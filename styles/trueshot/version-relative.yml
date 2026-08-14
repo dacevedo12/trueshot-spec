@@ -1,0 +1,13 @@
+extends: existence
+message: "'%s' is relative to an unstated version. Name the client version range instead."
+level: error
+ignorecase: true
+tokens:
+  - 'in this version'
+  - 'in the current version'
+  - 'in the latest version'
+  - 'as of this revision'
+  - 'before this revision'
+  - 'after this revision'
+  - 'in newer versions'
+  - 'in older versions'
