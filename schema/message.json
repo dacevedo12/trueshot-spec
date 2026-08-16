@@ -3,59 +3,71 @@
   "$id": "urn:trueshot:schema:message",
   "title": "Message definition",
   "description": "Meta-schema for the message definitions in schema/messages.",
-
   "type": "object",
   "required": ["message", "revisions"],
   "additionalProperties": false,
   "properties": {
-    "$schema": { "type": "string" },
+    "$schema": {
+      "type": "string"
+    },
     "message": {
       "description": "Stable identity. Never changes once published.",
       "type": "string",
       "pattern": "^[A-Z][A-Za-z0-9]*$"
     },
-    "note": { "$ref": "#/$defs/note" },
+    "note": {
+      "$ref": "#/$defs/note"
+    },
     "revisions": {
       "type": "array",
       "minItems": 1,
-      "items": { "$ref": "#/$defs/revision" }
+      "items": {
+        "$ref": "#/$defs/revision"
+      }
     }
   },
-
   "$defs": {
     "note": {
       "description": "Prose carried as data, so it reaches generated output.",
       "type": "string"
     },
-
     "version": {
       "description": "Four part client version, as the client reports it.",
       "type": "string",
       "pattern": "^\\d+\\.\\d+\\.\\d+\\.\\d+$"
     },
-
     "identifier": {
       "description": "A field name. The reserved words are excluded so that a reference to one is never ambiguous.",
       "type": "string",
       "pattern": "^[a-z][A-Za-z0-9]*$",
-      "not": { "enum": ["remaining", "terminated"] }
+      "not": {
+        "enum": ["remaining", "terminated"]
+      }
     },
-
     "typeName": {
       "type": "string",
       "pattern": "^[A-Z][A-Za-z0-9]*$"
     },
-
     "size": {
       "description": "How the reader knows where this field ends: a byte count, the name of an earlier field holding the count, the rest of the payload, or a zero byte.",
       "anyOf": [
-        { "type": "integer", "minimum": 0 },
-        { "$ref": "#/$defs/identifier" },
-        { "type": "string", "const": "remaining" },
-        { "type": "string", "const": "terminated" }
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "$ref": "#/$defs/identifier"
+        },
+        {
+          "type": "string",
+          "const": "remaining"
+        },
+        {
+          "type": "string",
+          "const": "terminated"
+        }
       ]
     },
-
     "revision": {
       "type": "object",
       "required": ["from", "channel", "command", "direction", "fields"],
@@ -69,7 +81,9 @@
           "description": "Client version it stops applying to. Exclusive. Omit if open ended.",
           "$ref": "#/$defs/version"
         },
-        "note": { "$ref": "#/$defs/note" },
+        "note": {
+          "$ref": "#/$defs/note"
+        },
         "channel": {
           "description": "Channel name, defined in schema/channels.json.",
           "type": "string"
@@ -92,29 +106,43 @@
         "fields": {
           "type": "array",
           "minItems": 1,
-          "items": { "$ref": "#/$defs/field" }
+          "items": {
+            "$ref": "#/$defs/field"
+          }
         }
       }
     },
-
     "field": {
       "type": "object",
       "oneOf": [
-        { "$ref": "#/$defs/scalarField" },
-        { "$ref": "#/$defs/bytesField" },
-        { "$ref": "#/$defs/stringField" },
-        { "$ref": "#/$defs/arrayField" },
-        { "$ref": "#/$defs/structField" }
+        {
+          "$ref": "#/$defs/scalarField"
+        },
+        {
+          "$ref": "#/$defs/bytesField"
+        },
+        {
+          "$ref": "#/$defs/stringField"
+        },
+        {
+          "$ref": "#/$defs/arrayField"
+        },
+        {
+          "$ref": "#/$defs/structField"
+        }
       ]
     },
-
     "scalarField": {
       "type": "object",
       "required": ["name", "type"],
       "additionalProperties": false,
       "properties": {
-        "name": { "$ref": "#/$defs/identifier" },
-        "note": { "$ref": "#/$defs/note" },
+        "name": {
+          "$ref": "#/$defs/identifier"
+        },
+        "note": {
+          "$ref": "#/$defs/note"
+        },
         "type": {
           "type": "string",
           "enum": ["u8", "u16", "u32", "u64", "i8", "i16", "i32", "i64", "f32", "f64"]
@@ -126,60 +154,101 @@
         }
       }
     },
-
     "bytesField": {
       "type": "object",
       "required": ["name", "type", "size"],
       "additionalProperties": false,
       "properties": {
-        "name": { "$ref": "#/$defs/identifier" },
-        "note": { "$ref": "#/$defs/note" },
-        "type": { "type": "string", "const": "bytes" },
-        "size": { "$ref": "#/$defs/size" }
+        "name": {
+          "$ref": "#/$defs/identifier"
+        },
+        "note": {
+          "$ref": "#/$defs/note"
+        },
+        "type": {
+          "type": "string",
+          "const": "bytes"
+        },
+        "size": {
+          "$ref": "#/$defs/size"
+        }
       }
     },
-
     "stringField": {
       "type": "object",
       "required": ["name", "type", "encoding", "size"],
       "additionalProperties": false,
       "properties": {
-        "name": { "$ref": "#/$defs/identifier" },
-        "note": { "$ref": "#/$defs/note" },
-        "type": { "type": "string", "const": "string" },
-        "encoding": { "type": "string", "enum": ["utf8", "ascii"] },
-        "size": { "$ref": "#/$defs/size" }
+        "name": {
+          "$ref": "#/$defs/identifier"
+        },
+        "note": {
+          "$ref": "#/$defs/note"
+        },
+        "type": {
+          "type": "string",
+          "const": "string"
+        },
+        "encoding": {
+          "type": "string",
+          "enum": ["utf8", "ascii"]
+        },
+        "size": {
+          "$ref": "#/$defs/size"
+        }
       }
     },
-
     "arrayField": {
       "type": "object",
       "required": ["name", "type", "count", "items"],
       "additionalProperties": false,
       "properties": {
-        "name": { "$ref": "#/$defs/identifier" },
-        "note": { "$ref": "#/$defs/note" },
-        "type": { "type": "string", "const": "array" },
+        "name": {
+          "$ref": "#/$defs/identifier"
+        },
+        "note": {
+          "$ref": "#/$defs/note"
+        },
+        "type": {
+          "type": "string",
+          "const": "array"
+        },
         "count": {
           "description": "A literal count, the name of an earlier field, or repeat to the end.",
           "anyOf": [
-            { "type": "integer", "minimum": 0 },
-            { "$ref": "#/$defs/identifier" },
-            { "type": "string", "const": "remaining" }
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "$ref": "#/$defs/identifier"
+            },
+            {
+              "type": "string",
+              "const": "remaining"
+            }
           ]
         },
-        "items": { "$ref": "#/$defs/field" }
+        "items": {
+          "$ref": "#/$defs/field"
+        }
       }
     },
-
     "structField": {
       "type": "object",
       "required": ["name", "type", "struct"],
       "additionalProperties": false,
       "properties": {
-        "name": { "$ref": "#/$defs/identifier" },
-        "note": { "$ref": "#/$defs/note" },
-        "type": { "type": "string", "const": "struct" },
+        "name": {
+          "$ref": "#/$defs/identifier"
+        },
+        "note": {
+          "$ref": "#/$defs/note"
+        },
+        "type": {
+          "type": "string",
+          "const": "struct"
+        },
         "struct": {
           "description": "Name of a definition in schema/types.",
           "$ref": "#/$defs/typeName"

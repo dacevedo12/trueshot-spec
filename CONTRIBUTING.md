@@ -31,6 +31,10 @@ here.
 
 ## Where things go
 
+A **message** is what this specification defines: an identity, its revisions,
+and the fields each one carries. A **packet** is what the transport moves. The
+two words are not interchangeable, so use each for its own thing.
+
 Field order, sizes, and types live in `schema/`, and nowhere else. Prose never
 restates a layout. Prose covers what the schema cannot express: sequencing,
 state transitions, ordering guarantees, timing, error handling, and algorithms.
@@ -54,7 +58,7 @@ accepts is the end of it, and until then the finding belongs in an issue rather
 than in the specification. Anything else publishes a guess with a label on it,
 which is what a specification exists to avoid.
 
-A vector is one packet and what it decodes to, which makes it two claims:
+A vector is one message and what it decodes to, which makes it two claims:
 decoding the bytes produces the fields, and encoding the fields reproduces the
 bytes exactly. An implementation passes only when both hold. `schema/vector.json`
 gives the shape.
@@ -72,11 +76,11 @@ code, not this protocol. State what the client accepts.
 
 - A game asset, in any form.
 - Anything that identifies a person: a display name, an account identifier, an
-  address. This holds whether it is plain text or bytes inside a packet.
+  address. This holds whether it is plain text or bytes inside a message.
 - A recorded match. A recording is somebody's whole game, and its content
-  differs every time. Take the packet you need out of it and commit that.
+  differs every time. Take the message you need out of it and commit that.
 
-A packet lifted from a recording carries names and identifiers in its bytes.
+A message lifted from a recording carries names and identifiers in its bytes.
 Zero them, adjust the decoded fields to match, and say so in a note.
 
 ## Naming

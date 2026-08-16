@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "urn:trueshot:schema:vector",
   "title": "Conformance vector",
-  "description": "One packet and what it decodes to. Decoding the bytes produces the fields, and encoding the fields reproduces the bytes exactly. Vectors live in conformance/vectors/<message-name>/<case>.json, the directory named in kebab-case after the message it covers.",
+  "description": "One message and what it decodes to. Decoding the bytes produces the fields, and encoding the fields reproduces the bytes exactly. Vectors live in conformance/vectors/<message-name>/<case>.json, the directory named in kebab-case after the message it covers.",
   "type": "object",
   "required": ["message", "version", "bytes", "fields"],
   "additionalProperties": false,
@@ -11,12 +11,12 @@
       "type": "string"
     },
     "message": {
-      "description": "Identity of the message this packet carries.",
+      "description": "Identity of the message these bytes carry.",
       "type": "string",
       "pattern": "^[A-Z][A-Za-z0-9]*$"
     },
     "version": {
-      "description": "Client version the packet was taken from. Selects the revision.",
+      "description": "Client version the message was taken from. Selects the revision.",
       "type": "string",
       "pattern": "^\\d+\\.\\d+\\.\\d+\\.\\d+$"
     },
@@ -24,7 +24,7 @@
       "$ref": "urn:trueshot:schema:message#/$defs/note"
     },
     "bytes": {
-      "description": "The complete channel payload, in hexadecimal, whitespace ignored. Bytes that identify a person are zeroed before committing.",
+      "description": "The message, in hexadecimal, whitespace ignored. Bytes that identify a person are zeroed before committing.",
       "type": "string",
       "pattern": "^[0-9a-fA-F\\s]+$"
     },

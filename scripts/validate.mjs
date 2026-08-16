@@ -102,7 +102,7 @@ function checkFields(fields, outer, structNames, at) {
   return seen;
 }
 
-const messageSchema = readConfig(join(SCHEMA_DIR, "schema.json"));
+const messageSchema = readConfig(join(SCHEMA_DIR, "message.json"));
 const structSchema = readConfig(join(SCHEMA_DIR, "struct.json"));
 const channelsDoc = readConfig(join(SCHEMA_DIR, "channels.json"));
 
