@@ -54,6 +54,11 @@ accepts is the end of it, and until then the finding belongs in an issue rather
 than in the specification. Anything else publishes a guess with a label on it,
 which is what a specification exists to avoid.
 
+A vector is one packet and what it decodes to, which makes it two claims:
+decoding the bytes produces the fields, and encoding the fields reproduces the
+bytes exactly. An implementation passes only when both hold. `schema/vector.json`
+gives the shape.
+
 Where a layout is confirmed but a field's meaning is not, say so in a note.
 Those are two claims, and one can be settled while the other stays open.
 
@@ -62,6 +67,17 @@ decomposed, named, or commented, and never carry a line of one across.
 
 Do not record what another project does or fails to do. That describes their
 code, not this protocol. State what the client accepts.
+
+## What never gets committed
+
+- A game asset, in any form.
+- Anything that identifies a person: a display name, an account identifier, an
+  address. This holds whether it is plain text or bytes inside a packet.
+- A recorded match. A recording is somebody's whole game, and its content
+  differs every time. Take the packet you need out of it and commit that.
+
+A packet lifted from a recording carries names and identifiers in its bytes.
+Zero them, adjust the decoded fields to match, and say so in a note.
 
 ## Naming
 

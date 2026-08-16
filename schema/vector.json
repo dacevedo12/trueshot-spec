@@ -2,13 +2,14 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "urn:trueshot:schema:vector",
   "title": "Conformance vector",
-  "description": "One packet, and what it decodes to. Read in both directions.",
-
+  "description": "One packet and what it decodes to. Decoding the bytes produces the fields, and encoding the fields reproduces the bytes exactly. Vectors live in conformance/vectors/<message-name>/<case>.json, the directory named in kebab-case after the message it covers.",
   "type": "object",
   "required": ["message", "version", "bytes", "fields"],
   "additionalProperties": false,
   "properties": {
-    "$schema": { "type": "string" },
+    "$schema": {
+      "type": "string"
+    },
     "message": {
       "description": "Identity of the message this packet carries.",
       "type": "string",
@@ -19,14 +20,16 @@
       "type": "string",
       "pattern": "^\\d+\\.\\d+\\.\\d+\\.\\d+$"
     },
-    "note": { "$ref": "urn:trueshot:schema:message#/$defs/note" },
+    "note": {
+      "$ref": "urn:trueshot:schema:message#/$defs/note"
+    },
     "bytes": {
-      "description": "The complete channel payload, in hexadecimal. Whitespace is ignored.",
+      "description": "The complete channel payload, in hexadecimal, whitespace ignored. Bytes that identify a person are zeroed before committing.",
       "type": "string",
       "pattern": "^[0-9a-fA-F\\s]+$"
     },
     "fields": {
-      "description": "The decoded value of every field the revision defines. Byte runs are hexadecimal, and an unsigned 64 bit value is a decimal string.",
+      "description": "The decoded value of every field the revision defines. A byte run is hexadecimal, and an unsigned 64 bit value is a decimal string, because JSON cannot hold one exactly as a number.",
       "type": "object",
       "minProperties": 1
     }
