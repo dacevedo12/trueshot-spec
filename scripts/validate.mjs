@@ -223,6 +223,90 @@ for (let i = 0; i < claims.length; i += 1) {
   }
 }
 
+// A vector claims a packet decodes to a struct. It has to name a message that
+// exists, at a version that message covers, with the fields that revision
+// defines.
+const vectorSchema = readConfig(join(SCHEMA_DIR, "vector.json"));
+const validateVector = vectorSchema ? ajv.compile(vectorSchema) : null;
+const byMessage = new Map(messages.map(({ doc }) => [doc.message, doc]));
+
+// Directory names stay kebab-case like every other directory. key-check holds
+// the vectors for KeyCheck.
+function pascalFromKebab(name) {
+  return name
+    .split("-")
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join("");
+}
+
+function revisionFor(doc, version) {
+  return doc.revisions.find(
+    (r) =>
+      compareVersions(version, r.from) >= 0 &&
+      (!r.until || compareVersions(version, r.until) < 0),
+  );
+}
+
+let vectorCount = 0;
+const VECTOR_DIR = join("conformance", "vectors");
+if (validateVector && existsSync(VECTOR_DIR)) {
+  for (const dir of readdirSync(VECTOR_DIR, { withFileTypes: true })) {
+    if (!dir.isDirectory()) continue;
+    for (const name of readdirSync(join(VECTOR_DIR, dir.name))) {
+      if (!name.endsWith(".json")) continue;
+      const path = join(VECTOR_DIR, dir.name, name);
+      vectorCount += 1;
+
+      let doc;
+      try {
+        doc = readJson(path);
+      } catch (error) {
+        fail(path, `not valid JSON: ${error.message}`);
+        continue;
+      }
+      if (!validateVector(doc)) {
+        for (const error of validateVector.errors) {
+          fail(path, `${error.instancePath || "/"} ${error.message}`);
+        }
+        continue;
+      }
+
+      if (pascalFromKebab(dir.name) !== doc.message) {
+        fail(path, `sits under "${dir.name}" but names message "${doc.message}"`);
+      }
+
+      const hex = doc.bytes.replace(/\s+/g, "");
+      if (hex.length % 2 !== 0) {
+        fail(path, `bytes has an odd number of hexadecimal digits`);
+      }
+
+      const message = byMessage.get(doc.message);
+      if (!message) {
+        fail(path, `names message "${doc.message}", which has no definition`);
+        continue;
+      }
+
+      const revision = revisionFor(message, doc.version);
+      if (!revision) {
+        fail(path, `version ${doc.version} falls outside every revision of ${doc.message}`);
+        continue;
+      }
+
+      const defined = new Set(revision.fields.map((f) => f.name));
+      for (const name of Object.keys(doc.fields)) {
+        if (!defined.has(name)) {
+          fail(path, `decodes a field "${name}" that the revision does not define`);
+        }
+      }
+      for (const name of defined) {
+        if (!(name in doc.fields)) {
+          fail(path, `does not decode the field "${name}"`);
+        }
+      }
+    }
+  }
+}
+
 if (problems.length > 0) {
   for (const problem of problems) console.error(problem);
   console.error(`\n${problems.length} problem(s) found.`);
@@ -230,5 +314,5 @@ if (problems.length > 0) {
 }
 
 console.log(
-  `Checked ${messages.length} message(s) and ${structNames.size} struct(s). No problems.`,
+  `Checked ${messages.length} message(s), ${structNames.size} struct(s) and ${vectorCount} vector(s). No problems.`,
 );
