@@ -1,0 +1,13 @@
+extends: existence
+message: "'%s' carries no requirement force in lower case. Use the upper case keyword, or rewrite the sentence."
+level: error
+tokens:
+  - '\bmust not\b'
+  - '\bshould not\b'
+  - '\bmust\b'
+  - '\bshould\b'
+  - '\bmay\b'
+  - '\bshall\b'
+  - '\brequired\b'
+  - '\brecommended\b'
+  - '\boptional\b'

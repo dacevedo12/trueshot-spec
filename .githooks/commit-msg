@@ -1,0 +1,10 @@
+#!/bin/sh
+# Runs on every commit. Wired up by the prepare script in package.json.
+set -e
+
+npx --no-install commitlint --edit "$1"
+
+if ! grep -qi '^Signed-off-by: ' "$1"; then
+  echo "commit-msg: no Signed-off-by trailer. Commit with 'git commit -s'." >&2
+  exit 1
+fi
