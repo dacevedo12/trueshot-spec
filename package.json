@@ -1,0 +1,23 @@
+{
+  "name": "trueshot-spec-tools",
+  "private": true,
+  "description": "Checks for the specification. Not published, and not needed to implement from the spec.",
+  "type": "module",
+  "scripts": {
+    "format": "prettier --write \"**/*.{json,md}\"",
+    "check:format": "prettier --check \"**/*.{json,md}\"",
+    "check:schema": "node scripts/validate.mjs",
+    "check": "npm run check:names && npm run check:format && npm run check:schema && npm run check:prose && npm run check:links",
+    "check:names": "ls-lint",
+    "prepare": "git config core.hooksPath .githooks",
+    "check:prose": "vale .",
+    "check:links": "lychee --no-progress --require-https=false ."
+  },
+  "devDependencies": {
+    "@commitlint/cli": "21.2.2",
+    "@commitlint/config-conventional": "21.2.2",
+    "@ls-lint/ls-lint": "^2.3.1",
+    "ajv": "^8.17.1",
+    "prettier": "^3.3.0"
+  }
+}

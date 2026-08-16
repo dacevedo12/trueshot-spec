@@ -1,0 +1,6 @@
+{
+  "endian": "little",
+  "note": "Every multi-byte field is little endian unless a field overrides it. No override is known to be needed.",
+  "minimumEncryptedLength": 8,
+  "encryptionNote": "A payload shorter than minimumEncryptedLength travels in the clear, even on an encrypted channel."
+}

@@ -1,0 +1,12 @@
+{
+  "note": "Encryption and reliability are properties of the channel. A message inherits them and does not restate them.",
+  "channels": [
+    {
+      "name": "handshake",
+      "id": 0,
+      "encrypted": false,
+      "reliability": "reliable",
+      "note": "Carries key exchange before encryption is established."
+    }
+  ]
+}
