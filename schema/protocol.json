@@ -67,7 +67,7 @@
             "name": "maximumTransmissionUnit",
             "value": 996,
             "stock": 4096,
-            "note": "The client asks for this when it connects. A ceiling on each end and the smaller of the two governs, so a server that leaves the stock ceiling in place still settles here. Whether a server may leave it alone is untested."
+            "note": "A server MUST clamp to this. The client asks for the stock default of 1400 and cannot receive more than 996, because its receive buffer is sized by this same ceiling. The clamp happens only on the server side, so a server that keeps the stock ceiling accepts 1400 and sends datagrams the client drops."
           }
         ]
       }

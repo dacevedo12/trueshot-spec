@@ -57,6 +57,28 @@ A server whose session identifier is wrong therefore looks, from the outside,
 like a server that has stopped responding. An implementer chasing that symptom
 SHOULD check this field first.
 
+## Maximum transmission unit
+
+A server MUST limit a connection to 996 bytes, and `schema/protocol.json`
+records the value.
+
+The reason is not that the client asks for it. The client asks for 1400, the
+stock default, and cannot receive more than 996, because the same ceiling sizes
+its receive buffer. Nothing on the client corrects this. ENet clamps a
+requested unit only where the connection is accepted, so the whole
+responsibility rests on the server.
+
+### When the limit is too high
+
+A server that accepts the requested 1400 sends datagrams the client discards on
+arrival. Anything under 996 bytes still fits, so the handshake completes and
+the connection looks healthy for as long as the messages stay small.
+
+The symptom arrives with the first large message: packet loss climbing from
+zero while round trip time stays flat. Loss that rises without any matching
+rise in latency means datagrams are being discarded on arrival rather than lost
+in transit, and an oversized unit is the reason.
+
 ## Byte order
 
 The sent time in the packet header is big endian. Every field of every message
