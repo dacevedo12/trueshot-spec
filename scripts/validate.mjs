@@ -67,26 +67,68 @@ function directionsOverlap(a, b) {
 
 // Walks a field list at any depth. `outer` carries the names already read in
 // enclosing scopes, so an array element may size itself from an earlier field.
+// Bit runs are addressable as parent.bit, which is what a presence rule points
+// at.
 function checkFields(fields, outer, structNames, at) {
   const seen = new Map(outer);
 
   for (const field of fields) {
+    if (field.present) {
+      const target = field.present.when;
+      if (!seen.has(target)) {
+        fail(
+          at,
+          `field "${field.name}" is present when "${target}", which is not an earlier field`,
+        );
+      }
+    }
+
+    if (field.type === "bits") {
+      const declared = field.bits.reduce((total, run) => total + run.width, 0);
+      const available = field.size * 8;
+      if (declared !== available) {
+        fail(
+          at,
+          `field "${field.name}" declares ${declared} bits across ${field.size} byte(s), which holds ${available}`,
+        );
+      }
+      for (const run of field.bits) {
+        const path = `${field.name}.${run.name}`;
+        if (seen.has(path)) {
+          fail(at, `bit run "${path}" is declared twice`);
+        }
+        seen.set(path, "u8");
+      }
+    }
+
     for (const key of ["count", "size"]) {
       const value = field[key];
       if (typeof value !== "string" || RESERVED.has(value)) continue;
       if (!seen.has(value)) {
-        fail(at, `field "${field.name}" ${key} refers to "${value}", which is not an earlier field`);
+        fail(
+          at,
+          `field "${field.name}" ${key} refers to "${value}", which is not an earlier field`,
+        );
       } else if (!COUNTABLE.has(seen.get(value))) {
-        fail(at, `field "${field.name}" ${key} refers to "${value}", which is ${seen.get(value)} rather than an unsigned integer`);
+        fail(
+          at,
+          `field "${field.name}" ${key} refers to "${value}", which is ${seen.get(value)} rather than an unsigned integer`,
+        );
       }
     }
 
     if (field.size === "terminated" && field.type !== "string") {
-      fail(at, `field "${field.name}" is ${field.type}, so it cannot be terminated`);
+      fail(
+        at,
+        `field "${field.name}" is ${field.type}, so it cannot be terminated`,
+      );
     }
 
     if (field.type === "struct" && !structNames.has(field.struct)) {
-      fail(at, `field "${field.name}" refers to struct "${field.struct}", which has no definition`);
+      fail(
+        at,
+        `field "${field.name}" refers to struct "${field.struct}", which has no definition`,
+      );
     }
 
     if (seen.has(field.name) && !outer.has(field.name)) {
@@ -138,7 +180,10 @@ for (const file of listJson("types")) {
     continue;
   }
   if (basename(file.name, ".json") !== doc.struct) {
-    fail(file.path, `file name does not match struct identity "${doc.struct}"`);
+    fail(
+      file.path,
+      `file name does not match struct identity "${doc.struct}"`,
+    );
   }
   structNames.add(doc.struct);
 }
@@ -168,7 +213,10 @@ for (const file of listJson("messages")) {
   }
 
   if (basename(file.name, ".json") !== doc.message) {
-    fail(file.path, `file name does not match message identity "${doc.message}"`);
+    fail(
+      file.path,
+      `file name does not match message identity "${doc.message}"`,
+    );
   }
 
   messages.push({ where: file.path, doc });
@@ -182,8 +230,14 @@ for (const { where, doc } of messages) {
       fail(at, `channel "${revision.channel}" is not in channels.json`);
     }
 
-    if (revision.until && compareVersions(revision.from, revision.until) >= 0) {
-      fail(at, `from "${revision.from}" is not before until "${revision.until}"`);
+    if (
+      revision.until &&
+      compareVersions(revision.from, revision.until) >= 0
+    ) {
+      fail(
+        at,
+        `from "${revision.from}" is not before until "${revision.until}"`,
+      );
     }
 
     checkFields(revision.fields, new Map(), structNames, at);
@@ -192,7 +246,10 @@ for (const { where, doc } of messages) {
   for (let i = 0; i < doc.revisions.length; i += 1) {
     for (let j = i + 1; j < doc.revisions.length; j += 1) {
       if (rangesOverlap(doc.revisions[i], doc.revisions[j])) {
-        fail(where, `revisions ${i} and ${j} cover overlapping client versions`);
+        fail(
+          where,
+          `revisions ${i} and ${j} cover overlapping client versions`,
+        );
       }
     }
   }
@@ -214,7 +271,8 @@ for (let i = 0; i < claims.length; i += 1) {
     if (a.message === b.message) continue;
     if (a.revision.command !== b.revision.command) continue;
     if (a.revision.channel !== b.revision.channel) continue;
-    if (!directionsOverlap(a.revision.direction, b.revision.direction)) continue;
+    if (!directionsOverlap(a.revision.direction, b.revision.direction))
+      continue;
     if (!rangesOverlap(a.revision, b.revision)) continue;
     fail(
       a.where,
@@ -272,7 +330,10 @@ if (validateVector && existsSync(VECTOR_DIR)) {
       }
 
       if (pascalFromKebab(dir.name) !== doc.message) {
-        fail(path, `sits under "${dir.name}" but names message "${doc.message}"`);
+        fail(
+          path,
+          `sits under "${dir.name}" but names message "${doc.message}"`,
+        );
       }
 
       const hex = doc.bytes.replace(/\s+/g, "");
@@ -288,14 +349,20 @@ if (validateVector && existsSync(VECTOR_DIR)) {
 
       const revision = revisionFor(message, doc.version);
       if (!revision) {
-        fail(path, `version ${doc.version} falls outside every revision of ${doc.message}`);
+        fail(
+          path,
+          `version ${doc.version} falls outside every revision of ${doc.message}`,
+        );
         continue;
       }
 
       const defined = new Set(revision.fields.map((f) => f.name));
       for (const name of Object.keys(doc.fields)) {
         if (!defined.has(name)) {
-          fail(path, `decodes a field "${name}" that the revision does not define`);
+          fail(
+            path,
+            `decodes a field "${name}" that the revision does not define`,
+          );
         }
       }
       for (const name of defined) {
