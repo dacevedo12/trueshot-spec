@@ -50,7 +50,9 @@
             "name": "sentTime",
             "type": "u16",
             "endian": "big",
-            "present": { "when": "peer.sentTimeFlag" },
+            "present": {
+              "when": "peer.sentTimeFlag"
+            },
             "note": "Milliseconds since the connection opened. Big endian, unlike every message field."
           }
         ],
@@ -60,6 +62,12 @@
             "value": 127,
             "stock": 32767,
             "note": "Follows from the peer id occupying seven bits."
+          },
+          {
+            "name": "maximumTransmissionUnit",
+            "value": 996,
+            "stock": 4096,
+            "note": "The client asks for this when it connects. A ceiling on each end and the smaller of the two governs, so a server that leaves the stock ceiling in place still settles here. Whether a server may leave it alone is untested."
           }
         ]
       }

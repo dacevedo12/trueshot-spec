@@ -14,3 +14,7 @@ restates them, so a layout cannot be recovered by reading prose.
 If the specification does not answer something you need, do not fill the gap
 with a guess and carry on. That is a defect worth reporting, and
 [CONTRIBUTING.md](CONTRIBUTING.md) explains how.
+
+## Reading order
+
+1. [Transport](spec/transport.md), which carries everything else.
