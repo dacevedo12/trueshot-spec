@@ -60,8 +60,10 @@ which is what a specification exists to avoid.
 
 A vector is one message and what it decodes to, which makes it two claims:
 decoding the bytes produces the fields, and encoding the fields reproduces the
-bytes exactly. An implementation passes only when both hold. `schema/vector.json`
-gives the shape.
+bytes exactly. An implementation passes only when both hold.
+
+`schema/meta/` holds the meta-schemas saying what a definition may contain.
+Everything beside them is the definitions themselves.
 
 Where a layout is confirmed but a field's meaning is not, say so in a note.
 Those are two claims, and one can be settled while the other stays open.

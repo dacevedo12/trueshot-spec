@@ -144,24 +144,77 @@ function checkFields(fields, outer, structNames, at) {
   return seen;
 }
 
-const messageSchema = readConfig(join(SCHEMA_DIR, "message.json"));
-const structSchema = readConfig(join(SCHEMA_DIR, "struct.json"));
+const META = join(SCHEMA_DIR, "meta");
+const messageSchema = readConfig(join(META, "message.json"));
+const structSchema = readConfig(join(META, "struct.json"));
+const protocolSchema = readConfig(join(META, "protocol.json"));
+const channelsSchema = readConfig(join(META, "channels.json"));
+const protocolDoc = readConfig(join(SCHEMA_DIR, "protocol.json"));
 const channelsDoc = readConfig(join(SCHEMA_DIR, "channels.json"));
 
-if (!messageSchema || !structSchema || !channelsDoc) {
+if (
+  !messageSchema ||
+  !structSchema ||
+  !protocolSchema ||
+  !channelsSchema ||
+  !protocolDoc ||
+  !channelsDoc
+) {
   for (const problem of problems) console.error(problem);
   process.exit(1);
 }
-
-if (!Array.isArray(channelsDoc.channels)) {
-  fail("schema/channels.json", "has no channels array");
-}
-const channels = new Set((channelsDoc.channels ?? []).map((c) => c.name));
 
 const ajv = new Ajv({ strict: true, allErrors: true });
 ajv.addSchema(messageSchema);
 const validateMessage = ajv.getSchema(messageSchema.$id);
 const validateStruct = ajv.compile(structSchema);
+const validateProtocol = ajv.compile(protocolSchema);
+const validateChannels = ajv.compile(channelsSchema);
+
+// The two singleton documents. A $schema pointer is a convenience for editors
+// and not part of the definition, so it is stripped before validating.
+const withoutPointer = (doc) => {
+  const copy = { ...doc };
+  delete copy.$schema;
+  return copy;
+};
+
+if (!validateProtocol(withoutPointer(protocolDoc))) {
+  for (const error of validateProtocol.errors) {
+    fail(
+      "schema/protocol.json",
+      `${error.instancePath || "/"} ${error.message}`,
+    );
+  }
+}
+if (!validateChannels(withoutPointer(channelsDoc))) {
+  for (const error of validateChannels.errors) {
+    fail(
+      "schema/channels.json",
+      `${error.instancePath || "/"} ${error.message}`,
+    );
+  }
+}
+
+// A message names a channel, and the channel has to exist somewhere.
+const channels = new Set(
+  (channelsDoc.revisions ?? []).flatMap((revision) =>
+    (revision.channels ?? []).map((channel) => channel.name),
+  ),
+);
+
+// The transport header uses the same field vocabulary, so it gets the same
+// walk: bit widths, presence references, backward references.
+for (const [index, revision] of (protocolDoc.revisions ?? []).entries()) {
+  if (revision.transport?.header) {
+    checkFields(
+      revision.transport.header,
+      new Map(),
+      new Set(),
+      `schema/protocol.json revision ${index} header`,
+    );
+  }
+}
 
 // Structs first: messages reference them.
 const structNames = new Set();
@@ -284,7 +337,7 @@ for (let i = 0; i < claims.length; i += 1) {
 // A vector claims a packet decodes to a struct. It has to name a message that
 // exists, at a version that message covers, with the fields that revision
 // defines.
-const vectorSchema = readConfig(join(SCHEMA_DIR, "vector.json"));
+const vectorSchema = readConfig(join(META, "vector.json"));
 const validateVector = vectorSchema ? ajv.compile(vectorSchema) : null;
 const byMessage = new Map(messages.map(({ doc }) => [doc.message, doc]));
 

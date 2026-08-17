@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:trueshot:schema:protocol",
+  "title": "Protocol definition",
+  "description": "Meta-schema for schema/protocol.json: what holds across every message, and the transport underneath them.",
+
+  "type": "object",
+  "required": ["revisions"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "note": { "$ref": "urn:trueshot:schema:message#/$defs/note" },
+    "revisions": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/revision" }
+    }
+  },
+
+  "$defs": {
+    "revision": {
+      "type": "object",
+      "required": ["from", "endian", "cipher", "transport"],
+      "additionalProperties": false,
+      "properties": {
+        "from": { "$ref": "urn:trueshot:schema:message#/$defs/version" },
+        "until": { "$ref": "urn:trueshot:schema:message#/$defs/version" },
+        "note": { "$ref": "urn:trueshot:schema:message#/$defs/note" },
+        "endian": {
+          "description": "Byte order every message field uses unless it says otherwise. The transport header is separate and states its own.",
+          "type": "string",
+          "enum": ["little", "big"]
+        },
+        "cipher": { "$ref": "#/$defs/cipher" },
+        "transport": { "$ref": "#/$defs/transport" }
+      }
+    },
+
+    "cipher": {
+      "description": "Applied to a channel payload above the transport, so the transport never sees plaintext.",
+      "type": "object",
+      "required": ["name", "mode", "blockSize"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string" },
+        "mode": { "type": "string" },
+        "blockSize": {
+          "description": "In bytes. A payload with no complete block travels unchanged, since there is nothing to encipher.",
+          "type": "integer",
+          "minimum": 1
+        },
+        "note": { "$ref": "urn:trueshot:schema:message#/$defs/note" }
+      }
+    },
+
+    "transport": {
+      "description": "The protocol carrying channel payloads, and how it differs from stock.",
+      "type": "object",
+      "required": ["base", "header"],
+      "additionalProperties": false,
+      "properties": {
+        "base": {
+          "type": "object",
+          "required": ["name", "version"],
+          "additionalProperties": false,
+          "properties": {
+            "name": { "type": "string" },
+            "version": { "type": "string" },
+            "note": { "$ref": "urn:trueshot:schema:message#/$defs/note" }
+          }
+        },
+        "note": { "$ref": "urn:trueshot:schema:message#/$defs/note" },
+        "header": {
+          "description": "The packet header, which differs from the stock one. Fields use the same vocabulary as a message.",
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "urn:trueshot:schema:message#/$defs/field" }
+        },
+        "constants": {
+          "description": "Values that differ from the stock protocol. Each names what it replaces.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "value", "stock"],
+            "additionalProperties": false,
+            "properties": {
+              "name": { "type": "string" },
+              "value": { "type": "integer" },
+              "stock": {
+                "description": "What the stock protocol uses, so the difference is visible.",
+                "type": "integer"
+              },
+              "note": { "$ref": "urn:trueshot:schema:message#/$defs/note" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

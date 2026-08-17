@@ -1,6 +1,68 @@
 {
-  "endian": "little",
-  "note": "Every multi-byte field is little endian unless a field overrides it. No override is known to be needed.",
-  "minimumEncryptedLength": 8,
-  "encryptionNote": "A payload shorter than minimumEncryptedLength travels in the clear, even on an encrypted channel."
+  "$schema": "meta/protocol.json",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "endian": "little",
+      "note": "Established against a 4.20.0.315 client. Whether any of it holds for earlier versions is untested.",
+      "cipher": {
+        "name": "Blowfish",
+        "mode": "ECB",
+        "blockSize": 8,
+        "note": "There is no padding. Trailing bytes that do not fill a block travel unchanged, so a payload shorter than one block is never enciphered at all."
+      },
+      "transport": {
+        "base": {
+          "name": "ENet",
+          "version": "1.2.5",
+          "note": "Stock ENet does not interoperate. The header below replaces the stock one, and the constants replace stock values. Everything else, including reliability, sequencing and fragmentation, is stock behaviour."
+        },
+        "header": [
+          {
+            "name": "unknown",
+            "type": "bytes",
+            "size": 4,
+            "note": "Purpose undetermined. The client emits 28 68 bd eb invariantly, across sessions and regardless of the match key or player. It does not check what it receives here: a server writing four unrelated bytes is accepted. Removing the field breaks the connection, so the width matters and the content does not."
+          },
+          {
+            "name": "sessionId",
+            "type": "u8",
+            "note": "A server MUST echo the value the client supplied when it connected. Sending a different value makes the client discard every packet, silently, with no error and no disconnection. The connection then dies of retransmission."
+          },
+          {
+            "name": "peer",
+            "type": "bits",
+            "size": 1,
+            "bits": [
+              {
+                "name": "peerId",
+                "width": 7,
+                "note": "127 marks a peer the transport has not assigned yet, which is what a connecting client sends."
+              },
+              {
+                "name": "sentTimeFlag",
+                "width": 1,
+                "note": "Set when the header carries a sent time."
+              }
+            ]
+          },
+          {
+            "name": "sentTime",
+            "type": "u16",
+            "endian": "big",
+            "present": { "when": "peer.sentTimeFlag" },
+            "note": "Milliseconds since the connection opened. Big endian, unlike every message field."
+          }
+        ],
+        "constants": [
+          {
+            "name": "maximumPeerId",
+            "value": 127,
+            "stock": 32767,
+            "note": "Follows from the peer id occupying seven bits."
+          }
+        ]
+      }
+    }
+  ]
 }

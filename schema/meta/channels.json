@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:trueshot:schema:channels",
+  "title": "Channel definitions",
+  "description": "Meta-schema for schema/channels.json. A message names a channel and inherits its encryption and reliability rather than restating them.",
+
+  "type": "object",
+  "required": ["revisions"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "note": { "$ref": "urn:trueshot:schema:message#/$defs/note" },
+    "revisions": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/revision" }
+    }
+  },
+
+  "$defs": {
+    "revision": {
+      "type": "object",
+      "required": ["from", "channels"],
+      "additionalProperties": false,
+      "properties": {
+        "from": { "$ref": "urn:trueshot:schema:message#/$defs/version" },
+        "until": { "$ref": "urn:trueshot:schema:message#/$defs/version" },
+        "note": { "$ref": "urn:trueshot:schema:message#/$defs/note" },
+        "channels": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/channel" }
+        }
+      }
+    },
+
+    "channel": {
+      "type": "object",
+      "required": ["name", "id", "encrypted", "reliability"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "description": "How a message refers to this channel.",
+          "type": "string",
+          "pattern": "^[a-z][A-Za-z0-9]*$"
+        },
+        "id": {
+          "description": "The number the transport carries.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 255
+        },
+        "encrypted": { "type": "boolean" },
+        "reliability": {
+          "description": "What a message on this channel gets unless it says otherwise.",
+          "type": "string",
+          "enum": ["reliable", "unreliable", "unsequenced"]
+        },
+        "note": { "$ref": "urn:trueshot:schema:message#/$defs/note" }
+      }
+    }
+  }
+}

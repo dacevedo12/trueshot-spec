@@ -1,12 +1,17 @@
 {
-  "note": "Encryption and reliability are properties of the channel. A message inherits them and does not restate them.",
-  "channels": [
+  "$schema": "meta/channels.json",
+  "revisions": [
     {
-      "name": "handshake",
-      "id": 0,
-      "encrypted": false,
-      "reliability": "reliable",
-      "note": "Carries key exchange before encryption is established."
+      "from": "4.20.0.315",
+      "channels": [
+        {
+          "name": "handshake",
+          "id": 0,
+          "encrypted": false,
+          "reliability": "reliable",
+          "note": "Carries key exchange, so it runs before a cipher key is agreed."
+        }
+      ]
     }
   ]
 }
