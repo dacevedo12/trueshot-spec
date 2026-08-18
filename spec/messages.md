@@ -51,10 +51,12 @@ field in that range that would need one cannot be recorded until one is.
 an earlier field, or `remaining`.
 
 **Strings.** A run of bytes and an encoding, either `utf8` or `ascii`. A string
-of fixed size occupies that many bytes whatever its content, and the bytes
-after its text are zero. A string sized `terminated` ends at the first zero
-byte, and that byte belongs to the field. A string sized `remaining` runs to
-the end of the body. A size counts bytes rather than characters.
+given a size occupies that many bytes whatever its content, the bytes after its
+text are zero, and those zeros are padding rather than content. A string sized
+`terminated` ends at the first zero byte, that byte belongs to the field, and
+it is the only one dropped. A string sized `remaining` carries every byte to
+the end of its enclosure, zeros included. A size counts bytes rather than
+characters.
 
 **Arrays.** A run of one repeated shape. An array states either a count of
 items or a size in bytes, and never both. A count is a literal, the name of an
@@ -67,7 +69,9 @@ wherever it occurs. A struct occupies exactly the bytes its own fields occupy.
 Where its length travels on the wire instead, the field states a size, and the
 struct's fields MUST fill it exactly.
 
-**Bits.** A field of one or more bytes divided into named runs. The bytes are
+**Bits.** A field of one or more bytes divided into named runs, whose widths
+total exactly the bits those bytes hold. No run is wider than 32 bits. The
+bytes are
 read as one little endian word whatever the range's byte order, because the
 runs are positions in that word rather than fields of their own. The runs are
 listed from the least significant bit upward: the first run occupies the low
@@ -83,10 +87,20 @@ bytes at all.
 
 ## Enumerated values
 
-Where a client treats a field as a fixed set, the field records what the values
-mean, keyed by the value on the wire. Recording some of a set does not claim to
+Where a client treats an integer field as a fixed set, the field records what
+the values mean, keyed by the value on the wire. Recording some of a set does not claim to
 have recorded all of it, so a value with no entry is a value nobody has
 identified rather than one the client rejects.
+
+## Revisions
+
+A revision covers a range of client versions, from one version inclusive to
+another exclusive, and an open range runs to whatever the newest recorded
+version turns out to be. Ranges of one message never overlap.
+
+A revision travels on a channel, which `schema/channels.json` defines, and
+takes that channel's reliability. Where the message differs, the revision
+states its own.
 
 ## Vectors
 
