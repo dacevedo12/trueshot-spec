@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   schema:
-    name: names, format and schema
+    name: names, format, codec and schema
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -21,6 +21,7 @@ jobs:
       - run: npm ci
       - run: npm run check:names
       - run: npm run check:format
+      - run: npm run check:codec
       - run: npm run check:schema
 
   prose:
