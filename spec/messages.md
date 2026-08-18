@@ -96,8 +96,8 @@ bytes at all.
 
 ## Enumerated values
 
-Where a client treats an integer field as a fixed set, the field records what
-the values mean, keyed by the value on the wire. Recording some of a set does not claim to
+Where a client treats an integer field, or a run of bits inside one, as a
+fixed set, it records what the values mean, keyed by the value on the wire. Recording some of a set does not claim to
 have recorded all of it, so a value with no entry is a value nobody has
 identified rather than one the client rejects.
 
