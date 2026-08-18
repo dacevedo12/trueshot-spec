@@ -297,3 +297,76 @@ test("a count that disagrees with the array it labels is rejected on encode", ()
     CodecError,
   );
 });
+
+test("an array bounded by a byte length rather than an item count", () => {
+  const structs = new Map([
+    [
+      "Attr",
+      {
+        struct: "Attr",
+        fields: [
+          { name: "id", type: "u8" },
+          { name: "value", type: "u16" },
+        ],
+      },
+    ],
+  ]);
+  roundTrip(
+    [
+      { name: "length", type: "u8" },
+      {
+        name: "attrs",
+        type: "array",
+        size: "length",
+        items: { name: "a", type: "struct", struct: "Attr" },
+      },
+      { name: "tail", type: "u8" },
+    ],
+    "06 01 0a00 02 0b00 ff",
+    {
+      length: 6,
+      attrs: [
+        { id: 1, value: 10 },
+        { id: 2, value: 11 },
+      ],
+      tail: 255,
+    },
+    { structs },
+  );
+});
+
+test("a struct bounded by a byte length has to fill it exactly", () => {
+  const structs = new Map([
+    ["Pair", { struct: "Pair", fields: [{ name: "a", type: "u16" }] }],
+  ]);
+  const fields = [
+    { name: "length", type: "u8" },
+    { name: "pair", type: "struct", struct: "Pair", size: "length" },
+  ];
+  roundTrip(fields, "02 0100", { length: 2, pair: { a: 1 } }, { structs });
+  assert.throws(
+    () => decodeFields(fields, hex("03 010000"), 0, structs, "little"),
+    CodecError,
+  );
+});
+
+test("an item that consumes no bytes is rejected rather than repeated for ever", () => {
+  assert.throws(
+    () =>
+      decodeFields(
+        [
+          {
+            name: "tail",
+            type: "array",
+            count: "remaining",
+            items: { name: "e", type: "bytes", size: 0 },
+          },
+        ],
+        hex("0102"),
+        0,
+        new Map(),
+        "little",
+      ),
+    CodecError,
+  );
+});

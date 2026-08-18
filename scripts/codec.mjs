@@ -6,7 +6,7 @@
 // every implementation built to match it would be wrong the same way.
 //
 // How a decoded value is written is part of the format, and schema/meta/vector
-// records it. In short: an integer wider than 32 bits is a decimal string
+// records it. In short: a 64 bit integer is a decimal string
 // because JSON cannot hold one exactly, a byte run is lower case hexadecimal, a
 // fixed size string drops its trailing zero bytes, an array is an array, and a
 // struct or a run of bits is an object.
@@ -209,6 +209,34 @@ function decodeFields(fields, buffer, offset, structs, endian, outer = {}) {
         break;
       }
       case "array": {
+        if (field.size !== undefined) {
+          const bound = countOf(field, scope, "size");
+          if (offset + bound > buffer.length) {
+            bail(
+              `"${field.name}" claims ${bound} bytes and runs past the end`,
+            );
+          }
+          const within = buffer.subarray(0, offset + bound);
+          const items = [];
+          while (offset < within.length) {
+            const read = decodeFields(
+              [field.items],
+              within,
+              offset,
+              structs,
+              endian,
+              scope,
+            );
+            if (read.offset === offset) {
+              bail(`"${field.name}" holds an item that consumes no bytes`);
+            }
+            items.push(read.values[field.items.name]);
+            offset = read.offset;
+          }
+          values[field.name] = items;
+          scope[field.name] = items;
+          continue;
+        }
         const count = countOf(field, scope, "count");
         const items = [];
         if (count === "remaining") {
@@ -221,6 +249,9 @@ function decodeFields(fields, buffer, offset, structs, endian, outer = {}) {
               endian,
               scope,
             );
+            if (read.offset === offset) {
+              bail(`"${field.name}" holds an item that consumes no bytes`);
+            }
             items.push(read.values[field.items.name]);
             offset = read.offset;
           }
@@ -244,13 +275,25 @@ function decodeFields(fields, buffer, offset, structs, endian, outer = {}) {
       case "struct": {
         const definition = structs.get(field.struct);
         if (!definition) bail(`struct "${field.struct}" has no definition`);
+        const bound =
+          field.size === undefined ? null : countOf(field, scope, "size");
+        const within =
+          bound === null ? buffer : buffer.subarray(0, offset + bound);
+        if (bound !== null && offset + bound > buffer.length) {
+          bail(`"${field.name}" claims ${bound} bytes and runs past the end`);
+        }
         const read = decodeFields(
           definition.fields,
-          buffer,
+          within,
           offset,
           structs,
           endian,
         );
+        if (bound !== null && read.offset !== offset + bound) {
+          bail(
+            `"${field.name}" is ${bound} bytes and its fields read ${read.offset - offset}`,
+          );
+        }
         value = read.values;
         offset = read.offset;
         break;
@@ -321,14 +364,18 @@ function encodeFields(fields, values, structs, endian, outer = {}) {
         break;
       }
       case "array": {
-        const counted = countOf(field, scope, "count");
+        const counted =
+          field.size === undefined
+            ? countOf(field, scope, "count")
+            : "remaining";
         if (counted !== "remaining" && counted !== value.length) {
           bail(
             `"${field.name}" holds ${value.length} items and its count says ${counted}`,
           );
         }
+        const written = [];
         for (const item of value) {
-          parts.push(
+          written.push(
             encodeFields(
               [field.items],
               { [field.items.name]: item },
@@ -338,12 +385,36 @@ function encodeFields(fields, values, structs, endian, outer = {}) {
             ),
           );
         }
+        const body = Buffer.concat(written);
+        if (field.size !== undefined) {
+          const bound = countOf(field, scope, "size");
+          if (body.length !== bound) {
+            bail(
+              `"${field.name}" writes ${body.length} bytes and its size says ${bound}`,
+            );
+          }
+        }
+        parts.push(body);
         break;
       }
       case "struct": {
         const definition = structs.get(field.struct);
         if (!definition) bail(`struct "${field.struct}" has no definition`);
-        parts.push(encodeFields(definition.fields, value, structs, endian));
+        const written = encodeFields(
+          definition.fields,
+          value,
+          structs,
+          endian,
+        );
+        if (field.size !== undefined) {
+          const bound = countOf(field, scope, "size");
+          if (written.length !== bound) {
+            bail(
+              `"${field.name}" writes ${written.length} bytes and its size says ${bound}`,
+            );
+          }
+        }
+        parts.push(written);
         break;
       }
       case "bits": {
