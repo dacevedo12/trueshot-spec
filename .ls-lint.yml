@@ -27,7 +27,11 @@ ls:
     .yml: kebab-case
 
   conformance:
-    .md: kebab-case
+    .md: kebab-case | regex:^README$
+
+  conformance/vectors:
+    .dir: kebab-case
+    .json: kebab-case
 
 ignore:
   - .git

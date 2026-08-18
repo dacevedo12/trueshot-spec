@@ -114,9 +114,15 @@ checked.
 
 ## Checks
 
-`npm run check` runs file naming, formatting, schema validation, prose linting,
-and link checking. Continuous integration runs the same checks, so a local pass
-is a remote pass.
+`npm run check` runs file naming, formatting, codec tests, schema validation,
+prose linting, and link checking. Continuous integration runs the same checks,
+so a local pass is a remote pass.
+
+Schema validation decodes every vector rather than taking its word. A vector
+whose bytes and fields disagree fails the checks, which is what makes a vector
+evidence. Cipher vectors are run through Blowfish for the same reason, so the
+checks need Node started with `--openssl-legacy-provider`. The `npm run`
+scripts pass it already.
 
 Prose and link checking need [Vale](https://vale.sh) and
 [lychee](https://lychee.cli.rs) on your PATH. Everything else arrives with
