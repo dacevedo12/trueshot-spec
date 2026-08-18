@@ -39,15 +39,22 @@ and its bytes are one deciphered channel payload rather than a header.
 
 `fields` writes each value the way JSON can hold it exactly.
 
-| In the layout                       | In the vector                                 |
-| ----------------------------------- | --------------------------------------------- |
-| An integer under 64 bit             | a number                                      |
-| A 64 bit integer                    | a decimal string, because JSON loses the tail |
-| A run of bytes                      | lower case hexadecimal                        |
-| A fixed size string                 | the text, with trailing zero bytes dropped    |
-| An array                            | an array                                      |
-| A struct or a bit run               | an object keyed by its own field names        |
-| A field left out by a presence rule | `null`                                        |
+| In the layout                       | In the vector                                   |
+| ----------------------------------- | ----------------------------------------------- |
+| An integer under 64 bit             | a number                                        |
+| A 64 bit integer                    | a decimal string, because JSON loses the tail   |
+| A 32 bit float                      | the value it reads back as                      |
+| A 64 bit float                      | a number                                        |
+| A run of bytes                      | lower case hexadecimal                          |
+| A string given a size               | the text, with the zeros padding it out dropped |
+| A terminated string                 | the text, with its terminator dropped           |
+| A remaining string                  | every byte of it, zeros included                |
+| An array                            | an array                                        |
+| A struct or a bit run               | an object keyed by its own field names          |
+| A field left out by a presence rule | `null`                                          |
+
+A 32 bit float holds fewer digits than a JSON number does, so writing `0.1`
+records a value the bytes never carried. Write what a decoder gives back.
 
 Whitespace inside `bytes` groups the hexadecimal for reading and carries no
 meaning. Strip it before decoding.
@@ -71,7 +78,7 @@ bytes directly.
 
 `npm run check` decodes every transport and message vector against the layout
 it names, compares the result to its `fields`, encodes those fields back, and
-compares to its `bytes`. Every cipher vector is enciphered and deciphered for
+compares to the bytes the layout covers. Every cipher vector is enciphered and deciphered for
 the same reason. A vector whose two halves disagree does not survive the
 checks, so a vector here is evidence rather than an assertion.
 

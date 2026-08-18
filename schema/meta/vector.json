@@ -34,7 +34,7 @@
       "pattern": "^[0-9a-fA-F\\s]+$"
     },
     "fields": {
-      "description": "Every field the revision defines, under its own name. An integer narrower than 64 bits is a number; a 64 bit one is a decimal string, because JSON cannot hold it exactly. A byte run is lower case hexadecimal. A fixed size string drops its trailing zero bytes, and a size counts bytes rather than characters. An array is an array, and a struct or a run of bits is an object keyed by its own names. A field a presence rule leaves out is written as null.",
+      "description": "Every field the revision defines, under its own name. An integer narrower than 64 bits is a number; a 64 bit one is a decimal string, because JSON cannot hold it exactly. A 32 bit float is written as the value it reads back as, which is the double nearest to it and rarely the decimal somebody typed. A byte run is lower case hexadecimal. A string given a size drops the zero bytes padding it out, a terminated string drops its terminator and nothing else, and a remaining string drops nothing. A size counts bytes rather than characters. An array is an array, and a struct or a run of bits is an object keyed by its own names. A field a presence rule leaves out is written as null.",
       "type": "object"
     },
     "key": {
