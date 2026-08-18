@@ -80,11 +80,11 @@ algorithm works on. A stock library implementation interoperates, confirmed
 against a client, so an implementer SHOULD use one. A hand written Blowfish is
 a source of silent mismatch, and nothing about this protocol calls for one.
 
-Blowfish is deprecated in several cryptographic libraries and reaching it can
-take a flag. OpenSSL 3 keeps it in a legacy provider, so a runtime built on it
-refuses the algorithm as unsupported until that provider is enabled. That
-refusal is the reason to find the flag, not the reason to write the algorithm
-by hand.
+Blowfish is an old algorithm, and a library that still carries it does not
+always offer it by default. OpenSSL 3.0 moved it into a legacy provider that
+stays off unless something enables it, so anything built on that version
+reports the algorithm as unsupported until the provider is turned on. Enabling
+it is the answer. Writing the algorithm by hand is not.
 
 `conformance/vectors/cipher` holds a pair of vectors. One covers a whole block
 and one covers a payload with a tail too short to fill one.
