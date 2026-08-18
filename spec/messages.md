@@ -22,8 +22,8 @@ The same value on two channels is two different messages.
 
 Fields occupy the body in the order the revision lists them, each beginning
 where the one before it ended. Nothing is aligned and nothing is padded between
-fields. A field's size is either fixed by its type, given as a literal, or
-carried by an earlier field.
+fields. A field's size is fixed by its type, given as a literal, carried by an
+earlier field, or one of the two words below.
 
 Where a size or a count names an earlier field, it names one that has already
 been read and one holding an unsigned integer. It names either a whole field or
@@ -39,8 +39,12 @@ used wherever it occurs, so it cannot depend on what surrounds any one use.
 `remaining` means every byte from where the field begins to the end of what
 encloses it: the message body, or the byte length of the struct or array the
 field sits inside. A field measured that way is the last one its enclosure
-defines, because nothing inside that enclosure can follow it. The enclosure is
-itself an ordinary field, so fields follow it as usual.
+defines, because nothing inside that enclosure can follow it.
+
+An enclosure that states a byte length is itself an ordinary field, and fields
+follow it as usual. An enclosure that states none ends where the body ends, so
+it is the last field too, and so is any struct whose own last field is one of
+these.
 
 ## Byte order
 
@@ -59,13 +63,14 @@ field in that range that would need one cannot be recorded until one is.
 **Bytes.** A run of bytes with no interpretation. Its size is fixed, named by
 an earlier field, or `remaining`.
 
-**Strings.** A run of bytes and an encoding, either `utf8` or `ascii`. A string
-given a size occupies that many bytes whatever its content, the bytes after its
-text are zero, and those zeros are padding rather than content. A string sized
-`terminated` ends at the first zero byte, that byte belongs to the field, and
-it is the only one dropped. A string sized `remaining` carries every byte to
-the end of its enclosure, zeros included. A size counts bytes rather than
-characters.
+**Strings.** A run of bytes and an encoding, either `utf8` or `ascii`. A size
+is a literal or the name of an earlier field. A string given one occupies that
+many bytes whatever its content, and the zero bytes at its end are padding
+rather than content, so they are dropped. A zero anywhere else belongs to the
+text and stays. A string sized `terminated` ends at the first zero byte, that
+byte belongs to the field, and it is the only one dropped. A string sized
+`remaining` carries every byte to the end of its enclosure, zeros included. A
+size counts bytes rather than characters.
 
 **Arrays.** A run of one repeated shape. An array states either a count of
 items or a size in bytes, and never both. A count is a literal, the name of an
@@ -81,39 +86,69 @@ fill it exactly.
 
 **Bits.** A field of one or more bytes divided into named runs, whose widths
 total exactly the bits those bytes hold. No run is wider than 32 bits. The
-bytes are read as one little endian word whatever the range's byte order, because the
-runs are positions in that word rather than fields of their own. The runs are
-listed from the least significant bit upward: the first run occupies the low
-bits, and each one after it the bits above. A run is read as an unsigned
-integer of its own width.
+bytes are read as one little endian word whatever the range's byte order,
+because the runs are positions in that word rather than fields of their own.
+The runs are listed from the least significant bit upward: the first run
+occupies the low bits, and each one after it the bits above. A run is read as
+an unsigned integer of its own width.
 
 ## Presence
 
 A field states a presence rule when it occupies bytes only under a condition.
 The rule names an earlier field or bit run holding an integer, and where the
-condition is a value rather than a flag, the value it takes. A field whose condition does not hold occupies no
-bytes at all.
+condition is a value rather than a flag, the value it takes. A field whose
+condition does not hold occupies no bytes at all.
 
 ## Enumerated values
 
-Where a client treats an integer field, or a run of bits inside one, as a
-fixed set, it records what the values mean, keyed by the value on the wire. Recording some of a set does not claim to
-have recorded all of it, so a value with no entry is a value nobody has
-identified rather than one the client rejects.
+Where a client treats an integer field, or a run of bits inside one, as a fixed
+set, it records what the values mean, keyed by the value on the wire. Each
+entry names the value, in the same form a field name takes, and no two entries
+of one field share a name. A key fits the width and sign of what it names.
+Recording some of a set does not claim to have recorded all of it, so a value
+with no entry is a value nobody has identified rather than one the client
+rejects.
 
 ## Revisions
 
 A revision covers a range of client versions, from one version inclusive to
-another exclusive, and an open range runs to whatever the newest recorded
-version turns out to be. Ranges of one message never overlap.
+another exclusive. A range with no end covers every version from its first
+onward, and stays that way until a revision recorded after it takes over.
+Ranges of one message never overlap.
 
 A revision travels on a channel, which `schema/channels.json` defines, and
 takes that channel's reliability. Where the message differs, the revision
 states its own.
 
+## Names and notes
+
+A field name begins with a lower case letter and carries letters and digits
+after it. A message identity and a struct identity begin with a capital. A file
+is named for the identity it defines, and a message's vectors sit in one
+directory named for that identity, with each capital starting a new part, lower
+case and joined by hyphens.
+
+A field name is unique among the fields beside it, and an item of an array
+never takes the name of a field enclosing it.
+
+Anything in `schema/` carries a note wherever a fact needs words: a revision, a
+field, a run of bits, a value. A note records what a client does. It carries no
+requirement keyword, because a requirement belongs here in `spec/` where a
+reader looks for one, and it describes no moment in time, because a note that
+says a thing changed leaves a reader guessing which version it changed in.
+
+## Directions
+
+A revision states whether it travels `clientToServer`, `serverToClient`, or
+`bidirectional`. Direction is part of what identifies a message, so one command
+byte serves two messages travelling opposite ways on one channel. A
+bidirectional revision claims that byte both ways.
+
 ## Vectors
 
-Every revision carries at least one conformance vector, which is what
-separates a layout somebody has confirmed against a client from one somebody
-has proposed. [conformance/](../conformance/) says how a vector is written and
-how to run one.
+Every revision carries at least one conformance vector, which is what separates
+a layout somebody has confirmed against a client from one somebody has
+proposed. A message vector opens with the command byte and its body is read to
+the end, so a layout leaving bytes unread is a layout that is wrong.
+[conformance/](../conformance/) says how a vector is written and how to run
+one.
