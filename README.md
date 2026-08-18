@@ -5,8 +5,13 @@ A wire protocol specification for League of Legends game servers.
 This repository describes the protocol a server must speak for a League of
 Legends client to connect to it, load a match, and play. It exists so that the
 protocol can be studied in the open, and so that anyone, human or machine, can
-build a conforming server of their own, in any language, working from this
-document alone.
+build a conforming server of their own, in any language, without reading
+anybody else's.
+
+Where the protocol rests on public general purpose software, this repository
+records the delta and names what it rests on rather than restating it. The
+transport is ENet, and [Transport](spec/transport.md) says which parts are
+stock and which are not.
 
 Getting a game server running is how a lot of people learned to program. The
 specification is written for that reader. It states what happens on the wire,

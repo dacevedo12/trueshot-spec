@@ -29,6 +29,17 @@ The test: if a statement would constrain someone who chose Rust and an entity
 component system, and no client can observe the difference, it does not belong
 here.
 
+One thing is allowed through that test. Where the protocol relies on something
+an implementer will struggle to obtain, the obstacle is worth naming, along
+with the software it shows up in. That records a fact about the world rather
+than a design, and it holds whatever language somebody works in. It stays an
+observation: it never becomes a requirement, and a requirement keyword never
+attaches to it.
+
+Requirement keywords belong in `spec/` and nowhere else. A note in `schema/`
+records what a client does, so a requirement in one is a second copy of
+something the prose already says.
+
 ## Where things go
 
 A **message** is what this specification defines: an identity, its revisions,

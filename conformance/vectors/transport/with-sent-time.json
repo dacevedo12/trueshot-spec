@@ -2,12 +2,15 @@
   "$schema": "../../../schema/meta/vector.json",
   "subject": "transport",
   "version": "4.20.0.315",
-  "note": "A header from a connecting client. Peer 127 marks an unassigned peer, and bit 7 of that byte carries the sent time that follows.",
+  "note": "A header a connecting client emits. Peer 127 marks an unassigned peer, and bit 7 of that byte carries the sent time that follows.",
   "bytes": "28 68 bd eb 29 ff 00 1c",
   "fields": {
     "unknown": "2868bdeb",
     "sessionId": 41,
-    "peer": { "peerId": 127, "sentTimeFlag": 1 },
+    "peer": {
+      "peerId": 127,
+      "sentTimeFlag": 1
+    },
     "sentTime": 28
   }
 }

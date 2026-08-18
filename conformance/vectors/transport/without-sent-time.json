@@ -2,12 +2,15 @@
   "$schema": "../../../schema/meta/vector.json",
   "subject": "transport",
   "version": "4.20.0.315",
-  "note": "Bit 7 of the peer byte is clear, so the header ends after it and the sent time is absent.",
+  "note": "A header a server emits. Bit 7 of the peer byte is clear, so the header ends after it and the sent time is absent. The four leading bytes are not the value a client emits, which is what a client never reading them allows.",
   "bytes": "29 00 00 00 29 00",
   "fields": {
     "unknown": "29000000",
     "sessionId": 41,
-    "peer": { "peerId": 0, "sentTimeFlag": 0 },
+    "peer": {
+      "peerId": 0,
+      "sentTimeFlag": 0
+    },
     "sentTime": null
   }
 }
