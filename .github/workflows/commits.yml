@@ -9,6 +9,8 @@ jobs:
   commits:
     name: messages and sign-off
     runs-on: ubuntu-latest
+    env:
+      RANGE: ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }}
     steps:
       - uses: actions/checkout@v5
         with:
@@ -18,6 +20,15 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: the range holds commits
+        run: |
+          set -euo pipefail
+          count=$(git rev-list --count "$RANGE")
+          if [ "$count" -eq 0 ]; then
+            echo "no commits in $RANGE, so the checks below would pass unread" >&2
+            exit 1
+          fi
+          echo "$count commit(s) to check"
       - name: conventional commit messages
         run: >
           npx --no-install commitlint
@@ -27,13 +38,7 @@ jobs:
         run: |
           set -euo pipefail
           missing=0
-          range="${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }}"
-          count=$(git rev-list --count "$range")
-          if [ "$count" -eq 0 ]; then
-            echo "no commits in $range, so nothing was checked" >&2
-            exit 1
-          fi
-          for sha in $(git rev-list "$range"); do
+          for sha in $(git rev-list "$RANGE"); do
             if ! git log -1 --format=%B "$sha" | grep -qi '^Signed-off-by: '; then
               echo "no sign-off: $sha $(git log -1 --format=%s "$sha")"
               missing=1
