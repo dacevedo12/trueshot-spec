@@ -26,12 +26,21 @@ fields. A field's size is either fixed by its type, given as a literal, or
 carried by an earlier field.
 
 Where a size or a count names an earlier field, it names one that has already
-been read. It names either a whole field or one run of bits inside a field, and a
-run is written as the field name, a full stop, and the run name.
+been read and one holding an unsigned integer. It names either a whole field or
+one run of bits inside a field, and a run is written as the field name, a full
+stop, and the run name. `remaining` and `terminated` are reserved words rather
+than names, so no field carries either.
 
-`remaining` means every byte from where the field begins to the end of the
-body. A field measured that way is the last one a revision defines, because
-nothing can follow it.
+What counts as an earlier field depends on what encloses the field doing the
+naming. An item of an array reaches the fields of the body around it. The
+fields of a struct reach only each other, because a struct is defined once and
+used wherever it occurs, so it cannot depend on what surrounds any one use.
+
+`remaining` means every byte from where the field begins to the end of what
+encloses it: the message body, or the byte length of the struct or array the
+field sits inside. A field measured that way is the last one its enclosure
+defines, because nothing inside that enclosure can follow it. The enclosure is
+itself an ordinary field, so fields follow it as usual.
 
 ## Byte order
 
@@ -60,19 +69,19 @@ characters.
 
 **Arrays.** A run of one repeated shape. An array states either a count of
 items or a size in bytes, and never both. A count is a literal, the name of an
-earlier field, or `remaining`, which repeats to the end of the body. A size in
-bytes repeats until those bytes are consumed, which is how a run whose length
-is carried as a byte count is recorded.
+earlier field, or `remaining`, which repeats to the end of the enclosure. A
+size in bytes repeats until those bytes are consumed, which is how a run whose
+length travels as a byte count is recorded.
 
 **Structs.** A named group of fields, defined once in `schema/types` and used
 wherever it occurs. A struct occupies exactly the bytes its own fields occupy.
-Where its length travels on the wire instead, the field states a size, and the
-struct's fields MUST fill it exactly.
+Where its length travels on the wire instead, the field states a size in bytes,
+as a literal or as the name of an earlier field, and the struct's fields MUST
+fill it exactly.
 
 **Bits.** A field of one or more bytes divided into named runs, whose widths
 total exactly the bits those bytes hold. No run is wider than 32 bits. The
-bytes are
-read as one little endian word whatever the range's byte order, because the
+bytes are read as one little endian word whatever the range's byte order, because the
 runs are positions in that word rather than fields of their own. The runs are
 listed from the least significant bit upward: the first run occupies the low
 bits, and each one after it the bits above. A run is read as an unsigned
@@ -81,8 +90,8 @@ integer of its own width.
 ## Presence
 
 A field states a presence rule when it occupies bytes only under a condition.
-The rule names an earlier field or bit run, and where the condition is a value
-rather than a flag, the value it takes. A field whose condition does not hold occupies no
+The rule names an earlier field or bit run holding an integer, and where the
+condition is a value rather than a flag, the value it takes. A field whose condition does not hold occupies no
 bytes at all.
 
 ## Enumerated values
