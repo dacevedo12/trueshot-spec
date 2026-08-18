@@ -5,7 +5,7 @@ ENet 1.2.5.
 
 ## Layering
 
-Four layers sit between a socket and a message.
+Four layers carry a message to a socket.
 
 1. UDP moves datagrams.
 2. ENet turns datagrams into ordered, acknowledged deliveries on numbered
@@ -35,10 +35,10 @@ built on an unmodified ENet 1.2.5 never completes a connection.
 use the layout recorded for the version it serves, because a header read at the
 wrong shape misplaces every field after it and no connection is established.
 
-The layout is the delta. An encoder and a decoder built from the schema satisfy
-the transport, with one exception the schema cannot express: a client never
-reads the four leading bytes present in some ranges, so a server MAY write any
-value into them. Their width matters and their content does not.
+The layout is the delta. Everything else about the transport is ENet, so a
+header built from the schema is necessary to reach a client and not sufficient
+on its own. Where a field's content is free rather than fixed, the note beside
+it in the schema says so.
 
 `conformance/vectors/transport` holds a header with a sent time and one
 without.
@@ -74,17 +74,16 @@ in transit, and an oversized unit is the reason.
 Each channel carries either enciphered payloads or plain ones, and
 `schema/channels.json` says which.
 
-The cipher is Blowfish in ECB mode, with the standard eight byte block and the
-standard big endian mapping of payload bytes onto the two 32 bit halves the
-algorithm works on. A stock library implementation interoperates, confirmed
-against a client, so an implementer SHOULD use one. A hand written Blowfish is
-a source of silent mismatch, and nothing about this protocol calls for one.
+`schema/protocol.json` records which cipher, in which mode, and the shape of a
+block. A stock library implementation of it interoperates, confirmed against a
+client.
 
 Blowfish is an old algorithm, and a library that still carries it does not
 always offer it by default. OpenSSL 3.0 moved it into a legacy provider that
 stays off unless something enables it, so anything built on that version
 reports the algorithm as unsupported until the provider is turned on. Enabling
-it is the answer. Writing the algorithm by hand is not.
+it is the answer. A hand written Blowfish is a source of silent mismatch, and
+nothing about this protocol calls for one.
 
 `conformance/vectors/cipher` holds a pair of vectors. One covers a whole block
 and one covers a payload with a tail too short to fill one.
@@ -101,7 +100,7 @@ latitude to substitute.
 Both ends hold the key before a connection opens. Nothing on the wire
 negotiates it, and no exchange derives it. A server obtains it alongside the
 rest of its match configuration, and a client receives it as a launch argument
-in base64. Keys of sixteen bytes are the observed case.
+in base64.
 
 The channel carrying key exchange is plain, because that exchange proves the
 two ends already agree rather than establishing anything.
@@ -113,4 +112,4 @@ two ends already agree rather than establishing anything.
 ## What a message is
 
 One deciphered channel payload. Its first byte names the message, and
-`schema/messages` gives the rest of the layout.
+[Messages](messages.md) defines how the rest of it is recorded.
