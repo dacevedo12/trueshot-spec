@@ -14,7 +14,9 @@ expected to import. Read the files, feed them to your own code, and compare.
 
 - `vectors/cipher` covers the cipher on its own, with no transport around it.
 - `vectors/transport` covers the packet header.
-- Message vectors live in a directory named for the message they carry.
+- Message vectors live in a directory named for the message they carry, with
+  each capital of the message identity starting a new part, lower case and
+  joined by hyphens.
 
 Every file declares a `subject` saying which of the three it is, and a `note`
 in plain words. `schema/meta/vector.json` is the machine readable definition of
@@ -23,10 +25,10 @@ the format, and it is the authority if this document and it disagree.
 ## The three shapes
 
 A **cipher** vector carries `key`, `plaintext` and `ciphertext`, each a run of
-lower case hexadecimal. Encipher the plaintext under the key and you get the
-ciphertext. Decipher the ciphertext and you get the plaintext back. Length is
-part of the fact: a plaintext whose tail does not fill a block travels with
-that tail unchanged.
+lower case hexadecimal. The key is as long as `schema/protocol.json` records.
+Encipher the plaintext under the key and you get the ciphertext. Decipher the
+ciphertext and you get the plaintext back. Length is part of the fact: a
+plaintext whose tail does not fill a block travels with that tail unchanged.
 
 A **transport** vector carries `version`, `bytes` and `fields`. The bytes are a
 packet header as it travels. The fields are what that header means, read
@@ -66,10 +68,10 @@ what you get to `fields`. Then encode `fields` back and compare to the bytes
 the layout covers. Both directions matter. An implementation that reads a
 header correctly and writes it wrong fails only in the second.
 
-A message payload is covered end to end, and its leading byte names the
-message rather than belonging to the layout, so the comparison starts after it.
-A transport vector covers the header, and whatever follows it in the datagram
-is immaterial.
+A message payload is covered end to end, and its leading byte names the message
+rather than belonging to the layout, so the comparison starts after it. A
+transport vector covers the header, and whatever follows it in the datagram is
+immaterial.
 
 For a cipher vector there are no layouts involved, so compare the two runs of
 bytes directly.
@@ -78,9 +80,9 @@ bytes directly.
 
 `npm run check` decodes every transport and message vector against the layout
 it names, compares the result to its `fields`, encodes those fields back, and
-compares to the bytes the layout covers. Every cipher vector is enciphered and deciphered for
-the same reason. A vector whose two halves disagree does not survive the
-checks, so a vector here is evidence rather than an assertion.
+compares to the bytes the layout covers. Every cipher vector is enciphered and
+deciphered for the same reason. A vector whose two halves disagree does not
+survive the checks, so a vector here is evidence rather than an assertion.
 
 That guarantee covers the vector against the schema. It does not cover the
 schema against a client. Facts get into the schema by observation, and

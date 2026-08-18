@@ -4,7 +4,7 @@
   "title": "Conformance vector",
   "description": "One thing to check, and what it should produce. Vectors live in conformance/vectors/<subject>/<case>.json. A message subject uses the message name with each capital starting a new part, lower case and joined by hyphens, as its directory.",
   "type": "object",
-  "required": ["subject"],
+  "required": ["subject", "note"],
   "unevaluatedProperties": false,
   "properties": {
     "$schema": {
@@ -72,7 +72,8 @@
           "fields": true,
           "key": false,
           "plaintext": false,
-          "ciphertext": false
+          "ciphertext": false,
+          "note": true
         }
       }
     },
@@ -94,7 +95,8 @@
           "message": false,
           "key": false,
           "plaintext": false,
-          "ciphertext": false
+          "ciphertext": false,
+          "note": true
         }
       }
     },
@@ -116,7 +118,8 @@
           "message": false,
           "version": false,
           "bytes": false,
-          "fields": false
+          "fields": false,
+          "note": true
         }
       }
     }

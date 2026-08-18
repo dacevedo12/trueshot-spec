@@ -261,7 +261,7 @@ function checkFields(fields, outer, structNames, at, openStructs = new Set()) {
       if (value === "remaining" && !last) {
         fail(
           at,
-          `field "${field.name}" ${key} runs to the end of the payload, so nothing may follow it`,
+          `field "${field.name}" ${key} runs to the end of what encloses it, so nothing may follow it`,
         );
       }
       if (value === "remaining") openEnded = true;
@@ -279,11 +279,12 @@ function checkFields(fields, outer, structNames, at, openStructs = new Set()) {
       }
     }
 
-    if (
-      field.type === "array" &&
-      field.items?.size === "remaining" &&
-      field.size === undefined
-    ) {
+    const itemRunsOn =
+      field.items?.size === "remaining" ||
+      (field.items?.type === "struct" &&
+        field.items.size === undefined &&
+        openStructs.has(field.items.struct));
+    if (field.type === "array" && itemRunsOn && field.size === undefined) {
       fail(
         at,
         `field "${field.name}" holds items that each run to the end, so the first takes every byte and a count cannot say how many follow`,
@@ -310,7 +311,7 @@ function checkFields(fields, outer, structNames, at, openStructs = new Set()) {
       ) {
         fail(
           at,
-          `field "${field.name}" holds struct "${field.struct}", which runs to the end of the payload, so nothing may follow it`,
+          `field "${field.name}" holds struct "${field.struct}", which states no length and runs to the end of what encloses it, so nothing may follow it`,
         );
       }
     }
@@ -503,7 +504,7 @@ const channelMissingFor = (messageRevision, name) => {
   const overlapping = (channelsDoc.revisions ?? []).filter((r) =>
     rangesOverlap(r, messageRevision),
   );
-  if (overlapping.length === 0) return "no channel is defined";
+  if (overlapping.length === 0) return "is defined nowhere";
   const absent = overlapping.filter(
     (r) => !(r.channels ?? []).some((c) => c.name === name),
   );
