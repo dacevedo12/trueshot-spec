@@ -46,7 +46,7 @@ without.
 ## Maximum transmission unit
 
 A server MUST accept a connection at a transmission unit no greater than 996
-bytes, measured as the whole UDP datagram including the packet header, by
+bytes, measured as the UDP payload with the packet header counted in, by
 clamping the value the client asks for. Capping its own sending without
 clamping the negotiated value is not sufficient, because ENet derives fragment
 sizes from the negotiated value and still emits datagrams above the limit.

@@ -21,7 +21,7 @@
           {
             "name": "sessionId",
             "type": "u8",
-            "note": "A server MUST echo the value the client supplied when it connected. Sending a different value makes the client discard every packet, silently, with no error and no disconnection. The connection then dies of retransmission."
+            "note": "The client discards every packet whose value does not match the one it supplied when it connected. It does so silently, with no error and no disconnection, and the connection dies of retransmission."
           },
           {
             "name": "peer",
@@ -47,7 +47,7 @@
             "present": {
               "when": "peer.sentTimeFlag"
             },
-            "note": "Milliseconds since the connection opened. Big endian, unlike every message field."
+            "note": "Milliseconds since the connection opened."
           }
         ],
         "constants": [
@@ -92,7 +92,7 @@
           {
             "name": "sessionId",
             "type": "u8",
-            "note": "A server MUST echo the value the client supplied when it connected. Sending a different value makes the client discard every packet, silently, with no error and no disconnection. The connection then dies of retransmission."
+            "note": "The client discards every packet whose value does not match the one it supplied when it connected. It does so silently, with no error and no disconnection, and the connection dies of retransmission."
           },
           {
             "name": "peer",
@@ -118,7 +118,7 @@
             "present": {
               "when": "peer.sentTimeFlag"
             },
-            "note": "Milliseconds since the connection opened. Big endian, unlike every message field."
+            "note": "Milliseconds since the connection opened."
           }
         ],
         "constants": [
