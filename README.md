@@ -18,7 +18,7 @@ and leaves every design decision to you.
 builds on the ones before it, so read it through once before writing code.
 
 [conformance/](conformance/) is where the vectors live. Any implementation can
-run them, in any language, to check itself.
+run them, in any language, to check itself against what has been recorded.
 
 To change the specification itself rather than build from it, read
 [CONTRIBUTING.md](CONTRIBUTING.md).

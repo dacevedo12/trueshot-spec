@@ -37,7 +37,7 @@
           "$ref": "urn:trueshot:schema:message#/$defs/note"
         },
         "endian": {
-          "description": "Byte order every message field uses unless it says otherwise. Absent where no message has been confirmed for the revision yet, since nothing has established it.",
+          "description": "Byte order every message field uses unless it says otherwise. Absent where nothing has established one for the range.",
           "type": "string",
           "enum": ["little", "big"]
         },

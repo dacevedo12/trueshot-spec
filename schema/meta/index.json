@@ -1,0 +1,10 @@
+{
+  "note": "Maps every identifier the meta-schemas reference to the file holding it. A tool loading these adds them all before compiling any one of them, because they cross-reference.",
+  "schemas": {
+    "urn:trueshot:schema:message": "message.json",
+    "urn:trueshot:schema:struct": "struct.json",
+    "urn:trueshot:schema:protocol": "protocol.json",
+    "urn:trueshot:schema:channels": "channels.json",
+    "urn:trueshot:schema:vector": "vector.json"
+  }
+}

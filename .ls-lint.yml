@@ -26,6 +26,9 @@ ls:
   styles/trueshot:
     .yml: kebab-case
 
+  conformance:
+    .md: kebab-case
+
 ignore:
   - .git
   - .github

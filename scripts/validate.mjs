@@ -1,27 +1,46 @@
 // Checks the schema files for things JSON Schema cannot express.
 //
 // JSON Schema validates the shape of a definition. It cannot tell whether a
-// channel exists, whether a struct reference resolves, whether a field
-// reference points backwards at something countable, or whether two revisions
-// claim the same command byte over the same versions. Those checks live here.
+// channel exists at the version a message claims, whether a struct reference
+// resolves, whether a reference points backwards at something countable, or
+// whether two revisions claim the same command byte over the same versions.
+// Those checks live here.
 
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { join, basename } from "node:path";
 import Ajv from "ajv/dist/2020.js";
 
 const SCHEMA_DIR = "schema";
+const META = join(SCHEMA_DIR, "meta");
+const VECTOR_DIR = join("conformance", "vectors");
+
 const COUNTABLE = new Set(["u8", "u16", "u32", "u64"]);
+const TRUTHY = new Set([...COUNTABLE, "i8", "i16", "i32", "i64"]);
 const RESERVED = new Set(["remaining", "terminated"]);
 
+// A revision describes itself. Prose carried as data reaches generated output,
+// so it holds to the same rule as the documents, and no linter reads JSON.
+const TEMPORAL = [
+  "later version",
+  "earlier version",
+  "newer version",
+  "older version",
+  "no longer",
+  "used to",
+  "previously",
+  "originally",
+  "so far",
+  "to date",
+  "for now",
+  "at present",
+  "currently",
+  "gained",
+  "yet",
+];
+
 const problems = [];
-
-function fail(where, message) {
-  problems.push(`${where}: ${message}`);
-}
-
-function readJson(path) {
-  return JSON.parse(readFileSync(path, "utf8"));
-}
+const fail = (where, message) => problems.push(`${where}: ${message}`);
+const readJson = (path) => JSON.parse(readFileSync(path, "utf8"));
 
 function readConfig(path) {
   try {
@@ -40,9 +59,7 @@ function listJson(dir) {
     .map((name) => ({ name, path: join(path, name) }));
 }
 
-function parseVersion(text) {
-  return text.split(".").map(Number);
-}
+const parseVersion = (text) => text.split(".").map(Number);
 
 function compareVersions(a, b) {
   const left = parseVersion(a);
@@ -60,9 +77,53 @@ function rangesOverlap(a, b) {
   return aStartsBeforeBEnds && bStartsBeforeAEnds;
 }
 
+const covers = (revision, version) =>
+  compareVersions(version, revision.from) >= 0 &&
+  (!revision.until || compareVersions(version, revision.until) < 0);
+
 // A bidirectional message occupies its command byte in both directions.
-function directionsOverlap(a, b) {
-  return a === b || a === "bidirectional" || b === "bidirectional";
+const directionsOverlap = (a, b) =>
+  a === b || a === "bidirectional" || b === "bidirectional";
+
+// Every list of revisions holds to the same rules, whatever it describes.
+function checkRevisions(revisions, where) {
+  revisions.forEach((revision, index) => {
+    if (revision.until && compareVersions(revision.from, revision.until) >= 0) {
+      fail(
+        `${where} revision ${index}`,
+        `from "${revision.from}" is not before until "${revision.until}"`,
+      );
+    }
+  });
+  for (let i = 0; i < revisions.length; i += 1) {
+    for (let j = i + 1; j < revisions.length; j += 1) {
+      if (rangesOverlap(revisions[i], revisions[j])) {
+        fail(where, `revisions ${i} and ${j} cover overlapping client versions`);
+      }
+    }
+  }
+}
+
+function checkNotes(value, where, path = "") {
+  if (Array.isArray(value)) {
+    value.forEach((item, index) => checkNotes(item, where, `${path}[${index}]`));
+    return;
+  }
+  if (!value || typeof value !== "object") return;
+
+  for (const [key, child] of Object.entries(value)) {
+    const here = `${path}/${key}`;
+    if ((key === "note" || key === "description") && typeof child === "string") {
+      const lower = child.toLowerCase();
+      for (const token of TEMPORAL) {
+        if (lower.includes(token)) {
+          fail(where, `${here} says "${token}", which describes a moment rather than a version`);
+        }
+      }
+      continue;
+    }
+    checkNotes(child, where, here);
+  }
 }
 
 // Walks a field list at any depth. `outer` carries the names already read in
@@ -72,14 +133,24 @@ function directionsOverlap(a, b) {
 function checkFields(fields, outer, structNames, at) {
   const seen = new Map(outer);
 
-  for (const field of fields) {
+  fields.forEach((field, index) => {
+    const last = index === fields.length - 1;
+
     if (field.present) {
       const target = field.present.when;
       if (!seen.has(target)) {
-        fail(
-          at,
-          `field "${field.name}" is present when "${target}", which is not an earlier field`,
-        );
+        fail(at, `field "${field.name}" is present when "${target}", which is not an earlier field`);
+      } else {
+        const entry = seen.get(target);
+        if (!TRUTHY.has(entry.type)) {
+          fail(at, `field "${field.name}" is present when "${target}", which is ${entry.type} and has no truth value`);
+        }
+        if (field.present.equals !== undefined && entry.width !== undefined) {
+          const ceiling = 2 ** entry.width;
+          if (field.present.equals < 0 || field.present.equals >= ceiling) {
+            fail(at, `field "${field.name}" is present when "${target}" equals ${field.present.equals}, which ${entry.width} bit(s) cannot hold`);
+          }
+        }
       }
     }
 
@@ -87,79 +158,64 @@ function checkFields(fields, outer, structNames, at) {
       const declared = field.bits.reduce((total, run) => total + run.width, 0);
       const available = field.size * 8;
       if (declared !== available) {
-        fail(
-          at,
-          `field "${field.name}" declares ${declared} bits across ${field.size} byte(s), which holds ${available}`,
-        );
+        fail(at, `field "${field.name}" declares ${declared} bits across ${field.size} byte(s), which holds ${available}`);
       }
       for (const run of field.bits) {
         const path = `${field.name}.${run.name}`;
         if (seen.has(path)) {
           fail(at, `bit run "${path}" is declared twice`);
         }
-        seen.set(path, "u8");
+        seen.set(path, { type: "u8", width: run.width });
       }
     }
 
     for (const key of ["count", "size"]) {
       const value = field[key];
-      if (typeof value !== "string" || RESERVED.has(value)) continue;
+      if (typeof value !== "string") continue;
+      if (value === "remaining" && !last) {
+        fail(at, `field "${field.name}" ${key} runs to the end of the payload, so nothing may follow it`);
+      }
+      if (RESERVED.has(value)) continue;
       if (!seen.has(value)) {
-        fail(
-          at,
-          `field "${field.name}" ${key} refers to "${value}", which is not an earlier field`,
-        );
-      } else if (!COUNTABLE.has(seen.get(value))) {
-        fail(
-          at,
-          `field "${field.name}" ${key} refers to "${value}", which is ${seen.get(value)} rather than an unsigned integer`,
-        );
+        fail(at, `field "${field.name}" ${key} refers to "${value}", which is not an earlier field`);
+      } else if (!COUNTABLE.has(seen.get(value).type)) {
+        fail(at, `field "${field.name}" ${key} refers to "${value}", which is ${seen.get(value).type} rather than an unsigned integer`);
       }
     }
 
     if (field.size === "terminated" && field.type !== "string") {
-      fail(
-        at,
-        `field "${field.name}" is ${field.type}, so it cannot be terminated`,
-      );
+      fail(at, `field "${field.name}" is ${field.type}, so it cannot be terminated`);
     }
 
     if (field.type === "struct" && !structNames.has(field.struct)) {
-      fail(
-        at,
-        `field "${field.name}" refers to struct "${field.struct}", which has no definition`,
-      );
+      fail(at, `field "${field.name}" refers to struct "${field.struct}", which has no definition`);
     }
 
-    if (seen.has(field.name) && !outer.has(field.name)) {
-      fail(at, `field "${field.name}" is declared twice`);
+    if (seen.has(field.name)) {
+      fail(at, outer.has(field.name)
+        ? `field "${field.name}" shadows an enclosing field of the same name`
+        : `field "${field.name}" is declared twice`);
     }
-    seen.set(field.name, field.type);
+    seen.set(field.name, { type: field.type });
 
     if (field.type === "array" && field.items) {
       checkFields([field.items], seen, structNames, `${at} > ${field.name}[]`);
     }
-  }
+  });
 
   return seen;
 }
 
-const META = join(SCHEMA_DIR, "meta");
 const messageSchema = readConfig(join(META, "message.json"));
 const structSchema = readConfig(join(META, "struct.json"));
 const protocolSchema = readConfig(join(META, "protocol.json"));
 const channelsSchema = readConfig(join(META, "channels.json"));
+const vectorSchema = readConfig(join(META, "vector.json"));
 const protocolDoc = readConfig(join(SCHEMA_DIR, "protocol.json"));
 const channelsDoc = readConfig(join(SCHEMA_DIR, "channels.json"));
 
-if (
-  !messageSchema ||
-  !structSchema ||
-  !protocolSchema ||
-  !channelsSchema ||
-  !protocolDoc ||
-  !channelsDoc
-) {
+if (!messageSchema || !structSchema || !protocolSchema || !channelsSchema ||
+    !vectorSchema || !protocolDoc || !channelsDoc) {
   for (const problem of problems) console.error(problem);
   process.exit(1);
 }
@@ -170,9 +226,18 @@ const validateMessage = ajv.getSchema(messageSchema.$id);
 const validateStruct = ajv.compile(structSchema);
 const validateProtocol = ajv.compile(protocolSchema);
 const validateChannels = ajv.compile(channelsSchema);
+const validateVector = ajv.compile(vectorSchema);
 
-// The two singleton documents. A $schema pointer is a convenience for editors
-// and not part of the definition, so it is stripped before validating.
+const report = (where, errors) => {
+  for (const error of errors) {
+    const detail = error.params && Object.keys(error.params).length
+      ? ` ${JSON.stringify(error.params)}`
+      : "";
+    fail(where, `${error.instancePath || "/"} ${error.message}${detail}`);
+  }
+};
+
+// A $schema pointer is a convenience for editors, not part of a definition.
 const withoutPointer = (doc) => {
   const copy = { ...doc };
   delete copy.$schema;
@@ -180,41 +245,49 @@ const withoutPointer = (doc) => {
 };
 
 if (!validateProtocol(withoutPointer(protocolDoc))) {
-  for (const error of validateProtocol.errors) {
-    fail(
-      "schema/protocol.json",
-      `${error.instancePath || "/"} ${error.message}`,
-    );
-  }
+  report("schema/protocol.json", validateProtocol.errors);
 }
 if (!validateChannels(withoutPointer(channelsDoc))) {
-  for (const error of validateChannels.errors) {
-    fail(
-      "schema/channels.json",
-      `${error.instancePath || "/"} ${error.message}`,
-    );
-  }
+  report("schema/channels.json", validateChannels.errors);
 }
 
-// A message names a channel, and the channel has to exist somewhere.
-const channels = new Set(
-  (channelsDoc.revisions ?? []).flatMap((revision) =>
-    (revision.channels ?? []).map((channel) => channel.name),
-  ),
-);
+checkRevisions(protocolDoc.revisions ?? [], "schema/protocol.json");
+checkRevisions(channelsDoc.revisions ?? [], "schema/channels.json");
+checkNotes(protocolDoc, "schema/protocol.json");
+checkNotes(channelsDoc, "schema/channels.json");
+checkNotes(protocolSchema, "schema/meta/protocol.json");
+checkNotes(messageSchema, "schema/meta/message.json");
+checkNotes(vectorSchema, "schema/meta/vector.json");
 
-// The transport header uses the same field vocabulary, so it gets the same
-// walk: bit widths, presence references, backward references.
-for (const [index, revision] of (protocolDoc.revisions ?? []).entries()) {
+// A channel name is how a message inherits encryption and reliability, so two
+// definitions of one name at one version make every message on it undecidable.
+(channelsDoc.revisions ?? []).forEach((revision, index) => {
+  const names = new Set();
+  const ids = new Set();
+  for (const channel of revision.channels ?? []) {
+    if (names.has(channel.name)) {
+      fail(`schema/channels.json revision ${index}`, `channel "${channel.name}" is defined twice`);
+    }
+    if (ids.has(channel.id)) {
+      fail(`schema/channels.json revision ${index}`, `channel id ${channel.id} is claimed twice`);
+    }
+    names.add(channel.name);
+    ids.add(channel.id);
+  }
+});
+
+const channelsAt = (version) => {
+  const revision = (channelsDoc.revisions ?? []).find((r) => covers(r, version));
+  return new Set((revision?.channels ?? []).map((c) => c.name));
+};
+
+// The transport header uses the same field vocabulary, so it gets the same walk.
+(protocolDoc.revisions ?? []).forEach((revision, index) => {
   if (revision.transport?.header) {
-    checkFields(
-      revision.transport.header,
-      new Map(),
-      new Set(),
-      `schema/protocol.json revision ${index} header`,
-    );
+    checkFields(revision.transport.header, new Map(), new Set(),
+      `schema/protocol.json revision ${index} header`);
   }
-}
+});
 
 // Structs first: messages reference them.
 const structNames = new Set();
@@ -227,25 +300,20 @@ for (const file of listJson("types")) {
     continue;
   }
   if (!validateStruct(doc)) {
-    for (const error of validateStruct.errors) {
-      fail(file.path, `${error.instancePath || "/"} ${error.message}`);
-    }
+    report(file.path, validateStruct.errors);
     continue;
   }
   if (basename(file.name, ".json") !== doc.struct) {
-    fail(
-      file.path,
-      `file name does not match struct identity "${doc.struct}"`,
-    );
+    fail(file.path, `file name does not match struct identity "${doc.struct}"`);
   }
+  checkNotes(doc, file.path);
   structNames.add(doc.struct);
 }
-
 for (const file of listJson("types")) {
-  const name = basename(file.name, ".json");
-  if (!structNames.has(name)) continue;
   const doc = readJson(file.path);
-  checkFields(doc.fields, new Map(), structNames, file.path);
+  if (structNames.has(doc.struct)) {
+    checkFields(doc.fields, new Map(), structNames, file.path);
+  }
 }
 
 const messages = [];
@@ -257,65 +325,32 @@ for (const file of listJson("messages")) {
     fail(file.path, `not valid JSON: ${error.message}`);
     continue;
   }
-
   if (!validateMessage(doc)) {
-    for (const error of validateMessage.errors) {
-      fail(file.path, `${error.instancePath || "/"} ${error.message}`);
-    }
+    report(file.path, validateMessage.errors);
     continue;
   }
-
   if (basename(file.name, ".json") !== doc.message) {
-    fail(
-      file.path,
-      `file name does not match message identity "${doc.message}"`,
-    );
+    fail(file.path, `file name does not match message identity "${doc.message}"`);
   }
-
+  checkNotes(doc, file.path);
   messages.push({ where: file.path, doc });
 }
 
 for (const { where, doc } of messages) {
+  checkRevisions(doc.revisions, where);
   doc.revisions.forEach((revision, index) => {
     const at = `${where} revision ${index}`;
-
-    if (!channels.has(revision.channel)) {
-      fail(at, `channel "${revision.channel}" is not in channels.json`);
+    if (!channelsAt(revision.from).has(revision.channel)) {
+      fail(at, `channel "${revision.channel}" is not defined at ${revision.from}`);
     }
-
-    if (
-      revision.until &&
-      compareVersions(revision.from, revision.until) >= 0
-    ) {
-      fail(
-        at,
-        `from "${revision.from}" is not before until "${revision.until}"`,
-      );
-    }
-
     checkFields(revision.fields, new Map(), structNames, at);
   });
-
-  for (let i = 0; i < doc.revisions.length; i += 1) {
-    for (let j = i + 1; j < doc.revisions.length; j += 1) {
-      if (rangesOverlap(doc.revisions[i], doc.revisions[j])) {
-        fail(
-          where,
-          `revisions ${i} and ${j} cover overlapping client versions`,
-        );
-      }
-    }
-  }
 }
 
 // One command byte cannot mean two things on the same channel, in the same
 // direction, at the same time.
-const claims = [];
-for (const { where, doc } of messages) {
-  for (const revision of doc.revisions) {
-    claims.push({ where, message: doc.message, revision });
-  }
-}
+const claims = messages.flatMap(({ where, doc }) =>
+  doc.revisions.map((revision) => ({ where, message: doc.message, revision })));
 
 for (let i = 0; i < claims.length; i += 1) {
   for (let j = i + 1; j < claims.length; j += 1) {
@@ -324,49 +359,29 @@ for (let i = 0; i < claims.length; i += 1) {
     if (a.message === b.message) continue;
     if (a.revision.command !== b.revision.command) continue;
     if (a.revision.channel !== b.revision.channel) continue;
-    if (!directionsOverlap(a.revision.direction, b.revision.direction))
-      continue;
+    if (!directionsOverlap(a.revision.direction, b.revision.direction)) continue;
     if (!rangesOverlap(a.revision, b.revision)) continue;
-    fail(
-      a.where,
-      `command ${a.revision.command} on channel "${a.revision.channel}" collides with ${b.message}`,
-    );
+    fail(a.where, `command ${a.revision.command} on channel "${a.revision.channel}" collides with ${b.message}`);
   }
 }
 
-// A vector claims a packet decodes to a struct. It has to name a message that
-// exists, at a version that message covers, with the fields that revision
-// defines.
-const vectorSchema = readConfig(join(META, "vector.json"));
-const validateVector = vectorSchema ? ajv.compile(vectorSchema) : null;
+// Vectors. A subject says what is being checked.
 const byMessage = new Map(messages.map(({ doc }) => [doc.message, doc]));
+const pascalFromKebab = (name) =>
+  name.split("-").map((part) => part.charAt(0).toUpperCase() + part.slice(1)).join("");
 
-// Directory names stay kebab-case like every other directory. key-check holds
-// the vectors for KeyCheck.
-function pascalFromKebab(name) {
-  return name
-    .split("-")
-    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-    .join("");
-}
-
-function revisionFor(doc, version) {
-  return doc.revisions.find(
-    (r) =>
-      compareVersions(version, r.from) >= 0 &&
-      (!r.until || compareVersions(version, r.until) < 0),
-  );
-}
+const hexPairs = (text) => {
+  const stripped = text.replace(/\s+/g, "");
+  return stripped.length % 2 === 0 ? stripped.length / 2 : null;
+};
 
 let vectorCount = 0;
-const VECTOR_DIR = join("conformance", "vectors");
-if (validateVector && existsSync(VECTOR_DIR)) {
+if (existsSync(VECTOR_DIR)) {
   for (const dir of readdirSync(VECTOR_DIR, { withFileTypes: true })) {
     if (!dir.isDirectory()) continue;
     for (const name of readdirSync(join(VECTOR_DIR, dir.name))) {
       if (!name.endsWith(".json")) continue;
       const path = join(VECTOR_DIR, dir.name, name);
-      vectorCount += 1;
 
       let doc;
       try {
@@ -375,52 +390,71 @@ if (validateVector && existsSync(VECTOR_DIR)) {
         fail(path, `not valid JSON: ${error.message}`);
         continue;
       }
-      if (!validateVector(doc)) {
-        for (const error of validateVector.errors) {
-          fail(path, `${error.instancePath || "/"} ${error.message}`);
+      vectorCount += 1;
+      if (!validateVector(withoutPointer(doc))) {
+        report(path, validateVector.errors);
+        continue;
+      }
+      checkNotes(doc, path);
+
+      for (const key of ["bytes", "key", "plaintext", "ciphertext"]) {
+        if (doc[key] === undefined) continue;
+        const pairs = hexPairs(doc[key]);
+        if (pairs === null) {
+          fail(path, `${key} has an odd number of hexadecimal digits`);
+        } else if (pairs === 0) {
+          fail(path, `${key} holds no bytes`);
         }
+      }
+
+      if (doc.subject === "cipher") continue;
+
+      const protocolRevision = (protocolDoc.revisions ?? []).find((r) => covers(r, doc.version));
+      if (!protocolRevision) {
+        fail(path, `version ${doc.version} falls outside every protocol revision`);
         continue;
       }
 
-      if (pascalFromKebab(dir.name) !== doc.message) {
-        fail(
-          path,
-          `sits under "${dir.name}" but names message "${doc.message}"`,
-        );
+      let defined;
+      if (doc.subject === "transport") {
+        if (dir.name !== "transport") {
+          fail(path, `sits under "${dir.name}" but its subject is transport`);
+        }
+        defined = protocolRevision.transport.header;
+      } else {
+        if (pascalFromKebab(dir.name) !== doc.message) {
+          fail(path, `sits under "${dir.name}" but names message "${doc.message}"`);
+        }
+        const message = byMessage.get(doc.message);
+        if (!message) {
+          fail(path, `names message "${doc.message}", which has no definition`);
+          continue;
+        }
+        const revision = message.revisions.find((r) => covers(r, doc.version));
+        if (!revision) {
+          fail(path, `version ${doc.version} falls outside every revision of ${doc.message}`);
+          continue;
+        }
+        defined = revision.fields;
+        const stripped = doc.bytes.replace(/\s+/g, "");
+        const leading = parseInt(stripped.slice(0, 2), 16);
+        if (leading !== revision.command) {
+          fail(path, `starts with byte ${leading}, and ${doc.message} carries command ${revision.command}`);
+        }
       }
 
-      const hex = doc.bytes.replace(/\s+/g, "");
-      if (hex.length % 2 !== 0) {
-        fail(path, `bytes has an odd number of hexadecimal digits`);
-      }
-
-      const message = byMessage.get(doc.message);
-      if (!message) {
-        fail(path, `names message "${doc.message}", which has no definition`);
-        continue;
-      }
-
-      const revision = revisionFor(message, doc.version);
-      if (!revision) {
-        fail(
-          path,
-          `version ${doc.version} falls outside every revision of ${doc.message}`,
-        );
-        continue;
-      }
-
-      const defined = new Set(revision.fields.map((f) => f.name));
+      const names = new Set(defined.map((f) => f.name));
       for (const name of Object.keys(doc.fields)) {
-        if (!defined.has(name)) {
-          fail(
-            path,
-            `decodes a field "${name}" that the revision does not define`,
-          );
+        if (!names.has(name)) {
+          fail(path, `decodes a field "${name}" that the revision does not define`);
         }
       }
-      for (const name of defined) {
-        if (!(name in doc.fields)) {
-          fail(path, `does not decode the field "${name}"`);
+      // A field a presence rule leaves out is written as null rather than omitted.
+      for (const field of defined) {
+        if (!(field.name in doc.fields)) {
+          fail(path, `does not decode the field "${field.name}"`);
+        } else if (doc.fields[field.name] === null && !field.present) {
+          fail(path, `writes "${field.name}" as absent, but no presence rule governs it`);
         }
       }
     }

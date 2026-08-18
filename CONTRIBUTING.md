@@ -103,8 +103,14 @@ from the game: no art, no audio, no models, no lore, and no links to a client.
 
 The protocol changes between client versions. A message has one stable identity
 and one or more revisions, each declaring the client version range it applies
-to. A restructuring is a new revision, not a pile of conditionals. Never write
-"in this version" in prose.
+to. A restructuring is a new revision, not a pile of conditionals.
+
+A revision describes itself. It never describes itself by reference to another
+revision, and never asserts a direction of change. Two ranges were observed;
+what lies between or beyond them is unknown, and prose that says one thing came
+before another claims more than anyone has established. This holds for the
+notes carried in the schema as much as for the documents, and both are
+checked.
 
 ## Checks
 

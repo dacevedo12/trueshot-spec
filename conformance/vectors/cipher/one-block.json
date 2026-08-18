@@ -1,0 +1,8 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "cipher",
+  "note": "One whole block. The key is arbitrary; nothing about it comes from a real match.",
+  "key": "000102030405060708090a0b0c0d0e0f",
+  "plaintext": "0011223344556677",
+  "ciphertext": "0263249aa34d999e"
+}

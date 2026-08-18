@@ -4,7 +4,7 @@
     {
       "from": "4.17.0.233",
       "until": "4.17.0.268",
-      "note": "Established against 4.17.0.233 and 4.17.0.267, which behave alike. No byte order is recorded because no message has been confirmed for these versions yet.",
+      "note": "Records the transport alone. Nothing above it is recorded for this range, so a server cannot be built for these versions from this document.",
       "cipher": {
         "name": "Blowfish",
         "mode": "ECB",
@@ -31,7 +31,7 @@
               {
                 "name": "peerId",
                 "width": 7,
-                "note": "127 marks a peer the transport has not assigned yet, which is what a connecting client sends."
+                "note": "127 marks an unassigned peer, which is what a connecting client sends."
               },
               {
                 "name": "sentTimeFlag",
@@ -61,7 +61,7 @@
             "name": "maximumTransmissionUnit",
             "value": 996,
             "stock": 4096,
-            "note": "A server MUST clamp to this. The client asks for the stock default of 1400 and cannot receive more than 996, because its receive buffer is sized by this same ceiling. The clamp happens only on the server side, so a server that keeps the stock ceiling accepts 1400 and sends datagrams the client drops."
+            "note": "A server MUST clamp to this. The client asks for 1400, read from its connect command, and cannot receive more than 996, because its receive buffer is sized by this same ceiling. The clamp happens only where a connection is accepted, so a server that keeps the stock ceiling accepts 1400 and sends datagrams the client drops."
           }
         ]
       }
@@ -69,7 +69,7 @@
     {
       "from": "4.20.0.315",
       "endian": "little",
-      "note": "Established against 4.20.0.315. The header gained four leading bytes since 4.17, which is the only transport difference found between them.",
+      "note": "Established against 4.20.0.315.",
       "cipher": {
         "name": "Blowfish",
         "mode": "ECB",
@@ -102,7 +102,7 @@
               {
                 "name": "peerId",
                 "width": 7,
-                "note": "127 marks a peer the transport has not assigned yet, which is what a connecting client sends."
+                "note": "127 marks an unassigned peer, which is what a connecting client sends."
               },
               {
                 "name": "sentTimeFlag",
@@ -132,7 +132,7 @@
             "name": "maximumTransmissionUnit",
             "value": 996,
             "stock": 4096,
-            "note": "A server MUST clamp to this. The client asks for the stock default of 1400 and cannot receive more than 996, because its receive buffer is sized by this same ceiling. The clamp happens only on the server side, so a server that keeps the stock ceiling accepts 1400 and sends datagrams the client drops."
+            "note": "A server MUST clamp to this. The client asks for 1400, read from its connect command, and cannot receive more than 996, because its receive buffer is sized by this same ceiling. The clamp happens only where a connection is accepted, so a server that keeps the stock ceiling accepts 1400 and sends datagrams the client drops."
           }
         ]
       }

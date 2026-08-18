@@ -14,96 +14,101 @@ Four layers sit between a socket and a message.
 4. A message occupies the deciphered payload, its first byte naming which
    message it is.
 
-The cipher is the boundary between this document and the rest of the
-specification. Everything below it is transport. Everything above it is the
-protocol proper.
+Layers 1 and 2 are the transport, and this document covers them. The cipher and
+everything above it belong to the protocol, and this document covers the cipher
+because nothing above it can be read without one.
 
 ## Stock ENet
 
 This document does not restate ENet. Connection setup, acknowledgement,
 sequence numbers, retransmission, throttling, and fragmentation behave as
-ENet 1.2.5 defines them, and an implementer works from that specification or
-from any of its ports.
+[ENet 1.2.5](http://enet.bespin.org) defines them. ENet is distributed as a C
+library with reference documentation rather than as a written protocol, and an
+implementer works from that library or from a port of it.
 
 What follows is what a client does **not** accept from stock ENet. A server
 built on an unmodified ENet 1.2.5 never completes a connection.
 
 ## The packet header
 
-`schema/protocol.json` gives the layout. It replaces the stock header, and it
-is the single change that makes stock ENet fail: every field after it lands at
-the wrong offset.
+`schema/protocol.json` gives the layout, one per version range. A server MUST
+use the layout recorded for the version it serves, because a header read at the
+wrong shape misplaces every field after it and no connection is established.
 
-**The header is the one part of the transport that differs between client
-versions**, so a server MUST select its layout from the version it serves. Four
-leading bytes appear in later versions and are absent from earlier ones.
-Reading a header of the wrong shape misplaces every field after it, and the
-connection never establishes.
+The layout is the delta. An encoder and a decoder built from the schema satisfy
+the transport, with one exception the schema cannot express: a client never
+reads the four leading bytes present in some ranges, so a server MAY write any
+value into them. Their width matters and their content does not.
 
-Where those four bytes are present:
-
-1. A server MUST write them. A client rejects a packet without them.
-2. A client does not read them. A server MAY write any value into them.
-
-And in every version:
-
-3. A server MUST copy the session identifier from the connect exchange into
-   every packet it sends.
-
-The header runs to two bytes at its smallest, and grows by two more when it
-carries a sent time and by four more where the leading bytes are present. Bit 7
-of the peer byte says whether the sent time is there.
-
-### When the session identifier is wrong
-
-A client that receives a mismatched session identifier discards the packet. It
-sends no error, closes nothing, and gives no sign that anything is wrong. It
-continues sending its own packets and retransmitting the ones it never sees
-acknowledged, at a delay that doubles each time.
-
-A server whose session identifier is wrong therefore looks, from the outside,
-like a server that has stopped responding. An implementer chasing that symptom
-SHOULD check this field first.
+`conformance/vectors/transport` holds a header with a sent time and one
+without.
 
 ## Maximum transmission unit
 
-A server MUST limit a connection to 996 bytes, and `schema/protocol.json`
-records the value.
+A server MUST accept a connection at a transmission unit no greater than 996
+bytes, measured as the whole UDP datagram including the packet header, by
+clamping the value the client asks for. Capping its own sending without
+clamping the negotiated value is not sufficient, because ENet derives fragment
+sizes from the negotiated value and still emits datagrams above the limit.
 
-The reason is not that the client asks for it. The client asks for 1400, the
-stock default, and cannot receive more than 996, because the same ceiling sizes
-its receive buffer. Nothing on the client corrects this. ENet clamps a
-requested unit only where the connection is accepted, so the whole
-responsibility rests on the server.
+The reason is not that the client asks for 996. The client asks for 1400 and
+cannot receive more than 996, because the same ceiling sizes its receive
+buffer. Nothing on the client corrects this. ENet clamps a requested unit only
+where a connection is accepted, so the whole responsibility rests on the
+server.
 
 ### When the limit is too high
 
 A server that accepts the requested 1400 sends datagrams the client discards on
-arrival. Anything under 996 bytes still fits, so the handshake completes and
-the connection looks healthy for as long as the messages stay small.
+arrival. A datagram of 996 bytes or fewer still fits, so the handshake
+completes and the connection looks healthy for as long as the messages stay
+small.
 
 The symptom arrives with the first large message: packet loss climbing from
 zero while round trip time stays flat. Loss that rises without any matching
 rise in latency means datagrams are being discarded on arrival rather than lost
 in transit, and an oversized unit is the reason.
 
-## Byte order
-
-The sent time in the packet header is big endian. Every field of every message
-is little endian. The boundary between the two orders is the boundary between
-the transport and the protocol above it.
-
 ## The cipher
 
 Each channel carries either enciphered payloads or plain ones, and
-`schema/channels.json` says which. The channel carrying key exchange is plain,
-because no key has been agreed when it runs.
+`schema/channels.json` says which.
 
-The cipher works on whole blocks and adds no padding. Bytes at the end of a
-payload that do not fill a block travel unchanged, which means a payload
-shorter than one block travels entirely in the clear. That is a consequence of
-the block size rather than a rule of its own, and an implementer who treats it
-as a special case for short payloads will get the same result.
+The cipher is Blowfish in ECB mode, with the standard eight byte block and the
+standard big endian mapping of payload bytes onto the two 32 bit halves the
+algorithm works on. A stock library implementation interoperates, confirmed
+against a client, so an implementer SHOULD use one. A hand written Blowfish is
+a source of silent mismatch, and nothing about this protocol calls for one.
+
+Blowfish is deprecated in several cryptographic libraries and reaching it can
+take a flag. OpenSSL 3 keeps it in a legacy provider, so a runtime built on it
+refuses the algorithm as unsupported until that provider is enabled. That
+refusal is the reason to find the flag, not the reason to write the algorithm
+by hand.
+
+`conformance/vectors/cipher` holds a pair of vectors. One covers a whole block
+and one covers a payload with a tail too short to fill one.
+
+There is no padding. Trailing bytes that do not fill a block travel unchanged,
+so a payload shorter than one block travels entirely in the clear.
+
+Blowfish and ECB both carry well understood weaknesses. This document records
+what the client does. It does not endorse the choice, and an implementer has no
+latitude to substitute.
+
+### The key
+
+Both ends hold the key before a connection opens. Nothing on the wire
+negotiates it, and no exchange derives it. A server obtains it alongside the
+rest of its match configuration, and a client receives it as a launch argument
+in base64. Keys of sixteen bytes are the observed case.
+
+The channel carrying key exchange is plain, because that exchange proves the
+two ends already agree rather than establishing anything.
+
+> [!NOTE]
+> The exchange itself is not recorded yet. Until it is, only the plain channel
+> can be implemented from this document.
 
 ## What a message is
 

@@ -2,36 +2,118 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "urn:trueshot:schema:vector",
   "title": "Conformance vector",
-  "description": "One message and what it decodes to. Decoding the bytes produces the fields, and encoding the fields reproduces the bytes exactly. Vectors live in conformance/vectors/<message-name>/<case>.json, the directory named in kebab-case after the message it covers.",
+  "description": "One thing to check, and what it should produce. Vectors live in conformance/vectors/<subject>/<case>.json, and a message subject uses the message name in kebab-case as its directory.",
   "type": "object",
-  "required": ["message", "version", "bytes", "fields"],
-  "additionalProperties": false,
+  "required": ["subject"],
+  "unevaluatedProperties": false,
   "properties": {
     "$schema": {
       "type": "string"
     },
-    "message": {
-      "description": "Identity of the message these bytes carry.",
-      "type": "string",
-      "pattern": "^[A-Z][A-Za-z0-9]*$"
-    },
-    "version": {
-      "description": "Client version the message was taken from. Selects the revision.",
-      "type": "string",
-      "pattern": "^\\d+\\.\\d+\\.\\d+\\.\\d+$"
-    },
     "note": {
       "$ref": "urn:trueshot:schema:message#/$defs/note"
     },
-    "bytes": {
-      "description": "The message, in hexadecimal, whitespace ignored. Bytes that identify a person are zeroed before committing.",
+    "subject": {
+      "description": "What this vector checks. A transport vector checks that the packet header was built correctly, and its payload is immaterial. A cipher vector checks the cipher alone and is not a packet.",
       "type": "string",
-      "pattern": "^[0-9a-fA-F\\s]+$"
-    },
-    "fields": {
-      "description": "The decoded value of every field the revision defines. A byte run is hexadecimal, and an unsigned 64 bit value is a decimal string, because JSON cannot hold one exactly as a number.",
-      "type": "object",
-      "minProperties": 1
+      "enum": ["transport", "cipher", "message"]
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "subject": {
+            "const": "message"
+          }
+        },
+        "required": ["subject"]
+      },
+      "then": {
+        "required": ["message", "version", "bytes", "fields"],
+        "properties": {
+          "message": {
+            "description": "Identity of the message these bytes carry.",
+            "type": "string",
+            "pattern": "^[A-Z][A-Za-z0-9]*$"
+          },
+          "version": {
+            "description": "Client version these bytes were taken from. Selects the revision.",
+            "type": "string",
+            "pattern": "^\\d+\\.\\d+\\.\\d+\\.\\d+$"
+          },
+          "bytes": {
+            "description": "The deciphered channel payload, in hexadecimal, whitespace ignored, first byte included. Bytes that identify a person are zeroed before committing.",
+            "type": "string",
+            "pattern": "^[0-9a-fA-F\\s]+$"
+          },
+          "fields": {
+            "description": "What the bytes decode to. A field the revision defines but that a presence rule leaves out is written as null.",
+            "type": "object",
+            "minProperties": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "subject": {
+            "const": "transport"
+          }
+        },
+        "required": ["subject"]
+      },
+      "then": {
+        "required": ["version", "bytes", "fields"],
+        "properties": {
+          "version": {
+            "description": "Client version these bytes were taken from. Selects the revision.",
+            "type": "string",
+            "pattern": "^\\d+\\.\\d+\\.\\d+\\.\\d+$"
+          },
+          "bytes": {
+            "description": "One packet header, in hexadecimal, whitespace ignored. Whatever follows the header is immaterial and need not appear.",
+            "type": "string",
+            "pattern": "^[0-9a-fA-F\\s]+$"
+          },
+          "fields": {
+            "description": "What the bytes decode to. A field the revision defines but that a presence rule leaves out is written as null.",
+            "type": "object",
+            "minProperties": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "subject": {
+            "const": "cipher"
+          }
+        },
+        "required": ["subject"]
+      },
+      "then": {
+        "required": ["key", "plaintext", "ciphertext"],
+        "properties": {
+          "key": {
+            "description": "The key, in hexadecimal.",
+            "type": "string",
+            "pattern": "^[0-9a-fA-F\\s]+$"
+          },
+          "plaintext": {
+            "description": "Input to the cipher, in hexadecimal.",
+            "type": "string",
+            "pattern": "^[0-9a-fA-F\\s]+$"
+          },
+          "ciphertext": {
+            "description": "What the cipher produces, in hexadecimal.",
+            "type": "string",
+            "pattern": "^[0-9a-fA-F\\s]+$"
+          }
+        }
+      }
+    }
+  ]
 }

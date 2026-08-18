@@ -25,8 +25,14 @@ jobs:
           --to ${{ github.event.pull_request.head.sha }}
       - name: sign-off present on every commit
         run: |
+          set -euo pipefail
           missing=0
           range="${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }}"
+          count=$(git rev-list --count "$range")
+          if [ "$count" -eq 0 ]; then
+            echo "no commits in $range, so nothing was checked" >&2
+            exit 1
+          fi
           for sha in $(git rev-list "$range"); do
             if ! git log -1 --format=%B "$sha" | grep -qi '^Signed-off-by: '; then
               echo "no sign-off: $sha $(git log -1 --format=%s "$sha")"
