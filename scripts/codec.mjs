@@ -201,7 +201,11 @@ function decodeFields(fields, buffer, offset, structs, endian, outer = {}) {
           bail(`"${field.name}" runs past the end`);
         const raw = buffer.subarray(offset, offset + length);
         let end = raw.length;
-        while (end > 0 && raw[end - 1] === 0) end -= 1;
+        if (size === "terminated") {
+          end -= 1;
+        } else if (size !== "remaining") {
+          while (end > 0 && raw[end - 1] === 0) end -= 1;
+        }
         value = raw
           .subarray(0, end)
           .toString(field.encoding === "ascii" ? "ascii" : "utf8");

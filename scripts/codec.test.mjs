@@ -370,3 +370,38 @@ test("an item that consumes no bytes is rejected rather than repeated for ever",
     CodecError,
   );
 });
+
+test("only a string padded to its own size drops trailing zeros", () => {
+  // A remaining string carries whatever is there, zeros included.
+  roundTrip(
+    [{ name: "text", type: "string", encoding: "utf8", size: "remaining" }],
+    "486900",
+    { text: "Hi\u0000" },
+  );
+  // A terminated string ends at exactly one zero byte.
+  roundTrip(
+    [
+      { name: "text", type: "string", encoding: "utf8", size: "terminated" },
+      { name: "after", type: "u8" },
+    ],
+    "486900 09",
+    { text: "Hi", after: 9 },
+  );
+});
+
+test("remaining is bounded by the run that encloses it", () => {
+  roundTrip(
+    [
+      { name: "n", type: "u8" },
+      {
+        name: "run",
+        type: "array",
+        size: "n",
+        items: { name: "item", type: "bytes", size: "remaining" },
+      },
+      { name: "after", type: "u8" },
+    ],
+    "04 aabbccdd 09",
+    { n: 4, run: ["aabbccdd"], after: 9 },
+  );
+});

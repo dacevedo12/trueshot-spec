@@ -51,7 +51,10 @@
     "reference": {
       "description": "The name of an earlier field, or a bit within one, written parent.bit.",
       "type": "string",
-      "pattern": "^[a-z][A-Za-z0-9]*(\\.[a-z][A-Za-z0-9]*)?$"
+      "pattern": "^[a-z][A-Za-z0-9]*(\\.[a-z][A-Za-z0-9]*)?$",
+      "not": {
+        "enum": ["remaining", "terminated"]
+      }
     },
     "size": {
       "description": "How the reader knows where this field ends: a byte count, the name of an earlier field holding the count, the rest of the payload, or a zero byte.",
@@ -269,7 +272,15 @@
               },
               "size": {
                 "description": "How many bytes the whole run occupies, where a length counts bytes rather than items. Give this or count, not both.",
-                "$ref": "#/$defs/size"
+                "anyOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  {
+                    "$ref": "#/$defs/reference"
+                  }
+                ]
               }
             },
             "oneOf": [
