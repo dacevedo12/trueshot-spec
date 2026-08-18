@@ -34,17 +34,25 @@ built on an unmodified ENet 1.2.5 never completes a connection.
 is the single change that makes stock ENet fail: every field after it lands at
 the wrong offset.
 
-The header occupies eight bytes when it carries a sent time, and six when it
-does not. Bit 7 of the peer byte says which.
+**The header is the one part of the transport that differs between client
+versions**, so a server MUST select its layout from the version it serves. Four
+leading bytes appear in later versions and are absent from earlier ones.
+Reading a header of the wrong shape misplaces every field after it, and the
+connection never establishes.
 
-Three rules govern it.
+Where those four bytes are present:
 
-1. A server MUST write four bytes at the start of every packet. A client
-   rejects a packet without them.
-2. A client does not read those four bytes. A server MAY write any value into
-   them.
+1. A server MUST write them. A client rejects a packet without them.
+2. A client does not read them. A server MAY write any value into them.
+
+And in every version:
+
 3. A server MUST copy the session identifier from the connect exchange into
    every packet it sends.
+
+The header runs to two bytes at its smallest, and grows by two more when it
+carries a sent time and by four more where the leading bytes are present. Bit 7
+of the peer byte says whether the sent time is there.
 
 ### When the session identifier is wrong
 

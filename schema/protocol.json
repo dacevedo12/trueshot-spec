@@ -2,9 +2,74 @@
   "$schema": "meta/protocol.json",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.17.0.268",
+      "note": "Established against 4.17.0.233 and 4.17.0.267, which behave alike. No byte order is recorded because no message has been confirmed for these versions yet.",
+      "cipher": {
+        "name": "Blowfish",
+        "mode": "ECB",
+        "blockSize": 8,
+        "note": "There is no padding. Trailing bytes that do not fill a block travel unchanged, so a payload shorter than one block is never enciphered at all."
+      },
+      "transport": {
+        "base": {
+          "name": "ENet",
+          "version": "1.2.5",
+          "note": "Stock ENet does not interoperate. The header below replaces the stock one, and the constants replace stock values. Everything else, including reliability, sequencing and fragmentation, is stock behaviour."
+        },
+        "header": [
+          {
+            "name": "sessionId",
+            "type": "u8",
+            "note": "A server MUST echo the value the client supplied when it connected. Sending a different value makes the client discard every packet, silently, with no error and no disconnection. The connection then dies of retransmission."
+          },
+          {
+            "name": "peer",
+            "type": "bits",
+            "size": 1,
+            "bits": [
+              {
+                "name": "peerId",
+                "width": 7,
+                "note": "127 marks a peer the transport has not assigned yet, which is what a connecting client sends."
+              },
+              {
+                "name": "sentTimeFlag",
+                "width": 1,
+                "note": "Set when the header carries a sent time."
+              }
+            ]
+          },
+          {
+            "name": "sentTime",
+            "type": "u16",
+            "endian": "big",
+            "present": {
+              "when": "peer.sentTimeFlag"
+            },
+            "note": "Milliseconds since the connection opened. Big endian, unlike every message field."
+          }
+        ],
+        "constants": [
+          {
+            "name": "maximumPeerId",
+            "value": 127,
+            "stock": 32767,
+            "note": "Follows from the peer id occupying seven bits."
+          },
+          {
+            "name": "maximumTransmissionUnit",
+            "value": 996,
+            "stock": 4096,
+            "note": "A server MUST clamp to this. The client asks for the stock default of 1400 and cannot receive more than 996, because its receive buffer is sized by this same ceiling. The clamp happens only on the server side, so a server that keeps the stock ceiling accepts 1400 and sends datagrams the client drops."
+          }
+        ]
+      }
+    },
+    {
       "from": "4.20.0.315",
       "endian": "little",
-      "note": "Established against a 4.20.0.315 client. Whether any of it holds for earlier versions is untested.",
+      "note": "Established against 4.20.0.315. The header gained four leading bytes since 4.17, which is the only transport difference found between them.",
       "cipher": {
         "name": "Blowfish",
         "mode": "ECB",
