@@ -10,7 +10,7 @@ import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { join, basename } from "node:path";
 import Ajv from "ajv/dist/2020.js";
 import { CodecError, decodeFields, encodeFields } from "./codec.mjs";
-import { BLOCK, CipherError, decipher, encipher } from "./cipher.mjs";
+import { CipherError, decipher, encipher } from "./cipher.mjs";
 
 const SCHEMA_DIR = "schema";
 const META = join(SCHEMA_DIR, "meta");
@@ -285,7 +285,11 @@ function checkFields(fields, outer, structNames, at, openStructs = new Set()) {
           at,
           `field "${field.name}" refers to struct "${field.struct}", which has no definition`,
         );
-      } else if (openStructs.has(field.struct) && !last) {
+      } else if (
+        openStructs.has(field.struct) &&
+        field.size === undefined &&
+        !last
+      ) {
         fail(
           at,
           `field "${field.name}" holds struct "${field.struct}", which runs to the end of the payload, so nothing may follow it`,
@@ -430,7 +434,8 @@ const withoutPointer = (doc) => {
   return copy;
 };
 
-if (!validateProtocol(withoutPointer(protocolDoc))) {
+const protocolIsValid = validateProtocol(withoutPointer(protocolDoc));
+if (!protocolIsValid) {
   report("schema/protocol.json", validateProtocol.errors);
 }
 if (!validateChannels(withoutPointer(channelsDoc))) {
@@ -483,16 +488,18 @@ const channelMissingFor = (messageRevision, name) => {
 };
 
 // The transport header uses the same field vocabulary, so it gets the same walk.
-(protocolDoc.revisions ?? []).forEach((revision, index) => {
-  if (revision.transport?.header) {
-    checkFields(
-      revision.transport.header,
-      new Map(),
-      new Set(),
-      `schema/protocol.json revision ${index} header`,
-    );
-  }
-});
+(protocolIsValid ? (protocolDoc.revisions ?? []) : []).forEach(
+  (revision, index) => {
+    if (revision.transport?.header) {
+      checkFields(
+        revision.transport.header,
+        new Map(),
+        new Set(),
+        `schema/protocol.json revision ${index} header`,
+      );
+    }
+  },
+);
 
 // Structs first: messages reference them.
 const structNames = new Set();
@@ -591,6 +598,18 @@ for (const { where, doc } of messages) {
       );
     }
     checkFields(revision.fields, new Map(), structNames, at, openStructs);
+
+    const bare = needingOrder(revision.fields, structs);
+    if (bare.length > 0) {
+      for (const protocolRevision of protocolDoc.revisions ?? []) {
+        if (!rangesOverlap(protocolRevision, revision)) continue;
+        if (protocolRevision.endian) continue;
+        fail(
+          at,
+          `reads ${bare.map((n) => `"${n}"`).join(", ")} across a range from ${protocolRevision.from}, where no byte order is established`,
+        );
+      }
+    }
   });
 }
 
@@ -688,6 +707,19 @@ if (existsSync(VECTOR_DIR)) {
           fail(path, `sits under "${dir.name}" but its subject is cipher`);
         }
         const key = Buffer.from(doc.key.replace(/\s+/g, ""), "hex");
+        // A cipher vector names no version, so it answers to every key size
+        // any revision records.
+        const sizes = new Set(
+          (protocolDoc.revisions ?? [])
+            .map((r) => r.cipher?.keySize)
+            .filter((n) => n !== undefined),
+        );
+        if (sizes.size > 0 && !sizes.has(key.length)) {
+          fail(
+            path,
+            `carries a ${key.length} byte key, and the recorded sizes are ${[...sizes].join(", ")}`,
+          );
+        }
         const plaintext = Buffer.from(
           doc.plaintext.replace(/\s+/g, ""),
           "hex",
@@ -728,6 +760,11 @@ if (existsSync(VECTOR_DIR)) {
         continue;
       }
 
+      if (!protocolIsValid) {
+        // Every layout below is read out of a file the meta-schema rejected,
+        // so the errors already reported are the ones worth reading.
+        continue;
+      }
       const protocolRevision = (protocolDoc.revisions ?? []).find((r) =>
         covers(r, doc.version),
       );
