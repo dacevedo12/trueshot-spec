@@ -317,7 +317,15 @@
               },
               "size": {
                 "description": "How many bytes the struct occupies, where its length is carried on the wire rather than implied by its fields.",
-                "$ref": "#/$defs/size"
+                "anyOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  {
+                    "$ref": "#/$defs/reference"
+                  }
+                ]
               }
             }
           }
@@ -358,6 +366,9 @@
                       "type": "integer",
                       "minimum": 1,
                       "maximum": 32
+                    },
+                    "values": {
+                      "$ref": "#/$defs/values"
                     }
                   }
                 }

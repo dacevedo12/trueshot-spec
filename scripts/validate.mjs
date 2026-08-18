@@ -168,6 +168,34 @@ function checkNotes(value, where, path = "", isVector = false) {
 // enclosing scopes, so an array element may size itself from an earlier field.
 // Bit runs are addressable as parent.bit, which is what a presence rule points
 // at.
+// A run of bits carries values as a whole field does, so both are read here.
+function checkValues(field, at, parent) {
+  if (!field.values) return;
+  const label = parent ? `"${parent}.${field.name}"` : `"${field.name}"`;
+  const bits = field.width ?? SCALAR_BITS[field.type];
+  const signed = field.width === undefined && field.type?.startsWith("i");
+  const low = signed ? -(2 ** (bits - 1)) : 0;
+  const high = signed ? 2 ** (bits - 1) - 1 : 2 ** bits - 1;
+  const what = field.width === undefined ? `a ${field.type}` : `${bits} bits`;
+  const names = new Set();
+  for (const [key, entry] of Object.entries(field.values)) {
+    const value = Number(key);
+    if (bits <= 53 && (value < low || value > high)) {
+      fail(
+        at,
+        `field ${label} gives a meaning for ${key}, which does not fit ${what}`,
+      );
+    }
+    if (names.has(entry.name)) {
+      fail(
+        at,
+        `field ${label} uses the name "${entry.name}" for more than one value`,
+      );
+    }
+    names.add(entry.name);
+  }
+}
+
 function checkFields(fields, outer, structNames, at, openStructs = new Set()) {
   const seen = new Map(outer);
 
@@ -175,29 +203,8 @@ function checkFields(fields, outer, structNames, at, openStructs = new Set()) {
     const last = index === fields.length - 1;
     let openEnded = false;
 
-    if (field.values) {
-      const bits = SCALAR_BITS[field.type];
-      const signed = field.type.startsWith("i");
-      const low = signed ? -(2 ** (bits - 1)) : 0;
-      const high = signed ? 2 ** (bits - 1) - 1 : 2 ** bits - 1;
-      const names = new Set();
-      for (const [key, entry] of Object.entries(field.values)) {
-        const value = Number(key);
-        if (bits <= 53 && (value < low || value > high)) {
-          fail(
-            at,
-            `field "${field.name}" gives a meaning for ${key}, which does not fit a ${field.type}`,
-          );
-        }
-        if (names.has(entry.name)) {
-          fail(
-            at,
-            `field "${field.name}" uses the name "${entry.name}" for more than one value`,
-          );
-        }
-        names.add(entry.name);
-      }
-    }
+    checkValues(field, at);
+    for (const run of field.bits ?? []) checkValues(run, at, field.name);
 
     if (field.present) {
       const target = field.present.when;
@@ -270,6 +277,17 @@ function checkFields(fields, outer, structNames, at, openStructs = new Set()) {
           `field "${field.name}" ${key} refers to "${value}", which is ${seen.get(value).type} rather than an unsigned integer`,
         );
       }
+    }
+
+    if (
+      field.type === "array" &&
+      field.items?.size === "remaining" &&
+      field.size === undefined
+    ) {
+      fail(
+        at,
+        `field "${field.name}" holds items that each run to the end, so the first takes every byte and a count cannot say how many follow`,
+      );
     }
 
     if (field.size === "terminated" && field.type !== "string") {
@@ -438,12 +456,17 @@ const protocolIsValid = validateProtocol(withoutPointer(protocolDoc));
 if (!protocolIsValid) {
   report("schema/protocol.json", validateProtocol.errors);
 }
-if (!validateChannels(withoutPointer(channelsDoc))) {
+const channelsAreValid = validateChannels(withoutPointer(channelsDoc));
+if (!channelsAreValid) {
   report("schema/channels.json", validateChannels.errors);
 }
 
-checkRevisions(protocolDoc.revisions ?? [], "schema/protocol.json");
-checkRevisions(channelsDoc.revisions ?? [], "schema/channels.json");
+if (protocolIsValid) {
+  checkRevisions(protocolDoc.revisions ?? [], "schema/protocol.json");
+}
+if (channelsAreValid) {
+  checkRevisions(channelsDoc.revisions ?? [], "schema/channels.json");
+}
 checkNotes(protocolDoc, "schema/protocol.json");
 checkNotes(channelsDoc, "schema/channels.json");
 for (const [urn, file] of Object.entries(index.schemas)) {
@@ -532,6 +555,23 @@ for (const file of listJson("types")) {
 for (const { path, doc } of structFiles) {
   const seen = checkFields(doc.fields, new Map(), structNames, path);
   if (seen.has("__open")) openStructs.add(doc.struct);
+}
+
+let growing = true;
+while (growing) {
+  growing = false;
+  for (const { doc } of structFiles) {
+    if (openStructs.has(doc.struct)) continue;
+    const last = doc.fields[doc.fields.length - 1];
+    if (
+      last?.type === "struct" &&
+      last.size === undefined &&
+      openStructs.has(last.struct)
+    ) {
+      openStructs.add(doc.struct);
+      growing = true;
+    }
+  }
 }
 
 const usedStructs = (fields) => {
