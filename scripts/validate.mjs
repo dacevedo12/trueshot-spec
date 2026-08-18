@@ -120,10 +120,15 @@ function checkRevisions(revisions, where) {
   }
 }
 
-function checkNotes(value, where, path = "") {
+// A requirement belongs in spec/, where Vale reads it and where a reader
+// looks for one. A note records what a client does.
+const KEYWORDS =
+  /\b(MUST NOT|MUST|SHOULD NOT|SHOULD|MAY|SHALL NOT|SHALL|REQUIRED|RECOMMENDED|OPTIONAL)\b/;
+
+function checkNotes(value, where, path = "", isVector = false) {
   if (Array.isArray(value)) {
     value.forEach((item, index) =>
-      checkNotes(item, where, `${path}[${index}]`),
+      checkNotes(item, where, `${path}[${index}]`, isVector),
     );
     return;
   }
@@ -131,7 +136,8 @@ function checkNotes(value, where, path = "") {
 
   for (const [key, child] of Object.entries(value)) {
     const here = `${path}/${key}`;
-    if (key === "fields") continue; // decoded wire data, not prose
+    // A vector's "fields" holds decoded wire data. A definition's holds prose.
+    if (isVector && key === "fields") continue;
     if (
       (key === "note" || key === "description") &&
       typeof child === "string"
@@ -145,9 +151,16 @@ function checkNotes(value, where, path = "") {
           );
         }
       }
+      const keyword = KEYWORDS.exec(child);
+      if (keyword) {
+        fail(
+          where,
+          `${here} says "${keyword[0]}", and a requirement belongs in spec/ rather than in a note`,
+        );
+      }
       continue;
     }
-    checkNotes(child, where, here);
+    checkNotes(child, where, here, isVector);
   }
 }
 
@@ -161,6 +174,30 @@ function checkFields(fields, outer, structNames, at, openStructs = new Set()) {
   fields.forEach((field, index) => {
     const last = index === fields.length - 1;
     let openEnded = false;
+
+    if (field.values) {
+      const bits = SCALAR_BITS[field.type];
+      const signed = field.type.startsWith("i");
+      const low = signed ? -(2 ** (bits - 1)) : 0;
+      const high = signed ? 2 ** (bits - 1) - 1 : 2 ** bits - 1;
+      const names = new Set();
+      for (const [key, entry] of Object.entries(field.values)) {
+        const value = Number(key);
+        if (bits <= 53 && (value < low || value > high)) {
+          fail(
+            at,
+            `field "${field.name}" gives a meaning for ${key}, which does not fit a ${field.type}`,
+          );
+        }
+        if (names.has(entry.name)) {
+          fail(
+            at,
+            `field "${field.name}" uses the name "${entry.name}" for more than one value`,
+          );
+        }
+        names.add(entry.name);
+      }
+    }
 
     if (field.present) {
       const target = field.present.when;
@@ -340,6 +377,42 @@ function canonical(value) {
   return JSON.stringify(value);
 }
 
+const MULTI_BYTE = new Set([
+  "u16",
+  "i16",
+  "u32",
+  "i32",
+  "u64",
+  "i64",
+  "f32",
+  "f64",
+]);
+
+// Which fields would read a byte order the revision never declared.
+function needingOrder(fields, structs, seen = new Set()) {
+  const found = [];
+  for (const field of fields ?? []) {
+    if (field.endian) continue;
+    if (MULTI_BYTE.has(field.type)) {
+      found.push(field.name);
+    } else if (field.type === "array" && field.items) {
+      found.push(...needingOrder([field.items], structs, seen));
+    } else if (field.type === "struct" && !seen.has(field.struct)) {
+      const definition = structs.get(field.struct);
+      if (definition) {
+        found.push(
+          ...needingOrder(
+            definition.fields,
+            structs,
+            new Set([...seen, field.struct]),
+          ),
+        );
+      }
+    }
+  }
+  return found;
+}
+
 const report = (where, errors) => {
   for (const error of errors) {
     const detail =
@@ -454,6 +527,35 @@ for (const { path, doc } of structFiles) {
   if (seen.has("__open")) openStructs.add(doc.struct);
 }
 
+const usedStructs = (fields) => {
+  const found = [];
+  for (const field of fields ?? []) {
+    if (field.type === "struct") found.push(field.struct);
+    if (field.type === "array" && field.items)
+      found.push(...usedStructs([field.items]));
+  }
+  return found;
+};
+for (const { path, doc } of structFiles) {
+  const trail = [doc.struct];
+  const walk = (name) => {
+    for (const next of usedStructs(structs.get(name)?.fields)) {
+      if (trail.includes(next)) {
+        fail(
+          path,
+          `contains itself through ${[...trail, next].join(" then ")}, so it describes a payload with no end`,
+        );
+        return true;
+      }
+      trail.push(next);
+      if (walk(next)) return true;
+      trail.pop();
+    }
+    return false;
+  };
+  walk(doc.struct);
+}
+
 const messages = [];
 for (const file of listJson("messages")) {
   let doc;
@@ -517,6 +619,7 @@ for (let i = 0; i < claims.length; i += 1) {
 
 // Vectors. A subject says what is being checked.
 const byMessage = new Map(messages.map(({ doc }) => [doc.message, doc]));
+const covered = new Set();
 const pascalFromKebab = (name) =>
   name
     .split("-")
@@ -528,13 +631,33 @@ const hexPairs = (text) => {
   return stripped.length % 2 === 0 ? stripped.length / 2 : null;
 };
 
+const vectorFiles = [];
+const walkVectors = (at, trail) => {
+  for (const entry of readdirSync(at, { withFileTypes: true })) {
+    const here = join(at, entry.name);
+    if (entry.isDirectory()) {
+      walkVectors(here, [...trail, entry.name]);
+    } else if (entry.name.endsWith(".json")) {
+      vectorFiles.push({ path: here, trail });
+    }
+  }
+};
+
 let vectorCount = 0;
 if (existsSync(VECTOR_DIR)) {
-  for (const dir of readdirSync(VECTOR_DIR, { withFileTypes: true })) {
-    if (!dir.isDirectory()) continue;
-    for (const name of readdirSync(join(VECTOR_DIR, dir.name))) {
-      if (!name.endsWith(".json")) continue;
-      const path = join(VECTOR_DIR, dir.name, name);
+  walkVectors(VECTOR_DIR, []);
+  {
+    for (const { path, trail } of vectorFiles) {
+      if (trail.length !== 1) {
+        fail(
+          path,
+          trail.length === 0
+            ? "sits directly under the vector directory, and a vector belongs in a directory naming its subject"
+            : `sits ${trail.length} directories deep, and a vector belongs one directory below the vector directory`,
+        );
+        continue;
+      }
+      const dir = { name: trail[0] };
 
       let doc;
       try {
@@ -548,7 +671,7 @@ if (existsSync(VECTOR_DIR)) {
         report(path, validateVector.errors);
         continue;
       }
-      checkNotes(doc, path);
+      checkNotes(doc, path, "", true);
 
       for (const key of ["bytes", "key", "plaintext", "ciphertext"]) {
         if (doc[key] === undefined) continue;
@@ -559,26 +682,6 @@ if (existsSync(VECTOR_DIR)) {
           fail(path, `${key} holds no bytes`);
         }
       }
-
-      const NEEDED = {
-        message: ["message", "version", "bytes", "fields"],
-        transport: ["version", "bytes", "fields"],
-        cipher: ["key", "plaintext", "ciphertext"],
-      };
-      const FORBIDDEN = {
-        message: ["key", "plaintext", "ciphertext"],
-        transport: ["message", "key", "plaintext", "ciphertext"],
-        cipher: ["message", "version", "bytes", "fields"],
-      };
-      for (const key of NEEDED[doc.subject]) {
-        if (doc[key] === undefined)
-          fail(path, `a ${doc.subject} vector needs "${key}"`);
-      }
-      for (const key of FORBIDDEN[doc.subject]) {
-        if (doc[key] !== undefined)
-          fail(path, `a ${doc.subject} vector has no use for "${key}"`);
-      }
-      if (NEEDED[doc.subject].some((key) => doc[key] === undefined)) continue;
 
       if (doc.subject === "cipher") {
         if (dir.name !== "cipher") {
@@ -666,6 +769,7 @@ if (existsSync(VECTOR_DIR)) {
           continue;
         }
         defined = revision.fields;
+        covered.add(`${doc.message}@${revision.from}`);
         const stripped = doc.bytes.replace(/\s+/g, "");
         const leading = stripped.length
           ? parseInt(stripped.slice(0, 2), 16)
@@ -699,11 +803,25 @@ if (existsSync(VECTOR_DIR)) {
         }
       }
 
+      if (!protocolRevision.endian) {
+        const bare = needingOrder(defined, structs);
+        if (bare.length > 0) {
+          fail(
+            path,
+            `reads ${bare.map((n) => `"${n}"`).join(", ")} at a byte order revision ${protocolRevision.from} does not declare`,
+          );
+          continue;
+        }
+      }
+
       // The two claims the vector makes, rather than an assertion nobody reads.
-      const endian = protocolRevision.endian ?? "little";
+      const endian = protocolRevision.endian;
       const payload = Buffer.from(doc.bytes.replace(/\s+/g, ""), "hex");
+      // A message payload opens with the byte that names it. The byte is
+      // recorded as the revision's command, so the layout starts after it.
+      const start = doc.subject === "message" ? 1 : 0;
       try {
-        const read = decodeFields(defined, payload, 0, structs, endian);
+        const read = decodeFields(defined, payload, start, structs, endian);
         if (doc.subject === "message" && read.offset !== payload.length) {
           fail(
             path,
@@ -719,7 +837,7 @@ if (existsSync(VECTOR_DIR)) {
           );
         } else {
           const written = encodeFields(defined, doc.fields, structs, endian);
-          const wanted = payload.subarray(0, read.offset);
+          const wanted = payload.subarray(start, read.offset);
           if (!written.equals(wanted)) {
             fail(
               path,
@@ -731,6 +849,17 @@ if (existsSync(VECTOR_DIR)) {
         if (!(error instanceof CodecError)) throw error;
         fail(path, `cannot be decoded: ${error.message}`);
       }
+    }
+  }
+}
+
+for (const { where, doc } of messages) {
+  for (const revision of doc.revisions ?? []) {
+    if (!covered.has(`${doc.message}@${revision.from}`)) {
+      fail(
+        where,
+        `revision ${revision.from} has no vector, so nothing checks its layout against a recorded payload`,
+      );
     }
   }
 }
