@@ -55,9 +55,14 @@ meaning. Strip it before decoding.
 ## Running them
 
 Load the file, decode `bytes` against the layout for its version, and compare
-what you get to `fields`. Then encode `fields` back and compare to `bytes`.
-Both directions matter. An implementation that reads a header correctly and
-writes it wrong fails only in the second.
+what you get to `fields`. Then encode `fields` back and compare to the bytes
+the layout covers. Both directions matter. An implementation that reads a
+header correctly and writes it wrong fails only in the second.
+
+A message payload is covered end to end, and its leading byte names the
+message rather than belonging to the layout, so the comparison starts after it.
+A transport vector covers the header, and whatever follows it in the datagram
+is immaterial.
 
 For a cipher vector there are no layouts involved, so compare the two runs of
 bytes directly.

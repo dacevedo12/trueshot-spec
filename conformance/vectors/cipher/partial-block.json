@@ -1,7 +1,7 @@
 {
   "$schema": "../../../schema/meta/vector.json",
   "subject": "cipher",
-  "note": "Twelve bytes. The first eight are enciphered and the remaining four travel unchanged, which is what no padding means in practice.",
+  "note": "Twelve bytes. The first eight are enciphered and the remaining four travel unchanged, which is what no padding means in practice. The key is arbitrary; nothing about it comes from a real match.",
   "key": "000102030405060708090a0b0c0d0e0f",
   "plaintext": "00112233445566778899aabb",
   "ciphertext": "0263249aa34d999e8899aabb"

@@ -20,7 +20,8 @@ issue that names a problem precisely is worth more than a guess at the fix.
 Observable behavior on the wire, and nothing else. It never describes how to
 build a server.
 
-- Do not name a language, framework, library, or runtime API.
+- Do not name a language, framework, library, or runtime API, with one
+  exception below.
 - Do not prescribe an architecture, a concurrency model, or a data structure.
 - Do not describe internal server state unless a client can observe it.
 - Do not record whether an implementation has built a thing yet.
@@ -29,12 +30,15 @@ The test: if a statement would constrain someone who chose Rust and an entity
 component system, and no client can observe the difference, it does not belong
 here.
 
-One thing is allowed through that test. Where the protocol relies on something
-an implementer will struggle to obtain, the obstacle is worth naming, along
-with the software it shows up in. That records a fact about the world rather
-than a design, and it holds whatever language somebody works in. It stays an
-observation: it never becomes a requirement, and a requirement keyword never
-attaches to it.
+The exception is to the first bullet. Where the protocol relies on something an
+implementer will struggle to obtain, the obstacle is worth naming, along with
+the software it shows up in, because a reader who hits it otherwise concludes
+the specification is wrong. That records a fact about the world rather than a
+design, and it holds whatever language somebody works in.
+
+It stays an observation. Naming where a thing is hard to get is not the same as
+recommending how to get it, and the exception covers the first and not the
+second. No requirement keyword attaches to it.
 
 Requirement keywords belong in `spec/` and nowhere else. A note in `schema/`
 records what a client does, so a requirement in one is a second copy of
@@ -69,9 +73,10 @@ accepts is the end of it, and until then the finding belongs in an issue rather
 than in the specification. Anything else publishes a guess with a label on it,
 which is what a specification exists to avoid.
 
-A vector is one message and what it decodes to, which makes it two claims:
-decoding the bytes produces the fields, and encoding the fields reproduces the
-bytes exactly. An implementation passes only when both hold.
+A vector is one recorded fact and what it produces. For a vector carrying
+bytes that makes two claims: decoding them produces the fields, and encoding
+the fields reproduces the bytes the layout covers. An implementation passes
+only when both hold.
 
 `schema/meta/` holds the meta-schemas saying what a definition may contain.
 Everything beside them is the definitions themselves.

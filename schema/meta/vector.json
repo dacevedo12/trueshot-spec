@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "urn:trueshot:schema:vector",
   "title": "Conformance vector",
-  "description": "One thing to check, and what it should produce. Vectors live in conformance/vectors/<subject>/<case>.json, and a message subject uses the message name in kebab-case as its directory.",
+  "description": "One thing to check, and what it should produce. Vectors live in conformance/vectors/<subject>/<case>.json. A message subject uses the message name with each capital starting a new part, lower case and joined by hyphens, as its directory.",
   "type": "object",
   "required": ["subject"],
   "unevaluatedProperties": false,

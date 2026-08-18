@@ -81,19 +81,19 @@ client.
 Blowfish is an old algorithm, and a library that still carries it does not
 always offer it by default. OpenSSL 3.0 moved it into a legacy provider that
 stays off unless something enables it, so anything built on that version
-reports the algorithm as unsupported until the provider is turned on. Enabling
-it is the answer. A hand written Blowfish is a source of silent mismatch, and
-nothing about this protocol calls for one.
+reports the algorithm as unsupported until the provider is turned on. What has
+been confirmed against a client is a library implementation, and a hand written
+Blowfish is a source of silent mismatch.
 
-`conformance/vectors/cipher` holds a pair of vectors. One covers a whole block
-and one covers a payload with a tail too short to fill one.
+`conformance/vectors/cipher` covers a whole block, a payload with a tail too
+short to fill one, and a payload shorter than a block.
 
 There is no padding. Trailing bytes that do not fill a block travel unchanged,
 so a payload shorter than one block travels entirely in the clear.
 
 Blowfish and ECB both carry well understood weaknesses. This document records
-what the client does. It does not endorse the choice, and an implementer has no
-latitude to substitute.
+what the client does rather than endorsing it. A server MUST NOT substitute
+another cipher, because a client accepts no other.
 
 ### The key
 
