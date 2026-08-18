@@ -9,6 +9,8 @@
         "name": "Blowfish",
         "mode": "ECB",
         "blockSize": 8,
+        "blockEndian": "big",
+        "keySize": 16,
         "note": "There is no padding. Trailing bytes that do not fill a block travel unchanged, so a payload shorter than one block is never enciphered at all."
       },
       "transport": {
@@ -61,7 +63,7 @@
             "name": "maximumTransmissionUnit",
             "value": 996,
             "stock": 4096,
-            "note": "A server MUST clamp to this. The client asks for 1400, read from its connect command, and cannot receive more than 996, because its receive buffer is sized by this same ceiling. The clamp happens only where a connection is accepted, so a server that keeps the stock ceiling accepts 1400 and sends datagrams the client drops."
+            "note": "The client asks for 1400, read from its connect command, and cannot receive more than 996, because its receive buffer is sized by this same ceiling. The clamp happens only where a connection is accepted, so a server that keeps the stock ceiling accepts 1400 and sends datagrams the client drops."
           }
         ]
       }
@@ -74,6 +76,8 @@
         "name": "Blowfish",
         "mode": "ECB",
         "blockSize": 8,
+        "blockEndian": "big",
+        "keySize": 16,
         "note": "There is no padding. Trailing bytes that do not fill a block travel unchanged, so a payload shorter than one block is never enciphered at all."
       },
       "transport": {
@@ -132,7 +136,7 @@
             "name": "maximumTransmissionUnit",
             "value": 996,
             "stock": 4096,
-            "note": "A server MUST clamp to this. The client asks for 1400, read from its connect command, and cannot receive more than 996, because its receive buffer is sized by this same ceiling. The clamp happens only where a connection is accepted, so a server that keeps the stock ceiling accepts 1400 and sends datagrams the client drops."
+            "note": "The client asks for 1400, read from its connect command, and cannot receive more than 996, because its receive buffer is sized by this same ceiling. The clamp happens only where a connection is accepted, so a server that keeps the stock ceiling accepts 1400 and sends datagrams the client drops."
           }
         ]
       }

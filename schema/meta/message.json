@@ -246,7 +246,7 @@
             "required": ["type"]
           },
           "then": {
-            "required": ["count", "items"],
+            "required": ["items"],
             "properties": {
               "count": {
                 "description": "A literal count, the name of an earlier field, or repeat to the end.",
@@ -266,8 +266,26 @@
               },
               "items": {
                 "$ref": "#/$defs/field"
+              },
+              "size": {
+                "description": "How many bytes the whole run occupies, where a length counts bytes rather than items. Give this or count, not both.",
+                "$ref": "#/$defs/size"
               }
-            }
+            },
+            "oneOf": [
+              {
+                "required": ["count"],
+                "properties": {
+                  "count": true
+                }
+              },
+              {
+                "required": ["size"],
+                "properties": {
+                  "size": true
+                }
+              }
+            ]
           }
         },
         {
@@ -285,6 +303,10 @@
               "struct": {
                 "description": "Name of a definition in schema/types.",
                 "$ref": "#/$defs/typeName"
+              },
+              "size": {
+                "description": "How many bytes the struct occupies, where its length is carried on the wire rather than implied by its fields.",
+                "$ref": "#/$defs/size"
               }
             }
           }
@@ -324,15 +346,53 @@
                     "width": {
                       "type": "integer",
                       "minimum": 1,
-                      "maximum": 64
+                      "maximum": 32
                     }
                   }
                 }
               }
             }
           }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "enum": ["u8", "u16", "u32", "u64", "i8", "i16", "i32", "i64"]
+              }
+            },
+            "required": ["type"]
+          },
+          "then": {
+            "properties": {
+              "values": {
+                "$ref": "#/$defs/values"
+              }
+            }
+          }
         }
       ]
+    },
+    "values": {
+      "description": "What the values of this field mean, where a client treats it as a fixed set. A key is the value on the wire, written the way a vector writes it. Recording some of the set does not claim to record all of it.",
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "pattern": "^-?(0|[1-9][0-9]*)$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "required": ["name"],
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "$ref": "#/$defs/identifier"
+          },
+          "note": {
+            "$ref": "#/$defs/note"
+          }
+        }
+      }
     }
   }
 }

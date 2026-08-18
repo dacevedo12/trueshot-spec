@@ -24,7 +24,7 @@
       "pattern": "^[A-Z][A-Za-z0-9]*$"
     },
     "version": {
-      "description": "Client version these bytes were taken from. Selects the revision.",
+      "description": "Client version these bytes belong to, whichever end emitted them. Selects the revision.",
       "type": "string",
       "pattern": "^\\d+\\.\\d+\\.\\d+\\.\\d+$"
     },
@@ -35,8 +35,7 @@
     },
     "fields": {
       "description": "Every field the revision defines, under its own name. An integer narrower than 64 bits is a number; a 64 bit one is a decimal string, because JSON cannot hold it exactly. A byte run is lower case hexadecimal. A fixed size string drops its trailing zero bytes, and a size counts bytes rather than characters. An array is an array, and a struct or a run of bits is an object keyed by its own names. A field a presence rule leaves out is written as null.",
-      "type": "object",
-      "minProperties": 1
+      "type": "object"
     },
     "key": {
       "description": "The key, in hexadecimal. A cipher subject only.",
@@ -53,5 +52,73 @@
       "type": "string",
       "pattern": "^[0-9a-fA-F\\s]+$"
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "subject": {
+            "const": "message"
+          }
+        },
+        "required": ["subject"]
+      },
+      "then": {
+        "required": ["message", "version", "bytes", "fields"],
+        "properties": {
+          "message": true,
+          "version": true,
+          "bytes": true,
+          "fields": true,
+          "key": false,
+          "plaintext": false,
+          "ciphertext": false
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "subject": {
+            "const": "transport"
+          }
+        },
+        "required": ["subject"]
+      },
+      "then": {
+        "required": ["version", "bytes", "fields"],
+        "properties": {
+          "version": true,
+          "bytes": true,
+          "fields": true,
+          "message": false,
+          "key": false,
+          "plaintext": false,
+          "ciphertext": false
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "subject": {
+            "const": "cipher"
+          }
+        },
+        "required": ["subject"]
+      },
+      "then": {
+        "required": ["key", "plaintext", "ciphertext"],
+        "properties": {
+          "key": true,
+          "plaintext": true,
+          "ciphertext": true,
+          "message": false,
+          "version": false,
+          "bytes": false,
+          "fields": false
+        }
+      }
+    }
+  ]
 }

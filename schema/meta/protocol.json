@@ -52,7 +52,7 @@
     "cipher": {
       "description": "Applied to a channel payload above the transport, so the transport never sees plaintext.",
       "type": "object",
-      "required": ["name", "mode", "blockSize"],
+      "required": ["name", "mode", "blockSize", "blockEndian", "keySize"],
       "additionalProperties": false,
       "properties": {
         "name": {
@@ -68,6 +68,16 @@
         },
         "note": {
           "$ref": "urn:trueshot:schema:message#/$defs/note"
+        },
+        "blockEndian": {
+          "description": "How the bytes of a block map onto the words the algorithm works on. This is a property of the cipher rather than of any field.",
+          "type": "string",
+          "enum": ["little", "big"]
+        },
+        "keySize": {
+          "description": "Key length in bytes, as observed. Both ends hold the key before a connection opens, so nothing on the wire carries it.",
+          "type": "integer",
+          "minimum": 1
         }
       }
     },
