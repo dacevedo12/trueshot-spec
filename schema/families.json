@@ -1,0 +1,69 @@
+{
+  "$schema": "meta/families.json",
+  "note": "A family is what a channel carries. It fixes the numbering a command value is drawn from and the header that precedes every body, so two channels of one family share both, and the same value on channels of different families is two unrelated messages.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "families": [
+        {
+          "name": "game",
+          "note": "The simulation itself: what a client asks for, and what the server says happened.",
+          "command": {
+            "field": "command",
+            "escape": 254,
+            "extendedField": "extendedCommand",
+            "reserved": [254, 255]
+          },
+          "header": [
+            {
+              "name": "command",
+              "type": "u8",
+              "note": "254 means the identifier is carried in the wider field instead. 255 introduces a container of several messages rather than a message of its own."
+            },
+            {
+              "name": "netId",
+              "type": "u32",
+              "note": "A network object the message concerns. Which object, and whether it is the origin or the subject, is settled by each message rather than here, and a message may carry a value naming none."
+            },
+            {
+              "name": "extendedCommand",
+              "type": "u16",
+              "present": {
+                "when": "command",
+                "equals": 254
+              },
+              "note": "Identifiers here start above the range a single byte holds."
+            }
+          ]
+        },
+        {
+          "name": "session",
+          "note": "The match and who is in it, rather than the simulation: text between players, and the roster.",
+          "command": {
+            "field": "command"
+          },
+          "header": [
+            {
+              "name": "command",
+              "type": "u8"
+            }
+          ]
+        },
+        {
+          "name": "registration",
+          "note": "Establishing a connection. The one family whose first message travels before a cipher state exists.",
+          "command": {
+            "field": "command"
+          },
+          "header": [
+            {
+              "name": "command",
+              "type": "u8"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -2,76 +2,10 @@
   "$schema": "meta/protocol.json",
   "revisions": [
     {
-      "from": "4.17.0.233",
-      "until": "4.17.0.268",
-      "note": "Records the transport alone. Nothing above it is recorded for this range, so a server cannot be built for these versions from this document.",
-      "cipher": {
-        "name": "Blowfish",
-        "mode": "ECB",
-        "blockSize": 8,
-        "blockEndian": "big",
-        "keySize": 16,
-        "note": "There is no padding. Trailing bytes that do not fill a block travel unchanged, so a payload shorter than one block is never enciphered at all."
-      },
-      "transport": {
-        "base": {
-          "name": "ENet",
-          "version": "1.2.5",
-          "note": "Stock ENet does not interoperate. The header below replaces the stock one, and the constants replace stock values. Everything else, including reliability, sequencing and fragmentation, is stock behaviour."
-        },
-        "header": [
-          {
-            "name": "sessionId",
-            "type": "u8",
-            "note": "The client discards every packet whose value does not match the one it supplied when it connected. It does so silently, with no error and no disconnection, and the connection dies of retransmission."
-          },
-          {
-            "name": "peer",
-            "type": "bits",
-            "size": 1,
-            "bits": [
-              {
-                "name": "peerId",
-                "width": 7,
-                "note": "127 marks an unassigned peer, which is what a connecting client sends."
-              },
-              {
-                "name": "sentTimeFlag",
-                "width": 1,
-                "note": "Set when the header carries a sent time."
-              }
-            ]
-          },
-          {
-            "name": "sentTime",
-            "type": "u16",
-            "endian": "big",
-            "present": {
-              "when": "peer.sentTimeFlag"
-            },
-            "note": "Milliseconds since the connection opened."
-          }
-        ],
-        "constants": [
-          {
-            "name": "maximumPeerId",
-            "value": 127,
-            "stock": 32767,
-            "note": "Follows from the peer id occupying seven bits."
-          },
-          {
-            "name": "maximumTransmissionUnit",
-            "value": 996,
-            "stock": 4096,
-            "note": "The client asks for 1400, read from its connect command, and cannot receive more than 996, because its receive buffer is sized by this same ceiling. The clamp happens only where a connection is accepted, so a server that keeps the stock ceiling accepts 1400 and sends datagrams the client drops."
-          }
-        ]
-      }
-    },
-    {
       "from": "4.20.0.315",
+      "until": "4.21.0.0",
       "endian": "little",
-      "note": "Established against 4.20.0.315.",
+      "note": "Established against 4.20.0.315. The range stops where the 4.20 line does, because nothing after it has been observed.",
       "cipher": {
         "name": "Blowfish",
         "mode": "ECB",

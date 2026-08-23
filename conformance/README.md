@@ -35,7 +35,9 @@ packet header as it travels. The fields are what that header means, read
 against the layout `schema/protocol.json` records for that version.
 
 A **message** vector carries `message` as well, naming the message identity,
-and its bytes are one deciphered channel payload rather than a header.
+and its bytes are one deciphered channel payload rather than a header. Those
+bytes open with the header its family carries, so `fields` records the header
+and the body together, under the names each gives them.
 
 ## Reading a vector's fields
 
@@ -68,10 +70,9 @@ what you get to `fields`. Then encode `fields` back and compare to the bytes
 the layout covers. Both directions matter. An implementation that reads a
 header correctly and writes it wrong fails only in the second.
 
-A message payload is covered end to end, and its leading byte names the message
-rather than belonging to the layout, so the comparison starts after it. A
-transport vector covers the header, and whatever follows it in the datagram is
-immaterial.
+A message payload is covered end to end, family header included, so the
+comparison starts at its first byte. A transport vector covers the packet
+header, and whatever follows it in the datagram is immaterial.
 
 For a cipher vector there are no layouts involved, so compare the two runs of
 bytes directly.

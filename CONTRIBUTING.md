@@ -60,8 +60,10 @@ Requirement keywords follow RFC 2119 as updated by RFC 8174. `MUST`,
 requirement force. Write one requirement per statement, and name the actor.
 
 Give the unit for every quantity, because the schema records a field's type but
-never what it measures. Endianness belongs in `schema/protocol.json`, not in
-prose.
+never what it measures. The byte order of a field belongs in `schema/`, not in
+prose. A rule about how the schema itself is read is different: how a run of
+bits is packed, or how a size is measured, is part of the vocabulary and
+belongs in `spec/messages.md`.
 
 ## What gets written down
 

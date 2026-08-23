@@ -1,15 +1,52 @@
 {
   "$schema": "meta/channels.json",
+  "note": "Channel numbers a client and server exchange traffic on. A name here describes what the channel carries rather than which end sends it, because direction belongs to a message.",
   "revisions": [
     {
       "from": "4.20.0.315",
+      "until": "4.21.0.0",
       "channels": [
         {
-          "name": "handshake",
+          "name": "registration",
           "id": 0,
-          "encrypted": false,
-          "reliability": "reliable",
-          "note": "Carries key exchange, so it runs before a cipher key is agreed."
+          "family": "registration",
+          "note": "Carries the exchange that registers a peer and establishes the cipher state for it. The request arrives before that state exists, so it is the one payload not enciphered as a whole, though a field inside it is."
+        },
+        {
+          "name": "requests",
+          "id": 1,
+          "family": "game",
+          "note": "What a client sends to ask the server to act: orders, purchases, spell casts, and the answers to questions the server asked."
+        },
+        {
+          "name": "clock",
+          "id": 2,
+          "family": "game",
+          "note": "Synchronisation of simulation time between the two ends."
+        },
+        {
+          "name": "events",
+          "id": 3,
+          "family": "game",
+          "note": "The server's account of what happened, delivered whole. This is where most of what a client renders arrives."
+        },
+        {
+          "name": "transient",
+          "id": 4,
+          "family": "game",
+          "note": "State that a following message supersedes, such as positions and unit properties. Traffic recorded here is observed to travel without a delivery guarantee, which costs nothing when losing one is corrected by the next."
+        },
+        {
+          "name": "chat",
+          "id": 5,
+          "family": "session",
+          "note": "Text players send each other during a match. Messages between players outside a match do not travel on this connection at all."
+        },
+        {
+          "name": "roster",
+          "id": 7,
+          "family": "session",
+          "note": "Team selection and the roster of who is in the match, while the match is being set up."
         }
       ]
     }

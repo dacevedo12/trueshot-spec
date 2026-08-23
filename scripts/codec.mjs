@@ -142,12 +142,22 @@ function lookup(scope, path) {
   const [head, run] = path.split(".");
   const value = scope[head];
   if (value === undefined) bail(`"${path}" was not read before it was needed`);
+  if (value === null) {
+    bail(`"${path}" is absent here, so it cannot say how much follows`);
+  }
   return run === undefined ? value : value?.[run];
 }
 
 function present(field, scope) {
   if (!field.present) return true;
-  const value = lookup(scope, field.present.when);
+  const [head, run] = field.present.when.split(".");
+  if (!(head in scope)) {
+    bail(`"${field.present.when}" was not read before it was needed`);
+  }
+  // A field a rule of its own left out holds no value, so a condition naming
+  // it does not hold. That is different from a size, which needs a number.
+  if (scope[head] === null) return false;
+  const value = run === undefined ? scope[head] : scope[head]?.[run];
   return field.present.equals === undefined
     ? Number(value) !== 0
     : Number(value) === field.present.equals;

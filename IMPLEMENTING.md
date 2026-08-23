@@ -5,6 +5,9 @@ it. The goal is that together they are enough to build a conforming server in
 any language, without reading another one, and the reading order says how far
 that has got.
 
+Every definition states the client versions it applies to, and
+`schema/protocol.json` is where the versions recorded so far are listed.
+
 Check your work against [conformance/](conformance/) as you go, rather than at
 the end. How you structure what you build is your business. The vectors are the
 only measure of whether it is right.
@@ -20,10 +23,11 @@ with a guess and carry on. That is a defect worth reporting, and
 
 1. [Transport](spec/transport.md), which carries everything else. Vectors for
    it live in `conformance/vectors/transport` and `conformance/vectors/cipher`.
-2. [Messages](spec/messages.md), which defines how a message is recorded and
-   how to read one of the files in `schema/messages`.
+2. [Messages](spec/messages.md), which defines how a message is recorded, what
+   a family puts in front of one, and how to read a file in `schema/messages`.
 
 The transport is a delta on ENet 1.2.5, so building it means building on ENet
 or a port of it. Above the transport the specification stops: the cipher is
-named but its key exchange is not recorded, and no message is recorded, so a
-server built from this repository speaks the transport and nothing above it.
+named, but the registration that establishes it is not recorded and no message
+is recorded, so a server built from this repository speaks the transport and
+nothing above it.

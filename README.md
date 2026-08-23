@@ -8,6 +8,11 @@ protocol can be studied in the open, and so that anyone, human or machine, can
 build a conforming server of their own, in any language, without reading
 anybody else's.
 
+Every definition in [schema/](schema/) states the client versions it applies
+to. Nothing here is written for one version: where behaviour differs between
+them it is recorded as more than one revision, and a reader can always tell
+what a fact was established against.
+
 Where the protocol rests on public general purpose software, this repository
 records the delta and names what it rests on rather than restating it. The
 transport is ENet, and [Transport](spec/transport.md) says which parts are
@@ -32,10 +37,17 @@ To change the specification itself rather than build from it, read
 
 - A grasp of binary data: integers, endianness, fixed width fields, bitmasks.
 - Familiarity with UDP, and with the idea of an unreliable transport.
+- Enough JSON to read a file. The field layouts are machine readable, and
+  [Messages](spec/messages.md) defines the vocabulary they are written in.
 - A language you are comfortable in. Any language will do.
 
 None of this has to be known in advance. The specification names what it uses,
 and defines its terms before it relies on them.
+
+## Licence
+
+Everything here is released under [CC0 1.0](LICENSE), which places it in the
+public domain as far as the law allows. Copy it, build on it, and do not ask.
 
 ## Notes
 

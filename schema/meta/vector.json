@@ -29,7 +29,7 @@
       "pattern": "^\\d+\\.\\d+\\.\\d+\\.\\d+$"
     },
     "bytes": {
-      "description": "The bytes on the wire, in hexadecimal, whitespace ignored. For a message this is the deciphered channel payload with its leading command byte. Bytes that identify a person are zeroed before committing.",
+      "description": "The bytes on the wire, in hexadecimal, whitespace ignored. For a message this is the deciphered channel payload, opening with the header its family carries. Bytes that identify a person are zeroed before committing.",
       "type": "string",
       "pattern": "^[0-9a-fA-F\\s]+$"
     },

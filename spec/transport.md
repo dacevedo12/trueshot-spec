@@ -11,8 +11,8 @@ Four layers carry a message to a socket.
 2. ENet turns datagrams into ordered, acknowledged deliveries on numbered
    channels.
 3. A cipher covers each channel payload.
-4. A message occupies the deciphered payload, its first byte naming which
-   message it is.
+4. A message occupies the deciphered payload, opening with the header its
+   family carries.
 
 Layers 1 and 2 are the transport, and this document covers them. The cipher and
 everything above it belong to the protocol, and this document covers the cipher
@@ -71,8 +71,11 @@ in transit, and an oversized unit is the reason.
 
 ## The cipher
 
-Each channel carries either enciphered payloads or plain ones, and
-`schema/channels.json` says which.
+Whether a payload is enciphered follows from the state of the connection
+rather than from the channel it travels on. A connection begins with no cipher
+state, and the request that establishes it travels in the clear apart from one
+field it carries enciphered as proof. Everything after that is enciphered, on
+every channel and in both directions, the answer to that request included.
 
 `schema/protocol.json` records which cipher, in which mode, and the shape of a
 block. A stock library implementation of it interoperates, confirmed against a
@@ -102,14 +105,18 @@ negotiates it, and no exchange derives it. A server obtains it alongside the
 rest of its match configuration, and a client receives it as a launch argument
 in base64.
 
-The channel carrying key exchange is plain, because that exchange proves the
-two ends already agree rather than establishing anything.
+Registration is what associates that key with a connection. The request
+carries an eight byte field enciphered under the key while the rest of it
+travels in the clear, and a server that deciphers that field and finds what it
+expects has learned that the other end holds the key. Nothing is negotiated,
+and nothing is derived: the exchange proves possession of something both ends
+already had, and a server MUST refuse a connection whose proof does not match.
 
 > [!NOTE]
-> The exchange itself is not recorded yet. Until it is, only the plain channel
-> can be implemented from this document.
+> The registration message itself is not recorded yet. Until it is, a server
+> cannot be built past the point of accepting a connection.
 
 ## What a message is
 
-One deciphered channel payload. Its first byte names the message, and
-[Messages](messages.md) defines how the rest of it is recorded.
+One deciphered channel payload. It opens with the header its family carries,
+and [Messages](messages.md) defines how a message is recorded.

@@ -92,7 +92,7 @@
     },
     "revision": {
       "type": "object",
-      "required": ["from", "channel", "command", "direction", "fields"],
+      "required": ["from", "channel", "command", "direction", "fields", "reliability"],
       "additionalProperties": false,
       "properties": {
         "from": {
@@ -111,17 +111,17 @@
           "type": "string"
         },
         "command": {
-          "description": "Value of the leading command byte.",
+          "description": "The value identifying this message within its family. A value a single byte cannot hold travels in the family's wider field, which the family says how to reach.",
           "type": "integer",
           "minimum": 0,
-          "maximum": 255
+          "maximum": 65535
         },
         "direction": {
           "type": "string",
           "enum": ["clientToServer", "serverToClient", "bidirectional"]
         },
         "reliability": {
-          "description": "Present only where this message differs from its channel default.",
+          "description": "How the transport delivers this message. Chosen per message rather than inherited, because one channel carries all three.",
           "type": "string",
           "enum": ["reliable", "unreliable", "unsequenced"]
         },

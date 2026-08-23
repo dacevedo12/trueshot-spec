@@ -3,7 +3,7 @@
 // JSON Schema validates the shape of a definition. It cannot tell whether a
 // channel exists at the version a message claims, whether a struct reference
 // resolves, whether a reference points backwards at something countable, or
-// whether two revisions claim the same command byte over the same versions.
+// whether two revisions claim the same command value over the same versions.
 // Those checks live here.
 
 import { readFileSync, readdirSync, existsSync } from "node:fs";
@@ -30,23 +30,41 @@ const SCALAR_BITS = {
   i64: 64,
 };
 
-// A revision describes itself. Prose carried as data reaches generated output,
-// so it holds to the same rule as the documents, and no linter reads JSON. The
-// phrases come from the prose rule rather than a second copy, which would drift.
-const TEMPORAL = readFileSync(
-  join("styles", "trueshot", "version-relative.yml"),
-  "utf8",
-)
-  .split("\n")
-  .map((line) => /^\s*-\s*'(.+)'\s*$/.exec(line))
-  .filter(Boolean)
-  .map(
-    (match) =>
-      new RegExp(
-        `\\b${match[1].replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`,
-        "i",
-      ),
-  );
+// Prose carried as data reaches a reader the same way the documents do, and no
+// linter reads JSON. Every prose rule is read from the file the documents are
+// held to rather than copied here, which would drift.
+const STYLES = join("styles", "trueshot");
+const escape = (text) => text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+const loadRule = (file) => {
+  const text = readFileSync(join(STYLES, file), "utf8");
+  const message = /^message:\s*"(.+)"\s*$/m.exec(text);
+  const nonword = /^nonword:\s*true\s*$/m.test(text);
+  // A rule that does not ask to ignore case means the case it wrote.
+  const anyCase = /^ignorecase:\s*true\s*$/m.test(text);
+  const tokens = text
+    .split("\n")
+    .map((line) => /^\s*-\s*['"]?(.+?)['"]?\s*$/.exec(line))
+    .filter(Boolean)
+    .map((match) => match[1]);
+  return {
+    say: message ? message[1] : file,
+    // A rule matching non-words carries its own anchoring, if any.
+    tests: tokens.map(
+      (token) =>
+        new RegExp(
+          nonword ? token : `\\b${escape(token)}\\b`,
+          anyCase ? "i" : "",
+        ),
+    ),
+  };
+};
+
+// The rules that apply wherever prose appears. Version-relative language and
+// requirement keywords are handled on their own below, because what they mean
+// in a note differs from what they mean in a document.
+const PROSE = ["hedging.yml", "em-dash.yml"].map(loadRule);
+const TEMPORAL = loadRule("version-relative.yml").tests;
 
 const problems = [];
 const fail = (where, message) => problems.push(`${where}: ${message}`);
@@ -91,7 +109,29 @@ const covers = (revision, version) =>
   compareVersions(version, revision.from) >= 0 &&
   (!revision.until || compareVersions(version, revision.until) < 0);
 
-// A bidirectional message occupies its command byte in both directions.
+// The first version of a range that no revision in a list accounts for, or
+// null where the list covers the range end to end.
+function uncoveredIn(revisions, range) {
+  const sorted = [...revisions].sort((a, b) =>
+    compareVersions(a.from, b.from),
+  );
+  let cursor = range.from;
+  let open = false;
+  for (const r of sorted) {
+    if (range.until && compareVersions(r.from, range.until) >= 0) break;
+    if (compareVersions(r.from, cursor) > 0) return cursor;
+    if (!r.until) {
+      open = true;
+      break;
+    }
+    if (compareVersions(r.until, cursor) > 0) cursor = r.until;
+  }
+  if (open) return null;
+  if (!range.until) return cursor;
+  return compareVersions(cursor, range.until) < 0 ? cursor : null;
+}
+
+// A bidirectional message occupies its command value in both directions.
 const directionsOverlap = (a, b) =>
   a === b || a === "bidirectional" || b === "bidirectional";
 
@@ -122,8 +162,7 @@ function checkRevisions(revisions, where) {
 
 // A requirement belongs in spec/, where Vale reads it and where a reader
 // looks for one. A note records what a client does.
-const KEYWORDS =
-  /\b(MUST NOT|MUST|SHOULD NOT|SHOULD|MAY|SHALL NOT|SHALL|REQUIRED|RECOMMENDED|OPTIONAL)\b/;
+const KEYWORDS = loadRule("requirement.yml").tests;
 
 function checkNotes(value, where, path = "", isVector = false) {
   if (Array.isArray(value)) {
@@ -151,12 +190,25 @@ function checkNotes(value, where, path = "", isVector = false) {
           );
         }
       }
-      const keyword = KEYWORDS.exec(child);
-      if (keyword) {
-        fail(
-          where,
-          `${here} says "${keyword[0]}", and a requirement belongs in spec/ rather than in a note`,
-        );
+      for (const rule of PROSE) {
+        for (const test of rule.tests) {
+          const hit = test.exec(child);
+          if (hit) {
+            fail(
+              where,
+              `${here} says "${hit[0]}". ${rule.say.replace("%s", hit[0])}`,
+            );
+          }
+        }
+      }
+      for (const test of KEYWORDS) {
+        const keyword = test.exec(child);
+        if (keyword) {
+          fail(
+            where,
+            `${here} says "${keyword[0]}", and a requirement belongs in spec/ rather than in a note`,
+          );
+        }
       }
       continue;
     }
@@ -335,7 +387,14 @@ function checkFields(fields, outer, structNames, at, openStructs = new Set()) {
         openStructs,
       );
     }
-    if (openEnded && last) seen.set("__open", { type: "u8" });
+    // A trailing struct that runs to the end makes its enclosure run to the
+    // end too, whether the enclosure is a body, another struct, or a header.
+    const endsOpen =
+      openEnded ||
+      (field.type === "struct" &&
+        field.size === undefined &&
+        openStructs.has(field.struct));
+    if (endsOpen && last) seen.set("__open", { type: "u8" });
   });
 
   return seen;
@@ -363,8 +422,10 @@ const structSchema = meta["urn:trueshot:schema:struct"];
 const protocolSchema = meta["urn:trueshot:schema:protocol"];
 const channelsSchema = meta["urn:trueshot:schema:channels"];
 const vectorSchema = meta["urn:trueshot:schema:vector"];
+const familiesSchema = meta["urn:trueshot:schema:families"];
 const protocolDoc = readConfig(join(SCHEMA_DIR, "protocol.json"));
 const channelsDoc = readConfig(join(SCHEMA_DIR, "channels.json"));
+const familiesDoc = readConfig(join(SCHEMA_DIR, "families.json"));
 
 if (
   !index ||
@@ -373,8 +434,10 @@ if (
   !protocolSchema ||
   !channelsSchema ||
   !vectorSchema ||
+  !familiesSchema ||
   !protocolDoc ||
-  !channelsDoc
+  !channelsDoc ||
+  !familiesDoc
 ) {
   for (const problem of problems) console.error(problem);
   process.exit(1);
@@ -387,6 +450,7 @@ const validateStruct = ajv.compile(structSchema);
 const validateProtocol = ajv.compile(protocolSchema);
 const validateChannels = ajv.compile(channelsSchema);
 const validateVector = ajv.compile(vectorSchema);
+const validateFamilies = ajv.compile(familiesSchema);
 
 // Key order is not part of a value, so compare with it settled.
 function canonical(value) {
@@ -457,6 +521,10 @@ const protocolIsValid = validateProtocol(withoutPointer(protocolDoc));
 if (!protocolIsValid) {
   report("schema/protocol.json", validateProtocol.errors);
 }
+const familiesAreValid = validateFamilies(withoutPointer(familiesDoc));
+if (!familiesAreValid) {
+  report("schema/families.json", validateFamilies.errors);
+}
 const channelsAreValid = validateChannels(withoutPointer(channelsDoc));
 if (!channelsAreValid) {
   report("schema/channels.json", validateChannels.errors);
@@ -470,6 +538,71 @@ if (channelsAreValid) {
 }
 checkNotes(protocolDoc, "schema/protocol.json");
 checkNotes(channelsDoc, "schema/channels.json");
+checkNotes(familiesDoc, "schema/families.json");
+
+// How far the specification reaches. A packet header is the floor everything
+// else stands on, so nothing is described past the last version one covers.
+const specEnd = (protocolDoc.revisions ?? []).some((r) => !r.until)
+  ? undefined
+  : (protocolDoc.revisions ?? [])
+      .map((r) => r.until)
+      .sort(compareVersions)
+      .pop();
+
+// The definition of a channel, at a version.
+const channelAt = (name, revision) => {
+  for (const r of channelsDoc.revisions ?? []) {
+    if (!rangesOverlap(r, revision)) continue;
+    const found = (r.channels ?? []).find((c) => c.name === name);
+    if (found) return found;
+  }
+  return null;
+};
+
+// The definition of a family, at a version.
+const familyDefAt = (name, revision) => {
+  for (const r of familiesDoc.revisions ?? []) {
+    if (!rangesOverlap(r, revision)) continue;
+    const found = (r.families ?? []).find((f) => f.name === name);
+    if (found) return found;
+  }
+  return null;
+};
+
+// The values a family's plain command field can hold: what its width allows,
+// less anything the family keeps for framing.
+const plainRange = (family) => {
+  const spec = family.command;
+  if (!spec) return null;
+  const field = family.header.find((f) => f.name === spec.field);
+  const bits = field && SCALAR_BITS[field.type];
+  if (!bits) return null;
+  const kept = new Set(spec.reserved ?? []);
+  if (spec.escape !== undefined) kept.add(spec.escape);
+  return { max: 2 ** bits - 1, kept };
+};
+
+// Whether an identifier travels in the plain field or behind the escape.
+const isPlain = (family, command) => {
+  const range = plainRange(family);
+  if (!range) return true;
+  return command <= range.max && !range.kept.has(command);
+};
+
+// The value a header carries that identifies a message.
+const effectiveCommand = (family, values) => {
+  const spec = family.command;
+  if (!spec) return null;
+  const plain = values[spec.field];
+  if (spec.escape !== undefined && plain === spec.escape) {
+    return values[spec.extendedField] ?? null;
+  }
+  return plain ?? null;
+};
+
+if (familiesAreValid) {
+  checkRevisions(familiesDoc.revisions ?? [], "schema/families.json");
+}
 for (const [urn, file] of Object.entries(index.schemas)) {
   checkNotes(meta[urn], join(META, file));
 }
@@ -493,6 +626,12 @@ checkNotes(index, join(META, "index.json"));
         `channel id ${channel.id} is claimed twice`,
       );
     }
+    if (channel.family && !familyDefAt(channel.family, revision)) {
+      fail(
+        `schema/channels.json revision ${index}`,
+        `channel "${channel.name}" carries family "${channel.family}", which is defined nowhere across the range this revision covers`,
+      );
+    }
     names.add(channel.name);
     ids.add(channel.id);
   }
@@ -510,20 +649,6 @@ const channelMissingFor = (messageRevision, name) => {
   );
   return absent.length ? `is not defined from ${absent[0].from}` : null;
 };
-
-// The transport header uses the same field vocabulary, so it gets the same walk.
-(protocolIsValid ? (protocolDoc.revisions ?? []) : []).forEach(
-  (revision, index) => {
-    if (revision.transport?.header) {
-      checkFields(
-        revision.transport.header,
-        new Map(),
-        new Set(),
-        `schema/protocol.json revision ${index} header`,
-      );
-    }
-  },
-);
 
 // Structs first: messages reference them.
 const structNames = new Set();
@@ -574,6 +699,90 @@ while (growing) {
     }
   }
 }
+
+if (familiesAreValid) {
+  (familiesDoc.revisions ?? []).forEach((revision, index) => {
+    const at = `schema/families.json revision ${index}`;
+    const names = new Set();
+    for (const family of revision.families ?? []) {
+      if (names.has(family.name)) {
+        fail(at, `family "${family.name}" is defined twice`);
+      }
+      names.add(family.name);
+      const seen = checkFields(
+        family.header,
+        new Map(),
+        structNames,
+        at,
+        openStructs,
+      );
+      const spec = family.command;
+      if (!spec) continue;
+      const declared = new Set(family.header.map((f) => f.name));
+      if (!declared.has(spec.field)) {
+        fail(
+          at,
+          `family "${family.name}" names "${spec.field}" as its command, which its header does not carry`,
+        );
+      }
+      if (spec.escape !== undefined && spec.extendedField === undefined) {
+        fail(
+          at,
+          `family "${family.name}" reserves ${spec.escape} as an escape without saying which field carries the identifier instead`,
+        );
+      }
+      if (
+        spec.extendedField !== undefined &&
+        !declared.has(spec.extendedField)
+      ) {
+        fail(
+          at,
+          `family "${family.name}" names "${spec.extendedField}" as its wider identifier, which its header does not carry`,
+        );
+      }
+      if (seen.has("__open")) {
+        fail(
+          at,
+          `family "${family.name}" has a header running to the end of the payload, leaving no room for a body`,
+        );
+      }
+      // A header reads multi byte fields, so it needs an order established
+      // across every range it applies to.
+      const bare = needingOrder(family.header, structs);
+      if (bare.length > 0) {
+        for (const protocolRevision of protocolDoc.revisions ?? []) {
+          if (!rangesOverlap(protocolRevision, revision)) continue;
+          if (protocolRevision.endian) continue;
+          fail(
+            at,
+            `family "${family.name}" reads ${bare.map((n) => `"${n}"`).join(", ")} across a range from ${protocolRevision.from}, where no byte order is established`,
+          );
+        }
+      }
+    }
+  });
+}
+
+// The packet header uses the same field vocabulary, so it gets the same walk.
+(protocolIsValid ? (protocolDoc.revisions ?? []) : []).forEach(
+  (revision, index) => {
+    if (!revision.transport?.header) return;
+    const at = `schema/protocol.json revision ${index} header`;
+    const seen = checkFields(
+      revision.transport.header,
+      new Map(),
+      structNames,
+      at,
+      openStructs,
+    );
+    if (seen.has("__open")) {
+      fail(
+        at,
+        "runs to the end of the datagram, leaving no room for a payload",
+      );
+    }
+  },
+);
 
 const usedStructs = (fields) => {
   const found = [];
@@ -638,7 +847,56 @@ for (const { where, doc } of messages) {
         `channel "${revision.channel}" ${missing} across the range this revision covers`,
       );
     }
+
+    // A revision with no end runs as far as the specification itself does,
+    // rather than for ever, so recording one costs no boundary to repeat.
+    const reach = revision.until ? revision : { ...revision, until: specEnd };
+
+    // Each of the three documents has to account for the whole range, not
+    // merely disagree with none of it.
+    for (const [what, revisions] of [
+      ["protocol", protocolDoc.revisions ?? []],
+      ["channel", channelsDoc.revisions ?? []],
+      ["family", familiesDoc.revisions ?? []],
+    ]) {
+      const gap = uncoveredIn(revisions, reach);
+      if (gap !== null) {
+        fail(at, `covers ${gap} onward, which no ${what} revision describes`);
+      }
+    }
     checkFields(revision.fields, new Map(), structNames, at, openStructs);
+
+    // A message body begins where its family's header ends, so the two cannot
+    // both claim a name, and the family has to be able to carry the command.
+    const channel = channelAt(revision.channel, revision);
+    const family = channel && familyDefAt(channel.family, revision);
+    if (family) {
+      const carried = new Set(family.header.map((f) => f.name));
+      for (const field of revision.fields ?? []) {
+        if (carried.has(field.name)) {
+          fail(
+            at,
+            `field "${field.name}" repeats a name the "${family.name}" header already carries`,
+          );
+        }
+      }
+      const spec = family.command ?? {};
+      const widest = spec.extendedField === undefined ? 255 : 65535;
+      if (revision.command > widest) {
+        fail(
+          at,
+          `command ${revision.command} does not fit what the "${family.name}" family can carry`,
+        );
+      }
+      const kept = new Set(spec.reserved ?? []);
+      if (spec.escape !== undefined) kept.add(spec.escape);
+      if (kept.has(revision.command)) {
+        fail(
+          at,
+          `command ${revision.command} is reserved for framing in the "${family.name}" family`,
+        );
+      }
+    }
 
     const bare = needingOrder(revision.fields, structs);
     if (bare.length > 0) {
@@ -654,7 +912,17 @@ for (const { where, doc } of messages) {
   });
 }
 
-// One command byte cannot mean two things on the same channel, in the same
+// Which family a channel carries, at a version.
+const familyAt = (channelName, revision) => {
+  for (const r of channelsDoc.revisions ?? []) {
+    if (!rangesOverlap(r, revision)) continue;
+    const found = (r.channels ?? []).find((c) => c.name === channelName);
+    if (found) return found.family;
+  }
+  return null;
+};
+
+// One command value cannot mean two things in the same family, in the same
 // direction, at the same time.
 const claims = messages.flatMap(({ where, doc }) =>
   doc.revisions.map((revision) => ({ where, message: doc.message, revision })),
@@ -666,13 +934,19 @@ for (let i = 0; i < claims.length; i += 1) {
     const b = claims[j];
     if (a.message === b.message) continue;
     if (a.revision.command !== b.revision.command) continue;
-    if (a.revision.channel !== b.revision.channel) continue;
+    if (!rangesOverlap(a.revision, b.revision)) continue;
+    const familyA = familyAt(a.revision.channel, a.revision);
+    const familyB = familyAt(b.revision.channel, b.revision);
+    if (familyA === null || familyB === null || familyA !== familyB) continue;
     if (!directionsOverlap(a.revision.direction, b.revision.direction))
       continue;
-    if (!rangesOverlap(a.revision, b.revision)) continue;
+    const where =
+      a.revision.channel === b.revision.channel
+        ? `on channel "${a.revision.channel}"`
+        : `across channels "${a.revision.channel}" and "${b.revision.channel}", which share the "${familyA}" numbering`;
     fail(
       a.where,
-      `command ${a.revision.command} on channel "${a.revision.channel}" collides with ${b.message}`,
+      `command ${a.revision.command} collides with ${b.message} ${where}`,
     );
   }
 }
@@ -680,6 +954,9 @@ for (let i = 0; i < claims.length; i += 1) {
 // Vectors. A subject says what is being checked.
 const byMessage = new Map(messages.map(({ doc }) => [doc.message, doc]));
 const covered = new Set();
+const transportCovered = new Set();
+// Which presence rules any vector has actually exercised, and which way.
+const exercised = new Map();
 const pascalFromKebab = (name) =>
   name
     .split("-")
@@ -818,11 +1095,13 @@ if (existsSync(VECTOR_DIR)) {
       }
 
       let defined;
+      let claim = null;
       if (doc.subject === "transport") {
         if (dir.name !== "transport") {
           fail(path, `sits under "${dir.name}" but its subject is transport`);
         }
         defined = protocolRevision.transport.header;
+        transportCovered.add(protocolRevision.from);
       } else {
         if (pascalFromKebab(dir.name) !== doc.message) {
           fail(
@@ -846,18 +1125,24 @@ if (existsSync(VECTOR_DIR)) {
           );
           continue;
         }
-        defined = revision.fields;
         covered.add(`${doc.message}@${revision.from}`);
-        const stripped = doc.bytes.replace(/\s+/g, "");
-        const leading = stripped.length
-          ? parseInt(stripped.slice(0, 2), 16)
-          : NaN;
-        if (Number.isFinite(leading) && leading !== revision.command) {
+        const channel = channelAt(revision.channel, revision);
+        const family = channel && familyDefAt(channel.family, revision);
+        if (!family) {
           fail(
             path,
-            `starts with byte ${leading}, and ${doc.message} carries command ${revision.command}`,
+            `travels on channel "${revision.channel}", whose family is defined nowhere for ${doc.version}`,
           );
+          continue;
         }
+        // A vector covers every byte of the payload, header included.
+        defined = [...family.header, ...revision.fields];
+        claim = {
+          family,
+          command: revision.command,
+          message: doc.message,
+          revision,
+        };
       }
 
       const names = new Set(defined.map((f) => f.name));
@@ -895,9 +1180,10 @@ if (existsSync(VECTOR_DIR)) {
       // The two claims the vector makes, rather than an assertion nobody reads.
       const endian = protocolRevision.endian;
       const payload = Buffer.from(doc.bytes.replace(/\s+/g, ""), "hex");
-      // A message payload opens with the byte that names it. The byte is
-      // recorded as the revision's command, so the layout starts after it.
-      const start = doc.subject === "message" ? 1 : 0;
+      // A payload is covered from its first byte: a message opens with the
+      // header its family carries, and a transport vector with the packet
+      // header itself.
+      const start = 0;
       try {
         const read = decodeFields(defined, payload, start, structs, endian);
         if (doc.subject === "message" && read.offset !== payload.length) {
@@ -905,6 +1191,46 @@ if (existsSync(VECTOR_DIR)) {
             path,
             `decodes ${read.offset} of ${payload.length} bytes, leaving ${payload.length - read.offset} unread`,
           );
+        }
+        if (claim) {
+          const carried = effectiveCommand(claim.family, read.values);
+          if (carried !== claim.command) {
+            fail(
+              path,
+              `carries command ${carried}, and ${claim.message} is command ${claim.command} at this version`,
+            );
+          } else {
+            const spec = claim.family.command ?? {};
+            const wantsPlain = isPlain(claim.family, claim.command);
+            const usedEscape =
+              spec.escape !== undefined &&
+              read.values[spec.field] === spec.escape;
+            if (wantsPlain && usedEscape) {
+              fail(
+                path,
+                `reaches command ${claim.command} through the escape, and the "${claim.family.name}" header carries that value directly`,
+              );
+            }
+            if (!wantsPlain && !usedEscape) {
+              fail(
+                path,
+                `carries command ${claim.command} directly, and the "${claim.family.name}" header reaches that value only through the escape`,
+              );
+            }
+          }
+        }
+        if (claim) {
+          for (const field of claim.revision.fields ?? []) {
+            if (!field.present) continue;
+            const key = `${claim.message}@${claim.revision.from}#${field.name}`;
+            const seenSoFar = exercised.get(key) ?? {
+              present: false,
+              absent: false,
+            };
+            if (read.values[field.name] === null) seenSoFar.absent = true;
+            else seenSoFar.present = true;
+            exercised.set(key, seenSoFar);
+          }
         }
         const expected = canonical(doc.fields);
         const actual = canonical(read.values);
@@ -931,8 +1257,33 @@ if (existsSync(VECTOR_DIR)) {
   }
 }
 
+if (protocolIsValid) {
+  for (const revision of protocolDoc.revisions ?? []) {
+    if (!revision.transport?.header) continue;
+    if (!transportCovered.has(revision.from)) {
+      fail(
+        "schema/protocol.json",
+        `revision ${revision.from} records a packet header with no vector, so nothing checks it against a recorded datagram`,
+      );
+    }
+  }
+}
+
 for (const { where, doc } of messages) {
   for (const revision of doc.revisions ?? []) {
+    for (const field of revision.fields ?? []) {
+      if (!field.present) continue;
+      const seen = exercised.get(
+        `${doc.message}@${revision.from}#${field.name}`,
+      );
+      if (!seen) continue;
+      if (!seen.present || !seen.absent) {
+        fail(
+          where,
+          `revision ${revision.from} has no vector where "${field.name}" is ${seen.present ? "absent" : "present"}, so half its presence rule is unrecorded`,
+        );
+      }
+    }
     if (!covered.has(`${doc.message}@${revision.from}`)) {
       fail(
         where,

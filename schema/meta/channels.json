@@ -2,41 +2,52 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "urn:trueshot:schema:channels",
   "title": "Channel definitions",
-  "description": "Meta-schema for schema/channels.json. A message names a channel and inherits its encryption and reliability rather than restating them.",
-
+  "description": "Meta-schema for schema/channels.json. A message names a channel, and the channel names the family whose numbering and header the message belongs to.",
   "type": "object",
   "required": ["revisions"],
   "additionalProperties": false,
   "properties": {
-    "$schema": { "type": "string" },
-    "note": { "$ref": "urn:trueshot:schema:message#/$defs/note" },
+    "$schema": {
+      "type": "string"
+    },
+    "note": {
+      "$ref": "urn:trueshot:schema:message#/$defs/note"
+    },
     "revisions": {
       "type": "array",
       "minItems": 1,
-      "items": { "$ref": "#/$defs/revision" }
+      "items": {
+        "$ref": "#/$defs/revision"
+      }
     }
   },
-
   "$defs": {
     "revision": {
       "type": "object",
       "required": ["from", "channels"],
       "additionalProperties": false,
       "properties": {
-        "from": { "$ref": "urn:trueshot:schema:message#/$defs/version" },
-        "until": { "$ref": "urn:trueshot:schema:message#/$defs/version" },
-        "note": { "$ref": "urn:trueshot:schema:message#/$defs/note" },
+        "from": {
+          "$ref": "urn:trueshot:schema:message#/$defs/version"
+        },
+        "until": {
+          "$ref": "urn:trueshot:schema:message#/$defs/version"
+        },
+        "note": {
+          "$ref": "urn:trueshot:schema:message#/$defs/note"
+        },
         "channels": {
           "type": "array",
           "minItems": 1,
-          "items": { "$ref": "#/$defs/channel" }
+          "items": {
+            "$ref": "#/$defs/channel"
+          }
         }
       }
     },
-
     "channel": {
       "type": "object",
-      "required": ["name", "id", "encrypted", "reliability"],
+      "required": ["name", "id", "family"],
       "additionalProperties": false,
       "properties": {
         "name": {
@@ -50,13 +61,14 @@
           "minimum": 0,
           "maximum": 255
         },
-        "encrypted": { "type": "boolean" },
-        "reliability": {
-          "description": "What a message on this channel gets unless it says otherwise.",
-          "type": "string",
-          "enum": ["reliable", "unreliable", "unsequenced"]
+        "note": {
+          "$ref": "urn:trueshot:schema:message#/$defs/note"
         },
-        "note": { "$ref": "urn:trueshot:schema:message#/$defs/note" }
+        "family": {
+          "description": "Which family of messages this channel carries. A family fixes both the numbering a command value is drawn from and the header that precedes a message body, so a channel does not determine either on its own.",
+          "type": "string",
+          "pattern": "^[a-z][A-Za-z0-9]*$"
+        }
       }
     }
   }

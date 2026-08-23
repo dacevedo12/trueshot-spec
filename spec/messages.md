@@ -1,27 +1,52 @@
 # Messages
 
-A message occupies one deciphered channel payload. Its first byte names which
-message it is, and the bytes after it are the message body.
+A message occupies one deciphered channel payload. The payload opens with the
+header the message's family carries, and the body begins where that header
+ends.
 
 `schema/messages` holds one file per message identity, and each file records
-one or more revisions. A revision carries the command byte that names the
-message, the channel it travels on, its direction, and the fields of its body.
+one or more revisions. A revision carries the value identifying the message,
+the channel it travels on, its direction, how the transport delivers it, and
+the fields of its body.
 This document defines the vocabulary those files are written in. It records no
 layout of its own, so no message can be recovered by reading it.
 
-## The command byte
+## Families
 
-The leading byte is not a field. A revision records it once, as its command,
-and the field list begins at the byte after it. A server reads that byte to
-decide which layout applies, and writes it ahead of the body it has encoded.
+Every channel carries one family of messages, and `schema/channels.json` says
+which. A family fixes two things: the numbering its command values are drawn
+from, and the header that precedes every body on it. `schema/families.json`
+records both. Two channels of one family share a numbering, so a value
+identifies at most one message across both, and the same value on channels of
+different families is two unrelated messages.
 
-A command byte identifies a message only alongside its channel and direction.
-The same value on two channels is two different messages.
+What selects the header is the family, not the channel. A channel carrying a
+family is how the two connect, and reading a payload against the wrong family
+decodes something rather than failing.
+
+## The command
+
+A revision records the value that identifies it, and the family's header says
+where that value sits on the wire. That value is not a field of the message: it
+belongs to the header, along with anything else the family carries before a
+body begins.
+
+A family keeps some values of the leading byte for framing rather than for
+messages where it needs them, and `schema/families.json` lists which. One such
+value means the real identifier is wider than a byte and
+travels elsewhere in the header, which is how a family numbers more messages
+than a byte holds. A revision records the identifier either way, and never the
+escape.
+
+Direction narrows it further. One value serves two messages travelling
+opposite ways within a family.
 
 ## Reading a body
 
-Fields occupy the body in the order the revision lists them, each beginning
-where the one before it ended. Nothing is aligned and nothing is padded between
+A body begins where its family's header ends. Fields occupy it in the order
+the revision lists them, each beginning where the one before it ended. A
+revision never restates a field its family's header already carries, and never
+takes a name from it. Nothing is aligned and nothing is padded between
 fields. A field's size is fixed by its type, given as a literal, carried by an
 earlier field, or one of the two words below.
 
@@ -30,6 +55,10 @@ been read and one holding an unsigned integer. It names either a whole field or
 one run of bits inside a field, and a run is written as the field name, a full
 stop, and the run name. `remaining` and `terminated` are reserved words rather
 than names, so no field carries either.
+
+A field of a body names only fields of that body. A family's header is read
+first, but it belongs to every message of the family rather than to this one,
+so nothing in a body is sized or governed by it.
 
 What counts as an earlier field depends on what encloses the field doing the
 naming. An item of an array reaches the fields of the body around it. The
@@ -112,13 +141,22 @@ rejects.
 ## Revisions
 
 A revision covers a range of client versions, from one version inclusive to
-another exclusive. A range with no end covers every version from its first
-onward, and stays that way until a revision recorded after it takes over.
-Ranges of one message never overlap.
+another exclusive. A range with no end runs as far as the specification itself
+reaches, which is the last version a packet header covers, rather than forever:
+nothing above the transport can be claimed for a version the transport does not
+describe. Ranges of one message never overlap, so recording a revision that
+starts later means stating where the one before it stops rather than leaving it
+open.
+
+A revision covers no version that `schema/protocol.json`, `schema/channels.json`
+and `schema/families.json` do not all describe, because a range none of them
+reaches has no header, no byte order, and no channel to travel on.
 
 A revision travels on a channel, which `schema/channels.json` defines, and
-takes that channel's reliability. Where the message differs, the revision
-states its own.
+states how the transport delivers it: reliable, unreliable, or unsequenced.
+Every revision states this for itself. A channel's note records what its traffic
+is observed to do, which is an observation rather than a default:
+one channel carries all three, so there is nothing to inherit.
 
 ## Names and notes
 
@@ -140,15 +178,27 @@ says a thing changed leaves a reader guessing which version it changed in.
 ## Directions
 
 A revision states whether it travels `clientToServer`, `serverToClient`, or
-`bidirectional`. Direction is part of what identifies a message, so one command
-byte serves two messages travelling opposite ways on one channel. A
-bidirectional revision claims that byte both ways.
+`bidirectional`. Direction is part of what identifies a message, so one value
+serves two messages travelling opposite ways within a family. A bidirectional
+revision claims that value both ways.
+
+## Identity a message reports about itself
+
+A message that names a player names them with a value the sender chose. A
+receiving client acts on that value, associating the message with a player and
+applying whatever the viewer has set for them, and it does not check the value
+against the connection the message arrived on.
+
+A server MUST therefore set any field naming the sender from the connection the
+message arrived on, and MUST NOT copy the value the message carried. Relaying
+what arrived lets one player send messages that every other client attributes
+to another.
 
 ## Vectors
 
 Every revision carries at least one conformance vector, which is what separates
 a layout somebody has confirmed against a client from one somebody has
-proposed. A message vector opens with the command byte and its body is read to
-the end, so a layout leaving bytes unread is a layout that is wrong.
+proposed. A message vector opens with its family's header and is read to the
+end, so a layout leaving bytes unread is a layout that is wrong.
 [conformance/](../conformance/) says how a vector is written and how to run
 one.
