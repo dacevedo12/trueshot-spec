@@ -103,6 +103,10 @@ code, not this protocol. State what the client accepts.
 A message lifted from a recording carries names and identifiers in its bytes.
 Zero them, adjust the decoded fields to match, and say so in a note.
 
+A channel payload is enciphered on the wire. Decipher it before it becomes a
+vector, because a vector records what a message is, not what one connection's
+key made of it.
+
 ## Naming
 
 Names that travel on the wire are part of the protocol. Champions, models,
@@ -150,6 +154,6 @@ Commit messages and the sign-off trailer are checked by that hook, and again on
 pull requests for anyone who has not installed it. A pull request is reviewed
 once the checks pass, and not before.
 
-Sign off your commits with `git commit -s`. That certifies the Developer
-Certificate of Origin, and that you have followed the requirements on this
-page.
+Sign off your commits with `git commit -s`. That certifies the [Developer
+Certificate of Origin](DCO), and that you have followed the requirements on
+this page.

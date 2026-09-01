@@ -2,6 +2,7 @@
   "name": "trueshot-spec-tools",
   "private": true,
   "description": "Checks for the specification. Not published, and not needed to implement from the spec.",
+  "license": "CC0-1.0",
   "type": "module",
   "scripts": {
     "format": "prettier --write \"**/*.{json,md}\"",

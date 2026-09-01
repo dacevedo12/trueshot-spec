@@ -608,7 +608,7 @@ for (const [urn, file] of Object.entries(index.schemas)) {
 }
 checkNotes(index, join(META, "index.json"));
 
-// A channel name is how a message inherits encryption and reliability, so two
+// A channel name is how a message reaches its family, so two
 // definitions of one name at one version make every message on it undecidable.
 (channelsDoc.revisions ?? []).forEach((revision, index) => {
   const names = new Set();
