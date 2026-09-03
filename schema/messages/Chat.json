@@ -29,7 +29,14 @@
           "name": "audience",
           "type": "i32",
           "note": "Who the message reaches.",
-          "values": { "0": { "name": "everyone" }, "1": { "name": "team" } }
+          "values": {
+            "0": {
+              "name": "everyone"
+            },
+            "1": {
+              "name": "team"
+            }
+          }
         },
         {
           "name": "paramsLength",
@@ -47,7 +54,13 @@
           "size": 32,
           "note": "Always thirty two bytes, of which the length above says how many mean anything. A client leaves the rest as it found them, so they carry whatever the buffer last held and differ between two messages that are otherwise alike. A server reads no further than the stated length."
         },
-        { "name": "text", "type": "string", "encoding": "utf8", "size": "textLength" },
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "textLength",
+          "note": "Every message observed carried text a single byte per character could hold, so nothing establishes how text outside that range is encoded."
+        },
         {
           "name": "terminator",
           "type": "bytes",

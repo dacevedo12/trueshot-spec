@@ -11,10 +11,10 @@
       "reliability": "reliable",
       "fields": [
         {
-          "name": "marker",
+          "name": "leading",
           "type": "bytes",
           "size": 3,
-          "note": "Purpose undetermined. The same three bytes appear in every message of the exchange, in both directions."
+          "note": "Purpose undetermined. It occupies the same three bytes a request uses, and a server is free to send zeros there."
         },
         {
           "name": "clientId",
@@ -30,7 +30,7 @@
           "name": "unknown",
           "type": "bytes",
           "size": 16,
-          "note": "Purpose undetermined. Every message observed carried zeros here, and a client accepted them, so whether it reads them at all is undetermined."
+          "note": "Purpose undetermined. It spans the bytes a request fills with its version and its proof, and every answer observed carried zeros across all sixteen, which a client accepted."
         }
       ]
     }

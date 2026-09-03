@@ -11,10 +11,10 @@
       "reliability": "reliable",
       "fields": [
         {
-          "name": "marker",
+          "name": "leading",
           "type": "bytes",
           "size": 3,
-          "note": "Purpose undetermined. The same three bytes appear in every message of the exchange, in both directions."
+          "note": "Purpose undetermined, and read by no implementation observed. A client emits bytes here that it never wrote for this message, so their content is not a fact about the protocol."
         },
         {
           "name": "clientId",
@@ -28,7 +28,7 @@
         },
         {
           "name": "version",
-          "type": "i32",
+          "type": "u32",
           "note": "The client's version with its separators removed, so 4.20.0.315 arrives as 42000315."
         },
         {
@@ -38,10 +38,10 @@
           "note": "The player identifier enciphered under the key both ends already hold. Deciphering it and finding the identifier beside it is what shows the sender holds the key."
         },
         {
-          "name": "unknown",
+          "name": "trailing",
           "type": "bytes",
           "size": 4,
-          "note": "Purpose undetermined, and not read by any implementation observed."
+          "note": "Purpose undetermined, and read by no implementation observed. A client emits bytes here that it never wrote for this message, so their content is not a fact about the protocol."
         }
       ]
     }
