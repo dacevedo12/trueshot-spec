@@ -121,6 +121,18 @@ The runs are listed from the least significant bit upward: the first run
 occupies the low bits, and each one after it the bits above. A run is read as
 an unsigned integer of its own width.
 
+## A field that travels enciphered
+
+A payload is enciphered as a whole once a connection has a cipher state, and a
+message says nothing about that. One case is different: a payload that travels
+before any cipher state exists can still carry a single field enciphered under
+the key both ends hold, and a field states when it does.
+
+Such a field occupies whole cipher blocks, because a field filling part of one
+would travel half in the clear. Its recorded value is what the bytes mean once
+deciphered, so a reader deciphers the field alone and leaves the payload around
+it untouched.
+
 ## Presence
 
 A field states a presence rule when it occupies bytes only under a condition.

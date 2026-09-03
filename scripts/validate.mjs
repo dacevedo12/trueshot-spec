@@ -10,7 +10,7 @@ import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { join, basename } from "node:path";
 import Ajv from "ajv/dist/2020.js";
 import { CodecError, decodeFields, encodeFields } from "./codec.mjs";
-import { CipherError, decipher, encipher } from "./cipher.mjs";
+import { BLOCK, CipherError, decipher, encipher } from "./cipher.mjs";
 
 const SCHEMA_DIR = "schema";
 const META = join(SCHEMA_DIR, "meta");
@@ -255,6 +255,17 @@ function checkFields(fields, outer, structNames, at, openStructs = new Set()) {
     const last = index === fields.length - 1;
     let openEnded = false;
 
+    if (field.enciphered) {
+      const width =
+        field.type === "bytes" ? field.size : SCALAR_BITS[field.type] / 8;
+      if (typeof width !== "number" || width % BLOCK !== 0) {
+        fail(
+          at,
+          `field "${field.name}" travels enciphered but does not fill whole ${BLOCK} byte blocks, so part of it would travel in the clear`,
+        );
+      }
+    }
+
     checkValues(field, at);
     for (const run of field.bits ?? []) checkValues(run, at, field.name);
 
@@ -489,6 +500,29 @@ function needingOrder(fields, structs, seen = new Set()) {
       if (definition) {
         found.push(
           ...needingOrder(
+            definition.fields,
+            structs,
+            new Set([...seen, field.struct]),
+          ),
+        );
+      }
+    }
+  }
+  return found;
+}
+
+function needingKey(fields, structs, seen = new Set()) {
+  const found = [];
+  for (const field of fields ?? []) {
+    if (field.enciphered) found.push(field.name);
+    if (field.type === "array" && field.items) {
+      found.push(...needingKey([field.items], structs, seen));
+    }
+    if (field.type === "struct" && !seen.has(field.struct)) {
+      const definition = structs.get(field.struct);
+      if (definition) {
+        found.push(
+          ...needingKey(
             definition.fields,
             structs,
             new Set([...seen, field.struct]),
@@ -1185,7 +1219,37 @@ if (existsSync(VECTOR_DIR)) {
       // header itself.
       const start = 0;
       try {
-        const read = decodeFields(defined, payload, start, structs, endian);
+        const sealed = needingKey(defined, structs);
+        let cipher = null;
+        if (sealed.length > 0) {
+          if (doc.key === undefined) {
+            fail(
+              path,
+              `records ${sealed.map((n) => `"${n}"`).join(", ")}, which travels enciphered, so the vector needs the key that reads it`,
+            );
+            continue;
+          }
+          const key = Buffer.from(doc.key.replace(/\s+/g, ""), "hex");
+          cipher = {
+            decipher: (bytes) => decipher(key, bytes),
+            encipher: (bytes) => encipher(key, bytes),
+          };
+        } else if (doc.key !== undefined) {
+          fail(
+            path,
+            "carries a key, and no field of this message travels enciphered",
+          );
+          continue;
+        }
+        const read = decodeFields(
+          defined,
+          payload,
+          start,
+          structs,
+          endian,
+          {},
+          cipher,
+        );
         if (doc.subject === "message" && read.offset !== payload.length) {
           fail(
             path,
@@ -1240,7 +1304,14 @@ if (existsSync(VECTOR_DIR)) {
             `bytes decode to ${actual}, and the vector says ${expected}`,
           );
         } else {
-          const written = encodeFields(defined, doc.fields, structs, endian);
+          const written = encodeFields(
+            defined,
+            doc.fields,
+            structs,
+            endian,
+            {},
+            cipher,
+          );
           const wanted = payload.subarray(start, read.offset);
           if (!written.equals(wanted)) {
             fail(

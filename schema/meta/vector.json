@@ -38,7 +38,7 @@
       "type": "object"
     },
     "key": {
-      "description": "The key, in hexadecimal. A cipher subject only.",
+      "description": "The key, in hexadecimal. Required by a cipher vector. A message vector carries one only where the message has a field that travels enciphered, and that key is arbitrary: nothing about it comes from a real match.",
       "type": "string",
       "pattern": "^[0-9a-fA-F\\s]+$"
     },
@@ -70,7 +70,6 @@
           "version": true,
           "bytes": true,
           "fields": true,
-          "key": false,
           "plaintext": false,
           "ciphertext": false,
           "note": true

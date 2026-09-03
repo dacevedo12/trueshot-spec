@@ -172,7 +172,15 @@ function countOf(field, scope, key) {
   return value;
 }
 
-function decodeFields(fields, buffer, offset, structs, endian, outer = {}) {
+function decodeFields(
+  fields,
+  buffer,
+  offset,
+  structs,
+  endian,
+  outer = {},
+  cipher = null,
+) {
   const scope = { ...outer };
   const values = {};
 
@@ -191,7 +199,13 @@ function decodeFields(fields, buffer, offset, structs, endian, outer = {}) {
         const length = size === "remaining" ? buffer.length - offset : size;
         if (offset + length > buffer.length)
           bail(`"${field.name}" runs past the end`);
-        value = buffer.subarray(offset, offset + length).toString("hex");
+        const raw = buffer.subarray(offset, offset + length);
+        if (field.enciphered && !cipher) {
+          bail(`"${field.name}" travels enciphered, and no key was given`);
+        }
+        value = (field.enciphered ? cipher.decipher(raw) : raw).toString(
+          "hex",
+        );
         offset += length;
         break;
       }
@@ -240,6 +254,7 @@ function decodeFields(fields, buffer, offset, structs, endian, outer = {}) {
               structs,
               endian,
               scope,
+              cipher,
             );
             if (read.offset === offset) {
               bail(`"${field.name}" holds an item that consumes no bytes`);
@@ -262,6 +277,7 @@ function decodeFields(fields, buffer, offset, structs, endian, outer = {}) {
               structs,
               endian,
               scope,
+              cipher,
             );
             if (read.offset === offset) {
               bail(`"${field.name}" holds an item that consumes no bytes`);
@@ -278,6 +294,7 @@ function decodeFields(fields, buffer, offset, structs, endian, outer = {}) {
               structs,
               endian,
               scope,
+              cipher,
             );
             items.push(read.values[field.items.name]);
             offset = read.offset;
@@ -302,6 +319,8 @@ function decodeFields(fields, buffer, offset, structs, endian, outer = {}) {
           offset,
           structs,
           endian,
+          {},
+          cipher,
         );
         if (bound !== null && read.offset !== offset + bound) {
           bail(
@@ -331,6 +350,21 @@ function decodeFields(fields, buffer, offset, structs, endian, outer = {}) {
         break;
       }
       default: {
+        if (field.enciphered) {
+          const width = WIDTH[field.type];
+          if (offset + width > buffer.length) {
+            bail(`"${field.name}" runs past the end`);
+          }
+          if (!cipher) {
+            bail(`"${field.name}" travels enciphered, and no key was given`);
+          }
+          const clear = cipher.decipher(
+            buffer.subarray(offset, offset + width),
+          );
+          value = readScalar(clear, 0, field.type, big).value;
+          offset += width;
+          break;
+        }
         const read = readScalar(buffer, offset, field.type, big);
         value = read.value;
         offset = read.offset;
@@ -344,7 +378,14 @@ function decodeFields(fields, buffer, offset, structs, endian, outer = {}) {
   return { values, offset };
 }
 
-function encodeFields(fields, values, structs, endian, outer = {}) {
+function encodeFields(
+  fields,
+  values,
+  structs,
+  endian,
+  outer = {},
+  cipher = null,
+) {
   const scope = { ...outer, ...values };
   const parts = [];
 
@@ -357,9 +398,14 @@ function encodeFields(fields, values, structs, endian, outer = {}) {
     const big = orderOf(field, endian);
 
     switch (field.type) {
-      case "bytes":
-        parts.push(Buffer.from(value, "hex"));
+      case "bytes": {
+        const raw = Buffer.from(value, "hex");
+        if (field.enciphered && !cipher) {
+          bail(`"${field.name}" travels enciphered, and no key was given`);
+        }
+        parts.push(field.enciphered ? cipher.encipher(raw) : raw);
         break;
+      }
       case "string": {
         const text = Buffer.from(
           value,
@@ -396,6 +442,7 @@ function encodeFields(fields, values, structs, endian, outer = {}) {
               structs,
               endian,
               scope,
+              cipher,
             ),
           );
         }
@@ -456,6 +503,13 @@ function encodeFields(fields, values, structs, endian, outer = {}) {
         break;
       }
       default:
+        if (field.enciphered) {
+          if (!cipher) {
+            bail(`"${field.name}" travels enciphered, and no key was given`);
+          }
+          parts.push(cipher.encipher(writeScalar(field.type, value, big)));
+          break;
+        }
         parts.push(writeScalar(field.type, value, big));
     }
   }

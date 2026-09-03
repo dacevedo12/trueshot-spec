@@ -195,6 +195,10 @@
                 "description": "Present only where the wire differs from the protocol default.",
                 "type": "string",
                 "enum": ["little", "big"]
+              },
+              "enciphered": {
+                "description": "Whether these bytes travel enciphered under the connection's key while the payload around them does not. A field marked this way occupies whole cipher blocks, and its value is what the bytes mean once deciphered.",
+                "type": "boolean"
               }
             }
           }
@@ -213,6 +217,10 @@
             "properties": {
               "size": {
                 "$ref": "#/$defs/size"
+              },
+              "enciphered": {
+                "description": "Whether these bytes travel enciphered under the connection's key while the payload around them does not. A field marked this way occupies whole cipher blocks, and its value is what the bytes mean once deciphered.",
+                "type": "boolean"
               }
             }
           }
@@ -389,6 +397,10 @@
             "properties": {
               "values": {
                 "$ref": "#/$defs/values"
+              },
+              "enciphered": {
+                "description": "Whether these bytes travel enciphered under the connection's key while the payload around them does not. A field marked this way occupies whole cipher blocks, and its value is what the bytes mean once deciphered.",
+                "type": "boolean"
               }
             }
           }

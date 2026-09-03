@@ -34,6 +34,11 @@ A **transport** vector carries `version`, `bytes` and `fields`. The bytes are a
 packet header as it travels. The fields are what that header means, read
 against the layout `schema/protocol.json` records for that version.
 
+A message whose layout has a field travelling enciphered carries a `key` as
+well, because the bytes cannot be read without one. That key is arbitrary, as a
+cipher vector's key is: it comes from no real match, and neither does anything
+it enciphers.
+
 A **message** vector carries `message` as well, naming the message identity,
 and its bytes are one deciphered channel payload rather than a header. Those
 bytes open with the header its family carries, so `fields` records the header
