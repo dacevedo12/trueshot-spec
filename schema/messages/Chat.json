@@ -1,0 +1,60 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "Chat",
+  "note": "Text one player sends the others during a match. Messages players exchange outside a match do not travel on this connection at all.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "chat",
+      "command": 104,
+      "direction": "bidirectional",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "i32",
+          "note": "Which seat the sender occupies."
+        },
+        {
+          "name": "netId",
+          "type": "u32",
+          "note": "A network object the message concerns. Observed as zero."
+        },
+        {
+          "name": "unknown",
+          "type": "u8",
+          "note": "Purpose undetermined. Observed as zero."
+        },
+        {
+          "name": "audience",
+          "type": "i32",
+          "note": "Who the message reaches.",
+          "values": { "0": { "name": "everyone" }, "1": { "name": "team" } }
+        },
+        {
+          "name": "paramsLength",
+          "type": "u32",
+          "note": "How many bytes of the run that follows carry meaning."
+        },
+        {
+          "name": "textLength",
+          "type": "u32",
+          "note": "The length of the text, counted in bytes and excluding the byte that ends it."
+        },
+        {
+          "name": "params",
+          "type": "bytes",
+          "size": 32,
+          "note": "Always thirty two bytes, of which the length above says how many mean anything. A client leaves the rest as it found them, so they carry whatever the buffer last held and differ between two messages that are otherwise alike. A server reads no further than the stated length."
+        },
+        { "name": "text", "type": "string", "encoding": "utf8", "size": "textLength" },
+        {
+          "name": "terminator",
+          "type": "bytes",
+          "size": 1,
+          "note": "A zero byte closing the text. Observed as zero."
+        }
+      ]
+    }
+  ]
+}

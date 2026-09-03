@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "Chat",
+  "version": "4.20.0.315",
+  "note": "Sent to the sender's team alone. Taken from a client. The trailing run was zeroed before committing, because a client leaves it as it found it and it carried memory that had not been written.",
+  "bytes": "68000000000000000000010000000000000003000000000000000000000000000000000000000000000000000000000000000000000061736400",
+  "fields": {
+    "command": 104,
+    "clientId": 0,
+    "netId": 0,
+    "unknown": 0,
+    "audience": 1,
+    "paramsLength": 0,
+    "textLength": 3,
+    "params": "0000000000000000000000000000000000000000000000000000000000000000",
+    "text": "asd",
+    "terminator": "00"
+  }
+}
