@@ -30,7 +30,7 @@
           "name": "unknown",
           "type": "bytes",
           "size": 16,
-          "note": "Purpose undetermined. It spans the bytes a request fills with its version and its proof, and every answer observed carried zeros across all sixteen, which a client accepted."
+          "note": "Purpose undetermined. It spans the bytes a request fills with its version and its proof, and nothing observed reads any of it: a receiving end takes the seat and the player identifier and looks no further."
         }
       ]
     }

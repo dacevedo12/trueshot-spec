@@ -18,12 +18,12 @@
         {
           "name": "netId",
           "type": "u32",
-          "note": "A network object the message concerns. Observed as zero."
+          "note": "The entity a receiving end attributes the text to where the seat does not name one. Where the seat names a speaker, that is what a receiving end uses instead."
         },
         {
-          "name": "unknown",
+          "name": "localized",
           "type": "u8",
-          "note": "Purpose undetermined. Observed as zero."
+          "note": "Whether the text is a phrase to show as it stands, or a key naming one the receiving end looks up and fills in from the parameters. Every message observed carried it clear."
         },
         {
           "name": "audience",
@@ -46,26 +46,26 @@
         {
           "name": "textLength",
           "type": "u32",
-          "note": "The length of the text, counted in bytes and excluding the byte that ends it."
+          "note": "The length of the text, counted in bytes and excluding the byte that ends it. A single byte holds it, so text runs no further than 255 bytes and a whole message no further than 310."
         },
         {
           "name": "params",
           "type": "bytes",
           "size": 32,
-          "note": "Always thirty two bytes, of which the length above says how many mean anything. A client leaves the rest as it found them, so they carry whatever the buffer last held and differ between two messages that are otherwise alike. A server reads no further than the stated length."
+          "note": "Always thirty two bytes, holding text that ends at a zero byte, which is what fills in a key. A client leaves whatever it is not using as it found it, so those bytes carry memory never written for this message and differ between two messages otherwise alike. A receiving end reads to the first zero byte rather than to the length beside it, so it reads past that length when the run holds no zero byte."
         },
         {
           "name": "text",
           "type": "string",
           "encoding": "utf8",
           "size": "textLength",
-          "note": "Every message observed carried text a single byte per character could hold, so nothing establishes how text outside that range is encoded."
+          "note": "A receiving end reads to the byte that ends the text rather than to the length beside it."
         },
         {
           "name": "terminator",
           "type": "bytes",
           "size": 1,
-          "note": "A zero byte closing the text. Observed as zero."
+          "note": "A zero byte closing the text. A receiving end depends on it, since it is what stops the read."
         }
       ]
     }

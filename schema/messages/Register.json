@@ -29,13 +29,13 @@
         {
           "name": "version",
           "type": "u32",
-          "note": "The client's version with its separators removed, so 4.20.0.315 arrives as 42000315."
+          "note": "The client's version with its separators removed, so 4.20.0.315 arrives as 42000315. It is carried for a server to read; nothing observed compares it or refuses a connection over it."
         },
         {
           "name": "proof",
           "type": "i64",
           "enciphered": true,
-          "note": "The player identifier enciphered under the key both ends already hold. Deciphering it and finding the identifier beside it is what shows the sender holds the key."
+          "note": "The player identifier and nothing else, enciphered under the key both ends already hold. Deciphering it and finding the identifier beside it is what shows the sender holds the key."
         },
         {
           "name": "trailing",
