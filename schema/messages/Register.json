@@ -1,0 +1,49 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "Register",
+  "note": "What a client sends first. It arrives before the connection has a cipher state, so the payload travels in the clear apart from the proof.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "registration",
+      "command": 0,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "marker",
+          "type": "bytes",
+          "size": 3,
+          "note": "Purpose undetermined. The same three bytes appear in every message of the exchange, in both directions."
+        },
+        {
+          "name": "clientId",
+          "type": "i32",
+          "note": "Which seat in the match the sender occupies, counted from zero."
+        },
+        {
+          "name": "playerId",
+          "type": "i64",
+          "note": "Who the sender claims to be. The proof is what settles the claim."
+        },
+        {
+          "name": "version",
+          "type": "i32",
+          "note": "The client's version with its separators removed, so 4.20.0.315 arrives as 42000315."
+        },
+        {
+          "name": "proof",
+          "type": "i64",
+          "enciphered": true,
+          "note": "The player identifier enciphered under the key both ends already hold. Deciphering it and finding the identifier beside it is what shows the sender holds the key."
+        },
+        {
+          "name": "unknown",
+          "type": "bytes",
+          "size": 4,
+          "note": "Purpose undetermined, and not read by any implementation observed."
+        }
+      ]
+    }
+  ]
+}

@@ -112,9 +112,7 @@ expects has learned that the other end holds the key. Nothing is negotiated,
 and nothing is derived: the exchange proves possession of something both ends
 already had, and a server MUST refuse a connection whose proof does not match.
 
-> [!NOTE]
-> The registration message itself is not recorded yet. Until it is, a server
-> cannot be built past the point of accepting a connection.
+`schema/messages` records the exchange itself, as `Register` and `Registered`.
 
 ## What a message is
 

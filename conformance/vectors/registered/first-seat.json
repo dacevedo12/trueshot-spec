@@ -1,0 +1,15 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "Registered",
+  "version": "4.20.0.315",
+  "note": "Taken from a server a client accepted. The identifiers are synthetic.",
+  "bytes": "00 72d702 00000000 0100000000000000 00000000000000000000000000000000",
+  "fields": {
+    "command": 0,
+    "marker": "72d702",
+    "clientId": 0,
+    "playerId": "1",
+    "unknown": "00000000000000000000000000000000"
+  }
+}

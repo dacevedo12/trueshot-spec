@@ -1,0 +1,38 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "Registered",
+  "note": "What a server answers a registration with, naming a player in the match and the seat they occupy. It shares its command value with the request it answers, which travels the other way.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "registration",
+      "command": 0,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "marker",
+          "type": "bytes",
+          "size": 3,
+          "note": "Purpose undetermined. The same three bytes appear in every message of the exchange, in both directions."
+        },
+        {
+          "name": "clientId",
+          "type": "i32",
+          "note": "Which seat in the match the named player occupies, counted from zero."
+        },
+        {
+          "name": "playerId",
+          "type": "i64",
+          "note": "Who occupies that seat."
+        },
+        {
+          "name": "unknown",
+          "type": "bytes",
+          "size": 16,
+          "note": "Purpose undetermined. Every message observed carried zeros here, and a client accepted them, so whether it reads them at all is undetermined."
+        }
+      ]
+    }
+  ]
+}

@@ -27,7 +27,6 @@ with a guess and carry on. That is a defect worth reporting, and
    a family puts in front of one, and how to read a file in `schema/messages`.
 
 The transport is a delta on ENet 1.2.5, so building it means building on ENet
-or a port of it. Above the transport the specification stops: the cipher is
-named, but the registration that establishes it is not recorded and no message
-is recorded, so a server built from this repository speaks the transport and
-nothing above it.
+or a port of it. Above the transport, registration is recorded and the rest is
+not, so a server built from this repository accepts a connection and speaks
+nothing further.

@@ -1,0 +1,18 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "Register",
+  "version": "4.20.0.315",
+  "note": "Layout taken from a client. The key here is arbitrary and the identifiers are synthetic, so the proof was recomputed under that key: nothing in this file comes from a real match.",
+  "key": "000102030405060708090a0b0c0d0e0f",
+  "bytes": "00 72d702 00000000 0100000000000000 bbdf8002 893fa0c88cfc47ab 18bdea04",
+  "fields": {
+    "command": 0,
+    "marker": "72d702",
+    "clientId": 0,
+    "playerId": "1",
+    "version": 42000315,
+    "proof": "1",
+    "unknown": "18bdea04"
+  }
+}
