@@ -1,0 +1,28 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "ClientVersion",
+  "note": "What a client sends to state which build it is.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "requests",
+      "command": 189,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "Which seat is reporting."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "ascii",
+          "size": 256,
+          "note": "The build, as text. The run is always 256 bytes and the text ends at a zero byte, so it runs no further than 255."
+        }
+      ]
+    }
+  ]
+}

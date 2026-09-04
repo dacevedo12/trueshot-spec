@@ -1,0 +1,21 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "BuyItem",
+  "note": "What a client sends to buy an item from the shop.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "requests",
+      "command": 130,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "item",
+          "type": "u32",
+          "note": "Which item, by the number the client knows it as."
+        }
+      ]
+    }
+  ]
+}

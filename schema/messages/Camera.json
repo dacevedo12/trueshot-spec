@@ -1,0 +1,50 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "Camera",
+  "note": "What a client sends to say where its view sits and which way it faces. It is the most frequent request a client makes.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "requests",
+      "command": 46,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "positionX",
+          "type": "f32"
+        },
+        {
+          "name": "positionY",
+          "type": "f32"
+        },
+        {
+          "name": "positionZ",
+          "type": "f32"
+        },
+        {
+          "name": "directionX",
+          "type": "f32"
+        },
+        {
+          "name": "directionY",
+          "type": "f32"
+        },
+        {
+          "name": "directionZ",
+          "type": "f32"
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "Which seat the view belongs to."
+        },
+        {
+          "name": "syncId",
+          "type": "u8",
+          "note": "Rises with each report, wrapping within the byte."
+        }
+      ]
+    }
+  ]
+}
