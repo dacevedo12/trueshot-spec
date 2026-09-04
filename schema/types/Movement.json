@@ -1,0 +1,81 @@
+{
+  "$schema": "../meta/struct.json",
+  "struct": "Movement",
+  "note": "A path a unit is to follow, given as points on the ground plane. Every point after the first states each of its coordinates either as a small step from the point before it or afresh, and a run of flags read first says which.",
+  "fields": [
+    {
+      "name": "header",
+      "type": "bits",
+      "size": 1,
+      "bits": [
+        {
+          "name": "hasTeleportToken",
+          "width": 1,
+          "note": "Set where a token follows the unit."
+        },
+        {
+          "name": "pointCount",
+          "width": 7,
+          "note": "How many points the path holds. Zero means the movement carries no path and nothing follows."
+        }
+      ]
+    },
+    {
+      "name": "unit",
+      "type": "u32",
+      "present": { "when": "header.pointCount" },
+      "note": "The unit the path belongs to."
+    },
+    {
+      "name": "teleportToken",
+      "type": "u8",
+      "present": { "when": "header.hasTeleportToken" },
+      "note": "Tells one relocation from another. A token unlike the one before it makes a receiving end place the unit rather than walk it there."
+    },
+    {
+      "name": "flags",
+      "type": "bitArray",
+      "count": { "field": "header.pointCount", "minus": 1 },
+      "present": { "when": "header.pointCount" },
+      "bits": [
+        { "name": "xIsStep", "width": 1 },
+        { "name": "zIsStep", "width": 1 }
+      ],
+      "note": "One pair for each point after the first, in the order the points follow. The run ends at the byte after the last pair, and the bits beyond it are clear."
+    },
+    { "name": "firstX", "type": "i16", "present": { "when": "header.pointCount" } },
+    { "name": "firstZ", "type": "i16", "present": { "when": "header.pointCount" } },
+    {
+      "name": "steps",
+      "type": "array",
+      "count": { "field": "header.pointCount", "minus": 1 },
+      "present": { "when": "header.pointCount" },
+      "items": {
+        "name": "step",
+        "type": "record",
+        "fields": [
+          {
+            "name": "xStep",
+            "type": "i8",
+            "present": { "when": "flags[step].xIsStep" }
+          },
+          {
+            "name": "xWhole",
+            "type": "i16",
+            "present": { "when": "flags[step].xIsStep", "equals": 0 }
+          },
+          {
+            "name": "zStep",
+            "type": "i8",
+            "present": { "when": "flags[step].zIsStep" }
+          },
+          {
+            "name": "zWhole",
+            "type": "i16",
+            "present": { "when": "flags[step].zIsStep", "equals": 0 }
+          }
+        ]
+      }
+    }
+  ]
+}

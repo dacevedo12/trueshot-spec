@@ -269,9 +269,52 @@ function checkFields(fields, outer, structNames, at, openStructs = new Set()) {
     checkValues(field, at);
     for (const run of field.bits ?? []) checkValues(run, at, field.name);
 
+    // array[item] names the item of an earlier list at the same position, so
+    // the two lists have to be counted the same way and cannot be one list.
+    const checkItemRef = (where, text) => {
+      const m =
+        /^([a-z][A-Za-z0-9]*)\[([a-z][A-Za-z0-9]*)\](?:\.([a-z][A-Za-z0-9]*))?$/.exec(
+          text,
+        );
+      if (!m) return false;
+      const [, list, , run] = m;
+      const entry = seen.get(list);
+      if (!entry) {
+        fail(
+          at,
+          `field "${where}" names "${text}", and "${list}" is not an earlier field`,
+        );
+      } else if (entry.type !== "bitArray" && entry.type !== "array") {
+        fail(
+          at,
+          `field "${where}" names "${text}", and "${list}" is ${entry.type} rather than a list`,
+        );
+      } else if (entry.itemName === m[2]) {
+        fail(
+          at,
+          `field "${where}" names "${text}", which is the list it is inside`,
+        );
+      } else if (
+        JSON.stringify(entry.count) !== JSON.stringify(outer.get("__count"))
+      ) {
+        fail(
+          at,
+          `field "${where}" names "${text}", and the two lists are not counted the same way`,
+        );
+      } else if (run !== undefined && !(entry.runs ?? []).includes(run)) {
+        fail(
+          at,
+          `field "${where}" names "${text}", and "${list}" holds no run "${run}"`,
+        );
+      }
+      return true;
+    };
+
     if (field.present) {
       const target = field.present.when;
-      if (!seen.has(target)) {
+      if (checkItemRef(field.name, target)) {
+        // handled above
+      } else if (!seen.has(target)) {
         fail(
           at,
           `field "${field.name}" is present when "${target}", which is not an earlier field`,
@@ -319,8 +362,25 @@ function checkFields(fields, outer, structNames, at, openStructs = new Set()) {
     }
 
     for (const key of ["count", "size"]) {
-      const value = field[key];
+      let value = field[key];
+      if (value && typeof value === "object") {
+        if (checkItemRef(field.name, value.field)) continue;
+        const entry = seen.get(value.field);
+        if (!entry) {
+          fail(
+            at,
+            `field "${field.name}" ${key} refers to "${value.field}", which is not an earlier field`,
+          );
+        } else if (!COUNTABLE.has(entry.type)) {
+          fail(
+            at,
+            `field "${field.name}" ${key} refers to "${value.field}", which is ${entry.type} rather than an unsigned integer`,
+          );
+        }
+        continue;
+      }
       if (typeof value !== "string") continue;
+      if (checkItemRef(field.name, value)) continue;
       if (value === "remaining" && !last) {
         fail(
           at,
@@ -387,14 +447,30 @@ function checkFields(fields, outer, structNames, at, openStructs = new Set()) {
           : `field "${field.name}" is declared twice`,
       );
     }
-    seen.set(field.name, { type: field.type });
+    seen.set(field.name, {
+      type: field.type,
+      count: field.count,
+      itemName: field.items?.name,
+      runs: (field.bits ?? []).map((r) => r.name),
+    });
 
     if (field.type === "array" && field.items) {
+      const inner = new Map(seen);
+      inner.set("__count", field.count);
       checkFields(
         [field.items],
-        seen,
+        inner,
         structNames,
         `${at} > ${field.name}[]`,
+        openStructs,
+      );
+    }
+    if (field.type === "record") {
+      checkFields(
+        field.fields,
+        seen,
+        structNames,
+        `${at} > ${field.name}`,
         openStructs,
       );
     }

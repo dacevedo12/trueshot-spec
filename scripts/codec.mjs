@@ -138,7 +138,21 @@ function writeInto(buffer, type, value, big) {
 }
 
 // A reference may name a field or a run of bits inside one.
-function lookup(scope, path) {
+function lookup(scope, path, index = null) {
+  const at =
+    /^([a-z][A-Za-z0-9]*)\[([a-z][A-Za-z0-9]*)\](?:\.([a-z][A-Za-z0-9]*))?$/.exec(
+      path,
+    );
+  if (at) {
+    const [, array, , run] = at;
+    if (index === null) bail(`"${path}" names an item outside any item`);
+    const list = scope[array];
+    if (!Array.isArray(list))
+      bail(`"${array}" was not read before it was needed`);
+    if (index >= list.length) bail(`"${array}" holds no item ${index}`);
+    const item = list[index];
+    return run === undefined ? item : item?.[run];
+  }
   const [head, run] = path.split(".");
   const value = scope[head];
   if (value === undefined) bail(`"${path}" was not read before it was needed`);
@@ -148,8 +162,23 @@ function lookup(scope, path) {
   return run === undefined ? value : value?.[run];
 }
 
-function present(field, scope) {
+// The only arithmetic there is.
+const amount = (spec, scope, index) => {
+  if (typeof spec === "number") return spec;
+  if (typeof spec === "object" && spec !== null) {
+    return Number(lookup(scope, spec.field, index)) - spec.minus;
+  }
+  return Number(lookup(scope, spec, index));
+};
+
+function present(field, scope, index = null) {
   if (!field.present) return true;
+  if (/\[[a-z][A-Za-z0-9]*\]/.test(field.present.when)) {
+    const v = lookup(scope, field.present.when, index);
+    return field.present.equals === undefined
+      ? Number(v) !== 0
+      : Number(v) === field.present.equals;
+  }
   const [head, run] = field.present.when.split(".");
   if (!(head in scope)) {
     bail(`"${field.present.when}" was not read before it was needed`);
@@ -163,11 +192,11 @@ function present(field, scope) {
     : Number(value) === field.present.equals;
 }
 
-function countOf(field, scope, key) {
+function countOf(field, scope, key, index = null) {
   const raw = field[key];
   if (typeof raw === "number") return raw;
   if (raw === "remaining" || raw === "terminated") return raw;
-  const value = Number(lookup(scope, raw));
+  const value = Number(amount(raw, scope, index));
   if (!Number.isInteger(value) || value < 0) bail(`"${raw}" is not a count`);
   return value;
 }
@@ -180,12 +209,13 @@ function decodeFields(
   endian,
   outer = {},
   cipher = null,
+  index = null,
 ) {
   const scope = { ...outer };
   const values = {};
 
   for (const field of fields) {
-    if (!present(field, scope)) {
+    if (!present(field, scope, index)) {
       values[field.name] = null;
       scope[field.name] = null;
       continue;
@@ -195,7 +225,7 @@ function decodeFields(
 
     switch (field.type) {
       case "bytes": {
-        const size = countOf(field, scope, "size");
+        const size = countOf(field, scope, "size", index);
         const length = size === "remaining" ? buffer.length - offset : size;
         if (offset + length > buffer.length)
           bail(`"${field.name}" runs past the end`);
@@ -210,7 +240,7 @@ function decodeFields(
         break;
       }
       case "string": {
-        const size = countOf(field, scope, "size");
+        const size = countOf(field, scope, "size", index);
         let length;
         if (size === "remaining") {
           length = buffer.length - offset;
@@ -238,7 +268,7 @@ function decodeFields(
       }
       case "array": {
         if (field.size !== undefined) {
-          const bound = countOf(field, scope, "size");
+          const bound = countOf(field, scope, "size", index);
           if (offset + bound > buffer.length) {
             bail(
               `"${field.name}" claims ${bound} bytes and runs past the end`,
@@ -247,6 +277,7 @@ function decodeFields(
           const within = buffer.subarray(0, offset + bound);
           const items = [];
           while (offset < within.length) {
+            const i = items.length;
             const read = decodeFields(
               [field.items],
               within,
@@ -255,6 +286,7 @@ function decodeFields(
               endian,
               scope,
               cipher,
+              i,
             );
             if (read.offset === offset) {
               bail(`"${field.name}" holds an item that consumes no bytes`);
@@ -266,10 +298,11 @@ function decodeFields(
           scope[field.name] = items;
           continue;
         }
-        const count = countOf(field, scope, "count");
+        const count = countOf(field, scope, "count", index);
         const items = [];
         if (count === "remaining") {
           while (offset < buffer.length) {
+            const i = items.length;
             const read = decodeFields(
               [field.items],
               buffer,
@@ -278,6 +311,7 @@ function decodeFields(
               endian,
               scope,
               cipher,
+              i,
             );
             if (read.offset === offset) {
               bail(`"${field.name}" holds an item that consumes no bytes`);
@@ -295,6 +329,7 @@ function decodeFields(
               endian,
               scope,
               cipher,
+              i,
             );
             items.push(read.values[field.items.name]);
             offset = read.offset;
@@ -307,7 +342,9 @@ function decodeFields(
         const definition = structs.get(field.struct);
         if (!definition) bail(`struct "${field.struct}" has no definition`);
         const bound =
-          field.size === undefined ? null : countOf(field, scope, "size");
+          field.size === undefined
+            ? null
+            : countOf(field, scope, "size", index);
         const within =
           bound === null ? buffer : buffer.subarray(0, offset + bound);
         if (bound !== null && offset + bound > buffer.length) {
@@ -327,6 +364,45 @@ function decodeFields(
             `"${field.name}" is ${bound} bytes and its fields read ${read.offset - offset}`,
           );
         }
+        value = read.values;
+        offset = read.offset;
+        break;
+      }
+      case "bitArray": {
+        const groups = countOf(field, scope, "count", index);
+        const width = field.bits.reduce((t, r) => t + r.width, 0);
+        const bytes = Math.ceil((groups * width) / 8);
+        if (offset + bytes > buffer.length)
+          bail(`"${field.name}" runs past the end`);
+        const block = buffer.subarray(offset, offset + bytes);
+        const read = [];
+        let at = 0;
+        for (let g = 0; g < groups; g += 1) {
+          const one = {};
+          for (const run of field.bits) {
+            let v = 0;
+            for (let k = 0; k < run.width; k += 1, at += 1) {
+              v |= ((block[at >> 3] >> (at & 7)) & 1) << k;
+            }
+            one[run.name] = v;
+          }
+          read.push(one);
+        }
+        value = read;
+        offset += bytes;
+        break;
+      }
+      case "record": {
+        const read = decodeFields(
+          field.fields,
+          buffer,
+          offset,
+          structs,
+          endian,
+          scope,
+          cipher,
+          index,
+        );
         value = read.values;
         offset = read.offset;
         break;
@@ -385,12 +461,13 @@ function encodeFields(
   endian,
   outer = {},
   cipher = null,
+  index = null,
 ) {
   const scope = { ...outer, ...values };
   const parts = [];
 
   for (const field of fields) {
-    if (!present(field, scope)) continue;
+    if (!present(field, scope, index)) continue;
     const value = values[field.name];
     if (value === null || value === undefined) {
       bail(`"${field.name}" is present but carries no value`);
@@ -411,7 +488,7 @@ function encodeFields(
           value,
           field.encoding === "ascii" ? "ascii" : "utf8",
         );
-        const size = countOf(field, scope, "size");
+        const size = countOf(field, scope, "size", index);
         if (size === "remaining") {
           parts.push(text);
         } else if (size === "terminated") {
@@ -426,7 +503,7 @@ function encodeFields(
       case "array": {
         const counted =
           field.size === undefined
-            ? countOf(field, scope, "count")
+            ? countOf(field, scope, "count", index)
             : "remaining";
         if (counted !== "remaining" && counted !== value.length) {
           bail(
@@ -443,12 +520,13 @@ function encodeFields(
               endian,
               scope,
               cipher,
+              written.length,
             ),
           );
         }
         const body = Buffer.concat(written);
         if (field.size !== undefined) {
-          const bound = countOf(field, scope, "size");
+          const bound = countOf(field, scope, "size", index);
           if (body.length !== bound) {
             bail(
               `"${field.name}" writes ${body.length} bytes and its size says ${bound}`,
@@ -468,7 +546,7 @@ function encodeFields(
           endian,
         );
         if (field.size !== undefined) {
-          const bound = countOf(field, scope, "size");
+          const bound = countOf(field, scope, "size", index);
           if (written.length !== bound) {
             bail(
               `"${field.name}" writes ${written.length} bytes and its size says ${bound}`,
@@ -478,6 +556,38 @@ function encodeFields(
         parts.push(written);
         break;
       }
+      case "bitArray": {
+        const width = field.bits.reduce((t, r) => t + r.width, 0);
+        const bytes = Math.ceil((value.length * width) / 8);
+        const block = Buffer.alloc(bytes);
+        let at = 0;
+        for (const one of value) {
+          for (const run of field.bits) {
+            const v = Number(one[run.name] ?? 0);
+            if (v < 0 || v >= 2 ** run.width) {
+              bail(`${v} does not fit the ${run.width} bits of "${run.name}"`);
+            }
+            for (let k = 0; k < run.width; k += 1, at += 1) {
+              if ((v >> k) & 1) block[at >> 3] |= 1 << (at & 7);
+            }
+          }
+        }
+        parts.push(block);
+        break;
+      }
+      case "record":
+        parts.push(
+          encodeFields(
+            field.fields,
+            value,
+            structs,
+            endian,
+            scope,
+            cipher,
+            index,
+          ),
+        );
+        break;
       case "bits": {
         let word = 0n;
         let taken = 0n;

@@ -49,9 +49,9 @@
       "pattern": "^[A-Z][A-Za-z0-9]*$"
     },
     "reference": {
-      "description": "The name of an earlier field, or a bit within one, written parent.bit.",
+      "description": "The name of an earlier field, a bit within one written parent.bit, or the item of an earlier array at the same position, written array[item], where item names the enclosing item.",
       "type": "string",
-      "pattern": "^[a-z][A-Za-z0-9]*(\\.[a-z][A-Za-z0-9]*)?$",
+      "pattern": "^[a-z][A-Za-z0-9]*(\\[[a-z][A-Za-z0-9]*\\])?(\\.[a-z][A-Za-z0-9]*)?$",
       "not": {
         "enum": ["remaining", "terminated"]
       }
@@ -164,7 +164,9 @@
             "string",
             "array",
             "struct",
-            "bits"
+            "bits",
+            "bitArray",
+            "record"
           ]
         }
       },
@@ -263,11 +265,7 @@
                 "description": "A literal count, the name of an earlier field, or repeat to the end.",
                 "anyOf": [
                   {
-                    "type": "integer",
-                    "minimum": 0
-                  },
-                  {
-                    "$ref": "#/$defs/reference"
+                    "$ref": "#/$defs/amount"
                   },
                   {
                     "type": "string",
@@ -356,30 +354,7 @@
                 "minimum": 1
               },
               "bits": {
-                "description": "Runs of bits, listed from the least significant upward. Their widths add up to eight times the size.",
-                "type": "array",
-                "minItems": 1,
-                "items": {
-                  "type": "object",
-                  "required": ["name", "width"],
-                  "additionalProperties": false,
-                  "properties": {
-                    "name": {
-                      "$ref": "#/$defs/identifier"
-                    },
-                    "note": {
-                      "$ref": "#/$defs/note"
-                    },
-                    "width": {
-                      "type": "integer",
-                      "minimum": 1,
-                      "maximum": 32
-                    },
-                    "values": {
-                      "$ref": "#/$defs/values"
-                    }
-                  }
-                }
+                "$ref": "#/$defs/runs"
               }
             }
           }
@@ -404,6 +379,51 @@
               }
             }
           }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "bitArray"
+              }
+            },
+            "required": ["type"]
+          },
+          "then": {
+            "required": ["count", "bits"],
+            "properties": {
+              "count": {
+                "description": "How many groups of runs follow. Never remaining, because nothing marks the end.",
+                "$ref": "#/$defs/amount"
+              },
+              "bits": {
+                "$ref": "#/$defs/runs"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "record"
+              }
+            },
+            "required": ["type"]
+          },
+          "then": {
+            "required": ["fields"],
+            "properties": {
+              "fields": {
+                "description": "Fields laid out where they occur, reaching what encloses them.",
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "$ref": "#/$defs/field"
+                }
+              }
+            }
+          }
         }
       ]
     },
@@ -424,6 +444,58 @@
           },
           "note": {
             "$ref": "#/$defs/note"
+          }
+        }
+      }
+    },
+    "amount": {
+      "description": "A literal, the name of an earlier field holding an unsigned integer, or that field less a literal. Nothing else is computed.",
+      "anyOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "$ref": "#/$defs/reference"
+        },
+        {
+          "type": "object",
+          "required": ["field", "minus"],
+          "additionalProperties": false,
+          "properties": {
+            "field": {
+              "$ref": "#/$defs/reference"
+            },
+            "minus": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        }
+      ]
+    },
+    "runs": {
+      "description": "Runs of bits, listed from the least significant upward. Their widths add up to eight times the size.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["name", "width"],
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "$ref": "#/$defs/identifier"
+          },
+          "note": {
+            "$ref": "#/$defs/note"
+          },
+          "width": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 32
+          },
+          "values": {
+            "$ref": "#/$defs/values"
           }
         }
       }
