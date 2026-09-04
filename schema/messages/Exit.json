@@ -1,0 +1,15 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "Exit",
+  "note": "What a client sends as it leaves. It carries nothing of its own.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "requests",
+      "command": 143,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": []
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "WaypointAck",
+  "note": "What a client sends to say it has taken in a movement a server sent, naming which one.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "requests",
+      "command": 119,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u32",
+          "note": "Which movement is being acknowledged, echoing what a server sent."
+        },
+        {
+          "name": "unknown",
+          "type": "u8",
+          "note": "Purpose undetermined. Observed as zero."
+        }
+      ]
+    }
+  ]
+}

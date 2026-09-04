@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "MapPing",
+  "version": "4.20.0.315",
+  "note": "A mark carrying a network object. Taken from a client.",
+  "bytes": "57 00000000 67e3b545 a46ac945 03010040 00",
+  "fields": {
+    "command": 87,
+    "netId": 0,
+    "extendedCommand": null,
+    "x": 5820.42529296875,
+    "z": 6445.330078125,
+    "target": 1073742083,
+    "kind": 0
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "MapPing",
+  "note": "What a client sends to mark a point on the map for the others.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "requests",
+      "command": 87,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Where on the map, along one ground axis."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Where on the map, along the other ground axis."
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "A network object the mark is on, or zero where it is on open ground."
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "Which mark it is. The values are not yet told apart."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "TransientAck",
+  "note": "What a client sends to say how much it has taken in. The count rises by one each time, and the number sent over a session tracked the number of messages the transient channel carried.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "requests",
+      "command": 168,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "received",
+          "type": "u32",
+          "note": "How many it has taken in, counted from one and rising by one."
+        }
+      ]
+    }
+  ]
+}
