@@ -25,6 +25,8 @@ with a guess and carry on. That is a defect worth reporting, and
    it live in `conformance/vectors/transport` and `conformance/vectors/cipher`.
 2. [Messages](spec/messages.md), which defines how a message is recorded, what
    a family puts in front of one, and how to read a file in `schema/messages`.
+3. [Movement](spec/movement.md), which covers the one thing a path needs that
+   no layout carries: what its coordinates mean.
 
 The transport is a delta on ENet 1.2.5, so building it means building on ENet
 or a port of it. Above the transport, registration is recorded and the rest is
