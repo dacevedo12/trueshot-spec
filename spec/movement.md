@@ -43,18 +43,21 @@ The origins this document records, by the map each belongs to:
 | Summoner's Rift, in the shape it took before that        | 6991, 7223 |
 | The Crystal Scar                                         | 6947, 6609 |
 | The Howling Abyss                                        | 6560, 6309 |
+| The Twisted Treeline                                     | 7708, 7227 |
 
 Each pair was established by observation rather than from any map: a movement
 order carries where it is going as world floats and also as a path, so each
 order that reaches its destination pins the origin to a window two units wide.
-Between twenty four and forty five orders on each map agree on the pair
-recorded for it, while the neighbouring whole numbers fit about half as many,
-which is what an origin off by one looks like. No map's pair fits any other
-map's orders at all.
+Between twenty one and forty five orders on each map agree on the pair recorded
+for it, while the neighbouring whole numbers fit about half as many, which is
+what an origin off by one looks like. No map's pair fits a single one of any
+other map's orders, which is what shows the origin belongs to the map rather
+than to the protocol.
 
 > [!NOTE]
-> Four maps are recorded. A server hosting another needs that map's origin, and
-> the paragraph above says how to obtain one.
+> These are the maps a client of these versions carries. A server hosting
+> anything else needs that map's origin, and the paragraph above says how to
+> obtain one.
 
 ## What a client asks for and what a server answers
 
