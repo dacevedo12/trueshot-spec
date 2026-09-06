@@ -42,6 +42,7 @@ The origins this document records, by the map each belongs to:
 | Summoner's Rift, in the shape it takes in these versions | 7358, 7412 |
 | Summoner's Rift, in the shape it took before that        | 6991, 7223 |
 | The Crystal Scar                                         | 6947, 6609 |
+| The Howling Abyss                                        | 6560, 6309 |
 
 Each pair was established by observation rather than from any map: a movement
 order carries where it is going as world floats and also as a path, so each
@@ -52,7 +53,7 @@ which is what an origin off by one looks like. No map's pair fits any other
 map's orders at all.
 
 > [!NOTE]
-> Three maps are recorded. A server hosting another needs that map's origin, and
+> Four maps are recorded. A server hosting another needs that map's origin, and
 > the paragraph above says how to obtain one.
 
 ## What a client asks for and what a server answers
