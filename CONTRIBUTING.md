@@ -83,6 +83,12 @@ only when both hold.
 `schema/meta/` holds the meta-schemas saying what a definition may contain.
 Everything beside them is the definitions themselves.
 
+An algorithm turns fields a decoder has already read into what they mean. It is
+written in `spec/` and, where a checker can run it, recorded as a vector under
+`conformance/vectors/algorithm`. It never reads bytes. Where one seems to need
+them, what it needs is a way of saying a layout, and that belongs in the
+vocabulary rather than here.
+
 Where a layout is confirmed but a field's meaning is not, say so in a note.
 Those are two claims, and one can be settled while the other stays open.
 

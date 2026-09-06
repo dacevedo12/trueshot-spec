@@ -1,0 +1,32 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "WaypointGroup",
+  "note": "What a server sends to move units. It carries a number a client returns to say it has taken the group in.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "transient",
+      "command": 97,
+      "direction": "serverToClient",
+      "reliability": "unreliable",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "i32",
+          "note": "Names this group. A client returns it to say the group arrived."
+        },
+        {
+          "name": "movementCount",
+          "type": "u16",
+          "note": "How many units the group moves."
+        },
+        {
+          "name": "movements",
+          "type": "array",
+          "count": "movementCount",
+          "items": { "name": "movement", "type": "struct", "struct": "Movement" }
+        }
+      ]
+    }
+  ]
+}

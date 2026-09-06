@@ -14,9 +14,9 @@
       "$ref": "urn:trueshot:schema:message#/$defs/note"
     },
     "subject": {
-      "description": "What this vector checks. A transport vector checks that the packet header was built correctly, and whatever follows it is immaterial. A cipher vector checks the cipher alone and is not a packet.",
+      "description": "What this vector checks. A transport vector checks that the packet header was built correctly, and whatever follows it is immaterial. A cipher vector checks the cipher alone and is not a packet. An algorithm vector checks what a layout cannot say: it carries fields a decoder has already read and what they mean, and touches no bytes.",
       "type": "string",
-      "enum": ["transport", "cipher", "message"]
+      "enum": ["transport", "cipher", "message", "algorithm"]
     },
     "message": {
       "description": "Identity of the message these bytes carry. A message subject only.",
@@ -51,6 +51,18 @@
       "description": "What the cipher produces, in hexadecimal. A cipher subject only.",
       "type": "string",
       "pattern": "^[0-9a-fA-F\\s]+$"
+    },
+    "algorithm": {
+      "description": "Which algorithm, by the name spec/ gives it.",
+      "type": "string",
+      "pattern": "^[a-z][A-Za-z0-9]*$"
+    },
+    "input": {
+      "description": "Fields a decoder has already read, written the way a message vector writes them.",
+      "type": "object"
+    },
+    "output": {
+      "description": "What those fields mean."
     }
   },
   "allOf": [
@@ -72,7 +84,10 @@
           "fields": true,
           "plaintext": false,
           "ciphertext": false,
-          "note": true
+          "note": true,
+          "algorithm": false,
+          "input": false,
+          "output": false
         }
       }
     },
@@ -95,7 +110,10 @@
           "key": false,
           "plaintext": false,
           "ciphertext": false,
-          "note": true
+          "note": true,
+          "algorithm": false,
+          "input": false,
+          "output": false
         }
       }
     },
@@ -118,7 +136,35 @@
           "version": false,
           "bytes": false,
           "fields": false,
-          "note": true
+          "note": true,
+          "algorithm": false,
+          "input": false,
+          "output": false
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "subject": {
+            "const": "algorithm"
+          }
+        },
+        "required": ["subject"]
+      },
+      "then": {
+        "required": ["algorithm", "input", "output"],
+        "properties": {
+          "algorithm": true,
+          "input": true,
+          "output": true,
+          "message": false,
+          "version": false,
+          "bytes": false,
+          "fields": false,
+          "key": false,
+          "plaintext": false,
+          "ciphertext": false
         }
       }
     }

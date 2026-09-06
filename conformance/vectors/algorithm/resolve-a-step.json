@@ -1,0 +1,28 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "algorithm",
+  "algorithm": "resolvePath",
+  "note": "The path of conformance/vectors/move-order/one-step.json, resolved. The second point takes its first coordinate as a step from the point before it and its second afresh.",
+  "input": {
+    "firstX": 3379,
+    "firstZ": 71,
+    "steps": [
+      {
+        "xStep": -17,
+        "xWhole": null,
+        "zStep": null,
+        "zWhole": -145
+      }
+    ]
+  },
+  "output": [
+    {
+      "x": 3379,
+      "z": 71
+    },
+    {
+      "x": 3362,
+      "z": -145
+    }
+  ]
+}

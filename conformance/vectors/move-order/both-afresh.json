@@ -1,0 +1,41 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "MoveOrder",
+  "version": "4.20.0.315",
+  "note": "A move whose second point states both coordinates afresh, which is what a flag pair of zero means. Taken from a client.",
+  "bytes": "72 00000040 0259db5e462f5bbc45000000000400000040007b0dc1fecd0ca9fd",
+  "fields": {
+    "command": 114,
+    "netId": 1073741824,
+    "extendedCommand": null,
+    "kind": 2,
+    "targetX": 14262.8369140625,
+    "targetZ": 6027.39794921875,
+    "target": 0,
+    "movement": {
+      "header": {
+        "hasTeleportToken": 0,
+        "pointCount": 2
+      },
+      "unit": 1073741824,
+      "teleportToken": null,
+      "flags": [
+        {
+          "xIsStep": 0,
+          "zIsStep": 0
+        }
+      ],
+      "firstX": 3451,
+      "firstZ": -319,
+      "steps": [
+        {
+          "xStep": null,
+          "xWhole": 3277,
+          "zStep": null,
+          "zWhole": -599
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "algorithm",
+  "algorithm": "resolvePath",
+  "note": "The path of conformance/vectors/move-order/both-afresh.json, resolved. Both coordinates of the second point are stated afresh, so neither is added to anything.",
+  "input": {
+    "firstX": 3451,
+    "firstZ": -319,
+    "steps": [
+      {
+        "xStep": null,
+        "xWhole": 3277,
+        "zStep": null,
+        "zWhole": -599
+      }
+    ]
+  },
+  "output": [
+    {
+      "x": 3451,
+      "z": -319
+    },
+    {
+      "x": 3277,
+      "z": -599
+    }
+  ]
+}

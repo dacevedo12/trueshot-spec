@@ -59,6 +59,18 @@ than to the protocol.
 > anything else needs that map's origin, and the paragraph above says how to
 > obtain one.
 
+## Resolving a path
+
+A path is read into points by taking the first as it stands and then, for each
+point after it, taking each coordinate either as it stands or by adding the
+step to the coordinate of the point before. The point before means as that
+point resolved, not what the wire carried for it, which matters wherever a
+coordinate stated afresh is followed by one stated as a step.
+
+`conformance/vectors/algorithm` records the resolution of the paths the
+movement vectors carry. Those vectors hold fields a decoder has already read
+and what they resolve to, and touch no bytes.
+
 ## What a client asks for and what a server answers
 
 A client sends the path it would take. A server is under no obligation to

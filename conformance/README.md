@@ -39,6 +39,10 @@ well, because the bytes cannot be read without one. That key is arbitrary, as a
 cipher vector's key is: it comes from no real match, and neither does anything
 it enciphers.
 
+An **algorithm** vector carries `algorithm`, `input` and `output` instead of
+bytes. It records what a layout cannot: the meaning fields carry once they have
+been read. Those live in `vectors/algorithm`.
+
 A **message** vector carries `message` as well, naming the message identity,
 and its bytes are one deciphered channel payload rather than a header. Those
 bytes open with the header its family carries, so `fields` records the header

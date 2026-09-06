@@ -11,6 +11,7 @@ import { join, basename } from "node:path";
 import Ajv from "ajv/dist/2020.js";
 import { CodecError, decodeFields, encodeFields } from "./codec.mjs";
 import { BLOCK, CipherError, decipher, encipher } from "./cipher.mjs";
+import { ALGORITHMS } from "./algorithms.mjs";
 
 const SCHEMA_DIR = "schema";
 const META = join(SCHEMA_DIR, "meta");
@@ -1128,6 +1129,27 @@ if (existsSync(VECTOR_DIR)) {
         } else if (pairs === 0) {
           fail(path, `${key} holds no bytes`);
         }
+      }
+
+      if (doc.subject === "algorithm") {
+        if (dir.name !== "algorithm") {
+          fail(path, `sits under "${dir.name}" but its subject is algorithm`);
+          continue;
+        }
+        const run = ALGORITHMS[doc.algorithm];
+        if (!run) {
+          fail(
+            path,
+            `names algorithm "${doc.algorithm}", which nothing implements`,
+          );
+          continue;
+        }
+        const got = canonical(run(doc.input));
+        const want = canonical(doc.output);
+        if (got !== want) {
+          fail(path, `produces ${got}, and the vector says ${want}`);
+        }
+        continue;
       }
 
       if (doc.subject === "cipher") {
