@@ -41,17 +41,18 @@ The origins this document records, by the map each belongs to:
 | -------------------------------------------------------- | ---------- |
 | Summoner's Rift, in the shape it takes in these versions | 7358, 7412 |
 | Summoner's Rift, in the shape it took before that        | 6991, 7223 |
+| The Crystal Scar                                         | 6947, 6609 |
 
 Each pair was established by observation rather than from any map: a movement
 order carries where it is going as world floats and also as a path, so each
 order that reaches its destination pins the origin to a window two units wide.
-Forty five orders on the first and twenty four on the second agree on the pairs
-above, while the neighbouring whole numbers fit about half as many, which is
-what an origin off by one looks like. Neither map's pair fits the other map's
-orders at all.
+Between twenty four and forty five orders on each map agree on the pair
+recorded for it, while the neighbouring whole numbers fit about half as many,
+which is what an origin off by one looks like. No map's pair fits any other
+map's orders at all.
 
 > [!NOTE]
-> Two maps are recorded. A server hosting another needs that map's origin, and
+> Three maps are recorded. A server hosting another needs that map's origin, and
 > the paragraph above says how to obtain one.
 
 ## What a client asks for and what a server answers
