@@ -130,6 +130,30 @@
           "items": {
             "$ref": "#/$defs/field"
           }
+        },
+        "alsoOn": {
+          "description": "Other channels the same layout travels on. A channel named here carries the identical body under the same command, and says how it is delivered there.",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["channel", "reliability"],
+            "additionalProperties": false,
+            "properties": {
+              "channel": {
+                "description": "Channel name, defined in schema/channels.json. It carries the same family as the channel above.",
+                "type": "string"
+              },
+              "reliability": {
+                "description": "How the transport delivers this message on that channel.",
+                "type": "string",
+                "enum": ["reliable", "unreliable", "unsequenced"]
+              },
+              "note": {
+                "$ref": "#/$defs/note"
+              }
+            }
+          }
         }
       }
     },

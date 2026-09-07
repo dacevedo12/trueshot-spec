@@ -1054,6 +1054,33 @@ for (const { where, doc } of messages) {
       }
     }
 
+    // A channel a message also travels on has to exist, has to be a channel
+    // it is not already on, and has to number its messages the same way, or
+    // the command value would not mean the same thing there.
+    const alsoSeen = new Set();
+    for (const other of revision.alsoOn ?? []) {
+      const gone = channelMissingFor(revision, other.channel);
+      if (gone) {
+        fail(
+          at,
+          `also travels on channel "${other.channel}", which ${gone} across the range this revision covers`,
+        );
+        continue;
+      }
+      if (other.channel === revision.channel || alsoSeen.has(other.channel)) {
+        fail(at, `names channel "${other.channel}" twice`);
+        continue;
+      }
+      alsoSeen.add(other.channel);
+      const there = channelAt(other.channel, revision);
+      if (channel && there && channel.family !== there.family) {
+        fail(
+          at,
+          `also travels on channel "${other.channel}", which carries the "${there.family}" numbering rather than the "${channel.family}" numbering of "${revision.channel}"`,
+        );
+      }
+    }
+
     const bare = needingOrder(revision.fields, structs);
     if (bare.length > 0) {
       for (const protocolRevision of protocolDoc.revisions ?? []) {
@@ -1081,7 +1108,11 @@ const familyAt = (channelName, revision) => {
 // One command value cannot mean two things in the same family, in the same
 // direction, at the same time.
 const claims = messages.flatMap(({ where, doc }) =>
-  doc.revisions.map((revision) => ({ where, message: doc.message, revision })),
+  doc.revisions.flatMap((revision) =>
+    [revision.channel, ...(revision.alsoOn ?? []).map((o) => o.channel)].map(
+      (channel) => ({ where, message: doc.message, revision, channel }),
+    ),
+  ),
 );
 
 for (let i = 0; i < claims.length; i += 1) {
@@ -1091,15 +1122,15 @@ for (let i = 0; i < claims.length; i += 1) {
     if (a.message === b.message) continue;
     if (a.revision.command !== b.revision.command) continue;
     if (!rangesOverlap(a.revision, b.revision)) continue;
-    const familyA = familyAt(a.revision.channel, a.revision);
-    const familyB = familyAt(b.revision.channel, b.revision);
+    const familyA = familyAt(a.channel, a.revision);
+    const familyB = familyAt(b.channel, b.revision);
     if (familyA === null || familyB === null || familyA !== familyB) continue;
     if (!directionsOverlap(a.revision.direction, b.revision.direction))
       continue;
     const where =
-      a.revision.channel === b.revision.channel
-        ? `on channel "${a.revision.channel}"`
-        : `across channels "${a.revision.channel}" and "${b.revision.channel}", which share the "${familyA}" numbering`;
+      a.channel === b.channel
+        ? `on channel "${a.channel}"`
+        : `across channels "${a.channel}" and "${b.channel}", which share the "${familyA}" numbering`;
     fail(
       a.where,
       `command ${a.revision.command} collides with ${b.message} ${where}`,

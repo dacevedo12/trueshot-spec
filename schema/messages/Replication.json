@@ -9,6 +9,13 @@
       "command": 196,
       "direction": "serverToClient",
       "reliability": "unreliable",
+      "alsoOn": [
+        {
+          "channel": "events",
+          "reliability": "reliable",
+          "note": "A server sends the same body here where the client has to see the change, rather than merely see it soon."
+        }
+      ],
       "fields": [
         {
           "name": "syncId",

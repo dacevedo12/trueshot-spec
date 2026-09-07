@@ -24,6 +24,14 @@ What selects the header is the family, not the channel. A channel carrying a
 family is how the two connect, and reading a payload against the wrong family
 decodes something rather than failing.
 
+A revision names the channel it travels on, and names any others in
+`alsoOn`.
+Those channels carry the same family, so the command value means the same
+message on each, and the body is byte for byte the one the revision records.
+What changes between them is delivery: each entry states how the transport
+carries the message there. A receiving end MUST accept such a message on any
+channel the revision names, and MUST read it the same way on all of them.
+
 ## The command
 
 A revision records the value that identifies it, and the family's header says
