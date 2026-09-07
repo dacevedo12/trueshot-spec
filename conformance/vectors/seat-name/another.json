@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SeatName",
+  "version": "4.20.0.315",
+  "note": "Taken from a server a client accepted. The seat names it carried are the stand-ins the server was configured with, so no name in it belongs to anybody.",
+  "bytes": "66 01000000000000000000000009000000506c61796572203100",
+  "fields": {
+    "command": 102,
+    "seat": "1",
+    "skin": 0,
+    "nameLength": 9,
+    "name": "Player 1",
+    "terminator": "00"
+  }
+}

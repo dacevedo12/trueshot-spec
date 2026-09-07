@@ -1,0 +1,47 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "SeatChampion",
+  "note": "What a server sends to say which champion a seat is playing, while the match is being put together.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "roster",
+      "command": 101,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "seat",
+          "type": "i64",
+          "note": "The seat this is about."
+        },
+        {
+          "name": "skin",
+          "type": "i32",
+          "note": "Which look the champion wears."
+        },
+        {
+          "name": "assetLength",
+          "type": "u32",
+          "note": "How many bytes the name below occupies, counting the byte that ends it."
+        },
+        {
+          "name": "asset",
+          "type": "string",
+          "encoding": "utf8",
+          "size": {
+            "field": "assetLength",
+            "minus": 1
+          },
+          "note": "The name the client loads the champion's art and sound under. It is not padded."
+        },
+        {
+          "name": "terminator",
+          "type": "bytes",
+          "size": 1,
+          "note": "A zero byte closing the text, which the length above counts."
+        }
+      ]
+    }
+  ]
+}

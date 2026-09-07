@@ -1,0 +1,26 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "JoinSide",
+  "note": "What a client sends to ask for a seat on one of the two sides while the match is being put together.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "roster",
+      "command": 100,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "seat",
+          "type": "i32",
+          "note": "The seat asking."
+        },
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "The side it asks for."
+        }
+      ]
+    }
+  ]
+}

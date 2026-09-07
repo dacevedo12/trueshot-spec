@@ -1,0 +1,58 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "Roster",
+  "note": "What a server sends to lay out both sides and who is on them, while the match is being put together.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "roster",
+      "command": 103,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "sideRoom",
+          "type": "u32",
+          "note": "How many seats the first side has room for."
+        },
+        {
+          "name": "otherSideRoom",
+          "type": "u32",
+          "note": "How many the other has room for."
+        },
+        {
+          "name": "side",
+          "type": "array",
+          "count": 24,
+          "note": "The seats on one side, twenty four places. The count below says how many of the leading places carry a seat; the rest hold zero. A place cannot be read on its own, because zero is a seat a match gives out as well as what an unused place holds.",
+          "items": {
+            "name": "seat",
+            "type": "i64",
+            "note": "One seat."
+          }
+        },
+        {
+          "name": "otherSide",
+          "type": "array",
+          "count": 24,
+          "note": "The seats on the other, under the same reading and its own count.",
+          "items": {
+            "name": "seat",
+            "type": "i64",
+            "note": "One seat."
+          }
+        },
+        {
+          "name": "sideTaken",
+          "type": "u32",
+          "note": "How many of the leading places on the first side carry a seat."
+        },
+        {
+          "name": "otherSideTaken",
+          "type": "u32",
+          "note": "How many on the other."
+        }
+      ]
+    }
+  ]
+}

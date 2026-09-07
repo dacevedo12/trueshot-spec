@@ -1,0 +1,47 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "SeatName",
+  "note": "What a server sends to say what a seat is called, while the match is being put together.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "roster",
+      "command": 102,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "seat",
+          "type": "i64",
+          "note": "The seat this is about."
+        },
+        {
+          "name": "skin",
+          "type": "i32",
+          "note": "Which look the seat's champion wears. Zero in everything observed."
+        },
+        {
+          "name": "nameLength",
+          "type": "u32",
+          "note": "How many bytes the name below occupies, counting the byte that ends it."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": {
+            "field": "nameLength",
+            "minus": 1
+          },
+          "note": "What the seat is called. It is not padded."
+        },
+        {
+          "name": "terminator",
+          "type": "bytes",
+          "size": 1,
+          "note": "A zero byte closing the text, which the length above counts."
+        }
+      ]
+    }
+  ]
+}
