@@ -1,0 +1,24 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "CastSpell",
+  "version": "4.20.0.315",
+  "note": "A cast from a summoner slot, aimed at a point. Taken from a client.",
+  "bytes": "9a 74060040 d1046d3e6445c90667456d3e6445c9066745e9010040",
+  "fields": {
+    "command": 154,
+    "netId": 1073743476,
+    "extendedCommand": null,
+    "how": {
+      "fromSummonerSlots": 1,
+      "fromHud": 0,
+      "unknown": 52
+    },
+    "slot": 4,
+    "x": 3651.901611328125,
+    "z": 3696.424072265625,
+    "endX": 3651.901611328125,
+    "endZ": 3696.424072265625,
+    "target": 1073742313
+  }
+}

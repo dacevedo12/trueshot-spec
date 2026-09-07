@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "GameOptions",
+  "version": "4.20.0.315",
+  "note": "Auto attack on. Taken from a client.",
+  "bytes": "47 74060040 01",
+  "fields": {
+    "command": 71,
+    "netId": 1073743476,
+    "extendedCommand": null,
+    "options": {
+      "autoAttack": 1,
+      "unknown": 0
+    }
+  }
+}

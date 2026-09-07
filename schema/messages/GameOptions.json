@@ -1,0 +1,33 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "GameOptions",
+  "note": "What a client sends when a setting that a server needs to know about changes.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "requests",
+      "command": 71,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "options",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "autoAttack",
+              "width": 1,
+              "note": "Set while the client attacks without being told to."
+            },
+            {
+              "name": "unknown",
+              "width": 7,
+              "note": "Purpose undetermined. Observed clear."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

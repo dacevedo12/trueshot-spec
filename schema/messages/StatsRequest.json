@@ -1,0 +1,22 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "StatsRequest",
+  "note": "What a client sends to ask for the scoreboard.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "requests",
+      "command": 86,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unknown",
+          "type": "bytes",
+          "size": 20,
+          "note": "Purpose undetermined, and read by no implementation observed."
+        }
+      ]
+    }
+  ]
+}

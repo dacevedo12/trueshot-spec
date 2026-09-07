@@ -1,0 +1,22 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "ClientReady",
+  "note": "What a client sends once it is ready to play, after loading and before the match begins.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "requests",
+      "command": 82,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unknown",
+          "type": "bytes",
+          "size": 16,
+          "note": "Purpose undetermined. A client sends the same sixteen bytes each time apart from one, which has been seen to carry a value and to carry none, so the run is recorded whole rather than divided into parts nothing has told apart."
+        }
+      ]
+    }
+  ]
+}

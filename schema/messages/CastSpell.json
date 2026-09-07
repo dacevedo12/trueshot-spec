@@ -1,0 +1,68 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "CastSpell",
+  "note": "What a client sends to cast something from a slot, at a point or at a unit.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "requests",
+      "command": 154,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "fromSummonerSlots",
+              "width": 1,
+              "note": "Set where the slot counts among the summoner slots rather than the unit's own."
+            },
+            {
+              "name": "fromHud",
+              "width": 1,
+              "note": "Set where the cast came from clicking the panel rather than the world."
+            },
+            {
+              "name": "unknown",
+              "width": 6,
+              "note": "Purpose undetermined. A client leaves these as it found them, so they carry values it never wrote for this message."
+            }
+          ]
+        },
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot is being cast from."
+        },
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Where the cast starts, along one ground axis, in world units."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Where the cast starts, along the other."
+        },
+        {
+          "name": "endX",
+          "type": "f32",
+          "note": "Where it is aimed, along one ground axis."
+        },
+        {
+          "name": "endZ",
+          "type": "f32",
+          "note": "Where it is aimed, along the other."
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The network object aimed at, or zero where the cast is aimed at ground."
+        }
+      ]
+    }
+  ]
+}

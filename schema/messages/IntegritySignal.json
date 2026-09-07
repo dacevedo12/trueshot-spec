@@ -1,0 +1,22 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "IntegritySignal",
+  "note": "What a client sends once a session, whose purpose is undetermined.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "requests",
+      "command": 125,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unknown",
+          "type": "bytes",
+          "size": 8,
+          "note": "Purpose undetermined, and read by no implementation observed. Observed as zero."
+        }
+      ]
+    }
+  ]
+}

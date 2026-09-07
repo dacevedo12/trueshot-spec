@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ClientReady",
+  "version": "4.20.0.315",
+  "note": "Every byte clear. Taken from a client.",
+  "bytes": "52 00000000 00000000000000000000000000000000",
+  "fields": {
+    "command": 82,
+    "netId": 0,
+    "extendedCommand": null,
+    "unknown": "00000000000000000000000000000000"
+  }
+}
