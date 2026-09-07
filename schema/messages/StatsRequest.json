@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "StatsRequest",
-  "note": "What a client sends to ask for the scoreboard.",
+  "note": "What a client sends about itself: what it has detected running alongside it, and which appearance it believes it is wearing.",
   "revisions": [
     {
       "from": "4.20.0.315",
@@ -14,7 +14,7 @@
           "name": "unknown",
           "type": "bytes",
           "size": 20,
-          "note": "Purpose undetermined, and read by no implementation observed."
+          "note": "Three values a client reports about software it has detected alongside itself, then the appearance it claims and a value standing for that appearance's content. A server takes none of it on trust."
         }
       ]
     }

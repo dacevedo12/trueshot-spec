@@ -11,9 +11,9 @@
       "reliability": "reliable",
       "fields": [
         {
-          "name": "unknown",
+          "name": "clientId",
           "type": "u32",
-          "note": "Purpose undetermined. Observed as zero."
+          "note": "Which seat is selecting. Zero is a seat like any other rather than an absence."
         },
         {
           "name": "selected",

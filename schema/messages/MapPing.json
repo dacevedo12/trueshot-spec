@@ -28,7 +28,30 @@
         {
           "name": "kind",
           "type": "u8",
-          "note": "Which mark it is. The values are not yet told apart."
+          "note": "Which mark it is.",
+          "values": {
+            "0": {
+              "name": "here"
+            },
+            "1": {
+              "name": "attackDirection"
+            },
+            "2": {
+              "name": "danger"
+            },
+            "3": {
+              "name": "targetUnaccountedFor"
+            },
+            "4": {
+              "name": "onMyWay"
+            },
+            "5": {
+              "name": "fallBack"
+            },
+            "6": {
+              "name": "comeHere"
+            }
+          }
         }
       ]
     }

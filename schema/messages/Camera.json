@@ -42,7 +42,7 @@
         {
           "name": "syncId",
           "type": "u8",
-          "note": "Rises with each report, wrapping within the byte."
+          "note": "Names this report. A server returns it unchanged, and a client sends the report again until one comes back. It counts up through a byte and begins again, and a client takes a returned value as newer only where it is fewer than 128 steps ahead of the last it accepted."
         }
       ]
     }

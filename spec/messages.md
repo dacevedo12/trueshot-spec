@@ -234,6 +234,21 @@ Reading a run therefore needs to know, for each value, which of the two shapes
 it takes. Nothing on the wire says, and it is not settled by position alone, so
 an end that does not already know cannot read one.
 
+## What follows what
+
+Most of what a client sends stands on its own: it moves, selects, marks the
+map, buys and sells in whatever order a player acts, and a server refusing one
+of those does not change what comes next.
+
+Opening a connection is not like that. A client asks whether a server is ready
+and asks again until told it is. It states its build only once told. It reports
+itself ready when a server starts play, and reports a character settled once it
+has finished loading one. Each waits on the step before it.
+
+One thing during play behaves the same way. A client names each view report and
+sends it again until a server returns that name, so a server that never returns
+one is sent the same report for as long as the match lasts.
+
 ## Vectors
 
 Every revision carries at least one conformance vector, which is what separates

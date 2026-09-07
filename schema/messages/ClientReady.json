@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "ClientReady",
-  "note": "What a client sends once it is ready to play, after loading and before the match begins.",
+  "note": "What a client sends once it has loaded and is ready to play. A server's start of play is what prompts it.",
   "revisions": [
     {
       "from": "4.20.0.315",
@@ -11,10 +11,71 @@
       "reliability": "reliable",
       "fields": [
         {
-          "name": "unknown",
-          "type": "bytes",
-          "size": 16,
-          "note": "Purpose undetermined. A client sends the same sixteen bytes each time apart from one, which has been seen to carry a value and to carry none, so the run is recorded whole rather than divided into parts nothing has told apart."
+          "name": "moduleOne",
+          "type": "u32",
+          "note": "One of three values a client reports about software it has detected alongside itself. Observed as zero."
+        },
+        {
+          "name": "tipChosen",
+          "type": "u8",
+          "note": "Which tip the client is set to show."
+        },
+        {
+          "name": "tipColour",
+          "type": "u8",
+          "note": "How it is coloured."
+        },
+        {
+          "name": "tipDuration",
+          "type": "u8",
+          "note": "How long it stays."
+        },
+        {
+          "name": "settings",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "tips",
+              "width": 1,
+              "note": "Set while tips are wanted at all."
+            },
+            {
+              "name": "reporting",
+              "width": 1,
+              "note": "Set while the client reports on itself."
+            },
+            {
+              "name": "loadingTips",
+              "width": 1,
+              "note": "Set while tips are wanted while loading."
+            },
+            {
+              "name": "playingTips",
+              "width": 1,
+              "note": "Set while tips are wanted during play."
+            },
+            {
+              "name": "debug",
+              "width": 1,
+              "note": "Set while the client runs in a debugging state."
+            },
+            {
+              "name": "unknown",
+              "width": 3,
+              "note": "Purpose undetermined. A client leaves these as it found them, so they carry values it never wrote for this message."
+            }
+          ]
+        },
+        {
+          "name": "moduleTwo",
+          "type": "u32",
+          "note": "The second of the three. Observed as zero."
+        },
+        {
+          "name": "moduleThree",
+          "type": "u32",
+          "note": "The third. Observed as zero."
         }
       ]
     }

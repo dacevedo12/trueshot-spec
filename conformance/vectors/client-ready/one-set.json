@@ -3,12 +3,25 @@
   "subject": "message",
   "message": "ClientReady",
   "version": "4.20.0.315",
-  "note": "The one byte that has been seen to differ, carrying a value. Taken from a client.",
+  "note": "Tips and reporting both wanted, with two bits beside them the flags do not explain. Taken from a client.",
   "bytes": "52 00000000 00000000000000c30000000000000000",
   "fields": {
     "command": 82,
     "netId": 0,
     "extendedCommand": null,
-    "unknown": "00000000000000c30000000000000000"
+    "moduleOne": 0,
+    "tipChosen": 0,
+    "tipColour": 0,
+    "tipDuration": 0,
+    "settings": {
+      "tips": 1,
+      "reporting": 1,
+      "loadingTips": 0,
+      "playingTips": 0,
+      "debug": 0,
+      "unknown": 6
+    },
+    "moduleTwo": 0,
+    "moduleThree": 0
   }
 }

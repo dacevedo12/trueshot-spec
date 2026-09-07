@@ -3,12 +3,25 @@
   "subject": "message",
   "message": "ClientReady",
   "version": "4.20.0.315",
-  "note": "Every byte clear. Taken from a client.",
+  "note": "Every setting clear. Taken from a client.",
   "bytes": "52 00000000 00000000000000000000000000000000",
   "fields": {
     "command": 82,
     "netId": 0,
     "extendedCommand": null,
-    "unknown": "00000000000000000000000000000000"
+    "moduleOne": 0,
+    "tipChosen": 0,
+    "tipColour": 0,
+    "tipDuration": 0,
+    "settings": {
+      "tips": 0,
+      "reporting": 0,
+      "loadingTips": 0,
+      "playingTips": 0,
+      "debug": 0,
+      "unknown": 0
+    },
+    "moduleTwo": 0,
+    "moduleThree": 0
   }
 }
