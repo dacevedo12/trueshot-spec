@@ -1,0 +1,124 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "CreateChampion",
+  "note": "What a server sends to put a champion on the field.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 76,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "champion",
+          "type": "u32",
+          "note": "The name the champion answers to, so later messages can name it."
+        },
+        {
+          "name": "seat",
+          "type": "i32",
+          "note": "The seat holding it, or a negative number where no seat does."
+        },
+        {
+          "name": "node",
+          "type": "u8",
+          "note": "Which of the sender's runs of names this one is drawn from."
+        },
+        {
+          "name": "skillLevel",
+          "type": "u8",
+          "note": "What level its own doings stand at."
+        },
+        {
+          "name": "who",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "orderSide",
+              "width": 1,
+              "note": "Set where the champion is on one side rather than the other."
+            },
+            {
+              "name": "bot",
+              "width": 1,
+              "note": "Set where nobody holds it."
+            },
+            {
+              "name": "unknown",
+              "width": 6,
+              "note": "Purpose undetermined. A server leaves these as it found them, so they carry values it never wrote for this message."
+            }
+          ]
+        },
+        {
+          "name": "rank",
+          "type": "u8",
+          "note": "How well it plays where nobody holds it."
+        },
+        {
+          "name": "spawnIndex",
+          "type": "u8",
+          "note": "Which of its side's starting places it begins at."
+        },
+        {
+          "name": "skin",
+          "type": "i32",
+          "note": "Which look it wears."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "What the seat holding it is called. Written out in full and padded with zero bytes to the width above."
+        },
+        {
+          "name": "asset",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 40,
+          "note": "The name the client loads its art and sound under, written and padded as above."
+        },
+        {
+          "name": "stayDown",
+          "type": "f32",
+          "note": "How long it stays down, in seconds, where it is already down."
+        },
+        {
+          "name": "downFor",
+          "type": "f32",
+          "note": "How long it has already been down, in seconds."
+        },
+        {
+          "name": "deathKind",
+          "type": "u32",
+          "note": "What sort of death it is already in, where it is already down."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "unknown1",
+              "width": 1,
+              "note": "Purpose undetermined."
+            },
+            {
+              "name": "unknown2",
+              "width": 1,
+              "note": "Purpose undetermined."
+            },
+            {
+              "name": "unknown",
+              "width": 6,
+              "note": "Purpose undetermined. A server leaves these as it found them, so they carry values it never wrote for this message."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

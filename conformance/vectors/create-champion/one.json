@@ -1,0 +1,35 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "CreateChampion",
+  "version": "4.20.0.315",
+  "note": "Taken from a server a client accepted. The seat names it carried are the stand-ins the server was configured with, so no name in it belongs to anybody.",
+  "bytes": "4c 00000000 2c06 004000000000000001000000000000506c6179657220300000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004b6173736164696e000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+  "fields": {
+    "command": 76,
+    "netId": 0,
+    "extendedCommand": null,
+    "champion": 1073743404,
+    "seat": 0,
+    "node": 0,
+    "skillLevel": 0,
+    "who": {
+      "orderSide": 1,
+      "bot": 0,
+      "unknown": 0
+    },
+    "rank": 0,
+    "spawnIndex": 0,
+    "skin": 0,
+    "name": "Player 0",
+    "asset": "Kassadin",
+    "stayDown": 0,
+    "downFor": 0,
+    "deathKind": 0,
+    "how": {
+      "unknown1": 0,
+      "unknown2": 0,
+      "unknown": 0
+    }
+  }
+}

@@ -107,7 +107,13 @@ code, not this protocol. State what the client accepts.
   differs every time. Take the message you need out of it and commit that.
 
 A message lifted from a recording carries names and identifiers in its bytes.
-Zero them, adjust the decoded fields to match, and say so in a note.
+Zero them, or write a plain stand-in over the run and zero the rest of it,
+adjust the decoded fields to match, and say so in a note. Where a capture was
+taken from a server configured with stand-in names to begin with, the note says
+that instead.
+
+Text another project wrote is that project's own, not this protocol. A vector
+carrying it gets the same treatment.
 
 A channel payload is enciphered on the wire. Decipher it before it becomes a
 vector, because a vector records what a message is, not what one connection's

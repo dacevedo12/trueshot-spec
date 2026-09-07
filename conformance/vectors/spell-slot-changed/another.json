@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SpellSlotChanged",
+  "version": "4.20.0.315",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "17 74060040 0600 020000004974656d4372797374616c466c61736b00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+  "fields": {
+    "command": 23,
+    "netId": 1073743476,
+    "extendedCommand": null,
+    "slot": 6,
+    "what": {
+      "summonerSpell": 0,
+      "unknown": 0
+    },
+    "kind": 2,
+    "name": "ItemCrystalFlask"
+  }
+}

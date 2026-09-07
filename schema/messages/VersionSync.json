@@ -1,0 +1,243 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "VersionSync",
+  "note": "What a server sends once a client has said which build it runs: whether the two agree, which map to load, who is at the match, and everything else settled before play.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 84,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "agreement",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "buildMatches",
+              "width": 1,
+              "note": "Set where the client's build is one the server serves."
+            },
+            {
+              "name": "writeToClientFile",
+              "width": 1,
+              "note": "Purpose undetermined."
+            },
+            {
+              "name": "matched",
+              "width": 1,
+              "note": "Set where the match was put together rather than made by hand."
+            },
+            {
+              "name": "reportingReady",
+              "width": 1,
+              "note": "Set where the reporting settings below are to be used."
+            },
+            {
+              "name": "unknown",
+              "width": 4,
+              "note": "Purpose undetermined. A server leaves these as it found them, so they carry values it never wrote for this message."
+            }
+          ]
+        },
+        {
+          "name": "map",
+          "type": "i32",
+          "note": "Which map to load. spec/movement.md keys the path origins by the same maps."
+        },
+        {
+          "name": "seats",
+          "type": "array",
+          "count": 12,
+          "note": "Every place at the match, held or empty.",
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
+        },
+        {
+          "name": "build",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 256,
+          "note": "Which build the server serves. Written out in full and padded with zero bytes to the width above."
+        },
+        {
+          "name": "mode",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "Which way the match is played, written and padded as above."
+        },
+        {
+          "name": "platform",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 32,
+          "note": "Which platform the match belongs to, written and padded as above."
+        },
+        {
+          "name": "variants",
+          "type": "array",
+          "count": 8,
+          "note": "The variations the match is played under, one place each. A place stands empty where none applies.",
+          "items": {
+            "name": "variant",
+            "type": "string",
+            "encoding": "utf8",
+            "size": 64,
+            "note": "One variation. Written out in full and padded with zero bytes to the width above."
+          }
+        },
+        {
+          "name": "variantCount",
+          "type": "u8",
+          "note": "How many of the places above are filled."
+        },
+        {
+          "name": "teamName",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 97,
+          "note": "What one side is called where it plays as a standing team, written and padded as above."
+        },
+        {
+          "name": "teamTag",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 25,
+          "note": "The short form of that name, written and padded as above."
+        },
+        {
+          "name": "otherTeamName",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 97,
+          "note": "What the other side is called, under the same terms."
+        },
+        {
+          "name": "otherTeamTag",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 25,
+          "note": "The short form of that one."
+        },
+        {
+          "name": "metricsHost",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 256,
+          "note": "Where a client reports figures about the match, written and padded as above."
+        },
+        {
+          "name": "metricsPath",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 256,
+          "note": "What it asks for there, written and padded as above."
+        },
+        {
+          "name": "metricsPort",
+          "type": "u16",
+          "note": "Which port it reaches that at."
+        },
+        {
+          "name": "reportingHost",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 256,
+          "note": "Where a client reports how the match went, written and padded as above."
+        },
+        {
+          "name": "reportingPath",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 256,
+          "note": "What it asks for there, written and padded as above."
+        },
+        {
+          "name": "reportingPort",
+          "type": "u16",
+          "note": "Which port it reaches that at."
+        },
+        {
+          "name": "altReportingHost",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 256,
+          "note": "A second such place, written and padded as above."
+        },
+        {
+          "name": "altReportingPath",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 256,
+          "note": "What it asks for there, written and padded as above."
+        },
+        {
+          "name": "altReportingPort",
+          "type": "u16",
+          "note": "Which port it reaches that at."
+        },
+        {
+          "name": "tip",
+          "type": "i8",
+          "note": "Which note the client shows before play."
+        },
+        {
+          "name": "tipColour",
+          "type": "i8",
+          "note": "Which colouring it shows it in."
+        },
+        {
+          "name": "tipDuration",
+          "type": "i8",
+          "note": "How long it holds it up."
+        },
+        {
+          "name": "tipFlags",
+          "type": "i8",
+          "note": "How else it shows it. The bits within are undetermined."
+        },
+        {
+          "name": "features",
+          "type": "u64",
+          "note": "Which parts of the match are turned on. The bits within are undetermined."
+        },
+        {
+          "name": "disabledItems",
+          "type": "array",
+          "count": 64,
+          "note": "Items nobody may buy in this match, one place each. A place holds zero where nothing is barred.",
+          "items": {
+            "name": "item",
+            "type": "u32",
+            "note": "One item, by the number the client knows it as."
+          }
+        },
+        {
+          "name": "reportingMessages",
+          "type": "array",
+          "count": 19,
+          "note": "Which of the reports a client sends are wanted, one place each.",
+          "items": {
+            "name": "wanted",
+            "type": "u8",
+            "note": "Whether that report is wanted.",
+            "values": {
+              "0": {
+                "name": "no"
+              },
+              "1": {
+                "name": "yes"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

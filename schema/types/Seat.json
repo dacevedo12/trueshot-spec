@@ -1,0 +1,83 @@
+{
+  "$schema": "../meta/struct.json",
+  "struct": "Seat",
+  "note": "One place at the match: who holds it, what they brought, and what the client shows for them.",
+  "fields": [
+    {
+      "name": "seat",
+      "type": "i64",
+      "note": "Which seat, or a negative number where the place stands empty."
+    },
+    {
+      "name": "level",
+      "type": "u16",
+      "note": "The level the seat holder has reached across matches."
+    },
+    {
+      "name": "summoner",
+      "type": "u32",
+      "note": "The spell in one of the seat's summoner slots."
+    },
+    {
+      "name": "summonerAgain",
+      "type": "u32",
+      "note": "The spell in the other."
+    },
+    {
+      "name": "flags",
+      "type": "u8",
+      "note": "How the seat is treated. The bits within are undetermined."
+    },
+    {
+      "name": "team",
+      "type": "u32",
+      "note": "The side the seat is on, or zero where it stands empty."
+    },
+    {
+      "name": "botName",
+      "type": "string",
+      "encoding": "utf8",
+      "size": 64,
+      "note": "What the seat is called where nobody holds it. Written out in full and padded with zero bytes to the width above."
+    },
+    {
+      "name": "botAsset",
+      "type": "string",
+      "encoding": "utf8",
+      "size": 64,
+      "note": "The name the client loads art for it under where nobody holds it, written and padded as above."
+    },
+    {
+      "name": "standing",
+      "type": "string",
+      "encoding": "utf8",
+      "size": 16,
+      "note": "What the seat's standing across matches is called, written and padded as above."
+    },
+    {
+      "name": "botSkin",
+      "type": "i32",
+      "note": "Which look it wears where nobody holds it."
+    },
+    {
+      "name": "botDifficulty",
+      "type": "i32",
+      "note": "How well it plays where nobody holds it."
+    },
+    {
+      "name": "icon",
+      "type": "i32",
+      "note": "Which picture the client shows beside it."
+    },
+    {
+      "name": "allyBadge",
+      "type": "u8",
+      "note": "Which mark the client shows for it to its own side."
+    },
+    {
+      "name": "enemyBadge",
+      "type": "u8",
+      "note": "Which mark the client shows for it to the other."
+    }
+  ]
+}

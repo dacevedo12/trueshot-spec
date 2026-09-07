@@ -1,0 +1,73 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "SpellSlotChanged",
+  "note": "What a server sends to change one thing about a spell already in a unit's slot. Which thing is settled by the kind below, and each kind carries its own shape.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 23,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot."
+        },
+        {
+          "name": "what",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "summonerSpell",
+              "width": 1,
+              "note": "Set where the slot is a summoner slot rather than one of the unit's own."
+            },
+            {
+              "name": "unknown",
+              "width": 7,
+              "note": "Purpose undetermined. A server leaves these as it found them, so they carry values it never wrote for this message."
+            }
+          ]
+        },
+        {
+          "name": "kind",
+          "type": "u32",
+          "note": "Which thing about the spell is being changed, and so which shape follows. Only a change of name has been observed.",
+          "values": {
+            "1": {
+              "name": "targetingType"
+            },
+            "2": {
+              "name": "name"
+            },
+            "3": {
+              "name": "castRange"
+            },
+            "4": {
+              "name": "maxGrowthRange"
+            },
+            "5": {
+              "name": "rangeShown"
+            },
+            "6": {
+              "name": "icon"
+            },
+            "7": {
+              "name": "targetOffset"
+            }
+          }
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "The name the client loads the spell under. Written out in full and padded with zero bytes to the width above. Every payload observed names a change of name; a payload naming another kind carries a shape this specification does not record."
+        }
+      ]
+    }
+  ]
+}

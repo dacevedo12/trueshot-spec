@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SpellSlotChanged",
+  "version": "4.20.0.315",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "17 74060040 0c00 020000005472696e6b6574546f74656d4c766c3100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+  "fields": {
+    "command": 23,
+    "netId": 1073743476,
+    "extendedCommand": null,
+    "slot": 12,
+    "what": {
+      "summonerSpell": 0,
+      "unknown": 0
+    },
+    "kind": 2,
+    "name": "TrinketTotemLvl1"
+  }
+}

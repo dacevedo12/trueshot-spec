@@ -1,0 +1,47 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "TipShown",
+  "note": "What a server sends to put a note in front of a seat.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 85,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "What the note is headed with. Written out in full and padded with zero bytes to the width above."
+        },
+        {
+          "name": "body",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "What the note says, written and padded as above."
+        },
+        {
+          "name": "image",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "The name the client loads a picture for it under, written and padded as above."
+        },
+        {
+          "name": "what",
+          "type": "u8",
+          "note": "What the client does with the note."
+        },
+        {
+          "name": "tip",
+          "type": "u32",
+          "note": "The name this note answers to, so a later message can name it."
+        }
+      ]
+    }
+  ]
+}
