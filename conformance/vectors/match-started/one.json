@@ -1,10 +1,10 @@
 {
   "$schema": "../../../schema/meta/vector.json",
   "subject": "message",
-  "message": "MissionClock",
+  "message": "MatchStarted",
   "version": "4.20.0.315",
   "note": "Taken from a server a client accepted.",
-  "bytes": "c2 00000000 00000000",
+  "bytes": "c2 00000000 0000 0000",
   "fields": {
     "command": 194,
     "netId": 0,

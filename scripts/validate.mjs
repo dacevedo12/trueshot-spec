@@ -1326,6 +1326,21 @@ if (existsSync(VECTOR_DIR)) {
           continue;
         }
         covered.add(`${doc.message}@${revision.from}`);
+        // Where a revision names more than one channel, each has to have a
+        // payload behind it, and a vector says which one it arrived on.
+        if (doc.channel !== undefined) {
+          const named = [
+            revision.channel,
+            ...(revision.alsoOn ?? []).map((o) => o.channel),
+          ];
+          if (!named.includes(doc.channel)) {
+            fail(
+              path,
+              `arrived on channel "${doc.channel}", which ${doc.message} does not travel on`,
+            );
+          }
+          covered.add(`${doc.message}@${revision.from}@${doc.channel}`);
+        }
         const channel = channelAt(revision.channel, revision);
         const family = channel && familyDefAt(channel.family, revision);
         if (!family) {
@@ -1606,6 +1621,20 @@ for (const { where, doc } of messages) {
         where,
         `revision ${revision.from} has no vector, so nothing checks its layout against a recorded payload`,
       );
+    }
+    for (const channel of [
+      revision.channel,
+      ...(revision.alsoOn ?? []).map((o) => o.channel),
+    ]) {
+      if (
+        (revision.alsoOn ?? []).length > 0 &&
+        !covered.has(`${doc.message}@${revision.from}@${channel}`)
+      ) {
+        fail(
+          where,
+          `revision ${revision.from} claims channel "${channel}" with no vector that arrived on it`,
+        );
+      }
     }
   }
 }

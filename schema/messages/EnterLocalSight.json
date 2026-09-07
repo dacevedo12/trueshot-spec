@@ -18,12 +18,12 @@
             {
               "name": "size",
               "width": 13,
-              "note": "How many bytes the messages below occupy in total. Zero in everything observed."
+              "note": "How many bytes the messages below occupy in total. Zero in everything observed. Nothing observed sets the three bits above it, so a plain sixteen bit count reads every payload alike."
             },
             {
               "name": "unknown",
               "width": 3,
-              "note": "Purpose undetermined. A reading end takes no meaning from these."
+              "note": "Purpose undetermined. Clear in everything observed."
             }
           ]
         },

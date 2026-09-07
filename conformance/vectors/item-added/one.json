@@ -1,10 +1,10 @@
 {
   "$schema": "../../../schema/meta/vector.json",
   "subject": "message",
-  "message": "BuyItemAnswer",
+  "message": "ItemAdded",
   "version": "4.20.0.315",
   "note": "Taken from a server a client accepted.",
-  "bytes": "6f 4b040040 dc05000000010000",
+  "bytes": "6f 4b040040 dc05 000000010000",
   "fields": {
     "command": 111,
     "netId": 1073742923,

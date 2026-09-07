@@ -24,13 +24,15 @@ What selects the header is the family, not the channel. A channel carrying a
 family is how the two connect, and reading a payload against the wrong family
 decodes something rather than failing.
 
-A revision names the channel it travels on, and names any others in
-`alsoOn`.
+A revision names the channel it travels on, and names any others in `alsoOn`.
 Those channels carry the same family, so the command value means the same
 message on each, and the body is byte for byte the one the revision records.
 What changes between them is delivery: each entry states how the transport
-carries the message there. A receiving end MUST accept such a message on any
-channel the revision names, and MUST read it the same way on all of them.
+carries the message there. A server MAY send such a message on any channel the
+revision names, and what it gets is the delivery stated for that channel. A
+client reads it the same way on every one of them, so a server MUST NOT vary
+the body with the channel it chooses. Each channel a revision names carries a
+vector that arrived on it.
 
 ## The command
 
@@ -173,7 +175,9 @@ and `schema/families.json` do not all describe, because a range none of them
 reaches has no header, no byte order, and no channel to travel on.
 
 A revision travels on a channel, which `schema/channels.json` defines, and
-states how the transport delivers it: reliable, unreliable, or unsequenced.
+names any further channels carrying the same layout, as Families above says. For
+each it states how the transport delivers it: reliable, unreliable, or
+unsequenced.
 Every revision states this for itself. A channel's note records what its traffic
 is observed to do, which is an observation rather than a default:
 one channel carries all three, so there is nothing to inherit.

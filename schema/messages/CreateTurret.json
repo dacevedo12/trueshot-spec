@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "CreateTurret",
-  "note": "What a server sends to put a turret on the field.",
+  "note": "What a server sends to put a turret on the field. In everything observed it arrives only inside EnterSight, and the channel and delivery recorded here are those of the message carrying it.",
   "revisions": [
     {
       "from": "4.20.0.315",
@@ -18,7 +18,7 @@
         {
           "name": "node",
           "type": "u8",
-          "note": "Which of the sender's runs of names this one is drawn from."
+          "note": "Purpose undetermined. It is 64 where a unit, a turret or a prop is put on the field, and zero where a champion is, though the name beside it opens with 64 in every one of those."
         },
         {
           "name": "name",
@@ -40,7 +40,7 @@
             {
               "name": "unknown",
               "width": 7,
-              "note": "Purpose undetermined. A server leaves these as it found them, so they carry values it never wrote for this message."
+              "note": "Observed clear."
             }
           ]
         },

@@ -11,9 +11,9 @@
       "reliability": "reliable",
       "fields": [
         {
-          "name": "positionSyncId",
-          "type": "i32",
-          "note": "The name of the caster's position report this casting is answered against."
+          "name": "syncId",
+          "type": "u32",
+          "note": "The name this casting is stated against. Its values are observed in the same run as the one WaypointGroup carries."
         },
         {
           "name": "how",
@@ -28,7 +28,7 @@
             {
               "name": "unknown",
               "width": 7,
-              "note": "Purpose undetermined. A server leaves these as it found them, so they carry values it never wrote for this message."
+              "note": "Observed clear."
             }
           ]
         },

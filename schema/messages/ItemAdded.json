@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
-  "message": "BuyItemAnswer",
-  "note": "What a server sends to confirm an item reached a slot.",
+  "message": "ItemAdded",
+  "note": "What a server sends to say an item reached a slot. It follows a request to buy one, and is also sent where nothing asked for it.",
   "revisions": [
     {
       "from": "4.20.0.315",
@@ -38,12 +38,12 @@
             {
               "name": "tellTheClient",
               "width": 1,
-              "note": "Set where the client is to show the change."
+              "note": "Purpose undetermined. Clear in everything observed."
             },
             {
               "name": "unknown",
               "width": 7,
-              "note": "Purpose undetermined. A server leaves these as it found them, so they carry values it never wrote for this message."
+              "note": "Observed clear."
             }
           ]
         }

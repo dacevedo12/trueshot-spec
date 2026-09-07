@@ -23,12 +23,12 @@
         {
           "name": "node",
           "type": "u8",
-          "note": "Which of the sender's runs of names this one is drawn from."
+          "note": "Purpose undetermined. It is 64 where a unit, a turret or a prop is put on the field, and zero where a champion is, though the name beside it opens with 64 in every one of those."
         },
         {
           "name": "skillLevel",
           "type": "u8",
-          "note": "What level its own doings stand at."
+          "note": "What level the champion's own spells stand at."
         },
         {
           "name": "who",
@@ -48,7 +48,7 @@
             {
               "name": "unknown",
               "width": 6,
-              "note": "Purpose undetermined. A server leaves these as it found them, so they carry values it never wrote for this message."
+              "note": "Observed clear."
             }
           ]
         },
@@ -114,7 +114,7 @@
             {
               "name": "unknown",
               "width": 6,
-              "note": "Purpose undetermined. A server leaves these as it found them, so they carry values it never wrote for this message."
+              "note": "Observed clear."
             }
           ]
         }

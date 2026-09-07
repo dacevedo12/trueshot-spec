@@ -13,12 +13,12 @@
         {
           "name": "atX",
           "type": "f32",
-          "note": "Where the ping sits, along one ground axis."
+          "note": "Where the ping sits, along one ground axis, in world units."
         },
         {
           "name": "atZ",
           "type": "f32",
-          "note": "Where it sits, along the other."
+          "note": "Where it sits, along the other, in world units."
         },
         {
           "name": "target",
@@ -43,27 +43,27 @@
             {
               "name": "playSound",
               "width": 1,
-              "note": "Set where the client plays a sound for it."
+              "note": "Purpose undetermined. Set in everything observed."
             },
             {
               "name": "showInChat",
               "width": 1,
-              "note": "Set where the client writes a line about it."
+              "note": "Purpose undetermined. Set in everything observed."
             },
             {
               "name": "wasThrottled",
               "width": 1,
-              "note": "Set where the sender was pinging faster than allowed."
+              "note": "Purpose undetermined. Clear in everything observed."
             },
             {
               "name": "speak",
               "width": 1,
-              "note": "Set where the unit says something about it."
+              "note": "Purpose undetermined. Set in everything observed."
             },
             {
               "name": "unknown",
               "width": 4,
-              "note": "Purpose undetermined. A server leaves these as it found them, so they carry values it never wrote for this message."
+              "note": "Observed clear."
             }
           ]
         }

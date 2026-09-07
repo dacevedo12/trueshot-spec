@@ -23,6 +23,10 @@
       "type": "string",
       "pattern": "^[A-Z][A-Za-z0-9]*$"
     },
+    "channel": {
+      "description": "Which channel the payload arrived on. Give it where the revision names more than one, so each channel it claims has a payload behind it.",
+      "type": "string"
+    },
     "version": {
       "description": "Client version these bytes belong to, whichever end emitted them. Selects the revision.",
       "type": "string",

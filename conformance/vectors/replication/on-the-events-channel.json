@@ -1,0 +1,43 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "Replication",
+  "channel": "events",
+  "version": "4.20.0.315",
+  "note": "Taken from a server a client accepted, off the events channel.",
+  "bytes": "c4 00000000 5620f6110122b57df9ff030000000500e0ab450003000000050180808010",
+  "fields": {
+    "command": 196,
+    "netId": 0,
+    "extendedCommand": null,
+    "syncId": 301342806,
+    "unitCount": 1,
+    "units": [
+      {
+        "present": {
+          "group0": 0,
+          "group1": 1,
+          "group2": 0,
+          "group3": 0,
+          "group4": 0,
+          "group5": 1,
+          "unknown": 0
+        },
+        "unit": 4294540725,
+        "group0": null,
+        "group1": {
+          "which": 3,
+          "length": 5,
+          "values": "00e0ab4500"
+        },
+        "group2": null,
+        "group3": null,
+        "group5": {
+          "which": 3,
+          "length": 5,
+          "values": "0180808010"
+        }
+      }
+    ]
+  }
+}

@@ -1,10 +1,10 @@
 {
   "$schema": "../../../schema/meta/vector.json",
   "subject": "message",
-  "message": "AttackAtPoint",
+  "message": "AttackFrom",
   "version": "4.20.0.315",
   "note": "Taken from a server a client accepted.",
-  "bytes": "1a 74060040 0b18004080641a0040400020e2c4e5db51420000f2c33050674555a9c345",
+  "bytes": "1a 74060040 0b18 004080641a0040400020e2c4e5db51420000f2c33050674555a9c345",
   "fields": {
     "command": 26,
     "netId": 1073743476,
@@ -18,7 +18,7 @@
       "targetY": 52.46474075317383,
       "targetZ": -484
     },
-    "atX": 3701.01171875,
-    "atZ": 6261.16650390625
+    "fromX": 3701.01171875,
+    "fromZ": 6261.16650390625
   }
 }

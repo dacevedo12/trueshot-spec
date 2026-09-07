@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
-  "message": "AttackAtPoint",
-  "note": "What a server sends to say a unit is swinging at a place rather than at another unit.",
+  "message": "AttackFrom",
+  "note": "What a server sends to say a unit is swinging at another, carrying where the swinging unit stands as well as what it swings at.",
   "revisions": [
     {
       "from": "4.20.0.315",
@@ -17,14 +17,14 @@
           "note": "The swing."
         },
         {
-          "name": "atX",
+          "name": "fromX",
           "type": "f32",
-          "note": "Where the swing lands, along one ground axis."
+          "note": "Where the swinging unit stands, along one ground axis, in world units."
         },
         {
-          "name": "atZ",
+          "name": "fromZ",
           "type": "f32",
-          "note": "Where it lands, along the other."
+          "note": "Where it stands, along the other, in world units."
         }
       ]
     }

@@ -13,32 +13,32 @@
         {
           "name": "atX",
           "type": "f32",
-          "note": "Where the missile is, along one ground axis."
+          "note": "Where the missile is, along one ground axis, in world units."
         },
         {
           "name": "atY",
           "type": "f32",
-          "note": "Where the missile is, in height."
+          "note": "Where the missile is, in height, in world units."
         },
         {
           "name": "atZ",
           "type": "f32",
-          "note": "Where the missile is, along the other ground axis."
+          "note": "Where the missile is, along the other ground axis, in world units."
         },
         {
           "name": "casterAtX",
           "type": "f32",
-          "note": "Where the unit that threw it stood when it left, along one ground axis."
+          "note": "Where the unit that threw it stood when it left, along one ground axis, in world units."
         },
         {
           "name": "casterAtY",
           "type": "f32",
-          "note": "Where the unit that threw it stood when it left, in height."
+          "note": "Where the unit that threw it stood when it left, in height, in world units."
         },
         {
           "name": "casterAtZ",
           "type": "f32",
-          "note": "Where the unit that threw it stood when it left, along the other ground axis."
+          "note": "Where the unit that threw it stood when it left, along the other ground axis, in world units."
         },
         {
           "name": "facingX",
@@ -58,62 +58,62 @@
         {
           "name": "velocityX",
           "type": "f32",
-          "note": "How fast the missile travels along each axis, along one ground axis."
+          "note": "How fast the missile travels, along one ground axis, in world units a second."
         },
         {
           "name": "velocityY",
           "type": "f32",
-          "note": "How fast the missile travels along each axis, in height."
+          "note": "How fast the missile travels, in height, in world units a second."
         },
         {
           "name": "velocityZ",
           "type": "f32",
-          "note": "How fast the missile travels along each axis, along the other ground axis."
+          "note": "How fast the missile travels, along the other ground axis, in world units a second."
         },
         {
           "name": "startX",
           "type": "f32",
-          "note": "Where the missile began, along one ground axis."
+          "note": "Where the missile began, along one ground axis, in world units."
         },
         {
           "name": "startY",
           "type": "f32",
-          "note": "Where the missile began, in height."
+          "note": "Where the missile began, in height, in world units."
         },
         {
           "name": "startZ",
           "type": "f32",
-          "note": "Where the missile began, along the other ground axis."
+          "note": "Where the missile began, along the other ground axis, in world units."
         },
         {
           "name": "endX",
           "type": "f32",
-          "note": "Where the missile is bound for, along one ground axis."
+          "note": "Where the missile is bound for, along one ground axis, in world units."
         },
         {
           "name": "endY",
           "type": "f32",
-          "note": "Where the missile is bound for, in height."
+          "note": "Where the missile is bound for, in height, in world units."
         },
         {
           "name": "endZ",
           "type": "f32",
-          "note": "Where the missile is bound for, along the other ground axis."
+          "note": "Where the missile is bound for, along the other ground axis, in world units."
         },
         {
           "name": "unitAtX",
           "type": "f32",
-          "note": "Where the unit the missile follows stands, along one ground axis."
+          "note": "Where the unit the missile follows stands, along one ground axis, in world units."
         },
         {
           "name": "unitAtY",
           "type": "f32",
-          "note": "Where the unit the missile follows stands, in height."
+          "note": "Where the unit the missile follows stands, in height, in world units."
         },
         {
           "name": "unitAtZ",
           "type": "f32",
-          "note": "Where the unit the missile follows stands, along the other ground axis."
+          "note": "Where the unit the missile follows stands, along the other ground axis, in world units."
         },
         {
           "name": "age",
@@ -123,7 +123,7 @@
         {
           "name": "speed",
           "type": "f32",
-          "note": "How fast it travels."
+          "note": "How fast the missile travels, in world units a second."
         },
         {
           "name": "lifeSpent",
@@ -133,12 +133,12 @@
         {
           "name": "speedChange",
           "type": "f32",
-          "note": "What is added to its speed over the time below."
+          "note": "What is added to that speed over the time below, in world units a second."
         },
         {
           "name": "speedChangeTime",
           "type": "f32",
-          "note": "How long that change takes, in seconds."
+          "note": "How long that change takes, in seconds. Every payload observed carries the bit pattern of an endless value here, which is what a missile whose speed never changes leaves."
         },
         {
           "name": "how",
@@ -153,7 +153,7 @@
             {
               "name": "unknown",
               "width": 7,
-              "note": "Purpose undetermined. A server leaves these as it found them, so they carry values it never wrote for this message."
+              "note": "Observed clear."
             }
           ]
         },

@@ -11,25 +11,25 @@
       "reliability": "reliable",
       "fields": [
         {
-          "name": "name",
-          "type": "string",
-          "encoding": "utf8",
-          "size": 128,
-          "note": "What the note is headed with. Written out in full and padded with zero bytes to the width above."
-        },
-        {
           "name": "body",
           "type": "string",
           "encoding": "utf8",
           "size": 128,
-          "note": "What the note says, written and padded as above."
+          "note": "What the note says. Written out in full and padded with zero bytes to the width above."
+        },
+        {
+          "name": "heading",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "What the note is headed with, written and padded as above. In everything observed it is the label and the run above is the value it labels."
         },
         {
           "name": "image",
           "type": "string",
           "encoding": "utf8",
           "size": 128,
-          "note": "The name the client loads a picture for it under, written and padded as above."
+          "note": "The name the client loads a picture for the note under, written and padded as above. It is empty in everything observed."
         },
         {
           "name": "what",

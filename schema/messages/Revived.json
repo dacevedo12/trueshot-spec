@@ -13,12 +13,12 @@
         {
           "name": "atX",
           "type": "f32",
-          "note": "Where it returns, along one ground axis."
+          "note": "Where it returns, along one ground axis, in world units."
         },
         {
           "name": "atZ",
           "type": "f32",
-          "note": "Where it returns, along the other."
+          "note": "Where it returns, along the other, in world units."
         },
         {
           "name": "resource",

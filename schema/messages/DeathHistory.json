@@ -27,14 +27,14 @@
         },
         {
           "name": "entryCount",
-          "type": "i32",
+          "type": "u32",
           "note": "How many entries follow. Zero in everything observed."
         },
         {
           "name": "entries",
           "type": "bytes",
           "size": "remaining",
-          "note": "The entries themselves, one after another. Each opens with when it happened, how many times it did, what kind of thing it was, and what did it, and what follows that is settled by the kind. No capture has carried an entry, so the shapes past that opening are not recorded here."
+          "note": "The entries themselves. No capture has carried one, so no shape is recorded here."
         }
       ]
     }

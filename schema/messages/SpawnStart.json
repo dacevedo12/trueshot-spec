@@ -13,12 +13,12 @@
         {
           "name": "botsOnOneSide",
           "type": "u8",
-          "note": "How many of the units are played by nobody, on one side."
+          "note": "One of two counts stated as the run of units opens. Both are zero in everything observed, and what they count is not recorded here."
         },
         {
           "name": "botsOnTheOther",
           "type": "u8",
-          "note": "How many on the other."
+          "note": "The other. It shares the reading above."
         }
       ]
     }

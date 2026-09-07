@@ -12,12 +12,12 @@
       "fields": [
         {
           "name": "slot",
-          "type": "i32",
+          "type": "u32",
           "note": "Which slot."
         },
         {
           "name": "level",
-          "type": "i32",
+          "type": "u32",
           "note": "The level it now stands at."
         }
       ]

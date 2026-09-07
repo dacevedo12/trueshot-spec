@@ -6,12 +6,12 @@
     {
       "name": "target",
       "type": "u32",
-      "note": "The unit swung at, or zero where the swing is aimed at a point instead."
+      "note": "The unit swung at. Nothing observed carries zero here."
     },
     {
       "name": "timing",
       "type": "u8",
-      "note": "How far the swing is shifted from the unit's own rhythm. Read it as a signed hundredth of a second by taking the byte, subtracting 128, and dividing by 100, so 128 means no shift."
+      "note": "How the swing sits against the unit's own rhythm. It is 128 in everything observed."
     },
     {
       "name": "missile",
@@ -26,17 +26,17 @@
     {
       "name": "targetX",
       "type": "f32",
-      "note": "Where the swing is aimed, along one ground axis. Carried in the units a path uses rather than in world units, and always whole. spec/movement.md says how the two relate."
+      "note": "Where the unit swung at stands, along one ground axis. Carried in the units a path uses rather than in world units, and whole in everything observed. spec/movement.md says how the two relate."
     },
     {
       "name": "targetY",
       "type": "f32",
-      "note": "Where the swing is aimed, in height. Carried in world units."
+      "note": "Where it stands, in height. Carried in world units."
     },
     {
       "name": "targetZ",
       "type": "f32",
-      "note": "Where the swing is aimed, along the other ground axis. It shares the reading of the first."
+      "note": "Where it stands, along the other ground axis. It shares the reading of the first."
     }
   ]
 }

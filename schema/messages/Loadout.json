@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "Loadout",
-  "note": "What a server sends to lay out everything a champion carries: its items, its summoner slots, the choices made before the match, and what it looks like.",
+  "note": "What a server sends to lay out everything a champion brought to the match: the stones set before it began, its summoner slots, the choices made alongside them, and what its wards look like.",
   "revisions": [
     {
       "from": "4.20.0.315",
@@ -11,14 +11,14 @@
       "reliability": "reliable",
       "fields": [
         {
-          "name": "items",
+          "name": "stones",
           "type": "array",
           "count": 30,
-          "note": "The items the champion may hold, by the numbers the client knows them as. Zero where a place holds none.",
+          "note": "The stones set before the match, thirty places in runs of nine, nine, nine and three. A place holds zero where nothing was set. The numbers observed sit in a range no shop item occupies, and a unit never holds thirty items, so these are not what a unit carries.",
           "items": {
-            "name": "item",
+            "name": "stone",
             "type": "u32",
-            "note": "One item."
+            "note": "One stone, by the number the client knows it as."
           }
         },
         {
@@ -47,7 +47,7 @@
           "name": "choices",
           "type": "array",
           "count": 80,
-          "note": "The choices made before the match, one place each. A place stands empty where nothing was chosen.",
+          "note": "The choices made alongside them, one place each, and how far each was taken. A place stands empty where nothing was chosen.",
           "items": {
             "name": "choice",
             "type": "struct",

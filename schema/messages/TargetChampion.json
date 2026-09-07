@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "TargetChampion",
-  "note": "What a server sends to say what a champion is attacking.",
+  "note": "What a server sends to say what a unit is attacking, seen only where the unit attacked is a champion. The layout is the one TargetUnit carries.",
   "revisions": [
     {
       "from": "4.20.0.315",
@@ -13,7 +13,7 @@
         {
           "name": "target",
           "type": "u32",
-          "note": "The unit being attacked, or zero where it is attacking nothing."
+          "note": "The champion being attacked."
         }
       ]
     }

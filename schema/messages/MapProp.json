@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
-  "message": "LevelProp",
-  "note": "What a server sends to place a prop on the field: a thing that stands there and is looked at rather than one that acts.",
+  "message": "MapProp",
+  "note": "What a server sends to place a prop on the map: a thing that stands there and is looked at rather than one that acts.",
   "revisions": [
     {
       "from": "4.20.0.315",
@@ -18,7 +18,7 @@
         {
           "name": "node",
           "type": "u8",
-          "note": "Which of the sender's runs of names this one is drawn from."
+          "note": "Purpose undetermined. It is 64 where a unit, a turret or a prop is put on the field, and zero where a champion is, though the name beside it opens with 64 in every one of those."
         },
         {
           "name": "skin",
@@ -28,32 +28,32 @@
         {
           "name": "atX",
           "type": "f32",
-          "note": "Where the prop stands, along one ground axis."
+          "note": "Where the prop stands, along one ground axis, in world units."
         },
         {
           "name": "atY",
           "type": "f32",
-          "note": "Where the prop stands, in height."
+          "note": "Where the prop stands, in height, in world units."
         },
         {
           "name": "atZ",
           "type": "f32",
-          "note": "Where the prop stands, along the other ground axis."
+          "note": "Where the prop stands, along the other ground axis, in world units."
         },
         {
           "name": "facingX",
           "type": "f32",
-          "note": "Which way it faces, along one ground axis."
+          "note": "One of three figures about which way the prop faces. Each observed between zero and 360, and what they measure is not recorded here."
         },
         {
           "name": "facingY",
           "type": "f32",
-          "note": "Which way it faces, in height."
+          "note": "One of three figures about which way the prop faces. Each observed between zero and 360, and what they measure is not recorded here."
         },
         {
           "name": "facingZ",
           "type": "f32",
-          "note": "Which way it faces, along the other ground axis."
+          "note": "One of three figures about which way the prop faces. Each observed between zero and 360, and what they measure is not recorded here."
         },
         {
           "name": "offsetX",
@@ -73,17 +73,17 @@
         {
           "name": "scaleX",
           "type": "f32",
-          "note": "What its drawn size is scaled by, along each axis, along one ground axis."
+          "note": "What its drawn size is scaled by, along one ground axis."
         },
         {
           "name": "scaleY",
           "type": "f32",
-          "note": "What its drawn size is scaled by, along each axis, in height."
+          "note": "What its drawn size is scaled by, in height."
         },
         {
           "name": "scaleZ",
           "type": "f32",
-          "note": "What its drawn size is scaled by, along each axis, along the other ground axis."
+          "note": "What its drawn size is scaled by, along the other ground axis."
         },
         {
           "name": "team",
@@ -98,7 +98,7 @@
         {
           "name": "skillLevel",
           "type": "u8",
-          "note": "What level its own doings stand at."
+          "note": "What level the prop's own doings stand at. Zero in everything observed."
         },
         {
           "name": "kind",
