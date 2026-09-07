@@ -1,0 +1,70 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "Loadout",
+  "note": "What a server sends to lay out everything a champion carries: its items, its summoner slots, the choices made before the match, and what it looks like.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 42,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "items",
+          "type": "array",
+          "count": 30,
+          "note": "The items the champion may hold, by the numbers the client knows them as. Zero where a place holds none.",
+          "items": {
+            "name": "item",
+            "type": "u32",
+            "note": "One item."
+          }
+        },
+        {
+          "name": "summoners",
+          "type": "array",
+          "count": 2,
+          "note": "The spells in the champion's summoner slots.",
+          "items": {
+            "name": "summoner",
+            "type": "u32",
+            "note": "One spell."
+          }
+        },
+        {
+          "name": "summonersAgain",
+          "type": "array",
+          "count": 2,
+          "note": "The same two spells a second time. A server writes them twice and both runs agree in everything observed.",
+          "items": {
+            "name": "summoner",
+            "type": "u32",
+            "note": "One spell."
+          }
+        },
+        {
+          "name": "choices",
+          "type": "array",
+          "count": 80,
+          "note": "The choices made before the match, one place each. A place stands empty where nothing was chosen.",
+          "items": {
+            "name": "choice",
+            "type": "struct",
+            "struct": "Choice"
+          }
+        },
+        {
+          "name": "level",
+          "type": "u8",
+          "note": "The level the champion starts at."
+        },
+        {
+          "name": "wardSkin",
+          "type": "u8",
+          "note": "What the champion's wards look like."
+        }
+      ]
+    }
+  ]
+}

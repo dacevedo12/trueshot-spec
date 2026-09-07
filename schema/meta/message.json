@@ -57,14 +57,10 @@
       }
     },
     "size": {
-      "description": "How the reader knows where this field ends: a byte count, the name of an earlier field holding the count, the rest of the payload, or a zero byte.",
+      "description": "How the reader knows where this field ends: a byte count, the name of an earlier field holding the count, that field less a literal, the rest of the payload, or a zero byte.",
       "anyOf": [
         {
-          "type": "integer",
-          "minimum": 0
-        },
-        {
-          "$ref": "#/$defs/reference"
+          "$ref": "#/$defs/amount"
         },
         {
           "type": "string",

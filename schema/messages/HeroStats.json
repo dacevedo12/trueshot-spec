@@ -1,0 +1,30 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "HeroStats",
+  "note": "What a server sends to lay out a champion's standing figures. Which figures the run holds is settled by the champion rather than by anything in the message, so the run cannot be read from the wire alone.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 70,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "size",
+          "type": "u32",
+          "note": "How many bytes this shape occupies, counting these four."
+        },
+        {
+          "name": "values",
+          "type": "bytes",
+          "size": {
+            "field": "size",
+            "minus": 4
+          },
+          "note": "The figures themselves. What they mean is settled by the champion the message names."
+        }
+      ]
+    }
+  ]
+}

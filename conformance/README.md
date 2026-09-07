@@ -17,6 +17,10 @@ expected to import. Read the files, feed them to your own code, and compare.
 - Message vectors live in a directory named for the message they carry, with
   each capital of the message identity starting a new part, lower case and
   joined by hyphens.
+- Within that directory a file is named for what makes it worth keeping, so
+  `with-sent-time` sits beside `without-sent-time`. Where two payloads take
+  the same shape and differ only in the values they carry, they are `one` and
+  `another`.
 
 Every file declares a `subject` saying which of the three it is, and a `note`
 in plain words. `schema/meta/vector.json` is the machine readable definition of

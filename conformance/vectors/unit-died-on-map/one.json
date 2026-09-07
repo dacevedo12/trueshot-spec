@@ -1,0 +1,24 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "UnitDiedOnMap",
+  "version": "4.20.0.315",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "fe 0b180040 2601 000000000074060040000700000000",
+  "fields": {
+    "command": 254,
+    "netId": 1073747979,
+    "extendedCommand": 294,
+    "death": {
+      "how": {
+        "becomeZombie": 0,
+        "unknown": 0
+      },
+      "kind": 0,
+      "killer": 1073743476,
+      "damageType": 0,
+      "damageSource": 7,
+      "stayDown": 0
+    }
+  }
+}
