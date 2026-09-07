@@ -171,13 +171,19 @@ const amount = (spec, scope, index) => {
   return Number(lookup(scope, spec, index));
 };
 
+// A rule names one value or a set of them.
+const matches = (value, equals) =>
+  Array.isArray(equals)
+    ? equals.some((one) => Number(value) === one)
+    : Number(value) === equals;
+
 function present(field, scope, index = null) {
   if (!field.present) return true;
   if (/\[[a-z][A-Za-z0-9]*\]/.test(field.present.when)) {
     const v = lookup(scope, field.present.when, index);
     return field.present.equals === undefined
       ? Number(v) !== 0
-      : Number(v) === field.present.equals;
+      : matches(v, field.present.equals);
   }
   const [head, run] = field.present.when.split(".");
   if (!(head in scope)) {
@@ -189,7 +195,7 @@ function present(field, scope, index = null) {
   const value = run === undefined ? scope[head] : scope[head]?.[run];
   return field.present.equals === undefined
     ? Number(value) !== 0
-    : Number(value) === field.present.equals;
+    : matches(value, field.present.equals);
 }
 
 function countOf(field, scope, key, index = null) {

@@ -73,7 +73,7 @@
       ]
     },
     "presence": {
-      "description": "Present only when an earlier field says so. Without `equals`, any value other than zero.",
+      "description": "Present only when an earlier field says so. Without `equals`, any value other than zero. `unseen` names the side of the rule no capture shows, for a rule recorded from something other than a payload.",
       "type": "object",
       "required": ["when"],
       "additionalProperties": false,
@@ -82,7 +82,25 @@
           "$ref": "#/$defs/reference"
         },
         "equals": {
-          "type": "integer"
+          "description": "The value, or any one of a set of values, the field named by `when` has to carry.",
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "array",
+              "minItems": 2,
+              "uniqueItems": true,
+              "items": {
+                "type": "integer"
+              }
+            }
+          ]
+        },
+        "unseen": {
+          "description": "Which side of this rule no captured payload shows. A rule without it is one both sides of which a vector exercises.",
+          "type": "string",
+          "enum": ["present", "absent"]
         }
       }
     },

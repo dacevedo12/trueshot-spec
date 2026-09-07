@@ -1584,7 +1584,7 @@ for (const { where, doc } of messages) {
     const collect = (fields, prefix, seenStructs = new Set()) => {
       for (const field of fields ?? []) {
         const path = prefix ? `${prefix}.${field.name}` : field.name;
-        if (field.present) ruled.push(path);
+        if (field.present) ruled.push([path, field.present.unseen]);
         if (field.type === "record") collect(field.fields, path, seenStructs);
         else if (field.type === "struct" && !seenStructs.has(field.struct)) {
           const d = structs.get(field.struct);
@@ -1600,7 +1600,7 @@ for (const { where, doc } of messages) {
       }
     };
     collect(revision.fields, "");
-    for (const path of ruled) {
+    for (const [path, unseen] of ruled) {
       // A rule inside a struct belongs to the struct, so any message that
       // carries it can be the one that evidences it.
       const shared = path.startsWith("struct:");
@@ -1615,7 +1615,14 @@ for (const { where, doc } of messages) {
         );
         continue;
       }
-      if (!seen.present || !seen.absent) {
+      // A rule may declare that no capture shows one of its sides. The
+      // declaration has to stay true, or it is hiding a vector nobody added.
+      if (unseen && seen[unseen]) {
+        fail(
+          where,
+          `revision ${revision.from} says no payload shows "${path}" ${unseen}, and one does`,
+        );
+      } else if (!unseen && (!seen.present || !seen.absent)) {
         fail(
           where,
           `revision ${revision.from} has no vector where "${path}" is ${seen.present ? "absent" : "present"}, so half its presence rule is unrecorded`,

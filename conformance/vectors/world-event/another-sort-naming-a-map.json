@@ -1,14 +1,17 @@
 {
   "$schema": "../../../schema/meta/vector.json",
   "subject": "message",
-  "message": "TargetChampion",
+  "message": "WorldEvent",
   "version": "4.20.0.315",
   "note": "Taken from a server a client accepted.",
-  "bytes": "c0 0b180040 74060040",
+  "bytes": "45 00000000 7800000000000000000b000000",
   "fields": {
-    "command": 192,
-    "netId": 1073747979,
+    "command": 69,
+    "netId": 0,
     "extendedCommand": null,
-    "target": 1073743476
+    "event": 120,
+    "source": 0,
+    "subject": 0,
+    "map": 11
   }
 }

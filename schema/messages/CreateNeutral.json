@@ -16,9 +16,9 @@
           "note": "The name the unit answers to, so later messages can name it."
         },
         {
-          "name": "unknown1",
+          "name": "node",
           "type": "u8",
-          "note": "Purpose undetermined. It is 64 where a unit, a turret or a prop is put on the field and zero where a champion is, though the name beside it opens with 64 in every one of those."
+          "note": "Which network node the object belongs to. A client reads it apart from the name beside it rather than as that name's leading byte."
         },
         {
           "name": "atX",

@@ -150,6 +150,13 @@ The rule names an earlier field or bit run holding an integer, and where the
 condition is a value rather than a flag, the value it takes. A field whose
 condition does not hold occupies no bytes at all.
 
+A rule states which side of it no captured payload shows, where a payload
+shows only one. Such a rule is recorded from something other than a capture,
+and the vectors hold it to that: a rule saying no payload is missing the field
+fails the moment one is. A rule that says nothing carries a vector for each
+side, which is what separates a rule somebody has confirmed from one somebody
+has proposed.
+
 ## Enumerated values
 
 Where a client treats an integer field, or a run of bits inside one, as a fixed

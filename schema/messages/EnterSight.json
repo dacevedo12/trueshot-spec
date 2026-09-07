@@ -55,24 +55,44 @@
           }
         },
         {
-          "name": "unknown1",
+          "name": "hasShields",
           "type": "u8",
-          "note": "Purpose undetermined. One in everything observed, and the three figures below follow in every payload seen."
+          "note": "Whether the three figures below follow. A zero leaves them out, and everything after them begins twelve bytes earlier. It is one in every payload observed.",
+          "values": {
+            "0": {
+              "name": "no"
+            },
+            "1": {
+              "name": "yes"
+            }
+          }
         },
         {
           "name": "magicShield",
           "type": "f32",
-          "note": "How much of the unit's shielding turns aside one sort of damage."
+          "note": "How much of the unit's shielding turns aside one sort of damage.",
+          "present": {
+            "when": "hasShields",
+            "unseen": "absent"
+          }
         },
         {
           "name": "physicalShield",
           "type": "f32",
-          "note": "How much turns aside the other."
+          "note": "How much turns aside the other.",
+          "present": {
+            "when": "hasShields",
+            "unseen": "absent"
+          }
         },
         {
           "name": "shield",
           "type": "f32",
-          "note": "How much turns aside either."
+          "note": "How much turns aside either.",
+          "present": {
+            "when": "hasShields",
+            "unseen": "absent"
+          }
         },
         {
           "name": "appearanceCount",
@@ -147,7 +167,7 @@
         {
           "name": "movementKind",
           "type": "u8",
-          "note": "What the unit is doing on the ground, and so which shape follows. Standing and moving have been observed; nothing observed carries either of the other two, and what follows them is not recorded here.",
+          "note": "What the unit is doing on the ground, and so which shape follows. Nothing follows where it does nothing. Standing and moving have been observed; moving at a stated speed has not.",
           "values": {
             "0": {
               "name": "nothing"
@@ -176,6 +196,28 @@
           "present": {
             "when": "movementKind",
             "equals": 2
+          }
+        },
+        {
+          "name": "movementWithSpeed",
+          "type": "struct",
+          "struct": "Movement",
+          "note": "Where the unit is going, read exactly as the shape above.",
+          "present": {
+            "when": "movementKind",
+            "equals": 1,
+            "unseen": "present"
+          }
+        },
+        {
+          "name": "speedParameters",
+          "type": "bytes",
+          "size": 33,
+          "note": "How the unit moves along that path where the path alone does not say: a speed standing in for its own, the values of an arc it travels through, how it faces, the unit it follows, and how far behind and how long. The runs within are not recorded here.",
+          "present": {
+            "when": "movementKind",
+            "equals": 1,
+            "unseen": "present"
           }
         },
         {

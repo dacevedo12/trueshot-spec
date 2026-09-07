@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "ItemAdded",
-  "note": "What a server sends to say an item reached a slot. Every payload observed names a unit no client asked for an item for.",
+  "note": "What a server sends to set what sits in one of a unit's item slots. It answers no request: a client clears the slot named and puts what follows in its place whether or not anything asked for it, so a server sends it to units nobody is buying for.",
   "revisions": [
     {
       "from": "4.20.0.315",
