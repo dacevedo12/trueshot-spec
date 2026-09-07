@@ -1,0 +1,26 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "SwapItems",
+  "note": "What a client sends to move an item from one slot to another.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "requests",
+      "command": 32,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "from",
+          "type": "u8",
+          "note": "The slot the item leaves."
+        },
+        {
+          "name": "to",
+          "type": "u8",
+          "note": "The slot it goes to."
+        }
+      ]
+    }
+  ]
+}

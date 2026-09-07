@@ -1,0 +1,26 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "TipEvent",
+  "note": "What a client sends about a tip it has shown or dismissed.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "requests",
+      "command": 109,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "what",
+          "type": "u8",
+          "note": "What happened to the tip."
+        },
+        {
+          "name": "tip",
+          "type": "u32",
+          "note": "Which tip, by the number the client knows it as."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "Pause",
+  "note": "What a client sends to hold a match.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "requests",
+      "command": 161,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "i32",
+          "note": "Which seat asked."
+        },
+        {
+          "name": "timeLeft",
+          "type": "i32",
+          "note": "How much holding time is left to the side that asked, in seconds."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "unlimited",
+              "width": 1,
+              "note": "Set where the hold is not counted against a limit."
+            },
+            {
+              "name": "unknown",
+              "width": 7,
+              "note": "Purpose undetermined. A client leaves these as it found them, so they carry values it never wrote for this message."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

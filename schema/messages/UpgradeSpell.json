@@ -1,0 +1,38 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "UpgradeSpell",
+  "note": "What a client sends to put a point into a spell.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "requests",
+      "command": 57,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot is being raised."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "evolve",
+              "width": 1,
+              "note": "Set where the point changes the spell rather than raising it."
+            },
+            {
+              "name": "unknown",
+              "width": 7,
+              "note": "Purpose undetermined. A client leaves these as it found them, so they carry values it never wrote for this message."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
