@@ -55,17 +55,9 @@
           }
         },
         {
-          "name": "hasShields",
+          "name": "unknown1",
           "type": "u8",
-          "note": "One in everything observed. Nothing observed shows what a zero changes, and the three figures below follow either way in every payload seen.",
-          "values": {
-            "0": {
-              "name": "no"
-            },
-            "1": {
-              "name": "yes"
-            }
-          }
+          "note": "Purpose undetermined. One in everything observed, and the three figures below follow in every payload seen."
         },
         {
           "name": "magicShield",
@@ -174,7 +166,7 @@
         {
           "name": "syncId",
           "type": "u32",
-          "note": "The name this statement of movement answers to. Its values are observed in the same run as the one WaypointGroup carries."
+          "note": "The name this statement of movement answers to. One of its values is observed on a unit that a Replication payload names with the same value."
         },
         {
           "name": "movement",

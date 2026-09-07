@@ -6,22 +6,22 @@
     {
       "name": "target",
       "type": "u32",
-      "note": "The unit the effect is aimed at, or zero."
+      "note": "The unit the particle is aimed at, or zero."
     },
     {
-      "name": "effect",
+      "name": "particle",
       "type": "u32",
       "note": "The name this particle answers to, so later messages can name it."
     },
     {
       "name": "caster",
       "type": "u32",
-      "note": "The unit that made it, or zero."
+      "note": "The unit that made the particle, or zero."
     },
     {
       "name": "boundTo",
       "type": "u32",
-      "note": "The unit it hangs off, or zero."
+      "note": "The unit the particle hangs off, or zero."
     },
     {
       "name": "unknown1",
@@ -31,12 +31,12 @@
     {
       "name": "atX",
       "type": "i16",
-      "note": "Where the effect sits, along one ground axis. Carried in the units a path uses rather than in world units."
+      "note": "Where the particle sits, along one ground axis. Carried in the units a path uses rather than in world units."
     },
     {
       "name": "atY",
       "type": "f32",
-      "note": "Where it sits, in height. Carried in world units."
+      "note": "Where it sits, in height, in world units."
     },
     {
       "name": "atZ",
@@ -46,12 +46,12 @@
     {
       "name": "towardX",
       "type": "i16",
-      "note": "Where the effect is aimed, along one ground axis, read as the first pair above."
+      "note": "Where the particle is aimed, along one ground axis, read as the first pair above."
     },
     {
       "name": "towardY",
       "type": "f32",
-      "note": "Where it is aimed, in height."
+      "note": "Where it is aimed, in height, in world units."
     },
     {
       "name": "towardZ",
@@ -66,7 +66,7 @@
     {
       "name": "ownerY",
       "type": "f32",
-      "note": "Where that unit stood, in height."
+      "note": "Where that unit stood, in height, in world units."
     },
     {
       "name": "ownerZ",
@@ -76,27 +76,27 @@
     {
       "name": "facingX",
       "type": "f32",
-      "note": "Which way the effect faces, along one ground axis."
+      "note": "Which way the particle faces, along one ground axis."
     },
     {
       "name": "facingY",
       "type": "f32",
-      "note": "Which way the effect faces, in height."
+      "note": "Which way it faces, in height."
     },
     {
       "name": "facingZ",
       "type": "f32",
-      "note": "Which way the effect faces, along the other ground axis."
+      "note": "Which way it faces, along the other ground axis."
     },
     {
       "name": "runningFor",
       "type": "f32",
-      "note": "How far into its run it already is, in seconds."
+      "note": "How far into its run the particle already is, in seconds."
     },
     {
       "name": "scale",
       "type": "f32",
-      "note": "What its drawn size is scaled by."
+      "note": "What the particle's drawn size is scaled by."
     }
   ]
 }

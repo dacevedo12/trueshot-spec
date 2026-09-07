@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "Loadout",
-  "note": "What a server sends to lay out everything a champion brought to the match: the stones set before it began, its summoner slots, the choices made alongside them, and what its wards look like.",
+  "note": "What a server sends to lay out everything a champion brought to the match: the runes set before it began, its summoner slots, the choices made alongside them, and what its wards look like.",
   "revisions": [
     {
       "from": "4.20.0.315",
@@ -11,14 +11,14 @@
       "reliability": "reliable",
       "fields": [
         {
-          "name": "stones",
+          "name": "runes",
           "type": "array",
           "count": 30,
-          "note": "The stones set before the match, thirty places in runs of nine, nine, nine and three. A place holds zero where nothing was set. The numbers observed sit in a range no shop item occupies, and a unit never holds thirty items, so these are not what a unit carries.",
+          "note": "The runes set before the match, thirty places in runs of nine, nine, nine and three. A place holds zero where nothing was set.",
           "items": {
-            "name": "stone",
+            "name": "rune",
             "type": "u32",
-            "note": "One stone, by the number the client knows it as."
+            "note": "One rune, by the number the client knows it as."
           }
         },
         {

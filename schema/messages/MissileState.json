@@ -138,7 +138,7 @@
         {
           "name": "speedChangeTime",
           "type": "f32",
-          "note": "How long that change takes, in seconds. Every payload observed carries the bit pattern of an endless value here, which is what a missile whose speed never changes leaves."
+          "note": "How long that change takes, in seconds. It is 2139095040 in everything observed, which is the number 0x7F800000 written as a value rather than the bits of an endless float."
         },
         {
           "name": "how",

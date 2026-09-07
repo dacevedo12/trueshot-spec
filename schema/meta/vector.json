@@ -103,7 +103,8 @@
           "note": true,
           "algorithm": false,
           "input": false,
-          "output": false
+          "output": false,
+          "channel": true
         }
       }
     },
@@ -129,7 +130,8 @@
           "note": true,
           "algorithm": false,
           "input": false,
-          "output": false
+          "output": false,
+          "channel": false
         }
       }
     },
@@ -155,7 +157,8 @@
           "note": true,
           "algorithm": false,
           "input": false,
-          "output": false
+          "output": false,
+          "channel": false
         }
       }
     },
@@ -180,7 +183,8 @@
           "fields": false,
           "key": false,
           "plaintext": false,
-          "ciphertext": false
+          "ciphertext": false,
+          "channel": false
         }
       }
     }

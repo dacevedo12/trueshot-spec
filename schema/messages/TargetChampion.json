@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "TargetChampion",
-  "note": "What a server sends to say what a unit is attacking, seen only where the unit attacked is a champion. The layout is the one TargetUnit carries.",
+  "note": "What a server sends where the unit attacked is a champion. It carries the layout TargetUnit carries, and in everything observed it arrives beside a TargetUnit naming the same target.",
   "revisions": [
     {
       "from": "4.20.0.315",

@@ -23,7 +23,7 @@
         {
           "name": "owner",
           "type": "i32",
-          "note": "Purpose undetermined. Zero in everything observed."
+          "note": "The seat the region answers to. Zero in everything observed."
         },
         {
           "name": "unit",
@@ -83,17 +83,17 @@
             {
               "name": "block",
               "width": 1,
-              "note": "Purpose undetermined. Set in everything observed."
+              "note": "Set where the region blocks the way. Set in everything observed."
             },
             {
               "name": "grantSight",
               "width": 1,
-              "note": "Purpose undetermined. Set in everything observed."
+              "note": "Set where it grants sight. Set in everything observed."
             },
             {
               "name": "revealHidden",
               "width": 1,
-              "note": "Purpose undetermined. Set in everything observed."
+              "note": "Set where it shows units that are hiding. Set in everything observed."
             },
             {
               "name": "unknown",

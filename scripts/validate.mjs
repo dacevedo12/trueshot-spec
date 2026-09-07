@@ -1134,7 +1134,7 @@ for (let i = 0; i < claims.length; i += 1) {
       a.channel === b.channel
         ? `on channel "${a.channel}"`
         : `across channels "${a.channel}" and "${b.channel}", which share the "${familyA}" numbering`;
-    const pair = [a.message, b.message].sort().join(" ");
+    const pair = `${a.revision.command} ${[a.message, b.message].sort().join(" ")}`;
     if (reportedCollisions.has(pair)) continue;
     reportedCollisions.add(pair);
     fail(

@@ -13,7 +13,7 @@
         {
           "name": "syncId",
           "type": "u32",
-          "note": "The name this casting is stated against. Its values are observed in the same run as the one WaypointGroup carries."
+          "note": "The name this casting is stated against. One of its values is observed on a unit that a Replication payload names with the same value."
         },
         {
           "name": "how",

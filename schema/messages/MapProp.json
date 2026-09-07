@@ -16,9 +16,9 @@
           "note": "The name the prop answers to, so later messages can name it."
         },
         {
-          "name": "node",
+          "name": "unknown1",
           "type": "u8",
-          "note": "Purpose undetermined. It is 64 where a unit, a turret or a prop is put on the field, and zero where a champion is, though the name beside it opens with 64 in every one of those."
+          "note": "Purpose undetermined. It is 64 where a unit, a turret or a prop is put on the field and zero where a champion is, though the name beside it opens with 64 in every one of those."
         },
         {
           "name": "skin",

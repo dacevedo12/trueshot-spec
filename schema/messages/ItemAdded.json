@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "ItemAdded",
-  "note": "What a server sends to say an item reached a slot. It follows a request to buy one, and is also sent where nothing asked for it.",
+  "note": "What a server sends to say an item reached a slot. Every payload observed names a unit no client asked for an item for.",
   "revisions": [
     {
       "from": "4.20.0.315",
@@ -38,7 +38,7 @@
             {
               "name": "tellTheClient",
               "width": 1,
-              "note": "Purpose undetermined. Clear in everything observed."
+              "note": "Set where the client is to show the change. Clear in everything observed."
             },
             {
               "name": "unknown",

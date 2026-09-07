@@ -4,7 +4,7 @@
   "message": "Chat",
   "version": "4.20.0.315",
   "note": "Sent to everyone in the match. Taken from a client. The trailing run was zeroed before committing, because a client leaves it as it found it and it carried memory that had not been written.",
-  "bytes": "68000000000000000000000000000000000009000000000000000000000000000000000000000000000000000000000000000000000068656c6c6f20616c6c00",
+  "bytes": "68 00000000 0000000000000000000000000009000000000000000000000000000000000000000000000000000000000000000000000068656c6c6f20616c6c00",
   "fields": {
     "command": 104,
     "clientId": 0,
