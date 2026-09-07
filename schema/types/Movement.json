@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/struct.json",
   "struct": "Movement",
-  "note": "What one unit is told to do: a path of points on the ground plane, or nothing at all. Every point after the first states each of its coordinates either as a step from the point before it or afresh, and a run of flags read first says which.",
+  "note": "What one unit is told to do, in the compact shape: a path of points on the ground plane, each after the first stated against the one before it. Other shapes of movement exist, and which one a payload holds is settled by the message carrying it rather than by anything inside the movement.",
   "fields": [
     {
       "name": "header",
@@ -11,12 +11,12 @@
         {
           "name": "hasTeleportToken",
           "width": 1,
-          "note": "Set where a token sits beside the unit."
+          "note": "Set where a token sits beside the unit. A client leaves it clear in everything it sends, so a token travels only from a server."
         },
         {
           "name": "pointCount",
           "width": 7,
-          "note": "How many points the path holds, and never fewer than one in anything observed. What a payload carrying zero holds after this byte is unrecorded, so a reader meeting one has met something this document does not describe."
+          "note": "How many points the path holds, and never fewer than one in anything observed. A receiving end refuses a movement claiming none and takes nothing further from it."
         }
       ]
     },
@@ -35,7 +35,7 @@
           "present": {
             "when": "header.hasTeleportToken"
           },
-          "note": "Tells one relocation from another."
+          "note": "Tells one relocation from another. spec/movement.md says what a receiving end does with it."
         },
         {
           "name": "flags",

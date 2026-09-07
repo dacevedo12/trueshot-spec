@@ -61,10 +61,35 @@ than to the protocol.
 
 ## Relocating rather than walking
 
-A movement sometimes carries a token beside the unit. A receiving end remembers the
-last token it saw for that unit, and a token unlike it means the unit is to be
-put where the path begins rather than walked there from where it stands. A
-token it has seen before carries no such meaning.
+A movement sometimes carries a token beside the unit. A receiving end remembers
+one token for each unit, beginning at zero.
+
+A token unlike the remembered one puts the unit where the path begins rather
+than walking it there, but only where the unit is far enough away to warrant
+it. Far enough is measured on each ground axis on its own rather than as a
+distance: either axis differing by more than fifty puts the unit, and fifty
+exactly does not. Height is not weighed. Where the unit goes is where the path
+begins, since nothing else carries a destination.
+
+A token the receiving end already holds changes nothing, and neither does an
+unfamiliar one arriving while the unit is near enough. In both the path is
+followed as it stands and the remembered token is left alone, so a token is
+taken up only once it has moved something.
+
+A client leaves the flag clear in everything it sends, so a token travels only
+from a server.
+
+## Other shapes
+
+The layout `schema/types` records is the compact one, where a path is a run of
+points each stated against the one before it. Others exist and are not recorded
+here: one carrying a speed and the manner of travel, one saying a unit has
+stopped, and messages carrying their points as world floats rather than
+compactly. Which shape a payload holds is settled by the message carrying it
+rather than by anything inside the movement, so a reader never chooses.
+
+A count of no points is not a movement a receiving end accepts. It reads the
+count, refuses the record, and takes nothing further from it.
 
 ## Resolving a path
 
