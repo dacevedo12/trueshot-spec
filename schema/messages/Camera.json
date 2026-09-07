@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "Camera",
-  "note": "What a client sends to say where its view sits and which way it faces. It is the most frequent request a client makes.",
+  "note": "What a client sends to say where its view sits and which way it faces.",
   "revisions": [
     {
       "from": "4.20.0.315",
@@ -42,7 +42,7 @@
         {
           "name": "syncId",
           "type": "u8",
-          "note": "Names this report. A server returns it unchanged, and a client sends the report again until one comes back. It counts up through a byte and begins again, and a client takes a returned value as newer only where it is fewer than 128 steps ahead of the last it accepted."
+          "note": "Names this report. A client sends the report again until a server returns the name, and takes a returned name as newer only where it is fewer than 128 steps ahead of the last it took."
         }
       ]
     }

@@ -20,7 +20,7 @@
           "type": "string",
           "encoding": "ascii",
           "size": 256,
-          "note": "The build, as text. The run is always 256 bytes and the text ends at a zero byte, so it runs no further than 255."
+          "note": "The build, as text. The text ends at a zero byte."
         }
       ]
     }

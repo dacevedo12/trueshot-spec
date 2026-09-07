@@ -28,9 +28,9 @@
           ]
         },
         {
-          "name": "unknown",
+          "name": "clientId",
           "type": "u32",
-          "note": "Purpose undetermined. Observed as zero."
+          "note": "Which seat is locking. Zero is a seat like any other rather than an absence."
         }
       ]
     }

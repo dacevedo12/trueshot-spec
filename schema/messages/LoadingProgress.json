@@ -48,14 +48,14 @@
             {
               "name": "ready",
               "width": 1,
-              "note": "Set once the client is ready."
+              "note": "Set once the client is ready. Nothing observed has set it, so what a server does differently when it is set is unrecorded."
             }
           ]
         },
         {
           "name": "unknown",
           "type": "u8",
-          "note": "Purpose undetermined. It has been observed to carry zero, one, and other values, and is read by no implementation observed."
+          "note": "The lowest bit rises with the report that first reaches the end of loading. The bits beside it carry values a client never wrote for the message."
         }
       ]
     }

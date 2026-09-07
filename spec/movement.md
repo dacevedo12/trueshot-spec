@@ -48,9 +48,9 @@ The origins this document records, by the map each belongs to:
 Each pair was established by observation rather than from any map: a movement
 order carries where it is going as world floats and also as a path, so each
 order that reaches its destination pins the origin to a window two units wide.
-Between twenty one and forty five orders on each map agree on the pair recorded
-for it, while the neighbouring whole numbers fit about half as many, which is
-what an origin off by one looks like. No map's pair fits a single one of any
+On each map the orders captured agree on the pair recorded for it, while the
+neighbouring whole numbers fit about half as many, which is what an origin off
+by one looks like. No map's pair fits a single one of any
 other map's orders, which is what shows the origin belongs to the map rather
 than to the protocol.
 

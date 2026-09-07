@@ -14,7 +14,17 @@
           "name": "kind",
           "type": "u8",
           "note": "What is being asked for.",
-          "values": { "2": { "name": "moveToPosition" }, "3": { "name": "attack" } }
+          "values": {
+            "2": {
+              "name": "moveToPosition"
+            },
+            "3": {
+              "name": "attack"
+            },
+            "10": {
+              "name": "stop"
+            }
+          }
         },
         {
           "name": "targetX",
@@ -31,7 +41,11 @@
           "type": "u32",
           "note": "The network object the order is aimed at, or zero where it is aimed at open ground."
         },
-        { "name": "movement", "type": "struct", "struct": "Movement" }
+        {
+          "name": "movement",
+          "type": "struct",
+          "struct": "Movement"
+        }
       ]
     }
   ]

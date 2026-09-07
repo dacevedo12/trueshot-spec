@@ -3,8 +3,8 @@
   "subject": "message",
   "message": "CameraLock",
   "version": "4.20.0.315",
-  "note": "Released, with the bits beside the flag left as the client found them. Taken from a client.",
-  "bytes": "81 00000000 fe 00000000",
+  "note": "The view released, with bits beside the flag it does not explain. Taken from a client.",
+  "bytes": "81 00000000 fe01000000",
   "fields": {
     "command": 129,
     "netId": 0,
@@ -13,6 +13,6 @@
       "locked": 0,
       "unknown": 127
     },
-    "unknown": 0
+    "clientId": 1
   }
 }

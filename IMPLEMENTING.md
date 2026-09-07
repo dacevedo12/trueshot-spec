@@ -29,6 +29,6 @@ with a guess and carry on. That is a defect worth reporting, and
    no layout carries: what its coordinates mean.
 
 The transport is a delta on ENet 1.2.5, so building it means building on ENet
-or a port of it. Above the transport, registration is recorded and the rest is
-not, so a server built from this repository accepts a connection and speaks
-nothing further.
+or a port of it. Above the transport, registration and the requests a client
+sends during a match are recorded, along with movement and what changes about a
+unit. What a server sends is recorded only in part.

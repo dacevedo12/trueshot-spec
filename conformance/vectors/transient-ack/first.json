@@ -3,12 +3,12 @@
   "subject": "message",
   "message": "TransientAck",
   "version": "4.20.0.315",
-  "note": "Taken from a client.",
-  "bytes": "a8 00000000 01000000",
+  "note": "Acknowledging a batch of changes. Taken from a client.",
+  "bytes": "a8 00000000 5620f611",
   "fields": {
     "command": 168,
     "netId": 0,
     "extendedCommand": null,
-    "received": 1
+    "syncId": 301342806
   }
 }

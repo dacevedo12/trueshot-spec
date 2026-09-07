@@ -3,13 +3,13 @@
   "subject": "message",
   "message": "SelectObject",
   "version": "4.20.0.315",
-  "note": "Taken from a client.",
-  "bytes": "af 00000000 00000000 03010040",
+  "note": "An object selected. Taken from a client.",
+  "bytes": "af 00000000 010000006f010040",
   "fields": {
     "command": 175,
     "netId": 0,
     "extendedCommand": null,
-    "clientId": 0,
-    "selected": 1073742083
+    "clientId": 1,
+    "selected": 1073742191
   }
 }

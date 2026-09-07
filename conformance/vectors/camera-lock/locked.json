@@ -3,16 +3,16 @@
   "subject": "message",
   "message": "CameraLock",
   "version": "4.20.0.315",
-  "note": "Taken from a client.",
-  "bytes": "81 00000000 01 00000000",
+  "note": "The view following a unit. Taken from a client.",
+  "bytes": "81 00000000 f101000000",
   "fields": {
     "command": 129,
     "netId": 0,
     "extendedCommand": null,
     "state": {
       "locked": 1,
-      "unknown": 0
+      "unknown": 120
     },
-    "unknown": 0
+    "clientId": 1
   }
 }

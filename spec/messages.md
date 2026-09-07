@@ -242,12 +242,12 @@ of those does not change what comes next.
 
 Opening a connection is not like that. A client asks whether a server is ready
 and asks again until told it is. It states its build only once told. It reports
-itself ready when a server starts play, and reports a character settled once it
-has finished loading one. Each waits on the step before it.
+a character settled the moment loading reaches its end, and reports itself
+ready some while after that. Each waits on the step before it.
 
-One thing during play behaves the same way. A client names each view report and
-sends it again until a server returns that name, so a server that never returns
-one is sent the same report for as long as the match lasts.
+One thing during play behaves the same way. A client names each view report
+and sends it again until a server returns that name, so a server that returns
+nothing is sent the same report over and over.
 
 ## Vectors
 

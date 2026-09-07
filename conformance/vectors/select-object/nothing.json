@@ -4,12 +4,12 @@
   "message": "SelectObject",
   "version": "4.20.0.315",
   "note": "Nothing selected. Taken from a client.",
-  "bytes": "af 00000000 00000000 00000000",
+  "bytes": "af 00000000 0100000000000000",
   "fields": {
     "command": 175,
     "netId": 0,
     "extendedCommand": null,
-    "clientId": 0,
+    "clientId": 1,
     "selected": 0
   }
 }

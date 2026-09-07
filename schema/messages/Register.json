@@ -14,7 +14,7 @@
           "name": "leading",
           "type": "bytes",
           "size": 3,
-          "note": "Purpose undetermined, and read by no implementation observed. A client emits bytes here that it never wrote for this message, so their content is not a fact about the protocol."
+          "note": "Purpose undetermined. A client emits bytes here that it never wrote for this message, so their content is not a fact about the protocol."
         },
         {
           "name": "clientId",
@@ -41,7 +41,7 @@
           "name": "trailing",
           "type": "bytes",
           "size": 4,
-          "note": "Purpose undetermined, and read by no implementation observed. A client emits bytes here that it never wrote for this message, so their content is not a fact about the protocol."
+          "note": "Purpose undetermined. A client emits bytes here that it never wrote for this message, so their content is not a fact about the protocol."
         }
       ]
     }
