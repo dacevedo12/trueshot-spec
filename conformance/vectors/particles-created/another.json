@@ -1,10 +1,10 @@
 {
   "$schema": "../../../schema/meta/vector.json",
   "subject": "message",
-  "message": "EffectGroupCreated",
+  "message": "ParticlesCreated",
   "version": "4.20.0.315",
   "note": "Taken from a server a client accepted.",
-  "bytes": "87 00000000 018d10110669e358002000000000000000000001000000004911004074060040000000000000000092f35b901d436bf3a1f15b901d4386f192f35b901d436bf3000000000000000000000000000000000000803f",
+  "bytes": "87 00000000 018d 10110699bdf5062000000000000000000001740600404a11004074060040740600400000000092f35b901d436bf392f35b901d436bf392f35b901d436bf3000000000000000000000000000000000000803f",
   "fields": {
     "command": 135,
     "netId": 0,
@@ -13,24 +13,24 @@
     "groups": [
       {
         "package": 101781645,
-        "effect": 5825385,
+        "effect": 116768153,
         "flags": 32,
         "targetBone": 0,
         "bone": 0,
-        "effectCount": 1,
-        "effects": [
+        "particleCount": 1,
+        "particles": [
           {
-            "target": 0,
-            "effect": 1073746249,
+            "target": 1073743476,
+            "effect": 1073746250,
             "caster": 1073743476,
-            "boundTo": 0,
-            "keyword": 0,
+            "boundTo": 1073743476,
+            "unknown1": 0,
             "atX": -3182,
             "atY": 157.5638885498047,
             "atZ": -3221,
-            "towardX": -3679,
+            "towardX": -3182,
             "towardY": 157.5638885498047,
-            "towardZ": -3706,
+            "towardZ": -3221,
             "ownerX": -3182,
             "ownerY": 157.5638885498047,
             "ownerZ": -3221,

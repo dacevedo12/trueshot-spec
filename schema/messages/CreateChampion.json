@@ -36,9 +36,9 @@
           "size": 1,
           "bits": [
             {
-              "name": "orderSide",
+              "name": "side",
               "width": 1,
-              "note": "Set where the champion is on one side rather than the other."
+              "note": "Which of the two sides the champion is on. Set in everything observed."
             },
             {
               "name": "bot",

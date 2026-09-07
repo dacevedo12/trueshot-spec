@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/struct.json",
-  "struct": "EffectGroup",
-  "note": "A set of drawn effects that share the art, the sound, and the place on a unit they hang from.",
+  "struct": "ParticleGroup",
+  "note": "A set of drawn particles that share the art, the sound, and the place on a unit they hang from.",
   "fields": [
     {
       "name": "package",
@@ -11,7 +11,7 @@
     {
       "name": "effect",
       "type": "u32",
-      "note": "Which effect, by the number the client knows it as."
+      "note": "Which particle, by the number the client knows it as."
     },
     {
       "name": "flags",
@@ -29,18 +29,18 @@
       "note": "Where on the unit that made them they hang, by the same reading."
     },
     {
-      "name": "effectCount",
+      "name": "particleCount",
       "type": "u8",
-      "note": "How many effects follow."
+      "note": "How many particles follow."
     },
     {
-      "name": "effects",
+      "name": "particles",
       "type": "array",
-      "count": "effectCount",
-      "note": "The effects themselves.",
+      "count": "particleCount",
+      "note": "The particles themselves.",
       "items": {
         "type": "struct",
-        "struct": "Effect",
+        "struct": "Particle",
         "name": "drawn"
       }
     }

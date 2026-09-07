@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/struct.json",
-  "struct": "Effect",
-  "note": "One drawn effect: where it sits, what it hangs off, and how far into its run it is.",
+  "struct": "Particle",
+  "note": "One drawn particle: where it sits, what it hangs off, and how far into its run it is.",
   "fields": [
     {
       "name": "target",
@@ -11,7 +11,7 @@
     {
       "name": "effect",
       "type": "u32",
-      "note": "The name this effect answers to, so later messages can name it."
+      "note": "The name this particle answers to, so later messages can name it."
     },
     {
       "name": "caster",
@@ -24,9 +24,9 @@
       "note": "The unit it hangs off, or zero."
     },
     {
-      "name": "keyword",
+      "name": "unknown1",
       "type": "u32",
-      "note": "A further unit the effect reads from, or zero."
+      "note": "Purpose undetermined. Zero in everything observed."
     },
     {
       "name": "atX",

@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "CampCleared",
-  "note": "What a server sends when a camp of units that belong to no side is emptied.",
+  "note": "What a server sends about a camp of units that belong to no side. Both payloads observed name a camp with nothing credited for it and no time for its return, one of them for a camp that had just filled, so whether it marks a camp emptied is not settled here.",
   "revisions": [
     {
       "from": "4.20.0.315",
@@ -13,7 +13,7 @@
         {
           "name": "killer",
           "type": "u32",
-          "note": "The unit credited with emptying it."
+          "note": "The unit credited with emptying it. Zero in everything observed."
         },
         {
           "name": "camp",
@@ -28,7 +28,7 @@
         {
           "name": "returnsAt",
           "type": "f32",
-          "note": "When the camp fills again, in seconds."
+          "note": "When the camp fills again, in seconds. Zero in everything observed."
         },
         {
           "name": "does",

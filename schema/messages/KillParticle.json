@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
-  "message": "KillEffect",
-  "note": "What a server sends to stop an effect a client is drawing.",
+  "message": "KillParticle",
+  "note": "What a server sends to stop a particle a client is drawing.",
   "revisions": [
     {
       "from": "4.20.0.315",
@@ -11,9 +11,9 @@
       "reliability": "reliable",
       "fields": [
         {
-          "name": "effect",
+          "name": "particle",
           "type": "u32",
-          "note": "The effect to stop."
+          "note": "The particle to stop."
         }
       ]
     }

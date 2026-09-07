@@ -31,9 +31,9 @@
           "note": "The unit the region follows, or zero where it stands still."
         },
         {
-          "name": "bubble",
+          "name": "marker",
           "type": "u32",
-          "note": "The unit standing in for the region itself, or zero."
+          "note": "The unit standing in for the region itself, or zero where none does."
         },
         {
           "name": "sightFrom",

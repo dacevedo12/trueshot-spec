@@ -1115,6 +1115,9 @@ const claims = messages.flatMap(({ where, doc }) =>
   ),
 );
 
+// One pair of messages is reported once, however many of their channels clash.
+const reportedCollisions = new Set();
+
 for (let i = 0; i < claims.length; i += 1) {
   for (let j = i + 1; j < claims.length; j += 1) {
     const a = claims[i];
@@ -1131,6 +1134,9 @@ for (let i = 0; i < claims.length; i += 1) {
       a.channel === b.channel
         ? `on channel "${a.channel}"`
         : `across channels "${a.channel}" and "${b.channel}", which share the "${familyA}" numbering`;
+    const pair = [a.message, b.message].sort().join(" ");
+    if (reportedCollisions.has(pair)) continue;
+    reportedCollisions.add(pair);
     fail(
       a.where,
       `command ${a.revision.command} collides with ${b.message} ${where}`,
