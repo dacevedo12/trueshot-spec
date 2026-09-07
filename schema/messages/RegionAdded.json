@@ -1,0 +1,113 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "RegionAdded",
+  "note": "What a server sends to place a region on the ground: a patch that grants sight, blocks the way, or grows cover.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 35,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "team",
+          "type": "u32",
+          "note": "The side the region belongs to."
+        },
+        {
+          "name": "kind",
+          "type": "i32",
+          "note": "What sort of region it is."
+        },
+        {
+          "name": "owner",
+          "type": "i32",
+          "note": "The seat the region answers to. Zero in everything observed."
+        },
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit the region follows, or zero where it stands still."
+        },
+        {
+          "name": "bubble",
+          "type": "u32",
+          "note": "The unit standing in for the region itself, or zero."
+        },
+        {
+          "name": "sightFrom",
+          "type": "u32",
+          "note": "The unit whose sight the region grants, or zero."
+        },
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where the region sits, along one ground axis."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where it sits, along the other."
+        },
+        {
+          "name": "lifetime",
+          "type": "f32",
+          "note": "How long it lasts, in seconds."
+        },
+        {
+          "name": "collisionRadius",
+          "type": "f32",
+          "note": "How far out it blocks the way."
+        },
+        {
+          "name": "grassRadius",
+          "type": "f32",
+          "note": "How far out it grows cover."
+        },
+        {
+          "name": "sizeMultiplier",
+          "type": "f32",
+          "note": "What its stated radius is scaled by."
+        },
+        {
+          "name": "sizeAdditive",
+          "type": "f32",
+          "note": "What is added to its stated radius after scaling."
+        },
+        {
+          "name": "does",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "block",
+              "width": 1,
+              "note": "Set where the region blocks the way."
+            },
+            {
+              "name": "grantSight",
+              "width": 1,
+              "note": "Set where it grants sight."
+            },
+            {
+              "name": "revealHidden",
+              "width": 1,
+              "note": "Set where it shows units that are hiding."
+            },
+            {
+              "name": "unknown",
+              "width": 5,
+              "note": "Purpose undetermined. A server leaves these as it found them, so they carry values it never wrote for this message."
+            }
+          ]
+        },
+        {
+          "name": "baseRadius",
+          "type": "f32",
+          "note": "The radius the three size fields above are applied to."
+        }
+      ]
+    }
+  ]
+}

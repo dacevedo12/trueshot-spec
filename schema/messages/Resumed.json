@@ -1,0 +1,38 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "Resumed",
+  "note": "What a server sends to take the match off hold.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 10,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "seat",
+          "type": "i32",
+          "note": "The seat that lifted the hold."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "afterCountdown",
+              "width": 1,
+              "note": "Set where play resumes at the end of a count rather than at once."
+            },
+            {
+              "name": "unknown",
+              "width": 7,
+              "note": "Purpose undetermined. A server leaves these as it found them, so they carry values it never wrote for this message."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

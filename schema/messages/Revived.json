@@ -1,0 +1,31 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "Revived",
+  "note": "What a server sends to put a champion back on the field.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 47,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where it returns, along one ground axis."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where it returns, along the other."
+        },
+        {
+          "name": "resource",
+          "type": "f32",
+          "note": "What its spendable resource stands at on return."
+        }
+      ]
+    }
+  ]
+}

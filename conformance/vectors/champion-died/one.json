@@ -1,0 +1,24 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ChampionDied",
+  "version": "4.20.0.315",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "5e 74060040 0000000000a0020040000700002041",
+  "fields": {
+    "command": 94,
+    "netId": 1073743476,
+    "extendedCommand": null,
+    "death": {
+      "how": {
+        "becomeZombie": 0,
+        "unknown": 0
+      },
+      "kind": 0,
+      "killer": 1073742496,
+      "damageType": 0,
+      "damageSource": 7,
+      "stayDown": 10
+    }
+  }
+}

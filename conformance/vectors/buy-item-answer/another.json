@@ -1,0 +1,21 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "BuyItemAnswer",
+  "version": "4.20.0.315",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "6f 4b040040 dd05000001010000",
+  "fields": {
+    "command": 111,
+    "netId": 1073742923,
+    "extendedCommand": null,
+    "item": 1501,
+    "slot": 1,
+    "inSlot": 1,
+    "charges": 0,
+    "how": {
+      "tellTheClient": 0,
+      "unknown": 0
+    }
+  }
+}

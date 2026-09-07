@@ -1,0 +1,73 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "PingPlaced",
+  "note": "What a server sends to show a ping on the map to everyone meant to see it.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 64,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where the ping sits, along one ground axis."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where it sits, along the other."
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit pinged, or zero where a place was pinged instead."
+        },
+        {
+          "name": "source",
+          "type": "u32",
+          "note": "The unit that placed it."
+        },
+        {
+          "name": "category",
+          "type": "u8",
+          "note": "Which sort of ping."
+        },
+        {
+          "name": "does",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "playSound",
+              "width": 1,
+              "note": "Set where the client plays a sound for it."
+            },
+            {
+              "name": "showInChat",
+              "width": 1,
+              "note": "Set where the client writes a line about it."
+            },
+            {
+              "name": "wasThrottled",
+              "width": 1,
+              "note": "Set where the sender was pinging faster than allowed."
+            },
+            {
+              "name": "speak",
+              "width": 1,
+              "note": "Set where the unit says something about it."
+            },
+            {
+              "name": "unknown",
+              "width": 4,
+              "note": "Purpose undetermined. A server leaves these as it found them, so they carry values it never wrote for this message."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "DeathHistory",
+  "note": "What a server sends to say what led to a death, so the client can lay it out.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 33,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "cause",
+          "type": "u8",
+          "note": "What sort of thing did it."
+        },
+        {
+          "name": "killer",
+          "type": "u32",
+          "note": "The unit credited with it."
+        },
+        {
+          "name": "stayDown",
+          "type": "f32",
+          "note": "How long the unit stays down, in seconds."
+        },
+        {
+          "name": "entryCount",
+          "type": "i32",
+          "note": "How many entries follow. Zero in everything observed."
+        },
+        {
+          "name": "entries",
+          "type": "bytes",
+          "size": "remaining",
+          "note": "The entries themselves, one after another. Each opens with when it happened, how many times it did, what kind of thing it was, and what did it, and what follows that is settled by the kind. No capture has carried an entry, so the shapes past that opening are not recorded here."
+        }
+      ]
+    }
+  ]
+}

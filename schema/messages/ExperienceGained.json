@@ -1,0 +1,26 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "ExperienceGained",
+  "note": "What a server sends to grant a unit experience.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 16,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit granted it."
+        },
+        {
+          "name": "amount",
+          "type": "f32",
+          "note": "How much."
+        }
+      ]
+    }
+  ]
+}

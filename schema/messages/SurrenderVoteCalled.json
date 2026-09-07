@@ -1,0 +1,68 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "SurrenderVoteCalled",
+  "note": "What a server sends to open a surrender vote, or to report one already open.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 201,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "countAsYes",
+              "width": 1,
+              "note": "Set where the receiving seat is taken to have voted for."
+            },
+            {
+              "name": "openTheMenu",
+              "width": 1,
+              "note": "Set where the client shows the vote to the seat."
+            },
+            {
+              "name": "unknown",
+              "width": 6,
+              "note": "Purpose undetermined. A server leaves these as it found them, so they carry values it never wrote for this message."
+            }
+          ]
+        },
+        {
+          "name": "caller",
+          "type": "u32",
+          "note": "The unit that called the vote."
+        },
+        {
+          "name": "inFavour",
+          "type": "u8",
+          "note": "How many have voted for."
+        },
+        {
+          "name": "against",
+          "type": "u8",
+          "note": "How many have voted against."
+        },
+        {
+          "name": "seats",
+          "type": "u8",
+          "note": "How many seats may vote."
+        },
+        {
+          "name": "team",
+          "type": "u32",
+          "note": "Which side is voting."
+        },
+        {
+          "name": "closesIn",
+          "type": "f32",
+          "note": "How long the vote stays open, in seconds."
+        }
+      ]
+    }
+  ]
+}

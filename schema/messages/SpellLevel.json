@@ -1,0 +1,26 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "SpellLevel",
+  "note": "What a server sends to set the level of one of a unit's spells.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 91,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "i32",
+          "note": "Which slot."
+        },
+        {
+          "name": "level",
+          "type": "i32",
+          "note": "The level it now stands at."
+        }
+      ]
+    }
+  ]
+}

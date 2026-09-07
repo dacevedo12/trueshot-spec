@@ -1,0 +1,43 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "Paused",
+  "note": "What a server sends to put the match on hold.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 161,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "seat",
+          "type": "i32",
+          "note": "The seat that called the hold."
+        },
+        {
+          "name": "timeLeft",
+          "type": "i32",
+          "note": "How long the hold may run, in seconds."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "unlimited",
+              "width": 1,
+              "note": "Set where the hold runs under tournament terms and does not expire on its own."
+            },
+            {
+              "name": "unknown",
+              "width": 7,
+              "note": "Purpose undetermined. A server leaves these as it found them, so they carry values it never wrote for this message."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

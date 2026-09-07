@@ -1,0 +1,19 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "Damage",
+  "version": "4.20.0.315",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "65 74060040 0400008bd2fd41740600400b180040",
+  "fields": {
+    "command": 101,
+    "netId": 1073743476,
+    "extendedCommand": null,
+    "result": 4,
+    "padding": 0,
+    "kind": 0,
+    "amount": 31.72780418395996,
+    "target": 1073743476,
+    "source": 1073747979
+  }
+}

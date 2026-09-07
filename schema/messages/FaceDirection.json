@@ -1,0 +1,53 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "FaceDirection",
+  "note": "What a server sends to turn a unit to face a direction.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 80,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "turnOverTime",
+              "width": 1,
+              "note": "Set where the turn takes the time named below rather than happening at once."
+            },
+            {
+              "name": "unknown",
+              "width": 7,
+              "note": "Purpose undetermined. A server leaves these as it found them, so they carry values it never wrote for this message."
+            }
+          ]
+        },
+        {
+          "name": "towardX",
+          "type": "f32",
+          "note": "The direction faced, along one ground axis."
+        },
+        {
+          "name": "towardY",
+          "type": "f32",
+          "note": "The direction faced, in height."
+        },
+        {
+          "name": "towardZ",
+          "type": "f32",
+          "note": "The direction faced, along the other ground axis."
+        },
+        {
+          "name": "turnTime",
+          "type": "f32",
+          "note": "How long the turn takes, in seconds."
+        }
+      ]
+    }
+  ]
+}

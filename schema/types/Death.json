@@ -1,0 +1,49 @@
+{
+  "$schema": "../meta/struct.json",
+  "struct": "Death",
+  "note": "How a unit died: who did it, with what, and how long it stays down.",
+  "fields": [
+    {
+      "name": "how",
+      "type": "bits",
+      "size": 1,
+      "bits": [
+        {
+          "name": "becomeZombie",
+          "width": 1,
+          "note": "Set where the unit stays on the field in a form that takes no orders and makes no attacks."
+        },
+        {
+          "name": "unknown",
+          "width": 7,
+          "note": "Purpose undetermined. A server leaves these as it found them, so they carry values it never wrote for this message."
+        }
+      ]
+    },
+    {
+      "name": "kind",
+      "type": "u32",
+      "note": "What sort of death this is."
+    },
+    {
+      "name": "killer",
+      "type": "u32",
+      "note": "The unit credited with it, or zero where nothing is."
+    },
+    {
+      "name": "damageType",
+      "type": "u8",
+      "note": "The sort of damage that finished it."
+    },
+    {
+      "name": "damageSource",
+      "type": "u8",
+      "note": "Where that damage came from."
+    },
+    {
+      "name": "stayDown",
+      "type": "f32",
+      "note": "How long the unit stays down, in seconds."
+    }
+  ]
+}

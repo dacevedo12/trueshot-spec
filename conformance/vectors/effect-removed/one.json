@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "EffectRemoved",
+  "version": "4.20.0.315",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "7b 74060040 017edc750e0010b9bb",
+  "fields": {
+    "command": 123,
+    "netId": 1073743476,
+    "extendedCommand": null,
+    "slot": 1,
+    "effect": 242605182,
+    "runningFor": -0.0056476593017578125
+  }
+}

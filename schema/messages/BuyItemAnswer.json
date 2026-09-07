@@ -1,0 +1,53 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "BuyItemAnswer",
+  "note": "What a server sends to confirm an item reached a slot.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 111,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "item",
+          "type": "u32",
+          "note": "Which item, by the number the client knows it as."
+        },
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "The slot it went to."
+        },
+        {
+          "name": "inSlot",
+          "type": "u8",
+          "note": "How many of it are in that slot now."
+        },
+        {
+          "name": "charges",
+          "type": "u8",
+          "note": "How many uses it carries."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "tellTheClient",
+              "width": 1,
+              "note": "Set where the client is to show the change."
+            },
+            {
+              "name": "unknown",
+              "width": 7,
+              "note": "Purpose undetermined. A server leaves these as it found them, so they carry values it never wrote for this message."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

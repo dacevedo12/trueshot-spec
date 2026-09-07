@@ -1,0 +1,31 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "GoldGained",
+  "note": "What a server sends to grant a unit gold.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 34,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit granted it."
+        },
+        {
+          "name": "source",
+          "type": "u32",
+          "note": "What it came from, or zero where nothing did."
+        },
+        {
+          "name": "amount",
+          "type": "f32",
+          "note": "How much."
+        }
+      ]
+    }
+  ]
+}

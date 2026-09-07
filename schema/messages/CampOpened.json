@@ -1,0 +1,46 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "CampOpened",
+  "note": "What a server sends to open a camp of units that belong to no side.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 233,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where the camp sits, along one ground axis."
+        },
+        {
+          "name": "atY",
+          "type": "f32",
+          "note": "Where it sits, in height."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where it sits, along the other ground axis."
+        },
+        {
+          "name": "spawnDuration",
+          "type": "f32",
+          "note": "How long the opening takes, in seconds."
+        },
+        {
+          "name": "camp",
+          "type": "u8",
+          "note": "Which camp."
+        },
+        {
+          "name": "timerKind",
+          "type": "i32",
+          "note": "Which clock the client shows for it."
+        }
+      ]
+    }
+  ]
+}

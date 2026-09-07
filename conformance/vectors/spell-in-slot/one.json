@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SpellInSlot",
+  "version": "4.20.0.315",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "70 74060040 74060040ac04ca0906",
+  "fields": {
+    "command": 112,
+    "netId": 1073743476,
+    "extendedCommand": null,
+    "unit": 1073743476,
+    "spell": 164234412,
+    "slot": 6
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "UnitDied",
+  "note": "What a server sends to say a unit died, to everyone who can see it.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 158,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "death",
+          "type": "struct",
+          "struct": "Death",
+          "note": "How it died."
+        }
+      ]
+    }
+  ]
+}

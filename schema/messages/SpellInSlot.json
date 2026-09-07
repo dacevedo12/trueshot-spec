@@ -1,0 +1,31 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "SpellInSlot",
+  "note": "What a server sends to put a spell in one of a unit's slots.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 112,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit whose slot this is."
+        },
+        {
+          "name": "spell",
+          "type": "u32",
+          "note": "Which spell, by the number the client knows it as."
+        },
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SurrenderVoteCalled",
+  "version": "4.20.0.315",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "c9 00000000 0374060040010005640000000000f041",
+  "fields": {
+    "command": 201,
+    "netId": 0,
+    "extendedCommand": null,
+    "how": {
+      "countAsYes": 1,
+      "openTheMenu": 1,
+      "unknown": 0
+    },
+    "caller": 1073743476,
+    "inFavour": 1,
+    "against": 0,
+    "seats": 5,
+    "team": 100,
+    "closesIn": 30
+  }
+}

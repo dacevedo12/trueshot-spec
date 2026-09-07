@@ -1,0 +1,24 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "UnitDied",
+  "version": "4.20.0.315",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "9e 0b180040 000000000074060040000700000000",
+  "fields": {
+    "command": 158,
+    "netId": 1073747979,
+    "extendedCommand": null,
+    "death": {
+      "how": {
+        "becomeZombie": 0,
+        "unknown": 0
+      },
+      "kind": 0,
+      "killer": 1073743476,
+      "damageType": 0,
+      "damageSource": 7,
+      "stayDown": 0
+    }
+  }
+}

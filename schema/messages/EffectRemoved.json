@@ -1,0 +1,31 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "EffectRemoved",
+  "note": "What a server sends to take a lasting effect off a unit.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 123,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot it sat in."
+        },
+        {
+          "name": "effect",
+          "type": "u32",
+          "note": "Which effect, by the number the client knows it as."
+        },
+        {
+          "name": "runningFor",
+          "type": "f32",
+          "note": "How far into its run the effect was taken off, in seconds. Values a shade below zero are observed."
+        }
+      ]
+    }
+  ]
+}

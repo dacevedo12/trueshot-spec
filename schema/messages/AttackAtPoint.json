@@ -1,0 +1,32 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "AttackAtPoint",
+  "note": "What a server sends to say a unit is swinging at a place rather than at another unit.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 26,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "strike",
+          "type": "struct",
+          "struct": "Strike",
+          "note": "The swing."
+        },
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where the swing lands, along one ground axis."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where it lands, along the other."
+        }
+      ]
+    }
+  ]
+}

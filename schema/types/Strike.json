@@ -1,0 +1,42 @@
+{
+  "$schema": "../meta/struct.json",
+  "struct": "Strike",
+  "note": "One swing of a unit's own weapon: what it is aimed at, when it lands, and the missile it throws.",
+  "fields": [
+    {
+      "name": "target",
+      "type": "u32",
+      "note": "The unit swung at, or zero where the swing is aimed at a point instead."
+    },
+    {
+      "name": "timing",
+      "type": "u8",
+      "note": "How far the swing is shifted from the unit's own rhythm. Read it as a signed hundredth of a second by taking the byte, subtracting 128, and dividing by 100, so 128 means no shift."
+    },
+    {
+      "name": "missile",
+      "type": "u32",
+      "note": "The name the missile this swing throws will answer to."
+    },
+    {
+      "name": "slot",
+      "type": "u8",
+      "note": "Which of the unit's attacks this is."
+    },
+    {
+      "name": "targetX",
+      "type": "f32",
+      "note": "Where the swing is aimed, along one ground axis. The points observed fall outside the ground a match is played on, so what they are measured against is undetermined."
+    },
+    {
+      "name": "targetY",
+      "type": "f32",
+      "note": "Where the swing is aimed, in height."
+    },
+    {
+      "name": "targetZ",
+      "type": "f32",
+      "note": "Where the swing is aimed, along the other ground axis. It shares the reading above."
+    }
+  ]
+}

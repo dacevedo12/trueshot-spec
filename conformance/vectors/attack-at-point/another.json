@@ -1,0 +1,24 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "AttackAtPoint",
+  "version": "4.20.0.315",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "1a 0b180040 7406004080661a0040400080e4c4e3e3514200c00fc40eba6945df5fc945",
+  "fields": {
+    "command": 26,
+    "netId": 1073747979,
+    "extendedCommand": null,
+    "strike": {
+      "target": 1073743476,
+      "timing": 128,
+      "missile": 1073748582,
+      "slot": 64,
+      "targetX": -1828,
+      "targetY": 52.4725456237793,
+      "targetZ": -575
+    },
+    "atX": 3739.62841796875,
+    "atZ": 6443.98388671875
+  }
+}
