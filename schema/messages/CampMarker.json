@@ -1,0 +1,55 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "CampMarker",
+  "note": "What a server sends to place a camp on the map and say how it is drawn. Its identifier is wider than a byte, so it travels behind the escape.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 290,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Where the camp sits, along one ground axis, in world units."
+        },
+        { "name": "y", "type": "f32", "note": "Where it sits, in height." },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Where it sits, along the other ground axis."
+        },
+        {
+          "name": "icon",
+          "type": "string",
+          "encoding": "ascii",
+          "size": 64,
+          "note": "Names the mark a client draws. What a name resolves to is the game's rather than the protocol's, so this specification records the field and not the meaning of any value."
+        },
+        { "name": "index", "type": "u8", "note": "Tells one camp from another." },
+        {
+          "name": "revealEvent",
+          "type": "u8",
+          "note": "Purpose undetermined. It varies with the kind of camp."
+        },
+        {
+          "name": "team",
+          "type": "u8",
+          "note": "Which side the camp belongs to, where it belongs to one."
+        },
+        {
+          "name": "timerKind",
+          "type": "i32",
+          "note": "Purpose undetermined. Observed as zero."
+        },
+        {
+          "name": "expires",
+          "type": "f32",
+          "note": "When the camp is next due, in seconds. Observed as zero."
+        }
+      ]
+    }
+  ]
+}

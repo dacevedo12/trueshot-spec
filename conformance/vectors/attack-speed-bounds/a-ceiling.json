@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "AttackSpeedBounds",
+  "version": "4.20.0.315",
+  "note": "A ceiling set with no floor, which is what the flags beside them are for. Taken from a server a client accepted.",
+  "bytes": "fe c5040040 2001 01000080400000803f",
+  "fields": {
+    "command": 254,
+    "netId": 1073743045,
+    "extendedCommand": 288,
+    "overrides": {
+      "ceiling": 1,
+      "floor": 0,
+      "unknown": 0
+    },
+    "ceiling": 4,
+    "floor": 1
+  }
+}

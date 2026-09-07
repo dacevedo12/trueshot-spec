@@ -1,0 +1,37 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "UnitLookAt",
+  "note": "What a server sends to turn a unit toward something. Its identifier is wider than a byte, so it travels behind the escape.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 271,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What the unit is turning toward. The values are not yet told apart."
+        },
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Where to look, along one ground axis, in world units."
+        },
+        { "name": "y", "type": "f32", "note": "Where to look, in height." },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Where to look, along the other ground axis."
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The network object being looked at, where one is named."
+        }
+      ]
+    }
+  ]
+}

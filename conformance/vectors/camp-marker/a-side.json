@@ -1,0 +1,22 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "CampMarker",
+  "version": "4.20.0.315",
+  "note": "A camp belonging to a side. Taken from a server a client accepted.",
+  "bytes": "fe 00000000 2201 d1f77145000070426fe8f64543616d70000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000014a640000000000000000",
+  "fields": {
+    "command": 254,
+    "netId": 0,
+    "extendedCommand": 290,
+    "x": 3871.488525390625,
+    "y": 60,
+    "z": 7901.05419921875,
+    "icon": "Camp",
+    "index": 1,
+    "revealEvent": 74,
+    "team": 100,
+    "timerKind": 0,
+    "expires": 0
+  }
+}
