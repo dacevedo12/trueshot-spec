@@ -1,0 +1,109 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "EnterSight",
+  "version": "4.20.0.315",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "ba 4d180040 0000000100000000000000000000000001000000100000005352555f4d75726b776f6c664d696e6900000000000000000000000000000000803f0000000000000000000000000002dba7ff110b4d18004000fd67f91cfe615bfdb5009c644e5d",
+  "fields": {
+    "command": 186,
+    "netId": 1073748045,
+    "extendedCommand": null,
+    "carried": {
+      "size": 0,
+      "unknown": 0
+    },
+    "messages": [],
+    "itemCount": 0,
+    "items": [],
+    "hasShields": 1,
+    "magicShield": 0,
+    "physicalShield": 0,
+    "shield": 0,
+    "appearanceCount": 1,
+    "appearance": [
+      {
+        "assetSize": 16,
+        "asset": "SRU_MurkwolfMini",
+        "skin": 0,
+        "how": {
+          "overrideSpells": 0,
+          "modelOnly": 0,
+          "replacePackage": 0,
+          "unknown": 0
+        },
+        "layer": 0
+      }
+    ],
+    "lookingAt": 0,
+    "lookKind": 0,
+    "lookX": 1,
+    "lookY": 0,
+    "lookZ": 0,
+    "effectStackCount": 0,
+    "effectStacks": [],
+    "isChampion": 0,
+    "movementKind": 2,
+    "movementSyncId": 301967323,
+    "movement": {
+      "header": {
+        "hasTeleportToken": 1,
+        "pointCount": 5
+      },
+      "path": {
+        "unit": 1073748045,
+        "teleportToken": 0,
+        "flags": [
+          {
+            "xIsStep": 1,
+            "zIsStep": 0
+          },
+          {
+            "xIsStep": 1,
+            "zIsStep": 1
+          },
+          {
+            "xIsStep": 1,
+            "zIsStep": 1
+          },
+          {
+            "xIsStep": 1,
+            "zIsStep": 1
+          }
+        ],
+        "firstX": -1689,
+        "firstZ": -484,
+        "steps": [
+          {
+            "xStep": 97,
+            "xWhole": null,
+            "zStep": null,
+            "zWhole": -677
+          },
+          {
+            "xStep": -75,
+            "xWhole": null,
+            "zStep": 0,
+            "zWhole": null
+          },
+          {
+            "xStep": -100,
+            "xWhole": null,
+            "zStep": 100,
+            "zWhole": null
+          },
+          {
+            "xStep": 78,
+            "xWhole": null,
+            "zStep": 93,
+            "zWhole": null
+          }
+        ]
+      }
+    },
+    "atX": null,
+    "atZ": null,
+    "facingX": null,
+    "facingZ": null
+  }
+}

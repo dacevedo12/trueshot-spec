@@ -1,0 +1,54 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "EnterSight",
+  "version": "4.20.0.315",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "ba b57df9ff 00000001000000000000000000000000010000001000000053525541505f4f726465724e6578757300000000000000000000000000000000803f00000000000000000000000000035620f61150ebc1441074cf440000000000000000",
+  "fields": {
+    "command": 186,
+    "netId": 4294540725,
+    "extendedCommand": null,
+    "carried": {
+      "size": 0,
+      "unknown": 0
+    },
+    "messages": [],
+    "itemCount": 0,
+    "items": [],
+    "hasShields": 1,
+    "magicShield": 0,
+    "physicalShield": 0,
+    "shield": 0,
+    "appearanceCount": 1,
+    "appearance": [
+      {
+        "assetSize": 16,
+        "asset": "SRUAP_OrderNexus",
+        "skin": 0,
+        "how": {
+          "overrideSpells": 0,
+          "modelOnly": 0,
+          "replacePackage": 0,
+          "unknown": 0
+        },
+        "layer": 0
+      }
+    ],
+    "lookingAt": 0,
+    "lookKind": 0,
+    "lookX": 1,
+    "lookY": 0,
+    "lookZ": 0,
+    "effectStackCount": 0,
+    "effectStacks": [],
+    "isChampion": 0,
+    "movementKind": 3,
+    "movementSyncId": 301342806,
+    "movement": null,
+    "atX": 1551.353515625,
+    "atZ": 1659.626953125,
+    "facingX": 0,
+    "facingZ": 0
+  }
+}

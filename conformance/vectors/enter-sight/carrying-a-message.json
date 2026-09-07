@@ -1,0 +1,84 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "EnterSight",
+  "version": "4.20.0.315",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "ba 4b040040 51004f009d4b0400404b040040405475727265745f54315f4c5f30335f41000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000204000100dc050000010100dd050000020100de050000030100df05000001000000000000000000000000010000001300000053525541505f5475727265745f4f726465723100000000000000000000000000000000803f000000000000000000000000000311c2cc1124527544d12523460000000000000000",
+  "fields": {
+    "command": 186,
+    "netId": 1073742923,
+    "extendedCommand": null,
+    "carried": {
+      "size": 81,
+      "unknown": 0
+    },
+    "messages": [
+      {
+        "size": 79,
+        "body": "9d4b0400404b040040405475727265745f54315f4c5f30335f410000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000002"
+      }
+    ],
+    "itemCount": 4,
+    "items": [
+      {
+        "slot": 0,
+        "inSlot": 1,
+        "charges": 0,
+        "item": 1500
+      },
+      {
+        "slot": 1,
+        "inSlot": 1,
+        "charges": 0,
+        "item": 1501
+      },
+      {
+        "slot": 2,
+        "inSlot": 1,
+        "charges": 0,
+        "item": 1502
+      },
+      {
+        "slot": 3,
+        "inSlot": 1,
+        "charges": 0,
+        "item": 1503
+      }
+    ],
+    "hasShields": 1,
+    "magicShield": 0,
+    "physicalShield": 0,
+    "shield": 0,
+    "appearanceCount": 1,
+    "appearance": [
+      {
+        "assetSize": 19,
+        "asset": "SRUAP_Turret_Order1",
+        "skin": 0,
+        "how": {
+          "overrideSpells": 0,
+          "modelOnly": 0,
+          "replacePackage": 0,
+          "unknown": 0
+        },
+        "layer": 0
+      }
+    ],
+    "lookingAt": 0,
+    "lookKind": 0,
+    "lookX": 1,
+    "lookY": 0,
+    "lookZ": 0,
+    "effectStackCount": 0,
+    "effectStacks": [],
+    "isChampion": 0,
+    "movementKind": 3,
+    "movementSyncId": 298631697,
+    "movement": null,
+    "atX": 981.283447265625,
+    "atZ": 10441.4541015625,
+    "facingX": 0,
+    "facingZ": 0
+  }
+}

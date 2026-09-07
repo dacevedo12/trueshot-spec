@@ -1,0 +1,56 @@
+{
+  "$schema": "../meta/struct.json",
+  "struct": "Appearance",
+  "note": "One layer of what a unit looks like. Layers are stated in the order a client lays them on.",
+  "fields": [
+    {
+      "name": "assetSize",
+      "type": "u32",
+      "note": "How many bytes the name below occupies."
+    },
+    {
+      "name": "asset",
+      "type": "string",
+      "encoding": "utf8",
+      "size": "assetSize",
+      "note": "The name the client loads this layer's art under. It is not padded, and it carries no terminator."
+    },
+    {
+      "name": "skin",
+      "type": "u32",
+      "note": "Which look within that art."
+    },
+    {
+      "name": "how",
+      "type": "bits",
+      "size": 1,
+      "bits": [
+        {
+          "name": "overrideSpells",
+          "width": 1,
+          "note": "Set where this layer replaces the unit's spells as well as its art."
+        },
+        {
+          "name": "modelOnly",
+          "width": 1,
+          "note": "Set where it replaces the shape alone."
+        },
+        {
+          "name": "replacePackage",
+          "width": 1,
+          "note": "Set where it replaces the whole set of art and sound."
+        },
+        {
+          "name": "unknown",
+          "width": 5,
+          "note": "Purpose undetermined. A server leaves these as it found them, so they carry values it never wrote for this message."
+        }
+      ]
+    },
+    {
+      "name": "layer",
+      "type": "u32",
+      "note": "The name this layer answers to, so a later message can take it off."
+    }
+  ]
+}

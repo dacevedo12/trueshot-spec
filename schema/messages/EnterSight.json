@@ -1,0 +1,228 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "EnterSight",
+  "note": "What a server sends when a unit comes into what a side can see. It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 186,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "carried",
+          "type": "bits",
+          "size": 2,
+          "bits": [
+            {
+              "name": "size",
+              "width": 13,
+              "note": "How many bytes the messages below occupy in total."
+            },
+            {
+              "name": "unknown",
+              "width": 3,
+              "note": "Purpose undetermined. A reading end takes no meaning from these."
+            }
+          ]
+        },
+        {
+          "name": "messages",
+          "type": "array",
+          "size": "carried.size",
+          "note": "Whole messages of the same family, each behind its own length, that a client reads as though they had arrived on their own.",
+          "items": {
+            "name": "message",
+            "type": "struct",
+            "struct": "CarriedMessage"
+          }
+        },
+        {
+          "name": "itemCount",
+          "type": "u8",
+          "note": "How many items the unit holds."
+        },
+        {
+          "name": "items",
+          "type": "array",
+          "count": "itemCount",
+          "note": "The items themselves.",
+          "items": {
+            "name": "item",
+            "type": "struct",
+            "struct": "HeldItem"
+          }
+        },
+        {
+          "name": "hasShields",
+          "type": "u8",
+          "note": "Whether the three figures below follow. It is one in everything observed, and what a server that wrote zero would leave out is not recorded here.",
+          "values": {
+            "0": {
+              "name": "no"
+            },
+            "1": {
+              "name": "yes"
+            }
+          }
+        },
+        {
+          "name": "magicShield",
+          "type": "f32",
+          "note": "How much of the unit's shielding turns aside one sort of damage."
+        },
+        {
+          "name": "physicalShield",
+          "type": "f32",
+          "note": "How much turns aside the other."
+        },
+        {
+          "name": "shield",
+          "type": "f32",
+          "note": "How much turns aside either."
+        },
+        {
+          "name": "appearanceCount",
+          "type": "u32",
+          "note": "How many layers of look follow."
+        },
+        {
+          "name": "appearance",
+          "type": "array",
+          "count": "appearanceCount",
+          "note": "What the unit looks like, laid on in order.",
+          "items": {
+            "name": "layer",
+            "type": "struct",
+            "struct": "Appearance"
+          }
+        },
+        {
+          "name": "lookingAt",
+          "type": "u32",
+          "note": "What the unit is turned towards, or zero where it is turned towards a place instead."
+        },
+        {
+          "name": "lookKind",
+          "type": "u8",
+          "note": "What sort of thing it is turned towards."
+        },
+        {
+          "name": "lookX",
+          "type": "f32",
+          "note": "Where it is turned, along one ground axis."
+        },
+        {
+          "name": "lookY",
+          "type": "f32",
+          "note": "Where it is turned, in height."
+        },
+        {
+          "name": "lookZ",
+          "type": "f32",
+          "note": "Where it is turned, along the other ground axis."
+        },
+        {
+          "name": "effectStackCount",
+          "type": "u32",
+          "note": "How many effect slots have more than one stacked in them."
+        },
+        {
+          "name": "effectStacks",
+          "type": "array",
+          "count": "effectStackCount",
+          "note": "Those slots and their counts.",
+          "items": {
+            "name": "stack",
+            "type": "struct",
+            "struct": "EffectStack"
+          }
+        },
+        {
+          "name": "isChampion",
+          "type": "u8",
+          "note": "Whether the unit is a champion.",
+          "values": {
+            "0": {
+              "name": "no"
+            },
+            "1": {
+              "name": "yes"
+            }
+          }
+        },
+        {
+          "name": "movementKind",
+          "type": "u8",
+          "note": "What the unit is doing on the ground, and so which shape follows. Standing and moving have been observed. A unit doing nothing is followed by no shape, and what follows a unit moving at a stated speed is not recorded here.",
+          "values": {
+            "0": {
+              "name": "nothing"
+            },
+            "1": {
+              "name": "movingAtASpeed"
+            },
+            "2": {
+              "name": "moving"
+            },
+            "3": {
+              "name": "standing"
+            }
+          }
+        },
+        {
+          "name": "movementSyncId",
+          "type": "i32",
+          "note": "The name this statement of movement answers to."
+        },
+        {
+          "name": "movement",
+          "type": "struct",
+          "struct": "Movement",
+          "note": "Where the unit is going. spec/movement.md says how a path is read.",
+          "present": {
+            "when": "movementKind",
+            "equals": 2
+          }
+        },
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where the unit stands, along one ground axis.",
+          "present": {
+            "when": "movementKind",
+            "equals": 3
+          }
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where it stands, along the other.",
+          "present": {
+            "when": "movementKind",
+            "equals": 3
+          }
+        },
+        {
+          "name": "facingX",
+          "type": "f32",
+          "note": "Which way it faces, along one ground axis.",
+          "present": {
+            "when": "movementKind",
+            "equals": 3
+          }
+        },
+        {
+          "name": "facingZ",
+          "type": "f32",
+          "note": "Which way it faces, along the other.",
+          "present": {
+            "when": "movementKind",
+            "equals": 3
+          }
+        }
+      ]
+    }
+  ]
+}

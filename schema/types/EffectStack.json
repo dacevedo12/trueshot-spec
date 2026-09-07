@@ -1,0 +1,17 @@
+{
+  "$schema": "../meta/struct.json",
+  "struct": "EffectStack",
+  "note": "How many of a lasting effect are stacked in one of a unit's effect slots.",
+  "fields": [
+    {
+      "name": "slot",
+      "type": "u8",
+      "note": "Which slot."
+    },
+    {
+      "name": "count",
+      "type": "i32",
+      "note": "How many are stacked there."
+    }
+  ]
+}
