@@ -1,0 +1,58 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "StopAttack",
+  "note": "What a server sends to break off an attack a unit is making.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 52,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "missile",
+          "type": "u32",
+          "note": "The missile the attack would have thrown, where there is one."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "keepAnimating",
+              "width": 1,
+              "note": "Set where the unit finishes what it was doing to look at."
+            },
+            {
+              "name": "destroyMissile",
+              "width": 1,
+              "note": "Set where the missile named above is to go too."
+            },
+            {
+              "name": "overrideVisibility",
+              "width": 1,
+              "note": "Purpose undetermined."
+            },
+            {
+              "name": "summonerSpell",
+              "width": 1,
+              "note": "Set where what is broken off came from a summoner slot."
+            },
+            {
+              "name": "forceClient",
+              "width": 1,
+              "note": "Purpose undetermined."
+            },
+            {
+              "name": "unknown",
+              "width": 3,
+              "note": "Purpose undetermined. A server leaves these as it found them, so they carry values it never wrote for this message."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

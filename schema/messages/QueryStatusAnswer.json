@@ -1,0 +1,29 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "QueryStatusAnswer",
+  "note": "What a server returns when asked whether it is ready.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 136,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "ready",
+          "type": "u8",
+          "note": "Whether the server is ready. A client asks again until this says so.",
+          "values": {
+            "0": {
+              "name": "no"
+            },
+            "1": {
+              "name": "yes"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "EmotePlayed",
+  "note": "What a server sends to say a unit played an emote.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 66,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "emote",
+          "type": "u8",
+          "note": "Which emote, by the number the client knows it as."
+        }
+      ]
+    }
+  ]
+}

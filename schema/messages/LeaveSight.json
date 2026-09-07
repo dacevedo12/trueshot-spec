@@ -1,0 +1,15 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "LeaveSight",
+  "note": "What a server sends when a unit passes out of what a side can see.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 81,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": []
+    }
+  ]
+}

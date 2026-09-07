@@ -1,0 +1,21 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "ClockSync",
+  "note": "What a server sends to set a client's idea of how long the match has run.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 193,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "elapsed",
+          "type": "f32",
+          "note": "How long the match has run, in seconds."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "LevelUp",
+  "note": "What a server sends when a unit gains a level.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 63,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "level",
+          "type": "u8",
+          "note": "The level now reached."
+        },
+        {
+          "name": "pointsToSpend",
+          "type": "u8",
+          "note": "How many spell points are left unspent."
+        }
+      ]
+    }
+  ]
+}

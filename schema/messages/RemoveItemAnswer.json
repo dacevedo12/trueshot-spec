@@ -1,0 +1,43 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "RemoveItemAnswer",
+  "note": "What a server sends to confirm an item left a slot.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 11,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot."
+        },
+        {
+          "name": "left",
+          "type": "u8",
+          "note": "How many of the item remain in it."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "tellTheClient",
+              "width": 1,
+              "note": "Set where the client is to show the change."
+            },
+            {
+              "name": "unknown",
+              "width": 7,
+              "note": "Purpose undetermined. A server leaves these as it found them, so they carry values it never wrote for this message."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

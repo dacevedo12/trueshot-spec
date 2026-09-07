@@ -1,0 +1,26 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "SwapItemsAnswer",
+  "note": "What a server sends to confirm an item moved between slots.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 62,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "from",
+          "type": "u8",
+          "note": "The slot the item left."
+        },
+        {
+          "name": "to",
+          "type": "u8",
+          "note": "The slot it went to."
+        }
+      ]
+    }
+  ]
+}
