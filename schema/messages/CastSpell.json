@@ -35,27 +35,27 @@
         {
           "name": "slot",
           "type": "u8",
-          "note": "Which slot is being cast from."
+          "note": "Which slot is being cast from. Slots for a unit's own spells and for items both appear here."
         },
         {
           "name": "x",
           "type": "f32",
-          "note": "Where the cast starts, along one ground axis, in world units."
+          "note": "A point on the ground the cast is described by, along one axis, in world units."
         },
         {
           "name": "z",
           "type": "f32",
-          "note": "Where the cast starts, along the other."
+          "note": "The same point, along the other axis."
         },
         {
           "name": "endX",
           "type": "f32",
-          "note": "Where it is aimed, along one ground axis."
+          "note": "A second point, along one axis. Every cast observed carried the same point twice, so nothing shows which of the two is where the cast begins and which is where it is aimed."
         },
         {
           "name": "endZ",
           "type": "f32",
-          "note": "Where it is aimed, along the other."
+          "note": "The second point, along the other axis."
         },
         {
           "name": "target",

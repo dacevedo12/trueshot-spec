@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "IntegritySignal",
-  "note": "What a client sends when it notices something about itself worth reporting. In these versions it is sent once a session, when the view is drawn further out than the client allows itself.",
+  "note": "What a client sends when it notices something about itself worth reporting. Some sessions carry one and others none, and in those that do it arrives once, beside a view drawn further out than the client allows itself.",
   "revisions": [
     {
       "from": "4.20.0.315",

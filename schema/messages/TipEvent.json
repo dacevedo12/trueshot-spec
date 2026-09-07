@@ -18,7 +18,7 @@
         {
           "name": "tip",
           "type": "u32",
-          "note": "Which tip, by the number the client knows it as."
+          "note": "Which tip, naming it as the server did when it sent it. A client returns what it was given rather than a number of its own."
         }
       ]
     }

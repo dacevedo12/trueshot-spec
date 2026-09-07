@@ -12,7 +12,7 @@
       "fields": [
         {
           "name": "syncId",
-          "type": "i32",
+          "type": "u32",
           "note": "Names this group. A client returns it to say the group arrived."
         },
         {
@@ -24,7 +24,11 @@
           "name": "movements",
           "type": "array",
           "count": "movementCount",
-          "items": { "name": "movement", "type": "struct", "struct": "Movement" }
+          "items": {
+            "name": "movement",
+            "type": "struct",
+            "struct": "Movement"
+          }
         }
       ]
     }

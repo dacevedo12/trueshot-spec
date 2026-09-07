@@ -1,0 +1,31 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "MoveOrder",
+  "version": "4.20.0.315",
+  "note": "A path of a single point, which carries no flags at all. Taken from a client.",
+  "bytes": "72 74060040 030eba6945df5fc9450b18004002740600406df821fe",
+  "fields": {
+    "command": 114,
+    "netId": 1073743476,
+    "extendedCommand": null,
+    "kind": 3,
+    "targetX": 3739.62841796875,
+    "targetZ": 6443.98388671875,
+    "target": 1073747979,
+    "movement": {
+      "header": {
+        "hasTeleportToken": 0,
+        "pointCount": 1
+      },
+      "path": {
+        "unit": 1073743476,
+        "teleportToken": null,
+        "flags": [],
+        "firstX": -1939,
+        "firstZ": -479,
+        "steps": []
+      }
+    }
+  }
+}

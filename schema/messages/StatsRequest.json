@@ -11,10 +11,29 @@
       "reliability": "reliable",
       "fields": [
         {
-          "name": "unknown",
-          "type": "bytes",
-          "size": 20,
-          "note": "Three values a client reports about software it has detected alongside itself, then the appearance it claims and a value standing for that appearance's content."
+          "name": "moduleOne",
+          "type": "u32",
+          "note": "One of three values a client reports about software it has detected alongside itself. Observed as zero."
+        },
+        {
+          "name": "moduleTwo",
+          "type": "u32",
+          "note": "The second of the three. Observed as zero."
+        },
+        {
+          "name": "moduleThree",
+          "type": "u32",
+          "note": "The third. Observed as zero."
+        },
+        {
+          "name": "appearance",
+          "type": "u32",
+          "note": "The appearance the client believes it is wearing, by the number it knows it as."
+        },
+        {
+          "name": "appearanceCheck",
+          "type": "u32",
+          "note": "A value standing for that appearance's content. A server takes neither this nor the appearance beside it on trust."
         }
       ]
     }
