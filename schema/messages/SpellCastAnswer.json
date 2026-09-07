@@ -1,0 +1,44 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "SpellCastAnswer",
+  "note": "What a server sends to say a unit is casting a spell.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 181,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "positionSyncId",
+          "type": "i32",
+          "note": "The name of the caster's position report this casting is answered against."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "unknown1",
+              "width": 1,
+              "note": "Purpose undetermined."
+            },
+            {
+              "name": "unknown",
+              "width": 7,
+              "note": "Purpose undetermined. A server leaves these as it found them, so they carry values it never wrote for this message."
+            }
+          ]
+        },
+        {
+          "name": "cast",
+          "type": "struct",
+          "struct": "SpellCast",
+          "note": "The casting."
+        }
+      ]
+    }
+  ]
+}

@@ -26,17 +26,17 @@
     {
       "name": "targetX",
       "type": "f32",
-      "note": "Where the swing is aimed, along one ground axis. The points observed fall outside the ground a match is played on, so what they are measured against is undetermined."
+      "note": "Where the swing is aimed, along one ground axis. Carried in the units a path uses rather than in world units, and always whole. spec/movement.md says how the two relate."
     },
     {
       "name": "targetY",
       "type": "f32",
-      "note": "Where the swing is aimed, in height."
+      "note": "Where the swing is aimed, in height. Carried in world units."
     },
     {
       "name": "targetZ",
       "type": "f32",
-      "note": "Where the swing is aimed, along the other ground axis. It shares the reading above."
+      "note": "Where the swing is aimed, along the other ground axis. It shares the reading of the first."
     }
   ]
 }

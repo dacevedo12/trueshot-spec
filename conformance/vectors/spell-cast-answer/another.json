@@ -1,0 +1,62 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SpellCastAnswer",
+  "version": "4.20.0.315",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "b5 74060040 b77bf611006b00fb28840543110040000000803f74060040740600408d10110644110040782929444b9a2e43f01e6044782929444b9a2e43f01e60440174060040000000003f000000000000003f0000000000000000000600000000782929444b9a2e43f01e60440100000000000000",
+  "fields": {
+    "command": 181,
+    "netId": 1073743476,
+    "extendedCommand": null,
+    "positionSyncId": 301366199,
+    "how": {
+      "unknown1": 0,
+      "unknown": 0
+    },
+    "cast": {
+      "size": 107,
+      "spell": 92547323,
+      "cast": 1073746243,
+      "level": 0,
+      "attackSpeed": 1,
+      "caster": 1073743476,
+      "chainOwner": 1073743476,
+      "package": 101781645,
+      "missile": 1073746244,
+      "targetX": 676.64794921875,
+      "targetY": 174.6027069091797,
+      "targetZ": 896.4833984375,
+      "targetEndX": 676.64794921875,
+      "targetEndY": 174.6027069091797,
+      "targetEndZ": 896.4833984375,
+      "hitCount": 1,
+      "hits": [
+        {
+          "unit": 1073743476,
+          "result": 0
+        }
+      ],
+      "castTime": 0.5,
+      "extraCastTime": 0,
+      "totalTime": 0.5,
+      "cooldown": 0,
+      "startedAt": 0,
+      "how": {
+        "basicAttack": 0,
+        "secondBasicAttack": 0,
+        "forced": 0,
+        "overrideCastPosition": 0,
+        "clicked": 0,
+        "unknown": 0
+      },
+      "slot": 6,
+      "cost": 0,
+      "launchX": 676.64794921875,
+      "launchY": 174.6027069091797,
+      "launchZ": 896.4833984375,
+      "ammoUsed": 1,
+      "ammoRecharge": 0
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "$schema": "../meta/struct.json",
+  "struct": "EffectGroup",
+  "note": "A set of drawn effects that share the art, the sound, and the place on a unit they hang from.",
+  "fields": [
+    {
+      "name": "package",
+      "type": "u32",
+      "note": "Which set of art and sound the client draws them with."
+    },
+    {
+      "name": "effect",
+      "type": "u32",
+      "note": "Which effect, by the number the client knows it as."
+    },
+    {
+      "name": "flags",
+      "type": "u16",
+      "note": "How the client draws them. The bits within are undetermined."
+    },
+    {
+      "name": "targetBone",
+      "type": "u32",
+      "note": "Where on the unit aimed at they hang, by the number the client knows that place as."
+    },
+    {
+      "name": "bone",
+      "type": "u32",
+      "note": "Where on the unit that made them they hang, by the same reading."
+    },
+    {
+      "name": "effectCount",
+      "type": "u8",
+      "note": "How many effects follow."
+    },
+    {
+      "name": "effects",
+      "type": "array",
+      "count": "effectCount",
+      "note": "The effects themselves.",
+      "items": {
+        "type": "struct",
+        "struct": "Effect",
+        "name": "drawn"
+      }
+    }
+  ]
+}

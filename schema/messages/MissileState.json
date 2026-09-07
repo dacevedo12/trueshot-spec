@@ -1,0 +1,169 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "MissileState",
+  "note": "What a server sends to say where a missile is and what it is doing.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 59,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where the missile is, along one ground axis."
+        },
+        {
+          "name": "atY",
+          "type": "f32",
+          "note": "Where the missile is, in height."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where the missile is, along the other ground axis."
+        },
+        {
+          "name": "casterAtX",
+          "type": "f32",
+          "note": "Where the unit that threw it stood when it left, along one ground axis."
+        },
+        {
+          "name": "casterAtY",
+          "type": "f32",
+          "note": "Where the unit that threw it stood when it left, in height."
+        },
+        {
+          "name": "casterAtZ",
+          "type": "f32",
+          "note": "Where the unit that threw it stood when it left, along the other ground axis."
+        },
+        {
+          "name": "facingX",
+          "type": "f32",
+          "note": "Which way the missile points, along one ground axis."
+        },
+        {
+          "name": "facingY",
+          "type": "f32",
+          "note": "Which way the missile points, in height."
+        },
+        {
+          "name": "facingZ",
+          "type": "f32",
+          "note": "Which way the missile points, along the other ground axis."
+        },
+        {
+          "name": "velocityX",
+          "type": "f32",
+          "note": "How fast the missile travels along each axis, along one ground axis."
+        },
+        {
+          "name": "velocityY",
+          "type": "f32",
+          "note": "How fast the missile travels along each axis, in height."
+        },
+        {
+          "name": "velocityZ",
+          "type": "f32",
+          "note": "How fast the missile travels along each axis, along the other ground axis."
+        },
+        {
+          "name": "startX",
+          "type": "f32",
+          "note": "Where the missile began, along one ground axis."
+        },
+        {
+          "name": "startY",
+          "type": "f32",
+          "note": "Where the missile began, in height."
+        },
+        {
+          "name": "startZ",
+          "type": "f32",
+          "note": "Where the missile began, along the other ground axis."
+        },
+        {
+          "name": "endX",
+          "type": "f32",
+          "note": "Where the missile is bound for, along one ground axis."
+        },
+        {
+          "name": "endY",
+          "type": "f32",
+          "note": "Where the missile is bound for, in height."
+        },
+        {
+          "name": "endZ",
+          "type": "f32",
+          "note": "Where the missile is bound for, along the other ground axis."
+        },
+        {
+          "name": "unitAtX",
+          "type": "f32",
+          "note": "Where the unit the missile follows stands, along one ground axis."
+        },
+        {
+          "name": "unitAtY",
+          "type": "f32",
+          "note": "Where the unit the missile follows stands, in height."
+        },
+        {
+          "name": "unitAtZ",
+          "type": "f32",
+          "note": "Where the unit the missile follows stands, along the other ground axis."
+        },
+        {
+          "name": "age",
+          "type": "f32",
+          "note": "How long the missile has existed, in seconds."
+        },
+        {
+          "name": "speed",
+          "type": "f32",
+          "note": "How fast it travels."
+        },
+        {
+          "name": "lifeSpent",
+          "type": "f32",
+          "note": "How much of its life is gone, as a part of one."
+        },
+        {
+          "name": "speedChange",
+          "type": "f32",
+          "note": "What is added to its speed over the time below."
+        },
+        {
+          "name": "speedChangeTime",
+          "type": "f32",
+          "note": "How long that change takes, in seconds."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "bounced",
+              "width": 1,
+              "note": "Set where the missile has already turned off something it struck."
+            },
+            {
+              "name": "unknown",
+              "width": 7,
+              "note": "Purpose undetermined. A server leaves these as it found them, so they carry values it never wrote for this message."
+            }
+          ]
+        },
+        {
+          "name": "cast",
+          "type": "struct",
+          "struct": "SpellCast",
+          "note": "The casting that threw it."
+        }
+      ]
+    }
+  ]
+}

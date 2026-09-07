@@ -1,0 +1,195 @@
+{
+  "$schema": "../meta/struct.json",
+  "struct": "SpellCast",
+  "note": "One casting of a spell: which spell, who cast it, at what, and the timings a client plays it out with.",
+  "fields": [
+    {
+      "name": "size",
+      "type": "u16",
+      "note": "How many bytes this whole shape occupies, counting these two."
+    },
+    {
+      "name": "spell",
+      "type": "u32",
+      "note": "Which spell, by the number the client knows it as."
+    },
+    {
+      "name": "cast",
+      "type": "u32",
+      "note": "The name this casting answers to, so later messages can name it."
+    },
+    {
+      "name": "level",
+      "type": "u8",
+      "note": "The level the spell stands at."
+    },
+    {
+      "name": "attackSpeed",
+      "type": "f32",
+      "note": "What the caster's attack rhythm is scaled by while this runs."
+    },
+    {
+      "name": "caster",
+      "type": "u32",
+      "note": "The unit casting."
+    },
+    {
+      "name": "chainOwner",
+      "type": "u32",
+      "note": "The unit the casting is credited to, where a chain of casts leads back to another."
+    },
+    {
+      "name": "package",
+      "type": "u32",
+      "note": "Which set of art and sound the client draws it with."
+    },
+    {
+      "name": "missile",
+      "type": "u32",
+      "note": "The name the missile this casting throws will answer to, or zero where it throws none."
+    },
+    {
+      "name": "targetX",
+      "type": "f32",
+      "note": "Where the casting is aimed, along one ground axis."
+    },
+    {
+      "name": "targetY",
+      "type": "f32",
+      "note": "Where the casting is aimed, in height."
+    },
+    {
+      "name": "targetZ",
+      "type": "f32",
+      "note": "Where the casting is aimed, along the other ground axis."
+    },
+    {
+      "name": "targetEndX",
+      "type": "f32",
+      "note": "Where the casting stops being aimed, for a spell that sweeps, along one ground axis."
+    },
+    {
+      "name": "targetEndY",
+      "type": "f32",
+      "note": "Where the casting stops being aimed, for a spell that sweeps, in height."
+    },
+    {
+      "name": "targetEndZ",
+      "type": "f32",
+      "note": "Where the casting stops being aimed, for a spell that sweeps, along the other ground axis."
+    },
+    {
+      "name": "hitCount",
+      "type": "u8",
+      "note": "How many units the casting names as hit."
+    },
+    {
+      "name": "hits",
+      "type": "array",
+      "count": "hitCount",
+      "note": "The units the casting names as hit.",
+      "items": {
+        "type": "struct",
+        "struct": "SpellHit",
+        "name": "hit"
+      }
+    },
+    {
+      "name": "castTime",
+      "type": "f32",
+      "note": "How long the casting takes before it takes effect, in seconds."
+    },
+    {
+      "name": "extraCastTime",
+      "type": "f32",
+      "note": "What is added to that, in seconds."
+    },
+    {
+      "name": "totalTime",
+      "type": "f32",
+      "note": "How long the whole casting runs, in seconds."
+    },
+    {
+      "name": "cooldown",
+      "type": "f32",
+      "note": "How long until the spell can be cast again, in seconds."
+    },
+    {
+      "name": "startedAt",
+      "type": "f32",
+      "note": "When the casting began, in seconds."
+    },
+    {
+      "name": "how",
+      "type": "bits",
+      "size": 1,
+      "bits": [
+        {
+          "name": "basicAttack",
+          "width": 1,
+          "note": "Set where the casting is the caster's own swing rather than a spell."
+        },
+        {
+          "name": "secondBasicAttack",
+          "width": 1,
+          "note": "Set where the swing is the second of a pair."
+        },
+        {
+          "name": "forced",
+          "width": 1,
+          "note": "Set where the casting was not asked for by whoever holds the caster."
+        },
+        {
+          "name": "overrideCastPosition",
+          "width": 1,
+          "note": "Set where the aim above replaces the one the caster would have used."
+        },
+        {
+          "name": "clicked",
+          "width": 1,
+          "note": "Set where a click chose the aim."
+        },
+        {
+          "name": "unknown",
+          "width": 3,
+          "note": "Purpose undetermined. A server leaves these as it found them, so they carry values it never wrote for this message."
+        }
+      ]
+    },
+    {
+      "name": "slot",
+      "type": "u8",
+      "note": "Which of the caster's slots the spell sits in."
+    },
+    {
+      "name": "cost",
+      "type": "f32",
+      "note": "What the casting spends from the caster's resource."
+    },
+    {
+      "name": "launchX",
+      "type": "f32",
+      "note": "Where what the casting throws leaves from, along one ground axis."
+    },
+    {
+      "name": "launchY",
+      "type": "f32",
+      "note": "Where what the casting throws leaves from, in height."
+    },
+    {
+      "name": "launchZ",
+      "type": "f32",
+      "note": "Where what the casting throws leaves from, along the other ground axis."
+    },
+    {
+      "name": "ammoUsed",
+      "type": "i32",
+      "note": "How many charges the casting spends."
+    },
+    {
+      "name": "ammoRecharge",
+      "type": "f32",
+      "note": "How long until a spent charge returns, in seconds."
+    }
+  ]
+}

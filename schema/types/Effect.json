@@ -1,0 +1,102 @@
+{
+  "$schema": "../meta/struct.json",
+  "struct": "Effect",
+  "note": "One drawn effect: where it sits, what it hangs off, and how far into its run it is.",
+  "fields": [
+    {
+      "name": "target",
+      "type": "u32",
+      "note": "The unit the effect is aimed at, or zero."
+    },
+    {
+      "name": "effect",
+      "type": "u32",
+      "note": "The name this effect answers to, so later messages can name it."
+    },
+    {
+      "name": "caster",
+      "type": "u32",
+      "note": "The unit that made it, or zero."
+    },
+    {
+      "name": "boundTo",
+      "type": "u32",
+      "note": "The unit it hangs off, or zero."
+    },
+    {
+      "name": "keyword",
+      "type": "u32",
+      "note": "A further unit the effect reads from, or zero."
+    },
+    {
+      "name": "atX",
+      "type": "i16",
+      "note": "Where the effect sits, along one ground axis. Carried in the units a path uses rather than in world units."
+    },
+    {
+      "name": "atY",
+      "type": "f32",
+      "note": "Where it sits, in height. Carried in world units."
+    },
+    {
+      "name": "atZ",
+      "type": "i16",
+      "note": "Where it sits, along the other ground axis. It shares the reading of the first."
+    },
+    {
+      "name": "towardX",
+      "type": "i16",
+      "note": "Where the effect is aimed, along one ground axis, read as the first pair above."
+    },
+    {
+      "name": "towardY",
+      "type": "f32",
+      "note": "Where it is aimed, in height."
+    },
+    {
+      "name": "towardZ",
+      "type": "i16",
+      "note": "Where it is aimed, along the other ground axis."
+    },
+    {
+      "name": "ownerX",
+      "type": "i16",
+      "note": "Where the unit that made it stood, along one ground axis, read as the first pair above."
+    },
+    {
+      "name": "ownerY",
+      "type": "f32",
+      "note": "Where that unit stood, in height."
+    },
+    {
+      "name": "ownerZ",
+      "type": "i16",
+      "note": "Where that unit stood, along the other ground axis."
+    },
+    {
+      "name": "facingX",
+      "type": "f32",
+      "note": "Which way the effect faces, along one ground axis."
+    },
+    {
+      "name": "facingY",
+      "type": "f32",
+      "note": "Which way the effect faces, in height."
+    },
+    {
+      "name": "facingZ",
+      "type": "f32",
+      "note": "Which way the effect faces, along the other ground axis."
+    },
+    {
+      "name": "runningFor",
+      "type": "f32",
+      "note": "How far into its run it already is, in seconds."
+    },
+    {
+      "name": "scale",
+      "type": "f32",
+      "note": "What its drawn size is scaled by."
+    }
+  ]
+}

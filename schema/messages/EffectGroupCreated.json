@@ -1,0 +1,32 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "EffectGroupCreated",
+  "note": "What a server sends to start drawing sets of effects.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 135,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "groupCount",
+          "type": "u8",
+          "note": "How many sets follow."
+        },
+        {
+          "name": "groups",
+          "type": "array",
+          "count": "groupCount",
+          "note": "The sets themselves.",
+          "items": {
+            "type": "struct",
+            "struct": "EffectGroup",
+            "name": "group"
+          }
+        }
+      ]
+    }
+  ]
+}

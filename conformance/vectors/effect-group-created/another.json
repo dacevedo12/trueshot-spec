@@ -1,0 +1,47 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "EffectGroupCreated",
+  "version": "4.20.0.315",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "87 00000000 018d10110699bdf5062000000000000000000001740600404a11004074060040740600400000000092f35b901d436bf392f35b901d436bf392f35b901d436bf3000000000000000000000000000000000000803f",
+  "fields": {
+    "command": 135,
+    "netId": 0,
+    "extendedCommand": null,
+    "groupCount": 1,
+    "groups": [
+      {
+        "package": 101781645,
+        "effect": 116768153,
+        "flags": 32,
+        "targetBone": 0,
+        "bone": 0,
+        "effectCount": 1,
+        "effects": [
+          {
+            "target": 1073743476,
+            "effect": 1073746250,
+            "caster": 1073743476,
+            "boundTo": 1073743476,
+            "keyword": 0,
+            "atX": -3182,
+            "atY": 157.5638885498047,
+            "atZ": -3221,
+            "towardX": -3182,
+            "towardY": 157.5638885498047,
+            "towardZ": -3221,
+            "ownerX": -3182,
+            "ownerY": 157.5638885498047,
+            "ownerZ": -3221,
+            "facingX": 0,
+            "facingY": 0,
+            "facingZ": 0,
+            "runningFor": 0,
+            "scale": 1
+          }
+        ]
+      }
+    ]
+  }
+}
