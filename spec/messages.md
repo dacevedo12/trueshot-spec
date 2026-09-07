@@ -51,6 +51,35 @@ escape.
 Direction narrows it further. One value serves two messages travelling
 opposite ways within a family.
 
+## A container of several messages
+
+One value the game family keeps for framing introduces a container rather than
+a message. A container carries no header: the byte introducing it is the whole
+of it, and nothing in `schema/messages` describes one. A reading end unwraps it
+and reads each message inside as though that message had arrived on its own.
+
+After the introducing byte comes a count of the entries, in one byte. The first
+entry is a length in one byte and then a whole message, header and all. Every
+later entry opens with a descriptor byte, and what follows that is:
+
+- the command, unless the descriptor says the entry repeats the command before
+  it;
+- the network object, either in full or as a signed difference of one byte from
+  the object the entry before it named;
+- a further byte of length, where the length the descriptor carries is 63;
+- the body, of the length the descriptor settles.
+
+The network object is the only thing stated as a difference. A command is
+either written or repeated, and a body is always written in full.
+
+A server that gathers messages this way of its own accord sends the container
+on the channel `schema/channels.json` names `events`, delivered reliably.
+
+No payload behind this specification is a container, so which bits of the
+descriptor carry the repetition, the difference and the length is not recorded
+here. A server MUST NOT send a container until that is settled, because a
+reading end built from this section alone cannot take one apart.
+
 ## Reading a body
 
 A body begins where its family's header ends. Fields occupy it in the order

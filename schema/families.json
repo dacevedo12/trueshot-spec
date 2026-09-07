@@ -19,7 +19,7 @@
             {
               "name": "command",
               "type": "u8",
-              "note": "254 means the identifier is carried in the wider field instead. 255 introduces a container of several messages rather than a message of its own."
+              "note": "254 means the identifier is carried in the wider field instead. 255 introduces a container of several messages rather than a message of its own, which spec/messages.md describes."
             },
             {
               "name": "netId",
