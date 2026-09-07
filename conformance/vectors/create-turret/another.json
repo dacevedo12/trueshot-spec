@@ -1,0 +1,21 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "CreateTurret",
+  "version": "4.20.0.315",
+  "note": "Taken from inside a container a server sent and a client accepted. A carried message is read as though it had arrived on its own.",
+  "bytes": "9d 88040040 88040040405475727265745f54315f4c5f30325f410000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000002",
+  "fields": {
+    "command": 157,
+    "netId": 1073742984,
+    "extendedCommand": null,
+    "turret": 1073742984,
+    "node": 64,
+    "name": "Turret_T1_L_02_A",
+    "how": {
+      "targetable": 1,
+      "unknown": 0
+    },
+    "targetableBy": 33554432
+  }
+}

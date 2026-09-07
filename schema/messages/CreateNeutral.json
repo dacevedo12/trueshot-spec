@@ -1,0 +1,161 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "CreateNeutral",
+  "note": "What a server sends to put a unit that belongs to no side on the field.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 99,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The name the unit answers to, so later messages can name it."
+        },
+        {
+          "name": "node",
+          "type": "u8",
+          "note": "Which of the sender's runs of names this one is drawn from."
+        },
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where the unit stands, along one ground axis."
+        },
+        {
+          "name": "atY",
+          "type": "f32",
+          "note": "Where the unit stands, in height."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where the unit stands, along the other ground axis."
+        },
+        {
+          "name": "campAtX",
+          "type": "f32",
+          "note": "Where the camp it belongs to sits, along one ground axis."
+        },
+        {
+          "name": "campAtY",
+          "type": "f32",
+          "note": "Where the camp it belongs to sits, in height."
+        },
+        {
+          "name": "campAtZ",
+          "type": "f32",
+          "note": "Where the camp it belongs to sits, along the other ground axis."
+        },
+        {
+          "name": "facingX",
+          "type": "f32",
+          "note": "Which way it faces, along one ground axis."
+        },
+        {
+          "name": "facingY",
+          "type": "f32",
+          "note": "Which way it faces, in height."
+        },
+        {
+          "name": "facingZ",
+          "type": "f32",
+          "note": "Which way it faces, along the other ground axis."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "What this unit is called, so a client can tell one from another. Written out in full and padded with zero bytes to the width above."
+        },
+        {
+          "name": "asset",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The name the client loads its art and sound under, written and padded as above."
+        },
+        {
+          "name": "uniqueName",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "A further name the unit answers to, written and padded as above."
+        },
+        {
+          "name": "spawnAnimation",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The name the client loads what it does on arriving under, written and padded as above."
+        },
+        {
+          "name": "team",
+          "type": "u32",
+          "note": "The side it belongs to, or zero where it belongs to none."
+        },
+        {
+          "name": "damageBonus",
+          "type": "i32",
+          "note": "What is added to the damage it deals."
+        },
+        {
+          "name": "healthBonus",
+          "type": "i32",
+          "note": "What is added to the health it holds."
+        },
+        {
+          "name": "roaming",
+          "type": "u32",
+          "note": "How far it wanders from its camp."
+        },
+        {
+          "name": "camp",
+          "type": "i32",
+          "note": "Which camp it belongs to."
+        },
+        {
+          "name": "effectSide",
+          "type": "u32",
+          "note": "The side that gains what killing it grants."
+        },
+        {
+          "name": "revealEvent",
+          "type": "i32",
+          "note": "What makes the unit known to a side that cannot see it."
+        },
+        {
+          "name": "level",
+          "type": "i32",
+          "note": "The level it starts at."
+        },
+        {
+          "name": "spawnDuration",
+          "type": "f32",
+          "note": "How long its arrival takes, in seconds."
+        },
+        {
+          "name": "spawnAt",
+          "type": "f32",
+          "note": "When it arrives, in seconds."
+        },
+        {
+          "name": "behaviour",
+          "type": "u8",
+          "note": "Which set of doings it follows."
+        },
+        {
+          "name": "script",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 32,
+          "note": "The name the client loads those doings under, written and padded as above."
+        }
+      ]
+    }
+  ]
+}
