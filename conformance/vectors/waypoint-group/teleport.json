@@ -1,0 +1,31 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "WaypointGroup",
+  "version": "4.20.0.315",
+  "note": "A group carrying a teleport token, which is what tells one relocation from another. Taken from a server a client accepted.",
+  "bytes": "61 00000000 e2ffa4110100037406004001bdf183f1",
+  "fields": {
+    "command": 97,
+    "netId": 0,
+    "extendedCommand": null,
+    "syncId": 296026082,
+    "movementCount": 1,
+    "movements": [
+      {
+        "header": {
+          "hasTeleportToken": 1,
+          "pointCount": 1
+        },
+        "path": {
+          "unit": 1073743476,
+          "teleportToken": 1,
+          "flags": [],
+          "firstX": -3651,
+          "firstZ": -3709,
+          "steps": []
+        }
+      }
+    ]
+  }
+}

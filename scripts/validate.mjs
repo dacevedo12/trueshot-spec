@@ -588,6 +588,51 @@ function needingOrder(fields, structs, seen = new Set()) {
   return found;
 }
 
+// Every presence rule a payload met, wherever it sits.
+function walkPresence(
+  fields,
+  values,
+  structs,
+  prefix,
+  note,
+  seen = new Set(),
+) {
+  for (const field of fields ?? []) {
+    if (!values || !(field.name in values)) continue;
+    const value = values[field.name];
+    const path = prefix ? `${prefix}.${field.name}` : field.name;
+    if (field.present) note(path, value === null);
+    if (value === null || value === undefined) continue;
+    if (field.type === "record") {
+      walkPresence(field.fields, value, structs, path, note, seen);
+    } else if (field.type === "struct" && !seen.has(field.struct)) {
+      const definition = structs.get(field.struct);
+      if (definition) {
+        walkPresence(
+          definition.fields,
+          value,
+          structs,
+          `struct:${field.struct}`,
+          note,
+          new Set([...seen, field.struct]),
+        );
+      }
+    } else if (field.type === "array" && Array.isArray(value)) {
+      // Items share one rule, so one item meeting it counts for the list.
+      for (const item of value) {
+        walkPresence(
+          [field.items],
+          { [field.items.name]: item },
+          structs,
+          path,
+          note,
+          seen,
+        );
+      }
+    }
+  }
+}
+
 function needingKey(fields, structs, seen = new Set()) {
   const found = [];
   for (const field of fields ?? []) {
@@ -1068,6 +1113,10 @@ const covered = new Set();
 const transportCovered = new Set();
 // Which presence rules any vector has actually exercised, and which way.
 const exercised = new Map();
+// What a message vector decoded to, so an algorithm can only read that.
+const decoded = new Map();
+const algorithmsSeen = new Set();
+const pendingAlgorithms = [];
 const pascalFromKebab = (name) =>
   name
     .split("-")
@@ -1136,19 +1185,7 @@ if (existsSync(VECTOR_DIR)) {
           fail(path, `sits under "${dir.name}" but its subject is algorithm`);
           continue;
         }
-        const run = ALGORITHMS[doc.algorithm];
-        if (!run) {
-          fail(
-            path,
-            `names algorithm "${doc.algorithm}", which nothing implements`,
-          );
-          continue;
-        }
-        const got = canonical(run(doc.input));
-        const want = canonical(doc.output);
-        if (got !== want) {
-          fail(path, `produces ${got}, and the vector says ${want}`);
-        }
+        pendingAlgorithms.push({ path, doc });
         continue;
       }
 
@@ -1382,17 +1419,22 @@ if (existsSync(VECTOR_DIR)) {
           }
         }
         if (claim) {
-          for (const field of claim.revision.fields ?? []) {
-            if (!field.present) continue;
-            const key = `${claim.message}@${claim.revision.from}#${field.name}`;
+          const note = (path, absent) => {
+            const key = path.startsWith("struct:")
+              ? `#${path}`
+              : `${claim.message}@${claim.revision.from}#${path}`;
             const seenSoFar = exercised.get(key) ?? {
               present: false,
               absent: false,
             };
-            if (read.values[field.name] === null) seenSoFar.absent = true;
+            if (absent) seenSoFar.absent = true;
             else seenSoFar.present = true;
             exercised.set(key, seenSoFar);
-          }
+          };
+          walkPresence(claim.revision.fields, read.values, structs, "", note);
+        }
+        if (doc.subject === "message") {
+          decoded.set(`${dir.name}/${basename(path, ".json")}`, read.values);
         }
         const expected = canonical(doc.fields);
         const actual = canonical(read.values);
@@ -1426,6 +1468,52 @@ if (existsSync(VECTOR_DIR)) {
   }
 }
 
+for (const { path, doc } of pendingAlgorithms) {
+  const run = ALGORITHMS[doc.algorithm];
+  if (!run) {
+    fail(path, `names algorithm "${doc.algorithm}", which nothing implements`);
+    continue;
+  }
+  algorithmsSeen.add(doc.algorithm);
+  const source = decoded.get(doc.input.vector);
+  if (!source) {
+    fail(
+      path,
+      `reads "${doc.input.vector}", which is not a message vector that decoded`,
+    );
+    continue;
+  }
+  let input = source;
+  for (const part of doc.input.field.split(".")) input = input?.[part];
+  if (input === undefined) {
+    fail(
+      path,
+      `reads "${doc.input.field}" of "${doc.input.vector}", which holds no such field`,
+    );
+    continue;
+  }
+  let got;
+  try {
+    got = canonical(run(input));
+  } catch (error) {
+    fail(path, `could not be run: ${error.message}`);
+    continue;
+  }
+  const want = canonical(doc.output);
+  if (got !== want) {
+    fail(path, `produces ${got}, and the vector says ${want}`);
+  }
+}
+
+for (const name of Object.keys(ALGORITHMS)) {
+  if (!algorithmsSeen.has(name)) {
+    fail(
+      "scripts/algorithms.mjs",
+      `algorithm "${name}" has no vector, so nothing checks it`,
+    );
+  }
+}
+
 if (protocolIsValid) {
   for (const revision of protocolDoc.revisions ?? []) {
     if (!revision.transport?.header) continue;
@@ -1440,16 +1528,45 @@ if (protocolIsValid) {
 
 for (const { where, doc } of messages) {
   for (const revision of doc.revisions ?? []) {
-    for (const field of revision.fields ?? []) {
-      if (!field.present) continue;
-      const seen = exercised.get(
-        `${doc.message}@${revision.from}#${field.name}`,
-      );
-      if (!seen) continue;
+    const ruled = [];
+    const collect = (fields, prefix, seenStructs = new Set()) => {
+      for (const field of fields ?? []) {
+        const path = prefix ? `${prefix}.${field.name}` : field.name;
+        if (field.present) ruled.push(path);
+        if (field.type === "record") collect(field.fields, path, seenStructs);
+        else if (field.type === "struct" && !seenStructs.has(field.struct)) {
+          const d = structs.get(field.struct);
+          if (d)
+            collect(
+              d.fields,
+              `struct:${field.struct}`,
+              new Set([...seenStructs, field.struct]),
+            );
+        } else if (field.type === "array" && field.items) {
+          collect([field.items], path, seenStructs);
+        }
+      }
+    };
+    collect(revision.fields, "");
+    for (const path of ruled) {
+      // A rule inside a struct belongs to the struct, so any message that
+      // carries it can be the one that evidences it.
+      const shared = path.startsWith("struct:");
+      const key = shared
+        ? `#${path}`
+        : `${doc.message}@${revision.from}#${path}`;
+      const seen = exercised.get(key);
+      if (!seen) {
+        fail(
+          where,
+          `revision ${revision.from} has no vector reaching "${path}" at all`,
+        );
+        continue;
+      }
       if (!seen.present || !seen.absent) {
         fail(
           where,
-          `revision ${revision.from} has no vector where "${field.name}" is ${seen.present ? "absent" : "present"}, so half its presence rule is unrecorded`,
+          `revision ${revision.from} has no vector where "${path}" is ${seen.present ? "absent" : "present"}, so half its presence rule is unrecorded`,
         );
       }
     }

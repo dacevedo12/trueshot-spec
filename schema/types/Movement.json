@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/struct.json",
   "struct": "Movement",
-  "note": "A path a unit is to follow, given as points on the ground plane. Every point after the first states each of its coordinates either as a small step from the point before it or afresh, and a run of flags read first says which.",
+  "note": "What one unit is told to do: a path of points on the ground plane, or nothing at all. Every point after the first states each of its coordinates either as a step from the point before it or afresh, and a run of flags read first says which.",
   "fields": [
     {
       "name": "header",
@@ -11,71 +11,113 @@
         {
           "name": "hasTeleportToken",
           "width": 1,
-          "note": "Set where a token follows the unit."
+          "note": "Set where a token sits beside the unit."
         },
         {
           "name": "pointCount",
           "width": 7,
-          "note": "How many points the path holds. Zero means the movement carries no path and nothing follows."
+          "note": "How many points the path holds, and never fewer than one in anything observed. What a payload carrying zero holds after this byte is unrecorded, so a reader meeting one has met something this document does not describe."
         }
       ]
     },
     {
-      "name": "unit",
-      "type": "u32",
-      "present": { "when": "header.pointCount" },
-      "note": "The unit the path belongs to."
-    },
-    {
-      "name": "teleportToken",
-      "type": "u8",
-      "present": { "when": "header.hasTeleportToken" },
-      "note": "Tells one relocation from another. A token unlike the one before it makes a receiving end place the unit rather than walk it there."
-    },
-    {
-      "name": "flags",
-      "type": "bitArray",
-      "count": { "field": "header.pointCount", "minus": 1 },
-      "present": { "when": "header.pointCount" },
-      "bits": [
-        { "name": "xIsStep", "width": 1 },
-        { "name": "zIsStep", "width": 1 }
-      ],
-      "note": "One pair for each point after the first, in the order the points follow. The run ends at the byte after the last pair, and the bits beyond it are clear."
-    },
-    { "name": "firstX", "type": "i16", "present": { "when": "header.pointCount" } },
-    { "name": "firstZ", "type": "i16", "present": { "when": "header.pointCount" } },
-    {
-      "name": "steps",
-      "type": "array",
-      "count": { "field": "header.pointCount", "minus": 1 },
-      "present": { "when": "header.pointCount" },
-      "items": {
-        "name": "step",
-        "type": "record",
-        "fields": [
-          {
-            "name": "xStep",
-            "type": "i8",
-            "present": { "when": "flags[step].xIsStep" }
+      "name": "path",
+      "type": "record",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit the path belongs to."
+        },
+        {
+          "name": "teleportToken",
+          "type": "u8",
+          "present": {
+            "when": "header.hasTeleportToken"
           },
-          {
-            "name": "xWhole",
-            "type": "i16",
-            "present": { "when": "flags[step].xIsStep", "equals": 0 }
+          "note": "Tells one relocation from another."
+        },
+        {
+          "name": "flags",
+          "type": "bitArray",
+          "count": {
+            "field": "header.pointCount",
+            "minus": 1
           },
-          {
-            "name": "zStep",
-            "type": "i8",
-            "present": { "when": "flags[step].zIsStep" }
+          "bits": [
+            {
+              "name": "xIsStep",
+              "width": 1,
+              "note": "Set where this point states its first coordinate as a step."
+            },
+            {
+              "name": "zIsStep",
+              "width": 1,
+              "note": "Set where this point states its second coordinate as a step."
+            }
+          ],
+          "note": "One pair for each point after the first, in the order the points follow. Pairs run on from the low bits of the first byte, and the run reaches to the byte holding the last pair. The bits past it are clear."
+        },
+        {
+          "name": "firstX",
+          "type": "i16",
+          "note": "The first point, along one ground axis, in the units spec/movement.md gives."
+        },
+        {
+          "name": "firstZ",
+          "type": "i16",
+          "note": "The first point, along the other."
+        },
+        {
+          "name": "steps",
+          "type": "array",
+          "count": {
+            "field": "header.pointCount",
+            "minus": 1
           },
-          {
-            "name": "zWhole",
-            "type": "i16",
-            "present": { "when": "flags[step].zIsStep", "equals": 0 }
+          "items": {
+            "name": "step",
+            "type": "record",
+            "fields": [
+              {
+                "name": "xStep",
+                "type": "i8",
+                "present": {
+                  "when": "flags[step].xIsStep"
+                },
+                "note": "Added to the first coordinate of the point before, as that point resolved."
+              },
+              {
+                "name": "xWhole",
+                "type": "i16",
+                "present": {
+                  "when": "flags[step].xIsStep",
+                  "equals": 0
+                },
+                "note": "The first coordinate, stated without reference to the point before."
+              },
+              {
+                "name": "zStep",
+                "type": "i8",
+                "present": {
+                  "when": "flags[step].zIsStep"
+                },
+                "note": "Added to the second coordinate of the point before, as that point resolved."
+              },
+              {
+                "name": "zWhole",
+                "type": "i16",
+                "present": {
+                  "when": "flags[step].zIsStep",
+                  "equals": 0
+                },
+                "note": "The second coordinate, stated without reference to the point before."
+              }
+            ]
           }
-        ]
-      }
+        }
+      ],
+      "note": "Everything the movement carries beyond its first byte."
     }
   ]
 }

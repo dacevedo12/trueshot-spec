@@ -59,6 +59,13 @@ than to the protocol.
 > anything else needs that map's origin, and the paragraph above says how to
 > obtain one.
 
+## Relocating rather than walking
+
+A movement sometimes carries a token beside the unit. A receiving end remembers the
+last token it saw for that unit, and a token unlike it means the unit is to be
+put where the path begins rather than walked there from where it stands. A
+token it has seen before carries no such meaning.
+
 ## Resolving a path
 
 A path is read into points by taking the first as it stands and then, for each

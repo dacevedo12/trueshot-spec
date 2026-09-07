@@ -3,13 +3,13 @@
   "subject": "message",
   "message": "WaypointGroup",
   "version": "4.20.0.315",
-  "note": "A group whose point states both coordinates afresh. Taken from a client.",
-  "bytes": "61 00000040 b41d000001000400000040007b0dc1fecc0ca9fd",
+  "note": "A group whose point states its second coordinate as a step. Taken from a server a client accepted.",
+  "bytes": "61 00000040 7543000001000400000040027e0810fb2806b4",
   "fields": {
     "command": 97,
     "netId": 1073741824,
     "extendedCommand": null,
-    "syncId": 7604,
+    "syncId": 17269,
     "movementCount": 1,
     "movements": [
       {
@@ -23,17 +23,17 @@
           "flags": [
             {
               "xIsStep": 0,
-              "zIsStep": 0
+              "zIsStep": 1
             }
           ],
-          "firstX": 3451,
-          "firstZ": -319,
+          "firstX": 2174,
+          "firstZ": -1264,
           "steps": [
             {
               "xStep": null,
-              "xWhole": 3276,
-              "zStep": null,
-              "zWhole": -599
+              "xWhole": 1576,
+              "zStep": -76,
+              "zWhole": null
             }
           ]
         }

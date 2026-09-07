@@ -58,8 +58,20 @@
       "pattern": "^[a-z][A-Za-z0-9]*$"
     },
     "input": {
-      "description": "Fields a decoder has already read, written the way a message vector writes them.",
-      "type": "object"
+      "description": "Where the fields come from: a message vector that has already been decoded and checked, and the field of it this algorithm reads. An algorithm never states its own input, so it can only consume what a verified decode produced.",
+      "type": "object",
+      "required": ["vector", "field"],
+      "additionalProperties": false,
+      "properties": {
+        "vector": {
+          "description": "A message vector, as directory/file without the suffix.",
+          "type": "string"
+        },
+        "field": {
+          "description": "Which field of it, written parent.child.",
+          "type": "string"
+        }
+      }
     },
     "output": {
       "description": "What those fields mean."

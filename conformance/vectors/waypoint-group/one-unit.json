@@ -17,24 +17,26 @@
           "hasTeleportToken": 0,
           "pointCount": 2
         },
-        "unit": 1073741824,
-        "teleportToken": null,
-        "flags": [
-          {
-            "xIsStep": 1,
-            "zIsStep": 0
-          }
-        ],
-        "firstX": 3379,
-        "firstZ": 70,
-        "steps": [
-          {
-            "xStep": -18,
-            "xWhole": null,
-            "zStep": null,
-            "zWhole": -145
-          }
-        ]
+        "path": {
+          "unit": 1073741824,
+          "teleportToken": null,
+          "flags": [
+            {
+              "xIsStep": 1,
+              "zIsStep": 0
+            }
+          ],
+          "firstX": 3379,
+          "firstZ": 70,
+          "steps": [
+            {
+              "xStep": -18,
+              "xWhole": null,
+              "zStep": null,
+              "zWhole": -145
+            }
+          ]
+        }
       }
     ]
   }
