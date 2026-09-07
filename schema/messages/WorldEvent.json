@@ -1,0 +1,32 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "WorldEvent",
+  "note": "What a server sends to say something happened that the whole match is told about. What sort of thing is named first, and what follows is settled by that.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 69,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "event",
+          "type": "u8",
+          "note": "What sort of thing happened, and so which shape follows. The captures hold five sorts, each once."
+        },
+        {
+          "name": "source",
+          "type": "u32",
+          "note": "The unit the thing is credited to, or zero where none is."
+        },
+        {
+          "name": "about",
+          "type": "bytes",
+          "size": "remaining",
+          "note": "What the thing is about. Its shape is settled by the sort named above, and no sort has been seen often enough to record one, so a reading end takes these as they come. Four bytes and eight bytes have both been observed."
+        }
+      ]
+    }
+  ]
+}

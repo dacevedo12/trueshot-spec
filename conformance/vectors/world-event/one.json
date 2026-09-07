@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "WorldEvent",
+  "version": "4.20.0.315",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "45 00000000 7700 000000000000000b000000",
+  "fields": {
+    "command": 69,
+    "netId": 0,
+    "extendedCommand": null,
+    "event": 119,
+    "source": 0,
+    "about": "000000000b000000"
+  }
+}
