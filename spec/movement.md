@@ -79,6 +79,14 @@ taken up only once it has moved something.
 A client leaves the flag clear in everything it sends, so a token travels only
 from a server.
 
+A client answers every group of movements it takes in, naming the group and
+listing the units the group asked it to relocate along with the tokens that
+did it. It lists every movement in the group that carried a token, whether or
+not the token moved anything, and it answers a group that asked for no
+relocation with an empty list. One answer covers a whole group rather than one
+movement. Nothing on a client waits on that answer, so a server that ignores it
+changes nothing a client does.
+
 ## Other shapes
 
 The layout `schema/types` records is the compact one, where a path is a run of

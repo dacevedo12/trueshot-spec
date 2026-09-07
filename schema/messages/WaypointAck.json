@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "WaypointAck",
-  "note": "What a client sends to say it has taken in a movement a server sent, naming which one.",
+  "note": "What a client sends once it has taken in a group of movements, naming which group and listing the units the group asked it to relocate.",
   "revisions": [
     {
       "from": "4.20.0.315",
@@ -13,12 +13,33 @@
         {
           "name": "syncId",
           "type": "u32",
-          "note": "Which movement is being acknowledged, echoing what a server sent."
+          "note": "Which group is being acknowledged, as the group named itself."
         },
         {
-          "name": "unknown",
+          "name": "relocationCount",
           "type": "u8",
-          "note": "Purpose undetermined. Observed as zero."
+          "note": "How many relocations follow. It counts every movement in the group that carried a token, whether or not the token moved anything."
+        },
+        {
+          "name": "relocations",
+          "type": "array",
+          "count": "relocationCount",
+          "items": {
+            "name": "relocation",
+            "type": "record",
+            "fields": [
+              {
+                "name": "unit",
+                "type": "u32",
+                "note": "The unit the token belonged to."
+              },
+              {
+                "name": "token",
+                "type": "u8",
+                "note": "The token that arrived with it."
+              }
+            ]
+          }
         }
       ]
     }
