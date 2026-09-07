@@ -1,0 +1,36 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "Replication",
+  "note": "What a server sends to say what has changed about units a client can see. It is the most frequent thing a server sends.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "transient",
+      "command": 196,
+      "direction": "serverToClient",
+      "reliability": "unreliable",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u32",
+          "note": "Names this batch of changes."
+        },
+        {
+          "name": "unitCount",
+          "type": "u8",
+          "note": "How many units follow."
+        },
+        {
+          "name": "units",
+          "type": "array",
+          "count": "unitCount",
+          "items": {
+            "name": "unit",
+            "type": "struct",
+            "struct": "Replication"
+          }
+        }
+      ]
+    }
+  ]
+}

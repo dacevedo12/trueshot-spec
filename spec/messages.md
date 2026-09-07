@@ -206,6 +206,17 @@ message arrived on, and MUST NOT copy the value the message carried. Relaying
 what arrived lets one player send messages that every other client attributes
 to another.
 
+## Values a layout cannot reach
+
+A run of bytes is sometimes carried whose contents a layout cannot describe,
+because reading them apart needs to know each value's width and kind and the
+wire carries neither. Both ends hold that knowledge before a match begins, as
+they hold the origin a path is measured against.
+
+Such a run is recorded as the bytes it is, with a length beside it and a note
+saying what settles the reading. A server relays or produces it whole. Nothing
+here says what any of it means, so nothing here can be wrong about it.
+
 ## Vectors
 
 Every revision carries at least one conformance vector, which is what separates

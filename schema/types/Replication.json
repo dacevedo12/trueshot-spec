@@ -1,0 +1,184 @@
+{
+  "$schema": "../meta/struct.json",
+  "struct": "Replication",
+  "note": "What has changed about one unit. A flag byte says which groups of values follow, and each group that follows says which of its values it holds and carries them as a run of bytes.",
+  "fields": [
+    {
+      "name": "present",
+      "type": "bits",
+      "size": 1,
+      "bits": [
+        {
+          "name": "group0",
+          "width": 1,
+          "note": "Set where this group's values follow."
+        },
+        {
+          "name": "group1",
+          "width": 1,
+          "note": "Set where this group's values follow."
+        },
+        {
+          "name": "group2",
+          "width": 1,
+          "note": "Set where this group's values follow."
+        },
+        {
+          "name": "group3",
+          "width": 1,
+          "note": "Set where this group's values follow."
+        },
+        {
+          "name": "group4",
+          "width": 1,
+          "note": "Nothing observed has set this. Where its group would sit among the others is unrecorded."
+        },
+        {
+          "name": "group5",
+          "width": 1,
+          "note": "Set where this group's values follow."
+        },
+        {
+          "name": "unknown",
+          "width": 2,
+          "note": "Purpose undetermined. Observed clear."
+        }
+      ]
+    },
+    {
+      "name": "unit",
+      "type": "u32",
+      "note": "The unit whose values these are."
+    },
+    {
+      "name": "group0",
+      "type": "record",
+      "present": {
+        "when": "present.group0"
+      },
+      "note": "The values of group 0, where the flag says they follow.",
+      "fields": [
+        {
+          "name": "which",
+          "type": "u32",
+          "note": "Says which of the group's values the run below holds, one bit each, lowest first."
+        },
+        {
+          "name": "length",
+          "type": "u8",
+          "note": "How many bytes the run below holds."
+        },
+        {
+          "name": "values",
+          "type": "bytes",
+          "size": "length",
+          "note": "The values themselves, packed one after another with nothing between them. Reading them apart needs to know each one's width and kind, which the wire does not carry and this document does not record."
+        }
+      ]
+    },
+    {
+      "name": "group1",
+      "type": "record",
+      "present": {
+        "when": "present.group1"
+      },
+      "note": "The values of group 1, where the flag says they follow.",
+      "fields": [
+        {
+          "name": "which",
+          "type": "u32",
+          "note": "Says which of the group's values the run below holds, one bit each, lowest first."
+        },
+        {
+          "name": "length",
+          "type": "u8",
+          "note": "How many bytes the run below holds."
+        },
+        {
+          "name": "values",
+          "type": "bytes",
+          "size": "length",
+          "note": "The values themselves, packed one after another with nothing between them. Reading them apart needs to know each one's width and kind, which the wire does not carry and this document does not record."
+        }
+      ]
+    },
+    {
+      "name": "group2",
+      "type": "record",
+      "present": {
+        "when": "present.group2"
+      },
+      "note": "The values of group 2, where the flag says they follow.",
+      "fields": [
+        {
+          "name": "which",
+          "type": "u32",
+          "note": "Says which of the group's values the run below holds, one bit each, lowest first."
+        },
+        {
+          "name": "length",
+          "type": "u8",
+          "note": "How many bytes the run below holds."
+        },
+        {
+          "name": "values",
+          "type": "bytes",
+          "size": "length",
+          "note": "The values themselves, packed one after another with nothing between them. Reading them apart needs to know each one's width and kind, which the wire does not carry and this document does not record."
+        }
+      ]
+    },
+    {
+      "name": "group3",
+      "type": "record",
+      "present": {
+        "when": "present.group3"
+      },
+      "note": "The values of group 3, where the flag says they follow.",
+      "fields": [
+        {
+          "name": "which",
+          "type": "u32",
+          "note": "Says which of the group's values the run below holds, one bit each, lowest first."
+        },
+        {
+          "name": "length",
+          "type": "u8",
+          "note": "How many bytes the run below holds."
+        },
+        {
+          "name": "values",
+          "type": "bytes",
+          "size": "length",
+          "note": "The values themselves, packed one after another with nothing between them. Reading them apart needs to know each one's width and kind, which the wire does not carry and this document does not record."
+        }
+      ]
+    },
+    {
+      "name": "group5",
+      "type": "record",
+      "present": {
+        "when": "present.group5"
+      },
+      "note": "The values of group 5, where the flag says they follow.",
+      "fields": [
+        {
+          "name": "which",
+          "type": "u32",
+          "note": "Says which of the group's values the run below holds, one bit each, lowest first."
+        },
+        {
+          "name": "length",
+          "type": "u8",
+          "note": "How many bytes the run below holds."
+        },
+        {
+          "name": "values",
+          "type": "bytes",
+          "size": "length",
+          "note": "The values themselves, packed one after another with nothing between them. Reading them apart needs to know each one's width and kind, which the wire does not carry and this document does not record."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "Replication",
+  "version": "4.20.0.315",
+  "note": "Units changing in the first group alone, which is nearly all of what a server sends. Taken from a server a client accepted.",
+  "bytes": "c4 00000000 0c21ce1105012c06004001000000049af9ed43017406004001000000049af9ed4301bc06004001000000049af9ed43010407004001000000049af9ed43014c07004001000000049af9ed43",
+  "fields": {
+    "command": 196,
+    "netId": 0,
+    "extendedCommand": null,
+    "syncId": 298721548,
+    "unitCount": 5,
+    "units": [
+      {
+        "present": {
+          "group0": 1,
+          "group1": 0,
+          "group2": 0,
+          "group3": 0,
+          "group4": 0,
+          "group5": 0,
+          "unknown": 0
+        },
+        "unit": 1073743404,
+        "group0": {
+          "which": 1,
+          "length": 4,
+          "values": "9af9ed43"
+        },
+        "group1": null,
+        "group2": null,
+        "group3": null,
+        "group5": null
+      },
+      {
+        "present": {
+          "group0": 1,
+          "group1": 0,
+          "group2": 0,
+          "group3": 0,
+          "group4": 0,
+          "group5": 0,
+          "unknown": 0
+        },
+        "unit": 1073743476,
+        "group0": {
+          "which": 1,
+          "length": 4,
+          "values": "9af9ed43"
+        },
+        "group1": null,
+        "group2": null,
+        "group3": null,
+        "group5": null
+      },
+      {
+        "present": {
+          "group0": 1,
+          "group1": 0,
+          "group2": 0,
+          "group3": 0,
+          "group4": 0,
+          "group5": 0,
+          "unknown": 0
+        },
+        "unit": 1073743548,
+        "group0": {
+          "which": 1,
+          "length": 4,
+          "values": "9af9ed43"
+        },
+        "group1": null,
+        "group2": null,
+        "group3": null,
+        "group5": null
+      },
+      {
+        "present": {
+          "group0": 1,
+          "group1": 0,
+          "group2": 0,
+          "group3": 0,
+          "group4": 0,
+          "group5": 0,
+          "unknown": 0
+        },
+        "unit": 1073743620,
+        "group0": {
+          "which": 1,
+          "length": 4,
+          "values": "9af9ed43"
+        },
+        "group1": null,
+        "group2": null,
+        "group3": null,
+        "group5": null
+      },
+      {
+        "present": {
+          "group0": 1,
+          "group1": 0,
+          "group2": 0,
+          "group3": 0,
+          "group4": 0,
+          "group5": 0,
+          "unknown": 0
+        },
+        "unit": 1073743692,
+        "group0": {
+          "which": 1,
+          "length": 4,
+          "values": "9af9ed43"
+        },
+        "group1": null,
+        "group2": null,
+        "group3": null,
+        "group5": null
+      }
+    ]
+  }
+}
