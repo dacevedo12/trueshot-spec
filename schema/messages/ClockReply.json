@@ -1,0 +1,26 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "ClockReply",
+  "note": "What a client sends back when a server states the match clock, carrying both readings so the server can tell how far apart they are.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "clock",
+      "command": 8,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "serverSaid",
+          "type": "f32",
+          "note": "What the server last said the clock stood at, in seconds."
+        },
+        {
+          "name": "clientSaid",
+          "type": "f32",
+          "note": "What the client's own clock stood at when it read that, in seconds."
+        }
+      ]
+    }
+  ]
+}

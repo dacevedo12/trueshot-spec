@@ -1,0 +1,31 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "SpellUpgraded",
+  "note": "What a server sends to confirm a unit's spell went up a level.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "clock",
+      "command": 21,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot."
+        },
+        {
+          "name": "level",
+          "type": "u8",
+          "note": "The level the spell now stands at."
+        },
+        {
+          "name": "pointsLeft",
+          "type": "u8",
+          "note": "How many spell points are left unspent."
+        }
+      ]
+    }
+  ]
+}

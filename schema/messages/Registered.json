@@ -29,8 +29,8 @@
         {
           "name": "unknown",
           "type": "bytes",
-          "size": 16,
-          "note": "Purpose undetermined. It spans the bytes a request fills with its version and its proof, and nothing observed reads any of it: a receiving end takes the seat and the player identifier and looks no further."
+          "size": "remaining",
+          "note": "Purpose undetermined. It spans the bytes a request fills with its version and its proof. Two lengths are observed, sixteen bytes and twenty, and the shorter carries the same twelve bytes in every payload seen while the longer carries the build number in its first four and zeros after."
         }
       ]
     }

@@ -1,0 +1,63 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "SeatLoadProgress",
+  "note": "What a server sends to tell everyone how far one seat has got through loading, and how it is holding up.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "transient",
+      "command": 149,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "seat",
+          "type": "i32",
+          "note": "The seat this is about."
+        },
+        {
+          "name": "player",
+          "type": "i64",
+          "note": "Who occupies it."
+        },
+        {
+          "name": "progress",
+          "type": "f32",
+          "note": "How far through loading it is, from zero to one hundred."
+        },
+        {
+          "name": "secondsLeft",
+          "type": "f32",
+          "note": "How much longer it is expected to take, in seconds."
+        },
+        {
+          "name": "count",
+          "type": "u16",
+          "note": "How many times this has been reported for the seat."
+        },
+        {
+          "name": "ping",
+          "type": "u16",
+          "note": "How long a message takes to reach the seat and come back, in milliseconds."
+        },
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "ready",
+              "width": 1,
+              "note": "Set where the seat has finished loading."
+            },
+            {
+              "name": "unknown",
+              "width": 7,
+              "note": "Observed clear."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
