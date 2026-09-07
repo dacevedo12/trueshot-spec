@@ -217,6 +217,23 @@ Such a run is recorded as the bytes it is, with a length beside it and a note
 saying what settles the reading. A server relays or produces it whole. Nothing
 here says what any of it means, so nothing here can be wrong about it.
 
+How the values sit in the run is another matter, and that much is recorded. A
+run holds its values one after another with nothing between them, in the order
+whatever selects them names them, lowest first. Each value takes one of two
+shapes.
+
+A value that counts takes seven bits from each byte, lowest seven first, and
+the top bit of a byte is set while another byte follows. Five bytes therefore
+carry anything a thirty two bit value holds.
+
+A value that measures takes one of three forms: a single byte of 255 meaning
+zero; a byte of 254 followed by four bytes; or four bytes on their own. The
+four bytes are the measure itself, lowest byte first.
+
+Reading a run therefore needs to know, for each value, which of the two shapes
+it takes. Nothing on the wire says, and it is not settled by position alone, so
+an end that does not already know cannot read one.
+
 ## Vectors
 
 Every revision carries at least one conformance vector, which is what separates

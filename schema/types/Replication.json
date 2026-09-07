@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/struct.json",
   "struct": "Replication",
-  "note": "What has changed about one unit. A flag byte says which groups of values follow, and each group that follows says which of its values it holds and carries them as a run of bytes.",
+  "note": "What has changed about one unit. A flag byte says which groups of values follow, and each group that follows says which of its values it holds and carries them as a run of bytes. The groups follow in a fixed order that is not the order of the flags: the last flag's values come before the one before it, and the rest run in flag order.",
   "fields": [
     {
       "name": "present",
@@ -31,12 +31,12 @@
         {
           "name": "group4",
           "width": 1,
-          "note": "Nothing observed has set this. Where its group would sit among the others is unrecorded."
+          "note": "Set where this group's values follow. They come after every other group's, whatever the flags. Nothing observed has set this, so no layout is recorded for it and a payload setting it leaves bytes unread rather than being read wrongly."
         },
         {
           "name": "group5",
           "width": 1,
-          "note": "Set where this group's values follow."
+          "note": "Set where this group's values follow. They come before the group numbered after it, not after."
         },
         {
           "name": "unknown",
@@ -72,7 +72,7 @@
           "name": "values",
           "type": "bytes",
           "size": "length",
-          "note": "The values themselves, packed one after another with nothing between them. Reading them apart needs to know each one's width and kind, which the wire does not carry and this document does not record."
+          "note": "The values themselves, in the order the mask names them, lowest bit first, with nothing between them. spec/messages.md gives the shape each takes. Which of them is a number and which a measure follows from the kind of unit the identifier names, which nothing on the wire carries."
         }
       ]
     },
@@ -98,7 +98,7 @@
           "name": "values",
           "type": "bytes",
           "size": "length",
-          "note": "The values themselves, packed one after another with nothing between them. Reading them apart needs to know each one's width and kind, which the wire does not carry and this document does not record."
+          "note": "The values themselves, in the order the mask names them, lowest bit first, with nothing between them. spec/messages.md gives the shape each takes. Which of them is a number and which a measure follows from the kind of unit the identifier names, which nothing on the wire carries."
         }
       ]
     },
@@ -124,7 +124,7 @@
           "name": "values",
           "type": "bytes",
           "size": "length",
-          "note": "The values themselves, packed one after another with nothing between them. Reading them apart needs to know each one's width and kind, which the wire does not carry and this document does not record."
+          "note": "The values themselves, in the order the mask names them, lowest bit first, with nothing between them. spec/messages.md gives the shape each takes. Which of them is a number and which a measure follows from the kind of unit the identifier names, which nothing on the wire carries."
         }
       ]
     },
@@ -150,7 +150,7 @@
           "name": "values",
           "type": "bytes",
           "size": "length",
-          "note": "The values themselves, packed one after another with nothing between them. Reading them apart needs to know each one's width and kind, which the wire does not carry and this document does not record."
+          "note": "The values themselves, in the order the mask names them, lowest bit first, with nothing between them. spec/messages.md gives the shape each takes. Which of them is a number and which a measure follows from the kind of unit the identifier names, which nothing on the wire carries."
         }
       ]
     },
@@ -176,7 +176,7 @@
           "name": "values",
           "type": "bytes",
           "size": "length",
-          "note": "The values themselves, packed one after another with nothing between them. Reading them apart needs to know each one's width and kind, which the wire does not carry and this document does not record."
+          "note": "The values themselves, in the order the mask names them, lowest bit first, with nothing between them. spec/messages.md gives the shape each takes. Which of them is a number and which a measure follows from the kind of unit the identifier names, which nothing on the wire carries."
         }
       ]
     }
