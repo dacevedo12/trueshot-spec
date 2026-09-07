@@ -15,7 +15,11 @@
           "type": "f32",
           "note": "Where the camp sits, along one ground axis, in world units."
         },
-        { "name": "y", "type": "f32", "note": "Where it sits, in height." },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "Where it sits, in height."
+        },
         {
           "name": "z",
           "type": "f32",
@@ -28,11 +32,15 @@
           "size": 64,
           "note": "Names the mark a client draws. What a name resolves to is the game's rather than the protocol's, so this specification records the field and not the meaning of any value."
         },
-        { "name": "index", "type": "u8", "note": "Tells one camp from another." },
+        {
+          "name": "index",
+          "type": "u8",
+          "note": "Tells one camp from another."
+        },
         {
           "name": "revealEvent",
           "type": "u8",
-          "note": "Purpose undetermined. It varies with the kind of camp."
+          "note": "What makes the unit known to a side that cannot see it. It is 74 for every camp observed but one, which carries 43."
         },
         {
           "name": "team",
@@ -42,7 +50,7 @@
         {
           "name": "timerKind",
           "type": "i32",
-          "note": "Purpose undetermined. Observed as zero."
+          "note": "Which clock the client shows for it. Zero in everything observed."
         },
         {
           "name": "expires",
