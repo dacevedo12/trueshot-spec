@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/struct.json",
   "struct": "Replication",
-  "note": "What has changed about one unit. A flag byte says which groups of values follow, and each group that follows says which of its values it holds and carries them as a run of bytes. The groups follow in a fixed order that is not the order of the flags: the last flag's values come before the one before it, and the rest run in flag order.",
+  "note": "What has changed about one unit. A flag byte says which groups of values follow, and each group that follows says which of its values it holds and carries them as a run of bytes. The groups follow in a fixed order that is not the order of the flags: the last flag's values come before the one before it, and the rest run in flag order. spec/replication.md says what settles the reading of a run, and records what a champion's groups carry.",
   "fields": [
     {
       "name": "present",
@@ -72,7 +72,7 @@
           "name": "values",
           "type": "bytes",
           "size": "length",
-          "note": "The values themselves, in the order the mask names them, lowest bit first, with nothing between them. spec/messages.md gives the shape each takes. Which of them is a number and which a measure follows from the kind of unit the identifier names, which nothing on the wire carries."
+          "note": "The values themselves, one after another in the order the bits above name them, lowest first. What each one is, and which of the two shapes it takes, is settled by the kind of unit rather than by anything here. spec/replication.md says so, and records what a champion's groups carry."
         }
       ]
     },
@@ -98,7 +98,7 @@
           "name": "values",
           "type": "bytes",
           "size": "length",
-          "note": "The values themselves, in the order the mask names them, lowest bit first, with nothing between them. spec/messages.md gives the shape each takes. Which of them is a number and which a measure follows from the kind of unit the identifier names, which nothing on the wire carries."
+          "note": "The values themselves, one after another in the order the bits above name them, lowest first. What each one is, and which of the two shapes it takes, is settled by the kind of unit rather than by anything here. spec/replication.md says so, and records what a champion's groups carry."
         }
       ]
     },
@@ -124,7 +124,7 @@
           "name": "values",
           "type": "bytes",
           "size": "length",
-          "note": "The values themselves, in the order the mask names them, lowest bit first, with nothing between them. spec/messages.md gives the shape each takes. Which of them is a number and which a measure follows from the kind of unit the identifier names, which nothing on the wire carries."
+          "note": "The values themselves, one after another in the order the bits above name them, lowest first. What each one is, and which of the two shapes it takes, is settled by the kind of unit rather than by anything here. spec/replication.md says so, and records what a champion's groups carry."
         }
       ]
     },
@@ -150,7 +150,7 @@
           "name": "values",
           "type": "bytes",
           "size": "length",
-          "note": "The values themselves, in the order the mask names them, lowest bit first, with nothing between them. spec/messages.md gives the shape each takes. Which of them is a number and which a measure follows from the kind of unit the identifier names, which nothing on the wire carries."
+          "note": "The values themselves, one after another in the order the bits above name them, lowest first. What each one is, and which of the two shapes it takes, is settled by the kind of unit rather than by anything here. spec/replication.md says so, and records what a champion's groups carry."
         }
       ]
     },
@@ -176,7 +176,7 @@
           "name": "values",
           "type": "bytes",
           "size": "length",
-          "note": "The values themselves, in the order the mask names them, lowest bit first, with nothing between them. spec/messages.md gives the shape each takes. Which of them is a number and which a measure follows from the kind of unit the identifier names, which nothing on the wire carries."
+          "note": "The values themselves, one after another in the order the bits above name them, lowest first. What each one is, and which of the two shapes it takes, is settled by the kind of unit rather than by anything here. spec/replication.md says so, and records what a champion's groups carry."
         }
       ]
     }
