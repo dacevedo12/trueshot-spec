@@ -1,0 +1,47 @@
+{
+  "$schema": "../meta/struct.json",
+  "struct": "SpellNumberSet",
+  "note": "The numbers a client shows beside one of a unit's spells, and which of them it keeps from the other side.",
+  "fields": [
+    {
+      "name": "unit",
+      "type": "u32",
+      "note": "The unit whose spell this is."
+    },
+    {
+      "name": "slot",
+      "type": "u8",
+      "note": "Which slot."
+    },
+    {
+      "name": "values",
+      "type": "array",
+      "count": 16,
+      "note": "The numbers themselves, one place each.",
+      "items": {
+        "name": "value",
+        "type": "f32",
+        "note": "One number."
+      }
+    },
+    {
+      "name": "hidden",
+      "type": "array",
+      "count": 16,
+      "note": "Which of those places the other side is not shown, one for each.",
+      "items": {
+        "name": "fromEnemy",
+        "type": "u8",
+        "note": "Whether that place is kept from the other side.",
+        "values": {
+          "0": {
+            "name": "shown"
+          },
+          "1": {
+            "name": "hidden"
+          }
+        }
+      }
+    }
+  ]
+}

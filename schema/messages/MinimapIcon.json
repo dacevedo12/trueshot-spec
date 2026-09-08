@@ -1,0 +1,76 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "MinimapIcon",
+  "note": "What a server sends to change what a client draws for a unit on its map.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 216,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit this is about."
+        },
+        {
+          "name": "changeIcon",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "change",
+              "width": 1,
+              "note": "Set where the mark below replaces what the client draws."
+            },
+            {
+              "name": "unknown",
+              "width": 7,
+              "note": "Observed clear."
+            }
+          ]
+        },
+        {
+          "name": "icon",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The name the client loads the mark under. Written out in full and padded with zero bytes to the width above."
+        },
+        {
+          "name": "changeBorder",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "change",
+              "width": 1,
+              "note": "Set where the ring below replaces what the client draws."
+            },
+            {
+              "name": "unknown",
+              "width": 7,
+              "note": "Observed clear."
+            }
+          ]
+        },
+        {
+          "name": "border",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The name the client loads the ring around the mark under, written and padded as above."
+        },
+        {
+          "name": "borderScript",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The name the client loads the ring's own doings under, written and padded as above."
+        }
+      ]
+    }
+  ]
+}

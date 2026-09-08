@@ -1,0 +1,32 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "SpellNumbers",
+  "note": "What a server sends to fill in the numbers a client shows beside a unit's spells.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 127,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "entryCount",
+          "type": "u16",
+          "note": "How many sets of numbers follow."
+        },
+        {
+          "name": "entries",
+          "type": "array",
+          "count": "entryCount",
+          "note": "The sets themselves.",
+          "items": {
+            "name": "entry",
+            "type": "struct",
+            "struct": "SpellNumberSet"
+          }
+        }
+      ]
+    }
+  ]
+}

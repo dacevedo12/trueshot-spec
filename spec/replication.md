@@ -44,28 +44,48 @@ where the traffic bears it out, and those are marked.
 
 ## A champion
 
-| Group | Bits     | Value                                                                                                  | Shape    |
-| ----- | -------- | ------------------------------------------------------------------------------------------------------ | -------- |
-| 0     | 0        | Gold in hand, confirmed                                                                                | measured |
-| 0     | 1        | Gold earned in all                                                                                     | measured |
-| 0     | 2 to 3   | Which spells are ready to cast, as sets of bits, confirmed                                             | counted  |
-| 0     | 4        | Points held for growing a spell                                                                        | counted  |
-| 0     | 5        | Which spells have grown                                                                                | counted  |
-| 0     | 6 to 9   | What each of four spells costs, confirmed                                                              | measured |
-| 0     | 10 to 27 | What each further spell costs                                                                          | measured |
-| 1     | 0 to 4   | What the champion is doing, and four kinds of harm it is proof against                                 | counted  |
-| 1     | 5 to 31  | Damage, armour, spell resistance, regeneration, reach, and the modifiers on them                       | measured |
-| 2     | 0 to 1   | How much armour and spell resistance the champion cuts through                                         | measured |
-| 3     | 0 to 12  | Health, resource, experience, lifetime, sight and speed, confirmed for health, resource and experience | measured |
-| 3     | 13 to 16 | Level, kills taken from no side, and whether anything is allowed to aim at the champion                | counted  |
+| Group | Bits             | Value                                                                  | Shape    |
+| ----- | ---------------- | ---------------------------------------------------------------------- | -------- |
+| 0     | 0                | Gold in hand, confirmed                                                | measured |
+| 0     | 1                | Gold earned in all                                                     | measured |
+| 0     | 2 to 3           | Which spells are ready to cast, as sets of bits                        | counted  |
+| 0     | 4                | Points held for growing a spell                                        | counted  |
+| 0     | 5                | Which spells have grown                                                | counted  |
+| 0     | 8 to 11          | What each of the champion's four spells costs, confirmed               | measured |
+| 0     | 6 to 7, 12 to 27 | Further costs, one to a place                                          | measured |
+| 1     | 0 to 4           | What the champion is doing, and four kinds of harm it is proof against | counted  |
+| 1     | 5                | Damage it deals by striking, confirmed                                 | measured |
+| 1     | 9                | Armour, confirmed                                                      | measured |
+| 1     | 10               | Spell resistance                                                       | measured |
+| 1     | 11 to 12         | How fast health and resource return                                    | measured |
+| 1     | 13               | How far it strikes from, confirmed                                     | measured |
+| 1     | 6 to 8, 14 to 31 | The modifiers on damage, defence, speed and reach                      | measured |
+| 2     | 0 to 1           | How much armour and spell resistance it cuts through                   | measured |
+| 3     | 0 to 1           | Health and resource as they stand, confirmed                           | measured |
+| 3     | 2 to 3           | Health and resource at their greatest, confirmed                       | measured |
+| 3     | 4                | Experience, confirmed                                                  | measured |
+| 3     | 5 to 9           | Lifetime and how far the champion sees                                 | measured |
+| 3     | 10               | How fast it moves, confirmed                                           | measured |
+| 3     | 11 to 12         | Its size, and how wide a path it needs                                 | measured |
+| 3     | 13               | Level, confirmed                                                       | counted  |
+| 3     | 14 to 16         | Kills taken from no side, and whether anything is allowed to aim at it | counted  |
 
-Gold in hand is the surest. One champion's value climbs by exactly 0.95 a step
-across a match, which is what a champion earns for standing still, and
-another's falls by 35 in one step, which is what an item costs. Health, resource
-and experience climb the way those climb.
+A name marked confirmed is one a champion's own numbers bear out.
 
-Group 0 runs to bit 27. The runs read exactly with every bit up to that
-carried and not with fewer.
+Gold in hand climbs by exactly 0.95 a step across a match, which is what a
+champion earns for standing still, and falls by 35 in one step, which is what
+an item costs. Health and resource as they stand climb the way those climb, and
+each opens at the value its own greatest carries. Level reads 1 and then 6, and
+experience 0, then 2400, then 2602, across the same session.
+
+The four spell costs sit at bits 8 to 11 rather than at the four places before
+them. One champion's four read 28 and then 31, 50 and then 60, 90, and 100:
+four spells, the first two of them growing a rank apiece while the others hold,
+which is what a champion's own costs do. Nothing was ever carried at bits 6 and 7.
+
+Damage by striking reads 50.24 and grows; armour reads 30.88 and grows; how far
+it strikes from reads 550, which is a champion's reach; how fast it moves reads
+325 and then 340, which is a champion's pace and then its pace in boots.
 
 ## A turret
 
