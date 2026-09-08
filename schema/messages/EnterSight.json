@@ -199,21 +199,10 @@
           }
         },
         {
-          "name": "movementWithSpeed",
+          "name": "movementAtSpeed",
           "type": "struct",
-          "struct": "Movement",
-          "note": "Where the unit is going, read exactly as the shape above.",
-          "present": {
-            "when": "movementKind",
-            "equals": 1,
-            "unseen": "present"
-          }
-        },
-        {
-          "name": "speedParameters",
-          "type": "bytes",
-          "size": 33,
-          "note": "How the unit travels, in place of what a reading end would otherwise choose: a speed standing in for its own, the values of an arc it travels through, which way it is made to face, the unit it follows, and how far behind and how long. A reading end stops choosing a path of its own while these hold. The runs within are not recorded here.",
+          "struct": "MovementAtSpeed",
+          "note": "Where the unit is going, and how a server makes it travel. WaypointGroupAtSpeed carries the same shape.",
           "present": {
             "when": "movementKind",
             "equals": 1,

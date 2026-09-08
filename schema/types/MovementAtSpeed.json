@@ -1,0 +1,130 @@
+{
+  "$schema": "../meta/struct.json",
+  "struct": "MovementAtSpeed",
+  "note": "What one unit is told to do where a server states how it travels: the same path of points as the compact shape, with the terms of its travel stated before them.",
+  "fields": [
+    {
+      "name": "header",
+      "type": "bits",
+      "size": 1,
+      "bits": [
+        {
+          "name": "hasTeleportToken",
+          "width": 1,
+          "note": "Set where a token sits beside the unit. A client leaves it clear in everything it sends, so a token travels only from a server."
+        },
+        {
+          "name": "pointCount",
+          "width": 7,
+          "note": "How many points the path holds, and never fewer than one in anything observed. A receiving end refuses a movement claiming none and takes nothing further from it."
+        }
+      ]
+    },
+    {
+      "name": "path",
+      "type": "record",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit the path belongs to."
+        },
+        {
+          "name": "teleportToken",
+          "type": "u8",
+          "present": {
+            "when": "header.hasTeleportToken",
+            "unseen": "present"
+          },
+          "note": "Tells one relocation from another, as in the compact shape. Nothing observed carries one here."
+        },
+        {
+          "name": "terms",
+          "type": "struct",
+          "struct": "SpeedParams",
+          "note": "How the unit is made to travel."
+        },
+        {
+          "name": "flags",
+          "type": "bitArray",
+          "count": {
+            "field": "header.pointCount",
+            "minus": 1
+          },
+          "bits": [
+            {
+              "name": "xIsStep",
+              "width": 1,
+              "note": "Set where this point states its first coordinate as a step."
+            },
+            {
+              "name": "zIsStep",
+              "width": 1,
+              "note": "Set where this point states its second coordinate as a step."
+            }
+          ],
+          "note": "One pair for each point after the first, in the order the points follow. Pairs run on from the low bits of the first byte, and the run reaches to the byte holding the last pair. The bits past it are clear."
+        },
+        {
+          "name": "firstX",
+          "type": "i16",
+          "note": "The first point, along one ground axis, in the units spec/movement.md gives."
+        },
+        {
+          "name": "firstZ",
+          "type": "i16",
+          "note": "The first point, along the other."
+        },
+        {
+          "name": "steps",
+          "type": "array",
+          "count": {
+            "field": "header.pointCount",
+            "minus": 1
+          },
+          "items": {
+            "name": "step",
+            "type": "record",
+            "fields": [
+              {
+                "name": "xStep",
+                "type": "i8",
+                "present": {
+                  "when": "flags[step].xIsStep"
+                },
+                "note": "Added to the first coordinate of the point before, as that point resolved."
+              },
+              {
+                "name": "xWhole",
+                "type": "i16",
+                "present": {
+                  "when": "flags[step].xIsStep",
+                  "equals": 0
+                },
+                "note": "The first coordinate, stated without reference to the point before."
+              },
+              {
+                "name": "zStep",
+                "type": "i8",
+                "present": {
+                  "when": "flags[step].zIsStep"
+                },
+                "note": "Added to the second coordinate of the point before, as that point resolved."
+              },
+              {
+                "name": "zWhole",
+                "type": "i16",
+                "present": {
+                  "when": "flags[step].zIsStep",
+                  "equals": 0
+                },
+                "note": "The second coordinate, stated without reference to the point before."
+              }
+            ]
+          }
+        }
+      ],
+      "note": "Everything the movement carries beyond its first byte."
+    }
+  ]
+}

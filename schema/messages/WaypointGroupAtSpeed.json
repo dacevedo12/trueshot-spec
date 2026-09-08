@@ -1,0 +1,37 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "WaypointGroupAtSpeed",
+  "note": "What a server sends to move units along paths of its own choosing, stating how each one travels rather than leaving it to the receiving end. It is what carries a unit thrown, dragged, or carried along by something other than its own walking.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 100,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "i32",
+          "note": "Names this statement of movement."
+        },
+        {
+          "name": "movementCount",
+          "type": "u16",
+          "note": "How many units follow."
+        },
+        {
+          "name": "movements",
+          "type": "array",
+          "count": "movementCount",
+          "note": "What each unit is told to do.",
+          "items": {
+            "name": "movement",
+            "type": "struct",
+            "struct": "MovementAtSpeed"
+          }
+        }
+      ]
+    }
+  ]
+}

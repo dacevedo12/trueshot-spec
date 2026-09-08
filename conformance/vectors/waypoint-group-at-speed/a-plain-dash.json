@@ -1,0 +1,54 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "WaypointGroupAtSpeed",
+  "version": "4.20.0.315",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "64 00000000 4a67811801000474060040000096440000000042de6d448f188a440000000000000000000000000000000000017df3aff31c81f4",
+  "fields": {
+    "command": 100,
+    "netId": 0,
+    "extendedCommand": null,
+    "syncId": 411133770,
+    "movementCount": 1,
+    "movements": [
+      {
+        "header": {
+          "hasTeleportToken": 0,
+          "pointCount": 2
+        },
+        "path": {
+          "unit": 1073743476,
+          "teleportToken": null,
+          "terms": {
+            "speed": 1200,
+            "gravity": 0,
+            "arcFromX": 951.4727783203125,
+            "arcFromZ": 1104.7674560546875,
+            "keepFacing": 0,
+            "follows": 0,
+            "followDistance": 0,
+            "followBackDistance": 0,
+            "followTime": 0
+          },
+          "flags": [
+            {
+              "xIsStep": 1,
+              "zIsStep": 0
+            }
+          ],
+          "firstX": -3203,
+          "firstZ": -3153,
+          "steps": [
+            {
+              "xStep": 28,
+              "xWhole": null,
+              "zStep": null,
+              "zWhole": -2943
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

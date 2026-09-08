@@ -1,0 +1,60 @@
+{
+  "$schema": "../meta/struct.json",
+  "struct": "SpeedParams",
+  "note": "How a unit is made to travel, in place of what a receiving end would otherwise choose for it. A receiving end takes these as they stand and stops choosing a path of its own while they hold.",
+  "fields": [
+    {
+      "name": "speed",
+      "type": "f32",
+      "note": "How fast the unit travels along the path, in world units a second, standing in for its own pace."
+    },
+    {
+      "name": "gravity",
+      "type": "f32",
+      "note": "How sharply the unit arcs through the air along the way. Zero where it keeps to the ground."
+    },
+    {
+      "name": "arcFromX",
+      "type": "f32",
+      "note": "Where the arc begins, along one ground axis, in world units."
+    },
+    {
+      "name": "arcFromZ",
+      "type": "f32",
+      "note": "Where it begins, along the other."
+    },
+    {
+      "name": "keepFacing",
+      "type": "u8",
+      "note": "Whether the unit holds the way it already faces rather than turning to face where it is going.",
+      "values": {
+        "0": {
+          "name": "faceTheWayItGoes"
+        },
+        "1": {
+          "name": "holdItsFacing"
+        }
+      }
+    },
+    {
+      "name": "follows",
+      "type": "u32",
+      "note": "The unit this one is made to follow, or zero where it follows none."
+    },
+    {
+      "name": "followDistance",
+      "type": "f32",
+      "note": "How far from that unit it is made to stay, in world units. Zero in everything observed."
+    },
+    {
+      "name": "followBackDistance",
+      "type": "f32",
+      "note": "How far behind that unit it is made to stay, in world units. Zero in everything observed."
+    },
+    {
+      "name": "followTime",
+      "type": "f32",
+      "note": "How long the following runs, in seconds."
+    }
+  ]
+}
