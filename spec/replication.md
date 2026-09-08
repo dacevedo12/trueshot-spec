@@ -51,8 +51,8 @@ where the traffic bears it out, and those are marked.
 | 0     | 2 to 3           | Which spells are ready to cast, as sets of bits                        | counted  |
 | 0     | 4                | Points held for growing a spell                                        | counted  |
 | 0     | 5                | Which spells have grown                                                | counted  |
-| 0     | 8 to 11          | What each of the champion's four spells costs, confirmed               | measured |
-| 0     | 6 to 7, 12 to 27 | Further costs, one to a place                                          | measured |
+| 0     | 6 to 7           | Nothing observed                                                       | measured |
+| 0     | 8 to 27          | What the spell in one slot costs, confirmed                            | measured |
 | 1     | 0 to 4           | What the champion is doing, and four kinds of harm it is proof against | counted  |
 | 1     | 5                | Damage it deals by striking, confirmed                                 | measured |
 | 1     | 9                | Armour, confirmed                                                      | measured |
@@ -78,10 +78,14 @@ an item costs. Health and resource as they stand climb the way those climb, and
 each opens at the value its own greatest carries. Level reads 1 and then 6, and
 experience 0, then 2400, then 2602, across the same session.
 
-The four spell costs sit at bits 8 to 11 rather than at the four places before
-them. One champion's four read 28 and then 31, 50 and then 60, 90, and 100:
-four spells, the first two of them growing a rank apiece while the others hold,
-which is what a champion's own costs do. Nothing was ever carried at bits 6 and 7.
+Spell costs are keyed by slot: bit 8 carries what the spell in slot 0 costs,
+bit 9 slot 1, and so on up the run. A session settles this outright. Six times
+a client asked to grow a spell, a server answered naming the slot and its new
+rank, and two payloads later one cost changed and no other. The slots asked for
+were 0, 3, 1, 2, 0 and 1, and the bits that moved were 8, 11, 9, 10, 8 and 9,
+in that order. The values behaved as a champion's costs do: 28 then 31 for the
+slot grown twice, 50 then 60 for the other, and 90 and 100 for the two grown
+once. Nothing was ever carried at bits 6 and 7.
 
 Damage by striking reads 50.24 and grows; armour reads 30.88 and grows; how far
 it strikes from reads 550, which is a champion's reach; how fast it moves reads
