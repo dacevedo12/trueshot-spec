@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "ChampionStats",
-  "note": "What a server sends to lay out a champion's standing figures. Which figures the run holds is not recorded here, so it cannot be read from the wire alone.",
+  "note": "What a server sends to lay out a champion's standing figures. The run holds one figure after another, ordered by the name each figure is known by, compared letter by letter. Which figures a champion has is settled before a match and is not recorded here, so the run cannot be read from the wire alone.",
   "revisions": [
     {
       "from": "4.20.0.315",
@@ -22,7 +22,7 @@
             "field": "size",
             "minus": 4
           },
-          "note": "The figures themselves. What settles the reading is not recorded here."
+          "note": "The figures themselves, in the order their names sort. Each is read by the kind its name is known to carry: four bytes for a whole number or a measure, one for a yes or no, eight for a wide whole number, and for text two bytes of length and that many bytes after, with nothing closing it."
         }
       ]
     }

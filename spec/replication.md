@@ -85,7 +85,13 @@ rank, and two payloads later one cost changed and no other. The slots asked for
 were 0, 3, 1, 2, 0 and 1, and the bits that moved were 8, 11, 9, 10, 8 and 9,
 in that order. The values behaved as a champion's costs do: 28 then 31 for the
 slot grown twice, 50 then 60 for the other, and 90 and 100 for the two grown
-once. Nothing was ever carried at bits 6 and 7.
+once.
+
+Bits 6 and 7 are not the first two of that run. No mask in any capture sets
+either, and one mask sets bits 8 to 27 together, carrying zero at every place
+no spell fills. A run does not skip its own opening while writing out the rest
+of itself, so what sits at 6 and 7 is something else, and nothing observed says
+what.
 
 Damage by striking reads 50.24 and grows; armour reads 30.88 and grows; how far
 it strikes from reads 550, which is a champion's reach; how fast it moves reads

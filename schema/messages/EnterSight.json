@@ -167,7 +167,7 @@
         {
           "name": "movementKind",
           "type": "u8",
-          "note": "What the unit is doing on the ground, and so which shape follows. Nothing follows where it does nothing. Standing and moving have been observed; moving at a stated speed has not.",
+          "note": "What the unit is doing on the ground, and so which shape follows. Standing and moving have been observed. Moving at a stated speed is a server overriding how the unit travels rather than a kind of movement of its own: a reading end takes the block that follows in place of what it would have chosen, and stops choosing a path for itself. Nothing observed carries it, or carries the shape meaning the unit does nothing.",
           "values": {
             "0": {
               "name": "nothing"
@@ -213,7 +213,7 @@
           "name": "speedParameters",
           "type": "bytes",
           "size": 33,
-          "note": "How the unit moves along that path where the path alone does not say: a speed standing in for its own, the values of an arc it travels through, how it faces, the unit it follows, and how far behind and how long. The runs within are not recorded here.",
+          "note": "How the unit travels, in place of what a reading end would otherwise choose: a speed standing in for its own, the values of an arc it travels through, which way it is made to face, the unit it follows, and how far behind and how long. A reading end stops choosing a path of its own while these hold. The runs within are not recorded here.",
           "present": {
             "when": "movementKind",
             "equals": 1,
