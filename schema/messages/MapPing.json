@@ -28,7 +28,7 @@
         {
           "name": "kind",
           "type": "u8",
-          "note": "Which mark it is. Three of the seven have been seen on the wire and the rest are recorded from what a client is able to send.",
+          "note": "Which mark it is. Six of the seven have been seen on the wire, all but the one meaning attack direction, and that one is recorded from what a client is able to send.",
           "values": {
             "0": {
               "name": "here"
