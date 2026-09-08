@@ -4,12 +4,14 @@
   "message": "Registered",
   "version": "4.20.0.315",
   "note": "Taken from a server a client accepted. The identifiers are synthetic.",
-  "bytes": "00 72d70200 000000010000000000000000000000000000000000000000000000",
+  "bytes": "00 72d70200000000010000000000000000000000000000000000000000000000",
   "fields": {
     "command": 0,
     "leading": "72d702",
     "clientId": 0,
     "playerId": "1",
-    "unknown": "00000000000000000000000000000000"
+    "version": 0,
+    "proof": "0000000000000000",
+    "trailing": "00000000"
   }
 }
