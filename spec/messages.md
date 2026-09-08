@@ -303,6 +303,18 @@ A value that measures takes one of three forms: a single byte of 255 meaning
 zero; a byte of 254 followed by four bytes; or four bytes on their own. The
 four bytes are the measure itself, lowest byte first.
 
+Which of the three a value takes is settled by its own lowest byte, and a
+reading end tells them apart by the first byte it meets. A value whose lowest
+byte is 254 or 255 MUST carry the byte of 254 before it, and a value whose
+lowest byte is anything else MUST NOT, so a measure written plain never begins
+with either. That is what makes the first byte enough: 255 alone is zero, 254
+says the four bytes after it are the measure, and anything else is already the
+lowest byte of one. In every measure observed, plain and marked alike, this
+holds without exception.
+
+The single byte of 255 is one way to carry zero rather than the only one. A
+measure of zero is observed written plain, as four bytes.
+
 Reading a run therefore needs to know, for each value, which of the two shapes
 it takes. Nothing on the wire says, and it is not settled by position alone, so
 an end that does not already know cannot read one.
