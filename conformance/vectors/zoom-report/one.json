@@ -1,14 +1,15 @@
 {
   "$schema": "../../../schema/meta/vector.json",
   "subject": "message",
-  "message": "IntegritySignal",
+  "message": "ZoomReport",
   "version": "4.20.0.315",
-  "note": "Taken from a client.",
+  "note": "Taken from a client a server accepted.",
   "bytes": "7d 74060040 0000000000000000",
   "fields": {
     "command": 125,
     "netId": 1073743476,
     "extendedCommand": null,
-    "unknown": "0000000000000000"
+    "signal": 0,
+    "flags": 0
   }
 }

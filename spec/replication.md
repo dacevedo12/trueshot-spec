@@ -7,7 +7,7 @@ groups, its own name, and for every group named a set of values it carries, the
 length of the run holding them, and the run itself.
 
 That much a layout reaches. What the run holds it does not, and this document
-says why, what settles it, and what has been read out of it.
+says what settles it.
 
 ## What settles a reading
 
@@ -17,85 +17,88 @@ bits name them, lowest first. Each value takes one of the two shapes
 on the wire.
 
 The bit that names a value means different things for different units. A
-champion, a turret, a unit belonging to no side and a prop each answer to their
+champion, a turret, a prop and a unit belonging to no side each answer to their
 own table, so the same bit in the same group is one value on one unit and
 another on the next. A receiving end knows the table because it made the unit,
 from the message that put the unit on the field and the names that message
-carried. A sending end MUST write the table the unit it names answers to.
+carried. A sending end MUST write the table the unit it names answers to, and
+MUST NOT write one unit's table for another.
 
-The kind of unit does not always settle it on its own. One kind is recorded as
-moving where its current and greatest resource sit between two groups according
-to a flag it carries, so a table is chosen by what a unit is and how it was
-made.
+The kind of unit does not always settle it. A unit belonging to no side keeps
+its resource in one of two places, and which one moves every bit after it, so a
+table is chosen by what a unit is and by how it was made.
 
 Nothing on the wire carries a table, a field name, or a width. An end that does
-not already hold the table cannot read a run, and this specification does not
-supply one it has not seen used.
+not already hold the table cannot read a run.
 
-## How these tables were read
+## How far these tables are checked
 
-Both shapes a value takes say where they end: a measure by its first byte, a
-count by the top bit of each byte. So a run carrying one value gives that
-value's shape outright, and a run carrying several gives it wherever one
-assignment of shapes to the bits, and only one, consumes the run exactly across
-every payload that carried the same set. Everything below was read that way,
-from a server a client accepted.
+Every table below was run against every replicated value in the captures behind
+this specification: 632,549 runs, each taken apart by the shapes its table
+gives and each ending exactly where its length says. None failed, and none was
+left over.
 
-A shape is what a reading end needs to take a run apart. A meaning is what it
-needs to act on one. The two tables are separate because the first is settled
-by far more of the traffic than the second.
+That checks the shapes, because a wrong shape runs off the end of a run or
+stops short of it. It does not check the names. A name below is confirmed only
+where the traffic bears it out, and those are marked.
 
-## What a champion's groups carry
+## A champion
 
-| Group | Bit | Value                                            | Shape    |
-| ----- | --- | ------------------------------------------------ | -------- |
-| 0     | 0   | Gold in hand                                     | measured |
-| 0     | 2   | Which spells are ready to cast, as a set of bits | counted  |
-| 0     | 8   | What a spell costs to cast                       | measured |
-| 1     | 11  | How fast health returns                          | measured |
-| 3     | 0   | Health now                                       | measured |
-| 3     | 1   | Resource now                                     | measured |
-| 3     | 3   | Resource at its greatest                         | measured |
-| 3     | 4   | Experience                                       | measured |
-| 3     | 10  | How fast the champion moves                      | measured |
+| Group | Bits     | Value                                                                                                  | Shape    |
+| ----- | -------- | ------------------------------------------------------------------------------------------------------ | -------- |
+| 0     | 0        | Gold in hand, confirmed                                                                                | measured |
+| 0     | 1        | Gold earned in all                                                                                     | measured |
+| 0     | 2 to 3   | Which spells are ready to cast, as sets of bits, confirmed                                             | counted  |
+| 0     | 4        | Points held for growing a spell                                                                        | counted  |
+| 0     | 5        | Which spells have grown                                                                                | counted  |
+| 0     | 6 to 9   | What each of four spells costs, confirmed                                                              | measured |
+| 0     | 10 to 27 | What each further spell costs                                                                          | measured |
+| 1     | 0 to 4   | What the champion is doing, and four kinds of harm it is proof against                                 | counted  |
+| 1     | 5 to 31  | Damage, armour, spell resistance, regeneration, reach, and the modifiers on them                       | measured |
+| 2     | 0 to 1   | How much armour and spell resistance the champion cuts through                                         | measured |
+| 3     | 0 to 12  | Health, resource, experience, lifetime, sight and speed, confirmed for health, resource and experience | measured |
+| 3     | 13 to 16 | Level, kills taken from no side, and whether anything is allowed to aim at the champion                | counted  |
 
-Gold in hand is the surest of these. One champion's value climbs by exactly
-0.95 a step across a match, which is what a champion earns for standing still,
-and another's falls by 35 in one step, which is what an item costs. Health now,
-resource now and experience each climb the way those climb, resource at its
-greatest holds still, and what a spell costs takes one of three values.
+Gold in hand is the surest. One champion's value climbs by exactly 0.95 a step
+across a match, which is what a champion earns for standing still, and
+another's falls by 35 in one step, which is what an item costs. Health, resource
+and experience climb the way those climb.
 
-## Shapes settled where the meaning is not
+Bits 26 and 27 of group 0 are carried by this client and are not in the table
+an earlier client used, which stopped at 25.
 
-A reading end can take these apart without knowing what they are.
+## A turret
 
-| Unit                      | Group | Bit | Shape    |
-| ------------------------- | ----- | --- | -------- |
-| Champion                  | 1     | 9   | measured |
-| Champion                  | 1     | 10  | measured |
-| Champion                  | 2     | 0   | measured |
-| Champion                  | 2     | 1   | measured |
-| Turret                    | 1     | 8   | measured |
-| Turret                    | 1     | 11  | measured |
-| Turret                    | 3     | 0   | measured |
-| Turret                    | 3     | 1   | measured |
-| Turret                    | 3     | 4   | measured |
-| Turret                    | 3     | 5   | measured |
-| Unit belonging to no side | 1     | 0   | measured |
+| Group | Bits    | Value                                                                                | Shape    |
+| ----- | ------- | ------------------------------------------------------------------------------------ | -------- |
+| 1     | 0 to 1  | Resource at its greatest, then as it stands                                          | measured |
+| 1     | 2 to 6  | What the turret is doing, and four kinds of harm it is proof against                 | counted  |
+| 1     | 7 to 14 | Damage, armour, spell resistance, the modifiers on them, and how fast health returns | measured |
+| 3     | 0 to 5  | Health as it stands and at its greatest, sight, speed, and size                      | measured |
+| 5     | 0 to 1  | Whether anything is allowed to aim at the turret, and which side is                  | counted  |
 
-A bit no table above names is a bit no run settled, either because none carried
-it or because more than one assignment of shapes fitted the ones that did. It
-is not a bit that means nothing.
+Group 3 bits 0 and 1 carry the same value as each other throughout, which is
+health standing at its greatest rather than two readings of one thing.
 
-## What other units carry
+## A unit belonging to no side
 
-A turret, a unit belonging to no side and a prop each answer to a table of
-their own, and the same bit carries something else on each. Group 1 bit 11 is
-one already recorded: on a champion it is how fast health returns, and on a
-turret it climbs by fours across a match, which health returning does not do.
-Group 3 bits 0 and 1 are another: on a champion they are health and resource as
-they stand, and on a turret they hold the same values as each other.
+| Group | Bits      | Value                                                                                               | Shape    |
+| ----- | --------- | --------------------------------------------------------------------------------------------------- | -------- |
+| 1     | 0 to 6    | Health, lifetime and resource, each as it stands and at its greatest, and the count of its lifetime | measured |
+| 1     | 7 to 11   | What the unit is doing, and four kinds of harm it is proof against                                  | counted  |
+| 1     | 12 and up | The modifiers on its damage and defence                                                             | measured |
+| 3     | 0 to 3    | Sight, speed and size                                                                               | measured |
+| 3     | 4 to 5    | Whether anything is allowed to aim at it, and which side is                                         | counted  |
 
-No meaning is recorded for those kinds. What has been read of them is that they
-differ, which is enough to say that a sending end MUST NOT write a champion's
-table for a unit that is not one.
+This is the placement a unit uses where it keeps its resource in group 1. A
+unit that keeps it in group 3 moves every bit after it, and no capture shows
+one, so that placement is not recorded here.
+
+## A prop
+
+| Group | Bits   | Value                                                       | Shape    |
+| ----- | ------ | ----------------------------------------------------------- | -------- |
+| 1     | 0 to 1 | Health as it stands and at its greatest                     | measured |
+| 1     | 2      | Whether the prop is proof against harm                      | counted  |
+| 3     | 0 to 3 | Sight, speed and size                                       | measured |
+| 3     | 4 to 5 | Whether anything is allowed to aim at it, and which side is | counted  |
