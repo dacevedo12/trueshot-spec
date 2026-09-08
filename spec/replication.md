@@ -64,8 +64,8 @@ across a match, which is what a champion earns for standing still, and
 another's falls by 35 in one step, which is what an item costs. Health, resource
 and experience climb the way those climb.
 
-Bits 26 and 27 of group 0 are carried by this client and are not in the table
-an earlier client used, which stopped at 25.
+Group 0 runs to bit 27. The runs read exactly with every bit up to that
+carried and not with fewer.
 
 ## A turret
 

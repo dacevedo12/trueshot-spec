@@ -1,6 +1,5 @@
 {
   "$schema": "meta/channels.json",
-  "note": "The channels this client uses, and the family each carries. Channel 6 is left out on purpose. An earlier client carried quick chat there, and no payload in any capture behind this specification travels on it. A client working its ping wheel sends map pings on the request channel instead, which is where six of the seven marks have been seen. Where 6 appears in a table beside these, it is a channel nothing dispatches on.",
   "revisions": [
     {
       "from": "4.20.0.315",
