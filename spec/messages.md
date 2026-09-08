@@ -127,6 +127,18 @@ follow it as usual. An enclosure that states none ends where the body ends, so
 it is the last field too, and so is any struct whose own last field is one of
 these.
 
+A body ends where its last field ends. A payload can carry more than that, and
+one does: a server's answer to a registration has been seen four bytes longer
+than the record, and the client it reached went on talking for the rest of the
+match. So a reading end MUST read the fields a revision lists and MUST take no
+meaning from anything past them, and MUST NOT refuse a payload for carrying it.
+A sender MUST write the fields and nothing after them, because a length beyond
+the record says nothing that a reading end reads.
+
+This is the one thing a vector cannot show. A vector is read to its end, so a
+payload with bytes past the record is not one, and the rule above rests on the
+client that accepted such a payload rather than on a recorded layout.
+
 ## Byte order
 
 A revision of `schema/protocol.json` states the byte order that covers a
