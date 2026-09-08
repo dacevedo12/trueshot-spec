@@ -1,0 +1,21 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "LeaveTeamSight",
+  "note": "What a server sends when a unit passes out of the view of a whole side.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 225,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "side",
+          "type": "u8",
+          "note": "Which side the unit came into or out of the view of."
+        }
+      ]
+    }
+  ]
+}

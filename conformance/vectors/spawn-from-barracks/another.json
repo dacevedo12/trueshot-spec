@@ -1,0 +1,21 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SpawnFromBarracks",
+  "version": "4.20.0.315",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "03 a0110040 a011004040e800baff01000000000001",
+  "fields": {
+    "command": 3,
+    "netId": 1073746336,
+    "extendedCommand": null,
+    "unit": 1073746336,
+    "node": 64,
+    "barracks": 4290380008,
+    "wave": 1,
+    "kind": 0,
+    "damageBonus": 0,
+    "healthBonus": 0,
+    "level": 1
+  }
+}

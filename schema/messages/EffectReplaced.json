@@ -1,0 +1,36 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "EffectReplaced",
+  "note": "What a server sends to put a lasting effect in a slot that already holds one, keeping the slot rather than taking the old one off first.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 48,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which of the unit's effect slots."
+        },
+        {
+          "name": "runningFor",
+          "type": "f32",
+          "note": "How long the effect has already run, in seconds."
+        },
+        {
+          "name": "lasts",
+          "type": "f32",
+          "note": "How long it runs in total, in seconds."
+        },
+        {
+          "name": "caster",
+          "type": "u32",
+          "note": "The unit that put it there."
+        }
+      ]
+    }
+  ]
+}

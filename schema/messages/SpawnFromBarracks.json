@@ -1,0 +1,56 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "SpawnFromBarracks",
+  "note": "What a server sends to put a unit on the field from the place its side sends them out of.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 3,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The name the unit answers to, so later messages can name it."
+        },
+        {
+          "name": "node",
+          "type": "u8",
+          "note": "Which network node the unit belongs to. A client reads it apart from the name beside it rather than as that name's leading byte."
+        },
+        {
+          "name": "barracks",
+          "type": "u32",
+          "note": "The place it came out of."
+        },
+        {
+          "name": "wave",
+          "type": "u8",
+          "note": "Which run of units it belongs to."
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What sort of unit it is."
+        },
+        {
+          "name": "damageBonus",
+          "type": "i16",
+          "note": "What is added to the damage it deals."
+        },
+        {
+          "name": "healthBonus",
+          "type": "i16",
+          "note": "What is added to the health it holds."
+        },
+        {
+          "name": "level",
+          "type": "u8",
+          "note": "The level it starts at."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "AnimationOverrides",
+  "note": "What a server sends to make a unit play one set of movements wherever it would have played another.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 107,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "pairCount",
+          "type": "u8",
+          "note": "How many pairs follow."
+        },
+        {
+          "name": "pairs",
+          "type": "array",
+          "count": "pairCount",
+          "note": "Each pair naming what is replaced and what replaces it.",
+          "items": {
+            "name": "pair",
+            "type": "struct",
+            "struct": "AnimationOverride"
+          }
+        }
+      ]
+    }
+  ]
+}

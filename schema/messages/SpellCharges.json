@@ -1,0 +1,54 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "SpellCharges",
+  "note": "What a server sends to say how many uses one of a unit's spells has left and when the next returns.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 263,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "summonerSpell",
+          "type": "u8",
+          "note": "Whether the slot is a summoner slot rather than one of the unit's own.",
+          "values": {
+            "0": {
+              "name": "no"
+            },
+            "1": {
+              "name": "yes"
+            }
+          }
+        },
+        {
+          "name": "slot",
+          "type": "i32",
+          "note": "Which slot."
+        },
+        {
+          "name": "charges",
+          "type": "i32",
+          "note": "How many uses are left."
+        },
+        {
+          "name": "mostCharges",
+          "type": "i32",
+          "note": "How many it holds at most."
+        },
+        {
+          "name": "rechargeFor",
+          "type": "f32",
+          "note": "How long the next use has been coming back, in seconds."
+        },
+        {
+          "name": "rechargeTime",
+          "type": "f32",
+          "note": "How long a use takes to come back, in seconds."
+        }
+      ]
+    }
+  ]
+}

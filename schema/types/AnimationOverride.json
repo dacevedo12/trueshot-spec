@@ -1,0 +1,31 @@
+{
+  "$schema": "../meta/struct.json",
+  "struct": "AnimationOverride",
+  "note": "One set of movements standing in for another.",
+  "fields": [
+    {
+      "name": "fromLength",
+      "type": "u32",
+      "note": "How many bytes the name below occupies."
+    },
+    {
+      "name": "from",
+      "type": "string",
+      "encoding": "utf8",
+      "size": "fromLength",
+      "note": "The name of what is replaced. It is not padded and carries nothing closing it."
+    },
+    {
+      "name": "toLength",
+      "type": "u32",
+      "note": "How many bytes the name below occupies."
+    },
+    {
+      "name": "to",
+      "type": "string",
+      "encoding": "utf8",
+      "size": "toLength",
+      "note": "The name of what replaces it, written as above."
+    }
+  ]
+}
