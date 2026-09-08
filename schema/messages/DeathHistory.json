@@ -28,13 +28,18 @@
         {
           "name": "entryCount",
           "type": "u32",
-          "note": "How many entries follow. Zero in everything observed."
+          "note": "How many entries follow."
         },
         {
           "name": "entries",
-          "type": "bytes",
-          "size": "remaining",
-          "note": "The entries themselves. No capture has carried one, so no shape is recorded here."
+          "type": "array",
+          "count": "entryCount",
+          "note": "What led to the death, oldest last.",
+          "items": {
+            "name": "entry",
+            "type": "struct",
+            "struct": "DeathEvent"
+          }
         }
       ]
     }

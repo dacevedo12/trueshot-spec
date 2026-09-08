@@ -1,0 +1,33 @@
+{
+  "$schema": "../meta/struct.json",
+  "struct": "DeathEvent",
+  "note": "One thing that led to a death: when it happened, what sort of thing it was, and what did it. What follows the opening is settled by the sort, and one sort has been observed.",
+  "fields": [
+    {
+      "name": "at",
+      "type": "f32",
+      "note": "When it happened, in seconds."
+    },
+    {
+      "name": "count",
+      "type": "u16",
+      "note": "How many times it happened."
+    },
+    {
+      "name": "kind",
+      "type": "u8",
+      "note": "What sort of thing it was. Every entry observed carries the same one, and what other sorts carry is not recorded here."
+    },
+    {
+      "name": "source",
+      "type": "u32",
+      "note": "The unit that did it."
+    },
+    {
+      "name": "about",
+      "type": "bytes",
+      "size": 24,
+      "note": "What the thing was about. It holds the unit it happened to, then two pairs each naming something by number and a unit, with two bytes closing it. The width holds for the one sort observed and nothing says it holds for another."
+    }
+  ]
+}

@@ -34,7 +34,7 @@ not already hold the table cannot read a run.
 ## How far these tables are checked
 
 Every table below was run against every replicated value in the captures behind
-this specification: 632,549 runs, each taken apart by the shapes its table
+this specification: 679,677 runs, each taken apart by the shapes its table
 gives and each ending exactly where its length says. None failed, and none was
 left over.
 
@@ -99,36 +99,55 @@ it strikes from reads 550, which is a champion's reach; how fast it moves reads
 
 ## A turret
 
-| Group | Bits    | Value                                                                                | Shape    |
-| ----- | ------- | ------------------------------------------------------------------------------------ | -------- |
-| 1     | 0 to 1  | Resource at its greatest, then as it stands                                          | measured |
-| 1     | 2 to 6  | What the turret is doing, and four kinds of harm it is proof against                 | counted  |
-| 1     | 7 to 14 | Damage, armour, spell resistance, the modifiers on them, and how fast health returns | measured |
-| 3     | 0 to 5  | Health as it stands and at its greatest, sight, speed, and size                      | measured |
-| 5     | 0 to 1  | Whether anything is allowed to aim at the turret, and which side is                  | counted  |
+| Group | Bits    | Value                                                                      | Shape    |
+| ----- | ------- | -------------------------------------------------------------------------- | -------- |
+| 1     | 0 to 1  | Resource at its greatest, then as it stands                                | measured |
+| 1     | 2 to 6  | What the turret is doing, and four kinds of harm it is proof against       | counted  |
+| 1     | 7       | Damage it deals by striking, confirmed                                     | measured |
+| 1     | 8       | Armour, confirmed                                                          | measured |
+| 1     | 9 to 14 | Spell resistance, the modifiers on its damage, and how fast health returns | measured |
+| 3     | 0 to 1  | Health as it stands, then at its greatest, confirmed                       | measured |
+| 3     | 2 to 5  | How far it sees, how fast it moves, and its size                           | measured |
+| 5     | 0 to 1  | Whether anything is allowed to aim at it, and which side is                | counted  |
 
-Group 3 bits 0 and 1 carry the same value as each other throughout, which is
-health standing at its greatest rather than two readings of one thing.
+Health at its greatest reads 1000, 1300, 1500, 1550 and 1750 across the
+turrets of one map, which is what turrets of differing standing hold, and
+health as it stands falls step by step under attack and holds still otherwise.
+Damage by striking reads 150, 152, 170 and 190, and armour 0, 67, 100 and 133.
 
-## A unit belonging to no side
+## A minion, and a unit belonging to no side
 
-| Group | Bits      | Value                                                                                               | Shape    |
-| ----- | --------- | --------------------------------------------------------------------------------------------------- | -------- |
-| 1     | 0 to 6    | Health, lifetime and resource, each as it stands and at its greatest, and the count of its lifetime | measured |
-| 1     | 7 to 11   | What the unit is doing, and four kinds of harm it is proof against                                  | counted  |
-| 1     | 12 and up | The modifiers on its damage and defence                                                             | measured |
-| 3     | 0 to 3    | Sight, speed and size                                                                               | measured |
-| 3     | 4 to 5    | Whether anything is allowed to aim at it, and which side is                                         | counted  |
+Both answer to one table.
 
-This is the placement a unit uses where it keeps its resource in group 1. A
-unit that keeps it in group 3 moves every bit after it, and no capture shows
-one, so that placement is not recorded here.
+| Group | Bits      | Value                                                                      | Shape    |
+| ----- | --------- | -------------------------------------------------------------------------- | -------- |
+| 1     | 0 to 1    | Health as it stands, then at its greatest, confirmed                       | measured |
+| 1     | 2 to 4    | How long it lives, as it stands and at its greatest, and the count of that | measured |
+| 1     | 5 to 6    | Resource at its greatest, then as it stands                                | measured |
+| 1     | 7 to 11   | What the unit is doing, and four kinds of harm it is proof against         | counted  |
+| 1     | 12        | Damage it deals by striking, confirmed                                     | measured |
+| 1     | 13 and up | Its defences and the modifiers on them                                     | measured |
+| 3     | 0 to 1    | How far it sees                                                            | measured |
+| 3     | 2         | How fast it moves, confirmed                                               | measured |
+| 3     | 3         | Its size                                                                   | measured |
+| 3     | 4 to 5    | Whether anything is allowed to aim at it, and which side is                | counted  |
+
+Health at its greatest reads 290, 455 and 805 for the units a side sends out,
+which is what three sorts of them hold, and damage by striking reads 12, 23 and
+40 alongside. For a unit belonging to no side the same two read 250 through
+540, and 12 through 42. How fast it moves reads 325, and half that where
+something slows it.
+
+This is the placement where the unit keeps its resource in group 1. A unit that
+keeps it in group 3 moves every bit after it, and no capture shows one.
 
 ## A prop
 
 | Group | Bits   | Value                                                       | Shape    |
 | ----- | ------ | ----------------------------------------------------------- | -------- |
-| 1     | 0 to 1 | Health as it stands and at its greatest                     | measured |
+| 1     | 0 to 1 | Health as it stands, then at its greatest                   | measured |
 | 1     | 2      | Whether the prop is proof against harm                      | counted  |
-| 3     | 0 to 3 | Sight, speed and size                                       | measured |
+| 3     | 0 to 1 | How far it sees                                             | measured |
+| 3     | 2      | How fast it moves                                           | measured |
+| 3     | 3      | Its size                                                    | measured |
 | 3     | 4 to 5 | Whether anything is allowed to aim at it, and which side is | counted  |
