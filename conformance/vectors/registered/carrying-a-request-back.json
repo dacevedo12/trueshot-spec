@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "Registered",
+  "version": "4.20.0.315",
+  "note": "Taken from a server a client accepted. It answers the seat that had just registered, so it carries that request's own build and proof back.",
+  "bytes": "00 000000000000000000000000000000bbdf8002166adf6750b927f600000000",
+  "fields": {
+    "command": 0,
+    "leading": "000000",
+    "clientId": 0,
+    "playerId": "0",
+    "version": 42000315,
+    "proof": "166adf6750b927f6",
+    "trailing": "00000000"
+  }
+}

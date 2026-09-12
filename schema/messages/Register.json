@@ -29,7 +29,7 @@
         {
           "name": "version",
           "type": "u32",
-          "note": "The client's version with its separators removed, so 4.20.0.315 arrives as 42000315. It is carried for a server to read; nothing observed compares it or refuses a connection over it."
+          "note": "The build the client runs, with each part written out and run together, so 4.20.0.315 arrives as 42000315. No captured request carries it: what is known of it comes from the answer a server carries back, which repeats the request's own number."
         },
         {
           "name": "proof",

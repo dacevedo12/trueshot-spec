@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "Registered",
-  "note": "What a server answers a registration with, naming a player in the match and the seat they occupy. It shares its command value with the request it answers, which travels the other way, and it is one fixed size: a server sends one for every seat, whether that seat has just registered or was already at the match. A payload has been seen carrying four bytes past the record, which spec/messages.md says what to do with.",
+  "note": "What a server answers a registration with, naming a player in the match and the seat they occupy. It shares its command value with the request it answers, which travels the other way, and it is one fixed size. A server sends one for every seat: the seat that just registered gets its own request carried back to it, and the seats already at the match get answers a server fills in itself.",
   "revisions": [
     {
       "from": "4.20.0.315",
@@ -29,13 +29,13 @@
         {
           "name": "version",
           "type": "u32",
-          "note": "The build the client said it runs, copied from its request and kept. A server writes nothing here for a seat that was already at the match, and it is zero in everything observed."
+          "note": "The build the client said it runs, carried back to it. Where the answer follows a request it is the number that request carried, and 42000315 in every one observed. Where it does not, a server states the build itself, and the only payloads that do carry four bytes past the record, so no vector holds one."
         },
         {
           "name": "proof",
           "type": "bytes",
           "size": 8,
-          "note": "The eight bytes a request fills with its proof. A server puts no meaningful value here, so whatever these carry is not a fact about the protocol. They are zero in everything observed."
+          "note": "The eight bytes a request fills with its proof, carried back. Where the answer follows a request it repeats what that request carried. Where it does not it is zero: a server states no proof of its own, so a receiving end takes nothing from it."
         },
         {
           "name": "trailing",
