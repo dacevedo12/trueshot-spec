@@ -16,9 +16,9 @@
           "size": 1,
           "bits": [
             {
-              "name": "won",
+              "name": "side100Won",
               "width": 1,
-              "note": "Set in the one payload captured, which went to a client whose own side won. Whether it names a particular side or the receiving client's own side is not settled."
+              "note": "Set where side 100 won and clear where side 200 won. A client compares the winning side with its own to show victory or defeat. The one payload captured has it set, at the end of a match in which side 200's nexus was destroyed and side 100's was not, sent to a client that had joined side 100."
             },
             {
               "name": "unknown",
