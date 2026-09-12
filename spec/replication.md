@@ -65,32 +65,32 @@ the rest are in that state.
 
 ## A champion
 
-| Group | Bits     | Value                                                                  | Shape    | Seen set                     |
-| ----- | -------- | ---------------------------------------------------------------------- | -------- | ---------------------------- |
-| 0     | 0        | Gold in hand, confirmed                                                | measured | all                          |
-| 0     | 1        | Gold earned in all                                                     | measured | none                         |
-| 0     | 2 to 3   | Which spells are ready to cast, as sets of bits                        | counted  | all                          |
-| 0     | 4        | Points held for growing a spell                                        | counted  | all                          |
-| 0     | 5        | Which spells have grown                                                | counted  | all                          |
-| 0     | 6 to 7   | Purpose undetermined                                                   | unknown  | none                         |
-| 0     | 8 to 27  | What the spell in one slot costs, confirmed for the first four         | measured | all                          |
-| 1     | 0 to 4   | What the champion is doing, and four kinds of harm it is proof against | counted  | all                          |
-| 1     | 5        | Damage it deals by striking, confirmed                                 | measured | all                          |
-| 1     | 6 to 8   | Damage it deals by spells, and how often it turns a blow aside         | measured | 6, 8                         |
-| 1     | 9        | Armour, confirmed                                                      | measured | all                          |
-| 1     | 10       | Spell resistance                                                       | measured | all                          |
-| 1     | 11 to 12 | How fast health and resource return                                    | measured | all                          |
-| 1     | 13       | How far it strikes from, confirmed                                     | measured | all                          |
-| 1     | 14 to 31 | The modifiers on its damage, defence, speed and reach                  | measured | 14 to 16, 19 to 21, 24 to 30 |
-| 2     | 0 to 1   | How much armour and spell resistance it cuts through                   | measured | all                          |
-| 3     | 0 to 1   | Health and resource as they stand, confirmed                           | measured | all                          |
-| 3     | 2 to 3   | Health and resource at their greatest, confirmed                       | measured | all                          |
-| 3     | 4        | Experience, confirmed                                                  | measured | all                          |
-| 3     | 5 to 9   | Lifetime, and how far the champion sees                                | measured | none                         |
-| 3     | 10       | How fast it moves, confirmed                                           | measured | all                          |
-| 3     | 11 to 12 | Its size, and how wide a path it needs                                 | measured | 11                           |
-| 3     | 13       | Level, confirmed                                                       | counted  | all                          |
-| 3     | 14 to 16 | Kills taken from no side, and whether anything is allowed to aim at it | counted  | all                          |
+| Group | Bits     | Value                                                                                      | Shape    | Seen set                     |
+| ----- | -------- | ------------------------------------------------------------------------------------------ | -------- | ---------------------------- |
+| 0     | 0        | Gold in hand, confirmed                                                                    | measured | all                          |
+| 0     | 1        | Gold earned in all                                                                         | measured | none                         |
+| 0     | 2 to 3   | Which of the champion's slots can be cast from, as a set of bits over two words, confirmed | counted  | all                          |
+| 0     | 4 to 5   | Which summoner slots can be cast from, as a set of bits over two words, confirmed          | counted  | all                          |
+| 0     | 6        | Points held for evolving a spell                                                           | counted  | none                         |
+| 0     | 7        | Which spells have evolved, as a set of bits                                                | counted  | none                         |
+| 0     | 8 to 27  | What the spell in one slot costs, confirmed for the first four                             | measured | all                          |
+| 1     | 0 to 4   | What the champion is doing, and four kinds of harm it is proof against                     | counted  | all                          |
+| 1     | 5        | Damage it deals by striking, confirmed                                                     | measured | all                          |
+| 1     | 6 to 8   | Damage it deals by spells, and how often it turns a blow aside                             | measured | 6, 8                         |
+| 1     | 9        | Armour, confirmed                                                                          | measured | all                          |
+| 1     | 10       | Spell resistance                                                                           | measured | all                          |
+| 1     | 11 to 12 | How fast health and resource return                                                        | measured | all                          |
+| 1     | 13       | How far it strikes from, confirmed                                                         | measured | all                          |
+| 1     | 14 to 31 | The modifiers on its damage, defence, speed and reach                                      | measured | 14 to 16, 19 to 21, 24 to 30 |
+| 2     | 0 to 1   | How much armour and spell resistance it cuts through                                       | measured | all                          |
+| 3     | 0 to 1   | Health and resource as they stand, confirmed                                               | measured | all                          |
+| 3     | 2 to 3   | Health and resource at their greatest, confirmed                                           | measured | all                          |
+| 3     | 4        | Experience, confirmed                                                                      | measured | all                          |
+| 3     | 5 to 9   | Lifetime, and how far the champion sees                                                    | measured | none                         |
+| 3     | 10       | How fast it moves, confirmed                                                               | measured | all                          |
+| 3     | 11 to 12 | Its size, and how wide a path it needs                                                     | measured | 11                           |
+| 3     | 13       | Level, confirmed                                                                           | counted  | all                          |
+| 3     | 14 to 16 | Kills taken from no side, and whether anything is allowed to aim at it                     | counted  | all                          |
 
 A name marked confirmed is one a champion's own numbers bear out.
 
@@ -99,12 +99,12 @@ champion earns for standing still, and falls by 35 in one step, which is what
 an item costs. Health and resource as they stand climb the way those climb, and
 each opens at the value its own greatest carries. Level climbs to 18 in one game and to 16 in another, and experience climbs alongside it from 0 to more than 26000.
 
+The two sets of slots that can be cast from read the way their names say. Bit 2 turns on slots 0, 1, 2 and 3 one at a time as a champion learns its spells, and bit 4 carries slots 4 and 5, the summoner slots, in every run. Bits 3 and 5 hold zero throughout.
+
 Spell costs are keyed by slot: bit 8 carries what the spell in slot 0 costs,
 bit 9 slot 1, bit 10 slot 2 and bit 11 slot 3. Bits 12 to 27 belong to the same run and hold zero in everything observed, so which slots they answer to is not settled. Captures settle this outright. Of the requests captured to grow a spell, seventeen were followed by a change to a cost, and each time the change sat at the bit eight above the slot asked for, across all four slots.
 
-Bits 6 and 7 are not the first two of that run. One mask sets bits 8 to 27 together, carrying zero at every place no spell fills, and leaves 6 and 7 clear. A run does not skip its own opening while writing out the rest
-of itself, so what sits at 6 and 7 is something else, and nothing observed says
-what.
+Bits 6 and 7 are not the first two of that run: they hold the points a champion has for evolving a spell and the set of spells that have evolved. One mask sets bits 8 to 27 together, carrying zero at every place no spell fills, and leaves 6 and 7 clear. Where captured traffic does set them, each carries zero, and every such run reads exactly with both counted and fails with both measured.
 
 Damage by striking reads from 54.67 to 115.3, and armour from 32.38 to 90.38; three values above 100000 also appear for armour, which nothing observed explains. How far a champion strikes from reads 150 for one and 550 for another, and how fast it moves reads 325, 340, 370 and 600.
 
