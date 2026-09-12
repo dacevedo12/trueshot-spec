@@ -153,18 +153,15 @@ Every captured run of these units reads under this placement.
 
 Inhibitors and nexuses. [spec/messages.md](messages.md) says how the
 identifier of each is worked out from its name, which is how a receiving end
-knows one no message ever created. The ones a map has carry these two groups,
-and nothing else has been seen.
+knows one no message ever created. Where a map's buildings replicate at all they carry these two groups, and nothing else has been seen. On map 8 none replicate.
 
 | Group | Bits   | Value                                                       | Shape    | Seen set |
 | ----- | ------ | ----------------------------------------------------------- | -------- | -------- |
-| 1     | 0      | Health as it stands, confirmed                              | measured | all      |
+| 1     | 0      | Health, as it stands or at its greatest                     | measured | all      |
 | 1     | 1      | Purpose undetermined                                        | counted  | all      |
 | 5     | 0 to 1 | Whether anything is allowed to aim at it, and which side is | counted  | all      |
 
-Health opens at 4000 for an inhibitor and 5500 for a nexus, and falls from
-there under attack: 3000 and 0 are also observed. Each
-is spoken of first by coming into a side's sight.
+An inhibitor reads 4000 on maps 1 and 11 and 3000 on map 10, and a nexus reads 5500 on all three. On map 12 every building reads 0. No building's figure changes within any capture, including the buildings destroyed in a game played to its end, whose figure stays 0 before and after. So the figure is some measure of health, and whether it is health as it stands or at its greatest is not settled. Each building is spoken of first by coming into a side's sight.
 
 ## A prop
 
