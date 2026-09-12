@@ -320,7 +320,7 @@ finishing with every bit inverted, so the nine bytes `123456789` give
 0xCBF43926.
 
 Every identifier with that top byte in the captures behind this specification
-is one of these, across both servers the captures came from:
+is one of these:
 
 | Name             | Identifier   | `map`         |
 | ---------------- | ------------ | ------------- |

@@ -1,0 +1,33 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "GreyscaleWhenDead",
+  "note": "What a server sends to say whether a client draws the world without colour while its champion is down.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 169,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "enabled",
+              "width": 1,
+              "note": "Set where the world is drawn without colour. Clear in everything observed."
+            },
+            {
+              "name": "unknown",
+              "width": 7,
+              "note": "Observed clear."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "InhibitorState",
+  "note": "What a server sends to change the state of an inhibitor, and say how long the new state lasts.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 43,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "state",
+          "type": "u8",
+          "note": "Which state. Observed 0."
+        },
+        {
+          "name": "duration",
+          "type": "u16",
+          "note": "How long the state lasts. Observed 300; what the figure counts is not recorded here."
+        }
+      ]
+    }
+  ]
+}

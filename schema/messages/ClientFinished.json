@@ -1,0 +1,15 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "ClientFinished",
+  "note": "What a client sends when it has finished with the match. It is sent once, at the end.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "requests",
+      "command": 141,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": []
+    }
+  ]
+}

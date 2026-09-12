@@ -35,7 +35,7 @@ not already hold the table cannot read a run.
 ## How far these tables are checked
 
 Every table below was run against every replicated value in the captures behind
-this specification: 680,757 runs, each taken apart by the shapes its table
+this specification: 682,561 runs, each taken apart by the shapes its table
 gives and each ending exactly where its length says. None failed, and none was
 left over.
 
@@ -47,13 +47,11 @@ above rests on. They do not always disagree. A counted value of four bytes,
 where each of the first three carries its continuing bit, takes the same four
 bytes a measure takes, so the two readings of that one value cannot be told
 apart by where the run ends. Putting the wrong shape at one place and
-reading every run again finds the mistake at 118 of the 129 places the tables
-name. At the other eleven it does not.
+reading every run again finds the mistake at 122 of the 133 places the tables name. At the other eleven it does not.
 
-Seven of those eleven the values settle instead: read as a measure each holds a
+Six of those eleven the values settle instead: read as a measure each holds a
 number too small for anything to mean by it, and read as a count each holds the
-same handful of values over and over, which is what a set of flags does. The
-remaining four are named from the places either side of them and nothing
+same handful of values over and over, which is what a set of flags does. The remaining five are named from the places either side of them and nothing
 observed tells them apart.
 
 None of this checks the names. A name below is confirmed only where the traffic
@@ -99,17 +97,10 @@ A name marked confirmed is one a champion's own numbers bear out.
 Gold in hand climbs by exactly 0.95 a step across a match, which is what a
 champion earns for standing still, and falls by 35 in one step, which is what
 an item costs. Health and resource as they stand climb the way those climb, and
-each opens at the value its own greatest carries. Level reads 1 and then 6, and
-experience 0, then 2400, then 2602, across the same session.
+each opens at the value its own greatest carries. Level climbs through 3, 4, 5 and 6 in one session and on to 18 in another, and experience climbs alongside it from 0 to more than 26000.
 
 Spell costs are keyed by slot: bit 8 carries what the spell in slot 0 costs,
-bit 9 slot 1, bit 10 slot 2 and bit 11 slot 3. Bits 12 to 27 belong to the same run and hold zero in everything observed, so which slots they answer to is not settled. A session settles this outright. Six times
-a client asked to grow a spell, a server answered naming the slot and its new
-rank, and two payloads later one cost changed and no other. The slots asked for
-were 0, 3, 1, 2, 0 and 1, and the bits that moved were 8, 11, 9, 10, 8 and 9,
-in that order. The values behaved as a champion's costs do: 28 then 31 for the
-slot grown twice, 50 then 60 for the other, and 90 and 100 for the two grown
-once.
+bit 9 slot 1, bit 10 slot 2 and bit 11 slot 3. Bits 12 to 27 belong to the same run and hold zero in everything observed, so which slots they answer to is not settled. Captures settle this outright. Seventeen times a client asked to grow a spell, and each time the first cost to change afterwards sat at the bit eight above the slot asked for, across all four slots.
 
 Bits 6 and 7 are not the first two of that run. No mask in any capture sets
 either, and one mask sets bits 8 to 27 together, carrying zero at every place
@@ -117,9 +108,7 @@ no spell fills. A run does not skip its own opening while writing out the rest
 of itself, so what sits at 6 and 7 is something else, and nothing observed says
 what.
 
-Damage by striking reads 50.24 and grows; armour reads 30.88 and grows; how far
-it strikes from reads 550, which is a champion's reach; how fast it moves reads
-325 and then 340, which is a champion's pace and then its pace in boots.
+Damage by striking reads from 54.67 to 115.3, and armour from 32.38 to 90.38; three values above 100000 also appear for armour, which nothing observed explains. How far a champion strikes from reads 150 for one and 550 for another, and how fast it moves reads 325, 340, 370 and 600.
 
 ## A turret
 
@@ -139,7 +128,7 @@ it strikes from reads 550, which is a champion's reach; how fast it moves reads
 Health at its greatest runs from 1000 to 3150 across the turrets of the maps
 captured, and reads 9999 for a few, which is what turrets of differing standing hold, and
 health as it stands falls step by step under attack and holds still otherwise.
-Damage by striking runs from 130 to 190, and reads 450 and 999 for a few, and armour 0, 67, 100 and 133.
+Damage by striking runs from 130 to 190, and reads 450 and 999 for a few, and armour runs from 50 to 78, and reads 0, 100 and 133 for a few.
 
 ## A minion, and a unit belonging to no side
 
@@ -158,11 +147,7 @@ Both answer to one table.
 | 3     | 3        | Its size                                                                   | measured | all      |
 | 3     | 4 to 5   | Whether anything is allowed to aim at it, and which side is                | counted  | all      |
 
-Health at its greatest reads 290, 455 and 805 for the units a side sends out,
-which is what three sorts of them hold, and damage by striking reads 12, 23 and
-40 alongside. For a unit belonging to no side the same two read 250 through
-540, and 12 through 42. How fast it moves reads 325, and half that where
-something slows it.
+Health at its greatest reads 290, 455, 700 and 1500 for the units a side sends out, and damage by striking reads 12, 23, 40 and 180 alongside. For a unit belonging to no side the same two run from 250 to 3500, and from 12 to 230. How fast a unit a side sends out moves reads 325.
 
 Every captured run of these units reads under this placement.
 
@@ -186,8 +171,7 @@ is spoken of first by coming into a side's sight.
 ## A prop
 
 No capture behind this specification carries a replicated value for a prop.
-Ninety one of them were put on the field across nine sessions and not one was
-ever spoken of again, so the table below is not evidence in the way the others
+379 of them were put on the field across the captured sessions and not one was ever spoken of again, so the table below is not evidence in the way the others
 are: it is the shape a reading end would need, written down so that nothing is
 silently missing, and nothing here has been tested against a payload.
 

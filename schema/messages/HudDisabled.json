@@ -1,0 +1,15 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "HudDisabled",
+  "note": "What a server sends to take down a client's interface as the match ends.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 188,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": []
+    }
+  ]
+}

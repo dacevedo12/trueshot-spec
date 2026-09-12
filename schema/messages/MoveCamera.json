@@ -1,0 +1,73 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "MoveCamera",
+  "note": "What a server sends to carry a client's view from one place to another.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 37,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "fromWhereItIs",
+              "width": 1,
+              "note": "Set where the view starts from where it already is rather than from the place below. Set in everything observed."
+            },
+            {
+              "name": "unlock",
+              "width": 1,
+              "note": "Set where the view is left free once it arrives. Clear in everything observed."
+            },
+            {
+              "name": "unknown",
+              "width": 6,
+              "note": "Observed clear."
+            }
+          ]
+        },
+        {
+          "name": "fromX",
+          "type": "f32",
+          "note": "Where the view starts, along one ground axis, in world units."
+        },
+        {
+          "name": "fromY",
+          "type": "f32",
+          "note": "Where the view starts, in height, in world units."
+        },
+        {
+          "name": "fromZ",
+          "type": "f32",
+          "note": "Where the view starts, along the other ground axis, in world units."
+        },
+        {
+          "name": "toX",
+          "type": "f32",
+          "note": "Where the view ends, along one ground axis, in world units."
+        },
+        {
+          "name": "toY",
+          "type": "f32",
+          "note": "Where the view ends, in height, in world units."
+        },
+        {
+          "name": "toZ",
+          "type": "f32",
+          "note": "Where the view ends, along the other ground axis, in world units."
+        },
+        {
+          "name": "travelTime",
+          "type": "f32",
+          "note": "How long the view takes to get there. Observed 3.0; what the figure counts is not recorded here."
+        }
+      ]
+    }
+  ]
+}
