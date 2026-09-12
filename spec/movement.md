@@ -57,8 +57,7 @@ map number, so every pair is tied to the number a server sends rather than to
 a name.
 
 On each map the recorded pair fits more of the captured orders than any
-neighbouring whole number on either axis: 10 of 10 on map 8, 9 of 10 on maps 11
-and 12, 7 of 10 on map 1, and 5 of 6 on map 10. No map's pair fits a single
+neighbouring whole number on either axis, counting only the orders that carry a destination: 10 of 10 on map 8, 9 of 9 on map 11, 9 of 10 on map 12, 6 of 7 on map 1, and 5 of 6 on map 10. No map's pair fits a single
 one of any other map's orders, which is what shows the origin belongs to the
 map rather than to the protocol.
 

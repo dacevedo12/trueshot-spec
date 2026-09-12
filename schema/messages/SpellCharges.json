@@ -36,7 +36,7 @@
         {
           "name": "mostCharges",
           "type": "i32",
-          "note": "How many it holds at most."
+          "note": "How many uses it holds at most. It is -1 in everything observed, and what that value stands for is not recorded here."
         },
         {
           "name": "rechargeFor",

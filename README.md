@@ -10,7 +10,7 @@ anybody else's.
 
 Every definition in [schema/](schema/) states the client versions it applies
 to, so a reader can always tell what a fact was established against. One client
-is described today. Where a later one differs, the difference is recorded as
+is described. Where a later one differs, the difference is recorded as
 another revision rather than by changing what is written here, and no document
 describes one client by pointing at another.
 

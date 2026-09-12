@@ -101,9 +101,7 @@ these.
 
 A body ends where its last field ends. One payload is seen carrying more: a
 server's answer to a registration, four bytes past its record, and the client
-it reached went on talking for the rest of the match. So a client MUST NOT
-refuse that answer for carrying bytes past its record, and takes no meaning
-from them. Nothing observed shows a client accepting bytes past the record of
+it reached went on talking for the rest of the match. A client does not refuse that answer for carrying bytes past its record, and takes no meaning from them. Nothing observed shows a client accepting bytes past the record of
 any other message, or a server accepting them from a client, so this document
 extends the rule no further. A sender MUST write the fields a revision lists
 and nothing after them.
@@ -246,9 +244,7 @@ A revision travels on a channel, which `schema/channels.json` defines, and
 names any further channels carrying the same layout, as Families above says. For
 each it states how the transport delivers it: reliable, unreliable, or
 unsequenced.
-Every revision states this for itself. A channel's note records what its traffic
-is observed to do, which is an observation rather than a default:
-one channel carries all three, so there is nothing to inherit.
+Every revision states this for itself.
 
 ## Names and notes
 

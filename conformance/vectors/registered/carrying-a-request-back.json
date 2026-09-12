@@ -3,7 +3,7 @@
   "subject": "message",
   "message": "Registered",
   "version": "4.20.0.315",
-  "note": "Taken from a server a client accepted. It answers the seat that had just registered, so it carries that request's own build and proof back.",
+  "note": "Taken from a server a client accepted. It is one of the answers sent straight after a registration request, one for every seat, and like each of them it carries that request's own build and proof back.",
   "bytes": "00 000000000000000000000000000000bbdf8002166adf6750b927f600000000",
   "fields": {
     "command": 0,

@@ -97,14 +97,12 @@ A name marked confirmed is one a champion's own numbers bear out.
 Gold in hand climbs by exactly 0.95 a step across a match, which is what a
 champion earns for standing still, and falls by 35 in one step, which is what
 an item costs. Health and resource as they stand climb the way those climb, and
-each opens at the value its own greatest carries. Level climbs through 3, 4, 5 and 6 in one session and on to 18 in another, and experience climbs alongside it from 0 to more than 26000.
+each opens at the value its own greatest carries. Level climbs to 18 in one game and to 16 in another, and experience climbs alongside it from 0 to more than 26000.
 
 Spell costs are keyed by slot: bit 8 carries what the spell in slot 0 costs,
-bit 9 slot 1, bit 10 slot 2 and bit 11 slot 3. Bits 12 to 27 belong to the same run and hold zero in everything observed, so which slots they answer to is not settled. Captures settle this outright. Seventeen times a client asked to grow a spell, and each time the first cost to change afterwards sat at the bit eight above the slot asked for, across all four slots.
+bit 9 slot 1, bit 10 slot 2 and bit 11 slot 3. Bits 12 to 27 belong to the same run and hold zero in everything observed, so which slots they answer to is not settled. Captures settle this outright. Of the requests captured to grow a spell, seventeen were followed by a change to a cost, and each time the change sat at the bit eight above the slot asked for, across all four slots.
 
-Bits 6 and 7 are not the first two of that run. No mask in any capture sets
-either, and one mask sets bits 8 to 27 together, carrying zero at every place
-no spell fills. A run does not skip its own opening while writing out the rest
+Bits 6 and 7 are not the first two of that run. One mask sets bits 8 to 27 together, carrying zero at every place no spell fills, and leaves 6 and 7 clear. A run does not skip its own opening while writing out the rest
 of itself, so what sits at 6 and 7 is something else, and nothing observed says
 what.
 
@@ -134,18 +132,18 @@ Damage by striking runs from 130 to 190, and reads 450 and 999 for a few, and ar
 
 Both answer to one table.
 
-| Group | Bits     | Value                                                                      | Shape    | Seen set |
-| ----- | -------- | -------------------------------------------------------------------------- | -------- | -------- |
-| 1     | 0 to 1   | Health as it stands, then at its greatest, confirmed                       | measured | all      |
-| 1     | 2 to 4   | How long it lives, as it stands and at its greatest, and the count of that | measured | none     |
-| 1     | 5 to 6   | Resource at its greatest, then as it stands                                | measured | none     |
-| 1     | 7 to 11  | What the unit is doing, and four kinds of harm it is proof against         | counted  | all      |
-| 1     | 12       | Damage it deals by striking, confirmed                                     | measured | all      |
-| 1     | 13 to 31 | Its defences and the modifiers on them                                     | measured | 13 to 22 |
-| 3     | 0 to 1   | How far it sees                                                            | measured | none     |
-| 3     | 2        | How fast it moves, confirmed                                               | measured | all      |
-| 3     | 3        | Its size                                                                   | measured | all      |
-| 3     | 4 to 5   | Whether anything is allowed to aim at it, and which side is                | counted  | all      |
+| Group | Bits     | Value                                                                      | Shape    | Seen set                                               |
+| ----- | -------- | -------------------------------------------------------------------------- | -------- | ------------------------------------------------------ |
+| 1     | 0 to 1   | Health as it stands, then at its greatest, confirmed                       | measured | all                                                    |
+| 1     | 2 to 4   | How long it lives, as it stands and at its greatest, and the count of that | measured | none                                                   |
+| 1     | 5 to 6   | Resource at its greatest, then as it stands                                | measured | none for a minion, all for a unit belonging to no side |
+| 1     | 7 to 11  | What the unit is doing, and four kinds of harm it is proof against         | counted  | all                                                    |
+| 1     | 12       | Damage it deals by striking, confirmed                                     | measured | all                                                    |
+| 1     | 13 to 31 | Its defences and the modifiers on them                                     | measured | 13 to 22                                               |
+| 3     | 0 to 1   | How far it sees                                                            | measured | none                                                   |
+| 3     | 2        | How fast it moves, confirmed                                               | measured | all                                                    |
+| 3     | 3        | Its size                                                                   | measured | all                                                    |
+| 3     | 4 to 5   | Whether anything is allowed to aim at it, and which side is                | counted  | all                                                    |
 
 Health at its greatest reads 290, 455, 700 and 1500 for the units a side sends out, and damage by striking reads 12, 23, 40 and 180 alongside. For a unit belonging to no side the same two run from 250 to 3500, and from 12 to 230. How fast a unit a side sends out moves reads 325.
 

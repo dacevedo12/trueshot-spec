@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "Registered",
-  "note": "What a server answers a registration with, naming a player in the match and the seat they occupy. It shares its command value with the request it answers, which travels the other way, and it is one fixed size. A server sends one for every seat: the seat that just registered gets its own request carried back to it, and the seats already at the match get answers a server fills in itself.",
+  "note": "What a server answers a registration with, naming a player in the match and the seat they occupy. It shares its command value with the request it answers, which travels the other way, and it is one fixed size. Straight after a request a server sends one answer for every seat, and every one of them carries that request's build and proof back. A later answer for the registering player's own seat is one a server fills in itself.",
   "revisions": [
     {
       "from": "4.20.0.315",

@@ -16,9 +16,9 @@
           "size": 1,
           "bits": [
             {
-              "name": "orderWon",
+              "name": "won",
               "width": 1,
-              "note": "Set where one side won rather than the other. Set in everything observed."
+              "note": "Set in the one payload captured, which went to a client whose own side won. Whether it names a particular side or the receiving client's own side is not settled."
             },
             {
               "name": "unknown",
