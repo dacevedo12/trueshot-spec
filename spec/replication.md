@@ -38,9 +38,25 @@ this specification: 679,677 runs, each taken apart by the shapes its table
 gives and each ending exactly where its length says. None failed, and none was
 left over.
 
-That checks the shapes, because a wrong shape runs off the end of a run or
-stops short of it. It does not check the names. A name below is confirmed only
-where the traffic bears it out, and those are marked.
+That is weaker evidence than it looks, and this section says how much weaker.
+
+A wrong shape runs off the end of a run or stops short of it wherever the two
+shapes disagree about how many bytes a value takes, which is what the count
+above rests on. They do not always disagree. A counted value of four bytes,
+where each of the first three carries its continuing bit, takes the same four
+bytes a measure takes, so the two readings of that one value cannot be told
+apart by where the run ends. Putting the wrong shape at one place and
+reading every run again finds the mistake at 118 of the 129 places the tables
+name. At the other eleven it does not.
+
+Seven of those eleven the values settle instead: read as a measure each holds a
+number too small for anything to mean by it, and read as a count each holds the
+same handful of values over and over, which is what a set of flags does. The
+remaining four are named from the places either side of them and nothing
+observed tells them apart.
+
+None of this checks the names. A name below is confirmed only where the traffic
+bears it out, and those are marked.
 
 ## A champion
 
@@ -142,6 +158,12 @@ This is the placement where the unit keeps its resource in group 1. A unit that
 keeps it in group 3 moves every bit after it, and no capture shows one.
 
 ## A prop
+
+No capture behind this specification carries a replicated value for a prop.
+Ninety one of them were put on the field across nine sessions and not one was
+ever spoken of again, so the table below is not evidence in the way the others
+are: it is the shape a reading end would need, written down so that nothing is
+silently missing, and nothing here has been tested against a payload.
 
 | Group | Bits   | Value                                                       | Shape    |
 | ----- | ------ | ----------------------------------------------------------- | -------- |
