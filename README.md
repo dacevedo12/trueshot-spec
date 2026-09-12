@@ -9,9 +9,10 @@ build a conforming server of their own, in any language, without reading
 anybody else's.
 
 Every definition in [schema/](schema/) states the client versions it applies
-to. Nothing here is written for one version: where behaviour differs between
-them it is recorded as more than one revision, and a reader can always tell
-what a fact was established against.
+to, so a reader can always tell what a fact was established against. One client
+is described today. Where a later one differs, the difference is recorded as
+another revision rather than by changing what is written here, and no document
+describes one client by pointing at another.
 
 Where the protocol rests on public general purpose software, this repository
 records the delta and names what it rests on rather than restating it. The

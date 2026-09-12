@@ -27,8 +27,12 @@ with a guess and carry on. That is a defect worth reporting, and
    a family puts in front of one, and how to read a file in `schema/messages`.
 3. [Movement](spec/movement.md), which covers the one thing a path needs that
    no layout carries: what its coordinates mean.
+4. [Replication](spec/replication.md), which covers the same for the message a
+   server sends most: what the values inside it are, which no layout reaches.
 
 The transport is a delta on ENet 1.2.5, so building it means building on ENet
-or a port of it. Above the transport, registration and the requests a client
-sends during a match are recorded, along with movement and what changes about a
-unit. What a server sends is recorded only in part.
+or a port of it. Above the transport, every channel a capture behind this
+specification carries traffic on is recorded: registering, the requests a
+client sends, the clock, what a server says happened, what changes about a
+unit, chat, and the seats before play. What a message means is recorded where
+the traffic settles it and marked where it does not.

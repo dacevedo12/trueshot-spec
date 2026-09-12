@@ -157,6 +157,38 @@ The runs are listed from the least significant bit upward: the first run
 occupies the low bits, and each one after it the bits above. A run is read as
 an unsigned integer of its own width.
 
+**Bit arrays.** A run of the same group of bit runs, repeated a stated number
+of times. The groups follow one another from the low bits of the first byte
+upward, crossing byte boundaries without padding, and the field occupies as
+many whole bytes as the groups need. The bits above the last group are clear. A
+count is written as an array's is.
+
+**Records.** A group of fields named together and read one after another, with
+nothing between them and nothing around them. A record occupies exactly what
+its fields occupy. Unlike a struct it is written where it is used rather than
+defined in `schema/types`, and its fields reach the fields around it, so a
+record is a way of naming part of a message rather than a shape reused
+elsewhere.
+
+## What a field names
+
+A size, a count, or a rule about whether a field is present names an earlier
+field. Four forms are written:
+
+- a name on its own, which is a field of the same enclosure;
+- a name, a full stop, and a run inside it, where that field is `bits`;
+- a name, square brackets, and a name inside them, which is the item of an
+  earlier array standing at the same position as the item doing the naming, so
+  that two arrays run together;
+- either of the first two inside `{"field": …, "minus": N}`, which is that
+  field's value less the literal N. Nothing else is computed, and N is never
+  larger than the value.
+
+A rule about whether a field is present states a value the named field carries,
+or a set of values, any one of which satisfies it. Without one, any
+value other than zero satisfies the rule. A field its own rule left out holds
+no value, so a rule naming that field does not hold either.
+
 ## A field that travels enciphered
 
 A payload is enciphered as a whole once a connection has a cipher state, and a

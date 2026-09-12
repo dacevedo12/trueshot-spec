@@ -167,7 +167,7 @@
         {
           "name": "movementKind",
           "type": "u8",
-          "note": "What the unit is doing on the ground, and so which shape follows. Standing and moving have been observed. Moving at a stated speed is a server overriding how the unit travels rather than a kind of movement of its own: a reading end takes the block that follows in place of what it would have chosen, and stops choosing a path for itself. Nothing observed carries it, or carries the shape meaning the unit does nothing.",
+          "note": "What the unit is doing on the ground, and so which shape follows. Standing and moving have been observed. Nothing observed carries the shape meaning it does nothing, or the one where a server states how it travels.",
           "values": {
             "0": {
               "name": "nothing"

@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/struct.json",
   "struct": "SpeedParams",
-  "note": "How a unit is made to travel, in place of what a receiving end would otherwise choose for it. A receiving end takes these as they stand and stops choosing a path of its own while they hold.",
+  "note": "How a unit is made to travel, in place of what a receiving end would otherwise choose for it.",
   "fields": [
     {
       "name": "speed",
@@ -11,17 +11,17 @@
     {
       "name": "gravity",
       "type": "f32",
-      "note": "How sharply the unit arcs through the air along the way. Zero where it keeps to the ground."
+      "note": "How sharply the unit arcs through the air along the way. Zero where it keeps to the ground, and zero in 185 of the 290 observed."
     },
     {
-      "name": "arcFromX",
+      "name": "fromX",
       "type": "f32",
-      "note": "Where the arc begins, along one ground axis, in world units."
+      "note": "Where the unit starts, along one ground axis, in world units. It holds the same place the path's first point states, and is carried whether the unit arcs or not."
     },
     {
-      "name": "arcFromZ",
+      "name": "fromZ",
       "type": "f32",
-      "note": "Where it begins, along the other."
+      "note": "Where it starts, along the other."
     },
     {
       "name": "keepFacing",
@@ -54,7 +54,7 @@
     {
       "name": "followTime",
       "type": "f32",
-      "note": "How long the following runs, in seconds."
+      "note": "How long the following runs. It is zero wherever no unit is followed, and 20000 in every one that follows a unit. What the figure counts is not recorded here."
     }
   ]
 }
