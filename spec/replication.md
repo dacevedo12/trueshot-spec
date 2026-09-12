@@ -125,7 +125,7 @@ Damage by striking reads from 54.67 to 115.3, and armour from 32.38 to 90.38; th
 
 Health at its greatest runs from 1000 to 3150 across the turrets of the maps
 captured, and reads 9999 for a few, which is what turrets of differing standing hold, and
-health as it stands falls step by step under attack and holds still otherwise.
+both figures are raised once early in a match, health as it stands following health at its greatest up to the same value. After that health as it stands only falls: across the captures it falls 260 times and never rises after a fall.
 Damage by striking runs from 130 to 190, and reads 450 and 999 for a few, and armour runs from 50 to 78, and reads 0, 100 and 133 for a few.
 
 ## A minion, and a unit belonging to no side
