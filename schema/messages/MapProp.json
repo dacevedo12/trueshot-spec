@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "MapProp",
-  "note": "What a server sends to place a prop on the map: a thing that stands there and is looked at rather than one that acts.",
+  "note": "What a server sends to place a prop on the map: a thing that stands there and is looked at rather than one that acts. Two servers send every prop in the captures with the same place, turns, offset and scale. In what order the three turns apply is not recorded here.",
   "revisions": [
     {
       "from": "4.20.0.315",
@@ -41,19 +41,19 @@
           "note": "Where the prop stands, along the other ground axis, in world units."
         },
         {
-          "name": "facingX",
+          "name": "rotationX",
           "type": "f32",
-          "note": "One of three figures about which way the prop faces. Each observed between zero and 360, and what they measure is not recorded here."
+          "note": "An angle the prop is turned by about a ground axis, in degrees, from zero up to but not reaching 360."
         },
         {
-          "name": "facingY",
+          "name": "rotationY",
           "type": "f32",
-          "note": "One of three figures about which way the prop faces. Each observed between zero and 360, and what they measure is not recorded here."
+          "note": "An angle the prop is turned by about the upright axis, in degrees, from zero up to but not reaching 360. On map 10 it is the only one of the three ever set."
         },
         {
-          "name": "facingZ",
+          "name": "rotationZ",
           "type": "f32",
-          "note": "One of three figures about which way the prop faces. Each observed between zero and 360, and what they measure is not recorded here."
+          "note": "An angle the prop is turned by about the other ground axis, in degrees, from zero up to but not reaching 360."
         },
         {
           "name": "offsetX",

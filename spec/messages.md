@@ -300,6 +300,47 @@ message arrived on, and MUST NOT copy the value the message carried. Relaying
 what arrived lets one player send messages that every other client attributes
 to another.
 
+## Objects a map names
+
+Some objects are on the field before any message puts them there, and no
+message ever does: the buildings a side defends and the shops beside them. A
+receiving end knows them from the map it loaded, and every message naming one
+names it by an identifier worked out from that object's name in the map.
+
+The identifier is the CRC-32 of the name, with the top byte set:
+
+```text
+identifier = crc32(name) | 0xFF000000
+```
+
+The name is taken byte for byte with its case kept, so `OrderShop01` and
+`orderShop01` are two names and give two identifiers. The CRC-32 is the common
+one: the polynomial 0x04C11DB7 read reflected, starting from 0xFFFFFFFF and
+finishing with every bit inverted, so the nine bytes `123456789` give
+0xCBF43926.
+
+Every identifier with that top byte in the captures behind this specification
+is one of these, across both servers the captures came from:
+
+| Name             | Identifier   | `map`         |
+| ---------------- | ------------ | ------------- |
+| `Barracks_T1_C1` | `0xFF4A20F1` | 1, 11, 12     |
+| `Barracks_T1_L1` | `0xFFD23C3E` | 1, 10, 11     |
+| `Barracks_T1_R1` | `0xFF9303E1` | 1, 10, 11     |
+| `Barracks_T2_C1` | `0xFFFF8F1F` | 1, 11, 12     |
+| `Barracks_T2_L1` | `0xFF6793D0` | 1, 10, 11     |
+| `Barracks_T2_R1` | `0xFF26AC0F` | 1, 10, 11     |
+| `ChaosShop01`    | `0xFF3A98D9` | 12            |
+| `chaosShop01`    | `0xFFA6170E` | 1, 8, 10, 11  |
+| `HQ_T1`          | `0xFFF97DB5` | 1, 10, 11, 12 |
+| `HQ_T2`          | `0xFFF02C0F` | 1, 10, 11, 12 |
+| `OrderShop01`    | `0xFF8C490C` | 12            |
+| `orderShop01`    | `0xFF10C6DB` | 1, 8, 11      |
+
+No message creates these objects, so nothing a server sends could give a client
+a different identifier for one. A server MUST name each by the identifier its
+name gives.
+
 ## Values a layout cannot reach
 
 A run of bytes is sometimes carried whose contents a layout cannot describe,

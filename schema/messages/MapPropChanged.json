@@ -18,14 +18,14 @@
           "note": "The name the change loads, such as a set of movements the prop plays. Written out in full and padded with zero bytes to the width above."
         },
         {
-          "name": "valueA",
+          "name": "startsAt",
           "type": "f32",
-          "note": "Purpose undetermined. It is observed 0.0, 1004.912, 21004.703, 41002.043."
+          "note": "When the change begins, in milliseconds of match time. Observed 0, and within five milliseconds of 1000, 21000 and 41000."
         },
         {
-          "name": "valueB",
+          "name": "lasts",
           "type": "f32",
-          "note": "Purpose undetermined. It is observed 0.0, 17.5, 20.0."
+          "note": "How long the change runs, in seconds. Observed 0, 17.5 and 20."
         },
         {
           "name": "prop",

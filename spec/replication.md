@@ -168,8 +168,10 @@ Every captured run of these units reads under this placement.
 
 ## A building
 
-The eight of these that replicate carry two groups between them, and nothing
-else has been seen.
+Inhibitors and nexuses. [spec/messages.md](messages.md) says how the
+identifier of each is worked out from its name, which is how a receiving end
+knows one no message ever created. The ones a map has carry these two groups,
+and nothing else has been seen.
 
 | Group | Bits   | Value                                                       | Shape    | Seen set |
 | ----- | ------ | ----------------------------------------------------------- | -------- | -------- |
@@ -177,10 +179,9 @@ else has been seen.
 | 1     | 1      | Purpose undetermined                                        | counted  | all      |
 | 5     | 0 to 1 | Whether anything is allowed to aim at it, and which side is | counted  | all      |
 
-Health reads 4000 for six of them and 5500 for the other two, and never moves.
-Their names all open with the same leading byte, which no other unit's does,
-and no message in any capture creates one: each is spoken of first by coming
-into a side's sight.
+Health opens at 4000 for an inhibitor and 5500 for a nexus, and falls from
+there under attack: 3000 and 0 are also observed. Each
+is spoken of first by coming into a side's sight.
 
 ## A prop
 

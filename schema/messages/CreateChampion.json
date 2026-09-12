@@ -60,7 +60,7 @@
         {
           "name": "spawnIndex",
           "type": "u8",
-          "note": "Which of its side's starting places it begins at."
+          "note": "Which of its side's starting places the champion begins at, counted from zero. In one server's traffic it names, for every champion, the place within its own side's list where EnterSight first shows it standing. In another's it is zero for every champion while the places EnterSight shows still differ, so where a champion starts is not settled by this field alone."
         },
         {
           "name": "skin",
