@@ -54,44 +54,16 @@ opposite ways within a family.
 ## A container of several messages
 
 One value the game family keeps for framing introduces a container rather than
-a message. A container carries no header: the byte introducing it is the whole
-of it, and nothing in `schema/messages` describes one. A reading end unwraps it
-and reads each message inside as though that message had arrived on its own.
+a message: a run of several messages gathered into one payload, which a reading
+end unwraps and reads one by one as though each had arrived on its own. A
+container carries no header, so nothing in `schema/messages` describes one, and
+a reading end MUST NOT read the value that introduces it as a command.
 
-After the introducing byte comes a count of the entries, in one byte. The first
-entry is a length in one byte and then a whole message, header and all.
-
-Every later entry opens with a descriptor byte, read from its least significant
-bit:
-
-| Bits   | Name    | Meaning                                                  |
-| ------ | ------- | -------------------------------------------------------- |
-| 0      | repeats | The entry carries no command and takes the one before it |
-| 1      | steps   | The network object is a signed difference of one byte    |
-| 2 to 7 | length  | How many bytes the body occupies                         |
-
-What follows the descriptor is the command, where `repeats` is clear; then the
-network object, in full where `steps` is clear and as a signed difference from
-the object the entry before it named where `steps` is set; then a further byte
-of length, where `length` is 63; then the body.
-
-A `length` of 63 does not describe a body of 63 bytes. It says the real length
-is in the byte that follows, which is what carries a body of 63 bytes or more.
-
-Both lengths are one byte, so a container holds only what a byte can measure: a
-body of at most 255 bytes in a later entry, and a whole message of at most 255
-bytes in the first. A server MUST send a message larger than that on its own
-rather than inside a container.
-
-The network object is the only thing stated as a difference. A command is
-either written or repeated, and a body is always written in full.
-
-A server that gathers messages this way of its own accord sends the container
-on the channel `schema/channels.json` names `events`, delivered reliably.
-
-No payload behind this specification is a container, so nothing here is checked
-against a recorded one. This section is the whole of what a reading end needs;
-what it lacks is a vector.
+No payload behind this specification is a container. What is known of how the
+entries inside one are framed is written up as an issue against this
+repository, because a layout no client has confirmed is a guess whatever label
+it carries, and this document does not carry guesses. A server MUST NOT send a
+container until that layout is settled here.
 
 ## Reading a body
 
