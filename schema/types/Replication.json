@@ -31,7 +31,7 @@
         {
           "name": "group4",
           "width": 1,
-          "note": "Set where this group's values follow. They come after every other group's, whatever the flags. Nothing observed has set this, so no layout is recorded for it and a payload setting it leaves bytes unread rather than being read wrongly."
+          "note": "Set where this group's values follow. They come after every other group's, whatever the flags. Nothing observed has set this, so no layout is recorded for it. A reading end that meets it cannot tell where this unit's values end, so it cannot read the units after it in the same batch either."
         },
         {
           "name": "group5",

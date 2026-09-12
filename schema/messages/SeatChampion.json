@@ -11,9 +11,9 @@
       "reliability": "reliable",
       "fields": [
         {
-          "name": "seat",
+          "name": "player",
           "type": "i64",
-          "note": "The seat this is about."
+          "note": "The player this is about. It has a player identifier's width. In every capture its values equal the seat numbers, because the stand-in players there are numbered the same way, so the values alone do not tell the two apart."
         },
         {
           "name": "skin",

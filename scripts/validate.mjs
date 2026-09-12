@@ -601,7 +601,7 @@ function walkPresence(
     if (!values || !(field.name in values)) continue;
     const value = values[field.name];
     const path = prefix ? `${prefix}.${field.name}` : field.name;
-    if (field.present) note(path, value === null);
+    if (field.present) note(path, value === null, field.present, values);
     if (value === null || value === undefined) continue;
     if (field.type === "record") {
       walkPresence(field.fields, value, structs, path, note, seen);
@@ -1471,16 +1471,27 @@ if (existsSync(VECTOR_DIR)) {
           }
         }
         if (claim) {
-          const note = (path, absent) => {
+          const note = (path, absent, rule, scope) => {
             const key = path.startsWith("struct:")
               ? `#${path}`
               : `${claim.message}@${claim.revision.from}#${path}`;
             const seenSoFar = exercised.get(key) ?? {
               present: false,
               absent: false,
+              members: new Set(),
             };
             if (absent) seenSoFar.absent = true;
             else seenSoFar.present = true;
+            // A rule satisfied by any one of a set is only exercised for the
+            // members some vector actually carried.
+            if (!absent && Array.isArray(rule?.equals)) {
+              const [head, run] = rule.when.split(".");
+              const carried =
+                run === undefined ? scope?.[head] : scope?.[head]?.[run];
+              if (carried !== undefined && carried !== null) {
+                seenSoFar.members.add(Number(carried));
+              }
+            }
             exercised.set(key, seenSoFar);
           };
           walkPresence(claim.revision.fields, read.values, structs, "", note);
@@ -1584,7 +1595,8 @@ for (const { where, doc } of messages) {
     const collect = (fields, prefix, seenStructs = new Set()) => {
       for (const field of fields ?? []) {
         const path = prefix ? `${prefix}.${field.name}` : field.name;
-        if (field.present) ruled.push([path, field.present.unseen]);
+        if (field.present)
+          ruled.push([path, field.present.unseen, field.present]);
         if (field.type === "record") collect(field.fields, path, seenStructs);
         else if (field.type === "struct" && !seenStructs.has(field.struct)) {
           const d = structs.get(field.struct);
@@ -1600,7 +1612,7 @@ for (const { where, doc } of messages) {
       }
     };
     collect(revision.fields, "");
-    for (const [path, unseen] of ruled) {
+    for (const [path, unseen, rule] of ruled) {
       // A rule inside a struct belongs to the struct, so any message that
       // carries it can be the one that evidences it.
       const shared = path.startsWith("struct:");
@@ -1621,6 +1633,18 @@ for (const { where, doc } of messages) {
         fail(
           where,
           `revision ${revision.from} says no payload shows "${path}" ${unseen}, and one does`,
+        );
+      } else if (
+        unseen !== "present" &&
+        Array.isArray(rule.equals) &&
+        rule.equals.some((member) => !seen.members?.has(member))
+      ) {
+        const missing = rule.equals.filter(
+          (member) => !seen.members?.has(member),
+        );
+        fail(
+          where,
+          `revision ${revision.from} has no vector where "${path}" is present with "${rule.when}" ${missing.join(", ")}, so part of its presence rule is unrecorded`,
         );
       } else if (!unseen && (!seen.present || !seen.absent)) {
         fail(

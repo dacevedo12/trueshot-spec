@@ -24,28 +24,28 @@
           "name": "side",
           "type": "array",
           "count": 24,
-          "note": "The seats on one side, twenty four places. The count below says how many of the leading places carry a seat; the rest hold zero. A place cannot be read on its own, because zero is a seat a match gives out as well as what an unused place holds.",
+          "note": "The players on one side, twenty four places. The count below says how many of the leading places carry a player; the rest hold zero. A place cannot be read on its own, because zero is an identifier a match gives out as well as what an unused place holds. It has a player identifier's width. In every capture its values equal the seat numbers, because the stand-in players there are numbered the same way, so the values alone do not tell the two apart.",
           "items": {
-            "name": "seat",
+            "name": "player",
             "type": "i64",
-            "note": "One seat."
+            "note": "One player."
           }
         },
         {
           "name": "otherSide",
           "type": "array",
           "count": 24,
-          "note": "The seats on the other, under the same reading and its own count.",
+          "note": "The players on the other, under the same reading and its own count.",
           "items": {
-            "name": "seat",
+            "name": "player",
             "type": "i64",
-            "note": "One seat."
+            "note": "One player."
           }
         },
         {
           "name": "sideTaken",
           "type": "u32",
-          "note": "How many of the leading places on the first side carry a seat."
+          "note": "How many of the leading places on the first side carry a player."
         },
         {
           "name": "otherSideTaken",

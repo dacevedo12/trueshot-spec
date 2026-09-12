@@ -99,13 +99,14 @@ follow it as usual. An enclosure that states none ends where the body ends, so
 it is the last field too, and so is any struct whose own last field is one of
 these.
 
-A body ends where its last field ends. A payload can carry more than that, and
-one does: a server's answer to a registration has been seen four bytes longer
-than the record, and the client it reached went on talking for the rest of the
-match. So a reading end MUST read the fields a revision lists and MUST take no
-meaning from anything past them, and MUST NOT refuse a payload for carrying it.
-A sender MUST write the fields and nothing after them, because a length beyond
-the record says nothing that a reading end reads.
+A body ends where its last field ends. One payload is seen carrying more: a
+server's answer to a registration, four bytes past its record, and the client
+it reached went on talking for the rest of the match. So a client MUST NOT
+refuse that answer for carrying bytes past its record, and takes no meaning
+from them. Nothing observed shows a client accepting bytes past the record of
+any other message, or a server accepting them from a client, so this document
+extends the rule no further. A sender MUST write the fields a revision lists
+and nothing after them.
 
 This is the one thing a vector cannot show. A vector is read to its end, so a
 payload with bytes past the record is not one, and the rule above rests on the
@@ -213,7 +214,9 @@ shows only one. Such a rule is recorded from something other than a capture,
 and the vectors hold it to that: a rule saying no payload is missing the field
 fails the moment one is. A rule that says nothing carries a vector for each
 side, which is what separates a rule somebody has confirmed from one somebody
-has proposed.
+has proposed. A rule marks a side unseen only where the shape that side guards
+is confirmed by a payload elsewhere, so what is missing is the value that
+selects it rather than the layout it selects.
 
 ## Enumerated values
 
@@ -330,8 +333,10 @@ says the four bytes after it are the measure, and anything else is already the
 lowest byte of one. In every measure observed, plain and marked alike, this
 holds without exception.
 
-The single byte of 255 is one way to carry zero rather than the only one. A
-measure of zero is observed written plain, as four bytes.
+No measure read across the captures takes the single byte of 255: every one
+is four bytes, with or without the marker, and a zero among them is written
+plain. So that form is recorded from how a measure is written rather than from
+a payload.
 
 Reading a run therefore needs to know, for each value, which of the two shapes
 it takes. Nothing on the wire says, and it is not settled by position alone, so

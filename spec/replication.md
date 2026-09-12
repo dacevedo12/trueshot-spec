@@ -74,7 +74,7 @@ the rest are in that state.
 | 0     | 2 to 3   | Which spells are ready to cast, as sets of bits                        | counted  | all                          |
 | 0     | 4        | Points held for growing a spell                                        | counted  | all                          |
 | 0     | 5        | Which spells have grown                                                | counted  | all                          |
-| 0     | 6 to 7   | Purpose undetermined                                                   | measured | none                         |
+| 0     | 6 to 7   | Purpose undetermined                                                   | unknown  | none                         |
 | 0     | 8 to 27  | What the spell in one slot costs, confirmed for the first four         | measured | all                          |
 | 1     | 0 to 4   | What the champion is doing, and four kinds of harm it is proof against | counted  | all                          |
 | 1     | 5        | Damage it deals by striking, confirmed                                 | measured | all                          |
@@ -103,7 +103,7 @@ each opens at the value its own greatest carries. Level reads 1 and then 6, and
 experience 0, then 2400, then 2602, across the same session.
 
 Spell costs are keyed by slot: bit 8 carries what the spell in slot 0 costs,
-bit 9 slot 1, and so on up the run. A session settles this outright. Six times
+bit 9 slot 1, bit 10 slot 2 and bit 11 slot 3. Bits 12 to 27 belong to the same run and hold zero in everything observed, so which slots they answer to is not settled. A session settles this outright. Six times
 a client asked to grow a spell, a server answered naming the slot and its new
 rank, and two payloads later one cost changed and no other. The slots asked for
 were 0, 3, 1, 2, 0 and 1, and the bits that moved were 8, 11, 9, 10, 8 and 9,
@@ -136,10 +136,10 @@ it strikes from reads 550, which is a champion's reach; how fast it moves reads
 | 3     | 5       | Its size                                                                   | measured | all      |
 | 5     | 0 to 1  | Whether anything is allowed to aim at it, and which side is                | counted  | all      |
 
-Health at its greatest reads 1000, 1300, 1500, 1550 and 1750 across the
-turrets of one map, which is what turrets of differing standing hold, and
+Health at its greatest runs from 1000 to 3150 across the turrets of the maps
+captured, and reads 9999 for a few, which is what turrets of differing standing hold, and
 health as it stands falls step by step under attack and holds still otherwise.
-Damage by striking reads 150, 152, 170 and 190, and armour 0, 67, 100 and 133.
+Damage by striking runs from 130 to 190, and reads 450 and 999 for a few, and armour 0, 67, 100 and 133.
 
 ## A minion, and a unit belonging to no side
 
@@ -164,8 +164,7 @@ which is what three sorts of them hold, and damage by striking reads 12, 23 and
 540, and 12 through 42. How fast it moves reads 325, and half that where
 something slows it.
 
-This is the placement where the unit keeps its resource in group 1. A unit that
-keeps it in group 3 moves every bit after it, and no capture shows one.
+Every captured run of these units reads under this placement.
 
 ## A building
 

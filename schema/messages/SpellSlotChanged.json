@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "SpellSlotChanged",
-  "note": "What a server sends to change one thing about a spell already in a unit's slot. The kind settles what follows it.",
+  "note": "What a server sends to change one thing about a spell already in a unit's slot. The kind settles what follows it, and only the kind that sets a name is recorded.",
   "revisions": [
     {
       "from": "4.20.0.315",
@@ -35,28 +35,10 @@
         {
           "name": "kind",
           "type": "u32",
-          "note": "Which thing about the spell is being changed, and so which shape follows. A kind outside this set is refused.",
+          "note": "Which thing about the spell is being changed, and so which shape follows. Only the kind that sets a name is recorded, and what follows any other is not recorded here.",
           "values": {
-            "1": {
-              "name": "targetingType"
-            },
             "2": {
               "name": "name"
-            },
-            "3": {
-              "name": "castRange"
-            },
-            "4": {
-              "name": "maxGrowthRange"
-            },
-            "5": {
-              "name": "rangeShown"
-            },
-            "6": {
-              "name": "icon"
-            },
-            "7": {
-              "name": "targetOffset"
             }
           }
         },
@@ -70,62 +52,6 @@
             "when": "kind",
             "equals": 2,
             "unseen": "absent"
-          }
-        },
-        {
-          "name": "targeting",
-          "type": "u8",
-          "note": "How the spell picks what it acts on.",
-          "present": {
-            "when": "kind",
-            "equals": 1,
-            "unseen": "present"
-          }
-        },
-        {
-          "name": "distance",
-          "type": "f32",
-          "note": "How far the change sets it, in world units. Which distance is settled by the kind: how far it reaches, how far that may grow to, or how far the client draws its reach.",
-          "present": {
-            "when": "kind",
-            "equals": [3, 4, 5],
-            "unseen": "present"
-          }
-        },
-        {
-          "name": "icon",
-          "type": "u8",
-          "note": "Which picture the client shows for it.",
-          "present": {
-            "when": "kind",
-            "equals": 6,
-            "unseen": "present"
-          }
-        },
-        {
-          "name": "offsetCount",
-          "type": "u8",
-          "note": "How many units follow.",
-          "present": {
-            "when": "kind",
-            "equals": 7,
-            "unseen": "present"
-          }
-        },
-        {
-          "name": "offsetTargets",
-          "type": "array",
-          "count": "offsetCount",
-          "note": "The units the spell reaches from instead of from its caster.",
-          "items": {
-            "name": "unit",
-            "type": "u32",
-            "note": "One unit."
-          },
-          "present": {
-            "when": "kind",
-            "equals": 7,
-            "unseen": "present"
           }
         }
       ]

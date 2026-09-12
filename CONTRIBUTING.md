@@ -75,6 +75,13 @@ accepts is the end of it, and until then the finding belongs in an issue rather
 than in the specification. Anything else publishes a guess with a label on it,
 which is what a specification exists to avoid.
 
+One exception is narrow. A presence rule can mark one of its sides as
+unseen when no payload shows it, but only where the layout that side guards is
+confirmed by a payload somewhere else. The rule then records that a confirmed
+shape can appear in a place nothing has yet shown it, and its note says what
+the unseen side rests on. A layout no payload has shown anywhere does not
+qualify, however it is marked.
+
 A vector is one recorded fact and what it produces. For a vector carrying
 bytes that makes two claims: decoding them produces the fields, and encoding
 the fields reproduces the bytes the layout covers. An implementation passes

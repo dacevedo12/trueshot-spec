@@ -4,9 +4,9 @@
   "note": "One place at the match: who holds it, what they brought, and what the client shows for them.",
   "fields": [
     {
-      "name": "seat",
+      "name": "player",
       "type": "i64",
-      "note": "Which seat, or a negative number where the place stands empty. The captures were taken from a server configured with stand-ins, so the values seen are small; the width is one an identifier drawn from elsewhere would need."
+      "note": "Which player holds the place, or a negative number where it stands empty. It has a player identifier's width. In every capture its values equal the seat numbers, because the stand-in players there are numbered the same way, so the values alone do not tell the two apart."
     },
     {
       "name": "level",
