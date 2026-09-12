@@ -1,0 +1,26 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "TeamScore",
+  "note": "What a server sends to set a side's score, where a match is won on score.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 212,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "Which side, observed 100, 200."
+        },
+        {
+          "name": "score",
+          "type": "i32",
+          "note": "The score it now stands at, observed 500."
+        }
+      ]
+    }
+  ]
+}

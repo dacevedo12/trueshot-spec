@@ -35,29 +35,37 @@ it from anything a client sent. A client's positions are a claim like any
 other, and a server that took an origin from one would let a single client
 move the ground under every other.
 
-The origins this document records, by the map each belongs to:
+The origins this document records, keyed by the map number a server sends in
+`VersionSync`:
 
-| Map                                                      | Origin     |
-| -------------------------------------------------------- | ---------- |
-| Summoner's Rift, in the shape it takes in these versions | 7358, 7412 |
-| Summoner's Rift, in the shape it took before that        | 6991, 7223 |
-| The Crystal Scar                                         | 6947, 6609 |
-| The Howling Abyss                                        | 6560, 6309 |
-| The Twisted Treeline                                     | 7708, 7227 |
+| `map` | Map                  | Origin     |
+| ----- | -------------------- | ---------- |
+| 1     | Summoner's Rift      | 6991, 7223 |
+| 8     | The Crystal Scar     | 6947, 6609 |
+| 10    | The Twisted Treeline | 7708, 7227 |
+| 11    | Summoner's Rift      | 7358, 7412 |
+| 12    | The Howling Abyss    | 6560, 6309 |
+
+Two maps carry the name Summoner's Rift and their origins differ, so the number
+is what identifies a map here and the name is only a label.
 
 Each pair was established by observation rather than from any map: a movement
 order carries where it is going as world floats and also as a path, so each
 order that reaches its destination pins the origin to a window two units wide.
-On each map the orders captured agree on the pair recorded for it, while the
-neighbouring whole numbers fit about half as many, which is what an origin off
-by one looks like. No map's pair fits a single one of any
-other map's orders, which is what shows the origin belongs to the map rather
-than to the protocol.
+Each pair was taken from a session on that map, and each session carried its
+map number, so every pair is tied to the number a server sends rather than to
+a name.
+
+On each map the recorded pair fits more of the captured orders than any
+neighbouring whole number on either axis: 10 of 10 on map 8, 9 of 10 on maps 11
+and 12, 7 of 10 on map 1, and 5 of 6 on map 10. No map's pair fits a single
+one of any other map's orders, which is what shows the origin belongs to the
+map rather than to the protocol.
 
 > [!NOTE]
-> These are the maps a client of these versions carries. A server hosting
-> anything else needs that map's origin, and the paragraph above says how to
-> obtain one.
+> These are the five maps the captures behind this specification were taken
+> on. A server hosting another takes its origin from that map's navigation
+> data, as the start of this section says.
 
 ## Relocating rather than walking
 
@@ -89,11 +97,13 @@ changes nothing a client does.
 
 ## Other shapes
 
-The layout `schema/types` records is the compact one, where a path is a run of
-points each stated against the one before it. Others exist and are not recorded
-here: one carrying a speed and the manner of travel, one saying a unit has
-stopped, and messages carrying their points as world floats rather than
-compactly. Which shape a payload holds is settled by the message carrying it
+The layout `schema/types` records as `Movement` is the compact one, where a
+path is a run of points each stated against the one before it.
+`MovementAtSpeed` carries the same points with the terms of the travel stated
+before them, and `WaypointGroupAtSpeed` is what carries it. A unit coming into
+sight while standing carries its place and facing in `EnterSight` instead.
+Messages carrying their points as world floats rather than compactly exist and
+are not recorded here. Which shape a payload holds is settled by the message carrying it
 rather than by anything inside the movement, so a reader never chooses.
 
 A count of no points is not a movement a receiving end accepts. It reads the

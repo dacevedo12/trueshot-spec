@@ -1,0 +1,15 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "TeamScore",
+  "version": "4.20.0.315",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "d4 00000000 64000000f4010000",
+  "fields": {
+    "command": 212,
+    "netId": 0,
+    "extendedCommand": null,
+    "side": 100,
+    "score": 500
+  }
+}

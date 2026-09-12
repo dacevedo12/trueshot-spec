@@ -1,0 +1,41 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "CapturePointChanged",
+  "note": "What a server sends when something changes about a point one side can take from the other.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 211,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "point",
+          "type": "u8",
+          "note": "Which point, observed 0, 1, 2, 3, 4."
+        },
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit the change concerns."
+        },
+        {
+          "name": "resourceKind",
+          "type": "u8",
+          "note": "Purpose undetermined. It is zero in everything observed."
+        },
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "The side the change favours. It is zero in everything observed."
+        },
+        {
+          "name": "change",
+          "type": "u8",
+          "note": "What sort of change it is. It is zero in everything observed."
+        }
+      ]
+    }
+  ]
+}

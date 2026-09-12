@@ -29,13 +29,13 @@
         {
           "name": "version",
           "type": "u32",
-          "note": "The build the client runs, with each part written out and run together, so 4.20.0.315 arrives as 42000315. No captured request carries it: what is known of it comes from the answer a server carries back, which repeats the request's own number."
+          "note": "The build the client runs, with each part written out and run together, so 4.20.0.315 arrives as 42000315. Every request captured carries it, and the answer a server carries back repeats the same number."
         },
         {
           "name": "proof",
           "type": "i64",
           "enciphered": true,
-          "note": "The player identifier and nothing else, enciphered under the key both ends already hold. Deciphering it and finding the identifier beside it is what shows the sender holds the key."
+          "note": "The player identifier and nothing else, enciphered under the key both ends already hold. Deciphering it and finding the identifier beside it is what shows the sender holds the key. In every request captured from a client, the eight bytes decipher to the player identifier the request carries."
         },
         {
           "name": "trailing",

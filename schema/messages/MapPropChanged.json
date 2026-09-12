@@ -1,0 +1,63 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "MapPropChanged",
+  "note": "What a server sends to change something about a prop already on the map. The kind of change is named inside it, and the fields around the kind are read the same way whatever it is.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 209,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The name the change loads, such as a set of movements the prop plays. Written out in full and padded with zero bytes to the width above."
+        },
+        {
+          "name": "valueA",
+          "type": "f32",
+          "note": "Purpose undetermined. It is observed 0.0, 1004.912, 21004.703, 41002.043."
+        },
+        {
+          "name": "valueB",
+          "type": "f32",
+          "note": "Purpose undetermined. It is observed 0.0, 17.5, 20.0."
+        },
+        {
+          "name": "prop",
+          "type": "u32",
+          "note": "The prop changed, by the name MapProp gave it."
+        },
+        {
+          "name": "flags",
+          "type": "u32",
+          "note": "How the change is made. The bits within are undetermined, and it is observed 1, 2."
+        },
+        {
+          "name": "kind",
+          "type": "u32",
+          "note": "What sort of change it is. It is observed 1 in every payload captured, and what the other kinds carry is not recorded here."
+        },
+        {
+          "name": "byteA",
+          "type": "u8",
+          "note": "Purpose undetermined. It is zero in everything observed."
+        },
+        {
+          "name": "byteB",
+          "type": "u8",
+          "note": "Purpose undetermined. It is zero in everything observed."
+        },
+        {
+          "name": "byteC",
+          "type": "u8",
+          "note": "Purpose undetermined. It is zero in everything observed."
+        }
+      ]
+    }
+  ]
+}

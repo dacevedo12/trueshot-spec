@@ -1,0 +1,22 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "MapPropChanged",
+  "version": "4.20.0.315",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "d1 00000000 4f70656e0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400200400100000001000000000000",
+  "fields": {
+    "command": 209,
+    "netId": 0,
+    "extendedCommand": null,
+    "name": "Open",
+    "valueA": 0,
+    "valueB": 0,
+    "prop": 1073742400,
+    "flags": 1,
+    "kind": 1,
+    "byteA": 0,
+    "byteB": 0,
+    "byteC": 0
+  }
+}

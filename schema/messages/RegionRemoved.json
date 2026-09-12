@@ -1,0 +1,21 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "RegionRemoved",
+  "note": "What a server sends to take away a region RegionAdded placed.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 51,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "region",
+          "type": "u32",
+          "note": "The region to take away, by the name RegionAdded gave it."
+        }
+      ]
+    }
+  ]
+}
