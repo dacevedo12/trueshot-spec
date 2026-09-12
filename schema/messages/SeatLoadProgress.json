@@ -1,14 +1,14 @@
 {
   "$schema": "../meta/message.json",
   "message": "SeatLoadProgress",
-  "note": "What a server sends to tell everyone how far one seat has got through loading, and how it is holding up.",
+  "note": "What a server sends to tell everyone how far one seat has got through loading, and how it is holding up. A later report supersedes an earlier one, so losing one costs nothing.",
   "revisions": [
     {
       "from": "4.20.0.315",
       "channel": "transient",
       "command": 149,
       "direction": "serverToClient",
-      "reliability": "reliable",
+      "reliability": "unreliable",
       "fields": [
         {
           "name": "seat",

@@ -264,6 +264,20 @@ requirement keyword, because a requirement belongs here in `spec/` where a
 reader looks for one, and it describes no moment in time, because a note that
 says a thing changed leaves a reader guessing which version it changed in.
 
+## How a message is delivered
+
+A revision states whether the transport carries it reliably, unreliably, or
+unsequenced. This is the one thing a revision states that no vector settles.
+The captures behind this specification record a payload, the channel it went
+on, and which way it travelled, and nothing in them carries a delivery flag, so
+what is written is what the message needs of the transport rather than
+something observed: a message another supersedes can be lost, and one that
+carries an account of what happened cannot.
+
+A reader building a server MUST take this as the one place to check its own
+judgement against a running client, and MUST NOT read it as evidenced the way a
+layout is.
+
 ## Directions
 
 A revision states whether it travels `clientToServer`, `serverToClient`, or

@@ -135,7 +135,7 @@
           "enum": ["clientToServer", "serverToClient", "bidirectional"]
         },
         "reliability": {
-          "description": "How the transport delivers this message. Chosen per message rather than inherited, because one channel carries all three.",
+          "description": "How the transport delivers this message. No capture behind this specification carries a delivery flag, so this is the one part of a revision no vector settles: it records what the message needs of the transport, and spec/messages.md says so.",
           "type": "string",
           "enum": ["reliable", "unreliable", "unsequenced"]
         },
