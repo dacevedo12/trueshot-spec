@@ -89,12 +89,12 @@ the rest are in that state.
 | 1     | 20       | A flat modifier on how far it casts from                                                               | measured | all      |
 | 1     | 21       | A modifier on its cooldowns, confirmed                                                                 | measured | all      |
 | 1     | 22 to 23 | When its passive's cooldown ends, and how long that cooldown lasts                                     | measured | none     |
-| 1     | 24 to 25 | How much armour it cuts through, flat then percent                                                     | measured | all      |
-| 1     | 26 to 27 | How much spell resistance it cuts through, flat then percent                                           | measured | all      |
+| 1     | 24 to 25 | How much armour it cuts through, flat then as the share left standing, confirmed                       | measured | all      |
+| 1     | 26 to 27 | How much spell resistance it cuts through, flat then as the share left standing, confirmed             | measured | all      |
 | 1     | 28       | Life steal, confirmed                                                                                  | measured | all      |
 | 1     | 29       | Spell vamp, confirmed                                                                                  | measured | all      |
-| 1     | 30       | Crowd-control reduction                                                                                | measured | all      |
-| 2     | 0 to 1   | How much armour and spell resistance it cuts through                                                   | measured | all      |
+| 1     | 30       | Crowd-control reduction, confirmed                                                                     | measured | all      |
+| 2     | 0 to 1   | How much more armour and spell resistance it cuts through, as the share left standing, confirmed       | measured | all      |
 | 3     | 0 to 1   | Health and resource as they stand, confirmed                                                           | measured | all      |
 | 3     | 2 to 3   | Health and resource at their greatest, confirmed                                                       | measured | all      |
 | 3     | 4        | Experience, confirmed                                                                                  | measured | all      |
@@ -123,10 +123,20 @@ Damage by striking reads from 54.67 to 115.3, and armour from 32.38 to 90.38; th
 
 A client shows bits 19, 21, 28 and 29 of the first group back in its panel of
 champion statistics. Sent 0.5 at bit 19, it shows the champion's attack speed
-halved. Sent −0.1 at bit 21, it shows 10 percent cooldown reduction. Sent 0.12
+halved. Sent −0.1 at bit 21, it shows 10 percent cooldown reduction, and sent 0.2 it shows 20 percent, so the panel shows the size of that modifier whatever its sign. Sent 0.12
 at bit 28 and 0.34 at bit 29, it shows life steal of 12 percent and spell vamp
 of 34 percent. Sent 2.0 at bit 20 and −0.3 at bit 22 at the same time, the panel
 moves on neither. Bit 31 is never seen set, and nothing here gives it a value.
+
+Penetration shows in that panel as a flat figure and a percent. Sent 5 at bit 24
+and 7 at bit 26, it shows flat penetration of 5 and 7. Each percent field
+carries the share of armour or spell resistance left standing, and the panel
+adds up what two of them cut through: bit 25 of the first group with bit 0 of
+the second for armour, and bit 27 with bit 1 for spell resistance. Sent 0.8 and
+0.9 it shows 30 percent, sent 0.7 and 0.95 it shows 35 percent, and a champion
+none of the four was ever sent for shows 200 percent on both. A champion that
+cuts through nothing carries 1 at each. Sent 0.25 at bit 30, the panel shows 25
+percent tenacity.
 
 ## A turret
 
