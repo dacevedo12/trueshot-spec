@@ -59,11 +59,11 @@ end unwraps and reads one by one as though each had arrived on its own. A
 container carries no header, so nothing in `schema/messages` describes one, and
 a reading end MUST NOT read the value that introduces it as a command.
 
-No payload behind this specification is a container. What is known of how the
-entries inside one are framed is written up as an issue against this
-repository, because a layout no client has confirmed is a guess whatever label
-it carries, and this document does not carry guesses. A server MUST NOT send a
-container until that layout is settled here.
+No payload behind this specification is a container, so how the entries inside
+one are framed is not recorded here: a layout no client has confirmed is a
+guess whatever label it carries, and this document does not carry guesses. A
+server MUST NOT send a container, because a reading end built from this
+document cannot take one apart.
 
 ## Reading a body
 
