@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "SpawnFromBarracks",
-  "note": "What a server sends to put a unit on the field from the place its side sends them out of.",
+  "note": "What a server sends to put a unit on the field from the place its side sends them out of. It arrives on its own and also inside EnterSight.",
   "revisions": [
     {
       "from": "4.20.0.315",
