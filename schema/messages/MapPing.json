@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "MapPing",
-  "note": "What a client sends to mark a point on the map for the others.",
+  "note": "What a client sends to mark a point on the map for the others. The header names no object: it carries zero.",
   "revisions": [
     {
       "from": "4.20.0.315",

@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "MoveCamera",
-  "note": "What a server sends to carry a client's view from one place to another.",
+  "note": "What a server sends to carry a client's view from one place to another. The header names the champion of the player it is sent to.",
   "revisions": [
     {
       "from": "4.20.0.315",

@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "InhibitorState",
-  "note": "What a server sends to change the state of an inhibitor, and say how long the new state lasts.",
+  "note": "What a server sends to change the state of an inhibitor, and say how long the new state lasts. The header names the unit this is about.",
   "revisions": [
     {
       "from": "4.20.0.315",

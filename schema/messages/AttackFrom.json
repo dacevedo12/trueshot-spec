@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "AttackFrom",
-  "note": "What a server sends to say a unit is swinging at another, carrying where the swinging unit stands as well as what it swings at.",
+  "note": "What a server sends to say a unit is swinging at another, carrying where the swinging unit stands as well as what it swings at. The header names the unit acting.",
   "revisions": [
     {
       "from": "4.20.0.315",

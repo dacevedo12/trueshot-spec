@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "RegionAdded",
-  "note": "What a server sends to place a region on the ground: a patch that grants sight, blocks the way, or grows cover.",
+  "note": "What a server sends to place a region on the ground: a patch that grants sight, blocks the way, or grows cover. The header names no object: it carries zero.",
   "revisions": [
     {
       "from": "4.20.0.315",

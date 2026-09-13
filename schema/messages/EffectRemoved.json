@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "EffectRemoved",
-  "note": "What a server sends to take a lasting effect off a unit.",
+  "note": "What a server sends to take a lasting effect off a unit. The header names the unit this is about.",
   "revisions": [
     {
       "from": "4.20.0.315",

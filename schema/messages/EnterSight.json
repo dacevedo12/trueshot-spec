@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "EnterSight",
-  "note": "What a server sends when a unit comes into what a side can see. It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say.",
+  "note": "What a server sends when a unit comes into what a side can see. It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say. The header names the unit this is about.",
   "revisions": [
     {
       "from": "4.20.0.315",

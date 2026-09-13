@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "TipShown",
-  "note": "What a server sends to put a note in front of a seat.",
+  "note": "What a server sends to put a note in front of a seat. The header names the champion of the player it is sent to.",
   "revisions": [
     {
       "from": "4.20.0.315",

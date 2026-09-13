@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "RegionRemoved",
-  "note": "What a server sends to take away a region RegionAdded placed.",
+  "note": "What a server sends to take away a region RegionAdded placed. The header names no object: it carries zero.",
   "revisions": [
     {
       "from": "4.20.0.315",

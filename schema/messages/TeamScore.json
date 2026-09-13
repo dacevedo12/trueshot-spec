@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "TeamScore",
-  "note": "What a server sends to set a side's score, where a match is won on score.",
+  "note": "What a server sends to set a side's score, where a match is won on score. The header names no object: it carries zero.",
   "revisions": [
     {
       "from": "4.20.0.315",

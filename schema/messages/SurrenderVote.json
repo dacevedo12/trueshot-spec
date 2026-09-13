@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "SurrenderVote",
-  "note": "What a client sends to answer a call to surrender.",
+  "note": "What a client sends to answer a call to surrender. The header names no object: it carries zero.",
   "revisions": [
     {
       "from": "4.20.0.315",

@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "Pause",
-  "note": "What a client sends to hold a match.",
+  "note": "What a client sends to hold a match. The header names no object: it carries zero.",
   "revisions": [
     {
       "from": "4.20.0.315",

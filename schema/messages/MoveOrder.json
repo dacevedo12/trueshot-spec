@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "MoveOrder",
-  "note": "What a client sends to tell a server what it wants a unit to do. The path it carries is what the client would take; where the unit actually goes is whatever the server answers with.",
+  "note": "What a client sends to tell a server what it wants a unit to do. The path it carries is what the client would take; where the unit actually goes is whatever the server answers with. The header names the sender's champion.",
   "revisions": [
     {
       "from": "4.20.0.315",

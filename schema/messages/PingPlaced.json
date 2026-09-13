@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "PingPlaced",
-  "note": "What a server sends to show a ping on the map to everyone meant to see it.",
+  "note": "What a server sends to show a ping on the map to everyone meant to see it. The header names the champion that placed the ping, as source does.",
   "revisions": [
     {
       "from": "4.20.0.315",
@@ -33,7 +33,30 @@
         {
           "name": "category",
           "type": "u8",
-          "note": "Which sort of ping."
+          "note": "Which sort of ping, under the values MapPing's kind takes. Each one observed repeats the kind of the request it answers.",
+          "values": {
+            "0": {
+              "name": "here"
+            },
+            "1": {
+              "name": "attackDirection"
+            },
+            "2": {
+              "name": "danger"
+            },
+            "3": {
+              "name": "targetUnaccountedFor"
+            },
+            "4": {
+              "name": "onMyWay"
+            },
+            "5": {
+              "name": "fallBack"
+            },
+            "6": {
+              "name": "comeHere"
+            }
+          }
         },
         {
           "name": "does",

@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "EmotePlayed",
-  "note": "What a server sends to say a unit played an emote.",
+  "note": "What a server sends to say a unit played an emote. The header names the champion playing the emote.",
   "revisions": [
     {
       "from": "4.20.0.315",

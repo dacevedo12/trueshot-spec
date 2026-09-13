@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "FaceDirection",
-  "note": "What a server sends to turn a unit to face a direction.",
+  "note": "What a server sends to turn a unit to face a direction. The header names the unit acting.",
   "revisions": [
     {
       "from": "4.20.0.315",

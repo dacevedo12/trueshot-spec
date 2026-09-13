@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "CapturePointChanged",
-  "note": "What a server sends when something changes about a point one side can take from the other.",
+  "note": "What a server sends when something changes about a point one side can take from the other. The header names no object: it carries zero.",
   "revisions": [
     {
       "from": "4.20.0.315",

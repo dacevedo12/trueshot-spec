@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "BuyItem",
-  "note": "What a client sends to buy an item from the shop.",
+  "note": "What a client sends to buy an item from the shop. The header names the sender's champion.",
   "revisions": [
     {
       "from": "4.20.0.315",

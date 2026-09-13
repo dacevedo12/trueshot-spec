@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "EffectCount",
-  "note": "What a server sends to restate how many of a lasting effect are stacked on a unit.",
+  "note": "What a server sends to restate how many of a lasting effect are stacked on a unit. The header names the unit this is about.",
   "revisions": [
     {
       "from": "4.20.0.315",

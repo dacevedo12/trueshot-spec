@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "Replication",
-  "note": "What a server sends to say what has changed about units a client can see. It is the most frequent thing a server sends.",
+  "note": "What a server sends to say what has changed about units a client can see. It is the most frequent thing a server sends. The header names no object: it carries zero.",
   "revisions": [
     {
       "from": "4.20.0.315",

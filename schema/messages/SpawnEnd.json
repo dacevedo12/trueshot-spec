@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "SpawnEnd",
-  "note": "What a server sends to close the run of units it opened with.",
+  "note": "What a server sends to close the run of units it opened with. The header names no object: it carries zero.",
   "revisions": [
     {
       "from": "4.20.0.315",

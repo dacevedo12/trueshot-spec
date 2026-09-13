@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "HudDisabled",
-  "note": "What a server sends to take down a client's interface as the match ends.",
+  "note": "What a server sends to take down a client's interface as the match ends. The header names no object: it carries zero.",
   "revisions": [
     {
       "from": "4.20.0.315",

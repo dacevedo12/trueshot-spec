@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "SystemMessage",
-  "note": "What a server sends to put a line of its own in a client's chat.",
+  "note": "What a server sends to put a line of its own in a client's chat. The header names no object: it carries zero.",
   "revisions": [
     {
       "from": "4.20.0.315",

@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "WorldEvent",
-  "note": "What a server sends to say something happened that the whole match is told about. What sort of thing is named first, and the sort settles what follows.",
+  "note": "What a server sends to say something happened that the whole match is told about. What sort of thing is named first, and the sort settles what follows. The header names no object: it carries zero.",
   "revisions": [
     {
       "from": "4.20.0.315",

@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "MapPropChanged",
-  "note": "What a server sends to change something about a prop already on the map. The kind of change is named inside it, and the fields around the kind are read the same way whatever it is.",
+  "note": "What a server sends to change something about a prop already on the map. The kind of change is named inside it, and the fields around the kind are read the same way whatever it is. The header names no object: it carries zero.",
   "revisions": [
     {
       "from": "4.20.0.315",

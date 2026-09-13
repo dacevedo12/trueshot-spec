@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "SwapItemsAnswer",
-  "note": "What a server sends to confirm an item moved between slots.",
+  "note": "What a server sends to confirm an item moved between slots. The header names the unit this is about.",
   "revisions": [
     {
       "from": "4.20.0.315",

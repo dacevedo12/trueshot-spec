@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "VersionSync",
-  "note": "What a server sends once a client has said which build it runs: whether the two agree, which map to load, who is at the match, and everything else settled before play.",
+  "note": "What a server sends once a client has said which build it runs: whether the two agree, which map to load, who is at the match, and everything else settled before play. The header names no object: it carries zero.",
   "revisions": [
     {
       "from": "4.20.0.315",

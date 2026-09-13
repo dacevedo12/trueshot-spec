@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "SwapItems",
-  "note": "What a client sends to move an item from one slot to another.",
+  "note": "What a client sends to move an item from one slot to another. The header names the sender's champion.",
   "revisions": [
     {
       "from": "4.20.0.315",

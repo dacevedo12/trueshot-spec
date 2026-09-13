@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "SpellInSlot",
-  "note": "What a server sends to put a spell in one of a unit's slots.",
+  "note": "What a server sends to put a spell in one of a unit's slots. The header names the unit this is about.",
   "revisions": [
     {
       "from": "4.20.0.315",

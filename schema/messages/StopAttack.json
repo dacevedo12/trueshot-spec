@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "StopAttack",
-  "note": "What a server sends to break off an attack a unit is making.",
+  "note": "What a server sends to break off an attack a unit is making. The header names the unit acting.",
   "revisions": [
     {
       "from": "4.20.0.315",

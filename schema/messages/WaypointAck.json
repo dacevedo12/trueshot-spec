@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "WaypointAck",
-  "note": "What a client sends once it has taken in a group of movements, naming which group and listing the units the group asked it to relocate.",
+  "note": "What a client sends once it has taken in a group of movements, naming which group and listing the units the group asked it to relocate. The header names no object: it carries zero.",
   "revisions": [
     {
       "from": "4.20.0.315",

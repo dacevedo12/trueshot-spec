@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "AnimationOverrides",
-  "note": "What a server sends to make a unit play one set of movements wherever it would have played another.",
+  "note": "What a server sends to make a unit play one set of movements wherever it would have played another. The header names the unit this is about.",
   "revisions": [
     {
       "from": "4.20.0.315",

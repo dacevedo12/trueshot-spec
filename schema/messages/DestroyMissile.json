@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "DestroyMissile",
-  "note": "What a server sends to be rid of a missile a client is drawing.",
+  "note": "What a server sends to be rid of a missile a client is drawing. The header names the missile.",
   "revisions": [
     {
       "from": "4.20.0.315",

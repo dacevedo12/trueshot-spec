@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "ExperienceGained",
-  "note": "What a server sends to grant a unit experience.",
+  "note": "What a server sends to grant a unit experience. The header names no object: it carries zero.",
   "revisions": [
     {
       "from": "4.20.0.315",

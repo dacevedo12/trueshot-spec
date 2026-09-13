@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "ClockSync",
-  "note": "What a server sends to set a client's idea of how long the match has run.",
+  "note": "What a server sends to set a client's idea of how long the match has run. The header names no object: it carries zero.",
   "revisions": [
     {
       "from": "4.20.0.315",

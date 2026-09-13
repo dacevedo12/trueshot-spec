@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "LeaveTeamSight",
-  "note": "What a server sends when a unit passes out of the view of a whole side.",
+  "note": "What a server sends when a unit passes out of the view of a whole side. The header names the object this is about.",
   "revisions": [
     {
       "from": "4.20.0.315",

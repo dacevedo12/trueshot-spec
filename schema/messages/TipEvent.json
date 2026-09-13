@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "TipEvent",
-  "note": "What a client sends about a tip it has shown or dismissed.",
+  "note": "What a client sends about a tip it has shown or dismissed. The header names the sender's champion.",
   "revisions": [
     {
       "from": "4.20.0.315",

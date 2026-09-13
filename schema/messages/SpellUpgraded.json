@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "SpellUpgraded",
-  "note": "What a server sends to confirm a unit's spell went up a level.",
+  "note": "What a server sends to confirm a unit's spell went up a level. The header names the unit this is about.",
   "revisions": [
     {
       "from": "4.20.0.315",

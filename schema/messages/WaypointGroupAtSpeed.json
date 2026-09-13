@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "WaypointGroupAtSpeed",
-  "note": "What a server sends to move units along paths of its own choosing, stating how each one travels rather than leaving it to the receiving end. It is what carries a unit thrown, dragged, or carried along by something other than its own walking.",
+  "note": "What a server sends to move units along paths of its own choosing, stating how each one travels rather than leaving it to the receiving end. It is what carries a unit thrown, dragged, or carried along by something other than its own walking. The header names no object: it carries zero.",
   "revisions": [
     {
       "from": "4.20.0.315",

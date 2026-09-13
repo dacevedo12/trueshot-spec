@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "ClockReply",
-  "note": "What a client sends back when a server states the match clock, carrying both readings so the server can tell how far apart they are.",
+  "note": "What a client sends back when a server states the match clock, carrying both readings so the server can tell how far apart they are. The header names no object: it carries zero.",
   "revisions": [
     {
       "from": "4.20.0.315",

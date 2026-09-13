@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "SurrenderStatus",
-  "note": "What a server sends to tell a side where its surrender vote stands.",
+  "note": "What a server sends to tell a side where its surrender vote stands. The header names no object: it carries zero.",
   "revisions": [
     {
       "from": "4.20.0.315",

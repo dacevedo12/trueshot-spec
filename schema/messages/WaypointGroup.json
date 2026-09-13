@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "WaypointGroup",
-  "note": "What a server sends to move units. It carries a number a client returns to say it has taken the group in.",
+  "note": "What a server sends to move units. It carries a number a client returns to say it has taken the group in. The header carries zero or names the object this is about, and a client accepted both.",
   "revisions": [
     {
       "from": "4.20.0.315",

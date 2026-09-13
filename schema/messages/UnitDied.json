@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "UnitDied",
-  "note": "What a server sends to say a unit died, to everyone who can see it.",
+  "note": "What a server sends to say a unit died, to everyone who can see it. The header names the unit this is about.",
   "revisions": [
     {
       "from": "4.20.0.315",

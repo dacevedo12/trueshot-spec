@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "SpellToggled",
-  "note": "What a server sends to turn one of a unit's spells on or off.",
+  "note": "What a server sends to turn one of a unit's spells on or off. The header names the unit this is about.",
   "revisions": [
     {
       "from": "4.20.0.315",

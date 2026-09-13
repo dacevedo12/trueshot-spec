@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "GameEnded",
-  "note": "What a server sends to end the match and say which side won.",
+  "note": "What a server sends to end the match and say which side won. The header names no object: it carries zero.",
   "revisions": [
     {
       "from": "4.20.0.315",
