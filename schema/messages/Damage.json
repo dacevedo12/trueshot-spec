@@ -13,11 +13,19 @@
         {
           "name": "result",
           "type": "u8",
-          "note": "How the damage landed, and so what a client shows over the unit hurt.",
+          "note": "How the damage landed, and so what a client shows over the unit hurt. A value of 6 shows the amount as normal does.",
           "values": {
             "0": {
               "name": "invulnerable",
               "note": "Shows that the unit could not be hurt."
+            },
+            "1": {
+              "name": "unseen",
+              "note": "Shows nothing."
+            },
+            "2": {
+              "name": "dodged",
+              "note": "Shows that the blow was dodged."
             },
             "3": {
               "name": "critical",
@@ -26,6 +34,10 @@
             "4": {
               "name": "normal",
               "note": "Shows the amount."
+            },
+            "5": {
+              "name": "missed",
+              "note": "Shows that the blow missed."
             }
           }
         },
@@ -37,7 +49,24 @@
         {
           "name": "kind",
           "type": "u8",
-          "note": "What sort of damage it is."
+          "note": "What sort of damage it is, which sets how a client colours the figure.",
+          "values": {
+            "0": {
+              "name": "physical"
+            },
+            "1": {
+              "name": "magical",
+              "note": "Shown in its own colour, purple where critical."
+            },
+            "2": {
+              "name": "true",
+              "note": "Shown in its own colour, white where critical."
+            },
+            "3": {
+              "name": "mixed",
+              "note": "Shown as physical damage is, critical or not."
+            }
+          }
         },
         {
           "name": "amount",

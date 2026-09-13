@@ -13,35 +13,35 @@
         {
           "name": "event",
           "type": "u8",
-          "note": "What sort of thing happened, and so which shape follows. Each name says what the sort is sent alongside; what a client shows for one is not recorded here.",
+          "note": "What sort of thing happened, and so which shape follows. Each name says what the sort is sent alongside, and each note what a client shows for it; the text of a notice that carries a map is the one that map gives it.",
           "values": {
             "31": {
               "name": "inhibitorDied",
-              "note": "Sent as an inhibitor falls, with that inhibitor as the source."
+              "note": "Sent as an inhibitor falls, with that inhibitor as source and the unit credited with it as subject. A client announces that the other side's super minions now spawn, and credits the subject beside its own record of kills."
             },
             "71": {
               "name": "playerLeft",
-              "note": "Sent as a player's client leaves the match, naming that player's champion as both source and subject."
+              "note": "Sent as a player's client leaves the match, naming that player's champion as both source and subject. A client announces that the player has quit, and nothing else changes."
             },
             "118": {
               "name": "minionsSpawned",
-              "note": "Sent once, as the first minions come out."
+              "note": "Sent once, as the first minions come out. A client announces that minions have spawned."
             },
             "119": {
-              "name": "startNoticeOne",
-              "note": "Sent once, early in a match."
+              "name": "welcome",
+              "note": "Sent once, early in a match. A client announces the welcome for the map carried."
             },
             "120": {
               "name": "startNoticeTwo",
-              "note": "Sent once, after startNoticeOne."
+              "note": "Sent once, after welcome. A client announces the second notice for the map carried; on map 10 that altars unlock in thirty seconds."
             },
             "121": {
               "name": "startNoticeThree",
-              "note": "Sent once, early in a match on map 8, where startNoticeOne is not."
+              "note": "Sent once, early in a match on map 8, where welcome is not. On map 10 a client announces from it that minions have spawned."
             },
             "127": {
               "name": "nexusIdle",
-              "note": "Sent once, alongside minionsSpawned."
+              "note": "Sent once, alongside minionsSpawned. A client shows no notice for it."
             }
           }
         },
