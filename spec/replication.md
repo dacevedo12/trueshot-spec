@@ -32,6 +32,21 @@ anything a server said.
 Nothing on the wire carries a table, a field name, or a width. An end that does
 not already hold the table cannot read a run.
 
+## Which batches a client takes
+
+A client keeps, for each unit, the `syncId` of the last batch whose values it
+took for that unit. It takes a unit's values from a later batch only where that
+batch's `syncId` is greater. Values carried under an equal or a lower `syncId`
+are dropped, including a `syncId` no batch has used before. The comparison is
+made unit by unit, so a `syncId` one batch has used for a turret is still taken
+for a champion.
+
+A server MUST give each batch carrying a unit a `syncId` greater than the last
+it sent carrying that unit. Batches for different units can share a `syncId`.
+
+A client answers a batch with `TransientAck` whether or not it took the values,
+so an answer says that a batch arrived and not that its values were taken.
+
 ## How far these tables are checked
 
 Every table below was run against every replicated value in the captures behind

@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "LeaveLocalSight",
-  "note": "What a server sends when a unit passes out of what one client can see.",
+  "note": "What a server sends when a unit passes out of what one client can see. Sent for the receiving client's own champion, it changes nothing the client shows.",
   "revisions": [
     {
       "from": "4.20.0.315",

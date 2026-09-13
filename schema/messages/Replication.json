@@ -20,7 +20,7 @@
         {
           "name": "syncId",
           "type": "u32",
-          "note": "Names this batch of changes."
+          "note": "Names this batch of changes. spec/replication.md says which batches a client takes values from."
         },
         {
           "name": "unitCount",

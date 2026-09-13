@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "TransientAck",
-  "note": "What a client sends to say it has taken in a batch of changes, naming which batch.",
+  "note": "What a client sends to say a batch of changes arrived, naming which batch. It is sent for a batch whose values the client dropped as well as for one it took.",
   "revisions": [
     {
       "from": "4.20.0.315",
