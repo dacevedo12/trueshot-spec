@@ -13,22 +13,35 @@
         {
           "name": "event",
           "type": "u8",
-          "note": "What sort of thing happened, and so which shape follows.",
+          "note": "What sort of thing happened, and so which shape follows. Each name says what the sort is sent alongside; what a client shows for one is not recorded here.",
           "values": {
+            "31": {
+              "name": "inhibitorDied",
+              "note": "Sent as an inhibitor falls, with that inhibitor as the source."
+            },
             "71": {
-              "name": "unitTaken"
+              "name": "playerLeft",
+              "note": "Sent as a player's client leaves the match, naming that player's champion as both source and subject."
             },
             "118": {
-              "name": "eventA"
+              "name": "minionsSpawned",
+              "note": "Sent once, as the first minions come out."
             },
             "119": {
-              "name": "eventB"
+              "name": "startNoticeOne",
+              "note": "Sent once, early in a match."
             },
             "120": {
-              "name": "eventC"
+              "name": "startNoticeTwo",
+              "note": "Sent once, after startNoticeOne."
+            },
+            "121": {
+              "name": "startNoticeThree",
+              "note": "Sent once, early in a match on map 8, where startNoticeOne is not."
             },
             "127": {
-              "name": "eventD"
+              "name": "nexusIdle",
+              "note": "Sent once, alongside minionsSpawned."
             }
           }
         },
@@ -45,10 +58,20 @@
         {
           "name": "map",
           "type": "u32",
-          "note": "Which map it happened on. It travels only with the two sorts that carry it.",
+          "note": "Which map it happened on. It travels only with the three sorts that carry it.",
           "present": {
             "when": "event",
-            "equals": [119, 120]
+            "equals": [119, 120, 121]
+          }
+        },
+        {
+          "name": "further",
+          "type": "bytes",
+          "size": 56,
+          "note": "More that comes with an inhibitor falling. Zero in everything observed, and what it holds is not recorded here.",
+          "present": {
+            "when": "event",
+            "equals": 31
           }
         }
       ]

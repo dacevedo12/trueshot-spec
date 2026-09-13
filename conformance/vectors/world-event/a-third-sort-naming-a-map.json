@@ -4,15 +4,15 @@
   "message": "WorldEvent",
   "version": "4.20.0.315",
   "note": "Taken from a server a client accepted.",
-  "bytes": "45 00000000 477406004074060040",
+  "bytes": "45 00000000 79000000000000000008000000",
   "fields": {
     "command": 69,
     "netId": 0,
     "extendedCommand": null,
-    "event": 71,
-    "source": 1073743476,
-    "subject": 1073743476,
-    "map": null,
+    "event": 121,
+    "source": 0,
+    "subject": 0,
+    "map": 8,
     "further": null
   }
 }
