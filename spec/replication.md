@@ -86,9 +86,10 @@ the rest are in that state.
 | 1     | 14 to 16 | Flat and percent modifiers on the damage it strikes with, then the flat modifier on its spells' damage | measured | all      |
 | 1     | 17 to 18 | Flat and percent reduction of the spell damage it takes                                                | measured | none     |
 | 1     | 19       | A multiplier on how fast it strikes, confirmed                                                         | measured | all      |
-| 1     | 20       | A flat modifier on how far it casts from                                                               | measured | all      |
+| 1     | 20       | A flat addition to how far from the champion an aimed spell's point is allowed to land                 | measured | all      |
 | 1     | 21       | A modifier on its cooldowns, confirmed                                                                 | measured | all      |
-| 1     | 22 to 23 | When its passive's cooldown ends, and how long that cooldown lasts                                     | measured | none     |
+| 1     | 22       | When its passive's cooldown ends, as a moment on the match clock, confirmed                            | measured | none     |
+| 1     | 23       | How long its passive's cooldown lasts in all                                                           | measured | none     |
 | 1     | 24 to 25 | How much armour it cuts through, flat then as the share left standing, confirmed                       | measured | all      |
 | 1     | 26 to 27 | How much spell resistance it cuts through, flat then as the share left standing, confirmed             | measured | all      |
 | 1     | 28       | Life steal, confirmed                                                                                  | measured | all      |
@@ -137,6 +138,18 @@ the second for armour, and bit 27 with bit 1 for spell resistance. Sent 0.8 and
 none of the four was ever sent for shows 200 percent on both. A champion that
 cuts through nothing carries 1 at each. Sent 0.25 at bit 30, the panel shows 25
 percent tenacity.
+
+A spell's cooldown lasts its base length times one plus the modifier at bit 21,
+so a reduction is carried as a negative fraction and the panel shows its size.
+
+Bit 22 sets the countdown a client shows on the champion's passive. It is a
+moment on the match clock, in seconds, on the same clock as the time a
+`ClockSync` carries, and not the time left. Sent 120 as a match opens, the
+countdown starts from 2:00; sent 180, it starts from 3:00. Once that moment has
+passed, the passive shows ready. Bit 23 is how long the whole cooldown lasts,
+and a client shades the passive's icon by the time left over that length rather
+than counting down from it: sent 360 alongside 180, the countdown still starts
+from 3:00.
 
 ## A turret
 
