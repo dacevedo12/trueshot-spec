@@ -13,7 +13,7 @@
         {
           "name": "ready",
           "type": "u8",
-          "note": "Whether the server is ready. Every answer observed says so, and a client asks more than once all the same.",
+          "note": "Whether the server is ready. While answers say it is not, a client keeps asking and goes no further, which spec/joining.md sets out.",
           "values": {
             "0": {
               "name": "no"

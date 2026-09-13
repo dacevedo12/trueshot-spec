@@ -13,9 +13,16 @@ A client's first payload is `Register`, on the registration channel.
 
 ## Asking whether a server is ready
 
-A client then sends `QueryStatus`, and a server answers each one with
-`QueryStatusAnswer`. A client asks more than once, from two to five times in
-everything observed, even when every answer says the server is ready.
+A client then sends `QueryStatus` over and over, and a server answers each one
+with `QueryStatusAnswer`. This is how a server holds a client back until the
+match can begin. While the answers say the server is not ready, a client stays
+on a black screen and keeps asking, many times a second. Once an answer says
+it is ready, the client goes on to the next step. It can send a few more
+queries after that first ready answer, and they are answered too, so a server
+ready from the outset still sees from two to five.
+
+A server that needs time before a match can begin answers that it is not ready
+until it is.
 
 ## Stating a build
 

@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "Damage",
-  "note": "What a server sends to say one unit hurt another.",
+  "note": "What a server sends to say one unit hurt another. A client shows the figure and nothing more: the health it shows for the unit is what replication carries, and this message leaves it as it was.",
   "revisions": [
     {
       "from": "4.20.0.315",
@@ -13,7 +13,21 @@
         {
           "name": "result",
           "type": "u8",
-          "note": "How the damage landed."
+          "note": "How the damage landed, and so what a client shows over the unit hurt.",
+          "values": {
+            "0": {
+              "name": "invulnerable",
+              "note": "Shows that the unit could not be hurt."
+            },
+            "3": {
+              "name": "critical",
+              "note": "Shows the amount as a critical strike."
+            },
+            "4": {
+              "name": "normal",
+              "note": "Shows the amount."
+            }
+          }
         },
         {
           "name": "unknown1",
