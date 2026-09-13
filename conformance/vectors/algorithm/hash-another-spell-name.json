@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "algorithm",
+  "algorithm": "nameHash",
+  "note": "The spell name of conformance/vectors/spell-slot-changed/another.json, turned into the number a client knows that spell by.",
+  "input": {
+    "vector": "spell-slot-changed/another",
+    "field": "name"
+  },
+  "output": 92547323
+}

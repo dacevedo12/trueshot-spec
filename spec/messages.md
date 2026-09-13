@@ -337,6 +337,41 @@ No message creates these objects, so nothing a server sends could give a client
 a different identifier for one. A server MUST name each by the identifier its
 name gives.
 
+## Numbers a client knows a name by
+
+Some things a message names are known to a client by name: a spell, an effect
+a unit carries, a particle, and a place on a unit that particles hang from. A
+message names one of these by a number worked out from its name, and a client
+looks the thing up by that number.
+
+The number is the ELF hash of the name with its capital letters lowered:
+
+```text
+number = 0
+for each byte b of the name, with A to Z made a to z:
+    number = (number << 4) + b
+    high = number & 0xF0000000
+    if high != 0:
+        number = number ^ (high >> 24)
+    number = number & ~high
+```
+
+Every step is worked in 32 bits. Only `A` to `Z` change; every other byte is
+taken as it is, so `SummonerFlash` and `summonerflash` give one number. A
+particle's name includes its extension, so the number comes from
+`global_ss_flash.troy` and not from `global_ss_flash`. The nine bytes
+`123456789` give 0x0678AEE9.
+
+| Name                      | Number       |
+| ------------------------- | ------------ |
+| `SummonerFlash`           | `0x06496EA8` |
+| `RegenerationPotion`      | `0x0E75DC7E` |
+| `EzrealMysticShotMissile` | `0x05FE9CE5` |
+| `global_ss_flash.troy`    | `0x0058E369` |
+| `L_HAND`                  | `0x0725E844` |
+
+A server MUST name each such thing by the number its name gives.
+
 ## Values a layout cannot reach
 
 A run of bytes is sometimes carried whose contents a layout cannot describe,

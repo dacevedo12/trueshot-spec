@@ -24,6 +24,22 @@ const resolvePath = ({ firstX, firstZ, steps }) => {
   return points;
 };
 
-const ALGORITHMS = { resolvePath };
+// A spell, an effect, a particle or a place on a unit is named by a number
+// worked out from its name: the ELF hash of the name with A to Z lowered.
+const nameHash = (name) => {
+  let number = 0;
+  for (const byte of Buffer.from(
+    name.replace(/[A-Z]/g, (c) => c.toLowerCase()),
+    "latin1",
+  )) {
+    number = ((number << 4) + byte) >>> 0;
+    const high = number & 0xf0000000;
+    if (high !== 0) number = (number ^ (high >>> 24)) >>> 0;
+    number = (number & ~high) >>> 0;
+  }
+  return number;
+};
+
+const ALGORITHMS = { resolvePath, nameHash };
 
 export { ALGORITHMS, AlgorithmError };
