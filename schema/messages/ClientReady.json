@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "ClientReady",
-  "note": "What a client sends once it has loaded and is ready to play. A server's start of play is what prompts it.",
+  "note": "What a client sends once it has loaded and is ready to play. It comes unprompted, before any start of play reaches the client.",
   "revisions": [
     {
       "from": "4.20.0.315",
