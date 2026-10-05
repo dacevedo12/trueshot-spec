@@ -4,6 +4,38 @@
   "note": "What a server sends to take the match off hold. The header names a champion: in everything observed, that of the player who resumed the match.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 10,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "seat",
+          "type": "i32",
+          "note": "The seat that lifted the hold."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "afterCountdown",
+              "width": 1,
+              "note": "Set where the match starts again after a countdown rather than at once. Clear in everything observed, and play resumed at once."
+            },
+            {
+              "name": "unknown",
+              "width": 7,
+              "note": "Observed clear."
+            }
+          ]
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "events",
       "command": 10,
