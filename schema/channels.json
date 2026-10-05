@@ -30,6 +30,12 @@
           "note": "The server's account of what happened, delivered whole. This is where most of what a client renders arrives."
         },
         {
+          "name": "transient",
+          "id": 4,
+          "family": "game",
+          "note": "State that a following message supersedes, such as positions and unit properties. Losing one costs nothing where the next corrects it, which is what the messages recorded here are for."
+        },
+        {
           "name": "roster",
           "id": 7,
           "family": "session",

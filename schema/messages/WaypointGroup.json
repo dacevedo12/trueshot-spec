@@ -4,6 +4,36 @@
   "note": "What a server sends to move units. It carries a number a client returns to say it has taken the group in. The header carries zero or names the object this is about, and a client accepted both.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "transient",
+      "command": 97,
+      "direction": "serverToClient",
+      "reliability": "unreliable",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u32",
+          "note": "Names this group. A client returns it to say the group arrived."
+        },
+        {
+          "name": "movementCount",
+          "type": "u16",
+          "note": "How many units the group moves."
+        },
+        {
+          "name": "movements",
+          "type": "array",
+          "count": "movementCount",
+          "items": {
+            "name": "movement",
+            "type": "struct",
+            "struct": "Movement"
+          }
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "transient",
       "command": 97,

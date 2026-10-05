@@ -127,3 +127,9 @@ accept it: a path arriving from a client is a request, and what a unit does is
 whatever the server sends back. The destination a client asks for arrives as
 world floats beside the path, so a server that computes its own route reads
 those and ignores the rest.
+
+A 4.17.0.267 client does not move its own champion on a right click by itself.
+Left without an answer to its `MoveOrder`, the champion stays where it stood.
+Answered with a `WaypointGroup` on the transient channel carrying the path the
+order brought, the champion walks it, and the client returns that group's
+`syncId` in a `WaypointAck`.
