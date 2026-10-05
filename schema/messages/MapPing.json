@@ -4,6 +4,59 @@
   "note": "What a client sends to mark a point on the map for the others. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "requests",
+      "command": 87,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Where on the map, along one ground axis."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Where on the map, along the other ground axis."
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "A network object the mark is on, or zero where it is on open ground."
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "Which mark it is. Six of the seven have been seen on the wire, all but the one meaning attack direction, and that one is recorded from what a client is able to send.",
+          "values": {
+            "0": {
+              "name": "here"
+            },
+            "1": {
+              "name": "attackDirection"
+            },
+            "2": {
+              "name": "danger"
+            },
+            "3": {
+              "name": "targetUnaccountedFor"
+            },
+            "4": {
+              "name": "onMyWay"
+            },
+            "5": {
+              "name": "fallBack"
+            },
+            "6": {
+              "name": "comeHere"
+            }
+          }
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "requests",
       "command": 87,

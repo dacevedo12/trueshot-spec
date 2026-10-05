@@ -4,6 +4,73 @@
   "note": "Text one player sends the others during a match. Messages players exchange outside a match do not travel on this connection at all.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "chat",
+      "command": 104,
+      "direction": "bidirectional",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "i32",
+          "note": "Which seat the sender occupies."
+        },
+        {
+          "name": "netId",
+          "type": "u32",
+          "note": "The entity a receiving end attributes the text to where the seat does not name one. Where the seat names a speaker, that is what a receiving end uses instead."
+        },
+        {
+          "name": "localized",
+          "type": "u8",
+          "note": "Whether the text is a phrase to show as it stands, or a key naming one the receiving end looks up and fills in from the parameters. Every message observed carried it clear."
+        },
+        {
+          "name": "audience",
+          "type": "i32",
+          "note": "Who the message reaches.",
+          "values": {
+            "0": {
+              "name": "everyone"
+            },
+            "1": {
+              "name": "team"
+            }
+          }
+        },
+        {
+          "name": "paramsLength",
+          "type": "u32",
+          "note": "How many bytes of the run that follows carry meaning."
+        },
+        {
+          "name": "textLength",
+          "type": "u32",
+          "note": "The length of the text, counted in bytes and excluding the byte that ends it. A single byte holds it, so text runs no further than 255 bytes and a whole message no further than 310."
+        },
+        {
+          "name": "params",
+          "type": "bytes",
+          "size": 32,
+          "note": "Always thirty two bytes, holding text that ends at a zero byte, which is what fills in a key. A client leaves whatever it is not using as it found it, so those bytes carry memory never written for this message and differ between two messages otherwise alike. A receiving end reads to the first zero byte rather than to the length beside it, so it reads past that length when the run holds no zero byte."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "textLength",
+          "note": "A receiving end reads to the byte that ends the text rather than to the length beside it."
+        },
+        {
+          "name": "terminator",
+          "type": "bytes",
+          "size": 1,
+          "note": "A zero byte closing the text. A receiving end depends on it, since it is what stops the read."
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "chat",
       "command": 104,

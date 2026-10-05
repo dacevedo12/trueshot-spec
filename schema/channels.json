@@ -36,6 +36,12 @@
           "note": "State that a following message supersedes, such as positions and unit properties. Losing one costs nothing where the next corrects it, which is what the messages recorded here are for."
         },
         {
+          "name": "chat",
+          "id": 5,
+          "family": "session",
+          "note": "Text players send each other during a match. Messages between players outside a match do not travel on this connection at all."
+        },
+        {
           "name": "roster",
           "id": 7,
           "family": "session",
