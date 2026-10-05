@@ -1,0 +1,47 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ParticlesCreated",
+  "version": "4.17.0.267",
+  "note": "Taken from a server a client accepted. The client drew the flash particle at the champion. Sent with target and bound-to zero it drew nothing; the package made no difference.",
+  "bytes": "87 00000000 018d10110669e358002000000000000000000001010000400150004001000040010000400000000021f300000000adf221f300000000adf221f300000000adf200000000000000000000803f000000000000803f",
+  "fields": {
+    "command": 135,
+    "netId": 0,
+    "extendedCommand": null,
+    "groupCount": 1,
+    "groups": [
+      {
+        "package": 101781645,
+        "particle": 5825385,
+        "flags": 32,
+        "targetBone": 0,
+        "bone": 0,
+        "particleCount": 1,
+        "particles": [
+          {
+            "target": 1073741825,
+            "particle": 1073762305,
+            "caster": 1073741825,
+            "boundTo": 1073741825,
+            "unknown1": 0,
+            "atX": -3295,
+            "atY": 0,
+            "atZ": -3411,
+            "towardX": -3295,
+            "towardY": 0,
+            "towardZ": -3411,
+            "ownerX": -3295,
+            "ownerY": 0,
+            "ownerZ": -3411,
+            "facingX": 0,
+            "facingY": 0,
+            "facingZ": 1,
+            "runningFor": 0,
+            "scale": 1
+          }
+        ]
+      }
+    ]
+  }
+}
