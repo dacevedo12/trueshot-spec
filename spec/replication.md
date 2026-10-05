@@ -133,6 +133,8 @@ The two sets of slots that can be cast from read the way their names say. Bit 2 
 Spell costs are keyed by slot: bit 8 carries what the spell in slot 0 costs,
 bit 9 slot 1, bit 10 slot 2 and bit 11 slot 3. Bits 12 to 27 belong to the same run and hold zero in everything observed, so which slots they answer to is not settled. Captures settle this outright. Of the requests captured to grow a spell, seventeen were followed by a change to a cost, and each time the change sat at the bit eight above the slot asked for, across all four slots.
 
+What a champion is doing, bit 0 of the first group, reads 0x800007 on every unit captured. A client sent its own champion's value with bit 0, 1, 2 or 23 cleared, or with bit 3 set, shows no change, and the player still moves, strikes and casts as before.
+
 Bits 6 and 7 are not the first two of that run: they hold the points a champion has for evolving a spell and the set of spells that have evolved. One mask sets bits 8 to 27 together, carrying zero at every place no spell fills, and leaves 6 and 7 clear. Where captured traffic does set them, each carries zero, and every such run reads exactly with both counted and fails with both measured.
 
 Damage by striking reads from 54.67 to 115.3, and armour from 32.38 to 90.38; three values above 100000 also appear for armour, which nothing observed explains. How far a champion strikes from reads 150 for one and 550 for another, and how fast it moves reads 325, 340, 370 and 600.
