@@ -21,9 +21,9 @@
           "note": "Which effect, by the number its name gives, as spec/messages.md works it out."
         },
         {
-          "name": "runningFor",
+          "name": "timeLeft",
           "type": "f32",
-          "note": "How far into its run the effect was taken off, in seconds. Values a shade below zero are observed."
+          "note": "How long the effect had left to run when it was taken off, in seconds. An effect taken off because its run is over carries about zero, and a shade below zero is observed."
         }
       ]
     }

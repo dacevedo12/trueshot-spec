@@ -21,9 +21,9 @@
           "note": "How many are stacked there now."
         },
         {
-          "name": "lasts",
+          "name": "timeLeft",
           "type": "f32",
-          "note": "How long it runs in total, in seconds."
+          "note": "How long it has left to run, in seconds. With runningFor it adds up to the whole run the effect was added with."
         },
         {
           "name": "runningFor",

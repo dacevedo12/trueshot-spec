@@ -21,7 +21,7 @@
     {
       "name": "level",
       "type": "u8",
-      "note": "The level the spell stands at."
+      "note": "The rank the spell stands at, counting from 1: a spell at its first rank carries 1, and none observed carries 0."
     },
     {
       "name": "attackSpeed",
