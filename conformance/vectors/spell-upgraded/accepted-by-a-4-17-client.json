@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SpellUpgraded",
+  "version": "4.17.0.267",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "15 01000040 000102",
+  "fields": {
+    "command": 21,
+    "netId": 1073741825,
+    "extendedCommand": null,
+    "slot": 0,
+    "level": 1,
+    "pointsLeft": 2
+  }
+}

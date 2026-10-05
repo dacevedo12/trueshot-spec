@@ -4,6 +4,63 @@
   "note": "What a client sends to cast something from a slot, at a point or at a unit. The header names the sender's champion.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "requests",
+      "command": 154,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "slot",
+              "width": 6,
+              "note": "Which slot is being cast from: 0, 1 and 2 for the champion's first three spells in everything observed."
+            },
+            {
+              "name": "unknown1",
+              "width": 1,
+              "note": "Purpose undetermined. Clear in everything observed."
+            },
+            {
+              "name": "unknown2",
+              "width": 1,
+              "note": "Purpose undetermined. Set in everything observed, for a cast begun from a key and for one begun by clicking the panel alike."
+            }
+          ]
+        },
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "A point on the ground the cast is described by, along one axis, in world units."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "The same point, along the other axis."
+        },
+        {
+          "name": "endX",
+          "type": "f32",
+          "note": "A second point, along one axis. Every cast observed carried the same point twice, so nothing shows which of the two is where the cast begins and which is where it is aimed."
+        },
+        {
+          "name": "endZ",
+          "type": "f32",
+          "note": "The second point, along the other axis."
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The network object aimed at, or zero where the cast is aimed at ground."
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "requests",
       "command": 154,
