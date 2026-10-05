@@ -4,6 +4,80 @@
   "note": "What a server sends to say something happened that the whole match is told about. What sort of thing is named first, and the sort settles what follows. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 69,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "event",
+          "type": "u8",
+          "note": "What sort of thing happened, and so which shape follows. Each name says what the sort is sent alongside, and each note what a client shows for it; the text of a notice that carries a map is the one that map gives it.",
+          "values": {
+            "31": {
+              "name": "inhibitorDied",
+              "note": "Sent as an inhibitor falls, with that inhibitor as source and the unit credited with it as subject. A client on map 1, sent it naming its champion with the fifty six bytes after it zero, puts up a notice whose text it lacks, showing that text's own name instead."
+            },
+            "71": {
+              "name": "playerLeft",
+              "note": "Sent as a player's client leaves the match, naming that player's champion as subject. A client announces that a player has quit; sent it naming a champion whose seat's name it does not hold, it names an unknown player."
+            },
+            "118": {
+              "name": "minionsSpawned",
+              "note": "Sent once, as the first minions come out. A client announces that minions have spawned."
+            },
+            "119": {
+              "name": "welcome",
+              "note": "Sent once, early in a match. A client announces the welcome for the map carried."
+            },
+            "120": {
+              "name": "startNoticeTwo",
+              "note": "Sent once, after welcome. A client announces the second notice for the map carried; on map 1 that minions spawn in thirty seconds."
+            },
+            "121": {
+              "name": "startNoticeThree",
+              "note": "A client on map 1 puts up a notice whose text it lacks, showing that text's own name instead."
+            },
+            "127": {
+              "name": "nexusIdle",
+              "note": "A client shows no notice for it."
+            }
+          }
+        },
+        {
+          "name": "source",
+          "type": "u32",
+          "note": "The unit the thing is credited to, or zero where none is."
+        },
+        {
+          "name": "subject",
+          "type": "u32",
+          "note": "The unit the thing happened to, or zero where none is named."
+        },
+        {
+          "name": "map",
+          "type": "u32",
+          "note": "Which map it happened on. It travels only with the three sorts that carry it.",
+          "present": {
+            "when": "event",
+            "equals": [119, 120, 121]
+          }
+        },
+        {
+          "name": "further",
+          "type": "bytes",
+          "size": 56,
+          "note": "More that comes with an inhibitor falling. Zero in everything observed, and what it holds is not recorded here.",
+          "present": {
+            "when": "event",
+            "equals": 31
+          }
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "events",
       "command": 69,

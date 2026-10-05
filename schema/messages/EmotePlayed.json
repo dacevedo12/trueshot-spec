@@ -4,6 +4,21 @@
   "note": "What a server sends to say a unit played an emote. The header names the champion playing the emote.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 66,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "emote",
+          "type": "u8",
+          "note": "Which emote, by the number the client knows it as. A client plays an animation on the champion for 0, 1 and 2, a different one each, and none for 3."
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "events",
       "command": 66,

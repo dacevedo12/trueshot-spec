@@ -1,0 +1,22 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ChampionDied",
+  "version": "4.17.0.267",
+  "note": "Taken from a server a client accepted. The client greyed the screen, emptied the champion's health and counted down from 15.",
+  "bytes": "5e 01000040 010000400000000000000000000070410000",
+  "fields": {
+    "command": 94,
+    "netId": 1073741825,
+    "extendedCommand": null,
+    "killer": 1073741825,
+    "damageType": 0,
+    "damageSource": 0,
+    "stayDown": 15,
+    "how": {
+      "unknown1": 0,
+      "unknown": 0
+    },
+    "kind": 0
+  }
+}

@@ -4,6 +4,31 @@
   "note": "What a server sends to put a champion back on the field. The header names the unit this is about.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 47,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where it returns, along one ground axis, in world units."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where it returns, along the other, in world units."
+        },
+        {
+          "name": "resource",
+          "type": "f32",
+          "note": "What its spendable resource stands at on return."
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "events",
       "command": 47,

@@ -4,6 +4,53 @@
   "note": "What a server sends to turn a unit to face a direction. The header names the unit acting.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 80,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "towardX",
+          "type": "f32",
+          "note": "The direction faced, along one ground axis."
+        },
+        {
+          "name": "towardY",
+          "type": "f32",
+          "note": "The direction faced, in height."
+        },
+        {
+          "name": "towardZ",
+          "type": "f32",
+          "note": "The direction faced, along the other ground axis."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "turnOverTime",
+              "width": 1,
+              "note": "Set where the turn takes the time named below rather than happening at once. Set in everything observed."
+            },
+            {
+              "name": "unknown",
+              "width": 7,
+              "note": "Observed clear."
+            }
+          ]
+        },
+        {
+          "name": "turnTime",
+          "type": "f32",
+          "note": "How long the turn takes, in seconds."
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "events",
       "command": 80,
