@@ -4,6 +4,44 @@
   "note": "What a server sends to say a unit is casting a spell. The header names the unit casting, as the casting inside does.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 181,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u32",
+          "note": "The name this casting is stated against."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "unknown1",
+              "width": 1,
+              "note": "Purpose undetermined."
+            },
+            {
+              "name": "unknown",
+              "width": 7,
+              "note": "Observed clear."
+            }
+          ]
+        },
+        {
+          "name": "cast",
+          "type": "struct",
+          "struct": "SpellCast",
+          "note": "The casting."
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "events",
       "command": 181,

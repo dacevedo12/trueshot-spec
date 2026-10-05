@@ -4,6 +4,53 @@
   "note": "What a server sends to set how long until one of a unit's spells is ready. The header names the unit this is about.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 133,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "speakWhenReady",
+              "width": 1,
+              "note": "Set where the unit says something once the wait is over. Clear in everything observed."
+            },
+            {
+              "name": "summonerSpell",
+              "width": 1,
+              "note": "Set where the slot is a summoner slot rather than one of the unit's own. Clear in everything observed."
+            },
+            {
+              "name": "unknown",
+              "width": 6,
+              "note": "Observed clear."
+            }
+          ]
+        },
+        {
+          "name": "timeLeft",
+          "type": "f32",
+          "note": "How long is left, in seconds. A client counts down from it on the slot."
+        },
+        {
+          "name": "outOf",
+          "type": "f32",
+          "note": "The length the client shows that remainder against, in seconds."
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "events",
       "command": 133,

@@ -1,0 +1,62 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SpellCastAnswer",
+  "version": "4.17.0.267",
+  "note": "Taken from a server a client accepted. The client put its champion into the cast and showed a bar named for the spell.",
+  "bytes": "b5 01000040 01000000006b0044407f0100010040010000803f0100004001000040a2b50c9c010100402170614400000000b3aca3442170614400000000b3aca3440100000000000000803e000000000000803e00008040000000000000000000000000c843000000000000c8430100000000000000",
+  "fields": {
+    "command": 181,
+    "netId": 1073741825,
+    "extendedCommand": null,
+    "syncId": 1,
+    "how": {
+      "unknown1": 0,
+      "unknown": 0
+    },
+    "cast": {
+      "size": 107,
+      "spell": 25116740,
+      "cast": 1073742080,
+      "level": 1,
+      "attackSpeed": 1,
+      "caster": 1073741825,
+      "chainOwner": 1073741825,
+      "package": 2618078626,
+      "missile": 1073742081,
+      "targetX": 901.7520141601562,
+      "targetY": 0,
+      "targetZ": 1309.3968505859375,
+      "targetEndX": 901.7520141601562,
+      "targetEndY": 0,
+      "targetEndZ": 1309.3968505859375,
+      "hitCount": 1,
+      "hits": [
+        {
+          "unit": 0,
+          "result": 0
+        }
+      ],
+      "castTime": 0.25,
+      "extraCastTime": 0,
+      "totalTime": 0.25,
+      "cooldown": 4,
+      "startedAt": 0,
+      "how": {
+        "basicAttack": 0,
+        "secondBasicAttack": 0,
+        "forced": 0,
+        "overrideCastPosition": 0,
+        "clicked": 0,
+        "unknown": 0
+      },
+      "slot": 0,
+      "cost": 0,
+      "launchX": 400,
+      "launchY": 0,
+      "launchZ": 400,
+      "ammoUsed": 1,
+      "ammoRecharge": 0
+    }
+  }
+}
