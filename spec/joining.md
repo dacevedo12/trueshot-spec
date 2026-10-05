@@ -69,8 +69,8 @@ client given a run of `SpawnStart`, its own seat's `CreateChampion` and
 and one `ClockSync`, and no `MatchStarted`, it enters play: it shows its
 champion's portrait, health, resource and spells, and goes on reporting where
 its view sits. It does not draw the champion itself, which nothing in such a
-run places on the map. A 4.17 client given the same run with an `EnterSight` for its
-champion after the `CreateChampion` draws the champion where that message
+run places on the map. A 4.17.0.267 or 4.20.0.315 client given the same run with an
+`EnterSight` for its champion after the `CreateChampion` draws the champion where that message
 places it, with its name and health bar over it, and an `EnterLocalSight` is
 not needed for that.
 
