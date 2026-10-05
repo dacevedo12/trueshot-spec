@@ -4,6 +4,56 @@
   "note": "What a server sends to put a unit on the field from the place its side sends them out of. It arrives on its own and also inside EnterSight. The header names the unit this is about.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 3,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The name the unit answers to, so later messages can name it."
+        },
+        {
+          "name": "node",
+          "type": "u8",
+          "note": "Which network node the unit belongs to. A client reads it apart from the name beside it rather than as that name's leading byte."
+        },
+        {
+          "name": "barracks",
+          "type": "u32",
+          "note": "The place it came out of, by the identifier its name gives as spec/messages.md works it out. On map 1 that is a spawn point such as __P_Order_Spawn_Barracks__C01, not the inhibitor named Barracks_T1_C1: named by the inhibitor, a client creates nothing."
+        },
+        {
+          "name": "wave",
+          "type": "u8",
+          "note": "Which run of units it belongs to."
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What sort of unit it is."
+        },
+        {
+          "name": "damageBonus",
+          "type": "i16",
+          "note": "What is added to the damage it deals."
+        },
+        {
+          "name": "healthBonus",
+          "type": "i16",
+          "note": "What is added to the health it holds."
+        },
+        {
+          "name": "level",
+          "type": "u8",
+          "note": "The level it starts at."
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "events",
       "command": 3,

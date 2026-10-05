@@ -318,20 +318,26 @@ finishing with every bit inverted, so the nine bytes `123456789` give
 Every identifier with that top byte in the captures behind this specification
 is one of these:
 
-| Name             | Identifier   | `map`         |
-| ---------------- | ------------ | ------------- |
-| `Barracks_T1_C1` | `0xFF4A20F1` | 1, 11, 12     |
-| `Barracks_T1_L1` | `0xFFD23C3E` | 1, 10, 11     |
-| `Barracks_T1_R1` | `0xFF9303E1` | 1, 10, 11     |
-| `Barracks_T2_C1` | `0xFFFF8F1F` | 1, 11, 12     |
-| `Barracks_T2_L1` | `0xFF6793D0` | 1, 10, 11     |
-| `Barracks_T2_R1` | `0xFF26AC0F` | 1, 10, 11     |
-| `ChaosShop01`    | `0xFF3A98D9` | 12            |
-| `chaosShop01`    | `0xFFA6170E` | 1, 8, 10, 11  |
-| `HQ_T1`          | `0xFFF97DB5` | 1, 10, 11, 12 |
-| `HQ_T2`          | `0xFFF02C0F` | 1, 10, 11, 12 |
-| `OrderShop01`    | `0xFF8C490C` | 12            |
-| `orderShop01`    | `0xFF10C6DB` | 1, 8, 11      |
+| Name                            | Identifier   | `map`         |
+| ------------------------------- | ------------ | ------------- |
+| `Barracks_T1_C1`                | `0xFF4A20F1` | 1, 11, 12     |
+| `Barracks_T1_L1`                | `0xFFD23C3E` | 1, 10, 11     |
+| `Barracks_T1_R1`                | `0xFF9303E1` | 1, 10, 11     |
+| `Barracks_T2_C1`                | `0xFFFF8F1F` | 1, 11, 12     |
+| `Barracks_T2_L1`                | `0xFF6793D0` | 1, 10, 11     |
+| `Barracks_T2_R1`                | `0xFF26AC0F` | 1, 10, 11     |
+| `__P_Order_Spawn_Barracks__C01` | `0xFFB77171` | 1             |
+| `ChaosShop01`                   | `0xFF3A98D9` | 12            |
+| `chaosShop01`                   | `0xFFA6170E` | 1, 8, 10, 11  |
+| `HQ_T1`                         | `0xFFF97DB5` | 1, 10, 11, 12 |
+| `HQ_T2`                         | `0xFFF02C0F` | 1, 10, 11, 12 |
+| `OrderShop01`                   | `0xFF8C490C` | 12            |
+| `orderShop01`                   | `0xFF10C6DB` | 1, 8, 11      |
+
+The minions a side sends out come from spawn points rather than from the
+buildings above. On map 1 one of them is `__P_Order_Spawn_Barracks__C01`, and a
+4.17.0.267 client sent `SpawnFromBarracks` naming it puts a minion on the field;
+named by `Barracks_T1_C1`, the inhibitor in front of it, it creates nothing.
 
 No message creates these objects, so nothing a server sends could give a client
 a different identifier for one. A server MUST name each by the identifier its

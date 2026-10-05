@@ -1,0 +1,22 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "UnitDied",
+  "version": "4.17.0.267",
+  "note": "Taken from a server a client accepted. The minion fell and was taken off the field.",
+  "bytes": "9e 01100040 010000400000000000000000000000000000",
+  "fields": {
+    "command": 158,
+    "netId": 1073745921,
+    "extendedCommand": null,
+    "killer": 1073741825,
+    "damageType": 0,
+    "damageSource": 0,
+    "stayDown": 0,
+    "how": {
+      "unknown1": 0,
+      "unknown": 0
+    },
+    "kind": 0
+  }
+}

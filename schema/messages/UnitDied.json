@@ -4,6 +4,58 @@
   "note": "What a server sends to say a unit died, to everyone who can see it. The header names the unit this is about.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 158,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "killer",
+          "type": "u32",
+          "note": "The unit credited with the death."
+        },
+        {
+          "name": "damageType",
+          "type": "u32",
+          "note": "What sort of damage the death came from. Zero in everything observed."
+        },
+        {
+          "name": "damageSource",
+          "type": "u32",
+          "note": "Where that damage came from. Zero in everything observed."
+        },
+        {
+          "name": "stayDown",
+          "type": "f32",
+          "note": "How long the unit stays down, in seconds. Zero in everything observed."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "unknown1",
+              "width": 1,
+              "note": "Purpose undetermined. Clear in everything observed."
+            },
+            {
+              "name": "unknown",
+              "width": 7,
+              "note": "Clear in everything observed."
+            }
+          ]
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What sort of death it is. Zero in everything observed. Sent about a minion in sight, a client plays its fall and then takes it off the field."
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "events",
       "command": 158,
