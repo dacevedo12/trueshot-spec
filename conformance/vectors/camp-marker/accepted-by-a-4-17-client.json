@@ -1,0 +1,22 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "CampMarker",
+  "version": "4.17.0.267",
+  "note": "Taken from a server a client accepted. A monster created for this camp afterwards was added to it without failure.",
+  "bytes": "fe 000000002201 00802244000000000000e1434c657373657243616d70000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000024a000000000000000000",
+  "fields": {
+    "command": 254,
+    "netId": 0,
+    "extendedCommand": 290,
+    "x": 650,
+    "y": 0,
+    "z": 450,
+    "icon": "LesserCamp",
+    "index": 2,
+    "revealEvent": 74,
+    "side": 0,
+    "timerKind": 0,
+    "expires": 0
+  }
+}
