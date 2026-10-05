@@ -4,6 +4,38 @@
   "note": "What a client sends to start a paused match again. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "requests",
+      "command": 10,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "Which seat asked."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "delayed",
+              "width": 1,
+              "note": "Set where the match is to start again after a countdown rather than at once."
+            },
+            {
+              "name": "unknown",
+              "width": 7,
+              "note": "Purpose undetermined. A client leaves these as it found them, so they carry values it never wrote for this message."
+            }
+          ]
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "requests",
       "command": 10,
