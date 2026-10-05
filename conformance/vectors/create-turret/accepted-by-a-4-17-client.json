@@ -1,0 +1,21 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "CreateTurret",
+  "version": "4.17.0.267",
+  "note": "Taken from inside an EnterSight a client accepted. The client drew the turret where that EnterSight placed it, with a health bar over it.",
+  "bytes": "9d 05000040 05000040405475727265745f54315f435f30325f410000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000002",
+  "fields": {
+    "command": 157,
+    "netId": 1073741829,
+    "extendedCommand": null,
+    "turret": 1073741829,
+    "node": 64,
+    "name": "Turret_T1_C_02_A",
+    "how": {
+      "targetable": 1,
+      "unknown": 0
+    },
+    "targetableBy": 33554432
+  }
+}

@@ -4,6 +4,113 @@
   "note": "What a server sends to place a region on the ground: a patch that grants sight, blocks the way, or grows cover. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 35,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "The side the region belongs to."
+        },
+        {
+          "name": "kind",
+          "type": "i32",
+          "note": "What sort of region it is."
+        },
+        {
+          "name": "owner",
+          "type": "i32",
+          "note": "The seat the region answers to. Zero in everything observed."
+        },
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit the region follows, or zero where it stands still."
+        },
+        {
+          "name": "marker",
+          "type": "u32",
+          "note": "The unit standing in for the region itself, or zero where none does."
+        },
+        {
+          "name": "sightFrom",
+          "type": "u32",
+          "note": "The unit whose sight the region grants, or zero."
+        },
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where the region sits, along one ground axis, in world units."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where it sits, along the other, in world units."
+        },
+        {
+          "name": "lifetime",
+          "type": "f32",
+          "note": "How long it lasts, in seconds."
+        },
+        {
+          "name": "collisionRadius",
+          "type": "f32",
+          "note": "How far out it blocks the way, in world units."
+        },
+        {
+          "name": "grassRadius",
+          "type": "f32",
+          "note": "How far out it grows cover, in world units."
+        },
+        {
+          "name": "sizeMultiplier",
+          "type": "f32",
+          "note": "What its stated radius is scaled by."
+        },
+        {
+          "name": "sizeAdditive",
+          "type": "f32",
+          "note": "What is added to its stated radius after scaling, in world units."
+        },
+        {
+          "name": "does",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "block",
+              "width": 1,
+              "note": "Set where the region blocks the way. Set in everything observed."
+            },
+            {
+              "name": "grantSight",
+              "width": 1,
+              "note": "Set where it grants sight. Set in everything observed."
+            },
+            {
+              "name": "revealHidden",
+              "width": 1,
+              "note": "Set where it shows units that are hiding. Set in everything observed."
+            },
+            {
+              "name": "unknown",
+              "width": 5,
+              "note": "Observed clear."
+            }
+          ]
+        },
+        {
+          "name": "baseRadius",
+          "type": "f32",
+          "note": "The radius the three size figures above are applied to, in world units."
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "events",
       "command": 35,

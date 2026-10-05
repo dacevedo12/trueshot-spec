@@ -1,0 +1,33 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "RegionAdded",
+  "version": "4.17.0.267",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "23 00000000 64000000feffffff000000000500004042000040000000002206dd44e5aec6440050c346cdccb042000000000000803f000000000700004844",
+  "fields": {
+    "command": 35,
+    "netId": 0,
+    "extendedCommand": null,
+    "side": 100,
+    "kind": -2,
+    "owner": 0,
+    "unit": 1073741829,
+    "marker": 1073741890,
+    "sightFrom": 0,
+    "atX": 1768.191650390625,
+    "atZ": 1589.4654541015625,
+    "lifetime": 25000,
+    "collisionRadius": 88.4000015258789,
+    "grassRadius": 0,
+    "sizeMultiplier": 1,
+    "sizeAdditive": 0,
+    "does": {
+      "block": 1,
+      "grantSight": 1,
+      "revealHidden": 1,
+      "unknown": 0
+    },
+    "baseRadius": 800
+  }
+}

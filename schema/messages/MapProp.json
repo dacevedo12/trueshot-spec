@@ -4,6 +4,125 @@
   "note": "What a server sends to place a prop on the map: a thing that stands there and is looked at rather than one that acts. In what order the three turns apply is not recorded here. The header carries zero or names the object this is about, and a client accepted both.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 208,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "prop",
+          "type": "u32",
+          "note": "The name the prop answers to, so later messages can name it."
+        },
+        {
+          "name": "node",
+          "type": "u8",
+          "note": "Which network node the object belongs to. A client reads it apart from the name beside it rather than as that name's leading byte."
+        },
+        {
+          "name": "skin",
+          "type": "i32",
+          "note": "Which look the prop wears."
+        },
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where the prop stands, along one ground axis, in world units."
+        },
+        {
+          "name": "atY",
+          "type": "f32",
+          "note": "Where the prop stands, in height, in world units."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where the prop stands, along the other ground axis, in world units."
+        },
+        {
+          "name": "rotationX",
+          "type": "f32",
+          "note": "An angle the prop is turned by about a ground axis, in degrees, from zero up to but not reaching 360. Zero for every prop observed."
+        },
+        {
+          "name": "rotationY",
+          "type": "f32",
+          "note": "An angle the prop is turned by about the upright axis, in degrees, from zero up to but not reaching 360."
+        },
+        {
+          "name": "rotationZ",
+          "type": "f32",
+          "note": "An angle the prop is turned by about the other ground axis, in degrees, from zero up to but not reaching 360. Zero for every prop observed."
+        },
+        {
+          "name": "offsetX",
+          "type": "f32",
+          "note": "What is added to where it stands, along one ground axis."
+        },
+        {
+          "name": "offsetY",
+          "type": "f32",
+          "note": "What is added to where it stands, in height."
+        },
+        {
+          "name": "offsetZ",
+          "type": "f32",
+          "note": "What is added to where it stands, along the other ground axis."
+        },
+        {
+          "name": "scaleX",
+          "type": "f32",
+          "note": "What its drawn size is scaled by, along one ground axis."
+        },
+        {
+          "name": "scaleY",
+          "type": "f32",
+          "note": "What its drawn size is scaled by, in height."
+        },
+        {
+          "name": "scaleZ",
+          "type": "f32",
+          "note": "What its drawn size is scaled by, along the other ground axis."
+        },
+        {
+          "name": "side",
+          "type": "u16",
+          "note": "The side it belongs to, or zero where it belongs to none."
+        },
+        {
+          "name": "rank",
+          "type": "u8",
+          "note": "How far it is advanced."
+        },
+        {
+          "name": "skillLevel",
+          "type": "u8",
+          "note": "What level the prop's own doings stand at. Zero in everything observed."
+        },
+        {
+          "name": "kind",
+          "type": "u32",
+          "note": "What sort of prop it is."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "What this prop is called, so a client can tell one from another. Written out in full and padded with zero bytes to the width above."
+        },
+        {
+          "name": "asset",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The name the client loads its art and sound under, written and padded as above."
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "events",
       "command": 208,
