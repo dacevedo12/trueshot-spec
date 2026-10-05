@@ -4,6 +4,53 @@
   "note": "What a server sends to set what sits in one of a unit's item slots. It answers no request: a client clears the slot named and puts what follows in its place whether or not anything asked for it, so a server sends it to units nobody is buying for. The header names the unit this is about.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 111,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "item",
+          "type": "u32",
+          "note": "Which item, by the number the client knows it as."
+        },
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "The slot it went to."
+        },
+        {
+          "name": "inSlot",
+          "type": "u8",
+          "note": "How many of it are in that slot now."
+        },
+        {
+          "name": "charges",
+          "type": "u8",
+          "note": "How many uses it carries."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "tellTheClient",
+              "width": 1,
+              "note": "Set where the client is to show the change. Clear in everything observed."
+            },
+            {
+              "name": "unknown",
+              "width": 7,
+              "note": "Observed clear."
+            }
+          ]
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "events",
       "command": 111,

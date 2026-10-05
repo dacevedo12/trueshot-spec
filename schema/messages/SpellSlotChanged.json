@@ -4,6 +4,60 @@
   "note": "What a server sends to change one thing about a spell already in a unit's slot. The kind settles what follows it, and only the kind that sets a name is recorded. The header names the unit this is about.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 23,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "which",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "slot",
+              "width": 6,
+              "note": "Which slot. A champion's own spells count from 0."
+            },
+            {
+              "name": "summonerSlots",
+              "width": 1,
+              "note": "Set where the slot counts among the summoner slots rather than the champion's own. Sent set with a summoner spell's name for slots 0 and 1, a client showed nothing in either summoner slot, so what it selects is not settled."
+            },
+            {
+              "name": "unknown",
+              "width": 1,
+              "note": "Clear in everything observed."
+            }
+          ]
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "Which thing about the spell is being changed, and so which shape follows. Only the kind that sets a name is recorded, and what follows any other is not recorded here.",
+          "values": {
+            "1": {
+              "name": "name"
+            }
+          }
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "The name the client loads the spell under, ended by a zero byte. Sent for the champion's slot 0 with the name of its fourth spell, a client showed that spell's icon in the slot.",
+          "present": {
+            "when": "kind",
+            "equals": 1,
+            "unseen": "absent"
+          }
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "events",
       "command": 23,
