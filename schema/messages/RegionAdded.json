@@ -19,7 +19,7 @@
         {
           "name": "kind",
           "type": "i32",
-          "note": "What sort of region it is."
+          "note": "What sort of region it is. 0 in everything observed. A client given −2 here logs a failure for each region it is sent."
         },
         {
           "name": "owner",
@@ -34,7 +34,7 @@
         {
           "name": "marker",
           "type": "u32",
-          "note": "The unit standing in for the region itself, or zero where none does."
+          "note": "The name the region answers to, which RegionRemoved names to take it away."
         },
         {
           "name": "sightFrom",
@@ -79,7 +79,7 @@
         {
           "name": "does",
           "type": "bits",
-          "size": 1,
+          "size": 4,
           "bits": [
             {
               "name": "block",
@@ -89,7 +89,7 @@
             {
               "name": "grantSight",
               "width": 1,
-              "note": "Set where it grants sight. Set in everything observed."
+              "note": "Set where it grants sight. Set in everything observed, and a client clears its map's cover over the region."
             },
             {
               "name": "revealHidden",
@@ -98,8 +98,8 @@
             },
             {
               "name": "unknown",
-              "width": 5,
-              "note": "Observed clear."
+              "width": 29,
+              "note": "Clear in everything observed."
             }
           ]
         },
