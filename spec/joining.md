@@ -63,6 +63,12 @@ carries:
 The order of those within a run differs from one run to another, and a client
 accepted every order observed.
 
+A run need not carry all of that. A 4.17.0.233 or 4.17.0.267 client given a
+run of `SpawnStart`, its own seat's `CreateChampion` and `SpawnEnd`, and
+nothing else, sends `ClientReady`. Answered with `StartGame` and one
+`ClockSync`, and no `MatchStarted`, it shows its champion on the map with its
+health, resource and spells, and goes on reporting where its view sits.
+
 Once `SpawnEnd` arrives, a client answers each `Replication` batch the run
 carried with a `TransientAck` naming that batch's `syncId`. It sends one answer
 for each batch, in the order the batches came, including a batch that repeats

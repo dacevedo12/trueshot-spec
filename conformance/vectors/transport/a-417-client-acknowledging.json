@@ -1,0 +1,15 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "transport",
+  "version": "4.17.0.267",
+  "note": "The header of a datagram a client emits once assigned peer 0. Bit 7 of the peer byte is clear, so the header ends after it and the sent time is absent.",
+  "bytes": "29 00",
+  "fields": {
+    "sessionId": 41,
+    "peer": {
+      "peerId": 0,
+      "sentTimeFlag": 0
+    },
+    "sentTime": null
+  }
+}

@@ -4,6 +4,38 @@
   "note": "What a server sends to say which champion a seat is playing, while the match is being put together.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "roster",
+      "command": 101,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "player",
+          "type": "i64",
+          "note": "The player this is about. It has a player identifier's width. In every capture its values equal the seat numbers, because the stand-in players there are numbered the same way, so the values alone do not tell the two apart."
+        },
+        {
+          "name": "skin",
+          "type": "i32",
+          "note": "Which look the champion wears."
+        },
+        {
+          "name": "assetLength",
+          "type": "u32",
+          "note": "How many bytes the text below holds, counting the zero byte that ends it."
+        },
+        {
+          "name": "asset",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "The name the client loads the champion's art and sound under, padded with zero bytes to the width above."
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "roster",
       "command": 101,

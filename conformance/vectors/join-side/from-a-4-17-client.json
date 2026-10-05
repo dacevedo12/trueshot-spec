@@ -1,0 +1,13 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "JoinSide",
+  "version": "4.17.0.233",
+  "note": "Taken from a client.",
+  "bytes": "64 0000000064000000",
+  "fields": {
+    "command": 100,
+    "seat": 0,
+    "side": 100
+  }
+}

@@ -4,6 +4,41 @@
   "note": "What a client sends about itself: what it has detected running alongside it, and which appearance it believes it is wearing. The header names the sender's champion.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "requests",
+      "command": 86,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "moduleOne",
+          "type": "u32",
+          "note": "One of three values a client reports about software it has detected alongside itself. Observed as zero."
+        },
+        {
+          "name": "moduleTwo",
+          "type": "u32",
+          "note": "The second of the three. Observed as zero."
+        },
+        {
+          "name": "moduleThree",
+          "type": "u32",
+          "note": "The third. Observed as zero."
+        },
+        {
+          "name": "appearance",
+          "type": "u32",
+          "note": "The appearance the client believes it is wearing, by the number it knows it as."
+        },
+        {
+          "name": "appearanceCheck",
+          "type": "u32",
+          "note": "A value standing for that appearance's content. A server takes neither this nor the appearance beside it on trust."
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "requests",
       "command": 86,

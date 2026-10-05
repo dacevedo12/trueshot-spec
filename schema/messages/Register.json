@@ -4,6 +4,49 @@
   "note": "What a client sends first. It arrives before the connection has a cipher state, so the payload travels in the clear apart from the proof.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "registration",
+      "command": 0,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "leading",
+          "type": "bytes",
+          "size": 3,
+          "note": "Purpose undetermined. A client emits bytes here that it never wrote for this message, so their content is not a fact about the protocol."
+        },
+        {
+          "name": "clientId",
+          "type": "i32",
+          "note": "Which seat in the match the sender occupies, counted from zero."
+        },
+        {
+          "name": "playerId",
+          "type": "i64",
+          "note": "Who the sender claims to be. The proof is what settles the claim."
+        },
+        {
+          "name": "version",
+          "type": "u32",
+          "note": "The build the client runs, with each part written out and run together, so 4.17.0.233 arrives as 41700233 and 4.17.0.267 as 41700267. Every request captured carries it, and the answer a server carries back repeats the same number."
+        },
+        {
+          "name": "proof",
+          "type": "i64",
+          "enciphered": true,
+          "note": "The player identifier and nothing else, enciphered under the key both ends already hold. Deciphering it and finding the identifier beside it is what shows the sender holds the key. In every request captured from a client, the eight bytes decipher to the player identifier the request carries."
+        },
+        {
+          "name": "trailing",
+          "type": "bytes",
+          "size": 4,
+          "note": "Purpose undetermined. A client emits bytes here that it never wrote for this message, so their content is not a fact about the protocol."
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "registration",
       "command": 0,

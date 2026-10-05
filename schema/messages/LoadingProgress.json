@@ -4,6 +4,58 @@
   "note": "What a client sends while a match loads, saying how far it has got. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "requests",
+      "command": 22,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "Which seat is reporting."
+        },
+        {
+          "name": "playerId",
+          "type": "i64",
+          "note": "Who is reporting. Observed as every bit set, which names nobody."
+        },
+        {
+          "name": "percent",
+          "type": "f32",
+          "note": "How far loading has got, from zero to one hundred."
+        },
+        {
+          "name": "eta",
+          "type": "f32",
+          "note": "How long the client expects still to take, in seconds."
+        },
+        {
+          "name": "status",
+          "type": "bits",
+          "size": 4,
+          "bits": [
+            {
+              "name": "count",
+              "width": 16,
+              "note": "Rises with every report, by more than one between reports that arrive one after another."
+            },
+            {
+              "name": "ping",
+              "width": 15,
+              "note": "Round trip time the client measures, in milliseconds."
+            },
+            {
+              "name": "loaded",
+              "width": 1,
+              "note": "Set in every report whose progress stands at one hundred, and in no other."
+            }
+          ]
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "requests",
       "command": 22,

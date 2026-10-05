@@ -4,6 +4,49 @@
   "note": "What a server answers a registration with, naming a player in the match and the seat they occupy. It shares its command value with the request it answers, which travels the other way, and it is one fixed size. Straight after a request a server sends one answer for every seat, and every one of them carries that request's build and proof back. A later answer for the registering player's own seat is one a server fills in itself.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "registration",
+      "command": 0,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "leading",
+          "type": "bytes",
+          "size": 3,
+          "note": "Purpose undetermined. It occupies the same three bytes a request uses, and a server is free to send zeros there."
+        },
+        {
+          "name": "clientId",
+          "type": "i32",
+          "note": "Which seat in the match the named player occupies, counted from zero."
+        },
+        {
+          "name": "playerId",
+          "type": "i64",
+          "note": "Who occupies that seat."
+        },
+        {
+          "name": "version",
+          "type": "u32",
+          "note": "The build the client said it runs, carried back to it. Where the answer follows a request it is the number that request carried: 41700233 and 41700267 in those observed."
+        },
+        {
+          "name": "proof",
+          "type": "bytes",
+          "size": 8,
+          "note": "The eight bytes a request fills with its proof, carried back. Where the answer follows a request it repeats what that request carried. Where it does not it is zero: a server states no proof of its own, so a receiving end takes nothing from it."
+        },
+        {
+          "name": "trailing",
+          "type": "bytes",
+          "size": 4,
+          "note": "Four bytes closing the record. Zero in everything observed."
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "registration",
       "command": 0,
