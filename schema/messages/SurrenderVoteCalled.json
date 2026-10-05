@@ -4,6 +4,68 @@
   "note": "What a server sends to open a surrender vote, or to report one already open. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 201,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "countAsYes",
+              "width": 1,
+              "note": "Set where the receiving seat is taken to have voted for. Set in everything observed."
+            },
+            {
+              "name": "openTheMenu",
+              "width": 1,
+              "note": "Set where the client shows the vote to the seat. Set in everything observed."
+            },
+            {
+              "name": "unknown",
+              "width": 6,
+              "note": "Observed clear."
+            }
+          ]
+        },
+        {
+          "name": "caller",
+          "type": "u32",
+          "note": "The unit that called the vote."
+        },
+        {
+          "name": "inFavour",
+          "type": "u8",
+          "note": "How many have voted for."
+        },
+        {
+          "name": "against",
+          "type": "u8",
+          "note": "How many have voted against."
+        },
+        {
+          "name": "seats",
+          "type": "u8",
+          "note": "How many seats may vote."
+        },
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "Which side is voting."
+        },
+        {
+          "name": "closesIn",
+          "type": "f32",
+          "note": "How long the vote stays open, in seconds."
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "events",
       "command": 201,

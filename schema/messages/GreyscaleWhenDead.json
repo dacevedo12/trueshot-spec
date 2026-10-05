@@ -4,6 +4,33 @@
   "note": "What a server sends to say whether a client draws the world without colour while its champion is down. The header names a champion: in the one payload observed, that of the player it was sent to.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 169,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "enabled",
+              "width": 1,
+              "note": "Set where the world is drawn without colour. Sent clear before a champion died, a client still drew the world without colour, so this alone does not turn that off."
+            },
+            {
+              "name": "unknown",
+              "width": 7,
+              "note": "Observed clear."
+            }
+          ]
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "events",
       "command": 169,
