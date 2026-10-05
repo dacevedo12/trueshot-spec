@@ -4,6 +4,21 @@
   "note": "What a client sends to say a batch of changes arrived, naming which batch. It is sent for a batch whose values the client dropped as well as for one it took. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "requests",
+      "command": 168,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u32",
+          "note": "Which batch is being acknowledged, as the batch named itself."
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "requests",
       "command": 168,

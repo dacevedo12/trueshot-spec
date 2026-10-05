@@ -139,6 +139,28 @@ Bits 6 and 7 are not the first two of that run: they hold the points a champion 
 
 Damage by striking reads from 54.67 to 115.3, and armour from 32.38 to 90.38; three values above 100000 also appear for armour, which nothing observed explains. How far a champion strikes from reads 150 for one and 550 for another, and how fast it moves reads 325, 340, 370 and 600.
 
+### What a 4.17 and a 4.20 client show from this table
+
+A 4.17.0.267 client reads a champion's values by this same table. Sent 200 and
+1000 at bits 0 and 2 of group 3 and 50 and 500 at bits 1 and 3, it
+shows health of 200 out of 1000 and resource of 50 out of 500. Sent 7 at bit
+13 of group 3 it shows level 7 on the portrait and over the health bar and offers the
+spell points that level brings, and sent 1234 at bit 0 of group 0 it
+shows 1234 gold. Sent 17, 22 and 33 at bits 6, 9 and 10 of group 1,
+1.5 at bit 19 of group 1 and 555 at bit 10 of group 3, the panel under its portrait
+shows ability power 17, armour 22, spell resistance 33, an attack speed of
+0.94, which is its own 0.625 times 1.5, and movement speed 555.
+
+The attack damage that panel shows is not bit 5 of group 1. A 4.17.0.267 and a 4.20.0.315
+client sent 111 at bit 5 and 10 at bit 14 both show 60: the client's own
+figure for the champion's level, which is 50 at level 1, with bit 14 added to
+it and drawn as a bonus.
+
+Until a champion's first batch arrives, the panel shows figures the client
+holds for that champion. Once one arrives, it shows the values batches carry,
+and armour, spell resistance, ability power and movement speed read 0 where no
+batch has carried them. Both versions behave alike in this.
+
 A client shows bits 19, 21, 28 and 29 of the first group back in its panel of
 champion statistics. Sent 0.5 at bit 19, it shows the champion's attack speed
 halved. Sent −0.1 at bit 21, it shows 10 percent cooldown reduction, and sent 0.2 it shows 20 percent, so the panel shows the size of that modifier whatever its sign. Sent 0.12
