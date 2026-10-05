@@ -4,6 +4,41 @@
   "note": "What a server sends to restate how many of a lasting effect are stacked on a unit. The header names the unit this is about.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 28,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot."
+        },
+        {
+          "name": "count",
+          "type": "u8",
+          "note": "How many are stacked there now."
+        },
+        {
+          "name": "timeLeft",
+          "type": "f32",
+          "note": "How long it has left to run, in seconds. With runningFor it adds up to the whole run the effect was added with."
+        },
+        {
+          "name": "runningFor",
+          "type": "f32",
+          "note": "How long it has already run, in seconds."
+        },
+        {
+          "name": "caster",
+          "type": "u32",
+          "note": "The unit that put it there."
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "events",
       "command": 28,

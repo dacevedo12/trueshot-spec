@@ -4,6 +4,58 @@
   "note": "What a server sends to say one unit hurt another. A client shows the figure and nothing more: the health it shows for the unit is what replication carries, and this message leaves it as it was. The header names the unit hurt, as target does.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 101,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "result",
+              "width": 3,
+              "note": "How the damage landed, and so what a client shows over the unit hurt. 4 shows the amount, 3 shows it as a critical strike, and 2 shows the word for a dodge in place of an amount."
+            },
+            {
+              "name": "unknown1",
+              "width": 1,
+              "note": "Purpose undetermined. Clear in everything observed."
+            },
+            {
+              "name": "kind",
+              "width": 2,
+              "note": "What sort of damage it is, which sets how a client colours the figure: 0 red, 1 purple and 2 white."
+            },
+            {
+              "name": "unknown",
+              "width": 2,
+              "note": "Purpose undetermined. Clear in everything observed."
+            }
+          ]
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit hurt."
+        },
+        {
+          "name": "source",
+          "type": "u32",
+          "note": "The unit that hurt it. A client shows the figure only where the header and both units here name units it holds: sent with either unit zero or unknown, or with the header zero, it shows nothing."
+        },
+        {
+          "name": "amount",
+          "type": "f32",
+          "note": "How much."
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "events",
       "command": 101,

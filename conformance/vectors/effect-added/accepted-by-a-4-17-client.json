@@ -1,0 +1,22 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "EffectAdded",
+  "version": "4.17.0.267",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "b7 01000040 050d01007edc750e8d101106000000000000a04101000040",
+  "fields": {
+    "command": 183,
+    "netId": 1073741825,
+    "extendedCommand": null,
+    "slot": 5,
+    "kind": 13,
+    "count": 1,
+    "hidden": 0,
+    "effect": 242605182,
+    "package": 101781645,
+    "runningFor": 0,
+    "lasts": 20,
+    "caster": 1073741825
+  }
+}

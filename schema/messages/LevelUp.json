@@ -4,6 +4,26 @@
   "note": "What a server sends when a unit gains a level. The header names the unit this is about. On its own, with no replication behind it, it is enough for a client to show the new level on the champion's portrait and offer the unspent points.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 63,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "level",
+          "type": "u8",
+          "note": "The level now reached."
+        },
+        {
+          "name": "pointsToSpend",
+          "type": "u8",
+          "note": "How many spell points are left unspent."
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "events",
       "command": 63,

@@ -1,0 +1,22 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "Damage",
+  "version": "4.17.0.267",
+  "note": "Taken from a server a client accepted. The client showed 111 in red over the champion.",
+  "bytes": "65 01000040 0401000040010000400000de42",
+  "fields": {
+    "command": 101,
+    "netId": 1073741825,
+    "extendedCommand": null,
+    "how": {
+      "result": 4,
+      "unknown1": 0,
+      "kind": 0,
+      "unknown": 0
+    },
+    "target": 1073741825,
+    "source": 1073741825,
+    "amount": 111
+  }
+}
