@@ -1,0 +1,55 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "EnterSight",
+  "version": "4.17.0.267",
+  "note": "Taken from a server a client accepted. The client drew the champion where it places it.",
+  "bytes": "ba 01000040 000000010000000000000000000000000100000006000000457a7265616c00000000000000000000000000000000803f0000000000000000000000000103010000000000c8430000c843000000000000803f",
+  "fields": {
+    "command": 186,
+    "netId": 1073741825,
+    "extendedCommand": null,
+    "carried": {
+      "size": 0,
+      "unknown": 0
+    },
+    "messages": [],
+    "itemCount": 0,
+    "items": [],
+    "hasShields": 1,
+    "magicShield": 0,
+    "physicalShield": 0,
+    "shield": 0,
+    "appearanceCount": 1,
+    "appearance": [
+      {
+        "assetSize": 6,
+        "asset": "Ezreal",
+        "skin": 0,
+        "how": {
+          "overrideSpells": 0,
+          "modelOnly": 0,
+          "replacePackage": 0,
+          "unknown": 0
+        },
+        "layer": 0
+      }
+    ],
+    "lookingAt": 0,
+    "lookKind": 0,
+    "lookX": 1,
+    "lookY": 0,
+    "lookZ": 0,
+    "effectStackCount": 0,
+    "effectStacks": [],
+    "isChampion": 1,
+    "movementKind": 3,
+    "syncId": 1,
+    "movement": null,
+    "movementAtSpeed": null,
+    "atX": 400,
+    "atZ": 400,
+    "facingX": 0,
+    "facingZ": 1
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "EnterSight",
+  "version": "4.17.0.267",
+  "note": "Taken from a server a client accepted. The client drew the champion at the path's first point and walked it along the path.",
+  "bytes": "ba 01000040 000000010000000000000000000000000100000006000000457a7265616c00000000000000000000000000000000803f00000000000000000000000001020100000004010000400021f3adf235f8c1f7",
+  "fields": {
+    "command": 186,
+    "netId": 1073741825,
+    "extendedCommand": null,
+    "carried": {
+      "size": 0,
+      "unknown": 0
+    },
+    "messages": [],
+    "itemCount": 0,
+    "items": [],
+    "hasShields": 1,
+    "magicShield": 0,
+    "physicalShield": 0,
+    "shield": 0,
+    "appearanceCount": 1,
+    "appearance": [
+      {
+        "assetSize": 6,
+        "asset": "Ezreal",
+        "skin": 0,
+        "how": {
+          "overrideSpells": 0,
+          "modelOnly": 0,
+          "replacePackage": 0,
+          "unknown": 0
+        },
+        "layer": 0
+      }
+    ],
+    "lookingAt": 0,
+    "lookKind": 0,
+    "lookX": 1,
+    "lookY": 0,
+    "lookZ": 0,
+    "effectStackCount": 0,
+    "effectStacks": [],
+    "isChampion": 1,
+    "movementKind": 2,
+    "syncId": 1,
+    "movement": {
+      "header": {
+        "hasTeleportToken": 0,
+        "pointCount": 2
+      },
+      "path": {
+        "unit": 1073741825,
+        "teleportToken": null,
+        "flags": [
+          {
+            "xIsStep": 0,
+            "zIsStep": 0
+          }
+        ],
+        "firstX": -3295,
+        "firstZ": -3411,
+        "steps": [
+          {
+            "xStep": null,
+            "xWhole": -1995,
+            "zStep": null,
+            "zWhole": -2111
+          }
+        ]
+      }
+    },
+    "movementAtSpeed": null,
+    "atX": null,
+    "atZ": null,
+    "facingX": null,
+    "facingZ": null
+  }
+}

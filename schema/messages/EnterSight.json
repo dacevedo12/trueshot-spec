@@ -4,6 +4,251 @@
   "note": "What a server sends when a unit comes into what a side can see. It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say. The header names the unit this is about.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 186,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "carried",
+          "type": "bits",
+          "size": 2,
+          "bits": [
+            {
+              "name": "size",
+              "width": 13,
+              "note": "How many bytes the messages below occupy in total."
+            },
+            {
+              "name": "unknown",
+              "width": 3,
+              "note": "Purpose undetermined. Clear in everything observed."
+            }
+          ]
+        },
+        {
+          "name": "messages",
+          "type": "array",
+          "size": "carried.size",
+          "note": "Whole messages of the same family, each behind its own length, that a client reads as though they had arrived on their own.",
+          "items": {
+            "name": "message",
+            "type": "struct",
+            "struct": "CarriedMessage"
+          }
+        },
+        {
+          "name": "itemCount",
+          "type": "u8",
+          "note": "How many items the unit holds."
+        },
+        {
+          "name": "items",
+          "type": "array",
+          "count": "itemCount",
+          "note": "The items themselves.",
+          "items": {
+            "name": "item",
+            "type": "struct",
+            "struct": "HeldItem"
+          }
+        },
+        {
+          "name": "hasShields",
+          "type": "u8",
+          "note": "Whether the three figures below follow. A zero leaves them out, and everything after them begins twelve bytes earlier.",
+          "values": {
+            "0": {
+              "name": "no"
+            },
+            "1": {
+              "name": "yes"
+            }
+          }
+        },
+        {
+          "name": "magicShield",
+          "type": "f32",
+          "note": "How much of the unit's shielding turns aside one sort of damage.",
+          "present": {
+            "when": "hasShields",
+            "unseen": "absent"
+          }
+        },
+        {
+          "name": "physicalShield",
+          "type": "f32",
+          "note": "How much turns aside the other.",
+          "present": {
+            "when": "hasShields",
+            "unseen": "absent"
+          }
+        },
+        {
+          "name": "shield",
+          "type": "f32",
+          "note": "How much turns aside either.",
+          "present": {
+            "when": "hasShields",
+            "unseen": "absent"
+          }
+        },
+        {
+          "name": "appearanceCount",
+          "type": "u32",
+          "note": "How many layers of look follow."
+        },
+        {
+          "name": "appearance",
+          "type": "array",
+          "count": "appearanceCount",
+          "note": "What the unit looks like, laid on in order.",
+          "items": {
+            "name": "layer",
+            "type": "struct",
+            "struct": "Appearance"
+          }
+        },
+        {
+          "name": "lookingAt",
+          "type": "u32",
+          "note": "What the unit is turned towards, or zero where it is turned towards a place instead."
+        },
+        {
+          "name": "lookKind",
+          "type": "u8",
+          "note": "What sort of thing it is turned towards."
+        },
+        {
+          "name": "lookX",
+          "type": "f32",
+          "note": "Which way the unit is turned, along one ground axis. The three together read as a direction rather than a place."
+        },
+        {
+          "name": "lookY",
+          "type": "f32",
+          "note": "Which way it is turned, in height."
+        },
+        {
+          "name": "lookZ",
+          "type": "f32",
+          "note": "Which way it is turned, along the other ground axis."
+        },
+        {
+          "name": "effectStackCount",
+          "type": "u32",
+          "note": "How many effect slots have more than one stacked in them."
+        },
+        {
+          "name": "effectStacks",
+          "type": "array",
+          "count": "effectStackCount",
+          "note": "Those slots and their counts.",
+          "items": {
+            "name": "stack",
+            "type": "struct",
+            "struct": "EffectStack"
+          }
+        },
+        {
+          "name": "isChampion",
+          "type": "u8",
+          "note": "Whether the unit is a champion.",
+          "values": {
+            "0": {
+              "name": "no"
+            },
+            "1": {
+              "name": "yes"
+            }
+          }
+        },
+        {
+          "name": "movementKind",
+          "type": "u8",
+          "note": "What the unit is doing on the ground, and so which shape follows. A champion stated as standing, with the place and facing below, is drawn there with its name and health bar over it. One stated as moving is drawn at the first point of its path and walks the rest.",
+          "values": {
+            "0": {
+              "name": "nothing"
+            },
+            "1": {
+              "name": "movingAtASpeed"
+            },
+            "2": {
+              "name": "moving"
+            },
+            "3": {
+              "name": "standing"
+            }
+          }
+        },
+        {
+          "name": "syncId",
+          "type": "u32",
+          "note": "The name this statement of movement answers to."
+        },
+        {
+          "name": "movement",
+          "type": "struct",
+          "struct": "Movement",
+          "note": "Where the unit is going. spec/movement.md says how a path is read.",
+          "present": {
+            "when": "movementKind",
+            "equals": 2
+          }
+        },
+        {
+          "name": "movementAtSpeed",
+          "type": "struct",
+          "struct": "MovementAtSpeed",
+          "note": "Where the unit is going, and how a server makes it travel. WaypointGroupAtSpeed carries the same shape.",
+          "present": {
+            "when": "movementKind",
+            "equals": 1,
+            "unseen": "present"
+          }
+        },
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where the unit stands, along one ground axis.",
+          "present": {
+            "when": "movementKind",
+            "equals": 3
+          }
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where it stands, along the other.",
+          "present": {
+            "when": "movementKind",
+            "equals": 3
+          }
+        },
+        {
+          "name": "facingX",
+          "type": "f32",
+          "note": "Which way it faces, along one ground axis.",
+          "present": {
+            "when": "movementKind",
+            "equals": 3
+          }
+        },
+        {
+          "name": "facingZ",
+          "type": "f32",
+          "note": "Which way it faces, along the other.",
+          "present": {
+            "when": "movementKind",
+            "equals": 3
+          }
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "events",
       "command": 186,
