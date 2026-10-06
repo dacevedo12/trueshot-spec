@@ -1,0 +1,26 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "WorldEvent",
+  "version": "4.17.0.267",
+  "note": "Taken from a recording of a match played on this version.",
+  "bytes": "45 00000000 9720000040b3730040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000013bcd4bc0000000000000000",
+  "fields": {
+    "command": 69,
+    "netId": 0,
+    "extendedCommand": null,
+    "event": 151,
+    "source": 1073741856,
+    "subject": 1073771443,
+    "map": null,
+    "further": null,
+    "kill": {
+      "gold": 0,
+      "assistCount": 0,
+      "assists": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      "skinHash": 3168058387,
+      "skin": 0,
+      "side": 0
+    }
+  }
+}

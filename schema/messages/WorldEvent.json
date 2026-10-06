@@ -43,6 +43,22 @@
             "127": {
               "name": "nexusIdle",
               "note": "A client shows no notice for it."
+            },
+            "151": {
+              "name": "dragonKilled",
+              "note": "Sent as the dragon falls, with the champion credited as source. The kill details below follow."
+            },
+            "152": {
+              "name": "dragonKilledWatched",
+              "note": "The same, as sent to clients watching the match. The kill details below follow."
+            },
+            "154": {
+              "name": "baronKilled",
+              "note": "Sent as Baron Nashor falls, with the champion credited as source. The kill details below follow."
+            },
+            "155": {
+              "name": "baronKilledWatched",
+              "note": "The same, as sent to clients watching the match. The kill details below follow."
             }
           }
         },
@@ -74,6 +90,53 @@
             "when": "event",
             "equals": 31
           }
+        },
+        {
+          "name": "kill",
+          "type": "record",
+          "present": {
+            "when": "event",
+            "equals": [151, 152, 154, 155]
+          },
+          "note": "What comes with a dragon or Baron Nashor falling.",
+          "fields": [
+            {
+              "name": "gold",
+              "type": "f32",
+              "note": "The gold the kill gives."
+            },
+            {
+              "name": "assistCount",
+              "type": "u32",
+              "note": "How many of the places below name a unit that helped."
+            },
+            {
+              "name": "assists",
+              "type": "array",
+              "count": 12,
+              "note": "Units that helped, twelve places; the rest hold zero.",
+              "items": {
+                "name": "assist",
+                "type": "u32",
+                "note": "One unit."
+              }
+            },
+            {
+              "name": "skinHash",
+              "type": "u32",
+              "note": "The number a look's name gives."
+            },
+            {
+              "name": "skin",
+              "type": "i32",
+              "note": "Which look."
+            },
+            {
+              "name": "side",
+              "type": "u32",
+              "note": "Which side."
+            }
+          ]
         }
       ]
     },

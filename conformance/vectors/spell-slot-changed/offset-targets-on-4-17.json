@@ -1,0 +1,25 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SpellSlotChanged",
+  "version": "4.17.0.267",
+  "note": "Taken from a recording of a match played on this version.",
+  "bytes": "17 1a000040 0306011a000040",
+  "fields": {
+    "command": 23,
+    "netId": 1073741850,
+    "extendedCommand": null,
+    "which": {
+      "slot": 3,
+      "summonerSlots": 0,
+      "unknown": 0
+    },
+    "kind": 6,
+    "name": null,
+    "targeting": null,
+    "range": null,
+    "icon": null,
+    "targetCount": 1,
+    "targets": [1073741850]
+  }
+}

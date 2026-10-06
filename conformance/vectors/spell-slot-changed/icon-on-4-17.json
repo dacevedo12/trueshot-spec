@@ -3,22 +3,22 @@
   "subject": "message",
   "message": "SpellSlotChanged",
   "version": "4.17.0.267",
-  "note": "Taken from a server a client accepted. The client showed the named spell's icon in the champion's first slot.",
-  "bytes": "17 01000040 0001457a7265616c5472756573686f744261727261676500",
+  "note": "Taken from a recording of a match played on this version.",
+  "bytes": "17 1f000040 030501",
   "fields": {
     "command": 23,
-    "netId": 1073741825,
+    "netId": 1073741855,
     "extendedCommand": null,
     "which": {
-      "slot": 0,
+      "slot": 3,
       "summonerSlots": 0,
       "unknown": 0
     },
-    "kind": 1,
-    "name": "EzrealTrueshotBarrage",
+    "kind": 5,
+    "name": null,
     "targeting": null,
     "range": null,
-    "icon": null,
+    "icon": 1,
     "targetCount": null,
     "targets": null
   }

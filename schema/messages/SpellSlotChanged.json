@@ -36,10 +36,26 @@
         {
           "name": "kind",
           "type": "u8",
-          "note": "Which thing about the spell is being changed, and so which shape follows. Only the kind that sets a name is recorded, and what follows any other is not recorded here.",
+          "note": "Which thing about the spell is being changed, and so which shape follows.",
           "values": {
+            "0": {
+              "name": "targeting",
+              "note": "Sets how the spell is aimed; one byte follows."
+            },
             "1": {
               "name": "name"
+            },
+            "2": {
+              "name": "range",
+              "note": "Sets how far it is cast; a float follows."
+            },
+            "5": {
+              "name": "icon",
+              "note": "Sets which icon it shows; one byte follows."
+            },
+            "6": {
+              "name": "offsetTargets",
+              "note": "Sets the units it is cast from; a count and that many units follow."
             }
           }
         },
@@ -51,8 +67,58 @@
           "note": "The name the client loads the spell under, ended by a zero byte. Sent for the champion's slot 0 with the name of its fourth spell, a client showed that spell's icon in the slot.",
           "present": {
             "when": "kind",
-            "equals": 1,
-            "unseen": "absent"
+            "equals": 1
+          }
+        },
+        {
+          "name": "targeting",
+          "type": "u8",
+          "present": {
+            "when": "kind",
+            "equals": 0
+          },
+          "note": "How the spell is aimed."
+        },
+        {
+          "name": "range",
+          "type": "f32",
+          "present": {
+            "when": "kind",
+            "equals": 2
+          },
+          "note": "How far the spell is cast."
+        },
+        {
+          "name": "icon",
+          "type": "u8",
+          "present": {
+            "when": "kind",
+            "equals": 5
+          },
+          "note": "Which icon the spell shows."
+        },
+        {
+          "name": "targetCount",
+          "type": "u8",
+          "present": {
+            "when": "kind",
+            "equals": 6
+          },
+          "note": "How many units follow."
+        },
+        {
+          "name": "targets",
+          "type": "array",
+          "count": "targetCount",
+          "present": {
+            "when": "kind",
+            "equals": 6
+          },
+          "note": "The units the spell is cast from.",
+          "items": {
+            "name": "target",
+            "type": "u32",
+            "note": "One unit."
           }
         }
       ]
