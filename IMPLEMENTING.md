@@ -33,6 +33,8 @@ with a guess and carry on. That is a defect worth reporting, and
    server sends most: what the values inside it are, which no layout reaches.
 6. [Watching a match](spec/spectating.md), which sets out how a server streams
    a recorded or running match to a client that watches over its connection.
+7. [The shop](spec/shop.md), which sets out what fills a client's shop, what it
+   asks for, and what a server answers.
 
 The transport is a delta on ENet 1.2.5, so building it means building on ENet
 or a port of it. Above the transport, every channel a capture behind this
