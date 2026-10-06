@@ -4,6 +4,36 @@
   "note": "What a client sends about a tip it has shown or dismissed. The header names the sender's champion.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "requests",
+      "command": 109,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "what",
+          "type": "u8",
+          "note": "What happened to the tip.",
+          "values": {
+            "0": {
+              "name": "clicked",
+              "note": "The player clicked the tip: once per tip, and only while no tip's dialogue is open."
+            },
+            "1": {
+              "name": "closed",
+              "note": "The player closed the tip's dialogue."
+            }
+          }
+        },
+        {
+          "name": "tip",
+          "type": "u32",
+          "note": "Which tip, as TipShown named it."
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "requests",
       "command": 109,

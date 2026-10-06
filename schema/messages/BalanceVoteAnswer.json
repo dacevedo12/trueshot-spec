@@ -1,0 +1,35 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "BalanceVoteAnswer",
+  "note": "What a client sends as its player answers a vote on evening out a match (BalanceVote), once per vote, from the vote's panel or by typing /equalize. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "requests",
+      "command": 251,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "vote",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "inFavour",
+              "width": 1,
+              "note": "Set for yes, clear for no."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Clear in everything observed."
+            }
+          ],
+          "note": "The answer."
+        }
+      ]
+    }
+  ]
+}

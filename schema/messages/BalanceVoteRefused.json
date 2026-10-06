@@ -1,0 +1,38 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "BalanceVoteRefused",
+  "note": "What a client sends as its player types /noequalize, where the version answer's features have bit 0 set, outside the tutorial: a vote against, laid out as BalanceVote with only its first fields filled. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "requests",
+      "command": 250,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "flags",
+          "type": "u8",
+          "note": "Zero: a vote against."
+        },
+        {
+          "name": "voter",
+          "type": "u32",
+          "note": "Zero."
+        },
+        {
+          "name": "unset",
+          "type": "array",
+          "count": 23,
+          "items": {
+            "name": "byte",
+            "type": "u8",
+            "note": "Whatever was there."
+          },
+          "note": "The rest of BalanceVote's layout, left as found: a server reads nothing from it."
+        }
+      ]
+    }
+  ]
+}

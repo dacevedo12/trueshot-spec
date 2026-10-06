@@ -1,0 +1,15 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "TipEvent",
+  "version": "4.17.0.267",
+  "note": "Taken from a client a server accepted.",
+  "bytes": "6d 01000040 0007000000",
+  "fields": {
+    "command": 109,
+    "netId": 1073741825,
+    "extendedCommand": null,
+    "what": 0,
+    "tip": 7
+  }
+}
