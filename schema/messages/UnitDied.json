@@ -19,12 +19,12 @@
         {
           "name": "damageType",
           "type": "u32",
-          "note": "What sort of damage the death came from. Zero in everything observed."
+          "note": "A client does not read it for this message."
         },
         {
           "name": "damageSource",
           "type": "u32",
-          "note": "Where that damage came from. Zero in everything observed."
+          "note": "A client does not read it for this message."
         },
         {
           "name": "stayDown",
@@ -37,23 +37,24 @@
           "size": 1,
           "bits": [
             {
-              "name": "unknown1",
+              "name": "standing",
               "width": 1,
-              "note": "Purpose undetermined. Clear in everything observed."
+              "note": "Set to leave the unit standing as a husk rather than dead: no time of death, and for a champion no death animation and no death screen. A turret kept after death behaves so whatever this says."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 7,
-              "note": "Clear in everything observed."
+              "note": "A client does not read these."
             }
           ]
         },
         {
           "name": "kind",
           "type": "u8",
-          "note": "What sort of death it is. Zero in everything observed. Sent about a minion in sight, a client plays its fall and then takes it off the field."
+          "note": "Which kill a client announces for killer: zero a neutral monster's, nonzero a minion's."
         }
-      ]
+      ],
+      "note": "Where killer names a unit it knows, a client announces the kill for that unit, then the one kind picks. Where the unit is not already dead, it cancels the unit's cast and attack, and only where killer is nonzero puts the unit down, by stayDown and standing."
     },
     {
       "from": "4.20.0.315",

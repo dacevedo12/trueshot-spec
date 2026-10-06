@@ -19,17 +19,17 @@
             {
               "name": "countAsYes",
               "width": 1,
-              "note": "Set where the receiving seat is taken to have voted for. Set in everything observed."
+              "note": "Read only where side is the client's own: set shows caller voting yes, clear voting no, opening the menu or not."
             },
             {
               "name": "openTheMenu",
               "width": 1,
-              "note": "Set where the client shows the vote to the seat. Set in everything observed."
+              "note": "Set where the vote opens: a client of side opens the vote's panel from seats and closesIn, which nothing else reads; every client is told a vote began, with caller, inFavour, against and side."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 6,
-              "note": "Observed clear."
+              "note": "A client does not read these."
             }
           ]
         },
@@ -63,7 +63,8 @@
           "type": "f32",
           "note": "How long the vote stays open, in seconds."
         }
-      ]
+      ],
+      "note": "A client ignores it unless its menu and its own champion both exist."
     },
     {
       "from": "4.20.0.315",

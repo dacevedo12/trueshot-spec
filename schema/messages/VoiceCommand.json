@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "VoiceCommand",
-  "note": "What a server sends to have a unit's voice called out. The header names the unit.",
+  "note": "What a server sends about a voice command a champion gave. A client takes it, on a champion only, and reads none of it. The header names the champion.",
   "revisions": [
     {
       "from": "4.17.0.233",
@@ -12,14 +12,14 @@
       "reliability": "reliable",
       "fields": [
         {
-          "name": "unknown1",
+          "name": "padding1",
           "type": "u16",
-          "note": "Purpose undetermined."
+          "note": "Padding before call. A client does not read it."
         },
         {
-          "name": "unknown2",
+          "name": "padding2",
           "type": "u8",
-          "note": "Purpose undetermined."
+          "note": "Padding before call. A client does not read it."
         },
         {
           "name": "call",
@@ -47,22 +47,22 @@
               "note": "Set where it marks a ping."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 6,
-              "note": "Purpose undetermined."
+              "note": "A client does not read these."
             }
           ],
           "note": "How it is shown."
         },
         {
-          "name": "unknown3",
+          "name": "padding3",
           "type": "u16",
-          "note": "Purpose undetermined."
+          "note": "Padding after flags. A client does not read it."
         },
         {
-          "name": "unknown4",
+          "name": "padding4",
           "type": "u8",
-          "note": "Purpose undetermined."
+          "note": "Padding after flags. A client does not read it."
         }
       ]
     }

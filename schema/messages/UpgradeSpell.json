@@ -24,12 +24,12 @@
             {
               "name": "evolve",
               "width": 1,
-              "note": "Set where the point changes the spell rather than raising it."
+              "note": "Set where the player spends an evolution point on the slot rather than levelling it."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 7,
-              "note": "Purpose undetermined. A client leaves these as it found them, so they carry values it never wrote for this message."
+              "note": "Always clear."
             }
           ]
         }

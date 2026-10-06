@@ -37,9 +37,9 @@
               "note": "Set where the reporting settings below are to be used."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 4,
-              "note": "A client does not read these."
+              "note": "Bit 4 is set aside for the scripted voice-over system, which a client takes from its own settings instead; a client reads none of these."
             }
           ]
         },
@@ -169,7 +169,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": 256,
-          "note": "A second such place, written and padded as above."
+          "note": "A second, test place to report to, written and padded as above."
         },
         {
           "name": "altReportingPath",
@@ -196,7 +196,7 @@
         {
           "name": "tipDuration",
           "type": "i8",
-          "note": "How long it holds the note up. What the figure counts is not recorded here."
+          "note": "Which of the display times in the client's own settings to hold the note up for, read only where tips are enabled and shown somewhere. tip, tipColour and tipDuration each name an entry; a client takes tip modulo its number of tips, and an entry missing (or a time not above zero) is an error, negated and tips cleared, returned so in ClientReady."
         },
         {
           "name": "tipFlags",

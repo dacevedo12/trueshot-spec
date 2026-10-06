@@ -18,7 +18,7 @@
           "values": {
             "31": {
               "name": "inhibitorDied",
-              "note": "Sent as an inhibitor falls, with that inhibitor as source and the unit credited with it as subject. A client on map 1, sent it naming its champion with the fifty six bytes after it zero, puts up a notice whose text it lacks, showing that text's own name instead."
+              "note": "Sent as an inhibitor falls, with that inhibitor as source and the unit credited with it as subject. A client calls out the kill, naming the killer, the inhibitor and the assisters, where it holds the inhibitor as a building and knows the killer. A client on map 1, sent it naming its champion with everything after it zero, puts up a notice whose text it lacks, showing that text's own name instead."
             },
             "71": {
               "name": "playerLeft",
@@ -82,13 +82,36 @@
           }
         },
         {
-          "name": "further",
-          "type": "bytes",
-          "size": 56,
-          "note": "More that comes with an inhibitor falling. Zero in everything observed, and what it holds is not recorded here.",
+          "name": "inhibitorGold",
+          "type": "f32",
           "present": {
             "when": "event",
             "equals": 31
+          },
+          "note": "Gold awarded for the inhibitor. A client does not read it."
+        },
+        {
+          "name": "inhibitorAssistCount",
+          "type": "u32",
+          "present": {
+            "when": "event",
+            "equals": 31
+          },
+          "note": "How many of the places below name an assister. A client names them where it is 0 to 11, and no assister from 12 up."
+        },
+        {
+          "name": "inhibitorAssists",
+          "type": "array",
+          "count": 12,
+          "present": {
+            "when": "event",
+            "equals": 31
+          },
+          "note": "Twelve places; those past inhibitorAssistCount are not read.",
+          "items": {
+            "name": "assister",
+            "type": "u32",
+            "note": "A champion that helped."
           }
         },
         {
