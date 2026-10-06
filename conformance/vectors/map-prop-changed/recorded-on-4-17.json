@@ -1,0 +1,22 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "MapPropChanged",
+  "version": "4.17.0.267",
+  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "d1 00000000 69646c65315f6265616d00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003000004001000000000000a8",
+  "fields": {
+    "command": 209,
+    "netId": 0,
+    "extendedCommand": null,
+    "name": "idle1_beam",
+    "first": 0,
+    "second": 0,
+    "prop": 1073741872,
+    "value": 1,
+    "change": 0,
+    "unknown1": 0,
+    "unknown2": 0,
+    "unknown3": 168
+  }
+}

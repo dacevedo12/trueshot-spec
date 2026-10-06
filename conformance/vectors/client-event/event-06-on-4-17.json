@@ -1,0 +1,18 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ClientEvent",
+  "version": "4.17.0.267",
+  "note": "Taken from a recording of a match played on this version.",
+  "bytes": "a3 1c000040 062100004000",
+  "fields": {
+    "command": 163,
+    "netId": 1073741852,
+    "extendedCommand": null,
+    "event": 6,
+    "subject": 1073741857,
+    "kill": null,
+    "extra": 0,
+    "assist": null
+  }
+}

@@ -4,6 +4,145 @@
   "note": "What a server sends to tell a client something happened. The sort is named first and settles what follows; unlike WorldEvent it carries no source apart from what the sort itself carries. The header names the unit the event is about.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 163,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "event",
+          "type": "u8",
+          "note": "What happened, and so which shape follows.",
+          "values": {
+            "4": {
+              "name": "championDied"
+            },
+            "6": {
+              "name": "championKill"
+            },
+            "9": {
+              "name": "doubleKill"
+            },
+            "10": {
+              "name": "tripleKill"
+            },
+            "31": {
+              "name": "inhibitorDied"
+            },
+            "36": {
+              "name": "turretDied"
+            },
+            "57": {
+              "name": "killDuringSpree"
+            },
+            "64": {
+              "name": "doubleKillDuringSpree"
+            },
+            "65": {
+              "name": "tripleKillDuringSpree"
+            },
+            "69": {
+              "name": "deathAssist"
+            }
+          }
+        },
+        {
+          "name": "subject",
+          "type": "u32",
+          "note": "The unit the event is about."
+        },
+        {
+          "name": "kill",
+          "type": "record",
+          "present": {
+            "when": "event",
+            "equals": [4, 31, 36]
+          },
+          "note": "What comes with a death.",
+          "fields": [
+            {
+              "name": "gold",
+              "type": "f32",
+              "note": "The gold the death gives."
+            },
+            {
+              "name": "assistCount",
+              "type": "u32",
+              "note": "How many of the places below name a unit that helped."
+            },
+            {
+              "name": "assists",
+              "type": "array",
+              "count": 12,
+              "note": "Units that helped, twelve places; the rest hold zero.",
+              "items": {
+                "name": "assist",
+                "type": "u32",
+                "note": "One unit."
+              }
+            }
+          ]
+        },
+        {
+          "name": "extra",
+          "type": "u8",
+          "present": {
+            "when": "event",
+            "equals": [6, 9, 10, 57, 64, 65]
+          },
+          "note": "Purpose undetermined. 0 with events 6, 9 and 10 and 1 with 57, 64 and 65 in those observed."
+        },
+        {
+          "name": "assist",
+          "type": "record",
+          "present": {
+            "when": "event",
+            "equals": 69
+          },
+          "note": "What comes with a share in a death.",
+          "fields": [
+            {
+              "name": "time",
+              "type": "f32",
+              "note": "When it happened."
+            },
+            {
+              "name": "physical",
+              "type": "f32",
+              "note": "Physical damage dealt."
+            },
+            {
+              "name": "magical",
+              "type": "f32",
+              "note": "Magical damage dealt."
+            },
+            {
+              "name": "true",
+              "type": "f32",
+              "note": "True damage dealt."
+            },
+            {
+              "name": "share",
+              "type": "f32",
+              "note": "The share of the death credited."
+            },
+            {
+              "name": "gold",
+              "type": "f32",
+              "note": "The gold it gives."
+            },
+            {
+              "name": "killer",
+              "type": "u32",
+              "note": "The unit credited with the death."
+            }
+          ]
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "events",
       "command": 163,
