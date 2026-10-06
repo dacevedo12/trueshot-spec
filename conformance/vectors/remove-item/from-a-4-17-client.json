@@ -1,0 +1,18 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "RemoveItem",
+  "version": "4.17.0.267",
+  "note": "Taken from a client, selling the item in slot 0 from the shop.",
+  "bytes": "09 01000040 80",
+  "fields": {
+    "command": 9,
+    "netId": 1073741825,
+    "extendedCommand": null,
+    "which": {
+      "slot": 0,
+      "unknown1": 0,
+      "unknown2": 1
+    }
+  }
+}

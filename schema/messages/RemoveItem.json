@@ -12,24 +12,24 @@
       "reliability": "reliable",
       "fields": [
         {
-          "name": "slot",
-          "type": "u8",
-          "note": "Which slot the item sits in."
-        },
-        {
-          "name": "how",
+          "name": "which",
           "type": "bits",
           "size": 1,
           "bits": [
             {
-              "name": "sell",
-              "width": 1,
-              "note": "Set where the item is sold rather than discarded."
+              "name": "slot",
+              "width": 6,
+              "note": "Which inventory slot, counted from 0."
             },
             {
-              "name": "unknown",
-              "width": 7,
-              "note": "Purpose undetermined. A client leaves these as it found them, so they carry values it never wrote for this message."
+              "name": "unknown1",
+              "width": 1,
+              "note": "Purpose undetermined. Clear in everything observed."
+            },
+            {
+              "name": "unknown2",
+              "width": 1,
+              "note": "Purpose undetermined. Set in everything observed, for an item sold from the shop."
             }
           ]
         }
