@@ -4,6 +4,27 @@
   "note": "What a server sends to set a side's score, where a match is won on score. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 212,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "note": "A client takes this only once the match has started. It keeps the score but draws nothing from this message alone: the score shows on the panel that a client shows only where the version answer named the mode ODIN and a point is known (CapturePointChanged). That panel counts five points and a score of 500 at most, both fixed in the client. A score kept before the panel shows is shown when it does. Reaching a score ends nothing in a client: a match ends through the messages that end any match.",
+      "fields": [
+        {
+          "name": "side",
+          "type": "i32",
+          "note": "Which side, 100 or 200. A client ignores any other."
+        },
+        {
+          "name": "score",
+          "type": "i32",
+          "note": "The score it now stands at: the whole of it, not a change."
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "events",
       "command": 212,

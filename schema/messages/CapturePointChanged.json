@@ -4,6 +4,64 @@
   "note": "What a server sends when something changes about a point one side can take from the other. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 211,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "note": "A client takes this only once the match has started; one that arrives earlier is dropped. The points exist only through this message: a map brings none, and a client makes point 0 to point n when it first meets n, whatever the change. Once a client knows one point, and only where the version answer named the mode ODIN, it shows the panel of each side's score and points held, and marks each point on the minimap. Everything shown of a point comes from the unit bound to it: its side holds the point (100 or 200; any other side leaves it neutral), its position places it, and its current resource over its maximum, where its resource kind matches the one bound, is how far the point is taken. A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
+      "fields": [
+        {
+          "name": "point",
+          "type": "u8",
+          "note": "Which point, 0 to 254; a match of five points uses 0 to 4."
+        },
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit to bind to the point: any unit that can be attacked, which the client must already know when this arrives. A client looks it up once; a point whose unit it does not know stays unbound, neutral and empty."
+        },
+        {
+          "name": "resourceKind",
+          "type": "u8",
+          "note": "The kind of resource whose fill shows how far the point is taken. Where it is not the bound unit's own kind, the point shows as not taken at all.",
+          "values": {
+            "0": { "name": "mana" },
+            "1": { "name": "energy" },
+            "2": { "name": "none" },
+            "3": { "name": "shield" },
+            "4": { "name": "battleFury" },
+            "5": { "name": "dragonFury" },
+            "6": { "name": "rage" },
+            "7": { "name": "heat" },
+            "8": { "name": "gnarFury" },
+            "9": { "name": "ferocity" },
+            "10": { "name": "bloodWell" },
+            "11": { "name": "wind" },
+            "12": { "name": "other" }
+          }
+        },
+        {
+          "name": "side",
+          "type": "i32",
+          "note": "The side attacking the point. A client does not use it for a binding."
+        },
+        {
+          "name": "change",
+          "type": "u8",
+          "note": "What to do. A client acts on 0 only; it ignores any other value, after making the points up to this one.",
+          "values": {
+            "0": {
+              "name": "bind",
+              "note": "Bind the point to the unit, with the resource kind."
+            },
+            "1": { "name": "retired", "note": "A client ignores it." }
+          }
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "events",
       "command": 211,
