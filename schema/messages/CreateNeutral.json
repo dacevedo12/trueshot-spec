@@ -112,7 +112,18 @@
         {
           "name": "roaming",
           "type": "u32",
-          "note": "How the unit roams, as a state rather than a distance. Which state each value names is not recorded here."
+          "note": "How the monster wanders. A client keeps it and acts on nothing of it.",
+          "values": {
+            "0": {
+              "name": "inactive"
+            },
+            "1": {
+              "name": "hostile"
+            },
+            "2": {
+              "name": "fleeing"
+            }
+          }
         },
         {
           "name": "camp",
@@ -147,16 +158,17 @@
         {
           "name": "behaviour",
           "type": "u8",
-          "note": "Which set of doings the unit follows."
+          "note": "A client does not read it."
         },
         {
           "name": "script",
           "type": "string",
           "encoding": "utf8",
           "size": 32,
-          "note": "The name the client loads those doings under, written and padded as above."
+          "note": "A client does not read it."
         }
-      ]
+      ],
+      "note": "The monster faces from where it stands toward the facing point, or along +Z where the two are the same. Its spawnAnimation plays only where named and time is left to spawn, and it cannot be targeted while it plays. A client drops the message while its map's navigation data is not yet loaded."
     },
     {
       "from": "4.20.0.315",

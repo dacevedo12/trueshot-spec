@@ -14,22 +14,22 @@
         {
           "name": "delay",
           "type": "f32",
-          "note": "How long before it shows."
+          "note": "A client does not read it."
         },
         {
           "name": "slot",
           "type": "i32",
-          "note": "Purpose undetermined."
+          "note": "Where the text goes. 0 floats it over the unit while the unit is in the client's own view, the text looked up as a key into the client's own text. 1 to 50 writes it, in colour, to that line of a debugging display, only where the unit is the one the player has selected. A client does nothing for any other value."
         },
         {
           "name": "error",
           "type": "u8",
-          "note": "Purpose undetermined."
+          "note": "Nonzero has a client ignore the whole message."
         },
         {
           "name": "colour",
           "type": "u8",
-          "note": "Which colour."
+          "note": "The text's colour on the debugging display; unread for slot 0."
         },
         {
           "name": "style",
@@ -39,7 +39,7 @@
         {
           "name": "length",
           "type": "u32",
-          "note": "How many bytes the text takes."
+          "note": "A client does not read it: it reads the text to its first zero byte, which the text must therefore end with."
         },
         {
           "name": "text",

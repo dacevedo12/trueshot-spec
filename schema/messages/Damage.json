@@ -19,22 +19,71 @@
             {
               "name": "result",
               "width": 3,
-              "note": "How the damage landed, and so what a client shows over the unit hurt. 4 shows the amount, 3 shows it as a critical strike, and 2 shows the word for a dodge in place of an amount."
+              "note": "How the damage landed, and so what a client shows over the unit hurt. 4 shows the amount, 3 shows it as a critical strike, and 2 shows the word for a dodge in place of an amount.",
+              "values": {
+                "0": {
+                  "name": "invulnerable",
+                  "note": "A notice, no number."
+                },
+                "1": {
+                  "name": "silent",
+                  "note": "Nothing shown."
+                },
+                "2": {
+                  "name": "dodge",
+                  "note": "A notice."
+                },
+                "3": {
+                  "name": "critical",
+                  "note": "The number, as a critical."
+                },
+                "4": {
+                  "name": "normal",
+                  "note": "The number."
+                },
+                "5": {
+                  "name": "miss",
+                  "note": "A notice in the dodge style."
+                },
+                "6": {
+                  "name": "normal6",
+                  "note": "As 4."
+                },
+                "7": {
+                  "name": "normal7",
+                  "note": "As 4."
+                }
+              }
             },
             {
-              "name": "unknown1",
+              "name": "unused1",
               "width": 1,
-              "note": "Purpose undetermined. Clear in everything observed."
+              "note": "A client does not read it."
             },
             {
               "name": "kind",
               "width": 2,
-              "note": "What sort of damage it is, which sets how a client colours the figure: 0 red, 1 purple and 2 white."
+              "note": "What sort of damage it is, which sets how a client colours the figure: 0 red, 1 purple and 2 white.",
+              "values": {
+                "0": {
+                  "name": "physical"
+                },
+                "1": {
+                  "name": "magic"
+                },
+                "2": {
+                  "name": "true"
+                },
+                "3": {
+                  "name": "mixed",
+                  "note": "Shown as physical."
+                }
+              }
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 2,
-              "note": "Purpose undetermined. Clear in everything observed."
+              "note": "A client does not read these."
             }
           ]
         },
@@ -46,7 +95,7 @@
         {
           "name": "source",
           "type": "u32",
-          "note": "The unit that hurt it. A client shows the figure only where the header and both units here name units it holds: sent with either unit zero or unknown, or with the header zero, it shows nothing."
+          "note": "The unit dealing it. A client shows nothing, notices included, unless it holds both target and source; the figure drifts from source toward target, and a champion source has the amount added to its damage dealt."
         },
         {
           "name": "amount",

@@ -168,9 +168,9 @@
                     "note": "The level of the spell it came from."
                   },
                   {
-                    "name": "unknown",
+                    "name": "unused",
                     "width": 1,
-                    "note": "Purpose undetermined."
+                    "note": "A client does not read it."
                   }
                 ]
               },
@@ -199,7 +199,8 @@
             ]
           }
         }
-      ]
+      ],
+      "note": "A client ignores the whole message unless it holds killer. Each entry's size after event and source follows from event alone, and a client trusts it, so an entry sized wrong shifts every entry after it. An entry whose target the client does not hold is left out."
     },
     {
       "from": "4.20.0.315",

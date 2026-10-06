@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "ChampionStats",
-  "note": "What a server sends to lay out a champion's standing figures. What the run holds is not recorded here, so it cannot be read from the wire alone. The header names no object: it carries zero.",
+  "note": "What a server sends to set a champion's tallies for the scoreboard. The header names the champion.",
   "revisions": [
     {
       "from": "4.17.0.233",
@@ -14,7 +14,7 @@
         {
           "name": "size",
           "type": "u32",
-          "note": "How many bytes this shape occupies, counting these four."
+          "note": "The whole length of what follows the header, these four bytes included, in the low 16 bits; the high 16 are zero. A client does not use it to bound its reading, and only logs a mismatch."
         },
         {
           "name": "values",
@@ -23,7 +23,7 @@
             "field": "size",
             "minus": 4
           },
-          "note": "The figures themselves. What they are, and in what order they sit, is not recorded here."
+          "note": "One value per tally in the client's own list of tallies, in ascending byte order of the tallies' names: a list from the client's data, one shared and one per mode, so the bytes cannot be read without it. An int takes 4 bytes, a float 4, a bool 1, a 64-bit int 8, and text a 16-bit length below 255 then that many bytes. A client ignores bytes left over. A nonzero count of champion kills marks first blood taken."
         }
       ]
     },

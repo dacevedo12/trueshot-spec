@@ -29,27 +29,27 @@
         {
           "name": "skillLevel",
           "type": "u8",
-          "note": "What level the champion's own spells stand at."
+          "note": "A client does not read it."
         },
         {
           "name": "side",
           "type": "u8",
-          "note": "Which side the champion is on. 1 puts it on team 100 and 0 on team 200."
+          "note": "Nonzero for side 100, zero for side 200."
         },
         {
           "name": "bot",
           "type": "u8",
-          "note": "1 makes it a champion nobody holds: a client then plays it as computer-controlled and does not show the seat's name for it. 0 leaves it to the seat's player."
+          "note": "Nonzero where a bot plays the seat; its shown name is then the client's own bot name for asset, and name is not read."
         },
         {
           "name": "rank",
           "type": "u8",
-          "note": "How well it plays where nobody holds it."
+          "note": "A client does not read it."
         },
         {
           "name": "spawnIndex",
           "type": "u8",
-          "note": "Which of its side's starting places the champion begins at, counted from zero. Where a champion first stands travels in EnterSight. Captured traffic carries values from 0 to 3 here, and also carries 0 for every champion while the places they stand at differ, so where a champion starts is not settled by this field alone."
+          "note": "Where the champion first stands and faces. From 0 to 5, its side's base position plus an offset from the map's own table, chosen by the side's head count (players and bots) and this index plus one, facing as that table says; server and client must agree on the head count. From 6 up, the base position itself, facing along +X. Movement or sight data replaces it."
         },
         {
           "name": "skin",
@@ -86,13 +86,24 @@
           "size": 1,
           "bits": [
             {
-              "name": "unknown",
-              "width": 8,
-              "note": "Purpose undetermined. Zero in everything observed."
+              "name": "down",
+              "width": 3,
+              "note": "0 alive; 1 dead but acting on (the state a champion that keeps acting after death is in), stayDown and downFor unread; 2 down, having been down for downFor with stayDown left. A client takes 3 to 7 as 0."
+            },
+            {
+              "name": "swap",
+              "width": 1,
+              "note": "Set where the champion replaces another; for the client's own seat, the client resets what it holds of its scripts once the champion is made. Of no effect otherwise."
+            },
+            {
+              "name": "unused",
+              "width": 4,
+              "note": "A client does not read these."
             }
           ]
         }
-      ]
+      ],
+      "note": "The champion takes the id in champion, not the header's; a client first removes any object holding that id. For the client's own seat, name also becomes its own player's name. A client drops the message while its map's navigation data is not yet loaded, as early in a reconnection."
     },
     {
       "from": "4.20.0.315",

@@ -12,26 +12,14 @@
       "reliability": "reliable",
       "fields": [
         {
-          "name": "overrides",
-          "type": "bits",
-          "size": 2,
-          "bits": [
-            {
-              "name": "ceiling",
-              "width": 1,
-              "note": "Set where the ceiling below is to be used. Clear in everything observed."
-            },
-            {
-              "name": "floor",
-              "width": 1,
-              "note": "Set where the floor below is to be used. Clear in everything observed."
-            },
-            {
-              "name": "unknown",
-              "width": 14,
-              "note": "Clear in everything observed."
-            }
-          ]
+          "name": "useCeiling",
+          "type": "u8",
+          "note": "1 to apply the ceiling below; 0 leaves the unit's ceiling as it was."
+        },
+        {
+          "name": "useFloor",
+          "type": "u8",
+          "note": "1 to apply the floor below; 0 leaves the unit's floor as it was."
         },
         {
           "name": "ceiling",

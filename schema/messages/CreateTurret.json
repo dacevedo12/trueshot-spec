@@ -36,21 +36,22 @@
             {
               "name": "targetable",
               "width": 1,
-              "note": "Set where anything may aim at it."
+              "note": "A client reads it and does nothing with it: a turret's targetability comes by replication."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 7,
-              "note": "Observed clear."
+              "note": "A client does not read these."
             }
           ]
         },
         {
           "name": "targetableBy",
           "type": "u32",
-          "note": "Which sides may aim at it. The bits within are undetermined."
+          "note": "Who may target the turret. A client reads it and does nothing with it; the same value by replication compares whole: 8388608 not its own side, 16777216 not the other side, 25165824 nobody, 33554432 everyone, anything else both sides."
         }
-      ]
+      ],
+      "note": "A client matches name exactly against the map's turrets. With no match it only removes any object holding the id; a matched turret missing or dead is rebuilt before it takes the id."
     },
     {
       "from": "4.20.0.315",

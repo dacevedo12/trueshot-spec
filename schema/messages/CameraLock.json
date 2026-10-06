@@ -22,9 +22,9 @@
               "note": "Set while the view follows a unit."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 7,
-              "note": "Purpose undetermined. A client leaves these as it found them, so they carry values it never wrote for this message."
+              "note": "Always clear."
             }
           ]
         },
@@ -33,7 +33,8 @@
           "type": "u32",
           "note": "Which seat is locking. Zero is a seat like any other rather than an absence."
         }
-      ]
+      ],
+      "note": "A client sends it whenever its lock changes: by the player, or as the game forces a lock or lifts one. It sends none while playing a replay."
     },
     {
       "from": "4.20.0.315",

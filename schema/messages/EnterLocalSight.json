@@ -22,9 +22,9 @@
               "note": "How many bytes the messages below occupy in total. Zero in everything observed."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 3,
-              "note": "Purpose undetermined. Clear in everything observed."
+              "note": "A client does not read these."
             }
           ]
         },

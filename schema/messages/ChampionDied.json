@@ -19,12 +19,64 @@
         {
           "name": "damageType",
           "type": "u32",
-          "note": "What sort of damage the death came from. Zero in everything observed."
+          "note": "The kind of the killing blow. A client shows nothing for it.",
+          "values": {
+            "0": {
+              "name": "physical"
+            },
+            "1": {
+              "name": "magic"
+            },
+            "2": {
+              "name": "true"
+            },
+            "3": {
+              "name": "mixed"
+            }
+          }
         },
         {
           "name": "damageSource",
           "type": "u32",
-          "note": "Where that damage came from. Zero in everything observed."
+          "note": "Where the killing blow came from. A client shows nothing for it.",
+          "values": {
+            "0": {
+              "name": "raw"
+            },
+            "1": {
+              "name": "internalRaw"
+            },
+            "2": {
+              "name": "periodic"
+            },
+            "3": {
+              "name": "proc"
+            },
+            "4": {
+              "name": "reactive"
+            },
+            "5": {
+              "name": "onDeath"
+            },
+            "6": {
+              "name": "spell"
+            },
+            "7": {
+              "name": "attack"
+            },
+            "8": {
+              "name": "default"
+            },
+            "9": {
+              "name": "areaSpell"
+            },
+            "10": {
+              "name": "persistentSpell"
+            },
+            "11": {
+              "name": "pet"
+            }
+          }
         },
         {
           "name": "stayDown",
@@ -37,23 +89,24 @@
           "size": 1,
           "bits": [
             {
-              "name": "unknown1",
+              "name": "zombie",
               "width": 1,
-              "note": "Purpose undetermined. Clear in everything observed."
+              "note": "Set to leave the champion standing in a zombie state rather than dead: no death animation and no death screen."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 7,
-              "note": "Clear in everything observed."
+              "note": "A client does not read these."
             }
           ]
         },
         {
           "name": "kind",
           "type": "u8",
-          "note": "What sort of death it is. Zero in everything observed."
+          "note": "A client does not read it for this message."
         }
-      ]
+      ],
+      "note": "A client ignores it where killer is zero or the champion is already dead."
     },
     {
       "from": "4.20.0.315",

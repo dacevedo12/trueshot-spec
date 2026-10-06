@@ -37,9 +37,9 @@
               "note": "Set where its art and sound change with it."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 5,
-              "note": "Purpose undetermined."
+              "note": "A client does not read these."
             }
           ],
           "note": "What the look changes."
@@ -47,16 +47,17 @@
         {
           "name": "skin",
           "type": "i32",
-          "note": "Which look."
+          "note": "Which look; -1 keeps the unit's own skin."
         },
         {
           "name": "asset",
           "type": "string",
           "encoding": "utf8",
           "size": "terminated",
-          "note": "The name the client loads it under, ended by a zero byte."
+          "note": "The name the client loads it under, ended by a zero byte. A client reads it from a 64-byte field, so a name and its zero take at most 64 bytes."
         }
-      ]
+      ],
+      "note": "A client stops a basic attack the unit is making first. Looks stack: the newest shows, and AppearancePopped takes away the one its entry names. An animated building instead looks for a look of the same name whose skin equals entry, adds the look under skin where it finds none, and reads nothing of how."
     }
   ]
 }

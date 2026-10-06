@@ -14,22 +14,12 @@
         {
           "name": "killer",
           "type": "u32",
-          "note": "The unit credited with emptying it."
+          "note": "The champion credited with emptying the camp, or zero for none. Where the camp has no buff side and no line of its own, a client has that champion speak a line for it, whatever speak says."
         },
         {
           "name": "camp",
           "type": "u32",
-          "note": "Which camp."
-        },
-        {
-          "name": "timerKind",
-          "type": "i32",
-          "note": "Which clock the client shows for it."
-        },
-        {
-          "name": "returnsAt",
-          "type": "f32",
-          "note": "When the camp fills again, in seconds."
+          "note": "Which camp. A client ignores a camp it does not know, but for the timer."
         },
         {
           "name": "does",
@@ -39,14 +29,29 @@
             {
               "name": "speak",
               "width": 1,
-              "note": "Set where the client says something about it."
+              "note": "Set to have the client play the line for a camp revealed or a buff taken, to the client's own side."
             },
             {
-              "name": "unknown",
-              "width": 7,
-              "note": "Purpose undetermined."
+              "name": "firstSide",
+              "width": 1,
+              "note": "A client does not read it."
+            },
+            {
+              "name": "unused",
+              "width": 6,
+              "note": "A client does not read these."
             }
           ]
+        },
+        {
+          "name": "timerKind",
+          "type": "i32",
+          "note": "Which of the client's neutral timers to set: a key into its own table, not a small number. Zero touches no timer."
+        },
+        {
+          "name": "returnsAt",
+          "type": "f32",
+          "note": "The game time, in seconds, when the camp fills again. The largest finite 32-bit float means now."
         }
       ]
     },

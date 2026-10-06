@@ -21,12 +21,17 @@
         {
           "name": "operation",
           "type": "u32",
-          "note": "0 resumes the group; any other value pauses it."
+          "note": "Nonzero to pause the emission, zero to resume it."
         },
         {
           "name": "groupOperation",
           "type": "u8",
-          "note": "Purpose undetermined. A client acts only on 0."
+          "note": "What to do with the group. A client acts on 0 only, pausing or resuming the group's emission, and does nothing for any other value.",
+          "values": {
+            "0": {
+              "name": "emission"
+            }
+          }
         }
       ]
     }

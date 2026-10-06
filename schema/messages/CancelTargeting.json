@@ -27,14 +27,15 @@
               "note": "Set where the slot is a summoner slot."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 1,
-              "note": "Purpose undetermined."
+              "note": "A client does not read it."
             }
           ],
           "note": "Which spell."
         }
-      ]
+      ],
+      "note": "A client cancels the aiming only where that slot is being aimed, and otherwise does nothing."
     }
   ]
 }

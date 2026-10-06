@@ -22,14 +22,14 @@
               "note": "Which slot is being cast from: 0, 1 and 2 for the champion's first three spells in everything observed."
             },
             {
-              "name": "unknown1",
+              "name": "summonerSpell",
               "width": 1,
-              "note": "Purpose undetermined. Clear in everything observed."
+              "note": "Set where the slot is a summoner spell's."
             },
             {
-              "name": "unknown2",
+              "name": "clicked",
               "width": 1,
-              "note": "Purpose undetermined. Set in everything observed, for a cast begun from a key and for one begun by clicking the panel alike."
+              "note": "Set where the cast began with a click on the spell's button rather than its key."
             }
           ]
         },
@@ -56,7 +56,7 @@
         {
           "name": "target",
           "type": "u32",
-          "note": "The network object aimed at, or zero where the cast is aimed at ground."
+          "note": "The unit aimed at; for a spell that takes no aim, the caster itself, with its own position in both points. Zero only where no unit is aimed at."
         }
       ]
     },

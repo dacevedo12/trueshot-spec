@@ -62,9 +62,9 @@
               "note": "Set while the client runs in a debugging state."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 3,
-              "note": "Purpose undetermined. A client leaves these as it found them, so they carry values it never wrote for this message."
+              "note": "Returned as the server sent them; a client does not read them."
             }
           ]
         },
@@ -78,7 +78,8 @@
           "type": "u32",
           "note": "The third. Observed as zero."
         }
-      ]
+      ],
+      "note": "The tip fields return the tip bytes of VersionSync as the client has corrected them: a figure it found invalid is negated (0 becomes -128) and tips cleared. Playing a replay, a client sends all four as zero. The three module fields are always zero."
     },
     {
       "from": "4.20.0.315",
