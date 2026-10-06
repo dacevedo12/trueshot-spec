@@ -72,7 +72,9 @@ its view sits. It does not draw the champion itself, which nothing in such a
 run places on the map. A 4.17.0.267 or 4.20.0.315 client given the same run with an
 `EnterSight` for its champion after the `CreateChampion` draws the champion where that message
 places it, with its name and health bar over it, and an `EnterLocalSight` is
-not needed for that.
+not needed for that. Such a client's shop opens empty, and so does a 4.20.0.315
+client's. A 4.17.0.267 client's shop fills, with every item and the items it suggests for the
+champion, once the run also carries its own champion's `Loadout`.
 
 Once `SpawnEnd` arrives, a client answers each `Replication` batch the run
 carried with a `TransientAck` naming that batch's `syncId`. It sends one answer
