@@ -22,14 +22,15 @@
               "note": "Set where a vote may be called."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 7,
-              "note": "Purpose undetermined."
+              "note": "A client does not read these."
             }
           ],
           "note": "Whether it is allowed."
         }
-      ]
+      ],
+      "note": "A client turns the surrender choice in its menu on or off, and does nothing before the menu exists."
     }
   ]
 }

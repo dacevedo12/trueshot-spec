@@ -27,9 +27,9 @@
               "note": "Set where the slot counts among the summoner slots, so that 0 and 1 name those two."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 1,
-              "note": "Purpose undetermined. Set in a few of those observed, with slots 3 and 10."
+              "note": "A client does not read it."
             }
           ]
         },
@@ -41,7 +41,7 @@
         {
           "name": "outOf",
           "type": "f32",
-          "note": "The length the client shows that remainder against, in seconds. −1 in most of those observed."
+          "note": "The whole cooldown the time left is shown against, taken only where above zero and above timeLeft; otherwise, as for the -1 observed, a client keeps its own, replacing it with timeLeft only where that is larger or the spell was not cooling down."
         }
       ]
     },

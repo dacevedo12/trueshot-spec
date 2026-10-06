@@ -87,9 +87,9 @@
               "note": "Set where it can be aimed at."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 2,
-              "note": "Purpose undetermined."
+              "note": "A client does not read these."
             }
           ],
           "note": "What sort of unit it is."
@@ -128,7 +128,8 @@
           "type": "u32",
           "note": "The unit that alone can see it, or zero."
         }
-      ]
+      ],
+      "note": "A client deletes any object holding the new unit's id first, and logs and does nothing more where it cannot make the unit. owner is only who gets the gold the unit earns; clone, where nonzero, is copied, state and inventory; onlyVisibleTo, zero or unknown, restricts nothing."
     }
   ]
 }

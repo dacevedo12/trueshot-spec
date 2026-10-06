@@ -3,25 +3,25 @@
   "subject": "message",
   "message": "SpellSlotChanged",
   "version": "4.17.0.267",
-  "note": "Taken from a recording of a match played on this version.",
-  "bytes": "17 1a000040 0306011a000040",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "17 01000040 00030000af44",
   "fields": {
     "command": 23,
-    "netId": 1073741850,
+    "netId": 1073741825,
     "extendedCommand": null,
     "which": {
-      "slot": 3,
+      "slot": 0,
       "summonerSlots": 0,
       "unused": 0
     },
-    "kind": 6,
+    "kind": 3,
     "name": null,
     "targeting": null,
     "range": null,
-    "maxRange": null,
+    "maxRange": 1400,
     "shownRange": null,
     "icon": null,
-    "targetCount": 1,
-    "targets": [1073741850]
+    "targetCount": null,
+    "targets": null
   }
 }

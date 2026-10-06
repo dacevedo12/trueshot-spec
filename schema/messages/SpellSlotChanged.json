@@ -24,19 +24,19 @@
             {
               "name": "summonerSlots",
               "width": 1,
-              "note": "Set where the slot counts among the summoner slots rather than the champion's own. Sent set with a summoner spell's name for slots 0 and 1, a client showed nothing in either summoner slot, so what it selects is not settled."
+              "note": "Set where slot names a summoner spell's slot, clear for the unit's own spells; every kind obeys it."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 1,
-              "note": "Clear in everything observed."
+              "note": "A client does not read it."
             }
           ]
         },
         {
           "name": "kind",
           "type": "u8",
-          "note": "Which thing about the spell is being changed, and so which shape follows.",
+          "note": "What changes. A client logs any other value and does nothing.",
           "values": {
             "0": {
               "name": "targeting",
@@ -48,6 +48,14 @@
             "2": {
               "name": "range",
               "note": "Sets how far it is cast; a float follows."
+            },
+            "3": {
+              "name": "maxRange",
+              "note": "Sets the farthest its range can grow to; a float follows."
+            },
+            "4": {
+              "name": "shownRange",
+              "note": "Sets the range its indicator shows; a float follows."
             },
             "5": {
               "name": "icon",
@@ -87,6 +95,24 @@
             "equals": 2
           },
           "note": "How far the spell is cast."
+        },
+        {
+          "name": "maxRange",
+          "type": "f32",
+          "present": {
+            "when": "kind",
+            "equals": 3
+          },
+          "note": "The farthest the spell's cast range can grow to."
+        },
+        {
+          "name": "shownRange",
+          "type": "f32",
+          "present": {
+            "when": "kind",
+            "equals": 4
+          },
+          "note": "The range its range indicator shows."
         },
         {
           "name": "icon",

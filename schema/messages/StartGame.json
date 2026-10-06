@@ -22,13 +22,14 @@
               "note": "Set where holding the match is allowed. Clear in everything observed, and play starts with it clear."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 7,
-              "note": "Observed clear."
+              "note": "A client does not read these."
             }
           ]
         }
-      ]
+      ],
+      "note": "A client past spawning ignores it."
     },
     {
       "from": "4.20.0.315",

@@ -14,24 +14,12 @@
         {
           "name": "slot",
           "type": "u32",
-          "note": "Which slot. 1 in everything observed."
+          "note": "Which of the champion's own spells, 0 to 62; a client ignores any other value. Summoner spells are never toggled by it."
         },
         {
           "name": "state",
-          "type": "bits",
-          "size": 1,
-          "bits": [
-            {
-              "name": "on",
-              "width": 1,
-              "note": "Set where the spell is now on."
-            },
-            {
-              "name": "unknown",
-              "width": 7,
-              "note": "Clear in everything observed."
-            }
-          ]
+          "type": "u8",
+          "note": "Nonzero to toggle the spell on, zero off."
         }
       ]
     },

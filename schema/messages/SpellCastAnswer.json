@@ -14,7 +14,7 @@
         {
           "name": "syncId",
           "type": "u32",
-          "note": "The name this casting is stated against."
+          "note": "A client uses it only to decide whether the caster's position can be brought in line for this cast."
         },
         {
           "name": "how",
@@ -24,12 +24,12 @@
             {
               "name": "endCharge",
               "width": 1,
-              "note": "Set where the cast ends a charge. Clear lets a client charge a spell that charges, sending SpellCharge as it does."
+              "note": "Set where the cast ends a charge: a client drops the message unless the caster is charging that same spell. Clear lets a client charge a spell that charges, sending SpellCharge as it does."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 7,
-              "note": "Observed clear."
+              "note": "A client does not read these."
             }
           ]
         },

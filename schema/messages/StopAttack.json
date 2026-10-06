@@ -24,36 +24,42 @@
             {
               "name": "keepAnimating",
               "width": 1,
-              "note": "Set where the unit finishes what it was doing to look at."
+              "note": "Set to let the attack's animation play on after the stop."
             },
             {
-              "name": "destroyMissile",
+              "name": "forceCast",
               "width": 1,
-              "note": "Set where the missile named above is to go too."
+              "note": "Set to make the attack land first where it has not yet."
             },
             {
-              "name": "unknown1",
+              "name": "forceStop",
               "width": 1,
-              "note": "Purpose undetermined."
+              "note": "Set to stop the attack outright; a client does so anyway, reading keepAnimating and forceCast as clear, where it cannot see the unit."
             },
             {
               "name": "summonerSpell",
               "width": 1,
-              "note": "Set where what is broken off came from a summoner slot. Clear in everything observed."
+              "note": "Set where the slot stopped is a summoner spell's."
             },
             {
-              "name": "unknown2",
+              "name": "destroyMissile",
               "width": 1,
-              "note": "Purpose undetermined."
+              "note": "Set to destroy the missile named in missile, where it exists; forced, after the attack landed, the spell's cooldown is also refunded."
             },
             {
-              "name": "unknown",
-              "width": 3,
-              "note": "Clear in everything observed."
+              "name": "completeCast",
+              "width": 1,
+              "note": "A client does not read it."
+            },
+            {
+              "name": "unused",
+              "width": 2,
+              "note": "A client does not read these."
             }
           ]
         }
-      ]
+      ],
+      "note": "Whatever the flags, a client then clears the unit's attack."
     },
     {
       "from": "4.20.0.315",
