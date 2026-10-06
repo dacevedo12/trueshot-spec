@@ -42,7 +42,7 @@
           "name": "trailing",
           "type": "bytes",
           "size": 4,
-          "note": "Purpose undetermined. A client emits bytes here that it never wrote for this message, so their content is not a fact about the protocol."
+          "note": "Bytes a client never writes for this message: whatever was there, and no fact about the protocol."
         }
       ]
     },
