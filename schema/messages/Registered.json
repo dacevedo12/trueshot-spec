@@ -15,12 +15,12 @@
           "name": "leading",
           "type": "bytes",
           "size": 3,
-          "note": "Purpose undetermined. It occupies the same three bytes a request uses, and a server is free to send zeros there."
+          "note": "A client does not read them."
         },
         {
           "name": "clientId",
           "type": "i32",
-          "note": "Which seat in the match the named player occupies, counted from zero."
+          "note": "The seat playerId holds; where playerId is the client's own, the client takes this seat as its own and goes on."
         },
         {
           "name": "playerId",
@@ -30,19 +30,19 @@
         {
           "name": "version",
           "type": "u32",
-          "note": "The build the client said it runs, carried back to it. Where the answer follows a request it is the number that request carried: 41700233 and 41700267 in those observed."
+          "note": "A client does not read it."
         },
         {
           "name": "proof",
           "type": "bytes",
           "size": 8,
-          "note": "The eight bytes a request fills with its proof, carried back. Where the answer follows a request it repeats what that request carried. Where it does not it is zero: a server states no proof of its own, so a receiving end takes nothing from it."
+          "note": "A client does not read it."
         },
         {
           "name": "trailing",
           "type": "bytes",
           "size": 4,
-          "note": "Four bytes closing the record. Zero in everything observed."
+          "note": "A client does not read them."
         }
       ]
     },

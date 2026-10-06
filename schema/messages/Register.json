@@ -15,12 +15,12 @@
           "name": "leading",
           "type": "bytes",
           "size": 3,
-          "note": "Purpose undetermined. A client emits bytes here that it never wrote for this message, so their content is not a fact about the protocol."
+          "note": "Bytes a client never writes: whatever was there."
         },
         {
           "name": "clientId",
           "type": "i32",
-          "note": "Which seat in the match the sender occupies, counted from zero."
+          "note": "Always zero: a server works out the seat itself."
         },
         {
           "name": "playerId",
@@ -36,7 +36,7 @@
           "name": "proof",
           "type": "i64",
           "enciphered": true,
-          "note": "The player identifier and nothing else, enciphered under the key both ends already hold. Deciphering it and finding the identifier beside it is what shows the sender holds the key. In every request captured from a client, the eight bytes decipher to the player identifier the request carries."
+          "note": "The player id enciphered with the 16-byte key; a plain copy where the client has no key."
         },
         {
           "name": "trailing",

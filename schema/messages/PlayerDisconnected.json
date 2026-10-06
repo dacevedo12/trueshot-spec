@@ -22,19 +22,20 @@
           "size": 1,
           "bits": [
             {
-              "name": "visibleToEnemies",
+              "name": "toEnemies",
               "width": 1,
-              "note": "Set where the other side is told too."
+              "note": "Set to show the notice only to the other side; clear to show it only to the player's own side. A client with no champion of its own shows it only where this is clear."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 7,
-              "note": "Purpose undetermined."
+              "note": "A client does not read these."
             }
           ],
           "note": "Who is told."
         }
-      ]
+      ],
+      "note": "A client shows a chat notice naming the player in their side's colour, and nothing where player names no champion it knows, names its own champion, or the match is not under way."
     }
   ]
 }

@@ -19,7 +19,12 @@
         {
           "name": "kind",
           "type": "i32",
-          "note": "What sort of region it is. 0 in everything observed. A client given −2 here logs a failure for each region it is sent."
+          "note": "What sort of region it is. A client makes one only for 0, a circle, and logs a failure for any other value.",
+          "values": {
+            "0": {
+              "name": "circle"
+            }
+          }
         },
         {
           "name": "owner",
@@ -57,9 +62,9 @@
           "note": "How long it lasts, in seconds."
         },
         {
-          "name": "collisionRadius",
+          "name": "lineOfSightRadius",
           "type": "f32",
-          "note": "How far out it blocks the way, in world units."
+          "note": "How far out the region's line of sight is reckoned, in world units."
         },
         {
           "name": "grassRadius",
@@ -82,31 +87,31 @@
           "size": 4,
           "bits": [
             {
-              "name": "block",
+              "name": "lineOfSight",
               "width": 1,
-              "note": "Set where the region blocks the way. Set in everything observed."
+              "note": "Set where walls and terrain cut the region's sight."
             },
             {
               "name": "grantSight",
               "width": 1,
-              "note": "Set where it grants sight. Set in everything observed, and a client clears its map's cover over the region."
+              "note": "Set to turn on the region's sight; sightFrom and revealHidden are read only where it is set. Set in everything observed, and a client clears its map's cover over the region."
             },
             {
               "name": "revealHidden",
               "width": 1,
-              "note": "Set where it shows units that are hiding. Set in everything observed."
+              "note": "Set to show hidden units within it, where grantSight is set."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 29,
-              "note": "Clear in everything observed."
+              "note": "A client does not read these."
             }
           ]
         },
         {
           "name": "baseRadius",
           "type": "f32",
-          "note": "The radius the three size figures above are applied to, in world units."
+          "note": "The region's radius. A client rejects a message shorter than 60 bytes but reads this field whether or not it was sent, so a server sends it."
         }
       ]
     },

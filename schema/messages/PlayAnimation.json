@@ -17,19 +17,34 @@
           "size": 4,
           "bits": [
             {
-              "name": "unknown1",
-              "width": 4,
-              "note": "Purpose undetermined."
+              "name": "locked",
+              "width": 1,
+              "note": "Set where no other animation may fade this one out."
+            },
+            {
+              "name": "lockedFromIdle",
+              "width": 1,
+              "note": "Set where idle animations may not fade it out; read only where locked is clear."
+            },
+            {
+              "name": "noBlend",
+              "width": 1,
+              "note": "Set to switch to it at once rather than blend in."
+            },
+            {
+              "name": "loop",
+              "width": 1,
+              "note": "Set to loop it."
             },
             {
               "name": "keepEmotes",
               "width": 1,
-              "note": "Set where an emote the unit is playing carries on."
+              "note": "Set to let an emote playing go on; clear stops it."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 27,
-              "note": "Purpose undetermined."
+              "note": "A client does not read these."
             }
           ],
           "note": "How the animation plays."
@@ -54,9 +69,10 @@
           "type": "string",
           "encoding": "utf8",
           "size": "terminated",
-          "note": "The animation's name, ended by a zero byte."
+          "note": "The animation's name, ended by a zero byte. A client reads it from a 64-byte field, so the name and its zero take at most 64 bytes; a name the unit has not is logged and nothing plays."
         }
-      ]
+      ],
+      "note": "scaleTime and startProgress are applied only where above zero. A unit holding a locked animation ignores the message. An animated building plays at normal speed and reads nothing of keepEmotes."
     }
   ]
 }

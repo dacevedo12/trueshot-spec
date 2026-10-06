@@ -19,17 +19,17 @@
             {
               "name": "fromWhereItIs",
               "width": 1,
-              "note": "Set where the view starts from where it already is rather than from the place below. Set in everything observed."
+              "note": "Set to start from where the camera stands, fromX, fromY and fromZ unread; clear to start from them."
             },
             {
-              "name": "unlock",
+              "name": "unused1",
               "width": 1,
-              "note": "Set where the view is left free once it arrives."
+              "note": "A client does not read it."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 6,
-              "note": "Observed clear."
+              "note": "A client does not read these."
             }
           ]
         },
@@ -68,7 +68,8 @@
           "type": "f32",
           "note": "How long the view takes to get there."
         }
-      ]
+      ],
+      "note": "Where the header names a champion, only the client whose own champion it is moves its view; others take the message and do nothing. Where the header carries zero, a client moves its view to to over travelTime, how and from unread."
     },
     {
       "from": "4.20.0.315",

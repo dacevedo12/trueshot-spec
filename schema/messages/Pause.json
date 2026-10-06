@@ -14,12 +14,12 @@
         {
           "name": "clientId",
           "type": "u32",
-          "note": "Which seat asked."
+          "note": "Always the value for no seat: a client does not fill it in."
         },
         {
           "name": "timeLeft",
           "type": "i32",
-          "note": "How much holding time is left to the side that asked, in seconds."
+          "note": "Always zero."
         },
         {
           "name": "how",
@@ -27,18 +27,19 @@
           "size": 1,
           "bits": [
             {
-              "name": "unlimited",
+              "name": "tournament",
               "width": 1,
-              "note": "Set where the hold is not counted against a limit."
+              "note": "Always clear."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 7,
-              "note": "Purpose undetermined. A client leaves these as it found them, so they carry values it never wrote for this message."
+              "note": "Always clear."
             }
           ]
         }
-      ]
+      ],
+      "note": "A client fills none of the fields: a server reads nothing from them."
     },
     {
       "from": "4.20.0.315",

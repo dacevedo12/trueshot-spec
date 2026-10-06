@@ -52,9 +52,9 @@
               "note": "Set in every ping observed but two."
             },
             {
-              "name": "unknown1",
+              "name": "throttled",
               "width": 1,
-              "note": "Set only in the two pings observed with the bits either side of it clear, both of category 0."
+              "note": "Set where the player is pinging too often: a client places no ping, plays nothing and announces nothing, and only writes a notice in its own chat."
             },
             {
               "name": "speak",
@@ -63,7 +63,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "A client drops the whole message where category is past its own list of categories."
     },
     {
       "from": "4.20.0.315",
