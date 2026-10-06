@@ -26,7 +26,7 @@
     {
       "name": "flags",
       "type": "u8",
-      "note": "How the seat is treated. The bits within are undetermined."
+      "note": "How the seat is treated. A 4.17 client reads two bits: bit 0, set where a bot holds the seat, which the loading screen then shows from the bot fields below as already loaded; and bit 1, set to show the seat's champion on the loading screen in its skin's vintage art. It reads none of the others."
     },
     {
       "name": "side",

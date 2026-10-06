@@ -22,9 +22,9 @@
               "note": "Set where the client's build is one the server serves."
             },
             {
-              "name": "unknown1",
+              "name": "reportsToFile",
               "width": 1,
-              "note": "Purpose undetermined. Observed clear."
+              "note": "Set to have a client also write its reports to a file of its own, where it reports by the older means (features bit 18 clear)."
             },
             {
               "name": "matched",
@@ -39,7 +39,7 @@
             {
               "name": "unknown",
               "width": 4,
-              "note": "Observed clear."
+              "note": "A client does not read these."
             }
           ]
         },
@@ -200,13 +200,209 @@
         },
         {
           "name": "tipFlags",
-          "type": "i8",
-          "note": "How else it shows it. The bits within are undetermined."
+          "type": "bits",
+          "note": "How the note is shown. A client sends these four bytes back in ClientReady, as it has corrected them.",
+          "size": 1,
+          "bits": [
+            {
+              "name": "enabled",
+              "width": 1,
+              "note": "Set where there is a note. A client builds it only where this and loadingScreen or inGame are set, and clears this, negating the bad figure, where tip, tipColour or tipDuration names nothing."
+            },
+            {
+              "name": "replay",
+              "width": 1,
+              "note": "Of no effect; a client clears it, with enabled, while playing a replay."
+            },
+            {
+              "name": "loadingScreen",
+              "width": 1,
+              "note": "Set to show the note on the loading screen."
+            },
+            {
+              "name": "inGame",
+              "width": 1,
+              "note": "Set to show the note during play, in a box on the screen."
+            },
+            {
+              "name": "cycle",
+              "width": 1,
+              "note": "Set to have the box during play show every note in turn."
+            },
+            {
+              "name": "unused",
+              "width": 3,
+              "note": "A client does not read these."
+            }
+          ]
         },
         {
           "name": "features",
-          "type": "u64",
-          "note": "Which parts of the match are turned on. The bits within are undetermined."
+          "type": "bits",
+          "note": "Which parts of the match are turned on, one bit each. A client takes all of them as they come; all clear, it notes so in its log.",
+          "size": 8,
+          "bits": [
+            {
+              "name": "balanceVoteCommands",
+              "width": 1,
+              "note": "The chat commands /equalize and /noequalize."
+            },
+            {
+              "name": "menuBack",
+              "width": 1,
+              "note": "With menuBack2, a second key that closes the pause and options menu. Alone, the minimap's showing of neutral camps follows the player's settings rather than the minimap's own."
+            },
+            {
+              "name": "menuBack2",
+              "width": 1,
+              "note": "Of use only with menuBack."
+            },
+            {
+              "name": "quickChat",
+              "width": 1,
+              "note": "Quick chat: its keys and its panel."
+            },
+            {
+              "name": "missileWarning",
+              "width": 1,
+              "note": "A missile coming at the client's side, or at no one, may show before it leaves the fog where it is near for its speed and heading that way."
+            },
+            {
+              "name": "animatedCursors",
+              "width": 1,
+              "note": "Cursors of several frames move on a frame every 0.15 seconds of play; clear, they show their first frame."
+            },
+            {
+              "name": "shopUndo",
+              "width": 1,
+              "note": "The shop's undo; clear, it is never enabled."
+            },
+            {
+              "name": "bit7",
+              "width": 1,
+              "note": "Read only in laying out the options menu."
+            },
+            {
+              "name": "skillshotOutline",
+              "width": 1,
+              "note": "While aiming a line spell, the units it would hit are outlined."
+            },
+            {
+              "name": "championIndicator",
+              "width": 1,
+              "note": "The mark over the player's champion, where their own setting also asks for it."
+            },
+            {
+              "name": "altBounty",
+              "width": 1,
+              "note": "Another reckoning of kill and assist gold: kill gold and the assist pool grow with time, a run of assists adds gold, and assists and minion gold shorten a run of deaths."
+            },
+            {
+              "name": "bit11",
+              "width": 1,
+              "note": "Read only in laying out the options menu."
+            },
+            {
+              "name": "turretRange",
+              "width": 1,
+              "note": "Enemy turrets' ranges, where the player's setting also asks for them; clear, they are never drawn."
+            },
+            {
+              "name": "bit13",
+              "width": 1,
+              "note": "Read only in laying out the options menu."
+            },
+            {
+              "name": "skinParticles",
+              "width": 1,
+              "note": "Skin-specific particle effects for units in a skin other than the first."
+            },
+            {
+              "name": "networkMetrics",
+              "width": 1,
+              "note": "Reports of network figures from time to time, where reporting is on (agreement's reportingReady)."
+            },
+            {
+              "name": "hardwareMetrics",
+              "width": 1,
+              "note": "A report of hardware and frame rate at the end of the match."
+            },
+            {
+              "name": "lagMetrics",
+              "width": 1,
+              "note": "Lag figures in the network report."
+            },
+            {
+              "name": "eventReports",
+              "width": 1,
+              "note": "Reports go by the newer, event-based means; clear, by the older one."
+            },
+            {
+              "name": "logServerAddress",
+              "width": 1,
+              "note": "A client writes the server's address and its own command line to its log."
+            },
+            {
+              "name": "jungleTimers",
+              "width": 1,
+              "note": "Timers for the jungle camps on the screen."
+            },
+            {
+              "name": "traceroute",
+              "width": 1,
+              "note": "A trace of the route to the server, begun after this message and reported later, where reporting is on."
+            },
+            {
+              "name": "bit22",
+              "width": 1,
+              "note": "Read only in laying out the options menu."
+            },
+            {
+              "name": "bit23",
+              "width": 1,
+              "note": "Read only in laying out the options menu."
+            },
+            {
+              "name": "bit24",
+              "width": 1,
+              "note": "Read only in laying out the options menu."
+            },
+            {
+              "name": "clockSync",
+              "width": 1,
+              "note": "The game's clock is nudged to keep with the system's at normal speed; in a replay, play follows the game's clock."
+            },
+            {
+              "name": "bit26",
+              "width": 1,
+              "note": "Read only in laying out the options menu."
+            },
+            {
+              "name": "farmBounty",
+              "width": 1,
+              "note": "Kill gold also counts assists and minion gold, and a death scales runs down rather than clearing them."
+            },
+            {
+              "name": "turretsPersist",
+              "width": 1,
+              "note": "Turrets stay as objects after they are destroyed."
+            },
+            {
+              "name": "stateFlags",
+              "width": 1,
+              "note": "A unit's can-move, can-attack, can-cast and like states are set on or off rather than counted up and down."
+            },
+            {
+              "name": "unused",
+              "width": 2,
+              "note": "A client does not read these."
+            },
+            {
+              "name": "unusedHigh",
+              "width": 32,
+              "note": "A client does not read these."
+            }
+          ]
         },
         {
           "name": "disabledItems",
@@ -223,7 +419,7 @@
           "name": "reportingMessages",
           "type": "array",
           "count": 19,
-          "note": "Which of the reports a client sends are wanted, one place each.",
+          "note": "Which of the reports a client sends are wanted, one place each, in this order: game start, game end, ping use, chat filter, damage figures, active item figures, network figures, hardware figures, server debugging, client debugging, item shop, injected modules, suspicious behaviour, skin swaps, failure to connect, traceroute, network instrumentation, peer network instrumentation, and block builder logging. A client takes any nonzero byte as wanted; a zero does not turn a report off.",
           "items": {
             "name": "wanted",
             "type": "u8",
