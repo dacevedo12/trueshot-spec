@@ -14,12 +14,12 @@
         {
           "name": "unknown",
           "type": "u32",
-          "note": "Purpose undetermined. Read as two sixteen bit halves, the second is always one more than the first: 124 and 125, 125 and 126, 92 and 93, 126 and 127 are observed."
+          "note": "A client does not read it. Read as two sixteen bit halves, the second is always one more than the first in those observed: 124 and 125, 125 and 126, 92 and 93, 126 and 127."
         },
         {
           "name": "state",
           "type": "i32",
-          "note": "Which way the resource is shown. 0, 1 and 2 are observed."
+          "note": "Which way the resource is shown; a client sets the unit's resource bar by it, and what each value looks like depends on the unit's own data. 0, 1 and 2 are observed."
         }
       ]
     }
