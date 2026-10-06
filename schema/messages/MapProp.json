@@ -89,7 +89,7 @@
         {
           "name": "side",
           "type": "u16",
-          "note": "The side it belongs to, or zero where it belongs to none."
+          "note": "The side the prop belongs to. 300 in everything observed."
         },
         {
           "name": "rank",
@@ -103,8 +103,8 @@
         },
         {
           "name": "kind",
-          "type": "u32",
-          "note": "What sort of prop it is."
+          "type": "u8",
+          "note": "What sort of prop it is. 1 in everything observed."
         },
         {
           "name": "name",

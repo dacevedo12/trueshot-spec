@@ -4,6 +4,21 @@
   "note": "What a server sends when a unit passes out of the view of a whole side. The header names the object this is about.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 225,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "side",
+          "type": "u8",
+          "note": "Which side the unit came into or out of the view of."
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "events",
       "command": 225,
