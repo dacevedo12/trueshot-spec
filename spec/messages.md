@@ -466,6 +466,14 @@ One thing during play behaves the same way. A client names each view report
 and sends it again until a server returns that name, so a server that returns
 nothing is sent the same report over and over.
 
+## What a client never sends
+
+A 4.17 client holds the means to build some requests it never sends, because
+nothing a player does, nor anything a server sends, leads to them. A server
+for that client need not expect commands 73, 214 or 244 on the requests
+channel. `ZoomReport` is in the same place: it reports a camera zoomed past
+what the client allows, so an unaltered client never sends it.
+
 ## Vectors
 
 Every revision carries at least one conformance vector, which is what separates

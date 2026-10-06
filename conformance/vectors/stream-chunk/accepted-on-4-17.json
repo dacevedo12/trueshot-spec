@@ -1,0 +1,21 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "StreamChunk",
+  "version": "4.17.0.267",
+  "note": "Taken from a server a client accepted: the first fragment of the first chunk of a recorded match, which the client played. Its fragment bytes were cut to the first 16 and those zeroed before committing, because they carry the recorded match.",
+  "bytes": "ed 00000000 010000000500000000000000050f8900001e0000000000000000000000000000000000000000000000",
+  "fields": {
+    "command": 237,
+    "netId": 0,
+    "extendedCommand": null,
+    "chunk": 1,
+    "fragments": 5,
+    "index": 0,
+    "kind": 5,
+    "size": 35087,
+    "duration": 30,
+    "nextChunk": 0,
+    "data": "00000000000000000000000000000000"
+  }
+}

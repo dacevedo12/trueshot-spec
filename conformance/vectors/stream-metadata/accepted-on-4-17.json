@@ -1,0 +1,15 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "StreamMetadata",
+  "version": "4.17.0.267",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "eb 00000000 000000007b226368756e6b54696d65496e74657276616c223a33303030302c226b65794672616d6554696d65496e74657276616c223a36303030307d",
+  "fields": {
+    "command": 235,
+    "netId": 0,
+    "extendedCommand": null,
+    "unused": 0,
+    "text": "{\"chunkTimeInterval\":30000,\"keyFrameTimeInterval\":60000}"
+  }
+}

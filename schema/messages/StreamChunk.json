@@ -1,0 +1,78 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "StreamChunk",
+  "note": "What a server streaming a match sends to carry one fragment of a chunk or key frame of recorded messages (see spec/spectating.md). A client takes a chunk's facts from its fragment 0, appends fragments in arrival order, and holds the chunk complete at the fragment whose index is one less than the count. A new fragment 0 drops a chunk left unfinished, and a fragment with no chunk begun is dropped. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 237,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "chunk",
+          "type": "u32",
+          "note": "The chunk's id, or the key frame's. Chunk 0 is dropped; chunks play in order from 1, and a missing one stalls the stream. Key frames count separately, from 1."
+        },
+        {
+          "name": "fragments",
+          "type": "u32",
+          "note": "How many fragments the chunk is cut into."
+        },
+        {
+          "name": "index",
+          "type": "u32",
+          "note": "This fragment's place, from 0."
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What the chunk is.",
+          "values": {
+            "1": {
+              "name": "ordinary"
+            },
+            "2": {
+              "name": "keyFrame"
+            },
+            "3": {
+              "name": "endOfStartup",
+              "note": "The last chunk of the match's setting up."
+            },
+            "4": {
+              "name": "gameStart",
+              "note": "The chunk the match proper begins with."
+            },
+            "5": {
+              "name": "startup",
+              "note": "A chunk of the match's setting up."
+            }
+          }
+        },
+        {
+          "name": "size",
+          "type": "u32",
+          "note": "The whole chunk's size in bytes. A client does not check fragments against it, so they must not exceed it."
+        },
+        {
+          "name": "duration",
+          "type": "u32",
+          "note": "Seconds the chunk covers; it only shapes the estimate of when the last chunk ends."
+        },
+        {
+          "name": "nextChunk",
+          "type": "u32",
+          "note": "For a key frame, the ordinary chunk to go on from. Where zero, a client takes key frame interval over chunk interval, times the key frame's id less one, plus the start-game chunk."
+        },
+        {
+          "name": "data",
+          "type": "bytes",
+          "size": "remaining",
+          "note": "This fragment's bytes of the chunk, to the end of the message."
+        }
+      ]
+    }
+  ]
+}

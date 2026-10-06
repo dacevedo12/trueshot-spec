@@ -31,6 +31,8 @@ with a guess and carry on. That is a defect worth reporting, and
    no layout carries: what its coordinates mean.
 5. [Replication](spec/replication.md), which covers the same for the message a
    server sends most: what the values inside it are, which no layout reaches.
+6. [Watching a match](spec/spectating.md), which sets out how a server streams
+   a recorded or running match to a client that watches over its connection.
 
 The transport is a delta on ENet 1.2.5, so building it means building on ENet
 or a port of it. Above the transport, every channel a capture behind this

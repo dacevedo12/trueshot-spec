@@ -1,0 +1,27 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "StreamChunkRange",
+  "note": "What a server streaming a match sends to say where the match proper begins in its chunks, and, once known, where it ends. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 236,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "startGameChunk",
+          "type": "u32",
+          "note": "The chunk the match proper begins with."
+        },
+        {
+          "name": "endGameChunk",
+          "type": "u32",
+          "note": "The match's last chunk, or zero while it runs."
+        }
+      ]
+    }
+  ]
+}
