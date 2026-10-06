@@ -66,7 +66,7 @@
             {
               "name": "hasShields",
               "type": "u8",
-              "note": "Whether the three figures below follow. A zero leaves them out, and everything after them begins twelve bytes earlier.",
+              "note": "Whether the three figures below follow. A zero leaves them out.",
               "values": {
                 "0": {
                   "name": "no"
@@ -81,8 +81,7 @@
               "type": "f32",
               "note": "How much of the unit's shielding turns aside one sort of damage.",
               "present": {
-                "when": "hasShields",
-                "unseen": "absent"
+                "when": "hasShields"
               }
             },
             {
@@ -90,8 +89,7 @@
               "type": "f32",
               "note": "How much turns aside the other.",
               "present": {
-                "when": "hasShields",
-                "unseen": "absent"
+                "when": "hasShields"
               }
             },
             {
@@ -99,8 +97,7 @@
               "type": "f32",
               "note": "How much turns aside either.",
               "present": {
-                "when": "hasShields",
-                "unseen": "absent"
+                "when": "hasShields"
               }
             },
             {
@@ -174,85 +171,95 @@
               }
             },
             {
-              "name": "movementKind",
-              "type": "u8",
-              "note": "What the unit is doing on the ground, and so which shape follows. A champion stated as standing, with the place and facing below, is drawn there with its name and health bar over it. One stated as moving is drawn at the first point of its path and walks the rest.",
-              "values": {
-                "0": {
-                  "name": "nothing"
+              "name": "movementState",
+              "type": "record",
+              "present": {
+                "when": "remaining"
+              },
+              "note": "Where the unit is and what it is doing on the ground. A server also sends this message ending before it: 786 of the 89,477 recorded on this version end there.",
+              "fields": [
+                {
+                  "name": "movementKind",
+                  "type": "u8",
+                  "note": "What the unit is doing on the ground, and so which shape follows. A champion stated as standing, with the place and facing below, is drawn there with its name and health bar over it. One stated as moving is drawn at the first point of its path and walks the rest.",
+                  "values": {
+                    "0": {
+                      "name": "nothing"
+                    },
+                    "1": {
+                      "name": "movingAtASpeed"
+                    },
+                    "2": {
+                      "name": "moving"
+                    },
+                    "3": {
+                      "name": "standing"
+                    }
+                  }
                 },
-                "1": {
-                  "name": "movingAtASpeed"
+                {
+                  "name": "syncId",
+                  "type": "u32",
+                  "note": "The name this statement of movement answers to."
                 },
-                "2": {
-                  "name": "moving"
+                {
+                  "name": "movement",
+                  "type": "struct",
+                  "struct": "Movement",
+                  "note": "Where the unit is going. spec/movement.md says how a path is read.",
+                  "present": {
+                    "when": "movementKind",
+                    "equals": 2
+                  }
                 },
-                "3": {
-                  "name": "standing"
+                {
+                  "name": "movementAtSpeed",
+                  "type": "struct",
+                  "struct": "MovementAtSpeed",
+                  "note": "Where the unit is going, and how a server makes it travel. WaypointGroupAtSpeed carries the same shape.",
+                  "present": {
+                    "when": "movementKind",
+                    "equals": 1,
+                    "unseen": "present"
+                  }
+                },
+                {
+                  "name": "atX",
+                  "type": "f32",
+                  "note": "Where the unit stands, along one ground axis.",
+                  "present": {
+                    "when": "movementKind",
+                    "equals": 3
+                  }
+                },
+                {
+                  "name": "atZ",
+                  "type": "f32",
+                  "note": "Where it stands, along the other.",
+                  "present": {
+                    "when": "movementKind",
+                    "equals": 3
+                  }
+                },
+                {
+                  "name": "facingX",
+                  "type": "f32",
+                  "note": "Which way it faces, along one ground axis.",
+                  "present": {
+                    "when": "movementKind",
+                    "equals": 3
+                  }
+                },
+                {
+                  "name": "facingZ",
+                  "type": "f32",
+                  "note": "Which way it faces, along the other.",
+                  "present": {
+                    "when": "movementKind",
+                    "equals": 3
+                  }
                 }
-              }
-            },
-            {
-              "name": "syncId",
-              "type": "u32",
-              "note": "The name this statement of movement answers to."
-            },
-            {
-              "name": "movement",
-              "type": "struct",
-              "struct": "Movement",
-              "note": "Where the unit is going. spec/movement.md says how a path is read.",
-              "present": {
-                "when": "movementKind",
-                "equals": 2
-              }
-            },
-            {
-              "name": "movementAtSpeed",
-              "type": "struct",
-              "struct": "MovementAtSpeed",
-              "note": "Where the unit is going, and how a server makes it travel. WaypointGroupAtSpeed carries the same shape.",
-              "present": {
-                "when": "movementKind",
-                "equals": 1,
-                "unseen": "present"
-              }
-            },
-            {
-              "name": "atX",
-              "type": "f32",
-              "note": "Where the unit stands, along one ground axis.",
-              "present": {
-                "when": "movementKind",
-                "equals": 3
-              }
-            },
-            {
-              "name": "atZ",
-              "type": "f32",
-              "note": "Where it stands, along the other.",
-              "present": {
-                "when": "movementKind",
-                "equals": 3
-              }
-            },
-            {
-              "name": "facingX",
-              "type": "f32",
-              "note": "Which way it faces, along one ground axis.",
-              "present": {
-                "when": "movementKind",
-                "equals": 3
-              }
-            },
-            {
-              "name": "facingZ",
-              "type": "f32",
-              "note": "Which way it faces, along the other.",
-              "present": {
-                "when": "movementKind",
-                "equals": 3
-              }
+              ]
             }
           ]
         }

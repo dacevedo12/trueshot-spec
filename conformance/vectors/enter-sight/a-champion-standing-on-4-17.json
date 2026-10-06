@@ -44,14 +44,16 @@
       "effectStackCount": 0,
       "effectStacks": [],
       "isChampion": 1,
-      "movementKind": 3,
-      "syncId": 1,
-      "movement": null,
-      "movementAtSpeed": null,
-      "atX": 400,
-      "atZ": 400,
-      "facingX": 0,
-      "facingZ": 1
+      "movementState": {
+        "movementKind": 3,
+        "syncId": 1,
+        "movement": null,
+        "movementAtSpeed": null,
+        "atX": 400,
+        "atZ": 400,
+        "facingX": 0,
+        "facingZ": 1
+      }
     }
   }
 }

@@ -1,0 +1,37 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "EnterSight",
+  "version": "4.17.0.267",
+  "note": "Taken from a recording of a match played on this version.",
+  "bytes": "ba 04000040 000000000000000000000000000000803f00000000000000000000000000",
+  "fields": {
+    "command": 186,
+    "netId": 1073741828,
+    "extendedCommand": null,
+    "carried": {
+      "size": 0,
+      "unknown": 0
+    },
+    "messages": [],
+    "itemCount": 0,
+    "items": [],
+    "view": {
+      "hasShields": 0,
+      "magicShield": null,
+      "physicalShield": null,
+      "shield": null,
+      "appearanceCount": 0,
+      "appearance": [],
+      "lookingAt": 0,
+      "lookKind": 0,
+      "lookX": 1,
+      "lookY": 0,
+      "lookZ": 0,
+      "effectStackCount": 0,
+      "effectStacks": [],
+      "isChampion": 0,
+      "movementState": null
+    }
+  }
+}

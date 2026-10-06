@@ -44,39 +44,41 @@
       "effectStackCount": 0,
       "effectStacks": [],
       "isChampion": 1,
-      "movementKind": 2,
-      "syncId": 1,
-      "movement": {
-        "header": {
-          "hasTeleportToken": 0,
-          "pointCount": 2
+      "movementState": {
+        "movementKind": 2,
+        "syncId": 1,
+        "movement": {
+          "header": {
+            "hasTeleportToken": 0,
+            "pointCount": 2
+          },
+          "path": {
+            "unit": 1073741825,
+            "teleportToken": null,
+            "flags": [
+              {
+                "xIsStep": 0,
+                "zIsStep": 0
+              }
+            ],
+            "firstX": -3295,
+            "firstZ": -3411,
+            "steps": [
+              {
+                "xStep": null,
+                "xWhole": -1995,
+                "zStep": null,
+                "zWhole": -2111
+              }
+            ]
+          }
         },
-        "path": {
-          "unit": 1073741825,
-          "teleportToken": null,
-          "flags": [
-            {
-              "xIsStep": 0,
-              "zIsStep": 0
-            }
-          ],
-          "firstX": -3295,
-          "firstZ": -3411,
-          "steps": [
-            {
-              "xStep": null,
-              "xWhole": -1995,
-              "zStep": null,
-              "zWhole": -2111
-            }
-          ]
-        }
-      },
-      "movementAtSpeed": null,
-      "atX": null,
-      "atZ": null,
-      "facingX": null,
-      "facingZ": null
+        "movementAtSpeed": null,
+        "atX": null,
+        "atZ": null,
+        "facingX": null,
+        "facingZ": null
+      }
     }
   }
 }
