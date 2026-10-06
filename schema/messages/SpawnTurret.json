@@ -1,0 +1,118 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "SpawnTurret",
+  "note": "What a server sends to create a turret of its own choosing. A client first deletes any object it holds under the same id, and does nothing more where it cannot make the character. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 291,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The id the turret takes."
+        },
+        {
+          "name": "owner",
+          "type": "u32",
+          "note": "The unit credited with the gold for its kills, or zero for none."
+        },
+        {
+          "name": "node",
+          "type": "u8",
+          "note": "The network node it belongs to."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The turret's object name. A client reads to the first zero byte."
+        },
+        {
+          "name": "character",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "Its character, that is, its model."
+        },
+        {
+          "name": "skin",
+          "type": "i32",
+          "note": "Which skin."
+        },
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Where it stands."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "Its height."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Where it stands."
+        },
+        {
+          "name": "deathDelay",
+          "type": "f32",
+          "note": "Seconds after it dies before its model is changed or taken away."
+        },
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 2,
+          "bits": [
+            {
+              "name": "side",
+              "width": 9,
+              "note": "Its side."
+            },
+            {
+              "name": "invulnerable",
+              "width": 1,
+              "note": "Set where it takes no damage."
+            },
+            {
+              "name": "targetable",
+              "width": 1,
+              "note": "Set where it can be targeted."
+            },
+            {
+              "name": "unused",
+              "width": 5,
+              "note": "A client does not read these."
+            }
+          ],
+          "note": "Its side and state."
+        },
+        {
+          "name": "targetableBy",
+          "type": "u32",
+          "note": "Who may target it. A client compares the whole value with these and gives no meaning to others.",
+          "values": {
+            "8388608": {
+              "name": "notOwnSide"
+            },
+            "16777216": {
+              "name": "notEnemies"
+            },
+            "25165824": {
+              "name": "nobody"
+            },
+            "33554432": {
+              "name": "everyone"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

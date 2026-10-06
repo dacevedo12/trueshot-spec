@@ -1,0 +1,22 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "ChatAllowance",
+  "note": "What a server sends to limit a player's chat, showing how many lines they have left. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 249,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "linesLeft",
+          "type": "i32",
+          "note": "How many lines are left. A client shows this number as sent."
+        }
+      ]
+    }
+  ]
+}

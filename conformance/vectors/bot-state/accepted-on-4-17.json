@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "BotState",
+  "version": "4.17.0.267",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "aa 01000040 01000000",
+  "fields": {
+    "command": 170,
+    "netId": 1073741825,
+    "extendedCommand": null,
+    "state": 1
+  }
+}

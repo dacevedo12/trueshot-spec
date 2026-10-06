@@ -1,0 +1,44 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "Path",
+  "note": "What a server sends to set a unit walking along a path, facing the way it walks. The header names the unit. A client answers every one at once, unsequenced on the transient channel, with ten bytes: WaypointAck's command, a net id of zero, this sync id, and one byte holding whatever was there. It applies it only where the sync id is not older than the last the unit took (as UnitStopped).",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 185,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "i32",
+          "note": "The unit's movement count."
+        },
+        {
+          "name": "points",
+          "type": "array",
+          "count": "remaining",
+          "items": {
+            "name": "pointsEntry",
+            "type": "record",
+            "fields": [
+              {
+                "name": "x",
+                "type": "f32",
+                "note": "A point on the path."
+              },
+              {
+                "name": "z",
+                "type": "f32",
+                "note": "A point on the path."
+              }
+            ]
+          },
+          "note": "The path's points, to the end of the message. A client takes the ground's height for each."
+        }
+      ]
+    }
+  ]
+}

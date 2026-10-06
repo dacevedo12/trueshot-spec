@@ -1,0 +1,28 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "BotTargets",
+  "note": "What a server sends naming the units a bot is weighing. A client takes it and reads none of it. The header names the unit.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 105,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "targets",
+          "type": "array",
+          "count": 5,
+          "items": {
+            "name": "target",
+            "type": "u32",
+            "note": "A unit."
+          },
+          "note": "Five units."
+        }
+      ]
+    }
+  ]
+}

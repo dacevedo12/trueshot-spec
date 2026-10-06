@@ -1,0 +1,29 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "GoldSourcesLog",
+  "note": "What a server sends to have a client write a text to its own log. Nothing shows. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 282,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "length",
+          "type": "u32",
+          "note": "How many bytes of text follow. A client does not check it against what arrived, and reads no text where it is zero or, taken as signed, below zero."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "length",
+          "note": "The text, with no terminating zero. A client looks each word up in its own text and writes the result a line at a time."
+        }
+      ]
+    }
+  ]
+}

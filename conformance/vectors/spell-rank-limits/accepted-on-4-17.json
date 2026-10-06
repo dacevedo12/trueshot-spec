@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SpellRankLimits",
+  "version": "4.17.0.267",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "fe 010000401101 0303030101030507090b01030507090b01030507090b060b10121212",
+  "fields": {
+    "command": 254,
+    "netId": 1073741825,
+    "extendedCommand": 273,
+    "maxRanks": [3, 3, 3, 1],
+    "levels": [
+      1, 3, 5, 7, 9, 11, 1, 3, 5, 7, 9, 11, 1, 3, 5, 7, 9, 11, 6, 11, 16, 18, 18, 18
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "GoldSourcesLog",
+  "version": "4.17.0.267",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "fe 000000001a01 160000007472756573686f7420676f6c64206c6f67206c696e65",
+  "fields": {
+    "command": 254,
+    "netId": 0,
+    "extendedCommand": 282,
+    "length": 22,
+    "text": "trueshot gold log line"
+  }
+}

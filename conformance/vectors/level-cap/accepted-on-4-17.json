@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "LevelCap",
+  "version": "4.17.0.267",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "fe 010000401201 0a",
+  "fields": {
+    "command": 254,
+    "netId": 1073741825,
+    "extendedCommand": 274,
+    "cap": 10
+  }
+}

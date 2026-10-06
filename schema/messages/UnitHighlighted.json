@@ -1,0 +1,22 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "UnitHighlighted",
+  "note": "What a server sends to outline a unit with a pulsing light, as a tutorial does, until UnitHighlightRemoved. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 89,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit: one that can be damaged."
+        }
+      ]
+    }
+  ]
+}

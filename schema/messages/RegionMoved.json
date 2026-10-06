@@ -1,0 +1,32 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "RegionMoved",
+  "note": "What a server sends to move a region of sight, keeping all else about it. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 36,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "region",
+          "type": "u32",
+          "note": "The region, as RegionAdded named it. A client does not check that it exists."
+        },
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Where its centre now stands."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Where its centre now stands."
+        }
+      ]
+    }
+  ]
+}

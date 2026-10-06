@@ -1,0 +1,22 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "SubstitutionCleared",
+  "note": "What a server sends to undo an ItemSubstitution, so the shop shows the item itself again. The header names the champion.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 285,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "item",
+          "type": "u32",
+          "note": "The item whose substitute is undone. Zero does nothing."
+        }
+      ]
+    }
+  ]
+}

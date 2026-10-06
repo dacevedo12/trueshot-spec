@@ -1,0 +1,77 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "BalanceResult",
+  "note": "What a server sends when a vote on evening out a match ends, or cannot be held. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 252,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "result",
+          "type": "u8",
+          "note": "What came of it.",
+          "values": {
+            "0": {
+              "name": "failed"
+            },
+            "1": {
+              "name": "notYet",
+              "note": "Too early in the match."
+            },
+            "2": {
+              "name": "notAheadInGold"
+            },
+            "3": {
+              "name": "notAheadInLevels"
+            },
+            "4": {
+              "name": "tooSoon",
+              "note": "Too soon after another vote."
+            },
+            "5": {
+              "name": "alreadyVoted"
+            },
+            "6": {
+              "name": "agreed"
+            }
+          }
+        },
+        {
+          "name": "inFavour",
+          "type": "u8",
+          "note": "How many voted for."
+        },
+        {
+          "name": "against",
+          "type": "u8",
+          "note": "How many voted against."
+        },
+        {
+          "name": "side",
+          "type": "i32",
+          "note": "The side that voted."
+        },
+        {
+          "name": "gold",
+          "type": "f32",
+          "note": "Gold given."
+        },
+        {
+          "name": "experience",
+          "type": "i32",
+          "note": "Experience given."
+        },
+        {
+          "name": "turrets",
+          "type": "i32",
+          "note": "Turrets given."
+        }
+      ]
+    }
+  ]
+}

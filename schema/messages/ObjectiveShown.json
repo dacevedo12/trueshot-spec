@@ -1,0 +1,24 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "ObjectiveShown",
+  "note": "What a server sends to show the objective panel with a text. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 54,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "The objective. A client copies all 128 bytes, so the text must end with a zero byte within them."
+        }
+      ]
+    }
+  ]
+}

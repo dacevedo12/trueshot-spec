@@ -1,0 +1,63 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "ResourceKindChanged",
+  "note": "What a server sends to change what sort of resource a unit has, which its bar's colours and art follow. The header names the unit.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 275,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "The kind.",
+          "values": {
+            "0": {
+              "name": "mana"
+            },
+            "1": {
+              "name": "energy"
+            },
+            "2": {
+              "name": "none"
+            },
+            "3": {
+              "name": "shield"
+            },
+            "4": {
+              "name": "battleFury"
+            },
+            "5": {
+              "name": "dragonFury"
+            },
+            "6": {
+              "name": "rage"
+            },
+            "7": {
+              "name": "heat"
+            },
+            "8": {
+              "name": "gnarFury"
+            },
+            "9": {
+              "name": "ferocity"
+            },
+            "10": {
+              "name": "bloodWell"
+            },
+            "11": {
+              "name": "wind"
+            },
+            "12": {
+              "name": "other"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

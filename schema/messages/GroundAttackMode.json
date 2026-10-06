@@ -1,0 +1,50 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "GroundAttackMode",
+  "note": "What a server sends to make a champion's clicks attack the ground. It changes what its own player's clicks do; for any other champion it is only kept. A client ignores it where the id names no champion. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 257,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "champion",
+          "type": "u32",
+          "note": "The champion."
+        },
+        {
+          "name": "mode",
+          "type": "u8",
+          "note": "Which clicks attack the ground.",
+          "values": {
+            "0": {
+              "name": "off"
+            },
+            "1": {
+              "name": "move",
+              "note": "A move click."
+            },
+            "2": {
+              "name": "select",
+              "note": "A select click."
+            },
+            "3": {
+              "name": "moveAndSelect"
+            },
+            "4": {
+              "name": "attackMove"
+            },
+            "5": {
+              "name": "atCursor",
+              "note": "Kept, but no click acts on it."
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

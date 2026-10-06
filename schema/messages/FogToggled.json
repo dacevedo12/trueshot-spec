@@ -1,0 +1,16 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "FogToggled",
+  "note": "What a server sends to turn the drawing of the fog of war off where it is on, or on where it is off. It changes only what is drawn: what can be seen is still what a server sends. It carries nothing of its own. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 126,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": []
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "BotDebug",
+  "note": "What a server sends describing what a bot is thinking. A client takes it and reads none of it. The header names the unit.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 19,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The bot's name."
+        },
+        {
+          "name": "strategy",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "Its strategy."
+        },
+        {
+          "name": "behaviour",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "Its behaviour."
+        },
+        {
+          "name": "task",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "Its task."
+        },
+        {
+          "name": "state1",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "A line of its state."
+        },
+        {
+          "name": "state2",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "A line of its state."
+        },
+        {
+          "name": "state3",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "A line of its state."
+        }
+      ]
+    }
+  ]
+}

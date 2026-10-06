@@ -1,0 +1,65 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "HudHighlightToggled",
+  "note": "What a server sends to light up part of the screen, or to put it out. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 79,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "part",
+          "type": "u8",
+          "note": "Which part of the screen. A client ignores any other value.",
+          "values": {
+            "1": {
+              "name": "hud",
+              "note": "The main controls, with element as in HudHighlighted."
+            },
+            "3": {
+              "name": "minimap",
+              "note": "The minimap; a client acts on element 0 only, its camera button."
+            }
+          }
+        },
+        {
+          "name": "element",
+          "type": "u8",
+          "note": "What to light up, as in HudHighlighted. A value beyond those named does nothing."
+        },
+        {
+          "name": "number",
+          "type": "u8",
+          "note": "Which slot, as in HudHighlighted."
+        },
+        {
+          "name": "unused",
+          "type": "u8",
+          "note": "A client does not read it."
+        },
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "on",
+              "width": 1,
+              "note": "Set to light it up, clear to put it out."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "A client does not read these."
+            }
+          ],
+          "note": "Whether it is lit."
+        }
+      ]
+    }
+  ]
+}

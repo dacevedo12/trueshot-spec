@@ -1,0 +1,60 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "NavigationFlags",
+  "note": "What a server sends to mark the ground within circles, in place of the circles it marked before. A client adds the flags to every cell of its navigation grid within each circle, and answers with command 29 on the requests channel, unreliable, carrying the same sync id, even with no circles; a client with no grid does neither. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 65,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "note": "A client of this version fails on the first of these in a match: it takes away the circles it marked before, and holding none, it stops, reading no circle and sending no answer. A server sends it to such a client only knowing that.",
+      "fields": [
+        {
+          "name": "count",
+          "type": "u16",
+          "note": "How many circles follow. A client trusts it."
+        },
+        {
+          "name": "syncId",
+          "type": "i32",
+          "note": "A number a client returns in NavigationFlagsAck."
+        },
+        {
+          "name": "circles",
+          "type": "array",
+          "count": "count",
+          "items": {
+            "name": "circlesEntry",
+            "type": "record",
+            "fields": [
+              {
+                "name": "x",
+                "type": "f32",
+                "note": "The circle's centre."
+              },
+              {
+                "name": "z",
+                "type": "f32",
+                "note": "The circle's centre."
+              },
+              {
+                "name": "radius",
+                "type": "f32",
+                "note": "Its radius. A client skips a circle of radius 1000 or more."
+              },
+              {
+                "name": "flags",
+                "type": "u32",
+                "note": "The flags to add to each cell. Only the low 16 bits take effect."
+              }
+            ]
+          },
+          "note": "The circles."
+        }
+      ]
+    }
+  ]
+}

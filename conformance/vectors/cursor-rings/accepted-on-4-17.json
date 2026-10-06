@@ -1,0 +1,15 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "CursorRings",
+  "version": "4.17.0.267",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "fe 010000400801 0000964300001643",
+  "fields": {
+    "command": 254,
+    "netId": 1073741825,
+    "extendedCommand": 264,
+    "radius": 300,
+    "secondRadius": 150
+  }
+}

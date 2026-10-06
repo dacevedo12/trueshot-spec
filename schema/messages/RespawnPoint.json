@@ -1,0 +1,62 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "RespawnPoint",
+  "note": "What a server sends about the points a champion can choose to return to life at. A client acts on it only where its screen has a panel of such points. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 213,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "action",
+          "type": "u8",
+          "note": "What happened. A client ignores any other value.",
+          "values": {
+            "0": {
+              "name": "owned",
+              "note": "The point is now held by side, at the position given."
+            },
+            "1": {
+              "name": "chosen",
+              "note": "The player named by clientId chose the point."
+            }
+          }
+        },
+        {
+          "name": "point",
+          "type": "u8",
+          "note": "Which point."
+        },
+        {
+          "name": "side",
+          "type": "i32",
+          "note": "The side holding it, 100 or 200. Read for owned only."
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The player who chose it. Read for chosen only."
+        },
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Where the point stands. Read for owned only."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "Its height. Read for owned only."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Where the point stands. Read for owned only."
+        }
+      ]
+    }
+  ]
+}

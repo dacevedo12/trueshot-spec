@@ -1,0 +1,56 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "VoiceEvent",
+  "note": "What a server sends to play a voice event. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 121,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "folder",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The event's folder. Unread for kind 1."
+        },
+        {
+          "name": "event",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The event's name; for kind 1, the conversation's."
+        },
+        {
+          "name": "callback",
+          "type": "u8",
+          "note": "For kind 0, nonzero asks the client to send VoiceEventDone once the event has played. A client sends it at once where it cannot play the event, whatever this holds."
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What sort of event. A client does nothing for any other value.",
+          "values": {
+            "0": {
+              "name": "general",
+              "note": "Played with no place."
+            },
+            "1": {
+              "name": "champion",
+              "note": "A conversation played in the voice of the champion named by handle, where sound is on and the client knows the champion."
+            }
+          }
+        },
+        {
+          "name": "handle",
+          "type": "u32",
+          "note": "For kind 0, a number a client returns in VoiceEventDone; for kind 1, the champion."
+        }
+      ]
+    }
+  ]
+}

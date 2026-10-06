@@ -1,0 +1,85 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "BalanceVote",
+  "note": "What a server sends as a side votes on evening out a match: on the first vote it opens the vote's panel for that side, and each message adds one voter. A client sends BalanceVoteAnswer as its player votes. A client with no champion of its own ignores it. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 250,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "inFavour",
+              "width": 1,
+              "note": "Set where this voter voted for."
+            },
+            {
+              "name": "first",
+              "width": 1,
+              "note": "Set where this vote opens a new vote."
+            },
+            {
+              "name": "unused",
+              "width": 6,
+              "note": "A client does not read these."
+            }
+          ],
+          "note": "This vote."
+        },
+        {
+          "name": "voter",
+          "type": "u32",
+          "note": "The voter's champion."
+        },
+        {
+          "name": "inFavour",
+          "type": "u8",
+          "note": "How many voted for."
+        },
+        {
+          "name": "against",
+          "type": "u8",
+          "note": "How many voted against."
+        },
+        {
+          "name": "voters",
+          "type": "u8",
+          "note": "How many may vote. Read only on the first vote."
+        },
+        {
+          "name": "side",
+          "type": "i32",
+          "note": "The voting side."
+        },
+        {
+          "name": "closesIn",
+          "type": "f32",
+          "note": "Seconds until the vote closes. Read only on the first vote."
+        },
+        {
+          "name": "gold",
+          "type": "f32",
+          "note": "Gold the losing side would be given."
+        },
+        {
+          "name": "experience",
+          "type": "i32",
+          "note": "Experience it would be given."
+        },
+        {
+          "name": "turrets",
+          "type": "i32",
+          "note": "Turrets it would be given."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "ParticleSource",
+  "note": "What a server sends to drive a value of the lasting particle effects on a unit from something that changes. A client ignores it where the id names no unit it knows. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 210,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit: a champion, minion, turret or other unit."
+        },
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which of the effects' inputs to drive."
+        },
+        {
+          "name": "point",
+          "type": "u8",
+          "note": "Which point, for source 0. Unread otherwise."
+        },
+        {
+          "name": "source",
+          "type": "u8",
+          "note": "What drives it. Any other value drives it from nothing.",
+          "values": {
+            "0": {
+              "name": "capturePoint",
+              "note": "How far the point is taken (CapturePointChanged)."
+            },
+            "1": {
+              "name": "resource",
+              "note": "The unit's resource bar."
+            },
+            "2": {
+              "name": "resourceSmoothed",
+              "note": "The unit's resource bar, smoothed over time."
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

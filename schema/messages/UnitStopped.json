@@ -1,0 +1,52 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "UnitStopped",
+  "note": "What a server sends to stop a unit where it stands. The header names the unit. A client applies it only where its sync id is not older than the last the unit took, counting a wrap: this message, PathWithSpeed and Path share one count per unit, starting at -1.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 49,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Where the unit stands; a client keeps this height rather than the ground's."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "Its height."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Where it stands."
+        },
+        {
+          "name": "facingX",
+          "type": "f32",
+          "note": "The way it faces."
+        },
+        {
+          "name": "facingY",
+          "type": "f32",
+          "note": "The way it faces."
+        },
+        {
+          "name": "facingZ",
+          "type": "f32",
+          "note": "The way it faces."
+        },
+        {
+          "name": "syncId",
+          "type": "i32",
+          "note": "The unit's movement count."
+        }
+      ]
+    }
+  ]
+}

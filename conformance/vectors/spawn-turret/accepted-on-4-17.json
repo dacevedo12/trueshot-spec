@@ -1,0 +1,30 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SpawnTurret",
+  "version": "4.17.0.267",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "fe 000000002301 3000004000000000407472756573686f7420747572726574000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004f726465725475727265744e6f726d616c0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000080894400000000000061440000a040640400000002",
+  "fields": {
+    "command": 254,
+    "netId": 0,
+    "extendedCommand": 291,
+    "unit": 1073741872,
+    "owner": 0,
+    "node": 64,
+    "name": "trueshot turret",
+    "character": "OrderTurretNormal",
+    "skin": 0,
+    "x": 1100,
+    "y": 0,
+    "z": 900,
+    "deathDelay": 5,
+    "flags": {
+      "side": 100,
+      "invulnerable": 0,
+      "targetable": 1,
+      "unused": 0
+    },
+    "targetableBy": 33554432
+  }
+}

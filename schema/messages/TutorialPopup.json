@@ -1,0 +1,24 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "TutorialPopup",
+  "note": "What a server sends to open the tutorial's popup: a caption, this text and a single button, which a client answers with TutorialPopupClosed. A client has one such popup; a second message replaces its text. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 179,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "A key into the client's own text for the popup's body. A client reads to the first zero byte."
+        }
+      ]
+    }
+  ]
+}

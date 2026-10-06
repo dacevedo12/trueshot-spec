@@ -1,0 +1,128 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "UnitText",
+  "note": "What a server sends to float a line of the client's own text over a unit, as combat text floats. A client shows it only where the unit is in its sight, and not while playing a replay. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 25,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit to float it over: one that can be damaged."
+        },
+        {
+          "name": "style",
+          "type": "u8",
+          "note": "How the line looks.",
+          "values": {
+            "0": {
+              "name": "invulnerable"
+            },
+            "1": {
+              "name": "special"
+            },
+            "2": {
+              "name": "heal"
+            },
+            "3": {
+              "name": "manaHeal"
+            },
+            "4": {
+              "name": "manaDamage"
+            },
+            "5": {
+              "name": "dodge"
+            },
+            "6": {
+              "name": "physicalCritical"
+            },
+            "7": {
+              "name": "magicCritical"
+            },
+            "8": {
+              "name": "trueCritical"
+            },
+            "9": {
+              "name": "experience"
+            },
+            "10": {
+              "name": "gold"
+            },
+            "11": {
+              "name": "level"
+            },
+            "12": {
+              "name": "disable"
+            },
+            "13": {
+              "name": "questReceived"
+            },
+            "14": {
+              "name": "questComplete"
+            },
+            "15": {
+              "name": "score"
+            },
+            "16": {
+              "name": "physicalDamage"
+            },
+            "17": {
+              "name": "magicDamage"
+            },
+            "18": {
+              "name": "trueDamage"
+            },
+            "19": {
+              "name": "enemyPhysicalDamage"
+            },
+            "20": {
+              "name": "enemyMagicDamage"
+            },
+            "21": {
+              "name": "enemyTrueDamage"
+            },
+            "22": {
+              "name": "enemyPhysicalCritical"
+            },
+            "23": {
+              "name": "enemyMagicCritical"
+            },
+            "24": {
+              "name": "enemyTrueCritical"
+            },
+            "25": {
+              "name": "countdown"
+            },
+            "26": {
+              "name": "onMyWay"
+            },
+            "27": {
+              "name": "absorbed"
+            },
+            "28": {
+              "name": "debug"
+            }
+          }
+        },
+        {
+          "name": "number",
+          "type": "i32",
+          "note": "A number put into the text where it asks for one."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "A key into the client's own text. A client reads to the first zero byte."
+        }
+      ]
+    }
+  ]
+}

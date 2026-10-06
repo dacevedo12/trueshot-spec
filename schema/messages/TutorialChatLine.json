@@ -1,0 +1,24 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "TutorialChatLine",
+  "note": "What a server sends to put a line of the client's own text in its chat, as a line from the game. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 2,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "A key into the client's own text, which it looks up and shows. A client reads to the first zero byte, which must fall within the field."
+        }
+      ]
+    }
+  ]
+}

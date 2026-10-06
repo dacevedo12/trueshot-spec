@@ -1,0 +1,16 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "AfkWarning",
+  "note": "What a server sends to warn the player that they seem to be away, in a popup with one button that only closes it. It carries nothing of its own. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 184,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": []
+    }
+  ]
+}

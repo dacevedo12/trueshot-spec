@@ -1,0 +1,47 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "SpawnMarker",
+  "note": "What a server sends to create an unseen object at a place, which other messages can then name. A client first deletes any object it holds under the same id. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 256,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The id the marker takes."
+        },
+        {
+          "name": "node",
+          "type": "u8",
+          "note": "The network node it belongs to."
+        },
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Where it stands."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "Its height."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Where it stands."
+        },
+        {
+          "name": "sightSize",
+          "type": "f32",
+          "note": "A client does not use it."
+        }
+      ]
+    }
+  ]
+}

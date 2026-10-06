@@ -1,0 +1,18 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "VoiceEvent",
+  "version": "4.17.0.267",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "79 00000000 7472756573686f7400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000006e6f7468696e670000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100d2040000",
+  "fields": {
+    "command": 121,
+    "netId": 0,
+    "extendedCommand": null,
+    "folder": "trueshot",
+    "event": "nothing",
+    "callback": 1,
+    "kind": 0,
+    "handle": 1234
+  }
+}

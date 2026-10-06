@@ -1,0 +1,27 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "BalanceVote",
+  "version": "4.17.0.267",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "fa 00000000 0301000040010005640000000000f0410000fa432c01000001000000",
+  "fields": {
+    "command": 250,
+    "netId": 0,
+    "extendedCommand": null,
+    "flags": {
+      "inFavour": 1,
+      "first": 1,
+      "unused": 0
+    },
+    "voter": 1073741825,
+    "inFavour": 1,
+    "against": 0,
+    "voters": 5,
+    "side": 100,
+    "closesIn": 30,
+    "gold": 500,
+    "experience": 300,
+    "turrets": 1
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "AnimationAdvanced",
+  "note": "What a server sends to move an animation a unit is playing forward at once. The header names the unit. Where the unit plays no animation of that name, nothing happens.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 259,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "seconds",
+          "type": "f32",
+          "note": "How far forward, in seconds."
+        },
+        {
+          "name": "animation",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The animation's name. A client reads to the first zero byte."
+        }
+      ]
+    }
+  ]
+}

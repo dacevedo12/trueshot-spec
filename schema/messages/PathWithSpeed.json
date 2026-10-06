@@ -1,0 +1,99 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "PathWithSpeed",
+  "note": "What a server sends to set a unit moving along a path at a speed of its own, perhaps in an arc or following another unit. The header names the unit. A client answers every one at once, before checking its sync id, as it answers Path. It applies it only where the sync id is not older than the last the unit took (as UnitStopped).",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 131,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "i32",
+          "note": "The unit's movement count."
+        },
+        {
+          "name": "speed",
+          "type": "f32",
+          "note": "The speed to move at."
+        },
+        {
+          "name": "gravity",
+          "type": "f32",
+          "note": "The arc's gravity, for a leap."
+        },
+        {
+          "name": "arcX",
+          "type": "f32",
+          "note": "Where the arc begins."
+        },
+        {
+          "name": "arcZ",
+          "type": "f32",
+          "note": "Where the arc begins."
+        },
+        {
+          "name": "facing",
+          "type": "u8",
+          "note": "Which way the unit faces as it moves.",
+          "values": {
+            "0": {
+              "name": "along",
+              "note": "The way it moves."
+            },
+            "1": {
+              "name": "keep",
+              "note": "The way it faced."
+            }
+          }
+        },
+        {
+          "name": "follow",
+          "type": "u32",
+          "note": "A unit to follow, or zero for none."
+        },
+        {
+          "name": "followDistance",
+          "type": "f32",
+          "note": "How near to keep to it. Read where follow is not zero."
+        },
+        {
+          "name": "backOff",
+          "type": "f32",
+          "note": "How far to fall back from it. Read where follow is not zero."
+        },
+        {
+          "name": "travelTime",
+          "type": "f32",
+          "note": "How long the move takes. Read where follow is not zero."
+        },
+        {
+          "name": "points",
+          "type": "array",
+          "count": "remaining",
+          "items": {
+            "name": "pointsEntry",
+            "type": "record",
+            "fields": [
+              {
+                "name": "x",
+                "type": "f32",
+                "note": "A point on the path."
+              },
+              {
+                "name": "z",
+                "type": "f32",
+                "note": "A point on the path."
+              }
+            ]
+          },
+          "note": "The path's points, to the end of the message. A client takes the ground's height for each."
+        }
+      ]
+    }
+  ]
+}

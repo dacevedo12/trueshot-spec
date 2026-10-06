@@ -1,0 +1,35 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "SoftReconnect",
+  "note": "What a server sends, in pairs, to rebuild a client's world without a new connection: the first marks what the client holds, the second deletes whatever is still marked. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 239,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "stage",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "stage",
+              "width": 2,
+              "note": "0 to mark every unit, and every object kept until a checkpoint other than an inhibitor, also clearing floating text, any screen tint and the state of neutral camps; any other value to delete whatever is still marked."
+            },
+            {
+              "name": "unused",
+              "width": 6,
+              "note": "A client does not read these."
+            }
+          ],
+          "note": "Which half of the pair."
+        }
+      ]
+    }
+  ]
+}

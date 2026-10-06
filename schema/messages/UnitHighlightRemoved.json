@@ -1,0 +1,22 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "UnitHighlightRemoved",
+  "note": "What a server sends to take away the light UnitHighlighted put on a unit. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 180,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit. Where it has no light, nothing happens."
+        }
+      ]
+    }
+  ]
+}

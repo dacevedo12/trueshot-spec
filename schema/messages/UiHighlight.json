@@ -1,0 +1,85 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "UiHighlight",
+  "note": "What a server sends to place an animated highlight over one element of the screen, or to take one away. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 202,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "action",
+          "type": "u8",
+          "note": "What to do. A client takes 2 to 14 and does nothing, and ignores the message from 15 up.",
+          "values": {
+            "0": {
+              "name": "show"
+            },
+            "1": {
+              "name": "remove",
+              "note": "Removes that element's highlight and puts every highlight to rest."
+            }
+          }
+        },
+        {
+          "name": "element",
+          "type": "u8",
+          "note": "Which element. A client does not check it: showing a value above 14 has no defined effect.",
+          "values": {
+            "0": {
+              "name": "minimap"
+            },
+            "1": {
+              "name": "quests"
+            },
+            "2": {
+              "name": "tips"
+            },
+            "3": {
+              "name": "characterInfo"
+            },
+            "4": {
+              "name": "effects",
+              "note": "The row of effects on the champion."
+            },
+            "5": {
+              "name": "ultimate",
+              "note": "The fourth spell."
+            },
+            "6": {
+              "name": "recall"
+            },
+            "7": {
+              "name": "shop"
+            },
+            "8": {
+              "name": "spellPoint1"
+            },
+            "9": {
+              "name": "gold"
+            },
+            "10": {
+              "name": "assists"
+            },
+            "11": {
+              "name": "passive"
+            },
+            "12": {
+              "name": "spellPoint2"
+            },
+            "13": {
+              "name": "spellPoint3"
+            },
+            "14": {
+              "name": "spellPoint4"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

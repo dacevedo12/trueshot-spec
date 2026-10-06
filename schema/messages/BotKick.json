@@ -1,0 +1,28 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "BotKick",
+  "note": "What a server sends to have a client it takes for a program rather than a player leave the match. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 222,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "action",
+          "type": "u8",
+          "note": "What to do. A client acts on 4 only.",
+          "values": {
+            "4": {
+              "name": "leave",
+              "note": "Leave the match at once, as one abandoning it, with nothing shown, sending Exit as it goes."
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

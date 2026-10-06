@@ -1,0 +1,38 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "ChainTargets",
+  "note": "What a server sends to name the units a chain missile will strike in turn. The header names the missile. Where the client already holds the missile, the missile takes the list; otherwise the list waits for the caster's next chain missile.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 108,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "count",
+          "type": "i32",
+          "note": "How many of the slots are used, 0 to 32. A client does not check it."
+        },
+        {
+          "name": "caster",
+          "type": "u32",
+          "note": "The unit casting the missile."
+        },
+        {
+          "name": "targets",
+          "type": "array",
+          "count": 32,
+          "items": {
+            "name": "target",
+            "type": "u32",
+            "note": "A unit, in the order struck."
+          },
+          "note": "Always 32 slots; those past count are unread."
+        }
+      ]
+    }
+  ]
+}

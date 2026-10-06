@@ -1,0 +1,27 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "ThemeMusic",
+  "note": "What a server sends to set a champion's skin music. A client plays it only for its own champion, and does nothing where the id names no champion or the track is past the skin's list. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 96,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "champion",
+          "type": "u32",
+          "note": "The champion."
+        },
+        {
+          "name": "track",
+          "type": "u32",
+          "note": "Which of the skin's music tracks, counting from zero."
+        }
+      ]
+    }
+  ]
+}

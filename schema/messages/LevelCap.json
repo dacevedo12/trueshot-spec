@@ -1,0 +1,22 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "LevelCap",
+  "note": "What a server sends its player's champion to set the highest level it can reach. The header names the champion.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 274,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "cap",
+          "type": "u8",
+          "note": "The highest level; zero restores the usual 18."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "CursorRings",
+  "note": "What a server sends its player's champion to draw rings around the cursor while no spell is being aimed. The header names the champion.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 264,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "radius",
+          "type": "f32",
+          "note": "The ring's radius. Zero or less draws neither ring."
+        },
+        {
+          "name": "secondRadius",
+          "type": "f32",
+          "note": "A second ring's radius, drawn where above zero."
+        }
+      ]
+    }
+  ]
+}

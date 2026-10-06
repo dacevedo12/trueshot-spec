@@ -1,0 +1,37 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "InventorySlot",
+  "note": "What a server sends to set one slot of a unit's inventory. The header names the unit. A client empties the slot, then fills it where count is above zero, and refreshes the shop where the unit is its own champion.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 83,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "item",
+          "type": "u32",
+          "note": "The item. Unread where count is zero."
+        },
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot, 0 to 39. A client ignores the message from 40 up."
+        },
+        {
+          "name": "count",
+          "type": "u8",
+          "note": "How many. Zero leaves the slot empty."
+        },
+        {
+          "name": "charges",
+          "type": "u8",
+          "note": "Its charges."
+        }
+      ]
+    }
+  ]
+}

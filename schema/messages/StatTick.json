@@ -1,0 +1,23 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "StatTick",
+  "note": "What a server sends to advance every unit's stats by a span of time. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 40,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "note": "A client takes it and changes nothing it shows.",
+      "fields": [
+        {
+          "name": "seconds",
+          "type": "f32",
+          "note": "The span, in seconds."
+        }
+      ]
+    }
+  ]
+}

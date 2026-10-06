@@ -1,0 +1,84 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "SpawnBot",
+  "note": "What a server sends to create a champion played by a bot. A client first deletes any object it holds under the same id. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 207,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The id the bot's champion takes."
+        },
+        {
+          "name": "node",
+          "type": "u8",
+          "note": "The network node it belongs to."
+        },
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Where it appears."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "Its height."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Where it appears."
+        },
+        {
+          "name": "rank",
+          "type": "u8",
+          "note": "The bot's rank."
+        },
+        {
+          "name": "sides",
+          "type": "bits",
+          "size": 2,
+          "bits": [
+            {
+              "name": "side",
+              "width": 9,
+              "note": "Its side: 100, 200 or 300."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "A client does not read these."
+            }
+          ],
+          "note": "Its side."
+        },
+        {
+          "name": "skin",
+          "type": "i32",
+          "note": "Which skin."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The name shown for it. A client reads to the first zero byte."
+        },
+        {
+          "name": "character",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The champion's character name, which is also its unique name."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "DrawPathMode",
+  "note": "What a server sends its player's champion to have the player draw paths with the mouse. The header names the champion. While on, each right click on the world also sends DrawPath. A client sets how often a held right click repeats a move to the interval, at least 0.1 seconds, whether on or off.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 261,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "A client does not use it."
+        },
+        {
+          "name": "mode",
+          "type": "u8",
+          "note": "Zero to turn drawing off, any other value to turn it on."
+        },
+        {
+          "name": "interval",
+          "type": "f32",
+          "note": "Seconds between repeats of a held right click."
+        }
+      ]
+    }
+  ]
+}
