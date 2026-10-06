@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "MapProp",
-  "note": "What a server sends to place a prop on the map: a thing that stands there and is looked at rather than one that acts. In what order the three turns apply is not recorded here. The header carries zero or names the object this is about, and a client accepted both.",
+  "note": "What a server sends to place a prop on the map: a thing that stands there and is looked at rather than one that acts. The header carries zero or names the object this is about, and a client accepted both.",
   "revisions": [
     {
       "from": "4.17.0.233",
@@ -44,17 +44,17 @@
         {
           "name": "rotationX",
           "type": "f32",
-          "note": "An angle the prop is turned by about a ground axis, in degrees, from zero up to but not reaching 360. Zero for every prop observed."
+          "note": "For scenery, the pitch in degrees: a turn about the x axis, positive turning +y toward +z. For an active prop, x of the direction it faces."
         },
         {
           "name": "rotationY",
           "type": "f32",
-          "note": "An angle the prop is turned by about the upright axis, in degrees, from zero up to but not reaching 360."
+          "note": "For scenery, the yaw in degrees: a turn about the up axis, positive turning +z toward +x, so yaw 0 faces +z and 90 faces +x. For an active prop, y of its facing, which a client keeps but does not turn by."
         },
         {
           "name": "rotationZ",
           "type": "f32",
-          "note": "An angle the prop is turned by about the other ground axis, in degrees, from zero up to but not reaching 360. Zero for every prop observed."
+          "note": "For scenery, the roll in degrees: a turn about the z axis, positive turning +x toward +y. For an active prop, z of the direction it faces."
         },
         {
           "name": "offsetX",
@@ -144,7 +144,7 @@
           "note": "The name the client loads its art and sound under, written and padded as above."
         }
       ],
-      "note": "A client takes the prop's id from prop, not from the header."
+      "note": "A client takes the prop's id from prop, not from the header. A scenery prop is turned by pitch, then yaw, then roll, each about the fixed world axes; none is negated or wrapped. An active prop only turns about the up axis, to face the ground direction its x and z give, and faces +z where both are zero."
     },
     {
       "from": "4.20.0.315",
