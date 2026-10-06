@@ -104,17 +104,17 @@
         {
           "name": "unitAtX",
           "type": "f32",
-          "note": "Where the unit the missile follows stands, along one ground axis, in world units."
+          "note": "Where to place the casting unit, along one ground axis, unless the casting itself places it."
         },
         {
           "name": "unitAtY",
           "type": "f32",
-          "note": "Where the unit the missile follows stands, in height, in world units."
+          "note": "Its height."
         },
         {
           "name": "unitAtZ",
           "type": "f32",
-          "note": "Where the unit the missile follows stands, along the other ground axis, in world units."
+          "note": "Where to place the casting unit, along the other ground axis."
         },
         {
           "name": "age",
@@ -149,12 +149,12 @@
             {
               "name": "bounced",
               "width": 1,
-              "note": "Set where the missile has already turned off something it struck."
+              "note": "Set where the missile has bounced. Read only where age is above zero, when a client moves the missile to its position and places it again from the caster's position, the end and the facing."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 7,
-              "note": "Clear in everything observed."
+              "note": "A client does not read these."
             }
           ]
         },
@@ -164,7 +164,8 @@
           "struct": "SpellCast",
           "note": "The casting that threw it."
         }
-      ]
+      ],
+      "note": "Where the end lies on walkable ground, a client takes the ground's height there for endY. Where age is not zero, it moves the missile's trail on by age seconds."
     },
     {
       "from": "4.20.0.315",

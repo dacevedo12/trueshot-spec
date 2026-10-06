@@ -19,16 +19,22 @@
             {
               "name": "side100Won",
               "width": 1,
-              "note": "Set where side 100 won and clear where side 200 won. Sent set to a client whose champion is on side 100, it shows victory."
+              "note": "Set where side 100 won, clear where side 200 did."
             },
             {
-              "name": "unknown",
-              "width": 7,
-              "note": "Observed clear."
+              "name": "surrendered",
+              "width": 1,
+              "note": "Set aside for a match ended by surrender. A client does not read it."
+            },
+            {
+              "name": "unused",
+              "width": 6,
+              "note": "A client does not read these."
             }
           ]
         }
-      ]
+      ],
+      "note": "Arriving while the match still loads, it has a client record the win or loss against its player's side and leave at once. Otherwise the client records it, ends the match on its screen and sends ClientFinished, except while playing a replay."
     },
     {
       "from": "4.20.0.315",

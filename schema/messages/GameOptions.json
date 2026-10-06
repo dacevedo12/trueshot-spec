@@ -22,9 +22,9 @@
               "note": "Set while the client attacks without being told to."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 7,
-              "note": "Purpose undetermined. Observed clear."
+              "note": "Always clear: a client writes the whole byte as 0 or 1."
             }
           ]
         }

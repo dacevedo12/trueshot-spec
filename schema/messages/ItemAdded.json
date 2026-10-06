@@ -19,7 +19,7 @@
         {
           "name": "slot",
           "type": "u8",
-          "note": "The slot it went to."
+          "note": "The slot it went to. A client rejects the message from 40 up."
         },
         {
           "name": "inSlot",
@@ -37,14 +37,19 @@
           "size": 1,
           "bits": [
             {
-              "name": "tellTheClient",
-              "width": 1,
-              "note": "Set where the client is to show the change. Clear in everything observed."
+              "name": "unused",
+              "width": 6,
+              "note": "A client does not read these."
             },
             {
-              "name": "unknown",
-              "width": 7,
-              "note": "Observed clear."
+              "name": "announce",
+              "width": 1,
+              "note": "Set to announce the purchase: a client shows it where the unit is on its side (or it plays a replay), the item's own data allows it, the player's setting asks for it, and the same item was not bought in the last 5 seconds, a repeat within them restarting the wait."
+            },
+            {
+              "name": "unused7",
+              "width": 1,
+              "note": "A client does not read it."
             }
           ]
         }

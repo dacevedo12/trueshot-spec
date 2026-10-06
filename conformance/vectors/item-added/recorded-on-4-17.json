@@ -3,19 +3,19 @@
   "subject": "message",
   "message": "ItemAdded",
   "version": "4.17.0.267",
-  "note": "Taken from a server a client accepted.",
-  "bytes": "6f 01000040 e903000000010000",
+  "note": "Taken from a recording of a match played on this version.",
+  "bytes": "6f 21000040 d307000001010040",
   "fields": {
     "command": 111,
-    "netId": 1073741825,
+    "netId": 1073741857,
     "extendedCommand": null,
-    "item": 1001,
-    "slot": 0,
+    "item": 2003,
+    "slot": 1,
     "inSlot": 1,
     "charges": 0,
     "how": {
       "unused": 0,
-      "announce": 0,
+      "announce": 1,
       "unused7": 0
     }
   }

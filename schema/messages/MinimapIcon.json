@@ -18,20 +18,8 @@
         },
         {
           "name": "changeIcon",
-          "type": "bits",
-          "size": 1,
-          "bits": [
-            {
-              "name": "change",
-              "width": 1,
-              "note": "Set where the mark below replaces what the client draws. Clear in everything observed."
-            },
-            {
-              "name": "unknown",
-              "width": 7,
-              "note": "Clear in everything observed."
-            }
-          ]
+          "type": "u8",
+          "note": "1 to replace the unit's minimap icon with icon; 0 leaves it, icon unread."
         },
         {
           "name": "icon",
@@ -42,20 +30,8 @@
         },
         {
           "name": "changeBorder",
-          "type": "bits",
-          "size": 1,
-          "bits": [
-            {
-              "name": "change",
-              "width": 1,
-              "note": "Set where the ring below replaces what the client draws. Set in everything observed."
-            },
-            {
-              "name": "unknown",
-              "width": 7,
-              "note": "Clear in everything observed."
-            }
-          ]
+          "type": "u8",
+          "note": "1 to replace the unit's ring with border, and what it does with borderScript; 0 leaves both, neither read."
         },
         {
           "name": "border",
@@ -71,7 +47,8 @@
           "size": 64,
           "note": "The name the client loads the ring's own doings under, written and padded as above."
         }
-      ]
+      ],
+      "note": "A client does nothing unless unit is a unit it holds that can be attacked."
     },
     {
       "from": "4.20.0.315",

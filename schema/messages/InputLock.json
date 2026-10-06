@@ -53,14 +53,15 @@
               "note": "Set to lock, clear to unlock."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 7,
-              "note": "Purpose undetermined."
+              "note": "A client does not read these."
             }
           ],
           "note": "Whether to lock."
         }
-      ]
+      ],
+      "note": "A client ignores it while playing a replay."
     }
   ]
 }

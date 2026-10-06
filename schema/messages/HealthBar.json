@@ -28,16 +28,16 @@
               "note": "Set where the bar's type changes; a client reads the type and side below only then. Clear in everything observed."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 6,
-              "note": "A client does not read these. Clear in everything observed."
+              "note": "A client does not read these."
             }
           ]
         },
         {
           "name": "barType",
           "type": "u8",
-          "note": "Which sort of bar: 1 a unit's, 2 a champion's. A client reads it only where changeType is set; a server observed sends it either way, 49 in everything observed."
+          "note": "Which sort of bar, read only where changeType is set and side is the client's player's side or zero: 1 a unit's, 2 a champion's; any other value only makes sure the unit has a bar. A server observed sends it either way, 49 in everything observed."
         },
         {
           "name": "side",

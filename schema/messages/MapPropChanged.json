@@ -41,33 +41,36 @@
         {
           "name": "change",
           "type": "u8",
-          "note": "What changes.",
+          "note": "What changes. A client does nothing for any other value, nor where prop names no prop it holds.",
           "values": {
             "0": {
-              "name": "animation"
+              "name": "animate",
+              "note": "Play the animation name, with value as its flags, starting at first (match time in seconds) for second seconds; option nonzero removes the prop afterwards. effect and point unread."
             },
             "1": {
-              "name": "particleSync"
+              "name": "linkEffect",
+              "note": "Drive the prop's particle value effect from capture point point; option must be zero, or the change is refused. name, first, second and value unread."
             },
             "2": {
-              "name": "skin"
+              "name": "look",
+              "note": "Change the prop's look to name, numbered value. The rest unread."
             }
           }
         },
         {
-          "name": "unknown1",
+          "name": "option",
           "type": "u8",
-          "note": "Purpose undetermined."
+          "note": "For animate, nonzero to remove the prop after the animation; for linkEffect, zero."
         },
         {
-          "name": "unknown2",
+          "name": "effect",
           "type": "u8",
-          "note": "Purpose undetermined."
+          "note": "For linkEffect, which of the prop's effect values to drive."
         },
         {
-          "name": "unknown3",
+          "name": "point",
           "type": "u8",
-          "note": "Purpose undetermined."
+          "note": "For linkEffect, which capture point drives it."
         }
       ]
     },

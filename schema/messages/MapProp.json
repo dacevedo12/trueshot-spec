@@ -88,8 +88,26 @@
         },
         {
           "name": "side",
-          "type": "u16",
-          "note": "The side the prop belongs to. 300 in everything observed."
+          "type": "bits",
+          "note": "The side the prop belongs to. 300 in everything observed.",
+          "size": 2,
+          "bits": [
+            {
+              "name": "side",
+              "width": 9,
+              "note": "The prop's side."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "A client does not read these."
+            }
+          ]
+        },
+        {
+          "name": "skillLevel",
+          "type": "u8",
+          "note": "A client reads it and uses zero in its place."
         },
         {
           "name": "rank",
@@ -97,14 +115,19 @@
           "note": "How far it is advanced."
         },
         {
-          "name": "skillLevel",
-          "type": "u8",
-          "note": "What level the prop's own doings stand at. Zero in everything observed."
-        },
-        {
           "name": "kind",
           "type": "u8",
-          "note": "What sort of prop it is. 1 in everything observed."
+          "note": "What sort of prop it is; a client makes nothing for any other value. A client first deletes any object holding the prop's id, whatever the kind.",
+          "values": {
+            "0": {
+              "name": "active",
+              "note": "Uses name, asset, skin, side, position, the three rotations and rank; not offset or scale."
+            },
+            "1": {
+              "name": "scenery",
+              "note": "Uses name, asset, skin, position, rotation (pitch, yaw, roll in degrees), offset and scale; not side or rank. Where the map has a placement point of the same name, its position is used instead; where a scenery prop of that name already stands there, it is reused and takes the new id."
+            }
+          }
         },
         {
           "name": "name",
@@ -120,7 +143,8 @@
           "size": 64,
           "note": "The name the client loads its art and sound under, written and padded as above."
         }
-      ]
+      ],
+      "note": "A client takes the prop's id from prop, not from the header."
     },
     {
       "from": "4.20.0.315",
