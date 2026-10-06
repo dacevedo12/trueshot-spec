@@ -1,0 +1,22 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "UseObject",
+  "note": "What a client sends to use a unit: as its player right-clicks a unit its character data makes usable by them and off its use cooldown, and also as a unit its champion is attacking changes side (TeamChanged), whether usable or not. The header names the sender's champion.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "requests",
+      "command": 58,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit to use."
+        }
+      ]
+    }
+  ]
+}
