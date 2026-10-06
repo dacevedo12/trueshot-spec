@@ -73,13 +73,21 @@
       ]
     },
     "presence": {
-      "description": "Present only when an earlier field says so. Without `equals`, any value other than zero. `unseen` names the side of the rule no capture shows, for a rule recorded from something other than a payload.",
+      "description": "Present only when an earlier field says so. Without `equals`, any value other than zero. `unseen` names the side of the rule no capture shows, for a rule recorded from something other than a payload. With `when` set to `remaining`, the field is present only where the payload has bytes left at that point, and `equals` does not apply.",
       "type": "object",
       "required": ["when"],
       "additionalProperties": false,
       "properties": {
         "when": {
-          "$ref": "#/$defs/reference"
+          "description": "The earlier field the rule reads, or `remaining`, which makes the field present exactly where bytes are left to read.",
+          "anyOf": [
+            {
+              "$ref": "#/$defs/reference"
+            },
+            {
+              "const": "remaining"
+            }
+          ]
         },
         "equals": {
           "description": "The value, or any one of a set of values, the field named by `when` has to carry.",

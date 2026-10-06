@@ -405,3 +405,12 @@ test("remaining is bounded by the run that encloses it", () => {
     { n: 4, run: ["aabbccdd"], after: 9 },
   );
 });
+
+test("a field present while bytes remain", () => {
+  const fields = [
+    { name: "a", type: "u8" },
+    { name: "b", type: "u16", present: { when: "remaining" } },
+  ];
+  roundTrip(fields, "07 0201", { a: 7, b: 0x0102 });
+  roundTrip(fields, "07", { a: 7, b: null });
+});

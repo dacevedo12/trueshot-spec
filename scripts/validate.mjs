@@ -311,7 +311,7 @@ function checkFields(fields, outer, structNames, at, openStructs = new Set()) {
       return true;
     };
 
-    if (field.present) {
+    if (field.present && field.present.when !== "remaining") {
       const target = field.present.when;
       if (checkItemRef(field.name, target)) {
         // handled above

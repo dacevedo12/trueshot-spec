@@ -212,6 +212,12 @@ or a set of values, any one of which satisfies it. Without one, any
 value other than zero satisfies the rule. A field its own rule left out holds
 no value, so a rule naming that field does not hold either.
 
+A rule can instead name `remaining`, which no field is called. A field under
+that rule is present where the payload has bytes left at that point and absent
+where it has ended, so a message whose sender stops early reads as one whose
+later fields are absent. A sender that stops early MUST stop where a field
+under such a rule begins.
+
 ## A field that travels enciphered
 
 A payload is enciphered as a whole once a connection has a cipher state, and a

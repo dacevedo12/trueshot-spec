@@ -221,7 +221,12 @@ function decodeFields(
   const values = {};
 
   for (const field of fields) {
-    if (!present(field, scope, index)) {
+    // "remaining" makes a field present only where bytes are left to read.
+    const here =
+      field.present?.when === "remaining"
+        ? offset < buffer.length
+        : present(field, scope, index);
+    if (!here) {
       values[field.name] = null;
       scope[field.name] = null;
       continue;
@@ -473,7 +478,10 @@ function encodeFields(
   const parts = [];
 
   for (const field of fields) {
-    if (!present(field, scope, index)) continue;
+    if (field.present?.when === "remaining") {
+      if (values[field.name] === null || values[field.name] === undefined)
+        continue;
+    } else if (!present(field, scope, index)) continue;
     const value = values[field.name];
     if (value === null || value === undefined) {
       bail(`"${field.name}" is present but carries no value`);

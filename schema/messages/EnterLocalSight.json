@@ -40,17 +40,26 @@
           }
         },
         {
-          "name": "maxHealth",
-          "type": "f32",
-          "note": "What the unit's health tops out at."
-        },
-        {
-          "name": "health",
-          "type": "f32",
-          "note": "What its health stands at."
+          "name": "vitals",
+          "type": "record",
+          "present": {
+            "when": "remaining"
+          },
+          "note": "The unit's health. A server sends this message without it too, ending after the carried messages: 11,593 of the 92,349 recorded on this version end there.",
+          "fields": [
+            {
+              "name": "maxHealth",
+              "type": "f32",
+              "note": "What the unit's health tops out at."
+            },
+            {
+              "name": "health",
+              "type": "f32",
+              "note": "What its health stands at."
+            }
+          ]
         }
-      ],
-      "note": "A server also sends this message ending after the carried count, when that count is zero, with no health following: 3113 of the 42851 recorded on this version end there. No layout here records that form, and what a client makes of it is not recorded."
+      ]
     },
     {
       "from": "4.20.0.315",
