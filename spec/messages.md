@@ -334,10 +334,12 @@ is one of these:
 | `OrderShop01`                   | `0xFF8C490C` | 12            |
 | `orderShop01`                   | `0xFF10C6DB` | 1, 8, 11      |
 
-The minions a side sends out come from spawn points rather than from the
-buildings above. On map 1 one of them is `__P_Order_Spawn_Barracks__C01`, and a
-4.17.0.267 client sent `SpawnFromBarracks` naming it puts a minion on the field;
-named by `Barracks_T1_C1`, the inhibitor in front of it, it creates nothing.
+The `Barracks` names above belong to inhibitors, whatever the name says. The
+minions a side sends out come from spawn points of their own, which are among
+the objects a map holds. On map 1 one of them is
+`__P_Order_Spawn_Barracks__C01`, and a 4.17.0.267 client sent
+`SpawnFromBarracks` naming it puts a minion on the field; named by
+`Barracks_T1_C1`, an inhibitor, it creates nothing.
 
 No message creates these objects, so nothing a server sends could give a client
 a different identifier for one. A server MUST name each by the identifier its
