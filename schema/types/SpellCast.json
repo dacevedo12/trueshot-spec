@@ -6,7 +6,7 @@
     {
       "name": "size",
       "type": "u16",
-      "note": "How many bytes this whole shape occupies, counting these two."
+      "note": "How many bytes the casting holds after this field. A 4.17 client compares it with what it read and, where they differ, logs it and looks up no spell, so the cast has none."
     },
     {
       "name": "spell",
@@ -87,7 +87,7 @@
       "name": "hits",
       "type": "array",
       "count": "hitCount",
-      "note": "The units the casting names as hit.",
+      "note": "The units the casting hits, at most 32 as a 4.17 client holds them: each a unit then a one-byte result, which the client keeps.",
       "items": {
         "type": "struct",
         "struct": "SpellHit",
@@ -152,7 +152,7 @@
         {
           "name": "unknown",
           "width": 3,
-          "note": "Observed clear."
+          "note": "A 4.17 client does not read these."
         }
       ]
     },

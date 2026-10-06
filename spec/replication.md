@@ -4,7 +4,9 @@ The most frequent thing a server sends is a statement of what has changed about
 the units a client can see. `schema/messages/Replication.json` records its
 shape: a name for the batch, a count of units, and for each unit a flag byte of
 groups, its own name, and for every group named a set of values it carries, the
-length of the run holding them, and the run itself.
+length of the run holding them, and the run itself. The groups follow in the
+order 0, 1, 2, 3, 5 and then 4: group 4 comes last. A client moves past each
+group by its length, whatever the values inside take.
 
 That much a layout reaches. What the run holds it does not, and this document
 says what settles it.

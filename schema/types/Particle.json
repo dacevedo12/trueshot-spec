@@ -26,7 +26,7 @@
     {
       "name": "unknown1",
       "type": "u32",
-      "note": "Purpose undetermined. Zero in everything observed."
+      "note": "A second unit the particle takes unit-specific settings from, where a 4.17 client knows it: its skin picks the particle's skin-specific version where caster is zero or unknown, and, where it is not boundTo, the particle's substitutions come from it. Zero or unknown is ignored."
     },
     {
       "name": "atX",

@@ -26,7 +26,7 @@
     {
       "name": "keepFacing",
       "type": "u8",
-      "note": "Whether the unit holds the way it already faces rather than turning to face where it is going.",
+      "note": "0 to face the way the unit travels, 1 to keep its facing.",
       "values": {
         "0": {
           "name": "faceTheWayItGoes"
@@ -54,7 +54,7 @@
     {
       "name": "followTime",
       "type": "f32",
-      "note": "How long the following runs. It is zero wherever no unit is followed, and 20000 in every one that follows a unit. What the figure counts is not recorded here."
+      "note": "Seconds to reach the followed unit, from when a client applies the message; read only where follows is nonzero. Above zero, a client sets the speed each update to the ground distance left to the followed unit (moved back by followBackDistance) over the time left, at least 0.0001 seconds, overriding speed, and keeps the last speed once the time is up; an arcing unit takes it as its first flight time. Zero or below does nothing."
     }
   ]
 }

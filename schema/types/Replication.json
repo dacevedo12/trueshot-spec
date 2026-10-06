@@ -179,6 +179,32 @@
           "note": "The values themselves, one after another in the order the bits above name them, lowest first. What each one is, and which of the two shapes it takes, is settled by the kind of unit rather than by anything here. spec/replication.md says so, and records what a champion's groups carry."
         }
       ]
+    },
+    {
+      "name": "group4",
+      "type": "record",
+      "present": {
+        "when": "present.group4"
+      },
+      "note": "The values of group 4, where the flag says they follow. A 4.17 client reads this group last, after group 5. No recording sets its flag.",
+      "fields": [
+        {
+          "name": "which",
+          "type": "u32",
+          "note": "Says which of the group's values the run below holds, one bit each, lowest first."
+        },
+        {
+          "name": "length",
+          "type": "u8",
+          "note": "How many bytes the run below holds. A client moves on by this length, whatever the values inside take."
+        },
+        {
+          "name": "values",
+          "type": "bytes",
+          "size": "length",
+          "note": "The values themselves, as for the other groups."
+        }
+      ]
     }
   ]
 }

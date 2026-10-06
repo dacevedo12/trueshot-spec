@@ -16,7 +16,7 @@
     {
       "name": "flags",
       "type": "u16",
-      "note": "How the client draws them. The bits within are undetermined."
+      "note": "How each particle of the group behaves, one bit each, as a 4.17 client reads them: 1 kept alive, not ending by itself; 2 unread; 4 scaled to the bound unit's bounding box and its effect scale (to 1 where the bound object cannot be attacked); 8 placed at the positions given rather than hung on bone and targetBone, made even where a nonzero boundTo is unknown (otherwise held and tried again) and with an unknown target not remembered; 16 not turned to follow its direction; 32 simulated while off screen; 64 laid flat on the ground's slope, facing as forward (+Z where facing is zero); 128 facing its target; 256 driven by the bound unit's resource bar. Bits 9 to 15 are unread."
     },
     {
       "name": "targetBone",
