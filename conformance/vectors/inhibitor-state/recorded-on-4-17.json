@@ -3,13 +3,15 @@
   "subject": "message",
   "message": "InhibitorState",
   "version": "4.17.0.267",
-  "note": "Taken from a server a client accepted.",
-  "bytes": "2b f1204aff 001e00",
+  "note": "Taken from a recording of a match played on this version.",
+  "bytes": "2b f1204aff f000",
   "fields": {
     "command": 43,
     "netId": 4283048177,
     "extendedCommand": null,
-    "state": 0,
-    "duration": 30
+    "state": {
+      "duration": 240,
+      "alive": 0
+    }
   }
 }

@@ -26,18 +26,7 @@
           "name": "summoners",
           "type": "array",
           "count": 2,
-          "note": "The spells in the champion's summoner slots.",
-          "items": {
-            "name": "summoner",
-            "type": "u32",
-            "note": "One spell."
-          }
-        },
-        {
-          "name": "summonersAgain",
-          "type": "array",
-          "count": 2,
-          "note": "The same two spells a second time.",
+          "note": "The spells in the champion's summoner slots, by the numbers their names give.",
           "items": {
             "name": "summoner",
             "type": "u32",
@@ -58,7 +47,7 @@
         {
           "name": "level",
           "type": "u8",
-          "note": "The level the champion starts at."
+          "note": "A level. 30 in 125 of the 130 observed, and from 21 to 29 in the rest."
         },
         {
           "name": "wardSkin",

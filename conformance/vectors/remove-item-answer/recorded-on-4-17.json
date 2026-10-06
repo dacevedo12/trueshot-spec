@@ -1,0 +1,19 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "RemoveItemAnswer",
+  "version": "4.17.0.267",
+  "note": "Taken from a recording of a match played on this version.",
+  "bytes": "0b 22000040 0000",
+  "fields": {
+    "command": 11,
+    "netId": 1073741858,
+    "extendedCommand": null,
+    "which": {
+      "slot": 0,
+      "unknown1": 0,
+      "unknown2": 0
+    },
+    "left": 0
+  }
+}

@@ -4,6 +4,43 @@
   "note": "What a server sends to confirm an item left a slot. The header names the unit this is about.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 11,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "which",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "slot",
+              "width": 6,
+              "note": "Which inventory slot, counted from 0."
+            },
+            {
+              "name": "unknown1",
+              "width": 1,
+              "note": "Clear in everything observed."
+            },
+            {
+              "name": "unknown2",
+              "width": 1,
+              "note": "Purpose undetermined. Set in some of those observed."
+            }
+          ]
+        },
+        {
+          "name": "left",
+          "type": "u8",
+          "note": "How many of the item are left in the slot. 0 in most of those observed."
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "events",
       "command": 11,

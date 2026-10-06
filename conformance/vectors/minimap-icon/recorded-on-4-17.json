@@ -1,0 +1,25 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "MinimapIcon",
+  "version": "4.17.0.267",
+  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there; a field whose bytes held no text end at all is written empty.",
+  "bytes": "d8 00000000 190000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+  "fields": {
+    "command": 216,
+    "netId": 0,
+    "extendedCommand": null,
+    "unit": 1073741849,
+    "changeIcon": {
+      "change": 0,
+      "unknown": 0
+    },
+    "icon": "",
+    "changeBorder": {
+      "change": 1,
+      "unknown": 0
+    },
+    "border": "",
+    "borderScript": ""
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "StopAttack",
+  "version": "4.17.0.267",
+  "note": "Taken from a recording of a match played on this version.",
+  "bytes": "34 f3000040 3501004011",
+  "fields": {
+    "command": 52,
+    "netId": 1073742067,
+    "extendedCommand": null,
+    "missile": 1073742133,
+    "how": {
+      "keepAnimating": 1,
+      "destroyMissile": 0,
+      "unknown1": 0,
+      "summonerSpell": 0,
+      "unknown2": 1,
+      "unknown": 0
+    }
+  }
+}

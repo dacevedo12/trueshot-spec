@@ -24,14 +24,23 @@
         {
           "name": "nameLength",
           "type": "u32",
-          "note": "How many bytes the text below holds, counting the zero byte that ends it."
+          "note": "How many bytes the name below occupies, counting the byte that ends it."
         },
         {
           "name": "name",
           "type": "string",
           "encoding": "utf8",
-          "size": 128,
-          "note": "What the seat is called, padded with zero bytes to the width above."
+          "size": {
+            "field": "nameLength",
+            "minus": 1
+          },
+          "note": "What the seat is called. It is not padded."
+        },
+        {
+          "name": "terminator",
+          "type": "bytes",
+          "size": 1,
+          "note": "A zero byte closing the text, which the length above counts."
         }
       ]
     },

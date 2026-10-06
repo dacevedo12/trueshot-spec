@@ -1,0 +1,24 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "PingPlaced",
+  "version": "4.17.0.267",
+  "note": "Taken from a recording of a match played on this version.",
+  "bytes": "40 00000000 d652eb45d6052c460000000022000040b0",
+  "fields": {
+    "command": 64,
+    "netId": 0,
+    "extendedCommand": null,
+    "atX": 7530.3544921875,
+    "atZ": 11009.458984375,
+    "target": 0,
+    "source": 1073741858,
+    "how": {
+      "category": 0,
+      "playSound": 1,
+      "showInChat": 1,
+      "unknown1": 0,
+      "speak": 1
+    }
+  }
+}

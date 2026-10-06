@@ -49,7 +49,8 @@
           "type": "f32",
           "note": "What its health stands at."
         }
-      ]
+      ],
+      "note": "A server also sends this message ending after the carried count, when that count is zero, with no health following: 3113 of the 42851 recorded on this version end there. No layout here records that form, and what a client makes of it is not recorded."
     },
     {
       "from": "4.20.0.315",

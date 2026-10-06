@@ -57,13 +57,37 @@ One value the game family keeps for framing introduces a container rather than
 a message: a run of several messages gathered into one payload, which a reading
 end unwraps and reads one by one as though each had arrived on its own. A
 container carries no header, so nothing in `schema/messages` describes one, and
-a reading end MUST NOT read the value that introduces it as a command.
+a reading end MUST NOT read the value that introduces it as a command. The
+value is 255.
 
-No payload behind this specification is a container, so how the entries inside
-one are framed is not recorded here: a layout no client has confirmed is a
-guess whatever label it carries, and this document does not carry guesses. A
-server MUST NOT send a container, because a reading end built from this
-document cannot take one apart.
+Recordings of matches played on 4.17.0.233, 4.17.0.267 and 4.20.0.315 carry
+containers on the events channel, sent by the server: 336,474 in thirteen 4.17
+matches and 51,738 in one 4.20 match. Every one of them unwraps exactly as
+follows, ending at its last byte.
+
+A container is the byte 255, then a count of entries in one byte, then the
+entries one after another. The first entry is a length in one byte, the
+command in one byte, the object identifier in four bytes, and then a body
+whose size is the length less five. Every later entry opens with a byte of
+flags and size:
+
+- bit 0 clear: a command byte follows, and this entry carries it; bit 0 set:
+  this entry carries the command the entry before it carried;
+- bit 1 clear: a four byte object identifier follows; bit 1 set: one signed
+  byte follows, and this entry's object identifier is the one before it plus
+  that byte;
+- bits 2 to 7: the size of the body; where they read 63, the size is the next
+  byte instead.
+
+The body follows. Each entry, given the command and object identifier it
+carries as its header, is a message read as though it had arrived on its own.
+An entry whose command is 254 carries the wider
+identifier in the first two bytes of its body, so that, with the command and
+object identifier before it, it reads as the extended form of the header does:
+323,904 of the 1,598,992 entries in the 4.17 recordings are of that kind.
+
+A server MAY send a container on the events channel. No recording shows one on
+another channel, and no client has been observed sending one.
 
 ## Reading a body
 

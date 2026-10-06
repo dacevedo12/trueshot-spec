@@ -4,6 +4,58 @@
   "note": "What a server sends to tell everyone how far one seat has got through loading, and how it is holding up. A later report supersedes an earlier one, so losing one costs nothing. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "transient",
+      "command": 149,
+      "direction": "serverToClient",
+      "reliability": "unreliable",
+      "fields": [
+        {
+          "name": "seat",
+          "type": "i32",
+          "note": "The seat this is about."
+        },
+        {
+          "name": "player",
+          "type": "i64",
+          "note": "Who occupies it."
+        },
+        {
+          "name": "progress",
+          "type": "f32",
+          "note": "How far through loading it is, from zero to one hundred."
+        },
+        {
+          "name": "secondsLeft",
+          "type": "f32",
+          "note": "How much longer it is expected to take, in seconds."
+        },
+        {
+          "name": "status",
+          "type": "bits",
+          "size": 4,
+          "bits": [
+            {
+              "name": "count",
+              "width": 16,
+              "note": "Rises with every report, by more than one between reports that arrive one after another."
+            },
+            {
+              "name": "ping",
+              "width": 15,
+              "note": "Round trip time the client measures, in milliseconds."
+            },
+            {
+              "name": "loaded",
+              "width": 1,
+              "note": "Set in every report whose progress stands at one hundred, and in no other."
+            }
+          ]
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "transient",
       "command": 149,

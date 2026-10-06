@@ -24,14 +24,23 @@
         {
           "name": "assetLength",
           "type": "u32",
-          "note": "How many bytes the text below holds, counting the zero byte that ends it."
+          "note": "How many bytes the name below occupies, counting the byte that ends it."
         },
         {
           "name": "asset",
           "type": "string",
           "encoding": "utf8",
-          "size": 128,
-          "note": "The name the client loads the champion's art and sound under, padded with zero bytes to the width above."
+          "size": {
+            "field": "assetLength",
+            "minus": 1
+          },
+          "note": "The name the client loads the champion's art and sound under. It is not padded."
+        },
+        {
+          "name": "terminator",
+          "type": "bytes",
+          "size": 1,
+          "note": "A zero byte closing the text, which the length above counts."
         }
       ]
     },

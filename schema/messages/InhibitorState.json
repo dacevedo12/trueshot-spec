@@ -13,13 +13,20 @@
       "fields": [
         {
           "name": "state",
-          "type": "u8",
-          "note": "Which state. Sent 0 for an inhibitor in sight, a client shows it destroyed."
-        },
-        {
-          "name": "duration",
-          "type": "u16",
-          "note": "How long the state lasts. What the figure counts is not recorded here."
+          "type": "bits",
+          "size": 2,
+          "bits": [
+            {
+              "name": "duration",
+              "width": 15,
+              "note": "How long the state lasts, in seconds. 240 and 300 are observed, both with the bit above clear, and 0 with it set."
+            },
+            {
+              "name": "alive",
+              "width": 1,
+              "note": "Set in those observed with no duration."
+            }
+          ]
         }
       ]
     },

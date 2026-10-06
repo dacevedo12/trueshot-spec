@@ -12,41 +12,36 @@
       "reliability": "reliable",
       "fields": [
         {
-          "name": "slot",
-          "type": "u8",
-          "note": "Which slot."
-        },
-        {
-          "name": "how",
+          "name": "which",
           "type": "bits",
           "size": 1,
           "bits": [
             {
-              "name": "speakWhenReady",
-              "width": 1,
-              "note": "Set where the unit says something once the wait is over. Clear in everything observed."
+              "name": "slot",
+              "width": 6,
+              "note": "Which slot. Values from 0 to 10 are observed."
             },
             {
               "name": "summonerSpell",
               "width": 1,
-              "note": "Set where the slot is a summoner slot rather than one of the unit's own. Clear in everything observed."
+              "note": "Set where the slot counts among the summoner slots, so that 0 and 1 name those two."
             },
             {
               "name": "unknown",
-              "width": 6,
-              "note": "Observed clear."
+              "width": 1,
+              "note": "Purpose undetermined. Set in a few of those observed, with slots 3 and 10."
             }
           ]
         },
         {
           "name": "timeLeft",
           "type": "f32",
-          "note": "How long is left, in seconds. A client counts down from it on the slot."
+          "note": "How long is left, in seconds."
         },
         {
           "name": "outOf",
           "type": "f32",
-          "note": "The length the client shows that remainder against, in seconds."
+          "note": "The length the client shows that remainder against, in seconds. −1 in most of those observed."
         }
       ]
     },

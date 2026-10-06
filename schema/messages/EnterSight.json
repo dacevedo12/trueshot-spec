@@ -246,7 +246,8 @@
             "equals": 3
           }
         }
-      ]
+      ],
+      "note": "A server also sends this message ending after the item count, when the carried count and the item count are both zero, with nothing following: 241 of the 39979 recorded on this version end there. No layout here records that form, and what a client makes of it is not recorded."
     },
     {
       "from": "4.20.0.315",

@@ -4,6 +4,53 @@
   "note": "What a server sends about a camp of units that belong to no side. Both payloads observed name a camp with nothing credited for it and no time for its return, one of them for a camp that had just filled, so whether it marks a camp emptied is not settled here. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 195,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "killer",
+          "type": "u32",
+          "note": "The unit credited with emptying it."
+        },
+        {
+          "name": "camp",
+          "type": "u32",
+          "note": "Which camp."
+        },
+        {
+          "name": "timerKind",
+          "type": "i32",
+          "note": "Which clock the client shows for it."
+        },
+        {
+          "name": "returnsAt",
+          "type": "f32",
+          "note": "When the camp fills again, in seconds."
+        },
+        {
+          "name": "does",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "speak",
+              "width": 1,
+              "note": "Set where the client says something about it."
+            },
+            {
+              "name": "unknown",
+              "width": 7,
+              "note": "Purpose undetermined."
+            }
+          ]
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "events",
       "command": 195,

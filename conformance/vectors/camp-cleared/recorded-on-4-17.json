@@ -1,0 +1,21 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "CampCleared",
+  "version": "4.17.0.267",
+  "note": "Taken from a recording of a match played on this version.",
+  "bytes": "c3 00000000 220000400700000000352d50060000da43",
+  "fields": {
+    "command": 195,
+    "netId": 0,
+    "extendedCommand": null,
+    "killer": 1073741858,
+    "camp": 7,
+    "timerKind": 1345139968,
+    "returnsAt": -9007205697191936,
+    "does": {
+      "speak": 1,
+      "unknown": 33
+    }
+  }
+}

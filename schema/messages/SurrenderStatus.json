@@ -13,8 +13,8 @@
       "fields": [
         {
           "name": "reason",
-          "type": "u32",
-          "note": "Why the vote stands where it does. Sent 1, a client wrote in chat that it was too early in the game to surrender."
+          "type": "u8",
+          "note": "Why the vote stands where it does. Values 0, 2 and 4 are observed."
         },
         {
           "name": "inFavour",

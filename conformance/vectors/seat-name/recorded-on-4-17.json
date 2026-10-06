@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SeatName",
+  "version": "4.17.0.267",
+  "note": "Layout taken from a recording of a match played on this version, with the player identifier and name replaced by stand-ins.",
+  "bytes": "66 01000000000000000000000009000000506c61796572203100",
+  "fields": {
+    "command": 102,
+    "player": "1",
+    "skin": 0,
+    "nameLength": 9,
+    "name": "Player 1",
+    "terminator": "00"
+  }
+}
