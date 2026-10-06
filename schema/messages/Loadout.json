@@ -4,6 +4,70 @@
   "note": "What a server sends to lay out everything a champion brought to the match: the runes set before it began, its summoner slots, the choices made alongside them, and what its wards look like. The header names the unit this is about.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 42,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "runes",
+          "type": "array",
+          "count": 30,
+          "note": "The runes set before the match, thirty places in runs of nine, nine, nine and three. A place holds zero where nothing was set.",
+          "items": {
+            "name": "rune",
+            "type": "u32",
+            "note": "One rune, by the number the client knows it as."
+          }
+        },
+        {
+          "name": "summoners",
+          "type": "array",
+          "count": 2,
+          "note": "The spells in the champion's summoner slots.",
+          "items": {
+            "name": "summoner",
+            "type": "u32",
+            "note": "One spell."
+          }
+        },
+        {
+          "name": "summonersAgain",
+          "type": "array",
+          "count": 2,
+          "note": "The same two spells a second time.",
+          "items": {
+            "name": "summoner",
+            "type": "u32",
+            "note": "One spell."
+          }
+        },
+        {
+          "name": "choices",
+          "type": "array",
+          "count": 80,
+          "note": "The choices made alongside them, one place each, and how far each was taken. A place stands empty where nothing was chosen.",
+          "items": {
+            "name": "choice",
+            "type": "struct",
+            "struct": "Choice"
+          }
+        },
+        {
+          "name": "level",
+          "type": "u8",
+          "note": "The level the champion starts at."
+        },
+        {
+          "name": "wardSkin",
+          "type": "u8",
+          "note": "What the champion's wards look like."
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "events",
       "command": 42,
