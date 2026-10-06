@@ -1,0 +1,16 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "ReconnectedInMatch",
+  "note": "What a client sends once it has connected again to a match it was playing, right after the server answers its registration. A client dropped while playing reconnects by itself; one dropped while loading leaves instead. It carries nothing of its own. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "requests",
+      "command": 156,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": []
+    }
+  ]
+}

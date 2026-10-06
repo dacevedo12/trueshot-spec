@@ -22,9 +22,9 @@
           "size": 1,
           "bits": [
             {
-              "name": "unknown1",
+              "name": "endCharge",
               "width": 1,
-              "note": "Purpose undetermined."
+              "note": "Set where the cast ends a charge. Clear lets a client charge a spell that charges, sending SpellCharge as it does."
             },
             {
               "name": "unknown",
