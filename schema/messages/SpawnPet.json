@@ -113,9 +113,9 @@
               "note": "Set where it shows on the minimap."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 5,
-              "note": "Purpose undetermined."
+              "note": "A client does not read these."
             }
           ],
           "note": "How it behaves."
@@ -127,7 +127,8 @@
           "size": 32,
           "note": "The script that drives it, padded with zero bytes."
         }
-      ]
+      ],
+      "note": "A client deletes any object holding the header's id; spawns nothing where it does not know the owner; kills the owner's earlier pet if it lives; makes the pet, replacing its script with script; gives it the owner's seat, its gold going to the owner; and registers it under the header's id and node. It does not read spellLevel, duration or effect."
     }
   ]
 }

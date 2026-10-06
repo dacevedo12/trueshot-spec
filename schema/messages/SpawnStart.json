@@ -14,7 +14,7 @@
         {
           "name": "botsOnOneSide",
           "type": "u8",
-          "note": "One of two counts stated as the run of units opens. Both are zero in everything observed, and what they count is not recorded here."
+          "note": "How many bots play on side 100. A client adds it to that side's head count, which picks the table of spawn positions and facings it places champions by (CreateChampion's spawnIndex)."
         },
         {
           "name": "botsOnTheOther",

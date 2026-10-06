@@ -32,9 +32,9 @@
               "note": "Set where the shield does not fade."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 5,
-              "note": "Clear in everything observed."
+              "note": "A client does not read these."
             }
           ],
           "note": "Which shield."
@@ -44,7 +44,8 @@
           "type": "f32",
           "note": "How much is added."
         }
-      ]
+      ],
+      "note": "Both physical and magical set adds amount to the shield that takes either kind of damage; one of them, to that kind's shield; neither, to nothing. A negative amount lowers it, and any shield left below 0.001 becomes zero. noFade clear does not restart a fade already stopped."
     }
   ]
 }

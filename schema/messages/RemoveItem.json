@@ -18,18 +18,13 @@
           "bits": [
             {
               "name": "slot",
-              "width": 6,
-              "note": "Which inventory slot, counted from 0."
+              "width": 7,
+              "note": "Which slot."
             },
             {
-              "name": "unknown1",
+              "name": "sell",
               "width": 1,
-              "note": "Purpose undetermined. Clear in everything observed."
-            },
-            {
-              "name": "unknown2",
-              "width": 1,
-              "note": "Purpose undetermined. Set in everything observed, for an item sold from the shop."
+              "note": "Set to sell the item, clear to throw it away."
             }
           ]
         }

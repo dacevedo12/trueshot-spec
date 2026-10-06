@@ -51,9 +51,9 @@
               "note": "Set where the client announces it."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 7,
-              "note": "Purpose undetermined."
+              "note": "A client does not read these."
             }
           ],
           "note": "How it is shown."
@@ -66,9 +66,10 @@
         {
           "name": "total",
           "type": "f32",
-          "note": "Purpose undetermined."
+          "note": "A client does not read it."
         }
-      ]
+      ],
+      "note": "A client logs and drops the message where player names no champion it holds."
     }
   ]
 }

@@ -13,8 +13,8 @@
       "fields": [
         {
           "name": "seat",
-          "type": "i32",
-          "note": "The seat that lifted the hold."
+          "type": "u32",
+          "note": "The player who resumed the match, announced in chat in their side's colour where their champion is known; 4294967295 announces no one."
         },
         {
           "name": "how",
@@ -27,13 +27,14 @@
               "note": "Set where the match starts again after a countdown rather than at once. Clear in everything observed, and play resumed at once."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 7,
-              "note": "Observed clear."
+              "note": "A client does not read these."
             }
           ]
         }
-      ]
+      ],
+      "note": "A client does not use the header. Resuming after the countdown, it keeps input locked and the pause panel open until a countdown of its own ends; resuming at once, it unlocks input and closes the panel."
     },
     {
       "from": "4.20.0.315",

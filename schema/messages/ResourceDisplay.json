@@ -12,9 +12,9 @@
       "reliability": "reliable",
       "fields": [
         {
-          "name": "unknown",
+          "name": "unused",
           "type": "u32",
-          "note": "A client does not read it. Read as two sixteen bit halves, the second is always one more than the first in those observed: 124 and 125, 125 and 126, 92 and 93, 126 and 127."
+          "note": "A client does not read it; the header names the unit."
         },
         {
           "name": "state",

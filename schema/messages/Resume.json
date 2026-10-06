@@ -14,7 +14,7 @@
         {
           "name": "clientId",
           "type": "u32",
-          "note": "Which seat asked."
+          "note": "Always 4294967295, for no seat: a server knows the sender from its connection."
         },
         {
           "name": "how",
@@ -27,13 +27,14 @@
               "note": "Set where the match is to start again after a countdown rather than at once."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 7,
-              "note": "Purpose undetermined. A client leaves these as it found them, so they carry values it never wrote for this message."
+              "note": "Always clear."
             }
           ]
         }
-      ]
+      ],
+      "note": "A client writes the whole how byte as zero."
     },
     {
       "from": "4.20.0.315",

@@ -18,25 +18,20 @@
           "bits": [
             {
               "name": "slot",
-              "width": 6,
-              "note": "Which inventory slot, counted from 0."
+              "width": 7,
+              "note": "Which slot. A client changes nothing from 40 up."
             },
             {
-              "name": "unknown1",
+              "name": "notify",
               "width": 1,
-              "note": "Clear in everything observed."
-            },
-            {
-              "name": "unknown2",
-              "width": 1,
-              "note": "Purpose undetermined. Set in some of those observed."
+              "note": "Set to have a client tell its screens the inventory changed; clear still updates the slot, quietly."
             }
           ]
         },
         {
           "name": "left",
           "type": "u8",
-          "note": "How many of the item are left in the slot. 0 in most of those observed."
+          "note": "How many are left in the slot; zero empties it, item and charges cleared. Either way a client cancels any spell or action its player had picked."
         }
       ]
     },
