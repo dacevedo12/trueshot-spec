@@ -1,0 +1,391 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "DeathHistory",
+  "version": "4.17.0.267",
+  "note": "Taken from a recording of a match played on this version.",
+  "bytes": "21 1a000040 1e000040009a984100100000006a0d5b440100101e0000401a0000400553dc04000000000000000000da6fa543000000000553dc041e00004010406a0d5b440100301a0000401a000040d229dc0a00000000000553dc041e000040100014fb5a440100101e0000401a0000404426ec080000000000000000006b553c43000000004426ec081e000040102014fb5a440100301a0000401a000040d229dc0a00000000004426ec081e000040100084f45a440100301a0000401a000040359ba2070000000000359ba2071a0000400000b6cf5a44010010542f00401a00004000000000040000000069163b430000000000000000ffffffff542f0040147146ba5a440100101e0000401a00004014662409000000000000000000378db64300000000146624091e000040100046ba5a440100301a0000401a000040d229dc0a0000000000146624091e0000401000364a5a44010030200000401a000040fed35f050000000000b7630300200000401100364a5a44010010200000401a000040fed35f05000000000000000000c318234300000000b763030020000040117091395a440100301e0000401a000040548c7a000200000000146624091e000040100091395a440100301e0000401a000040d2f71c040000000000146624091e000040100067fd59440100301a0000401a000040707f15030000000000366503001a000040010067fd59440100301a0000401a00004040b2c2030000000000366503001a000040010040c5574401002f223000401a0000405c86e702000000000000002041586e74025a2400402301017b574401002f1a0000401a00004040b2c203000000000074d73243366503001a0000400170",
+  "fields": {
+    "command": 33,
+    "netId": 1073741850,
+    "extendedCommand": null,
+    "killer": 1073741854,
+    "span": 19.0751953125,
+    "sourceType": 0,
+    "entryCount": 16,
+    "entries": [
+      {
+        "time": 876.2095947265625,
+        "count": 1,
+        "event": 16,
+        "source": 1073741854,
+        "target": 1073741850,
+        "script": 81548037,
+        "category": 0,
+        "sourceObject": 0,
+        "damage": {
+          "physical": 0,
+          "magical": 330.87384033203125,
+          "true": 0
+        },
+        "healing": null,
+        "parentScript": 81548037,
+        "parentCaster": 1073741854,
+        "parent": {
+          "source": 0,
+          "side": 1,
+          "category": 0,
+          "spellLevel": 4,
+          "unknown": 0
+        },
+        "buff": null
+      },
+      {
+        "time": 876.2095947265625,
+        "count": 1,
+        "event": 48,
+        "source": 1073741850,
+        "target": 1073741850,
+        "script": 182200786,
+        "category": 0,
+        "sourceObject": 0,
+        "damage": null,
+        "healing": null,
+        "parentScript": 81548037,
+        "parentCaster": 1073741854,
+        "parent": {
+          "source": 0,
+          "side": 1,
+          "category": 0,
+          "spellLevel": 0,
+          "unknown": 0
+        },
+        "buff": null
+      },
+      {
+        "time": 875.923095703125,
+        "count": 1,
+        "event": 16,
+        "source": 1073741854,
+        "target": 1073741850,
+        "script": 149694020,
+        "category": 0,
+        "sourceObject": 0,
+        "damage": {
+          "physical": 0,
+          "magical": 188.3336639404297,
+          "true": 0
+        },
+        "healing": null,
+        "parentScript": 149694020,
+        "parentCaster": 1073741854,
+        "parent": {
+          "source": 0,
+          "side": 1,
+          "category": 0,
+          "spellLevel": 2,
+          "unknown": 0
+        },
+        "buff": null
+      },
+      {
+        "time": 875.923095703125,
+        "count": 1,
+        "event": 48,
+        "source": 1073741850,
+        "target": 1073741850,
+        "script": 182200786,
+        "category": 0,
+        "sourceObject": 0,
+        "damage": null,
+        "healing": null,
+        "parentScript": 149694020,
+        "parentCaster": 1073741854,
+        "parent": {
+          "source": 0,
+          "side": 1,
+          "category": 0,
+          "spellLevel": 0,
+          "unknown": 0
+        },
+        "buff": null
+      },
+      {
+        "time": 875.820556640625,
+        "count": 1,
+        "event": 48,
+        "source": 1073741850,
+        "target": 1073741850,
+        "script": 128097077,
+        "category": 0,
+        "sourceObject": 0,
+        "damage": null,
+        "healing": null,
+        "parentScript": 128097077,
+        "parentCaster": 1073741850,
+        "parent": {
+          "source": 0,
+          "side": 0,
+          "category": 0,
+          "spellLevel": 0,
+          "unknown": 0
+        },
+        "buff": null
+      },
+      {
+        "time": 875.2454833984375,
+        "count": 1,
+        "event": 16,
+        "source": 1073753940,
+        "target": 1073741850,
+        "script": 0,
+        "category": 4,
+        "sourceObject": 0,
+        "damage": {
+          "physical": 187.08753967285156,
+          "magical": 0,
+          "true": 0
+        },
+        "healing": null,
+        "parentScript": 4294967295,
+        "parentCaster": 1073753940,
+        "parent": {
+          "source": 4,
+          "side": 1,
+          "category": 1,
+          "spellLevel": 7,
+          "unknown": 0
+        },
+        "buff": null
+      },
+      {
+        "time": 874.9105224609375,
+        "count": 1,
+        "event": 16,
+        "source": 1073741854,
+        "target": 1073741850,
+        "script": 153380372,
+        "category": 0,
+        "sourceObject": 0,
+        "damage": {
+          "physical": 0,
+          "magical": 365.1032409667969,
+          "true": 0
+        },
+        "healing": null,
+        "parentScript": 153380372,
+        "parentCaster": 1073741854,
+        "parent": {
+          "source": 0,
+          "side": 1,
+          "category": 0,
+          "spellLevel": 0,
+          "unknown": 0
+        },
+        "buff": null
+      },
+      {
+        "time": 874.9105224609375,
+        "count": 1,
+        "event": 48,
+        "source": 1073741850,
+        "target": 1073741850,
+        "script": 182200786,
+        "category": 0,
+        "sourceObject": 0,
+        "damage": null,
+        "healing": null,
+        "parentScript": 153380372,
+        "parentCaster": 1073741854,
+        "parent": {
+          "source": 0,
+          "side": 1,
+          "category": 0,
+          "spellLevel": 0,
+          "unknown": 0
+        },
+        "buff": null
+      },
+      {
+        "time": 873.1595458984375,
+        "count": 1,
+        "event": 48,
+        "source": 1073741856,
+        "target": 1073741850,
+        "script": 90166270,
+        "category": 0,
+        "sourceObject": 0,
+        "damage": null,
+        "healing": null,
+        "parentScript": 222135,
+        "parentCaster": 1073741856,
+        "parent": {
+          "source": 1,
+          "side": 1,
+          "category": 0,
+          "spellLevel": 0,
+          "unknown": 0
+        },
+        "buff": null
+      },
+      {
+        "time": 873.1595458984375,
+        "count": 1,
+        "event": 16,
+        "source": 1073741856,
+        "target": 1073741850,
+        "script": 90166270,
+        "category": 0,
+        "sourceObject": 0,
+        "damage": {
+          "physical": 0,
+          "magical": 163.0967254638672,
+          "true": 0
+        },
+        "healing": null,
+        "parentScript": 222135,
+        "parentCaster": 1073741856,
+        "parent": {
+          "source": 1,
+          "side": 1,
+          "category": 0,
+          "spellLevel": 7,
+          "unknown": 0
+        },
+        "buff": null
+      },
+      {
+        "time": 872.8994750976562,
+        "count": 1,
+        "event": 48,
+        "source": 1073741854,
+        "target": 1073741850,
+        "script": 8031316,
+        "category": 2,
+        "sourceObject": 0,
+        "damage": null,
+        "healing": null,
+        "parentScript": 153380372,
+        "parentCaster": 1073741854,
+        "parent": {
+          "source": 0,
+          "side": 1,
+          "category": 0,
+          "spellLevel": 0,
+          "unknown": 0
+        },
+        "buff": null
+      },
+      {
+        "time": 872.8994750976562,
+        "count": 1,
+        "event": 48,
+        "source": 1073741854,
+        "target": 1073741850,
+        "script": 69007314,
+        "category": 0,
+        "sourceObject": 0,
+        "damage": null,
+        "healing": null,
+        "parentScript": 153380372,
+        "parentCaster": 1073741854,
+        "parent": {
+          "source": 0,
+          "side": 1,
+          "category": 0,
+          "spellLevel": 0,
+          "unknown": 0
+        },
+        "buff": null
+      },
+      {
+        "time": 871.9594116210938,
+        "count": 1,
+        "event": 48,
+        "source": 1073741850,
+        "target": 1073741850,
+        "script": 51740528,
+        "category": 0,
+        "sourceObject": 0,
+        "damage": null,
+        "healing": null,
+        "parentScript": 222518,
+        "parentCaster": 1073741850,
+        "parent": {
+          "source": 1,
+          "side": 0,
+          "category": 0,
+          "spellLevel": 0,
+          "unknown": 0
+        },
+        "buff": null
+      },
+      {
+        "time": 871.9594116210938,
+        "count": 1,
+        "event": 48,
+        "source": 1073741850,
+        "target": 1073741850,
+        "script": 63091264,
+        "category": 0,
+        "sourceObject": 0,
+        "damage": null,
+        "healing": null,
+        "parentScript": 222518,
+        "parentCaster": 1073741850,
+        "parent": {
+          "source": 1,
+          "side": 0,
+          "category": 0,
+          "spellLevel": 0,
+          "unknown": 0
+        },
+        "buff": null
+      },
+      {
+        "time": 863.08203125,
+        "count": 1,
+        "event": 47,
+        "source": 1073754146,
+        "target": 1073741850,
+        "script": 48727644,
+        "category": 0,
+        "sourceObject": 0,
+        "damage": null,
+        "healing": 10,
+        "parentScript": 41184856,
+        "parentCaster": 1073751130,
+        "parent": {
+          "source": 3,
+          "side": 2,
+          "category": 1,
+          "spellLevel": 0,
+          "unknown": 0
+        },
+        "buff": null
+      },
+      {
+        "time": 861.9219360351562,
+        "count": 1,
+        "event": 47,
+        "source": 1073741850,
+        "target": 1073741850,
+        "script": 63091264,
+        "category": 0,
+        "sourceObject": 0,
+        "damage": null,
+        "healing": 178.84161376953125,
+        "parentScript": 222518,
+        "parentCaster": 1073741850,
+        "parent": {
+          "source": 1,
+          "side": 0,
+          "category": 0,
+          "spellLevel": 7,
+          "unknown": 0
+        },
+        "buff": null
+      }
+    ]
+  }
+}

@@ -4,6 +4,204 @@
   "note": "What a server sends to say what led to a death, so the client can lay it out. The header names the unit this is about.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 33,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "killer",
+          "type": "u32",
+          "note": "The unit credited with the death."
+        },
+        {
+          "name": "span",
+          "type": "f32",
+          "note": "The time the entries below cover, in seconds."
+        },
+        {
+          "name": "sourceType",
+          "type": "u8",
+          "note": "What sort of source the killer was."
+        },
+        {
+          "name": "entryCount",
+          "type": "u32",
+          "note": "How many entries follow."
+        },
+        {
+          "name": "entries",
+          "type": "array",
+          "count": "entryCount",
+          "note": "What happened to the unit before it died, oldest first.",
+          "items": {
+            "name": "entry",
+            "type": "record",
+            "note": "One thing that happened to the unit before it died.",
+            "fields": [
+              {
+                "name": "time",
+                "type": "f32",
+                "note": "When it happened, in match seconds."
+              },
+              {
+                "name": "count",
+                "type": "u16",
+                "note": "How many times. 1 in everything observed."
+              },
+              {
+                "name": "event",
+                "type": "u8",
+                "note": "What sort of thing, and so which fields follow.",
+                "values": {
+                  "16": {
+                    "name": "damage"
+                  },
+                  "47": {
+                    "name": "healing"
+                  },
+                  "48": {
+                    "name": "effect"
+                  },
+                  "49": {
+                    "name": "effectWithBuff",
+                    "note": "No recording carries it."
+                  }
+                }
+              },
+              {
+                "name": "source",
+                "type": "u32",
+                "note": "The unit that did it."
+              },
+              {
+                "name": "target",
+                "type": "u32",
+                "note": "The unit it was done to."
+              },
+              {
+                "name": "script",
+                "type": "u32",
+                "note": "The spell or effect, by the number its name gives."
+              },
+              {
+                "name": "category",
+                "type": "u8",
+                "note": "What sort of source it was."
+              },
+              {
+                "name": "sourceObject",
+                "type": "u32",
+                "note": "The object it came from."
+              },
+              {
+                "name": "damage",
+                "type": "record",
+                "present": {
+                  "when": "event",
+                  "equals": 16
+                },
+                "note": "How much harm.",
+                "fields": [
+                  {
+                    "name": "physical",
+                    "type": "f32",
+                    "note": "Physical damage."
+                  },
+                  {
+                    "name": "magical",
+                    "type": "f32",
+                    "note": "Magical damage."
+                  },
+                  {
+                    "name": "true",
+                    "type": "f32",
+                    "note": "True damage."
+                  }
+                ]
+              },
+              {
+                "name": "healing",
+                "type": "f32",
+                "note": "How much health was restored.",
+                "present": {
+                  "when": "event",
+                  "equals": 47
+                }
+              },
+              {
+                "name": "parentScript",
+                "type": "u32",
+                "note": "The spell or effect that gave rise to it, by the number its name gives."
+              },
+              {
+                "name": "parentCaster",
+                "type": "u32",
+                "note": "The unit that cast that."
+              },
+              {
+                "name": "parent",
+                "type": "bits",
+                "size": 2,
+                "note": "More about where it came from.",
+                "bits": [
+                  {
+                    "name": "source",
+                    "width": 4,
+                    "note": "What sort of event gave rise to it."
+                  },
+                  {
+                    "name": "side",
+                    "width": 4,
+                    "note": "Which side."
+                  },
+                  {
+                    "name": "category",
+                    "width": 4,
+                    "note": "What sort of source that was."
+                  },
+                  {
+                    "name": "spellLevel",
+                    "width": 3,
+                    "note": "The level of the spell it came from."
+                  },
+                  {
+                    "name": "unknown",
+                    "width": 1,
+                    "note": "Purpose undetermined."
+                  }
+                ]
+              },
+              {
+                "name": "buff",
+                "type": "record",
+                "present": {
+                  "when": "event",
+                  "equals": 49,
+                  "unseen": "present"
+                },
+                "note": "What an effect of this sort carries.",
+                "fields": [
+                  {
+                    "name": "buffType",
+                    "type": "i32",
+                    "note": "What sort of effect."
+                  },
+                  {
+                    "name": "duration",
+                    "type": "f32",
+                    "note": "How long it lasted, in seconds."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "events",
       "command": 33,
