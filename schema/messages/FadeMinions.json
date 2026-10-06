@@ -1,0 +1,32 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "FadeMinions",
+  "note": "What a server sends to fade one side's minions. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 203,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "side",
+          "type": "u8",
+          "note": "Which side, or zero for both."
+        },
+        {
+          "name": "amount",
+          "type": "f32",
+          "note": "How far they fade."
+        },
+        {
+          "name": "time",
+          "type": "f32",
+          "note": "How long the fade takes, in seconds."
+        }
+      ]
+    }
+  ]
+}

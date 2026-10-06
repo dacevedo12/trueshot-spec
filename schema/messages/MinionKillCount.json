@@ -1,0 +1,22 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "MinionKillCount",
+  "note": "What a server sends to add one to a champion's count of minions killed. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 287,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "player",
+          "type": "u32",
+          "note": "The champion."
+        }
+      ]
+    }
+  ]
+}

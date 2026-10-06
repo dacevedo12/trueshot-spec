@@ -1,0 +1,16 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "AppearanceCleared",
+  "note": "What a server sends to take every look laid over a unit away. The header names the unit.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 200,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": []
+    }
+  ]
+}

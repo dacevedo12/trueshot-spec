@@ -1,0 +1,13 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "Empty",
+  "version": "4.17.0.267",
+  "note": "Taken from a spectator recording of a match played on this version: what the server sent a client watching the match. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "00 00000000",
+  "fields": {
+    "command": 0,
+    "netId": 0,
+    "extendedCommand": null
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "FadeSounds",
+  "version": "4.17.0.267",
+  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "5f 00000000 00000040",
+  "fields": {
+    "command": 95,
+    "netId": 0,
+    "extendedCommand": null,
+    "time": 2
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "MusicCue",
+  "version": "4.17.0.267",
+  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "dc 10000040 000f000000ce069415",
+  "fields": {
+    "command": 220,
+    "netId": 1073741840,
+    "extendedCommand": null,
+    "cue": 0,
+    "event": 15,
+    "parameter": 362022606
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "BounceMissile",
+  "version": "4.17.0.267",
+  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "fe 7c2000401901 0000000044584946575a4a42a92c7445",
+  "fields": {
+    "command": 254,
+    "netId": 1073750140,
+    "extendedCommand": 281,
+    "target": 0,
+    "fromX": 12886.06640625,
+    "fromY": 50.58822250366211,
+    "fromZ": 3906.791259765625
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "InventorySnapshot",
+  "note": "What a server sends to state a unit's whole inventory at once, with each slot's cooldown. The header names the unit.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 268,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "items",
+          "type": "array",
+          "count": 10,
+          "items": {
+            "name": "itemsEntry",
+            "type": "record",
+            "fields": [
+              {
+                "name": "item",
+                "type": "u32",
+                "note": "The item, or zero for an empty slot."
+              },
+              {
+                "name": "slot",
+                "type": "u8",
+                "note": "Which slot."
+              },
+              {
+                "name": "inSlot",
+                "type": "u8",
+                "note": "How many are in the slot."
+              },
+              {
+                "name": "charges",
+                "type": "u8",
+                "note": "How many charges it holds."
+              }
+            ]
+          },
+          "note": "Ten places, one per slot."
+        },
+        {
+          "name": "cooldowns",
+          "type": "array",
+          "count": 10,
+          "items": {
+            "name": "cooldown",
+            "type": "f32",
+            "note": "How long until the slot's item can be used again, in seconds."
+          },
+          "note": "One per slot."
+        },
+        {
+          "name": "maxCooldowns",
+          "type": "array",
+          "count": 10,
+          "items": {
+            "name": "maxCooldown",
+            "type": "f32",
+            "note": "The length that wait is shown against, in seconds."
+          },
+          "note": "One per slot."
+        }
+      ]
+    }
+  ]
+}

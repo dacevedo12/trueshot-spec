@@ -1,0 +1,27 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "ItemSubstitution",
+  "note": "What a server sends to have one item stand in for another in a champion's inventory. The header names the champion.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 284,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "original",
+          "type": "u32",
+          "note": "The item replaced."
+        },
+        {
+          "name": "substitute",
+          "type": "u32",
+          "note": "The item standing in for it."
+        }
+      ]
+    }
+  ]
+}

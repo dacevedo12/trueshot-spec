@@ -1,0 +1,27 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "MissileSpeed",
+  "note": "What a server sends to change how fast a missile flies. The header names the missile.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 269,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "speed",
+          "type": "f32",
+          "note": "The new speed."
+        },
+        {
+          "name": "delay",
+          "type": "f32",
+          "note": "How long before it applies, in seconds."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "PauseAnimation",
+  "version": "4.17.0.267",
+  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "71 1f000040 01",
+  "fields": {
+    "command": 113,
+    "netId": 1073741855,
+    "extendedCommand": null,
+    "state": {
+      "paused": 1,
+      "unknown": 0
+    }
+  }
+}

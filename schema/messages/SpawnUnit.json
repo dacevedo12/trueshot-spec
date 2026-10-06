@@ -1,0 +1,134 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "SpawnUnit",
+  "note": "What a server sends to put a minion-like unit on the field, such as a ward. The header names the unit that put it there.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 124,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The name the new unit answers to."
+        },
+        {
+          "name": "owner",
+          "type": "u32",
+          "note": "The unit that owns it."
+        },
+        {
+          "name": "node",
+          "type": "u8",
+          "note": "Which network node the unit belongs to."
+        },
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where it stands, along one ground axis."
+        },
+        {
+          "name": "atY",
+          "type": "f32",
+          "note": "Where it stands, in height."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where it stands, along the other ground axis."
+        },
+        {
+          "name": "skin",
+          "type": "i32",
+          "note": "Which look it wears."
+        },
+        {
+          "name": "clone",
+          "type": "u32",
+          "note": "The unit it copies, or zero."
+        },
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 2,
+          "bits": [
+            {
+              "name": "team",
+              "width": 9,
+              "note": "Which side, as a team number."
+            },
+            {
+              "name": "ignoreCollision",
+              "width": 1,
+              "note": "Set where it does not block the way."
+            },
+            {
+              "name": "ward",
+              "width": 1,
+              "note": "Set where it is a ward."
+            },
+            {
+              "name": "laneMinion",
+              "width": 1,
+              "note": "Set where it is a lane minion."
+            },
+            {
+              "name": "bot",
+              "width": 1,
+              "note": "Set where it is driven by the client's own decisions."
+            },
+            {
+              "name": "targetable",
+              "width": 1,
+              "note": "Set where it can be aimed at."
+            },
+            {
+              "name": "unknown",
+              "width": 2,
+              "note": "Purpose undetermined."
+            }
+          ],
+          "note": "What sort of unit it is."
+        },
+        {
+          "name": "targetableToTeam",
+          "type": "u32",
+          "note": "Which sides can aim at it, as a set of bits."
+        },
+        {
+          "name": "visibilitySize",
+          "type": "f32",
+          "note": "How large it counts as for sight."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "Its name, padded with zero bytes."
+        },
+        {
+          "name": "asset",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The name the client loads its art under, padded with zero bytes."
+        },
+        {
+          "name": "level",
+          "type": "u16",
+          "note": "The level it starts at."
+        },
+        {
+          "name": "onlyVisibleTo",
+          "type": "u32",
+          "note": "The unit that alone can see it, or zero."
+        }
+      ]
+    }
+  ]
+}

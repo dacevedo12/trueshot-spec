@@ -1,0 +1,27 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "Autocast",
+  "note": "What a server sends to set which spells a unit casts by itself. The header names the unit.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 31,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "i8",
+          "note": "The slot cast by itself, from 0 to 62; any other value leaves it unset."
+        },
+        {
+          "name": "criticalSlot",
+          "type": "i8",
+          "note": "The slot cast by itself on a critical strike, under the same terms."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "HealthBar",
+  "note": "What a server sends about a unit's health bar. The header names the unit.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 206,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "show",
+              "width": 1,
+              "note": "Set where the bar is shown. Clear in everything observed."
+            },
+            {
+              "name": "changeType",
+              "width": 1,
+              "note": "Set where the bar's type changes. Clear in everything observed."
+            },
+            {
+              "name": "unknown",
+              "width": 6,
+              "note": "Clear in everything observed."
+            }
+          ],
+          "note": "What changes."
+        },
+        {
+          "name": "barType",
+          "type": "u8",
+          "note": "Which sort of bar. 49 in everything observed."
+        }
+      ]
+    }
+  ]
+}

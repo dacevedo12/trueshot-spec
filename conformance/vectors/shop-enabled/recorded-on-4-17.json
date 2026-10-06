@@ -1,0 +1,18 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ShopEnabled",
+  "version": "4.17.0.267",
+  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "f0 22000040 01",
+  "fields": {
+    "command": 240,
+    "netId": 1073741858,
+    "extendedCommand": null,
+    "flags": {
+      "enabled": 1,
+      "force": 0,
+      "unknown": 0
+    }
+  }
+}

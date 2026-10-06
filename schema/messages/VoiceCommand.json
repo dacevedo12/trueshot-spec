@@ -1,0 +1,70 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "VoiceCommand",
+  "note": "What a server sends to have a unit's voice called out. The header names the unit.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 68,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unknown1",
+          "type": "u16",
+          "note": "Purpose undetermined."
+        },
+        {
+          "name": "unknown2",
+          "type": "u8",
+          "note": "Purpose undetermined."
+        },
+        {
+          "name": "call",
+          "type": "u32",
+          "note": "Which call."
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit the call is about."
+        },
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "highlight",
+              "width": 1,
+              "note": "Set where the player's icon is highlighted."
+            },
+            {
+              "name": "ping",
+              "width": 1,
+              "note": "Set where it marks a ping."
+            },
+            {
+              "name": "unknown",
+              "width": 6,
+              "note": "Purpose undetermined."
+            }
+          ],
+          "note": "How it is shown."
+        },
+        {
+          "name": "unknown3",
+          "type": "u16",
+          "note": "Purpose undetermined."
+        },
+        {
+          "name": "unknown4",
+          "type": "u8",
+          "note": "Purpose undetermined."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "TeamChanged",
+  "note": "What a server sends to move a unit to another side. The header names the unit.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 215,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit."
+        },
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "Its new side."
+        }
+      ]
+    }
+  ]
+}

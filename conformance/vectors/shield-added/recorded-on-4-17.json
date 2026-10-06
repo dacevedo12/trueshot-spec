@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ShieldAdded",
+  "version": "4.17.0.267",
+  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "66 19000040 036afc8142",
+  "fields": {
+    "command": 102,
+    "netId": 1073741849,
+    "extendedCommand": null,
+    "flags": {
+      "physical": 1,
+      "magical": 1,
+      "noFade": 0,
+      "unknown": 0
+    },
+    "amount": 64.99299621582031
+  }
+}

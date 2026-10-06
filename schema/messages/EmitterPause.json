@@ -1,0 +1,34 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "EmitterPause",
+  "note": "What a server sends to pause or resume a named group of particle emitters. The header carries no object this acts on.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 248,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "group",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 256,
+          "note": "The group's name, padded with zero bytes."
+        },
+        {
+          "name": "operation",
+          "type": "u32",
+          "note": "0 resumes the group; any other value pauses it."
+        },
+        {
+          "name": "groupOperation",
+          "type": "u8",
+          "note": "Purpose undetermined. A client acts only on 0."
+        }
+      ]
+    }
+  ]
+}

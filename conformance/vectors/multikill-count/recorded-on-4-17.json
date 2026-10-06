@@ -1,0 +1,15 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "MultikillCount",
+  "version": "4.17.0.267",
+  "note": "Taken from a spectator recording of a match played on this version: what the server sent a client watching the match. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "fe 000000001501 2300004001",
+  "fields": {
+    "command": 254,
+    "netId": 0,
+    "extendedCommand": 277,
+    "owner": 1073741859,
+    "count": 1
+  }
+}

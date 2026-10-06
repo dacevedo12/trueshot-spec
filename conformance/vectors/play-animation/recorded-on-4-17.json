@@ -1,0 +1,22 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "PlayAnimation",
+  "version": "4.17.0.267",
+  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "b0 1b000040 0000000000000000000000000000803f49646c655f6261636b757000",
+  "fields": {
+    "command": 176,
+    "netId": 1073741851,
+    "extendedCommand": null,
+    "flags": {
+      "unknown1": 0,
+      "keepEmotes": 0,
+      "unknown": 0
+    },
+    "scaleTime": 0,
+    "startProgress": 0,
+    "speed": 1,
+    "animation": "Idle_backup"
+  }
+}

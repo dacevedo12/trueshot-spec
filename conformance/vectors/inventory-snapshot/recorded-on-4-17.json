@@ -1,0 +1,79 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "InventorySnapshot",
+  "version": "4.17.0.267",
+  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "fe 210000400c01 0f040000000100d3070000010400000000008bc5000000000048ce9500000000080cd900000000bd00215e0c0000060100d107000007010000000000bf0000000000000000fc000080bf000080bf000080bf000080bf000080bf000080bf000080bf000080bf000080bf000080bf01000100010000000000000000000000000000000000000000000000000000000000000000000000",
+  "fields": {
+    "command": 254,
+    "netId": 1073741857,
+    "extendedCommand": 268,
+    "items": [
+      {
+        "item": 1039,
+        "slot": 0,
+        "inSlot": 1,
+        "charges": 0
+      },
+      {
+        "item": 2003,
+        "slot": 1,
+        "inSlot": 4,
+        "charges": 0
+      },
+      {
+        "item": 0,
+        "slot": 139,
+        "inSlot": 197,
+        "charges": 0
+      },
+      {
+        "item": 0,
+        "slot": 72,
+        "inSlot": 206,
+        "charges": 149
+      },
+      {
+        "item": 0,
+        "slot": 8,
+        "inSlot": 12,
+        "charges": 217
+      },
+      {
+        "item": 0,
+        "slot": 189,
+        "inSlot": 0,
+        "charges": 33
+      },
+      {
+        "item": 3166,
+        "slot": 6,
+        "inSlot": 1,
+        "charges": 0
+      },
+      {
+        "item": 2001,
+        "slot": 7,
+        "inSlot": 1,
+        "charges": 0
+      },
+      {
+        "item": 0,
+        "slot": 191,
+        "inSlot": 0,
+        "charges": 0
+      },
+      {
+        "item": 0,
+        "slot": 0,
+        "inSlot": 0,
+        "charges": 252
+      }
+    ],
+    "cooldowns": [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    "maxCooldowns": [
+      9.183689745645554e-41, 1.401298464324817e-45, 0, 0, 0, 0, 0, 0, 0, 0
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SpawnPet",
+  "version": "4.17.0.267",
+  "note": "Taken from a spectator recording of a match played on this version: what the server sent a client watching the match. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "37 17230040 2100004040cd84344581285c429af1e5450100000000009041c80000000000000000000000446164612044617661796c000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000536861636f0000000000000000000000000000000000000000000000000000000000000048616c6c7563696e617465000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000021000040075065742e6c756100000000000000000000000000000000000000000000000000",
+  "fields": {
+    "command": 55,
+    "netId": 1073750807,
+    "extendedCommand": null,
+    "owner": 1073741857,
+    "node": 64,
+    "atX": 2888.300048828125,
+    "atY": 55.039554595947266,
+    "atZ": 7358.2001953125,
+    "spellLevel": 1,
+    "duration": 18,
+    "side": 200,
+    "damageBonus": 0,
+    "healthBonus": 0,
+    "name": "Dada Davayl",
+    "asset": "Shaco",
+    "skin": 0,
+    "effect": "Hallucinate",
+    "clone": 1073741857,
+    "flags": {
+      "copyInventory": 1,
+      "clearOwnerTarget": 1,
+      "minimapIcon": 1,
+      "unknown": 0
+    },
+    "script": "Pet.lua"
+  }
+}

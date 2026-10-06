@@ -1,0 +1,24 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "VoiceCommand",
+  "version": "4.17.0.267",
+  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "44 22000040 000000290000000000000001000000",
+  "fields": {
+    "command": 68,
+    "netId": 1073741858,
+    "extendedCommand": null,
+    "unknown1": 0,
+    "unknown2": 0,
+    "call": 41,
+    "target": 0,
+    "flags": {
+      "highlight": 1,
+      "ping": 0,
+      "unknown": 0
+    },
+    "unknown3": 0,
+    "unknown4": 0
+  }
+}

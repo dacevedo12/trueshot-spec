@@ -1,0 +1,54 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "EffectRemovedGroup",
+  "note": "What a server sends to take one effect off several units at once. The header names no object it acts on: the units are listed below.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 148,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "effect",
+          "type": "u32",
+          "note": "Which effect, by the number its name gives."
+        },
+        {
+          "name": "count",
+          "type": "u8",
+          "note": "How many units follow."
+        },
+        {
+          "name": "entries",
+          "type": "array",
+          "count": "count",
+          "items": {
+            "name": "entriesEntry",
+            "type": "record",
+            "fields": [
+              {
+                "name": "unit",
+                "type": "u32",
+                "note": "The unit carrying the effect."
+              },
+              {
+                "name": "slot",
+                "type": "u8",
+                "note": "Which slot it sat in."
+              },
+              {
+                "name": "timeLeft",
+                "type": "f32",
+                "note": "How long it had left to run, in seconds."
+              }
+            ]
+          },
+          "note": "The units, one place each."
+        }
+      ]
+    }
+  ]
+}

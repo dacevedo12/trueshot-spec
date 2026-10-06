@@ -1,0 +1,74 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "ScoreAdded",
+  "note": "What a server sends to add to a player's score. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 217,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "player",
+          "type": "u32",
+          "note": "The champion whose score it is."
+        },
+        {
+          "name": "category",
+          "type": "u8",
+          "note": "Which part of the score.",
+          "values": {
+            "0": {
+              "name": "offense"
+            },
+            "1": {
+              "name": "defense"
+            },
+            "2": {
+              "name": "combat"
+            },
+            "3": {
+              "name": "objective"
+            }
+          }
+        },
+        {
+          "name": "event",
+          "type": "u8",
+          "note": "What earned it."
+        },
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "callout",
+              "width": 1,
+              "note": "Set where the client announces it."
+            },
+            {
+              "name": "unknown",
+              "width": 7,
+              "note": "Purpose undetermined."
+            }
+          ],
+          "note": "How it is shown."
+        },
+        {
+          "name": "points",
+          "type": "f32",
+          "note": "How much is added."
+        },
+        {
+          "name": "total",
+          "type": "f32",
+          "note": "Purpose undetermined."
+        }
+      ]
+    }
+  ]
+}

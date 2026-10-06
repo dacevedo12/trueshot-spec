@@ -1,0 +1,40 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "ShopEnabled",
+  "note": "What a server sends to say whether a champion can use the shop. The header names the champion.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 240,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "enabled",
+              "width": 1,
+              "note": "Set where the shop can be used."
+            },
+            {
+              "name": "force",
+              "width": 1,
+              "note": "Set where it can be used wherever the champion stands."
+            },
+            {
+              "name": "unknown",
+              "width": 6,
+              "note": "Purpose undetermined."
+            }
+          ],
+          "note": "Whether it can be used."
+        }
+      ]
+    }
+  ]
+}

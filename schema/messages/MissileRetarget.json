@@ -1,0 +1,37 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "MissileRetarget",
+  "note": "What a server sends to change what a missile flies at. The header names the missile.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 238,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit it now flies at, or a name no unit answers to for none."
+        },
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Where it now flies to, along one ground axis."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "In height."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Along the other ground axis."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "AttackIndicators",
+  "version": "4.17.0.267",
+  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "fe 000000000201 1d0000400001",
+  "fields": {
+    "command": 254,
+    "netId": 0,
+    "extendedCommand": 258,
+    "unit": 1073741853,
+    "show": 0,
+    "minimap": 1
+  }
+}

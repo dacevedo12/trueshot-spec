@@ -1,0 +1,36 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SpawnUnit",
+  "version": "4.17.0.267",
+  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "7c 670c0040 670c00402100004040d41ee444f6b15b42fc0e01460000000000000000c82000000002000000004a61636b20496e2054686520426f7800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000536861636f426f780000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000",
+  "fields": {
+    "command": 124,
+    "netId": 1073744999,
+    "extendedCommand": null,
+    "unit": 1073744999,
+    "owner": 1073741857,
+    "node": 64,
+    "atX": 1824.96337890625,
+    "atY": 54.923789978027344,
+    "atZ": 8259.74609375,
+    "skin": 0,
+    "clone": 0,
+    "flags": {
+      "team": 200,
+      "ignoreCollision": 0,
+      "ward": 0,
+      "laneMinion": 0,
+      "bot": 0,
+      "targetable": 1,
+      "unknown": 0
+    },
+    "targetableToTeam": 33554432,
+    "visibilitySize": 0,
+    "name": "Jack In The Box",
+    "asset": "ShacoBox",
+    "level": 1,
+    "onlyVisibleTo": 0
+  }
+}

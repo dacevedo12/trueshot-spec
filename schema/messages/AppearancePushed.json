@@ -1,0 +1,62 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "AppearancePushed",
+  "note": "What a server sends to lay a new look over a unit's own. The header names the unit.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 151,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "entry",
+          "type": "u32",
+          "note": "Names this look, so that AppearancePopped can name it."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "overrideSpells",
+              "width": 1,
+              "note": "Set where the unit's spells change with it."
+            },
+            {
+              "name": "modelOnly",
+              "width": 1,
+              "note": "Set where only the model changes."
+            },
+            {
+              "name": "replacePackage",
+              "width": 1,
+              "note": "Set where its art and sound change with it."
+            },
+            {
+              "name": "unknown",
+              "width": 5,
+              "note": "Purpose undetermined."
+            }
+          ],
+          "note": "What the look changes."
+        },
+        {
+          "name": "skin",
+          "type": "i32",
+          "note": "Which look."
+        },
+        {
+          "name": "asset",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "The name the client loads it under, ended by a zero byte."
+        }
+      ]
+    }
+  ]
+}

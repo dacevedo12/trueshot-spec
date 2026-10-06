@@ -1,0 +1,22 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "AppearancePushed",
+  "version": "4.17.0.267",
+  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "97 22030040 ae03000002ffffffff5a6564536861646f7700",
+  "fields": {
+    "command": 151,
+    "netId": 1073742626,
+    "extendedCommand": null,
+    "entry": 942,
+    "how": {
+      "overrideSpells": 0,
+      "modelOnly": 1,
+      "replacePackage": 0,
+      "unknown": 0
+    },
+    "skin": -1,
+    "asset": "ZedShadow"
+  }
+}

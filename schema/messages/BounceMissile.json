@@ -1,0 +1,37 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "BounceMissile",
+  "note": "What a server sends as a missile bounces on to another unit. The header names the missile.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 281,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit it now flies at."
+        },
+        {
+          "name": "fromX",
+          "type": "f32",
+          "note": "Where it bounces from, along one ground axis."
+        },
+        {
+          "name": "fromY",
+          "type": "f32",
+          "note": "Where it bounces from, in height."
+        },
+        {
+          "name": "fromZ",
+          "type": "f32",
+          "note": "Where it bounces from, along the other ground axis."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "MissileRetarget",
+  "version": "4.17.0.267",
+  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "ee f20d0040 1d000040000000000000000000000000",
+  "fields": {
+    "command": 238,
+    "netId": 1073745394,
+    "extendedCommand": null,
+    "target": 1073741853,
+    "x": 0,
+    "y": 0,
+    "z": 0
+  }
+}

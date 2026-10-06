@@ -1,0 +1,15 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "CampTimer",
+  "version": "4.17.0.267",
+  "note": "Taken from a spectator recording of a match played on this version: what the server sent a client watching the match. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "fe 000000001601 352d50060000d743",
+  "fields": {
+    "command": 254,
+    "netId": 0,
+    "extendedCommand": 278,
+    "timer": 105917749,
+    "expires": 430
+  }
+}

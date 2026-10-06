@@ -1,0 +1,22 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "ShopUndoCount",
+  "note": "What a server sends to say how many purchases a champion can still undo. The header names the champion.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 267,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "undo",
+          "type": "u8",
+          "note": "How many steps can be undone."
+        }
+      ]
+    }
+  ]
+}

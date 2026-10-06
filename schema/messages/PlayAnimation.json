@@ -1,0 +1,62 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "PlayAnimation",
+  "note": "What a server sends to make a unit play an animation. The header names the unit.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 176,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 4,
+          "bits": [
+            {
+              "name": "unknown1",
+              "width": 4,
+              "note": "Purpose undetermined."
+            },
+            {
+              "name": "keepEmotes",
+              "width": 1,
+              "note": "Set where an emote the unit is playing carries on."
+            },
+            {
+              "name": "unknown",
+              "width": 27,
+              "note": "Purpose undetermined."
+            }
+          ],
+          "note": "How the animation plays."
+        },
+        {
+          "name": "scaleTime",
+          "type": "f32",
+          "note": "A scale on how long it plays."
+        },
+        {
+          "name": "startProgress",
+          "type": "f32",
+          "note": "How far into the animation it starts."
+        },
+        {
+          "name": "speed",
+          "type": "f32",
+          "note": "How fast it plays."
+        },
+        {
+          "name": "animation",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "The animation's name, ended by a zero byte."
+        }
+      ]
+    }
+  ]
+}

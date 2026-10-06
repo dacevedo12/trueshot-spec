@@ -1,0 +1,18 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "CancelTargeting",
+  "version": "4.17.0.267",
+  "note": "Taken from a spectator recording of a match played on this version: what the server sent a client watching the match.",
+  "bytes": "86 0b010040 00",
+  "fields": {
+    "command": 134,
+    "netId": 1073742091,
+    "extendedCommand": null,
+    "which": {
+      "slot": 0,
+      "summonerSpell": 0,
+      "unknown": 0
+    }
+  }
+}

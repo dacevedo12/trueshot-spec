@@ -1,0 +1,22 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "GoldRedirect",
+  "note": "What a server sends to send the gold a unit earns to another. The header names the unit.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 7,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit that receives the gold."
+        }
+      ]
+    }
+  ]
+}

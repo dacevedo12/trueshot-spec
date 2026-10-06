@@ -1,0 +1,32 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "CameraBehaviour",
+  "note": "What a server sends to set a point a champion's player's view keeps to. The header names the champion.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 115,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Along one ground axis."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "In height."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Along the other ground axis."
+        }
+      ]
+    }
+  ]
+}

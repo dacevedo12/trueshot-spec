@@ -1,0 +1,64 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "EffectCountGroup",
+  "note": "What a server sends to restate how many of an effect are stacked on several units at once. The header names no object it acts on: the units are listed below.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 191,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "lasts",
+          "type": "f32",
+          "note": "How long the effect runs in total, in seconds."
+        },
+        {
+          "name": "runningFor",
+          "type": "f32",
+          "note": "How long it has already run, in seconds."
+        },
+        {
+          "name": "count",
+          "type": "u8",
+          "note": "How many units follow."
+        },
+        {
+          "name": "entries",
+          "type": "array",
+          "count": "count",
+          "items": {
+            "name": "entriesEntry",
+            "type": "record",
+            "fields": [
+              {
+                "name": "unit",
+                "type": "u32",
+                "note": "The unit carrying the effect."
+              },
+              {
+                "name": "caster",
+                "type": "u32",
+                "note": "The unit that put it there."
+              },
+              {
+                "name": "slot",
+                "type": "u8",
+                "note": "Which of the unit's effect slots it sits in."
+              },
+              {
+                "name": "stacks",
+                "type": "u8",
+                "note": "How many are stacked there now."
+              }
+            ]
+          },
+          "note": "The units, one place each."
+        }
+      ]
+    }
+  ]
+}

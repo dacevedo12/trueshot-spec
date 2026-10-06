@@ -1,0 +1,27 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "ResourceDisplay",
+  "note": "What a server sends to change how a unit's resource bar is shown. The header names the unit.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 147,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unknown",
+          "type": "u32",
+          "note": "Purpose undetermined. Read as two sixteen bit halves, the second is always one more than the first: 124 and 125, 125 and 126, 92 and 93, 126 and 127 are observed."
+        },
+        {
+          "name": "state",
+          "type": "i32",
+          "note": "Which way the resource is shown. 0, 1 and 2 are observed."
+        }
+      ]
+    }
+  ]
+}

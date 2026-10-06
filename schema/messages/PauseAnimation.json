@@ -1,0 +1,35 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "PauseAnimation",
+  "note": "What a server sends to pause or resume a unit's animation. The header names the unit.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 113,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "paused",
+              "width": 1,
+              "note": "Set to pause, clear to resume."
+            },
+            {
+              "name": "unknown",
+              "width": 7,
+              "note": "Purpose undetermined."
+            }
+          ],
+          "note": "Whether to pause."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ClockConvergence",
+  "version": "4.17.0.267",
+  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "76 00000000 00000000ece42e3fece42e3f",
+  "fields": {
+    "command": 118,
+    "netId": 0,
+    "extendedCommand": null,
+    "clientTime": 0,
+    "roundTrip": 0.683180570602417,
+    "convergence": 0.683180570602417
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "FloatingText",
+  "note": "What a server sends to show text floating over a unit. The header names the unit.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 24,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "delay",
+          "type": "f32",
+          "note": "How long before it shows."
+        },
+        {
+          "name": "slot",
+          "type": "i32",
+          "note": "Purpose undetermined."
+        },
+        {
+          "name": "error",
+          "type": "u8",
+          "note": "Purpose undetermined."
+        },
+        {
+          "name": "colour",
+          "type": "u8",
+          "note": "Which colour."
+        },
+        {
+          "name": "style",
+          "type": "u32",
+          "note": "Which style of floating text."
+        },
+        {
+          "name": "length",
+          "type": "u32",
+          "note": "How many bytes the text takes."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "length",
+          "note": "The text."
+        }
+      ]
+    }
+  ]
+}

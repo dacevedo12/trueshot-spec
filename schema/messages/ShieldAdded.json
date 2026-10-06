@@ -1,0 +1,50 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "ShieldAdded",
+  "note": "What a server sends to add to a unit's shield. The header names the unit.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 102,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "physical",
+              "width": 1,
+              "note": "Set where the shield turns aside physical damage."
+            },
+            {
+              "name": "magical",
+              "width": 1,
+              "note": "Set where it turns aside magical damage. Both set means either."
+            },
+            {
+              "name": "noFade",
+              "width": 1,
+              "note": "Set where the shield does not fade."
+            },
+            {
+              "name": "unknown",
+              "width": 5,
+              "note": "Clear in everything observed."
+            }
+          ],
+          "note": "Which shield."
+        },
+        {
+          "name": "amount",
+          "type": "f32",
+          "note": "How much is added."
+        }
+      ]
+    }
+  ]
+}

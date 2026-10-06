@@ -1,0 +1,22 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "FollowerMaster",
+  "note": "What a server sends to change which unit a following object follows. The header names the follower.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 242,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "master",
+          "type": "u32",
+          "note": "The unit it now follows; one no unit answers to leaves it following none."
+        }
+      ]
+    }
+  ]
+}

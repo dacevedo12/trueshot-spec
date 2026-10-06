@@ -1,0 +1,50 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "ScreenTint",
+  "note": "What a server sends to tint a side's screens, or to take a tint away. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 219,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "fadeIn",
+          "type": "u8",
+          "note": "1 brings a tint in, and the colour and weight below follow; 0 takes it away, and they do not."
+        },
+        {
+          "name": "time",
+          "type": "f32",
+          "note": "How long the change takes, in seconds."
+        },
+        {
+          "name": "side",
+          "type": "i32",
+          "note": "Which side sees it."
+        },
+        {
+          "name": "colour",
+          "type": "u32",
+          "note": "The tint, as blue, green, red and opacity bytes.",
+          "present": {
+            "when": "fadeIn",
+            "equals": 1
+          }
+        },
+        {
+          "name": "weight",
+          "type": "f32",
+          "note": "How strongly it applies at most.",
+          "present": {
+            "when": "fadeIn",
+            "equals": 1
+          }
+        }
+      ]
+    }
+  ]
+}

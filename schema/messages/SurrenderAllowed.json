@@ -1,0 +1,35 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "SurrenderAllowed",
+  "note": "What a server sends to say whether a champion's player may call a surrender vote. The header names the champion.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 270,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "allowed",
+              "width": 1,
+              "note": "Set where a vote may be called."
+            },
+            {
+              "name": "unknown",
+              "width": 7,
+              "note": "Purpose undetermined."
+            }
+          ],
+          "note": "Whether it is allowed."
+        }
+      ]
+    }
+  ]
+}

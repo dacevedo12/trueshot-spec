@@ -1,0 +1,22 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ScoreAdded",
+  "version": "4.17.0.267",
+  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "d9 00000000 190000400039000000000000000000",
+  "fields": {
+    "command": 217,
+    "netId": 0,
+    "extendedCommand": null,
+    "player": 1073741849,
+    "category": 0,
+    "event": 57,
+    "flags": {
+      "callout": 0,
+      "unknown": 0
+    },
+    "points": 0,
+    "total": 0
+  }
+}

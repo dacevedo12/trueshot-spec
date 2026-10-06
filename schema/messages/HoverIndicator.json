@@ -1,0 +1,22 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "HoverIndicator",
+  "note": "What a server sends to turn a unit's hover indicator on or off. The header names the unit. Recorded only in what a server sent clients watching a match.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 246,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "enabled",
+          "type": "u8",
+          "note": "0 turns it off; any other value on."
+        }
+      ]
+    }
+  ]
+}

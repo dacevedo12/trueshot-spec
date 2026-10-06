@@ -1,0 +1,32 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "AttackIndicators",
+  "note": "What a server sends to show or hide a unit's attack indicators. The header names the unit.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 258,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit."
+        },
+        {
+          "name": "show",
+          "type": "u8",
+          "note": "Whether the indicator shows."
+        },
+        {
+          "name": "minimap",
+          "type": "u8",
+          "note": "Whether it shows on the minimap."
+        }
+      ]
+    }
+  ]
+}
