@@ -11,12 +11,12 @@
     {
       "name": "level",
       "type": "u16",
-      "note": "The level the seat holder has reached across matches."
+      "note": "The level the seat holder has reached across matches. A 4.17 client does not draw it on the loading screen."
     },
     {
       "name": "summoner",
       "type": "u32",
-      "note": "The spell in one of the seat's summoner slots."
+      "note": "The spell in one of the seat's summoner slots, as the name hash of the spell; drawn as its icon on the loading screen. A bot's seat leaves it unread."
     },
     {
       "name": "otherSummoner",
@@ -38,7 +38,7 @@
       "type": "string",
       "encoding": "utf8",
       "size": 64,
-      "note": "What the seat is called where nobody holds it. Written out in full and padded with zero bytes to the width above."
+      "note": "What the seat is called where nobody holds it, written and padded as above. A 4.17 client shows its own name for a bot of the champion instead."
     },
     {
       "name": "botAsset",
@@ -52,7 +52,7 @@
       "type": "string",
       "encoding": "utf8",
       "size": 16,
-      "note": "What the seat's standing across matches is called, written and padded as above."
+      "note": "What the seat's standing across matches is called, written and padded as above. A 4.17 client frames the seat's loading-screen card with its own image of that name, where it has one; UNRANKED and BRONZE draw nothing."
     },
     {
       "name": "botSkin",
@@ -62,22 +62,22 @@
     {
       "name": "botDifficulty",
       "type": "i32",
-      "note": "How well it plays where nobody holds it."
+      "note": "How well it plays where nobody holds it: 0 beginner, 1 intermediate, 2 advanced, 3 top, 4 tutorial, 5 intro. A 4.17 client draws it nowhere and picks the bot's summoner spells by it."
     },
     {
       "name": "icon",
       "type": "i32",
-      "note": "Which picture the client shows beside it."
+      "note": "Which profile icon the client shows on the seat's loading-screen card; a negative number, or one with no art, shows icon 0's."
     },
     {
       "name": "allyBadge",
       "type": "u8",
-      "note": "Which mark the client shows for it to its own side."
+      "note": "The badge a 4.17 client shows on the seat's card to the seat's own side (and to a client on neither side), where it is one of the badges the client's own data names."
     },
     {
       "name": "enemyBadge",
       "type": "u8",
-      "note": "Which mark the client shows for it to the other."
+      "note": "The badge it shows where the ally badge is not shown and this is nonzero."
     }
   ]
 }
