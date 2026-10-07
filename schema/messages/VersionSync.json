@@ -245,7 +245,7 @@
             {
               "name": "balanceVoteCommands",
               "width": 1,
-              "note": "The chat commands /equalize and /noequalize."
+              "note": "The chat commands /equalize and /noequalize. Clear in every recorded 4.17 match."
             },
             {
               "name": "menuBack",
@@ -260,7 +260,7 @@
             {
               "name": "quickChat",
               "width": 1,
-              "note": "Quick chat: its keys and its panel."
+              "note": "Quick chat: its keys and its panel, which loads an interface file a 4.17.0.267 client's data does not hold. Given this bit, such a client fails as it finishes building its screen while loading. Clear in every recorded 4.17 match."
             },
             {
               "name": "missileWarning",
@@ -275,7 +275,7 @@
             {
               "name": "shopUndo",
               "width": 1,
-              "note": "The shop's undo; clear, it is never enabled."
+              "note": "The shop's undo; clear, it is never enabled. Set in every recorded 4.17 match."
             },
             {
               "name": "bit7",

@@ -474,6 +474,13 @@ for that client need not expect commands 73, 214 or 244 on the requests
 channel. `ZoomReport` is in the same place: it reports a camera zoomed past
 what the client allows, so an unaltered client never sends it.
 
+Quick chat is another such feature. A client sends a quick chat on channel 6
+only where `VersionSync`'s features turn quick chat on, and a 4.17.0.267 client
+given that bit fails while loading, because its data holds no quick-chat
+interface file. Every recorded 4.17 match leaves the bit clear, and no recorded
+match carries anything on channel 6, so this specification records no layout
+for it.
+
 ## Vectors
 
 Every revision carries at least one conformance vector, which is what separates
