@@ -1,0 +1,450 @@
+# Messages
+
+A message occupies one deciphered channel payload. The payload opens with the
+header the message's family carries, and the body begins where that header
+ends.
+
+`schema/messages` holds one file per message identity, and each file records
+one or more revisions. A revision carries the value identifying the message,
+the channel it travels on, its direction, how the transport delivers it, and
+the fields of its body.
+
+Applies to 4.20 clients, as [Versions](versions.md) describes.
+This document defines the vocabulary those files are written in, together with
+the container and the shapes of values that vocabulary relies on. It records no
+message's layout: those live in `schema/`.
+
+## Families
+
+Every channel carries one family of messages, and `schema/channels.json` says
+which. A family fixes two things: the numbering its command values are drawn
+from, and the header that precedes every body on it. `schema/families.json`
+records both. Two channels of one family share a numbering, so a value
+identifies at most one message across both, and the same value on channels of
+different families is two unrelated messages.
+
+What selects the header is the family, not the channel. A channel carrying a
+family is how the two connect, and reading a payload against the wrong family
+decodes something rather than failing.
+
+A revision names the channel it travels on, and names any others in `alsoOn`.
+Those channels carry the same family, so the command value means the same
+message on each, and the body is byte for byte the one the revision records.
+What changes between them is delivery: each entry states how the transport
+carries the message there. A server MAY send such a message on any channel the
+revision names, and what it gets is the delivery stated for that channel. A
+client reads it the same way on every one of them, so a server MUST NOT vary
+the body with the channel it chooses.
+
+## The command
+
+A revision records the value that identifies it, and the family's header says
+where that value sits on the wire. That value is not a field of the message: it
+belongs to the header, along with anything else the family carries before a
+body begins.
+
+A family keeps some values of the leading byte for framing rather than for
+messages where it needs them, and `schema/families.json` lists which. One such
+value means the real identifier is wider than a byte and
+travels elsewhere in the header, which is how a family numbers more messages
+than a byte holds. A revision records the identifier either way, and never the
+escape.
+
+Direction narrows it further. One value serves two messages travelling
+opposite ways within a family.
+
+## A container of several messages
+
+One value the game family keeps for framing introduces a container rather than
+a message: a run of several messages gathered into one payload, which a reading
+end unwraps and reads one by one as though each had arrived on its own. A
+container carries no header, so nothing in `schema/messages` describes one, and
+a reading end MUST NOT read the value that introduces it as a command. The
+value is 255.
+
+A container is the byte 255, then a count of entries in one byte, then the
+entries one after another. The first entry is a length in one byte, the
+command in one byte, the object identifier in four bytes, and then a body
+whose size is the length less five. Every later entry opens with a byte of
+flags and size:
+
+- bit 0 clear: a command byte follows, and this entry carries it; bit 0 set:
+  this entry carries the command the entry before it carried;
+- bit 1 clear: a four byte object identifier follows; bit 1 set: one signed
+  byte follows, and this entry's object identifier is the one before it plus
+  that byte;
+- bits 2 to 7: the size of the body; where they read 63, the size is the next
+  byte instead.
+
+The body follows. Each entry, given the command and object identifier it
+carries as its header, is a message read as though it had arrived on its own.
+An entry whose command is 254 carries the wider
+identifier in the first two bytes of its body, so that, with the command and
+object identifier before it, it reads as the extended form of the header does.
+
+A server MAY send a container on the events channel. A client sends none.
+
+## Reading a body
+
+A body begins where its family's header ends. Fields occupy it in the order
+the revision lists them, each beginning where the one before it ended. A
+revision never restates a field its family's header already carries, and never
+takes a name from it. Nothing is aligned and nothing is padded between
+fields. A field's size is fixed by its type, given as a literal, carried by an
+earlier field, or one of the two words below.
+
+Where a size or a count names an earlier field, it names one that has already
+been read and one holding an unsigned integer. It names either a whole field or
+one run of bits inside a field, and a run is written as the field name, a full
+stop, and the run name. `remaining` and `terminated` are reserved words rather
+than names, so no field carries either.
+
+A field of a body names only fields of that body. A family's header is read
+first, but it belongs to every message of the family rather than to this one,
+so nothing in a body is sized or governed by it.
+
+What counts as an earlier field depends on what encloses the field doing the
+naming. An item of an array reaches the fields of the body around it. The
+fields of a struct reach only each other, because a struct is defined once and
+used wherever it occurs, so it cannot depend on what surrounds any one use.
+
+`remaining` means every byte from where the field begins to the end of what
+encloses it: the message body, or the byte length of the struct or array the
+field sits inside. A field measured that way is the last one its enclosure
+defines, because nothing inside that enclosure can follow it.
+
+An enclosure that states a byte length is itself an ordinary field, and fields
+follow it as usual. An enclosure that states none ends where the body ends, so
+it is the last field too, and so is any struct whose own last field is one of
+these.
+
+A body ends where its last field ends, with one exception: a client accepts a
+`Registered` carrying bytes past its record, and takes no meaning from them.
+This document extends the exception to no other message. A sender MUST write the fields a revision lists
+and nothing after them.
+
+## Byte order
+
+A revision of `schema/protocol.json` states the byte order that covers a
+version range, and every multi byte field in that range is read that way. A
+field that differs states its own order, which overrides the range.
+
+Every range states an order.
+
+## The types
+
+**Integers.** `u8` through `u64` and `i8` through `i64`, in two's complement.
+`f32` and `f64` are IEEE 754 binary floating point.
+
+**Bytes.** A run of bytes with no interpretation. Its size is fixed, named by
+an earlier field, or `remaining`.
+
+**Strings.** A run of bytes and an encoding, either `utf8` or `ascii`. A size
+is a literal or the name of an earlier field. A string given one occupies that
+many bytes whatever its content, and the zero bytes at its end are padding
+rather than content, so they are dropped. A zero anywhere else belongs to the
+text and stays. A string sized `terminated` ends at the first zero byte, that
+byte belongs to the field, and it is the only one dropped. A string sized
+`remaining` carries every byte to the end of its enclosure, zeros included. A
+size counts bytes rather than characters.
+
+**Arrays.** A run of one repeated shape. An array states either a count of
+items or a size in bytes, and never both. A count is a literal, the name of an
+earlier field, or `remaining`, which repeats to the end of the enclosure. A
+size in bytes repeats until those bytes are consumed, which is how a run whose
+length travels as a byte count is recorded.
+
+**Structs.** A named group of fields, defined once in `schema/types` and used
+wherever it occurs. A struct occupies exactly the bytes its own fields occupy.
+Where its length travels on the wire instead, the field states a size in bytes,
+as a literal or as the name of an earlier field. A sending end MUST write a
+struct's fields to fill that size exactly.
+
+**Bits.** A field of one or more bytes divided into named runs, whose widths
+total exactly the bits those bytes hold. No run is wider than 32 bits. The
+bytes are read as one little endian word whatever the range's byte order,
+because the runs are positions in that word rather than fields of their own.
+The runs are listed from the least significant bit upward: the first run
+occupies the low bits, and each one after it the bits above. A run is read as
+an unsigned integer of its own width.
+
+**Bit arrays.** A run of the same group of bit runs, repeated a stated number
+of times. The groups follow one another from the low bits of the first byte
+upward, crossing byte boundaries without padding, and the field occupies as
+many whole bytes as the groups need. The bits above the last group are clear. A
+count is written as an array's is.
+
+**Records.** A group of fields named together and read one after another, with
+nothing between them and nothing around them. A record occupies exactly what
+its fields occupy. Unlike a struct it is written where it is used rather than
+defined in `schema/types`, and its fields reach the fields around it, so a
+record is a way of naming part of a message rather than a shape reused
+elsewhere.
+
+## What a field names
+
+A size, a count, or a rule about whether a field is present names an earlier
+field. Four forms are written:
+
+- a name on its own, which is a field of the same enclosure;
+- a name, a full stop, and a run inside it, where that field is `bits`;
+- a name, square brackets, and a name inside them, which is the item of an
+  earlier array standing at the same position as the item doing the naming, so
+  that two arrays run together;
+- either of the first two inside `{"field": …, "minus": N}`, which is that
+  field's value less the literal N. Nothing else is computed, and N is never
+  larger than the value.
+
+A rule about whether a field is present states a value the named field carries,
+or a set of values, any one of which satisfies it. Without one, any
+value other than zero satisfies the rule. A field its own rule left out holds
+no value, so a rule naming that field does not hold either.
+
+A rule can instead name `remaining`, which no field is called. A field under
+that rule is present where the payload has bytes left at that point and absent
+where it has ended, so a message whose sender stops early reads as one whose
+later fields are absent. A sender that stops early MUST stop where a field
+under such a rule begins.
+
+## A field that travels enciphered
+
+A payload is enciphered as a whole once a connection has a cipher state, and a
+message says nothing about that. One case is different: a payload that travels
+before any cipher state exists can still carry a single field enciphered under
+the key both ends hold, and a field states when it does.
+
+Such a field occupies whole cipher blocks, because a field filling part of one
+would travel half in the clear. Its recorded value is what the bytes mean once
+deciphered, so a reader deciphers the field alone and leaves the payload around
+it untouched.
+
+## Presence
+
+A field states a presence rule when it occupies bytes only under a condition.
+The rule names an earlier field or bit run holding an integer, and where the
+condition is a value rather than a flag, the value it takes. A field whose
+condition does not hold occupies no bytes at all.
+
+A rule can mark one of its sides `unseen`: no vector shows that side in this
+message, and its layout is the one the field states.
+
+## Enumerated values
+
+Where an integer field, or a run of bits inside one, takes a fixed set of
+values, the field lists what they mean, keyed by the value on the wire. Each
+entry names the value, in the same form a field name takes, and no two entries
+of one field share a name. A key fits the width and sign of what it names.
+A value with no entry has no meaning this specification states.
+
+## Revisions
+
+A revision covers a range of client versions, from one version inclusive to
+another exclusive. A range with no end runs as far as the specification itself
+reaches, which is the last version a packet header covers, rather than forever:
+nothing above the transport can be claimed for a version the transport does not
+describe. Ranges of one message never overlap, so every revision but the last states
+where it stops.
+
+A revision covers no version that `schema/protocol.json`, `schema/channels.json`
+and `schema/families.json` do not all describe, because a range none of them
+reaches has no header, no byte order, and no channel to travel on.
+
+A revision travels on a channel, which `schema/channels.json` defines, and
+names any further channels carrying the same layout, as Families above says. For
+each it states how the transport delivers it: reliable, unreliable, or
+unsequenced.
+Every revision states this for itself.
+
+## Names and notes
+
+A field name begins with a lower case letter and carries letters and digits
+after it. A message identity and a struct identity begin with a capital. A file
+is named for the identity it defines, and a message's vectors sit in one
+directory named for that identity, with each capital starting a new part, lower
+case and joined by hyphens.
+
+A field name is unique among the fields beside it, and an item of an array
+never takes the name of a field enclosing it.
+
+Anything in `schema/` carries a note wherever a fact needs words: a revision, a
+field, a run of bits, a value. A note states what the wire carries and what
+each end does. It carries no
+requirement keyword, because a requirement belongs here in `spec/` where a
+reader looks for one, and it describes no moment in time, because a note that
+says a thing changed leaves a reader guessing which version it changed in.
+
+## How a message is delivered
+
+A revision states whether the transport carries it reliably, unreliably, or
+unsequenced, which is what the message needs of the transport: a message
+another supersedes can be lost, and one that carries an account of what
+happened cannot. A server MUST send a message with the delivery its revision
+states.
+
+## Directions
+
+A revision states whether it travels `clientToServer`, `serverToClient`, or
+`bidirectional`. Direction is part of what identifies a message, so one value
+serves two messages travelling opposite ways within a family. A bidirectional
+revision claims that value both ways.
+
+## Identity a message reports about itself
+
+A message that names a player names them with a value the sender chose. A
+receiving client acts on that value, associating the message with a player and
+applying whatever the viewer has set for them, whatever connection the message
+arrived on.
+
+A server MUST therefore set any field naming the sender from the connection the
+message arrived on. A server MUST NOT copy the value the message carried. Relaying
+what arrived lets one player send messages that every other client attributes
+to another.
+
+## Objects a map names
+
+Some objects are on the field before any message puts them there, and no
+message ever does: the buildings a side defends and the shops beside them. A
+receiving end knows them from the map it loaded, and every message naming one
+names it by an identifier worked out from that object's name in the map.
+
+The identifier is the CRC-32 of the name, with the top byte set:
+
+```text
+identifier = crc32(name) | 0xFF000000
+```
+
+The name is taken byte for byte with its case kept, so `OrderShop01` and
+`orderShop01` are two names and give two identifiers. The CRC-32 is the common
+one: the polynomial 0x04C11DB7 read reflected, starting from 0xFFFFFFFF and
+finishing with every bit inverted, so the nine bytes `123456789` give
+0xCBF43926.
+
+The identifiers with that top byte are these:
+
+| Name                            | Identifier   | `map`         |
+| ------------------------------- | ------------ | ------------- |
+| `Barracks_T1_C1`                | `0xFF4A20F1` | 1, 11, 12     |
+| `Barracks_T1_L1`                | `0xFFD23C3E` | 1, 10, 11     |
+| `Barracks_T1_R1`                | `0xFF9303E1` | 1, 10, 11     |
+| `Barracks_T2_C1`                | `0xFFFF8F1F` | 1, 11, 12     |
+| `Barracks_T2_L1`                | `0xFF6793D0` | 1, 10, 11     |
+| `Barracks_T2_R1`                | `0xFF26AC0F` | 1, 10, 11     |
+| `__P_Order_Spawn_Barracks__C01` | `0xFFB77171` | 1             |
+| `ChaosShop01`                   | `0xFF3A98D9` | 12            |
+| `chaosShop01`                   | `0xFFA6170E` | 1, 8, 10, 11  |
+| `HQ_T1`                         | `0xFFF97DB5` | 1, 10, 11, 12 |
+| `HQ_T2`                         | `0xFFF02C0F` | 1, 10, 11, 12 |
+| `OrderShop01`                   | `0xFF8C490C` | 12            |
+| `orderShop01`                   | `0xFF10C6DB` | 1, 8, 11      |
+
+The `Barracks` names above belong to inhibitors, whatever the name says. The
+minions a side sends out come from spawn points of their own, which are among
+the objects a map holds. On map 1 one of them is
+`__P_Order_Spawn_Barracks__C01`. A 4.17 client puts a minion on the field for
+a `SpawnFromBarracks` naming a spawn point, and creates nothing for one naming
+an inhibitor such as `Barracks_T1_C1`.
+
+No message creates these objects, so nothing a server sends could give a client
+a different identifier for one. A server MUST name each by the identifier its
+name gives.
+
+## Numbers a client knows a name by
+
+Some things a message names are known to a client by name: a spell, an effect
+a unit carries, a particle, and a place on a unit that particles hang from. A
+message names one of these by a number worked out from its name.
+
+The number is the ELF hash of the name with its capital letters lowered:
+
+```text
+number = 0
+for each byte b of the name, with A to Z made a to z:
+    number = (number << 4) + b
+    high = number & 0xF0000000
+    if high != 0:
+        number = number ^ (high >> 24)
+    number = number & ~high
+```
+
+Every step is worked in 32 bits. Only `A` to `Z` change; every other byte is
+taken as it is, so `SummonerFlash` and `summonerflash` give one number. A
+particle's name includes its extension, so the number comes from
+`global_ss_flash.troy` and not from `global_ss_flash`. The nine bytes
+`123456789` give 0x0678AEE9.
+
+| Name                      | Number       |
+| ------------------------- | ------------ |
+| `SummonerFlash`           | `0x06496EA8` |
+| `RegenerationPotion`      | `0x0E75DC7E` |
+| `EzrealMysticShotMissile` | `0x05FE9CE5` |
+| `global_ss_flash.troy`    | `0x0058E369` |
+| `L_HAND`                  | `0x0725E844` |
+
+A server MUST name each such thing by the number its name gives.
+
+## Values a layout cannot reach
+
+A run of bytes is sometimes carried whose contents a layout cannot describe,
+because reading them apart needs to know each value's width and kind and the
+wire carries neither. Both ends hold that knowledge before a match begins, as
+they hold the origin a path is measured against.
+
+Such a run is recorded as the bytes it is, with a length beside it and a note
+saying what settles the reading. A server relays or produces it whole.
+
+How the values sit in the run is another matter, and that much is recorded. A
+run holds its values one after another with nothing between them, in the order
+whatever selects them names them, lowest first. Each value takes one of two
+shapes.
+
+A value that counts takes seven bits from each byte, lowest seven first, and
+the top bit of a byte is set while another byte follows. Five bytes therefore
+carry anything a thirty two bit value holds.
+
+A value that measures takes one of three forms: a single byte of 255 meaning
+zero; a byte of 254 followed by four bytes; or four bytes on their own. The
+four bytes are the measure itself, lowest byte first.
+
+Which of the three a value takes is settled by its own lowest byte, and a
+reading end tells them apart by the first byte it meets. A sending end MUST write
+the byte of 254 before a value whose lowest byte is 254 or 255. A sending end
+MUST NOT write it before any other value. A measure written plain therefore
+never begins with either. That is what makes the first byte enough: 255 alone is zero, 254
+says the four bytes after it are the measure, and anything else is already the
+lowest byte of one.
+
+Reading a run therefore needs to know, for each value, which of the two shapes
+it takes. Nothing on the wire says, and it is not settled by position alone, so
+an end that does not already know cannot read one.
+
+## What follows what
+
+Most of what a client sends stands on its own: it moves, selects, marks the
+map, buys and sells in whatever order a player acts, and a server refusing one
+of those does not change what comes next.
+
+Opening a connection is not like that. Its steps come in a fixed order, from
+registering to the start of play, and [Joining a match](joining.md) sets them
+out.
+
+One thing during play behaves the same way. A client names each view report
+and sends it again until a server returns that name, so a server that returns
+nothing is sent the same report over and over.
+
+## Requests a server can ignore
+
+A 4.20 client sends `ZoomReport` when its view is drawn further out than it
+allows; a server MAY ignore one.
+
+Quick chat is a feature a server leaves off. A client sends a quick chat on channel 6
+only where `VersionSync`'s features turn quick chat on, and a 4.17 client given
+that bit fails while loading. A server MUST NOT set that bit for a 4.17
+client. This
+specification records no layout for channel 6.
+
+## Vectors
+
+Every revision carries at least one conformance vector. A message vector opens
+with its family's header and is read to the end.
+[conformance/](../conformance/) says how a vector is written and how to run
+one.

@@ -1,0 +1,114 @@
+# Conformance vectors
+
+A vector is one recorded fact, written so a program can check itself against
+it. Each is a JSON file holding an input, an output, and enough context to say
+which part of the specification it belongs to.
+
+The vectors are the measure of whether an implementation is right. Nothing here
+says how to structure what you build, and nothing here is a test suite you are
+expected to import. Read the files, feed them to your own code, and compare.
+
+## Where they live
+
+`vectors/` holds one directory per subject.
+
+- `vectors/cipher` covers the cipher on its own, with no transport around it.
+- `vectors/transport` covers the packet header.
+- `vectors/algorithm` covers algorithms.
+- Message vectors live in a directory named for the message they carry, with
+  each capital of the message identity starting a new part, lower case and
+  joined by hyphens. Struct vectors are named the same way for their struct.
+- Within that directory a file is named for what makes it worth keeping, so
+  `with-sent-time` sits beside `without-sent-time`. Where two payloads take
+  the same shape and differ only in the values they carry, they are `one` and
+  `another`.
+
+Every file declares a `subject` saying which of the five it is, and a `note`
+in plain words. `schema/meta/vector.json` is the machine readable definition of
+the format, and it is the authority if this document and it disagree.
+
+## The five shapes
+
+A **cipher** vector carries `key`, `plaintext` and `ciphertext`, each a run of
+lower case hexadecimal. The key is as long as `schema/protocol.json` records.
+Encipher the plaintext under the key and you get the ciphertext. Decipher the
+ciphertext and you get the plaintext back. Length is part of the fact: a
+plaintext whose tail does not fill a block travels with that tail unchanged.
+
+A **transport** vector carries `version`, `bytes` and `fields`. The bytes are a
+packet header as it travels. The fields are what that header means, read
+against the layout `schema/protocol.json` records for that version.
+
+A message whose layout has a field travelling enciphered carries a `key` as
+well, because the bytes cannot be read without one. That key is arbitrary, as a
+cipher vector's key is, and carries no meaning.
+
+An **algorithm** vector carries `algorithm`, `input` and `output` instead of
+bytes. It records what a layout cannot: the meaning fields carry once they have
+been read. Those live in `vectors/algorithm`.
+
+A **message** vector carries `message` as well, naming the message identity,
+and its bytes are one deciphered channel payload rather than a header. Those
+bytes open with the header its family carries, so `fields` records the header
+and the body together, under the names each gives them.
+
+A **struct** vector carries `struct` as well, naming a struct in
+`schema/types` that travels outside any message, such as a record in a
+streamed chunk. Its bytes are that struct alone, read from its first byte to
+its last.
+
+## Reading a vector's fields
+
+`fields` writes each value the way JSON can hold it exactly.
+
+| In the layout                       | In the vector                                   |
+| ----------------------------------- | ----------------------------------------------- |
+| An integer under 64 bit             | a number                                        |
+| A 64 bit integer                    | a decimal string, because JSON loses the tail   |
+| A 32 bit float                      | the value it reads back as                      |
+| A 64 bit float                      | a number                                        |
+| A run of bytes                      | lower case hexadecimal                          |
+| A string given a size               | the text, with the zeros padding it out dropped |
+| A terminated string                 | the text, with its terminator dropped           |
+| A remaining string                  | every byte of it, zeros included                |
+| An array                            | an array                                        |
+| A struct or a bit run               | an object keyed by its own field names          |
+| A field left out by a presence rule | `null`                                          |
+
+A 32 bit float holds fewer digits than a JSON number does, so writing `0.1`
+records a value the bytes never carried. Write what a decoder gives back.
+
+Whitespace inside `bytes` groups the hexadecimal for reading and carries no
+meaning. Strip it before decoding.
+
+## Running them
+
+Load the file, decode `bytes` against the layout for its version, and compare
+what you get to `fields`. Then encode `fields` back and compare to the bytes
+the layout covers. Both directions matter. An implementation that reads a
+header correctly and writes it wrong fails only in the second.
+
+A message payload is covered end to end, family header included, so the
+comparison starts at its first byte. A transport vector covers the packet
+header, and whatever follows it in the datagram is immaterial.
+
+For a cipher vector there are no layouts involved, so compare the two runs of
+bytes directly.
+
+## What the checks already guarantee
+
+`npm run check` decodes every transport, message and struct vector against the layout
+it names, compares the result to its `fields`, encodes those fields back, and
+compares to the bytes the layout covers. Every cipher vector is enciphered and
+deciphered for the same reason. A vector whose two halves disagree does not
+survive the checks.
+
+That guarantee covers the vector against the schema. It does not cover the
+schema against a client; [CONTRIBUTING.md](../CONTRIBUTING.md) says when a fact
+enters the schema.
+
+## When a vector is wrong
+
+If your implementation disagrees with a vector and you are confident you are
+right, that is worth reporting rather than working around. A vector that does
+not match a client is a defect of the same kind as a wrong field width.

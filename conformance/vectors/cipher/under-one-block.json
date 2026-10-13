@@ -1,0 +1,8 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "cipher",
+  "note": "Four bytes, which is less than one block. Nothing is enciphered, so the payload travels in the clear. The key is arbitrary; nothing about it comes from a real match.",
+  "key": "000102030405060708090a0b0c0d0e0f",
+  "plaintext": "00112233",
+  "ciphertext": "00112233"
+}
