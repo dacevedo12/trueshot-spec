@@ -1,0 +1,30 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "GoldSourcesLog",
+  "system": "replication",
+  "note": "What a server sends to carry a text to a client. It changes nothing a client shows. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 282,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "length",
+          "type": "u32",
+          "note": "How many bytes of text follow. Zero, or a value below zero taken as signed, carries no text."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "length",
+          "note": "The text, with no terminating zero. A client looks each word up in its own text and writes the result a line at a time."
+        }
+      ]
+    }
+  ]
+}

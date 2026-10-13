@@ -1,7 +1,7 @@
 # Spells
 
 Casting, levelling spells, cooldowns, and the missiles casts send out.
-Applies to 4.20 clients, as [Versions](versions.md) describes.
+Applies to 4.17 and 4.20 clients, as [Versions](versions.md) describes.
 
 ## Casting
 
@@ -55,20 +55,32 @@ name in advance the units a chain missile will strike with `ChainTargets`.
 
 <!-- messages:begin -->
 
-| Message                                                        | Sent by | 4.20            | What it does                                                                |
-| -------------------------------------------------------------- | ------- | --------------- | --------------------------------------------------------------------------- |
-| [`CastSpell`](../schema/messages/CastSpell.json)               | client  | 154 on requests | Cast something from a slot, at a point or at a unit                         |
-| [`DestroyMissile`](../schema/messages/DestroyMissile.json)     | server  | 90 on events    | Be rid of a missile a client is drawing                                     |
-| [`MissileState`](../schema/messages/MissileState.json)         | server  | 59 on events    | Say where a missile is and what it is doing                                 |
-| [`SpellCastAnswer`](../schema/messages/SpellCastAnswer.json)   | server  | 181 on events   | Say a unit is casting a spell                                               |
-| [`SpellCharges`](../schema/messages/SpellCharges.json)         | server  | 263 on events   | Say how many uses one of a unit's spells has left and when the next returns |
-| [`SpellCooldown`](../schema/messages/SpellCooldown.json)       | server  | 133 on events   | Set how long until one of a unit's spells is ready                          |
-| [`SpellInSlot`](../schema/messages/SpellInSlot.json)           | server  | 112 on events   | Put a spell in one of a unit's slots                                        |
-| [`SpellLevel`](../schema/messages/SpellLevel.json)             | server  | 91 on events    | Set the level of one of a unit's spells                                     |
-| [`SpellNumbers`](../schema/messages/SpellNumbers.json)         | server  | 127 on events   | Fill in the numbers a client shows beside a unit's spells                   |
-| [`SpellSlotChanged`](../schema/messages/SpellSlotChanged.json) | server  | 23 on events    | Change one thing about a spell already in a unit's slot                     |
-| [`SpellToggled`](../schema/messages/SpellToggled.json)         | server  | 280 on events   | Turn one of a unit's spells on or off                                       |
-| [`SpellUpgraded`](../schema/messages/SpellUpgraded.json)       | server  | 21 on clock     | Confirm a unit's spell went up a level                                      |
-| [`UpgradeSpell`](../schema/messages/UpgradeSpell.json)         | client  | 57 on requests  | Put a point into a spell                                                    |
+| Message                                                        | Sent by | 4.17            | 4.20            | What it does                                                                                            |
+| -------------------------------------------------------------- | ------- | --------------- | --------------- | ------------------------------------------------------------------------------------------------------- |
+| [`Autocast`](../schema/messages/Autocast.json)                 | server  | 31 on events    | none            | Set which spells a unit casts by itself                                                                 |
+| [`BounceMissile`](../schema/messages/BounceMissile.json)       | server  | 281 on events   | none            | What a server sends as a missile bounces on to another unit                                             |
+| [`CancelTargeting`](../schema/messages/CancelTargeting.json)   | server  | 134 on events   | none            | End a spell's targeting on a client                                                                     |
+| [`CastSpell`](../schema/messages/CastSpell.json)               | client  | 154 on requests | 154 on requests | Cast something from a slot, at a point or at a unit                                                     |
+| [`ChainTargets`](../schema/messages/ChainTargets.json)         | server  | 108 on events   | none            | Name the units a chain missile will strike in turn                                                      |
+| [`CursorRings`](../schema/messages/CursorRings.json)           | server  | 264 on events   | none            | What a server sends its player's champion to draw rings around the cursor while no spell is being aimed |
+| [`DestroyMissile`](../schema/messages/DestroyMissile.json)     | server  | 90 on events    | 90 on events    | Be rid of a missile a client is drawing                                                                 |
+| [`MissileHits`](../schema/messages/MissileHits.json)           | server  | 38 on events    | none            | Say which units a missile struck                                                                        |
+| [`MissileLaunched`](../schema/messages/MissileLaunched.json)   | server  | 110 on events   | none            | What a server sends as the missile a swing or a cast prepared leaves the unit                           |
+| [`MissileRetarget`](../schema/messages/MissileRetarget.json)   | server  | 238 on events   | none            | Change what a missile flies at                                                                          |
+| [`MissileSpeed`](../schema/messages/MissileSpeed.json)         | server  | 269 on events   | none            | Change how fast a missile flies                                                                         |
+| [`MissileState`](../schema/messages/MissileState.json)         | server  | 59 on events    | 59 on events    | Say where a missile is and what it is doing                                                             |
+| [`SpellCastAnswer`](../schema/messages/SpellCastAnswer.json)   | server  | 181 on events   | 181 on events   | Say a unit is casting a spell                                                                           |
+| [`SpellCharge`](../schema/messages/SpellCharge.json)           | client  | 230 on requests | none            | What a client sends while its player charges a spell, and as the charge ends                            |
+| [`SpellCharges`](../schema/messages/SpellCharges.json)         | server  | 263 on events   | 263 on events   | Say how many uses one of a unit's spells has left and when the next returns                             |
+| [`SpellCooldown`](../schema/messages/SpellCooldown.json)       | server  | 133 on events   | 133 on events   | Set how long until one of a unit's spells is ready                                                      |
+| [`SpellCostChanged`](../schema/messages/SpellCostChanged.json) | server  | 260 on events   | none            | Change what a spell costs the player it is sent to                                                      |
+| [`SpellInSlot`](../schema/messages/SpellInSlot.json)           | server  | 112 on events   | 112 on events   | Put a spell in one of a unit's slots                                                                    |
+| [`SpellLevel`](../schema/messages/SpellLevel.json)             | server  | 91 on events    | 91 on events    | Set the level of one of a unit's spells                                                                 |
+| [`SpellNumbers`](../schema/messages/SpellNumbers.json)         | server  | 127 on events   | 127 on events   | Fill in the numbers a client shows beside a unit's spells                                               |
+| [`SpellRankLimits`](../schema/messages/SpellRankLimits.json)   | server  | 273 on events   | none            | What a server sends its player's champion to set how far each spell can be raised, and at which levels  |
+| [`SpellSlotChanged`](../schema/messages/SpellSlotChanged.json) | server  | 23 on events    | 23 on events    | Change one thing about a spell already in a unit's slot                                                 |
+| [`SpellToggled`](../schema/messages/SpellToggled.json)         | server  | 280 on events   | 280 on events   | Turn one of a unit's spells on or off                                                                   |
+| [`SpellUpgraded`](../schema/messages/SpellUpgraded.json)       | server  | 21 on clock     | 21 on clock     | Confirm a unit's spell went up a level                                                                  |
+| [`UpgradeSpell`](../schema/messages/UpgradeSpell.json)         | client  | 57 on requests  | 57 on requests  | Put a point into a spell                                                                                |
 
 <!-- messages:end -->

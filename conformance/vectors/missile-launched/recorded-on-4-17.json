@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "MissileLaunched",
+  "version": "4.17.0.267",
+  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "6e f5000040 34010040",
+  "fields": {
+    "command": 110,
+    "netId": 1073742069,
+    "extendedCommand": null,
+    "missile": 1073742132
+  }
+}

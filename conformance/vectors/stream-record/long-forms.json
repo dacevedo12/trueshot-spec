@@ -1,0 +1,26 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "struct",
+  "struct": "StreamRecord",
+  "version": "4.17.0.267",
+  "note": "A key frame's first record, every part written in full. Taken from a recorded stream a client played.",
+  "bytes": "0320f36f420200000062000000000000",
+  "fields": {
+    "flags": {
+      "channel": 3,
+      "sizeIsByte": 0,
+      "objectIsDelta": 0,
+      "commandRepeats": 0,
+      "timeIsDelta": 0
+    },
+    "time": 59.9874267578125,
+    "timeDelta": null,
+    "size": 2,
+    "byteSize": null,
+    "command": 98,
+    "object": 0,
+    "objectDelta": null,
+    "body": "0000",
+    "byteBody": null
+  }
+}

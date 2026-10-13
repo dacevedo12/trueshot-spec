@@ -5,6 +5,49 @@
   "note": "What a server answers a registration with, naming a player in the match and the seat they occupy. It shares its command value with the request it answers, which travels the other way, and it is one fixed size. Straight after a request a server sends one answer for every seat, and every one of them carries that request's build and proof back.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "registration",
+      "command": 0,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "leading",
+          "type": "bytes",
+          "size": 3,
+          "note": "Unused; a server writes zero."
+        },
+        {
+          "name": "clientId",
+          "type": "i32",
+          "note": "The seat playerId holds; where playerId is the client's own, the client takes this seat as its own and goes on."
+        },
+        {
+          "name": "playerId",
+          "type": "i64",
+          "note": "Who occupies that seat."
+        },
+        {
+          "name": "version",
+          "type": "u32",
+          "note": "The build the client said it runs, carried back to it: a server writes the build the request carried."
+        },
+        {
+          "name": "proof",
+          "type": "bytes",
+          "size": 8,
+          "note": "The request's proof, carried back: a server writes the proof the request carried."
+        },
+        {
+          "name": "trailing",
+          "type": "bytes",
+          "size": 4,
+          "note": "Unused; a server writes zero."
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "registration",
       "command": 0,

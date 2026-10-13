@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "CameraAck",
+  "version": "4.17.0.267",
+  "note": "Taken from a recording of a match played on this version.",
+  "bytes": "2c 00000000 01",
+  "fields": {
+    "command": 44,
+    "netId": 0,
+    "extendedCommand": null,
+    "syncId": 1
+  }
+}

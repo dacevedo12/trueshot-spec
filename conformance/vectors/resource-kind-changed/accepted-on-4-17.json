@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ResourceKindChanged",
+  "version": "4.17.0.267",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "fe 010000401301 01",
+  "fields": {
+    "command": 254,
+    "netId": 1073741825,
+    "extendedCommand": 275,
+    "kind": 1
+  }
+}

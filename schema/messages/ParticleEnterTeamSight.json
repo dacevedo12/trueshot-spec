@@ -1,0 +1,28 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "ParticleEnterTeamSight",
+  "system": "vision",
+  "note": "What a server sends as a particle comes into what one side can see. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 226,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "particle",
+          "type": "u32",
+          "note": "The particle."
+        },
+        {
+          "name": "team",
+          "type": "u8",
+          "note": "Which side, by an index."
+        }
+      ]
+    }
+  ]
+}

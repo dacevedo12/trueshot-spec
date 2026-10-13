@@ -1,0 +1,22 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SeatLoadProgress",
+  "version": "4.17.0.267",
+  "note": "Taken from a recording of a match played on this version, with the player identifier replaced by a stand-in.",
+  "bytes": "95 00000000 09000000010000000000000000000000a01a3d4200007100",
+  "fields": {
+    "command": 149,
+    "netId": 0,
+    "extendedCommand": null,
+    "seat": 9,
+    "player": "1",
+    "progress": 0,
+    "secondsLeft": 47.2760009765625,
+    "status": {
+      "count": 0,
+      "ping": 113,
+      "loaded": 0
+    }
+  }
+}

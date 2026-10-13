@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ItemUsed",
+  "version": "4.17.0.267",
+  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "9f 1f000040 060100",
+  "fields": {
+    "command": 159,
+    "netId": 1073741855,
+    "extendedCommand": null,
+    "slot": 6,
+    "left": 1,
+    "charges": 0
+  }
+}

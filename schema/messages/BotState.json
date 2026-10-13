@@ -1,0 +1,23 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "BotState",
+  "system": "units",
+  "note": "What a server sends naming a bot's state. It changes nothing a client shows. The header names the unit.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 170,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "state",
+          "type": "i32",
+          "note": "The state."
+        }
+      ]
+    }
+  ]
+}

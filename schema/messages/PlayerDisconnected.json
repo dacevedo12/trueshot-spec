@@ -1,0 +1,42 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "PlayerDisconnected",
+  "system": "match",
+  "note": "What a server sends as a player's client drops out. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 152,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "player",
+          "type": "u32",
+          "note": "The player's champion."
+        },
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "toEnemies",
+              "width": 1,
+              "note": "Set to show the notice only to the other side; clear to show it only to the player's own side. A client with no champion of its own shows it only where this is clear."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ],
+          "note": "Who is told."
+        }
+      ],
+      "note": "A client shows a chat notice naming the player in their side's colour, and nothing where player names no champion it knows, names its own champion, or the match is not under way."
+    }
+  ]
+}

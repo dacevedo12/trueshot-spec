@@ -1,0 +1,15 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "AnimationAdvanced",
+  "version": "4.17.0.267",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "fe 010000400301 0000003f49646c65310000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+  "fields": {
+    "command": 254,
+    "netId": 1073741825,
+    "extendedCommand": 259,
+    "seconds": 0.5,
+    "animation": "Idle1"
+  }
+}

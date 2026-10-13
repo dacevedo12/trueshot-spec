@@ -3,7 +3,7 @@
 A server and a client exchange messages over UDP, carried by a modified
 ENet 1.2.5.
 
-Applies to 4.20 clients, as [Versions](versions.md) describes.
+Applies to 4.17 and 4.20 clients, as [Versions](versions.md) describes.
 
 ## Layering
 

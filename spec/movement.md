@@ -5,7 +5,7 @@ which is where the unit is and the last where it is going. `schema/types` holds
 the layout under `Movement`, and this document covers what the layout cannot
 say.
 
-Applies to 4.20 clients, as [Versions](versions.md) describes.
+Applies to 4.17 and 4.20 clients, as [Versions](versions.md) describes.
 
 ## Coordinates
 
@@ -132,13 +132,20 @@ client: such a client fails on the first one a match brings.
 
 <!-- messages:begin -->
 
-| Message                                                                | Sent by | 4.20            | What it does                                                                                                                           |
-| ---------------------------------------------------------------------- | ------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| [`FaceDirection`](../schema/messages/FaceDirection.json)               | server  | 80 on events    | Turn a unit to face a direction                                                                                                        |
-| [`MoveOrder`](../schema/messages/MoveOrder.json)                       | client  | 114 on requests | Tell a server what it wants a unit to do                                                                                               |
-| [`UnitLookAt`](../schema/messages/UnitLookAt.json)                     | server  | 271 on events   | Turn a unit toward something                                                                                                           |
-| [`WaypointAck`](../schema/messages/WaypointAck.json)                   | client  | 119 on requests | What a client sends once it has taken in a group of movements, naming which group and listing the units the group asked it to relocate |
-| [`WaypointGroup`](../schema/messages/WaypointGroup.json)               | server  | 97 on transient | Move units                                                                                                                             |
-| [`WaypointGroupAtSpeed`](../schema/messages/WaypointGroupAtSpeed.json) | server  | 100 on events   | Move units along paths of its own choosing, stating how each one travels rather than leaving it to the receiving end                   |
+| Message                                                                | Sent by | 4.17            | 4.20            | What it does                                                                                                                           |
+| ---------------------------------------------------------------------- | ------- | --------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| [`DrawPath`](../schema/messages/DrawPath.json)                         | client  | 262 on requests | none            | What a client sends as its player draws a path with the right mouse button, once a server has turned drawing on (DrawPathMode)         |
+| [`DrawPathMode`](../schema/messages/DrawPathMode.json)                 | server  | 261 on events   | none            | What a server sends its player's champion to have the player draw paths with the mouse                                                 |
+| [`FaceDirection`](../schema/messages/FaceDirection.json)               | server  | 80 on events    | 80 on events    | Turn a unit to face a direction                                                                                                        |
+| [`MoveOrder`](../schema/messages/MoveOrder.json)                       | client  | 114 on requests | 114 on requests | Tell a server what it wants a unit to do                                                                                               |
+| [`MovementBounds`](../schema/messages/MovementBounds.json)             | server  | 6 on events     | none            | Keep its champion's orders within a circle                                                                                             |
+| [`NavigationFlags`](../schema/messages/NavigationFlags.json)           | server  | 65 on events    | none            | Mark the ground within circles, in place of the circles it marked before: each circle's flags apply to the ground within it            |
+| [`Path`](../schema/messages/Path.json)                                 | server  | 185 on events   | none            | Set a unit walking along a path, facing the way it walks                                                                               |
+| [`PathWithSpeed`](../schema/messages/PathWithSpeed.json)               | server  | 131 on events   | none            | Set a unit moving along a path at a speed of its own, perhaps in an arc or following another unit                                      |
+| [`UnitLookAt`](../schema/messages/UnitLookAt.json)                     | server  | 271 on events   | 271 on events   | Turn a unit toward something                                                                                                           |
+| [`UnitStopped`](../schema/messages/UnitStopped.json)                   | server  | 49 on events    | none            | Stop a unit where it stands                                                                                                            |
+| [`WaypointAck`](../schema/messages/WaypointAck.json)                   | client  | 119 on requests | 119 on requests | What a client sends once it has taken in a group of movements, naming which group and listing the units the group asked it to relocate |
+| [`WaypointGroup`](../schema/messages/WaypointGroup.json)               | server  | 97 on transient | 97 on transient | Move units                                                                                                                             |
+| [`WaypointGroupAtSpeed`](../schema/messages/WaypointGroupAtSpeed.json) | server  | 100 on events   | 100 on events   | Move units along paths of its own choosing, stating how each one travels rather than leaving it to the receiving end                   |
 
 <!-- messages:end -->

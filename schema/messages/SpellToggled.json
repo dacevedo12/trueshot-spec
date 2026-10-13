@@ -5,6 +5,26 @@
   "note": "What a server sends to turn one of a unit's spells on or off. The header names the unit this is about.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 280,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u32",
+          "note": "Which of the champion's own spells, 0 to 62; a client ignores any other value. Summoner spells are never toggled by it."
+        },
+        {
+          "name": "state",
+          "type": "u8",
+          "note": "Nonzero to toggle the spell on, zero off."
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "events",
       "command": 280,

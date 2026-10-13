@@ -1,0 +1,33 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "RegionAdded",
+  "version": "4.17.0.267",
+  "note": "Taken from a server a client accepted. The client cleared its map's cover over the region.",
+  "bytes": "23 00000000 64000000000000000000000000000000013000400000000000409c4500409c450000000000004844000000000000803f000000000700000000004844",
+  "fields": {
+    "command": 35,
+    "netId": 0,
+    "extendedCommand": null,
+    "side": 100,
+    "kind": 0,
+    "owner": 0,
+    "unit": 0,
+    "marker": 1073754113,
+    "sightFrom": 0,
+    "atX": 5000,
+    "atZ": 5000,
+    "lifetime": 0,
+    "grassRadius": 0,
+    "sizeMultiplier": 1,
+    "sizeAdditive": 0,
+    "does": {
+      "grantSight": 1,
+      "revealHidden": 1,
+      "lineOfSight": 1,
+      "unused": 0
+    },
+    "baseRadius": 800,
+    "lineOfSightRadius": 800
+  }
+}

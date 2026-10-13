@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SeatChampion",
+  "version": "4.17.0.267",
+  "note": "Layout taken from a recording of a match played on this version, with the player identifier and champion replaced by stand-ins.",
+  "bytes": "65 01000000000000000000000007000000457a7265616c00",
+  "fields": {
+    "command": 101,
+    "player": "1",
+    "skin": 0,
+    "assetLength": 7,
+    "asset": "Ezreal",
+    "terminator": "00"
+  }
+}

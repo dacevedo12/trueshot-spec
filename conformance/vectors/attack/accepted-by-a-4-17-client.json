@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "Attack",
+  "version": "4.17.0.267",
+  "note": "Taken from a server a client accepted. The client drew the turret throwing its shot at the champion.",
+  "bytes": "0c 05000040 010000400000c843000000000000c843800120004040",
+  "fields": {
+    "command": 12,
+    "netId": 1073741829,
+    "extendedCommand": null,
+    "target": 1073741825,
+    "targetX": 400,
+    "targetY": 0,
+    "targetZ": 400,
+    "timing": 128,
+    "missile": 1073750017,
+    "slot": 64
+  }
+}

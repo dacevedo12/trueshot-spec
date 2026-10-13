@@ -5,6 +5,73 @@
   "note": "Text one player sends the others during a match. Messages players exchange outside a match do not travel on this connection at all.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "chat",
+      "command": 104,
+      "direction": "bidirectional",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "i32",
+          "note": "Which seat the sender occupies."
+        },
+        {
+          "name": "netId",
+          "type": "u32",
+          "note": "The entity a receiving end attributes the text to where the seat does not name one. Where the seat names a speaker, that is what a receiving end uses instead."
+        },
+        {
+          "name": "localized",
+          "type": "u8",
+          "note": "Whether the text is a phrase to show as it stands, or a key naming one the receiving end looks up and fills in from the parameters. Both ends send it clear."
+        },
+        {
+          "name": "audience",
+          "type": "i32",
+          "note": "Who the message reaches.",
+          "values": {
+            "0": {
+              "name": "everyone"
+            },
+            "1": {
+              "name": "team"
+            }
+          }
+        },
+        {
+          "name": "paramsLength",
+          "type": "u32",
+          "note": "How many bytes of the run that follows carry meaning."
+        },
+        {
+          "name": "textLength",
+          "type": "u32",
+          "note": "The length of the text, counted in bytes and excluding the byte that ends it. A 4.17 client sends at most 255 bytes of text. A client shows the text to its first zero byte."
+        },
+        {
+          "name": "params",
+          "type": "bytes",
+          "size": 32,
+          "note": "Thirty two bytes holding text that fills in a key, ended by a zero byte within them. The bytes after that zero byte carry no meaning, so two messages otherwise alike can differ in them."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "textLength",
+          "note": "The text, textLength bytes of it."
+        },
+        {
+          "name": "terminator",
+          "type": "bytes",
+          "size": 1,
+          "note": "A zero byte closing the text."
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "chat",
       "command": 104,

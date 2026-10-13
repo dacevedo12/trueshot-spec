@@ -1,0 +1,15 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ParticleLeaveTeamSight",
+  "version": "4.17.0.267",
+  "note": "Taken from a spectator recording of a match played on this version: what the server sent a client watching the match. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "e3 00000000 0d02004001",
+  "fields": {
+    "command": 227,
+    "netId": 0,
+    "extendedCommand": null,
+    "particle": 1073742349,
+    "team": 1
+  }
+}

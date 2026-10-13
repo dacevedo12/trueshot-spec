@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "HoverTarget",
+  "version": "4.17.0.267",
+  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "f5 43230040 1f000040",
+  "fields": {
+    "command": 245,
+    "netId": 1073750851,
+    "extendedCommand": null,
+    "target": 1073741855
+  }
+}

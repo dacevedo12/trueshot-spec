@@ -2,7 +2,7 @@
 
 The parts of a map players compete for besides each other: neutral camps,
 points a side can capture and a score, and the events the whole match is told
-about. Applies to 4.20 clients, as [Versions](versions.md) describes.
+about. Applies to 4.17 and 4.20 clients, as [Versions](versions.md) describes.
 
 ## Camps
 
@@ -38,13 +38,16 @@ it, and each sort's note in its definition says what a client shows for it.
 
 <!-- messages:begin -->
 
-| Message                                                              | Sent by | 4.20          | What it does                                                                              |
-| -------------------------------------------------------------------- | ------- | ------------- | ----------------------------------------------------------------------------------------- |
-| [`CampCleared`](../schema/messages/CampCleared.json)                 | server  | 195 on events | What a server sends as a camp of units that belong to no side is emptied                  |
-| [`CampMarker`](../schema/messages/CampMarker.json)                   | server  | 290 on events | Place a camp on the map and say how it is drawn                                           |
-| [`CampOpened`](../schema/messages/CampOpened.json)                   | server  | 233 on events | Open a camp of units that belong to no side                                               |
-| [`CapturePointChanged`](../schema/messages/CapturePointChanged.json) | server  | 211 on events | What a server sends when something changes about a point one side can take from the other |
-| [`TeamScore`](../schema/messages/TeamScore.json)                     | server  | 212 on events | Set a side's score, where a match is won on score                                         |
-| [`WorldEvent`](../schema/messages/WorldEvent.json)                   | server  | 69 on events  | Say something happened that the whole match is told about                                 |
+| Message                                                              | Sent by | 4.17          | 4.20          | What it does                                                                              |
+| -------------------------------------------------------------------- | ------- | ------------- | ------------- | ----------------------------------------------------------------------------------------- |
+| [`AscendedUnit`](../schema/messages/AscendedUnit.json)               | server  | 292 on events | none          | Name the unit that holds the Ascension                                                    |
+| [`CampCleared`](../schema/messages/CampCleared.json)                 | server  | 195 on events | 195 on events | What a server sends as a camp of units that belong to no side is emptied                  |
+| [`CampMarker`](../schema/messages/CampMarker.json)                   | server  | 290 on events | 290 on events | Place a camp on the map and say how it is drawn                                           |
+| [`CampOpened`](../schema/messages/CampOpened.json)                   | server  | 233 on events | 233 on events | Open a camp of units that belong to no side                                               |
+| [`CampTimer`](../schema/messages/CampTimer.json)                     | server  | 278 on events | none          | What a server sends a client watching a match to set when a camp is next due              |
+| [`CapturePointChanged`](../schema/messages/CapturePointChanged.json) | server  | 211 on events | 211 on events | What a server sends when something changes about a point one side can take from the other |
+| [`RespawnPoint`](../schema/messages/RespawnPoint.json)               | server  | 213 on events | none          | What a server sends about the points a champion can choose to return to life at           |
+| [`TeamScore`](../schema/messages/TeamScore.json)                     | server  | 212 on events | 212 on events | Set a side's score, where a match is won on score                                         |
+| [`WorldEvent`](../schema/messages/WorldEvent.json)                   | server  | 69 on events  | 69 on events  | Say something happened that the whole match is told about                                 |
 
 <!-- messages:end -->

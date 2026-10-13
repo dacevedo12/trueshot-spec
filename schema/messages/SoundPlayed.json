@@ -1,0 +1,30 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "SoundPlayed",
+  "system": "communication",
+  "note": "What a server sends to play a sound once. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 67,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "sound",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 1024,
+          "note": "The sound event's name. The text ends at its first zero byte, which falls within the field."
+        },
+        {
+          "name": "owner",
+          "type": "u32",
+          "note": "The object to play it at, where a client knows one by this id; otherwise, or for zero, the sound has no place."
+        }
+      ]
+    }
+  ]
+}

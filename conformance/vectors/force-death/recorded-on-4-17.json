@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ForceDeath",
+  "version": "4.17.0.267",
+  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "1b 0b000040 40ef2541",
+  "fields": {
+    "command": 27,
+    "netId": 1073741835,
+    "extendedCommand": null,
+    "duration": 10.37091064453125
+  }
+}

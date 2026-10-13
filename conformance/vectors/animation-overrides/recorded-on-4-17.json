@@ -1,0 +1,22 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "AnimationOverrides",
+  "version": "4.17.0.267",
+  "note": "Taken from a recording of a match played on this version.",
+  "bytes": "6b 25010040 010500000049444c45310c000000414749544154454449444c45",
+  "fields": {
+    "command": 107,
+    "netId": 1073742117,
+    "extendedCommand": null,
+    "pairCount": 1,
+    "pairs": [
+      {
+        "fromLength": 5,
+        "from": "IDLE1",
+        "toLength": 12,
+        "to": "AGITATEDIDLE"
+      }
+    ]
+  }
+}

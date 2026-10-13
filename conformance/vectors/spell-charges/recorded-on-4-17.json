@@ -1,0 +1,19 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SpellCharges",
+  "version": "4.17.0.267",
+  "note": "Taken from a recording of a match played on this version.",
+  "bytes": "fe 1f0000400701 000300000000000000ffffffff0000000000000000",
+  "fields": {
+    "command": 254,
+    "netId": 1073741855,
+    "extendedCommand": 263,
+    "summonerSpell": 0,
+    "slot": 3,
+    "charges": 0,
+    "mostCharges": -1,
+    "rechargeFor": 0,
+    "rechargeTime": 0
+  }
+}
