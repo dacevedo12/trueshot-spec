@@ -1,0 +1,41 @@
+ls:
+  .dir: kebab-case
+
+  scripts:
+    .mjs: kebab-case
+
+  spec:
+    .dir: kebab-case
+    .md: kebab-case
+
+  schema:
+    .dir: kebab-case
+    .json: kebab-case
+
+  # A message file is named for the message identity it defines, which the
+  # schema requires to be PascalCase. The validator checks that they match.
+  schema/messages:
+    .json: PascalCase
+
+  schema/types:
+    .json: PascalCase
+
+  styles:
+    .dir: kebab-case
+
+  styles/trueshot:
+    .yml: kebab-case
+
+  conformance:
+    .md: kebab-case | regex:^README$
+
+  conformance/vectors:
+    .dir: kebab-case
+    .json: kebab-case
+
+ignore:
+  - .git
+  - .github
+  - .githooks
+  - .claude
+  - node_modules

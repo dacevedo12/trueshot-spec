@@ -1,0 +1,52 @@
+name: commits
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  commits:
+    name: commit messages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: every new commit follows the standard
+        env:
+          EVENT: ${{ github.event_name }}
+          BASE: ${{ github.event.pull_request.base.sha }}
+          HEAD: ${{ github.event.pull_request.head.sha }}
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.event.after }}
+        run: |
+          set -euo pipefail
+          if [ "$EVENT" = "pull_request" ]; then
+            shas=$(git rev-list "$BASE..$HEAD")
+          elif git cat-file -e "$BEFORE^{commit}" 2>/dev/null && git merge-base --is-ancestor "$BEFORE" "$AFTER"; then
+            shas=$(git rev-list "$BEFORE..$AFTER")
+          else
+            # A new branch or a rewritten one: hold everything it carries to the standard.
+            shas=$(git rev-list "$AFTER")
+          fi
+          if [ -z "$shas" ]; then
+            echo "no commits to check, so the check would pass unread" >&2
+            exit 1
+          fi
+          failed=0
+          for sha in $shas; do
+            if ! git log -1 --format=%B "$sha" | npx --no-install commitlint; then
+              echo "::error::$sha $(git log -1 --format=%s "$sha")"
+              failed=1
+            fi
+          done
+          exit $failed

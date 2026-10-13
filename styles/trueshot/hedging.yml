@@ -1,0 +1,13 @@
+extends: existence
+message: "'%s' hedges. State the condition instead."
+level: error
+ignorecase: true
+tokens:
+  - typically
+  - usually
+  - generally
+  - normally
+  - probably
+  - basically
+  - essentially
+  - more or less

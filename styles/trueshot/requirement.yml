@@ -1,0 +1,6 @@
+extends: existence
+message: "'%s' carries requirement force, and a requirement belongs in spec/."
+level: error
+nonword: true
+tokens:
+  - '\b(MUST NOT|MUST|SHOULD NOT|SHOULD|SHALL NOT|SHALL|MAY|REQUIRED|RECOMMENDED|OPTIONAL)\b'

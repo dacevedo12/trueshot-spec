@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:trueshot:schema:families",
+  "title": "Message family definitions",
+  "description": "Meta-schema for schema/families.json. A family is a set of messages that draw their command values from one numbering and share the header that precedes a body. A channel carries one family, and schema/channels.json says which.",
+  "type": "object",
+  "required": ["revisions"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "note": {
+      "$ref": "urn:trueshot:schema:message#/$defs/note"
+    },
+    "revisions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/revision"
+      }
+    }
+  },
+  "$defs": {
+    "revision": {
+      "type": "object",
+      "required": ["from", "families"],
+      "additionalProperties": false,
+      "properties": {
+        "from": {
+          "$ref": "urn:trueshot:schema:message#/$defs/version"
+        },
+        "until": {
+          "$ref": "urn:trueshot:schema:message#/$defs/version"
+        },
+        "note": {
+          "$ref": "urn:trueshot:schema:message#/$defs/note"
+        },
+        "families": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/family"
+          }
+        }
+      }
+    },
+    "family": {
+      "type": "object",
+      "required": ["name", "header", "command"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "description": "How a channel refers to this family.",
+          "type": "string",
+          "pattern": "^[a-z][A-Za-z0-9]*$"
+        },
+        "note": {
+          "$ref": "urn:trueshot:schema:message#/$defs/note"
+        },
+        "header": {
+          "description": "What precedes a message body, in order, starting at the first byte of the payload. Every message of this family carries it, so no message repeats it among its own fields.",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "urn:trueshot:schema:message#/$defs/field"
+          }
+        },
+        "command": {
+          "description": "Which header field carries the value identifying a message, and which carries it where the first is a reserved escape.",
+          "type": "object",
+          "required": ["field"],
+          "additionalProperties": false,
+          "properties": {
+            "field": {
+              "$ref": "urn:trueshot:schema:message#/$defs/identifier"
+            },
+            "escape": {
+              "description": "The value of that field which means the identifier is carried elsewhere.",
+              "type": "integer",
+              "minimum": 0
+            },
+            "extendedField": {
+              "description": "Which header field carries the identifier when the escape is present.",
+              "$ref": "urn:trueshot:schema:message#/$defs/identifier"
+            },
+            "reserved": {
+              "description": "Values of the command field that introduce framing rather than identify a message of their own.",
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "integer",
+                "minimum": 0
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
