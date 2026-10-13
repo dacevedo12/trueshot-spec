@@ -1,0 +1,18 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "Resume",
+  "version": "4.20.0.315",
+  "note": "Starting a held match again. Taken from a client.",
+  "bytes": "0a 00000000 00000000e8",
+  "fields": {
+    "command": 10,
+    "netId": 0,
+    "extendedCommand": null,
+    "clientId": 0,
+    "how": {
+      "delayed": 0,
+      "unknown": 116
+    }
+  }
+}

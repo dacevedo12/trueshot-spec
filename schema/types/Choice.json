@@ -1,0 +1,17 @@
+{
+  "$schema": "../meta/struct.json",
+  "struct": "Choice",
+  "note": "One choice made before the match, and how far it was taken.",
+  "fields": [
+    {
+      "name": "choice",
+      "type": "u32",
+      "note": "Which choice, by the number the client knows it as. Zero where the place stands empty."
+    },
+    {
+      "name": "rank",
+      "type": "u8",
+      "note": "How far it was taken."
+    }
+  ]
+}

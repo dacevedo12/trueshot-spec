@@ -1,0 +1,48 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "DeathHistory",
+  "system": "combat",
+  "note": "What a server sends to say what led to a death, so the client can lay it out. The header names the unit this is about.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 33,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "cause",
+          "type": "u8",
+          "note": "What sort of thing did it."
+        },
+        {
+          "name": "killer",
+          "type": "u32",
+          "note": "The unit credited with it."
+        },
+        {
+          "name": "unknown",
+          "type": "f32",
+          "note": "Purpose undetermined. It is not how long the unit stays down."
+        },
+        {
+          "name": "entryCount",
+          "type": "u32",
+          "note": "How many entries follow."
+        },
+        {
+          "name": "entries",
+          "type": "array",
+          "count": "entryCount",
+          "note": "What led to the death, newest first.",
+          "items": {
+            "name": "entry",
+            "type": "struct",
+            "struct": "DeathEvent"
+          }
+        }
+      ]
+    }
+  ]
+}

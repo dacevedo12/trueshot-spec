@@ -1,0 +1,37 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "SurrenderStatus",
+  "system": "votes",
+  "note": "What a server sends to tell a side where its surrender vote stands. The header names no object: it carries zero.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 165,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "reason",
+          "type": "u32",
+          "note": "Why the vote is where it is."
+        },
+        {
+          "name": "inFavour",
+          "type": "u8",
+          "note": "How many voted for."
+        },
+        {
+          "name": "against",
+          "type": "u8",
+          "note": "How many voted against."
+        },
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "Which side."
+        }
+      ]
+    }
+  ]
+}

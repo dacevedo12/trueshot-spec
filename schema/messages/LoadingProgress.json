@@ -1,0 +1,76 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "LoadingProgress",
+  "system": "joining",
+  "note": "What a client sends while a match loads, saying how far it has got. The header names no object: it carries zero.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "requests",
+      "command": 22,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "Which seat is reporting."
+        },
+        {
+          "name": "playerId",
+          "type": "i64",
+          "note": "Who is reporting. A client sends every bit set, which names nobody."
+        },
+        {
+          "name": "percent",
+          "type": "f32",
+          "note": "How far loading has got, from zero to one hundred."
+        },
+        {
+          "name": "eta",
+          "type": "f32",
+          "note": "How long the client expects still to take, in seconds."
+        },
+        {
+          "name": "status",
+          "type": "bits",
+          "size": 4,
+          "bits": [
+            {
+              "name": "count",
+              "width": 16,
+              "note": "How many reports have been made."
+            },
+            {
+              "name": "ping",
+              "width": 15,
+              "note": "Round trip time the client measures, in milliseconds."
+            },
+            {
+              "name": "unknown",
+              "width": 1,
+              "note": "Purpose undetermined; a client sends it clear."
+            }
+          ]
+        },
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "loaded",
+              "width": 1,
+              "note": "A client sets it only in reports whose progress stands at one hundred."
+            },
+            {
+              "name": "unknown",
+              "width": 7,
+              "note": "Purpose undetermined; a client sends arbitrary values in these bits."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

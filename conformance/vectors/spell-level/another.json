@@ -1,0 +1,15 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SpellLevel",
+  "version": "4.20.0.315",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "5b 74060040 0500000001000000",
+  "fields": {
+    "command": 91,
+    "netId": 1073743476,
+    "extendedCommand": null,
+    "slot": 5,
+    "level": 1
+  }
+}

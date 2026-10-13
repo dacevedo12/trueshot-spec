@@ -1,0 +1,39 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "SpellToggled",
+  "system": "spells",
+  "note": "What a server sends to turn one of a unit's spells on or off. The header names the unit this is about.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 280,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u32",
+          "note": "Which slot."
+        },
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "on",
+              "width": 1,
+              "note": "Set where the spell is now on."
+            },
+            {
+              "name": "unknown",
+              "width": 7,
+              "note": "Purpose undetermined; a server sends these bits clear."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "Resumed",
+  "version": "4.20.0.315",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "0a 74060040 0100000001",
+  "fields": {
+    "command": 10,
+    "netId": 1073743476,
+    "extendedCommand": null,
+    "seat": 1,
+    "how": {
+      "afterCountdown": 1,
+      "unknown": 0
+    }
+  }
+}

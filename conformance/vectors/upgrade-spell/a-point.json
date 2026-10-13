@@ -1,0 +1,18 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "UpgradeSpell",
+  "version": "4.20.0.315",
+  "note": "Putting a point into a spell. Taken from a client.",
+  "bytes": "39 74060040 0100",
+  "fields": {
+    "command": 57,
+    "netId": 1073743476,
+    "extendedCommand": null,
+    "slot": 1,
+    "how": {
+      "evolve": 0,
+      "unknown": 0
+    }
+  }
+}

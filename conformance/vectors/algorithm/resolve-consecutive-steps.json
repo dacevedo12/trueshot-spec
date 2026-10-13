@@ -1,0 +1,60 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "algorithm",
+  "algorithm": "resolvePath",
+  "note": "The path of conformance/vectors/waypoint-group/long-path.json, resolved. Consecutive steps on one axis are what separate adding to the point before as it resolved from adding to the last coordinate stated afresh.",
+  "input": {
+    "vector": "waypoint-group/long-path",
+    "field": "movements.0.path"
+  },
+  "output": [
+    {
+      "x": -3293,
+      "z": -2892
+    },
+    {
+      "x": -3092,
+      "z": -302
+    },
+    {
+      "x": -2692,
+      "z": 222
+    },
+    {
+      "x": -2417,
+      "z": 47
+    },
+    {
+      "x": -2342,
+      "z": 72
+    },
+    {
+      "x": -1967,
+      "z": 447
+    },
+    {
+      "x": -1967,
+      "z": 572
+    },
+    {
+      "x": -1792,
+      "z": 972
+    },
+    {
+      "x": -1742,
+      "z": 1022
+    },
+    {
+      "x": -1617,
+      "z": 972
+    },
+    {
+      "x": -1517,
+      "z": 872
+    },
+    {
+      "x": -1527,
+      "z": 854
+    }
+  ]
+}

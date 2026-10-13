@@ -1,0 +1,73 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "ClientEvent",
+  "system": "interface",
+  "note": "What a server sends to tell a client something happened. The sort is named first and settles what follows; unlike WorldEvent it carries no source apart from what the sort itself carries. The header names the unit the event is about.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 163,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "event",
+          "type": "u8",
+          "note": "What sort of thing happened, and so which shape follows. A server sends the sort for a turret dying; what follows any other sort is undetermined.",
+          "values": {
+            "36": {
+              "name": "turretDied"
+            }
+          }
+        },
+        {
+          "name": "credited",
+          "type": "u32",
+          "note": "The unit the death is credited to.",
+          "present": {
+            "when": "event",
+            "equals": 36,
+            "unseen": "absent"
+          }
+        },
+        {
+          "name": "gold",
+          "type": "f32",
+          "note": "Gold given for the death.",
+          "present": {
+            "when": "event",
+            "equals": 36,
+            "unseen": "absent"
+          }
+        },
+        {
+          "name": "assistCount",
+          "type": "u32",
+          "note": "How many of the places below carry a unit.",
+          "present": {
+            "when": "event",
+            "equals": 36,
+            "unseen": "absent"
+          }
+        },
+        {
+          "name": "assists",
+          "type": "array",
+          "count": 12,
+          "note": "The units that helped, twelve places.",
+          "present": {
+            "when": "event",
+            "equals": 36,
+            "unseen": "absent"
+          },
+          "items": {
+            "name": "assist",
+            "type": "u32",
+            "note": "One unit that helped."
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "algorithm",
+  "algorithm": "resolvePath",
+  "note": "The path of conformance/vectors/move-order/a-long-path.json, resolved. It comes from a client rather than a server, and takes steps on one axis over consecutive points, which is what tells the two resolution rules apart.",
+  "input": {
+    "vector": "move-order/a-long-path",
+    "field": "movement.path"
+  },
+  "output": [
+    {
+      "x": -3318,
+      "z": -3307
+    },
+    {
+      "x": -2817,
+      "z": -3052
+    },
+    {
+      "x": -2792,
+      "z": -3027
+    },
+    {
+      "x": -2767,
+      "z": -3002
+    },
+    {
+      "x": -2742,
+      "z": -2977
+    },
+    {
+      "x": -2667,
+      "z": -2777
+    },
+    {
+      "x": -2617,
+      "z": -2727
+    },
+    {
+      "x": -1467,
+      "z": -1752
+    },
+    {
+      "x": -1242,
+      "z": -1827
+    },
+    {
+      "x": -842,
+      "z": -1827
+    },
+    {
+      "x": -192,
+      "z": -1177
+    },
+    {
+      "x": -162,
+      "z": -1162
+    }
+  ]
+}

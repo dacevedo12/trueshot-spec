@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "StartGame",
+  "version": "4.20.0.315",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "5c 00000000 01",
+  "fields": {
+    "command": 92,
+    "netId": 0,
+    "extendedCommand": null,
+    "rules": {
+      "pausing": 1,
+      "unknown": 0
+    }
+  }
+}

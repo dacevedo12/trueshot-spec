@@ -1,0 +1,21 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "FaceDirection",
+  "version": "4.20.0.315",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "50 74060040 003c803abf00000000d35d2fbfeba8aa3d",
+  "fields": {
+    "command": 80,
+    "netId": 1073743476,
+    "extendedCommand": null,
+    "how": {
+      "turnOverTime": 0,
+      "unknown": 0
+    },
+    "towardX": -0.7285192012786865,
+    "towardY": 0,
+    "towardZ": -0.6850253939628601,
+    "turnTime": 0.08332999795675278
+  }
+}

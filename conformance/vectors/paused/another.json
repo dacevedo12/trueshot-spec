@@ -1,0 +1,19 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "Paused",
+  "version": "4.20.0.315",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "a1 00000000 010000000807000001",
+  "fields": {
+    "command": 161,
+    "netId": 0,
+    "extendedCommand": null,
+    "seat": 1,
+    "timeLeft": 1800,
+    "how": {
+      "unlimited": 1,
+      "unknown": 0
+    }
+  }
+}

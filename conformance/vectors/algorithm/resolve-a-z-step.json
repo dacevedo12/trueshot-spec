@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "algorithm",
+  "algorithm": "resolvePath",
+  "note": "The path of conformance/vectors/move-order/z-steps.json, resolved. Its second point takes the second coordinate as a step and the first afresh.",
+  "input": {
+    "vector": "move-order/z-steps",
+    "field": "movement.path"
+  },
+  "output": [
+    {
+      "x": 2180,
+      "z": -1259
+    },
+    {
+      "x": 1577,
+      "z": -1340
+    }
+  ]
+}

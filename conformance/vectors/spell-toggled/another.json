@@ -1,0 +1,18 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SpellToggled",
+  "version": "4.20.0.315",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "fe 74060040 1801 0600000000",
+  "fields": {
+    "command": 254,
+    "netId": 1073743476,
+    "extendedCommand": 280,
+    "slot": 6,
+    "state": {
+      "on": 0,
+      "unknown": 0
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "UnitDiedOnMap",
+  "system": "combat",
+  "note": "What a server sends to say a unit died, for what the client draws on its map rather than on the field. The header names the unit this is about.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 294,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "death",
+          "type": "struct",
+          "struct": "Death",
+          "note": "How it died."
+        }
+      ]
+    }
+  ]
+}

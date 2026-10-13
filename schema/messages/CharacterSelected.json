@@ -1,0 +1,16 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "CharacterSelected",
+  "system": "joining",
+  "note": "What a client sends once a character is settled on. It carries nothing of its own. The header names no object: it carries zero.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "requests",
+      "command": 190,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": []
+    }
+  ]
+}
