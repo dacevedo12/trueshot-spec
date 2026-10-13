@@ -1,0 +1,229 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:trueshot:schema:vector",
+  "title": "Conformance vector",
+  "description": "One thing to check, and what it produces. Vectors live in conformance/vectors/<subject>/<case>.json. A message subject uses the message name with each capital starting a new part, lower case and joined by hyphens, as its directory.",
+  "type": "object",
+  "required": ["subject", "note"],
+  "unevaluatedProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "note": {
+      "$ref": "urn:trueshot:schema:message#/$defs/note"
+    },
+    "subject": {
+      "description": "What this vector checks. A transport vector checks that the packet header was built correctly, and whatever follows it is immaterial. A cipher vector checks the cipher alone and is not a packet. An algorithm vector checks what a layout cannot say: it carries fields a decoder has already read and what they mean, and touches no bytes. A struct vector checks a struct read on its own, for one that travels outside any message.",
+      "type": "string",
+      "enum": ["transport", "cipher", "message", "struct", "algorithm"]
+    },
+    "message": {
+      "description": "Identity of the message these bytes carry. A message subject only.",
+      "type": "string",
+      "pattern": "^[A-Z][A-Za-z0-9]*$"
+    },
+    "struct": {
+      "description": "Identity of the struct these bytes hold. A struct subject only, under a directory named as a message subject's is.",
+      "type": "string",
+      "pattern": "^[A-Z][A-Za-z0-9]*$"
+    },
+    "channel": {
+      "description": "Which channel the payload arrived on. Give it where the revision names more than one, so each channel it claims has a payload behind it.",
+      "type": "string"
+    },
+    "version": {
+      "description": "Client version these bytes belong to, whichever end emitted them. Selects the revision.",
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+\\.\\d+$"
+    },
+    "bytes": {
+      "description": "The bytes on the wire, in hexadecimal, whitespace ignored. For a message this is the deciphered channel payload, opening with the header its family carries. Bytes that would identify a person carry zeros or a stand-in.",
+      "type": "string",
+      "pattern": "^[0-9a-fA-F\\s]+$"
+    },
+    "fields": {
+      "description": "Every field the revision defines, under its own name. An integer narrower than 64 bits is a number; a 64 bit one is a decimal string, because JSON cannot hold it exactly. A 32 bit float is written as the value it reads back as, which is the double nearest to it and rarely the decimal somebody typed. A byte run is lower case hexadecimal. A string given a size drops the zero bytes padding it out, a terminated string drops its terminator and nothing else, and a remaining string drops nothing. A size counts bytes rather than characters. An array is an array, and a struct or a run of bits is an object keyed by its own names. A field a presence rule leaves out is written as null.",
+      "type": "object"
+    },
+    "key": {
+      "description": "The key, in hexadecimal. A cipher vector carries one. A message vector carries one only where the message has a field that travels enciphered, and that key is arbitrary.",
+      "type": "string",
+      "pattern": "^[0-9a-fA-F\\s]+$"
+    },
+    "plaintext": {
+      "description": "Input to the cipher, in hexadecimal. A cipher subject only.",
+      "type": "string",
+      "pattern": "^[0-9a-fA-F\\s]+$"
+    },
+    "ciphertext": {
+      "description": "What the cipher produces, in hexadecimal. A cipher subject only.",
+      "type": "string",
+      "pattern": "^[0-9a-fA-F\\s]+$"
+    },
+    "algorithm": {
+      "description": "Which algorithm, by the name spec/ gives it.",
+      "type": "string",
+      "pattern": "^[a-z][A-Za-z0-9]*$"
+    },
+    "input": {
+      "description": "Where the fields come from: a message vector that has already been decoded and checked, and the field of it this algorithm reads. An algorithm never states its own input, so it can only consume what a verified decode produced.",
+      "type": "object",
+      "required": ["vector", "field"],
+      "additionalProperties": false,
+      "properties": {
+        "vector": {
+          "description": "A message vector, as directory/file without the suffix.",
+          "type": "string"
+        },
+        "field": {
+          "description": "Which field of it, written parent.child.",
+          "type": "string"
+        }
+      }
+    },
+    "output": {
+      "description": "What those fields mean."
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "subject": {
+            "const": "message"
+          }
+        },
+        "required": ["subject"]
+      },
+      "then": {
+        "required": ["message", "version", "bytes", "fields"],
+        "properties": {
+          "message": true,
+          "struct": false,
+          "version": true,
+          "bytes": true,
+          "fields": true,
+          "plaintext": false,
+          "ciphertext": false,
+          "note": true,
+          "algorithm": false,
+          "input": false,
+          "output": false,
+          "channel": true
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "subject": {
+            "const": "struct"
+          }
+        },
+        "required": ["subject"]
+      },
+      "then": {
+        "required": ["struct", "version", "bytes", "fields"],
+        "properties": {
+          "struct": true,
+          "message": false,
+          "version": true,
+          "bytes": true,
+          "fields": true,
+          "key": false,
+          "plaintext": false,
+          "ciphertext": false,
+          "note": true,
+          "algorithm": false,
+          "input": false,
+          "output": false,
+          "channel": false
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "subject": {
+            "const": "transport"
+          }
+        },
+        "required": ["subject"]
+      },
+      "then": {
+        "required": ["version", "bytes", "fields"],
+        "properties": {
+          "version": true,
+          "bytes": true,
+          "fields": true,
+          "message": false,
+          "struct": false,
+          "key": false,
+          "plaintext": false,
+          "ciphertext": false,
+          "note": true,
+          "algorithm": false,
+          "input": false,
+          "output": false,
+          "channel": false
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "subject": {
+            "const": "cipher"
+          }
+        },
+        "required": ["subject"]
+      },
+      "then": {
+        "required": ["key", "plaintext", "ciphertext"],
+        "properties": {
+          "key": true,
+          "plaintext": true,
+          "ciphertext": true,
+          "message": false,
+          "struct": false,
+          "version": false,
+          "bytes": false,
+          "fields": false,
+          "note": true,
+          "algorithm": false,
+          "input": false,
+          "output": false,
+          "channel": false
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "subject": {
+            "const": "algorithm"
+          }
+        },
+        "required": ["subject"]
+      },
+      "then": {
+        "required": ["algorithm", "input", "output"],
+        "properties": {
+          "algorithm": true,
+          "input": true,
+          "output": true,
+          "message": false,
+          "struct": false,
+          "version": false,
+          "bytes": false,
+          "fields": false,
+          "key": false,
+          "plaintext": false,
+          "ciphertext": false,
+          "channel": false
+        }
+      }
+    }
+  ]
+}
