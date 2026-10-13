@@ -1,0 +1,19 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "MarkerMoved",
+  "version": "4.20.0.315",
+  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "fe 612300401401 433537461997e4443039374696a5e444ab2a814401",
+  "fields": {
+    "command": 254,
+    "netId": 1073750881,
+    "extendedCommand": 276,
+    "fromX": 11725.3154296875,
+    "fromZ": 1828.7218017578125,
+    "toX": 11726.296875,
+    "toZ": 1829.174560546875,
+    "speed": 1033.3333740234375,
+    "faceGoal": 1
+  }
+}

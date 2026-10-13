@@ -1,0 +1,21 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "MovementBounds",
+  "version": "4.20.0.315",
+  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "06 05000040 f2be10442eb028c2b89280450000c84368",
+  "fields": {
+    "command": 6,
+    "netId": 1073741829,
+    "extendedCommand": null,
+    "x": 578.9835205078125,
+    "y": -42.17205047607422,
+    "z": 4114.33984375,
+    "radius": 400,
+    "flags": {
+      "camera": 0,
+      "unused": 52
+    }
+  }
+}

@@ -32,6 +32,35 @@
         }
       ],
       "note": "A client turns the surrender choice in its menu on or off, and does nothing before the menu exists."
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 270,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "note": "A client turns the surrender choice in its menu on or off, and does nothing before the menu exists.",
+      "fields": [
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "allowed",
+              "width": 1,
+              "note": "Set where a vote can be called."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ],
+          "note": "Whether it is allowed."
+        }
+      ]
     }
   ]
 }

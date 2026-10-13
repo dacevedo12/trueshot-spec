@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "StopAnimation",
+  "version": "4.20.0.315",
+  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "29 05000040 b35370656c6c3300",
+  "fields": {
+    "command": 41,
+    "netId": 1073741829,
+    "extendedCommand": null,
+    "flags": {
+      "fade": 1,
+      "ignoreLock": 1,
+      "stopAll": 0,
+      "unused": 22
+    },
+    "animation": "Spell3"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ResourceDisplay",
+  "version": "4.20.0.315",
+  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "93 22000040 b000b10001000000",
+  "fields": {
+    "command": 147,
+    "netId": 1073741858,
+    "extendedCommand": null,
+    "unused": 11600048,
+    "state": 1
+  }
+}

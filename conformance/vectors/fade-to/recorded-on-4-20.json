@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "FadeTo",
+  "version": "4.20.0.315",
+  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "b2 0b000040 0100cdcccc3d00000000",
+  "fields": {
+    "command": 178,
+    "netId": 1073741835,
+    "extendedCommand": null,
+    "fade": 1,
+    "time": 0.10000000149011612,
+    "target": 0
+  }
+}

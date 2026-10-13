@@ -23,6 +23,26 @@
           "note": "The slot cast by itself on a critical strike, under the same terms."
         }
       ]
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 31,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "i8",
+          "note": "The slot cast by itself, from 0 to 62; any other value leaves it unset."
+        },
+        {
+          "name": "criticalSlot",
+          "type": "i8",
+          "note": "The slot cast by itself on a critical strike, under the same terms."
+        }
+      ]
     }
   ]
 }

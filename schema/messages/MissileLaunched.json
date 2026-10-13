@@ -18,6 +18,21 @@
           "note": "The missile, by the name the swing or cast that prepared it gave it."
         }
       ]
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 110,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "missile",
+          "type": "u32",
+          "note": "The missile, by the name the swing or cast that prepared it gave it."
+        }
+      ]
     }
   ]
 }

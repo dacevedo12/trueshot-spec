@@ -45,6 +45,48 @@
           "note": "Which state, where the state changes."
         }
       ]
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 220,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "cue",
+          "type": "u8",
+          "note": "What to do.",
+          "values": {
+            "0": {
+              "name": "prepare"
+            },
+            "1": {
+              "name": "begin"
+            },
+            "2": {
+              "name": "end"
+            },
+            "3": {
+              "name": "changeState"
+            },
+            "4": {
+              "name": "trigger"
+            }
+          }
+        },
+        {
+          "name": "event",
+          "type": "u32",
+          "note": "Which cue or event."
+        },
+        {
+          "name": "parameter",
+          "type": "u32",
+          "note": "Which state, where the state changes."
+        }
+      ]
     }
   ]
 }

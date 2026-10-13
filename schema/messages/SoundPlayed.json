@@ -25,6 +25,28 @@
           "note": "The object to play it at, where a client knows one by this id; otherwise, or for zero, the sound has no place."
         }
       ]
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 67,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "sound",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 1024,
+          "note": "The sound event's name. The text ends at its first zero byte, which falls within the field."
+        },
+        {
+          "name": "owner",
+          "type": "u32",
+          "note": "The object to play it at, where a client knows one by this id; otherwise, or for zero, the sound has no place."
+        }
+      ]
     }
   ]
 }

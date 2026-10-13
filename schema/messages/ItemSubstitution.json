@@ -23,6 +23,26 @@
           "note": "The item standing in for it."
         }
       ]
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 284,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "original",
+          "type": "u32",
+          "note": "The item replaced."
+        },
+        {
+          "name": "substitute",
+          "type": "u32",
+          "note": "The item standing in for it."
+        }
+      ]
     }
   ]
 }

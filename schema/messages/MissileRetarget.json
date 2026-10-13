@@ -33,6 +33,36 @@
           "note": "Along the other ground axis, in world units."
         }
       ]
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 238,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit it now flies at, or a name no unit answers to for none."
+        },
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Where it now flies to, along one ground axis, in world units."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "In height, in world units."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Along the other ground axis, in world units."
+        }
+      ]
     }
   ]
 }
