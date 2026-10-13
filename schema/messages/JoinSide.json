@@ -13,9 +13,9 @@
       "reliability": "reliable",
       "fields": [
         {
-          "name": "seat",
-          "type": "i32",
-          "note": "The seat asking."
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the client asking."
         },
         {
           "name": "side",
@@ -32,9 +32,9 @@
       "reliability": "reliable",
       "fields": [
         {
-          "name": "seat",
-          "type": "i32",
-          "note": "The seat asking."
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the client asking."
         },
         {
           "name": "side",

@@ -28,9 +28,9 @@
           }
         },
         {
-          "name": "owner",
-          "type": "i32",
-          "note": "The seat the region answers to."
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the client the region answers to."
         },
         {
           "name": "unit",
@@ -60,7 +60,7 @@
         {
           "name": "lifetime",
           "type": "f32",
-          "note": "How long it lasts, in seconds."
+          "note": "How long it lasts, in seconds. A lifetime of 0 never runs out."
         },
         {
           "name": "lineOfSightRadius",
@@ -134,9 +134,9 @@
           "note": "What sort of region it is."
         },
         {
-          "name": "owner",
-          "type": "i32",
-          "note": "The seat the region answers to."
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the client the region answers to."
         },
         {
           "name": "unit",
@@ -166,7 +166,7 @@
         {
           "name": "lifetime",
           "type": "f32",
-          "note": "How long it lasts, in seconds."
+          "note": "How long it lasts, in seconds. A lifetime of 0 never runs out."
         },
         {
           "name": "collisionRadius",

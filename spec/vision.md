@@ -28,7 +28,8 @@ whole side.
 ## Losing sight
 
 `LeaveSight`, `LeaveLocalSight` and `LeaveTeamSight` take a unit out of the
-matching view. `LeaveLocalSight` naming a client's own champion changes
+matching view. Leaving a view hides a unit and does not remove it, so a client
+still holds it (see [Objects and identifiers](objects.md)). `LeaveLocalSight` naming a client's own champion changes
 nothing it shows. Particles come into and leave a side's view with
 `ParticleEnterTeamSight` and `ParticleLeaveTeamSight`.
 
@@ -36,7 +37,8 @@ nothing it shows. Particles come into and leave a side's view with
 
 A region is a patch of ground with sight of its own, which can reveal hidden
 units within it. A server places one with `RegionAdded`, moves it with
-`RegionMoved` and takes it away with `RegionRemoved`. A region granting sight
+`RegionMoved` and takes it away with `RegionRemoved`; [Objects and
+identifiers](objects.md) says how regions are named and when one ends. A region granting sight
 has a client clear its map's cover over it. A 4.17 client makes only circular
 regions, and its regions see over walls or not as the region says.
 

@@ -39,12 +39,12 @@
         {
           "name": "clientId",
           "type": "u32",
-          "note": "Which seat the view belongs to."
+          "note": "The client id of the client the view belongs to."
         },
         {
           "name": "syncId",
           "type": "u8",
-          "note": "Names this report. A client sends the report again until a server returns the name. A client writes 1."
+          "note": "Names this report, counting up as the view moves. A client sends the report again until a server returns the name."
         }
       ]
     },
@@ -82,12 +82,12 @@
         {
           "name": "clientId",
           "type": "u32",
-          "note": "Which seat the view belongs to."
+          "note": "The client id of the client the view belongs to."
         },
         {
           "name": "syncId",
           "type": "u8",
-          "note": "Names this report. A client sends the report again until a server returns the name. A client writes 1."
+          "note": "Names this report, counting up as the view moves. A client sends the report again until a server returns the name."
         }
       ]
     }

@@ -6,12 +6,10 @@ Applies to 4.17 and 4.20 clients, as [Versions](versions.md) describes.
 
 ## The clock
 
-A server states how long the match has run with `ClockSync`, whose first value
-is 0 as play begins (see [Joining a match](joining.md)). A client answers on the
-clock channel with `ClockReply`, carrying both what the server said and what its
-own clock read, so a server can measure how far apart the two are. A 4.17
-server also tells a client how the two clocks are being brought together with
-`ClockConvergence`.
+A server states how long the match has run with `ClockSync`, and a client
+answers on the clock channel with `ClockReply`. [Time](time.md) says how the
+match clock is kept, and which clock each time on the wire is measured
+against.
 
 `GameSpeed` sets how fast a 4.17 client's clock runs, from 0 to 10 times normal,
 and shows the new speed over its champion; sent during a hold, it takes effect
@@ -21,8 +19,8 @@ seconds, and a 4.17 client changes nothing it shows for it.
 ## Holding and resuming
 
 A client asks to hold the match with `Pause`, and to resume it with `Resume`. A
-4.17 client names no one in either, so a server MUST attribute each to the
-connection it arrived on.
+4.17 client names no one in either, so a server MUST attribute each to the connection it
+arrived on (see [Objects and identifiers](objects.md)).
 
 A server holds the match with `Paused`, carrying how long the hold can last,
 in seconds. A
@@ -51,10 +49,8 @@ A server tells the others that a player's client dropped with
 `PlayerDisconnected`, and a 4.17 client shows a notice in chat for it. A 4.17
 client dropped during play connects again by itself, registers again, and sends
 `ReconnectedInMatch` right after the registration answer; one dropped while
-loading leaves instead. `SoftReconnect` rebuilds a 4.17 client's world without
-a new connection, in two halves: the first marks every unit the client holds,
-and the second removes every unit still marked. In between, a server sends
-again each unit the client is to keep.
+loading leaves instead. `SoftReconnect` rebuilds a 4.17 client's world without a new connection, as
+[Objects and identifiers](objects.md) describes.
 
 ## Messages
 

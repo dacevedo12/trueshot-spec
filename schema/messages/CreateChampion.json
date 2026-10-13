@@ -18,9 +18,9 @@
           "note": "The name the champion answers to, so later messages can name it."
         },
         {
-          "name": "seat",
-          "type": "i32",
-          "note": "The seat holding it, or a negative number where no seat does."
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the player the champion belongs to, or 4294967295 where it belongs to none, as a bot's does. A client takes the champion carrying its own client id as its own."
         },
         {
           "name": "node",
@@ -119,9 +119,9 @@
           "note": "The name the champion answers to, so later messages can name it."
         },
         {
-          "name": "seat",
-          "type": "i32",
-          "note": "The seat holding it, or a negative number where no seat does."
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the player the champion belongs to, or 4294967295 where it belongs to none, as a bot's does. A client takes the champion carrying its own client id as its own."
         },
         {
           "name": "node",

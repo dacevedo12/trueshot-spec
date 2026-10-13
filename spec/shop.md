@@ -12,7 +12,7 @@ a server decides is which of those items a match lets a player buy, and whether
 the shop has a player to show them to.
 
 A client sets its shop up for its own champion, from the champion's
-`CreateChampion` (the one whose seat is the client's own, and not a bot's) and
+`CreateChampion` (the one carrying the client's own client id) and
 then that champion's `Loadout`. Until the `Loadout` arrives, its shop opens
 empty and too big for the screen: no items, no suggested items, no builds.
 Given its own champion's `Loadout`, it shows every item and the items it

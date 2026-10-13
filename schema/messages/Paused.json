@@ -13,9 +13,9 @@
       "reliability": "reliable",
       "fields": [
         {
-          "name": "seat",
-          "type": "i32",
-          "note": "The seat that asked for the hold; it applies only to a tournament's hold."
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the client that asked for the hold; it applies only to a tournament's hold."
         },
         {
           "name": "timeLeft",
@@ -49,9 +49,9 @@
       "reliability": "reliable",
       "fields": [
         {
-          "name": "seat",
-          "type": "i32",
-          "note": "The seat that called the hold."
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the client that called the hold."
         },
         {
           "name": "timeLeft",

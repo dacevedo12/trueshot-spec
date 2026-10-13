@@ -110,8 +110,8 @@ opens, and closes the run with `SpawnEnd`. A run carries:
 
 A client takes these in any order within the run.
 
-A run MUST carry at least `SpawnStart`, the client's own seat's
-`CreateChampion`, and `SpawnEnd`. Given only those, a client still enters play,
+A run MUST carry at least `SpawnStart`, the `CreateChampion` carrying the
+client's own client id, and `SpawnEnd`. Given only those, a client still enters play,
 showing its champion's portrait, health, resource and spells. It draws the
 champion on the map only once an `EnterSight` places it there, with its name
 and health bar over it. Its shop stays empty until its own champion's `Loadout`
@@ -127,8 +127,8 @@ the `syncId` of the batch before it.
 A client sends `ClientReady` after `SpawnEnd` and after those answers, while it
 is still reporting its loading. A server MUST answer with `StartGame` followed
 by a `ClockSync`, and a client enters play once it has both. A server then
-sends `MatchStarted`, with other messages free to come between them. The first
-`ClockSync` carries 0, and so does `MatchStarted`.
+sends `MatchStarted`, with other messages free to come between them. The first `ClockSync` carries 0, and so does `MatchStarted` (see
+[Time](time.md)).
 
 ## Messages
 

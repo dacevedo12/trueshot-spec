@@ -13,9 +13,9 @@
       "reliability": "reliable",
       "fields": [
         {
-          "name": "seat",
+          "name": "clientId",
           "type": "u32",
-          "note": "The player who resumed the match, announced in chat in their side's colour where their champion is known; 4294967295 announces no one."
+          "note": "The client id of the player who resumed the match, announced in chat in their side's colour where their champion is known; 4294967295 announces no one."
         },
         {
           "name": "how",
@@ -45,9 +45,9 @@
       "reliability": "reliable",
       "fields": [
         {
-          "name": "seat",
-          "type": "i32",
-          "note": "The seat that lifted the hold."
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the client that lifted the hold."
         },
         {
           "name": "how",

@@ -6,23 +6,16 @@ the documents on [movement](movement.md), [combat](combat.md) and
 [spells](spells.md), and what it is worth in [replication](replication.md).
 Applies to 4.17 and 4.20 clients, as [Versions](versions.md) describes.
 
-## Ids
-
-Every object is named by an id, which the messages about it carry in their
-header or in their body. A server picks the ids of what it creates. Objects the
-map already holds, its buildings and the points minions come from, have ids the
-map's own names give them, which [Messages](messages.md) sets out under objects
-a map names.
-
-A 4.17 client that is told to create an object under an id it already holds
-first deletes what held it, for every message here that creates one.
+Every object is named by a net id. [Objects and identifiers](objects.md) says
+how net ids are formed, what a client holds, and what removes each kind of
+object.
 
 ## Creating
 
 Each kind of object has its own message:
 
-- a champion, `CreateChampion`, which for the client's own seat also makes that
-  champion the client's own; a bot's champion, `SpawnBot`;
+- a champion, `CreateChampion`, which, carrying the client's own client id,
+  also makes that champion the client's own; a bot's champion, `SpawnBot`;
 - a minion sent out from a side's barracks, `SpawnFromBarracks`, and a unit
   like one, such as a ward, `SpawnUnit`;
 - a monster of no side, `CreateNeutral`; a pet, `SpawnPet`;

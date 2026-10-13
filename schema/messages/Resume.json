@@ -15,7 +15,7 @@
         {
           "name": "clientId",
           "type": "u32",
-          "note": "A client writes 4294967295 here, the value for no seat."
+          "note": "A client writes 4294967295, the client id of no client."
         },
         {
           "name": "how",
@@ -47,7 +47,7 @@
         {
           "name": "clientId",
           "type": "u32",
-          "note": "Which seat asked."
+          "note": "The client id of the client that asked."
         },
         {
           "name": "how",
