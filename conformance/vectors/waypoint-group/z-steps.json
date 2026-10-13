@@ -1,0 +1,43 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "WaypointGroup",
+  "version": "4.20.0.315",
+  "note": "A group whose point states its second coordinate as a step. Taken from a server a client accepted.",
+  "bytes": "61 00000040 7543000001000400000040027e0810fb2806b4",
+  "fields": {
+    "command": 97,
+    "netId": 1073741824,
+    "extendedCommand": null,
+    "syncId": 17269,
+    "movementCount": 1,
+    "movements": [
+      {
+        "header": {
+          "hasTeleportToken": 0,
+          "pointCount": 2
+        },
+        "path": {
+          "unit": 1073741824,
+          "teleportToken": null,
+          "flags": [
+            {
+              "xIsStep": 0,
+              "zIsStep": 1
+            }
+          ],
+          "firstX": 2174,
+          "firstZ": -1264,
+          "steps": [
+            {
+              "xStep": null,
+              "xWhole": 1576,
+              "zStep": -76,
+              "zWhole": null
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

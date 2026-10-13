@@ -1,0 +1,61 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "SpellSlotChanged",
+  "system": "spells",
+  "note": "What a server sends to change one thing about a spell already in a unit's slot. The kind settles what follows it. The header names the unit this is about.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 23,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot."
+        },
+        {
+          "name": "what",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "summonerSpell",
+              "width": 1,
+              "note": "Set where the slot is a summoner slot rather than one of the unit's own."
+            },
+            {
+              "name": "unknown",
+              "width": 7,
+              "note": "Purpose undetermined; a server sends these bits clear."
+            }
+          ]
+        },
+        {
+          "name": "kind",
+          "type": "u32",
+          "note": "Which thing about the spell is being changed, and so which shape follows. What follows a kind other than the one that sets a name is undetermined.",
+          "values": {
+            "2": {
+              "name": "name"
+            }
+          }
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "The name the client loads the spell under. Written out in full and padded with zero bytes to the width above.",
+          "present": {
+            "when": "kind",
+            "equals": 2,
+            "unseen": "absent"
+          }
+        }
+      ]
+    }
+  ]
+}

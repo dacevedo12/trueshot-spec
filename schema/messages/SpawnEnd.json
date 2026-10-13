@@ -1,0 +1,16 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "SpawnEnd",
+  "system": "joining",
+  "note": "What a server sends to close the run of units it opened with. The header names no object: it carries zero.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 17,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": []
+    }
+  ]
+}

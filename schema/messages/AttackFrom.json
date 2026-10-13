@@ -1,0 +1,33 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "AttackFrom",
+  "system": "combat",
+  "note": "What a server sends to say a unit is swinging at another, carrying where the swinging unit stands as well as what it swings at. The header names the unit acting.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 26,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "strike",
+          "type": "struct",
+          "struct": "Strike",
+          "note": "The swing."
+        },
+        {
+          "name": "fromX",
+          "type": "f32",
+          "note": "Where the swinging unit stands, along one ground axis, in world units."
+        },
+        {
+          "name": "fromZ",
+          "type": "f32",
+          "note": "Where it stands, along the other, in world units."
+        }
+      ]
+    }
+  ]
+}

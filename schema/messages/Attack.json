@@ -1,0 +1,23 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "Attack",
+  "system": "combat",
+  "note": "What a server sends to say a unit is swinging at another. The header names the unit acting.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 12,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "strike",
+          "type": "struct",
+          "struct": "Strike",
+          "note": "The swing."
+        }
+      ]
+    }
+  ]
+}

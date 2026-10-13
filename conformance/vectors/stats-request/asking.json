@@ -1,0 +1,18 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "StatsRequest",
+  "version": "4.20.0.315",
+  "note": "A client reporting on itself and the appearance it claims. Taken from a client.",
+  "bytes": "56 00000040 000000000000000000000000040000002b8297c1",
+  "fields": {
+    "command": 86,
+    "netId": 1073741824,
+    "extendedCommand": null,
+    "moduleOne": 0,
+    "moduleTwo": 0,
+    "moduleThree": 0,
+    "appearance": 4,
+    "appearanceCheck": 3247931947
+  }
+}

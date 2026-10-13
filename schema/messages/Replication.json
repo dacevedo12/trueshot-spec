@@ -1,0 +1,44 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "Replication",
+  "system": "replication",
+  "note": "What a server sends to say what has changed about units a client can see. It is the most frequent thing a server sends. The header names no object: it carries zero.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "transient",
+      "command": 196,
+      "direction": "serverToClient",
+      "reliability": "unreliable",
+      "alsoOn": [
+        {
+          "channel": "events",
+          "reliability": "reliable",
+          "note": "It travels here as well, under the same command and carrying the same body."
+        }
+      ],
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u32",
+          "note": "Names this batch of changes. spec/replication.md says which batches a client takes values from."
+        },
+        {
+          "name": "unitCount",
+          "type": "u8",
+          "note": "How many units follow."
+        },
+        {
+          "name": "units",
+          "type": "array",
+          "count": "unitCount",
+          "items": {
+            "name": "unit",
+            "type": "struct",
+            "struct": "Replication"
+          }
+        }
+      ]
+    }
+  ]
+}

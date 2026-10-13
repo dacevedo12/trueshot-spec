@@ -1,0 +1,24 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "CastSpell",
+  "version": "4.20.0.315",
+  "note": "A cast aimed at a unit rather than at ground. Taken from a client.",
+  "bytes": "9a 74060040 00060000294400006044000029440000604474060040",
+  "fields": {
+    "command": 154,
+    "netId": 1073743476,
+    "extendedCommand": null,
+    "how": {
+      "fromSummonerSlots": 0,
+      "fromHud": 0,
+      "unknown": 0
+    },
+    "slot": 6,
+    "x": 676,
+    "z": 896,
+    "endX": 676,
+    "endZ": 896,
+    "target": 1073743476
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "../meta/struct.json",
+  "struct": "CarriedMessage",
+  "note": "One whole message carried inside another, behind the count of its bytes.",
+  "fields": [
+    {
+      "name": "size",
+      "type": "u16",
+      "note": "How many bytes the message occupies."
+    },
+    {
+      "name": "body",
+      "type": "bytes",
+      "size": "size",
+      "note": "The message itself, read as though it had arrived on its own on the channel that carried the message holding it."
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "UnitLookAt",
+  "version": "4.20.0.315",
+  "note": "A unit turned toward another. Taken from a server a client accepted.",
+  "bytes": "fe 74060040 0f01 026d3e6445007fbf42c9066745e9010040",
+  "fields": {
+    "command": 254,
+    "netId": 1073743476,
+    "extendedCommand": 271,
+    "kind": 2,
+    "x": 3651.901611328125,
+    "y": 95.748046875,
+    "z": 3696.424072265625,
+    "target": 1073742313
+  }
+}

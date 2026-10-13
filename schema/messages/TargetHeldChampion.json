@@ -1,0 +1,22 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "TargetHeldChampion",
+  "system": "combat",
+  "note": "What a server sends to mark that a unit is attacking a champion, or to take the mark away. The header names the unit. A client marks the unit where target is nonzero, names a champion the client holds and the unit is on the other side, drawing an indicator on the unit's health bar unless the unit's data turns it off; any other target clears the mark. TargetUnit draws the targeting beam and never touches this mark.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 192,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The champion being attacked."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "TeamScore",
+  "system": "objectives",
+  "note": "What a server sends to set a side's score, where a match is won on score. The header names no object: it carries zero.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 212,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "Which side: 100 or 200."
+        },
+        {
+          "name": "score",
+          "type": "i32",
+          "note": "The score it now stands at."
+        }
+      ]
+    }
+  ]
+}

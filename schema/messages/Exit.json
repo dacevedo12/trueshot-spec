@@ -1,0 +1,16 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "Exit",
+  "system": "match",
+  "note": "What a client sends as it leaves. It carries nothing of its own. The header names no object: it carries zero.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "requests",
+      "command": 143,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": []
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "MoveOrder",
+  "version": "4.20.0.315",
+  "note": "An order to stop, which carries a path of the one point the unit stands on. Taken from a client.",
+  "bytes": "72 74060040 0a00803b4500803b450000000002740600407df762f7",
+  "fields": {
+    "command": 114,
+    "netId": 1073743476,
+    "extendedCommand": null,
+    "kind": 10,
+    "targetX": 3000,
+    "targetZ": 3000,
+    "target": 0,
+    "movement": {
+      "header": {
+        "hasTeleportToken": 0,
+        "pointCount": 1
+      },
+      "path": {
+        "unit": 1073743476,
+        "teleportToken": null,
+        "flags": [],
+        "firstX": -2179,
+        "firstZ": -2206,
+        "steps": []
+      }
+    }
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "MoveOrder",
+  "version": "4.20.0.315",
+  "note": "A path long enough to run past one byte of flags, sent by a client rather than a server. Taken from a client.",
+  "bytes": "72 74060040 0281c1db4557f89e45000000001874060040fc8d320af315f3fff414f41919191919194b27f5323245fa28f926fbb5b6fc0040ff67fb1e0f",
+  "fields": {
+    "command": 114,
+    "netId": 1073743476,
+    "extendedCommand": null,
+    "kind": 2,
+    "targetX": 7032.18798828125,
+    "targetZ": 5087.04248046875,
+    "target": 0,
+    "movement": {
+      "header": {
+        "hasTeleportToken": 0,
+        "pointCount": 12
+      },
+      "path": {
+        "unit": 1073743476,
+        "teleportToken": null,
+        "flags": [
+          {
+            "xIsStep": 0,
+            "zIsStep": 0
+          },
+          {
+            "xIsStep": 1,
+            "zIsStep": 1
+          },
+          {
+            "xIsStep": 1,
+            "zIsStep": 1
+          },
+          {
+            "xIsStep": 1,
+            "zIsStep": 1
+          },
+          {
+            "xIsStep": 1,
+            "zIsStep": 0
+          },
+          {
+            "xIsStep": 1,
+            "zIsStep": 1
+          },
+          {
+            "xIsStep": 0,
+            "zIsStep": 0
+          },
+          {
+            "xIsStep": 0,
+            "zIsStep": 1
+          },
+          {
+            "xIsStep": 0,
+            "zIsStep": 1
+          },
+          {
+            "xIsStep": 0,
+            "zIsStep": 0
+          },
+          {
+            "xIsStep": 1,
+            "zIsStep": 1
+          }
+        ],
+        "firstX": -3318,
+        "firstZ": -3307,
+        "steps": [
+          {
+            "xStep": null,
+            "xWhole": -2817,
+            "zStep": null,
+            "zWhole": -3052
+          },
+          {
+            "xStep": 25,
+            "xWhole": null,
+            "zStep": 25,
+            "zWhole": null
+          },
+          {
+            "xStep": 25,
+            "xWhole": null,
+            "zStep": 25,
+            "zWhole": null
+          },
+          {
+            "xStep": 25,
+            "xWhole": null,
+            "zStep": 25,
+            "zWhole": null
+          },
+          {
+            "xStep": 75,
+            "xWhole": null,
+            "zStep": null,
+            "zWhole": -2777
+          },
+          {
+            "xStep": 50,
+            "xWhole": null,
+            "zStep": 50,
+            "zWhole": null
+          },
+          {
+            "xStep": null,
+            "xWhole": -1467,
+            "zStep": null,
+            "zWhole": -1752
+          },
+          {
+            "xStep": null,
+            "xWhole": -1242,
+            "zStep": -75,
+            "zWhole": null
+          },
+          {
+            "xStep": null,
+            "xWhole": -842,
+            "zStep": 0,
+            "zWhole": null
+          },
+          {
+            "xStep": null,
+            "xWhole": -192,
+            "zStep": null,
+            "zWhole": -1177
+          },
+          {
+            "xStep": 30,
+            "xWhole": null,
+            "zStep": 15,
+            "zWhole": null
+          }
+        ]
+      }
+    }
+  }
+}

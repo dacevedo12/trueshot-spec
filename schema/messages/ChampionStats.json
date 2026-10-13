@@ -1,0 +1,31 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "ChampionStats",
+  "system": "replication",
+  "note": "What a server sends to set a champion's tallies for the scoreboard. The header names the champion.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 70,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "size",
+          "type": "u32",
+          "note": "How many bytes this shape occupies, counting these four."
+        },
+        {
+          "name": "values",
+          "type": "bytes",
+          "size": {
+            "field": "size",
+            "minus": 4
+          },
+          "note": "The figures themselves. Which tally each one is, and the order they sit in, is undetermined."
+        }
+      ]
+    }
+  ]
+}

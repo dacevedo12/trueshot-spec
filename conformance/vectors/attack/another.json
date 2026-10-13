@@ -1,0 +1,22 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "Attack",
+  "version": "4.20.0.315",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "0c 8f180040 7406004080801a00404000a0e8c4000000000080d9c3",
+  "fields": {
+    "command": 12,
+    "netId": 1073748111,
+    "extendedCommand": null,
+    "strike": {
+      "target": 1073743476,
+      "timing": 128,
+      "missile": 1073748608,
+      "slot": 64,
+      "targetX": -1861,
+      "targetY": 0,
+      "targetZ": -435
+    }
+  }
+}

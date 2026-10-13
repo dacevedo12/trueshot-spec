@@ -1,0 +1,49 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "AttackSpeedBounds",
+  "system": "combat",
+  "note": "What a server sends to put a ceiling or a floor on how fast a unit attacks. Its identifier is wider than a byte, so it travels behind the escape. The header names the unit this is about.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 288,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "overrides",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "ceiling",
+              "width": 1,
+              "note": "Set where the ceiling below is to be used."
+            },
+            {
+              "name": "floor",
+              "width": 1,
+              "note": "Set where the floor below is to be used."
+            },
+            {
+              "name": "unknown",
+              "width": 6,
+              "note": "Purpose undetermined; a server sends it clear."
+            }
+          ]
+        },
+        {
+          "name": "ceiling",
+          "type": "f32",
+          "note": "The fastest the unit can attack, in attacks a second, where the flag says to use it. A value of 0.00001 or less, -1 among them, sets no bound."
+        },
+        {
+          "name": "floor",
+          "type": "f32",
+          "note": "The slowest the unit can attack, in attacks a second, where the flag says to use it. A value of 0.00001 or less, -1 among them, sets no bound."
+        }
+      ]
+    }
+  ]
+}

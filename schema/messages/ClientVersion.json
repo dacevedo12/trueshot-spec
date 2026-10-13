@@ -1,0 +1,29 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "ClientVersion",
+  "system": "joining",
+  "note": "What a client sends to state which build it is. The header names no object: it carries zero.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "requests",
+      "command": 189,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "Which seat is reporting."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "ascii",
+          "size": 256,
+          "note": "The build, as text. The text ends at a zero byte."
+        }
+      ]
+    }
+  ]
+}

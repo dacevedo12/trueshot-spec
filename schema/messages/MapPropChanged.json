@@ -1,0 +1,64 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "MapPropChanged",
+  "system": "units",
+  "note": "What a server sends to change something about a prop already on the map. The kind of change is named inside it, and the fields around the kind keep one layout whatever it is. The header names no object: it carries zero.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 209,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The name the change loads, such as a set of movements the prop plays. Written out in full and padded with zero bytes to the width above."
+        },
+        {
+          "name": "startsAt",
+          "type": "f32",
+          "note": "When the change begins, in milliseconds of match time."
+        },
+        {
+          "name": "lasts",
+          "type": "f32",
+          "note": "How long the change runs, in seconds."
+        },
+        {
+          "name": "prop",
+          "type": "u32",
+          "note": "The prop changed, by the name MapProp gave it."
+        },
+        {
+          "name": "flags",
+          "type": "u32",
+          "note": "How the change is made. The bits within are undetermined; a server sends 1 or 2."
+        },
+        {
+          "name": "kind",
+          "type": "u32",
+          "note": "What sort of change it is. A server sends 1; what other kinds carry is undetermined."
+        },
+        {
+          "name": "byteA",
+          "type": "u8",
+          "note": "Purpose undetermined; a server sends 0."
+        },
+        {
+          "name": "byteB",
+          "type": "u8",
+          "note": "Purpose undetermined; a server sends 0."
+        },
+        {
+          "name": "byteC",
+          "type": "u8",
+          "note": "Purpose undetermined; a server sends 0."
+        }
+      ]
+    }
+  ]
+}

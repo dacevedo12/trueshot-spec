@@ -1,0 +1,34 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "GameEnded",
+  "system": "match",
+  "note": "What a server sends to end the match and say which side won. The header names no object: it carries zero.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "channel": "events",
+      "command": 198,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "result",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "side100Won",
+              "width": 1,
+              "note": "Set where side 100 won and clear where side 200 won. A client compares the winning side with its own to show victory or defeat."
+            },
+            {
+              "name": "unknown",
+              "width": 7,
+              "note": "Purpose undetermined; a server sends it clear."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

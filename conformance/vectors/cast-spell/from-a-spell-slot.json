@@ -1,0 +1,24 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "CastSpell",
+  "version": "4.20.0.315",
+  "note": "A cast from the unit own slots, aimed at ground. Taken from a client.",
+  "bytes": "9a 74060040 000385b3974416dc2f4485b3974416dc2f4400000000",
+  "fields": {
+    "command": 154,
+    "netId": 1073743476,
+    "extendedCommand": null,
+    "how": {
+      "fromSummonerSlots": 0,
+      "fromHud": 0,
+      "unknown": 0
+    },
+    "slot": 3,
+    "x": 1213.6099853515625,
+    "z": 703.4388427734375,
+    "endX": 1213.6099853515625,
+    "endZ": 703.4388427734375,
+    "target": 0
+  }
+}

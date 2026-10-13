@@ -1,0 +1,22 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "AnimationOverrides",
+  "version": "4.20.0.315",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "6b 74060040 010300000052756e070000005370656c6c3362",
+  "fields": {
+    "command": 107,
+    "netId": 1073743476,
+    "extendedCommand": null,
+    "pairCount": 1,
+    "pairs": [
+      {
+        "fromLength": 3,
+        "from": "Run",
+        "toLength": 7,
+        "to": "Spell3b"
+      }
+    ]
+  }
+}
