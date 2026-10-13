@@ -40,35 +40,37 @@ consistent with one another:
 6. [Space](spec/space.md): positions, directions and maps.
 7. [Time](spec/time.md): the clocks a match runs on, and which each time on the
    wire is measured against.
+8. [Sides and slots](spec/values.md): sides, and how spell, item and effect
+   slots are numbered.
 
 Then a match from end to end, which is enough for a client to join and play:
 
-8. [Joining a match](spec/joining.md), from registering until play begins,
+9. [Joining a match](spec/joining.md), from registering until play begins,
    including what the loading screen shows.
-9. [The match](spec/match.md): its clock, holding it, its end, and players
-   leaving and coming back.
-10. [Units](spec/units.md): putting champions, minions, monsters, turrets and
+10. [The match](spec/match.md): its clock, holding it, its end, and players
+    leaving and coming back.
+11. [Units](spec/units.md): putting champions, minions, monsters, turrets and
     props on the field.
-11. [Vision](spec/vision.md): bringing units into a client's view.
-12. [Movement](spec/movement.md): orders, paths and what their coordinates
+12. [Vision](spec/vision.md): bringing units into a client's view.
+13. [Movement](spec/movement.md): orders, paths and what their coordinates
     mean.
-13. [Replication](spec/replication.md): the values of units a server keeps
+14. [Replication](spec/replication.md): the values of units a server keeps
     current, which no layout reaches.
 
 Then the systems a match is played with, in any order:
 
-14. [Combat](spec/combat.md): attacks, damage, death and coming back.
-15. [Spells](spec/spells.md): casting, levelling spells, and missiles.
-16. [Effects and looks](spec/effects.md): lasting effects, particles and how
+15. [Combat](spec/combat.md): attacks, damage, death and coming back.
+16. [Spells](spec/spells.md): casting, levelling spells, and missiles.
+17. [Effects and looks](spec/effects.md): lasting effects, particles and how
     units look.
-17. [The shop](spec/shop.md): what fills it, buying and selling.
-18. [Objectives](spec/objectives.md): camps, capture points and score, and the
+18. [The shop](spec/shop.md): what fills it, buying and selling.
+19. [Objectives](spec/objectives.md): camps, capture points and score, and the
     events the whole match is told about.
-19. [Communication](spec/communication.md): chat, pings, emotes and sound.
-20. [Votes](spec/votes.md): surrender, and evening out a match.
-21. [The interface](spec/interface.md): the view, input, tips, quests and the
+20. [Communication](spec/communication.md): chat, pings, emotes and sound.
+21. [Votes](spec/votes.md): surrender, and evening out a match.
+22. [The interface](spec/interface.md): the view, input, tips, quests and the
     tutorial.
-22. [Watching a match](spec/spectating.md): streaming a match to a client that
+23. [Watching a match](spec/spectating.md): streaming a match to a client that
     watches over its connection.
 
 Each system document ends with a table of its messages, generated from
