@@ -1,0 +1,21 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "MovementBounds",
+  "version": "4.17.0.267",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "06 00000000 0000c843000000000000c8430000fa4301",
+  "fields": {
+    "command": 6,
+    "netId": 0,
+    "extendedCommand": null,
+    "x": 400,
+    "y": 0,
+    "z": 400,
+    "radius": 500,
+    "flags": {
+      "camera": 1,
+      "unused": 0
+    }
+  }
+}

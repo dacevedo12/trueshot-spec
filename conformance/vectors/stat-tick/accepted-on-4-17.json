@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "StatTick",
+  "version": "4.17.0.267",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "28 00000000 0000803e",
+  "fields": {
+    "command": 40,
+    "netId": 0,
+    "extendedCommand": null,
+    "seconds": 0.25
+  }
+}

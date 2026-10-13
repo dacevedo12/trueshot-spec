@@ -5,6 +5,44 @@
   "note": "What a client sends to hold a match. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "requests",
+      "command": 161,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "A client sends 4294967295, the value for no seat."
+        },
+        {
+          "name": "timeLeft",
+          "type": "i32",
+          "note": "A client sends zero."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "tournament",
+              "width": 1,
+              "note": "A client sends it clear."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a client writes zero."
+            }
+          ]
+        }
+      ],
+      "note": "A client sends the same values in every Pause, as each field states."
+    },
+    {
       "from": "4.20.0.315",
       "channel": "requests",
       "command": 161,

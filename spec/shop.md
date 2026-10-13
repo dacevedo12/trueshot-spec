@@ -3,7 +3,7 @@
 How the shop works: what fills it, what a client asks for, and what a server
 answers. Layouts live in `schema/`.
 
-Applies to 4.20 clients, as [Versions](versions.md) describes.
+Applies to 4.17 and 4.20 clients, as [Versions](versions.md) describes.
 
 ## What fills it
 
@@ -71,14 +71,25 @@ or `InputLockToggled` closes it and turns off its key.
 
 <!-- messages:begin -->
 
-| Message                                                        | Sent by | 4.20            | What it does                                                                                                                                                         |
-| -------------------------------------------------------------- | ------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`BuyItem`](../schema/messages/BuyItem.json)                   | client  | 130 on requests | Buy an item from the shop                                                                                                                                            |
-| [`ItemAdded`](../schema/messages/ItemAdded.json)               | server  | 111 on events   | Set what sits in one of a unit's item slots                                                                                                                          |
-| [`Loadout`](../schema/messages/Loadout.json)                   | server  | 42 on events    | Lay out everything a champion brought to the match: the runes set before it began, its summoner slots, the choices made alongside them, and what its wards look like |
-| [`RemoveItem`](../schema/messages/RemoveItem.json)             | client  | 9 on requests   | Be rid of an item, either by selling it or by discarding it                                                                                                          |
-| [`RemoveItemAnswer`](../schema/messages/RemoveItemAnswer.json) | server  | 11 on events    | Confirm an item left a slot                                                                                                                                          |
-| [`SwapItems`](../schema/messages/SwapItems.json)               | client  | 32 on requests  | Move an item from one slot to another                                                                                                                                |
-| [`SwapItemsAnswer`](../schema/messages/SwapItemsAnswer.json)   | server  | 62 on events    | Confirm an item moved between slots                                                                                                                                  |
+| Message                                                              | Sent by | 4.17            | 4.20            | What it does                                                                                                                                                         |
+| -------------------------------------------------------------------- | ------- | --------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`BuyItem`](../schema/messages/BuyItem.json)                         | client  | 130 on requests | 130 on requests | Buy an item from the shop                                                                                                                                            |
+| [`CloseShop`](../schema/messages/CloseShop.json)                     | server  | 14 on events    | none            | Close a client's shop                                                                                                                                                |
+| [`InventorySlot`](../schema/messages/InventorySlot.json)             | server  | 83 on events    | none            | Set one slot of a unit's inventory                                                                                                                                   |
+| [`InventorySnapshot`](../schema/messages/InventorySnapshot.json)     | server  | 268 on events   | none            | State a unit's whole inventory at once, with each slot's cooldown                                                                                                    |
+| [`ItemAdded`](../schema/messages/ItemAdded.json)                     | server  | 111 on events   | 111 on events   | Set what sits in one of a unit's item slots                                                                                                                          |
+| [`ItemCharges`](../schema/messages/ItemCharges.json)                 | server  | 253 on events   | none            | Set how many charges an item holds                                                                                                                                   |
+| [`ItemSubstitution`](../schema/messages/ItemSubstitution.json)       | server  | 284 on events   | none            | Have one item stand in for another in a champion's inventory                                                                                                         |
+| [`ItemUsed`](../schema/messages/ItemUsed.json)                       | server  | 159 on events   | none            | What a server sends after an item in a unit's inventory is used                                                                                                      |
+| [`Loadout`](../schema/messages/Loadout.json)                         | server  | 42 on events    | 42 on events    | Lay out everything a champion brought to the match: the runes set before it began, its summoner slots, the choices made alongside them, and what its wards look like |
+| [`RemoveItem`](../schema/messages/RemoveItem.json)                   | client  | 9 on requests   | 9 on requests   | Be rid of an item, either by selling it or by discarding it                                                                                                          |
+| [`RemoveItemAnswer`](../schema/messages/RemoveItemAnswer.json)       | server  | 11 on events    | 11 on events    | Confirm an item left a slot                                                                                                                                          |
+| [`ShopEnabled`](../schema/messages/ShopEnabled.json)                 | server  | 240 on events   | none            | Say whether a champion can use the shop                                                                                                                              |
+| [`ShopUndo`](../schema/messages/ShopUndo.json)                       | client  | 266 on requests | none            | What a client sends as its player presses the shop's undo button                                                                                                     |
+| [`ShopUndoCount`](../schema/messages/ShopUndoCount.json)             | server  | 267 on events   | none            | Say how many purchases a champion can still undo                                                                                                                     |
+| [`SubstitutionCleared`](../schema/messages/SubstitutionCleared.json) | server  | 285 on events   | none            | Undo an ItemSubstitution, so the shop shows the item itself again                                                                                                    |
+| [`SwapItems`](../schema/messages/SwapItems.json)                     | client  | 32 on requests  | 32 on requests  | Move an item from one slot to another                                                                                                                                |
+| [`SwapItemsAnswer`](../schema/messages/SwapItemsAnswer.json)         | server  | 62 on events    | 62 on events    | Confirm an item moved between slots                                                                                                                                  |
+| [`TutorialShopOpened`](../schema/messages/TutorialShopOpened.json)   | client  | 93 on requests  | none            | What a client in the tutorial sends as its player opens the shop                                                                                                     |
 
 <!-- messages:end -->

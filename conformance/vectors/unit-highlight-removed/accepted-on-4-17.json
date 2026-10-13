@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "UnitHighlightRemoved",
+  "version": "4.17.0.267",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "b4 00000000 01000040",
+  "fields": {
+    "command": 180,
+    "netId": 0,
+    "extendedCommand": null,
+    "unit": 1073741825
+  }
+}

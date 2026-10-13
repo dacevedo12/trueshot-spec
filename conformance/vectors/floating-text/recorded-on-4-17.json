@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "FloatingText",
+  "version": "4.17.0.267",
+  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "18 25010040 00000040000000000000000000001500000067616d655f6c75615f41656769735f426c6f636b00",
+  "fields": {
+    "command": 24,
+    "netId": 1073742117,
+    "extendedCommand": null,
+    "delay": 2,
+    "slot": 0,
+    "error": 0,
+    "colour": 0,
+    "style": 0,
+    "length": 21,
+    "text": "game_lua_Aegis_Block"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "AttackFrom",
+  "version": "4.17.0.267",
+  "note": "Taken from a server a client accepted. The minion turned to the champion and swung.",
+  "bytes": "1a 01100040 010000400000c843000000000000c843800000000040000016440000fa43",
+  "fields": {
+    "command": 26,
+    "netId": 1073745921,
+    "extendedCommand": null,
+    "target": 1073741825,
+    "targetX": 400,
+    "targetY": 0,
+    "targetZ": 400,
+    "timing": 128,
+    "missile": 0,
+    "slot": 64,
+    "fromX": 600,
+    "fromZ": 500
+  }
+}

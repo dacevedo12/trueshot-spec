@@ -1,0 +1,28 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "GoldEarned",
+  "system": "replication",
+  "note": "What a server sends a client watching a match to credit a champion with gold. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 228,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "owner",
+          "type": "u32",
+          "note": "The champion credited."
+        },
+        {
+          "name": "amount",
+          "type": "f32",
+          "note": "How much gold. 0.95 is what a champion earns for each step it stands still."
+        }
+      ]
+    }
+  ]
+}

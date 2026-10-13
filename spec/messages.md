@@ -9,7 +9,7 @@ one or more revisions. A revision carries the value identifying the message,
 the channel it travels on, its direction, how the transport delivers it, and
 the fields of its body.
 
-Applies to 4.20 clients, as [Versions](versions.md) describes.
+Applies to 4.17 and 4.20 clients, as [Versions](versions.md) describes.
 This document defines the vocabulary those files are written in, together with
 the container and the shapes of values that vocabulary relies on. It records no
 message's layout: those live in `schema/`.

@@ -1,0 +1,42 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "CancelTargeting",
+  "system": "spells",
+  "note": "What a server sends to end a spell's targeting on a client. The header names the unit. A server sends it to clients watching a match.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 134,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "which",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "slot",
+              "width": 6,
+              "note": "Which slot."
+            },
+            {
+              "name": "summonerSpell",
+              "width": 1,
+              "note": "Set where the slot is a summoner slot."
+            },
+            {
+              "name": "unused",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            }
+          ],
+          "note": "Which spell."
+        }
+      ],
+      "note": "A client cancels the aiming only where that slot is being aimed, and otherwise does nothing."
+    }
+  ]
+}

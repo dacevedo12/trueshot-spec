@@ -1,0 +1,122 @@
+{
+  "$schema": "../meta/struct.json",
+  "struct": "StreamRecord",
+  "note": "One message in a chunk a server streams to a watching client (see spec/spectating.md), for a 4.17 client. Chunks hold records back to back. A record can leave out its command and shorten its time and object to a difference from the record before it; spec/spectating.md says how a reader recovers them.",
+  "fields": [
+    {
+      "name": "flags",
+      "type": "bits",
+      "size": 1,
+      "bits": [
+        {
+          "name": "channel",
+          "width": 4,
+          "note": "The channel the message went on."
+        },
+        {
+          "name": "sizeIsByte",
+          "width": 1,
+          "note": "Set where the body's size is one byte."
+        },
+        {
+          "name": "objectIsDelta",
+          "width": 1,
+          "note": "Set where the object is a difference from the last record's."
+        },
+        {
+          "name": "commandRepeats",
+          "width": 1,
+          "note": "Set where the command is the last record's and is left out."
+        },
+        {
+          "name": "timeIsDelta",
+          "width": 1,
+          "note": "Set where the time is a difference from the last record's."
+        }
+      ]
+    },
+    {
+      "name": "time",
+      "type": "f32",
+      "present": {
+        "when": "flags.timeIsDelta",
+        "equals": 0
+      },
+      "note": "When the message was sent, in seconds of the stream's clock."
+    },
+    {
+      "name": "timeDelta",
+      "type": "u8",
+      "present": {
+        "when": "flags.timeIsDelta",
+        "equals": 1
+      },
+      "note": "When the message was sent, in milliseconds after the last record's time."
+    },
+    {
+      "name": "size",
+      "type": "u32",
+      "present": {
+        "when": "flags.sizeIsByte",
+        "equals": 0
+      },
+      "note": "How many bytes the body occupies."
+    },
+    {
+      "name": "byteSize",
+      "type": "u8",
+      "present": {
+        "when": "flags.sizeIsByte",
+        "equals": 1
+      },
+      "note": "How many bytes the body occupies."
+    },
+    {
+      "name": "command",
+      "type": "u8",
+      "present": {
+        "when": "flags.commandRepeats",
+        "equals": 0
+      },
+      "note": "The message's command."
+    },
+    {
+      "name": "object",
+      "type": "u32",
+      "present": {
+        "when": "flags.objectIsDelta",
+        "equals": 0
+      },
+      "note": "The network object the message's header names."
+    },
+    {
+      "name": "objectDelta",
+      "type": "i8",
+      "present": {
+        "when": "flags.objectIsDelta",
+        "equals": 1
+      },
+      "note": "The network object the message's header names, as a difference from the last record's object."
+    },
+    {
+      "name": "body",
+      "type": "bytes",
+      "size": "size",
+      "present": {
+        "when": "flags.sizeIsByte",
+        "equals": 0
+      },
+      "note": "The rest of the message, after its command and object."
+    },
+    {
+      "name": "byteBody",
+      "type": "bytes",
+      "size": "byteSize",
+      "present": {
+        "when": "flags.sizeIsByte",
+        "equals": 1
+      },
+      "note": "The rest of the message, after its command and object."
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "struct",
+  "struct": "StreamRecord",
+  "version": "4.17.0.267",
+  "note": "A record using every short form: the time and object as differences, a one byte size, and the last record's command. Taken from a recorded stream a client played.",
+  "bytes": "f32001f700",
+  "fields": {
+    "flags": {
+      "channel": 3,
+      "sizeIsByte": 1,
+      "objectIsDelta": 1,
+      "commandRepeats": 1,
+      "timeIsDelta": 1
+    },
+    "time": null,
+    "timeDelta": 32,
+    "size": null,
+    "byteSize": 1,
+    "command": null,
+    "object": null,
+    "objectDelta": -9,
+    "body": null,
+    "byteBody": "00"
+  }
+}

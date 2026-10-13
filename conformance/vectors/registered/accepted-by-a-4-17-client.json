@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "Registered",
+  "version": "4.17.0.233",
+  "note": "Taken from a server a client accepted, with the proof replaced by the one the synthetic request beside it carries.",
+  "bytes": "00 000000 00000000 0100000000000000 894b7c02 893fa0c88cfc47ab 00000000",
+  "fields": {
+    "command": 0,
+    "leading": "000000",
+    "clientId": 0,
+    "playerId": "1",
+    "version": 41700233,
+    "proof": "893fa0c88cfc47ab",
+    "trailing": "00000000"
+  }
+}

@@ -1,6 +1,6 @@
 # Communication
 
-Chat, pings, emotes, and the sound and music a server can drive. Applies to 4.20 clients, as [Versions](versions.md) describes.
+Chat, pings, emotes, and the sound and music a server can drive. Applies to 4.17 and 4.20 clients, as [Versions](versions.md) describes.
 
 ## Chat
 
@@ -32,13 +32,23 @@ effects out (`FadeSounds`).
 
 <!-- messages:begin -->
 
-| Message                                                  | Sent by | 4.20           | What it does                                       |
-| -------------------------------------------------------- | ------- | -------------- | -------------------------------------------------- |
-| [`Chat`](../schema/messages/Chat.json)                   | server  | 104 on chat    | Text one player sends the others during a match    |
-| [`EmotePlayed`](../schema/messages/EmotePlayed.json)     | server  | 66 on events   | Say a unit played an emote                         |
-| [`MapPing`](../schema/messages/MapPing.json)             | client  | 87 on requests | Mark a point on the map for the others             |
-| [`PingPlaced`](../schema/messages/PingPlaced.json)       | server  | 64 on events   | Show a ping on the map to everyone meant to see it |
-| [`PlayEmote`](../schema/messages/PlayEmote.json)         | client  | 72 on requests | Play an emote                                      |
-| [`SystemMessage`](../schema/messages/SystemMessage.json) | server  | 247 on events  | Put a line of its own in a client's chat           |
+| Message                                                    | Sent by | 4.17           | 4.20           | What it does                                                                                                                                     |
+| ---------------------------------------------------------- | ------- | -------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [`Chat`](../schema/messages/Chat.json)                     | server  | 104 on chat    | 104 on chat    | Text one player sends the others during a match                                                                                                  |
+| [`ChatAllowance`](../schema/messages/ChatAllowance.json)   | server  | 249 on events  | none           | Limit a player's chat, showing how many lines they have left                                                                                     |
+| [`ContextEmote`](../schema/messages/ContextEmote.json)     | server  | 243 on events  | none           | What a server sends about an emote a champion played for the moment                                                                              |
+| [`EmotePlayed`](../schema/messages/EmotePlayed.json)       | server  | 66 on events   | 66 on events   | Say a unit played an emote                                                                                                                       |
+| [`FadeSounds`](../schema/messages/FadeSounds.json)         | server  | 95 on events   | none           | Fade a client's sound effects out                                                                                                                |
+| [`MapPing`](../schema/messages/MapPing.json)               | client  | 87 on requests | 87 on requests | Mark a point on the map for the others                                                                                                           |
+| [`MusicCue`](../schema/messages/MusicCue.json)             | server  | 220 on events  | none           | Drive the music a client plays                                                                                                                   |
+| [`PingPlaced`](../schema/messages/PingPlaced.json)         | server  | 64 on events   | 64 on events   | Show a ping on the map to everyone meant to see it                                                                                               |
+| [`PlayEmote`](../schema/messages/PlayEmote.json)           | client  | 72 on requests | 72 on requests | Play an emote                                                                                                                                    |
+| [`SoundPlayed`](../schema/messages/SoundPlayed.json)       | server  | 67 on events   | none           | Play a sound once                                                                                                                                |
+| [`SystemMessage`](../schema/messages/SystemMessage.json)   | server  | 247 on events  | 247 on events  | Put a line of its own in a client's chat                                                                                                         |
+| [`ThemeMusic`](../schema/messages/ThemeMusic.json)         | server  | 96 on events   | none           | Set a champion's skin music                                                                                                                      |
+| [`VoiceCommand`](../schema/messages/VoiceCommand.json)     | server  | 68 on events   | none           | What a server sends about a voice command a champion gave                                                                                        |
+| [`VoiceEvent`](../schema/messages/VoiceEvent.json)         | server  | 121 on events  | none           | Play a voice event                                                                                                                               |
+| [`VoiceEventDone`](../schema/messages/VoiceEventDone.json) | client  | 5 on requests  | none           | What a client sends once a voice event (VoiceEvent) of kind 0 that asked for it has played, or at once where the client could not play the event |
+| [`VolumeMuted`](../schema/messages/VolumeMuted.json)       | server  | 39 on events   | none           | Mute or unmute one kind of sound                                                                                                                 |
 
 <!-- messages:end -->

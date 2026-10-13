@@ -5,6 +5,58 @@
   "note": "What a server sends as a camp of units that belong to no side is emptied. A client marks the camp empty, even one that had just filled. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 195,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "killer",
+          "type": "u32",
+          "note": "The champion credited with emptying the camp, or zero for none. Where the camp has no buff side and no line of its own, a client has that champion speak a line for it, whatever speak says."
+        },
+        {
+          "name": "camp",
+          "type": "u32",
+          "note": "Which camp. A client ignores a camp it does not know, but for the timer."
+        },
+        {
+          "name": "does",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "speak",
+              "width": 1,
+              "note": "Set to have the client play the line for a camp revealed or a buff taken, to the client's own side."
+            },
+            {
+              "name": "firstSide",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
+            {
+              "name": "unused",
+              "width": 6,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "timerKind",
+          "type": "i32",
+          "note": "Which of the client's neutral timers to set, named by a value that is not a small number. Zero touches no timer."
+        },
+        {
+          "name": "returnsAt",
+          "type": "f32",
+          "note": "The game time, in seconds, when the camp fills again. The largest finite 32-bit float means now."
+        }
+      ]
+    },
+    {
       "from": "4.20.0.315",
       "channel": "events",
       "command": 195,

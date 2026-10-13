@@ -1,0 +1,21 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SpawnFromBarracks",
+  "version": "4.17.0.267",
+  "note": "Taken from inside an EnterSight a client accepted. The client drew the minion where that EnterSight placed it.",
+  "bytes": "03 01100040 01100040407171b7ff01000000000001",
+  "fields": {
+    "command": 3,
+    "netId": 1073745921,
+    "extendedCommand": null,
+    "unit": 1073745921,
+    "node": 64,
+    "barracks": 4290212209,
+    "wave": 1,
+    "kind": 0,
+    "damageBonus": 0,
+    "healthBonus": 0,
+    "level": 1
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "LeaveTeamSight",
+  "version": "4.17.0.267",
+  "note": "Taken from a spectator recording of a match played on this version: what the server sent a client watching the match.",
+  "bytes": "e1 02000040 01",
+  "fields": {
+    "command": 225,
+    "netId": 1073741826,
+    "extendedCommand": null,
+    "side": 1
+  }
+}

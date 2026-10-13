@@ -7,7 +7,7 @@ The groups follow in the
 order 0, 1, 2, 3, 5 and then 4: group 4 comes last. A sending end MUST write
 each group's length as the number of bytes its run takes.
 
-Applies to 4.20 clients, as [Versions](versions.md) describes.
+Applies to 4.17 and 4.20 clients, as [Versions](versions.md) describes.
 
 That much a layout reaches. What the run holds it does not, and this document
 says what settles it.
@@ -242,13 +242,25 @@ scoreboard with `ChampionStats`. A 4.17 server can also add to a unit's shield
 
 <!-- messages:begin -->
 
-| Message                                                        | Sent by | 4.20             | What it does                                       |
-| -------------------------------------------------------------- | ------- | ---------------- | -------------------------------------------------- |
-| [`ChampionStats`](../schema/messages/ChampionStats.json)       | server  | 70 on events     | Set a champion's tallies for the scoreboard        |
-| [`ExperienceGained`](../schema/messages/ExperienceGained.json) | server  | 16 on events     | Grant a unit experience                            |
-| [`GoldGained`](../schema/messages/GoldGained.json)             | server  | 34 on events     | Grant a unit gold                                  |
-| [`LevelUp`](../schema/messages/LevelUp.json)                   | server  | 63 on events     | What a server sends when a unit gains a level      |
-| [`Replication`](../schema/messages/Replication.json)           | server  | 196 on transient | Say what has changed about units a client can see  |
-| [`TransientAck`](../schema/messages/TransientAck.json)         | client  | 168 on requests  | Say a batch of changes arrived, naming which batch |
+| Message                                                                | Sent by | 4.17             | 4.20             | What it does                                                                     |
+| ---------------------------------------------------------------------- | ------- | ---------------- | ---------------- | -------------------------------------------------------------------------------- |
+| [`ChampionStats`](../schema/messages/ChampionStats.json)               | server  | 70 on events     | 70 on events     | Set a champion's tallies for the scoreboard                                      |
+| [`ExperienceGained`](../schema/messages/ExperienceGained.json)         | server  | 16 on events     | 16 on events     | Grant a unit experience                                                          |
+| [`GoldEarned`](../schema/messages/GoldEarned.json)                     | server  | 228 on events    | none             | What a server sends a client watching a match to credit a champion with gold     |
+| [`GoldGained`](../schema/messages/GoldGained.json)                     | server  | 34 on events     | 34 on events     | Grant a unit gold                                                                |
+| [`GoldRedirect`](../schema/messages/GoldRedirect.json)                 | server  | 7 on events      | none             | Send the gold a unit earns to another                                            |
+| [`GoldSourcesLog`](../schema/messages/GoldSourcesLog.json)             | server  | 282 on events    | none             | Carry a text to a client                                                         |
+| [`HealthBar`](../schema/messages/HealthBar.json)                       | server  | 206 on events    | none             | What a server sends about a unit's health bar                                    |
+| [`LevelCap`](../schema/messages/LevelCap.json)                         | server  | 274 on events    | none             | What a server sends its player's champion to set the highest level it can reach  |
+| [`LevelUp`](../schema/messages/LevelUp.json)                           | server  | 63 on events     | 63 on events     | What a server sends when a unit gains a level                                    |
+| [`MinionKillCount`](../schema/messages/MinionKillCount.json)           | server  | 287 on events    | none             | Add one to a champion's count of minions killed                                  |
+| [`MultikillCount`](../schema/messages/MultikillCount.json)             | server  | 277 on events    | none             | What a server sends a client watching a match to state a champion's run of kills |
+| [`Replication`](../schema/messages/Replication.json)                   | server  | 196 on transient | 196 on transient | Say what has changed about units a client can see                                |
+| [`ResourceDisplay`](../schema/messages/ResourceDisplay.json)           | server  | 147 on events    | none             | Change how a unit's resource bar is shown                                        |
+| [`ResourceKindChanged`](../schema/messages/ResourceKindChanged.json)   | server  | 275 on events    | none             | Change what sort of resource a unit has, which its bar's colours and art follow  |
+| [`ScoreAdded`](../schema/messages/ScoreAdded.json)                     | server  | 217 on events    | none             | Add to a player's score                                                          |
+| [`ShieldAdded`](../schema/messages/ShieldAdded.json)                   | server  | 102 on events    | none             | Add to a unit's shield                                                           |
+| [`StatisticIncremented`](../schema/messages/StatisticIncremented.json) | server  | 218 on events    | none             | Add one to a champion's count of a deed, as counted for the end of a match       |
+| [`TransientAck`](../schema/messages/TransientAck.json)                 | client  | 168 on requests  | 168 on requests  | Say a batch of changes arrived, naming which batch                               |
 
 <!-- messages:end -->

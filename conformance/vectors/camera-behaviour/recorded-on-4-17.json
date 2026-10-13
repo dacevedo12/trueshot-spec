@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "CameraBehaviour",
+  "version": "4.17.0.267",
+  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "73 22000040 29b759465eab33435e685d46",
+  "fields": {
+    "command": 115,
+    "netId": 1073741858,
+    "extendedCommand": null,
+    "x": 13933.7900390625,
+    "y": 179.66940307617188,
+    "z": 14170.091796875
+  }
+}

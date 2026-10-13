@@ -11,6 +11,7 @@ by its first two parts.
 
 | Range | From       | Up to    |
 | ----- | ---------- | -------- |
+| 4.17  | 4.17.0.233 | 4.18.0.0 |
 | 4.20  | 4.20.0.315 | 4.21.0.0 |
 
 Every build in a range is held to the same facts.
@@ -36,6 +37,7 @@ what each does, in the same place.
 For each range, a page lists every message a build in it sends or takes, by
 system, with the layout of its body, generated from the definitions:
 
+- [4.17](reference/4-17-0-233.md)
 - [4.20](reference/4-20-0-315.md)
 
 Each system document also ends with a generated table of its messages, giving

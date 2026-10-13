@@ -1,0 +1,73 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "WaypointGroup",
+  "version": "4.17.0.267",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "61 00000000 0100000001000a01000040fc21f3adf2e1f4f9f37d7d007dce32",
+  "fields": {
+    "command": 97,
+    "netId": 0,
+    "extendedCommand": null,
+    "syncId": 1,
+    "movementCount": 1,
+    "movements": [
+      {
+        "header": {
+          "hasTeleportToken": 0,
+          "pointCount": 5
+        },
+        "path": {
+          "unit": 1073741825,
+          "teleportToken": null,
+          "flags": [
+            {
+              "xIsStep": 0,
+              "zIsStep": 0
+            },
+            {
+              "xIsStep": 1,
+              "zIsStep": 1
+            },
+            {
+              "xIsStep": 1,
+              "zIsStep": 1
+            },
+            {
+              "xIsStep": 1,
+              "zIsStep": 1
+            }
+          ],
+          "firstX": -3295,
+          "firstZ": -3411,
+          "steps": [
+            {
+              "xStep": null,
+              "xWhole": -2847,
+              "zStep": null,
+              "zWhole": -3079
+            },
+            {
+              "xStep": 125,
+              "xWhole": null,
+              "zStep": 125,
+              "zWhole": null
+            },
+            {
+              "xStep": 0,
+              "xWhole": null,
+              "zStep": 125,
+              "zWhole": null
+            },
+            {
+              "xStep": -50,
+              "xWhole": null,
+              "zStep": 50,
+              "zWhole": null
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

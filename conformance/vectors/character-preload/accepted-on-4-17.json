@@ -1,0 +1,15 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "CharacterPreload",
+  "version": "4.17.0.267",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "8a 00000000 00000000416e6e69650000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+  "fields": {
+    "command": 138,
+    "netId": 0,
+    "extendedCommand": null,
+    "skin": 0,
+    "character": "Annie"
+  }
+}

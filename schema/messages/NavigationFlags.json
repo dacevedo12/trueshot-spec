@@ -1,0 +1,61 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "NavigationFlags",
+  "system": "movement",
+  "note": "What a server sends to mark the ground within circles, in place of the circles it marked before: each circle's flags apply to the ground within it. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.0",
+      "channel": "events",
+      "command": 65,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "note": "A client fails on the first of these in a match: it stops, marking no circle and sending no answer.",
+      "fields": [
+        {
+          "name": "count",
+          "type": "u16",
+          "note": "The count of circles that follow."
+        },
+        {
+          "name": "syncId",
+          "type": "i32",
+          "note": "A number naming this marking."
+        },
+        {
+          "name": "circles",
+          "type": "array",
+          "count": "count",
+          "items": {
+            "name": "circlesEntry",
+            "type": "record",
+            "fields": [
+              {
+                "name": "x",
+                "type": "f32",
+                "note": "The circle's centre, along one ground axis, in world units."
+              },
+              {
+                "name": "z",
+                "type": "f32",
+                "note": "The circle's centre, along the other ground axis, in world units."
+              },
+              {
+                "name": "radius",
+                "type": "f32",
+                "note": "Its radius, in world units. A circle of radius 1000 or more marks nothing."
+              },
+              {
+                "name": "flags",
+                "type": "u32",
+                "note": "The flags to add to each cell. Only the low 16 bits take effect."
+              }
+            ]
+          },
+          "note": "The circles."
+        }
+      ]
+    }
+  ]
+}

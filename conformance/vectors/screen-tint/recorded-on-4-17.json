@@ -1,0 +1,18 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ScreenTint",
+  "version": "4.17.0.267",
+  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "db 00000000 010000803e64000000320000ffcdcc4c3e",
+  "fields": {
+    "command": 219,
+    "netId": 0,
+    "extendedCommand": null,
+    "fadeIn": 1,
+    "time": 0.25,
+    "side": 100,
+    "colour": 4278190130,
+    "weight": 0.20000000298023224
+  }
+}

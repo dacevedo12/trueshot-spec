@@ -45,7 +45,7 @@ The stream's chunks run for `chunkTimeInterval` each and its key frames for
 ## What a chunk holds
 
 A chunk is the messages a server sent the players of the match, one
-`StreamRecord` after another, each
+[`StreamRecord`](../schema/types/StreamRecord.json) after another, each
 written against the one before it to save space. A reader keeps the last
 record's time, command and object, and recovers a record's own:
 
@@ -76,7 +76,11 @@ or, where it names none, from the chunk its number implies (see `StreamChunk`).
 
 <!-- messages:begin -->
 
-| Message | Sent by | 4.20 | What it does |
-| ------- | ------- | ---- | ------------ |
+| Message                                                        | Sent by | 4.17            | 4.20 | What it does                                                                                                                                                                 |
+| -------------------------------------------------------------- | ------- | --------------- | ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`StreamChunk`](../schema/messages/StreamChunk.json)           | server  | 237 on events   | none | What a server streaming a match sends to carry one fragment of a chunk or key frame of recorded messages (see spec/spectating.md)                                            |
+| [`StreamChunkRange`](../schema/messages/StreamChunkRange.json) | server  | 236 on events   | none | What a server streaming a match sends to say where the match proper begins in its chunks, and, once known, where it ends                                                     |
+| [`StreamMetadata`](../schema/messages/StreamMetadata.json)     | server  | 235 on events   | none | What a server streaming a match to a watching client sends first, within 30 seconds of the client's request: how long its chunks and key frames run                          |
+| [`StreamRequest`](../schema/messages/StreamRequest.json)       | client  | 234 on requests | none | What a client watching a match streamed over its connection (see spec/spectating.md) sends each time the server answers its registration, asking for the stream from a point |
 
 <!-- messages:end -->

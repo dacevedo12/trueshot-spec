@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "EnterTeamSight",
+  "version": "4.17.0.267",
+  "note": "Taken from a spectator recording of a match played on this version: what the server sent a client watching the match.",
+  "bytes": "e0 19010040 00",
+  "fields": {
+    "command": 224,
+    "netId": 1073742105,
+    "extendedCommand": null,
+    "side": 0
+  }
+}

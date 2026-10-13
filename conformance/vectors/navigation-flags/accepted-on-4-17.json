@@ -1,0 +1,23 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "NavigationFlags",
+  "version": "4.17.0.267",
+  "note": "Taken from a server. A client of this version failed on it before reading a circle, as the revision's note says.",
+  "bytes": "41 00000000 01004d0000000000c8430000c8430000964300000000",
+  "fields": {
+    "command": 65,
+    "netId": 0,
+    "extendedCommand": null,
+    "count": 1,
+    "syncId": 77,
+    "circles": [
+      {
+        "x": 400,
+        "z": 400,
+        "radius": 300,
+        "flags": 0
+      }
+    ]
+  }
+}
