@@ -1,0 +1,79 @@
+{
+  "$schema": "meta/protocol.json",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "endian": "little",
+      "note": "Covers the 4.20 range.",
+      "cipher": {
+        "name": "Blowfish",
+        "mode": "ECB",
+        "blockSize": 8,
+        "blockEndian": "big",
+        "keySize": 16,
+        "note": "There is no padding. Trailing bytes that do not fill a block travel unchanged, so a payload shorter than one block is never enciphered at all."
+      },
+      "transport": {
+        "base": {
+          "name": "ENet",
+          "version": "1.2.5",
+          "note": "Stock ENet does not interoperate. The header below replaces the stock one, and the constants replace stock values. Everything else, including reliability, sequencing and fragmentation, is stock behaviour."
+        },
+        "header": [
+          {
+            "name": "unknown",
+            "type": "bytes",
+            "size": 4,
+            "note": "Purpose undetermined. A client writes 28 68 bd eb, and does not connect without the field; from a server, any four bytes serve."
+          },
+          {
+            "name": "sessionId",
+            "type": "u8",
+            "note": "The value the client supplied when it connected, carried on every packet. A connection whose packets carry any other value times out."
+          },
+          {
+            "name": "peer",
+            "type": "bits",
+            "size": 1,
+            "bits": [
+              {
+                "name": "peerId",
+                "width": 7,
+                "note": "127 marks an unassigned peer, which is what a connecting client sends."
+              },
+              {
+                "name": "sentTimeFlag",
+                "width": 1,
+                "note": "Set when the header carries a sent time."
+              }
+            ]
+          },
+          {
+            "name": "sentTime",
+            "type": "u16",
+            "endian": "big",
+            "present": {
+              "when": "peer.sentTimeFlag"
+            },
+            "note": "Milliseconds since the connection opened."
+          }
+        ],
+        "constants": [
+          {
+            "name": "maximumPeerId",
+            "value": 127,
+            "stock": 32767,
+            "note": "Follows from the peer id occupying seven bits."
+          },
+          {
+            "name": "maximumTransmissionUnit",
+            "value": 996,
+            "stock": 4096,
+            "note": "A client asks for 1400 in its connect command, and takes no datagram larger than 996 bytes."
+          }
+        ]
+      }
+    }
+  ]
+}
