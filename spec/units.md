@@ -65,13 +65,13 @@ sees.
 | [`FollowerMaster`](../schema/messages/FollowerMaster.json)       | server  | 242 on events | none          | Change which unit a following object follows                                                  |
 | [`MapProp`](../schema/messages/MapProp.json)                     | server  | 208 on events | 208 on events | Place a prop on the map: a thing that stands there and is looked at rather than one that acts |
 | [`MapPropChanged`](../schema/messages/MapPropChanged.json)       | server  | 209 on events | 209 on events | Change something about a prop already on the map                                              |
-| [`MarkerMoved`](../schema/messages/MarkerMoved.json)             | server  | 276 on events | none          | Move a marker (SpawnMarker) from one place toward another                                     |
+| [`MarkerMoved`](../schema/messages/MarkerMoved.json)             | server  | 276 on events | 276 on events | Move a marker (SpawnMarker) from one place toward another                                     |
 | [`SpawnBot`](../schema/messages/SpawnBot.json)                   | server  | 207 on events | none          | Create a champion played by a bot                                                             |
 | [`SpawnFromBarracks`](../schema/messages/SpawnFromBarracks.json) | server  | 3 on events   | 3 on events   | Put a unit on the field from the place its side sends them out of                             |
 | [`SpawnMarker`](../schema/messages/SpawnMarker.json)             | server  | 256 on events | none          | Create an unseen object at a place, which other messages can then name                        |
 | [`SpawnPet`](../schema/messages/SpawnPet.json)                   | server  | 55 on events  | none          | Put a pet on the field                                                                        |
 | [`SpawnTurret`](../schema/messages/SpawnTurret.json)             | server  | 291 on events | none          | Create a turret of its own choosing                                                           |
 | [`SpawnUnit`](../schema/messages/SpawnUnit.json)                 | server  | 124 on events | none          | Put a minion-like unit on the field, such as a ward                                           |
-| [`TeamChanged`](../schema/messages/TeamChanged.json)             | server  | 215 on events | none          | Move a unit to another side                                                                   |
+| [`TeamChanged`](../schema/messages/TeamChanged.json)             | server  | 215 on events | 215 on events | Move a unit to another side                                                                   |
 
 <!-- messages:end -->

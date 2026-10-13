@@ -43,6 +43,46 @@
           "note": "One to turn it the way it moves, zero not to."
         }
       ]
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 276,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "fromX",
+          "type": "f32",
+          "note": "Where it starts, in world units."
+        },
+        {
+          "name": "fromZ",
+          "type": "f32",
+          "note": "Where it starts, in world units."
+        },
+        {
+          "name": "toX",
+          "type": "f32",
+          "note": "Where it goes, in world units."
+        },
+        {
+          "name": "toZ",
+          "type": "f32",
+          "note": "Where it goes, in world units."
+        },
+        {
+          "name": "speed",
+          "type": "f32",
+          "note": "How fast it goes, in world units a second. Below zero it jumps to the goal; zero leaves it at the start."
+        },
+        {
+          "name": "faceGoal",
+          "type": "u8",
+          "note": "One to turn it the way it moves, zero not to."
+        }
+      ]
     }
   ]
 }

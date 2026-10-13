@@ -1,0 +1,25 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "PlayAnimation",
+  "version": "4.20.0.315",
+  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "b0 761c0040 2500000000cdcc4c3e0000004041747461636b3100",
+  "fields": {
+    "command": 176,
+    "netId": 1073749110,
+    "extendedCommand": null,
+    "flags": {
+      "locked": 1,
+      "lockedFromIdle": 0,
+      "noBlend": 1,
+      "loop": 0,
+      "keepEmotes": 0,
+      "unused": 1
+    },
+    "scaleTime": 107374592,
+    "startProgress": 8.688050478813866e-44,
+    "speed": 7.7407462201485365e31,
+    "animation": "ack1"
+  }
+}

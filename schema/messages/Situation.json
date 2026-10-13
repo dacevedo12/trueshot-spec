@@ -18,6 +18,21 @@
           "note": "What came about, by a number a name gives."
         }
       ]
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 289,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "situation",
+          "type": "u32",
+          "note": "What came about, by a number a name gives."
+        }
+      ]
     }
   ]
 }

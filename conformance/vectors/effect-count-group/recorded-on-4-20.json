@@ -1,0 +1,48 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "EffectCountGroup",
+  "version": "4.20.0.315",
+  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "bf 00000000 0000003f00000000050500004008000040050106000040080000400401070000400800004004010900004008000040050108000040080000400301",
+  "fields": {
+    "command": 191,
+    "netId": 0,
+    "extendedCommand": null,
+    "lasts": 0.5,
+    "runningFor": 0,
+    "count": 5,
+    "entries": [
+      {
+        "unit": 1073741829,
+        "caster": 1073741832,
+        "slot": 5,
+        "stacks": 1
+      },
+      {
+        "unit": 1073741830,
+        "caster": 1073741832,
+        "slot": 4,
+        "stacks": 1
+      },
+      {
+        "unit": 1073741831,
+        "caster": 1073741832,
+        "slot": 4,
+        "stacks": 1
+      },
+      {
+        "unit": 1073741833,
+        "caster": 1073741832,
+        "slot": 5,
+        "stacks": 1
+      },
+      {
+        "unit": 1073741832,
+        "caster": 1073741832,
+        "slot": 3,
+        "stacks": 1
+      }
+    ]
+  }
+}

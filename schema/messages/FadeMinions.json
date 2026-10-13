@@ -28,6 +28,31 @@
           "note": "How long the fade takes, in seconds."
         }
       ]
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 203,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "side",
+          "type": "u8",
+          "note": "Which side, or zero for both."
+        },
+        {
+          "name": "amount",
+          "type": "f32",
+          "note": "The opacity they fade to, from 0 for unseen to 1 for solid."
+        },
+        {
+          "name": "time",
+          "type": "f32",
+          "note": "How long the fade takes, in seconds."
+        }
+      ]
     }
   ]
 }

@@ -28,6 +28,31 @@
           "note": "The opacity it fades to, from 0 for unseen to 1 for solid."
         }
       ]
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 178,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "fade",
+          "type": "i16",
+          "note": "Names this fade, so that FadeRemoved can name it."
+        },
+        {
+          "name": "time",
+          "type": "f32",
+          "note": "How long the fade takes, in seconds."
+        },
+        {
+          "name": "target",
+          "type": "f32",
+          "note": "The opacity it fades to, from 0 for unseen to 1 for solid."
+        }
+      ]
     }
   ]
 }
