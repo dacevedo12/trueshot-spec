@@ -47,6 +47,37 @@ regions, and its regions see over walls or not as the region says.
 A 4.17 client draws its fog of war, or the map with no darkening, as
 `FogSet` and `FogToggled` say. Neither changes what the client can see.
 
+## Who is told what
+
+A client acts on a message about whichever unit it names, its own champion or
+another, so what a client knows is whatever a server sends it. A server
+decides, message by message, which clients to tell.
+
+Messages about a champion's own state, its gold, its inventory, its spells'
+levels, cooldowns and charges, and whether it can shop, are applied to the
+champion they name on any client that receives them, but a client shows most
+of them only for its own champion:
+
+- `GoldGained` shows floating gold only for the client's own champion.
+- `ItemAdded` and `InventorySlot` announce a purchase only for the client's own
+  champion; an ally's purchase is called out where the message asks for it.
+- `ShopEnabled` changes the shop only for the client's own champion.
+- `LevelUp` shows its effect over any unit the client can see.
+
+A server SHOULD send `SpellCooldown`, `SpellCharges` and `GoldGained` about a
+champion only to the client whose champion it is.
+
+A client also acts on what it is told about a unit it holds but cannot see:
+
+- a particle on a hidden unit is created but not drawn until the unit comes
+  into view, unless the particle is bound to a target the client can see;
+- floating text over a hidden unit is dropped;
+- an animation plays on a hidden unit, which comes into view part way through
+  it.
+
+A client holds whatever it is sent, shown or not. A server SHOULD NOT send a
+client what its side cannot see, beyond what keeps its world consistent.
+
 ## Messages
 
 <!-- messages:begin -->
