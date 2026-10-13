@@ -20,7 +20,7 @@
         },
         {
           "name": "clientId",
-          "type": "i32",
+          "type": "u32",
           "note": "A client writes zero here."
         },
         {
@@ -62,8 +62,8 @@
         },
         {
           "name": "clientId",
-          "type": "i32",
-          "note": "Which seat in the match the sender occupies, counted from zero."
+          "type": "u32",
+          "note": "The client id the sender holds, counted from zero."
         },
         {
           "name": "playerId",

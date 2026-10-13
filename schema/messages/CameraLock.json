@@ -32,7 +32,7 @@
         {
           "name": "clientId",
           "type": "u32",
-          "note": "Which seat is locking. Zero is a seat like any other rather than an absence."
+          "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
         }
       ],
       "note": "A client sends it whenever its lock changes: by the player, or as the game forces a lock or lifts one. It sends none while playing a replay."
@@ -64,7 +64,7 @@
         {
           "name": "clientId",
           "type": "u32",
-          "note": "Which seat is locking. Zero is a seat like any other rather than an absence."
+          "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
         }
       ]
     }

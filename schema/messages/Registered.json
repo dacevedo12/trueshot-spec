@@ -20,8 +20,8 @@
         },
         {
           "name": "clientId",
-          "type": "i32",
-          "note": "The seat playerId holds; where playerId is the client's own, the client takes this seat as its own and goes on."
+          "type": "u32",
+          "note": "The client id playerId holds. Where playerId is the client's own, the client takes this client id as its own and goes on."
         },
         {
           "name": "playerId",
@@ -62,8 +62,8 @@
         },
         {
           "name": "clientId",
-          "type": "i32",
-          "note": "Which seat in the match the named player occupies, counted from zero."
+          "type": "u32",
+          "note": "The client id the named player holds, counted from zero."
         },
         {
           "name": "playerId",

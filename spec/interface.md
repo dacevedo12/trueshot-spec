@@ -7,8 +7,8 @@ tutorial. Applies to 4.17 and 4.20 clients, as [Versions](versions.md) describes
 ## The view
 
 A client reports where its view sits and which way it faces with `Camera`, and a
-server MUST answer each report with `CameraAck`, naming it: until it does, a
-client sends the report again and again. A client tells a server what it has
+server answers each report with `CameraAck`, naming it, as
+[Ordering](ordering.md) requires. A client tells a server what it has
 selected with `SelectObject`, and as it locks its view to its champion or
 releases it with `CameraLock`.
 

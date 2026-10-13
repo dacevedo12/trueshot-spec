@@ -35,16 +35,9 @@ not already hold the table cannot read a run.
 ## Which batches a client takes
 
 A client applies a unit's values from a batch only where the batch's `syncId`
-is greater than that of the last batch it applied for that unit, and drops
-values carried under an equal or a lower one. The comparison is made unit by
-unit, so a `syncId` one batch has used for a turret is still taken for a
-champion.
-
-A server MUST give each batch carrying a unit a `syncId` greater than the last
-it sent carrying that unit. Batches for different units can share a `syncId`.
-
-A client answers a batch with `TransientAck` whether or not it took the values,
-so an answer says that a batch arrived and not that its values were taken.
+is greater than that of the last batch it applied for that unit and group. A client answers a batch with `TransientAck` whether or not it took the
+values. [Ordering](ordering.md) gives the rules for these numbers, when a
+batch goes unanswered, and what they require of a server.
 
 ## Reading the tables
 
@@ -148,7 +141,7 @@ A spell's cooldown lasts its base length times one plus the modifier at bit 21,
 so a reduction is carried as a negative fraction and the panel shows its size.
 
 Bit 22 sets the countdown a client shows on the champion's passive. It is a
-moment on the match clock, in seconds, on the same clock as the time a
+moment on the match clock (see [Time](time.md)), in seconds, on the same clock as the time a
 `ClockSync` carries, and not the time left: 120 at the opening of a match starts
 the countdown from 2:00. Once that moment has passed, the passive shows ready.
 Bit 23 is how long the whole cooldown lasts, in seconds, and a client shades the

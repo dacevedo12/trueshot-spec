@@ -13,9 +13,9 @@
       "reliability": "unreliable",
       "fields": [
         {
-          "name": "seat",
-          "type": "i32",
-          "note": "The seat this is about."
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id this is about."
         },
         {
           "name": "player",
@@ -64,9 +64,9 @@
       "reliability": "unreliable",
       "fields": [
         {
-          "name": "seat",
-          "type": "i32",
-          "note": "The seat this is about."
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id this is about."
         },
         {
           "name": "player",

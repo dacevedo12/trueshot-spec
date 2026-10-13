@@ -9,8 +9,9 @@ Applies to 4.17 and 4.20 clients, as [Versions](versions.md) describes.
 
 ## Coordinates
 
-A path carries its points compactly, as integers, while positions elsewhere
-are world floats covering a far larger range. The two are related by an origin
+The compact paths of `Movement` and `MovementAtSpeed` carry their points as
+integers, while positions elsewhere are world floats covering a far larger
+range (see [Space](space.md)). The two are related by an origin
 and a step:
 
 ```
@@ -38,21 +39,9 @@ derive the origin from anything a client sent. A client's positions are a claim 
 other, and a server that took an origin from one would let a single client
 move the ground under every other.
 
-The origins this document records, keyed by the map number a server sends in
-`VersionSync`:
-
-| `map` | Map                  | Origin     |
-| ----- | -------------------- | ---------- |
-| 1     | Summoner's Rift      | 6991, 7223 |
-| 8     | The Crystal Scar     | 6947, 6609 |
-| 10    | The Twisted Treeline | 7708, 7227 |
-| 11    | Summoner's Rift      | 7358, 7412 |
-| 12    | The Howling Abyss    | 6560, 6309 |
-
-Two maps carry the name Summoner's Rift and their origins differ, so the number
-is what identifies a map here and the name is only a label.
-
-The origin belongs to the map, not to the protocol. A server hosting a map the
+[Space](space.md) gives the origin of each map, keyed by the map number a
+server sends in `VersionSync`. The origin belongs to the map, not to the
+protocol. A server hosting a map the
 table leaves out takes its origin from that map's navigation data.
 
 ## Relocating rather than walking
@@ -119,7 +108,8 @@ as world floats beside the path.
 A client does not move its own champion on a right click by itself: the
 champion moves only along a `WaypointGroup` a server sends. To move it, a
 server MUST answer the `MoveOrder` with a `WaypointGroup` on the transient
-channel, and the client returns that group's `syncId` in a `WaypointAck`. A
+channel, and the client returns that group's `syncId` in a `WaypointAck` (see
+[Ordering](ordering.md)). A
 `WaypointGroup` carrying back the path the order brought, unchanged, moves the
 champion along the route the client proposed.
 

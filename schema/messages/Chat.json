@@ -14,8 +14,8 @@
       "fields": [
         {
           "name": "clientId",
-          "type": "i32",
-          "note": "Which seat the sender occupies."
+          "type": "u32",
+          "note": "The client id of the sender."
         },
         {
           "name": "netId",
@@ -80,8 +80,8 @@
       "fields": [
         {
           "name": "clientId",
-          "type": "i32",
-          "note": "Which seat the sender occupies."
+          "type": "u32",
+          "note": "The client id of the sender."
         },
         {
           "name": "netId",
