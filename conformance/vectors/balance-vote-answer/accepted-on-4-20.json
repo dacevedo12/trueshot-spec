@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "BalanceVoteAnswer",
+  "version": "4.20.0.315",
+  "note": "Taken from a client a server accepted.",
+  "bytes": "fb 00000000 d6",
+  "fields": {
+    "command": 251,
+    "netId": 0,
+    "extendedCommand": null,
+    "vote": {
+      "inFavour": 0,
+      "unused": 107
+    }
+  }
+}
