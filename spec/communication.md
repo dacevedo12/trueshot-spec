@@ -49,6 +49,6 @@ effects out (`FadeSounds`).
 | [`VoiceCommand`](../schema/messages/VoiceCommand.json)     | server  | 68 on events   | 68 on events   | What a server sends about a voice command a champion gave                                                                                        |
 | [`VoiceEvent`](../schema/messages/VoiceEvent.json)         | server  | 121 on events  | none           | Play a voice event                                                                                                                               |
 | [`VoiceEventDone`](../schema/messages/VoiceEventDone.json) | client  | 5 on requests  | none           | What a client sends once a voice event (VoiceEvent) of kind 0 that asked for it has played, or at once where the client could not play the event |
-| [`VolumeMuted`](../schema/messages/VolumeMuted.json)       | server  | 39 on events   | none           | Mute or unmute one kind of sound                                                                                                                 |
+| [`VolumeMuted`](../schema/messages/VolumeMuted.json)       | server  | 39 on events   | 39 on events   | Mute or unmute one kind of sound                                                                                                                 |
 
 <!-- messages:end -->

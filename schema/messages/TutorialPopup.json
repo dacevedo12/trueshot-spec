@@ -20,6 +20,23 @@
           "note": "A key into the client's own text for the popup's body. The text ends at its first zero byte, which falls within the field."
         }
       ]
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 179,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "A key into the client's own text for the popup's body. The text ends at its first zero byte, which falls within the field."
+        }
+      ]
     }
   ]
 }
