@@ -131,12 +131,12 @@
         {
           "name": "kind",
           "type": "i32",
-          "note": "What sort of region it is."
+          "note": "Unused; a client makes a circle whatever it holds. A server writes 0."
         },
         {
-          "name": "clientId",
+          "name": "object",
           "type": "u32",
-          "note": "The client id of the client the region answers to."
+          "note": "An object the region keeps hold of, or zero; it changes nothing a client shows."
         },
         {
           "name": "unit",
@@ -146,7 +146,7 @@
         {
           "name": "marker",
           "type": "u32",
-          "note": "The unit standing in for the region itself, or zero where none does."
+          "note": "The name the region answers to, which RegionRemoved names to take it away."
         },
         {
           "name": "sightFrom",
@@ -169,9 +169,9 @@
           "note": "How long it lasts, in seconds. A lifetime of 0 never runs out."
         },
         {
-          "name": "collisionRadius",
+          "name": "lineOfSightRadius",
           "type": "f32",
-          "note": "How far out it blocks the way, in world units."
+          "note": "How far out the region's line of sight is reckoned, in world units."
         },
         {
           "name": "grassRadius",
@@ -194,26 +194,27 @@
           "size": 1,
           "bits": [
             {
-              "name": "block",
+              "name": "lineOfSight",
               "width": 1,
-              "note": "Set where the region blocks the way."
+              "note": "Set where walls and terrain cut the region's sight."
             },
             {
               "name": "grantSight",
               "width": 1,
-              "note": "Set where it grants sight."
+              "note": "Set to turn on the region's sight; sightFrom and revealHidden apply only where it is set. Where it is set, a client clears its map's cover over the region."
             },
             {
               "name": "revealHidden",
               "width": 1,
-              "note": "Set where it shows units that are hiding."
+              "note": "Set to show hidden units within it, where grantSight is set."
             },
             {
               "name": "unused",
               "width": 5,
               "note": "Unused; a server writes zero."
             }
-          ]
+          ],
+          "note": "What the region does. One byte here, where 4.17 has four."
         },
         {
           "name": "baseRadius",
