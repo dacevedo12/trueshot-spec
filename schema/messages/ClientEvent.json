@@ -282,7 +282,7 @@
         {
           "name": "value",
           "type": "u32",
-          "note": "Purpose undetermined. It counts 0 to 4 through events 128 to 132, and again through 133 to 137.",
+          "note": "For events 128 to 137, the capture point, 0 to 4 for points A to E, whose name the announcement carries.",
           "present": {
             "when": "event",
             "equals": [128, 129, 130, 131, 132, 133, 134, 135, 136, 137]

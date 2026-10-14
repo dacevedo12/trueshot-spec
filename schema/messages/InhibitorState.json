@@ -46,7 +46,7 @@
         {
           "name": "duration",
           "type": "u16",
-          "note": "How long the state lasts. Unit undetermined; a server sends 300."
+          "note": "Seconds the state lasts, counted down by the client. After a state of 0, the client announces once that the inhibitor returns soon, when fewer than 15 seconds remain."
         }
       ]
     }

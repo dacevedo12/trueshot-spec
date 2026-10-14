@@ -59,9 +59,9 @@
               "note": "Set where the point changes the spell rather than raising it."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 7,
-              "note": "Unused; these bits carry no meaning."
+              "note": "Unused; a client may leave any value here, and a server ignores it."
             }
           ]
         }

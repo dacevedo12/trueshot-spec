@@ -47,7 +47,7 @@
         {
           "name": "endX",
           "type": "f32",
-          "note": "A second point, along one axis, in world units. A client sends the same point here as in x and z. Which of the two is where the cast begins and which is where it is aimed is undetermined."
+          "note": "The second point of what aims the spell: the same as x and z for a point or a unit; for a line dragged out, its far end, cut to the spell's length; for a cone, its far point."
         },
         {
           "name": "endZ",
@@ -84,9 +84,9 @@
               "note": "Set where the cast came from clicking the panel rather than the world."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 6,
-              "note": "Unused; its bits carry no meaning."
+              "note": "Unused; a client may leave any value here, and a server ignores it."
             }
           ]
         },
@@ -108,7 +108,7 @@
         {
           "name": "endX",
           "type": "f32",
-          "note": "A second point, along one axis, in world units. A client sends the same point here as in x and z. Which of the two is where the cast begins and which is where it is aimed is undetermined."
+          "note": "The second point of what aims the spell: the same as x and z for a point or a unit; for a line dragged out, its far end, cut to the spell's length; for a cone, its far point."
         },
         {
           "name": "endZ",

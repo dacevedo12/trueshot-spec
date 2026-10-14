@@ -90,9 +90,9 @@
               "note": "Set where the client shows the vote to the seat."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 6,
-              "note": "Purpose undetermined; a server sends these bits clear."
+              "note": "Unused; a server writes zero."
             }
           ]
         },

@@ -15,14 +15,15 @@
         {
           "name": "object",
           "type": "i32",
-          "note": "Purpose undetermined; a server sends -1."
+          "note": "Unused; a client reads none of this message."
         },
         {
           "name": "flags",
           "type": "u8",
-          "note": "Purpose undetermined; a server sends 255."
+          "note": "Unused; a client reads none of this message."
         }
-      ]
+      ],
+      "note": "A client reads none of it and changes nothing."
     }
   ]
 }

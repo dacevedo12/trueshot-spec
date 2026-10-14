@@ -55,9 +55,9 @@
               "note": "Set where side 100 won and clear where side 200 won. A client compares the winning side with its own to show victory or defeat."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 7,
-              "note": "Purpose undetermined; a server sends it clear."
+              "note": "Unused; a server writes zero."
             }
           ]
         }

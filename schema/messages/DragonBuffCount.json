@@ -23,21 +23,21 @@
               "note": "Set for side 100, clear for side 200."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 7,
-              "note": "Purpose undetermined."
+              "note": "Unused; a server writes zero."
             }
           ]
         },
         {
-          "name": "unknown",
+          "name": "counter",
           "type": "u32",
-          "note": "Purpose undetermined."
+          "note": "Which count it sets. A client takes only 0, and drops the message otherwise."
         },
         {
           "name": "count",
           "type": "i32",
-          "note": "How many buffs the side holds."
+          "note": "How many buffs the side holds. Both sides start at -1, which hides the counts; once either is 0 or more, a client shows both, a negative one as 0."
         }
       ]
     }

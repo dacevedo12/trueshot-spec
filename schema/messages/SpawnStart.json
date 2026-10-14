@@ -34,12 +34,12 @@
         {
           "name": "firstCount",
           "type": "u8",
-          "note": "One of two counts stated as the run of units opens. Purpose undetermined; a server sends zero in each."
+          "note": "How many seats on side 100 nobody holds. Added to that side's players, it chooses the layout of the side's starting places."
         },
         {
           "name": "secondCount",
           "type": "u8",
-          "note": "The other. It shares the reading above."
+          "note": "The same for side 200."
         }
       ]
     }

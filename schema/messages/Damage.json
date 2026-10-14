@@ -144,9 +144,9 @@
           }
         },
         {
-          "name": "unknown1",
+          "name": "unused",
           "type": "u8",
-          "note": "One byte between result and kind. Unused; a server writes zero."
+          "note": "Unused; a server writes zero."
         },
         {
           "name": "kind",

@@ -111,17 +111,40 @@
         {
           "name": "resourceKind",
           "type": "u8",
-          "note": "Purpose undetermined; a server sends zero."
+          "note": "Which of the unit's resources the client shows as the point's capture progress, where change is 0.",
+          "values": {
+            "0": {
+              "name": "mana"
+            },
+            "1": {
+              "name": "energy"
+            },
+            "2": {
+              "name": "none"
+            },
+            "3": {
+              "name": "shield"
+            },
+            "4": {
+              "name": "battleFury"
+            },
+            "5": {
+              "name": "dragonFury"
+            },
+            "6": {
+              "name": "rage"
+            }
+          }
         },
         {
           "name": "side",
           "type": "u32",
-          "note": "The side the change favours."
+          "note": "Unused; a client does not read it."
         },
         {
           "name": "change",
           "type": "u8",
-          "note": "What sort of change it is."
+          "note": "What sort of change it is. A client acts only on 0, and reads resourceKind only then."
         }
       ]
     }

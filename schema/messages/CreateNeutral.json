@@ -279,7 +279,18 @@
         {
           "name": "roaming",
           "type": "u32",
-          "note": "How the unit roams, as a state rather than a distance. Which state each value names is undetermined."
+          "note": "How it roams, which changes nothing a client shows.",
+          "values": {
+            "0": {
+              "name": "still"
+            },
+            "1": {
+              "name": "hostile"
+            },
+            "2": {
+              "name": "fleeing"
+            }
+          }
         },
         {
           "name": "camp",

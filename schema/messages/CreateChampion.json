@@ -149,9 +149,9 @@
               "note": "Set where nobody holds it."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 6,
-              "note": "Purpose undetermined; a server writes zero."
+              "note": "Unused; a server writes zero."
             }
           ]
         },
@@ -205,19 +205,19 @@
           "size": 1,
           "bits": [
             {
-              "name": "unknown1",
+              "name": "swap",
               "width": 1,
-              "note": "Purpose undetermined."
+              "note": "Set where the champion replaces another; a client whose champion it is resets every script's state."
             },
             {
-              "name": "unknown2",
+              "name": "hidden",
               "width": 1,
-              "note": "Purpose undetermined."
+              "note": "Set to fade the champion's model out at once."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 6,
-              "note": "Purpose undetermined; a server writes zero."
+              "note": "Unused; a server writes zero."
             }
           ]
         }
