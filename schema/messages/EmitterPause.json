@@ -35,6 +35,38 @@
           }
         }
       ]
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 248,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "group",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 256,
+          "note": "The group's name, padded with zero bytes."
+        },
+        {
+          "name": "operation",
+          "type": "u32",
+          "note": "Nonzero to pause the emission, zero to resume it."
+        },
+        {
+          "name": "groupOperation",
+          "type": "u32",
+          "note": "What to do with the group. A client acts on 0 only, pausing or resuming the group's emission, and does nothing for any other value.",
+          "values": {
+            "0": {
+              "name": "emission"
+            }
+          }
+        }
+      ]
     }
   ]
 }
