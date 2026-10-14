@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ParticleSource",
+  "version": "4.20.0.315",
+  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "d2 00000000 2c000040000001000000",
+  "fields": {
+    "command": 210,
+    "netId": 0,
+    "extendedCommand": null,
+    "unit": 1073741868,
+    "slot": 0,
+    "point": 0,
+    "source": 1
+  }
+}

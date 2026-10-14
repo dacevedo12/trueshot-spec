@@ -66,6 +66,49 @@
           "note": "Padding after flags. Unused; a server writes zero."
         }
       ]
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 68,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "call",
+          "type": "u32",
+          "note": "Which call."
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit the call is about."
+        },
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "highlight",
+              "width": 1,
+              "note": "Set where the player's icon is highlighted."
+            },
+            {
+              "name": "ping",
+              "width": 1,
+              "note": "Set where it marks a ping."
+            },
+            {
+              "name": "unused",
+              "width": 6,
+              "note": "Unused; a server writes zero."
+            }
+          ],
+          "note": "How it is shown."
+        }
+      ]
     }
   ]
 }

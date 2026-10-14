@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "UnitText",
+  "version": "4.20.0.315",
+  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "19 00000000 2c0000400f000000feffffff67616d655f666c6f6174696e675f667269656e646c795f6b696c6c0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+  "fields": {
+    "command": 25,
+    "netId": 0,
+    "extendedCommand": null,
+    "unit": 1073741868,
+    "style": 15,
+    "number": -2,
+    "text": "game_floating_friendly_kill"
+  }
+}

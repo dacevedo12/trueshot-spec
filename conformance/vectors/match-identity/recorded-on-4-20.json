@@ -1,0 +1,15 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "MatchIdentity",
+  "version": "4.20.0.315",
+  "note": "Taken from a recording of a match played on this version. The player's name and the match's number were replaced with stand-ins before committing. Text fields were cut at their end and the bytes after zeroed, because a server leaves whatever it found there.",
+  "bytes": "92 00000000 e803000000000000506c617965722031000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+  "fields": {
+    "command": 146,
+    "netId": 0,
+    "extendedCommand": null,
+    "game": "1000",
+    "name": "Player 1"
+  }
+}

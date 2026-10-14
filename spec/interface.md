@@ -91,7 +91,7 @@ tutorial too.
 | [`UiHighlight`](../schema/messages/UiHighlight.json)                   | server  | 202 on events   | none            | Place an animated highlight over one element of the screen, or to take one away                                               |
 | [`UnitHighlightRemoved`](../schema/messages/UnitHighlightRemoved.json) | server  | 180 on events   | none            | Take away the light UnitHighlighted put on a unit                                                                             |
 | [`UnitHighlighted`](../schema/messages/UnitHighlighted.json)           | server  | 89 on events    | none            | Outline a unit with a pulsing light, as a tutorial does, until UnitHighlightRemoved                                           |
-| [`UnitText`](../schema/messages/UnitText.json)                         | server  | 25 on events    | none            | Float a line of the client's own text over a unit, as combat text floats                                                      |
+| [`UnitText`](../schema/messages/UnitText.json)                         | server  | 25 on events    | 25 on events    | Float a line of the client's own text over a unit, as combat text floats                                                      |
 | [`ZoomReport`](../schema/messages/ZoomReport.json)                     | client  | none            | 125 on requests | What a client sends when it notices it has drawn its view further out than it allows itself                                   |
 
 <!-- messages:end -->
