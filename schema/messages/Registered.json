@@ -21,7 +21,7 @@
         {
           "name": "clientId",
           "type": "u32",
-          "note": "The client id playerId holds. Where playerId is the client's own, the client takes this client id as its own and goes on."
+          "note": "The client id playerId holds. Where playerId is the client's own, the client takes this client id as its own and goes on. A watching client takes the champion of the player holding this client id as its own, so a server answers one with a client id no player in the streamed match holds (see spec/spectating.md)."
         },
         {
           "name": "playerId",
@@ -63,7 +63,7 @@
         {
           "name": "clientId",
           "type": "u32",
-          "note": "The client id the named player holds, counted from zero."
+          "note": "The client id the named player holds, counted from zero. A watching client takes the champion of the player holding this client id as its own, so a server answers one with a client id no player in the streamed match holds (see spec/spectating.md)."
         },
         {
           "name": "playerId",
