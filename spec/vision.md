@@ -109,7 +109,7 @@ client what its side cannot see, beyond what keeps its world consistent.
 | [`ParticleEnterTeamSight`](../schema/messages/ParticleEnterTeamSight.json) | server  | 226 on events | 226 on events | What a server sends as a particle comes into what one side can see                      |
 | [`ParticleLeaveTeamSight`](../schema/messages/ParticleLeaveTeamSight.json) | server  | 227 on events | 227 on events | What a server sends as a particle passes out of what one side can see                   |
 | [`RegionAdded`](../schema/messages/RegionAdded.json)                       | server  | 35 on events  | 35 on events  | Place a region on the ground: a patch that grants sight, blocks the way, or grows cover |
-| [`RegionMoved`](../schema/messages/RegionMoved.json)                       | server  | 36 on events  | none          | Move a region of sight, keeping all else about it                                       |
+| [`RegionMoved`](../schema/messages/RegionMoved.json)                       | server  | 36 on events  | 36 on events  | Move a region of sight, keeping all else about it                                       |
 | [`RegionRemoved`](../schema/messages/RegionRemoved.json)                   | server  | 51 on events  | 51 on events  | Take away a region RegionAdded placed                                                   |
 
 <!-- messages:end -->

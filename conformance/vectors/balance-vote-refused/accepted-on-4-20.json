@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "BalanceVoteRefused",
+  "version": "4.20.0.315",
+  "note": "Taken from a client a server accepted.",
+  "bytes": "fa 00000000 e4000000000000000000000000000000000000000000000000000000",
+  "fields": {
+    "command": 250,
+    "netId": 0,
+    "extendedCommand": null,
+    "flags": 228,
+    "voter": 0,
+    "unset": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  }
+}

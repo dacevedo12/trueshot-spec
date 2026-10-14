@@ -31,6 +31,22 @@
           "note": "Which half of the pair."
         }
       ]
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 239,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "note": "A client changes nothing it shows for either half: its units, floating text and any screen tint stay as they were.",
+      "fields": [
+        {
+          "name": "stage",
+          "type": "u32",
+          "note": "Which half of the pair: 0 for the mark, 1 for the sweep."
+        }
+      ]
     }
   ]
 }

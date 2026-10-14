@@ -24,6 +24,22 @@
           }
         }
       ]
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 222,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "note": "A client stays in the match and changes nothing it shows, whatever the action. To have it leave, a server sends Shutdown.",
+      "fields": [
+        {
+          "name": "action",
+          "type": "u8",
+          "note": "What to do. A client acts on no value."
+        }
+      ]
     }
   ]
 }

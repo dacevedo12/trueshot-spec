@@ -116,7 +116,7 @@ champion along the route the client proposed.
 ## Marking the ground
 
 `NavigationFlags` marks the ground within circles. A server MUST NOT send `NavigationFlags` to a 4.17
-client: such a client fails on the first one a match brings.
+or 4.20 client: such a client fails on the first one a match brings.
 
 ## Messages
 
@@ -129,7 +129,7 @@ client: such a client fails on the first one a match brings.
 | [`FaceDirection`](../schema/messages/FaceDirection.json)               | server  | 80 on events    | 80 on events    | Turn a unit to face a direction                                                                                                        |
 | [`MoveOrder`](../schema/messages/MoveOrder.json)                       | client  | 114 on requests | 114 on requests | Tell a server what it wants a unit to do                                                                                               |
 | [`MovementBounds`](../schema/messages/MovementBounds.json)             | server  | 6 on events     | 6 on events     | Keep its champion's orders within a circle                                                                                             |
-| [`NavigationFlags`](../schema/messages/NavigationFlags.json)           | server  | 65 on events    | none            | Mark the ground within circles, in place of the circles it marked before: each circle's flags apply to the ground within it            |
+| [`NavigationFlags`](../schema/messages/NavigationFlags.json)           | server  | 65 on events    | 65 on events    | Mark the ground within circles, in place of the circles it marked before: each circle's flags apply to the ground within it            |
 | [`Path`](../schema/messages/Path.json)                                 | server  | 185 on events   | 185 on events   | Set a unit walking along a path, facing the way it walks                                                                               |
 | [`PathWithSpeed`](../schema/messages/PathWithSpeed.json)               | server  | 131 on events   | 131 on events   | Set a unit moving along a path at a speed of its own, perhaps in an arc or following another unit                                      |
 | [`UnitLookAt`](../schema/messages/UnitLookAt.json)                     | server  | 271 on events   | 271 on events   | Turn a unit toward something                                                                                                           |

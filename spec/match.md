@@ -42,15 +42,15 @@ client that receives `GameEnded` while still loading leaves at once.
 ## Leaving and coming back
 
 A client leaving as one abandoning the match sends `Exit`: as its player quits
-or closes the window, as a reconnection fails, or on a server's `Shutdown` or
-`BotKick`, either of which has a 4.17 client leave at once.
+or closes the window, as a reconnection fails, or on a server's `Shutdown`, which has it leave at once. A 4.17 client also
+leaves at once on `BotKick`; a 4.20 client stays and changes nothing it shows.
 
 A server tells the others that a player's client dropped with
-`PlayerDisconnected`, and a 4.17 client shows a notice in chat for it. A 4.17
+`PlayerDisconnected`, and a 4.17 client shows a notice in chat for it. A
 client dropped during play connects again by itself, registers again, and sends
 `ReconnectedInMatch` right after the registration answer; one dropped while
 loading leaves instead. `SoftReconnect` rebuilds a 4.17 client's world without a new connection, as
-[Objects and identifiers](objects.md) describes.
+[Objects and identifiers](objects.md) describes; a 4.20 client acts on neither half.
 
 ## Messages
 
@@ -58,7 +58,7 @@ loading leaves instead. `SoftReconnect` rebuilds a 4.17 client's world without a
 
 | Message                                                            | Sent by | 4.17            | 4.20            | What it does                                                                                                                                                                   |
 | ------------------------------------------------------------------ | ------- | --------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [`BotKick`](../schema/messages/BotKick.json)                       | server  | 222 on events   | none            | Have a client it takes for a program rather than a player leave the match                                                                                                      |
+| [`BotKick`](../schema/messages/BotKick.json)                       | server  | 222 on events   | 222 on events   | Have a client it takes for a program rather than a player leave the match                                                                                                      |
 | [`ClientFinished`](../schema/messages/ClientFinished.json)         | client  | 141 on requests | 141 on requests | What a client sends when it has finished with the match                                                                                                                        |
 | [`ClockConvergence`](../schema/messages/ClockConvergence.json)     | server  | 118 on clock    | 118 on clock    | What a server sends about how its clock and a client's are being brought together                                                                                              |
 | [`ClockReply`](../schema/messages/ClockReply.json)                 | client  | 8 on clock      | 8 on clock      | What a client sends back when a server states the match clock, carrying both readings so the server can tell how far apart they are                                            |
@@ -72,13 +72,13 @@ loading leaves instead. `SoftReconnect` rebuilds a 4.17 client's world without a
 | [`Paused`](../schema/messages/Paused.json)                         | server  | 161 on events   | 161 on events   | Put the match on hold                                                                                                                                                          |
 | [`PlayerDisconnected`](../schema/messages/PlayerDisconnected.json) | server  | 152 on events   | 152 on events   | What a server sends as a player's client drops out                                                                                                                             |
 | [`Reconnected`](../schema/messages/Reconnected.json)               | server  | 15 on events    | 15 on events    | Say a client has reconnected                                                                                                                                                   |
-| [`ReconnectedInMatch`](../schema/messages/ReconnectedInMatch.json) | client  | 156 on requests | none            | What a client sends once it has connected again to a match it was playing, right after the server answers its registration                                                     |
+| [`ReconnectedInMatch`](../schema/messages/ReconnectedInMatch.json) | client  | 156 on requests | 156 on requests | What a client sends once it has connected again to a match it was playing, right after the server answers its registration                                                     |
 | [`Resume`](../schema/messages/Resume.json)                         | client  | 10 on requests  | 10 on requests  | Start a paused match again                                                                                                                                                     |
 | [`Resumed`](../schema/messages/Resumed.json)                       | server  | 10 on events    | 10 on events    | Take the match off hold                                                                                                                                                        |
-| [`Shutdown`](../schema/messages/Shutdown.json)                     | server  | 229 on events   | none            | Have a client leave the match at once, as one abandoning it, sending Exit as it goes                                                                                           |
-| [`SoftReconnect`](../schema/messages/SoftReconnect.json)           | server  | 239 on events   | none            | What a server sends, in pairs, to rebuild a client's world without a new connection: the first marks what the client holds, the second deletes whatever is still marked        |
+| [`Shutdown`](../schema/messages/Shutdown.json)                     | server  | 229 on events   | 229 on events   | Have a client leave the match at once, as one abandoning it, sending Exit as it goes                                                                                           |
+| [`SoftReconnect`](../schema/messages/SoftReconnect.json)           | server  | 239 on events   | 239 on events   | What a server sends, in pairs, to rebuild a client's world without a new connection: the first marks what the client holds, the second deletes whatever is still marked        |
 | [`StatTick`](../schema/messages/StatTick.json)                     | server  | 40 on events    | 40 on events    | Advance every unit's stats by a span of time                                                                                                                                   |
-| [`Unhandled286`](../schema/messages/Unhandled286.json)             | server  | 286 on events   | none            | A message that changes nothing a client shows                                                                                                                                  |
+| [`Unhandled286`](../schema/messages/Unhandled286.json)             | server  | 286 on events   | 286 on events   | A message that changes nothing a client shows                                                                                                                                  |
 | [`VictoryDance`](../schema/messages/VictoryDance.json)             | server  | 197 on events   | 197 on events   | Set every unit on a side moving as winners or losers do: a winning champion dances, a losing one stands idle, and other units play a win or loss animation where they have one |
 
 <!-- messages:end -->

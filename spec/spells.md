@@ -16,8 +16,8 @@ ready with `SpellCooldown`, and, for a spell with uses, how many are left with
 Which slots a client lets its player cast from at all is a value of the
 champion's that [replication](replication.md) carries.
 
-A 4.17 spell that charges, such as one held down before it is let go, charges
-where the cast answer leaves its end-of-charge flag clear. The client then sends
+A spell that charges, such as one held down before it is let go, charges where
+the cast answer leaves its flags clear. The client then sends
 `SpellCharge` with the cursor's position as the charge goes on, where the spell
 updates at all, and once more as the charge ends.
 
@@ -70,7 +70,7 @@ name in advance the units a chain missile will strike with `ChainTargets`.
 | [`MissileSpeed`](../schema/messages/MissileSpeed.json)                         | server  | 269 on events   | 269 on events   | Change how fast a missile flies                                                                                                                                 |
 | [`MissileState`](../schema/messages/MissileState.json)                         | server  | 59 on events    | 59 on events    | Say where a missile is and what it is doing                                                                                                                     |
 | [`SpellCastAnswer`](../schema/messages/SpellCastAnswer.json)                   | server  | 181 on events   | 181 on events   | Say a unit is casting a spell                                                                                                                                   |
-| [`SpellCharge`](../schema/messages/SpellCharge.json)                           | client  | 230 on requests | none            | What a client sends while its player charges a spell, and as the charge ends                                                                                    |
+| [`SpellCharge`](../schema/messages/SpellCharge.json)                           | client  | 230 on requests | 230 on requests | What a client sends while its player charges a spell, and as the charge ends                                                                                    |
 | [`SpellCharges`](../schema/messages/SpellCharges.json)                         | server  | 263 on events   | 263 on events   | Say how many uses one of a unit's spells has left and when the next returns                                                                                     |
 | [`SpellCooldown`](../schema/messages/SpellCooldown.json)                       | server  | 133 on events   | 133 on events   | Set how long until one of a unit's spells is ready                                                                                                              |
 | [`SpellCostChanged`](../schema/messages/SpellCostChanged.json)                 | server  | 260 on events   | 260 on events   | Change what a spell costs the player it is sent to                                                                                                              |
