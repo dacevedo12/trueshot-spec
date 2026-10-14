@@ -23,6 +23,26 @@
           "note": "Which look."
         }
       ]
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 116,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "side",
+          "type": "u8",
+          "note": "Which side."
+        },
+        {
+          "name": "skin",
+          "type": "u32",
+          "note": "Which look."
+        }
+      ]
     }
   ]
 }

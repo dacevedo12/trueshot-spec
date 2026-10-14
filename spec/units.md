@@ -59,19 +59,19 @@ sees.
 | [`ChampionRemoved`](../schema/messages/ChampionRemoved.json)     | server  | 272 on events | 272 on events | Take a champion out of the world                                                              |
 | [`CharacterPreload`](../schema/messages/CharacterPreload.json)   | server  | 138 on events | 138 on events | Have a character and a skin of it loaded ahead of need                                        |
 | [`CreateChampion`](../schema/messages/CreateChampion.json)       | server  | 76 on events  | 76 on events  | Put a champion on the field                                                                   |
-| [`CreateFollower`](../schema/messages/CreateFollower.json)       | server  | 241 on events | none          | Put an object on the field that follows a unit                                                |
+| [`CreateFollower`](../schema/messages/CreateFollower.json)       | server  | 241 on events | 241 on events | Put an object on the field that follows a unit                                                |
 | [`CreateNeutral`](../schema/messages/CreateNeutral.json)         | server  | 99 on events  | 99 on events  | Put a unit that belongs to no side on the field                                               |
 | [`CreateTurret`](../schema/messages/CreateTurret.json)           | server  | 157 on events | 157 on events | Put a turret on the field                                                                     |
-| [`FollowerMaster`](../schema/messages/FollowerMaster.json)       | server  | 242 on events | none          | Change which unit a following object follows                                                  |
+| [`FollowerMaster`](../schema/messages/FollowerMaster.json)       | server  | 242 on events | 242 on events | Change which unit a following object follows                                                  |
 | [`MapProp`](../schema/messages/MapProp.json)                     | server  | 208 on events | 208 on events | Place a prop on the map: a thing that stands there and is looked at rather than one that acts |
 | [`MapPropChanged`](../schema/messages/MapPropChanged.json)       | server  | 209 on events | 209 on events | Change something about a prop already on the map                                              |
 | [`MarkerMoved`](../schema/messages/MarkerMoved.json)             | server  | 276 on events | 276 on events | Move a marker (SpawnMarker) from one place toward another                                     |
 | [`SpawnBot`](../schema/messages/SpawnBot.json)                   | server  | 207 on events | 207 on events | Create a champion played by a bot                                                             |
 | [`SpawnFromBarracks`](../schema/messages/SpawnFromBarracks.json) | server  | 3 on events   | 3 on events   | Put a unit on the field from the place its side sends them out of                             |
 | [`SpawnMarker`](../schema/messages/SpawnMarker.json)             | server  | 256 on events | 256 on events | Create an unseen object at a place, which other messages can then name                        |
-| [`SpawnPet`](../schema/messages/SpawnPet.json)                   | server  | 55 on events  | none          | Put a pet on the field                                                                        |
+| [`SpawnPet`](../schema/messages/SpawnPet.json)                   | server  | 55 on events  | 55 on events  | Put a pet on the field                                                                        |
 | [`SpawnTurret`](../schema/messages/SpawnTurret.json)             | server  | 291 on events | 291 on events | Create a turret of its own choosing                                                           |
-| [`SpawnUnit`](../schema/messages/SpawnUnit.json)                 | server  | 124 on events | none          | Put a minion-like unit on the field, such as a ward                                           |
+| [`SpawnUnit`](../schema/messages/SpawnUnit.json)                 | server  | 124 on events | 124 on events | Put a minion-like unit on the field, such as a ward                                           |
 | [`TeamChanged`](../schema/messages/TeamChanged.json)             | server  | 215 on events | 215 on events | Move a unit to another side                                                                   |
 
 <!-- messages:end -->

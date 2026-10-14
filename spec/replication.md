@@ -238,7 +238,7 @@ scoreboard with `ChampionStats`. A 4.17 server can also add to a unit's shield
 | ---------------------------------------------------------------------- | ------- | ---------------- | ---------------- | -------------------------------------------------------------------------------- |
 | [`ChampionStats`](../schema/messages/ChampionStats.json)               | server  | 70 on events     | 70 on events     | Set a champion's tallies for the scoreboard                                      |
 | [`ExperienceGained`](../schema/messages/ExperienceGained.json)         | server  | 16 on events     | 16 on events     | Grant a unit experience                                                          |
-| [`GoldEarned`](../schema/messages/GoldEarned.json)                     | server  | 228 on events    | none             | What a server sends a client watching a match to credit a champion with gold     |
+| [`GoldEarned`](../schema/messages/GoldEarned.json)                     | server  | 228 on events    | 228 on events    | What a server sends a client watching a match to credit a champion with gold     |
 | [`GoldGained`](../schema/messages/GoldGained.json)                     | server  | 34 on events     | 34 on events     | Grant a unit gold                                                                |
 | [`GoldRedirect`](../schema/messages/GoldRedirect.json)                 | server  | 7 on events      | 7 on events      | Send the gold a unit earns to another                                            |
 | [`GoldSourcesLog`](../schema/messages/GoldSourcesLog.json)             | server  | 282 on events    | 282 on events    | Carry a text to a client                                                         |
@@ -246,7 +246,7 @@ scoreboard with `ChampionStats`. A 4.17 server can also add to a unit's shield
 | [`LevelCap`](../schema/messages/LevelCap.json)                         | server  | 274 on events    | 274 on events    | What a server sends its player's champion to set the highest level it can reach  |
 | [`LevelUp`](../schema/messages/LevelUp.json)                           | server  | 63 on events     | 63 on events     | What a server sends when a unit gains a level                                    |
 | [`MinionKillCount`](../schema/messages/MinionKillCount.json)           | server  | 287 on events    | 287 on events    | Add one to a champion's count of minions killed                                  |
-| [`MultikillCount`](../schema/messages/MultikillCount.json)             | server  | 277 on events    | none             | What a server sends a client watching a match to state a champion's run of kills |
+| [`MultikillCount`](../schema/messages/MultikillCount.json)             | server  | 277 on events    | 277 on events    | What a server sends a client watching a match to state a champion's run of kills |
 | [`Replication`](../schema/messages/Replication.json)                   | server  | 196 on transient | 196 on transient | Say what has changed about units a client can see                                |
 | [`ResourceDisplay`](../schema/messages/ResourceDisplay.json)           | server  | 147 on events    | 147 on events    | Change how a unit's resource bar is shown                                        |
 | [`ResourceKindChanged`](../schema/messages/ResourceKindChanged.json)   | server  | 275 on events    | 275 on events    | Change what sort of resource a unit has, which its bar's colours and art follow  |

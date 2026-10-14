@@ -44,7 +44,7 @@ it, and each sort's note in its definition says what a client shows for it.
 | [`CampCleared`](../schema/messages/CampCleared.json)                 | server  | 195 on events | 195 on events | What a server sends as a camp of units that belong to no side is emptied                  |
 | [`CampMarker`](../schema/messages/CampMarker.json)                   | server  | 290 on events | 290 on events | Place a camp on the map and say how it is drawn                                           |
 | [`CampOpened`](../schema/messages/CampOpened.json)                   | server  | 233 on events | 233 on events | Open a camp of units that belong to no side                                               |
-| [`CampTimer`](../schema/messages/CampTimer.json)                     | server  | 278 on events | none          | What a server sends a client watching a match to set when a camp is next due              |
+| [`CampTimer`](../schema/messages/CampTimer.json)                     | server  | 278 on events | 278 on events | What a server sends a client watching a match to set when a camp is next due              |
 | [`CapturePointChanged`](../schema/messages/CapturePointChanged.json) | server  | 211 on events | 211 on events | What a server sends when something changes about a point one side can take from the other |
 | [`DragonBuffCount`](../schema/messages/DragonBuffCount.json)         | server  | none          | 300 on events | Say how many dragon buffs a side holds                                                    |
 | [`RespawnPoint`](../schema/messages/RespawnPoint.json)               | server  | 213 on events | 213 on events | What a server sends about the points a champion can choose to return to life at           |
