@@ -32,12 +32,17 @@
       "command": 222,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client stays in the match and changes nothing it shows, whatever the action. To have it leave, a server sends Shutdown.",
       "fields": [
         {
           "name": "action",
-          "type": "u8",
-          "note": "What to do. A client acts on no value."
+          "type": "u32",
+          "note": "What to do. A client acts on 5 only.",
+          "values": {
+            "5": {
+              "name": "leave",
+              "note": "Leave the match at once, as one abandoning it, with nothing shown, sending Exit as it goes."
+            }
+          }
         }
       ]
     }

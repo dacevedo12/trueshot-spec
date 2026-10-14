@@ -42,15 +42,16 @@ client that receives `GameEnded` while still loading leaves at once.
 ## Leaving and coming back
 
 A client leaving as one abandoning the match sends `Exit`: as its player quits
-or closes the window, as a reconnection fails, or on a server's `Shutdown`, which has it leave at once. A 4.17 client also
-leaves at once on `BotKick`; a 4.20 client stays and changes nothing it shows.
+or closes the window, as a reconnection fails, or on a server's `Shutdown`, which has it leave at once. A client also
+leaves at once on `BotKick` with the action that means leave: 4 for a 4.17
+client, 5 for a 4.20 one.
 
 A server tells the others that a player's client dropped with
 `PlayerDisconnected`, and a 4.17 client shows a notice in chat for it. A
 client dropped during play connects again by itself, registers again, and sends
 `ReconnectedInMatch` right after the registration answer; one dropped while
-loading leaves instead. `SoftReconnect` rebuilds a 4.17 client's world without a new connection, as
-[Objects and identifiers](objects.md) describes; a 4.20 client acts on neither half.
+loading leaves instead. `SoftReconnect` rebuilds a client's world without a new connection, as
+[Objects and identifiers](objects.md) describes.
 
 ## Messages
 

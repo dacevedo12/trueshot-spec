@@ -40,12 +40,30 @@
         {
           "name": "unit",
           "type": "u32",
-          "note": "The unit."
+          "note": "The unit. A client acts only where it is a champion."
         },
         {
           "name": "show",
-          "type": "u8",
-          "note": "Whether the indicator shows."
+          "type": "bits",
+          "size": 1,
+          "note": "Where the indicators show.",
+          "bits": [
+            {
+              "name": "show",
+              "width": 1,
+              "note": "Set where the indicator shows."
+            },
+            {
+              "name": "minimap",
+              "width": 1,
+              "note": "Set where it shows on the minimap."
+            },
+            {
+              "name": "unused",
+              "width": 6,
+              "note": "Unused; a server writes zero."
+            }
+          ]
         }
       ]
     }
