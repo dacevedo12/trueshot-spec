@@ -41,7 +41,7 @@ side's screens (`ScreenTint`), and change the voice a unit speaks with
 
 | Message                                                              | Sent by | 4.17          | 4.20          | What it does                                                                                                     |
 | -------------------------------------------------------------------- | ------- | ------------- | ------------- | ---------------------------------------------------------------------------------------------------------------- |
-| [`AnimationAdvanced`](../schema/messages/AnimationAdvanced.json)     | server  | 259 on events | none          | Move an animation a unit is playing forward at once                                                              |
+| [`AnimationAdvanced`](../schema/messages/AnimationAdvanced.json)     | server  | 259 on events | 259 on events | Move an animation a unit is playing forward at once                                                              |
 | [`AnimationOverrides`](../schema/messages/AnimationOverrides.json)   | server  | 107 on events | 107 on events | Make a unit play one set of movements wherever it would have played another                                      |
 | [`AppearanceCleared`](../schema/messages/AppearanceCleared.json)     | server  | 200 on events | none          | Take every look laid over a unit away                                                                            |
 | [`AppearancePopped`](../schema/messages/AppearancePopped.json)       | server  | 103 on events | 103 on events | Take a look AppearancePushed laid over a unit away                                                               |

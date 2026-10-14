@@ -1,0 +1,18 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "DrawPath",
+  "version": "4.20.0.315",
+  "note": "Taken from a client a server accepted.",
+  "bytes": "fe 010000400601 0100004000dac90d44007cf94283b88044",
+  "fields": {
+    "command": 254,
+    "netId": 1073741825,
+    "extendedCommand": 262,
+    "unit": 1073741825,
+    "node": 0,
+    "x": 567.1539306640625,
+    "y": 124.7421875,
+    "z": 1029.7659912109375
+  }
+}

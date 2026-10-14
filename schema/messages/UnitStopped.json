@@ -48,6 +48,51 @@
           "note": "The unit's movement count."
         }
       ]
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 49,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Where the unit stands, in world units; a client keeps this height rather than the ground's."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "Its height, in world units."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Where it stands, in world units."
+        },
+        {
+          "name": "facingX",
+          "type": "f32",
+          "note": "The way it faces."
+        },
+        {
+          "name": "facingY",
+          "type": "f32",
+          "note": "The way it faces."
+        },
+        {
+          "name": "facingZ",
+          "type": "f32",
+          "note": "The way it faces."
+        },
+        {
+          "name": "syncId",
+          "type": "i32",
+          "note": "The unit's movement count."
+        }
+      ]
     }
   ]
 }
