@@ -9,14 +9,14 @@
       "size": 1,
       "bits": [
         {
-          "name": "unknown1",
+          "name": "zombie",
           "width": 1,
-          "note": "Purpose undetermined; a server sends it clear."
+          "note": "Set to leave the champion standing in a zombie state rather than dead: no death animation and no death screen."
         },
         {
-          "name": "unknown",
+          "name": "unused",
           "width": 7,
-          "note": "Purpose undetermined; a server sends these bits clear."
+          "note": "Unused; a server writes zero."
         }
       ]
     },

@@ -279,9 +279,9 @@
                 "note": "The unit it was done to."
               },
               {
-                "name": "unknown",
+                "name": "byParent",
                 "type": "u8",
-                "note": "Purpose undetermined; a server sends 1."
+                "note": "Whom the death recap credits a damage entry (event 16) to: not zero for the parent caster, grouped by the parent spell; zero for the source. In other entries a server sends 1."
               },
               {
                 "name": "script",
