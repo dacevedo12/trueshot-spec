@@ -1,0 +1,23 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "SpellTargeterHidden",
+  "system": "spells",
+  "note": "What a server sends to take a spell's targeter away. The header names the champion.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 298,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u32",
+          "note": "Which slot's spell."
+        }
+      ]
+    }
+  ]
+}

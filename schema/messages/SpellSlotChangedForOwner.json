@@ -1,0 +1,152 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "SpellSlotChangedForOwner",
+  "system": "spells",
+  "note": "What a server sends only to the client whose unit a spell slot belongs to, to change something about the spell in it, as SpellSlotChanged does for every client. The header names the unit.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 293,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot. A champion's own spells count from 0."
+        },
+        {
+          "name": "what",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "summonerSpell",
+              "width": 1,
+              "note": "Set where the slot is a summoner slot rather than one of the unit's own."
+            },
+            {
+              "name": "unknown",
+              "width": 7,
+              "note": "Purpose undetermined."
+            }
+          ]
+        },
+        {
+          "name": "kind",
+          "type": "u32",
+          "note": "What changes, and so which shape follows.",
+          "values": {
+            "1": {
+              "name": "targeting"
+            },
+            "2": {
+              "name": "name"
+            },
+            "3": {
+              "name": "range"
+            },
+            "4": {
+              "name": "maxRange"
+            },
+            "5": {
+              "name": "shownRange"
+            },
+            "6": {
+              "name": "icon"
+            },
+            "7": {
+              "name": "targets"
+            }
+          }
+        },
+        {
+          "name": "targeting",
+          "type": "u8",
+          "note": "How the spell is aimed.",
+          "present": {
+            "when": "kind",
+            "equals": 1,
+            "unseen": "present"
+          }
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "The name the client loads the spell under, ended by a zero byte. A client shows the named spell's icon in the slot.",
+          "present": {
+            "when": "kind",
+            "equals": 2,
+            "unseen": "present"
+          }
+        },
+        {
+          "name": "range",
+          "type": "f32",
+          "note": "How far the spell is cast, in world units.",
+          "present": {
+            "when": "kind",
+            "equals": 3
+          }
+        },
+        {
+          "name": "maxRange",
+          "type": "f32",
+          "note": "The farthest the spell's cast range can grow to, in world units.",
+          "present": {
+            "when": "kind",
+            "equals": 4,
+            "unseen": "present"
+          }
+        },
+        {
+          "name": "shownRange",
+          "type": "f32",
+          "note": "The range its range indicator shows, in world units.",
+          "present": {
+            "when": "kind",
+            "equals": 5,
+            "unseen": "present"
+          }
+        },
+        {
+          "name": "icon",
+          "type": "u8",
+          "note": "Which icon the spell shows.",
+          "present": {
+            "when": "kind",
+            "equals": 6
+          }
+        },
+        {
+          "name": "targetCount",
+          "type": "u8",
+          "note": "How many units follow.",
+          "present": {
+            "when": "kind",
+            "equals": 7
+          }
+        },
+        {
+          "name": "targets",
+          "type": "array",
+          "count": "targetCount",
+          "items": {
+            "name": "target",
+            "type": "u32",
+            "note": "A unit the spell is cast from."
+          },
+          "note": "The units the spell is cast from.",
+          "present": {
+            "when": "kind",
+            "equals": 7
+          }
+        }
+      ]
+    }
+  ]
+}

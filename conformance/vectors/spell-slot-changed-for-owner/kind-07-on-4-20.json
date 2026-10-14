@@ -1,0 +1,27 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SpellSlotChangedForOwner",
+  "version": "4.20.0.315",
+  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "fe 1f0000402501 0330070000000120000040",
+  "fields": {
+    "command": 254,
+    "netId": 1073741855,
+    "extendedCommand": 293,
+    "slot": 3,
+    "what": {
+      "summonerSpell": 0,
+      "unknown": 24
+    },
+    "kind": 7,
+    "targeting": null,
+    "name": null,
+    "range": null,
+    "maxRange": null,
+    "shownRange": null,
+    "icon": null,
+    "targetCount": 1,
+    "targets": [1073741856]
+  }
+}

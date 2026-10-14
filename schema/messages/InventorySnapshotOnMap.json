@@ -1,0 +1,52 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "InventorySnapshotOnMap",
+  "system": "shop",
+  "note": "What a server sends to state a unit's whole inventory at once, with each slot's cooldown, to the clients that can see the unit. The header names the unit.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 295,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "items",
+          "type": "array",
+          "count": 10,
+          "items": {
+            "name": "item",
+            "type": "struct",
+            "struct": "HeldItem",
+            "note": "One slot."
+          },
+          "note": "Ten slots, in order."
+        },
+        {
+          "name": "cooldowns",
+          "type": "array",
+          "count": 10,
+          "items": {
+            "name": "cooldown",
+            "type": "f32",
+            "note": "How long is left, in seconds."
+          },
+          "note": "Each slot's cooldown left, in the same order."
+        },
+        {
+          "name": "maxCooldowns",
+          "type": "array",
+          "count": 10,
+          "items": {
+            "name": "maxCooldown",
+            "type": "f32",
+            "note": "The whole cooldown, in seconds."
+          },
+          "note": "Each slot's whole cooldown, in the same order."
+        }
+      ]
+    }
+  ]
+}

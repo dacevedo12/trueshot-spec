@@ -53,6 +53,20 @@ A client acts on a message about whichever unit it names, its own champion or
 another, so what a client knows is whatever a server sends it. A server
 decides, message by message, which clients to tell.
 
+Some messages exist in more than one form, each for its own audience, laid
+out alike:
+
+| For every client    | For the clients that can see the unit | For the unit's own client         |
+| ------------------- | ------------------------------------- | --------------------------------- |
+| `UnitDied`          | `UnitDiedOnMap` (4.20)                |                                   |
+| `InventorySnapshot` | `InventorySnapshotOnMap` (4.20)       |                                   |
+| `FloatingText`      | `FloatingTextOnMap` (4.20)            |                                   |
+| `SpellSlotChanged`  |                                       | `SpellSlotChangedForOwner` (4.20) |
+
+A 4.17 server sends both audiences of `UnitDied` and `InventorySnapshot` under
+the one command. A 4.20 server sends the narrower audience as a message of its
+own, and sends the wider form only where every client is to know.
+
 Messages about a champion's own state, its gold, its inventory, its spells'
 levels, cooldowns and charges, and whether it can shop, are applied to the
 champion they name on any client that receives them, but a client shows most

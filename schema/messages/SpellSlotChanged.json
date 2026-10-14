@@ -160,7 +160,7 @@
         {
           "name": "slot",
           "type": "u8",
-          "note": "Which slot."
+          "note": "Which slot. A champion's own spells count from 0."
         },
         {
           "name": "what",
@@ -182,15 +182,38 @@
         {
           "name": "kind",
           "type": "u32",
-          "note": "Which thing about the spell is being changed, and so which shape follows.",
+          "note": "What changes, and so which shape follows.",
           "values": {
             "1": {
-              "name": "setting",
-              "note": "Sets one byte about the spell; which is undetermined."
+              "name": "targeting"
             },
             "2": {
               "name": "name"
+            },
+            "3": {
+              "name": "range"
+            },
+            "4": {
+              "name": "maxRange"
+            },
+            "5": {
+              "name": "shownRange"
+            },
+            "6": {
+              "name": "icon"
+            },
+            "7": {
+              "name": "targets"
             }
+          }
+        },
+        {
+          "name": "targeting",
+          "type": "u8",
+          "note": "How the spell is aimed.",
+          "present": {
+            "when": "kind",
+            "equals": 1
           }
         },
         {
@@ -205,12 +228,69 @@
           }
         },
         {
-          "name": "setting",
-          "type": "u8",
-          "note": "The byte kind 1 sets; purpose undetermined.",
+          "name": "range",
+          "type": "f32",
+          "note": "How far the spell is cast, in world units.",
           "present": {
             "when": "kind",
-            "equals": 1
+            "equals": 3,
+            "unseen": "present"
+          }
+        },
+        {
+          "name": "maxRange",
+          "type": "f32",
+          "note": "The farthest the spell's cast range can grow to, in world units.",
+          "present": {
+            "when": "kind",
+            "equals": 4,
+            "unseen": "present"
+          }
+        },
+        {
+          "name": "shownRange",
+          "type": "f32",
+          "note": "The range its range indicator shows, in world units.",
+          "present": {
+            "when": "kind",
+            "equals": 5,
+            "unseen": "present"
+          }
+        },
+        {
+          "name": "icon",
+          "type": "u8",
+          "note": "Which icon the spell shows.",
+          "present": {
+            "when": "kind",
+            "equals": 6,
+            "unseen": "present"
+          }
+        },
+        {
+          "name": "targetCount",
+          "type": "u8",
+          "note": "How many units follow.",
+          "present": {
+            "when": "kind",
+            "equals": 7,
+            "unseen": "present"
+          }
+        },
+        {
+          "name": "targets",
+          "type": "array",
+          "count": "targetCount",
+          "items": {
+            "name": "target",
+            "type": "u32",
+            "note": "A unit the spell is cast from."
+          },
+          "note": "The units the spell is cast from.",
+          "present": {
+            "when": "kind",
+            "equals": 7,
+            "unseen": "present"
           }
         }
       ]
