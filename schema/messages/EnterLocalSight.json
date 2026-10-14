@@ -98,14 +98,24 @@
           }
         },
         {
-          "name": "maxHealth",
-          "type": "f32",
-          "note": "What the unit's health tops out at."
-        },
-        {
-          "name": "health",
-          "type": "f32",
-          "note": "What its health stands at."
+          "name": "vitals",
+          "type": "record",
+          "present": {
+            "when": "remaining"
+          },
+          "note": "The unit's health. A server sends this message without it too, ending after the carried messages.",
+          "fields": [
+            {
+              "name": "maxHealth",
+              "type": "f32",
+              "note": "What the unit's health tops out at."
+            },
+            {
+              "name": "health",
+              "type": "f32",
+              "note": "What its health stands at."
+            }
+          ]
         }
       ]
     }
