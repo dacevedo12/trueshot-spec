@@ -181,15 +181,16 @@
           "note": "The unit it copies, or zero."
         },
         {
+          "name": "team",
+          "type": "u16",
+          "note": "Which side, as a team number."
+        },
+        {
           "name": "flags",
           "type": "bits",
-          "size": 2,
+          "size": 1,
+          "note": "What sort of unit it is.",
           "bits": [
-            {
-              "name": "team",
-              "width": 9,
-              "note": "Which side, as a team number."
-            },
             {
               "name": "ignoreCollision",
               "width": 1,
@@ -211,27 +212,16 @@
               "note": "Set where it is driven by the client's own decisions."
             },
             {
-              "name": "targetable",
-              "width": 1,
-              "note": "Set where it can be aimed at."
-            },
-            {
               "name": "unused",
-              "width": 2,
+              "width": 4,
               "note": "Unused; a server writes zero."
             }
-          ],
-          "note": "What sort of unit it is."
+          ]
         },
         {
-          "name": "unknown",
-          "type": "u8",
-          "note": "Purpose undetermined; a server sends 0."
-        },
-        {
-          "name": "targetableToTeam",
+          "name": "unused",
           "type": "u32",
-          "note": "Which sides can aim at it, as a set of bits."
+          "note": "Unused; a server writes zero."
         },
         {
           "name": "visibilitySize",

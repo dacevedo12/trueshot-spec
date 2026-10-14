@@ -39,12 +39,16 @@
       "command": 239,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client changes nothing it shows for either half: its units, floating text and any screen tint stay as they were.",
       "fields": [
         {
           "name": "stage",
           "type": "u32",
-          "note": "Which half of the pair: 0 for the mark, 1 for the sweep."
+          "note": "Which half of the pair: 1 to mark every unit, and every object kept until a checkpoint other than an inhibitor, also clearing floating text, any screen tint and the state of neutral camps; any other value to delete whatever is still marked.",
+          "values": {
+            "1": {
+              "name": "mark"
+            }
+          }
         }
       ]
     }

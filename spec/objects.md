@@ -105,9 +105,9 @@ for a region a client does not hold does nothing.
 halves. The first marks every unit and every object kept until a checkpoint,
 inhibitors aside. A create message for a marked net id replaces the marked
 object rather than keeping the id on it. The second removes every object still
-marked. In between, a server sends again each object the client is to keep. A 4.20
-client acts on neither half: its units, floating text and any screen tint stay
-as they were.
+marked. In between, a server sends again each object the client is to keep. The stage
+that marks is 0 for a 4.17 client and 1 for a 4.20 one; any other value
+removes.
 
 ## Messages about objects a client does not hold
 

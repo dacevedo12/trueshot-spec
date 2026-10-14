@@ -47,15 +47,16 @@
       "reliability": "reliable",
       "fields": [
         {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot, as the whole byte."
+        },
+        {
           "name": "which",
           "type": "bits",
           "size": 1,
+          "note": "Which book the slot is in.",
           "bits": [
-            {
-              "name": "slot",
-              "width": 6,
-              "note": "Which slot."
-            },
             {
               "name": "summonerSpell",
               "width": 1,
@@ -63,16 +64,10 @@
             },
             {
               "name": "unused",
-              "width": 1,
+              "width": 7,
               "note": "Unused; a server writes zero."
             }
-          ],
-          "note": "Which spell."
-        },
-        {
-          "name": "unknown",
-          "type": "u8",
-          "note": "Purpose undetermined; a server sends 0."
+          ]
         }
       ],
       "note": "A client cancels the aiming only where that slot is being aimed, and otherwise does nothing."
