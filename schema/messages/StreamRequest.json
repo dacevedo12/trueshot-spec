@@ -20,7 +20,7 @@
         {
           "name": "jumpToLatest",
           "type": "u8",
-          "note": "One where the client has no key frame yet and nothing past the end of the startup chunks."
+          "note": "One where the client has no key frame yet and nothing past the end of the startup chunks: a client that can be joined late (see spec/spectating.md)."
         },
         {
           "name": "fromChunk",
@@ -50,7 +50,7 @@
         {
           "name": "jumpToLatest",
           "type": "u8",
-          "note": "One where the client has no key frame yet and nothing past the end of the startup chunks."
+          "note": "One where the client has no key frame yet and nothing past the end of the startup chunks: a client that can be joined late (see spec/spectating.md)."
         },
         {
           "name": "fromChunk",

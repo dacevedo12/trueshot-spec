@@ -36,9 +36,22 @@ no `LoadingProgress`.
    client waits.
 3. A server sends `StreamChunkRange`, with the match's end left at zero while
    it runs.
-4. A server sends the chunks, from chunk 1 upward and none skipped, each cut
-   into `StreamChunk` fragments sent in order and not mixed with another
-   chunk's.
+4. A server sends the chunks, each cut into `StreamChunk` fragments sent in
+   order and not mixed with another chunk's. It either sends every chunk from
+   chunk 1 upward, or joins the client late:
+   - the chunks of setting up, from 1 to the last of them (the chunk of kind
+     3), and no chunk after it;
+   - then the key frame nearest the present, the first key frame sent on the
+     connection;
+   - then the chunks from the one that key frame leads to.
+
+   Either way it skips none after that. A client takes a key frame only where
+   it is the first one sent and arrives before the chunk after the last chunk
+   of setting up; otherwise it keeps it but plays on from that chunk. A client
+   sent every chunk from 1 catches up at speed, and fails partway through a
+   long catch-up, so a server SHOULD join a client late once a match is more
+   than a few minutes in.
+
 5. As the match ends, a server sends `StreamChunkRange` again naming its last
    chunk, then that chunk. Once it has arrived the client takes no more of the
    stream.
@@ -72,9 +85,11 @@ answer on: `VersionSync` first. A client whose own build differs from the one
 `VersionSync`, and again while it builds the world after `SpawnStart`, and
 goes on by itself afterwards.
 
-A key frame is laid out as a chunk is. A client that starts late plays the key
-frame nearest the point it wants and goes on from the chunk the key frame names,
-or, where it names none, from the chunk its number implies (see `StreamChunk`).
+A key frame is laid out as a chunk is, and holds the whole world as it stands
+at that point. A client joined late plays the chunks of setting up, then the
+key frame, then goes on from the chunk the key frame names, or, where it names
+none, from the chunk its number implies (see `StreamChunk`). The chunks between
+the last of setting up and that one are never played.
 
 ## Messages
 
