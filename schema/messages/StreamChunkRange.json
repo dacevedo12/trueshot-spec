@@ -23,6 +23,26 @@
           "note": "The match's last chunk, or zero while it runs."
         }
       ]
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 236,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "startGameChunk",
+          "type": "u32",
+          "note": "The chunk the match proper begins with."
+        },
+        {
+          "name": "endGameChunk",
+          "type": "u32",
+          "note": "The match's last chunk, or zero while it runs."
+        }
+      ]
     }
   ]
 }
