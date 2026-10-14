@@ -15,7 +15,7 @@
         {
           "name": "chunk",
           "type": "u32",
-          "note": "The chunk's id, or the key frame's. Chunk 0 is dropped; chunks play in order from 1, and a missing one stalls the stream. Key frames count separately, from 1."
+          "note": "The chunk's id, or the key frame's. Chunk 0 is dropped; chunks play in order from the one a client starts at, and a missing one after it stalls the stream. Key frames count separately, from 1."
         },
         {
           "name": "fragments",
@@ -60,12 +60,12 @@
         {
           "name": "duration",
           "type": "u32",
-          "note": "Seconds the chunk covers."
+          "note": "Seconds the chunk covers. A client reads it only from fragment 0, and uses it only for the match's last chunk: the match ends that many seconds after that chunk starts. A value too large holds a client that joins near the end on its loading screen."
         },
         {
           "name": "nextChunk",
           "type": "u32",
-          "note": "For a key frame, the ordinary chunk to go on from. Where zero, a client takes key frame interval over chunk interval, times the key frame's id less one, plus the start-game chunk."
+          "note": "For a key frame, the ordinary chunk to go on from. Where zero or less, a client takes key frame interval over chunk interval, times the key frame's id less one, plus the start-game chunk: the one StreamChunkRange names, or the last chunk of kind 4 to arrive."
         },
         {
           "name": "data",
@@ -86,7 +86,7 @@
         {
           "name": "chunk",
           "type": "u32",
-          "note": "The chunk's id, or the key frame's. Chunk 0 is dropped; chunks play in order from 1, and a missing one stalls the stream. Key frames count separately, from 1."
+          "note": "The chunk's id, or the key frame's. Chunk 0 is dropped; chunks play in order from the one a client starts at, and a missing one after it stalls the stream. Key frames count separately, from 1."
         },
         {
           "name": "fragments",
@@ -131,12 +131,12 @@
         {
           "name": "duration",
           "type": "u32",
-          "note": "Seconds the chunk covers."
+          "note": "Seconds the chunk covers. A client reads it only from fragment 0, and uses it only for the match's last chunk: the match ends that many seconds after that chunk starts. A value too large holds a client that joins near the end on its loading screen."
         },
         {
           "name": "nextChunk",
           "type": "u32",
-          "note": "For a key frame, the ordinary chunk to go on from. Where zero, a client takes key frame interval over chunk interval, times the key frame's id less one, plus the start-game chunk."
+          "note": "For a key frame, the ordinary chunk to go on from. Where zero or less, a client takes key frame interval over chunk interval, times the key frame's id less one, plus the start-game chunk: the one StreamChunkRange names, or the last chunk of kind 4 to arrive."
         },
         {
           "name": "data",
