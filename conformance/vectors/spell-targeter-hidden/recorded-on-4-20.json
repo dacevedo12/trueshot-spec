@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SpellTargeterHidden",
+  "version": "4.20.0.315",
+  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "fe 1f0000402a01 2e000000",
+  "fields": {
+    "command": 254,
+    "netId": 1073741855,
+    "extendedCommand": 298,
+    "slot": 46
+  }
+}

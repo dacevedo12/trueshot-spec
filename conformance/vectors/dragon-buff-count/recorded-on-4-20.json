@@ -1,0 +1,19 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "DragonBuffCount",
+  "version": "4.20.0.315",
+  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "fe 000000002c01 0100000000ffffffff",
+  "fields": {
+    "command": 254,
+    "netId": 0,
+    "extendedCommand": 300,
+    "flags": {
+      "order": 1,
+      "unknown": 0
+    },
+    "unknown": 0,
+    "count": -1
+  }
+}

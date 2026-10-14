@@ -1,0 +1,25 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "AnimationUnlocked",
+  "system": "effects",
+  "note": "What a server sends to let a unit's locked animation be replaced again. The header names the unit.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 303,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "animation",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "Which animation, by name, ended by a zero byte; an empty name for any."
+        }
+      ]
+    }
+  ]
+}

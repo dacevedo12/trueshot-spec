@@ -1,0 +1,45 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "DragonBuffCount",
+  "system": "objectives",
+  "note": "What a server sends to say how many dragon buffs a side holds. The header carries zero.",
+  "revisions": [
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 300,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "order",
+              "width": 1,
+              "note": "Set for side 100, clear for side 200."
+            },
+            {
+              "name": "unknown",
+              "width": 7,
+              "note": "Purpose undetermined."
+            }
+          ]
+        },
+        {
+          "name": "unknown",
+          "type": "u32",
+          "note": "Purpose undetermined."
+        },
+        {
+          "name": "count",
+          "type": "i32",
+          "note": "How many buffs the side holds."
+        }
+      ]
+    }
+  ]
+}
