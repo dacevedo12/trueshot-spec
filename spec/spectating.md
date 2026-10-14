@@ -17,7 +17,11 @@ encodes, deciphered as Blowfish ECB under the match number written out in
 decimal, give the key as their first 16 bytes.
 
 A watching client registers as a player's client does (see
-[Joining a match](joining.md)), and is answered the same way. From then on it
+[Joining a match](joining.md)), and is answered the same way, save for the
+client id. A server MUST answer a watching client with a client id that no
+player in the streamed match holds: a watching client given a player's client
+id takes that player's champion as its own, and fails as soon as it has caught
+up with the stream. From then on it
 takes only `StreamMetadata`, `StreamChunkRange` and `StreamChunk`, on any
 channel, and drops every other message a server sends it directly, `VersionSync`
 included. Of what a player's client sends while joining, it sends only
