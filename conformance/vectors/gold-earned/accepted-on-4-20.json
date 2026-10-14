@@ -1,0 +1,15 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "GoldEarned",
+  "version": "4.20.0.315",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "e4 01000040 010000400000c841",
+  "fields": {
+    "command": 228,
+    "netId": 1073741825,
+    "extendedCommand": null,
+    "owner": 1073741825,
+    "amount": 25
+  }
+}
