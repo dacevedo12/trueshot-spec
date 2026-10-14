@@ -4,7 +4,7 @@ A client can watch a match that a server streams to it over the same
 connection a player uses, rather than playing in it. This document says how the
 stream is laid out and in what order its parts go. Layouts live in `schema/`.
 
-Applies to 4.17 clients, as [Versions](versions.md) describes.
+Applies to 4.17 and 4.20 clients, as [Versions](versions.md) describes.
 
 ## What marks a watching client
 
@@ -76,11 +76,11 @@ or, where it names none, from the chunk its number implies (see `StreamChunk`).
 
 <!-- messages:begin -->
 
-| Message                                                        | Sent by | 4.17            | 4.20 | What it does                                                                                                                                                                 |
-| -------------------------------------------------------------- | ------- | --------------- | ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`StreamChunk`](../schema/messages/StreamChunk.json)           | server  | 237 on events   | none | What a server streaming a match sends to carry one fragment of a chunk or key frame of recorded messages (see spec/spectating.md)                                            |
-| [`StreamChunkRange`](../schema/messages/StreamChunkRange.json) | server  | 236 on events   | none | What a server streaming a match sends to say where the match proper begins in its chunks, and, once known, where it ends                                                     |
-| [`StreamMetadata`](../schema/messages/StreamMetadata.json)     | server  | 235 on events   | none | What a server streaming a match to a watching client sends first, within 30 seconds of the client's request: how long its chunks and key frames run                          |
-| [`StreamRequest`](../schema/messages/StreamRequest.json)       | client  | 234 on requests | none | What a client watching a match streamed over its connection (see spec/spectating.md) sends each time the server answers its registration, asking for the stream from a point |
+| Message                                                        | Sent by | 4.17            | 4.20            | What it does                                                                                                                                                                 |
+| -------------------------------------------------------------- | ------- | --------------- | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`StreamChunk`](../schema/messages/StreamChunk.json)           | server  | 237 on events   | 237 on events   | What a server streaming a match sends to carry one fragment of a chunk or key frame of recorded messages (see spec/spectating.md)                                            |
+| [`StreamChunkRange`](../schema/messages/StreamChunkRange.json) | server  | 236 on events   | 236 on events   | What a server streaming a match sends to say where the match proper begins in its chunks, and, once known, where it ends                                                     |
+| [`StreamMetadata`](../schema/messages/StreamMetadata.json)     | server  | 235 on events   | 235 on events   | What a server streaming a match to a watching client sends first, within 30 seconds of the client's request: how long its chunks and key frames run                          |
+| [`StreamRequest`](../schema/messages/StreamRequest.json)       | client  | 234 on requests | 234 on requests | What a client watching a match streamed over its connection (see spec/spectating.md) sends each time the server answers its registration, asking for the stream from a point |
 
 <!-- messages:end -->

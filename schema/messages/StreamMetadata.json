@@ -25,6 +25,28 @@
           "note": "A JSON object with integer members chunkTimeInterval and keyFrameTimeInterval, in milliseconds, to the end of the message. A server sends both."
         }
       ]
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 235,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unused",
+          "type": "u32",
+          "note": "Unused; a server writes zero."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "remaining",
+          "note": "A JSON object with integer members chunkTimeInterval and keyFrameTimeInterval, in milliseconds, to the end of the message. A server sends both."
+        }
+      ]
     }
   ]
 }
