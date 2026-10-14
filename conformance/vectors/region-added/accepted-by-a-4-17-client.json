@@ -18,16 +18,16 @@
     "atX": 5000,
     "atZ": 5000,
     "lifetime": 0,
+    "lineOfSightRadius": 800,
     "grassRadius": 0,
     "sizeMultiplier": 1,
     "sizeAdditive": 0,
     "does": {
+      "lineOfSight": 1,
       "grantSight": 1,
       "revealHidden": 1,
-      "lineOfSight": 1,
       "unused": 0
     },
-    "baseRadius": 800,
-    "lineOfSightRadius": 800
+    "baseRadius": 800
   }
 }

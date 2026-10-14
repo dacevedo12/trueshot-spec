@@ -15,7 +15,21 @@
         {
           "name": "kind",
           "type": "u8",
-          "note": "What the unit is turning toward. What each value stands for is undetermined."
+          "note": "What the unit's model turns to look at; not which way it faces. A client ignores 3 and above, keeping what it looked at before.",
+          "values": {
+            "0": {
+              "name": "direction",
+              "note": "x, y and z are a direction; target is not read."
+            },
+            "1": {
+              "name": "point",
+              "note": "x, y and z are a point in the world; target is not read."
+            },
+            "2": {
+              "name": "unit",
+              "note": "target is the object to look at; x, y and z are not read. Should it go, the unit looks at where it was last."
+            }
+          }
         },
         {
           "name": "x",
@@ -49,7 +63,21 @@
         {
           "name": "kind",
           "type": "u8",
-          "note": "What the unit is turning toward. What each value stands for is undetermined."
+          "note": "What the unit's model turns to look at; not which way it faces. A client ignores 3 and above, keeping what it looked at before.",
+          "values": {
+            "0": {
+              "name": "direction",
+              "note": "x, y and z are a direction; target is not read."
+            },
+            "1": {
+              "name": "point",
+              "note": "x, y and z are a point in the world; target is not read."
+            },
+            "2": {
+              "name": "unit",
+              "note": "target is the object to look at; x, y and z are not read. Should it go, the unit looks at where it was last."
+            }
+          }
         },
         {
           "name": "x",

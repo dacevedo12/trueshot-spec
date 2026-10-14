@@ -49,9 +49,9 @@
               "note": "Set where the answer is yes."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 7,
-              "note": "Unused; these bits carry no meaning."
+              "note": "Unused; a client may leave any value here, and a server ignores it."
             }
           ]
         }

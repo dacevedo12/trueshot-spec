@@ -86,19 +86,20 @@
             {
               "name": "targetable",
               "width": 1,
-              "note": "Set where anything can aim at it."
+              "note": "Unused; a server writes zero."
             },
             {
               "name": "unknown",
               "width": 7,
-              "note": "Purpose undetermined; a server writes zero."
+              "note": "Unused; a server writes zero."
             }
-          ]
+          ],
+          "note": "Unused; a client reads none of these bits."
         },
         {
           "name": "targetableBy",
           "type": "u32",
-          "note": "Which sides can aim at it. The bits within are undetermined."
+          "note": "Unused; a server writes zero."
         }
       ]
     }

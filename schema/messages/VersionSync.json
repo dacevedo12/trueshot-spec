@@ -455,9 +455,9 @@
               "note": "Set where the client's build is one the server serves."
             },
             {
-              "name": "unknown1",
+              "name": "logMetrics",
               "width": 1,
-              "note": "Purpose undetermined; a server sends it clear."
+              "note": "Set to have the client also write its figures about the match to a file of its own."
             },
             {
               "name": "matched",
@@ -470,9 +470,9 @@
               "note": "Set where the reporting settings below are to be used."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 4,
-              "note": "Purpose undetermined; a server sends these bits clear."
+              "note": "Unused; a server writes zero."
             }
           ]
         },
@@ -629,17 +629,17 @@
         {
           "name": "tipDuration",
           "type": "i8",
-          "note": "How long it holds the note up, in a unit undetermined."
+          "note": "How long the note shows, as an entry of the client's own table: 1 is 10 seconds, and no other entry is defined. Any other value makes the note invalid; the client then clears the tips bit and returns the value negated in ClientReady, 0 as -128."
         },
         {
           "name": "tipFlags",
           "type": "i8",
-          "note": "How else it shows it. The bits within are undetermined."
+          "note": "Bits from the lowest: 0 shows notes at all; 1 is only returned in ClientReady; 2 shows the note on the loading screen; 3 shows it in play; 4 cycles through every note. A note shows only where bit 0 and bit 2 or 3 are set. Bits 5 to 7 are unused. A client watching a recorded match clears bits 0 and 1."
         },
         {
           "name": "features",
           "type": "u64",
-          "note": "Which parts of the match are turned on. The bits within are undetermined."
+          "note": "Which parts of the match are turned on, one bit each from the lowest: 0 balancing votes, 1 the new options menu, 2 the old options menu, 3 quick chat, 4 warning of missiles from unseen ground, 5 animated cursors, 6 shop undo, 8 marking the targets of line missiles, 9 marking a champion under another's control, 10 the alternative bounty rules, 12 turret range indicators, 14 particles named per look, 15 network figures, 16 hardware figures, 17 lag figures, 18 a newer reporting library, 19 logging the server's address, 20 jungle timers, 21 route figures, 24 keeping a recorded match's clock in step, 26 the active-item display, 27 the minion farming bounty, 28 teleporting to fallen turrets, 29 unshared character states, 30 sight between any units, 31 the old outline under the pointer, 32 the new inventory display. Bits 7, 11, 13, 22, 23, 25 and 33 to 63 change nothing. A server sets at least one bit."
         },
         {
           "name": "disabledItems",

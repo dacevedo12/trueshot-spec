@@ -55,9 +55,9 @@
               "note": "Set while the view follows a unit."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 7,
-              "note": "Unused; its bits carry no meaning."
+              "note": "Unused; a client may leave any value here, and a server ignores it."
             }
           ]
         },

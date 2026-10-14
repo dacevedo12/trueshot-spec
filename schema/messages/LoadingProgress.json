@@ -95,13 +95,8 @@
             },
             {
               "name": "ping",
-              "width": 15,
+              "width": 16,
               "note": "Round trip time the client measures, in milliseconds."
-            },
-            {
-              "name": "unknown",
-              "width": 1,
-              "note": "Purpose undetermined; a client sends it clear."
             }
           ]
         },
@@ -116,9 +111,9 @@
               "note": "A client sets it only in reports whose progress stands at one hundred."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 7,
-              "note": "Purpose undetermined; a client sends arbitrary values in these bits."
+              "note": "Unused; a client may leave any value here, and a server ignores it."
             }
           ]
         }

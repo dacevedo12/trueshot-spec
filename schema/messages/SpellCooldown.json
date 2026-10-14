@@ -64,19 +64,19 @@
           "size": 1,
           "bits": [
             {
-              "name": "speakWhenReady",
-              "width": 1,
-              "note": "Set where the unit says something once the wait is over."
-            },
-            {
               "name": "summonerSpell",
               "width": 1,
               "note": "Set where the slot is a summoner slot rather than one of the unit's own. It does not move the slot into the summoner range: a client puts the wait on the slot named, set or clear."
             },
             {
-              "name": "unknown",
+              "name": "speakWhenReady",
+              "width": 1,
+              "note": "Set where the unit says something once the wait is over."
+            },
+            {
+              "name": "unused",
               "width": 6,
-              "note": "Purpose undetermined; a server sends these bits clear."
+              "note": "Unused; a server writes zero."
             }
           ]
         },

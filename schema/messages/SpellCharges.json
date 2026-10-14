@@ -85,7 +85,7 @@
         {
           "name": "mostCharges",
           "type": "i32",
-          "note": "How many uses it holds at most. A server sends -1; what -1 stands for is undetermined."
+          "note": "How many charges the slot can hold: -1 to keep the spell's own figure for its level, otherwise that many; 0 has the slot use no charges."
         },
         {
           "name": "rechargeFor",

@@ -52,7 +52,7 @@
         {
           "name": "syncId",
           "type": "u32",
-          "note": "Purpose undetermined."
+          "note": "The movement sync id the cast was made against. Where it is the unit's latest or newer, a client moves the caster to the cast's launch point."
         },
         {
           "name": "how",
@@ -60,14 +60,14 @@
           "size": 1,
           "bits": [
             {
-              "name": "unknown1",
+              "name": "endCharge",
               "width": 1,
-              "note": "Purpose undetermined."
+              "note": "Set where it ends a charged cast; a client acts on it only while that spell is charging. Clear, a charged cast by the client's own champion starts the charge display."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 7,
-              "note": "Purpose undetermined; a server sends these bits clear."
+              "note": "Unused; a server writes zero."
             }
           ]
         },

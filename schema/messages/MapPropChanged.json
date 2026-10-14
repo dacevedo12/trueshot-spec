@@ -107,27 +107,41 @@
         {
           "name": "flags",
           "type": "u32",
-          "note": "How the change is made. The bits within are undetermined; a server sends 1 or 2."
+          "note": "For kind 1, passed to the movements: 2 holds the last pose where they do not repeat. For kind 3, the look's number. Not read for kind 2."
         },
         {
           "name": "kind",
           "type": "u32",
-          "note": "What sort of change it is. A server sends 1; what other kinds carry is undetermined."
+          "note": "What sort of change it is. A client ignores any value but 1, 2 and 3, and a prop it does not know.",
+          "values": {
+            "1": {
+              "name": "animate",
+              "note": "Plays the movements name names; startsAt and lasts are both zero or both not."
+            },
+            "2": {
+              "name": "captureEffect",
+              "note": "Drives one of the prop's particle values from a capture point's state; name, flags, startsAt and lasts are not read."
+            },
+            "3": {
+              "name": "look",
+              "note": "Changes the prop's look to the one name names, numbered by flags."
+            }
+          }
         },
         {
           "name": "byteA",
           "type": "u8",
-          "note": "Purpose undetermined; a server sends 0."
+          "note": "For kind 1, not zero to remove the prop once the movements end. For kind 2, the change applies only where it is zero."
         },
         {
           "name": "byteB",
           "type": "u8",
-          "note": "Purpose undetermined; a server sends 0."
+          "note": "For kind 2, which of the prop's particle values to drive. Otherwise unused."
         },
         {
           "name": "byteC",
           "type": "u8",
-          "note": "Purpose undetermined; a server sends 0."
+          "note": "For kind 2, the capture point whose state drives it. Otherwise unused."
         }
       ]
     }

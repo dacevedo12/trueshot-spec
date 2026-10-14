@@ -60,9 +60,9 @@
               "note": "Set where the match is to start again after a countdown rather than at once."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 7,
-              "note": "Purpose undetermined; a client sends arbitrary values in these bits."
+              "note": "Unused; a client may leave any value here, and a server ignores it."
             }
           ]
         }

@@ -35,7 +35,7 @@
         {
           "name": "timing",
           "type": "u8",
-          "note": "How the swing sits against the unit's own rhythm. Encoding undetermined; a server sends 128."
+          "note": "A shift in time: the value less 128, in hundredths of a second, from -1.28 to 1.27; 128 shifts nothing. It moves when the swing lets go and ends, and when the unit may next attack."
         },
         {
           "name": "missile",

@@ -140,9 +140,9 @@
               "note": "Set while the client runs in a debugging state."
             },
             {
-              "name": "unknown",
+              "name": "unused",
               "width": 3,
-              "note": "Unused; its bits carry no meaning."
+              "note": "Unused; a client may leave any value here, and a server ignores it."
             }
           ]
         },
