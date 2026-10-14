@@ -1,0 +1,21 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "WorldEvent",
+  "version": "4.20.0.315",
+  "note": "Taken from a server a client accepted.",
+  "bytes": "45 00000000 9b0100004000000000",
+  "fields": {
+    "command": 69,
+    "netId": 0,
+    "extendedCommand": null,
+    "event": 155,
+    "source": 1073741825,
+    "subject": 0,
+    "map": null,
+    "inhibitorGold": null,
+    "inhibitorAssistCount": null,
+    "inhibitorAssists": null,
+    "kill": null
+  }
+}
