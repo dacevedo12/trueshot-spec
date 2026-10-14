@@ -175,15 +175,19 @@
             {
               "name": "unknown",
               "width": 7,
-              "note": "Purpose undetermined; a server sends these bits clear."
+              "note": "Purpose undetermined."
             }
           ]
         },
         {
           "name": "kind",
           "type": "u32",
-          "note": "Which thing about the spell is being changed, and so which shape follows. What follows a kind other than the one that sets a name is undetermined.",
+          "note": "Which thing about the spell is being changed, and so which shape follows.",
           "values": {
+            "1": {
+              "name": "setting",
+              "note": "Sets one byte about the spell; which is undetermined."
+            },
             "2": {
               "name": "name"
             }
@@ -193,12 +197,20 @@
           "name": "name",
           "type": "string",
           "encoding": "utf8",
-          "size": 128,
-          "note": "The name the client loads the spell under. Written out in full and padded with zero bytes to the width above.",
+          "size": "terminated",
+          "note": "The name the client loads the spell under, ended by a zero byte. A client shows the named spell's icon in the slot.",
           "present": {
             "when": "kind",
-            "equals": 2,
-            "unseen": "absent"
+            "equals": 2
+          }
+        },
+        {
+          "name": "setting",
+          "type": "u8",
+          "note": "The byte kind 1 sets; purpose undetermined.",
+          "present": {
+            "when": "kind",
+            "equals": 1
           }
         }
       ]

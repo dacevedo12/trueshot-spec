@@ -1,0 +1,21 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SpellSlotChanged",
+  "version": "4.20.0.315",
+  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "17 05000040 313a020000004b68617a69785145766f00",
+  "fields": {
+    "command": 23,
+    "netId": 1073741829,
+    "extendedCommand": null,
+    "slot": 49,
+    "what": {
+      "summonerSpell": 0,
+      "unknown": 29
+    },
+    "kind": 2,
+    "name": "KhazixQEvo",
+    "setting": null
+  }
+}

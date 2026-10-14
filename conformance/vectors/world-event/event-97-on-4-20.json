@@ -1,0 +1,28 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "WorldEvent",
+  "version": "4.20.0.315",
+  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "45 00000000 971d0000402004004000000000020000001a0000401b00004000000000000000000000000000000000000000000000000000000000000000000000000000000000fc5849690000000000000000",
+  "fields": {
+    "command": 69,
+    "netId": 0,
+    "extendedCommand": null,
+    "event": 151,
+    "source": 1073741853,
+    "subject": 1073742880,
+    "map": null,
+    "inhibitorGold": null,
+    "inhibitorAssistCount": null,
+    "inhibitorAssists": null,
+    "kill": {
+      "gold": 0,
+      "assistCount": 2,
+      "assists": [1073741850, 1073741851, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      "skinHash": 1766414588,
+      "skin": 0,
+      "side": 0
+    }
+  }
+}

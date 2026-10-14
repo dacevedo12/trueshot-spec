@@ -16,95 +16,99 @@
     "messages": [],
     "itemCount": 0,
     "items": [],
-    "hasShields": 1,
-    "magicShield": 0,
-    "physicalShield": 0,
-    "shield": 0,
-    "appearanceCount": 1,
-    "appearance": [
-      {
-        "assetSize": 16,
-        "asset": "SRU_MurkwolfMini",
-        "skin": 0,
-        "how": {
-          "overrideSpells": 0,
-          "modelOnly": 0,
-          "replacePackage": 0,
-          "unused": 0
+    "view": {
+      "hasShields": 1,
+      "magicShield": 0,
+      "physicalShield": 0,
+      "shield": 0,
+      "appearanceCount": 1,
+      "appearance": [
+        {
+          "assetSize": 16,
+          "asset": "SRU_MurkwolfMini",
+          "skin": 0,
+          "how": {
+            "overrideSpells": 0,
+            "modelOnly": 0,
+            "replacePackage": 0,
+            "unused": 0
+          },
+          "layer": 0
+        }
+      ],
+      "lookingAt": 0,
+      "lookKind": 0,
+      "lookX": 1,
+      "lookY": 0,
+      "lookZ": 0,
+      "effectStackCount": 0,
+      "effectStacks": [],
+      "isChampion": 0,
+      "movementState": {
+        "movementKind": 2,
+        "syncId": 301967323,
+        "movement": {
+          "header": {
+            "hasTeleportToken": 1,
+            "pointCount": 5
+          },
+          "path": {
+            "unit": 1073748045,
+            "teleportToken": 0,
+            "flags": [
+              {
+                "xIsStep": 1,
+                "zIsStep": 0
+              },
+              {
+                "xIsStep": 1,
+                "zIsStep": 1
+              },
+              {
+                "xIsStep": 1,
+                "zIsStep": 1
+              },
+              {
+                "xIsStep": 1,
+                "zIsStep": 1
+              }
+            ],
+            "firstX": -1689,
+            "firstZ": -484,
+            "steps": [
+              {
+                "xStep": 97,
+                "xWhole": null,
+                "zStep": null,
+                "zWhole": -677
+              },
+              {
+                "xStep": -75,
+                "xWhole": null,
+                "zStep": 0,
+                "zWhole": null
+              },
+              {
+                "xStep": -100,
+                "xWhole": null,
+                "zStep": 100,
+                "zWhole": null
+              },
+              {
+                "xStep": 78,
+                "xWhole": null,
+                "zStep": 93,
+                "zWhole": null
+              }
+            ]
+          }
         },
-        "layer": 0
+        "movementAtSpeed": null,
+        "atX": null,
+        "atZ": null,
+        "facingX": null,
+        "facingZ": null
       }
-    ],
-    "lookingAt": 0,
-    "lookKind": 0,
-    "lookX": 1,
-    "lookY": 0,
-    "lookZ": 0,
-    "effectStackCount": 0,
-    "effectStacks": [],
-    "isChampion": 0,
-    "movementKind": 2,
-    "syncId": 301967323,
-    "movement": {
-      "header": {
-        "hasTeleportToken": 1,
-        "pointCount": 5
-      },
-      "path": {
-        "unit": 1073748045,
-        "teleportToken": 0,
-        "flags": [
-          {
-            "xIsStep": 1,
-            "zIsStep": 0
-          },
-          {
-            "xIsStep": 1,
-            "zIsStep": 1
-          },
-          {
-            "xIsStep": 1,
-            "zIsStep": 1
-          },
-          {
-            "xIsStep": 1,
-            "zIsStep": 1
-          }
-        ],
-        "firstX": -1689,
-        "firstZ": -484,
-        "steps": [
-          {
-            "xStep": 97,
-            "xWhole": null,
-            "zStep": null,
-            "zWhole": -677
-          },
-          {
-            "xStep": -75,
-            "xWhole": null,
-            "zStep": 0,
-            "zWhole": null
-          },
-          {
-            "xStep": -100,
-            "xWhole": null,
-            "zStep": 100,
-            "zWhole": null
-          },
-          {
-            "xStep": 78,
-            "xWhole": null,
-            "zStep": 93,
-            "zWhole": null
-          }
-        ]
-      }
-    },
-    "movementAtSpeed": null,
-    "atX": null,
-    "atZ": null,
-    "facingX": null,
-    "facingZ": null
+    }
   }
 }

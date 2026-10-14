@@ -1,0 +1,23 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ClientEvent",
+  "version": "4.20.0.315",
+  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "bytes": "a3 1f8fffff 1f1c00004000000000010000001b0000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+  "fields": {
+    "command": 163,
+    "netId": 4294938399,
+    "extendedCommand": null,
+    "event": 31,
+    "subject": 1073741852,
+    "kill": {
+      "gold": 0,
+      "assistCount": 1,
+      "assists": [1073741851, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    },
+    "extra": null,
+    "assist": null,
+    "value": null
+  }
+}
