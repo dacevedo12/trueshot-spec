@@ -18,6 +18,21 @@
           "note": "Nonzero where side 100 won, zero where side 200 won."
         }
       ]
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 197,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "orderWon",
+          "type": "u8",
+          "note": "Nonzero where side 100 won, zero where side 200 won."
+        }
+      ]
     }
   ]
 }

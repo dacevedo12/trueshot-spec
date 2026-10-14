@@ -19,6 +19,22 @@
           "note": "The span, in seconds."
         }
       ]
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 40,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "note": "A client takes it and changes nothing it shows.",
+      "fields": [
+        {
+          "name": "seconds",
+          "type": "f32",
+          "note": "The span, in seconds."
+        }
+      ]
     }
   ]
 }

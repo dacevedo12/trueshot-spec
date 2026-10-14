@@ -59,6 +59,62 @@
           }
         }
       ]
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 275,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "The kind.",
+          "values": {
+            "0": {
+              "name": "mana"
+            },
+            "1": {
+              "name": "energy"
+            },
+            "2": {
+              "name": "none"
+            },
+            "3": {
+              "name": "shield"
+            },
+            "4": {
+              "name": "battleFury"
+            },
+            "5": {
+              "name": "dragonFury"
+            },
+            "6": {
+              "name": "rage"
+            },
+            "7": {
+              "name": "heat"
+            },
+            "8": {
+              "name": "gnarFury"
+            },
+            "9": {
+              "name": "ferocity"
+            },
+            "10": {
+              "name": "bloodWell"
+            },
+            "11": {
+              "name": "wind"
+            },
+            "12": {
+              "name": "other"
+            }
+          }
+        }
+      ]
     }
   ]
 }
