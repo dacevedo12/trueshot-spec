@@ -86,7 +86,7 @@ function writeScalar(type: Scalar, value: Value, little: boolean): Uint8Array {
   const view = new DataView(out.buffer);
   if (type === "u64" || type === "i64") {
     if (typeof value !== "string" && typeof value !== "number")
-      bail(`${type} needs a decimal string`);
+      bail(`${type} is written as a decimal string, not ${typeof value}`);
     const big = BigInt(value as string | number);
     const fits =
       type === "u64"
@@ -98,7 +98,7 @@ function writeScalar(type: Scalar, value: Value, little: boolean): Uint8Array {
     return out;
   }
   if (typeof value !== "number")
-    return bail(`${type} needs a number, not ${typeof value}`);
+    return bail(`${type} is written as a number, not ${typeof value}`);
   const range: Partial<Record<Scalar, [number, number]>> = {
     u8: [0, 0xff],
     i8: [-0x80, 0x7f],
@@ -178,7 +178,8 @@ function amount(spec: Amount, scope: Values, index: number | null): number {
       `"${named}" is absent here, so it cannot say how much follows`,
     );
   const n = Number(value) - (typeof spec === "string" ? 0 : spec.minus);
-  if (!Number.isInteger(n) || n < 0) return bail(`"${named}" is not a count`);
+  if (!Number.isInteger(n) || n < 0)
+    return bail(`"${String(spec)}" is not a count`);
   return n;
 }
 
@@ -227,6 +228,11 @@ function decodeFields(
   const need = (field: Field, length: number): void => {
     if (offset + length > bytes.length)
       bail(`"${field.name}" runs past the end`);
+  };
+  // A field that states its own length in bytes says how much it claimed.
+  const claim = (field: Field, bound: number): void => {
+    if (offset + bound > bytes.length)
+      bail(`"${field.name}" claims ${bound} bytes and runs past the end`);
   };
   const decipher = (field: Field, raw: Uint8Array): Uint8Array => {
     if (context.cipher === undefined)
@@ -308,7 +314,7 @@ function decodeFields(
       case "array": {
         if (field.size !== undefined) {
           const bound = amount(field.size, scope, index);
-          need(field, bound);
+          claim(field, bound);
           value = items(field, offset + bound, null);
         } else if (field.count === undefined || field.count === "remaining") {
           value = items(field, bytes.length, null);
@@ -327,7 +333,7 @@ function decodeFields(
           bail(`struct "${field.struct}" has no definition`);
         const bound =
           field.size === undefined ? null : amount(field.size, scope, index);
-        if (bound !== null) need(field, bound);
+        if (bound !== null) claim(field, bound);
         const within =
           bound === null ? bytes : bytes.subarray(0, offset + bound);
         const read = decodeFields(definition, within, offset, context);
@@ -397,8 +403,8 @@ function decodeFields(
       default: {
         const little = (field.endian ?? context.endian) === "little";
         const width = WIDTH[field.type];
-        need(field, width);
         if (field.enciphered === true) {
+          need(field, width);
           const clear = decipher(
             field,
             bytes.subarray(offset, offset + width),

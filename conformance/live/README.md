@@ -22,15 +22,13 @@ from. The specification is that.
 
 ## Running the checks
 
-Install and check the harness itself, which needs no client:
-
-    bun install
-    bun run typecheck
-    bun run test
+Every command runs from the repository root. The harness shares the codec,
+cipher and definitions with the rest of the tooling, so `bun install` and
+`bun run check` cover it without a client.
 
 Build ENet, which a check against a client needs:
 
-    bun run native
+    bun run live:native
 
 That fetches the ENet 1.2.5 release, checks it against a known digest,
 applies `native/enet-1.2.5.patch`, and builds one library per header layout
@@ -55,7 +53,7 @@ Then name a client in an environment file kept outside version control (every
 
 and run every check against it:
 
-    bun --env-file=<that file> run conform
+    bun --env-file=<that file> run live:conform
 
 That writes a results file named for the build, as `spec/reference` names
 one (`results/4-20-0-315.json`): the commit it ran at, each check's outcome,
@@ -63,7 +61,7 @@ and each screenshot a person has to judge, with the sentence it should bear
 out. A results file is what a version range's coverage rests on, and anyone
 holding the same build can run the same commit and compare.
 
-`bun --env-file=<that file> run checks` runs the same checks without writing
+`bun --env-file=<that file> run live:checks` runs the same checks without writing
 results.
 
 ## How a client is started
@@ -85,7 +83,7 @@ the client's own art.
 
 A capture can be run again:
 
-    bun --env-file=<that file> run replay captures/<run> [seconds]
+    bun --env-file=<that file> run live:replay conformance/live/captures/<run> [seconds]
 
 The match brings the client into play as usual, then sends what the check
 sent on top, at the times it went out. Fields are encoded under the running
@@ -106,12 +104,10 @@ specification lacks, the specification is what changes.
 
 ## Layout
 
-- `src/schema.ts` reads the definitions for one build.
-- `src/codec.ts` and `src/message.ts` read and write payloads.
-- `src/blowfish.ts` is the cipher, from the runtime's OpenSSL.
-- `src/header.ts` reads and writes the packet header, for the vectors.
+- `scripts/` at the root reads the definitions and lays out payloads, headers
+  and the cipher, for this harness and for the checks alike.
 - `src/enet.ts` is the transport, with a relay that records every datagram.
 - `native/` builds ENet with the client's changes.
 - `src/session.ts`, `src/match.ts` and `src/client.ts` run a match.
-- `test/` holds the harness to every vector, with no client involved.
-- `checks/` holds the checks that need one.
+- `src/conform.ts` and `src/replay.ts` are the two commands above.
+- `checks/` holds the checks.

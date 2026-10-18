@@ -6,12 +6,21 @@
 // whether two revisions claim the same command value over the same versions.
 // Those checks live here.
 
-import { readFileSync, readdirSync, existsSync } from "node:fs";
-import { join, basename } from "node:path";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
+import { basename, join } from "node:path";
 import Ajv from "ajv/dist/2020.js";
-import { CodecError, decodeFields, encodeFields } from "./codec.mjs";
-import { BLOCK, CipherError, decipher, encipher } from "./cipher.mjs";
-import { ALGORITHMS } from "./algorithms.mjs";
+import type { ErrorObject } from "ajv";
+import { ALGORITHMS } from "./algorithms.ts";
+import { BLOCK, Blowfish } from "./cipher.ts";
+import {
+  CodecError,
+  decodeFields,
+  encodeFields,
+  hex,
+  unhex,
+} from "./codec.ts";
+import type { Cipher, Value, Values } from "./codec.ts";
+import type { Amount, Endian, Field, Size } from "./schema.ts";
 
 const SCHEMA_DIR = "schema";
 const META = join(SCHEMA_DIR, "meta");
@@ -20,7 +29,7 @@ const VECTOR_DIR = join("conformance", "vectors");
 const COUNTABLE = new Set(["u8", "u16", "u32", "u64"]);
 const TRUTHY = new Set([...COUNTABLE, "i8", "i16", "i32", "i64"]);
 const RESERVED = new Set(["remaining", "terminated"]);
-const SCALAR_BITS = {
+const SCALAR_BITS: Readonly<Record<string, number>> = {
   u8: 8,
   i8: 8,
   u16: 16,
@@ -31,13 +40,131 @@ const SCALAR_BITS = {
   i64: 64,
 };
 
+// What the meta-schemas guarantee a definition holds, read loosely enough that
+// one shape serves a field, an item and a run of bits.
+interface Presence {
+  readonly when: string;
+  readonly equals?: number | readonly number[] | undefined;
+  readonly unseen?: "present" | "absent" | undefined;
+}
+
+interface FieldLike {
+  readonly name: string;
+  readonly type?: string | undefined;
+  readonly width?: number | undefined;
+  readonly present?: Presence | undefined;
+  readonly values?:
+    Readonly<Record<string, { readonly name: string }>> | undefined;
+  readonly size?: Size | undefined;
+  readonly count?: Amount | "remaining" | undefined;
+  readonly items?: FieldLike | undefined;
+  readonly struct?: string | undefined;
+  readonly bits?: readonly FieldLike[] | undefined;
+  readonly fields?: readonly FieldLike[] | undefined;
+  readonly enciphered?: boolean | undefined;
+  readonly endian?: Endian | undefined;
+}
+
+interface Ranged {
+  readonly from: string;
+  readonly until?: string | undefined;
+}
+
+interface ProtocolRevision extends Ranged {
+  readonly endian?: Endian | undefined;
+  readonly cipher?: { readonly keySize?: number | undefined } | undefined;
+  readonly transport?:
+    { readonly header?: readonly FieldLike[] | undefined } | undefined;
+}
+
+interface ChannelDef {
+  readonly name: string;
+  readonly id: number;
+  readonly family?: string | undefined;
+}
+
+interface ChannelsRevision extends Ranged {
+  readonly channels?: readonly ChannelDef[] | undefined;
+}
+
+interface CommandSpec {
+  readonly field?: string | undefined;
+  readonly escape?: number | undefined;
+  readonly extendedField?: string | undefined;
+  readonly reserved?: readonly number[] | undefined;
+}
+
+interface FamilyDef {
+  readonly name: string;
+  readonly command?: CommandSpec | undefined;
+  readonly header: readonly FieldLike[];
+}
+
+interface FamiliesRevision extends Ranged {
+  readonly families?: readonly FamilyDef[] | undefined;
+}
+
+type Direction = "clientToServer" | "serverToClient" | "bidirectional";
+
+interface MessageRevision extends Ranged {
+  readonly channel: string;
+  readonly command: number;
+  readonly direction: Direction;
+  readonly fields: readonly FieldLike[];
+  readonly alsoOn?: readonly { readonly channel: string }[] | undefined;
+}
+
+interface MessageDoc {
+  readonly message: string;
+  readonly revisions: readonly MessageRevision[];
+}
+
+interface StructDoc {
+  readonly struct: string;
+  readonly fields: readonly FieldLike[];
+}
+
+interface VectorDoc {
+  readonly subject:
+    "transport" | "cipher" | "message" | "struct" | "algorithm";
+  readonly message?: string | undefined;
+  readonly struct?: string | undefined;
+  readonly channel?: string | undefined;
+  readonly version?: string | undefined;
+  readonly key?: string | undefined;
+  readonly bytes?: string | undefined;
+  readonly fields?: Values | undefined;
+  readonly plaintext?: string | undefined;
+  readonly ciphertext?: string | undefined;
+  readonly algorithm?: string | undefined;
+  readonly input?:
+    { readonly vector: string; readonly field: string } | undefined;
+  readonly output?: Value | undefined;
+}
+
+interface Documents<T> {
+  readonly revisions?: readonly T[] | undefined;
+}
+
+interface Index {
+  readonly schemas: Readonly<Record<string, string>>;
+}
+
+interface MetaSchema {
+  readonly $id: string;
+}
+
+const messageOf = (error: unknown): string =>
+  error instanceof Error ? error.message : String(error);
+
 // Prose carried as data reaches a reader the same way the documents do, and no
 // linter reads JSON. Every prose rule is read from the file the documents are
 // held to rather than copied here, which would drift.
 const STYLES = join("styles", "trueshot");
-const escape = (text) => text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+const escape = (text: string): string =>
+  text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
-const loadRule = (file) => {
+const loadRule = (file: string): { say: string; tests: RegExp[] } => {
   const text = readFileSync(join(STYLES, file), "utf8");
   const message = /^message:\s*"(.+)"\s*$/m.exec(text);
   const nonword = /^nonword:\s*true\s*$/m.test(text);
@@ -45,11 +172,10 @@ const loadRule = (file) => {
   const anyCase = /^ignorecase:\s*true\s*$/m.test(text);
   const tokens = text
     .split("\n")
-    .map((line) => /^\s*-\s*['"]?(.+?)['"]?\s*$/.exec(line))
-    .filter(Boolean)
-    .map((match) => match[1]);
+    .map((line) => /^\s*-\s*['"]?(.+?)['"]?\s*$/.exec(line)?.[1])
+    .filter((token): token is string => token !== undefined);
   return {
-    say: message ? message[1] : file,
+    say: message?.[1] ?? file,
     // A rule matching non-words carries its own anchoring, if any.
     tests: tokens.map(
       (token) =>
@@ -67,52 +193,61 @@ const loadRule = (file) => {
 const PROSE = ["hedging.yml", "em-dash.yml"].map(loadRule);
 const TEMPORAL = loadRule("version-relative.yml").tests;
 
-const problems = [];
-const fail = (where, message) => problems.push(`${where}: ${message}`);
-const readJson = (path) => JSON.parse(readFileSync(path, "utf8"));
+const problems: string[] = [];
+const fail = (where: string, message: string): void => {
+  problems.push(`${where}: ${message}`);
+};
+const readJson = (path: string): unknown =>
+  JSON.parse(readFileSync(path, "utf8"));
 
-function readConfig(path) {
+function readConfig(path: string): unknown {
   try {
     return readJson(path);
   } catch (error) {
-    fail(path, `could not be read: ${error.message}`);
+    fail(path, `could not be read: ${messageOf(error)}`);
     return null;
   }
 }
 
-function listJson(dir) {
+function listJson(dir: string): { name: string; path: string }[] {
   const path = join(SCHEMA_DIR, dir);
   if (!existsSync(path)) return [];
   return readdirSync(path)
+    .sort()
     .filter((name) => name.endsWith(".json"))
     .map((name) => ({ name, path: join(path, name) }));
 }
 
-const parseVersion = (text) => text.split(".").map(Number);
+const parseVersion = (text: string): number[] => text.split(".").map(Number);
 
-function compareVersions(a, b) {
+function compareVersions(a: string, b: string): number {
   const left = parseVersion(a);
   const right = parseVersion(b);
   for (let i = 0; i < 4; i += 1) {
-    if (left[i] !== right[i]) return left[i] - right[i];
+    const l = left[i] ?? NaN;
+    const r = right[i] ?? NaN;
+    if (l !== r) return l - r;
   }
   return 0;
 }
 
 // Revisions cover [from, until). An absent `until` runs forever.
-function rangesOverlap(a, b) {
+function rangesOverlap(a: Ranged, b: Ranged): boolean {
   const aStartsBeforeBEnds = !b.until || compareVersions(a.from, b.until) < 0;
   const bStartsBeforeAEnds = !a.until || compareVersions(b.from, a.until) < 0;
   return aStartsBeforeBEnds && bStartsBeforeAEnds;
 }
 
-const covers = (revision, version) =>
+const covers = (revision: Ranged, version: string): boolean =>
   compareVersions(version, revision.from) >= 0 &&
   (!revision.until || compareVersions(version, revision.until) < 0);
 
 // The first version of a range that no revision in a list accounts for, or
 // null where the list covers the range end to end.
-function uncoveredIn(revisions, range) {
+function uncoveredIn(
+  revisions: readonly Ranged[],
+  range: Ranged,
+): string | null {
   const sorted = [...revisions].sort((a, b) =>
     compareVersions(a.from, b.from),
   );
@@ -133,11 +268,11 @@ function uncoveredIn(revisions, range) {
 }
 
 // A bidirectional message occupies its command value in both directions.
-const directionsOverlap = (a, b) =>
+const directionsOverlap = (a: Direction, b: Direction): boolean =>
   a === b || a === "bidirectional" || b === "bidirectional";
 
 // Every list of revisions holds to the same rules, whatever it describes.
-function checkRevisions(revisions, where) {
+function checkRevisions(revisions: readonly Ranged[], where: string): void {
   revisions.forEach((revision, index) => {
     if (
       revision.until &&
@@ -151,7 +286,9 @@ function checkRevisions(revisions, where) {
   });
   for (let i = 0; i < revisions.length; i += 1) {
     for (let j = i + 1; j < revisions.length; j += 1) {
-      if (rangesOverlap(revisions[i], revisions[j])) {
+      const a = revisions[i];
+      const b = revisions[j];
+      if (a !== undefined && b !== undefined && rangesOverlap(a, b)) {
         fail(
           where,
           `revisions ${i} and ${j} cover overlapping client versions`,
@@ -165,9 +302,14 @@ function checkRevisions(revisions, where) {
 // looks for one. A note records what a client does.
 const KEYWORDS = loadRule("requirement.yml").tests;
 
-function checkNotes(value, where, path = "", isVector = false) {
+function checkNotes(
+  value: unknown,
+  where: string,
+  path = "",
+  isVector = false,
+): void {
   if (Array.isArray(value)) {
-    value.forEach((item, index) =>
+    value.forEach((item: unknown, index) =>
       checkNotes(item, where, `${path}[${index}]`, isVector),
     );
     return;
@@ -217,20 +359,31 @@ function checkNotes(value, where, path = "", isVector = false) {
   }
 }
 
+// What a field list has declared so far, by name. `__count` carries the count
+// of the list an item sits in, and `__open` marks an enclosure running to the
+// end.
+interface Seen {
+  readonly type: string | undefined;
+  readonly width?: number | undefined;
+  readonly count?: Amount | "remaining" | undefined;
+  readonly itemName?: string | undefined;
+  readonly runs?: readonly string[] | undefined;
+}
+
 // Walks a field list at any depth. `outer` carries the names already read in
 // enclosing scopes, so an array element may size itself from an earlier field.
 // Bit runs are addressable as parent.bit, which is what a presence rule points
 // at.
 // A run of bits carries values as a whole field does, so both are read here.
-function checkValues(field, at, parent) {
+function checkValues(field: FieldLike, at: string, parent?: string): void {
   if (!field.values) return;
   const label = parent ? `"${parent}.${field.name}"` : `"${field.name}"`;
-  const bits = field.width ?? SCALAR_BITS[field.type];
+  const bits = field.width ?? SCALAR_BITS[field.type ?? ""] ?? NaN;
   const signed = field.width === undefined && field.type?.startsWith("i");
   const low = signed ? -(2 ** (bits - 1)) : 0;
   const high = signed ? 2 ** (bits - 1) - 1 : 2 ** bits - 1;
   const what = field.width === undefined ? `a ${field.type}` : `${bits} bits`;
-  const names = new Set();
+  const names = new Set<string>();
   for (const [key, entry] of Object.entries(field.values)) {
     const value = Number(key);
     if (bits <= 53 && (value < low || value > high)) {
@@ -249,7 +402,13 @@ function checkValues(field, at, parent) {
   }
 }
 
-function checkFields(fields, outer, structNames, at, openStructs = new Set()) {
+function checkFields(
+  fields: readonly FieldLike[],
+  outer: ReadonlyMap<string, Seen>,
+  structNames: ReadonlySet<string>,
+  at: string,
+  openStructs: ReadonlySet<string> = new Set(),
+): Map<string, Seen> {
   const seen = new Map(outer);
 
   fields.forEach((field, index) => {
@@ -258,7 +417,9 @@ function checkFields(fields, outer, structNames, at, openStructs = new Set()) {
 
     if (field.enciphered) {
       const width =
-        field.type === "bytes" ? field.size : SCALAR_BITS[field.type] / 8;
+        field.type === "bytes"
+          ? field.size
+          : (SCALAR_BITS[field.type ?? ""] ?? NaN) / 8;
       if (typeof width !== "number" || width % BLOCK !== 0) {
         fail(
           at,
@@ -272,13 +433,13 @@ function checkFields(fields, outer, structNames, at, openStructs = new Set()) {
 
     // array[item] names the item of an earlier list at the same position, so
     // the two lists have to be counted the same way and cannot be one list.
-    const checkItemRef = (where, text) => {
+    const checkItemRef = (where: string, text: string): boolean => {
       const m =
         /^([a-z][A-Za-z0-9]*)\[([a-z][A-Za-z0-9]*)\](?:\.([a-z][A-Za-z0-9]*))?$/.exec(
           text,
         );
       if (!m) return false;
-      const [, list, , run] = m;
+      const [, list = "", item, run] = m;
       const entry = seen.get(list);
       if (!entry) {
         fail(
@@ -290,13 +451,14 @@ function checkFields(fields, outer, structNames, at, openStructs = new Set()) {
           at,
           `field "${where}" names "${text}", and "${list}" is ${entry.type} rather than a list`,
         );
-      } else if (entry.itemName === m[2]) {
+      } else if (entry.itemName === item) {
         fail(
           at,
           `field "${where}" names "${text}", which is the list it is inside`,
         );
       } else if (
-        JSON.stringify(entry.count) !== JSON.stringify(outer.get("__count"))
+        JSON.stringify(entry.count) !==
+        JSON.stringify(outer.get("__count")?.count)
       ) {
         fail(
           at,
@@ -322,22 +484,24 @@ function checkFields(fields, outer, structNames, at, openStructs = new Set()) {
         );
       } else {
         const entry = seen.get(target);
-        if (!TRUTHY.has(entry.type)) {
+        const type = entry?.type ?? "";
+        if (!TRUTHY.has(type)) {
           fail(
             at,
-            `field "${field.name}" is present when "${target}", which is ${entry.type} and has no truth value`,
+            `field "${field.name}" is present when "${target}", which is ${entry?.type} and has no truth value`,
           );
         }
-        const width = entry.width ?? SCALAR_BITS[entry.type];
-        if (field.present.equals !== undefined && width !== undefined) {
-          const signed =
-            entry.width === undefined && entry.type.startsWith("i");
+        const width = entry?.width ?? SCALAR_BITS[type];
+        const equals = field.present.equals;
+        if (equals !== undefined && width !== undefined) {
+          const signed = entry?.width === undefined && type.startsWith("i");
           const low = signed ? -(2 ** (width - 1)) : 0;
           const high = signed ? 2 ** (width - 1) - 1 : 2 ** width - 1;
-          if (field.present.equals < low || field.present.equals > high) {
+          const compared = Number(equals);
+          if (compared < low || compared > high) {
             fail(
               at,
-              `field "${field.name}" is present when "${target}" equals ${field.present.equals}, which ${entry.type} cannot hold`,
+              `field "${field.name}" is present when "${target}" equals ${String(equals)}, which ${entry?.type} cannot hold`,
             );
           }
         }
@@ -345,15 +509,20 @@ function checkFields(fields, outer, structNames, at, openStructs = new Set()) {
     }
 
     if (field.type === "bits") {
-      const declared = field.bits.reduce((total, run) => total + run.width, 0);
-      const available = field.size * 8;
+      const runs = field.bits ?? [];
+      const declared = runs.reduce(
+        (total, run) => total + (run.width ?? 0),
+        0,
+      );
+      const size = typeof field.size === "number" ? field.size : NaN;
+      const available = size * 8;
       if (declared !== available) {
         fail(
           at,
-          `field "${field.name}" declares ${declared} bits across ${field.size} byte(s), which holds ${available}`,
+          `field "${field.name}" declares ${declared} bits across ${String(field.size)} byte(s), which holds ${available}`,
         );
       }
-      for (const run of field.bits) {
+      for (const run of runs) {
         const path = `${field.name}.${run.name}`;
         if (seen.has(path)) {
           fail(at, `bit run "${path}" is declared twice`);
@@ -362,8 +531,8 @@ function checkFields(fields, outer, structNames, at, openStructs = new Set()) {
       }
     }
 
-    for (const key of ["count", "size"]) {
-      let value = field[key];
+    for (const key of ["count", "size"] as const) {
+      const value = field[key];
       if (value && typeof value === "object") {
         if (checkItemRef(field.name, value.field)) continue;
         const entry = seen.get(value.field);
@@ -372,7 +541,7 @@ function checkFields(fields, outer, structNames, at, openStructs = new Set()) {
             at,
             `field "${field.name}" ${key} refers to "${value.field}", which is not an earlier field`,
           );
-        } else if (!COUNTABLE.has(entry.type)) {
+        } else if (!COUNTABLE.has(entry.type ?? "")) {
           fail(
             at,
             `field "${field.name}" ${key} refers to "${value.field}", which is ${entry.type} rather than an unsigned integer`,
@@ -390,15 +559,16 @@ function checkFields(fields, outer, structNames, at, openStructs = new Set()) {
       }
       if (value === "remaining") openEnded = true;
       if (RESERVED.has(value)) continue;
-      if (!seen.has(value)) {
+      const entry = seen.get(value);
+      if (!entry) {
         fail(
           at,
           `field "${field.name}" ${key} refers to "${value}", which is not an earlier field`,
         );
-      } else if (!COUNTABLE.has(seen.get(value).type)) {
+      } else if (!COUNTABLE.has(entry.type ?? "")) {
         fail(
           at,
-          `field "${field.name}" ${key} refers to "${value}", which is ${seen.get(value).type} rather than an unsigned integer`,
+          `field "${field.name}" ${key} refers to "${value}", which is ${entry.type} rather than an unsigned integer`,
         );
       }
     }
@@ -407,7 +577,7 @@ function checkFields(fields, outer, structNames, at, openStructs = new Set()) {
       field.items?.size === "remaining" ||
       (field.items?.type === "struct" &&
         field.items.size === undefined &&
-        openStructs.has(field.items.struct));
+        openStructs.has(field.items.struct ?? ""));
     if (field.type === "array" && itemRunsOn && field.size === undefined) {
       fail(
         at,
@@ -423,13 +593,13 @@ function checkFields(fields, outer, structNames, at, openStructs = new Set()) {
     }
 
     if (field.type === "struct") {
-      if (!structNames.has(field.struct)) {
+      if (!structNames.has(field.struct ?? "")) {
         fail(
           at,
           `field "${field.name}" refers to struct "${field.struct}", which has no definition`,
         );
       } else if (
-        openStructs.has(field.struct) &&
+        openStructs.has(field.struct ?? "") &&
         field.size === undefined &&
         !last
       ) {
@@ -457,7 +627,7 @@ function checkFields(fields, outer, structNames, at, openStructs = new Set()) {
 
     if (field.type === "array" && field.items) {
       const inner = new Map(seen);
-      inner.set("__count", field.count);
+      inner.set("__count", { type: undefined, count: field.count });
       checkFields(
         [field.items],
         inner,
@@ -468,7 +638,7 @@ function checkFields(fields, outer, structNames, at, openStructs = new Set()) {
     }
     if (field.type === "record") {
       checkFields(
-        field.fields,
+        field.fields ?? [],
         seen,
         structNames,
         `${at} > ${field.name}`,
@@ -481,16 +651,16 @@ function checkFields(fields, outer, structNames, at, openStructs = new Set()) {
       openEnded ||
       (field.type === "struct" &&
         field.size === undefined &&
-        openStructs.has(field.struct));
+        openStructs.has(field.struct ?? ""));
     if (endsOpen && last) seen.set("__open", { type: "u8" });
   });
 
   return seen;
 }
 
-const index = readConfig(join(META, "index.json"));
+const index = readConfig(join(META, "index.json")) as Index | null;
 const metaFiles = Object.values(index?.schemas ?? {});
-for (const name of readdirSync(META)) {
+for (const name of readdirSync(META).sort()) {
   if (
     name.endsWith(".json") &&
     name !== "index.json" &&
@@ -499,21 +669,33 @@ for (const name of readdirSync(META)) {
     fail(join(META, "index.json"), `does not list ${name}`);
   }
 }
-const meta = Object.fromEntries(
+const meta: Record<string, unknown> = Object.fromEntries(
   Object.entries(index?.schemas ?? {}).map(([urn, file]) => [
     urn,
     readConfig(join(META, file)),
   ]),
 );
-const messageSchema = meta["urn:trueshot:schema:message"];
-const structSchema = meta["urn:trueshot:schema:struct"];
-const protocolSchema = meta["urn:trueshot:schema:protocol"];
-const channelsSchema = meta["urn:trueshot:schema:channels"];
-const vectorSchema = meta["urn:trueshot:schema:vector"];
-const familiesSchema = meta["urn:trueshot:schema:families"];
-const protocolDoc = readConfig(join(SCHEMA_DIR, "protocol.json"));
-const channelsDoc = readConfig(join(SCHEMA_DIR, "channels.json"));
-const familiesDoc = readConfig(join(SCHEMA_DIR, "families.json"));
+const messageSchema = meta["urn:trueshot:schema:message"] as MetaSchema | null;
+const structSchema = meta["urn:trueshot:schema:struct"] as MetaSchema | null;
+const protocolSchema = meta[
+  "urn:trueshot:schema:protocol"
+] as MetaSchema | null;
+const channelsSchema = meta[
+  "urn:trueshot:schema:channels"
+] as MetaSchema | null;
+const vectorSchema = meta["urn:trueshot:schema:vector"] as MetaSchema | null;
+const familiesSchema = meta[
+  "urn:trueshot:schema:families"
+] as MetaSchema | null;
+const protocolDoc = readConfig(
+  join(SCHEMA_DIR, "protocol.json"),
+) as Documents<ProtocolRevision> | null;
+const channelsDoc = readConfig(
+  join(SCHEMA_DIR, "channels.json"),
+) as Documents<ChannelsRevision> | null;
+const familiesDoc = readConfig(
+  join(SCHEMA_DIR, "families.json"),
+) as Documents<FamiliesRevision> | null;
 
 if (
   !index ||
@@ -534,6 +716,11 @@ if (
 const ajv = new Ajv({ strict: true, allErrors: true });
 ajv.addSchema(messageSchema);
 const validateMessage = ajv.getSchema(messageSchema.$id);
+if (validateMessage === undefined) {
+  throw new Error(
+    `the message meta-schema ${messageSchema.$id} did not compile`,
+  );
+}
 const validateStruct = ajv.compile(structSchema);
 const validateProtocol = ajv.compile(protocolSchema);
 const validateChannels = ajv.compile(channelsSchema);
@@ -541,12 +728,15 @@ const validateVector = ajv.compile(vectorSchema);
 const validateFamilies = ajv.compile(familiesSchema);
 
 // Key order is not part of a value, so compare with it settled.
-function canonical(value) {
-  if (Array.isArray(value)) return `[${value.map(canonical).join(",")}]`;
+function canonical(value: unknown): string | undefined {
+  if (Array.isArray(value)) {
+    return `[${value.map((item: unknown) => canonical(item)).join(",")}]`;
+  }
   if (value && typeof value === "object") {
-    return `{${Object.keys(value)
+    const record = value as Readonly<Record<string, unknown>>;
+    return `{${Object.keys(record)
       .sort()
-      .map((k) => `${JSON.stringify(k)}:${canonical(value[k])}`)
+      .map((k) => `${JSON.stringify(k)}:${canonical(record[k])}`)
       .join(",")}}`;
   }
   return JSON.stringify(value);
@@ -564,22 +754,26 @@ const MULTI_BYTE = new Set([
 ]);
 
 // Which fields would read a byte order the revision never declared.
-function needingOrder(fields, structs, seen = new Set()) {
-  const found = [];
+function needingOrder(
+  fields: readonly FieldLike[] | undefined,
+  structs: ReadonlyMap<string, StructDoc>,
+  seen: ReadonlySet<string> = new Set(),
+): string[] {
+  const found: string[] = [];
   for (const field of fields ?? []) {
     if (field.endian) continue;
-    if (MULTI_BYTE.has(field.type)) {
+    if (MULTI_BYTE.has(field.type ?? "")) {
       found.push(field.name);
     } else if (field.type === "array" && field.items) {
       found.push(...needingOrder([field.items], structs, seen));
-    } else if (field.type === "struct" && !seen.has(field.struct)) {
-      const definition = structs.get(field.struct);
+    } else if (field.type === "struct" && !seen.has(field.struct ?? "")) {
+      const definition = structs.get(field.struct ?? "");
       if (definition) {
         found.push(
           ...needingOrder(
             definition.fields,
             structs,
-            new Set([...seen, field.struct]),
+            new Set([...seen, field.struct ?? ""]),
           ),
         );
       }
@@ -588,15 +782,28 @@ function needingOrder(fields, structs, seen = new Set()) {
   return found;
 }
 
+type Note = (
+  path: string,
+  absent: boolean,
+  rule: Presence,
+  scope: Readonly<Record<string, unknown>>,
+) => void;
+
+const asRecord = (value: unknown): Readonly<Record<string, unknown>> | null =>
+  value && typeof value === "object" && !Array.isArray(value)
+    ? (value as Readonly<Record<string, unknown>>)
+    : null;
+
 // Every presence rule a payload met, wherever it sits.
 function walkPresence(
-  fields,
-  values,
-  structs,
-  prefix,
-  note,
-  seen = new Set(),
-) {
+  fields: readonly FieldLike[] | undefined,
+  given: unknown,
+  structs: ReadonlyMap<string, StructDoc>,
+  prefix: string,
+  note: Note,
+  seen: ReadonlySet<string> = new Set(),
+): void {
+  const values = asRecord(given);
   for (const field of fields ?? []) {
     if (!values || !(field.name in values)) continue;
     const value = values[field.name];
@@ -605,8 +812,8 @@ function walkPresence(
     if (value === null || value === undefined) continue;
     if (field.type === "record") {
       walkPresence(field.fields, value, structs, path, note, seen);
-    } else if (field.type === "struct" && !seen.has(field.struct)) {
-      const definition = structs.get(field.struct);
+    } else if (field.type === "struct" && !seen.has(field.struct ?? "")) {
+      const definition = structs.get(field.struct ?? "");
       if (definition) {
         walkPresence(
           definition.fields,
@@ -614,15 +821,17 @@ function walkPresence(
           structs,
           `struct:${field.struct}`,
           note,
-          new Set([...seen, field.struct]),
+          new Set([...seen, field.struct ?? ""]),
         );
       }
     } else if (field.type === "array" && Array.isArray(value)) {
       // Items share one rule, so one item meeting it counts for the list.
-      for (const item of value) {
+      const items = field.items;
+      if (items === undefined) continue;
+      for (const item of value as readonly unknown[]) {
         walkPresence(
-          [field.items],
-          { [field.items.name]: item },
+          [items],
+          { [items.name]: item },
           structs,
           path,
           note,
@@ -633,21 +842,25 @@ function walkPresence(
   }
 }
 
-function needingKey(fields, structs, seen = new Set()) {
-  const found = [];
+function needingKey(
+  fields: readonly FieldLike[] | undefined,
+  structs: ReadonlyMap<string, StructDoc>,
+  seen: ReadonlySet<string> = new Set(),
+): string[] {
+  const found: string[] = [];
   for (const field of fields ?? []) {
     if (field.enciphered) found.push(field.name);
     if (field.type === "array" && field.items) {
       found.push(...needingKey([field.items], structs, seen));
     }
-    if (field.type === "struct" && !seen.has(field.struct)) {
-      const definition = structs.get(field.struct);
+    if (field.type === "struct" && !seen.has(field.struct ?? "")) {
+      const definition = structs.get(field.struct ?? "");
       if (definition) {
         found.push(
           ...needingKey(
             definition.fields,
             structs,
-            new Set([...seen, field.struct]),
+            new Set([...seen, field.struct ?? ""]),
           ),
         );
       }
@@ -656,8 +869,11 @@ function needingKey(fields, structs, seen = new Set()) {
   return found;
 }
 
-const report = (where, errors) => {
-  for (const error of errors) {
+const report = (
+  where: string,
+  errors: readonly ErrorObject[] | null | undefined,
+): void => {
+  for (const error of errors ?? []) {
     const detail =
       error.params && Object.keys(error.params).length
         ? ` ${JSON.stringify(error.params)}`
@@ -667,9 +883,9 @@ const report = (where, errors) => {
 };
 
 // A $schema pointer is a convenience for editors, not part of a definition.
-const withoutPointer = (doc) => {
-  const copy = { ...doc };
-  delete copy.$schema;
+const withoutPointer = (doc: unknown): Record<string, unknown> => {
+  const copy: Record<string, unknown> = { ...asRecord(doc) };
+  delete copy["$schema"];
   return copy;
 };
 
@@ -701,12 +917,12 @@ checkNotes(familiesDoc, "schema/families.json");
 const specEnd = (protocolDoc.revisions ?? []).some((r) => !r.until)
   ? undefined
   : (protocolDoc.revisions ?? [])
-      .map((r) => r.until)
+      .map((r) => r.until ?? "")
       .sort(compareVersions)
       .pop();
 
 // The definition of a channel, at a version.
-const channelAt = (name, revision) => {
+const channelAt = (name: string, revision: Ranged): ChannelDef | null => {
   for (const r of channelsDoc.revisions ?? []) {
     if (!rangesOverlap(r, revision)) continue;
     const found = (r.channels ?? []).find((c) => c.name === name);
@@ -716,7 +932,10 @@ const channelAt = (name, revision) => {
 };
 
 // The definition of a family, at a version.
-const familyDefAt = (name, revision) => {
+const familyDefAt = (
+  name: string | undefined,
+  revision: Ranged,
+): FamilyDef | null => {
   for (const r of familiesDoc.revisions ?? []) {
     if (!rangesOverlap(r, revision)) continue;
     const found = (r.families ?? []).find((f) => f.name === name);
@@ -727,11 +946,13 @@ const familyDefAt = (name, revision) => {
 
 // The values a family's plain command field can hold: what its width allows,
 // less anything the family keeps for framing.
-const plainRange = (family) => {
+const plainRange = (
+  family: FamilyDef,
+): { max: number; kept: Set<number> } | null => {
   const spec = family.command;
   if (!spec) return null;
   const field = family.header.find((f) => f.name === spec.field);
-  const bits = field && SCALAR_BITS[field.type];
+  const bits = field && SCALAR_BITS[field.type ?? ""];
   if (!bits) return null;
   const kept = new Set(spec.reserved ?? []);
   if (spec.escape !== undefined) kept.add(spec.escape);
@@ -739,19 +960,19 @@ const plainRange = (family) => {
 };
 
 // Whether an identifier travels in the plain field or behind the escape.
-const isPlain = (family, command) => {
+const isPlain = (family: FamilyDef, command: number): boolean => {
   const range = plainRange(family);
   if (!range) return true;
   return command <= range.max && !range.kept.has(command);
 };
 
 // The value a header carries that identifies a message.
-const effectiveCommand = (family, values) => {
+const effectiveCommand = (family: FamilyDef, values: Values): Value => {
   const spec = family.command;
   if (!spec) return null;
-  const plain = values[spec.field];
+  const plain = values[spec.field ?? ""];
   if (spec.escape !== undefined && plain === spec.escape) {
-    return values[spec.extendedField] ?? null;
+    return values[spec.extendedField ?? ""] ?? null;
   }
   return plain ?? null;
 };
@@ -767,8 +988,8 @@ checkNotes(index, join(META, "index.json"));
 // A channel name is how a message reaches its family, so two
 // definitions of one name at one version make every message on it undecidable.
 (channelsDoc.revisions ?? []).forEach((revision, index) => {
-  const names = new Set();
-  const ids = new Set();
+  const names = new Set<string>();
+  const ids = new Set<number>();
   for (const channel of revision.channels ?? []) {
     if (names.has(channel.name)) {
       fail(
@@ -795,7 +1016,10 @@ checkNotes(index, join(META, "index.json"));
 
 // A message revision spans a range, and a channel has to exist across all of
 // it, not merely where it starts.
-const channelMissingFor = (messageRevision, name) => {
+const channelMissingFor = (
+  messageRevision: Ranged,
+  name: string,
+): string | null => {
   const overlapping = (channelsDoc.revisions ?? []).filter((r) =>
     rangesOverlap(r, messageRevision),
   );
@@ -803,26 +1027,28 @@ const channelMissingFor = (messageRevision, name) => {
   const absent = overlapping.filter(
     (r) => !(r.channels ?? []).some((c) => c.name === name),
   );
-  return absent.length ? `is not defined from ${absent[0].from}` : null;
+  const [first] = absent;
+  return first ? `is not defined from ${first.from}` : null;
 };
 
 // Structs first: messages reference them.
-const structNames = new Set();
-const structs = new Map();
-const structFiles = [];
-const openStructs = new Set();
+const structNames = new Set<string>();
+const structs = new Map<string, StructDoc>();
+const structFiles: { path: string; doc: StructDoc }[] = [];
+const openStructs = new Set<string>();
 for (const file of listJson("types")) {
-  let doc;
+  let parsed: unknown;
   try {
-    doc = readJson(file.path);
+    parsed = readJson(file.path);
   } catch (error) {
-    fail(file.path, `not valid JSON: ${error.message}`);
+    fail(file.path, `not valid JSON: ${messageOf(error)}`);
     continue;
   }
-  if (!validateStruct(doc)) {
+  if (!validateStruct(parsed)) {
     report(file.path, validateStruct.errors);
     continue;
   }
+  const doc = parsed as StructDoc;
   if (basename(file.name, ".json") !== doc.struct) {
     fail(
       file.path,
@@ -848,7 +1074,7 @@ while (growing) {
     if (
       last?.type === "struct" &&
       last.size === undefined &&
-      openStructs.has(last.struct)
+      openStructs.has(last.struct ?? "")
     ) {
       openStructs.add(doc.struct);
       growing = true;
@@ -856,10 +1082,15 @@ while (growing) {
   }
 }
 
+// What the codec reads a struct as.
+const structFields = new Map<string, readonly Field[]>(
+  [...structs].map(([name, doc]) => [name, doc.fields as readonly Field[]]),
+);
+
 if (familiesAreValid) {
   (familiesDoc.revisions ?? []).forEach((revision, index) => {
     const at = `schema/families.json revision ${index}`;
-    const names = new Set();
+    const names = new Set<string>();
     for (const family of revision.families ?? []) {
       if (names.has(family.name)) {
         fail(at, `family "${family.name}" is defined twice`);
@@ -875,7 +1106,7 @@ if (familiesAreValid) {
       const spec = family.command;
       if (!spec) continue;
       const declared = new Set(family.header.map((f) => f.name));
-      if (!declared.has(spec.field)) {
+      if (!declared.has(spec.field ?? "")) {
         fail(
           at,
           `family "${family.name}" names "${spec.field}" as its command, which its header does not carry`,
@@ -940,10 +1171,10 @@ if (familiesAreValid) {
   },
 );
 
-const usedStructs = (fields) => {
-  const found = [];
+const usedStructs = (fields: readonly FieldLike[] | undefined): string[] => {
+  const found: string[] = [];
   for (const field of fields ?? []) {
-    if (field.type === "struct") found.push(field.struct);
+    if (field.type === "struct") found.push(field.struct ?? "");
     if (field.type === "array" && field.items)
       found.push(...usedStructs([field.items]));
   }
@@ -951,7 +1182,7 @@ const usedStructs = (fields) => {
 };
 for (const { path, doc } of structFiles) {
   const trail = [doc.struct];
-  const walk = (name) => {
+  const walk = (name: string): boolean => {
     for (const next of usedStructs(structs.get(name)?.fields)) {
       if (trail.includes(next)) {
         fail(
@@ -969,19 +1200,20 @@ for (const { path, doc } of structFiles) {
   walk(doc.struct);
 }
 
-const messages = [];
+const messages: { where: string; doc: MessageDoc }[] = [];
 for (const file of listJson("messages")) {
-  let doc;
+  let parsed: unknown;
   try {
-    doc = readJson(file.path);
+    parsed = readJson(file.path);
   } catch (error) {
-    fail(file.path, `not valid JSON: ${error.message}`);
+    fail(file.path, `not valid JSON: ${messageOf(error)}`);
     continue;
   }
-  if (!validateMessage(doc)) {
+  if (!validateMessage(parsed)) {
     report(file.path, validateMessage.errors);
     continue;
   }
+  const doc = parsed as MessageDoc;
   if (basename(file.name, ".json") !== doc.message) {
     fail(
       file.path,
@@ -1006,7 +1238,9 @@ for (const { where, doc } of messages) {
 
     // A revision with no end runs as far as the specification itself does,
     // rather than for ever, so recording one costs no boundary to repeat.
-    const reach = revision.until ? revision : { ...revision, until: specEnd };
+    const reach: Ranged = revision.until
+      ? revision
+      : { ...revision, until: specEnd };
 
     // Each of the three documents has to account for the whole range, not
     // merely disagree with none of it.
@@ -1014,7 +1248,7 @@ for (const { where, doc } of messages) {
       ["protocol", protocolDoc.revisions ?? []],
       ["channel", channelsDoc.revisions ?? []],
       ["family", familiesDoc.revisions ?? []],
-    ]) {
+    ] as const) {
       const gap = uncoveredIn(revisions, reach);
       if (gap !== null) {
         fail(at, `covers ${gap} onward, which no ${what} revision describes`);
@@ -1036,7 +1270,7 @@ for (const { where, doc } of messages) {
           );
         }
       }
-      const spec = family.command ?? {};
+      const spec: CommandSpec = family.command ?? {};
       const widest = spec.extendedField === undefined ? 255 : 65535;
       if (revision.command > widest) {
         fail(
@@ -1057,7 +1291,7 @@ for (const { where, doc } of messages) {
     // A channel a message also travels on has to exist, has to be a channel
     // it is not already on, and has to number its messages the same way, or
     // the command value would not mean the same thing there.
-    const alsoSeen = new Set();
+    const alsoSeen = new Set<string>();
     for (const other of revision.alsoOn ?? []) {
       const gone = channelMissingFor(revision, other.channel);
       if (gone) {
@@ -1096,11 +1330,11 @@ for (const { where, doc } of messages) {
 }
 
 // Which family a channel carries, at a version.
-const familyAt = (channelName, revision) => {
+const familyAt = (channelName: string, revision: Ranged): string | null => {
   for (const r of channelsDoc.revisions ?? []) {
     if (!rangesOverlap(r, revision)) continue;
     const found = (r.channels ?? []).find((c) => c.name === channelName);
-    if (found) return found.family;
+    if (found) return found.family ?? null;
   }
   return null;
 };
@@ -1116,12 +1350,13 @@ const claims = messages.flatMap(({ where, doc }) =>
 );
 
 // One pair of messages is reported once, however many of their channels clash.
-const reportedCollisions = new Set();
+const reportedCollisions = new Set<string>();
 
 for (let i = 0; i < claims.length; i += 1) {
   for (let j = i + 1; j < claims.length; j += 1) {
     const a = claims[i];
     const b = claims[j];
+    if (a === undefined || b === undefined) continue;
     if (a.message === b.message) continue;
     if (a.revision.command !== b.revision.command) continue;
     if (!rangesOverlap(a.revision, b.revision)) continue;
@@ -1146,30 +1381,42 @@ for (let i = 0; i < claims.length; i += 1) {
 
 // Vectors. A subject says what is being checked.
 const byMessage = new Map(messages.map(({ doc }) => [doc.message, doc]));
-const covered = new Set();
-const transportCovered = new Set();
+const covered = new Set<string>();
+const transportCovered = new Set<string>();
 // Structs a vector reads on their own.
-const structCovered = new Set();
+const structCovered = new Set<string>();
 // Which presence rules any vector has actually exercised, and which way.
-const exercised = new Map();
+interface Exercised {
+  present: boolean;
+  absent: boolean;
+  readonly members: Set<number>;
+}
+const exercised = new Map<string, Exercised>();
 // What a message vector decoded to, so an algorithm can only read that.
-const decoded = new Map();
-const algorithmsSeen = new Set();
-const pendingAlgorithms = [];
-const pascalFromKebab = (name) =>
+const decoded = new Map<string, Values>();
+const algorithmsSeen = new Set<string>();
+const pendingAlgorithms: { path: string; doc: VectorDoc }[] = [];
+const pascalFromKebab = (name: string): string =>
   name
     .split("-")
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join("");
 
-const hexPairs = (text) => {
+const hexPairs = (text: string): number | null => {
   const stripped = text.replace(/\s+/g, "");
   return stripped.length % 2 === 0 ? stripped.length / 2 : null;
 };
 
-const vectorFiles = [];
-const walkVectors = (at, trail) => {
-  for (const entry of readdirSync(at, { withFileTypes: true })) {
+const equalBytes = (a: Uint8Array, b: Uint8Array): boolean =>
+  hex(a) === hex(b);
+
+const vectorFiles: { path: string; trail: string[] }[] = [];
+const walkVectors = (at: string, trail: string[]): void => {
+  // Sorted, so problems come out in the same order on every runtime.
+  const entries = readdirSync(at, { withFileTypes: true }).sort((a, b) =>
+    a.name < b.name ? -1 : a.name > b.name ? 1 : 0,
+  );
+  for (const entry of entries) {
     const here = join(at, entry.name);
     if (entry.isDirectory()) {
       walkVectors(here, [...trail, entry.name]);
@@ -1193,25 +1440,27 @@ if (existsSync(VECTOR_DIR)) {
         );
         continue;
       }
-      const dir = { name: trail[0] };
+      const dir = { name: trail[0] ?? "" };
 
-      let doc;
+      let parsed: unknown;
       try {
-        doc = readJson(path);
+        parsed = readJson(path);
       } catch (error) {
-        fail(path, `not valid JSON: ${error.message}`);
+        fail(path, `not valid JSON: ${messageOf(error)}`);
         continue;
       }
       vectorCount += 1;
-      if (!validateVector(withoutPointer(doc))) {
+      if (!validateVector(withoutPointer(parsed))) {
         report(path, validateVector.errors);
         continue;
       }
+      const doc = parsed as VectorDoc;
       checkNotes(doc, path, "", true);
 
-      for (const key of ["bytes", "key", "plaintext", "ciphertext"]) {
-        if (doc[key] === undefined) continue;
-        const pairs = hexPairs(doc[key]);
+      for (const key of ["bytes", "key", "plaintext", "ciphertext"] as const) {
+        const text = doc[key];
+        if (text === undefined) continue;
+        const pairs = hexPairs(text);
         if (pairs === null) {
           fail(path, `${key} has an odd number of hexadecimal digits`);
         } else if (pairs === 0) {
@@ -1232,13 +1481,13 @@ if (existsSync(VECTOR_DIR)) {
         if (dir.name !== "cipher") {
           fail(path, `sits under "${dir.name}" but its subject is cipher`);
         }
-        const key = Buffer.from(doc.key.replace(/\s+/g, ""), "hex");
+        const key = unhex(doc.key ?? "");
         // A cipher vector names no version, so it answers to every key size
         // any revision records.
         const sizes = new Set(
           (protocolDoc.revisions ?? [])
             .map((r) => r.cipher?.keySize)
-            .filter((n) => n !== undefined),
+            .filter((n): n is number => n !== undefined),
         );
         if (sizes.size > 0 && !sizes.has(key.length)) {
           fail(
@@ -1246,41 +1495,37 @@ if (existsSync(VECTOR_DIR)) {
             `carries a ${key.length} byte key, and the recorded sizes are ${[...sizes].join(", ")}`,
           );
         }
-        const plaintext = Buffer.from(
-          doc.plaintext.replace(/\s+/g, ""),
-          "hex",
-        );
-        const ciphertext = Buffer.from(
-          doc.ciphertext.replace(/\s+/g, ""),
-          "hex",
-        );
+        const plaintext = unhex(doc.plaintext ?? "");
+        const ciphertext = unhex(doc.ciphertext ?? "");
         if (plaintext.length !== ciphertext.length) {
           fail(
             path,
             `enciphers ${plaintext.length} bytes into ${ciphertext.length}, and the cipher does not change length`,
           );
         } else {
+          let written: Uint8Array;
+          let read: Uint8Array;
           try {
-            const written = encipher(key, plaintext);
-            if (!written.equals(ciphertext)) {
-              fail(
-                path,
-                `enciphers to ${written.toString("hex")}, and the vector says ${ciphertext.toString("hex")}`,
-              );
-            }
-            const read = decipher(key, ciphertext);
-            if (!read.equals(plaintext)) {
-              fail(
-                path,
-                `deciphers to ${read.toString("hex")}, and the vector says ${plaintext.toString("hex")}`,
-              );
-            }
+            const cipher = new Blowfish(key);
+            written = cipher.encipher(plaintext);
+            read = cipher.decipher(ciphertext);
           } catch (error) {
-            if (!(error instanceof CipherError)) throw error;
             // Nothing below can be checked without the algorithm, so stop
             // rather than report every vector as a failure of its own.
-            console.error(error.message);
+            console.error(`Blowfish is unavailable: ${messageOf(error)}`);
             process.exit(1);
+          }
+          if (!equalBytes(written, ciphertext)) {
+            fail(
+              path,
+              `enciphers to ${hex(written)}, and the vector says ${hex(ciphertext)}`,
+            );
+          }
+          if (!equalBytes(read, plaintext)) {
+            fail(
+              path,
+              `deciphers to ${hex(read)}, and the vector says ${hex(plaintext)}`,
+            );
           }
         }
         continue;
@@ -1291,24 +1536,27 @@ if (existsSync(VECTOR_DIR)) {
         // so the errors already reported are the ones worth reading.
         continue;
       }
+      const version = doc.version ?? "";
       const protocolRevision = (protocolDoc.revisions ?? []).find((r) =>
-        covers(r, doc.version),
+        covers(r, version),
       );
       if (!protocolRevision) {
-        fail(
-          path,
-          `version ${doc.version} falls outside every protocol revision`,
-        );
+        fail(path, `version ${version} falls outside every protocol revision`);
         continue;
       }
 
-      let defined;
-      let claim = null;
+      let defined: readonly FieldLike[];
+      let claim: {
+        family: FamilyDef;
+        command: number;
+        message: string;
+        revision: MessageRevision;
+      } | null = null;
       if (doc.subject === "transport") {
         if (dir.name !== "transport") {
           fail(path, `sits under "${dir.name}" but its subject is transport`);
         }
-        defined = protocolRevision.transport.header;
+        defined = protocolRevision.transport?.header ?? [];
         transportCovered.add(protocolRevision.from);
       } else if (doc.subject === "struct") {
         if (pascalFromKebab(dir.name) !== doc.struct) {
@@ -1317,13 +1565,13 @@ if (existsSync(VECTOR_DIR)) {
             `sits under "${dir.name}" but names struct "${doc.struct}"`,
           );
         }
-        const definition = structs.get(doc.struct);
+        const definition = structs.get(doc.struct ?? "");
         if (!definition) {
           fail(path, `names struct "${doc.struct}", which has no definition`);
           continue;
         }
         defined = definition.fields;
-        structCovered.add(doc.struct);
+        structCovered.add(definition.struct);
       } else {
         if (pascalFromKebab(dir.name) !== doc.message) {
           fail(
@@ -1331,7 +1579,7 @@ if (existsSync(VECTOR_DIR)) {
             `sits under "${dir.name}" but names message "${doc.message}"`,
           );
         }
-        const message = byMessage.get(doc.message);
+        const message = byMessage.get(doc.message ?? "");
         if (!message) {
           fail(
             path,
@@ -1339,15 +1587,15 @@ if (existsSync(VECTOR_DIR)) {
           );
           continue;
         }
-        const revision = message.revisions.find((r) => covers(r, doc.version));
+        const revision = message.revisions.find((r) => covers(r, version));
         if (!revision) {
           fail(
             path,
-            `version ${doc.version} falls outside every revision of ${doc.message}`,
+            `version ${version} falls outside every revision of ${message.message}`,
           );
           continue;
         }
-        covered.add(`${doc.message}@${revision.from}`);
+        covered.add(`${message.message}@${revision.from}`);
         // Where a revision names more than one channel, each has to have a
         // payload behind it, and a vector says which one it arrived on.
         if (doc.channel !== undefined) {
@@ -1358,17 +1606,17 @@ if (existsSync(VECTOR_DIR)) {
           if (!named.includes(doc.channel)) {
             fail(
               path,
-              `arrived on channel "${doc.channel}", which ${doc.message} does not travel on`,
+              `arrived on channel "${doc.channel}", which ${message.message} does not travel on`,
             );
           }
-          covered.add(`${doc.message}@${revision.from}@${doc.channel}`);
+          covered.add(`${message.message}@${revision.from}@${doc.channel}`);
         }
         const channel = channelAt(revision.channel, revision);
         const family = channel && familyDefAt(channel.family, revision);
         if (!family) {
           fail(
             path,
-            `travels on channel "${revision.channel}", whose family is defined nowhere for ${doc.version}`,
+            `travels on channel "${revision.channel}", whose family is defined nowhere for ${version}`,
           );
           continue;
         }
@@ -1377,13 +1625,14 @@ if (existsSync(VECTOR_DIR)) {
         claim = {
           family,
           command: revision.command,
-          message: doc.message,
+          message: message.message,
           revision,
         };
       }
 
+      const fields = doc.fields ?? {};
       const names = new Set(defined.map((f) => f.name));
-      for (const name of Object.keys(doc.fields)) {
+      for (const name of Object.keys(fields)) {
         if (!names.has(name)) {
           fail(
             path,
@@ -1393,9 +1642,9 @@ if (existsSync(VECTOR_DIR)) {
       }
       // A field a presence rule leaves out is written as null rather than omitted.
       for (const field of defined) {
-        if (!(field.name in doc.fields)) {
+        if (!(field.name in fields)) {
           fail(path, `does not decode the field "${field.name}"`);
-        } else if (doc.fields[field.name] === null && !field.present) {
+        } else if (fields[field.name] === null && !field.present) {
           fail(
             path,
             `writes "${field.name}" as absent, but no presence rule governs it`,
@@ -1415,15 +1664,16 @@ if (existsSync(VECTOR_DIR)) {
       }
 
       // The two claims the vector makes, rather than an assertion nobody reads.
-      const endian = protocolRevision.endian;
-      const payload = Buffer.from(doc.bytes.replace(/\s+/g, ""), "hex");
+      const endian = protocolRevision.endian ?? "little";
+      const payload = unhex(doc.bytes ?? "");
       // A payload is covered from its first byte: a message opens with the
       // header its family carries, and a transport vector with the packet
       // header itself.
       const start = 0;
+      const layout = defined as readonly Field[];
       try {
         const sealed = needingKey(defined, structs);
-        let cipher = null;
+        let cipher: Cipher | undefined;
         if (sealed.length > 0) {
           if (doc.key === undefined) {
             fail(
@@ -1432,11 +1682,7 @@ if (existsSync(VECTOR_DIR)) {
             );
             continue;
           }
-          const key = Buffer.from(doc.key.replace(/\s+/g, ""), "hex");
-          cipher = {
-            decipher: (bytes) => decipher(key, bytes),
-            encipher: (bytes) => encipher(key, bytes),
-          };
+          cipher = new Blowfish(unhex(doc.key));
         } else if (doc.key !== undefined) {
           fail(
             path,
@@ -1444,15 +1690,12 @@ if (existsSync(VECTOR_DIR)) {
           );
           continue;
         }
-        const read = decodeFields(
-          defined,
-          payload,
-          start,
-          structs,
+        const context = {
+          structs: structFields,
           endian,
-          {},
-          cipher,
-        );
+          ...(cipher === undefined ? {} : { cipher }),
+        };
+        const read = decodeFields(layout, payload, start, context);
         if (doc.subject !== "transport" && read.offset !== payload.length) {
           fail(
             path,
@@ -1464,14 +1707,14 @@ if (existsSync(VECTOR_DIR)) {
           if (carried !== claim.command) {
             fail(
               path,
-              `carries command ${carried}, and ${claim.message} is command ${claim.command} at this version`,
+              `carries command ${String(carried)}, and ${claim.message} is command ${claim.command} at this version`,
             );
           } else {
-            const spec = claim.family.command ?? {};
+            const spec: CommandSpec = claim.family.command ?? {};
             const wantsPlain = isPlain(claim.family, claim.command);
             const usedEscape =
               spec.escape !== undefined &&
-              read.values[spec.field] === spec.escape;
+              read.values[spec.field ?? ""] === spec.escape;
             if (wantsPlain && usedEscape) {
               fail(
                 path,
@@ -1487,32 +1730,33 @@ if (existsSync(VECTOR_DIR)) {
           }
         }
         if (claim || doc.subject === "struct") {
-          const note = (path, absent, rule, scope) => {
-            const key = path.startsWith("struct:")
-              ? `#${path}`
-              : `${claim.message}@${claim.revision.from}#${path}`;
+          const owner = claim;
+          const note: Note = (at, absent, rule, scope) => {
+            const key = at.startsWith("struct:")
+              ? `#${at}`
+              : `${owner?.message}@${owner?.revision.from}#${at}`;
             const seenSoFar = exercised.get(key) ?? {
               present: false,
               absent: false,
-              members: new Set(),
+              members: new Set<number>(),
             };
             if (absent) seenSoFar.absent = true;
             else seenSoFar.present = true;
             // A rule satisfied by any one of a set is only exercised for the
             // members some vector actually carried.
-            if (!absent && Array.isArray(rule?.equals)) {
-              const [head, run] = rule.when.split(".");
+            if (!absent && Array.isArray(rule.equals)) {
+              const [head = "", run] = rule.when.split(".");
               const carried =
-                run === undefined ? scope?.[head] : scope?.[head]?.[run];
+                run === undefined ? scope[head] : asRecord(scope[head])?.[run];
               if (carried !== undefined && carried !== null) {
                 seenSoFar.members.add(Number(carried));
               }
             }
             exercised.set(key, seenSoFar);
           };
-          if (claim) {
+          if (owner) {
             walkPresence(
-              claim.revision.fields,
+              owner.revision.fields,
               read.values,
               structs,
               "",
@@ -1525,14 +1769,14 @@ if (existsSync(VECTOR_DIR)) {
               structs,
               `struct:${doc.struct}`,
               note,
-              new Set([doc.struct]),
+              new Set([doc.struct ?? ""]),
             );
           }
         }
         if (doc.subject === "message") {
           decoded.set(`${dir.name}/${basename(path, ".json")}`, read.values);
         }
-        const expected = canonical(doc.fields);
+        const expected = canonical(fields);
         const actual = canonical(read.values);
         if (expected !== actual) {
           fail(
@@ -1540,19 +1784,12 @@ if (existsSync(VECTOR_DIR)) {
             `bytes decode to ${actual}, and the vector says ${expected}`,
           );
         } else {
-          const written = encodeFields(
-            defined,
-            doc.fields,
-            structs,
-            endian,
-            {},
-            cipher,
-          );
+          const written = encodeFields(layout, fields, context);
           const wanted = payload.subarray(start, read.offset);
-          if (!written.equals(wanted)) {
+          if (!equalBytes(written, wanted)) {
             fail(
               path,
-              `fields encode to ${written.toString("hex")}, and the bytes are ${wanted.toString("hex")}`,
+              `fields encode to ${hex(written)}, and the bytes are ${hex(wanted)}`,
             );
           }
         }
@@ -1565,34 +1802,43 @@ if (existsSync(VECTOR_DIR)) {
 }
 
 for (const { path, doc } of pendingAlgorithms) {
-  const run = ALGORITHMS[doc.algorithm];
+  const name = doc.algorithm ?? "";
+  const run = ALGORITHMS[name];
   if (!run) {
-    fail(path, `names algorithm "${doc.algorithm}", which nothing implements`);
+    fail(path, `names algorithm "${name}", which nothing implements`);
     continue;
   }
-  algorithmsSeen.add(doc.algorithm);
-  const source = decoded.get(doc.input.vector);
+  algorithmsSeen.add(name);
+  const source = decoded.get(doc.input?.vector ?? "");
   if (!source) {
     fail(
       path,
-      `reads "${doc.input.vector}", which is not a message vector that decoded`,
+      `reads "${doc.input?.vector}", which is not a message vector that decoded`,
     );
     continue;
   }
-  let input = source;
-  for (const part of doc.input.field.split(".")) input = input?.[part];
+  let input: Value | undefined = source;
+  for (const part of (doc.input?.field ?? "").split(".")) {
+    if (Array.isArray(input)) {
+      input = (input as readonly Value[])[Number(part)];
+    } else {
+      const record = asRecord(input);
+      input =
+        record === null ? undefined : (record[part] as Value | undefined);
+    }
+  }
   if (input === undefined) {
     fail(
       path,
-      `reads "${doc.input.field}" of "${doc.input.vector}", which holds no such field`,
+      `reads "${doc.input?.field}" of "${doc.input?.vector}", which holds no such field`,
     );
     continue;
   }
-  let got;
+  let got: string | undefined;
   try {
     got = canonical(run(input));
   } catch (error) {
-    fail(path, `could not be run: ${error.message}`);
+    fail(path, `could not be run: ${messageOf(error)}`);
     continue;
   }
   const want = canonical(doc.output);
@@ -1604,7 +1850,7 @@ for (const { path, doc } of pendingAlgorithms) {
 for (const name of Object.keys(ALGORITHMS)) {
   if (!algorithmsSeen.has(name)) {
     fail(
-      "scripts/algorithms.mjs",
+      "scripts/algorithms.ts",
       `algorithm "${name}" has no vector, so nothing checks it`,
     );
   }
@@ -1623,24 +1869,35 @@ if (protocolIsValid) {
 }
 
 // Structs some message carries, so its vectors evidence their rules.
-const carriedStructs = new Set();
+const carriedStructs = new Set<string>();
+type Ruled = [path: string, unseen: Presence["unseen"], rule: Presence];
 // Every presence rule under fields, with the side a rule says nothing shows.
-const presenceRules = (fields, prefix) => {
-  const ruled = [];
-  const collect = (fields, prefix, seenStructs) => {
+const presenceRules = (
+  fields: readonly FieldLike[],
+  prefix: string,
+): Ruled[] => {
+  const ruled: Ruled[] = [];
+  const collect = (
+    fields: readonly FieldLike[] | undefined,
+    prefix: string,
+    seenStructs: ReadonlySet<string>,
+  ): void => {
     for (const field of fields ?? []) {
       const path = prefix ? `${prefix}.${field.name}` : field.name;
       if (field.present)
         ruled.push([path, field.present.unseen, field.present]);
       if (field.type === "record") collect(field.fields, path, seenStructs);
-      else if (field.type === "struct" && !seenStructs.has(field.struct)) {
-        carriedStructs.add(field.struct);
-        const d = structs.get(field.struct);
+      else if (
+        field.type === "struct" &&
+        !seenStructs.has(field.struct ?? "")
+      ) {
+        carriedStructs.add(field.struct ?? "");
+        const d = structs.get(field.struct ?? "");
         if (d)
           collect(
             d.fields,
             `struct:${field.struct}`,
-            new Set([...seenStructs, field.struct]),
+            new Set([...seenStructs, field.struct ?? ""]),
           );
       } else if (field.type === "array" && field.items) {
         collect([field.items], path, seenStructs);
@@ -1655,7 +1912,12 @@ const presenceRules = (fields, prefix) => {
   return ruled;
 };
 // Whether vectors met each rule both ways, or as the rule says.
-const checkRules = (where, label, ruled, keyOf) => {
+const checkRules = (
+  where: string,
+  label: string,
+  ruled: readonly Ruled[],
+  keyOf: (path: string) => string,
+): void => {
   for (const [path, unseen, rule] of ruled) {
     const seen = exercised.get(keyOf(path));
     if (!seen) {
@@ -1664,6 +1926,7 @@ const checkRules = (where, label, ruled, keyOf) => {
     }
     // A rule may declare that no capture shows one of its sides. The
     // declaration has to stay true, or it is hiding a vector nobody added.
+    const equals = rule.equals;
     if (unseen && seen[unseen]) {
       fail(
         where,
@@ -1671,12 +1934,10 @@ const checkRules = (where, label, ruled, keyOf) => {
       );
     } else if (
       unseen !== "present" &&
-      Array.isArray(rule.equals) &&
-      rule.equals.some((member) => !seen.members?.has(member))
+      Array.isArray(equals) &&
+      equals.some((member) => !seen.members.has(member))
     ) {
-      const missing = rule.equals.filter(
-        (member) => !seen.members?.has(member),
-      );
+      const missing = equals.filter((member) => !seen.members.has(member));
       fail(
         where,
         `${label} has no vector where "${path}" is present with "${rule.when}" ${missing.join(", ")}, so part of its presence rule is unrecorded`,

@@ -10,34 +10,20 @@ permissions:
 
 jobs:
   schema:
-    name: names, format, codec and schema
+    name: names, format, types, codec, schema and generated text
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
-        with:
-          node-version: 22
-          cache: npm
-      - run: npm ci
-      - run: npm run check:names
-      - run: npm run check:format
-      - run: npm run check:codec
-      - run: npm run check:schema
-
-  live:
-    name: live check harness
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: conformance/live
     steps:
       - uses: actions/checkout@v5
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: 1.4.2
       - run: bun install --frozen-lockfile
-      - run: bun run typecheck
-      - run: bun run test
+      - run: bun run check:names
+      - run: bun run check:format
+      - run: bun run check:types
+      - run: bun run check:codec
+      - run: bun run check:schema
+      - run: bun run check:generated
 
   prose:
     name: prose

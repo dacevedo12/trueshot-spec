@@ -16,11 +16,10 @@ jobs:
       - uses: actions/checkout@v5
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v5
+      - uses: oven-sh/setup-bun@v2
         with:
-          node-version: 22
-          cache: npm
-      - run: npm ci
+          bun-version: 1.4.2
+      - run: bun install --frozen-lockfile
       - name: every new commit follows the standard
         env:
           EVENT: ${{ github.event_name }}
@@ -44,7 +43,7 @@ jobs:
           fi
           failed=0
           for sha in $shas; do
-            if ! git log -1 --format=%B "$sha" | npx --no-install commitlint; then
+            if ! git log -1 --format=%B "$sha" | bun x --bun commitlint; then
               echo "::error::$sha $(git log -1 --format=%s "$sha")"
               failed=1
             fi

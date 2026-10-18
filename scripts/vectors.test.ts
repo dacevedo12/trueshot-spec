@@ -5,14 +5,14 @@
 import { describe, expect, test } from "bun:test";
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import { Blowfish } from "../src/blowfish.ts";
-import { decodeFields, encodeFields, unhex } from "../src/codec.ts";
-import type { Values } from "../src/codec.ts";
-import { addressCheck, Headers } from "../src/header.ts";
-import { decodeMessage, encodeMessage } from "../src/message.ts";
-import { Layouts } from "../src/schema.ts";
+import { Blowfish } from "./cipher.ts";
+import { decodeFields, encodeFields, unhex } from "./codec.ts";
+import type { Values } from "./codec.ts";
+import { addressCheck, Headers } from "./header.ts";
+import { decodeMessage, encodeMessage } from "./message.ts";
+import { Layouts } from "./schema.ts";
 
-const VECTORS = join(import.meta.dir, "..", "..", "vectors");
+const VECTORS = join(import.meta.dir, "..", "conformance", "vectors");
 
 interface Vector {
   readonly subject:

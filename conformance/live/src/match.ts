@@ -7,13 +7,13 @@ import { join } from "node:path";
 import { Capture, LOOKS } from "./capture.ts";
 import { Client } from "./client.ts";
 import type { Setup } from "./client.ts";
-import { decodeFields, hex } from "./codec.ts";
-import type { Values } from "./codec.ts";
+import { decodeFields, hex } from "../../../scripts/codec.ts";
+import type { Values } from "../../../scripts/codec.ts";
 import { Host } from "./enet.ts";
 import type { Peer } from "./enet.ts";
-import { decodeHeader } from "./message.ts";
-import type { Message } from "./message.ts";
-import { Layouts } from "./schema.ts";
+import { decodeHeader } from "../../../scripts/message.ts";
+import type { Message } from "../../../scripts/message.ts";
+import { Layouts } from "../../../scripts/schema.ts";
 import { Session } from "./session.ts";
 
 // An arbitrary key. It is passed to the client at launch and means nothing.

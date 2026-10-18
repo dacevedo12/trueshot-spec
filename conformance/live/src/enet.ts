@@ -6,7 +6,7 @@
 import type { udp } from "bun";
 import type { IENetHost, IENetPeer } from "enet-js";
 import { join } from "node:path";
-import type { Layouts } from "./schema.ts";
+import type { Layouts } from "../../../scripts/schema.ts";
 
 type Delivery = "reliable" | "unreliable" | "unsequenced";
 

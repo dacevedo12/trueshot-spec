@@ -5,13 +5,13 @@
 // so a capture made on one build can be replayed on another that has the same
 // messages.
 //
-//   bun --env-file=<your env file> run replay <capture directory> [seconds]
+//   bun --env-file=<your env file> run live:replay <capture directory> [seconds]
 
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import type { Entry } from "./capture.ts";
 import { setup } from "./client.ts";
-import { isRecord } from "./codec.ts";
+import { isRecord } from "../../../scripts/codec.ts";
 import { Match } from "./match.ts";
 
 type Sent = Extract<Entry, { kind: "message" }>;
@@ -20,7 +20,7 @@ const [directory, seconds = "60"] = process.argv.slice(2);
 const s = setup();
 if (directory === undefined || s === undefined) {
   console.error(
-    "usage: bun --env-file=<env> run replay <capture directory> [seconds]",
+    "usage: bun --env-file=<env> run live:replay <capture directory> [seconds]",
   );
   process.exit(2);
 }

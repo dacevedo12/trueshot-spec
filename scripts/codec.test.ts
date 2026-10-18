@@ -1,23 +1,32 @@
 // The validator trusts the codec to say what a vector's bytes mean, so the
 // codec is checked here against values worked out by hand. A round trip alone
 // would not catch a fault that decode and encode share.
-import { strict as assert } from "node:assert";
-import { test } from "node:test";
-import { CodecError, decodeFields, encodeFields } from "./codec.mjs";
 
-const hex = (text) => Buffer.from(text.replace(/\s+/g, ""), "hex");
+import { expect, test } from "bun:test";
+import { CodecError, decodeFields, encodeFields, unhex } from "./codec.ts";
+import type { Context, Values } from "./codec.ts";
+import type { Endian, Field } from "./schema.ts";
+
+const context = (
+  structs: ReadonlyMap<string, readonly Field[]> = new Map(),
+  endian: Endian = "little",
+): Context => ({ structs, endian });
 
 const roundTrip = (
-  fields,
-  bytes,
-  values,
-  { structs = new Map(), endian = "little" } = {},
-) => {
-  const buffer = hex(bytes);
-  const read = decodeFields(fields, buffer, 0, structs, endian);
-  assert.deepEqual(read.values, values);
-  assert.equal(read.offset, buffer.length);
-  assert.deepEqual(encodeFields(fields, values, structs, endian), buffer);
+  fields: readonly Field[],
+  bytes: string,
+  values: Values,
+  options: {
+    structs?: ReadonlyMap<string, readonly Field[]>;
+    endian?: Endian;
+  } = {},
+): void => {
+  const buffer = unhex(bytes);
+  const c = context(options.structs, options.endian);
+  const read = decodeFields(fields, buffer, 0, c);
+  expect(read.values).toEqual(values);
+  expect(read.offset).toBe(buffer.length);
+  expect(encodeFields(fields, values, c)).toEqual(buffer);
 };
 
 test("scalars little endian", () => {
@@ -116,36 +125,17 @@ test("a remaining string takes the rest of the payload", () => {
 });
 
 test("bits pack from the least significant end", () => {
-  roundTrip(
-    [
-      {
-        name: "flags",
-        type: "bits",
-        size: 1,
-        bits: [
-          { name: "low", width: 7 },
-          { name: "high", width: 1 },
-        ],
-      },
+  const flags: Field = {
+    name: "flags",
+    type: "bits",
+    size: 1,
+    bits: [
+      { name: "low", width: 7 },
+      { name: "high", width: 1 },
     ],
-    "ff",
-    { flags: { low: 127, high: 1 } },
-  );
-  roundTrip(
-    [
-      {
-        name: "flags",
-        type: "bits",
-        size: 1,
-        bits: [
-          { name: "low", width: 7 },
-          { name: "high", width: 1 },
-        ],
-      },
-    ],
-    "29",
-    { flags: { low: 41, high: 0 } },
-  );
+  };
+  roundTrip([flags], "ff", { flags: { low: 127, high: 1 } });
+  roundTrip([flags], "29", { flags: { low: 41, high: 0 } });
 });
 
 test("an array takes its count from another field", () => {
@@ -165,16 +155,13 @@ test("an array takes its count from another field", () => {
 });
 
 test("a struct nests, and a field inside it can size a later one", () => {
-  const structs = new Map([
+  const structs = new Map<string, readonly Field[]>([
     [
       "Entry",
-      {
-        struct: "Entry",
-        fields: [
-          { name: "length", type: "u16" },
-          { name: "text", type: "string", encoding: "utf8", size: "length" },
-        ],
-      },
+      [
+        { name: "length", type: "u16" },
+        { name: "text", type: "string", encoding: "utf8", size: "length" },
+      ],
     ],
   ]);
   roundTrip(
@@ -200,7 +187,7 @@ test("a struct nests, and a field inside it can size a later one", () => {
 });
 
 test("a presence rule leaves a field out, and it is written as null", () => {
-  const fields = [
+  const fields: Field[] = [
     {
       name: "peer",
       type: "bits",
@@ -222,7 +209,7 @@ test("a presence rule leaves a field out, and it is written as null", () => {
 });
 
 test("a presence rule can turn on an exact value", () => {
-  const fields = [
+  const fields: Field[] = [
     { name: "kind", type: "u8" },
     { name: "extra", type: "u8", present: { when: "kind", equals: 3 } },
   ];
@@ -231,84 +218,60 @@ test("a presence rule can turn on an exact value", () => {
 });
 
 test("a payload too short to hold a field is rejected", () => {
-  assert.throws(
-    () =>
-      decodeFields(
-        [{ name: "a", type: "u32" }],
-        hex("0102"),
-        0,
-        new Map(),
-        "little",
-      ),
-    CodecError,
-  );
+  expect(() =>
+    decodeFields([{ name: "a", type: "u32" }], unhex("0102"), 0, context()),
+  ).toThrow(CodecError);
 });
 
 test("a value too wide for its field is rejected on encode", () => {
-  assert.throws(
-    () =>
-      encodeFields(
-        [{ name: "a", type: "u8" }],
-        { a: 256 },
-        new Map(),
-        "little",
-      ),
-    CodecError,
-  );
-  assert.throws(
-    () =>
-      encodeFields(
-        [
-          {
-            name: "f",
-            type: "bits",
-            size: 1,
-            bits: [
-              { name: "x", width: 3 },
-              { name: "y", width: 5 },
-            ],
-          },
-        ],
-        { f: { x: 8, y: 0 } },
-        new Map(),
-        "little",
-      ),
-    CodecError,
-  );
+  expect(() =>
+    encodeFields([{ name: "a", type: "u8" }], { a: 256 }, context()),
+  ).toThrow(CodecError);
+  expect(() =>
+    encodeFields(
+      [
+        {
+          name: "f",
+          type: "bits",
+          size: 1,
+          bits: [
+            { name: "x", width: 3 },
+            { name: "y", width: 5 },
+          ],
+        },
+      ],
+      { f: { x: 8, y: 0 } },
+      context(),
+    ),
+  ).toThrow(CodecError);
 });
 
 test("a count that disagrees with the array it labels is rejected on encode", () => {
-  assert.throws(
-    () =>
-      encodeFields(
-        [
-          { name: "count", type: "u8" },
-          {
-            name: "values",
-            type: "array",
-            count: "count",
-            items: { name: "v", type: "u8" },
-          },
-        ],
-        { count: 5, values: [1, 2] },
-        new Map(),
-        "little",
-      ),
-    CodecError,
-  );
+  expect(() =>
+    encodeFields(
+      [
+        { name: "count", type: "u8" },
+        {
+          name: "values",
+          type: "array",
+          count: "count",
+          items: { name: "v", type: "u8" },
+        },
+      ],
+      { count: 5, values: [1, 2] },
+      context(),
+    ),
+  ).toThrow(CodecError);
 });
 
 test("an array bounded by a byte length rather than an item count", () => {
-  const structs = new Map([
+  const structs = new Map<string, readonly Field[]>([
     [
       "Attr",
-      {
-        struct: "Attr",
-        fields: [
-          { name: "id", type: "u8" },
-          { name: "value", type: "u16" },
-        ],
-      },
+      [
+        { name: "id", type: "u8" },
+        { name: "value", type: "u16" },
+      ],
     ],
   ]);
   roundTrip(
@@ -336,39 +299,35 @@ test("an array bounded by a byte length rather than an item count", () => {
 });
 
 test("a struct bounded by a byte length has to fill it exactly", () => {
-  const structs = new Map([
-    ["Pair", { struct: "Pair", fields: [{ name: "a", type: "u16" }] }],
+  const structs = new Map<string, readonly Field[]>([
+    ["Pair", [{ name: "a", type: "u16" }]],
   ]);
-  const fields = [
+  const fields: Field[] = [
     { name: "length", type: "u8" },
     { name: "pair", type: "struct", struct: "Pair", size: "length" },
   ];
   roundTrip(fields, "02 0100", { length: 2, pair: { a: 1 } }, { structs });
-  assert.throws(
-    () => decodeFields(fields, hex("03 010000"), 0, structs, "little"),
-    CodecError,
-  );
+  expect(() =>
+    decodeFields(fields, unhex("03 010000"), 0, context(structs)),
+  ).toThrow(CodecError);
 });
 
 test("an item that consumes no bytes is rejected rather than repeated for ever", () => {
-  assert.throws(
-    () =>
-      decodeFields(
-        [
-          {
-            name: "tail",
-            type: "array",
-            count: "remaining",
-            items: { name: "e", type: "bytes", size: 0 },
-          },
-        ],
-        hex("0102"),
-        0,
-        new Map(),
-        "little",
-      ),
-    CodecError,
-  );
+  expect(() =>
+    decodeFields(
+      [
+        {
+          name: "tail",
+          type: "array",
+          count: "remaining",
+          items: { name: "e", type: "bytes", size: 0 },
+        },
+      ],
+      unhex("0102"),
+      0,
+      context(),
+    ),
+  ).toThrow(CodecError);
 });
 
 test("only a string padded to its own size drops trailing zeros", () => {
@@ -407,7 +366,7 @@ test("remaining is bounded by the run that encloses it", () => {
 });
 
 test("a field present while bytes remain", () => {
-  const fields = [
+  const fields: Field[] = [
     { name: "a", type: "u8" },
     { name: "b", type: "u16", present: { when: "remaining" } },
   ];

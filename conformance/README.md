@@ -97,7 +97,7 @@ bytes directly.
 
 ## What the checks already guarantee
 
-`npm run check` decodes every transport, message and struct vector against the layout
+`bun run check` decodes every transport, message and struct vector against the layout
 it names, compares the result to its `fields`, encodes those fields back, and
 compares to the bytes the layout covers. Every cipher vector is enciphered and
 deciphered for the same reason. A vector whose two halves disagree does not

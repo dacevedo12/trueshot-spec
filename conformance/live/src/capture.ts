@@ -4,8 +4,8 @@
 
 import { appendFileSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
-import { hex } from "./codec.ts";
-import type { Value } from "./codec.ts";
+import { hex } from "../../../scripts/codec.ts";
+import type { Value } from "../../../scripts/codec.ts";
 
 const CAPTURES = join(import.meta.dir, "..", "captures");
 const LOOKS = join(CAPTURES, "looks.jsonl");

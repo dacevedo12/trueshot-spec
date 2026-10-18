@@ -1,12 +1,12 @@
 // The definitions under schema/, typed. The harness reads them as data and
 // builds every layout from them, so a check exercises the specification rather
-// than a copy of it. `npm run check` validates the files against schema/meta;
+// than a copy of it. `bun run check` validates the files against schema/meta;
 // this module trusts that and only narrows the JSON to these types.
 
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
-const ROOT = join(import.meta.dir, "..", "..", "..", "schema");
+const ROOT = join(import.meta.dir, "..", "schema");
 
 type Scalar =
   "u8" | "i8" | "u16" | "i16" | "u32" | "i32" | "u64" | "i64" | "f32" | "f64";

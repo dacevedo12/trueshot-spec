@@ -28,5 +28,10 @@
     "forceConsistentCasingInFileNames": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src", "test", "checks"]
+  "include": [
+    "commitlint.config.ts",
+    "scripts",
+    "conformance/live/src",
+    "conformance/live/checks"
+  ]
 }

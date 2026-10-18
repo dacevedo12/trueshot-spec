@@ -3,7 +3,7 @@
 // on. The file names the commit it ran at, so anyone holding the same build
 // can run the same checks and compare.
 //
-//   bun --env-file=<your env file> run conform
+//   bun --env-file=<your env file> run live:conform
 
 import { mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
@@ -108,8 +108,15 @@ const results = {
   build: s.build,
   commit: git("rev-parse", "HEAD"),
   modified:
-    git("status", "--porcelain", "--", ".", ":!results", "../../schema")
-      .length > 0,
+    git(
+      "status",
+      "--porcelain",
+      "--",
+      ".",
+      ":!results",
+      "../../schema",
+      "../../scripts",
+    ).length > 0,
   runtime: `bun ${Bun.version}`,
   date: new Date().toISOString().slice(0, 10),
   checks: outcomes.sort((a, b) => a.check.localeCompare(b.check)),

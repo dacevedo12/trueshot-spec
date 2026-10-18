@@ -173,23 +173,25 @@ Every message names the system it belongs to, and each system has a document in
 behaviour and links the definitions; it never restates a layout. The table of
 messages at the end of each system document, and the page for each range of
 versions under `spec/reference/`, are generated: change the definitions, then
-run `npm run generate`, and never edit the generated parts by hand.
+run `bun run generate`, and never edit the generated parts by hand.
 
 ## Checks
 
-`npm run check` runs file naming, formatting, codec tests, schema validation,
-a check that the generated text is current, prose linting, and link checking. Continuous integration runs the same checks,
-so a local pass is a remote pass.
+The tooling runs on [Bun](https://bun.com), in TypeScript. `bun run check` runs
+file naming, formatting, type checking, codec tests, schema validation, a check
+that the generated text is current, prose linting, and link checking.
+Continuous integration runs the same checks, so a local pass is a remote pass.
 
 Schema validation decodes every vector rather than taking its word. A vector
 whose bytes and fields disagree fails the checks, which is what makes a vector
-evidence. Cipher vectors are run through Blowfish for the same reason, so the
-checks need Node started with `--openssl-legacy-provider`. The `npm run`
-scripts pass it already.
+evidence. Cipher vectors are run through Blowfish for the same reason.
 
 Prose and link checking need [Vale](https://vale.sh) and
 [lychee](https://lychee.cli.rs) on your PATH. Everything else arrives with
-`npm install`, which also installs a commit hook.
+`bun install`, which also installs a commit hook.
+
+[conformance/live](conformance/live/) checks the specification against a client
+you supply, and is where a fact about a client is shown to hold for a build.
 
 A pull request is reviewed once the checks pass, and not before.
 

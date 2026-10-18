@@ -1,0 +1,4 @@
+# Package binaries (prettier, commitlint, ls-lint) run under Bun rather than
+# whatever their first line names, so the tooling needs no other runtime.
+[run]
+bun = true

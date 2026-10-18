@@ -1,13 +1,17 @@
 // One client's connection, carried by the host: the cipher state, payloads as
 // named messages, and a record of everything that passed.
 
-import { Blowfish } from "./blowfish.ts";
-import type { Values } from "./codec.ts";
+import { Blowfish } from "../../../scripts/cipher.ts";
+import type { Values } from "../../../scripts/codec.ts";
 import type { Capture } from "./capture.ts";
 import type { Delivery, Host, Peer } from "./enet.ts";
-import { compose, decodeMessage, encodeMessage } from "./message.ts";
-import type { Message } from "./message.ts";
-import type { Layouts } from "./schema.ts";
+import {
+  compose,
+  decodeMessage,
+  encodeMessage,
+} from "../../../scripts/message.ts";
+import type { Message } from "../../../scripts/message.ts";
+import type { Layouts } from "../../../scripts/schema.ts";
 
 interface Waiter {
   readonly name: string;
