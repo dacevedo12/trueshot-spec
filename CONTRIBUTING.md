@@ -203,7 +203,10 @@ evidence. Cipher vectors are run through Blowfish for the same reason.
 
 Prose and link checking need [Vale](https://vale.sh) and
 [lychee](https://lychee.cli.rs) on your PATH. Everything else arrives with
-`bun install`, which also installs a commit hook.
+`bun install`, which also installs a commit hook. `nix develop` gives a shell
+with Bun, Vale, lychee, pandoc and typst at the versions `flake.lock` pins,
+which is what continuous integration runs in; it is a convenience, and the
+same tools installed any other way serve as well.
 
 [conformance/live](conformance/live/) checks the specification against a client
 you supply, and is where a fact about a client is shown to hold for a build.
