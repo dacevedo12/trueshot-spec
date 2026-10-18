@@ -5,8 +5,8 @@
   "license": "CC0-1.0",
   "type": "module",
   "scripts": {
-    "format": "prettier --write \"**/*.{json,md}\"",
-    "check:format": "prettier --check \"**/*.{json,md}\"",
+    "format": "prettier --write \"**/*.{json,md}\" \"conformance/live/**/*.ts\"",
+    "check:format": "prettier --check \"**/*.{json,md}\" \"conformance/live/**/*.ts\"",
     "check:schema": "node --openssl-legacy-provider scripts/validate.mjs",
     "check": "npm run check:names && npm run check:format && npm run check:codec && npm run check:schema && npm run check:generated && npm run check:prose && npm run check:links",
     "generate": "node scripts/generate.mjs",

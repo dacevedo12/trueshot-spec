@@ -33,9 +33,18 @@ ls:
     .dir: kebab-case
     .json: kebab-case
 
+  conformance/live:
+    .dir: kebab-case
+    .ts: kebab-case
+    .json: kebab-case
+
 ignore:
   - .git
   - .github
   - .githooks
   - .claude
   - node_modules
+  - conformance/live/node_modules
+  - conformance/live/captures
+  - conformance/live/local
+  - conformance/live/native/build

@@ -1,0 +1,22 @@
+{
+  "name": "trueshot-live",
+  "private": true,
+  "description": "Checks the specification against a client you supply. Not published, and not needed to implement from the spec.",
+  "license": "CC0-1.0",
+  "type": "module",
+  "scripts": {
+    "native": "native/build.sh",
+    "typecheck": "tsc --noEmit",
+    "test": "bun test ./test",
+    "checks": "bun test ./checks --timeout 600000",
+    "conform": "bun run src/conform.ts",
+    "replay": "bun run src/replay.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "1.4.3",
+    "typescript": "7.0.2"
+  },
+  "dependencies": {
+    "enet-js": "1.2.8"
+  }
+}

@@ -1,0 +1,236 @@
+diff --color -ru a/enet-1.2.5/include/enet/protocol.h b/enet-1.2.5/include/enet/protocol.h
+--- a/enet-1.2.5/include/enet/protocol.h	2011-06-28 03:12:13
++++ b/enet-1.2.5/include/enet/protocol.h	2026-10-18 15:14:36
+@@ -10,13 +10,13 @@
+ enum
+ {
+    ENET_PROTOCOL_MINIMUM_MTU             = 576,
+-   ENET_PROTOCOL_MAXIMUM_MTU             = 4096,
++   ENET_PROTOCOL_MAXIMUM_MTU             = 996,
+    ENET_PROTOCOL_MAXIMUM_PACKET_COMMANDS = 32,
+    ENET_PROTOCOL_MINIMUM_WINDOW_SIZE     = 4096,
+    ENET_PROTOCOL_MAXIMUM_WINDOW_SIZE     = 32768,
+    ENET_PROTOCOL_MINIMUM_CHANNEL_COUNT   = 1,
+    ENET_PROTOCOL_MAXIMUM_CHANNEL_COUNT   = 255,
+-   ENET_PROTOCOL_MAXIMUM_PEER_ID         = 0x7FFF
++   ENET_PROTOCOL_MAXIMUM_PEER_ID         = 0x7F
+ };
+ 
+ typedef enum _ENetProtocolCommand
+@@ -43,8 +43,8 @@
+    ENET_PROTOCOL_COMMAND_FLAG_ACKNOWLEDGE = (1 << 7),
+    ENET_PROTOCOL_COMMAND_FLAG_UNSEQUENCED = (1 << 6),
+ 
+-   ENET_PROTOCOL_HEADER_FLAG_SENT_TIME = (1 << 15),
+-   ENET_PROTOCOL_HEADER_FLAG_MASK      = 0x8000
++   ENET_PROTOCOL_HEADER_FLAG_SENT_TIME = (1 << 7),
++   ENET_PROTOCOL_HEADER_FLAG_MASK      = 0x80
+ } ENetProtocolFlag;
+ 
+ #ifdef _MSC_VER_
+@@ -58,8 +58,11 @@
+ 
+ typedef struct _ENetProtocolHeader
+ {
+-   enet_uint32 checksum;
+-   enet_uint16 peerID;
++#ifdef ENET_ADDRESS_CHECK
++   enet_uint8 addressCheck [4];
++#endif
++   enet_uint8 sessionID;
++   enet_uint8 peerID;
+    enet_uint16 sentTime;
+ } ENET_PACKED ENetProtocolHeader;
+ 
+@@ -80,7 +83,8 @@
+ typedef struct _ENetProtocolConnect
+ {
+    ENetProtocolCommandHeader header;
+-   enet_uint16 outgoingPeerID;
++   enet_uint8  outgoingPeerID;
++   enet_uint8  outgoingPeerIDUnused;
+    enet_uint16 mtu;
+    enet_uint32 windowSize;
+    enet_uint32 channelCount;
+@@ -89,13 +93,15 @@
+    enet_uint32 packetThrottleInterval;
+    enet_uint32 packetThrottleAcceleration;
+    enet_uint32 packetThrottleDeceleration;
+-   enet_uint32 sessionID;
++   enet_uint8  sessionID;
++   enet_uint8  sessionIDUnused [3];
+ } ENET_PACKED ENetProtocolConnect;
+ 
+ typedef struct _ENetProtocolVerifyConnect
+ {
+    ENetProtocolCommandHeader header;
+-   enet_uint16 outgoingPeerID;
++   enet_uint8  outgoingPeerID;
++   enet_uint8  outgoingPeerIDUnused;
+    enet_uint16 mtu;
+    enet_uint32 windowSize;
+    enet_uint32 channelCount;
+diff --color -ru a/enet-1.2.5/protocol.c b/enet-1.2.5/protocol.c
+--- a/enet-1.2.5/protocol.c	2011-06-28 03:13:05
++++ b/enet-1.2.5/protocol.c	2026-10-18 15:14:36
+@@ -239,6 +239,42 @@
+     return commandNumber;
+ } 
+ 
++#ifdef ENET_ADDRESS_CHECK
++/* The value a client writes in the four bytes before the session id: a CRC-32
++   over the address it sends to, as schema/protocol.json gives it. A client
++   does not check what it receives, so this only makes a server's datagrams
++   look like a client's. */
++static void
++enet_protocol_address_check (const ENetAddress * address, enet_uint8 * out)
++{
++    const enet_uint8 * ip = (const enet_uint8 *) & address -> host;
++    enet_uint8 input [10];
++    enet_uint32 reg = 0xFFFFFFFF;
++    size_t i;
++
++    input [0] = ip [0]; input [1] = ip [1]; input [2] = ip [2]; input [3] = ip [3];
++    input [4] = address -> port & 0xFF;
++    input [5] = (address -> port >> 8) & 0xFF;
++    input [6] = 0x98; input [7] = 0x2E; input [8] = 0x3F; input [9] = 0x3C;
++
++    for (i = 0; i < sizeof (input); ++ i)
++    {
++        enet_uint32 entry = (reg >> 24) << 24;
++        int k;
++
++        for (k = 0; k < 8; ++ k)
++          entry = entry & 0x80000000 ? (entry << 1) ^ 0x04C11DB7 : entry << 1;
++        reg = ((reg << 8) | input [i]) ^ entry;
++    }
++
++    reg = ~ reg;
++    out [0] = (reg >> 24) & 0xFF;
++    out [1] = (reg >> 16) & 0xFF;
++    out [2] = (reg >> 8) & 0xFF;
++    out [3] = reg & 0xFF;
++}
++#endif
++
+ static ENetPeer *
+ enet_protocol_handle_connect (ENetHost * host, ENetProtocolHeader * header, ENetProtocol * command)
+ {
+@@ -249,24 +285,8 @@
+     ENetPeer * currentPeer;
+     ENetProtocol verifyCommand;
+ 
+-    if (host -> checksum != NULL)
+-    {
+-        enet_uint32 checksum = header -> checksum;
+-        ENetBuffer buffer;
++    (void) header;
+ 
+-        command -> header.reliableSequenceNumber = ENET_HOST_TO_NET_16 (command -> header.reliableSequenceNumber);
+-
+-        header -> checksum = command -> connect.sessionID;
+-
+-        buffer.data = host -> receivedData;
+-        buffer.dataLength = host -> receivedDataLength;
+-
+-        if (host -> checksum (& buffer, 1) != checksum)
+-          return NULL;
+-
+-        command -> header.reliableSequenceNumber = ENET_NET_TO_HOST_16 (command -> header.reliableSequenceNumber);
+-    }
+- 
+     channelCount = ENET_NET_TO_HOST_32 (command -> connect.channelCount);
+ 
+     if (channelCount < ENET_PROTOCOL_MINIMUM_CHANNEL_COUNT ||
+@@ -304,7 +324,7 @@
+     currentPeer -> state = ENET_PEER_STATE_ACKNOWLEDGING_CONNECT;
+     currentPeer -> sessionID = command -> connect.sessionID;
+     currentPeer -> address = host -> receivedAddress;
+-    currentPeer -> outgoingPeerID = ENET_NET_TO_HOST_16 (command -> connect.outgoingPeerID);
++    currentPeer -> outgoingPeerID = command -> connect.outgoingPeerID;
+     currentPeer -> incomingBandwidth = ENET_NET_TO_HOST_32 (command -> connect.incomingBandwidth);
+     currentPeer -> outgoingBandwidth = ENET_NET_TO_HOST_32 (command -> connect.outgoingBandwidth);
+     currentPeer -> packetThrottleInterval = ENET_NET_TO_HOST_32 (command -> connect.packetThrottleInterval);
+@@ -374,7 +394,8 @@
+ 
+     verifyCommand.header.command = ENET_PROTOCOL_COMMAND_VERIFY_CONNECT | ENET_PROTOCOL_COMMAND_FLAG_ACKNOWLEDGE;
+     verifyCommand.header.channelID = 0xFF;
+-    verifyCommand.verifyConnect.outgoingPeerID = ENET_HOST_TO_NET_16 (currentPeer -> incomingPeerID);
++    verifyCommand.verifyConnect.outgoingPeerID = (enet_uint8) currentPeer -> incomingPeerID;
++    verifyCommand.verifyConnect.outgoingPeerIDUnused = 0;
+     verifyCommand.verifyConnect.mtu = ENET_HOST_TO_NET_16 (currentPeer -> mtu);
+     verifyCommand.verifyConnect.windowSize = ENET_HOST_TO_NET_32 (windowSize);
+     verifyCommand.verifyConnect.channelCount = ENET_HOST_TO_NET_32 (channelCount);
+@@ -776,7 +797,7 @@
+     if (channelCount < peer -> channelCount)
+       peer -> channelCount = channelCount;
+ 
+-    peer -> outgoingPeerID = ENET_NET_TO_HOST_16 (command -> verifyConnect.outgoingPeerID);
++    peer -> outgoingPeerID = command -> verifyConnect.outgoingPeerID;
+ 
+     mtu = ENET_NET_TO_HOST_16 (command -> verifyConnect.mtu);
+ 
+@@ -815,14 +836,14 @@
+     ENetPeer * peer;
+     enet_uint8 * currentData;
+     size_t headerSize;
+-    enet_uint16 peerID, flags;
++    enet_uint8 peerID, flags;
+ 
+     if (host -> receivedDataLength < sizeof (ENetProtocolHeader))
+       return 0;
+ 
+     header = (ENetProtocolHeader *) host -> receivedData;
+ 
+-    peerID = ENET_NET_TO_HOST_16 (header -> peerID);
++    peerID = header -> peerID;
+     flags = peerID & ENET_PROTOCOL_HEADER_FLAG_MASK;
+     peerID &= ~ ENET_PROTOCOL_HEADER_FLAG_MASK;
+ 
+@@ -842,21 +863,7 @@
+              peer -> address.host != ENET_HOST_BROADCAST))
+          return 0;
+ 
+-       if (host -> checksum != NULL)
+-       {
+-           enet_uint32 checksum = header -> checksum;
+-           ENetBuffer buffer;
+-
+-           header -> checksum = peer -> sessionID;
+-
+-           buffer.data = host -> receivedData;
+-           buffer.dataLength = host -> receivedDataLength;
+-
+-           if (host -> checksum (& buffer, 1) != checksum)
+-             return 0;
+-       }
+-       else
+-       if (header -> checksum != peer -> sessionID)
++       if (header -> sessionID != (enet_uint8) peer -> sessionID)
+          return 0;
+ 
+        peer -> address.host = host -> receivedAddress.host;
+@@ -1411,8 +1418,11 @@
+            currentPeer -> packetsLost = 0;
+         }
+ 
+-        header.checksum = currentPeer -> sessionID;
+-        header.peerID = ENET_HOST_TO_NET_16 (currentPeer -> outgoingPeerID | host -> headerFlags);
++        header.sessionID = (enet_uint8) currentPeer -> sessionID;
++        header.peerID = (enet_uint8) (currentPeer -> outgoingPeerID | host -> headerFlags);
++#ifdef ENET_ADDRESS_CHECK
++        enet_protocol_address_check (& currentPeer -> address, header.addressCheck);
++#endif
+         
+         host -> buffers -> data = & header;
+         if (host -> headerFlags & ENET_PROTOCOL_HEADER_FLAG_SENT_TIME)
+@@ -1424,9 +1434,6 @@
+         else
+           host -> buffers -> dataLength = (size_t) & ((ENetProtocolHeader *) 0) -> sentTime;
+  
+-        if (host -> checksum != NULL)
+-          header.checksum = host -> checksum (host -> buffers, host -> bufferCount);
+-
+         currentPeer -> lastSendTime = host -> serviceTime;
+ 
+         sentLength = enet_socket_send (host -> socket, & currentPeer -> address, host -> buffers, host -> bufferCount);
