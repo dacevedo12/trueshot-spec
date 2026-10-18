@@ -13,8 +13,8 @@ A client names no one in `Pause` or `Resume`.
 
 <!-- place: hold -->
 
-A client begins a hold only where that time is above zero and the match is not
-already held, and shows a tournament's hold, crediting the seat that asked,
+A client begins a hold only where the time `Paused` carries is above zero and the
+match is not already held, and shows a tournament's hold, crediting the seat that asked,
 where the message says it is one.
 
 <!-- place: end -->

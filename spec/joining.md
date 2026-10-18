@@ -5,6 +5,15 @@ until play begins. The steps below come in this order, each
 following the one before it. Layouts live in `schema/`; this
 document says what follows what.
 
+## Starting a client
+
+A client learns where to connect from its command line. It takes three
+arguments it needs nothing in, which can be empty, and then a fourth holding
+four words separated by single spaces: the server's IPv4 address, its UDP port,
+the key in base64, and the player id the client registers as. The client
+connects to that address and port, registers as that player, and enciphers its
+proof under that key (see [Transport](transport.md)).
+
 ## Registering
 
 A client's first payload is `Register`, on the registration channel.

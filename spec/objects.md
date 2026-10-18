@@ -83,8 +83,6 @@ Leaving a client's sight removes nothing: `LeaveSight`, `LeaveLocalSight` and
 
 Regions are named by region ids, apart from net ids.
 
-Regions are named by region ids, apart from net ids.
-
 <!-- binding: regions -->
 
 ### A soft reconnect
