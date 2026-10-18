@@ -130,8 +130,15 @@ function sweepFor(
   const markers = new Set(
     out.filter((m) => m.name === "SpawnMarker").map((m) => m.fields["unit"]),
   );
+  // spec/objects.md: a 4.17 server MUST NOT move a region a client does not
+  // hold, so a region is moved only where the sweep added it.
+  const regions = new Set(
+    out.filter((m) => m.name === "RegionAdded").map((m) => m.fields["marker"]),
+  );
   return out.filter(
-    (m) => m.name !== "SpellInSlot" || !markers.has(m.fields["unit"]),
+    (m) =>
+      (m.name !== "SpellInSlot" || !markers.has(m.fields["unit"])) &&
+      (m.name !== "RegionMoved" || regions.has(m.fields["region"])),
   );
 }
 

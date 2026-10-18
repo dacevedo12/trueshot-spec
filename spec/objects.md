@@ -95,9 +95,10 @@ How each kind leaves a 4.17 client's world:
 | Marker               | only by a soft reconnect                                                                                                                                                              |                                                                         |
 | Region               | by `RegionRemoved`, once its lifetime runs out (a lifetime of 0 never does), or once the unit it follows is removed                                                                   |                                                                         |
 
-Regions are named by region ids, apart from net ids. A 4.17 server SHOULD NOT
-send `RegionMoved` for a region whose lifetime has run out. `RegionRemoved`
-for a region a client does not hold does nothing.
+Regions are named by region ids, apart from net ids. A 4.17 client fails on a
+`RegionMoved` naming a region it does not hold, one whose lifetime has run out
+included, and a 4.17 server MUST NOT send one. `RegionRemoved` for a region a
+client does not hold does nothing.
 
 ### A soft reconnect
 
