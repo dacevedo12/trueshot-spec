@@ -2,7 +2,6 @@
 
 How a match runs once play has begun, apart from what happens on the field: its
 clock, holding it and resuming it, its end, and players leaving and coming back.
-Applies to 4.17 and 4.20 clients, as [Versions](versions.md) describes.
 
 ## The clock
 
@@ -11,22 +10,25 @@ answers on the clock channel with `ClockReply`. [Time](time.md) says how the
 match clock is kept, and which clock each time on the wire is measured
 against.
 
-`GameSpeed` sets how fast a 4.17 client's clock runs, from 0 to 10 times normal,
-and shows the new speed over its champion; sent during a hold, it takes effect
-as the match resumes. `StatTick` asks every unit's stats to advance by a span of
-seconds, and a 4.17 client changes nothing it shows for it.
+`GameSpeed` sets how fast the match runs. `StatTick` asks every unit's stats to
+advance by a span of seconds.
+
+<!-- binding: speed -->
 
 ## Holding and resuming
 
 A client asks to hold the match with `Pause`, and to resume it with `Resume`. A
-4.17 client names no one in either, so a server MUST attribute each to the connection it
-arrived on (see [Objects and identifiers](objects.md)).
+server MUST attribute each to the connection it arrived on (see [Objects and
+identifiers](objects.md)).
 
-A server holds the match with `Paused`, carrying how long the hold can last,
-in seconds. A
-4.17 client begins a hold only where that time is above zero and the match is
-not already held, and shows a tournament's hold, crediting the seat that asked,
-where the message says it is one. A server ends the hold with `Resumed`, either
+<!-- binding: hold-requests -->
+
+A server holds the match with `Paused`, carrying how long the hold can last, in
+seconds.
+
+<!-- binding: hold -->
+
+A server ends the hold with `Resumed`, either
 at once or after a countdown the client shows, during which input stays
 locked; a client announces in chat who resumed it.
 
@@ -34,8 +36,9 @@ locked; a client announces in chat who resumed it.
 
 A server ends the match with `GameEnded`, saying which side won, and takes the
 interface down with `HudDisabled`. A client shows the win or loss for its player's
-side and sends `ClientFinished` once, except while playing a replay. A 4.17
-client that receives `GameEnded` while still loading leaves at once.
+side and sends `ClientFinished` once, except while playing a replay.
+
+<!-- binding: end -->
 
 `VictoryDance` sets every unit moving as winners or losers do. It ends nothing.
 
@@ -43,12 +46,17 @@ client that receives `GameEnded` while still loading leaves at once.
 
 A client leaving as one abandoning the match sends `Exit`: as its player quits
 or closes the window, as a reconnection fails, or on a server's `Shutdown`, which has it leave at once. A client also
-leaves at once on `BotKick` with the action that means leave: 4 for a 4.17
-client, 5 for a 4.20 one.
+leaves at once on `BotKick` with the action that means leave, which each range
+names.
+
+<!-- binding: bot-kick -->
 
 A server tells the others that a player's client dropped with
-`PlayerDisconnected`, and a 4.17 client shows a notice in chat for it. A
-client dropped during play connects again by itself, registers again, and sends
+`PlayerDisconnected`.
+
+<!-- binding: disconnected -->
+
+A client dropped during play connects again by itself, registers again, and sends
 `ReconnectedInMatch` right after the registration answer; one dropped while
 loading leaves instead. `SoftReconnect` rebuilds a client's world without a new connection, as
 [Objects and identifiers](objects.md) describes.

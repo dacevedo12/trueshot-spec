@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   schema:
-    name: names, format, types, codec, schema and generated text
+    name: names, format, types, codec, schema, generated text and books
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -24,6 +24,7 @@ jobs:
       - run: bun run check:codec
       - run: bun run check:schema
       - run: bun run check:generated
+      - run: bun run check:book
 
   prose:
     name: prose

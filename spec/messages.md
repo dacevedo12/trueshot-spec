@@ -9,7 +9,6 @@ one or more revisions. A revision carries the value identifying the message,
 the channel it travels on, its direction, how the transport delivers it, and
 the fields of its body.
 
-Applies to 4.17 and 4.20 clients, as [Versions](versions.md) describes.
 This document defines the vocabulary those files are written in, together with
 the container and the shapes of values that vocabulary relies on. It records no
 message's layout: those live in `schema/`.
@@ -339,14 +338,14 @@ nothing is sent the same report over and over.
 
 ## Requests a server can ignore
 
-A 4.20 client sends `ZoomReport` when its view is drawn further out than it
-allows; a server MAY ignore one.
+A client sends `ZoomReport`, where its range defines it, when its view is drawn
+further out than it allows; a server MAY ignore one.
 
 Quick chat is a feature a server leaves off. A client sends a quick chat on channel 6
-only where `VersionSync`'s features turn quick chat on, and a 4.17 client given
-that bit fails while loading. A server MUST NOT set that bit for a 4.17
-client. This
-specification records no layout for channel 6.
+only where `VersionSync`'s features turn quick chat on. This specification
+records no layout for channel 6.
+
+<!-- binding: quick-chat -->
 
 ## Vectors
 

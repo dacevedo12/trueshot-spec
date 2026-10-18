@@ -1,7 +1,6 @@
 # Spells
 
 Casting, levelling spells, cooldowns, and the missiles casts send out.
-Applies to 4.17 and 4.20 clients, as [Versions](versions.md) describes.
 
 ## Casting
 
@@ -29,7 +28,7 @@ which spells a unit casts by itself with `Autocast`.
 A client asks to put a point into a spell with `UpgradeSpell`. A server answers
 with `SpellUpgraded`, on the clock channel, and a client shows the new level;
 `SpellLevel` sets a level outright. The spell points a champion has to spend
-are what `LevelUp` carries. A 4.17 server can set how far each
+are what `LevelUp` carries. A server can set how far each
 spell can be raised, and at which champion levels, with `SpellRankLimits`.
 
 ## What a slot holds
@@ -38,7 +37,7 @@ spell can be raised, and at which champion levels, with `SpellRankLimits`.
 a spell already there: how it is aimed, its name, its ranges, its icon, or the
 units it is cast from. `SpellToggled` turns a spell on or off, `SpellNumbers`
 fills in the numbers a client shows beside a unit's spells, and
-`SpellCostChanged` changes what a spell costs. A 4.17 server can also draw rings
+`SpellCostChanged` changes what a spell costs. A server can also draw rings
 around its player's cursor with `CursorRings`.
 
 A marker has no slots. A server MUST NOT send `SpellInSlot` naming a marker: a
@@ -51,7 +50,7 @@ is doing, with the casting that sent it; `MissileLaunched` says the missile a
 swing or a cast prepared has left the unit. A server changes what a missile
 flies at with `MissileRetarget` and how fast with `MissileSpeed`, says what it
 struck with `MissileHits`, and is rid of it with `DestroyMissile`. A missile that
-bounces from unit to unit does so with `BounceMissile`, and a 4.17 server can
+bounces from unit to unit does so with `BounceMissile`, and a server can
 name in advance the units a chain missile will strike with `ChainTargets`.
 
 ## Messages

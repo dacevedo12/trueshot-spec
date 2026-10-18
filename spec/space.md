@@ -3,8 +3,6 @@
 How positions, distances and directions are carried, whichever system carries
 them, and what a map gives that nothing on the wire carries.
 
-Applies to 4.17 and 4.20 clients, as [Versions](versions.md) describes.
-
 ## Units and axes
 
 Positions and distances are in world units. The ground is the plane of x and

@@ -2,7 +2,7 @@
 
 The parts of a map players compete for besides each other: neutral camps,
 points a side can capture and a score, and the events the whole match is told
-about. Applies to 4.17 and 4.20 clients, as [Versions](versions.md) describes.
+about.
 
 ## Camps
 
@@ -14,18 +14,15 @@ server tells clients watching a match when a camp is next due with `CampTimer`.
 
 ## Capture points and score
 
-On a map won on score, a 4.17 server binds each capture point to a unit with
-`CapturePointChanged`; everything a client shows of a point (who holds it, where
-it stands, how far it is taken) comes from that unit, so a server hands a point
-over by changing the unit's side and moves it toward capture by changing the
-unit's resource. `TeamScore` sets each side's score. A 4.17 client shows the
-points and the score on a panel it builds only where the version answer names
-the mode ODIN, and only once one point is known. Reaching a score ends nothing:
-the match ends as any match does (see [The match](match.md)).
+On a map won on score, a server binds each capture point to a unit with
+`CapturePointChanged`, and `TeamScore` sets each side's score.
 
-A 4.17 server can name the unit holding the Ascension with `AscendedUnit`, and
-send `RespawnPoint` about points a champion returns to life at, which a client
-acts on only where its screen has such a panel.
+<!-- binding: capture-points -->
+
+A server can name the unit holding the Ascension with `AscendedUnit`, and send
+`RespawnPoint` about points a champion returns to life at.
+
+<!-- binding: respawn-points -->
 
 ## Events the match is told about
 

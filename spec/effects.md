@@ -2,7 +2,7 @@
 
 The lasting effects units carry, the particles a client draws, and how units
 look and move on screen. None of this changes what a unit can do; that is
-[replication](replication.md)'s to say. Applies to 4.17 and 4.20 clients, as [Versions](versions.md) describes.
+[replication](replication.md)'s to say.
 
 ## Lasting effects
 
@@ -10,7 +10,7 @@ A lasting effect sits in one of a unit's effect slots and shows on its icon row.
 A server puts one on with `EffectAdded`, replaces the one in a slot with
 `EffectReplaced`, restates how many are stacked with `EffectCount`, and takes it
 off with `EffectRemoved`. The unit carrying an effect can differ from the unit
-that cast it. A 4.17 server can do each of these for several units at once
+that cast it. A server can do each of these for several units at once
 (`EffectAddedGroup`, `EffectReplacedGroup`, `EffectCountGroup`,
 `EffectRemovedGroup`), and set the number an effect shows on its icon with
 `EffectCounter`.
@@ -18,17 +18,17 @@ that cast it. A 4.17 server can do each of these for several units at once
 ## Particles
 
 `ParticlesCreated` starts a client drawing sets of particles, each named by its
-own id, and `KillParticle` stops one. A 4.17 server can also pause or resume a
+own id, and `KillParticle` stops one. A server can also pause or resume a
 named group of emitters with `EmitterPause`, and drive a value of a unit's
 lasting particles from something that changes, such as a capture point or the
 unit's resource, with `ParticleSource`.
 
 ## Looks and animation
 
-A 4.17 server lays a new look over a unit's own with `AppearancePushed`; looks
+A server lays a new look over a unit's own with `AppearancePushed`; looks
 stack, the newest showing, and `AppearancePopped` and `AppearanceCleared` take
 them away. `AnimationOverrides` has a unit play one set of movements wherever it
-would have played another. A 4.17 server can also play, stop, pause and advance
+would have played another. A server can also play, stop, pause and advance
 a unit's animations (`PlayAnimation`, `StopAnimation`, `PauseAnimation`,
 `AnimationAdvanced`), fade a unit or a side's minions (`FadeTo`, `FadeRemoved`,
 `FadeMinions`), set how each nexus looks (`NexusIdle`, `NexusSkin`), tint a

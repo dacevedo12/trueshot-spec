@@ -5,8 +5,6 @@ another, and what a client answers with. A server whose messages arrive out of
 the order these rules expect has them ignored or lost, however correct each one
 is on its own.
 
-Applies to 4.17 and 4.20 clients, as [Versions](versions.md) describes.
-
 ## Across channels
 
 The transport delivers a channel's reliable messages in the order they were
@@ -28,8 +26,11 @@ message creating what it names is lost. So:
 
 The messages creating a unit travel reliably on the events channel, while
 `Replication` and `WaypointGroup` travel unreliably on the transient channel,
-so either can overtake the message creating the unit it names. A 4.20 server
-can instead send `Replication` reliably on the events channel. A client skips
+so either can overtake the message creating the unit it names.
+
+<!-- binding: replication-channel -->
+
+A client skips
 a unit it does not hold, and answers no batch that named one (see below), so a
 server sends a newly created unit's values again until a batch naming it is
 answered.

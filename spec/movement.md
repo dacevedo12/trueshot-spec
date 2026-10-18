@@ -5,8 +5,6 @@ which is where the unit is and the last where it is going. `schema/types` holds
 the layout under `Movement`, and this document covers what the layout cannot
 say.
 
-Applies to 4.17 and 4.20 clients, as [Versions](versions.md) describes.
-
 ## Coordinates
 
 The compact paths of `Movement` and `MovementAtSpeed` carry their points as
@@ -115,8 +113,8 @@ champion along the route the client proposed.
 
 ## Marking the ground
 
-`NavigationFlags` marks the ground within circles. A server MUST NOT send `NavigationFlags` to a 4.17
-or 4.20 client: such a client fails on the first one a match brings.
+`NavigationFlags` marks the ground within circles. A server MUST NOT send
+`NavigationFlags`: a client fails on the first one a match brings.
 
 ## Messages
 

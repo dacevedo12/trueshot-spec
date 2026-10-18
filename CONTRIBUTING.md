@@ -166,6 +166,21 @@ notes carried in the schema as much as for the documents, and both are
 checked. [Versions](spec/versions.md) says how a document states which builds a
 fact holds for.
 
+### Chapters and bindings
+
+A chapter holds for every range, so a statement belongs in it only where every
+range bears it out. What one range's client was seen to do goes in that range's
+binding, at the place in the chapter it concerns, and a chapter marks a new
+place with a `<!-- binding: name -->` line where a binding needs one. A fact
+shown to hold for every range moves from the bindings into the chapter.
+
+A new range is a new binding. Its definitions go in `schema/` as revisions of
+their own, its facts go in `spec/bindings/<first build>/`, and every chapter
+statement goes on holding only once the new range's client bears it out; one
+that does not moves into the bindings of the ranges that do. Contributors to
+different ranges work in different directories, and a change to a chapter is a
+claim about every range at once.
+
 ## Systems
 
 Every message names the system it belongs to, and each system has a document in

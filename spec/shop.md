@@ -3,8 +3,6 @@
 How the shop works: what fills it, what a client asks for, and what a server
 answers. Layouts live in `schema/`.
 
-Applies to 4.17 and 4.20 clients, as [Versions](versions.md) describes.
-
 ## What fills it
 
 A client's catalogue of items is its own: no message sends or changes it. What

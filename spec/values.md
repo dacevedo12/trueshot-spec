@@ -3,8 +3,6 @@
 Values many systems share: which side something is on, and how a unit's spell,
 item and effect slots are numbered.
 
-Applies to 4.17 and 4.20 clients, as [Versions](versions.md) describes.
-
 ## Sides
 
 A side is 100 or 200, for the two sides that play, or 300 for what belongs to

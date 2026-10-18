@@ -7,8 +7,6 @@ The groups follow in the
 order 0, 1, 2, 3, 5 and then 4: group 4 comes last. A sending end MUST write
 each group's length as the number of bytes its run takes.
 
-Applies to 4.17 and 4.20 clients, as [Versions](versions.md) describes.
-
 That much a layout reaches. What the run holds it does not, and this document
 says what settles it.
 
@@ -218,11 +216,11 @@ table below.
 ## Values stated outside a batch
 
 Besides its batches, a server states some values with messages of their own. It
-grants experience with `ExperienceGained` and gold with `GoldGained`, and a
-4.17 server can send the gold a unit earns to another with `GoldRedirect`. A
+grants experience with `ExperienceGained` and gold with `GoldGained`, and can
+send the gold a unit earns to another with `GoldRedirect`. A
 level gained is `LevelUp`, which on its own is enough for a client to show the
 new level on its champion's portrait. A server sets a champion's tallies for the
-scoreboard with `ChampionStats`. A 4.17 server can also add to a unit's shield
+scoreboard with `ChampionStats`. A server can also add to a unit's shield
 (`ShieldAdded`), change how its health bar or resource bar is shown
 (`HealthBar`, `ResourceDisplay`), change the sort of resource it has
 (`ResourceKindChanged`), set the highest level a champion reaches

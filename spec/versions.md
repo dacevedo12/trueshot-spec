@@ -25,12 +25,25 @@ message a range lacks has no revision covering that range.
 
 ## In the prose
 
-Each document under `spec/`, other than this one, opens by naming the ranges it
-applies to. A statement in it that names no range holds for every range the
-document names. A statement that names one, such as "a 4.17 client", holds for
-that range alone and says nothing of the others. A 4.17 server is a server
-talking to a 4.17 client. Where ranges behave differently, the document says
-what each does, in the same place.
+A chapter under `spec/` holds for every range, except where a statement in it
+names one. A statement such as "a 4.17 client" holds for that range alone and
+says nothing of the others, and a 4.17 server is a server talking to a 4.17
+client. A chapter that opens by naming ranges holds for those alone.
+
+What one range alone does belongs in that range's binding rather than in the
+chapter. A binding is a directory under `spec/bindings`, named for the first
+build of its range as the reference pages are, with a file for each chapter it
+adds to. Each entry of such a file opens with a line naming a place the
+chapter marks, and says what the range does there. A statement in a binding
+holds for its range alone, so it names no range.
+
+## Books
+
+`bun run book` writes one book for each range: the chapters in the order
+[IMPLEMENTING.md](../IMPLEMENTING.md) reads them, the range's binding set in
+its places, the tables of messages narrowed to the range, and the range's
+reference page at the end. `bun run book -- --pdf` typesets them as well,
+given [pandoc](https://pandoc.org) and [typst](https://typst.app).
 
 ## Per range
 

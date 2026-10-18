@@ -4,9 +4,13 @@ Work through the documents below in order. Each one builds on the ones before
 it. Together they are meant to be enough to build a conforming server in any
 language, without reading another one.
 
-Every definition and every document states the client versions it applies to. [Versions](spec/versions.md) says how to
-read both, and links a generated page for each range of versions that lists
-every message a build in it sends or takes, with the layout of its body.
+Every definition states the client versions it applies to, and every chapter
+holds for all of them, with what one range alone does in that range's binding.
+[Versions](spec/versions.md) says how to read both, and links a generated page
+for each range of versions that lists every message a build in it sends or
+takes, with the layout of its body. `bun run book` puts the chapters and one
+range's binding together as a single book, which is the easiest way to read
+the specification for one range.
 
 Check your work against [conformance/](conformance/) as you go, rather than at
 the end. How you structure what you build is your business. The vectors are the

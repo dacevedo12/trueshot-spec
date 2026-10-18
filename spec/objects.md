@@ -6,8 +6,6 @@ object comes into a client's world and leaves it. A message that names
 something a client does not hold does nothing, so a server's messages agree
 with each other only where they agree with this document.
 
-Applies to 4.17 and 4.20 clients, as [Versions](versions.md) describes.
-
 ## The identifiers
 
 | Identifier | Width                  | Formed                                                                                | No one            |
@@ -17,7 +15,7 @@ Applies to 4.17 and 4.20 clients, as [Versions](versions.md) describes.
 | Seat       | a place in a side list | the order of a side's player ids in `Roster`                                          | an empty place    |
 | Net id     | 32 bits, unsigned      | chosen by the server for what it creates; worked out from a name for what a map holds | 0                 |
 | Node       | 8 bits, unsigned       | the owning client's client id plus 1, or 0 for an object no client owns               | 0                 |
-| Region id  | 32 bits, unsigned      | chosen by the server for each region; a 4.17 `RegionAdded` carries it as `marker`     | (none stated)     |
+| Region id  | 32 bits, unsigned      | chosen by the server for each region, and carried by `RegionAdded`                    | (none stated)     |
 | Name hash  | 32 bits, unsigned      | worked out from the name of a spell, an effect, a particle or a bone                  | 0                 |
 
 A field's own definition gives its exact type. Where a field carries one of
@@ -81,24 +79,13 @@ from, a client holds from the moment it loads the map.
 Leaving a client's sight removes nothing: `LeaveSight`, `LeaveLocalSight` and
 `LeaveTeamSight` hide an object, and it is held as before.
 
-How each kind leaves a 4.17 client's world:
+<!-- binding: lifetimes -->
 
-| Kind                 | Removed                                                                                                                                                                               | Its death                                                               |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| Champion             | by `ChampionRemoved`, at once                                                                                                                                                         | kills it; it is held, and comes back                                    |
-| Minion, monster, pet | by the client, once it has been dead for its death time, 4 seconds unless its character says otherwise; a new `SpawnPet` for an owner removes that owner's pet before it              | starts that wait; a death naming no killer does nothing                 |
-| Turret               | by the client, 1.2 seconds after its death, or after the time its `SpawnTurret` gives; a lane turret is held where `VersionSync`'s features keep destroyed turrets (`turretsPersist`) | kills it                                                                |
-| Inhibitor, nexus     | never                                                                                                                                                                                 | `BuildingDied` plays its death; it is held, and an inhibitor comes back |
-| Missile              | by `DestroyMissile`, by its flight ending, or once its caster is removed                                                                                                              |                                                                         |
-| Particle             | by `KillParticle`, naming it in its body, or once its effect ends                                                                                                                     |                                                                         |
-| Follower             | once the unit it follows is removed                                                                                                                                                   |                                                                         |
-| Marker               | only by a soft reconnect                                                                                                                                                              |                                                                         |
-| Region               | by `RegionRemoved`, once its lifetime runs out (a lifetime of 0 never does), or once the unit it follows is removed                                                                   |                                                                         |
+Regions are named by region ids, apart from net ids.
 
-Regions are named by region ids, apart from net ids. A 4.17 client fails on a
-`RegionMoved` naming a region it does not hold, one whose lifetime has run out
-included, and a 4.17 server MUST NOT send one. `RegionRemoved` for a region a
-client does not hold does nothing.
+Regions are named by region ids, apart from net ids.
+
+<!-- binding: regions -->
 
 ### A soft reconnect
 
@@ -106,9 +93,10 @@ client does not hold does nothing.
 halves. The first marks every unit and every object kept until a checkpoint,
 inhibitors aside. A create message for a marked net id replaces the marked
 object rather than keeping the id on it. The second removes every object still
-marked. In between, a server sends again each object the client is to keep. The stage
-that marks is 0 for a 4.17 client and 1 for a 4.20 one; any other value
-removes.
+marked. In between, a server sends again each object the client is to keep.
+Each range names the stage that marks; any other value removes.
+
+<!-- binding: soft-reconnect -->
 
 ## Messages about objects a client does not hold
 
@@ -133,8 +121,7 @@ Nothing is held back for later, those paths aside: a message that arrives
 before the message creating what it names is lost. [Ordering](ordering.md)
 says what that requires of a server.
 
-A 4.17 client drops game messages until it sends `CharacterSelected`, apart
-from the few [Joining a match](joining.md) lists.
+<!-- binding: before-selection -->
 
 ## A message naming its sender
 
@@ -188,9 +175,9 @@ The identifiers with that top byte are these:
 The `Barracks` names above belong to inhibitors, whatever the name says. The
 minions a side sends out come from spawn points of their own, which are among
 the objects a map holds. On map 1 one of them is
-`__P_Order_Spawn_Barracks__C01`. A 4.17 client puts a minion on the field for
-a `SpawnFromBarracks` naming a spawn point, and creates nothing for one naming
-an inhibitor such as `Barracks_T1_C1`.
+`__P_Order_Spawn_Barracks__C01`.
+
+<!-- binding: barracks -->
 
 No message creates these objects, so nothing a server sends could give a client
 a different identifier for one. A server MUST name each by the identifier its

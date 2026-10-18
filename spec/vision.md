@@ -3,7 +3,6 @@
 What a client can see, and how a server tells it. A client draws what a server
 says it sees and nothing else: the fog of war a client draws is only a picture,
 and what lies inside it is whatever the server has brought into view.
-Applies to 4.17 and 4.20 clients, as [Versions](versions.md) describes.
 
 ## Bringing a unit into view
 
@@ -12,9 +11,9 @@ states everything a client needs to draw the unit at once: its looks, its items,
 its shields, where it stands or which path it walks, and, in what follows, its
 health and resource. It can also carry whole messages of the game family, such
 as the `CreateTurret` or `CreateNeutral` that makes the unit, which a client
-reads as though each had arrived on its own. A 4.17 `EnterSight` ends its body
-early where the unit has nothing more to say: the parts its layout marks as
-present while bytes remain are left out from the end.
+reads as though each had arrived on its own. Where a layout marks the last
+parts of the body as present while bytes remain, a body ends early once the
+unit has nothing more to say, and those parts are left out from the end.
 
 A client does not draw a champion that no `EnterSight` has placed: given only
 its `CreateChampion`, a client shows the champion's portrait and spells and
@@ -39,13 +38,15 @@ A region is a patch of ground with sight of its own, which can reveal hidden
 units within it. A server places one with `RegionAdded`, moves it with
 `RegionMoved` and takes it away with `RegionRemoved`; [Objects and
 identifiers](objects.md) says how regions are named and when one ends. A region granting sight
-has a client clear its map's cover over it. A 4.17 client makes only circular
-regions, and its regions see over walls or not as the region says.
+has a client clear its map's cover over it.
+
+<!-- binding: regions -->
 
 ## Drawing the fog
 
-A 4.17 client draws its fog of war, or the map with no darkening, as
-`FogSet` and `FogToggled` say. Neither changes what the client can see.
+`FogSet` and `FogToggled` concern how a client draws its fog of war.
+
+<!-- binding: fog -->
 
 ## Who is told what
 
@@ -56,16 +57,16 @@ decides, message by message, which clients to tell.
 Some messages exist in more than one form, each for its own audience, laid
 out alike:
 
-| For every client    | For the clients that can see the unit | For the unit's own client         |
-| ------------------- | ------------------------------------- | --------------------------------- |
-| `UnitDied`          | `UnitDiedOnMap` (4.20)                |                                   |
-| `InventorySnapshot` | `InventorySnapshotOnMap` (4.20)       |                                   |
-| `FloatingText`      | `FloatingTextOnMap` (4.20)            |                                   |
-| `SpellSlotChanged`  |                                       | `SpellSlotChangedForOwner` (4.20) |
+| For every client    | For the clients that can see the unit | For the unit's own client  |
+| ------------------- | ------------------------------------- | -------------------------- |
+| `UnitDied`          | `UnitDiedOnMap`                       |                            |
+| `InventorySnapshot` | `InventorySnapshotOnMap`              |                            |
+| `FloatingText`      | `FloatingTextOnMap`                   |                            |
+| `SpellSlotChanged`  |                                       | `SpellSlotChangedForOwner` |
 
-A 4.17 server sends both audiences of `UnitDied` and `InventorySnapshot` under
-the one command. A 4.20 server sends the narrower audience as a message of its
-own, and sends the wider form only where every client is to know.
+Which of these forms a range has is in its definitions.
+
+<!-- binding: audiences -->
 
 Messages about a champion's own state, its gold, its inventory, its spells'
 levels, cooldowns and charges, and whether it can shop, are applied to the

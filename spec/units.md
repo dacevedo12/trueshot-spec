@@ -4,7 +4,6 @@ How a server puts objects on the field and takes them away: champions, minions,
 neutral monsters, turrets, pets, markers and props. What a unit then does is in
 the documents on [movement](movement.md), [combat](combat.md) and
 [spells](spells.md), and what it is worth in [replication](replication.md).
-Applies to 4.17 and 4.20 clients, as [Versions](versions.md) describes.
 
 Every object is named by a net id. [Objects and identifiers](objects.md) says
 how net ids are formed, what a client holds, and what removes each kind of
@@ -29,12 +28,11 @@ Each kind of object has its own message:
   change to one, `MapPropChanged`.
 
 Several of these arrive on their own or inside the `EnterSight` that brings the
-unit into view (see [Vision](vision.md)): a 4.17 client takes either.
+unit into view (see [Vision](vision.md)): a client takes either.
 
-A 4.17 client drops a `CreateChampion` or a `CreateNeutral` that arrives before
-it sends `CharacterSelected`, reconnecting included. A server MUST send them
-after it receives `CharacterSelected`.
-`CharacterPreload` has a 4.17 client load a character's art ahead of need.
+<!-- binding: before-selection -->
+
+`CharacterPreload` has a client load a character's art ahead of need.
 
 ## Changing and removing
 
@@ -43,9 +41,10 @@ champion out of the world. A unit's death is in [Combat](combat.md).
 
 ## Bots
 
-A server can tell a 4.17 client what a bot is thinking (`BotDebug`), weighing
-(`BotTargets`) or doing (`BotState`). None of them changes what a player
-sees.
+A server can tell a client what a bot is thinking (`BotDebug`), weighing
+(`BotTargets`) or doing (`BotState`).
+
+<!-- binding: bots -->
 
 ## Messages
 

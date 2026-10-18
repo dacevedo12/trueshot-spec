@@ -4,8 +4,6 @@ A client can watch a match that a server streams to it over the same
 connection a player uses, rather than playing in it. This document says how the
 stream is laid out and in what order its parts go. Layouts live in `schema/`.
 
-Applies to 4.17 and 4.20 clients, as [Versions](versions.md) describes.
-
 ## What marks a watching client
 
 Nothing on the wire does. A client watches because it was started to watch: it

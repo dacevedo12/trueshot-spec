@@ -3,8 +3,6 @@
 A server and a client exchange messages over UDP, carried by a modified
 ENet 1.2.5.
 
-Applies to 4.17 and 4.20 clients, as [Versions](versions.md) describes.
-
 ## Layering
 
 Four layers carry a message to a socket.
@@ -45,9 +43,8 @@ it in the schema says so.
 `conformance/vectors/transport` holds a header with a sent time and one
 without.
 
-A client discards any datagram shorter than 4 bytes in 4.17, and shorter than
-8 bytes in 4.20, whose header opens with four bytes more. A server MUST NOT
-send a shorter datagram.
+A client discards any datagram shorter than the `minimumDatagram` constant of
+its range. A server MUST NOT send a shorter datagram.
 
 ## The connect command
 
