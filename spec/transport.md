@@ -45,6 +45,10 @@ it in the schema says so.
 `conformance/vectors/transport` holds a header with a sent time and one
 without.
 
+A client discards any datagram shorter than 4 bytes in 4.17, and shorter than
+8 bytes in 4.20, whose header opens with four bytes more. A server MUST NOT
+send a shorter datagram.
+
 ## Maximum transmission unit
 
 A client asks for a transmission unit of 1400 bytes, and discards any datagram

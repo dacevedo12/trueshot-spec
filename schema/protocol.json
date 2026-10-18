@@ -65,6 +65,12 @@
             "value": 996,
             "stock": 4096,
             "note": "A client asks for 1400 in its connect command, and takes no datagram larger than 996 bytes."
+          },
+          {
+            "name": "minimumDatagram",
+            "value": 4,
+            "stock": 2,
+            "note": "A client discards any datagram shorter than this many bytes."
           }
         ]
       }
@@ -90,7 +96,7 @@
         },
         "header": [
           {
-            "name": "unknown",
+            "name": "addressCheck",
             "type": "bytes",
             "size": 4,
             "note": "A CRC-32 over the address the datagram is sent to, written big-endian. The input is ten bytes: the IPv4 address in network order, the UDP port as a little-endian u16, and 98 2e 3f 3c. The register starts at all ones; for each input byte it is shifted left eight bits with the byte placed in the low eight, then XORed with the table entry for the eight bits shifted out; the entry for a value v is v shifted left 24 bits, then eight steps of the polynomial 04c11db7, most significant bit first, with no reflection; at the end the register is inverted. A client sending to 127.0.0.1 port 5000 writes 28 68 bd eb, and to port 5001 fa 71 7c 37. A client does not check the field on what it receives, so a server may write any four bytes; a client does not connect without the field."
@@ -139,6 +145,12 @@
             "value": 996,
             "stock": 4096,
             "note": "A client asks for 1400 in its connect command, and takes no datagram larger than 996 bytes."
+          },
+          {
+            "name": "minimumDatagram",
+            "value": 8,
+            "stock": 2,
+            "note": "A client discards any datagram shorter than this many bytes."
           }
         ]
       }
