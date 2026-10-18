@@ -18,7 +18,7 @@
         "base": {
           "name": "ENet",
           "version": "1.2.5",
-          "note": "Stock ENet does not interoperate. The header below replaces the stock one: it has no checksum and nothing before the session id. The constants replace stock values. Everything else, including reliability, sequencing and fragmentation, is stock behaviour."
+          "note": "Stock ENet does not interoperate. The header below replaces the stock one: it has no checksum and nothing before the session id. The constants replace stock values, and the connect command carries its peer id and session id in one byte each, which spec/transport.md sets out. Everything else, including reliability, sequencing and fragmentation, is stock behaviour."
         },
         "header": [
           {
@@ -92,7 +92,7 @@
         "base": {
           "name": "ENet",
           "version": "1.2.5",
-          "note": "Stock ENet does not interoperate. The header below replaces the stock one, and the constants replace stock values. Everything else, including reliability, sequencing and fragmentation, is stock behaviour."
+          "note": "Stock ENet does not interoperate. The header below replaces the stock one, and the constants replace stock values. The connect command carries its peer id and session id in one byte each, which spec/transport.md sets out. Everything else, including reliability, sequencing and fragmentation, is stock behaviour."
         },
         "header": [
           {
