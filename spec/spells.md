@@ -41,6 +41,9 @@ fills in the numbers a client shows beside a unit's spells, and
 `SpellCostChanged` changes what a spell costs. A 4.17 server can also draw rings
 around its player's cursor with `CursorRings`.
 
+A marker has no slots. A server MUST NOT send `SpellInSlot` naming a marker: a
+client fails on it, whatever the slot.
+
 ## Missiles
 
 A missile is named by its own id. `MissileState` says where one is and what it
