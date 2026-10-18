@@ -75,7 +75,7 @@ const alive = match.alive;
 console.log(
   alive
     ? `the client is still in play; capture in ${match.capture.dir}`
-    : `the client left: ${match.disconnected ?? "it exited"}`,
+    : `the client left: ${match.stopped ?? "it exited"}`,
 );
 await match.stop();
 process.exit(alive ? 0 : 1);

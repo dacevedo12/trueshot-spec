@@ -5,7 +5,7 @@
 import { appendFileSync } from "node:fs";
 import { join } from "node:path";
 import { Capture, LOOKS } from "./capture.ts";
-import { Client } from "./client.ts";
+import { Client, layoutsOf } from "./client.ts";
 import type { Setup } from "./client.ts";
 import { decodeFields, hex } from "../../../scripts/codec.ts";
 import type { Values } from "../../../scripts/codec.ts";
@@ -31,6 +31,9 @@ interface Seat {
 // What the match sends to bring a client into play is owed whatever a check
 // does, so a capture marks it as an answer and a replay leaves it out.
 const ANSWER = { answer: true } as const;
+
+// How long a client gets from launch to its registration.
+const REGISTER_WITHIN = 150_000;
 
 const SEAT: Seat = {
   playerId: "1",
@@ -84,7 +87,7 @@ class Match {
   constructor(setup: Setup, options: Options) {
     this.#setup = setup;
     this.#options = options;
-    this.layouts = new Layouts(setup.build);
+    this.layouts = layoutsOf(setup);
     this.capture = new Capture(options.name);
     this.seat = { ...SEAT, ...options.seat };
     this.client = new Client(setup);
@@ -110,6 +113,7 @@ class Match {
       datagram: (direction, bytes) => this.capture.datagram(direction, bytes),
       disconnect: (_peer, why) => {
         this.disconnected = why;
+        this.#giveUp(why);
         this.session?.close(why);
         this.capture.note(`disconnected: ${why}`);
       },
@@ -127,16 +131,81 @@ class Match {
       },
       this.capture.dir,
     );
+    // A client that never registers, or exits, ends the match there.
+    const started = Date.now();
+    let looking = false;
+    const watch = setInterval(() => {
+      if (!looking && this.#stopped === undefined) {
+        looking = true;
+        void this.#lookForDialogs().finally(() => {
+          looking = false;
+        });
+      }
+      if (this.#stopped !== undefined) clearInterval(watch);
+      else if (!this.client.running) this.#giveUp("the client exited");
+      else if (
+        this.session === undefined &&
+        Date.now() - started > REGISTER_WITHIN
+      ) {
+        this.#giveUp(
+          `the client did not register within ${REGISTER_WITHIN / 1000} s`,
+        );
+      }
+    }, 1_000);
+    this.#watch = watch;
   }
 
+  #watch: ReturnType<typeof setInterval> | undefined;
+  readonly #dialogs = new Set<string>();
+
+  // A window besides the one the client plays in is an error the client
+  // shows, or its crash report, and the client goes no further past one.
+  async #lookForDialogs(): Promise<void> {
+    for (const w of await this.client.dialogs()) {
+      if (this.#dialogs.has(w.id)) continue;
+      this.#dialogs.add(w.id);
+      const file = join(this.capture.dir, `dialog-${this.#dialogs.size}.png`);
+      const failed = await this.client.screenshot(file, w.id);
+      this.capture.note(
+        `the client showed a window titled "${w.title}"${failed === "" ? `, captured in ${file}` : ""}`,
+      );
+      this.#giveUp(`the client showed a window titled "${w.title}"`);
+    }
+  }
+
+  readonly #reachedStages = new Set<Stage>();
+
   #reach(stage: Stage): void {
+    this.#reachedStages.add(stage);
     this.capture.note(`stage: ${stage}`);
     this.#reached.get(stage)?.();
   }
 
   // Resolves once the client gets that far, and fails if it does not in time.
+  // Why the match can go no further: the connection dropped, the client
+  // exited, or it never registered. Every later stage fails at once with it.
+  #stopped: string | undefined;
+  readonly #stop = new Set<(why: string) => void>();
+
+  #giveUp(why: string): void {
+    if (this.#stopped !== undefined) return;
+    this.#stopped = why;
+    this.capture.note(`gave up: ${why}`);
+    for (const f of this.#stop) f(why);
+  }
+
   async reach(stage: Stage, timeout = 180_000): Promise<void> {
     const reached = this.#stages.get(stage);
+    const stopped = this.#stopped;
+    if (stopped !== undefined && this.#reachedStages.has(stage) === false) {
+      throw new Error(`the client did not reach "${stage}": ${stopped}`);
+    }
+    let onStop: ((why: string) => void) | undefined;
+    const gone = new Promise<never>((_, reject) => {
+      onStop = (why) =>
+        reject(new Error(`the client did not reach "${stage}": ${why}`));
+      this.#stop.add(onStop);
+    });
     let timer: ReturnType<typeof setTimeout> | undefined;
     const late = new Promise<never>((_, reject) => {
       timer = setTimeout(
@@ -150,14 +219,20 @@ class Match {
       );
     });
     try {
-      await Promise.race([reached, late]);
+      await Promise.race([reached, late, gone]);
     } finally {
       clearTimeout(timer);
+      if (onStop !== undefined) this.#stop.delete(onStop);
     }
   }
 
   get alive(): boolean {
-    return this.disconnected === undefined && this.client.running;
+    return this.#stopped === undefined && this.client.running;
+  }
+
+  // Why the match went no further, where it did not.
+  get stopped(): string | undefined {
+    return this.#stopped;
   }
 
   async screenshot(label: string): Promise<string | undefined> {
@@ -179,6 +254,7 @@ class Match {
   }
 
   async stop(): Promise<void> {
+    if (this.#watch !== undefined) clearInterval(this.#watch);
     await this.client.stop();
     this.#host.close();
   }
@@ -236,7 +312,7 @@ class Match {
         clientId: this.seat.clientId,
         playerId: this.seat.playerId,
         version: Number(
-          request["version"] ?? versionNumber(this.layouts.build),
+          request["version"] ?? versionNumber(this.#setup.build),
         ),
         proof,
       },
@@ -267,7 +343,7 @@ class Match {
           agreement: { buildMatches: 1 },
           map: this.#options.map ?? 1,
           seats,
-          build: `Version ${this.layouts.build} [PUBLIC]`,
+          build: `Version ${this.#setup.build} [PUBLIC]`,
           mode: "CLASSIC",
           platform: "NA1",
           ...this.#options.versionSync,

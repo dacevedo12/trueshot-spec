@@ -175,11 +175,21 @@ class Layouts {
   readonly structs: ReadonlyMap<string, readonly Field[]>;
   readonly messages: ReadonlyMap<string, Revision>;
 
-  constructor(build: string) {
+  // `transport` takes the header, channels and families from another build,
+  // and `messages` the revision of each message it names from the build it
+  // names: both only for trying a build the specification does not cover.
+  constructor(
+    build: string,
+    mix: {
+      readonly transport?: string;
+      readonly messages?: ReadonlyMap<string, string>;
+    } = {},
+  ) {
     this.build = build;
+    const carrier = mix.transport ?? build;
     const protocol = pick(
       read<{ revisions: Protocol[] }>(join(ROOT, "protocol.json")).revisions,
-      build,
+      carrier,
     );
     if (protocol === undefined)
       throw new SchemaError(`the specification does not cover ${build}`);
@@ -189,13 +199,13 @@ class Layouts {
       read<{ revisions: (Ranged & { channels: Channel[] })[] }>(
         join(ROOT, "channels.json"),
       ).revisions,
-      build,
+      carrier,
     );
     const families = pick(
       read<{ revisions: (Ranged & { families: Family[] })[] }>(
         join(ROOT, "families.json"),
       ).revisions,
-      build,
+      carrier,
     );
     if (channels === undefined || families === undefined) {
       throw new SchemaError(`channels or families do not cover ${build}`);
@@ -219,7 +229,10 @@ class Layouts {
     for (const file of readdirSync(join(ROOT, "messages"))) {
       if (!file.endsWith(".json")) continue;
       const message = read<MessageFile>(join(ROOT, "messages", file));
-      const revision = pick(message.revisions, build);
+      const revision = pick(
+        message.revisions,
+        mix.messages?.get(message.message) ?? build,
+      );
       if (revision !== undefined) messages.set(message.message, revision);
     }
     this.messages = messages;

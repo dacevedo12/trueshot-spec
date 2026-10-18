@@ -4,14 +4,34 @@
 
 import type { Subprocess } from "bun";
 import { dirname, join } from "node:path";
+import { Layouts } from "../../../scripts/schema.ts";
 
 interface Setup {
   readonly build: string;
+  // The build whose layouts the harness serves: the client's own unless
+  // TRUESHOT_LAYOUTS names another, which is how a build the specification
+  // does not yet cover is tried against a range it might join.
+  readonly layouts: string;
+  // TRUESHOT_TRANSPORT takes the header, channels and families from another
+  // build, and TRUESHOT_MESSAGES the revision of each message it names
+  // (Name=build, separated by commas): both only for trials.
+  readonly transport: string | undefined;
+  readonly messages: ReadonlyMap<string, string>;
   readonly client: string;
   readonly launcher: readonly string[];
   readonly stop: readonly string[];
   readonly screenshot: readonly string[];
+  // A command that prints the client's open windows, one per line as an id,
+  // a tab and a title; and the title of the window it plays in. Any other
+  // window is a dialog: an error, or a crash report.
+  readonly windows: readonly string[];
+  readonly mainWindow: string;
   readonly port: number;
+}
+
+interface Window {
+  readonly id: string;
+  readonly title: string;
 }
 
 // Words split on spaces; a launcher that needs a space in one word belongs
@@ -31,10 +51,21 @@ function setup(): Setup | undefined {
     return undefined;
   return {
     build,
+    layouts: Bun.env["TRUESHOT_LAYOUTS"] || build,
+    transport: Bun.env["TRUESHOT_TRANSPORT"] || undefined,
+    messages: new Map(
+      (Bun.env["TRUESHOT_MESSAGES"] ?? "")
+        .split(",")
+        .filter((pair) => pair.includes("="))
+        .map((pair) => pair.split("=", 2) as [string, string]),
+    ),
     client,
     launcher: words(Bun.env["TRUESHOT_LAUNCHER"]),
     stop: words(Bun.env["TRUESHOT_STOP"]),
     screenshot: words(Bun.env["TRUESHOT_SCREENSHOT"]),
+    windows: words(Bun.env["TRUESHOT_WINDOWS"]),
+    mainWindow:
+      Bun.env["TRUESHOT_MAIN_WINDOW"] ?? "League of Legends (TM) Client",
     port: Number(Bun.env["TRUESHOT_PORT"] ?? 5000),
   };
 }
@@ -82,14 +113,38 @@ class Client {
   }
 
   // Empty where it worked, otherwise why it did not.
-  async screenshot(file: string): Promise<string> {
+  // The windows the client has open other than the one it plays in, or none
+  // where nothing says how to list them.
+  async dialogs(): Promise<readonly Window[]> {
+    if (this.#setup.windows.length === 0) return [];
+    const [program = "", ...rest] = this.#setup.windows;
+    const done = Bun.spawn([program, ...rest], {
+      stdout: "pipe",
+      stderr: "ignore",
+    });
+    const text = await new Response(done.stdout).text();
+    await done.exited;
+    return text
+      .split("\n")
+      .map((line) => line.split("\t"))
+      .filter((parts): parts is [string, string] => parts.length >= 2)
+      .map(([id, title]) => ({ id, title }))
+      .filter((w) => w.title !== this.#setup.mainWindow);
+  }
+
+  // The client's window, or the window `id` names where the command takes
+  // one after the file.
+  async screenshot(file: string, id?: string): Promise<string> {
     if (this.#setup.screenshot.length === 0)
       return "TRUESHOT_SCREENSHOT is not set";
     const [program = "", ...rest] = this.#setup.screenshot;
-    const done = Bun.spawn([program, ...rest, file], {
-      stdout: "pipe",
-      stderr: "pipe",
-    });
+    const done = Bun.spawn(
+      [program, ...rest, file, ...(id === undefined ? [] : [id])],
+      {
+        stdout: "pipe",
+        stderr: "pipe",
+      },
+    );
     const code = await done.exited;
     if (code === 0) return "";
     const said =
@@ -106,5 +161,17 @@ class Client {
   }
 }
 
-export { Client, setup };
-export type { Launch, Setup };
+// The layouts a run serves, as the environment mixes them.
+function layoutsOf(s: Setup): Layouts {
+  return new Layouts(s.layouts, {
+    ...(s.transport === undefined ? {} : { transport: s.transport }),
+    messages: s.messages,
+  });
+}
+
+// Whether a run serves anything but the client's own build's layouts.
+const isTrial = (s: Setup): boolean =>
+  s.layouts !== s.build || s.transport !== undefined || s.messages.size > 0;
+
+export { Client, isTrial, layoutsOf, setup };
+export type { Launch, Setup, Window };

@@ -8,7 +8,7 @@
 import { mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { LOOKS } from "./capture.ts";
-import { setup } from "./client.ts";
+import { isTrial, setup } from "./client.ts";
 
 interface Outcome {
   readonly check: string;
@@ -106,6 +106,11 @@ const looks = (() => {
 
 const results = {
   build: s.build,
+  layouts: s.layouts,
+  ...(s.transport === undefined ? {} : { transport: s.transport }),
+  ...(s.messages.size === 0
+    ? {}
+    : { messages: Object.fromEntries(s.messages) }),
   commit: git("rev-parse", "HEAD"),
   modified:
     git(
@@ -124,7 +129,14 @@ const results = {
 };
 mkdirSync(join(HERE, "results"), { recursive: true });
 // Named as spec/reference names a build: its parts joined by hyphens.
-const file = join(HERE, "results", `${s.build.replaceAll(".", "-")}.json`);
+// A run under another build's layouts is a trial, not coverage, so it stays
+// with the captures.
+const trial = isTrial(s);
+const file = join(
+  HERE,
+  trial ? "captures" : "results",
+  `${s.build.replaceAll(".", "-")}${trial ? `-as-${s.layouts.replaceAll(".", "-")}${s.transport === undefined && s.messages.size === 0 ? "" : "-mixed"}` : ""}.json`,
+);
 writeFileSync(file, `${JSON.stringify(results, null, 2)}\n`);
 const failed = outcomes.filter((o) => o.outcome === "failed").length;
 console.log(

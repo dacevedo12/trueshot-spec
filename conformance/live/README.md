@@ -47,13 +47,23 @@ Then name a client in an environment file kept outside version control (every
     TRUESHOT_LAUNCHER=
     # Optional: a command run after the client is stopped, to clean up after the launcher.
     TRUESHOT_STOP=
-    # Optional: a command given a file path, which captures the client's window to it.
+    # Optional: a command given a file path, which captures the client's window to it,
+    # or the window whose id follows the path.
     TRUESHOT_SCREENSHOT=
+    # Optional: a command that prints the client's open windows, one per line as an
+    # id, a tab and a title.
+    TRUESHOT_WINDOWS=
     TRUESHOT_PORT=5000
 
 and run every check against it:
 
     bun --env-file=<that file> run live:conform
+
+A window the client opens besides the one it plays in, named by
+`TRUESHOT_MAIN_WINDOW` (`League of Legends (TM) Client` unless set), is an
+error it shows or its crash report. Where `TRUESHOT_WINDOWS` lists windows, the
+harness captures any such window, notes its title, and ends the match there,
+so a run stops at the error rather than at its timeouts.
 
 That writes a results file named for the build, as `spec/reference` names
 one (`results/4-20-0-315.json`): the commit it ran at, each check's outcome,
@@ -63,6 +73,19 @@ holding the same build can run the same commit and compare.
 
 `bun --env-file=<that file> run live:checks` runs the same checks without writing
 results.
+
+A build the specification does not cover yet can be tried against a range it
+might belong to: `TRUESHOT_LAYOUTS` names the build whose layouts the harness
+serves, and the client stays the one `TRUESHOT_BUILD` names. Such a run is a
+trial, so `conform` writes it beside the captures rather than into `results/`.
+
+The sweep check sends one payload of every message a server sends, from the
+vectors, and asks that the client stays in play and gives the answers a client
+owes. `TRUESHOT_SWEEP` narrows it to the messages it names, separated by
+commas, `TRUESHOT_SWEEP_GAP` sets the milliseconds between them, and
+`TRUESHOT_SWEEP_WAIT` how long the client is watched after the last, which
+together find the message a client fails on. `TRUESHOT_SWEEP_SKIP` leaves out
+the messages it names, for a trial whose client lacks what a vector names.
 
 ## How a client is started
 

@@ -54,7 +54,7 @@ describe.skipIf(s === undefined)("joining", () => {
 
   test("a client stays in play for 30 seconds", async () => {
     await Bun.sleep(30_000);
-    expect(match.disconnected).toBeUndefined();
+    expect(match.stopped).toBeUndefined();
     expect(match.client.running).toBe(true);
     await match.screenshot("in-play");
   }, 45_000);
