@@ -5,7 +5,7 @@
   "note": "What a server sends to place a camp on the map and say how it is drawn. Its identifier is wider than a byte, so it travels behind the escape. The header names no object: it carries zero.",
   "revisions": [
     {
-      "from": "4.9.0.253",
+      "from": "4.9.0.239",
       "until": "4.21.0.0",
       "channel": "events",
       "command": 290,

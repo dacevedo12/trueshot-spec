@@ -15,7 +15,7 @@
     },
     {
       "from": "4.1.0.171",
-      "until": "4.5.0.266",
+      "until": "4.5.0.260",
       "channel": "requests",
       "command": 81,
       "direction": "clientToServer",
@@ -87,7 +87,7 @@
       "note": "The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero. The three module fields are always zero."
     },
     {
-      "from": "4.5.0.266",
+      "from": "4.5.0.260",
       "until": "4.11.0.386",
       "channel": "requests",
       "command": 81,
