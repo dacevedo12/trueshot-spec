@@ -4,7 +4,7 @@
   "algorithm": "resolvePath",
   "note": "The path of conformance/vectors/waypoint-group/long-path.json, resolved. Consecutive steps on one axis are what separate adding to the point before as it resolved from adding to the last coordinate stated afresh.",
   "input": {
-    "vector": "waypoint-group/long-path",
+    "vector": "waypoint-group/long-path-on-4-20",
     "field": "movements.0.path"
   },
   "output": [

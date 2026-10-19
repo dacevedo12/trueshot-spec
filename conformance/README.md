@@ -19,9 +19,12 @@ expected to import. Read the files, feed them to your own code, and compare.
   each capital of the message identity starting a new part, lower case and
   joined by hyphens. Struct vectors are named the same way for their struct.
 - Within that directory a file is named for what makes it worth keeping, so
-  `with-sent-time` sits beside `without-sent-time`. Where two payloads take
-  the same shape and differ only in the values they carry, they are `one` and
-  `another`.
+  `with-sent-time` sits beside `without-sent-time`. Where payloads take the
+  same shape and differ only in the values they carry, they are `one`,
+  `another`, `a-third` and so on.
+- A vector that declares a version ends its name with `-on-` and the range
+  that version falls in, written as the first two parts of the range's first
+  build joined by a hyphen: `with-sent-time-on-4-20`, `one-on-1-0`.
 
 Every file declares a `subject` saying which of the five it is, and a `note`
 in plain words. `schema/meta/vector.json` is the machine readable definition of

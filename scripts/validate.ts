@@ -20,6 +20,7 @@ import {
   unhex,
 } from "./codec.ts";
 import type { Cipher, Value, Values } from "./codec.ts";
+import { ranges } from "./schema.ts";
 import type { Amount, Endian, Field, Size } from "./schema.ts";
 
 const SCHEMA_DIR = "schema";
@@ -1433,6 +1434,27 @@ const walkVectors = (at: string, trail: string[]): void => {
   }
 };
 
+// The range starts a vector's name ends with, or null where the definitions
+// are too broken to say what the ranges are.
+const rangeStarts = ((): string[] | null => {
+  try {
+    return ranges().map((r) => r.from);
+  } catch {
+    return null;
+  }
+})();
+
+// The ending a vector for this version takes: "-on-" and the first two parts
+// of the first build of the range it falls in.
+const rangeSuffix = (version: string): string | undefined => {
+  const from = (rangeStarts ?? [])
+    .filter((start) => compareVersions(start, version) <= 0)
+    .at(-1);
+  return from === undefined
+    ? undefined
+    : `-on-${from.split(".").slice(0, 2).join("-")}`;
+};
+
 let vectorCount = 0;
 if (existsSync(VECTOR_DIR)) {
   walkVectors(VECTOR_DIR, []);
@@ -1463,6 +1485,18 @@ if (existsSync(VECTOR_DIR)) {
       }
       const doc = parsed as VectorDoc;
       checkNotes(doc, path, "", true);
+      if (doc.version !== undefined) {
+        const suffix = rangeSuffix(doc.version);
+        if (
+          suffix !== undefined &&
+          !basename(path, ".json").endsWith(suffix)
+        ) {
+          fail(
+            path,
+            `declares version ${doc.version}, so its name ends with "${suffix}"`,
+          );
+        }
+      }
 
       for (const key of ["bytes", "key", "plaintext", "ciphertext"] as const) {
         const text = doc[key];
