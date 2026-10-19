@@ -1,7 +1,7 @@
 {
   "build": "1.0.0.126",
   "layouts": "1.0.0.126",
-  "commit": "60a7c4cfc80e3ae1167bcaf324028875d5c5a54d",
+  "commit": "7de67cd0c7b812386e2e86cceac15aeaeaf5e98e",
   "modified": false,
   "runtime": "bun 1.4.2",
   "date": "2026-10-19",
@@ -60,7 +60,7 @@
     },
     {
       "check": "sweep > a client answers VoiceEvent with VoiceEventDone",
-      "outcome": "skipped"
+      "outcome": "passed"
     },
     {
       "check": "sweep > a client answers WaypointGroup with WaypointAck",

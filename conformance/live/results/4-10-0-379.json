@@ -1,0 +1,86 @@
+{
+  "build": "4.10.0.379",
+  "layouts": "4.10.0.379",
+  "commit": "63b6eafeb0a2675391d472cecdec5b5310a78ba0",
+  "modified": false,
+  "runtime": "bun 1.4.2",
+  "date": "2026-10-19",
+  "checks": [
+    {
+      "check": "communication > a client takes SystemMessage and stays in play",
+      "outcome": "passed"
+    },
+    {
+      "check": "joining > a client answers ClockSync with ClockReply",
+      "outcome": "passed"
+    },
+    {
+      "check": "joining > a client answers the spawn run with ClientReady",
+      "outcome": "passed"
+    },
+    {
+      "check": "joining > a client in play sends view reports",
+      "outcome": "passed"
+    },
+    {
+      "check": "joining > a client registers with the key it was launched with",
+      "outcome": "passed"
+    },
+    {
+      "check": "joining > a client settles its character after loading",
+      "outcome": "passed"
+    },
+    {
+      "check": "joining > a client states its build and asks for a seat",
+      "outcome": "passed"
+    },
+    {
+      "check": "joining > a client stays in play for 30 seconds",
+      "outcome": "passed"
+    },
+    {
+      "check": "movement > (unnamed)",
+      "outcome": "skipped"
+    },
+    {
+      "check": "movement > (unnamed)",
+      "outcome": "skipped"
+    },
+    {
+      "check": "movement > a champion brought into view is drawn and walks its path",
+      "outcome": "skipped"
+    },
+    {
+      "check": "movement > a champion taken out of view is no longer drawn",
+      "outcome": "skipped"
+    },
+    {
+      "check": "movement > a client answers WaypointGroup with WaypointAck",
+      "outcome": "skipped"
+    },
+    {
+      "check": "sweep > a client answers VoiceEvent with VoiceEventDone",
+      "outcome": "passed"
+    },
+    {
+      "check": "sweep > a client answers WaypointGroup with WaypointAck",
+      "outcome": "passed"
+    },
+    {
+      "check": "sweep > a client in play takes every message a server sends, and stays",
+      "outcome": "passed"
+    }
+  ],
+  "looks": [
+    {
+      "look": "sweep",
+      "expect": "the client is in play, whatever the messages drew",
+      "outcome": "to review"
+    },
+    {
+      "look": "system-message",
+      "expect": "the chat shows \"trueshot: a line of the server's own\"",
+      "outcome": "to review"
+    }
+  ]
+}
