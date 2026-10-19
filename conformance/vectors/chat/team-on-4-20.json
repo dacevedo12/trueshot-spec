@@ -3,7 +3,7 @@
   "subject": "message",
   "message": "Chat",
   "version": "4.20.0.315",
-  "note": "Sent to the sender's team alone. Taken from a client. The trailing run was zeroed before committing, because a client leaves it as it found it and it carried memory that had not been written.",
+  "note": "Laid out as a 4.20.0.315 client writes it. Sent to the sender's team alone. A client's bytes after the text's zero byte vary from send to send and carry no meaning; they are zero here.",
   "bytes": "68 00000000 0000000000010000000000000003000000000000000000000000000000000000000000000000000000000000000000000061736400",
   "fields": {
     "command": 104,

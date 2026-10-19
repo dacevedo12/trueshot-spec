@@ -3,7 +3,7 @@
   "subject": "message",
   "message": "VoiceOverride",
   "version": "4.17.0.267",
-  "note": "Taken from a recording of a match played on this version, with the leftover byte zeroed before committing.",
+  "note": "Laid out as a 4.17.0.267 client reads it. Its leftover byte is zero here.",
   "bytes": "96 19000040 0100",
   "fields": {
     "command": 150,

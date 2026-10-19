@@ -3,7 +3,7 @@
   "subject": "message",
   "message": "FloatingText",
   "version": "4.17.0.267",
-  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "note": "Laid out as a 4.17.0.267 client reads it. A server's bytes after each text's zero byte carry no meaning; they are zero here.",
   "bytes": "18 25010040 00000040000000000000000000001500000067616d655f6c75615f41656769735f426c6f636b00",
   "fields": {
     "command": 24,

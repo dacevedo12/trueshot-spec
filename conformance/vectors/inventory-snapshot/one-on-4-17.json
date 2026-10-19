@@ -3,7 +3,7 @@
   "subject": "message",
   "message": "InventorySnapshot",
   "version": "4.17.0.267",
-  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "note": "Laid out as a 4.17.0.267 client reads it. A server's bytes after each text's zero byte carry no meaning; they are zero here.",
   "bytes": "fe 210000400c01 0f040000000100d3070000010400000000008bc5000000000048ce9500000000080cd900000000bd00215e0c0000060100d107000007010000000000bf0000000000000000fc000080bf000080bf000080bf000080bf000080bf000080bf000080bf000080bf000080bf000080bf01000100010000000000000000000000000000000000000000000000000000000000000000000000",
   "fields": {
     "command": 254,

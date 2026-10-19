@@ -3,7 +3,7 @@
   "subject": "message",
   "message": "Chat",
   "version": "4.17.0.267",
-  "note": "Sent to everyone in the match. Taken from a client. The parameter run was zeroed before committing, because a client leaves it as it found it and it carried memory that had not been written.",
+  "note": "Laid out as a 4.17.0.267 client writes it. Sent to everyone in the match. A client's parameter bytes vary from send to send and carry no meaning; they are zero here.",
   "bytes": "68 00000000000000000001000000000000000e000000000000000000000000000000000000000000000000000000000000000000000068656c6c6f207374616e642d696e00",
   "fields": {
     "command": 104,

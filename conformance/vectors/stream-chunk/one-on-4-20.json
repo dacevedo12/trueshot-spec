@@ -3,7 +3,7 @@
   "subject": "message",
   "message": "StreamChunk",
   "version": "4.20.0.315",
-  "note": "Taken from a server a client accepted: the first fragment of the first chunk of a recorded match, which the client loaded. Its fragment bytes were cut to the first 16 and those zeroed before committing, because they carry the recorded match.",
+  "note": "Laid out as a 4.20.0.315 client reads it: the first fragment of the first chunk of a match, which a client loads. Its fragment bytes are cut to the first 16, which are zero here.",
   "bytes": "ed 00000000 010000000600000000000000058bac00001e0000000000000000000000000000000000000000000000",
   "fields": {
     "command": 237,

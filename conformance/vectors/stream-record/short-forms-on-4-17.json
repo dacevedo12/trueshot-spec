@@ -3,7 +3,7 @@
   "subject": "struct",
   "struct": "StreamRecord",
   "version": "4.17.0.267",
-  "note": "A record using every short form: the time and object as differences, a one byte size, and the last record's command. Taken from a recorded stream a client played.",
+  "note": "Laid out as a 4.17.0.267 client reads it. A record using every short form: the time and object as differences, a one byte size, and the last record's command.",
   "bytes": "f32001f700",
   "fields": {
     "flags": {

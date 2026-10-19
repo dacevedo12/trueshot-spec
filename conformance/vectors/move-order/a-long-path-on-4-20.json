@@ -3,7 +3,7 @@
   "subject": "message",
   "message": "MoveOrder",
   "version": "4.20.0.315",
-  "note": "A path long enough to run past one byte of flags, sent by a client rather than a server. Taken from a client.",
+  "note": "A path long enough to run past one byte of flags, sent by a client rather than a server. Laid out as a 4.20.0.315 client writes it.",
   "bytes": "72 74060040 0281c1db4557f89e45000000001874060040fc8d320af315f3fff414f41919191919194b27f5323245fa28f926fbb5b6fc0040ff67fb1e0f",
   "fields": {
     "command": 114,

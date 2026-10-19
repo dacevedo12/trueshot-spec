@@ -3,7 +3,7 @@
   "subject": "message",
   "message": "EffectAddedGroup",
   "version": "4.17.0.267",
-  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "note": "Laid out as a 4.17.0.267 client reads it. A server's bytes after each text's zero byte carry no meaning; they are zero here.",
   "bytes": "68 00000000 02e464220c8dc079910000000000409c4603480300404803004001010049030040490300400101004b0300404b030040010100",
   "fields": {
     "command": 104,

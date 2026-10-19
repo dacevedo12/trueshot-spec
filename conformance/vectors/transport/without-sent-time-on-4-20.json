@@ -2,7 +2,7 @@
   "$schema": "../../../schema/meta/vector.json",
   "subject": "transport",
   "version": "4.20.0.315",
-  "note": "A header a server emits. Bit 7 of the peer byte is clear, so the header ends after it and the sent time is absent. The four leading bytes are not the value a client emits, which is what a client never reading them allows. It is sent to 127.0.0.1 port 5000, which its first four bytes check.",
+  "note": "A header a server emits. Bit 7 of the peer byte is clear, so the header ends after it and the sent time is absent. The four leading bytes are not the value a client emits, which a client allows because it does nothing with them. It is sent to 127.0.0.1 port 5000, which its first four bytes check.",
   "bytes": "29 00 00 00 29 00",
   "fields": {
     "addressCheck": "29000000",

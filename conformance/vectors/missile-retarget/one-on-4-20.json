@@ -3,7 +3,7 @@
   "subject": "message",
   "message": "MissileRetarget",
   "version": "4.20.0.315",
-  "note": "Taken from a recording of a match played on this version. Text fields were cut at their end and the bytes after zeroed before committing, because a server leaves whatever it found there.",
+  "note": "Laid out as a 4.20.0.315 client reads it. A server's bytes after each text's zero byte carry no meaning; they are zero here.",
   "bytes": "ee d9060040 1d000040000000000000000000000000",
   "fields": {
     "command": 238,

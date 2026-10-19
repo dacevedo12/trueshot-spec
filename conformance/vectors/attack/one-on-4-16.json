@@ -3,7 +3,7 @@
   "subject": "message",
   "message": "Attack",
   "version": "4.16.0.238",
-  "note": "The vector a 4.17 client accepted, without the position a 4.16 client does not read.",
+  "note": "Laid out as a 4.16.0.238 client reads it: the vector for 4.17, less the position, which changes nothing a 4.16 client does.",
   "bytes": "0c 05000040 01000040800120004040",
   "fields": {
     "command": 12,

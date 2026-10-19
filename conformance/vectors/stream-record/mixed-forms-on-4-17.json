@@ -3,7 +3,7 @@
   "subject": "struct",
   "struct": "StreamRecord",
   "version": "4.17.0.267",
-  "note": "A record with a one byte time difference and size, and its command and object written in full. Taken from a recorded stream a client played.",
+  "note": "Laid out as a 4.17.0.267 client reads it. A record with a one byte time difference and size, and its command and object written in full.",
   "bytes": "934101e0dbc610ff00",
   "fields": {
     "flags": {
