@@ -51,8 +51,9 @@ Then name a client in an environment file kept outside version control (every
     # Optional: a command given a file path, which captures the client's window to it,
     # or the window whose id follows the path.
     TRUESHOT_SCREENSHOT=
-    # Optional: a command that prints the client's open windows, one per line as an
-    # id, a tab and a title.
+    # Optional: a command given the id of the process the harness started, which prints
+    # the windows of that process and those under it, one per line as an id, a tab and
+    # a title.
     TRUESHOT_WINDOWS=
     TRUESHOT_PORT=5000
 

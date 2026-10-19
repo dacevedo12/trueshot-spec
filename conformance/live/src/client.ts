@@ -114,11 +114,14 @@ class Client {
 
   // Empty where it worked, otherwise why it did not.
   // The windows the client has open other than the one it plays in, or none
-  // where nothing says how to list them.
+  // where nothing says how to list them. The command is given the process the
+  // harness started, and lists only the windows of that process and those
+  // under it.
   async dialogs(): Promise<readonly Window[]> {
-    if (this.#setup.windows.length === 0) return [];
+    const pid = this.#process?.pid;
+    if (this.#setup.windows.length === 0 || pid === undefined) return [];
     const [program = "", ...rest] = this.#setup.windows;
-    const done = Bun.spawn([program, ...rest], {
+    const done = Bun.spawn([program, ...rest, String(pid)], {
       stdout: "pipe",
       stderr: "ignore",
     });
