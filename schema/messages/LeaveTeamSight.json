@@ -5,6 +5,21 @@
   "note": "What a server sends when a unit passes out of the view of a whole side. The header names the object this is about.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 239,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "side",
+          "type": "u8",
+          "note": "Which side the unit passed out of the view of, as an index from 0 to 3. A client applies a larger index too; a server sends only 0 to 3."
+        }
+      ]
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.11.0.386",
       "channel": "events",

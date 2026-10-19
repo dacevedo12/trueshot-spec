@@ -5,6 +5,59 @@
   "note": "What a server sends to replace one effect with another on several units at once. The header names no object it acts on: the units are listed below.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 33,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "runningFor",
+          "type": "f32",
+          "note": "How long the effect has already run, in seconds."
+        },
+        {
+          "name": "lasts",
+          "type": "f32",
+          "note": "How long it runs in total, in seconds."
+        },
+        {
+          "name": "count",
+          "type": "u8",
+          "note": "How many units follow."
+        },
+        {
+          "name": "entries",
+          "type": "array",
+          "count": "count",
+          "items": {
+            "name": "entriesEntry",
+            "type": "record",
+            "fields": [
+              {
+                "name": "unit",
+                "type": "u32",
+                "note": "The unit carrying the effect."
+              },
+              {
+                "name": "caster",
+                "type": "u32",
+                "note": "The unit that put it there."
+              },
+              {
+                "name": "slot",
+                "type": "u8",
+                "note": "Which of the unit's effect slots."
+              }
+            ]
+          },
+          "note": "The units, one place each."
+        }
+      ],
+      "note": "A client takes each entry as it takes an EffectReplaced for that unit, with the two times above."
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.21.0.0",
       "channel": "events",

@@ -5,6 +5,47 @@
   "note": "What a server sends to tint a side's screens, or to take a tint away. The header carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 228,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "fadeIn",
+          "type": "u8",
+          "note": "Any value other than zero brings a tint in, and the colour and weight below follow; 0 takes it away, and they do not."
+        },
+        {
+          "name": "time",
+          "type": "f32",
+          "note": "How long the change takes, in seconds."
+        },
+        {
+          "name": "side",
+          "type": "i32",
+          "note": "Which side sees it: 0 for every client, or a side's number. A client with no player of its own shows a tint only for 0 and 100."
+        },
+        {
+          "name": "colour",
+          "type": "u32",
+          "note": "The tint, as blue, green, red and opacity bytes.",
+          "present": {
+            "when": "fadeIn"
+          }
+        },
+        {
+          "name": "weight",
+          "type": "f32",
+          "note": "How strongly it applies at most.",
+          "present": {
+            "when": "fadeIn"
+          }
+        }
+      ]
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.11.0.386",
       "channel": "events",

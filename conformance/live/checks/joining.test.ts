@@ -2,7 +2,7 @@
 // must send reaches play, and stays there.
 
 import { afterAll, beforeAll, describe, expect, test } from "bun:test";
-import { setup } from "../src/client.ts";
+import { layoutsOf, setup } from "../src/client.ts";
 import { Match } from "../src/match.ts";
 
 const s = setup();
@@ -46,9 +46,17 @@ describe.skipIf(s === undefined)("joining", () => {
     expect(reply.fields["serverSaid"]).toBe(0);
   }, 40_000);
 
+  // A client whose camera is locked sends none (spec/interface.md), and the
+  // lock can come from the player's own settings, so the camera is freed first.
   test("a client in play sends view reports", async () => {
     const session = match.session;
     if (session === undefined) throw new Error("no session");
+    if (s !== undefined && layoutsOf(s).messages.has("CameraLockSet")) {
+      session.send("CameraLockSet", {
+        netId: 0,
+        state: { locked: 0, unused: 0 },
+      });
+    }
     await session.next("Camera", { seen: true, timeout: 30_000 });
   }, 40_000);
 

@@ -5,6 +5,58 @@
   "note": "What a server sends to add one to a champion's count of a deed, as counted for the end of a match. Nothing shows at once. A client ignores it where the id names no champion. The header carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 227,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "champion",
+          "type": "u32",
+          "note": "The champion."
+        },
+        {
+          "name": "statistic",
+          "type": "u8",
+          "note": "Which count, from 0 to 9. A client does not check the range, so a value past 9 changes something that is not a count; a server sends only those named.",
+          "values": {
+            "0": {
+              "name": "pointCaptured"
+            },
+            "1": {
+              "name": "pointNeutralised"
+            },
+            "2": {
+              "name": "killWhileAttackingPoint"
+            },
+            "3": {
+              "name": "teamObjective"
+            },
+            "4": {
+              "name": "defendedPointNeutralised"
+            },
+            "5": {
+              "name": "killWhileDefendingPoint"
+            },
+            "6": {
+              "name": "timeDefendingPoint"
+            },
+            "7": {
+              "name": "lastStand"
+            },
+            "8": {
+              "name": "captureAssist"
+            },
+            "9": {
+              "name": "neutraliseAssist"
+            }
+          }
+        }
+      ]
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.11.0.386",
       "channel": "events",

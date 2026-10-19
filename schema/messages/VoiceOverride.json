@@ -5,6 +5,42 @@
   "note": "What a server sends to change or reset the voice a unit speaks with. The header names the unit.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 158,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "reset",
+          "type": "u8",
+          "note": "Whether to reset. A client reads a name after any value other than 1, so a server sends only 0 or 1.",
+          "values": {
+            "0": {
+              "name": "change",
+              "note": "The name below follows."
+            },
+            "1": {
+              "name": "reset",
+              "note": "The unit returns to its own voice; nothing follows."
+            }
+          }
+        },
+        {
+          "name": "voice",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "The voice's name, ended by a zero byte.",
+          "present": {
+            "when": "reset",
+            "equals": 0
+          }
+        }
+      ]
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.11.0.386",
       "channel": "events",

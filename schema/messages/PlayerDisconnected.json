@@ -5,6 +5,21 @@
   "note": "What a server sends as a player's client drops out. The header carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 160,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "champion",
+          "type": "u32",
+          "note": "The player's champion, matched against the owner of each champion the client knows."
+        }
+      ]
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.11.0.386",
       "channel": "events",

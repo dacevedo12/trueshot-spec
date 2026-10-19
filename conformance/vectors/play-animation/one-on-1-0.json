@@ -1,0 +1,27 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "PlayAnimation",
+  "version": "1.0.0.126",
+  "note": "Laid out as a 1.0.0.126 client reads it.",
+  "bytes": "b80100004008000000000000005370656c6c3100",
+  "fields": {
+    "command": 184,
+    "netId": 1073741825,
+    "flags": {
+      "unused0": 0,
+      "bit1": 0,
+      "unused2": 0,
+      "bit3": 1,
+      "bit4": 0,
+      "bit5": 0,
+      "bit6": 0,
+      "unused7": 0,
+      "bit8": 0,
+      "bit9": 0,
+      "unusedHigh": 0
+    },
+    "scaleTime": 0,
+    "animation": "Spell1"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "MissileHits",
+  "version": "1.0.0.126",
+  "note": "Laid out as a 1.0.0.126 client reads it.",
+  "bytes": "280600004002000100004002000040",
+  "fields": {
+    "command": 40,
+    "netId": 1073741830,
+    "count": 2,
+    "targets": [1073741825, 1073741826]
+  }
+}

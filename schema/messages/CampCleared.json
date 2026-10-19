@@ -5,6 +5,31 @@
   "note": "What a server sends as a camp of units that belong to no side is emptied. A client marks the camp empty, even one that had just filled. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 203,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "killer",
+          "type": "u32",
+          "note": "The champion credited with emptying the camp. A client uses it only to choose a side: side 100 where the killer is on side 100, side 200 otherwise."
+        },
+        {
+          "name": "camp",
+          "type": "u32",
+          "note": "Which camp. A client ignores the message for a camp it does not know."
+        },
+        {
+          "name": "state",
+          "type": "u8",
+          "note": "The camp's state for that side, kept as the whole byte. What it carries is not recorded."
+        }
+      ]
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.11.0.386",
       "channel": "events",

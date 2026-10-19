@@ -5,6 +5,22 @@
   "note": "What a server sends to set which spells a unit casts by itself. The header names the unit.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 34,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "i8",
+          "note": "The slot cast by itself, from -1 to 51. A client takes a value outside that range as it stands. What -1 does is not recorded."
+        }
+      ],
+      "note": "It names one slot: there is no slot for a critical strike."
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.21.0.0",
       "channel": "events",

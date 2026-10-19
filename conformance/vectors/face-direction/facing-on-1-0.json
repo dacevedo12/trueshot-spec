@@ -1,0 +1,15 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "FaceDirection",
+  "version": "1.0.0.126",
+  "note": "Laid out as a 1.0.0.126 client reads it.",
+  "bytes": "53 01000040 0000803f0000000000000000",
+  "fields": {
+    "command": 83,
+    "netId": 1073741825,
+    "towardX": 1,
+    "unusedY": 0,
+    "towardZ": 0
+  }
+}

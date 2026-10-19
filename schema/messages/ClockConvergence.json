@@ -5,6 +5,26 @@
   "note": "What a server sends about how its clock and a client's are being brought together. The header carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "clock",
+      "command": 121,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientTime",
+          "type": "f32",
+          "note": "The client's clock, in seconds, as the client reported it. A client sets its clock offset from it, taking off half of its own clock's reading less this value."
+        },
+        {
+          "name": "roundTrip",
+          "type": "f32",
+          "note": "The round trip time the server measures, in seconds. A client blends it into a running value, keeping 0.8 of the old and adding 0.1 of this."
+        }
+      ]
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.11.0.386",
       "channel": "clock",

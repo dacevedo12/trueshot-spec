@@ -5,6 +5,21 @@
   "note": "What a server sends to advance every unit's stats by a span of time. The header carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 42,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "seconds",
+          "type": "f32",
+          "note": "The span, in seconds. A client applies it to every champion."
+        }
+      ]
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.11.0.386",
       "channel": "events",

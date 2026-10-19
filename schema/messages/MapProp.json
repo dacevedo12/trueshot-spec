@@ -5,6 +5,128 @@
   "note": "What a server sends to place a prop on the map: a thing that stands there and is looked at rather than one that acts. The header carries zero or names the object this is about, and a client accepts either.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 217,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "prop",
+          "type": "u32",
+          "note": "The name the prop answers to, so later messages can name it."
+        },
+        {
+          "name": "node",
+          "type": "u8",
+          "note": "Which network node the object belongs to. It is a field of its own, not the leading byte of the name beside it."
+        },
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where the prop stands, along one ground axis, in world units."
+        },
+        {
+          "name": "atY",
+          "type": "f32",
+          "note": "Where the prop stands, in height, in world units."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where the prop stands, along the other ground axis, in world units."
+        },
+        {
+          "name": "firstX",
+          "type": "f32",
+          "note": "A vector's part along one ground axis, used for either kind. What this carries is not recorded."
+        },
+        {
+          "name": "firstY",
+          "type": "f32",
+          "note": "A vector's part in height, used for either kind. What this carries is not recorded."
+        },
+        {
+          "name": "firstZ",
+          "type": "f32",
+          "note": "A vector's part along the other ground axis, used for either kind. What this carries is not recorded."
+        },
+        {
+          "name": "secondX",
+          "type": "f32",
+          "note": "A second vector's part along one ground axis, used only where kind is 1. What this carries is not recorded."
+        },
+        {
+          "name": "secondY",
+          "type": "f32",
+          "note": "A second vector's part in height, used only where kind is 1. What this carries is not recorded."
+        },
+        {
+          "name": "secondZ",
+          "type": "f32",
+          "note": "A second vector's part along the other ground axis, used only where kind is 1. What this carries is not recorded."
+        },
+        {
+          "name": "side",
+          "type": "bits",
+          "note": "The side the prop belongs to.",
+          "size": 4,
+          "bits": [
+            {
+              "name": "side",
+              "width": 9,
+              "note": "The prop's side."
+            },
+            {
+              "name": "unused",
+              "width": 23,
+              "note": "A client reads nothing here; a server sends zero."
+            }
+          ]
+        },
+        {
+          "name": "unused",
+          "type": "u8",
+          "note": "A client reads nothing here; a server sends zero."
+        },
+        {
+          "name": "skillLevel",
+          "type": "u8",
+          "note": "Used only where kind is 0. What this carries is not recorded."
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What sort of prop it is; a client makes nothing for any other value.",
+          "values": {
+            "0": {
+              "name": "fromAsset",
+              "note": "A prop built from asset."
+            },
+            "1": {
+              "name": "attached",
+              "note": "A prop attached to the object named in name."
+            }
+          }
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "What this prop is called, so a client can tell one from another. Written out in full and padded with zero bytes to the width above."
+        },
+        {
+          "name": "asset",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The name of the character the client loads the prop's art and sound under, written and padded as above. A client given one it lacks fails soon after, once the prop is near what it draws."
+        }
+      ]
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.11.0.386",
       "channel": "events",

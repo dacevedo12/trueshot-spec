@@ -5,6 +5,50 @@
   "note": "What a server sends to stop an animation a unit is playing. The header names the unit.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 43,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 4,
+          "bits": [
+            {
+              "name": "unusedLow",
+              "width": 6,
+              "note": "A client ignores these; a server sends zero."
+            },
+            {
+              "name": "unlock",
+              "width": 1,
+              "note": "Set to release the unit's animation lock in every case. Clear releases it only where the unit's own state allows; the animation stops either way."
+            },
+            {
+              "name": "unusedMid",
+              "width": 2,
+              "note": "A client ignores these; a server sends zero."
+            },
+            {
+              "name": "blend",
+              "width": 1,
+              "note": "Set to put the unit's animation into a second blend state, which a client applies only where one of its own settings is on. What that state changes is not recorded."
+            },
+            {
+              "name": "unusedHigh",
+              "width": 22,
+              "note": "A client ignores these; a server sends zero."
+            }
+          ],
+          "note": "How it stops."
+        }
+      ],
+      "note": "No name is carried: a client stops whatever animation the unit is playing, blending out over a fixed time."
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.11.0.386",
       "channel": "events",

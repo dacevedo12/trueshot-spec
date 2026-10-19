@@ -5,6 +5,36 @@
   "note": "What a server sends to set one slot of a unit's inventory. The header names the unit. A client empties the slot, then fills it where count is above zero, and refreshes the shop where the unit is its own champion.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 86,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot, 0 to 37. A client ignores the message from 38 up."
+        },
+        {
+          "name": "item",
+          "type": "u32",
+          "note": "The item. It has no effect where count is zero."
+        },
+        {
+          "name": "count",
+          "type": "u8",
+          "note": "How many. Zero leaves the slot empty."
+        },
+        {
+          "name": "charges",
+          "type": "u8",
+          "note": "Its charges."
+        }
+      ]
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.11.0.386",
       "channel": "events",

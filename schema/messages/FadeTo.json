@@ -5,6 +5,31 @@
   "note": "What a server sends to fade a unit towards an opacity over time. The header names the unit.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 186,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "fade",
+          "type": "i16",
+          "note": "Names this fade, so that FadeRemoved can name it."
+        },
+        {
+          "name": "time",
+          "type": "f32",
+          "note": "How long the fade takes, in seconds."
+        },
+        {
+          "name": "target",
+          "type": "f32",
+          "note": "The opacity it fades to, from 0 for unseen to 1 for solid."
+        }
+      ]
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.11.0.386",
       "channel": "events",

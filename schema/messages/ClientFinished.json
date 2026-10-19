@@ -5,6 +5,15 @@
   "note": "What a client sends when it has finished with the match. It is sent once, at the end. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "requests",
+      "command": 145,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": []
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.11.0.386",
       "channel": "requests",

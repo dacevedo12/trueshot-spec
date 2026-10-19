@@ -5,6 +5,27 @@
   "note": "What a server sends when a unit comes into what one client can see. The header names the unit this is about.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 181,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "maxHealth",
+          "type": "f32",
+          "note": "What the unit's health tops out at."
+        },
+        {
+          "name": "health",
+          "type": "f32",
+          "note": "What its health stands at. A client holds it to between zero and maxHealth."
+        }
+      ],
+      "note": "It carries no other messages: the body is the unit's health alone, always present."
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.11.0.386",
       "channel": "events",

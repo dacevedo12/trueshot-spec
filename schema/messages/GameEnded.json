@@ -5,6 +5,38 @@
   "note": "What a server sends to end the match and say which side won. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 206,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "result",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "side100Won",
+              "width": 1,
+              "note": "Set where side 100 won, clear where side 200 did. A client counts a win where this names its own side, and a loss otherwise."
+            },
+            {
+              "name": "surrendered",
+              "width": 1,
+              "note": "Set aside for a match ended by surrender. A client reads nothing there."
+            },
+            {
+              "name": "unused",
+              "width": 6,
+              "note": "Unused; a client reads nothing there, and a server writes zero."
+            }
+          ]
+        }
+      ]
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.11.0.386",
       "channel": "events",

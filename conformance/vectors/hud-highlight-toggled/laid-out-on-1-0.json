@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "HudHighlightToggled",
+  "version": "1.0.0.126",
+  "note": "Laid out as a 1.0.0.126 client reads it.",
+  "bytes": "52 00000000 0100000000",
+  "fields": {
+    "command": 82,
+    "netId": 0,
+    "part": 1,
+    "element": 0,
+    "number": 0,
+    "unused": 0,
+    "state": {
+      "on": 0,
+      "unused": 0
+    }
+  }
+}

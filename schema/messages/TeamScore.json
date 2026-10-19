@@ -5,6 +5,26 @@
   "note": "What a server sends to set a side's score, where a match is won on score. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 221,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "side",
+          "type": "i32",
+          "note": "Which side, 100 or 200. A client ignores any other."
+        },
+        {
+          "name": "score",
+          "type": "i32",
+          "note": "The score it now stands at: the whole of it, not a change."
+        }
+      ]
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.11.0.386",
       "channel": "events",

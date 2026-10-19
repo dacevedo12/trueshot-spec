@@ -5,6 +5,59 @@
   "note": "What a server sends to mark the ground within circles, in place of the circles it marked before: each circle's flags apply to the ground within it. The header carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 71,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "count",
+          "type": "u16",
+          "note": "The count of circles that follow. A client reads no more than this many, and stops at the end of the message where fewer follow."
+        },
+        {
+          "name": "syncId",
+          "type": "i32",
+          "note": "A number naming this marking."
+        },
+        {
+          "name": "circles",
+          "type": "array",
+          "count": "count",
+          "items": {
+            "name": "circlesEntry",
+            "type": "record",
+            "fields": [
+              {
+                "name": "x",
+                "type": "f32",
+                "note": "The circle's centre, along one ground axis, in world units."
+              },
+              {
+                "name": "z",
+                "type": "f32",
+                "note": "The circle's centre, along the other ground axis, in world units."
+              },
+              {
+                "name": "radius",
+                "type": "f32",
+                "note": "Its radius, in world units. A circle of radius 1000 or more marks nothing."
+              },
+              {
+                "name": "flags",
+                "type": "u32",
+                "note": "The flags to add to each cell. Only the low 16 bits take effect."
+              }
+            ]
+          },
+          "note": "The circles."
+        }
+      ],
+      "note": "A client clears every circle it holds before marking these, and answers each with a message to the server under command 32 whose body is this sync id alone."
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.11.0.386",
       "channel": "events",

@@ -5,6 +5,36 @@
   "note": "What a server sends to say a champion died. The header names the unit this is about.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 97,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "killer",
+          "type": "u32",
+          "note": "The unit credited with the death. Where it names the champion that died, a client still plays the death."
+        },
+        {
+          "name": "unused",
+          "type": "u16",
+          "note": "A client reads nothing here; a server sends zero."
+        },
+        {
+          "name": "stayDown",
+          "type": "f32",
+          "note": "How long the champion stays down, in seconds. A client counts its respawn timer down from it."
+        },
+        {
+          "name": "zombie",
+          "type": "u8",
+          "note": "Not zero to leave the champion standing in a zombie state rather than dead, with no death animation; a client tests the whole byte."
+        }
+      ]
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.11.0.386",
       "channel": "events",

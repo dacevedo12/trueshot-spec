@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "FogSet",
+  "version": "1.0.0.126",
+  "note": "Laid out as a 1.0.0.126 client reads it.",
+  "bytes": "b4 00000000 01",
+  "fields": {
+    "command": 180,
+    "netId": 0,
+    "state": {
+      "drawn": 1,
+      "unused": 0
+    }
+  }
+}

@@ -5,6 +5,68 @@
   "note": "What a server sends to open a surrender vote, or to report one already open. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 210,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "countAsYes",
+              "width": 1,
+              "note": "Applies only where side is the client's own: set shows caller voting yes, clear voting no, opening the menu or not."
+            },
+            {
+              "name": "openTheMenu",
+              "width": 1,
+              "note": "Set where the vote opens: a client of side opens the vote's panel from seats and closesIn, which have no other effect; every client announces that a vote began."
+            },
+            {
+              "name": "unused",
+              "width": 6,
+              "note": "Unused; a client reads nothing there, and a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "caller",
+          "type": "u32",
+          "note": "The unit that called the vote."
+        },
+        {
+          "name": "inFavour",
+          "type": "u8",
+          "note": "How many have voted for."
+        },
+        {
+          "name": "against",
+          "type": "u8",
+          "note": "How many have voted against."
+        },
+        {
+          "name": "seats",
+          "type": "u8",
+          "note": "How many seats can vote."
+        },
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "Which side is voting."
+        },
+        {
+          "name": "closesIn",
+          "type": "f32",
+          "note": "How long the vote stays open, in seconds."
+        }
+      ]
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.11.0.386",
       "channel": "events",

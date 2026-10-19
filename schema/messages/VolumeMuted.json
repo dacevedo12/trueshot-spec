@@ -5,6 +5,62 @@
   "note": "What a server sends to mute or unmute one kind of sound. The header carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 41,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "category",
+          "type": "u8",
+          "note": "Which kind. A client ignores the message from 7 up.",
+          "values": {
+            "0": {
+              "name": "all"
+            },
+            "1": {
+              "name": "music"
+            },
+            "2": {
+              "name": "effects"
+            },
+            "3": {
+              "name": "announcer"
+            },
+            "4": {
+              "name": "unitResponses"
+            },
+            "5": {
+              "name": "environment"
+            },
+            "6": {
+              "name": "mainEffects"
+            }
+          }
+        },
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "muted",
+              "width": 1,
+              "note": "Set to mute, clear to unmute."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a client reads nothing there, and a server writes zero."
+            }
+          ],
+          "note": "Whether it is muted."
+        }
+      ]
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.11.0.386",
       "channel": "events",

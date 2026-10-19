@@ -5,6 +5,66 @@
   "note": "What a server sends to lock or unlock a kind of input on a client. The header carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "note": "A client ignores it while playing a replay.",
+      "channel": "events",
+      "command": 137,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "category",
+          "type": "u32",
+          "note": "Which input, as a set of bits.",
+          "values": {
+            "1": {
+              "name": "cameraLocking"
+            },
+            "2": {
+              "name": "movement"
+            },
+            "4": {
+              "name": "abilities"
+            },
+            "8": {
+              "name": "summonerSpells"
+            },
+            "16": {
+              "name": "shop"
+            },
+            "32": {
+              "name": "chat"
+            },
+            "64": {
+              "name": "minimapMovement"
+            },
+            "128": {
+              "name": "cameraMovement"
+            }
+          }
+        },
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "locked",
+              "width": 1,
+              "note": "Set to lock, clear to unlock."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "A server writes zero; a client takes any bit set here as a lock too."
+            }
+          ],
+          "note": "Whether to lock. A client tests the whole byte: any value but zero locks."
+        }
+      ]
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.11.0.386",
       "channel": "events",

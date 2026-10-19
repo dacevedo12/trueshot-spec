@@ -5,6 +5,27 @@
   "note": "What a server sends as a particle passes out of what one side can see. The header carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 241,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "particle",
+          "type": "u32",
+          "note": "The particle."
+        },
+        {
+          "name": "team",
+          "type": "u8",
+          "note": "Which side, by an index."
+        }
+      ],
+      "note": "A client ignores the message where particle names none it holds."
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.11.0.386",
       "channel": "events",

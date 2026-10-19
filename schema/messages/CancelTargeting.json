@@ -5,6 +5,35 @@
   "note": "What a server sends to end a spell's targeting on a client. The header names the unit. A server sends it to clients watching a match.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 139,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "which",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "slot",
+              "width": 7,
+              "note": "Which slot."
+            },
+            {
+              "name": "summonerSpell",
+              "width": 1,
+              "note": "Set where the slot is a summoner slot."
+            }
+          ],
+          "note": "Which spell."
+        }
+      ],
+      "note": "A client cancels the aiming only where that slot, in the book named, is being aimed, and otherwise does nothing."
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.11.0.386",
       "channel": "events",

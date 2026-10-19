@@ -5,6 +5,54 @@
   "note": "What a client sends to mark a point on the map for the others. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "requests",
+      "command": 90,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Where on the map, along one ground axis, in world units."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "Its height, in world units."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Where on the map, along the other ground axis, in world units."
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "A network object the mark is on, or zero where it is on open ground."
+        },
+        {
+          "name": "kind",
+          "type": "bits",
+          "size": 1,
+          "note": "Which mark it is.",
+          "bits": [
+            {
+              "name": "category",
+              "width": 4,
+              "note": "Which sort of mark. What each value names is not recorded."
+            },
+            {
+              "name": "unused",
+              "width": 4,
+              "note": "Unused; a client may leave any value here, and a server ignores it."
+            }
+          ]
+        }
+      ]
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.11.0.386",
       "channel": "requests",

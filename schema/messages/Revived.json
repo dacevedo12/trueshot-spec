@@ -5,6 +5,31 @@
   "note": "What a server sends to put a champion back on the field. The header names the unit this is about.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 49,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where it returns, along one ground axis, in world units. A client sets the champion on the nearest open ground to this point and atZ."
+        },
+        {
+          "name": "atY",
+          "type": "f32",
+          "note": "Where it returns, in height, in world units. A client takes the height from the ground; any other use is not recorded."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where it returns, along the other ground axis, in world units."
+        }
+      ]
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.11.0.386",
       "channel": "events",

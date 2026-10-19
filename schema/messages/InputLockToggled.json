@@ -5,6 +5,49 @@
   "note": "What a server sends to turn kinds of input off where they are on, or on where they are off. A client acts on the change at once only where exactly one lock is set; any other value still changes what is locked, and takes effect as the player next tries. The header carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 163,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "locks",
+          "type": "u32",
+          "note": "Each lock set flips.",
+          "values": {
+            "1": {
+              "name": "cameraLock",
+              "note": "Locking the camera."
+            },
+            "2": {
+              "name": "movement"
+            },
+            "4": {
+              "name": "spells"
+            },
+            "8": {
+              "name": "summonerSpells"
+            },
+            "16": {
+              "name": "shop"
+            },
+            "32": {
+              "name": "chat"
+            },
+            "64": {
+              "name": "minimapMovement",
+              "note": "Moving by the minimap."
+            },
+            "128": {
+              "name": "cameraMovement"
+            }
+          }
+        }
+      ]
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.11.0.386",
       "channel": "events",

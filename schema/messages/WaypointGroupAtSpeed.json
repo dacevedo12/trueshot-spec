@@ -5,6 +5,164 @@
   "note": "What a server sends to move units along paths of its own choosing, stating how each one travels rather than leaving it to the receiving end. It is what carries a unit thrown, dragged, or carried along by something other than its own walking. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 103,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u32",
+          "note": "Names this statement of movement."
+        },
+        {
+          "name": "movementCount",
+          "type": "u16",
+          "note": "How many units follow. A client reads the field as signed, so above 32767 it reads none, as it does for zero."
+        },
+        {
+          "name": "movements",
+          "type": "array",
+          "count": "movementCount",
+          "note": "What each unit is told to do.",
+          "items": {
+            "name": "movement",
+            "type": "record",
+            "fields": [
+              {
+                "name": "header",
+                "type": "bits",
+                "size": 4,
+                "bits": [
+                  {
+                    "name": "hasTeleportToken",
+                    "width": 1,
+                    "note": "Set where a token sits beside the unit."
+                  },
+                  {
+                    "name": "unused",
+                    "width": 15,
+                    "note": "A client ignores these; a server writes zero."
+                  },
+                  {
+                    "name": "pointCount",
+                    "width": 7,
+                    "note": "How many points the path holds, from 1 to 127. A client takes nothing further from the message once a movement gives 0."
+                  },
+                  {
+                    "name": "unusedHigh",
+                    "width": 9,
+                    "note": "A client ignores these; a server writes zero."
+                  }
+                ]
+              },
+              {
+                "name": "unit",
+                "type": "u32",
+                "note": "The unit the path belongs to. A client that does not hold it reads no further than the terms, and so misreads every movement after it; a server sends only units the client holds."
+              },
+              {
+                "name": "teleportToken",
+                "type": "u8",
+                "present": {
+                  "when": "header.hasTeleportToken"
+                },
+                "note": "Tells one relocation from another, as in the compact shape (see spec/movement.md)."
+              },
+              {
+                "name": "terms",
+                "type": "struct",
+                "struct": "SpeedParams",
+                "note": "How the unit is made to travel."
+              },
+              {
+                "name": "flags",
+                "type": "bitArray",
+                "count": {
+                  "field": "header.pointCount",
+                  "minus": 1
+                },
+                "bits": [
+                  {
+                    "name": "xIsStep",
+                    "width": 1,
+                    "note": "Set where this point states its first coordinate as a step."
+                  },
+                  {
+                    "name": "zIsStep",
+                    "width": 1,
+                    "note": "Set where this point states its second coordinate as a step."
+                  }
+                ],
+                "note": "One pair for each point after the first, in the order the points follow. Pairs run on from the low bits of the first byte, and the run reaches to the byte holding the last pair. The bits past it are clear."
+              },
+              {
+                "name": "firstX",
+                "type": "i16",
+                "note": "The first point, along one ground axis, in the units spec/movement.md gives."
+              },
+              {
+                "name": "firstZ",
+                "type": "i16",
+                "note": "The first point, along the other."
+              },
+              {
+                "name": "steps",
+                "type": "array",
+                "count": {
+                  "field": "header.pointCount",
+                  "minus": 1
+                },
+                "items": {
+                  "name": "step",
+                  "type": "record",
+                  "fields": [
+                    {
+                      "name": "xStep",
+                      "type": "i8",
+                      "present": {
+                        "when": "flags[step].xIsStep"
+                      },
+                      "note": "Added to the first coordinate of the point before, as that point resolved."
+                    },
+                    {
+                      "name": "xWhole",
+                      "type": "i16",
+                      "present": {
+                        "when": "flags[step].xIsStep",
+                        "equals": 0
+                      },
+                      "note": "The first coordinate, stated without reference to the point before."
+                    },
+                    {
+                      "name": "zStep",
+                      "type": "i8",
+                      "present": {
+                        "when": "flags[step].zIsStep"
+                      },
+                      "note": "Added to the second coordinate of the point before, as that point resolved."
+                    },
+                    {
+                      "name": "zWhole",
+                      "type": "i16",
+                      "present": {
+                        "when": "flags[step].zIsStep",
+                        "equals": 0
+                      },
+                      "note": "The second coordinate, stated without reference to the point before."
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "note": "A client answers each with WaypointAck, naming this sync id and listing, in order, each unit whose path carried a teleport token with that token."
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.11.0.386",
       "channel": "events",

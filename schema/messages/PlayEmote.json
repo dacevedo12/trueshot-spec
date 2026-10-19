@@ -5,6 +5,21 @@
   "note": "What a client sends to play an emote. The header names the sender's champion.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "requests",
+      "command": 76,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "emote",
+          "type": "u32",
+          "note": "Which emote, by the number the client knows it as. A client sends nothing where no emote matches."
+        }
+      ]
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.11.0.386",
       "channel": "requests",

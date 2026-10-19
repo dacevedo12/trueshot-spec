@@ -5,6 +5,39 @@
   "note": "What a client sends as it locks its view to a unit or releases it. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "note": "A client sends it at once on each CameraLockSet, with state as that message carried it, whole byte and all.",
+      "channel": "requests",
+      "command": 134,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "locked",
+              "width": 1,
+              "note": "Set while the view follows a unit."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "As CameraLockSet carried them; zero where a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
+        }
+      ]
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.11.0.386",
       "channel": "requests",

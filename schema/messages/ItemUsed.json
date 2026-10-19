@@ -5,6 +5,31 @@
   "note": "What a server sends after an item in a unit's inventory is used. The header names the unit.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 167,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot, 0 to 37. A client ignores the message from 38 up, and where the slot is empty."
+        },
+        {
+          "name": "left",
+          "type": "u8",
+          "note": "How many are left in it; zero empties the slot."
+        },
+        {
+          "name": "charges",
+          "type": "u8",
+          "note": "How many charges it holds."
+        }
+      ]
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.11.0.386",
       "channel": "events",

@@ -5,6 +5,128 @@
   "note": "What a server sends to put a pet on the field. The header names the pet. A server sends it to clients watching a match.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "note": "A client gives the pet its owner's side.",
+      "channel": "events",
+      "command": 60,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "owner",
+          "type": "u32",
+          "note": "The unit it belongs to."
+        },
+        {
+          "name": "node",
+          "type": "u8",
+          "note": "Which network node it belongs to."
+        },
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where it stands, along one ground axis, in world units."
+        },
+        {
+          "name": "atY",
+          "type": "f32",
+          "note": "In height, in world units."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Along the other ground axis, in world units."
+        },
+        {
+          "name": "spellLevel",
+          "type": "i32",
+          "note": "The level of the spell that summoned it, plus one. A client uses it only in some states of the owner, which are not recorded."
+        },
+        {
+          "name": "unused",
+          "type": "u32",
+          "note": "A client reads nothing here; a server sends zero."
+        },
+        {
+          "name": "damageBonus",
+          "type": "i32",
+          "note": "What is added to the damage it deals."
+        },
+        {
+          "name": "healthBonus",
+          "type": "i32",
+          "note": "What is added to its health."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 32,
+          "note": "Its name, padded with zero bytes."
+        },
+        {
+          "name": "asset",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 32,
+          "note": "The name the client loads its art under, padded with zero bytes."
+        },
+        {
+          "name": "skin",
+          "type": "i32",
+          "note": "Which look it wears."
+        },
+        {
+          "name": "effect",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "An effect it carries, padded with zero bytes. A client uses it only in some states of the owner, which are not recorded."
+        },
+        {
+          "name": "clone",
+          "type": "u32",
+          "note": "The unit it copies, or zero."
+        },
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "copyInventory",
+              "width": 1,
+              "note": "Set where it copies its owner's items."
+            },
+            {
+              "name": "clearOwnerTarget",
+              "width": 1,
+              "note": "Set where its owner's target is cleared; a client acts on it only where the owner is its own champion."
+            },
+            {
+              "name": "unused",
+              "width": 6,
+              "note": "A client reads nothing here; a server sends zero."
+            }
+          ],
+          "note": "How it behaves."
+        },
+        {
+          "name": "script",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 32,
+          "note": "The script that drives it, padded with zero bytes."
+        },
+        {
+          "name": "withOwner",
+          "type": "u8",
+          "note": "Not zero, where the owner is a champion, to class the pet with its owner for display. What that changes on screen is not recorded."
+        }
+      ]
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.11.0.386",
       "channel": "events",

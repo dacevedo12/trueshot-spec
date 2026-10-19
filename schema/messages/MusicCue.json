@@ -5,6 +5,26 @@
   "note": "What a server sends to drive the music a client plays. The header names the champion of the player it is sent to.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 229,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "cue",
+          "type": "u8",
+          "note": "What to do. What each value asks of a 1.0 client is not recorded."
+        },
+        {
+          "name": "event",
+          "type": "u32",
+          "note": "Which cue or event."
+        }
+      ]
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.11.0.386",
       "channel": "events",

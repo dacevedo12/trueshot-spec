@@ -5,6 +5,32 @@
   "note": "What a server sends to turn a unit to face a direction. The header names the unit acting.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 83,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "towardX",
+          "type": "f32",
+          "note": "The direction faced, along one ground axis."
+        },
+        {
+          "name": "unusedY",
+          "type": "f32",
+          "note": "A client reads nothing there; a server sends zero."
+        },
+        {
+          "name": "towardZ",
+          "type": "f32",
+          "note": "The direction faced, along the other ground axis."
+        }
+      ],
+      "note": "A client ignores the message where towardX and towardZ are both zero."
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.11.0.386",
       "channel": "events",

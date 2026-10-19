@@ -232,25 +232,25 @@ scoreboard with `ChampionStats`. A server can also add to a unit's shield
 
 <!-- messages:begin -->
 
-| Message                                                                | Sent by | Ranges    | What it does                                                                     |
-| ---------------------------------------------------------------------- | ------- | --------- | -------------------------------------------------------------------------------- |
-| [`ChampionStats`](../schema/messages/ChampionStats.json)               | server  | 4.10–4.20 | Set a champion's tallies for the scoreboard                                      |
-| [`ExperienceGained`](../schema/messages/ExperienceGained.json)         | server  | 4.10–4.20 | Grant a unit experience                                                          |
-| [`GoldEarned`](../schema/messages/GoldEarned.json)                     | server  | 4.10–4.20 | What a server sends a client watching a match to credit a champion with gold     |
-| [`GoldGained`](../schema/messages/GoldGained.json)                     | server  | 4.10–4.20 | Grant a unit gold                                                                |
-| [`GoldRedirect`](../schema/messages/GoldRedirect.json)                 | server  | 4.10–4.20 | Send the gold a unit earns to another                                            |
-| [`GoldSourcesLog`](../schema/messages/GoldSourcesLog.json)             | server  | 4.10–4.20 | Carry a text to a client                                                         |
-| [`HealthBar`](../schema/messages/HealthBar.json)                       | server  | 4.10–4.20 | What a server sends about a unit's health bar                                    |
-| [`LevelCap`](../schema/messages/LevelCap.json)                         | server  | 4.10–4.20 | What a server sends its player's champion to set the highest level it can reach  |
-| [`LevelUp`](../schema/messages/LevelUp.json)                           | server  | 4.10–4.20 | What a server sends when a unit gains a level                                    |
-| [`MinionKillCount`](../schema/messages/MinionKillCount.json)           | server  | 4.12–4.20 | Add one to a champion's count of minions killed                                  |
-| [`MultikillCount`](../schema/messages/MultikillCount.json)             | server  | 4.10–4.20 | What a server sends a client watching a match to state a champion's run of kills |
-| [`Replication`](../schema/messages/Replication.json)                   | server  | 4.10–4.20 | Say what has changed about units a client can see                                |
-| [`ResourceDisplay`](../schema/messages/ResourceDisplay.json)           | server  | 4.10–4.20 | Change how a unit's resource bar is shown                                        |
-| [`ResourceKindChanged`](../schema/messages/ResourceKindChanged.json)   | server  | 4.10–4.20 | Change what sort of resource a unit has, which its bar's colours and art follow  |
-| [`ScoreAdded`](../schema/messages/ScoreAdded.json)                     | server  | 4.10–4.20 | Add to a player's score                                                          |
-| [`ShieldAdded`](../schema/messages/ShieldAdded.json)                   | server  | 4.10–4.20 | Add to a unit's shield                                                           |
-| [`StatisticIncremented`](../schema/messages/StatisticIncremented.json) | server  | 4.10–4.20 | Add one to a champion's count of a deed, as counted for the end of a match       |
-| [`TransientAck`](../schema/messages/TransientAck.json)                 | client  | 4.10–4.20 | Say a batch of changes arrived, naming which batch                               |
+| Message                                                                | Sent by | Ranges      | What it does                                                                     |
+| ---------------------------------------------------------------------- | ------- | ----------- | -------------------------------------------------------------------------------- |
+| [`ChampionStats`](../schema/messages/ChampionStats.json)               | server  | 4.10–4.20   | Set a champion's tallies for the scoreboard                                      |
+| [`ExperienceGained`](../schema/messages/ExperienceGained.json)         | server  | every range | Grant a unit experience                                                          |
+| [`GoldEarned`](../schema/messages/GoldEarned.json)                     | server  | every range | What a server sends a client watching a match to credit a champion with gold     |
+| [`GoldGained`](../schema/messages/GoldGained.json)                     | server  | every range | Grant a unit gold                                                                |
+| [`GoldRedirect`](../schema/messages/GoldRedirect.json)                 | server  | every range | Send the gold a unit earns to another                                            |
+| [`GoldSourcesLog`](../schema/messages/GoldSourcesLog.json)             | server  | 4.10–4.20   | Carry a text to a client                                                         |
+| [`HealthBar`](../schema/messages/HealthBar.json)                       | server  | every range | What a server sends about a unit's health bar                                    |
+| [`LevelCap`](../schema/messages/LevelCap.json)                         | server  | 4.10–4.20   | What a server sends its player's champion to set the highest level it can reach  |
+| [`LevelUp`](../schema/messages/LevelUp.json)                           | server  | every range | What a server sends when a unit gains a level                                    |
+| [`MinionKillCount`](../schema/messages/MinionKillCount.json)           | server  | 4.12–4.20   | Add one to a champion's count of minions killed                                  |
+| [`MultikillCount`](../schema/messages/MultikillCount.json)             | server  | 4.10–4.20   | What a server sends a client watching a match to state a champion's run of kills |
+| [`Replication`](../schema/messages/Replication.json)                   | server  | 4.10–4.20   | Say what has changed about units a client can see                                |
+| [`ResourceDisplay`](../schema/messages/ResourceDisplay.json)           | server  | 4.10–4.20   | Change how a unit's resource bar is shown                                        |
+| [`ResourceKindChanged`](../schema/messages/ResourceKindChanged.json)   | server  | 4.10–4.20   | Change what sort of resource a unit has, which its bar's colours and art follow  |
+| [`ScoreAdded`](../schema/messages/ScoreAdded.json)                     | server  | every range | Add to a player's score                                                          |
+| [`ShieldAdded`](../schema/messages/ShieldAdded.json)                   | server  | every range | Add to a unit's shield                                                           |
+| [`StatisticIncremented`](../schema/messages/StatisticIncremented.json) | server  | every range | Add one to a champion's count of a deed, as counted for the end of a match       |
+| [`TransientAck`](../schema/messages/TransientAck.json)                 | client  | every range | Say a batch of changes arrived, naming which batch                               |
 
 <!-- messages:end -->

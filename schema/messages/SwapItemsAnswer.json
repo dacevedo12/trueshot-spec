@@ -5,6 +5,26 @@
   "note": "What a server sends to confirm an item moved between slots. The header names the unit this is about.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 68,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "from",
+          "type": "u8",
+          "note": "The slot the item left, 0 to 5. A client ignores the message for any other."
+        },
+        {
+          "name": "to",
+          "type": "u8",
+          "note": "The slot it went to, 0 to 5. A client ignores the message for any other."
+        }
+      ]
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.11.0.386",
       "channel": "events",

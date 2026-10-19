@@ -1,0 +1,19 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ShieldAdded",
+  "version": "1.0.0.126",
+  "note": "Laid out as a 1.0.0.126 client reads it.",
+  "bytes": "69 01000040 030000c842",
+  "fields": {
+    "command": 105,
+    "netId": 1073741825,
+    "flags": {
+      "physical": 1,
+      "magical": 1,
+      "noFade": 0,
+      "unused": 0
+    },
+    "amount": 100
+  }
+}

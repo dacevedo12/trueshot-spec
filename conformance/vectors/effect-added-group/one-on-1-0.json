@@ -1,0 +1,33 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "EffectAddedGroup",
+  "version": "1.0.0.126",
+  "note": "Laid out as a 1.0.0.126 client reads it.",
+  "bytes": "6b0000000002e464220c00000000000020410201000040020000400101000300004002000040010100",
+  "fields": {
+    "command": 107,
+    "netId": 0,
+    "kind": 2,
+    "effect": 203580644,
+    "runningFor": 0,
+    "lasts": 10,
+    "count": 2,
+    "entries": [
+      {
+        "unit": 1073741825,
+        "caster": 1073741826,
+        "slot": 1,
+        "stacks": 1,
+        "hidden": 0
+      },
+      {
+        "unit": 1073741827,
+        "caster": 1073741826,
+        "slot": 1,
+        "stacks": 1,
+        "hidden": 0
+      }
+    ]
+  }
+}

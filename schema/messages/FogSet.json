@@ -5,6 +5,34 @@
   "note": "What a server sends to turn the drawing of the fog of war on or off. It changes only what is drawn. The header carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 180,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "drawn",
+              "width": 1,
+              "note": "Set to draw the fog, clear to draw the map with no darkening. A client tests the whole byte, so any bit set counts as this one."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "A client takes any bit set here as drawn set; a server writes zero."
+            }
+          ],
+          "note": "Whether the fog is drawn."
+        }
+      ]
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.11.0.386",
       "channel": "events",

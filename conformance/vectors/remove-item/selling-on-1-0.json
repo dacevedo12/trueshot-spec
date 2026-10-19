@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "RemoveItem",
+  "version": "1.0.0.126",
+  "note": "Laid out as a 1.0.0.126 client reads it.",
+  "bytes": "09 01000040 83",
+  "fields": {
+    "command": 9,
+    "netId": 1073741825,
+    "which": {
+      "slot": 3,
+      "sell": 1
+    }
+  }
+}

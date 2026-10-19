@@ -5,6 +5,34 @@
   "note": "What a server sends to lay a new look over a unit's own. The header names the unit.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 159,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "entry",
+          "type": "u32",
+          "note": "Names this look, so that AppearancePopped can name it."
+        },
+        {
+          "name": "how",
+          "type": "u8",
+          "note": "What the look changes. A client keeps the whole byte; which of its bits it acts on is not recorded."
+        },
+        {
+          "name": "asset",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "The name the client loads it under, ended by a zero byte. The name and its zero byte take at most 64 bytes."
+        }
+      ],
+      "note": "No skin is carried."
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.11.0.386",
       "channel": "events",

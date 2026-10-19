@@ -5,6 +5,92 @@
   "note": "What a server sends to make a unit play an animation. The header names the unit.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 184,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 4,
+          "bits": [
+            {
+              "name": "unused0",
+              "width": 1,
+              "note": "No effect is recorded; a server sends zero."
+            },
+            {
+              "name": "bit1",
+              "width": 1,
+              "note": "Changes how the animation plays; what it changes is not recorded."
+            },
+            {
+              "name": "unused2",
+              "width": 1,
+              "note": "No effect is recorded; a server sends zero."
+            },
+            {
+              "name": "bit3",
+              "width": 1,
+              "note": "Changes how the animation plays; what it changes is not recorded."
+            },
+            {
+              "name": "bit4",
+              "width": 1,
+              "note": "Changes how the animation plays; what it changes is not recorded."
+            },
+            {
+              "name": "bit5",
+              "width": 1,
+              "note": "Changes how the animation plays; what it changes is not recorded."
+            },
+            {
+              "name": "bit6",
+              "width": 1,
+              "note": "Locks the unit's animation, where one of the client's own settings is on."
+            },
+            {
+              "name": "unused7",
+              "width": 1,
+              "note": "No effect is recorded; a server sends zero."
+            },
+            {
+              "name": "bit8",
+              "width": 1,
+              "note": "Changes how the animation plays; what it changes is not recorded."
+            },
+            {
+              "name": "bit9",
+              "width": 1,
+              "note": "Changes how the animation plays; what it changes is not recorded."
+            },
+            {
+              "name": "unusedHigh",
+              "width": 22,
+              "note": "No effect is recorded; a server sends zero."
+            }
+          ],
+          "note": "How the animation plays. How these bits answer to the 4.17 ones is not recorded."
+        },
+        {
+          "name": "scaleTime",
+          "type": "f32",
+          "note": "Where above zero, how many seconds the animation is stretched or squeezed to span; otherwise it plays at normal speed."
+        },
+        {
+          "name": "animation",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "The animation's name, ended by a zero byte. Nothing plays for a name the unit does not have."
+        }
+      ],
+      "note": "No start point or speed is carried: the animation starts from its beginning at normal speed. A client ignores the message while the unit's animation is frozen."
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.11.0.386",
       "channel": "events",

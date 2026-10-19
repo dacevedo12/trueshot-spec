@@ -5,6 +5,32 @@
   "note": "What a server sends to say which units a missile struck. The header names the missile.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 40,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "count",
+          "type": "u16",
+          "note": "How many units follow. A client takes it as signed, and reads no units where that is zero or below, so a server sends at most 32767."
+        },
+        {
+          "name": "targets",
+          "type": "array",
+          "count": "count",
+          "items": {
+            "name": "target",
+            "type": "u32",
+            "note": "A unit struck."
+          },
+          "note": "The units struck, in order. A client still takes a unit it does not know, with nothing attached to it, and reads no further once the missile is destroyed."
+        }
+      ]
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.11.0.386",
       "channel": "events",

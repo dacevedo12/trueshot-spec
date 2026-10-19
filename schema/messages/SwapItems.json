@@ -5,6 +5,26 @@
   "note": "What a client sends to move an item from one slot to another. The header names the sender's champion.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "requests",
+      "command": 35,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "from",
+          "type": "u8",
+          "note": "The slot the item leaves, 0 to 5."
+        },
+        {
+          "name": "to",
+          "type": "u8",
+          "note": "The slot it goes to, 0 to 5. A client never sends the slot named by from."
+        }
+      ]
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.18.0.271",
       "channel": "requests",
