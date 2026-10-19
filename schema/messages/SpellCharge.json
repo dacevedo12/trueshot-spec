@@ -5,7 +5,7 @@
   "note": "What a client sends while its player charges a spell, and as the charge ends. A spell charges where its cast answer (SpellCastAnswer) leaves the end-of-charge flag clear. A client sends updates at the spell's own interval, at least 0.1 seconds, where the spell has one; it ends the charge as the key is pressed again, or released where casting on release, or as the window loses focus. The header names the sender's champion.",
   "revisions": [
     {
-      "from": "4.10.0.379",
+      "from": "4.1.0.171",
       "until": "4.11.0.386",
       "channel": "requests",
       "command": 229,

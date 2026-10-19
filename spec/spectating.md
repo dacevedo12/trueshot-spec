@@ -93,11 +93,11 @@ the last of setting up and that one are never played.
 
 <!-- messages:begin -->
 
-| Message                                                        | Sent by | Ranges    | What it does                                                                                                                                                                 |
-| -------------------------------------------------------------- | ------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`StreamChunk`](../schema/messages/StreamChunk.json)           | server  | 4.10–4.20 | What a server streaming a match sends to carry one fragment of a chunk or key frame of recorded messages (see spec/spectating.md)                                            |
-| [`StreamChunkRange`](../schema/messages/StreamChunkRange.json) | server  | 4.10–4.20 | What a server streaming a match sends to say where the match proper begins in its chunks, and, once known, where it ends                                                     |
-| [`StreamMetadata`](../schema/messages/StreamMetadata.json)     | server  | 4.10–4.20 | What a server streaming a match to a watching client sends first, within 30 seconds of the client's request: how long its chunks and key frames run                          |
-| [`StreamRequest`](../schema/messages/StreamRequest.json)       | client  | 4.10–4.20 | What a client watching a match streamed over its connection (see spec/spectating.md) sends each time the server answers its registration, asking for the stream from a point |
+| Message                                                        | Sent by | Ranges   | What it does                                                                                                                                                                 |
+| -------------------------------------------------------------- | ------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`StreamChunk`](../schema/messages/StreamChunk.json)           | server  | 4.1–4.20 | What a server streaming a match sends to carry one fragment of a chunk or key frame of recorded messages (see spec/spectating.md)                                            |
+| [`StreamChunkRange`](../schema/messages/StreamChunkRange.json) | server  | 4.1–4.20 | What a server streaming a match sends to say where the match proper begins in its chunks, and, once known, where it ends                                                     |
+| [`StreamMetadata`](../schema/messages/StreamMetadata.json)     | server  | 4.1–4.20 | What a server streaming a match to a watching client sends first, within 30 seconds of the client's request: how long its chunks and key frames run                          |
+| [`StreamRequest`](../schema/messages/StreamRequest.json)       | client  | 4.1–4.20 | What a client watching a match streamed over its connection (see spec/spectating.md) sends each time the server answers its registration, asking for the stream from a point |
 
 <!-- messages:end -->

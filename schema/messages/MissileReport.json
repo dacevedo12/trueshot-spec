@@ -1,0 +1,160 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "MissileReport",
+  "system": "spells",
+  "note": "What a client sends to report where a missile that flies straight is and where it is going. A server need do nothing with it. The header names the missile.",
+  "revisions": [
+    {
+      "from": "4.1.0.171",
+      "until": "4.10.0.379",
+      "channel": "requests",
+      "command": 58,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where the missile is, in world units, along one ground axis."
+        },
+        {
+          "name": "atY",
+          "type": "f32",
+          "note": "Where the missile is, in world units, in height."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where the missile is, in world units, along the other ground axis."
+        },
+        {
+          "name": "unknownAX",
+          "type": "f32",
+          "note": "What this holds is not recorded."
+        },
+        {
+          "name": "unknownAY",
+          "type": "f32",
+          "note": "What this holds is not recorded."
+        },
+        {
+          "name": "unknownAZ",
+          "type": "f32",
+          "note": "What this holds is not recorded."
+        },
+        {
+          "name": "travelX",
+          "type": "f32",
+          "note": "Its end less its start, in world units, along one ground axis."
+        },
+        {
+          "name": "travelY",
+          "type": "f32",
+          "note": "Its end less its start, in world units, in height."
+        },
+        {
+          "name": "travelZ",
+          "type": "f32",
+          "note": "Its end less its start, in world units, along the other ground axis."
+        },
+        {
+          "name": "velocityX",
+          "type": "f32",
+          "note": "How fast it travels, in world units a second, along one ground axis."
+        },
+        {
+          "name": "velocityY",
+          "type": "f32",
+          "note": "How fast it travels, in world units a second, in height."
+        },
+        {
+          "name": "velocityZ",
+          "type": "f32",
+          "note": "How fast it travels, in world units a second, along the other ground axis."
+        },
+        {
+          "name": "unknownBX",
+          "type": "f32",
+          "note": "What this holds is not recorded."
+        },
+        {
+          "name": "unknownBY",
+          "type": "f32",
+          "note": "What this holds is not recorded."
+        },
+        {
+          "name": "unknownBZ",
+          "type": "f32",
+          "note": "What this holds is not recorded."
+        },
+        {
+          "name": "endX",
+          "type": "f32",
+          "note": "Where it ends, in world units, along one ground axis."
+        },
+        {
+          "name": "endY",
+          "type": "f32",
+          "note": "Where it ends, in world units, in height."
+        },
+        {
+          "name": "endZ",
+          "type": "f32",
+          "note": "Where it ends, in world units, along the other ground axis."
+        },
+        {
+          "name": "targetX",
+          "type": "f32",
+          "note": "Where its target is, or the point it aims at, in world units, along one ground axis."
+        },
+        {
+          "name": "targetY",
+          "type": "f32",
+          "note": "Where its target is, or the point it aims at, in world units, in height."
+        },
+        {
+          "name": "targetZ",
+          "type": "f32",
+          "note": "Where its target is, or the point it aims at, in world units, along the other ground axis."
+        },
+        {
+          "name": "age",
+          "type": "f32",
+          "note": "How long since it was launched, in seconds."
+        },
+        {
+          "name": "speed",
+          "type": "f32",
+          "note": "How fast it travels, in world units a second."
+        },
+        {
+          "name": "unset",
+          "type": "bytes",
+          "size": 4,
+          "note": "A client writes nothing in particular here."
+        },
+        {
+          "name": "unknownC",
+          "type": "f32",
+          "note": "What this holds is not recorded; a server ignores it."
+        },
+        {
+          "name": "unknownD",
+          "type": "f32",
+          "note": "What this holds is not recorded; a server ignores it."
+        },
+        {
+          "name": "flag",
+          "type": "u8",
+          "note": "Zero or one; what it means is not recorded."
+        },
+        {
+          "name": "cast",
+          "type": "bytes",
+          "size": "remaining",
+          "note": "A description of the cast the missile belongs to, at most 512 bytes."
+        }
+      ]
+    }
+  ]
+}

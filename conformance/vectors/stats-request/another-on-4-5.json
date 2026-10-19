@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "StatsRequest",
+  "version": "4.5.0.266",
+  "note": "Laid out as a 4.5.0.266 client reads it.",
+  "bytes": "550100004000000000",
+  "fields": {
+    "command": 85,
+    "netId": 1073741825,
+    "extendedCommand": null,
+    "moduleOne": 0
+  }
+}

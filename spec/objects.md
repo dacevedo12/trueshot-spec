@@ -83,12 +83,12 @@ Leaving a client's sight removes nothing: `LeaveSight`, `LeaveLocalSight` and
 `LeaveTeamSight` hide an object, and it is held as before.
 
 <!-- binding: lifetimes -->
-<!-- by range -->*Ranges add to this: [4.10–4.17](bindings/4-10-0-379--4-18-0-271/objects.md).*
+<!-- by range -->*Ranges add to this: [4.1–4.17](bindings/4-1-0-171--4-18-0-271/objects.md).*
 
 Regions are named by region ids, apart from net ids.
 
 <!-- binding: regions -->
-<!-- by range -->*Ranges add to this: [4.10–4.17](bindings/4-10-0-379--4-18-0-271/objects.md).*
+<!-- by range -->*Ranges add to this: [4.1–4.17](bindings/4-1-0-171--4-18-0-271/objects.md).*
 
 ### A soft reconnect
 
@@ -100,7 +100,7 @@ marked. In between, a server sends again each object the client is to keep.
 Each range names the stage that marks; any other value removes.
 
 <!-- binding: soft-reconnect -->
-<!-- by range -->*Ranges add to this: [4.10–4.17](bindings/4-10-0-379--4-18-0-271/objects.md), [4.20](bindings/4-20-0-315/objects.md).*
+<!-- by range -->*Ranges add to this: [4.1–4.17](bindings/4-1-0-171--4-18-0-271/objects.md), [4.20](bindings/4-20-0-315/objects.md).*
 
 ## Messages about objects a client does not hold
 
@@ -126,7 +126,7 @@ before the message creating what it names is lost. [Ordering](ordering.md)
 says what that requires of a server.
 
 <!-- binding: before-selection -->
-<!-- by range -->*Ranges add to this: [4.10–4.17](bindings/4-10-0-379--4-18-0-271/objects.md).*
+<!-- by range -->*Ranges add to this: [4.1–4.17](bindings/4-1-0-171--4-18-0-271/objects.md).*
 
 ## A message naming its sender
 
@@ -183,7 +183,7 @@ the objects a map holds. On map 1 one of them is
 `__P_Order_Spawn_Barracks__C01`.
 
 <!-- binding: barracks -->
-<!-- by range -->*Ranges add to this: [4.10–4.17](bindings/4-10-0-379--4-18-0-271/objects.md).*
+<!-- by range -->*Ranges add to this: [4.1–4.17](bindings/4-1-0-171--4-18-0-271/objects.md).*
 
 No message creates these objects, so nothing a server sends could give a client
 a different identifier for one. A server MUST name each by the identifier its

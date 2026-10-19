@@ -1,0 +1,55 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "UnitSpoke",
+  "system": "communication",
+  "note": "What a client sends when a script it runs makes a unit say something. A server need do nothing with it. The header names the unit speaking.",
+  "revisions": [
+    {
+      "from": "4.1.0.171",
+      "until": "4.10.0.379",
+      "channel": "requests",
+      "command": 24,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unknown",
+          "type": "u32",
+          "note": "A client writes 1073741824."
+        },
+        {
+          "name": "unknownToo",
+          "type": "u32",
+          "note": "A client writes zero."
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "A client writes zero."
+        },
+        {
+          "name": "unused",
+          "type": "u8",
+          "note": "A client writes zero."
+        },
+        {
+          "name": "unusedToo",
+          "type": "u32",
+          "note": "A client writes zero."
+        },
+        {
+          "name": "length",
+          "type": "u32",
+          "note": "The text's length in bytes, counting its zero byte; at most 1024."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "length",
+          "note": "What the unit says."
+        }
+      ]
+    }
+  ]
+}

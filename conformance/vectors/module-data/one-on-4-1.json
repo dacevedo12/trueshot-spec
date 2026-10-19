@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ModuleData",
+  "version": "4.1.0.171",
+  "note": "Laid out as a 4.1.0.171 client reads it.",
+  "bytes": "dc0000000002040000000000",
+  "fields": {
+    "command": 220,
+    "netId": 0,
+    "extendedCommand": null,
+    "kind": 2,
+    "length": 4,
+    "data": "00000000"
+  }
+}

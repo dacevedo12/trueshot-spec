@@ -5,7 +5,7 @@
   "note": "What a client sends as its player presses the shop's undo button. The button is there only where the version answer's features have shopUndo set, and is enabled only while ShopUndoCount has given the champion undos to spend. It carries nothing of its own. Its identifier is wider than a byte, so it travels behind the escape. The header names the sender's champion.",
   "revisions": [
     {
-      "from": "4.10.0.379",
+      "from": "4.1.0.171",
       "until": "4.21.0.0",
       "channel": "requests",
       "command": 266,

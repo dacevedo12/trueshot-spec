@@ -41,14 +41,14 @@ identifiers](objects.md) says how regions are named and when one ends. A region 
 has a client clear its map's cover over it.
 
 <!-- binding: regions -->
-<!-- by range -->*Ranges add to this: [4.10–4.17](bindings/4-10-0-379--4-18-0-271/vision.md).*
+<!-- by range -->*Ranges add to this: [4.1–4.17](bindings/4-1-0-171--4-18-0-271/vision.md).*
 
 ## Drawing the fog
 
 `FogSet` and `FogToggled` concern how a client draws its fog of war.
 
 <!-- binding: fog -->
-<!-- by range -->*Ranges add to this: [4.10–4.17](bindings/4-10-0-379--4-18-0-271/vision.md).*
+<!-- by range -->*Ranges add to this: [4.1–4.17](bindings/4-1-0-171--4-18-0-271/vision.md).*
 
 ## Who is told what
 
@@ -69,7 +69,7 @@ out alike:
 Which of these forms a range has is in its definitions.
 
 <!-- binding: audiences -->
-<!-- by range -->*Ranges add to this: [4.10–4.17](bindings/4-10-0-379--4-18-0-271/vision.md), [4.20](bindings/4-20-0-315/vision.md).*
+<!-- by range -->*Ranges add to this: [4.1–4.17](bindings/4-1-0-171--4-18-0-271/vision.md), [4.20](bindings/4-20-0-315/vision.md).*
 
 Messages about a champion's own state, its gold, its inventory, its spells'
 levels, cooldowns and charges, and whether it can shop, are applied to the
@@ -110,7 +110,7 @@ client what its side cannot see, beyond what keeps its world consistent.
 | [`LeaveLocalSight`](../schema/messages/LeaveLocalSight.json)               | server  | every range | What a server sends when a unit passes out of what one client can see                               |
 | [`LeaveSight`](../schema/messages/LeaveSight.json)                         | server  | every range | What a server sends when a unit passes out of what a side can see                                   |
 | [`LeaveTeamSight`](../schema/messages/LeaveTeamSight.json)                 | server  | every range | What a server sends when a unit passes out of the view of a whole side                              |
-| [`ParticleEnterTeamSight`](../schema/messages/ParticleEnterTeamSight.json) | server  | 4.10–4.20   | What a server sends as a particle comes into what one side can see                                  |
+| [`ParticleEnterTeamSight`](../schema/messages/ParticleEnterTeamSight.json) | server  | 4.1–4.20    | What a server sends as a particle comes into what one side can see                                  |
 | [`ParticleLeaveTeamSight`](../schema/messages/ParticleLeaveTeamSight.json) | server  | every range | What a server sends as a particle passes out of what one side can see                               |
 | [`RegionAdded`](../schema/messages/RegionAdded.json)                       | server  | every range | Place a region on the ground: a patch that grants sight, blocks the way, or grows cover             |
 | [`RegionAttached`](../schema/messages/RegionAttached.json)                 | server  | 1.0         | Place a region that follows a unit, showing the map around it until it runs out or the unit is gone |

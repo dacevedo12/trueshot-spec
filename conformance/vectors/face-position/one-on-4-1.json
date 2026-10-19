@@ -1,0 +1,18 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "FacePosition",
+  "version": "4.1.0.171",
+  "note": "Laid out as a 4.1.0.171 client writes it.",
+  "bytes": "4f0100004000000000000000000000803f00cdcccc3d",
+  "fields": {
+    "command": 79,
+    "netId": 1073741825,
+    "extendedCommand": null,
+    "directionX": 0,
+    "directionY": 0,
+    "directionZ": 1,
+    "unused": 0,
+    "unknown": 0.10000000149011612
+  }
+}

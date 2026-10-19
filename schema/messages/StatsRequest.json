@@ -15,7 +15,31 @@
       "note": "A client sends no body."
     },
     {
-      "from": "4.10.0.379",
+      "from": "4.1.0.171",
+      "until": "4.5.0.266",
+      "channel": "requests",
+      "command": 85,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": []
+    },
+    {
+      "from": "4.5.0.266",
+      "until": "4.8.0.189",
+      "channel": "requests",
+      "command": 85,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "moduleOne",
+          "type": "u32",
+          "note": "One of three values a client reports about software it has detected alongside itself. A client sends zero."
+        }
+      ]
+    },
+    {
+      "from": "4.8.0.189",
       "until": "4.11.0.386",
       "channel": "requests",
       "command": 85,

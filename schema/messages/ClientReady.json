@@ -14,7 +14,80 @@
       "fields": []
     },
     {
-      "from": "4.10.0.379",
+      "from": "4.1.0.171",
+      "until": "4.5.0.266",
+      "channel": "requests",
+      "command": 81,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "maskedStatus",
+          "type": "u32",
+          "note": "A value a client derives from its own state and the mask below; a server ignores it."
+        },
+        {
+          "name": "mask",
+          "type": "u32",
+          "note": "A random value the client picks to mask the one above."
+        },
+        {
+          "name": "tipChosen",
+          "type": "u8",
+          "note": "Which tip the client is set to show."
+        },
+        {
+          "name": "tipColour",
+          "type": "u8",
+          "note": "How it is coloured."
+        },
+        {
+          "name": "tipDuration",
+          "type": "u8",
+          "note": "How long it stays, as an entry among the display times in the client's own settings rather than a length of time."
+        },
+        {
+          "name": "settings",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "tips",
+              "width": 1,
+              "note": "Set while tips are wanted at all."
+            },
+            {
+              "name": "reporting",
+              "width": 1,
+              "note": "Set while the client reports on itself."
+            },
+            {
+              "name": "loadingTips",
+              "width": 1,
+              "note": "Set while tips are wanted while loading."
+            },
+            {
+              "name": "playingTips",
+              "width": 1,
+              "note": "Set while tips are wanted during play."
+            },
+            {
+              "name": "debug",
+              "width": 1,
+              "note": "Set while the client runs in a debugging state."
+            },
+            {
+              "name": "unused",
+              "width": 3,
+              "note": "A client returns them as the server sent them."
+            }
+          ]
+        }
+      ],
+      "note": "The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero. The three module fields are always zero."
+    },
+    {
+      "from": "4.5.0.266",
       "until": "4.11.0.386",
       "channel": "requests",
       "command": 81,

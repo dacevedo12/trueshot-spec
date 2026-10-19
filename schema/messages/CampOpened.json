@@ -5,7 +5,93 @@
   "note": "What a server sends to open a camp of units that belong to no side. The header names no object: it carries zero.",
   "revisions": [
     {
-      "from": "4.10.0.379",
+      "from": "4.1.0.171",
+      "until": "4.2.0.2726",
+      "channel": "events",
+      "command": 232,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where the camp sits, along one ground axis, in world units."
+        },
+        {
+          "name": "atY",
+          "type": "f32",
+          "note": "Where it sits, in height, in world units."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where it sits, along the other ground axis, in world units."
+        },
+        {
+          "name": "campIcon",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The name of the icon the minimap shows at the camp, written in full and padded with zero bytes to the width above; empty shows none. A client uses it only where it creates the camp."
+        },
+        {
+          "name": "proximityAnimations",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The name of a set of animations the camp plays as units come near, written and padded as above; empty means none. A client uses it only where it creates the camp."
+        },
+        {
+          "name": "camp",
+          "type": "u8",
+          "note": "Which camp."
+        }
+      ]
+    },
+    {
+      "from": "4.2.0.2726",
+      "until": "4.9.0.253",
+      "channel": "events",
+      "command": 232,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where the camp sits, along one ground axis, in world units."
+        },
+        {
+          "name": "atY",
+          "type": "f32",
+          "note": "Where it sits, in height, in world units."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where it sits, along the other ground axis, in world units."
+        },
+        {
+          "name": "campIcon",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The name of the icon the minimap shows at the camp, written in full and padded with zero bytes to the width above; empty shows none. A client uses it only where it creates the camp."
+        },
+        {
+          "name": "spawnDuration",
+          "type": "f32",
+          "note": "How long until the camp next opens, in seconds."
+        },
+        {
+          "name": "camp",
+          "type": "u8",
+          "note": "Which camp."
+        }
+      ]
+    },
+    {
+      "from": "4.9.0.253",
       "until": "4.11.0.386",
       "channel": "events",
       "command": 232,
