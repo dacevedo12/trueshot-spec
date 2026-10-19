@@ -1,0 +1,62 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "DeathHistory",
+  "version": "1.0.0.126",
+  "note": "Laid out as a 1.0.0.126 client reads it.",
+  "bytes": "24 01000040 0100004000002041000000003e000000020000000000f04201000a01000040010000400000c842000000000000000000000000000000000000000001000040000000000000ec420100010100004001000040",
+  "fields": {
+    "command": 36,
+    "netId": 1073741825,
+    "killer": 1073741825,
+    "span": 10,
+    "sourceType": {
+      "type": 0,
+      "unused": 0
+    },
+    "blobLength": 62,
+    "entryCount": 2,
+    "entries": [
+      {
+        "time": 120,
+        "count": 1,
+        "event": 10,
+        "source": 1073741825,
+        "target": null,
+        "damage": {
+          "struck": 1073741825,
+          "physical": 100,
+          "magical": 0,
+          "true": 0,
+          "between": "0000000000000000",
+          "script": 0,
+          "sourceObject": 1073741825,
+          "parent": {
+            "first": 0,
+            "second": 0,
+            "third": 0,
+            "unused": 0
+          }
+        },
+        "healing": null,
+        "buff": null,
+        "short": null,
+        "medium": null,
+        "long": null
+      },
+      {
+        "time": 118,
+        "count": 1,
+        "event": 1,
+        "source": 1073741825,
+        "target": 1073741825,
+        "damage": null,
+        "healing": null,
+        "buff": null,
+        "short": null,
+        "medium": null,
+        "long": null
+      }
+    ]
+  }
+}

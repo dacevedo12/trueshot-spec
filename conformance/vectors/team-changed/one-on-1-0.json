@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "TeamChanged",
+  "version": "1.0.0.126",
+  "note": "Laid out as a 1.0.0.126 client reads it.",
+  "bytes": "e0 01000040 01000040c8000000",
+  "fields": {
+    "command": 224,
+    "netId": 1073741825,
+    "unit": 1073741825,
+    "side": 200
+  }
+}

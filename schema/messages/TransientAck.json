@@ -10,7 +10,7 @@
       "channel": "requests",
       "command": 176,
       "direction": "clientToServer",
-      "reliability": "reliable",
+      "reliability": "unsequenced",
       "fields": [
         {
           "name": "syncId",

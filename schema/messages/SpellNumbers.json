@@ -5,6 +5,55 @@
   "note": "What a server sends to fill in the numbers a client shows beside a unit's spells. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 131,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "entryCount",
+          "type": "u16",
+          "note": "How many sets of numbers follow. A client ignores the whole message where they do not all fit in it."
+        },
+        {
+          "name": "entries",
+          "type": "array",
+          "count": "entryCount",
+          "note": "The sets themselves.",
+          "items": {
+            "name": "entry",
+            "type": "record",
+            "note": "The numbers a client shows beside one of a unit's spells.",
+            "fields": [
+              {
+                "name": "unit",
+                "type": "u32",
+                "note": "The unit whose spell this is. A client skips the set where it does not hold the unit."
+              },
+              {
+                "name": "slot",
+                "type": "u8",
+                "note": "Where the numbers go: 120 and up is the summoner slot this less 120, 60 to 119 the spell slot this less 60. 0 to 59 fills a separate place a client keeps for each unit, whose use is not recorded."
+              },
+              {
+                "name": "values",
+                "type": "array",
+                "count": 3,
+                "note": "The numbers themselves, one place each.",
+                "items": {
+                  "name": "value",
+                  "type": "f32",
+                  "note": "One number."
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.11.0.386",
       "channel": "events",

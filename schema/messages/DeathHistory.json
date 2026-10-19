@@ -5,6 +5,340 @@
   "note": "What a server sends to say what led to a death, so the client can lay it out. The header names the unit this is about.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "note": "A client ignores the whole message where killer is zero. Each entry's size after source follows from event alone.",
+      "channel": "events",
+      "command": 36,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "killer",
+          "type": "u32",
+          "note": "The unit credited with the death. A client ignores the whole message where this is zero."
+        },
+        {
+          "name": "span",
+          "type": "f32",
+          "note": "The time the entries below cover, in seconds."
+        },
+        {
+          "name": "sourceType",
+          "type": "bits",
+          "size": 4,
+          "note": "What sort of source the killer was. A client acts on it only where it holds killer.",
+          "bits": [
+            {
+              "name": "type",
+              "width": 4,
+              "note": "Read as signed, -8 to 7. What each value means is not recorded for this range."
+            },
+            {
+              "name": "unused",
+              "width": 28,
+              "note": "A client reads nothing here; a server sends zero."
+            }
+          ]
+        },
+        {
+          "name": "blobLength",
+          "type": "u32",
+          "note": "How many bytes the entries below take together. A client reads no entries where this is zero or, read as signed, less."
+        },
+        {
+          "name": "entryCount",
+          "type": "u32",
+          "note": "How many entries follow."
+        },
+        {
+          "name": "entries",
+          "type": "array",
+          "count": "entryCount",
+          "note": "What happened to the unit before it died, packed one after another.",
+          "items": {
+            "name": "entry",
+            "type": "record",
+            "note": "One thing that happened to the unit before it died. What follows source depends on event alone.",
+            "fields": [
+              {
+                "name": "time",
+                "type": "f32",
+                "note": "When it happened, in match seconds."
+              },
+              {
+                "name": "count",
+                "type": "i16",
+                "note": "How many times."
+              },
+              {
+                "name": "event",
+                "type": "u8",
+                "note": "What sort of thing, from 0 to 98, and so which fields follow: 10 and 11 are damage, 36 and 37 healing, 38 an effect. What the other values mean is not recorded for this range, nor what a client does with a value above 98."
+              },
+              {
+                "name": "source",
+                "type": "u32",
+                "note": "The unit that did it. A client takes it as the attacker where the entry names no object it holds."
+              },
+              {
+                "name": "target",
+                "type": "u32",
+                "note": "The unit it was done to.",
+                "present": {
+                  "when": "event",
+                  "equals": [
+                    1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 13, 14, 15, 16, 17, 22, 23, 24, 25,
+                    26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 40, 41, 42, 43, 44, 45, 46,
+                    47, 48, 49, 50, 51, 52, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64,
+                    65, 66, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82,
+                    83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98
+                  ]
+                }
+              },
+              {
+                "name": "damage",
+                "type": "record",
+                "present": {
+                  "when": "event",
+                  "equals": [10, 11]
+                },
+                "note": "What damage of this sort carries.",
+                "fields": [
+                  {
+                    "name": "struck",
+                    "type": "u32",
+                    "note": "The unit it was done to."
+                  },
+                  {
+                    "name": "physical",
+                    "type": "f32",
+                    "note": "Physical damage."
+                  },
+                  {
+                    "name": "magical",
+                    "type": "f32",
+                    "note": "Magical damage."
+                  },
+                  {
+                    "name": "true",
+                    "type": "f32",
+                    "note": "True damage."
+                  },
+                  {
+                    "name": "between",
+                    "type": "bytes",
+                    "size": 8,
+                    "note": "What this carries is not recorded."
+                  },
+                  {
+                    "name": "script",
+                    "type": "u32",
+                    "note": "The spell or effect whose name is shown, by the number its name gives."
+                  },
+                  {
+                    "name": "sourceObject",
+                    "type": "u32",
+                    "note": "The object it came from."
+                  },
+                  {
+                    "name": "parent",
+                    "type": "bits",
+                    "size": 4,
+                    "note": "Three values, each read as signed. What they carry is not recorded.",
+                    "bits": [
+                      {
+                        "name": "first",
+                        "width": 4,
+                        "note": "What this carries is not recorded."
+                      },
+                      {
+                        "name": "second",
+                        "width": 4,
+                        "note": "What this carries is not recorded."
+                      },
+                      {
+                        "name": "third",
+                        "width": 4,
+                        "note": "What this carries is not recorded."
+                      },
+                      {
+                        "name": "unused",
+                        "width": 20,
+                        "note": "A client reads nothing here; a server sends zero."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "healing",
+                "type": "record",
+                "present": {
+                  "when": "event",
+                  "equals": [36, 37],
+                  "unseen": "present"
+                },
+                "note": "What healing carries.",
+                "fields": [
+                  {
+                    "name": "struck",
+                    "type": "u32",
+                    "note": "The unit it was done to."
+                  },
+                  {
+                    "name": "amount",
+                    "type": "f32",
+                    "note": "How much health was restored."
+                  },
+                  {
+                    "name": "between",
+                    "type": "bytes",
+                    "size": 12,
+                    "note": "What this carries is not recorded."
+                  },
+                  {
+                    "name": "value",
+                    "type": "u32",
+                    "note": "What this carries is not recorded."
+                  },
+                  {
+                    "name": "after",
+                    "type": "bytes",
+                    "size": 4,
+                    "note": "What this carries is not recorded."
+                  },
+                  {
+                    "name": "object",
+                    "type": "u32",
+                    "note": "An object, by its id. What it is to the entry is not recorded."
+                  },
+                  {
+                    "name": "flags",
+                    "type": "bits",
+                    "size": 4,
+                    "note": "Two values. What they carry is not recorded.",
+                    "bits": [
+                      {
+                        "name": "first",
+                        "width": 4,
+                        "note": "What this carries is not recorded."
+                      },
+                      {
+                        "name": "second",
+                        "width": 4,
+                        "note": "What this carries is not recorded."
+                      },
+                      {
+                        "name": "unused",
+                        "width": 24,
+                        "note": "A client reads nothing here; a server sends zero."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "buff",
+                "type": "record",
+                "present": {
+                  "when": "event",
+                  "equals": 38,
+                  "unseen": "present"
+                },
+                "note": "What an effect carries.",
+                "fields": [
+                  {
+                    "name": "struck",
+                    "type": "u32",
+                    "note": "The unit it was done to."
+                  },
+                  {
+                    "name": "between",
+                    "type": "bytes",
+                    "size": 12,
+                    "note": "What this carries is not recorded."
+                  },
+                  {
+                    "name": "first",
+                    "type": "u32",
+                    "note": "What this carries is not recorded."
+                  },
+                  {
+                    "name": "after",
+                    "type": "bytes",
+                    "size": 4,
+                    "note": "What this carries is not recorded."
+                  },
+                  {
+                    "name": "second",
+                    "type": "u32",
+                    "note": "What this carries is not recorded."
+                  },
+                  {
+                    "name": "flags",
+                    "type": "bits",
+                    "size": 4,
+                    "note": "Two values. What they carry is not recorded.",
+                    "bits": [
+                      {
+                        "name": "first",
+                        "width": 4,
+                        "note": "What this carries is not recorded."
+                      },
+                      {
+                        "name": "second",
+                        "width": 4,
+                        "note": "What this carries is not recorded."
+                      },
+                      {
+                        "name": "unused",
+                        "width": 24,
+                        "note": "A client reads nothing here; a server sends zero."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "short",
+                "type": "bytes",
+                "size": 8,
+                "note": "What this carries is not recorded.",
+                "present": {
+                  "when": "event",
+                  "equals": [18, 19, 20, 21, 39, 67],
+                  "unseen": "present"
+                }
+              },
+              {
+                "name": "medium",
+                "type": "bytes",
+                "size": 32,
+                "note": "What this carries is not recorded.",
+                "present": {
+                  "when": "event",
+                  "equals": 53,
+                  "unseen": "present"
+                }
+              },
+              {
+                "name": "long",
+                "type": "bytes",
+                "size": 60,
+                "note": "What this carries is not recorded.",
+                "present": {
+                  "when": "event",
+                  "equals": 0,
+                  "unseen": "present"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.18.0.271",
       "channel": "events",

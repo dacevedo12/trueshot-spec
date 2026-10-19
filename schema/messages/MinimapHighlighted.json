@@ -1,0 +1,23 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "MinimapHighlighted",
+  "system": "interface",
+  "note": "What a server sends to make part of the minimap blink, as a tutorial does.",
+  "revisions": [
+    {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "command": 20,
+      "fields": [
+        {
+          "name": "element",
+          "type": "u8",
+          "note": "Which part of the minimap blinks. A client acts on 0 alone, its camera button, and ignores any other value."
+        }
+      ]
+    }
+  ]
+}

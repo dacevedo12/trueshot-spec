@@ -1,0 +1,41 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "Replication",
+  "version": "1.0.0.126",
+  "note": "Laid out as a 1.0.0.126 client reads it.",
+  "bytes": "cc0000000002000000011501000040020000000080ed4303000000000000000000000000000000",
+  "fields": {
+    "command": 204,
+    "netId": 0,
+    "syncId": 2,
+    "unitCount": 1,
+    "units": [
+      {
+        "present": {
+          "group0": 1,
+          "group1": 0,
+          "group2": 1,
+          "group3": 0,
+          "group4": 1,
+          "unused": 0
+        },
+        "unit": 1073741825,
+        "group0": {
+          "which": 2,
+          "values": ["0080ed43"]
+        },
+        "group1": null,
+        "group2": {
+          "which": 3,
+          "values": ["00000000", "00000000"]
+        },
+        "group3": null,
+        "group4": {
+          "which": 0,
+          "values": []
+        }
+      }
+    ]
+  }
+}

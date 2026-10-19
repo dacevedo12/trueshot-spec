@@ -5,6 +5,95 @@
   "note": "What a server sends to place a region on the ground: a patch that grants sight, blocks the way, or grows cover. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "command": 123,
+      "note": "On this range a region stands where the message places it; RegionAttached places one that follows a unit. A region matching one the client holds in view, sightRadius, the first three bits of does, marker, sightFrom and position only gives that one the new lifetime.",
+      "fields": [
+        {
+          "name": "view",
+          "type": "u32",
+          "note": "Whose map shows the region: 0 side 100's, 1 side 200's, 2 everyone's, 3 side 300's, 4 any other. A client takes the value as it stands, so 100 or 200 here matches no one, and draws the region only where it is 2 or names the player's own side."
+        },
+        {
+          "name": "unused",
+          "type": "u32",
+          "note": "A client reads nothing here; a server sends zero."
+        },
+        {
+          "name": "sightRadius",
+          "type": "f32",
+          "note": "How far the region shows the map around it, in world units, zero or more."
+        },
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where it stands, in world units."
+        },
+        {
+          "name": "atY",
+          "type": "f32",
+          "note": "Its height, in world units."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where it stands, in world units."
+        },
+        {
+          "name": "lifetime",
+          "type": "f32",
+          "note": "How long it lasts, in seconds. A client counts it down and removes the region once it reaches zero, so zero or less removes it at once."
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The id the client keeps the region under. Zero has the client pick one."
+        },
+        {
+          "name": "does",
+          "type": "bits",
+          "size": 4,
+          "bits": [
+            {
+              "name": "grantSight",
+              "width": 1,
+              "note": "Set where the region shows the map; where view is 2, a client also sets revealHidden. What else it changes is not recorded."
+            },
+            {
+              "name": "revealHidden",
+              "width": 1,
+              "note": "What this changes on a client is not recorded."
+            },
+            {
+              "name": "attached",
+              "width": 1,
+              "note": "A client clears this itself, whatever arrives."
+            },
+            {
+              "name": "unused",
+              "width": 29,
+              "note": "A client tests nothing here; a server sends zero."
+            }
+          ],
+          "note": "What the region does."
+        },
+        {
+          "name": "marker",
+          "type": "u32",
+          "note": "A value a client compares only to tell a region it already holds from a new one; what it names is not recorded. A server sends zero."
+        },
+        {
+          "name": "sightFrom",
+          "type": "u32",
+          "note": "A value a client compares only to tell a region it already holds from a new one; what it names is not recorded. A server sends zero."
+        }
+      ]
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.18.0.271",
       "channel": "events",

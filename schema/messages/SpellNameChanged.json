@@ -1,0 +1,42 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "SpellNameChanged",
+  "system": "spells",
+  "note": "What a server sends to put another spell into a slot of a unit's that already holds one. The header names the unit this is about.",
+  "revisions": [
+    {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "command": 53,
+      "fields": [
+        {
+          "name": "which",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "slot",
+              "width": 7,
+              "note": "Which slot. A champion's own spells count from 0."
+            },
+            {
+              "name": "summonerSpell",
+              "width": 1,
+              "note": "Set where the slot counts among the summoner slots, so that 0 and 1 name those two."
+            }
+          ]
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "The name the client loads the spell under, ended by a zero byte. A client shows the named spell's icon in the slot, and treats a name it has no spell for as an error."
+        }
+      ]
+    }
+  ]
+}

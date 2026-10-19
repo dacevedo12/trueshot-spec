@@ -5,6 +5,30 @@
   "note": "What a server sends to set a champion's tallies for the scoreboard. The header names the champion.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 75,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "size",
+          "type": "u32",
+          "note": "The whole length of what follows the header, these four bytes included. A mismatch has no effect."
+        },
+        {
+          "name": "values",
+          "type": "bytes",
+          "size": {
+            "field": "size",
+            "minus": 4
+          },
+          "note": "One value per tally in the client's own list of tallies, a list from the client's data. Which tallies, and in what order, is not recorded for this range. An int takes 4 bytes, a float 4, a bool 1, a 64-bit int 8, and text a 16-bit length below 255 then that many bytes."
+        }
+      ]
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.11.0.386",
       "channel": "events",

@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SpellTargetingChanged",
+  "version": "1.0.0.126",
+  "note": "Laid out as a 1.0.0.126 client reads it.",
+  "bytes": "1a010000400201",
+  "fields": {
+    "command": 26,
+    "netId": 1073741825,
+    "which": {
+      "slot": 2,
+      "summonerSpell": 0
+    },
+    "targeting": 1
+  }
+}

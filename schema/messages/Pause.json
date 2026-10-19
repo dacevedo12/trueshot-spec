@@ -5,6 +5,43 @@
   "note": "What a client sends to hold a match. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "requests",
+      "command": 169,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "A client writes 4294967295, the client id of no client."
+        },
+        {
+          "name": "timeLeft",
+          "type": "i32",
+          "note": "What a client leaves here is not recorded; a server ignores it."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "tournament",
+              "width": 1,
+              "note": "A client sends it clear."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a client may leave any value here, and a server ignores it."
+            }
+          ]
+        }
+      ]
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.11.0.386",
       "channel": "requests",

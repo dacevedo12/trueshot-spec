@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "Announcement",
+  "version": "1.0.0.126",
+  "note": "Laid out as a 1.0.0.126 client reads it.",
+  "bytes": "85000000000500000001000040",
+  "fields": {
+    "command": 133,
+    "netId": 0,
+    "announcement": 5,
+    "unit": 1073741825
+  }
+}

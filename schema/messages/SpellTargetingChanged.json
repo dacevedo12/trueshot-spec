@@ -1,0 +1,40 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "SpellTargetingChanged",
+  "system": "spells",
+  "note": "What a server sends to change how a spell already in a unit's slot is aimed. The header names the unit this is about.",
+  "revisions": [
+    {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "command": 26,
+      "fields": [
+        {
+          "name": "which",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "slot",
+              "width": 7,
+              "note": "Which slot. A champion's own spells count from 0."
+            },
+            {
+              "name": "summonerSpell",
+              "width": 1,
+              "note": "Set where the slot counts among the summoner slots, so that 0 and 1 name those two."
+            }
+          ]
+        },
+        {
+          "name": "targeting",
+          "type": "u8",
+          "note": "How the spell is aimed, 0 to 10. A client keeps a larger value but leaves the slot with no way to aim; no value asks for the spell's own default."
+        }
+      ]
+    }
+  ]
+}

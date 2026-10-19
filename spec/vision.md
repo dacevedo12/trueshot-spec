@@ -100,20 +100,21 @@ client what its side cannot see, beyond what keeps its world consistent.
 
 <!-- messages:begin -->
 
-| Message                                                                    | Sent by | Ranges      | What it does                                                                            |
-| -------------------------------------------------------------------------- | ------- | ----------- | --------------------------------------------------------------------------------------- |
-| [`EnterLocalSight`](../schema/messages/EnterLocalSight.json)               | server  | every range | What a server sends when a unit comes into what one client can see                      |
-| [`EnterSight`](../schema/messages/EnterSight.json)                         | server  | every range | What a server sends when a unit comes into what a side can see                          |
-| [`EnterTeamSight`](../schema/messages/EnterTeamSight.json)                 | server  | every range | What a server sends when a unit comes into the view of a whole side                     |
-| [`FogSet`](../schema/messages/FogSet.json)                                 | server  | every range | Turn the drawing of the fog of war on or off                                            |
-| [`FogToggled`](../schema/messages/FogToggled.json)                         | server  | every range | Turn the drawing of the fog of war off where it is on, or on where it is off            |
-| [`LeaveLocalSight`](../schema/messages/LeaveLocalSight.json)               | server  | every range | What a server sends when a unit passes out of what one client can see                   |
-| [`LeaveSight`](../schema/messages/LeaveSight.json)                         | server  | every range | What a server sends when a unit passes out of what a side can see                       |
-| [`LeaveTeamSight`](../schema/messages/LeaveTeamSight.json)                 | server  | every range | What a server sends when a unit passes out of the view of a whole side                  |
-| [`ParticleEnterTeamSight`](../schema/messages/ParticleEnterTeamSight.json) | server  | 4.10–4.20   | What a server sends as a particle comes into what one side can see                      |
-| [`ParticleLeaveTeamSight`](../schema/messages/ParticleLeaveTeamSight.json) | server  | every range | What a server sends as a particle passes out of what one side can see                   |
-| [`RegionAdded`](../schema/messages/RegionAdded.json)                       | server  | 4.10–4.20   | Place a region on the ground: a patch that grants sight, blocks the way, or grows cover |
-| [`RegionMoved`](../schema/messages/RegionMoved.json)                       | server  | 4.11–4.20   | Move a region of sight, keeping all else about it                                       |
-| [`RegionRemoved`](../schema/messages/RegionRemoved.json)                   | server  | every range | Take away a region RegionAdded placed                                                   |
+| Message                                                                    | Sent by | Ranges      | What it does                                                                                        |
+| -------------------------------------------------------------------------- | ------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| [`EnterLocalSight`](../schema/messages/EnterLocalSight.json)               | server  | every range | What a server sends when a unit comes into what one client can see                                  |
+| [`EnterSight`](../schema/messages/EnterSight.json)                         | server  | every range | What a server sends when a unit comes into what a side can see                                      |
+| [`EnterTeamSight`](../schema/messages/EnterTeamSight.json)                 | server  | every range | What a server sends when a unit comes into the view of a whole side                                 |
+| [`FogSet`](../schema/messages/FogSet.json)                                 | server  | every range | Turn the drawing of the fog of war on or off                                                        |
+| [`FogToggled`](../schema/messages/FogToggled.json)                         | server  | every range | Turn the drawing of the fog of war off where it is on, or on where it is off                        |
+| [`LeaveLocalSight`](../schema/messages/LeaveLocalSight.json)               | server  | every range | What a server sends when a unit passes out of what one client can see                               |
+| [`LeaveSight`](../schema/messages/LeaveSight.json)                         | server  | every range | What a server sends when a unit passes out of what a side can see                                   |
+| [`LeaveTeamSight`](../schema/messages/LeaveTeamSight.json)                 | server  | every range | What a server sends when a unit passes out of the view of a whole side                              |
+| [`ParticleEnterTeamSight`](../schema/messages/ParticleEnterTeamSight.json) | server  | 4.10–4.20   | What a server sends as a particle comes into what one side can see                                  |
+| [`ParticleLeaveTeamSight`](../schema/messages/ParticleLeaveTeamSight.json) | server  | every range | What a server sends as a particle passes out of what one side can see                               |
+| [`RegionAdded`](../schema/messages/RegionAdded.json)                       | server  | every range | Place a region on the ground: a patch that grants sight, blocks the way, or grows cover             |
+| [`RegionAttached`](../schema/messages/RegionAttached.json)                 | server  | 1.0         | Place a region that follows a unit, showing the map around it until it runs out or the unit is gone |
+| [`RegionMoved`](../schema/messages/RegionMoved.json)                       | server  | 4.11–4.20   | Move a region of sight, keeping all else about it                                                   |
+| [`RegionRemoved`](../schema/messages/RegionRemoved.json)                   | server  | every range | Take away a region RegionAdded placed                                                               |
 
 <!-- messages:end -->

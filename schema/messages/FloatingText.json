@@ -5,6 +5,44 @@
   "note": "What a server sends to show text floating over a unit. The header names the unit.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "command": 27,
+      "fields": [
+        {
+          "name": "unused",
+          "type": "bytes",
+          "size": 8,
+          "note": "A client reads nothing here; a server sends zero."
+        },
+        {
+          "name": "slot",
+          "type": "i32",
+          "note": "Where the text goes. 0 floats it over the unit while the unit is in the client's own view. 1 to 50 writes it, in colour, to that line of a debugging display, only where the unit is the player's own. A client does nothing for any other value."
+        },
+        {
+          "name": "error",
+          "type": "u8",
+          "note": "Nonzero has a client show the text as an error message for ten seconds, wherever slot points."
+        },
+        {
+          "name": "colour",
+          "type": "u8",
+          "note": "The text's colour on the debugging display; it has no effect for slot 0."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "The text, ended by a zero byte."
+        }
+      ]
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.21.0.0",
       "channel": "events",

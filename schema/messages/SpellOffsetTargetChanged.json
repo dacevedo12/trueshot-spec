@@ -1,0 +1,40 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "SpellOffsetTargetChanged",
+  "system": "spells",
+  "note": "What a server sends to change the unit a spell already in a unit's slot is cast from. The header names the unit this is about.",
+  "revisions": [
+    {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "command": 55,
+      "fields": [
+        {
+          "name": "which",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "slot",
+              "width": 7,
+              "note": "Which slot. A champion's own spells count from 0."
+            },
+            {
+              "name": "summonerSpell",
+              "width": 1,
+              "note": "Set where the slot counts among the summoner slots, so that 0 and 1 name those two."
+            }
+          ]
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit the spell is cast from. A client takes an id it does not know as no unit."
+        }
+      ]
+    }
+  ]
+}

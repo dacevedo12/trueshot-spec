@@ -76,6 +76,6 @@ A server can tell a client what a bot is thinking (`BotDebug`), weighing
 | [`SpawnPet`](../schema/messages/SpawnPet.json)                   | server  | every range          | Put a pet on the field                                                                        |
 | [`SpawnTurret`](../schema/messages/SpawnTurret.json)             | server  | 4.12–4.20            | Create a turret of its own choosing                                                           |
 | [`SpawnUnit`](../schema/messages/SpawnUnit.json)                 | server  | 4.10–4.20            | Put a minion-like unit on the field, such as a ward                                           |
-| [`TeamChanged`](../schema/messages/TeamChanged.json)             | server  | 4.10–4.20            | Move a unit to another side                                                                   |
+| [`TeamChanged`](../schema/messages/TeamChanged.json)             | server  | every range          | Move a unit to another side                                                                   |
 
 <!-- messages:end -->

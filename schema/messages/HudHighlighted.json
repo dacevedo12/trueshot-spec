@@ -5,6 +5,26 @@
   "note": "What a server sends to light up part of the screen, as a tutorial does. Only HudHighlightToggled turns it off. The header carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "command": 67,
+      "fields": [
+        {
+          "name": "element",
+          "type": "u8",
+          "note": "What to light up on the main controls, 0 to 8; a client ignores a larger value. 4, 5 and 6 each name a part of a second panel. Which part each value names is not recorded."
+        },
+        {
+          "name": "number",
+          "type": "u8",
+          "note": "Which slot, for a spell or a summoner spell; it has no effect for 4, 5 or 6."
+        }
+      ]
+    },
+    {
       "from": "4.10.0.379",
       "until": "4.11.0.386",
       "channel": "events",
