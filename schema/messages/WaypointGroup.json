@@ -20,7 +20,7 @@
         {
           "name": "movementCount",
           "type": "u16",
-          "note": "How many paths follow. A client reads the field as signed, so above 32767 it reads none, as it does for zero, and still answers."
+          "note": "How many paths follow. A count above 32767 counts as none, as zero does, and a client still answers."
         },
         {
           "name": "movements",
@@ -48,7 +48,7 @@
                   {
                     "name": "pointCount",
                     "width": 7,
-                    "note": "How many points the path has, from 1 to 127. A client reads nothing further of a group whose entry gives 0."
+                    "note": "How many points the path has, from 1 to 127. A group whose entry gives 0 ends there."
                   },
                   {
                     "name": "unusedHigh",

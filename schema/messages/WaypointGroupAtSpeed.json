@@ -20,7 +20,7 @@
         {
           "name": "movementCount",
           "type": "u16",
-          "note": "How many units follow. A client reads the field as signed, so above 32767 it reads none, as it does for zero."
+          "note": "How many units follow. A count above 32767 counts as none, as zero does."
         },
         {
           "name": "movements",

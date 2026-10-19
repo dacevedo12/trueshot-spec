@@ -15,7 +15,7 @@
         {
           "name": "side",
           "type": "u8",
-          "note": "Which side the unit came into the view of, as an index from 0 to 3. A client applies a larger index too; a server sends only 0 to 3."
+          "note": "Which side the unit came into the view of, as an index from 0 to 3. A server sends only 0 to 3; a larger index has no defined effect."
         }
       ]
     },

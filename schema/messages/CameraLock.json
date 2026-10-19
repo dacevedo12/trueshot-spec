@@ -7,7 +7,7 @@
     {
       "from": "1.0.0.126",
       "until": "1.0.0.127",
-      "note": "A client sends it at once on each CameraLockSet, with state as that message carried it, whole byte and all.",
+      "note": "A client sends it at once on each CameraLockSet, with state as that message carried it, all eight bits included.",
       "channel": "requests",
       "command": 134,
       "direction": "clientToServer",

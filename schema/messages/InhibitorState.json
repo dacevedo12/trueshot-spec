@@ -25,7 +25,7 @@
             {
               "name": "unused",
               "width": 1,
-              "note": "A client reads nothing here; a server sends zero."
+              "note": "Unused; a server writes zero."
             }
           ]
         },
@@ -42,7 +42,7 @@
             {
               "name": "unused",
               "width": 7,
-              "note": "A client reads nothing here; a server sends zero."
+              "note": "Unused; a server writes zero."
             }
           ]
         }

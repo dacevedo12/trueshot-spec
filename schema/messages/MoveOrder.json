@@ -64,7 +64,7 @@
                 {
                   "name": "pointCount",
                   "width": 7,
-                  "note": "How many points the path has, from 1 to 127. A client reads nothing further of a group whose entry gives 0."
+                  "note": "How many points the path has, from 1 to 127. A group whose entry gives 0 ends there."
                 },
                 {
                   "name": "unusedHigh",

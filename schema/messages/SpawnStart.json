@@ -35,7 +35,7 @@
         {
           "name": "botsOnOneSide",
           "type": "u8",
-          "note": "How many bots play on side 100. A client adds it to that side's head count, which picks the table of spawn positions and facings it places champions by (CreateChampion's spawnIndex)."
+          "note": "How many bots play on side 100. A client adds it to that side's head count, which picks the set of spawn positions and facings it places champions by (CreateChampion's spawnIndex)."
         },
         {
           "name": "botsOnTheOther",
@@ -55,7 +55,7 @@
         {
           "name": "botsOnOneSide",
           "type": "u8",
-          "note": "How many bots play on side 100. A client adds it to that side's head count, which picks the table of spawn positions and facings it places champions by (CreateChampion's spawnIndex)."
+          "note": "How many bots play on side 100. A client adds it to that side's head count, which picks the set of spawn positions and facings it places champions by (CreateChampion's spawnIndex)."
         },
         {
           "name": "botsOnTheOther",

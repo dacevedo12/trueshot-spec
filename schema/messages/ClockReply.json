@@ -31,7 +31,7 @@
           "name": "digest",
           "type": "bytes",
           "size": 32,
-          "note": "The same thirty two bytes from every client of the build; a server need not read them."
+          "note": "The same thirty two bytes from every client of the build; they carry nothing a server needs."
         }
       ]
     },

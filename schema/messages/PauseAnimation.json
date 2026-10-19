@@ -15,7 +15,7 @@
         {
           "name": "state",
           "type": "u8",
-          "note": "Whether to pause. A client keeps the whole byte; whether it treats other values as any value other than zero or by their lowest bit is not recorded, so a server sends only 0 or 1.",
+          "note": "Whether to pause. A server sends only 0 or 1; what other values do is not recorded.",
           "values": {
             "0": {
               "name": "resume"

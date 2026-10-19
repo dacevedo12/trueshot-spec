@@ -60,7 +60,7 @@
               "note": "A server writes zero; a client takes any bit set here as a lock too."
             }
           ],
-          "note": "Whether to lock. A client tests the whole byte: any value but zero locks."
+          "note": "Whether to lock. Any value other than zero locks."
         }
       ]
     },

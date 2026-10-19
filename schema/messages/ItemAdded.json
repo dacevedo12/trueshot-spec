@@ -30,7 +30,7 @@
         {
           "name": "flag",
           "type": "u8",
-          "note": "What this carries is not recorded. A client tests the whole byte: where it is nonzero and the slot holds an item, the client refreshes the slot and sends RemoveItem for it with sell clear. A server sends zero."
+          "note": "What this carries is not recorded. Where it is not zero and the slot holds an item, a client refreshes the slot and sends RemoveItem for it with sell clear. A server sends zero."
         }
       ],
       "note": "There is no charges field: a client takes an item's charges from the item's own data."

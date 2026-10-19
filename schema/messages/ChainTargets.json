@@ -15,7 +15,7 @@
         {
           "name": "count",
           "type": "i32",
-          "note": "How many of the slots are used, 0 to 32; 0 clears every target the client holds. A client does not reject a larger count and fails on one, so a server never sends more than 32."
+          "note": "How many of the slots are used, 0 to 32; 0 clears every target the client holds. A client given more than 32 fails."
         },
         {
           "name": "caster",

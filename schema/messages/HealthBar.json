@@ -15,7 +15,7 @@
         {
           "name": "show",
           "type": "u8",
-          "note": "Not zero to show the bar, zero to hide it. A client tests the whole byte."
+          "note": "Any value other than zero shows the bar; zero hides it."
         }
       ]
     },

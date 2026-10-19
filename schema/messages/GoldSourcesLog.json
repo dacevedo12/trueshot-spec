@@ -15,7 +15,7 @@
         {
           "name": "length",
           "type": "u32",
-          "note": "How many bytes of text follow. Zero, or a value below zero taken as signed, carries no text."
+          "note": "How many bytes of text follow. Zero, or a value above 2147483647, carries no text."
         },
         {
           "name": "text",

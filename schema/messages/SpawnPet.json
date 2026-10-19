@@ -46,7 +46,7 @@
         {
           "name": "unused",
           "type": "u32",
-          "note": "A client reads nothing here; a server sends zero."
+          "note": "Unused; a server writes zero."
         },
         {
           "name": "damageBonus",
@@ -107,7 +107,7 @@
             {
               "name": "unused",
               "width": 6,
-              "note": "A client reads nothing here; a server sends zero."
+              "note": "Unused; a server writes zero."
             }
           ],
           "note": "How it behaves."

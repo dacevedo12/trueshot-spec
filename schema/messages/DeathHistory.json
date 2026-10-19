@@ -32,19 +32,19 @@
             {
               "name": "type",
               "width": 4,
-              "note": "Read as signed, -8 to 7. What each value means is not recorded for this range."
+              "note": "A signed value, -8 to 7. What each value means is not recorded for this range."
             },
             {
               "name": "unused",
               "width": 28,
-              "note": "A client reads nothing here; a server sends zero."
+              "note": "Unused; a server writes zero."
             }
           ]
         },
         {
           "name": "blobLength",
           "type": "u32",
-          "note": "How many bytes the entries below take together. A client reads no entries where this is zero or, read as signed, less."
+          "note": "How many bytes the entries below take together. Zero, or a value above 2147483647, carries no entries."
         },
         {
           "name": "entryCount",
@@ -145,7 +145,7 @@
                     "name": "parent",
                     "type": "bits",
                     "size": 4,
-                    "note": "Three values, each read as signed. What they carry is not recorded.",
+                    "note": "Three signed values. What they carry is not recorded.",
                     "bits": [
                       {
                         "name": "first",
@@ -165,7 +165,7 @@
                       {
                         "name": "unused",
                         "width": 20,
-                        "note": "A client reads nothing here; a server sends zero."
+                        "note": "Unused; a server writes zero."
                       }
                     ]
                   }
@@ -232,7 +232,7 @@
                       {
                         "name": "unused",
                         "width": 24,
-                        "note": "A client reads nothing here; a server sends zero."
+                        "note": "Unused; a server writes zero."
                       }
                     ]
                   }
@@ -294,7 +294,7 @@
                       {
                         "name": "unused",
                         "width": 24,
-                        "note": "A client reads nothing here; a server sends zero."
+                        "note": "Unused; a server writes zero."
                       }
                     ]
                   }

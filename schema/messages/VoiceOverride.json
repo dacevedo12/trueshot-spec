@@ -15,7 +15,7 @@
         {
           "name": "reset",
           "type": "u8",
-          "note": "Whether to reset. A client reads a name after any value other than 1, so a server sends only 0 or 1.",
+          "note": "Whether to reset. A name follows any value other than 1, so a server sends only 0 or 1.",
           "values": {
             "0": {
               "name": "change",

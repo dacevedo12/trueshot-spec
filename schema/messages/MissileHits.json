@@ -15,7 +15,7 @@
         {
           "name": "count",
           "type": "u16",
-          "note": "How many units follow. A client takes it as signed, and reads no units where that is zero or below, so a server sends at most 32767."
+          "note": "How many units follow. A count of zero or above 32767 carries no units, so a server sends at most 32767."
         },
         {
           "name": "targets",

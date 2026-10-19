@@ -2,8 +2,8 @@
 
 > [!IMPORTANT]
 > This repository describes a protocol. It records facts about what travels on
-> the wire, established by observing a client and reverse engineering what it
-> sends. It reproduces no source code.
+> the wire, established by observing what a client sends and how it responds to
+> what it is sent. It reproduces no source code.
 
 These are the house rules. They apply to every contributor, human or otherwise.
 If you came here to build a server rather than to change the specification,

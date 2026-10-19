@@ -86,8 +86,7 @@ short to fill one, and a payload shorter than a block.
 There is no padding. Trailing bytes that do not fill a block travel unchanged,
 so a payload shorter than one block travels entirely in the clear.
 
-Blowfish and ECB both carry well understood weaknesses. This document records
-what the client does rather than endorsing it. A server MUST NOT substitute
+A server MUST NOT substitute
 another cipher, because a client accepts no other.
 
 ### The key

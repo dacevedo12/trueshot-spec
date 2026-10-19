@@ -20,7 +20,7 @@
         {
           "name": "unusedY",
           "type": "f32",
-          "note": "A client reads nothing there; a server sends zero."
+          "note": "Unused; a server writes zero."
         },
         {
           "name": "towardZ",

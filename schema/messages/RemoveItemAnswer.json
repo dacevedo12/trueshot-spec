@@ -15,7 +15,7 @@
         {
           "name": "slot",
           "type": "u8",
-          "note": "Which slot, 0 to 37, as the whole byte. A client drops the message from 38 up."
+          "note": "Which slot, 0 to 37. A client drops the message from 38 up."
         },
         {
           "name": "left",

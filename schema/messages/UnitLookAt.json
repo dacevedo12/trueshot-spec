@@ -19,15 +19,15 @@
           "values": {
             "0": {
               "name": "direction",
-              "note": "x, y and z are a direction; target is not read."
+              "note": "x, y and z are a direction; target changes nothing."
             },
             "1": {
               "name": "point",
-              "note": "x, y and z are a point in the world; target is not read."
+              "note": "x, y and z are a point in the world; target changes nothing."
             },
             "2": {
               "name": "unit",
-              "note": "target is the object to look at; x, y and z are not read. Should it go, the unit looks at where it was last."
+              "note": "target is the object to look at; x, y and z change nothing. Should it go, the unit looks at where it was last."
             }
           }
         },

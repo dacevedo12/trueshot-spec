@@ -15,15 +15,15 @@
         {
           "name": "object",
           "type": "i32",
-          "note": "Unused; a client reads none of this message."
+          "note": "Unused; a server writes zero."
         },
         {
           "name": "flags",
           "type": "u8",
-          "note": "Unused; a client reads none of this message."
+          "note": "Unused; a server writes zero."
         }
       ],
-      "note": "A client reads none of it and changes nothing."
+      "note": "A client does nothing with it."
     }
   ]
 }

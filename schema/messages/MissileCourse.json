@@ -15,7 +15,7 @@
         {
           "name": "unused",
           "type": "u8",
-          "note": "A client reads nothing here; a server writes zero."
+          "note": "Unused; a server writes zero."
         },
         {
           "name": "fromX",

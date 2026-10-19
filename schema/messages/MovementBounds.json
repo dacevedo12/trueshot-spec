@@ -40,7 +40,7 @@
             {
               "name": "camera",
               "width": 1,
-              "note": "Set to keep the camera within the circle too. Clear leaves the camera as it was, bound or not. A client tests the whole byte, so any bit set counts as this one."
+              "note": "Set to keep the camera within the circle too. Clear leaves the camera as it was, bound or not. Any bit of its byte set counts as this one set."
             },
             {
               "name": "unused",

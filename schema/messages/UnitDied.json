@@ -20,7 +20,7 @@
         {
           "name": "unused",
           "type": "u16",
-          "note": "A client reads nothing here; a server sends zero."
+          "note": "Unused; a server writes zero."
         },
         {
           "name": "stayDown",
@@ -30,7 +30,7 @@
         {
           "name": "standing",
           "type": "u8",
-          "note": "Not zero to leave the unit standing rather than dead, with no death animation; a client tests the whole byte."
+          "note": "Any value other than zero leaves the unit standing rather than dead, with no death animation."
         }
       ]
     },

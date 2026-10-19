@@ -81,14 +81,14 @@
             {
               "name": "unused",
               "width": 23,
-              "note": "A client reads nothing here; a server sends zero."
+              "note": "Unused; a server writes zero."
             }
           ]
         },
         {
           "name": "unused",
           "type": "u8",
-          "note": "A client reads nothing here; a server sends zero."
+          "note": "Unused; a server writes zero."
         },
         {
           "name": "skillLevel",

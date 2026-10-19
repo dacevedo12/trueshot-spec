@@ -20,7 +20,7 @@
         {
           "name": "unused",
           "type": "u32",
-          "note": "A client reads nothing here; a server sends zero."
+          "note": "Unused; a server writes zero."
         },
         {
           "name": "sightRadius",
@@ -60,12 +60,12 @@
             {
               "name": "attached",
               "width": 1,
-              "note": "A client sets this itself, whatever arrives."
+              "note": "Its value has no effect; a server writes zero."
             },
             {
               "name": "unused",
               "width": 29,
-              "note": "A client tests nothing here; a server sends zero."
+              "note": "Unused; a server writes zero."
             }
           ],
           "note": "What the region does."

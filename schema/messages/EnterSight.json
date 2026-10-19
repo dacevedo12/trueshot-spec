@@ -119,7 +119,7 @@
                 {
                   "name": "pointCount",
                   "width": 7,
-                  "note": "How many points the path has, from 1 to 127. A client reads nothing further of a group whose entry gives 0."
+                  "note": "How many points the path has, from 1 to 127. A group whose entry gives 0 ends there."
                 },
                 {
                   "name": "unusedHigh",
@@ -386,7 +386,7 @@
             {
               "name": "lookX",
               "type": "f32",
-              "note": "Which way the unit is turned, along one ground axis. The three together read as a direction rather than a place."
+              "note": "Which way the unit is turned, along one ground axis. The three together are a direction rather than a place."
             },
             {
               "name": "lookY",
@@ -648,7 +648,7 @@
             {
               "name": "lookX",
               "type": "f32",
-              "note": "Which way the unit is turned, along one ground axis. The three together read as a direction rather than a place."
+              "note": "Which way the unit is turned, along one ground axis. The three together are a direction rather than a place."
             },
             {
               "name": "lookY",
@@ -897,7 +897,7 @@
             {
               "name": "lookX",
               "type": "f32",
-              "note": "Which way the unit is turned, along one ground axis. The three together read as a direction rather than a place."
+              "note": "Which way the unit is turned, along one ground axis. The three together are a direction rather than a place."
             },
             {
               "name": "lookY",

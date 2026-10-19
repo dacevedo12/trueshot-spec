@@ -25,7 +25,7 @@
         {
           "name": "state",
           "type": "u8",
-          "note": "The camp's state for that side, kept as the whole byte. What it carries is not recorded."
+          "note": "The camp's state for that side; all eight bits count. What it carries is not recorded."
         }
       ]
     },

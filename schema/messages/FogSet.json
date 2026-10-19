@@ -20,7 +20,7 @@
             {
               "name": "drawn",
               "width": 1,
-              "note": "Set to draw the fog, clear to draw the map with no darkening. A client tests the whole byte, so any bit set counts as this one."
+              "note": "Set to draw the fog, clear to draw the map with no darkening. Any bit of its byte set counts as this one set."
             },
             {
               "name": "unused",

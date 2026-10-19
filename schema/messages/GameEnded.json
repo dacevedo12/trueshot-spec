@@ -25,12 +25,12 @@
             {
               "name": "surrendered",
               "width": 1,
-              "note": "Set aside for a match ended by surrender. A client reads nothing there."
+              "note": "Set aside for a match ended by surrender. A client does nothing with it."
             },
             {
               "name": "unused",
               "width": 6,
-              "note": "Unused; a client reads nothing there, and a server writes zero."
+              "note": "Unused; a server writes zero."
             }
           ]
         }

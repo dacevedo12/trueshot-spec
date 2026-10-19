@@ -71,7 +71,7 @@
         {
           "name": "side",
           "type": "i32",
-          "note": "The side attacking the point. A client reads nothing there."
+          "note": "The side attacking the point. A client does nothing with it."
         },
         {
           "name": "change",
@@ -312,7 +312,7 @@
         {
           "name": "side",
           "type": "u32",
-          "note": "Unused; a client does not read it."
+          "note": "Unused; a server writes zero."
         },
         {
           "name": "change",

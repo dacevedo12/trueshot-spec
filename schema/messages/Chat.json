@@ -34,7 +34,7 @@
         {
           "name": "textLength",
           "type": "u32",
-          "note": "The length of the text in bytes, without the byte that ends it. A client does not read it."
+          "note": "The length of the text in bytes, without the byte that ends it. Its value changes nothing a client does."
         },
         {
           "name": "text",
