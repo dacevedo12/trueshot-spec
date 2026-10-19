@@ -1,0 +1,72 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "MoveOrder",
+  "version": "1.0.0.126",
+  "note": "Taken from a 1.0.0.126 client. The identifiers are the harness's own, so nothing in this file comes from a real match.",
+  "bytes": "7501000040020f618745dc01334204d759450000000060ec050001000040f8c2f73bf897f8f4f872fa4b4bb519ce",
+  "fields": {
+    "command": 117,
+    "netId": 1073741825,
+    "kind": 2,
+    "targetX": 4332.13232421875,
+    "targetY": 44.75181579589844,
+    "targetZ": 3485.4384765625,
+    "target": 0,
+    "movement": {
+      "header": {
+        "unusedLow": 0,
+        "unused": 30256,
+        "pointCount": 5,
+        "unusedHigh": 0
+      },
+      "unit": 1073741825,
+      "flags": [
+        {
+          "xIsStep": 0,
+          "zIsStep": 0
+        },
+        {
+          "xIsStep": 0,
+          "zIsStep": 1
+        },
+        {
+          "xIsStep": 1,
+          "zIsStep": 1
+        },
+        {
+          "xIsStep": 1,
+          "zIsStep": 1
+        }
+      ],
+      "firstX": -2110,
+      "firstZ": -1989,
+      "steps": [
+        {
+          "xStep": null,
+          "xWhole": -1897,
+          "zStep": null,
+          "zWhole": -1804
+        },
+        {
+          "xStep": null,
+          "xWhole": -1422,
+          "zStep": 75,
+          "zWhole": null
+        },
+        {
+          "xStep": 75,
+          "xWhole": null,
+          "zStep": -75,
+          "zWhole": null
+        },
+        {
+          "xStep": 25,
+          "xWhole": null,
+          "zStep": -50,
+          "zWhole": null
+        }
+      ]
+    }
+  }
+}

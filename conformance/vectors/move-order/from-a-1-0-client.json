@@ -1,0 +1,42 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "MoveOrder",
+  "version": "1.0.0.126",
+  "note": "Taken from a 1.0.0.126 client. The identifiers are the harness's own, so nothing in this file comes from a real match.",
+  "bytes": "75010000400218591744686e2543461fc2430000000060ec020001000040026bf26ef288f339",
+  "fields": {
+    "command": 117,
+    "netId": 1073741825,
+    "kind": 2,
+    "targetX": 605.39208984375,
+    "targetY": 165.4312744140625,
+    "targetZ": 388.24432373046875,
+    "target": 0,
+    "movement": {
+      "header": {
+        "unusedLow": 0,
+        "unused": 30256,
+        "pointCount": 2,
+        "unusedHigh": 0
+      },
+      "unit": 1073741825,
+      "flags": [
+        {
+          "xIsStep": 0,
+          "zIsStep": 1
+        }
+      ],
+      "firstX": -3477,
+      "firstZ": -3474,
+      "steps": [
+        {
+          "xStep": null,
+          "xWhole": -3192,
+          "zStep": 57,
+          "zWhole": null
+        }
+      ]
+    }
+  }
+}

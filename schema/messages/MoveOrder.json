@@ -5,53 +5,166 @@
   "note": "What a client sends to tell a server what it wants a unit to do. The path it carries is what the client would take; where the unit actually goes is whatever the server answers with. The header names the sender's champion.",
   "revisions": [
     {
-      "from": "4.17.0.233",
-      "until": "4.18.0.0",
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
       "channel": "requests",
-      "command": 114,
+      "command": 117,
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [
         {
           "name": "kind",
           "type": "u8",
-          "note": "What is being asked for.",
           "values": {
             "2": {
               "name": "moveToPosition"
-            },
-            "3": {
-              "name": "attack"
-            },
-            "10": {
-              "name": "stop"
             }
-          }
+          },
+          "note": "What the order is."
         },
         {
           "name": "targetX",
           "type": "f32",
-          "note": "Where the order points, along one ground axis. Carried in world units rather than in the units a path uses."
+          "note": "Where the player clicked, along one ground axis, in world units."
+        },
+        {
+          "name": "targetY",
+          "type": "f32",
+          "note": "The height there."
         },
         {
           "name": "targetZ",
           "type": "f32",
-          "note": "Where the order points, along the other."
+          "note": "Along the other ground axis."
         },
         {
           "name": "target",
           "type": "u32",
-          "note": "The network object the order is aimed at, or zero where it is aimed at open ground."
+          "note": "The unit clicked, or zero for the ground."
         },
         {
           "name": "movement",
-          "type": "struct",
-          "struct": "Movement"
+          "type": "record",
+          "fields": [
+            {
+              "name": "header",
+              "type": "bits",
+              "size": 4,
+              "bits": [
+                {
+                  "name": "unusedLow",
+                  "width": 1,
+                  "note": "Clear: a client sends no teleport token."
+                },
+                {
+                  "name": "unused",
+                  "width": 15,
+                  "note": "Carries nothing."
+                },
+                {
+                  "name": "pointCount",
+                  "width": 7,
+                  "note": "How many points the path has, from 1 to 127. A client reads nothing further of a group whose entry gives 0."
+                },
+                {
+                  "name": "unusedHigh",
+                  "width": 9,
+                  "note": "Carries nothing."
+                }
+              ]
+            },
+            {
+              "name": "unit",
+              "type": "u32",
+              "note": "The unit the path is for. A client that does not hold it misreads every entry after it."
+            },
+            {
+              "name": "flags",
+              "type": "bitArray",
+              "count": {
+                "field": "header.pointCount",
+                "minus": 1
+              },
+              "bits": [
+                {
+                  "name": "xIsStep",
+                  "width": 1
+                },
+                {
+                  "name": "zIsStep",
+                  "width": 1
+                }
+              ],
+              "note": "Whether each coordinate of the points after the first is a step from the point before it."
+            },
+            {
+              "name": "firstX",
+              "type": "i16",
+              "note": "The first point, along one ground axis, in the map's path coordinates."
+            },
+            {
+              "name": "firstZ",
+              "type": "i16",
+              "note": "Along the other ground axis."
+            },
+            {
+              "name": "steps",
+              "type": "array",
+              "count": {
+                "field": "header.pointCount",
+                "minus": 1
+              },
+              "items": {
+                "name": "step",
+                "type": "record",
+                "fields": [
+                  {
+                    "name": "xStep",
+                    "type": "i8",
+                    "present": {
+                      "when": "flags[step].xIsStep"
+                    },
+                    "note": "A step from the point before, along one axis."
+                  },
+                  {
+                    "name": "xWhole",
+                    "type": "i16",
+                    "present": {
+                      "when": "flags[step].xIsStep",
+                      "equals": 0
+                    },
+                    "note": "The coordinate afresh."
+                  },
+                  {
+                    "name": "zStep",
+                    "type": "i8",
+                    "present": {
+                      "when": "flags[step].zIsStep"
+                    },
+                    "note": "A step along the other axis."
+                  },
+                  {
+                    "name": "zWhole",
+                    "type": "i16",
+                    "present": {
+                      "when": "flags[step].zIsStep",
+                      "equals": 0
+                    },
+                    "note": "The coordinate afresh."
+                  }
+                ]
+              },
+              "note": "Every point after the first."
+            }
+          ],
+          "note": "The path the client worked out for its champion."
         }
-      ]
+      ],
+      "note": "What a client sends as its player orders the champion somewhere. The header names the champion."
     },
     {
-      "from": "4.20.0.315",
+      "from": "4.17.0.233",
+      "until": "4.21.0.0",
       "channel": "requests",
       "command": 114,
       "direction": "clientToServer",

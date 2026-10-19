@@ -1,0 +1,122 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "MoveOrder",
+  "version": "1.0.0.126",
+  "note": "Taken from a 1.0.0.126 client. The identifiers are the harness's own, so nothing in this file comes from a real match.",
+  "bytes": "75010000400277f4394667f0c142d3b848460000000060ec0a0001000040303c0073f687f56bf7e1f7fcfca4fd1900f6016c024e045a0519191919290635079709fb0a",
+  "fields": {
+    "command": 117,
+    "netId": 1073741825,
+    "kind": 2,
+    "targetX": 11901.1162109375,
+    "targetY": 96.96953582763672,
+    "targetZ": 12846.2060546875,
+    "target": 0,
+    "movement": {
+      "header": {
+        "unusedLow": 0,
+        "unused": 30256,
+        "pointCount": 10,
+        "unusedHigh": 0
+      },
+      "unit": 1073741825,
+      "flags": [
+        {
+          "xIsStep": 0,
+          "zIsStep": 0
+        },
+        {
+          "xIsStep": 0,
+          "zIsStep": 0
+        },
+        {
+          "xIsStep": 1,
+          "zIsStep": 1
+        },
+        {
+          "xIsStep": 0,
+          "zIsStep": 0
+        },
+        {
+          "xIsStep": 0,
+          "zIsStep": 0
+        },
+        {
+          "xIsStep": 1,
+          "zIsStep": 1
+        },
+        {
+          "xIsStep": 1,
+          "zIsStep": 1
+        },
+        {
+          "xIsStep": 0,
+          "zIsStep": 0
+        },
+        {
+          "xIsStep": 0,
+          "zIsStep": 0
+        }
+      ],
+      "firstX": -2445,
+      "firstZ": -2681,
+      "steps": [
+        {
+          "xStep": null,
+          "xWhole": -2197,
+          "zStep": null,
+          "zWhole": -2079
+        },
+        {
+          "xStep": null,
+          "xWhole": -772,
+          "zStep": null,
+          "zWhole": -604
+        },
+        {
+          "xStep": 25,
+          "xWhole": null,
+          "zStep": 0,
+          "zWhole": null
+        },
+        {
+          "xStep": null,
+          "xWhole": 502,
+          "zStep": null,
+          "zWhole": 620
+        },
+        {
+          "xStep": null,
+          "xWhole": 1102,
+          "zStep": null,
+          "zWhole": 1370
+        },
+        {
+          "xStep": 25,
+          "xWhole": null,
+          "zStep": 25,
+          "zWhole": null
+        },
+        {
+          "xStep": 25,
+          "xWhole": null,
+          "zStep": 25,
+          "zWhole": null
+        },
+        {
+          "xStep": null,
+          "xWhole": 1577,
+          "zStep": null,
+          "zWhole": 1845
+        },
+        {
+          "xStep": null,
+          "xWhole": 2455,
+          "zStep": null,
+          "zWhole": 2811
+        }
+      ]
+    }
+  }
+}

@@ -6,41 +6,7 @@
   "revisions": [
     {
       "from": "4.17.0.233",
-      "until": "4.18.0.0",
-      "channel": "requests",
-      "command": 86,
-      "direction": "clientToServer",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "moduleOne",
-          "type": "u32",
-          "note": "One of three values a client reports about software it has detected alongside itself. A client sends zero."
-        },
-        {
-          "name": "moduleTwo",
-          "type": "u32",
-          "note": "The second of the three. A client sends zero."
-        },
-        {
-          "name": "moduleThree",
-          "type": "u32",
-          "note": "The third. A client sends zero."
-        },
-        {
-          "name": "appearance",
-          "type": "u32",
-          "note": "The appearance the client believes it is wearing, by the number it knows it as."
-        },
-        {
-          "name": "appearanceCheck",
-          "type": "u32",
-          "note": "A value standing for that appearance's content."
-        }
-      ]
-    },
-    {
-      "from": "4.20.0.315",
+      "until": "4.21.0.0",
       "channel": "requests",
       "command": 86,
       "direction": "clientToServer",

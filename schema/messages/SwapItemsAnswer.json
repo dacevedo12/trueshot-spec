@@ -6,26 +6,7 @@
   "revisions": [
     {
       "from": "4.17.0.233",
-      "until": "4.18.0.0",
-      "channel": "events",
-      "command": 62,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "from",
-          "type": "u8",
-          "note": "The slot the item left."
-        },
-        {
-          "name": "to",
-          "type": "u8",
-          "note": "The slot it went to."
-        }
-      ]
-    },
-    {
-      "from": "4.20.0.315",
+      "until": "4.21.0.0",
       "channel": "events",
       "command": 62,
       "direction": "serverToClient",

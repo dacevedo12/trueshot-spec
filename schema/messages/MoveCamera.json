@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "4.17.0.233",
-      "until": "4.18.0.0",
+      "until": "4.18.0.271",
       "channel": "events",
       "command": 37,
       "direction": "serverToClient",
@@ -73,7 +73,7 @@
       "note": "Where the header names a champion, only the client whose own champion it is moves its view; others take the message and do nothing. Where the header carries zero, a client moves its view to to over travelTime, how and from having no effect."
     },
     {
-      "from": "4.20.0.315",
+      "from": "4.18.0.271",
       "channel": "events",
       "command": 37,
       "direction": "serverToClient",

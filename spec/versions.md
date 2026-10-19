@@ -11,15 +11,24 @@ by its first two parts.
 
 <!-- ranges:begin -->
 
-| Range | From       | Up to     |
-| ----- | ---------- | --------- |
-| 1.0   | 1.0.0.126  | 1.0.0.127 |
-| 4.17  | 4.17.0.233 | 4.18.0.0  |
-| 4.20  | 4.20.0.315 | 4.21.0.0  |
+| Range | From       | Up to      |
+| ----- | ---------- | ---------- |
+| 1.0   | 1.0.0.126  | 1.0.0.127  |
+| 4.17  | 4.17.0.233 | 4.18.0.271 |
+| 4.18  | 4.18.0.271 | 4.20.0.315 |
+| 4.20  | 4.20.0.315 | 4.21.0.0   |
 
 <!-- ranges:end -->
 
 Every build in a range is held to the same facts.
+
+## Coverage
+
+A range is checked against the client builds that
+[conformance/live/results](../conformance/live/results/) holds a file for, one
+per build, each naming the commit its checks ran at and how each fared. A range
+claims the builds between its first and the last one checked as well, on the
+strength of those checks, and claims nothing of a build outside it.
 
 ## In the definitions
 

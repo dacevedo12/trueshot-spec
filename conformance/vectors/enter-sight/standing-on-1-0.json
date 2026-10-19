@@ -1,0 +1,36 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "EnterSight",
+  "version": "1.0.0.126",
+  "note": "Accepted by a 1.0.0.126 client, which stayed in play. The identifiers are the harness's own, so nothing in this file comes from a real match.",
+  "bytes": "c20100004001000000e90300000100000000000000000000803f030100000000007a4400007a44000000000000803f",
+  "fields": {
+    "command": 194,
+    "netId": 1073741825,
+    "itemCount": 1,
+    "items": [
+      {
+        "slot": 0,
+        "first": 0,
+        "second": 0,
+        "itemId": 1001
+      }
+    ],
+    "hasVector": 1,
+    "vector": {
+      "x": 0,
+      "y": 0,
+      "z": 1
+    },
+    "movementKind": 3,
+    "syncId": 1,
+    "path": null,
+    "standing": {
+      "x": 1000,
+      "z": 1000,
+      "directionX": 0,
+      "directionZ": 1
+    }
+  }
+}

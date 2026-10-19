@@ -21,21 +21,7 @@
     },
     {
       "from": "4.17.0.233",
-      "until": "4.18.0.0",
-      "channel": "events",
-      "command": 193,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "elapsed",
-          "type": "f32",
-          "note": "How long the match has run, in seconds."
-        }
-      ]
-    },
-    {
-      "from": "4.20.0.315",
+      "until": "4.21.0.0",
       "channel": "events",
       "command": 193,
       "direction": "serverToClient",

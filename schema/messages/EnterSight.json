@@ -5,8 +5,264 @@
   "note": "What a server sends when a unit comes into what a side can see. It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say. The header names the unit this is about.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 194,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "itemCount",
+          "type": "u8",
+          "note": "How many items follow."
+        },
+        {
+          "name": "items",
+          "type": "array",
+          "count": "itemCount",
+          "items": {
+            "name": "item",
+            "type": "record",
+            "fields": [
+              {
+                "name": "slot",
+                "type": "u8",
+                "note": "Which slot, from 0 to 37; a client passes over any other."
+              },
+              {
+                "name": "first",
+                "type": "u8",
+                "note": "What this carries is not recorded."
+              },
+              {
+                "name": "second",
+                "type": "u8",
+                "note": "What this carries is not recorded."
+              },
+              {
+                "name": "itemId",
+                "type": "u32",
+                "note": "Which item."
+              }
+            ]
+          },
+          "note": "What the unit carries, one entry a slot."
+        },
+        {
+          "name": "hasVector",
+          "type": "u8",
+          "note": "Not zero where a vector follows."
+        },
+        {
+          "name": "vector",
+          "type": "record",
+          "present": {
+            "when": "hasVector"
+          },
+          "fields": [
+            {
+              "name": "x",
+              "type": "f32"
+            },
+            {
+              "name": "y",
+              "type": "f32"
+            },
+            {
+              "name": "z",
+              "type": "f32"
+            }
+          ],
+          "note": "What this carries is not recorded."
+        },
+        {
+          "name": "movementKind",
+          "type": "u8",
+          "values": {
+            "0": {
+              "name": "none"
+            },
+            "2": {
+              "name": "path"
+            },
+            "3": {
+              "name": "standing"
+            }
+          },
+          "note": "What follows the sync id: 0 nothing, 2 a path, 3 a point the unit stands at. 1 is not recorded, and a server sends one of the others."
+        },
+        {
+          "name": "syncId",
+          "type": "u32",
+          "note": "The number of this statement about the unit; a client takes a path or a point only where it is not behind the last one the unit took."
+        },
+        {
+          "name": "path",
+          "type": "record",
+          "fields": [
+            {
+              "name": "header",
+              "type": "bits",
+              "size": 4,
+              "bits": [
+                {
+                  "name": "hasTeleportToken",
+                  "width": 1,
+                  "note": "Set where a teleport token follows the unit."
+                },
+                {
+                  "name": "unused",
+                  "width": 15,
+                  "note": "Carries nothing."
+                },
+                {
+                  "name": "pointCount",
+                  "width": 7,
+                  "note": "How many points the path has, from 1 to 127. A client reads nothing further of a group whose entry gives 0."
+                },
+                {
+                  "name": "unusedHigh",
+                  "width": 9,
+                  "note": "Carries nothing."
+                }
+              ]
+            },
+            {
+              "name": "unit",
+              "type": "u32",
+              "note": "The unit the path is for. A client that does not hold it misreads every entry after it."
+            },
+            {
+              "name": "teleportToken",
+              "type": "u8",
+              "present": {
+                "when": "header.hasTeleportToken"
+              },
+              "note": "Where it differs from the one the unit holds, the unit is put at the first point rather than walking there."
+            },
+            {
+              "name": "flags",
+              "type": "bitArray",
+              "count": {
+                "field": "header.pointCount",
+                "minus": 1
+              },
+              "bits": [
+                {
+                  "name": "xIsStep",
+                  "width": 1
+                },
+                {
+                  "name": "zIsStep",
+                  "width": 1
+                }
+              ],
+              "note": "Whether each coordinate of the points after the first is a step from the point before it."
+            },
+            {
+              "name": "firstX",
+              "type": "i16",
+              "note": "The first point, along one ground axis, in the map's path coordinates."
+            },
+            {
+              "name": "firstZ",
+              "type": "i16",
+              "note": "Along the other ground axis."
+            },
+            {
+              "name": "steps",
+              "type": "array",
+              "count": {
+                "field": "header.pointCount",
+                "minus": 1
+              },
+              "items": {
+                "name": "step",
+                "type": "record",
+                "fields": [
+                  {
+                    "name": "xStep",
+                    "type": "i8",
+                    "present": {
+                      "when": "flags[step].xIsStep"
+                    },
+                    "note": "A step from the point before, along one axis."
+                  },
+                  {
+                    "name": "xWhole",
+                    "type": "i16",
+                    "present": {
+                      "when": "flags[step].xIsStep",
+                      "equals": 0
+                    },
+                    "note": "The coordinate afresh."
+                  },
+                  {
+                    "name": "zStep",
+                    "type": "i8",
+                    "present": {
+                      "when": "flags[step].zIsStep"
+                    },
+                    "note": "A step along the other axis."
+                  },
+                  {
+                    "name": "zWhole",
+                    "type": "i16",
+                    "present": {
+                      "when": "flags[step].zIsStep",
+                      "equals": 0
+                    },
+                    "note": "The coordinate afresh."
+                  }
+                ]
+              },
+              "note": "Every point after the first."
+            }
+          ],
+          "note": "The path the unit walks.",
+          "present": {
+            "when": "movementKind",
+            "equals": 2
+          }
+        },
+        {
+          "name": "standing",
+          "type": "record",
+          "present": {
+            "when": "movementKind",
+            "equals": 3
+          },
+          "fields": [
+            {
+              "name": "x",
+              "type": "f32",
+              "note": "Along one ground axis, in world units; the height is the ground's."
+            },
+            {
+              "name": "z",
+              "type": "f32",
+              "note": "Along the other ground axis."
+            },
+            {
+              "name": "directionX",
+              "type": "f32",
+              "note": "What this carries is not recorded."
+            },
+            {
+              "name": "directionZ",
+              "type": "f32",
+              "note": "What this carries is not recorded."
+            }
+          ],
+          "note": "Where the unit stands."
+        }
+      ],
+      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it. The header names the unit."
+    },
+    {
       "from": "4.17.0.233",
-      "until": "4.18.0.0",
+      "until": "4.18.0.271",
       "channel": "events",
       "command": 186,
       "direction": "serverToClient",
@@ -267,7 +523,7 @@
       ]
     },
     {
-      "from": "4.20.0.315",
+      "from": "4.18.0.271",
       "channel": "events",
       "command": 186,
       "direction": "serverToClient",

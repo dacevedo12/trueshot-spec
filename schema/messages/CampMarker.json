@@ -6,63 +6,7 @@
   "revisions": [
     {
       "from": "4.17.0.233",
-      "until": "4.18.0.0",
-      "channel": "events",
-      "command": 290,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "x",
-          "type": "f32",
-          "note": "Where the camp sits, along one ground axis, in world units."
-        },
-        {
-          "name": "y",
-          "type": "f32",
-          "note": "Where it sits, in height, in world units."
-        },
-        {
-          "name": "z",
-          "type": "f32",
-          "note": "Where it sits, along the other ground axis, in world units."
-        },
-        {
-          "name": "icon",
-          "type": "string",
-          "encoding": "ascii",
-          "size": 64,
-          "note": "Names the mark a client draws, by a name from the game's own data."
-        },
-        {
-          "name": "index",
-          "type": "u8",
-          "note": "Tells one camp from another."
-        },
-        {
-          "name": "revealEvent",
-          "type": "u8",
-          "note": "What makes the unit known to a side that cannot see it."
-        },
-        {
-          "name": "side",
-          "type": "u8",
-          "note": "Which side the camp belongs to, where it belongs to one."
-        },
-        {
-          "name": "timerKind",
-          "type": "i32",
-          "note": "Which clock the client shows for it."
-        },
-        {
-          "name": "expires",
-          "type": "f32",
-          "note": "When the camp is next due, in seconds."
-        }
-      ]
-    },
-    {
-      "from": "4.20.0.315",
+      "until": "4.21.0.0",
       "channel": "events",
       "command": 290,
       "direction": "serverToClient",

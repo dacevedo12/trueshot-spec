@@ -6,38 +6,6 @@
   "revisions": [
     {
       "from": "4.17.0.233",
-      "until": "4.18.0.0",
-      "channel": "events",
-      "command": 273,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "maxRanks",
-          "type": "array",
-          "count": 4,
-          "items": {
-            "name": "maxRank",
-            "type": "u8",
-            "note": "A spell's highest rank, slots 0 to 3 in turn. A client shows zero as one."
-          },
-          "note": "Each spell's highest rank."
-        },
-        {
-          "name": "levels",
-          "type": "array",
-          "count": 24,
-          "items": {
-            "name": "level",
-            "type": "u8",
-            "note": "A champion level."
-          },
-          "note": "Six per slot, slot 0 first: the level a champion needs to raise that spell from rank 0, 1, 2, 3, 4 and 5 in turn."
-        }
-      ]
-    },
-    {
-      "from": "4.20.0.315",
       "until": "4.21.0.0",
       "channel": "events",
       "command": 273,

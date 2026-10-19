@@ -6,55 +6,7 @@
   "revisions": [
     {
       "from": "4.17.0.233",
-      "until": "4.18.0.0",
-      "channel": "events",
-      "command": 271,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "kind",
-          "type": "u8",
-          "note": "What the unit's model turns to look at; not which way it faces. A client ignores 3 and above, keeping what it looked at before.",
-          "values": {
-            "0": {
-              "name": "direction",
-              "note": "x, y and z are a direction; target is not read."
-            },
-            "1": {
-              "name": "point",
-              "note": "x, y and z are a point in the world; target is not read."
-            },
-            "2": {
-              "name": "unit",
-              "note": "target is the object to look at; x, y and z are not read. Should it go, the unit looks at where it was last."
-            }
-          }
-        },
-        {
-          "name": "x",
-          "type": "f32",
-          "note": "Where to look, along one ground axis, in world units."
-        },
-        {
-          "name": "y",
-          "type": "f32",
-          "note": "Where to look, in height, in world units."
-        },
-        {
-          "name": "z",
-          "type": "f32",
-          "note": "Where to look, along the other ground axis, in world units."
-        },
-        {
-          "name": "target",
-          "type": "u32",
-          "note": "The network object being looked at, where one is named."
-        }
-      ]
-    },
-    {
-      "from": "4.20.0.315",
+      "until": "4.21.0.0",
       "channel": "events",
       "command": 271,
       "direction": "serverToClient",

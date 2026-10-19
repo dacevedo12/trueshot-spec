@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "4.17.0.233",
-      "until": "4.18.0.0",
+      "until": "4.18.0.271",
       "channel": "events",
       "command": 198,
       "direction": "serverToClient",
@@ -38,7 +38,7 @@
       "note": "Arriving while the match still loads, it counts as a win or loss for the player's side and the client leaves at once. Otherwise the client ends the match on its screen and sends ClientFinished, except while playing a replay."
     },
     {
-      "from": "4.20.0.315",
+      "from": "4.18.0.271",
       "channel": "events",
       "command": 198,
       "direction": "serverToClient",

@@ -1,0 +1,62 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "WaypointGroup",
+  "version": "1.0.0.126",
+  "note": "Accepted by a 1.0.0.126 client, which stayed in play. The identifiers are the harness's own, so nothing in this file comes from a real match.",
+  "bytes": "6400000000eb030000010060ec040001000040206efa3df9dbf5a8f400f463f37bf3d6",
+  "fields": {
+    "command": 100,
+    "netId": 0,
+    "syncId": 1003,
+    "movementCount": 1,
+    "movements": [
+      {
+        "header": {
+          "hasTeleportToken": 0,
+          "unused": 30256,
+          "pointCount": 4,
+          "unusedHigh": 0
+        },
+        "unit": 1073741825,
+        "teleportToken": null,
+        "flags": [
+          {
+            "xIsStep": 0,
+            "zIsStep": 0
+          },
+          {
+            "xIsStep": 0,
+            "zIsStep": 0
+          },
+          {
+            "xIsStep": 0,
+            "zIsStep": 1
+          }
+        ],
+        "firstX": -1426,
+        "firstZ": -1731,
+        "steps": [
+          {
+            "xStep": null,
+            "xWhole": -2597,
+            "zStep": null,
+            "zWhole": -2904
+          },
+          {
+            "xStep": null,
+            "xWhole": -3072,
+            "zStep": null,
+            "zWhole": -3229
+          },
+          {
+            "xStep": null,
+            "xWhole": -3205,
+            "zStep": -42,
+            "zWhole": null
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -97,20 +97,20 @@ client what its side cannot see, beyond what keeps its world consistent.
 
 <!-- messages:begin -->
 
-| Message                                                                    | Sent by | 1.0  | 4.17          | 4.20          | What it does                                                                            |
-| -------------------------------------------------------------------------- | ------- | ---- | ------------- | ------------- | --------------------------------------------------------------------------------------- |
-| [`EnterLocalSight`](../schema/messages/EnterLocalSight.json)               | server  | none | 174 on events | 174 on events | What a server sends when a unit comes into what one client can see                      |
-| [`EnterSight`](../schema/messages/EnterSight.json)                         | server  | none | 186 on events | 186 on events | What a server sends when a unit comes into what a side can see                          |
-| [`EnterTeamSight`](../schema/messages/EnterTeamSight.json)                 | server  | none | 224 on events | 224 on events | What a server sends when a unit comes into the view of a whole side                     |
-| [`FogSet`](../schema/messages/FogSet.json)                                 | server  | none | 171 on events | 171 on events | Turn the drawing of the fog of war on or off                                            |
-| [`FogToggled`](../schema/messages/FogToggled.json)                         | server  | none | 126 on events | 126 on events | Turn the drawing of the fog of war off where it is on, or on where it is off            |
-| [`LeaveLocalSight`](../schema/messages/LeaveLocalSight.json)               | server  | none | 53 on events  | 53 on events  | What a server sends when a unit passes out of what one client can see                   |
-| [`LeaveSight`](../schema/messages/LeaveSight.json)                         | server  | none | 81 on events  | 81 on events  | What a server sends when a unit passes out of what a side can see                       |
-| [`LeaveTeamSight`](../schema/messages/LeaveTeamSight.json)                 | server  | none | 225 on events | 225 on events | What a server sends when a unit passes out of the view of a whole side                  |
-| [`ParticleEnterTeamSight`](../schema/messages/ParticleEnterTeamSight.json) | server  | none | 226 on events | 226 on events | What a server sends as a particle comes into what one side can see                      |
-| [`ParticleLeaveTeamSight`](../schema/messages/ParticleLeaveTeamSight.json) | server  | none | 227 on events | 227 on events | What a server sends as a particle passes out of what one side can see                   |
-| [`RegionAdded`](../schema/messages/RegionAdded.json)                       | server  | none | 35 on events  | 35 on events  | Place a region on the ground: a patch that grants sight, blocks the way, or grows cover |
-| [`RegionMoved`](../schema/messages/RegionMoved.json)                       | server  | none | 36 on events  | 36 on events  | Move a region of sight, keeping all else about it                                       |
-| [`RegionRemoved`](../schema/messages/RegionRemoved.json)                   | server  | none | 51 on events  | 51 on events  | Take away a region RegionAdded placed                                                   |
+| Message                                                                    | Sent by | 1.0           | 4.17          | 4.18          | 4.20          | What it does                                                                            |
+| -------------------------------------------------------------------------- | ------- | ------------- | ------------- | ------------- | ------------- | --------------------------------------------------------------------------------------- |
+| [`EnterLocalSight`](../schema/messages/EnterLocalSight.json)               | server  | none          | 174 on events | 174 on events | 174 on events | What a server sends when a unit comes into what one client can see                      |
+| [`EnterSight`](../schema/messages/EnterSight.json)                         | server  | 194 on events | 186 on events | 186 on events | 186 on events | What a server sends when a unit comes into what a side can see                          |
+| [`EnterTeamSight`](../schema/messages/EnterTeamSight.json)                 | server  | none          | 224 on events | 224 on events | 224 on events | What a server sends when a unit comes into the view of a whole side                     |
+| [`FogSet`](../schema/messages/FogSet.json)                                 | server  | none          | 171 on events | 171 on events | 171 on events | Turn the drawing of the fog of war on or off                                            |
+| [`FogToggled`](../schema/messages/FogToggled.json)                         | server  | none          | 126 on events | 126 on events | 126 on events | Turn the drawing of the fog of war off where it is on, or on where it is off            |
+| [`LeaveLocalSight`](../schema/messages/LeaveLocalSight.json)               | server  | none          | 53 on events  | 53 on events  | 53 on events  | What a server sends when a unit passes out of what one client can see                   |
+| [`LeaveSight`](../schema/messages/LeaveSight.json)                         | server  | 84 on events  | 81 on events  | 81 on events  | 81 on events  | What a server sends when a unit passes out of what a side can see                       |
+| [`LeaveTeamSight`](../schema/messages/LeaveTeamSight.json)                 | server  | none          | 225 on events | 225 on events | 225 on events | What a server sends when a unit passes out of the view of a whole side                  |
+| [`ParticleEnterTeamSight`](../schema/messages/ParticleEnterTeamSight.json) | server  | none          | 226 on events | 226 on events | 226 on events | What a server sends as a particle comes into what one side can see                      |
+| [`ParticleLeaveTeamSight`](../schema/messages/ParticleLeaveTeamSight.json) | server  | none          | 227 on events | 227 on events | 227 on events | What a server sends as a particle passes out of what one side can see                   |
+| [`RegionAdded`](../schema/messages/RegionAdded.json)                       | server  | none          | 35 on events  | 35 on events  | 35 on events  | Place a region on the ground: a patch that grants sight, blocks the way, or grows cover |
+| [`RegionMoved`](../schema/messages/RegionMoved.json)                       | server  | none          | 36 on events  | 36 on events  | 36 on events  | Move a region of sight, keeping all else about it                                       |
+| [`RegionRemoved`](../schema/messages/RegionRemoved.json)                   | server  | none          | 51 on events  | 51 on events  | 51 on events  | Take away a region RegionAdded placed                                                   |
 
 <!-- messages:end -->

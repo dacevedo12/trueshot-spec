@@ -6,27 +6,6 @@
   "revisions": [
     {
       "from": "4.17.0.233",
-      "until": "4.18.0.0",
-      "channel": "events",
-      "command": 105,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "targets",
-          "type": "array",
-          "count": 5,
-          "items": {
-            "name": "target",
-            "type": "u32",
-            "note": "A unit."
-          },
-          "note": "Five units."
-        }
-      ]
-    },
-    {
-      "from": "4.20.0.315",
       "until": "4.21.0.0",
       "channel": "events",
       "command": 105,

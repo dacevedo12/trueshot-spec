@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "4.17.0.233",
-      "until": "4.18.0.0",
+      "until": "4.18.0.271",
       "channel": "events",
       "command": 157,
       "direction": "serverToClient",
@@ -55,7 +55,7 @@
       "note": "A client matches name exactly against the map's turrets. With no match it only removes any object holding the id; a matched turret missing or dead is rebuilt before it takes the id."
     },
     {
-      "from": "4.20.0.315",
+      "from": "4.18.0.271",
       "channel": "events",
       "command": 157,
       "direction": "serverToClient",

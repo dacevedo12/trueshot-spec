@@ -5,22 +5,22 @@
   "note": "What a server sends to move units. It carries a number a client returns to say it has taken the group in. The header carries zero or names the object this is about, and a client accepts either.",
   "revisions": [
     {
-      "from": "4.17.0.233",
-      "until": "4.18.0.0",
-      "channel": "transient",
-      "command": 97,
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 100,
       "direction": "serverToClient",
-      "reliability": "unreliable",
+      "reliability": "reliable",
       "fields": [
         {
           "name": "syncId",
           "type": "u32",
-          "note": "Names this group. A client returns it to say the group arrived."
+          "note": "The number of this statement; a client applies a path to a unit only where it is not behind the last the unit took."
         },
         {
           "name": "movementCount",
           "type": "u16",
-          "note": "How many units the group moves."
+          "note": "How many paths follow. A client reads the field as signed, so above 32767 it reads none, as it does for zero, and still answers."
         },
         {
           "name": "movements",
@@ -28,14 +28,136 @@
           "count": "movementCount",
           "items": {
             "name": "movement",
-            "type": "struct",
-            "struct": "Movement"
-          }
+            "type": "record",
+            "fields": [
+              {
+                "name": "header",
+                "type": "bits",
+                "size": 4,
+                "bits": [
+                  {
+                    "name": "hasTeleportToken",
+                    "width": 1,
+                    "note": "Set where a teleport token follows the unit."
+                  },
+                  {
+                    "name": "unused",
+                    "width": 15,
+                    "note": "Carries nothing."
+                  },
+                  {
+                    "name": "pointCount",
+                    "width": 7,
+                    "note": "How many points the path has, from 1 to 127. A client reads nothing further of a group whose entry gives 0."
+                  },
+                  {
+                    "name": "unusedHigh",
+                    "width": 9,
+                    "note": "Carries nothing."
+                  }
+                ]
+              },
+              {
+                "name": "unit",
+                "type": "u32",
+                "note": "The unit the path is for. A client that does not hold it misreads every entry after it."
+              },
+              {
+                "name": "teleportToken",
+                "type": "u8",
+                "present": {
+                  "when": "header.hasTeleportToken"
+                },
+                "note": "Where it differs from the one the unit holds, the unit is put at the first point rather than walking there."
+              },
+              {
+                "name": "flags",
+                "type": "bitArray",
+                "count": {
+                  "field": "header.pointCount",
+                  "minus": 1
+                },
+                "bits": [
+                  {
+                    "name": "xIsStep",
+                    "width": 1
+                  },
+                  {
+                    "name": "zIsStep",
+                    "width": 1
+                  }
+                ],
+                "note": "Whether each coordinate of the points after the first is a step from the point before it."
+              },
+              {
+                "name": "firstX",
+                "type": "i16",
+                "note": "The first point, along one ground axis, in the map's path coordinates."
+              },
+              {
+                "name": "firstZ",
+                "type": "i16",
+                "note": "Along the other ground axis."
+              },
+              {
+                "name": "steps",
+                "type": "array",
+                "count": {
+                  "field": "header.pointCount",
+                  "minus": 1
+                },
+                "items": {
+                  "name": "step",
+                  "type": "record",
+                  "fields": [
+                    {
+                      "name": "xStep",
+                      "type": "i8",
+                      "present": {
+                        "when": "flags[step].xIsStep"
+                      },
+                      "note": "A step from the point before, along one axis."
+                    },
+                    {
+                      "name": "xWhole",
+                      "type": "i16",
+                      "present": {
+                        "when": "flags[step].xIsStep",
+                        "equals": 0
+                      },
+                      "note": "The coordinate afresh."
+                    },
+                    {
+                      "name": "zStep",
+                      "type": "i8",
+                      "present": {
+                        "when": "flags[step].zIsStep"
+                      },
+                      "note": "A step along the other axis."
+                    },
+                    {
+                      "name": "zWhole",
+                      "type": "i16",
+                      "present": {
+                        "when": "flags[step].zIsStep",
+                        "equals": 0
+                      },
+                      "note": "The coordinate afresh."
+                    }
+                  ]
+                },
+                "note": "Every point after the first."
+              }
+            ]
+          },
+          "note": "One path for each unit."
         }
-      ]
+      ],
+      "note": "What a server sends to set units walking paths, which each walks at its own speed."
     },
     {
-      "from": "4.20.0.315",
+      "from": "4.17.0.233",
+      "until": "4.21.0.0",
       "channel": "transient",
       "command": 97,
       "direction": "serverToClient",

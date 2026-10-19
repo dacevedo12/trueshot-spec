@@ -75,7 +75,7 @@
     },
     {
       "from": "4.17.0.233",
-      "until": "4.18.0.0",
+      "until": "4.18.0.271",
       "channel": "events",
       "command": 76,
       "direction": "serverToClient",
@@ -176,7 +176,7 @@
       "note": "The champion takes the id in champion, not the header's; a client first removes any object holding that id. For the client's own seat, name also becomes its own player's name. A client drops the message while its map's navigation data is unloaded, as early in a reconnection."
     },
     {
-      "from": "4.20.0.315",
+      "from": "4.18.0.271",
       "channel": "events",
       "command": 76,
       "direction": "serverToClient",
