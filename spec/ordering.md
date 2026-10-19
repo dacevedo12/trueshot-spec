@@ -29,6 +29,7 @@ The messages creating a unit travel reliably on the events channel, while
 so either can overtake the message creating the unit it names.
 
 <!-- binding: replication-channel -->
+<!-- by range -->*Ranges add to this: [4.20](bindings/4-20-0-315/ordering.md).*
 
 A client skips
 a unit it does not hold, and answers no batch that named one (see below), so a

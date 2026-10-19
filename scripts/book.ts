@@ -20,6 +20,7 @@ import {
 } from "node:fs";
 import { join } from "node:path";
 import { compare, ranges as coveredRanges } from "./schema.ts";
+import { rangeName, rangeTable } from "./tables.ts";
 
 interface Range {
   readonly from: string;
@@ -34,7 +35,6 @@ const read = (path: string): string => readFileSync(join(ROOT, path), "utf8");
 
 const ranges: Range[] = coveredRanges();
 const slug = (build: string): string => build.replace(/\./g, "-");
-const short = (r: Range): string => r.from.split(".").slice(0, 2).join(".");
 
 // The chapters, in the order IMPLEMENTING.md gives them.
 const order = read("IMPLEMENTING.md").split("## Reading order")[1] ?? "";
@@ -162,40 +162,11 @@ function relink(text: string, base: string): string {
   });
 }
 
-// A table of messages keeps the columns that hold for this range, and the rows
-// of messages the range has.
-function narrow(table: string, range: Range): string {
-  const rows = table.split("\n").filter((l) => l.startsWith("|"));
-  const cells = (row: string): string[] =>
-    row
-      .split("|")
-      .slice(1, -1)
-      .map((c) => c.trim());
-  const head = cells(rows[0] ?? "");
-  const own = head.indexOf(short(range));
-  if (own === -1) return table;
-  const keep = head
-    .map((_, i) => i)
-    .filter((i) => i < 2 || i === own || i === head.length - 1);
-  const pick = (row: string): string =>
-    `| ${keep.map((i) => cells(row)[i] ?? "").join(" | ")} |`;
-  const body = rows.slice(2).filter((row) => cells(row)[own] !== "none");
-  const title = (i: number): string =>
-    i === own ? "Command" : (head[i] ?? "");
-  // Dashes set each column's share of the width, and the colons align it left.
-  const share = [28, 8, 18, 46];
-  const rule = keep
-    .map((_, i) => `:${"-".repeat(share[i] ?? 10)}`)
-    .join(" | ");
-  return [
-    `| ${keep.map(title).join(" | ")} |`,
-    `| ${rule} |`,
-    ...body.map(pick),
-  ].join("\n");
-}
-
 function chapterFor(chapter: string, range: Range): string {
   let text = read(`spec/${chapter}.md`);
+  // The line pointing a reader on the repository at the bindings goes; the
+  // book sets the entries in place.
+  text = text.replace(/^<!-- by range -->.*\n/gm, "");
   // A binding's links are written from where the binding sits.
   const entries = bindingsFor(range).map((b) => ({
     base: b.dir,
@@ -214,7 +185,7 @@ function chapterFor(chapter: string, range: Range): string {
   );
   text = text.replace(
     /<!-- messages:begin -->([\s\S]*?)<!-- messages:end -->/,
-    (_, table: string) => narrow(table.trim(), range),
+    () => rangeTable(chapter, range, "../schema/messages/"),
   );
   text = text.replace(/^# (.+)$/m, `# $1 {#chapter-${chapter}}`);
   return relink(text, "spec");
@@ -228,6 +199,48 @@ function appendix(range: Range): string {
   return relink(text, "spec/reference");
 }
 
+// The opening every book shares, from IMPLEMENTING.md: the order the
+// chapters fall in, then its advice on checking work and on gaps.
+const preface = ((): string => {
+  const [intro = "", reading = ""] =
+    read("IMPLEMENTING.md").split("## Reading order");
+  const blocks = reading.split(/\n\n+/).map((b) => b.trim());
+  const parts = blocks.flatMap((lead, i) => {
+    if (!lead.endsWith(":")) return [];
+    const named = [
+      ...(blocks[i + 1] ?? "").matchAll(
+        /\[([^\]]+)\]\(spec\/([a-z-]+)\.md\)/g,
+      ),
+    ]
+      .map((m) => ({ title: m[1] ?? "", chapter: m[2] ?? "" }))
+      .filter((c) => c.chapter !== "versions");
+    const first = named[0];
+    const last = named[named.length - 1];
+    if (first === undefined || last === undefined) return [];
+    const link = (c: { title: string; chapter: string }): string =>
+      `[${c.title}](#chapter-${c.chapter})`;
+    const span =
+      first === last ? link(first) : `${link(first)} to ${link(last)}`;
+    return [`- ${lead.replace(/\s+/g, " ")} ${span}.`];
+  });
+  const advice = intro
+    .split(/\n\n+/)
+    .map((b) => b.trim())
+    .filter((b) =>
+      /^(Check your work|Field layouts|If the specification)/.test(b),
+    );
+  return relink(
+    [
+      "The chapters run in this order:",
+      "",
+      ...parts,
+      "",
+      advice.join("\n\n"),
+    ].join("\n"),
+    ".",
+  );
+})();
+
 mkdirSync(join(ROOT, "dist", "book"), { recursive: true });
 for (const range of ranges) {
   const span =
@@ -236,7 +249,7 @@ for (const range of ranges) {
       : `${range.from} up to ${range.until}`;
   const front = [
     "---",
-    `title: "Trueshot ${short(range)}"`,
+    `title: "Trueshot ${rangeName(range)}"`,
     `subtitle: "The wire protocol of client builds ${span}"`,
     "toc: true",
     "---",
@@ -260,6 +273,8 @@ for (const range of ranges) {
     "each of them. It is put together from the specification's chapters, with",
     "what these builds alone do set in place, and it ends with every message they",
     "send or take. The definitions it links to are the record it is drawn from.",
+    "",
+    preface,
   ].join("\n");
   const body = [
     about,

@@ -78,7 +78,8 @@ Then the systems a match is played with, in any order:
     watches over its connection.
 
 Each system document ends with a table of its messages, generated from
-`schema/`, with the command and channel each takes in every range of versions.
+`schema/`, with the ranges of versions that define each. The page for a range
+gives the command and channel each takes there.
 
 The transport is ENet 1.2.5 except where [Transport](spec/transport.md) says
 otherwise. Above the transport, the specification covers registering, the

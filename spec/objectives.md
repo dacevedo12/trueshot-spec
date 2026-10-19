@@ -18,11 +18,13 @@ On a map won on score, a server binds each capture point to a unit with
 `CapturePointChanged`, and `TeamScore` sets each side's score.
 
 <!-- binding: capture-points -->
+<!-- by range -->*Ranges add to this: [4.17](bindings/4-17-0-233/objectives.md).*
 
 A server can name the unit holding the Ascension with `AscendedUnit`, and send
 `RespawnPoint` about points a champion returns to life at.
 
 <!-- binding: respawn-points -->
+<!-- by range -->*Ranges add to this: [4.17](bindings/4-17-0-233/objectives.md).*
 
 ## Events the match is told about
 
@@ -35,17 +37,17 @@ it, and each sort's note in its definition says what a client shows for it.
 
 <!-- messages:begin -->
 
-| Message                                                              | Sent by | 1.0  | 4.17          | 4.18          | 4.20          | What it does                                                                              |
-| -------------------------------------------------------------------- | ------- | ---- | ------------- | ------------- | ------------- | ----------------------------------------------------------------------------------------- |
-| [`AscendedUnit`](../schema/messages/AscendedUnit.json)               | server  | none | 292 on events | 292 on events | 292 on events | Name the unit that holds the Ascension                                                    |
-| [`CampCleared`](../schema/messages/CampCleared.json)                 | server  | none | 195 on events | none          | 195 on events | What a server sends as a camp of units that belong to no side is emptied                  |
-| [`CampMarker`](../schema/messages/CampMarker.json)                   | server  | none | 290 on events | 290 on events | 290 on events | Place a camp on the map and say how it is drawn                                           |
-| [`CampOpened`](../schema/messages/CampOpened.json)                   | server  | none | 233 on events | 233 on events | 233 on events | Open a camp of units that belong to no side                                               |
-| [`CampTimer`](../schema/messages/CampTimer.json)                     | server  | none | 278 on events | 278 on events | 278 on events | What a server sends a client watching a match to set when a camp is next due              |
-| [`CapturePointChanged`](../schema/messages/CapturePointChanged.json) | server  | none | 211 on events | 211 on events | 211 on events | What a server sends when something changes about a point one side can take from the other |
-| [`DragonBuffCount`](../schema/messages/DragonBuffCount.json)         | server  | none | none          | none          | 300 on events | Say how many dragon buffs a side holds                                                    |
-| [`RespawnPoint`](../schema/messages/RespawnPoint.json)               | server  | none | 213 on events | 213 on events | 213 on events | What a server sends about the points a champion can choose to return to life at           |
-| [`TeamScore`](../schema/messages/TeamScore.json)                     | server  | none | 212 on events | 212 on events | 212 on events | Set a side's score, where a match is won on score                                         |
-| [`WorldEvent`](../schema/messages/WorldEvent.json)                   | server  | none | 69 on events  | 69 on events  | 69 on events  | Say something happened that the whole match is told about                                 |
+| Message                                                              | Sent by | Ranges     | What it does                                                                              |
+| -------------------------------------------------------------------- | ------- | ---------- | ----------------------------------------------------------------------------------------- |
+| [`AscendedUnit`](../schema/messages/AscendedUnit.json)               | server  | 4.17–4.20  | Name the unit that holds the Ascension                                                    |
+| [`CampCleared`](../schema/messages/CampCleared.json)                 | server  | 4.17, 4.20 | What a server sends as a camp of units that belong to no side is emptied                  |
+| [`CampMarker`](../schema/messages/CampMarker.json)                   | server  | 4.17–4.20  | Place a camp on the map and say how it is drawn                                           |
+| [`CampOpened`](../schema/messages/CampOpened.json)                   | server  | 4.17–4.20  | Open a camp of units that belong to no side                                               |
+| [`CampTimer`](../schema/messages/CampTimer.json)                     | server  | 4.17–4.20  | What a server sends a client watching a match to set when a camp is next due              |
+| [`CapturePointChanged`](../schema/messages/CapturePointChanged.json) | server  | 4.17–4.20  | What a server sends when something changes about a point one side can take from the other |
+| [`DragonBuffCount`](../schema/messages/DragonBuffCount.json)         | server  | 4.20       | Say how many dragon buffs a side holds                                                    |
+| [`RespawnPoint`](../schema/messages/RespawnPoint.json)               | server  | 4.17–4.20  | What a server sends about the points a champion can choose to return to life at           |
+| [`TeamScore`](../schema/messages/TeamScore.json)                     | server  | 4.17–4.20  | Set a side's score, where a match is won on score                                         |
+| [`WorldEvent`](../schema/messages/WorldEvent.json)                   | server  | 4.17–4.20  | Say something happened that the whole match is told about                                 |
 
 <!-- messages:end -->

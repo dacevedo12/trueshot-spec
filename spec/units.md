@@ -31,6 +31,7 @@ Several of these arrive on their own or inside the `EnterSight` that brings the
 unit into view (see [Vision](vision.md)): a client takes either.
 
 <!-- binding: before-selection -->
+<!-- by range -->*Ranges add to this: [4.17](bindings/4-17-0-233/units.md).*
 
 `CharacterPreload` has a client load a character's art ahead of need.
 
@@ -45,32 +46,33 @@ A server can tell a client what a bot is thinking (`BotDebug`), weighing
 (`BotTargets`) or doing (`BotState`).
 
 <!-- binding: bots -->
+<!-- by range -->*Ranges add to this: [4.17](bindings/4-17-0-233/units.md).*
 
 ## Messages
 
 <!-- messages:begin -->
 
-| Message                                                          | Sent by | 1.0          | 4.17          | 4.18          | 4.20          | What it does                                                                                  |
-| ---------------------------------------------------------------- | ------- | ------------ | ------------- | ------------- | ------------- | --------------------------------------------------------------------------------------------- |
-| [`BotDebug`](../schema/messages/BotDebug.json)                   | server  | none         | 19 on events  | 19 on events  | 19 on events  | What a server sends describing what a bot is thinking                                         |
-| [`BotState`](../schema/messages/BotState.json)                   | server  | none         | 170 on events | 170 on events | 170 on events | What a server sends naming a bot's state                                                      |
-| [`BotTargets`](../schema/messages/BotTargets.json)               | server  | none         | 105 on events | 105 on events | 105 on events | What a server sends naming the units a bot is weighing                                        |
-| [`ChampionRemoved`](../schema/messages/ChampionRemoved.json)     | server  | none         | 272 on events | 272 on events | 272 on events | Take a champion out of the world                                                              |
-| [`CharacterPreload`](../schema/messages/CharacterPreload.json)   | server  | none         | 138 on events | 138 on events | 138 on events | Have a character and a skin of it loaded ahead of need                                        |
-| [`CreateChampion`](../schema/messages/CreateChampion.json)       | server  | 79 on events | 76 on events  | 76 on events  | 76 on events  | Put a champion on the field                                                                   |
-| [`CreateFollower`](../schema/messages/CreateFollower.json)       | server  | none         | 241 on events | 241 on events | 241 on events | Put an object on the field that follows a unit                                                |
-| [`CreateNeutral`](../schema/messages/CreateNeutral.json)         | server  | none         | 99 on events  | 99 on events  | 99 on events  | Put a unit that belongs to no side on the field                                               |
-| [`CreateTurret`](../schema/messages/CreateTurret.json)           | server  | none         | 157 on events | 157 on events | 157 on events | Put a turret on the field                                                                     |
-| [`FollowerMaster`](../schema/messages/FollowerMaster.json)       | server  | none         | 242 on events | 242 on events | 242 on events | Change which unit a following object follows                                                  |
-| [`MapProp`](../schema/messages/MapProp.json)                     | server  | none         | 208 on events | none          | 208 on events | Place a prop on the map: a thing that stands there and is looked at rather than one that acts |
-| [`MapPropChanged`](../schema/messages/MapPropChanged.json)       | server  | none         | 209 on events | none          | 209 on events | Change something about a prop already on the map                                              |
-| [`MarkerMoved`](../schema/messages/MarkerMoved.json)             | server  | none         | 276 on events | 276 on events | 276 on events | Move a marker (SpawnMarker) from one place toward another                                     |
-| [`SpawnBot`](../schema/messages/SpawnBot.json)                   | server  | none         | 207 on events | 207 on events | 207 on events | Create a champion played by a bot                                                             |
-| [`SpawnFromBarracks`](../schema/messages/SpawnFromBarracks.json) | server  | none         | 3 on events   | 3 on events   | 3 on events   | Put a unit on the field from the place its side sends them out of                             |
-| [`SpawnMarker`](../schema/messages/SpawnMarker.json)             | server  | none         | 256 on events | 256 on events | 256 on events | Create an unseen object at a place, which other messages can then name                        |
-| [`SpawnPet`](../schema/messages/SpawnPet.json)                   | server  | none         | 55 on events  | 55 on events  | 55 on events  | Put a pet on the field                                                                        |
-| [`SpawnTurret`](../schema/messages/SpawnTurret.json)             | server  | none         | 291 on events | 291 on events | 291 on events | Create a turret of its own choosing                                                           |
-| [`SpawnUnit`](../schema/messages/SpawnUnit.json)                 | server  | none         | 124 on events | 124 on events | 124 on events | Put a minion-like unit on the field, such as a ward                                           |
-| [`TeamChanged`](../schema/messages/TeamChanged.json)             | server  | none         | 215 on events | 215 on events | 215 on events | Move a unit to another side                                                                   |
+| Message                                                          | Sent by | Ranges      | What it does                                                                                  |
+| ---------------------------------------------------------------- | ------- | ----------- | --------------------------------------------------------------------------------------------- |
+| [`BotDebug`](../schema/messages/BotDebug.json)                   | server  | 4.17–4.20   | What a server sends describing what a bot is thinking                                         |
+| [`BotState`](../schema/messages/BotState.json)                   | server  | 4.17–4.20   | What a server sends naming a bot's state                                                      |
+| [`BotTargets`](../schema/messages/BotTargets.json)               | server  | 4.17–4.20   | What a server sends naming the units a bot is weighing                                        |
+| [`ChampionRemoved`](../schema/messages/ChampionRemoved.json)     | server  | 4.17–4.20   | Take a champion out of the world                                                              |
+| [`CharacterPreload`](../schema/messages/CharacterPreload.json)   | server  | 4.17–4.20   | Have a character and a skin of it loaded ahead of need                                        |
+| [`CreateChampion`](../schema/messages/CreateChampion.json)       | server  | every range | Put a champion on the field                                                                   |
+| [`CreateFollower`](../schema/messages/CreateFollower.json)       | server  | 4.17–4.20   | Put an object on the field that follows a unit                                                |
+| [`CreateNeutral`](../schema/messages/CreateNeutral.json)         | server  | 4.17–4.20   | Put a unit that belongs to no side on the field                                               |
+| [`CreateTurret`](../schema/messages/CreateTurret.json)           | server  | 4.17–4.20   | Put a turret on the field                                                                     |
+| [`FollowerMaster`](../schema/messages/FollowerMaster.json)       | server  | 4.17–4.20   | Change which unit a following object follows                                                  |
+| [`MapProp`](../schema/messages/MapProp.json)                     | server  | 4.17, 4.20  | Place a prop on the map: a thing that stands there and is looked at rather than one that acts |
+| [`MapPropChanged`](../schema/messages/MapPropChanged.json)       | server  | 4.17, 4.20  | Change something about a prop already on the map                                              |
+| [`MarkerMoved`](../schema/messages/MarkerMoved.json)             | server  | 4.17–4.20   | Move a marker (SpawnMarker) from one place toward another                                     |
+| [`SpawnBot`](../schema/messages/SpawnBot.json)                   | server  | 4.17–4.20   | Create a champion played by a bot                                                             |
+| [`SpawnFromBarracks`](../schema/messages/SpawnFromBarracks.json) | server  | 4.17–4.20   | Put a unit on the field from the place its side sends them out of                             |
+| [`SpawnMarker`](../schema/messages/SpawnMarker.json)             | server  | 4.17–4.20   | Create an unseen object at a place, which other messages can then name                        |
+| [`SpawnPet`](../schema/messages/SpawnPet.json)                   | server  | 4.17–4.20   | Put a pet on the field                                                                        |
+| [`SpawnTurret`](../schema/messages/SpawnTurret.json)             | server  | 4.17–4.20   | Create a turret of its own choosing                                                           |
+| [`SpawnUnit`](../schema/messages/SpawnUnit.json)                 | server  | 4.17–4.20   | Put a minion-like unit on the field, such as a ward                                           |
+| [`TeamChanged`](../schema/messages/TeamChanged.json)             | server  | 4.17–4.20   | Move a unit to another side                                                                   |
 
 <!-- messages:end -->

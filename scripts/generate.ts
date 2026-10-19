@@ -22,15 +22,14 @@ import {
 import { dirname, join } from "node:path";
 import * as prettier from "prettier";
 import { covers, ranges as coveredRanges } from "./schema.ts";
-import type { Amount, Channel, Field, Presence, Revision } from "./schema.ts";
-
-interface MessageFile {
-  readonly file: string;
-  readonly message: string;
-  readonly system: string;
-  readonly note?: string;
-  readonly revisions: readonly Revision[];
-}
+import type { Amount, Channel, Field, Presence } from "./schema.ts";
+import {
+  by,
+  chapterTable,
+  messages,
+  rangeName,
+  revisionAt,
+} from "./tables.ts";
 
 interface Range {
   readonly from: string;
@@ -53,50 +52,14 @@ const ranges: Range[] = coveredRanges().map((r) => ({
 }));
 const label = (r: Range): string =>
   r.until === undefined ? `${r.from} on` : `${r.from} to ${r.until}`;
-const short = (r: Range): string => r.from.split(".").slice(0, 2).join(".");
 const systems = json<{ properties: { system: { enum: string[] } } }>(
   "schema/meta/message.json",
 ).properties.system.enum;
-const messages: MessageFile[] = readdirSync(join(ROOT, "schema/messages"))
-  .filter((f) => f.endsWith(".json"))
-  .sort()
-  .map((file) => ({
-    file,
-    ...json<Omit<MessageFile, "file">>(`schema/messages/${file}`),
-  }));
-
-const revisionAt = (m: MessageFile, build: string): Revision | undefined =>
-  m.revisions.find((r) => covers(r, build));
-
-// A note's first sentence; "What a server sends to do something" becomes
-// "Do something", and any other opening is kept whole.
-const firstSentence = (note = ""): string => {
-  const end = note.search(/\.(\s|$)/);
-  const t = end >= 0 ? note.slice(0, end) : note;
-  const m = /^What (?:a|the) (?:server|client) sends to (.*)$/.exec(t);
-  const rest = m?.[1];
-  return rest === undefined ? t : rest.charAt(0).toUpperCase() + rest.slice(1);
-};
-const by = (r: Revision | undefined): string =>
-  r?.direction === "clientToServer" ? "client" : "server";
-const cell = (m: MessageFile, range: Range): string => {
-  const r = revisionAt(m, range.from);
-  return r === undefined ? "none" : `${r.command} on ${r.channel}`;
-};
-
 // 1. The tables in the system documents.
 const BEGIN = "<!-- messages:begin -->";
 const END = "<!-- messages:end -->";
-const table = (system: string, link: string): string => {
-  const rows = messages.filter((m) => m.system === system);
-  const head = `| Message | Sent by | ${ranges.map(short).join(" | ")} | What it does |`;
-  const rule = `| --- | --- | ${ranges.map(() => "---").join(" | ")} | --- |`;
-  const body = rows.map(
-    (m) =>
-      `| [\`${m.message}\`](${link}${m.file}) | ${by(m.revisions[0])} | ${ranges.map((r) => cell(m, r)).join(" | ")} | ${firstSentence(m.note)} |`,
-  );
-  return [BEGIN, "", head, rule, ...body, "", END].join("\n");
-};
+const table = (system: string, link: string): string =>
+  [BEGIN, "", chapterTable(system, ranges, link), "", END].join("\n");
 
 const stale: string[] = [];
 // Formatted as the repository formats markdown, so check:format agrees.
@@ -122,6 +85,48 @@ const flush = async (path: string, raw: string): Promise<void> => {
   console.log("wrote", path);
 };
 
+// Under each place a chapter marks for its bindings, a line links every
+// binding with an entry there, so a reader on the repository sees where a
+// range adds to the chapter; the books set the entries in place instead.
+const BY_RANGE = "<!-- by range -->";
+const bindingDirs = existsSync(join(ROOT, "spec/bindings"))
+  ? readdirSync(join(ROOT, "spec/bindings")).sort()
+  : [];
+const bindingLabel = (dir: string): string => {
+  const [from = "", until] = dir.split("--");
+  const name = (b: string): string => b.split("-").slice(0, 2).join(".");
+  return until === undefined ? name(from) : `${name(from)} to ${name(until)}`;
+};
+const withBindings = (chapter: string, text: string): string =>
+  text
+    .replace(new RegExp(`^${BY_RANGE}.*\\n`, "gm"), "")
+    .replace(
+      /^<!-- binding: ([a-z][a-z0-9-]*) -->$/gm,
+      (line, key: string) => {
+        const links = bindingDirs
+          .filter((dir) => {
+            const file = join(ROOT, "spec/bindings", dir, `${chapter}.md`);
+            return (
+              existsSync(file) &&
+              readFileSync(file, "utf8").includes(`<!-- place: ${key} -->`)
+            );
+          })
+          .map(
+            (dir) => `[${bindingLabel(dir)}](bindings/${dir}/${chapter}.md)`,
+          );
+        return links.length === 0
+          ? line
+          : `${line}\n${BY_RANGE}*Ranges add to this: ${links.join(", ")}.*`;
+      },
+    );
+
+for (const file of readdirSync(join(ROOT, "spec")).sort()) {
+  const chapter = file.replace(/\.md$/, "");
+  if (!file.endsWith(".md") || systems.includes(chapter)) continue;
+  const text = readFileSync(join(ROOT, "spec", file), "utf8");
+  put(`spec/${file}`, withBindings(chapter, text));
+}
+
 for (const s of systems) {
   const path = `spec/${s}.md`;
   const full = join(ROOT, path);
@@ -138,9 +143,12 @@ for (const s of systems) {
   }
   put(
     path,
-    text.slice(0, a) +
-      table(s, "../schema/messages/") +
-      text.slice(b + END.length),
+    withBindings(
+      s,
+      text.slice(0, a) +
+        table(s, "../schema/messages/") +
+        text.slice(b + END.length),
+    ),
   );
 }
 
@@ -155,7 +163,7 @@ for (const s of systems) {
   if (a < 0 || b < 0) stale.push(`${path} (no ${open} block)`);
   else {
     const rows = ranges.map(
-      (r) => `| ${short(r)} | ${r.from} | ${r.until ?? "on"} |`,
+      (r) => `| ${rangeName(r)} | ${r.from} | ${r.until ?? "on"} |`,
     );
     const table = [
       open,
@@ -272,7 +280,7 @@ for (const range of ranges) {
         "",
         `### ${m.message}`,
         "",
-        `Command ${r.command} on ${r.channel}, sent by the ${by(r)}, ${r.reliability}. [Definition](../../schema/messages/${m.file}).`,
+        `Command ${r.command} on ${r.channel}, ${by(r) === "both" ? "sent by either side" : `sent by the ${by(r)}`}, ${r.reliability}. [Definition](../../schema/messages/${m.file}).`,
       );
       if (r.fields.length > 0) {
         lines.push(
