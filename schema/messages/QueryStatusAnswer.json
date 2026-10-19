@@ -5,6 +5,21 @@
   "note": "What a server returns when asked whether it is ready. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 141,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "ready",
+          "type": "u8",
+          "note": "Whether the server is ready; any value but zero ends the client's wait."
+        }
+      ]
+    },
+    {
       "from": "4.17.0.233",
       "until": "4.18.0.0",
       "channel": "events",

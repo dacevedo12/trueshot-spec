@@ -29,14 +29,24 @@ class Peer {
 
 type Enet = typeof import("enet-js");
 
-// The library whose header matches the build's: one with four bytes before the
-// session id where schema/protocol.json lays them out, and one without.
+// The library whose header matches the build's, as schema/protocol.json lays
+// it out: the release's own, whose session id fills four bytes and whose peer
+// id fills two; the one-byte form; or that form after four bytes more.
 function library(layouts: Layouts): string {
-  const checked = layouts.protocol.transport.header.some(
-    (f) => f.name === "addressCheck",
-  );
-  const named =
-    Bun.env[checked ? "TRUESHOT_ENET_ADDRESS_CHECK" : "TRUESHOT_ENET_PLAIN"];
+  const header = layouts.protocol.transport.header;
+  const kind = header.some((f) => f.name === "addressCheck")
+    ? "address-check"
+    : header.some(
+          (f) => f.name === "peer" && f.type === "bits" && f.size === 2,
+        )
+      ? "stock"
+      : "plain";
+  const variable = {
+    "address-check": "TRUESHOT_ENET_ADDRESS_CHECK",
+    stock: "TRUESHOT_ENET_STOCK",
+    plain: "TRUESHOT_ENET_PLAIN",
+  }[kind];
+  const named = Bun.env[variable];
   if (named !== undefined && named !== "") return named;
   const extension =
     process.platform === "darwin"
@@ -44,7 +54,7 @@ function library(layouts: Layouts): string {
       : process.platform === "win32"
         ? "dll"
         : "so";
-  const name = checked ? "libenet-address-check" : "libenet-plain";
+  const name = `libenet-${kind}`;
   return join(
     import.meta.dir,
     "..",

@@ -5,6 +5,106 @@
   "note": "What a server sends once a client has said which build it runs: whether the two agree, which map to load, who is at the match, and everything else settled before play. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 87,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "agreement",
+          "type": "u8",
+          "note": "Must be 1: any other value has the client report a build mismatch and leave."
+        },
+        {
+          "name": "map",
+          "type": "i32",
+          "note": "Which map to load."
+        },
+        {
+          "name": "seats",
+          "type": "array",
+          "count": 12,
+          "items": {
+            "name": "seat",
+            "type": "record",
+            "fields": [
+              {
+                "name": "player",
+                "type": "i64",
+                "note": "Which player holds the place."
+              },
+              {
+                "name": "level",
+                "type": "u16",
+                "note": "What this carries is not recorded."
+              },
+              {
+                "name": "summoner",
+                "type": "u32",
+                "note": "What this carries is not recorded."
+              },
+              {
+                "name": "otherSummoner",
+                "type": "u32",
+                "note": "What this carries is not recorded."
+              },
+              {
+                "name": "flags",
+                "type": "u8",
+                "note": "What this carries is not recorded."
+              },
+              {
+                "name": "side",
+                "type": "i32",
+                "note": "What this carries is not recorded."
+              },
+              {
+                "name": "firstName",
+                "type": "string",
+                "size": 28,
+                "encoding": "utf8",
+                "note": "What this carries is not recorded."
+              },
+              {
+                "name": "secondName",
+                "type": "string",
+                "size": 28,
+                "encoding": "utf8",
+                "note": "What this carries is not recorded."
+              },
+              {
+                "name": "firstNumber",
+                "type": "i32",
+                "note": "What this carries is not recorded."
+              },
+              {
+                "name": "lastNumber",
+                "type": "i32",
+                "note": "Applied to the player the place names, where it is zero or more."
+              }
+            ]
+          },
+          "note": "Every place at the match, held or empty."
+        },
+        {
+          "name": "build",
+          "type": "string",
+          "size": 256,
+          "encoding": "utf8",
+          "note": "Which build the server serves, shown and not checked."
+        },
+        {
+          "name": "mode",
+          "type": "string",
+          "size": 128,
+          "encoding": "utf8",
+          "note": "Which way the match is played."
+        }
+      ]
+    },
+    {
       "from": "4.17.0.233",
       "until": "4.18.0.0",
       "channel": "events",

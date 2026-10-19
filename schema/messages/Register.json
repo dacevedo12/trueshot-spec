@@ -5,6 +5,38 @@
   "note": "What a client sends first. It arrives before the connection has a cipher state, so the payload travels in the clear apart from the proof.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "registration",
+      "command": 0,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "leading",
+          "type": "bytes",
+          "size": 3,
+          "note": "Arbitrary; it carries no meaning."
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "Zero."
+        },
+        {
+          "name": "playerId",
+          "type": "i64",
+          "note": "Who the sender claims to be, as its launch line names the player. The proof is what settles the claim."
+        },
+        {
+          "name": "proof",
+          "type": "i64",
+          "enciphered": true,
+          "note": "The player identifier, enciphered under the key both ends already hold."
+        }
+      ]
+    },
+    {
       "from": "4.17.0.233",
       "until": "4.18.0.0",
       "channel": "registration",

@@ -1,7 +1,7 @@
 # Transport
 
-A server and a client exchange messages over UDP, carried by a modified
-ENet 1.2.5.
+A server and a client exchange messages over UDP, carried by ENet 1.2.5 with
+the header each range's definitions give.
 
 ## Layering
 
@@ -26,8 +26,7 @@ sequence numbers, retransmission, throttling, and fragmentation behave as
 library with reference documentation rather than as a written protocol, so
 that library is what defines this behaviour.
 
-What follows is what a client does **not** accept from stock ENet. A server
-built on an unmodified ENet 1.2.5 never completes a connection.
+<!-- binding: stock -->
 
 ## The packet header
 
@@ -46,30 +45,22 @@ without.
 A client discards any datagram shorter than the `minimumDatagram` constant of
 its range. A server MUST NOT send a shorter datagram.
 
-## The connect command
-
-A client's connect command takes ENet's layout, except that two of its fields
-carry one byte of meaning each. The peer id is the first of the two bytes ENet
-gives it, and the session id is the first of the four. The bytes after each
-carry nothing a server reads, and a client fills them with anything.
-
-A server MUST take the peer id and the session id from those first bytes. The
-session id is then the byte every header carries, and a server that reads
-either field at ENet's width answers a client that never hears it.
+<!-- binding: connect-command -->
 
 ## Maximum transmission unit
 
 A client asks for a transmission unit of 1400 bytes, and discards any datagram
-whose UDP payload, packet header included, exceeds 996 bytes.
+whose UDP payload, packet header included, exceeds the
+`maximumTransmissionUnit` constant of its range.
 
-A server MUST accept a connection at a transmission unit no greater than 996
-bytes, by clamping the value the client asks for. Capping its own sending
+A server MUST accept a connection at a transmission unit no greater than that
+constant, by clamping the value the client asks for. Capping its own sending
 without clamping the negotiated value is not sufficient, because ENet derives
 fragment sizes from the negotiated value and still emits datagrams above the
 limit.
 
-A server that does not clamp loses every message whose datagram exceeds 996
-bytes, while the handshake, whose datagrams are small, still completes.
+A server that does not clamp loses every message whose datagram exceeds the
+constant, while the handshake, whose datagrams are small, still completes.
 
 ## The cipher
 

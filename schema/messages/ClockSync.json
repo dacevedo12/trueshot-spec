@@ -5,6 +5,21 @@
   "note": "What a server sends to set a client's idea of how long the match has run. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 201,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "elapsed",
+          "type": "f32",
+          "note": "How long the match has run, in seconds."
+        }
+      ]
+    },
+    {
       "from": "4.17.0.233",
       "until": "4.18.0.0",
       "channel": "events",

@@ -19,6 +19,7 @@ import {
   writeFileSync,
 } from "node:fs";
 import { join } from "node:path";
+import { compare, ranges as coveredRanges } from "./schema.ts";
 
 interface Range {
   readonly from: string;
@@ -31,9 +32,7 @@ const check = process.argv.includes("--check");
 const pdf = process.argv.includes("--pdf");
 const read = (path: string): string => readFileSync(join(ROOT, path), "utf8");
 
-const ranges = (
-  JSON.parse(read("schema/channels.json")) as { revisions: Range[] }
-).revisions;
+const ranges: Range[] = coveredRanges();
 const slug = (build: string): string => build.replace(/\./g, "-");
 const short = (r: Range): string => r.from.split(".").slice(0, 2).join(".");
 
@@ -64,26 +63,64 @@ function sections(path: string): Map<string, string> {
   return out;
 }
 
-// Every binding's sections have a place in their chapter, and every place is
-// named once.
-for (const range of ranges) {
-  const dir = `spec/bindings/${slug(range.from)}`;
-  if (!existsSync(join(ROOT, dir))) continue;
-  for (const file of readdirSync(join(ROOT, dir))) {
+// A binding is named for the first build of its range, or for a span of
+// ranges as two builds joined by "--", the second where the span stops: one
+// that holds for every range from the first build up to the second.
+interface Binding {
+  readonly dir: string;
+  readonly from: string;
+  readonly until?: string;
+}
+const unslug = (s: string): string => s.replace(/-/g, ".");
+const bindings: Binding[] = (
+  existsSync(join(ROOT, "spec/bindings"))
+    ? readdirSync(join(ROOT, "spec/bindings")).sort()
+    : []
+).map((name) => {
+  const [from = "", until] = name.split("--");
+  return {
+    dir: `spec/bindings/${name}`,
+    from: unslug(from),
+    ...(until === undefined ? {} : { until: unslug(until) }),
+  };
+});
+const appliesTo = (b: Binding, r: Range): boolean =>
+  b.until === undefined
+    ? b.from === r.from
+    : compare(r.from, b.from) >= 0 &&
+      r.until !== undefined &&
+      compare(r.until, b.until) <= 0;
+// Spans first, then the range's own, so the narrower says the last word.
+const bindingsFor = (r: Range): Binding[] =>
+  bindings
+    .filter((b) => appliesTo(b, r))
+    .sort(
+      (x, y) =>
+        (x.until === undefined ? 1 : 0) - (y.until === undefined ? 1 : 0),
+    );
+
+// Every binding names ranges that exist, its entries have a place in their
+// chapter, and every place is named once.
+for (const b of bindings) {
+  if (!ranges.some((r) => appliesTo(b, r)))
+    problems.push(
+      `${b.dir}: no range starts at that build, or lies in that span`,
+    );
+  for (const file of readdirSync(join(ROOT, b.dir))) {
     const chapter = file.replace(/\.md$/, "");
     if (!chapters.includes(chapter)) {
       problems.push(
-        `${dir}/${file}: no chapter spec/${chapter}.md in the reading order`,
+        `${b.dir}/${file}: no chapter spec/${chapter}.md in the reading order`,
       );
       continue;
     }
     const places = [...read(`spec/${chapter}.md`).matchAll(ANCHOR)].map(
       (m) => m[1],
     );
-    for (const key of sections(`${dir}/${file}`).keys()) {
+    for (const key of sections(`${b.dir}/${file}`).keys()) {
       if (!places.includes(key))
         problems.push(
-          `${dir}/${file}: "${key}" has no place in spec/${chapter}.md`,
+          `${b.dir}/${file}: "${key}" has no place in spec/${chapter}.md`,
         );
     }
   }
@@ -95,12 +132,6 @@ for (const chapter of chapters) {
   const twice = places.filter((p, i) => places.indexOf(p) !== i);
   for (const p of new Set(twice))
     problems.push(`spec/${chapter}.md: the place "${p}" is named twice`);
-}
-for (const dir of existsSync(join(ROOT, "spec/bindings"))
-  ? readdirSync(join(ROOT, "spec/bindings"))
-  : []) {
-  if (!ranges.some((r) => slug(r.from) === dir))
-    problems.push(`spec/bindings/${dir}: no range starts at that build`);
 }
 
 if (problems.length > 0) {
@@ -165,11 +196,16 @@ function narrow(table: string, range: Range): string {
 
 function chapterFor(chapter: string, range: Range): string {
   let text = read(`spec/${chapter}.md`);
-  const own = sections(`spec/bindings/${slug(range.from)}/${chapter}.md`);
   // A binding's links are written from where the binding sits.
-  const base = `spec/bindings/${slug(range.from)}`;
+  const entries = bindingsFor(range).map((b) => ({
+    base: b.dir,
+    own: sections(`${b.dir}/${chapter}.md`),
+  }));
   text = text.replace(ANCHOR, (_, key: string) =>
-    relink(own.get(key) ?? "", base),
+    entries
+      .map(({ base, own }) => relink(own.get(key) ?? "", base))
+      .filter((t) => t !== "")
+      .join("\n\n"),
   );
   // A chapter not yet split into core and bindings still names its ranges.
   text = text.replace(

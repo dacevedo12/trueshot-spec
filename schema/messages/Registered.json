@@ -5,6 +5,32 @@
   "note": "What a server answers a registration with, naming a player in the match and the seat they occupy. It shares its command value with the request it answers, which travels the other way, and it is one fixed size. Straight after a request a server sends one answer for every seat, and every one of them carries that request's build and proof back.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "registration",
+      "command": 0,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "leading",
+          "type": "bytes",
+          "size": 3,
+          "note": "Unused; a server writes zero."
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id the named player holds, from 0 to 252. A client whose own player this names takes it as its own."
+        },
+        {
+          "name": "playerId",
+          "type": "i64",
+          "note": "Who occupies that seat."
+        }
+      ]
+    },
+    {
       "from": "4.17.0.233",
       "until": "4.18.0.0",
       "channel": "registration",

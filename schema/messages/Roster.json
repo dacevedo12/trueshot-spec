@@ -5,6 +5,68 @@
   "note": "What a server sends to lay out both sides and who is on them, while the match is being put together.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "roster",
+      "command": 103,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "leading",
+          "type": "bytes",
+          "size": 3,
+          "note": "Unused; a server writes zero."
+        },
+        {
+          "name": "sideRoom",
+          "type": "u32",
+          "note": "How many seats side 100 has room for."
+        },
+        {
+          "name": "otherSideRoom",
+          "type": "u32",
+          "note": "How many side 200 has room for."
+        },
+        {
+          "name": "between",
+          "type": "bytes",
+          "size": 4,
+          "note": "Unused; a server writes zero."
+        },
+        {
+          "name": "side",
+          "type": "array",
+          "count": 24,
+          "items": {
+            "name": "player",
+            "type": "i64"
+          },
+          "note": "The players on side 100; the client copies as many as sideRoom says."
+        },
+        {
+          "name": "otherSide",
+          "type": "array",
+          "count": 24,
+          "items": {
+            "name": "player",
+            "type": "i64"
+          },
+          "note": "The players on side 200, read the same way."
+        },
+        {
+          "name": "sideTaken",
+          "type": "u32",
+          "note": "How many of side 100's places carry a player."
+        },
+        {
+          "name": "otherSideTaken",
+          "type": "u32",
+          "note": "How many on side 200."
+        }
+      ]
+    },
+    {
       "from": "4.17.0.233",
       "until": "4.18.0.0",
       "channel": "roster",

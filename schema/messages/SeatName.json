@@ -5,6 +5,40 @@
   "note": "What a server sends to say what a seat is called, while the match is being put together.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "roster",
+      "command": 102,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "leading",
+          "type": "bytes",
+          "size": 7,
+          "note": "Unused; a server writes zero."
+        },
+        {
+          "name": "player",
+          "type": "i64",
+          "note": "Whose name this is."
+        },
+        {
+          "name": "between",
+          "type": "bytes",
+          "size": 8,
+          "note": "What this carries is not recorded."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "size": "terminated",
+          "encoding": "utf8",
+          "note": "What the seat is called."
+        }
+      ]
+    },
+    {
       "from": "4.17.0.233",
       "until": "4.18.0.0",
       "channel": "roster",

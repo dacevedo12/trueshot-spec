@@ -5,6 +5,56 @@
   "note": "What a client sends to say where its view sits and which way it faces. It is sent once where a server answers it, and again and again where a server does not. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "requests",
+      "command": 48,
+      "direction": "clientToServer",
+      "reliability": "unreliable",
+      "fields": [
+        {
+          "name": "positionX",
+          "type": "f32",
+          "note": "Where the view stands, along one ground axis."
+        },
+        {
+          "name": "positionY",
+          "type": "f32",
+          "note": "Its height."
+        },
+        {
+          "name": "positionZ",
+          "type": "f32",
+          "note": "Along the other ground axis."
+        },
+        {
+          "name": "directionX",
+          "type": "f32",
+          "note": "What this carries is not recorded."
+        },
+        {
+          "name": "directionY",
+          "type": "f32",
+          "note": "What this carries is not recorded."
+        },
+        {
+          "name": "directionZ",
+          "type": "f32",
+          "note": "What this carries is not recorded."
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id the sender holds."
+        },
+        {
+          "name": "syncId",
+          "type": "u8",
+          "note": "The report's number, counting up as the view moves."
+        }
+      ]
+    },
+    {
       "from": "4.17.0.233",
       "until": "4.18.0.0",
       "channel": "requests",

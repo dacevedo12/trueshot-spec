@@ -293,6 +293,13 @@ class Match {
       header.offset,
       context,
     ).values;
+    this.capture.message(
+      "in",
+      channel.name,
+      "Register",
+      { ...header.values, ...request },
+      payload,
+    );
     if (request["proof"] !== request["playerId"]) {
       this.capture.note(
         `refused: the proof deciphers to ${String(request["proof"])}, not ${String(request["playerId"])}`,
@@ -301,7 +308,18 @@ class Match {
       return;
     }
     // The proof travels back as the bytes it arrived as.
-    const proofAt = header.offset + 3 + 4 + 8 + 4;
+    // The proof travels back as the bytes it arrived as, wherever the
+    // build's layout puts it.
+    const before = revision.fields.slice(
+      0,
+      revision.fields.findIndex((f) => f.name === "proof"),
+    );
+    const proofAt = decodeFields(
+      before,
+      payload,
+      header.offset,
+      context,
+    ).offset;
     const proof = hex(payload.subarray(proofAt, proofAt + 8));
     this.session = session;
     session.enciphered = true;
@@ -319,6 +337,15 @@ class Match {
       ANSWER,
     );
     this.#reach("registered");
+  }
+
+  // A field that is a flag in one build's layout and a run of bits holding
+  // the flag in another's.
+  #flag(field: string, message: string, run: string): Values[string] {
+    const f = this.layouts
+      .message(message)
+      .fields.find((x) => x.name === field);
+    return f?.type === "bits" ? { [run]: 1 } : 1;
   }
 
   #answer(s: Session): void {
@@ -340,7 +367,8 @@ class Match {
       s.send(
         "VersionSync",
         {
-          agreement: { buildMatches: 1 },
+          // A run of bits in some builds, a plain value of 1 in others.
+          agreement: this.#flag("agreement", "VersionSync", "buildMatches"),
           map: this.#options.map ?? 1,
           seats,
           build: `Version ${this.#setup.build} [PUBLIC]`,
@@ -406,6 +434,10 @@ class Match {
           secondsLeft: Number(m.fields["eta"] ?? 0),
           count: Number(status?.["count"] ?? 0),
           ping: Number(status?.["ping"] ?? 0),
+          status: {
+            count: Number(status?.["count"] ?? 0),
+            ping: Number(status?.["ping"] ?? 0),
+          },
           state: { ready: Number(state?.["loaded"] ?? 0) },
         },
         ANSWER,
@@ -421,6 +453,7 @@ class Match {
           champion: seat.netId,
           clientId: seat.clientId,
           who: { side: 1 },
+          side: 1,
           name: seat.name,
           asset: seat.champion,
           skin: seat.skin,

@@ -63,6 +63,7 @@ type Field =
       readonly type: "bits";
       readonly size: number;
       readonly bits: readonly BitRun[];
+      readonly endian?: Endian;
     })
   | (Common & {
       readonly type: "bitArray";
@@ -293,8 +294,47 @@ class Layouts {
   }
 }
 
-export { compare, covers, Layouts, SchemaError };
+// The ranges of versions the specification covers: the spans between every
+// build at which any definition starts or stops, wherever a packet header
+// covers them. Every build in a range is held to the same definitions.
+function ranges(): Ranged[] {
+  const lists: (readonly Ranged[])[] = [];
+  const files = (dir: string): string[] =>
+    readdirSync(join(ROOT, dir))
+      .filter((f) => f.endsWith(".json"))
+      .map((f) => join(ROOT, dir, f));
+  for (const path of [
+    join(ROOT, "protocol.json"),
+    join(ROOT, "channels.json"),
+    join(ROOT, "families.json"),
+    ...files("messages"),
+    ...files("types"),
+  ]) {
+    const doc = read<{ revisions?: Ranged[] }>(path);
+    if (doc.revisions !== undefined) lists.push(doc.revisions);
+  }
+  const protocol = lists[0] ?? [];
+  const points = [
+    ...new Set(
+      lists.flatMap((l) =>
+        l.flatMap((r) =>
+          r.until === undefined ? [r.from] : [r.from, r.until],
+        ),
+      ),
+    ),
+  ].sort(compare);
+  const out: Ranged[] = [];
+  points.forEach((from, i) => {
+    if (!protocol.some((r) => covers(r, from))) return;
+    const until = points[i + 1];
+    out.push(until === undefined ? { from } : { from, until });
+  });
+  return out;
+}
+
+export { compare, covers, Layouts, ranges, SchemaError };
 export type {
+  Ranged,
   Amount,
   BitRun,
   Channel,

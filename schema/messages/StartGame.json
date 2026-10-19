@@ -5,6 +5,33 @@
   "note": "What a server sends to begin play. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 95,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "rules",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "pausing",
+              "width": 1,
+              "note": "Set where holding the match is allowed."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ]
+    },
+    {
       "from": "4.17.0.233",
       "until": "4.18.0.0",
       "channel": "events",

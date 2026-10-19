@@ -5,6 +5,15 @@
   "note": "What a client sends once it has loaded and is ready to play. It comes unprompted, before any start of play reaches the client. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "requests",
+      "command": 85,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": []
+    },
+    {
       "from": "4.17.0.233",
       "until": "4.18.0.0",
       "channel": "requests",

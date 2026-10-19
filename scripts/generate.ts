@@ -7,6 +7,8 @@
 //    <!-- messages:begin --> and <!-- messages:end --> becomes a table of the
 //    messages whose definition names that system, with the command and channel
 //    each takes in every range of versions.
+//    Likewise the table between <!-- ranges:begin --> and <!-- ranges:end -->
+//    in spec/versions.md lists the ranges the definitions make.
 // 2. spec/reference/<first build>.md is written for each range of versions the
 //    channels are defined for: every channel, then every message by system,
 //    with its fields as that range lays them out.
@@ -19,7 +21,7 @@ import {
 } from "node:fs";
 import { dirname, join } from "node:path";
 import * as prettier from "prettier";
-import { covers } from "./schema.ts";
+import { covers, ranges as coveredRanges } from "./schema.ts";
 import type { Amount, Channel, Field, Presence, Revision } from "./schema.ts";
 
 interface MessageFile {
@@ -41,7 +43,14 @@ const check = process.argv.includes("--check");
 const json = <T>(path: string): T =>
   JSON.parse(readFileSync(join(ROOT, path), "utf8")) as T;
 
-const ranges = json<{ revisions: Range[] }>("schema/channels.json").revisions;
+// Each range with the channels that cover it, for its reference page.
+const channelRevisions = json<{ revisions: Range[] }>(
+  "schema/channels.json",
+).revisions;
+const ranges: Range[] = coveredRanges().map((r) => ({
+  ...r,
+  channels: channelRevisions.find((c) => covers(c, r.from))?.channels ?? [],
+}));
 const label = (r: Range): string =>
   r.until === undefined ? `${r.from} on` : `${r.from} to ${r.until}`;
 const short = (r: Range): string => r.from.split(".").slice(0, 2).join(".");
@@ -133,6 +142,32 @@ for (const s of systems) {
       table(s, "../schema/messages/") +
       text.slice(b + END.length),
   );
+}
+
+// 1b. The table of ranges in spec/versions.md.
+{
+  const path = "spec/versions.md";
+  const text = readFileSync(join(ROOT, path), "utf8");
+  const open = "<!-- ranges:begin -->";
+  const close = "<!-- ranges:end -->";
+  const a = text.indexOf(open);
+  const b = text.indexOf(close);
+  if (a < 0 || b < 0) stale.push(`${path} (no ${open} block)`);
+  else {
+    const rows = ranges.map(
+      (r) => `| ${short(r)} | ${r.from} | ${r.until ?? "on"} |`,
+    );
+    const table = [
+      open,
+      "",
+      "| Range | From | Up to |",
+      "| --- | --- | --- |",
+      ...rows,
+      "",
+      close,
+    ].join("\n");
+    put(path, text.slice(0, a) + table + text.slice(b + close.length));
+  }
 }
 
 // 2. One reference page per range of versions.

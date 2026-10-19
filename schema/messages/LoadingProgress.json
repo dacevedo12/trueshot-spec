@@ -5,6 +5,75 @@
   "note": "What a client sends while a match loads, saying how far it has got. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "requests",
+      "command": 25,
+      "direction": "clientToServer",
+      "reliability": "unreliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id the sender holds."
+        },
+        {
+          "name": "playerId",
+          "type": "i64",
+          "note": "Zero."
+        },
+        {
+          "name": "percent",
+          "type": "f32",
+          "note": "How far loading has got, to 100."
+        },
+        {
+          "name": "eta",
+          "type": "f32",
+          "note": "How many seconds it expects to take still."
+        },
+        {
+          "name": "status",
+          "type": "bits",
+          "size": 4,
+          "bits": [
+            {
+              "name": "count",
+              "width": 16,
+              "note": "How many times this has been reported."
+            },
+            {
+              "name": "ping",
+              "width": 15,
+              "note": "The round trip, in milliseconds."
+            },
+            {
+              "name": "unused",
+              "width": 1,
+              "note": "Carries nothing."
+            }
+          ]
+        },
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "loaded",
+              "width": 1,
+              "note": "Set once loading is done."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Carries nothing."
+            }
+          ]
+        }
+      ]
+    },
+    {
       "from": "4.17.0.233",
       "until": "4.18.0.0",
       "channel": "requests",

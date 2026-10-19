@@ -422,6 +422,11 @@
               },
               "bits": {
                 "$ref": "#/$defs/runs"
+              },
+              "endian": {
+                "description": "The order the field's bytes form its word in. Little unless stated; a field that states big reads its first byte as the word's highest.",
+                "type": "string",
+                "enum": ["little", "big"]
               }
             }
           }

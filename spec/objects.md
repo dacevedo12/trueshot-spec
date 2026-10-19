@@ -21,6 +21,8 @@ with each other only where they agree with this document.
 A field's own definition gives its exact type. Where a field carries one of
 these, it carries it whole, at the width above.
 
+<!-- binding: identifiers -->
+
 ## How they relate
 
 A player is known by a player id. Registration pairs each player id with a

@@ -1,0 +1,25 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SeatLoadProgress",
+  "version": "1.0.0.126",
+  "note": "Accepted by a 1.0.0.126 client, which went on into play. The identifiers are the harness's own, so nothing in this file comes from a real match.",
+  "bytes": "9d0000000000000000010000000000000000000000ac1c954100009b0000",
+  "fields": {
+    "command": 157,
+    "netId": 0,
+    "clientId": 0,
+    "player": "1",
+    "progress": 0,
+    "secondsLeft": 18.638999938964844,
+    "status": {
+      "count": 0,
+      "ping": 155,
+      "unused": 0
+    },
+    "state": {
+      "ready": 0,
+      "unused": 0
+    }
+  }
+}

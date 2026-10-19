@@ -162,7 +162,8 @@ struct's fields to fill that size exactly.
 **Bits.** A field of one or more bytes divided into named runs, whose widths
 total exactly the bits those bytes hold. No run is wider than 32 bits. The
 bytes are read as one little endian word whatever the range's byte order,
-because the runs are positions in that word rather than fields of their own.
+because the runs are positions in that word rather than fields of their own,
+unless the field states big, when its first byte is the word's highest.
 The runs are listed from the least significant bit upward: the first run
 occupies the low bits, and each one after it the bits above. A run is read as
 an unsigned integer of its own width.

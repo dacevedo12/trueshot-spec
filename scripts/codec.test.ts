@@ -138,6 +138,22 @@ test("bits pack from the least significant end", () => {
   roundTrip([flags], "29", { flags: { low: 41, high: 0 } });
 });
 
+test("bits a field states big read their first byte as the word's highest", () => {
+  const peer: Field = {
+    name: "peer",
+    type: "bits",
+    size: 2,
+    endian: "big",
+    bits: [
+      { name: "peerId", width: 15 },
+      { name: "sentTimeFlag", width: 1 },
+    ],
+  };
+  roundTrip([peer], "8000", { peer: { peerId: 0, sentTimeFlag: 1 } });
+  roundTrip([peer], "7fff", { peer: { peerId: 32767, sentTimeFlag: 0 } });
+  roundTrip([peer], "0102", { peer: { peerId: 258, sentTimeFlag: 0 } });
+});
+
 test("an array takes its count from another field", () => {
   roundTrip(
     [

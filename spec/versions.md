@@ -9,10 +9,15 @@ A build is named the way its client reports it, in four parts. A range of
 builds starts at a build and runs up to, not including, another, and is named
 by its first two parts.
 
-| Range | From       | Up to    |
-| ----- | ---------- | -------- |
-| 4.17  | 4.17.0.233 | 4.18.0.0 |
-| 4.20  | 4.20.0.315 | 4.21.0.0 |
+<!-- ranges:begin -->
+
+| Range | From       | Up to     |
+| ----- | ---------- | --------- |
+| 1.0   | 1.0.0.126  | 1.0.0.127 |
+| 4.17  | 4.17.0.233 | 4.18.0.0  |
+| 4.20  | 4.20.0.315 | 4.21.0.0  |
+
+<!-- ranges:end -->
 
 Every build in a range is held to the same facts.
 
@@ -21,7 +26,8 @@ Every build in a range is held to the same facts.
 Every definition under `schema/` holds its facts in revisions, each naming the
 range it applies to (see [Messages](messages.md)). Where ranges differ, each
 has its own revision, and no revision is described by pointing at another. A
-message a range lacks has no revision covering that range.
+message a range lacks has no revision covering that range, and what a chapter
+says about that message says nothing of that range.
 
 ## In the prose
 
@@ -36,6 +42,11 @@ build of its range as the reference pages are, with a file for each chapter it
 adds to. Each entry of such a file opens with a line naming a place the
 chapter marks, and says what the range does there. A statement in a binding
 holds for its range alone, so it names no range.
+
+What several ranges do alike, and another does not, belongs in a binding for a
+span: a directory named for two builds joined by `--`, which holds for every
+range from the first build up to the second. Where a span and a range both
+fill a place, the span's entry comes first.
 
 ## Books
 

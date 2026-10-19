@@ -385,9 +385,13 @@ function decodeFields(
       }
       case "bits": {
         need(field, field.size);
+        // The word is little endian unless the field says big.
+        const big = field.endian === "big";
         let word = 0n;
-        for (let i = field.size - 1; i >= 0; i -= 1)
+        for (let k = 0; k < field.size; k += 1) {
+          const i = big ? k : field.size - 1 - k;
           word = (word << 8n) | BigInt(bytes[offset + i] ?? 0);
+        }
         const runs: Record<string, number> = {};
         let taken = 0n;
         for (const run of field.bits) {
@@ -586,8 +590,10 @@ function encodeFields(
           taken += BigInt(run.width);
         }
         const out = new Uint8Array(field.size);
-        for (let i = 0; i < field.size; i += 1)
-          out[i] = Number((word >> BigInt(8 * i)) & 0xffn);
+        for (let i = 0; i < field.size; i += 1) {
+          const at = field.endian === "big" ? field.size - 1 - i : i;
+          out[at] = Number((word >> BigInt(8 * i)) & 0xffn);
+        }
         parts.push(out);
         break;
       }

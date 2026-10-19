@@ -1,0 +1,15 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "transport",
+  "version": "1.0.0.126",
+  "note": "The header of a datagram a connecting client emits.",
+  "bytes": "29000000ffff0028",
+  "fields": {
+    "sessionId": "29000000",
+    "peer": {
+      "peerId": 32767,
+      "sentTimeFlag": 1
+    },
+    "sentTime": 40
+  }
+}
