@@ -51,6 +51,11 @@
               "type": "u8"
             }
           ]
+        },
+        {
+          "name": "chat",
+          "note": "Text between players. A payload is a message from its first byte, with nothing in front of it.",
+          "header": []
         }
       ]
     },

@@ -108,7 +108,7 @@ interface StructFile {
 
 interface Family {
   readonly name: string;
-  readonly command: {
+  readonly command?: {
     readonly field: string;
     readonly escape?: number;
     readonly extendedField?: string;

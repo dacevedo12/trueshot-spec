@@ -967,9 +967,10 @@ const isPlain = (family: FamilyDef, command: number): boolean => {
 };
 
 // The value a header carries that identifies a message.
+// A family with no command field numbers its one message 0.
 const effectiveCommand = (family: FamilyDef, values: Values): Value => {
   const spec = family.command;
-  if (!spec) return null;
+  if (!spec) return 0;
   const plain = values[spec.field ?? ""];
   if (spec.escape !== undefined && plain === spec.escape) {
     return values[spec.extendedField ?? ""] ?? null;
@@ -1269,6 +1270,12 @@ for (const { where, doc } of messages) {
             `field "${field.name}" repeats a name the "${family.name}" header already carries`,
           );
         }
+      }
+      if (family.command === undefined && revision.command !== 0) {
+        fail(
+          at,
+          `command ${revision.command} names a message of the "${family.name}" family, which carries no command and numbers its one message 0`,
+        );
       }
       const spec: CommandSpec = family.command ?? {};
       const widest = spec.extendedField === undefined ? 255 : 65535;

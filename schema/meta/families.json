@@ -47,7 +47,7 @@
     },
     "family": {
       "type": "object",
-      "required": ["name", "header", "command"],
+      "required": ["name", "header"],
       "additionalProperties": false,
       "properties": {
         "name": {
@@ -61,13 +61,13 @@
         "header": {
           "description": "What precedes a message body, in order, starting at the first byte of the payload. Every message of this family carries it, so no message repeats it among its own fields.",
           "type": "array",
-          "minItems": 1,
+          "minItems": 0,
           "items": {
             "$ref": "urn:trueshot:schema:message#/$defs/field"
           }
         },
         "command": {
-          "description": "Which header field carries the value identifying a message, and which carries it where the first is a reserved escape.",
+          "description": "Which header field carries the value identifying a message, and which carries it where the first is a reserved escape. A family whose header carries no command has one message each way on each of its channels, which its revisions number 0.",
           "type": "object",
           "required": ["field"],
           "additionalProperties": false,

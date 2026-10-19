@@ -18,23 +18,23 @@ interface Message {
   readonly fields: Values;
 }
 
-const commandField = (family: Family): string => family.command.field;
-
+// A family whose header carries no command numbers its one message 0.
 function headerValues(
   family: Family,
   revision: Revision,
   header: Values,
 ): Values {
-  const escape = family.command.escape;
-  const wide =
-    escape !== undefined &&
-    family.command.extendedField !== undefined &&
-    revision.command > 0xff;
   const out: Record<string, Value> = {};
   for (const field of family.header) out[field.name] = header[field.name] ?? 0;
-  out[commandField(family)] = wide ? (escape ?? 0) : revision.command;
-  if (family.command.extendedField !== undefined) {
-    out[family.command.extendedField] = wide ? revision.command : null;
+  const spec = family.command;
+  if (spec === undefined) return out;
+  const wide =
+    spec.escape !== undefined &&
+    spec.extendedField !== undefined &&
+    revision.command > 0xff;
+  out[spec.field] = wide ? (spec.escape ?? 0) : revision.command;
+  if (spec.extendedField !== undefined) {
+    out[spec.extendedField] = wide ? revision.command : null;
   }
   return out;
 }
@@ -98,11 +98,12 @@ function decodeHeader(
     endian: layouts.protocol.endian,
   };
   const read = decodeFields(family.header, bytes, 0, context);
-  const lead = Number(read.values[commandField(family)]);
-  const extended = family.command.extendedField;
+  const spec = family.command;
+  if (spec === undefined) return { ...read, command: 0 };
+  const lead = Number(read.values[spec.field]);
   const command =
-    lead === family.command.escape && extended !== undefined
-      ? Number(read.values[extended])
+    lead === spec.escape && spec.extendedField !== undefined
+      ? Number(read.values[spec.extendedField])
       : lead;
   return { ...read, command };
 }

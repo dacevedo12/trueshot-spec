@@ -36,6 +36,12 @@
           "note": "State that a following message supersedes, such as positions and unit properties. Losing one costs nothing where the next corrects it, which is what the messages on this channel are for."
         },
         {
+          "id": 5,
+          "name": "chat",
+          "family": "chat",
+          "note": "Text players send each other during a match."
+        },
+        {
           "name": "roster",
           "id": 6,
           "family": "session",

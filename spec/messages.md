@@ -22,6 +22,10 @@ records both. Two channels of one family share a numbering, so a value
 identifies at most one message across both, and the same value on channels of
 different families is two unrelated messages.
 
+A family whose header carries no command field has one message each way on
+each channel it rides, read from the payload's first byte; its revisions number
+that message 0.
+
 What selects the header is the family, not the channel. A channel carrying a
 family is how the two connect, and reading a payload against the wrong family
 decodes something rather than failing.
