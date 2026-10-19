@@ -7,7 +7,9 @@ import { afterAll, beforeAll, describe, expect, test } from "bun:test";
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import type { Values } from "../../../scripts/codec.ts";
-import { Layouts } from "../../../scripts/schema.ts";
+import { unhex } from "../../../scripts/codec.ts";
+import { decodeMessage } from "../../../scripts/message.ts";
+import type { Layouts } from "../../../scripts/schema.ts";
 import { layoutsOf, setup } from "../src/client.ts";
 import { Match } from "../src/match.ts";
 
@@ -33,6 +35,7 @@ interface Vector {
   readonly version?: string;
   readonly channel?: string;
   readonly fields?: Values;
+  readonly bytes?: string;
 }
 
 const VECTORS = join(import.meta.dir, "..", "..", "vectors");
@@ -57,25 +60,9 @@ function sweepFor(
     };
     systems.set(m.message, m.system);
   }
-  // A vector stands for the revision served where its own revision lays the
-  // message out alike. Of those, the one recorded nearest the client's build
-  // is taken, since what a vector names (a map's art, a champion) can be
-  // missing from a build far from it.
-  const own = new Map<string, Layouts>();
-  const layoutAt = (version: string): Layouts | undefined => {
-    if (!own.has(version)) {
-      try {
-        own.set(version, new Layouts(version));
-      } catch {
-        return undefined;
-      }
-    }
-    return own.get(version);
-  };
-  const shape = (r: unknown): string =>
-    JSON.stringify(r, (k: string, v: unknown) =>
-      k === "note" || k === "from" || k === "until" ? undefined : v,
-    );
+  // Of the vectors that read under the served revision, the one recorded
+  // nearest the client's build is taken, since what a vector names (a map's
+  // art, a champion) can be missing from a build far from it.
   const distance = (version: string): number => {
     const a = version.split(".").map(Number);
     const b = build.split(".").map(Number);
@@ -105,21 +92,29 @@ function sweepFor(
         SYSTEMS_LEFT_OUT.has(systems.get(v.message) ?? "")
       )
         continue;
-      const recorded = layoutAt(v.version)?.messages.get(v.message);
-      if (recorded === undefined || shape(recorded) !== shape(revision))
-        continue;
       // One payload of each message, on each channel it travels on.
       const channel = v.channel ?? revision.channel;
+      // A vector stands for the served revision where its bytes read under
+      // it whole: the same bytes on the wire, whatever each revision calls
+      // its fields. It is sent as that revision reads it.
+      let fields: Values;
+      try {
+        const read = decodeMessage(
+          layouts,
+          layouts.channel(channel),
+          unhex(v.bytes ?? ""),
+          false,
+        );
+        if (read.name !== v.message) continue;
+        fields = read.fields;
+      } catch {
+        continue;
+      }
       const key = `${v.message}/${channel}`;
       const d = distance(v.version);
       const held = best.get(key);
       if (held !== undefined && held.distance <= d) continue;
-      best.set(key, {
-        name: v.message,
-        channel,
-        fields: v.fields,
-        distance: d,
-      });
+      best.set(key, { name: v.message, channel, fields, distance: d });
     }
   }
   const out = [...best.values()]
