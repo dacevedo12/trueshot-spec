@@ -7,7 +7,7 @@ import { join } from "node:path";
 import { Capture, LOOKS } from "./capture.ts";
 import { Client, layoutsOf } from "./client.ts";
 import type { Setup } from "./client.ts";
-import { decodeFields, hex } from "../../../scripts/codec.ts";
+import { decodeFields, hex, isRecord } from "../../../scripts/codec.ts";
 import type { Values } from "../../../scripts/codec.ts";
 import { Host } from "./enet.ts";
 import type { Peer } from "./enet.ts";
@@ -349,6 +349,11 @@ class Match {
   }
 
   #answer(s: Session): void {
+    const walkOf = (movement: Values[string] | undefined): Values => {
+      const path = isRecord(movement) ? movement : {};
+      const header = isRecord(path["header"]) ? path["header"] : {};
+      return { ...path, header: { ...header, hasTeleportToken: 0 } };
+    };
     const seat = this.seat;
     const terminated = (text: string): number =>
       Buffer.byteLength(text, "utf8") + 1;
@@ -473,6 +478,28 @@ class Match {
       this.#reach("playing");
       this.#options.play?.(s);
     });
+
+    // A champion ordered somewhere walks the path its client worked out
+    // (spec/movement.md), numbered above anything a check sends.
+    if (
+      this.layouts.messages.has("MoveOrder") &&
+      this.layouts.messages.has("WaypointGroup")
+    ) {
+      let syncId = 1_000;
+      s.on("MoveOrder", (m: Message) => {
+        syncId += 1;
+        s.send(
+          "WaypointGroup",
+          {
+            syncId,
+            movementCount: 1,
+            // The order's path, with no teleport token: a client sends none.
+            movements: [walkOf(m.fields["movement"])],
+          },
+          ANSWER,
+        );
+      });
+    }
 
     s.on("Camera", (m: Message) =>
       s.send("CameraAck", { syncId: Number(m.fields["syncId"] ?? 0) }, ANSWER),

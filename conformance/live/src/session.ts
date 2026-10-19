@@ -90,6 +90,14 @@ class Session {
     fields: Values = {},
     options: { channel?: string; answer?: boolean } = {},
   ): void {
+    // A range the specification defines no revision of this message for
+    // gets nothing; the capture says so.
+    if (!this.layouts.messages.has(name)) {
+      this.#capture.note(
+        `not sent: ${name} has no revision for ${this.layouts.build}`,
+      );
+      return;
+    }
     if (this.closed !== undefined) return;
     const revision = this.layouts.message(name);
     const channelName = options.channel ?? revision.channel;

@@ -1,13 +1,16 @@
 // spec/communication.md: a line a server puts in a client's chat.
 
 import { afterAll, beforeAll, describe, expect, test } from "bun:test";
-import { setup } from "../src/client.ts";
+import { layoutsOf, setup } from "../src/client.ts";
 import { Match } from "../src/match.ts";
 
 const s = setup();
 const LINE = "trueshot: a line of the server's own";
 
-describe.skipIf(s === undefined)("communication", () => {
+// A range without SystemMessage has nothing here to check.
+const defined = s !== undefined && layoutsOf(s).messages.has("SystemMessage");
+
+describe.skipIf(!defined)("communication", () => {
   let match: Match;
 
   beforeAll(async () => {

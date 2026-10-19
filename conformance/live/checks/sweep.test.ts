@@ -217,15 +217,24 @@ describe.skipIf(s === undefined)("sweep", () => {
     ["WaypointGroup", "WaypointAck"],
     ["VoiceEvent", "VoiceEventDone"],
   ] as const) {
-    test(`a client answers ${asked} with ${answer}`, async () => {
-      const session = match.session;
-      if (session === undefined) throw new Error("no session");
-      const at = sent.find((m) => m.name === asked)?.at;
-      expect(at, `the sweep sent no ${asked}`).toBeDefined();
-      await session.next(answer, {
-        seen: true,
-        timeout: 5_000,
-      });
-    }, 10_000);
+    // Only where the range defines both.
+    const both =
+      s !== undefined &&
+      layoutsOf(s).messages.has(asked) &&
+      layoutsOf(s).messages.has(answer);
+    test.skipIf(!both)(
+      `a client answers ${asked} with ${answer}`,
+      async () => {
+        const session = match.session;
+        if (session === undefined) throw new Error("no session");
+        const at = sent.find((m) => m.name === asked)?.at;
+        expect(at, `the sweep sent no ${asked}`).toBeDefined();
+        await session.next(answer, {
+          seen: true,
+          timeout: 5_000,
+        });
+      },
+      10_000,
+    );
   }
 });
