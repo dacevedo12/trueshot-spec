@@ -152,11 +152,14 @@ class Client {
     return `the screenshot command exited ${code}${said === "" ? "" : `: ${said}`}`;
   }
 
+  // The stop command runs first, given the process the harness started, so
+  // it can find what that process started in turn while it is still there.
   async stop(): Promise<void> {
-    this.#process?.kill();
-    if (this.#setup.stop.length > 0) {
-      await Bun.spawn([...this.#setup.stop]).exited;
+    const pid = this.#process?.pid;
+    if (this.#setup.stop.length > 0 && pid !== undefined) {
+      await Bun.spawn([...this.#setup.stop, String(pid)]).exited;
     }
+    this.#process?.kill();
     await this.#process?.exited;
   }
 }

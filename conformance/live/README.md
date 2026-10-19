@@ -45,7 +45,8 @@ Then name a client in an environment file kept outside version control (every
     TRUESHOT_CLIENT=/path/to/League of Legends.exe
     # Optional: a program the client is run through, given the client and its arguments.
     TRUESHOT_LAUNCHER=
-    # Optional: a command run after the client is stopped, to clean up after the launcher.
+    # Optional: a command run as the client is stopped, given the id of the process the
+    # harness started, to stop what that process started in turn.
     TRUESHOT_STOP=
     # Optional: a command given a file path, which captures the client's window to it,
     # or the window whose id follows the path.
