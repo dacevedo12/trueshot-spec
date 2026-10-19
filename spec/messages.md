@@ -196,8 +196,11 @@ field. Four forms are written:
   earlier array standing at the same position as the item doing the naming, so
   that two arrays run together;
 - either of the first two inside `{"field": …, "minus": N}`, which is that
-  field's value less the literal N. Nothing else is computed, and N is never
-  larger than the value.
+  field's value less the literal N, and N is never larger than the value;
+- either of the first two inside `{"field": …, "bitsSet": true}`, which is how
+  many bits of that field's value are one.
+
+Nothing else is computed.
 
 A rule about whether a field is present states a value the named field carries,
 or a set of values, any one of which satisfies it. Without one, any

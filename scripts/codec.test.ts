@@ -170,6 +170,22 @@ test("an array takes its count from another field", () => {
   );
 });
 
+test("an array can take its count from the bits another field has set", () => {
+  roundTrip(
+    [
+      { name: "which", type: "u32" },
+      {
+        name: "values",
+        type: "array",
+        count: { field: "which", bitsSet: true },
+        items: { name: "v", type: "u8" },
+      },
+    ],
+    "05000080 01 02 03",
+    { which: 2147483653, values: [1, 2, 3] },
+  );
+});
+
 test("a struct nests, and a field inside it can size a later one", () => {
   const structs = new Map<string, readonly Field[]>([
     [

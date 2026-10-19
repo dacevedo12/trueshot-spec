@@ -169,6 +169,12 @@ function lookup(scope: Values, path: string, index: number | null): Value {
   return isRecord(value) ? (value[run] ?? null) : null;
 }
 
+const bitsSet = (value: bigint): number => {
+  let n = 0;
+  for (let v = value; v > 0n; v >>= 1n) n += Number(v & 1n);
+  return n;
+};
+
 function amount(spec: Amount, scope: Values, index: number | null): number {
   if (typeof spec === "number") return spec;
   const named = typeof spec === "string" ? spec : spec.field;
@@ -177,7 +183,12 @@ function amount(spec: Amount, scope: Values, index: number | null): number {
     return bail(
       `"${named}" is absent here, so it cannot say how much follows`,
     );
-  const n = Number(value) - (typeof spec === "string" ? 0 : spec.minus);
+  const n =
+    typeof spec === "string"
+      ? Number(value)
+      : "minus" in spec
+        ? Number(value) - spec.minus
+        : bitsSet(BigInt(value as number | bigint));
   if (!Number.isInteger(n) || n < 0)
     return bail(`"${String(spec)}" is not a count`);
   return n;

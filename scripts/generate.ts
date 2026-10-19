@@ -200,7 +200,11 @@ const structFiles = new Map(
     ),
 );
 const named = (a: Amount | "remaining" | "terminated"): string =>
-  typeof a === "string" ? a : JSON.stringify(a);
+  typeof a === "string"
+    ? a
+    : typeof a === "object" && "bitsSet" in a
+      ? `the bits set in ${a.field}`
+      : JSON.stringify(a);
 const structLink = (name: string): string =>
   `[${name}](../../schema/types/${structFiles.get(name)})`;
 const typeOf = (f: Field): string => {

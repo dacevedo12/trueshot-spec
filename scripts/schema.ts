@@ -12,7 +12,10 @@ type Scalar =
   "u8" | "i8" | "u16" | "i16" | "u32" | "i32" | "u64" | "i64" | "f32" | "f64";
 type Endian = "little" | "big";
 type Amount =
-  number | string | { readonly field: string; readonly minus: number };
+  | number
+  | string
+  | { readonly field: string; readonly minus: number }
+  | { readonly field: string; readonly bitsSet: true };
 type Size = Amount | "remaining" | "terminated";
 
 interface Presence {

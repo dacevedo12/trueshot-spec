@@ -521,7 +521,7 @@
       }
     },
     "amount": {
-      "description": "A literal, the name of an earlier field holding an unsigned integer, or that field less a literal. Nothing else is computed.",
+      "description": "A literal, the name of an earlier field holding an unsigned integer, that field less a literal, or how many bits that field has set. Nothing else is computed.",
       "anyOf": [
         {
           "type": "integer",
@@ -541,6 +541,19 @@
             "minus": {
               "type": "integer",
               "minimum": 1
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": ["field", "bitsSet"],
+          "additionalProperties": false,
+          "properties": {
+            "field": {
+              "$ref": "#/$defs/reference"
+            },
+            "bitsSet": {
+              "const": true
             }
           }
         }
