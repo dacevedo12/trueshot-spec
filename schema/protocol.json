@@ -5,7 +5,7 @@
       "from": "1.0.0.126",
       "until": "1.0.0.127",
       "endian": "little",
-      "note": "Covers the 1.0 range.",
+      "note": "The header a 1.0 client reads and writes.",
       "cipher": {
         "name": "Blowfish",
         "mode": "ECB",
@@ -81,7 +81,7 @@
       "from": "4.1.0.171",
       "until": "4.20.0.315",
       "endian": "little",
-      "note": "Covers the 4.17 range.",
+      "note": "The header 4.1 to 4.19 clients read and write: nothing before the session id.",
       "cipher": {
         "name": "Blowfish",
         "mode": "ECB",
@@ -155,7 +155,7 @@
       "from": "4.20.0.315",
       "until": "4.21.0.0",
       "endian": "little",
-      "note": "Covers the 4.20 range.",
+      "note": "The header from 4.20: an address check in front of the session id.",
       "cipher": {
         "name": "Blowfish",
         "mode": "ECB",
