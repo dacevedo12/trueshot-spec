@@ -22,6 +22,7 @@
     "live:checks": "bun test ./conformance/live/checks --timeout 600000",
     "live:conform": "bun conformance/live/src/conform.ts",
     "live:replay": "bun conformance/live/src/replay.ts",
+    "live:serve": "bun conformance/live/src/serve.ts",
     "prepare": "git config core.hooksPath .githooks"
   },
   "devDependencies": {

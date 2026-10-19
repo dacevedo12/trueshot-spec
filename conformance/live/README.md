@@ -97,6 +97,14 @@ address, port, key in base64, and player id, separated by spaces:
 The key is arbitrary. Where a client runs under a compatibility layer, point
 `TRUESHOT_LAUNCHER` at whatever starts a Windows program there.
 
+## Serving a client started elsewhere
+
+    bun run live:serve <build> [port]
+
+serves one client of that build, launched some other way with the line above,
+from connecting into play, and keeps it there until it leaves, recording a
+capture as any run does.
+
 ## Captures and replays
 
 Every run writes a directory under `captures/`, never committed: each message

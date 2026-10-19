@@ -62,6 +62,8 @@ interface Options {
   readonly spawn?: (session: Session) => void;
   // What a check does once the client is in play.
   readonly play?: (session: Session) => void;
+  // False to serve a client started some other way, and to leave it be.
+  readonly launch?: boolean;
 }
 
 const versionNumber = (build: string): number => {
@@ -122,6 +124,7 @@ class Match {
 
   async start(): Promise<void> {
     await this.#host.listen(this.#setup.port);
+    if (this.#options.launch === false) return;
     this.client.start(
       {
         host: "127.0.0.1",
