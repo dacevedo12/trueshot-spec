@@ -5,7 +5,32 @@
   "note": "What a server sends to put a spell in one of a unit's slots. The header names the unit this is about.",
   "revisions": [
     {
-      "from": "4.17.0.233",
+      "from": "4.10.0.379",
+      "until": "4.11.0.386",
+      "channel": "events",
+      "command": 111,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit whose slot this is."
+        },
+        {
+          "name": "spell",
+          "type": "u32",
+          "note": "Which spell, by the number its name gives, as spec/objects.md works it out."
+        },
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot."
+        }
+      ]
+    },
+    {
+      "from": "4.11.0.386",
       "until": "4.21.0.0",
       "channel": "events",
       "command": 112,

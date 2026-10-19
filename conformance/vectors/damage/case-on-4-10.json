@@ -1,0 +1,22 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "Damage",
+  "version": "4.10.0.379",
+  "note": "Laid out as a 4.10.0.379 client reads it.",
+  "bytes": "64010000400401000040010000400000de42",
+  "fields": {
+    "command": 100,
+    "netId": 1073741825,
+    "extendedCommand": null,
+    "how": {
+      "result": 4,
+      "unused1": 0,
+      "kind": 0,
+      "unused": 0
+    },
+    "target": 1073741825,
+    "source": 1073741825,
+    "amount": 111
+  }
+}

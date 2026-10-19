@@ -5,7 +5,22 @@
   "note": "What a server sends to take away a region RegionAdded placed. The header names no object: it carries zero.",
   "revisions": [
     {
-      "from": "4.17.0.233",
+      "from": "4.10.0.379",
+      "until": "4.11.0.386",
+      "channel": "events",
+      "command": 50,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "region",
+          "type": "u32",
+          "note": "The region to take away, by the name RegionAdded gave it."
+        }
+      ]
+    },
+    {
+      "from": "4.11.0.386",
       "until": "4.21.0.0",
       "channel": "events",
       "command": 51,

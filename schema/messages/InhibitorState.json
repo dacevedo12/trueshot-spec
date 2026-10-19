@@ -5,7 +5,34 @@
   "note": "What a server sends to change the state of an inhibitor, and say how long the new state lasts. The header names the unit this is about.",
   "revisions": [
     {
-      "from": "4.17.0.233",
+      "from": "4.10.0.379",
+      "until": "4.11.0.386",
+      "channel": "events",
+      "command": 42,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 2,
+          "bits": [
+            {
+              "name": "duration",
+              "width": 15,
+              "note": "How long the state lasts, in seconds; zero where alive is set."
+            },
+            {
+              "name": "alive",
+              "width": 1,
+              "note": "Set while the inhibitor stands, with duration zero; clear while a state lasts the duration given."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "from": "4.11.0.386",
       "until": "4.18.0.271",
       "channel": "events",
       "command": 43,

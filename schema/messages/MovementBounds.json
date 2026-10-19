@@ -5,7 +5,7 @@
   "note": "What a server sends to keep its champion's orders within a circle. A client pulls an order to a point outside onto the circle's edge before sending it, and drops an order at an object outside. The header carries zero.",
   "revisions": [
     {
-      "from": "4.17.0.233",
+      "from": "4.10.0.379",
       "until": "4.21.0.0",
       "channel": "events",
       "command": 6,

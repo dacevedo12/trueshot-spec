@@ -152,5 +152,6 @@ export {
   rangeName,
   rangeTable,
   revisionAt,
+  spans,
 };
 export type { MessageFile };

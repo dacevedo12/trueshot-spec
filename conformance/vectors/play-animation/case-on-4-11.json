@@ -1,0 +1,24 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "PlayAnimation",
+  "version": "4.11.0.386",
+  "note": "Laid out as a 4.11.0.386 client reads it.",
+  "bytes": "b01b00004000000000000000000000000049646c655f6261636b757000",
+  "fields": {
+    "command": 176,
+    "netId": 1073741851,
+    "extendedCommand": null,
+    "flags": {
+      "locked": 0,
+      "lockedFromIdle": 0,
+      "noBlend": 0,
+      "loop": 0,
+      "keepEmotes": 0,
+      "unused": 0
+    },
+    "scaleTime": 0,
+    "startProgress": 0,
+    "animation": "Idle_backup"
+  }
+}

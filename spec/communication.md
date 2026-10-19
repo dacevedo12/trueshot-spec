@@ -11,7 +11,7 @@ or to a side. A server puts a line of its own in a client's chat with
 this connection at all.
 
 <!-- binding: chat-allowance -->
-<!-- by range -->*Ranges add to this: [4.17](bindings/4-17-0-233/communication.md).*
+<!-- by range -->*Ranges add to this: [4.10–4.17](bindings/4-10-0-379--4-18-0-271/communication.md).*
 
 ## Pings and emotes
 
@@ -20,7 +20,7 @@ everyone meant to see it with `PingPlaced`. A client asks to play an emote with
 `PlayEmote`, and a server shows it with `EmotePlayed`.
 
 <!-- binding: pings-and-emotes -->
-<!-- by range -->*Ranges add to this: [4.17](bindings/4-17-0-233/communication.md).*
+<!-- by range -->*Ranges add to this: [4.10–4.17](bindings/4-10-0-379--4-18-0-271/communication.md).*
 
 ## Sound and music
 
@@ -35,23 +35,23 @@ effects out (`FadeSounds`).
 
 <!-- messages:begin -->
 
-| Message                                                    | Sent by | Ranges      | What it does                                                                                                                                     |
-| ---------------------------------------------------------- | ------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [`Chat`](../schema/messages/Chat.json)                     | both    | every range | Text one player sends the others during a match                                                                                                  |
-| [`ChatAllowance`](../schema/messages/ChatAllowance.json)   | server  | 4.17–4.20   | Limit a player's chat, showing how many lines they have left                                                                                     |
-| [`ContextEmote`](../schema/messages/ContextEmote.json)     | server  | 4.17–4.20   | What a server sends about an emote a champion played for the moment                                                                              |
-| [`EmotePlayed`](../schema/messages/EmotePlayed.json)       | server  | 4.17–4.20   | Say a unit played an emote                                                                                                                       |
-| [`FadeSounds`](../schema/messages/FadeSounds.json)         | server  | 4.17–4.20   | Fade a client's sound effects out                                                                                                                |
-| [`MapPing`](../schema/messages/MapPing.json)               | client  | 4.17–4.20   | Mark a point on the map for the others                                                                                                           |
-| [`MusicCue`](../schema/messages/MusicCue.json)             | server  | 4.17–4.20   | Drive the music a client plays                                                                                                                   |
-| [`PingPlaced`](../schema/messages/PingPlaced.json)         | server  | 4.17, 4.20  | Show a ping on the map to everyone meant to see it                                                                                               |
-| [`PlayEmote`](../schema/messages/PlayEmote.json)           | client  | 4.17–4.20   | Play an emote                                                                                                                                    |
-| [`SoundPlayed`](../schema/messages/SoundPlayed.json)       | server  | 4.17–4.20   | Play a sound once                                                                                                                                |
-| [`SystemMessage`](../schema/messages/SystemMessage.json)   | server  | 4.17–4.20   | Put a line of its own in a client's chat                                                                                                         |
-| [`ThemeMusic`](../schema/messages/ThemeMusic.json)         | server  | 4.17–4.20   | Set a champion's skin music                                                                                                                      |
-| [`VoiceCommand`](../schema/messages/VoiceCommand.json)     | server  | 4.17, 4.20  | What a server sends about a voice command a champion gave                                                                                        |
-| [`VoiceEvent`](../schema/messages/VoiceEvent.json)         | server  | 4.17–4.20   | Play a voice event                                                                                                                               |
-| [`VoiceEventDone`](../schema/messages/VoiceEventDone.json) | client  | 4.17–4.20   | What a client sends once a voice event (VoiceEvent) of kind 0 that asked for it has played, or at once where the client could not play the event |
-| [`VolumeMuted`](../schema/messages/VolumeMuted.json)       | server  | 4.17–4.20   | Mute or unmute one kind of sound                                                                                                                 |
+| Message                                                    | Sent by | Ranges          | What it does                                                                                                                                     |
+| ---------------------------------------------------------- | ------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [`Chat`](../schema/messages/Chat.json)                     | both    | every range     | Text one player sends the others during a match                                                                                                  |
+| [`ChatAllowance`](../schema/messages/ChatAllowance.json)   | server  | 4.10–4.20       | Limit a player's chat, showing how many lines they have left                                                                                     |
+| [`ContextEmote`](../schema/messages/ContextEmote.json)     | server  | 4.10–4.20       | What a server sends about an emote a champion played for the moment                                                                              |
+| [`EmotePlayed`](../schema/messages/EmotePlayed.json)       | server  | 4.10–4.20       | Say a unit played an emote                                                                                                                       |
+| [`FadeSounds`](../schema/messages/FadeSounds.json)         | server  | 4.10–4.20       | Fade a client's sound effects out                                                                                                                |
+| [`MapPing`](../schema/messages/MapPing.json)               | client  | 4.10–4.20       | Mark a point on the map for the others                                                                                                           |
+| [`MusicCue`](../schema/messages/MusicCue.json)             | server  | 4.10–4.20       | Drive the music a client plays                                                                                                                   |
+| [`PingPlaced`](../schema/messages/PingPlaced.json)         | server  | 4.10–4.17, 4.20 | Show a ping on the map to everyone meant to see it                                                                                               |
+| [`PlayEmote`](../schema/messages/PlayEmote.json)           | client  | 4.10–4.20       | Play an emote                                                                                                                                    |
+| [`SoundPlayed`](../schema/messages/SoundPlayed.json)       | server  | 4.10–4.20       | Play a sound once                                                                                                                                |
+| [`SystemMessage`](../schema/messages/SystemMessage.json)   | server  | 4.10–4.20       | Put a line of its own in a client's chat                                                                                                         |
+| [`ThemeMusic`](../schema/messages/ThemeMusic.json)         | server  | 4.17–4.20       | Set a champion's skin music                                                                                                                      |
+| [`VoiceCommand`](../schema/messages/VoiceCommand.json)     | server  | 4.10–4.17, 4.20 | What a server sends about a voice command a champion gave                                                                                        |
+| [`VoiceEvent`](../schema/messages/VoiceEvent.json)         | server  | 4.10–4.20       | Play a voice event                                                                                                                               |
+| [`VoiceEventDone`](../schema/messages/VoiceEventDone.json) | client  | 4.10–4.20       | What a client sends once a voice event (VoiceEvent) of kind 0 that asked for it has played, or at once where the client could not play the event |
+| [`VolumeMuted`](../schema/messages/VolumeMuted.json)       | server  | 4.10–4.20       | Mute or unmute one kind of sound                                                                                                                 |
 
 <!-- messages:end -->

@@ -5,7 +5,38 @@
   "note": "What a server sends to move units along paths of its own choosing, stating how each one travels rather than leaving it to the receiving end. It is what carries a unit thrown, dragged, or carried along by something other than its own walking. The header names no object: it carries zero.",
   "revisions": [
     {
-      "from": "4.17.0.233",
+      "from": "4.10.0.379",
+      "until": "4.11.0.386",
+      "channel": "events",
+      "command": 99,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u32",
+          "note": "Names this statement of movement."
+        },
+        {
+          "name": "movementCount",
+          "type": "u16",
+          "note": "How many units follow."
+        },
+        {
+          "name": "movements",
+          "type": "array",
+          "count": "movementCount",
+          "note": "What each unit is told to do.",
+          "items": {
+            "name": "movement",
+            "type": "struct",
+            "struct": "MovementAtSpeed"
+          }
+        }
+      ]
+    },
+    {
+      "from": "4.11.0.386",
       "until": "4.21.0.0",
       "channel": "events",
       "command": 100,

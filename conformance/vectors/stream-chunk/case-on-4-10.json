@@ -1,0 +1,21 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "StreamChunk",
+  "version": "4.10.0.379",
+  "note": "Laid out as a 4.10.0.379 client reads it.",
+  "bytes": "ec00000000010000000500000000000000050f8900001e0000000000000000000000000000000000000000000000",
+  "fields": {
+    "command": 236,
+    "netId": 0,
+    "extendedCommand": null,
+    "chunk": 1,
+    "fragments": 5,
+    "index": 0,
+    "kind": 5,
+    "size": 35087,
+    "duration": 30,
+    "nextChunk": 0,
+    "data": "00000000000000000000000000000000"
+  }
+}

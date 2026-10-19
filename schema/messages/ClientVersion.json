@@ -32,7 +32,29 @@
       ]
     },
     {
-      "from": "4.17.0.233",
+      "from": "4.10.0.379",
+      "until": "4.11.0.386",
+      "channel": "requests",
+      "command": 188,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the client reporting."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "ascii",
+          "size": 256,
+          "note": "The build, as text. The text ends at a zero byte."
+        }
+      ]
+    },
+    {
+      "from": "4.11.0.386",
       "until": "4.21.0.0",
       "channel": "requests",
       "command": 189,

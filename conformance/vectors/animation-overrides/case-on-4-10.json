@@ -1,0 +1,22 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "AnimationOverrides",
+  "version": "4.10.0.379",
+  "note": "Laid out as a 4.10.0.379 client reads it.",
+  "bytes": "6a25010040010500000049444c45310c000000414749544154454449444c45",
+  "fields": {
+    "command": 106,
+    "netId": 1073742117,
+    "extendedCommand": null,
+    "pairCount": 1,
+    "pairs": [
+      {
+        "fromLength": 5,
+        "from": "IDLE1",
+        "toLength": 12,
+        "to": "AGITATEDIDLE"
+      }
+    ]
+  }
+}

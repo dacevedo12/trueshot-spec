@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "GameOptions",
+  "version": "4.10.0.379",
+  "note": "Laid out as a 4.10.0.379 client reads it.",
+  "bytes": "460100004001",
+  "fields": {
+    "command": 70,
+    "netId": 1073741825,
+    "extendedCommand": null,
+    "options": {
+      "autoAttack": 1,
+      "unused": 0
+    }
+  }
+}

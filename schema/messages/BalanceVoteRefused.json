@@ -5,7 +5,38 @@
   "note": "What a client sends as its player types /noequalize, where the version answer's features have bit 0 set, outside the tutorial: a vote against, laid out as BalanceVote with only its first fields filled. The header carries zero.",
   "revisions": [
     {
-      "from": "4.17.0.233",
+      "from": "4.10.0.379",
+      "until": "4.11.0.386",
+      "channel": "requests",
+      "command": 249,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "flags",
+          "type": "u8",
+          "note": "Zero: a vote against."
+        },
+        {
+          "name": "voter",
+          "type": "u32",
+          "note": "Zero."
+        },
+        {
+          "name": "unset",
+          "type": "array",
+          "count": 23,
+          "items": {
+            "name": "byte",
+            "type": "u8",
+            "note": "One unused byte."
+          },
+          "note": "The rest of BalanceVote's layout. Unused; its bytes carry no meaning."
+        }
+      ]
+    },
+    {
+      "from": "4.11.0.386",
       "until": "4.18.0.271",
       "channel": "requests",
       "command": 250,

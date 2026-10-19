@@ -5,7 +5,112 @@
   "note": "What a server sends to say a champion died. The header names the unit this is about.",
   "revisions": [
     {
-      "from": "4.17.0.233",
+      "from": "4.10.0.379",
+      "until": "4.11.0.386",
+      "channel": "events",
+      "command": 93,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "killer",
+          "type": "u32",
+          "note": "The unit credited with the death. Where it names the champion that died, a client still plays the death."
+        },
+        {
+          "name": "damageType",
+          "type": "u32",
+          "note": "The kind of the killing blow. A client shows nothing for it.",
+          "values": {
+            "0": {
+              "name": "physical"
+            },
+            "1": {
+              "name": "magic"
+            },
+            "2": {
+              "name": "true"
+            },
+            "3": {
+              "name": "mixed"
+            }
+          }
+        },
+        {
+          "name": "damageSource",
+          "type": "u32",
+          "note": "Where the killing blow came from. A client shows nothing for it.",
+          "values": {
+            "0": {
+              "name": "raw"
+            },
+            "1": {
+              "name": "internalRaw"
+            },
+            "2": {
+              "name": "periodic"
+            },
+            "3": {
+              "name": "proc"
+            },
+            "4": {
+              "name": "reactive"
+            },
+            "5": {
+              "name": "onDeath"
+            },
+            "6": {
+              "name": "spell"
+            },
+            "7": {
+              "name": "attack"
+            },
+            "8": {
+              "name": "default"
+            },
+            "9": {
+              "name": "areaSpell"
+            },
+            "10": {
+              "name": "persistentSpell"
+            },
+            "11": {
+              "name": "pet"
+            }
+          }
+        },
+        {
+          "name": "stayDown",
+          "type": "f32",
+          "note": "How long the champion stays down, in seconds. A client counts its respawn timer down from it."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "zombie",
+              "width": 1,
+              "note": "Set to leave the champion standing in a zombie state rather than dead: no death animation and no death screen."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "It has no effect in this message."
+        }
+      ],
+      "note": "A client ignores it where killer is zero or the champion is already dead."
+    },
+    {
+      "from": "4.11.0.386",
       "until": "4.18.0.271",
       "channel": "events",
       "command": 94,

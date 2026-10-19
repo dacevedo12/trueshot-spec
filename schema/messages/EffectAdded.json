@@ -5,7 +5,70 @@
   "note": "What a server sends to put a lasting effect on a unit. The header names the unit carrying the effect, which can differ from the caster named inside.",
   "revisions": [
     {
-      "from": "4.17.0.233",
+      "from": "4.10.0.379",
+      "until": "4.11.0.386",
+      "channel": "events",
+      "command": 182,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which of the unit's effect slots it sits in."
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What sort of effect it is."
+        },
+        {
+          "name": "count",
+          "type": "u8",
+          "note": "How many of it are stacked there."
+        },
+        {
+          "name": "hidden",
+          "type": "u8",
+          "note": "Whether the client keeps it off the unit's display.",
+          "values": {
+            "0": {
+              "name": "shown"
+            },
+            "1": {
+              "name": "hidden"
+            }
+          }
+        },
+        {
+          "name": "effect",
+          "type": "u32",
+          "note": "Which effect, by the number its name gives, as spec/objects.md works it out."
+        },
+        {
+          "name": "package",
+          "type": "u32",
+          "note": "Which set of art and sound the client draws it with."
+        },
+        {
+          "name": "runningFor",
+          "type": "f32",
+          "note": "How long it has already run, in seconds."
+        },
+        {
+          "name": "lasts",
+          "type": "f32",
+          "note": "How long it runs in total, in seconds."
+        },
+        {
+          "name": "caster",
+          "type": "u32",
+          "note": "The unit that put it there."
+        }
+      ]
+    },
+    {
+      "from": "4.11.0.386",
       "until": "4.21.0.0",
       "channel": "events",
       "command": 183,

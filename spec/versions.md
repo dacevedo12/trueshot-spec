@@ -11,12 +11,19 @@ by its first two parts.
 
 <!-- ranges:begin -->
 
-| Range     | From       | Up to      |
-| --------- | ---------- | ---------- |
-| 1.0       | 1.0.0.126  | 1.0.0.127  |
-| 4.17      | 4.17.0.233 | 4.18.0.271 |
-| 4.18–4.19 | 4.18.0.271 | 4.20.0.315 |
-| 4.20      | 4.20.0.315 | 4.21.0.0   |
+| Range                                | From       | Up to      |
+| ------------------------------------ | ---------- | ---------- |
+| [1.0](reference/1-0-0-126.md)        | 1.0.0.126  | 1.0.0.127  |
+| [4.10](reference/4-10-0-379.md)      | 4.10.0.379 | 4.11.0.386 |
+| [4.11](reference/4-11-0-386.md)      | 4.11.0.386 | 4.12.0.356 |
+| [4.12](reference/4-12-0-356.md)      | 4.12.0.356 | 4.13.0.265 |
+| [4.13](reference/4-13-0-265.md)      | 4.13.0.265 | 4.14.0.362 |
+| [4.14](reference/4-14-0-362.md)      | 4.14.0.362 | 4.15.0.238 |
+| [4.15](reference/4-15-0-238.md)      | 4.15.0.238 | 4.16.0.238 |
+| [4.16](reference/4-16-0-238.md)      | 4.16.0.238 | 4.17.0.233 |
+| [4.17](reference/4-17-0-233.md)      | 4.17.0.233 | 4.18.0.271 |
+| [4.18–4.19](reference/4-18-0-271.md) | 4.18.0.271 | 4.20.0.315 |
+| [4.20](reference/4-20-0-315.md)      | 4.20.0.315 | 4.21.0.0   |
 
 <!-- ranges:end -->
 
@@ -61,18 +68,13 @@ fill a place, the span's entry comes first.
 
 `bun run book` writes one book for each range: the chapters in the order
 [IMPLEMENTING.md](../IMPLEMENTING.md) reads them, the range's binding set in
-its places, the tables of messages narrowed to the range, and the range's
-reference page at the end. `bun run book -- --pdf` typesets them as well,
-given [pandoc](https://pandoc.org) and [typst](https://typst.app).
+its places, each system's table of messages with the commands the range uses,
+and the range's reference page at the end. `bun run book -- --pdf` typesets
+them as well, given [pandoc](https://pandoc.org) and [typst](https://typst.app).
 
 ## Per range
 
-For each range, a page lists every message a build in it sends or takes, by
-system, with the layout of its body, generated from the definitions:
-
-- [4.17](reference/4-17-0-233.md)
-- [4.20](reference/4-20-0-315.md)
-
-Each system document also ends with a generated table of its messages, giving
-the command and channel each takes in every range, or "none" where a range
-lacks it.
+Each range in the table above links a page that lists every message a build in
+it sends or takes, by system, with the layout of its body, generated from the
+definitions. Each system document also ends with a generated table of its
+messages, giving the ranges that define each.

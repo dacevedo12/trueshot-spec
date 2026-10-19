@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "WaypointAck",
+  "version": "4.10.0.379",
+  "note": "Laid out as a 4.10.0.379 client reads it.",
+  "bytes": "76000000000100000000",
+  "fields": {
+    "command": 118,
+    "netId": 0,
+    "extendedCommand": null,
+    "syncId": 1,
+    "relocationCount": 0,
+    "relocations": []
+  }
+}

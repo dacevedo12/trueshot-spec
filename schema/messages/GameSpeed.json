@@ -5,7 +5,7 @@
   "note": "What a server sends to set how fast the game's clock runs. A client shows the new speed over its champion. Sent while paused, it takes effect on resuming. The header carries zero.",
   "revisions": [
     {
-      "from": "4.17.0.233",
+      "from": "4.10.0.379",
       "until": "4.21.0.0",
       "channel": "events",
       "command": 18,

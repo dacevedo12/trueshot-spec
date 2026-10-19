@@ -5,7 +5,37 @@
   "note": "What a server sends to put a lasting effect in a slot that already holds one, keeping the slot rather than taking the old one off first. The header names the unit carrying the effect, which can differ from the caster named inside.",
   "revisions": [
     {
-      "from": "4.17.0.233",
+      "from": "4.10.0.379",
+      "until": "4.11.0.386",
+      "channel": "events",
+      "command": 47,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which of the unit's effect slots."
+        },
+        {
+          "name": "runningFor",
+          "type": "f32",
+          "note": "How long the effect has already run, in seconds."
+        },
+        {
+          "name": "lasts",
+          "type": "f32",
+          "note": "How long it runs in total, in seconds."
+        },
+        {
+          "name": "caster",
+          "type": "u32",
+          "note": "The unit that put it there."
+        }
+      ]
+    },
+    {
+      "from": "4.11.0.386",
       "until": "4.21.0.0",
       "channel": "events",
       "command": 48,

@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "FadeRemoved",
+  "version": "4.10.0.379",
+  "note": "Laid out as a 4.10.0.379 client reads it.",
+  "bytes": "31050000400700",
+  "fields": {
+    "command": 49,
+    "netId": 1073741829,
+    "extendedCommand": null,
+    "fade": 7
+  }
+}

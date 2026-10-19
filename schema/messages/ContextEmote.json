@@ -5,7 +5,32 @@
   "note": "What a server sends about an emote a champion played for the moment. It changes nothing a client shows. The header names the champion.",
   "revisions": [
     {
-      "from": "4.17.0.233",
+      "from": "4.10.0.379",
+      "until": "4.11.0.386",
+      "channel": "events",
+      "command": 242,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "emote",
+          "type": "u8",
+          "note": "Which emote."
+        },
+        {
+          "name": "parameter",
+          "type": "u32",
+          "note": "A hashed parameter."
+        },
+        {
+          "name": "flags",
+          "type": "u8",
+          "note": "Flags with no meaning given."
+        }
+      ]
+    },
+    {
+      "from": "4.11.0.386",
       "until": "4.21.0.0",
       "channel": "events",
       "command": 243,

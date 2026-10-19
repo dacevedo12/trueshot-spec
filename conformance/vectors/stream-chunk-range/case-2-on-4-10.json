@@ -1,0 +1,15 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "StreamChunkRange",
+  "version": "4.10.0.379",
+  "note": "Laid out as a 4.10.0.379 client reads it.",
+  "bytes": "eb000000000600000000000000",
+  "fields": {
+    "command": 235,
+    "netId": 0,
+    "extendedCommand": null,
+    "startGameChunk": 6,
+    "endGameChunk": 0
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SpawnTurret",
+  "version": "4.12.0.356",
+  "note": "Laid out as a 4.12.0.356 client reads it.",
+  "bytes": "fe0000000023013000004000000000407374616e642d696e20747572726574000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004f726465725475727265744e6f726d616c00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000080894400000000000061446404",
+  "fields": {
+    "command": 254,
+    "netId": 0,
+    "extendedCommand": 291,
+    "unit": 1073741872,
+    "owner": 0,
+    "node": 64,
+    "name": "stand-in turret",
+    "character": "OrderTurretNormal",
+    "x": 1100,
+    "y": 0,
+    "z": 900,
+    "flags": {
+      "side": 100,
+      "invulnerable": 0,
+      "targetable": 1,
+      "unused": 0
+    }
+  }
+}

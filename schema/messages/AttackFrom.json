@@ -5,6 +5,46 @@
   "note": "What a server sends to say a unit is swinging at another, carrying where the swinging unit stands as well as what it swings at. The header names the unit acting.",
   "revisions": [
     {
+      "from": "4.10.0.379",
+      "until": "4.17.0.233",
+      "channel": "events",
+      "command": 26,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit swung at. A client throws the swing at it."
+        },
+        {
+          "name": "timing",
+          "type": "u8",
+          "note": "A shift in time: the value less 128, in hundredths of a second, from -1.28 to 1.27; 128 shifts nothing. It moves when the swing lets go and ends, and when the unit may next attack."
+        },
+        {
+          "name": "missile",
+          "type": "u32",
+          "note": "The name the missile this swing throws will answer to. Zero for a swing that throws none."
+        },
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which of the unit's attacks this is."
+        },
+        {
+          "name": "fromX",
+          "type": "f32",
+          "note": "Where the swinging unit stands, along one ground axis, in world units."
+        },
+        {
+          "name": "fromZ",
+          "type": "f32",
+          "note": "Where it stands, along the other, in world units."
+        }
+      ]
+    },
+    {
       "from": "4.17.0.233",
       "until": "4.18.0.271",
       "channel": "events",

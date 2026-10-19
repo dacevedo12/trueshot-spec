@@ -1,0 +1,24 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ClientReady",
+  "version": "4.10.0.379",
+  "note": "Laid out as a 4.10.0.379 client reads it.",
+  "bytes": "510000000000000000",
+  "fields": {
+    "command": 81,
+    "netId": 0,
+    "extendedCommand": null,
+    "tipChosen": 0,
+    "tipColour": 0,
+    "tipDuration": 0,
+    "settings": {
+      "tips": 0,
+      "reporting": 0,
+      "loadingTips": 0,
+      "playingTips": 0,
+      "debug": 0,
+      "unused": 0
+    }
+  }
+}

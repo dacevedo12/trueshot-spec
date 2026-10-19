@@ -5,7 +5,27 @@
   "note": "What a server sends a client watching a match to credit a champion with gold. The header carries zero.",
   "revisions": [
     {
-      "from": "4.17.0.233",
+      "from": "4.10.0.379",
+      "until": "4.11.0.386",
+      "channel": "events",
+      "command": 227,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "owner",
+          "type": "u32",
+          "note": "The champion credited."
+        },
+        {
+          "name": "amount",
+          "type": "f32",
+          "note": "How much gold. 0.95 is what a champion earns for each step it stands still."
+        }
+      ]
+    },
+    {
+      "from": "4.11.0.386",
       "until": "4.21.0.0",
       "channel": "events",
       "command": 228,

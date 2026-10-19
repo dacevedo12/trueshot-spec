@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "MissileRetarget",
+  "version": "4.10.0.379",
+  "note": "Laid out as a 4.10.0.379 client reads it.",
+  "bytes": "edd90600401d000040000000000000000000000000",
+  "fields": {
+    "command": 237,
+    "netId": 1073743577,
+    "extendedCommand": null,
+    "target": 1073741853,
+    "x": 0,
+    "y": 0,
+    "z": 0
+  }
+}

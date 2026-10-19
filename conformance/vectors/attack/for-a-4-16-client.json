@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "Attack",
+  "version": "4.16.0.238",
+  "note": "The vector a 4.17 client accepted, without the position a 4.16 client does not read.",
+  "bytes": "0c 05000040 01000040800120004040",
+  "fields": {
+    "command": 12,
+    "netId": 1073741829,
+    "extendedCommand": null,
+    "target": 1073741825,
+    "timing": 128,
+    "missile": 1073750017,
+    "slot": 64
+  }
+}

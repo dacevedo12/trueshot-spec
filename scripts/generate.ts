@@ -21,7 +21,7 @@ import {
 } from "node:fs";
 import { dirname, join } from "node:path";
 import * as prettier from "prettier";
-import { covers, ranges as coveredRanges } from "./schema.ts";
+import { compare, covers, ranges as coveredRanges } from "./schema.ts";
 import type { Amount, Channel, Field, Presence } from "./schema.ts";
 import {
   by,
@@ -29,6 +29,7 @@ import {
   messages,
   rangeName,
   revisionAt,
+  spans,
 } from "./tables.ts";
 
 interface Range {
@@ -92,10 +93,17 @@ const BY_RANGE = "<!-- by range -->";
 const bindingDirs = existsSync(join(ROOT, "spec/bindings"))
   ? readdirSync(join(ROOT, "spec/bindings")).sort()
   : [];
+// A binding's label names the ranges it holds for: those from its first build
+// up to, not including, the build after the dashes.
 const bindingLabel = (dir: string): string => {
   const [from = "", until] = dir.split("--");
-  const name = (b: string): string => b.split("-").slice(0, 2).join(".");
-  return until === undefined ? name(from) : `${name(from)} to ${name(until)}`;
+  const build = (slug: string): string => slug.replace(/-/g, ".");
+  const held = ranges.filter((r) =>
+    until === undefined
+      ? r.from === build(from)
+      : compare(r.from, build(from)) >= 0 && compare(r.from, build(until)) < 0,
+  );
+  return spans(held, ranges);
 };
 const withBindings = (chapter: string, text: string): string =>
   text
@@ -163,7 +171,8 @@ for (const s of systems) {
   if (a < 0 || b < 0) stale.push(`${path} (no ${open} block)`);
   else {
     const rows = ranges.map(
-      (r) => `| ${rangeName(r)} | ${r.from} | ${r.until ?? "on"} |`,
+      (r) =>
+        `| [${rangeName(r)}](reference/${r.from.replace(/\./g, "-")}.md) | ${r.from} | ${r.until ?? "on"} |`,
     );
     const table = [
       open,

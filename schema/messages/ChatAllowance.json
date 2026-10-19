@@ -5,7 +5,22 @@
   "note": "What a server sends to limit a player's chat, showing how many lines they have left. The header carries zero.",
   "revisions": [
     {
-      "from": "4.17.0.233",
+      "from": "4.10.0.379",
+      "until": "4.11.0.386",
+      "channel": "events",
+      "command": 248,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "linesLeft",
+          "type": "i32",
+          "note": "How many lines are left. A client shows this number as sent."
+        }
+      ]
+    },
+    {
+      "from": "4.11.0.386",
       "until": "4.21.0.0",
       "channel": "events",
       "command": 249,

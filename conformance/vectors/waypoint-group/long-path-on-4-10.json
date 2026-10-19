@@ -1,0 +1,143 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "WaypointGroup",
+  "version": "4.10.0.379",
+  "note": "Laid out as a 4.10.0.379 client reads it.",
+  "bytes": "60000000000a84a41101001874060040c0cc3f23f3b4f4ecf3d2fe7cf5de008ff62f004b1951f8bf01007d00f9cc0332327dce649cf6ee",
+  "fields": {
+    "command": 96,
+    "netId": 0,
+    "extendedCommand": null,
+    "syncId": 295994378,
+    "movementCount": 1,
+    "movements": [
+      {
+        "header": {
+          "hasTeleportToken": 0,
+          "pointCount": 12
+        },
+        "path": {
+          "unit": 1073743476,
+          "teleportToken": null,
+          "flags": [
+            {
+              "xIsStep": 0,
+              "zIsStep": 0
+            },
+            {
+              "xIsStep": 0,
+              "zIsStep": 0
+            },
+            {
+              "xIsStep": 0,
+              "zIsStep": 0
+            },
+            {
+              "xIsStep": 1,
+              "zIsStep": 1
+            },
+            {
+              "xIsStep": 0,
+              "zIsStep": 0
+            },
+            {
+              "xIsStep": 1,
+              "zIsStep": 1
+            },
+            {
+              "xIsStep": 0,
+              "zIsStep": 0
+            },
+            {
+              "xIsStep": 1,
+              "zIsStep": 1
+            },
+            {
+              "xIsStep": 1,
+              "zIsStep": 1
+            },
+            {
+              "xIsStep": 1,
+              "zIsStep": 1
+            },
+            {
+              "xIsStep": 1,
+              "zIsStep": 1
+            }
+          ],
+          "firstX": -3293,
+          "firstZ": -2892,
+          "steps": [
+            {
+              "xStep": null,
+              "xWhole": -3092,
+              "zStep": null,
+              "zWhole": -302
+            },
+            {
+              "xStep": null,
+              "xWhole": -2692,
+              "zStep": null,
+              "zWhole": 222
+            },
+            {
+              "xStep": null,
+              "xWhole": -2417,
+              "zStep": null,
+              "zWhole": 47
+            },
+            {
+              "xStep": 75,
+              "xWhole": null,
+              "zStep": 25,
+              "zWhole": null
+            },
+            {
+              "xStep": null,
+              "xWhole": -1967,
+              "zStep": null,
+              "zWhole": 447
+            },
+            {
+              "xStep": 0,
+              "xWhole": null,
+              "zStep": 125,
+              "zWhole": null
+            },
+            {
+              "xStep": null,
+              "xWhole": -1792,
+              "zStep": null,
+              "zWhole": 972
+            },
+            {
+              "xStep": 50,
+              "xWhole": null,
+              "zStep": 50,
+              "zWhole": null
+            },
+            {
+              "xStep": 125,
+              "xWhole": null,
+              "zStep": -50,
+              "zWhole": null
+            },
+            {
+              "xStep": 100,
+              "xWhole": null,
+              "zStep": -100,
+              "zWhole": null
+            },
+            {
+              "xStep": -10,
+              "xWhole": null,
+              "zStep": -18,
+              "zWhole": null
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

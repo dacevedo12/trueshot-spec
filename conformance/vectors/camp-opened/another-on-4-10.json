@@ -1,0 +1,19 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "CampOpened",
+  "version": "4.10.0.379",
+  "note": "Laid out as a 4.10.0.379 client reads it.",
+  "bytes": "e800000000847e464600007042df5fc945cdcc4c400e00000000",
+  "fields": {
+    "command": 232,
+    "netId": 0,
+    "extendedCommand": null,
+    "atX": 12703.62890625,
+    "atY": 60,
+    "atZ": 6443.98388671875,
+    "spawnDuration": 3.200000047683716,
+    "camp": 14,
+    "timerKind": 0
+  }
+}

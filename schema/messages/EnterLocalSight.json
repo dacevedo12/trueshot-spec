@@ -5,7 +5,65 @@
   "note": "What a server sends when a unit comes into what one client can see. The header names the unit this is about.",
   "revisions": [
     {
-      "from": "4.17.0.233",
+      "from": "4.10.0.379",
+      "until": "4.11.0.386",
+      "channel": "events",
+      "command": 173,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "carried",
+          "type": "bits",
+          "size": 2,
+          "bits": [
+            {
+              "name": "size",
+              "width": 13,
+              "note": "How many bytes the messages below occupy in total."
+            },
+            {
+              "name": "unused",
+              "width": 3,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "messages",
+          "type": "array",
+          "size": "carried.size",
+          "note": "Whole messages of the same family, each behind its own length, that a client acts on as though they had arrived on their own.",
+          "items": {
+            "type": "struct",
+            "struct": "CarriedMessage",
+            "name": "message"
+          }
+        },
+        {
+          "name": "vitals",
+          "type": "record",
+          "present": {
+            "when": "remaining"
+          },
+          "note": "The unit's health. A server sends this message without it too, ending after the carried messages.",
+          "fields": [
+            {
+              "name": "maxHealth",
+              "type": "f32",
+              "note": "What the unit's health tops out at."
+            },
+            {
+              "name": "health",
+              "type": "f32",
+              "note": "What its health stands at."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "from": "4.11.0.386",
       "until": "4.18.0.271",
       "channel": "events",
       "command": 174,

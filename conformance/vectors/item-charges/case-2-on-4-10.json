@@ -1,0 +1,15 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ItemCharges",
+  "version": "4.10.0.379",
+  "note": "Laid out as a 4.10.0.379 client reads it.",
+  "bytes": "fc050000400601",
+  "fields": {
+    "command": 252,
+    "netId": 1073741829,
+    "extendedCommand": null,
+    "slot": 6,
+    "charges": 1
+  }
+}

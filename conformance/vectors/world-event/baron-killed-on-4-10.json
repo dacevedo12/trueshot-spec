@@ -1,0 +1,28 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "WorldEvent",
+  "version": "4.10.0.379",
+  "note": "Laid out as a 4.10.0.379 client reads it.",
+  "bytes": "44000000009a22000040cf390040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000033dec5d70000000000000000",
+  "fields": {
+    "command": 68,
+    "netId": 0,
+    "extendedCommand": null,
+    "event": 154,
+    "source": 1073741858,
+    "subject": 1073756623,
+    "map": null,
+    "inhibitorGold": null,
+    "inhibitorAssistCount": null,
+    "inhibitorAssists": null,
+    "kill": {
+      "gold": 0,
+      "assistCount": 0,
+      "assists": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      "skinHash": 3620068915,
+      "skin": 0,
+      "side": 0
+    }
+  }
+}

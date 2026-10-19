@@ -1,0 +1,31 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "WaypointGroup",
+  "version": "4.10.0.379",
+  "note": "Laid out as a 4.10.0.379 client reads it.",
+  "bytes": "6000000000e2ffa4110100037406004001bdf183f1",
+  "fields": {
+    "command": 96,
+    "netId": 0,
+    "extendedCommand": null,
+    "syncId": 296026082,
+    "movementCount": 1,
+    "movements": [
+      {
+        "header": {
+          "hasTeleportToken": 1,
+          "pointCount": 1
+        },
+        "path": {
+          "unit": 1073743476,
+          "teleportToken": 1,
+          "flags": [],
+          "firstX": -3651,
+          "firstZ": -3709,
+          "steps": []
+        }
+      }
+    ]
+  }
+}

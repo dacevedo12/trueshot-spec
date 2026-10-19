@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "TargetHeldChampion",
+  "version": "4.10.0.379",
+  "note": "Laid out as a 4.10.0.379 client reads it.",
+  "bytes": "bf0b18004074060040",
+  "fields": {
+    "command": 191,
+    "netId": 1073747979,
+    "extendedCommand": null,
+    "target": 1073743476
+  }
+}

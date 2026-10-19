@@ -5,7 +5,29 @@
   "note": "What a server sends to have a character and a skin of it loaded ahead of need. Nothing shows. The header carries zero.",
   "revisions": [
     {
-      "from": "4.17.0.233",
+      "from": "4.10.0.379",
+      "until": "4.11.0.386",
+      "channel": "events",
+      "command": 137,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "skin",
+          "type": "i32",
+          "note": "Which skin."
+        },
+        {
+          "name": "character",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The character's name. It ends at its first zero byte."
+        }
+      ]
+    },
+    {
+      "from": "4.11.0.386",
       "until": "4.21.0.0",
       "channel": "events",
       "command": 138,

@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "MissileLaunched",
+  "version": "4.10.0.379",
+  "note": "Laid out as a 4.10.0.379 client reads it.",
+  "bytes": "6df500004034010040",
+  "fields": {
+    "command": 109,
+    "netId": 1073742069,
+    "extendedCommand": null,
+    "missile": 1073742132
+  }
+}

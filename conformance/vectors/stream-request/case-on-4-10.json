@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "StreamRequest",
+  "version": "4.10.0.379",
+  "note": "Laid out as a 4.10.0.379 client reads it.",
+  "bytes": "e90000000001010100000001000000",
+  "fields": {
+    "command": 233,
+    "netId": 0,
+    "extendedCommand": null,
+    "wantsMetadata": 1,
+    "jumpToLatest": 1,
+    "fromChunk": 1,
+    "fromKeyFrame": 1
+  }
+}

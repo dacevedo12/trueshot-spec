@@ -45,7 +45,7 @@ and hide an objective panel (`ObjectiveShown`, `ObjectiveReplaced`,
 ## The tutorial
 
 <!-- binding: tutorial -->
-<!-- by range -->*Ranges add to this: [4.17](bindings/4-17-0-233/interface.md).*
+<!-- by range -->*Ranges add to this: [4.10–4.17](bindings/4-10-0-379--4-18-0-271/interface.md).*
 
 In the tutorial, a server can put lines of the client's own text in its chat
 (`TutorialChatLine`), open the tutorial's popup (`TutorialPopup`), which the
@@ -58,43 +58,43 @@ tutorial too.
 
 <!-- messages:begin -->
 
-| Message                                                                | Sent by | Ranges      | What it does                                                                                                                  |
-| ---------------------------------------------------------------------- | ------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| [`AfkWarning`](../schema/messages/AfkWarning.json)                     | server  | 4.17–4.20   | Warn the player that they seem to be away, in a popup with one button that only closes it                                     |
-| [`Camera`](../schema/messages/Camera.json)                             | client  | every range | Say where its view sits and which way it faces                                                                                |
-| [`CameraAck`](../schema/messages/CameraAck.json)                       | server  | every range | What a server returns for a view report, naming the report it answers                                                         |
-| [`CameraBehaviour`](../schema/messages/CameraBehaviour.json)           | server  | 4.17–4.20   | Set a point a champion's player's view keeps to                                                                               |
-| [`CameraLock`](../schema/messages/CameraLock.json)                     | client  | 4.17–4.20   | What a client sends as it locks its view to a unit or releases it                                                             |
-| [`CameraLockSet`](../schema/messages/CameraLockSet.json)               | server  | 4.17–4.20   | Lock the camera to the champion or free it                                                                                    |
-| [`ClientEvent`](../schema/messages/ClientEvent.json)                   | server  | 4.17, 4.20  | Tell a client something happened                                                                                              |
-| [`DebugHidden`](../schema/messages/DebugHidden.json)                   | server  | 4.20        | What a server sends about which objects a debug view hides                                                                    |
-| [`FloatingText`](../schema/messages/FloatingText.json)                 | server  | 4.17–4.20   | Show text floating over a unit                                                                                                |
-| [`FloatingTextOnMap`](../schema/messages/FloatingTextOnMap.json)       | server  | 4.20        | Float text over a unit, to the clients that can see it                                                                        |
-| [`HudHighlightToggled`](../schema/messages/HudHighlightToggled.json)   | server  | 4.17–4.20   | Light up part of the screen, or to put it out                                                                                 |
-| [`HudHighlighted`](../schema/messages/HudHighlighted.json)             | server  | 4.17–4.20   | Light up part of the screen, as a tutorial does                                                                               |
-| [`InputLock`](../schema/messages/InputLock.json)                       | server  | 4.17–4.20   | Lock or unlock a kind of input on a client                                                                                    |
-| [`InputLockToggled`](../schema/messages/InputLockToggled.json)         | server  | 4.17–4.20   | Turn kinds of input off where they are on, or on where they are off                                                           |
-| [`MinimapIcon`](../schema/messages/MinimapIcon.json)                   | server  | 4.17–4.20   | Change what a client draws for a unit on its map                                                                              |
-| [`MoveCamera`](../schema/messages/MoveCamera.json)                     | server  | 4.17–4.20   | Carry a client's view from one place to another                                                                               |
-| [`ObjectiveHidden`](../schema/messages/ObjectiveHidden.json)           | server  | 4.17–4.20   | Hide the objective panel                                                                                                      |
-| [`ObjectiveReplaced`](../schema/messages/ObjectiveReplaced.json)       | server  | 4.17–4.20   | Replace the text of the objective panel, showing the panel if it is hidden                                                    |
-| [`ObjectiveShown`](../schema/messages/ObjectiveShown.json)             | server  | 4.17–4.20   | Show the objective panel with a text                                                                                          |
-| [`QuestEvent`](../schema/messages/QuestEvent.json)                     | client  | 4.17–4.20   | What a client sends as its player points at a quest in the tracker (QuestUpdated), stops pointing at it, or clicks it         |
-| [`QuestUpdated`](../schema/messages/QuestUpdated.json)                 | server  | 4.17–4.20   | Add a quest to the quest tracker, complete it or remove it                                                                    |
-| [`SelectObject`](../schema/messages/SelectObject.json)                 | client  | 4.17–4.20   | What a client sends as the object it has selected changes                                                                     |
-| [`SideTextHidden`](../schema/messages/SideTextHidden.json)             | server  | 4.17–4.20   | Close the box of text SideTextShown opened                                                                                    |
-| [`SideTextRefreshed`](../schema/messages/SideTextRefreshed.json)       | server  | 4.17–4.20   | Change the text in the box SideTextShown opened, in place                                                                     |
-| [`SideTextShown`](../schema/messages/SideTextShown.json)               | server  | 4.17–4.20   | Show a box of text at the right edge of the screen, halfway down                                                              |
-| [`Situation`](../schema/messages/Situation.json)                       | server  | 4.17–4.20   | Tell a champion something has come about                                                                                      |
-| [`TipEvent`](../schema/messages/TipEvent.json)                         | client  | 4.17–4.20   | What a client sends about a tip it has shown or dismissed                                                                     |
-| [`TipShown`](../schema/messages/TipShown.json)                         | server  | 4.17–4.20   | Put a note in front of a seat                                                                                                 |
-| [`TutorialChatLine`](../schema/messages/TutorialChatLine.json)         | server  | 4.17–4.20   | Put a line of the client's own text in its chat, as a line from the game                                                      |
-| [`TutorialPopup`](../schema/messages/TutorialPopup.json)               | server  | 4.17–4.20   | Open the tutorial's popup: a caption, this text and a single button, which a client answers with TutorialPopupClosed          |
-| [`TutorialPopupClosed`](../schema/messages/TutorialPopupClosed.json)   | client  | 4.17–4.20   | What a client sends as its player presses the button of the tutorial's popup (TutorialPopup), or closes a tip in the tutorial |
-| [`UiHighlight`](../schema/messages/UiHighlight.json)                   | server  | 4.17–4.20   | Place an animated highlight over one element of the screen, or to take one away                                               |
-| [`UnitHighlightRemoved`](../schema/messages/UnitHighlightRemoved.json) | server  | 4.17–4.20   | Take away the light UnitHighlighted put on a unit                                                                             |
-| [`UnitHighlighted`](../schema/messages/UnitHighlighted.json)           | server  | 4.17–4.20   | Outline a unit with a pulsing light, as a tutorial does, until UnitHighlightRemoved                                           |
-| [`UnitText`](../schema/messages/UnitText.json)                         | server  | 4.17, 4.20  | Float a line of the client's own text over a unit, as combat text floats                                                      |
-| [`ZoomReport`](../schema/messages/ZoomReport.json)                     | client  | 4.20        | What a client sends when it notices it has drawn its view further out than it allows itself                                   |
+| Message                                                                | Sent by | Ranges          | What it does                                                                                                                  |
+| ---------------------------------------------------------------------- | ------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| [`AfkWarning`](../schema/messages/AfkWarning.json)                     | server  | 4.10–4.20       | Warn the player that they seem to be away, in a popup with one button that only closes it                                     |
+| [`Camera`](../schema/messages/Camera.json)                             | client  | every range     | Say where its view sits and which way it faces                                                                                |
+| [`CameraAck`](../schema/messages/CameraAck.json)                       | server  | every range     | What a server returns for a view report, naming the report it answers                                                         |
+| [`CameraBehaviour`](../schema/messages/CameraBehaviour.json)           | server  | 4.10–4.20       | Set a point a champion's player's view keeps to                                                                               |
+| [`CameraLock`](../schema/messages/CameraLock.json)                     | client  | 4.10–4.20       | What a client sends as it locks its view to a unit or releases it                                                             |
+| [`CameraLockSet`](../schema/messages/CameraLockSet.json)               | server  | 4.10–4.20       | Lock the camera to the champion or free it                                                                                    |
+| [`ClientEvent`](../schema/messages/ClientEvent.json)                   | server  | 4.10–4.17, 4.20 | Tell a client something happened                                                                                              |
+| [`DebugHidden`](../schema/messages/DebugHidden.json)                   | server  | 4.20            | What a server sends about which objects a debug view hides                                                                    |
+| [`FloatingText`](../schema/messages/FloatingText.json)                 | server  | 4.10–4.20       | Show text floating over a unit                                                                                                |
+| [`FloatingTextOnMap`](../schema/messages/FloatingTextOnMap.json)       | server  | 4.20            | Float text over a unit, to the clients that can see it                                                                        |
+| [`HudHighlightToggled`](../schema/messages/HudHighlightToggled.json)   | server  | 4.10–4.20       | Light up part of the screen, or to put it out                                                                                 |
+| [`HudHighlighted`](../schema/messages/HudHighlighted.json)             | server  | 4.10–4.20       | Light up part of the screen, as a tutorial does                                                                               |
+| [`InputLock`](../schema/messages/InputLock.json)                       | server  | 4.10–4.20       | Lock or unlock a kind of input on a client                                                                                    |
+| [`InputLockToggled`](../schema/messages/InputLockToggled.json)         | server  | 4.10–4.20       | Turn kinds of input off where they are on, or on where they are off                                                           |
+| [`MinimapIcon`](../schema/messages/MinimapIcon.json)                   | server  | 4.10–4.20       | Change what a client draws for a unit on its map                                                                              |
+| [`MoveCamera`](../schema/messages/MoveCamera.json)                     | server  | 4.10–4.20       | Carry a client's view from one place to another                                                                               |
+| [`ObjectiveHidden`](../schema/messages/ObjectiveHidden.json)           | server  | 4.10–4.20       | Hide the objective panel                                                                                                      |
+| [`ObjectiveReplaced`](../schema/messages/ObjectiveReplaced.json)       | server  | 4.10–4.20       | Replace the text of the objective panel, showing the panel if it is hidden                                                    |
+| [`ObjectiveShown`](../schema/messages/ObjectiveShown.json)             | server  | 4.10–4.20       | Show the objective panel with a text                                                                                          |
+| [`QuestEvent`](../schema/messages/QuestEvent.json)                     | client  | 4.10–4.20       | What a client sends as its player points at a quest in the tracker (QuestUpdated), stops pointing at it, or clicks it         |
+| [`QuestUpdated`](../schema/messages/QuestUpdated.json)                 | server  | 4.10–4.20       | Add a quest to the quest tracker, complete it or remove it                                                                    |
+| [`SelectObject`](../schema/messages/SelectObject.json)                 | client  | 4.10–4.20       | What a client sends as the object it has selected changes                                                                     |
+| [`SideTextHidden`](../schema/messages/SideTextHidden.json)             | server  | 4.10–4.20       | Close the box of text SideTextShown opened                                                                                    |
+| [`SideTextRefreshed`](../schema/messages/SideTextRefreshed.json)       | server  | 4.10–4.20       | Change the text in the box SideTextShown opened, in place                                                                     |
+| [`SideTextShown`](../schema/messages/SideTextShown.json)               | server  | 4.10–4.20       | Show a box of text at the right edge of the screen, halfway down                                                              |
+| [`Situation`](../schema/messages/Situation.json)                       | server  | 4.10–4.20       | Tell a champion something has come about                                                                                      |
+| [`TipEvent`](../schema/messages/TipEvent.json)                         | client  | 4.10–4.20       | What a client sends about a tip it has shown or dismissed                                                                     |
+| [`TipShown`](../schema/messages/TipShown.json)                         | server  | 4.10–4.20       | Put a note in front of a seat                                                                                                 |
+| [`TutorialChatLine`](../schema/messages/TutorialChatLine.json)         | server  | 4.10–4.20       | Put a line of the client's own text in its chat, as a line from the game                                                      |
+| [`TutorialPopup`](../schema/messages/TutorialPopup.json)               | server  | 4.10–4.20       | Open the tutorial's popup: a caption, this text and a single button, which a client answers with TutorialPopupClosed          |
+| [`TutorialPopupClosed`](../schema/messages/TutorialPopupClosed.json)   | client  | 4.10–4.20       | What a client sends as its player presses the button of the tutorial's popup (TutorialPopup), or closes a tip in the tutorial |
+| [`UiHighlight`](../schema/messages/UiHighlight.json)                   | server  | 4.10–4.20       | Place an animated highlight over one element of the screen, or to take one away                                               |
+| [`UnitHighlightRemoved`](../schema/messages/UnitHighlightRemoved.json) | server  | 4.10–4.20       | Take away the light UnitHighlighted put on a unit                                                                             |
+| [`UnitHighlighted`](../schema/messages/UnitHighlighted.json)           | server  | 4.10–4.20       | Outline a unit with a pulsing light, as a tutorial does, until UnitHighlightRemoved                                           |
+| [`UnitText`](../schema/messages/UnitText.json)                         | server  | 4.10–4.17, 4.20 | Float a line of the client's own text over a unit, as combat text floats                                                      |
+| [`ZoomReport`](../schema/messages/ZoomReport.json)                     | client  | 4.20            | What a client sends when it notices it has drawn its view further out than it allows itself                                   |
 
 <!-- messages:end -->

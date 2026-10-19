@@ -1,0 +1,22 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "AppearancePushed",
+  "version": "4.10.0.379",
+  "note": "Laid out as a 4.10.0.379 client reads it.",
+  "bytes": "9622030040ae03000002ffffffff5a6564536861646f7700",
+  "fields": {
+    "command": 150,
+    "netId": 1073742626,
+    "extendedCommand": null,
+    "entry": 942,
+    "how": {
+      "overrideSpells": 0,
+      "modelOnly": 1,
+      "replacePackage": 0,
+      "unused": 0
+    },
+    "skin": -1,
+    "asset": "ZedShadow"
+  }
+}

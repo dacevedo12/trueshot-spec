@@ -5,7 +5,32 @@
   "note": "What a server sends about how its clock and a client's are being brought together. The header carries zero.",
   "revisions": [
     {
-      "from": "4.17.0.233",
+      "from": "4.10.0.379",
+      "until": "4.11.0.386",
+      "channel": "clock",
+      "command": 117,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientTime",
+          "type": "f32",
+          "note": "The client's clock, in seconds, as the client reported it."
+        },
+        {
+          "name": "roundTrip",
+          "type": "f32",
+          "note": "The round trip time the server measures, in seconds."
+        },
+        {
+          "name": "convergence",
+          "type": "f32",
+          "note": "How long the two clocks take to agree, in seconds. It has no effect on a client."
+        }
+      ]
+    },
+    {
+      "from": "4.11.0.386",
       "until": "4.21.0.0",
       "channel": "clock",
       "command": 118,

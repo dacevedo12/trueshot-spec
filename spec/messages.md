@@ -351,7 +351,7 @@ only where `VersionSync`'s features turn quick chat on. This specification
 records no layout for channel 6.
 
 <!-- binding: quick-chat -->
-<!-- by range -->*Ranges add to this: [4.17](bindings/4-17-0-233/messages.md).*
+<!-- by range -->*Ranges add to this: [4.10–4.17](bindings/4-10-0-379--4-18-0-271/messages.md).*
 
 ## Vectors
 

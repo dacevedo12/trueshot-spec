@@ -5,7 +5,59 @@
   "note": "What a server sends to show the objective panel with a text. The header carries zero.",
   "revisions": [
     {
-      "from": "4.17.0.233",
+      "from": "4.10.0.379",
+      "until": "4.11.0.386",
+      "channel": "events",
+      "command": 53,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "The objective. The text ends at its first zero byte, which falls within the field."
+        }
+      ]
+    },
+    {
+      "from": "4.11.0.386",
+      "until": "4.13.0.265",
+      "channel": "events",
+      "command": 54,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "The objective. The text ends at its first zero byte, which falls within the field."
+        },
+        {
+          "name": "option",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "on",
+              "width": 1,
+              "note": "A client shows the text with an option of its own set; what that changes on screen is not recorded."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "A client reads nothing here; a server sends zero."
+            }
+          ],
+          "note": "One option for how the text is shown."
+        }
+      ]
+    },
+    {
+      "from": "4.13.0.265",
       "until": "4.21.0.0",
       "channel": "events",
       "command": 54,
