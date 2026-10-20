@@ -12,9 +12,11 @@ by its first two parts.
 The ranges are not listed here, since the definitions make them: every build
 at which a revision of any definition starts or stops begins a range, and the
 range runs to the next such build. `bun run site` lists them, grouped by the
-seasons in [seasons.json](seasons.json), which follows the
-[League of Legends Wiki](https://wiki.leagueoflegends.com/en-us/Patch) in
-counting a preseason as part of the season after it.
+seasons in [seasons.json](seasons.json). A season runs from the first patch
+of its ranked play up to the next season's first, so a preseason belongs to
+the season it closes, and each season links the
+[League of Legends Wiki](https://wiki.leagueoflegends.com/en-us/Patch)'s list
+of its patches.
 
 Every build in a range is held to the same facts.
 

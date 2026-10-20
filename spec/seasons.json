@@ -1,5 +1,5 @@
 {
-  "note": "The seasons the generated site groups ranges of versions by, as the League of Legends Wiki groups its patch notes: a season starts with the preseason before it. A range belongs to the season its first build falls in. Each season links the wiki's list of its patches, and each range the notes of every patch it spans, at patchNotes with {patch} replaced by the page's name: V and the patch's name, or the name patchPages gives where the wiki names a page otherwise.",
+  "note": "The seasons the generated site groups ranges of versions by. A season runs from the first patch of its ranked play up to the next season's first, so the preseason before a season belongs to the season it closes. A range belongs to the season its first build falls in. Each season links the League of Legends Wiki's list of its patches, and each range the notes of every patch it spans, at patchNotes with {patch} replaced by the page's name: V and the patch's name, or the name patchPages gives where the wiki names a page otherwise. The wiki lists a preseason with the season after it.",
   "patchNotes": "https://wiki.leagueoflegends.com/en-us/{patch}",
   "patchPages": {
     "3.1": "V3.01",
@@ -11,34 +11,34 @@
     {
       "name": "Season 1",
       "folder": "season-1",
-      "until": "1.0.0.126",
+      "until": "1.0.0.130",
       "patches": "https://wiki.leagueoflegends.com/en-us/Patch/Season_One"
     },
     {
       "name": "Season 2",
       "folder": "season-2",
-      "from": "1.0.0.126",
-      "until": "1.0.0.152",
+      "from": "1.0.0.130",
+      "until": "3.1.0.0",
       "patches": "https://wiki.leagueoflegends.com/en-us/Patch/Season_Two"
     },
     {
       "name": "Season 3",
       "folder": "season-3",
-      "from": "1.0.0.152",
-      "until": "3.14.0.0",
+      "from": "3.1.0.0",
+      "until": "4.1.0.0",
       "patches": "https://wiki.leagueoflegends.com/en-us/Patch/Season_Three"
     },
     {
       "name": "Season 4",
       "folder": "season-4",
-      "from": "3.14.0.0",
-      "until": "4.20.0.0",
+      "from": "4.1.0.0",
+      "until": "5.1.0.0",
       "patches": "https://wiki.leagueoflegends.com/en-us/Patch/Season_2014"
     },
     {
       "name": "Season 5",
       "folder": "season-5",
-      "from": "4.20.0.0",
+      "from": "5.1.0.0",
       "patches": "https://wiki.leagueoflegends.com/en-us/Patch/Season_2015"
     }
   ]

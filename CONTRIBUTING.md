@@ -209,8 +209,9 @@ check` lists every revision still waiting for one. Once the definitions
    binding a split leaves behind. `bun run site` shows the new range against
    its neighbours, where anything left as a copy stands out.
 
-A range's season comes from [spec/seasons.json](spec/seasons.json), which
-follows the wiki's grouping and is not changed to suit a range.
+A range's season comes from [spec/seasons.json](spec/seasons.json): the
+season its first build falls in, a preseason counting as part of the season it
+closes. The boundaries are not moved to suit a range.
 
 ## Systems
 
