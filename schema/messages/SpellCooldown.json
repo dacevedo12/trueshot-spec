@@ -38,6 +38,43 @@
       "note": "It carries no whole cooldown to show the time left against."
     },
     {
+      "from": "3.13.0.399",
+      "until": "3.14.0.700",
+      "channel": "events",
+      "command": 133,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "which",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "slot",
+              "width": 6,
+              "note": "Which slot."
+            },
+            {
+              "name": "summonerSpell",
+              "width": 1,
+              "note": "Set where the slot counts among the summoner slots, so that 0 and 1 name those two."
+            },
+            {
+              "name": "unused",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "timeLeft",
+          "type": "f32",
+          "note": "How long is left, in seconds."
+        }
+      ]
+    },
+    {
       "from": "3.14.0.700",
       "until": "4.1.0.171",
       "channel": "events",
