@@ -64,8 +64,8 @@ book reads the chapters in the order [the index](README.md) gives them, with
 every binding that holds for some of the season's ranges set in its place and
 headed with those ranges. Each system's chapter ends with its messages and the
 command each takes by range. The appendices give every message and struct with
-each layout it has in the season, each range's builds, patches and live
-checks, and how each range differs from the one before it in the season.
+each layout it has in the season, and, for each patch, its builds, its notes and live checks, and how it differs
+from the patch before it.
 `bun run site -- --pdf` typesets each book as well, given
 [pandoc](https://pandoc.org) and [typst](https://typst.app), and `bun run pages`
 renders the home page and the books as web pages.

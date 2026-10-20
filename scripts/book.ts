@@ -250,7 +250,7 @@ for (const season of seasons) {
     about,
     ...chapters.filter((c) => c !== "versions").map((c) => chapterFor(c, own)),
     part(season.folder, "messages"),
-    part(season.folder, "ranges"),
+    part(season.folder, "patches"),
     part(season.folder, "index"),
   ].join("\n\n");
   const out = join(ROOT, "dist", "site", `${season.folder}.md`);

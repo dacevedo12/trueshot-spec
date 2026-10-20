@@ -9,7 +9,7 @@
 // of its book drawn from the definitions, under dist/site/parts/<season>/:
 //   about.md     the season's ranges, its builds and its patches
 //   messages.md  every message and struct, with each layout it has
-//   ranges.md    each range: its checks, and how it differs from the one before
+//   patches.md   each patch: its checks, and how it differs from the one before
 //   index.md     every message by name
 // scripts/book.ts then puts each season's book together as dist/site/<season>.md.
 import {
@@ -85,7 +85,7 @@ const put = (path: string, lines: readonly string[]): void => {
     );
 }
 const rangeAnchor = (r: Ranged): string =>
-  `range-${rangeName(r).replace(/[.–]/g, "-")}`;
+  `patch-${rangeName(r).replace(/[.–]/g, "-")}`;
 const structAnchor = (s: string): string => `struct-${s.toLowerCase()}`;
 const cell = (s: string): string =>
   s.replace(/\|/g, "\\|").replace(/\n/g, " ");
@@ -837,11 +837,11 @@ function changesPart(prev: Range, range: Range): string[] {
 const seasonRanges = (r: Ranged): Range[] =>
   ranges.filter((x) => seasonOf(x) === seasonOf(r));
 
-function rangesPart(season: readonly Range[]): string[] {
+function patchesPart(season: readonly Range[]): string[] {
   const lines = [
-    "# Ranges {#appendix-ranges}",
+    "# Patches {#appendix-patches}",
     "",
-    "Each range of this book: the builds it runs over and the patches they shipped in, the live checks that ran on them, what the specification leaves unrecorded there, and how the range differs from the one before it.",
+    "What is particular to each patch this book covers: the builds it shipped, the live checks that ran on them, what the specification leaves unrecorded there, and how it differs from the patch before it. Where builds of two patches are held to the same facts, they share a section.",
   ];
   for (const range of season) {
     const i = ranges.indexOf(range);
@@ -931,12 +931,12 @@ function indexPart(season: readonly Range[]): string[] {
     ),
   ];
 }
-const rangeRows = (season: readonly Range[], book: string): string[] => [
-  "| Range | From | Up to | Patches | Builds checked |",
+const patchRows = (season: readonly Range[]): string[] => [
+  "| Patch | From | Up to | Patch notes | Builds checked |",
   "| --- | --- | --- | --- | --- |",
   ...season.map(
     (r) =>
-      `| [${rangeName(r)}](${book}#${rangeAnchor(r)}) | ${r.from} | ${r.until ?? "on"} | ${patchesOf(
+      `| [${rangeName(r)}](#${rangeAnchor(r)}) | ${r.from} | ${r.until ?? "on"} | ${patchesOf(
         r,
       )
         .map((p) => `[V${p.name}](${p.url})`)
@@ -949,9 +949,9 @@ function aboutPart(season: readonly Range[]): string[] {
   return [
     `This book covers client builds from ${first?.from ?? ""} up to, not including, ${last?.until ?? "the end"}, in ${season.length === 1 ? "one range" : `${season.length} ranges`}. Every build in a range is held to the same facts.`,
     "",
-    ...rangeRows(season, ""),
+    ...patchRows(season),
     "",
-    "Everything in the chapters holds for every range of the book, except a passage set apart and headed with ranges, which holds for those alone. What the chapters say of a message says nothing of a range that has no layout for it; [the appendix on messages](#appendix-messages) gives each message's layouts by range, and [the appendix on ranges](#appendix-ranges) each range's checks and how it differs from the range before it.",
+    "Everything in the chapters holds for every range of the book, except a passage set apart and headed with ranges, which holds for those alone. What the chapters say of a message says nothing of a range that has no layout for it; [the appendix on messages](#appendix-messages) gives each message's layouts by range, and [the appendix on patches](#appendix-patches) each patch's checks and how it differs from the one before it.",
   ];
 }
 
@@ -960,26 +960,15 @@ for (const s of held) {
   const own = ranges.filter((r) => seasonOf(r) === s);
   put(`parts/${s.folder}/about.md`, aboutPart(own));
   put(`parts/${s.folder}/messages.md`, messagesPart(own));
-  put(`parts/${s.folder}/ranges.md`, rangesPart(own));
+  put(`parts/${s.folder}/patches.md`, patchesPart(own));
   put(`parts/${s.folder}/index.md`, indexPart(own));
 }
 put("index.md", [
   "# Trueshot",
   "",
-  "A wire protocol specification for League of Legends game servers: what a server sends for a client to connect, load a match and play, and what the client does with it, written so that anyone can build a conforming server in any language.",
+  "A wire protocol specification for League of Legends game servers, with one book for each season it covers.",
   "",
-  `Each season has one book. Pick the season of the client you serve, find its range below, and read the book through: each chapter builds on the ones before it, and a passage that holds for some ranges alone says which. Every field layout comes from the definitions in the [repository](${REPOSITORY}), and its [conformance vectors](${REPOSITORY}/tree/main/conformance) check your work as you go.`,
-  ...held.flatMap((s) => {
-    const own = ranges.filter((r) => seasonOf(r) === s);
-    return [
-      "",
-      `## ${s.name}`,
-      "",
-      `[The ${s.name} book](${s.folder}.md) ([PDF](${s.folder}.pdf)) covers builds from ${own[0]?.from ?? ""} up to ${own[own.length - 1]?.until ?? "the end"}. The wiki lists [every patch of ${s.name}](${s.patches}).`,
-      "",
-      ...rangeRows(own, `${s.folder}.md`),
-    ];
-  }),
+  ...held.map((s) => `- [${s.name}](${s.folder}.md)`),
 ]);
 
 rmSync(SITE, { recursive: true, force: true });

@@ -8,8 +8,8 @@ reading another one.
 
 A book holds for every range of its season, except a passage headed with
 ranges, which holds for those alone. Its appendices give every message with
-each layout it has by range, each range's live checks, and how each range
-differs from the one before it. [Versions](spec/versions.md) says how the
+each layout it has by range, and, for each patch, its live checks and how it
+differs from the patch before it. [Versions](spec/versions.md) says how the
 definitions and the chapters a book is made from state which builds a fact
 holds for.
 
