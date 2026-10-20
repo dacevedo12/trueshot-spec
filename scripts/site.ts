@@ -1,15 +1,17 @@
-// The generated site: one folder per season, and in it one per range of
-// versions, all drawn from schema/, spec/ and conformance/. Nothing it writes
-// is committed, so nothing it says can drift from what it is drawn from.
+// The generated site: a home page, and a book for each season, all drawn from
+// schema/, spec/ and conformance/. Nothing it writes is committed, so nothing
+// it says can drift from what it is drawn from.
 //
-//   bun scripts/site.ts          write dist/site, with every range's book
+//   bun scripts/site.ts          write dist/site
 //   bun scripts/site.ts --pdf    and each book as a PDF too
 //
-// For every range, dist/site/<season>/<range>/ holds:
-//   README.md   what the range is: its builds, patches, checks and bindings
-//   changes.md  what differs from the range before it
-//   messages.md every message, by system, with the layout of its body
-// and scripts/book.ts adds the range's book beside them.
+// This writes dist/site/index.md, the home page, and for each season the parts
+// of its book drawn from the definitions, under dist/site/parts/<season>/:
+//   about.md     the season's ranges, its builds and its patches
+//   messages.md  every message and struct, with each layout it has
+//   ranges.md    each range: its checks, and how it differs from the one before
+//   index.md     every message by name
+// scripts/book.ts then puts each season's book together as dist/site/<season>.md.
 import {
   existsSync,
   mkdirSync,
@@ -19,13 +21,7 @@ import {
   writeFileSync,
 } from "node:fs";
 import { dirname, join } from "node:path";
-import {
-  bindingsFor,
-  chapters,
-  filled,
-  placesOf,
-  sections,
-} from "./bindings.ts";
+import { bindingsFor, chapters, filled, sections } from "./bindings.ts";
 import type { Binding } from "./bindings.ts";
 import { compare, covers, ranges as coveredRanges } from "./schema.ts";
 import type {
@@ -36,13 +32,15 @@ import type {
   Presence,
   Ranged,
 } from "./schema.ts";
-import { folderOf, patchesOf, seasonOf, seasons } from "./seasons.ts";
+import { patchesOf, seasonOf, seasons } from "./seasons.ts";
 import {
+  anchorOf,
   by,
   firstSentence,
   messages,
   rangeName,
   revisionAt,
+  spanName,
 } from "./tables.ts";
 
 const ROOT = join(import.meta.dir, "..");
@@ -69,17 +67,26 @@ const span = (r: Ranged): string =>
     ? `${r.from} on`
     : `${r.from} up to, not including, ${r.until}`;
 
-// Every page is written from its own folder, so a link into the repository
-// climbs out of dist/site first.
+// A book is read apart from the repository, so its links into the repository
+// go to it on GitHub, and its links within itself to anchors.
+const REPOSITORY = "https://github.com/dacevedo12/trueshot-spec";
+const repo = `${REPOSITORY}/blob/main/`;
 const pages = new Map<string, string>();
 const put = (path: string, lines: readonly string[]): void => {
-  if (pages.has(path))
-    throw new Error(
-      `two ranges are named alike and would both write ${path}; name one by its build`,
-    );
   pages.set(path, `${lines.join("\n").replace(/\n{3,}/g, "\n\n")}\n`);
 };
-const up = (path: string): string => "../".repeat(path.split("/").length + 1);
+// Two ranges named alike would read as one in a book.
+{
+  const names = ranges.map((r) => rangeName(r));
+  const twice = names.filter((n, i) => names.indexOf(n) !== i);
+  if (twice.length > 0)
+    throw new Error(
+      `ranges are named alike (${[...new Set(twice)].join(", ")}); a checked build must tell them apart`,
+    );
+}
+const rangeAnchor = (r: Ranged): string =>
+  `range-${rangeName(r).replace(/[.–]/g, "-")}`;
+const structAnchor = (s: string): string => `struct-${s.toLowerCase()}`;
 const cell = (s: string): string =>
   s.replace(/\|/g, "\\|").replace(/\n/g, " ");
 
@@ -198,9 +205,8 @@ const children = (f: Field): readonly Field[] =>
       ? f.items.fields
       : [];
 
-// 1. Every message of a range, by system, with every note its definition
-// carries, the headers its families put in front, the structs it holds and
-// the vectors that show it.
+// 1. Every message and struct of a season, with each layout it has there, and
+// the channels and family headers it travels under.
 interface FamilyDef {
   readonly name: string;
   readonly header: readonly Field[];
@@ -212,59 +218,95 @@ const noted = (x: unknown): string => {
   const n = (x as { note?: string }).note;
   return n === undefined || n === "" ? "" : n;
 };
-function messagesPage(range: Range, path: string): string[] {
-  const repo = up(path);
-  const link = (s: string): string => `[${s}](#struct-${s.toLowerCase()})`;
-  const valuesOf = (f: Field): string =>
-    Object.entries(f.values ?? {})
-      .map(([k, v]) => `${k} ${v.name}`)
-      .join(", ");
-  const rows = (fields: readonly Field[], depth = 0): string[] =>
-    fields.flatMap((f) => {
-      const pad = "&nbsp;&nbsp;".repeat(depth);
-      const values = valuesOf(f);
-      let at = 0;
-      return [
-        `| ${pad}${f.name} | ${cell(typeOf(f, link))} | ${cell(presence(f.present))} | ${cell(noted(f))}${values === "" ? "" : ` Values: ${cell(values)}.`} |`,
-        ...runs(f).map((b) => {
-          const row = `| ${pad}&nbsp;&nbsp;${b.name} | bit ${at}${b.width === 1 ? "" : ` to ${at + b.width - 1}`} |  | ${cell(noted(b))} |`;
-          at += b.width;
-          return row;
-        }),
-        ...rows(children(f), depth + 1),
+const structLink = (s: string): string => `[${s}](#${structAnchor(s)})`;
+const valuesOf = (f: Field): string =>
+  Object.entries(f.values ?? {})
+    .map(([k, v]) => `${k} ${v.name}`)
+    .join(", ");
+const rows = (fields: readonly Field[], depth = 0): string[] =>
+  fields.flatMap((f) => {
+    const pad = "&nbsp;&nbsp;".repeat(depth);
+    const values = valuesOf(f);
+    let at = 0;
+    return [
+      `| ${pad}${f.name} | ${cell(typeOf(f, structLink))} | ${cell(presence(f.present))} | ${cell(noted(f))}${values === "" ? "" : ` Values: ${cell(values)}.`} |`,
+      ...runs(f).map((b) => {
+        const row = `| ${pad}&nbsp;&nbsp;${b.name} | bit ${at}${b.width === 1 ? "" : ` to ${at + b.width - 1}`} |  | ${cell(noted(b))} |`;
+        at += b.width;
+        return row;
+      }),
+      ...rows(children(f), depth + 1),
+    ];
+  });
+const table = (fields: readonly Field[]): string[] =>
+  fields.length === 0
+    ? ["No body."]
+    : [
+        "| Field | Type | Present when | What it is |",
+        "| --- | --- | --- | --- |",
+        ...rows(fields),
       ];
-    });
-  const table = (fields: readonly Field[]): string[] =>
-    fields.length === 0
-      ? ["No body."]
-      : [
-          "| Field | Type | Present when | What it is |",
-          "| --- | --- | --- | --- |",
-          ...rows(fields),
-        ];
-  const families =
-    familyRevisions.find((r) => covers(r, range.from))?.families ?? [];
+const vectorLinks = (shown: readonly Vector[]): string[] =>
+  shown.length === 0
+    ? []
+    : [
+        "",
+        `Vectors: ${shown
+          .map(
+            (v) =>
+              `[${v.path
+                .split("/")
+                .pop()
+                ?.replace(/\.json$/, "")}](${repo}${v.path})`,
+          )
+          .join(", ")}.`,
+      ];
+
+// The revisions of a list that cover some of a season's ranges, each with
+// those ranges.
+function within<T extends Ranged>(
+  revisions: readonly T[],
+  season: readonly Range[],
+): { revision: T; here: Range[] }[] {
+  return revisions.flatMap((revision) => {
+    const here = season.filter((r) => covers(revision, r.from));
+    return here.length === 0 ? [] : [{ revision, here }];
+  });
+}
+// A heading for one layout of several: the ranges it holds for.
+const inRanges = (here: readonly Range[], season: readonly Range[]): string =>
+  here.length === season.length
+    ? "In every range of this book"
+    : `In ${spanName(here, ranges)}`;
+
+function messagesPart(season: readonly Range[]): string[] {
   const lines = [
-    `# Messages of ${rangeName(range)}`,
+    "# Messages {#appendix-messages}",
     "",
-    `Every message a build from ${span(range)} sends or takes, by system, with every note its definition carries and the layout of its body after the header its channel's family puts in front. How a system's messages work together is in the system's chapter. A field present when \`remaining\` is set is present exactly where the payload has bytes left at that point.`,
+    "Every message a build in this book sends or takes, by system, with each layout it has across the book's ranges and every note its definition carries. A layout is the message's body after the header its channel's family puts in front. A field present when `remaining` is set is present exactly where the payload has bytes left at that point.",
     "",
-    "## Channels",
-    "",
-    "| Channel | Name | Family |",
-    "| --- | --- | --- |",
-    ...range.channels.map((c) => `| ${c.id} | ${c.name} | ${c.family} |`),
-    "",
-    "## Families",
-    "",
-    "The header each family puts in front of every message on its channels.",
-    ...families.flatMap((f) => [
-      "",
-      `### The ${f.name} family`,
-      "",
-      ...table(f.header),
-    ]),
+    "## Channels and families",
   ];
+  for (const { revision, here } of within(channelRevisions, season))
+    lines.push(
+      "",
+      `### Channels: ${inRanges(here, season).replace(/^In/, "in")}`,
+      "",
+      "| Channel | Name | Family |",
+      "| --- | --- | --- |",
+      ...revision.channels.map((c) => `| ${c.id} | ${c.name} | ${c.family} |`),
+    );
+  for (const { revision, here } of within(familyRevisions, season))
+    lines.push(
+      "",
+      `### Family headers: ${inRanges(here, season).replace(/^In/, "in")}`,
+      ...revision.families.flatMap((f) => [
+        "",
+        `The ${f.name} family:`,
+        "",
+        ...table(f.header),
+      ]),
+    );
   const held = new Set<string>();
   const hold = (fields: readonly Field[]): void => {
     for (const f of fields) {
@@ -277,75 +319,90 @@ function messagesPage(range: Range, path: string): string[] {
       if (name !== undefined && !held.has(name)) {
         held.add(name);
         const s = structs.find((x) => x.struct === name);
-        if (s !== undefined) hold(structAt(s, range.from) ?? []);
+        for (const r of s?.revisions ?? []) hold(r.fields);
       }
       hold(children(f));
       if (f.type === "array") hold([f.items]);
     }
   };
-  for (const s of systems) {
+  for (const system of systems) {
     const here = messages.filter(
-      (m) => m.system === s && revisionAt(m, range.from) !== undefined,
+      (m) => within(m.revisions, season).length > 0,
     );
-    if (here.length === 0) continue;
+    const own = here.filter((m) => m.system === system);
+    if (own.length === 0) continue;
     lines.push(
       "",
-      `## ${s.charAt(0).toUpperCase() + s.slice(1)}`,
+      `## ${system.charAt(0).toUpperCase() + system.slice(1)}`,
       "",
-      `See the [${s}](${repo}spec/${s}.md) chapter.`,
+      `How these work together is in the [${system}](#chapter-${system}) chapter.`,
     );
-    for (const m of here) {
-      const r = revisionAt(m, range.from);
-      if (r === undefined) continue;
-      hold(r.fields);
-      const shown = vectors.filter(
-        (v) =>
-          v.message === m.message &&
-          v.version !== undefined &&
-          covers(r, v.version),
-      );
+    for (const m of own) {
+      const layouts = within(m.revisions, season);
       lines.push(
         "",
-        `### ${m.message}`,
+        `### \`${m.message}\` {#${anchorOf(m.message)}}`,
+        ...[noted(m)].filter((n) => n !== "").flatMap((n) => ["", n]),
         "",
-        `Command ${r.command} on ${r.channel}${(r.alsoOn ?? []).map((o) => `, or on ${o.channel} ${o.reliability}`).join("")}, ${by(r) === "both" ? "sent by either side" : `sent by the ${by(r)}`}, ${r.reliability}. The layout holds from ${r.from} up to ${r.until ?? "the end"}. [Definition](${repo}schema/messages/${m.file}).`,
-        ...[noted(m), noted(r)]
-          .filter((n) => n !== "")
-          .flatMap((n) => ["", n]),
-        "",
-        ...table(r.fields),
-        ...(shown.length === 0
-          ? []
-          : [
-              "",
-              `Vectors: ${shown
-                .map(
-                  (v) =>
-                    `[${v.path
-                      .split("/")
-                      .pop()
-                      ?.replace(/\.json$/, "")}](${repo}${v.path})`,
-                )
-                .join(", ")}.`,
-            ]),
+        `[Definition](${repo}schema/messages/${m.file}).`,
       );
+      for (const { revision: r, here: rs } of layouts) {
+        hold(r.fields);
+        lines.push(
+          "",
+          `#### ${inRanges(rs, season)}`,
+          "",
+          `Command ${r.command} on ${r.channel}${(r.alsoOn ?? []).map((o) => `, or on ${o.channel} ${o.reliability}`).join("")}, ${by(r) === "both" ? "sent by either side" : `sent by the ${by(r)}`}, ${r.reliability}. This layout holds from ${r.from} up to ${r.until ?? "the end"}.`,
+          ...[noted(r)].filter((n) => n !== "").flatMap((n) => ["", n]),
+          "",
+          ...table(r.fields),
+          ...vectorLinks(
+            vectors.filter(
+              (v) =>
+                v.message === m.message &&
+                v.version !== undefined &&
+                covers(r, v.version),
+            ),
+          ),
+        );
+      }
     }
   }
   const order = [...held].sort();
-  if (order.length > 0) lines.push("", "## Structs");
-  for (const name of order) {
-    const s = structs.find((x) => x.struct === name);
-    const fields = s === undefined ? undefined : structAt(s, range.from);
-    if (s === undefined || fields === undefined) continue;
+  if (order.length > 0)
     lines.push(
       "",
-      `### Struct ${name}`,
+      "# Structs {#appendix-structs}",
       "",
-      `[Definition](${repo}schema/types/${s.file}).`,
+      "The groups of fields the messages above hold, each with the layout it has across the book's ranges.",
+    );
+  for (const name of order) {
+    const s = structs.find((x) => x.struct === name);
+    if (s === undefined) continue;
+    const layouts = within(s.revisions, season);
+    if (layouts.length === 0) continue;
+    lines.push(
+      "",
+      `## \`${name}\` {#${structAnchor(name)}}`,
       ...[noted(s)].filter((n) => n !== "").flatMap((n) => ["", n]),
       "",
-      ...table(fields),
+      `[Definition](${repo}schema/types/${s.file}).`,
     );
+    for (const { revision, here } of layouts)
+      lines.push(
+        "",
+        `### ${inRanges(here, season)}`,
+        "",
+        ...table(revision.fields),
+        ...vectorLinks(
+          vectors.filter(
+            (v) =>
+              v.struct === name &&
+              v.version !== undefined &&
+              covers(revision, v.version),
+          ),
+        ),
+      );
   }
   return lines;
 }
@@ -496,18 +553,17 @@ const gapAt = (m: (typeof messages)[number], i: number): boolean => {
   return before >= 0 && after < ranges.length;
 };
 
-function changesPage(prev: Range, range: Range, path: string): string[] {
+function changesPart(prev: Range, range: Range): string[] {
   const i = ranges.indexOf(range);
   const P = rangeName(prev);
   const C = rangeName(range);
-  const repo = up(path);
   const lines = [
-    `# ${C} against ${P}`,
+    `### Against ${P}`,
     "",
-    `Where a build from ${span(range)} differs from one from ${span(prev)}. Anything not named here is the same in both. The [messages](messages.md) page and the [book](book.md) give the whole of ${C}.`,
+    `Where a build from ${span(range)} differs from one from ${span(prev)}. Anything not named here is the same in both.`,
   ];
   const section = (title: string, body: readonly string[]): void => {
-    if (body.length > 0) lines.push("", `## ${title}`, "", ...body);
+    if (body.length > 0) lines.push("", `#### ${title}`, "", ...body);
   };
 
   // The header, the channels and the families.
@@ -552,8 +608,17 @@ function changesPage(prev: Range, range: Range, path: string): string[] {
   const unrecorded: string[] = [];
   const again: string[] = [];
   const renumbered: string[] = [];
+  // A message this book holds links to its section; one only another
+  // season's book holds, to its definition.
+  const inBook = new Set(
+    messages
+      .filter((m) => within(m.revisions, seasonRanges(range)).length > 0)
+      .map((m) => m.file),
+  );
   const def = (file: string, name: string): string =>
-    `[\`${name}\`](${repo}schema/messages/${file})`;
+    inBook.has(file)
+      ? `[\`${name}\`](#${anchorOf(name)})`
+      : `[\`${name}\`](${repo}schema/messages/${file})`;
   for (const m of messages) {
     let a = revisionAt(m, prev.from);
     const b = revisionAt(m, range.from);
@@ -767,196 +832,154 @@ function changesPage(prev: Range, range: Range, path: string): string[] {
   return lines;
 }
 
-// 3. A range's own page.
-function rangePage(i: number, path: string): string[] {
-  const range = ranges[i];
-  if (range === undefined) return [];
-  const prev = ranges[i - 1];
-  const repo = up(path);
-  const season = seasonOf(range);
-  const ran = results.filter((r) => covers(range, r.build));
-  const here = messages.filter((m) => revisionAt(m, range.from) !== undefined);
-  const count = (d: string): number =>
-    here.filter((m) => by(revisionAt(m, range.from)) === d).length;
-  // What both neighbours define and this range does not: a gap, or a message
-  // these builds alone go without.
-  const lacks = messages.filter((m) => gapAt(m, i));
+// 3. Each range of a season: its builds, its checks, what the specification
+// leaves unrecorded there, and how it differs from the range before it.
+const seasonRanges = (r: Ranged): Range[] =>
+  ranges.filter((x) => seasonOf(x) === seasonOf(r));
+
+function rangesPart(season: readonly Range[]): string[] {
   const lines = [
-    `# ${rangeName(range)}`,
+    "# Ranges {#appendix-ranges}",
     "",
-    `Client builds from ${span(range)}, in [${season.name}](../README.md). Patch notes: ${patchesOf(
-      range,
-    )
-      .map((p) => `[V${p.name}](${p.url})`)
-      .join(", ")}.`,
-    "",
-    "- [The book](book.md), the chapters with this range's bindings in place, as one document. A PDF is beside it when the site is built with `--pdf`.",
-    `- [Every message](messages.md): ${here.length} messages, ${count("server")} sent by the server, ${count("client")} by the client and ${count("both")} by either.`,
-    ...(prev === undefined
-      ? []
-      : [`- [How it differs from ${rangeName(prev)}](changes.md).`]),
-    "",
-    "## Bindings",
-    "",
-    ...(bindingsFor(range).length === 0
-      ? ["No binding adds to the chapters for this range."]
-      : [
-          "What this range alone does, set in place in its book:",
-          "",
-          ...bindingsFor(range).map(
-            (b) =>
-              `- [${b.dir.split("/").pop()}](${repo}${b.dir}/), for ${b.until === undefined ? "this range alone" : `every range from ${b.from} up to ${b.until}`}: ${readdirSync(
-                join(ROOT, b.dir),
-              )
-                .map((f) => f.replace(/\.md$/, ""))
-                .join(", ")}.`,
-          ),
-        ]),
-    "",
-    "## Places",
-    "",
-    "Each place a chapter marks for its bindings, with the bindings that fill it for this range. Where none does, the chapter's own text is all the specification says there for this range, which is not a finding that the range does nothing more.",
-    "",
-    "| Chapter | Place | Filled by |",
-    "| --- | --- | --- |",
-    ...chapters.flatMap((chapter) => {
-      const own = filled(range).get(chapter);
-      return placesOf(chapter).map((key) => {
-        const by = own?.get(key) ?? [];
-        return `| [${chapter}](${repo}spec/${chapter}.md) | ${key} | ${by.length === 0 ? "" : by.map((b) => `[${b.dir.split("/").pop()}](${repo}${b.dir}/${chapter}.md)`).join(", ")} |`;
-      });
-    }),
-    "",
-    "## Live checks",
-    "",
-    ...(ran.length === 0
-      ? ["No build in this range has been checked against a live client."]
-      : [
-          "| Build | Passed | Failed | Skipped | Commit | Date |",
-          "| --- | --- | --- | --- | --- | --- |",
-          ...ran.map((r) => {
-            const n = (o: string): number =>
-              r.checks.filter((c) => c.outcome === o).length;
-            return `| [${r.build}](${repo}${RESULTS}/${slug(r.build)}.json) | ${n("passed")} | ${n("failed")} | ${n("skipped")} | ${r.commit.slice(0, 7)} | ${r.date} |`;
-          }),
-        ]),
-    "",
-    "## Vectors",
-    "",
-    `${vectorsIn(range).length} vectors are laid out as a build in this range lays its messages out.`,
+    "Each range of this book: the builds it runs over and the patches they shipped in, the live checks that ran on them, what the specification leaves unrecorded there, and how the range differs from the one before it.",
   ];
-  // Messages the range's book names, which the range has no revision of.
-  const told = [
-    ...chapters.map((c) =>
-      readFileSync(join(ROOT, "spec", `${c}.md`), "utf8"),
-    ),
-    ...bindingsFor(range).flatMap((b) =>
-      readdirSync(join(ROOT, b.dir)).map((f) =>
-        readFileSync(join(ROOT, b.dir, f), "utf8"),
+  for (const range of season) {
+    const i = ranges.indexOf(range);
+    const prev = ranges[i - 1];
+    const ran = results.filter((r) => covers(range, r.build));
+    const lacks = messages.filter((m) => gapAt(m, i));
+    const told = [
+      ...chapters.map((c) =>
+        readFileSync(join(ROOT, "spec", `${c}.md`), "utf8"),
       ),
-    ),
-  ].join("\n");
-  const named = new Set(
-    [...told.matchAll(/`([A-Z][A-Za-z0-9]*)`/g)].map((m) => m[1]),
-  );
-  const absent = messages.filter(
-    (m) => named.has(m.message) && revisionAt(m, range.from) === undefined,
-  );
-  if (absent.length > 0)
+      ...bindingsFor(range).flatMap((b) =>
+        readdirSync(join(ROOT, b.dir)).map((f) =>
+          readFileSync(join(ROOT, b.dir, f), "utf8"),
+        ),
+      ),
+    ].join("\n");
+    const named = new Set(
+      [...told.matchAll(/`([A-Z][A-Za-z0-9]*)`/g)].map((m) => m[1]),
+    );
+    const absent = messages.filter(
+      (m) => named.has(m.message) && revisionAt(m, range.from) === undefined,
+    );
+    const list = (ms: readonly (typeof messages)[number][]): string =>
+      ms
+        .map((m) =>
+          within(m.revisions, season).length > 0
+            ? `[\`${m.message}\`](#${anchorOf(m.message)})`
+            : `[\`${m.message}\`](${repo}schema/messages/${m.file})`,
+        )
+        .join(", ");
     lines.push(
       "",
-      "## Named but not defined here",
+      `## ${rangeName(range)} {#${rangeAnchor(range)}}`,
       "",
-      `The book names these, and no build in this range sends or takes them, so what it says of them says nothing of this range: ${absent.map((m) => `[\`${m.message}\`](${repo}schema/messages/${m.file})`).join(", ")}.`,
+      `Client builds from ${span(range)}. Patch notes: ${patchesOf(range)
+        .map((p) => `[V${p.name}](${p.url})`)
+        .join(", ")}.`,
+      "",
+      ...(ran.length === 0
+        ? ["No build in this range has been checked against a live client."]
+        : [
+            "| Build checked | Passed | Failed | Skipped | Commit | Date |",
+            "| --- | --- | --- | --- | --- | --- |",
+            ...ran.map((r) => {
+              const n = (o: string): number =>
+                r.checks.filter((c) => c.outcome === o).length;
+              return `| [${r.build}](${repo}${RESULTS}/${slug(r.build)}.json) | ${n("passed")} | ${n("failed")} | ${n("skipped")} | ${r.commit.slice(0, 7)} | ${r.date} |`;
+            }),
+          ]),
     );
-  if (lacks.length > 0)
-    lines.push(
-      "",
-      "## Not recorded",
-      "",
-      `The nearest ranges on either side of this one that define these both do, and this one does not. The specification says nothing of whether a build in it sends or takes them: ${lacks.map((m) => `[\`${m.message}\`](${repo}schema/messages/${m.file})`).join(", ")}.`,
-    );
+    if (lacks.length > 0)
+      lines.push(
+        "",
+        `The nearest ranges on either side of this one that define these both do, and this one does not; the specification says nothing of whether a build in it sends or takes them: ${list(lacks)}.`,
+      );
+    if (absent.length > 0)
+      lines.push(
+        "",
+        `The chapters name these, and no build in this range sends or takes them, so what they say of them says nothing of this range: ${list(absent)}.`,
+      );
+    // A range is set against the one before it in the same book; the first of
+    // a season stands on its own, since the season before has a book of its
+    // own.
+    if (prev !== undefined && seasonOf(prev) === seasonOf(range))
+      lines.push("", ...changesPart(prev, range));
+  }
   return lines;
 }
 
-// 4. A season's page, and the site's.
-const rangeRow = (r: Range, from: string): string => {
-  const ran = results.filter((x) => covers(r, x.build)).length;
-  const i = ranges.indexOf(r);
-  return `| [${rangeName(r)}](${from}${folderOf(r).split("/").pop()}/README.md) | ${r.from} | ${r.until ?? "on"} | ${ran} | ${i === 0 ? "" : `[changes](${from}${folderOf(r).split("/").pop()}/changes.md)`} | [book](${from}${folderOf(r).split("/").pop()}/book.md) |`;
-};
-const RANGE_HEAD = [
-  "| Range | From | Up to | Builds checked | From the one before | Book |",
-  "| --- | --- | --- | --- | --- | --- |",
-];
-
-for (const [i, r] of ranges.entries()) {
-  const dir = folderOf(r);
-  put(`${dir}/README.md`, rangePage(i, `${dir}/README.md`));
-  put(`${dir}/messages.md`, messagesPage(r, `${dir}/messages.md`));
-  const prev = ranges[i - 1];
-  if (prev !== undefined)
-    put(`${dir}/changes.md`, changesPage(prev, r, `${dir}/changes.md`));
+// 4. Every message of a season by name, and the season's ranges for the book's
+// opening.
+function indexPart(season: readonly Range[]): string[] {
+  const own = messages
+    .filter((m) => within(m.revisions, season).length > 0)
+    .sort((a, b) => a.message.localeCompare(b.message));
+  return [
+    "# Index of messages {#appendix-index}",
+    "",
+    "| Message | System | Ranges |",
+    "| --- | --- | --- |",
+    ...own.map(
+      (m) =>
+        `| [\`${m.message}\`](#${anchorOf(m.message)}) | ${m.system} | ${spanName(
+          season.filter((r) => revisionAt(m, r.from) !== undefined),
+          ranges,
+        )} |`,
+    ),
+  ];
 }
+const rangeRows = (season: readonly Range[], book: string): string[] => [
+  "| Range | From | Up to | Patches | Builds checked |",
+  "| --- | --- | --- | --- | --- |",
+  ...season.map(
+    (r) =>
+      `| [${rangeName(r)}](${book}#${rangeAnchor(r)}) | ${r.from} | ${r.until ?? "on"} | ${patchesOf(
+        r,
+      )
+        .map((p) => `[V${p.name}](${p.url})`)
+        .join(", ")} | ${results.filter((x) => covers(r, x.build)).length} |`,
+  ),
+];
+function aboutPart(season: readonly Range[]): string[] {
+  const first = season[0];
+  const last = season[season.length - 1];
+  return [
+    `This book covers client builds from ${first?.from ?? ""} up to, not including, ${last?.until ?? "the end"}, in ${season.length === 1 ? "one range" : `${season.length} ranges`}. Every build in a range is held to the same facts.`,
+    "",
+    ...rangeRows(season, ""),
+    "",
+    "Everything in the chapters holds for every range of the book, except a passage set apart and headed with ranges, which holds for those alone. What the chapters say of a message says nothing of a range that has no layout for it; [the appendix on messages](#appendix-messages) gives each message's layouts by range, and [the appendix on ranges](#appendix-ranges) each range's checks and how it differs from the range before it.",
+  ];
+}
+
 const held = seasons.filter((s) => ranges.some((r) => seasonOf(r) === s));
 for (const s of held) {
   const own = ranges.filter((r) => seasonOf(r) === s);
-  put(`${s.folder}/README.md`, [
-    `# ${s.name}`,
-    "",
-    `The ranges of versions the specification covers in ${s.name}. The wiki lists [every patch of ${s.name}](${s.patches}), with its notes.`,
-    "",
-    ...RANGE_HEAD,
-    ...own.map((r) => rangeRow(r, "")),
-  ]);
+  put(`parts/${s.folder}/about.md`, aboutPart(own));
+  put(`parts/${s.folder}/messages.md`, messagesPart(own));
+  put(`parts/${s.folder}/ranges.md`, rangesPart(own));
+  put(`parts/${s.folder}/index.md`, indexPart(own));
 }
-// Every message, with the ranges that define it, each linked to the message
-// on that range's page.
-put("messages.md", [
-  "# Index of messages",
-  "",
-  "Every message the specification defines, by name, with the ranges whose builds send or take it. Each range links the message as that range lays it out.",
-  ...[...new Set(messages.map((m) => m.message.charAt(0)))]
-    .sort()
-    .flatMap((letter) => [
-      "",
-      `## ${letter}`,
-      "",
-      "| Message | System | Ranges |",
-      "| --- | --- | --- |",
-      ...messages
-        .filter((m) => m.message.charAt(0) === letter)
-        .map((m) => {
-          const where = ranges.filter(
-            (r) => revisionAt(m, r.from) !== undefined,
-          );
-          return `| \`${m.message}\` | ${m.system} | ${where
-            .map(
-              (r) =>
-                `[${rangeName(r)}](${folderOf(r)}/messages.md#${m.message.toLowerCase()})`,
-            )
-            .join(", ")} |`;
-        }),
-    ]),
-]);
-put("README.md", [
+put("index.md", [
   "# Trueshot",
   "",
   "A wire protocol specification for League of Legends game servers: what a server sends for a client to connect, load a match and play, and what the client does with it, written so that anyone can build a conforming server in any language.",
   "",
-  "The [index of messages](messages.md) finds any message in every range that defines it.",
-  "",
-  "Read the [chapters](../../spec/README.md) in the order they give, since each builds on the ones before it; they hold for every client build covered. Then pick the range of builds you serve below. Each has a book that sets the chapters and what that range alone does together as one document, every message its builds send or take with the layout of each, and how it differs from the range before it. The field layouts and the [conformance vectors](../../conformance/) to check your work against are in the [repository](../../).",
-  "",
-  ...held.flatMap((s) => [
-    `## [${s.name}](${s.folder}/README.md)`,
-    "",
-    ...RANGE_HEAD,
-    ...ranges
-      .filter((r) => seasonOf(r) === s)
-      .map((r) => rangeRow(r, `${s.folder}/`)),
-    "",
-  ]),
+  `Each season has one book. Pick the season of the client you serve, find its range below, and read the book through: each chapter builds on the ones before it, and a passage that holds for some ranges alone says which. Every field layout comes from the definitions in the [repository](${REPOSITORY}), and its [conformance vectors](${REPOSITORY}/tree/main/conformance) check your work as you go.`,
+  ...held.flatMap((s) => {
+    const own = ranges.filter((r) => seasonOf(r) === s);
+    return [
+      "",
+      `## ${s.name}`,
+      "",
+      `[The ${s.name} book](${s.folder}.md) ([PDF](${s.folder}.pdf)) covers builds from ${own[0]?.from ?? ""} up to ${own[own.length - 1]?.until ?? "the end"}. The wiki lists [every patch of ${s.name}](${s.patches}).`,
+      "",
+      ...rangeRows(own, `${s.folder}.md`),
+    ];
+  }),
 ]);
 
 rmSync(SITE, { recursive: true, force: true });
@@ -965,12 +988,12 @@ for (const [path, text] of pages) {
   mkdirSync(dirname(full), { recursive: true });
   writeFileSync(full, text);
 }
-// The books go beside the pages, so a site is never left without them.
+// The books go beside the home page, so a site is never left without them.
 const books = Bun.spawnSync(
   ["bun", join(ROOT, "scripts/book.ts"), ...process.argv.slice(2)],
   { stdout: "inherit", stderr: "inherit" },
 );
 if (books.exitCode !== 0) process.exit(books.exitCode);
 console.log(
-  `wrote ${pages.size} pages for ${ranges.length} ranges in ${held.length} seasons to dist/site`,
+  `wrote the home page and ${held.length} books, over ${ranges.length} ranges, to dist/site`,
 );

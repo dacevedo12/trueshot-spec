@@ -25,8 +25,10 @@ and leaves every design decision to you.
 
 ## Start here
 
-[IMPLEMENTING.md](IMPLEMENTING.md) carries the reading order. Each document
-builds on the ones before it, so read it through once before writing code.
+[IMPLEMENTING.md](IMPLEMENTING.md) says where to start: the book for the season
+of the client you serve, which `bun run site` puts together from this
+repository. Each chapter builds on the ones before it, so read it through once
+before writing code.
 
 [conformance/](conformance/) is where the vectors live. Any implementation can
 run them, in any language, to check itself against the specification.

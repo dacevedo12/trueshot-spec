@@ -1,14 +1,15 @@
-// One book per range of versions, put together from the specification.
+// One book per season, put together from the specification.
 //
-//   bun scripts/book.ts          write dist/site/<season>/<range>/book.md
-//   bun scripts/book.ts --pdf    and book.pdf beside it, with pandoc and typst
+//   bun scripts/book.ts          write dist/site/<season>.md
+//   bun scripts/book.ts --pdf    and <season>.pdf beside it, with pandoc and typst
 //   bun scripts/book.ts --check  only check that every binding has its place
 //
-// A book takes the chapters in the order spec/README.md reads them, sets each
-// binding's entries in their places (see scripts/bindings.ts), puts the
-// system's messages with their commands in that range at the
-// `<!-- messages -->` line of each system's chapter, and ends with the range's
-// messages page, which scripts/site.ts writes first.
+// A book takes the chapters in the order spec/README.md reads them, and sets
+// in each place a chapter marks every binding entry that holds for some of the
+// season's ranges, headed with the ranges it holds for (see
+// scripts/bindings.ts). At each system's `<!-- messages -->` line it puts the
+// system's messages with their commands by range, and it ends with the
+// appendices scripts/site.ts writes first under dist/site/parts/<season>/.
 import {
   existsSync,
   mkdirSync,
@@ -21,15 +22,14 @@ import {
   ANCHOR,
   appliesTo,
   bindings,
-  bindingsFor,
   chapters,
   placesOf,
   sections,
 } from "./bindings.ts";
 import { ranges as coveredRanges } from "./schema.ts";
 import type { Ranged } from "./schema.ts";
-import { folderOf } from "./seasons.ts";
-import { rangeName, rangeTable } from "./tables.ts";
+import { seasonOf, seasons } from "./seasons.ts";
+import { seasonTable, spanName } from "./tables.ts";
 
 type Range = Ranged;
 
@@ -93,7 +93,7 @@ for (const s of systems) {
 }
 for (const r of ranges) {
   try {
-    folderOf(r);
+    seasonOf(r);
   } catch (e) {
     problems.push((e as Error).message);
   }
@@ -121,53 +121,57 @@ function relink(text: string, base: string): string {
     if (chapter !== undefined && chapters.includes(chapter)) {
       return `](#${fragment ?? `chapter-${chapter}`})`;
     }
-    if (/^dist\/site\/.*\/messages\.md$/.test(resolved))
-      return "](#appendix-messages)";
     return `](${REPOSITORY}/${resolved}${fragment === undefined ? "" : `#${fragment}`})`;
   });
 }
 
-function chapterFor(chapter: string, range: Range): string {
+// A chapter as a season reads it: every binding entry that holds for some of
+// its ranges, in its place and headed with those ranges, the widest span
+// first, then its messages with their commands by range.
+const startOf = (rs: readonly Range[]): number => {
+  const first = rs[0];
+  return first === undefined ? -1 : ranges.indexOf(first);
+};
+function chapterFor(chapter: string, season: readonly Range[]): string {
   let text = read(`spec/${chapter}.md`);
-  // A binding's links are written from where the binding sits.
-  const entries = bindingsFor(range).map((b) => ({
-    base: b.dir,
-    own: sections(`${b.dir}/${chapter}.md`),
-  }));
+  const held = bindings
+    .map((b) => ({ b, here: season.filter((r) => appliesTo(b, r)) }))
+    .filter(({ here }) => here.length > 0)
+    .sort(
+      (x, y) =>
+        y.here.length - x.here.length || startOf(x.here) - startOf(y.here),
+    )
+    .map(({ b, here }) => ({
+      base: b.dir,
+      label: spanName(here, ranges),
+      own: sections(`${b.dir}/${chapter}.md`),
+    }));
   text = text.replace(ANCHOR, (_, key: string) =>
-    entries
-      .map(({ base, own }) => relink(own.get(key) ?? "", base))
-      .filter((t) => t !== "")
+    held
+      .flatMap(({ base, label, own }) => {
+        const entry = own.get(key);
+        return entry === undefined || entry === ""
+          ? []
+          : [`::: {.ranges}\n**In ${label}**\n\n${relink(entry, base)}\n:::`];
+      })
       .join("\n\n"),
-  );
-  // A chapter not yet split into core and bindings still names its ranges.
-  text = text.replace(
-    / ?Applies to [0-9. and]+ clients, as \[Versions\]\(versions\.md\) describes\./g,
-    "",
   );
   text = text.replace(
     MESSAGES,
-    () =>
-      `## Messages\n\n${rangeTable(chapter, range, "../schema/messages/")}`,
+    () => `## Messages\n\n${seasonTable(chapter, season, ranges)}`,
   );
   text = text.replace(/^# (.+)$/m, `# $1 {#chapter-${chapter}}`);
   return relink(text, "spec");
 }
 
-function appendix(range: Range): string {
-  const dir = `dist/site/${folderOf(range)}`;
-  if (!existsSync(join(ROOT, dir, "messages.md"))) {
-    console.error(
-      `${dir}/messages.md is missing: run bun scripts/site.ts first`,
-    );
+const part = (season: string, name: string): string => {
+  const path = `dist/site/parts/${season}/${name}.md`;
+  if (!existsSync(join(ROOT, path))) {
+    console.error(`${path} is missing: run bun scripts/site.ts first`);
     process.exit(1);
   }
-  const text = read(`${dir}/messages.md`).replace(
-    /^# .+$/m,
-    "# Messages {#appendix-messages}",
-  );
-  return relink(text, dir);
-}
+  return read(path);
+};
 
 // The opening every book shares: the order the chapters fall in, from
 // spec/README.md, then the advice of IMPLEMENTING.md on checking work and on
@@ -210,14 +214,15 @@ const preface = ((): string => {
   );
 })();
 
-for (const range of ranges) {
-  const span =
-    range.until === undefined
-      ? `${range.from} on`
-      : `${range.from} up to ${range.until}`;
+for (const season of seasons) {
+  const own = ranges.filter((r) => seasonOf(r) === season);
+  if (own.length === 0) continue;
+  const first = own[0]?.from ?? "";
+  const last = own[own.length - 1]?.until;
+  const span = last === undefined ? `${first} on` : `${first} up to ${last}`;
   const front = [
     "---",
-    `title: "Trueshot ${rangeName(range)}"`,
+    `title: "Trueshot ${season.name}"`,
     `subtitle: "The wire protocol of client builds ${span}"`,
     "toc: true",
     "---",
@@ -232,27 +237,25 @@ for (const range of ranges) {
     "```",
     "",
   ].join("\n");
-  // Versions says how the repository covers many ranges; a book covers one,
-  // and says which in its own opening instead.
+  // Versions says how the repository covers many ranges; a book says which
+  // it covers in its own opening instead.
   const about = [
     "# About this book {#chapter-versions}",
     "",
-    `This book covers client builds ${span}, and every statement in it holds for`,
-    "each of them. It is put together from the specification's chapters, with",
-    "what these builds alone do set in place, and it ends with every message they",
-    "send or take. The definitions it links to are the record it is drawn from.",
+    part(season.folder, "about"),
     "",
     preface,
   ].join("\n");
   const body = [
     about,
-    ...chapters
-      .filter((c) => c !== "versions")
-      .map((c) => chapterFor(c, range)),
+    ...chapters.filter((c) => c !== "versions").map((c) => chapterFor(c, own)),
+    part(season.folder, "messages"),
+    part(season.folder, "ranges"),
+    part(season.folder, "index"),
   ].join("\n\n");
-  const out = join(ROOT, "dist", "site", folderOf(range), "book.md");
+  const out = join(ROOT, "dist", "site", `${season.folder}.md`);
   mkdirSync(join(out, ".."), { recursive: true });
-  writeFileSync(out, `${front}\n${body}\n\n${appendix(range)}`);
+  writeFileSync(out, `${front}\n${body}\n`);
   console.log("wrote", out);
   if (pdf) {
     const made = Bun.spawnSync(

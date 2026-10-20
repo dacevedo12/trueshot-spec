@@ -35,8 +35,8 @@ range it applies to (see [Messages](messages.md)). Where ranges differ, each
 has its own revision, and no revision is described by pointing at another. A
 message a range lacks has no revision covering that range, and what a chapter
 or a binding says about that message, or about a field or bit its revision for
-the range lacks, says nothing of that range. Each range's page in the site
-lists the messages its book names and the range lacks.
+the range lacks, says nothing of that range. A season's book lists, for each
+range, the messages its chapters name and the range lacks.
 
 ## In the prose
 
@@ -57,15 +57,15 @@ span: a directory named for two builds joined by `--`, which holds for every
 range from the first build up to the second. Where several bindings fill a
 place, the widest span's entry comes first and the range's own last.
 
-## The site
+## The books
 
-`bun run site` writes `dist/site`: a folder for each season, and in it a folder
-for each range. A range's folder holds its book, which reads the chapters in
-the order [the index](README.md) gives them with the range's bindings set in
-their places; every message a build in it sends or takes, by system, with the
-layout of its body; and what changes from the range before it, so a range can
-be read as the one before it and what differs. Its first page names the builds
-the range runs over, the patches they shipped in, the live checks that ran on
-them and the bindings that add to its chapters. `bun run site -- --pdf`
-typesets each book as well, given [pandoc](https://pandoc.org) and
-[typst](https://typst.app).
+`bun run site` writes `dist/site`: a home page, and a book for each season. A
+book reads the chapters in the order [the index](README.md) gives them, with
+every binding that holds for some of the season's ranges set in its place and
+headed with those ranges. Each system's chapter ends with its messages and the
+command each takes by range. The appendices give every message and struct with
+each layout it has in the season, each range's builds, patches and live
+checks, and how each range differs from the one before it in the season.
+`bun run site -- --pdf` typesets each book as well, given
+[pandoc](https://pandoc.org) and [typst](https://typst.app), and `bun run pages`
+renders the home page and the books as web pages.

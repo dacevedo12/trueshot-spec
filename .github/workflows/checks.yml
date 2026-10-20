@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   checks:
-    name: every check, and the site
+    name: every check, and the books
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -20,7 +20,8 @@ jobs:
       - run: nix develop -c bun install --frozen-lockfile
       - run: nix develop -c bun run check
       - run: nix develop -c bun run site -- --pdf
+      - run: nix develop -c bun run pages
       - uses: actions/upload-artifact@v7
         with:
-          name: site
-          path: dist/site
+          name: pages
+          path: dist/pages

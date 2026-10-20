@@ -51,7 +51,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   background: var(--bg);
   border-bottom: 1px solid var(--rule);
 }
-.bar-in, .tabs-in {
+.bar-in {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
@@ -72,21 +72,6 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .crumbs a { color: var(--muted); }
 .crumbs span + span::before { content: "/"; margin-right: 6px; color: var(--rule); }
 .repo { margin-left: auto; font-size: 0.9rem; }
-.tabs { border-top: 1px solid var(--rule); }
-.tabs-in { gap: 0 4px; }
-.tabs a {
-  display: inline-block;
-  padding: 8px 10px;
-  font: 500 0.9rem/1.2 var(--display);
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  color: var(--muted);
-  text-decoration: none;
-  border-bottom: 2px solid transparent;
-}
-.tabs a[aria-current="page"] { color: var(--fg); border-bottom-color: var(--accent); }
-.tabs a:hover { color: var(--fg); }
-
 .page {
   max-width: 760px;
   margin: 0 auto;
@@ -204,6 +189,19 @@ a.here {
 }
 h1:hover a.here, h2:hover a.here, h3:hover a.here, h4:hover a.here, a.here:focus-visible { opacity: 1; }
 @media (hover: none) { a.here { opacity: 0.5; } }
+/* A passage that holds for some of a book's ranges alone. */
+.ranges {
+  margin: 1.2em 0;
+  padding: 4px 0 4px 16px;
+  border-left: 3px solid var(--accent);
+}
+.ranges > p:first-child strong {
+  font: 600 0.8rem/1.2 var(--display);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.ranges > :last-child { margin-bottom: 0; }
 .rfc {
   font: 600 0.82em/1 var(--display);
   letter-spacing: 0.06em;

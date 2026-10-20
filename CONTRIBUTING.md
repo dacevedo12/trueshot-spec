@@ -206,8 +206,9 @@ check` lists every revision still waiting for one. Once the definitions
    does there goes in a binding of its own. A chapter statement it does not
    bear out moves into the bindings of the ranges that do.
 5. Review what the tools list: every copied note that names a build, and every
-   binding a split leaves behind. `bun run site` shows the new range against
-   its neighbours, where anything left as a copy stands out.
+   binding a split leaves behind. `bun run site` sets the new range against
+   the one before it in its season's book, where anything left as a copy
+   stands out.
 
 A range's season comes from [spec/seasons.json](spec/seasons.json): the
 season its first build falls in, a preseason counting as part of the season it
@@ -219,9 +220,9 @@ Every message names the system it belongs to, and each system has a document in
 `spec/` that explains how its messages work together. Prose there describes
 behaviour and links the definitions; it never restates a layout. Nothing
 committed is generated from the definitions: the tables of a system's messages,
-the page of every message in a range and what changes between ranges are all
-written by `bun run site` into `dist/site`, so they cannot fall behind what
-they are drawn from. A system's chapter marks where its book sets the table of
+every message's layouts and what changes between ranges are all written by
+`bun run site` into the season books under `dist/site`, so they cannot fall
+behind what they are drawn from. A system's chapter marks where its book sets the table of
 its messages with a `<!-- messages -->` line.
 
 ## Checks
