@@ -282,7 +282,14 @@ const directionsOverlap = (a: Direction, b: Direction): boolean =>
   a === b || a === "bidirectional" || b === "bidirectional";
 
 // Every list of revisions holds to the same rules, whatever it describes.
-function checkRevisions(revisions: readonly Ranged[], where: string): void {
+function checkRevisions(
+  revisions: readonly Ranged[],
+  where: string,
+  // Whether two revisions also hold the same layout of every struct they
+  // name, where they hold any: a struct that changes between them is a
+  // difference their JSON alone does not show.
+  sameStructs: (a: Ranged, b: Ranged) => boolean = () => true,
+): void {
   revisions.forEach((revision, index) => {
     if (
       revision.until &&
@@ -313,7 +320,7 @@ function checkRevisions(revisions: readonly Ranged[], where: string): void {
     if (a === undefined || b === undefined || a.until !== b.from) continue;
     const rest = (r: Ranged): string =>
       JSON.stringify({ ...r, from: undefined, until: undefined });
-    if (rest(a) === rest(b))
+    if (rest(a) === rest(b) && sameStructs(a, b))
       fail(
         where,
         `revisions ${a.from} and ${b.from} are the same in every respect, so they are one revision from ${a.from} up to ${b.until ?? "the end"}`,
@@ -1290,7 +1297,13 @@ for (const file of listJson("messages")) {
 }
 
 for (const { where, doc } of messages) {
-  checkRevisions(doc.revisions, where);
+  checkRevisions(doc.revisions, where, (a, b) =>
+    heldStructs((a as MessageRevision).fields).every((name) => {
+      const at = (v: string): Ranged | undefined =>
+        structs.get(name)?.revisions.find((r) => covers(r, v));
+      return at(a.from) === at(b.from);
+    }),
+  );
   doc.revisions.forEach((revision, index) => {
     const at = `${where} revision ${index}`;
     const missing = channelMissingFor(revision, revision.channel);
