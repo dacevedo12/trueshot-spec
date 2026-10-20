@@ -1,0 +1,177 @@
+/* A reference for implementers: a quiet reading column, a bar that says
+   which season and range you are in, and tables that scroll on their own. */
+:root {
+  --bg: #fafaf8;
+  --fg: #1c1f24;
+  --muted: #5d6570;
+  --rule: #e2e4e7;
+  --panel: #f0f2f4;
+  --accent: #2d5a87;
+  --accent-soft: #e3ecf5;
+  --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --display: "IBM Plex Sans Condensed", "IBM Plex Sans", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #13161a;
+    --fg: #e3e6ea;
+    --muted: #9aa3ad;
+    --rule: #2a3038;
+    --panel: #1b2026;
+    --accent: #8db3da;
+    --accent-soft: #1d2a38;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #13161a;
+  --fg: #e3e6ea;
+  --muted: #9aa3ad;
+  --rule: #2a3038;
+  --panel: #1b2026;
+  --accent: #8db3da;
+  --accent-soft: #1d2a38;
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 16px/1.6 var(--sans);
+}
+a { color: var(--accent); text-underline-offset: 2px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.bar {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 2;
+  background: var(--bg);
+  border-bottom: 1px solid var(--rule);
+}
+.bar-in, .tabs-in {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.bar-in { padding-block: 12px; }
+.mark {
+  font: 600 1.15rem/1 var(--display);
+  letter-spacing: 0.02em;
+  color: var(--fg);
+  text-decoration: none;
+}
+.crumbs { display: flex; flex-wrap: wrap; gap: 6px; color: var(--muted); font-size: 0.9rem; }
+.crumbs a { color: var(--muted); }
+.crumbs span + span::before { content: "/"; margin-right: 6px; color: var(--rule); }
+.repo { margin-left: auto; font-size: 0.9rem; }
+.tabs { border-top: 1px solid var(--rule); }
+.tabs-in { gap: 0 4px; }
+.tabs a {
+  display: inline-block;
+  padding: 8px 10px;
+  font: 500 0.9rem/1.2 var(--display);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+}
+.tabs a[aria-current="page"] { color: var(--fg); border-bottom-color: var(--accent); }
+.tabs a:hover { color: var(--fg); }
+
+.page {
+  max-width: 760px;
+  margin: 0 auto;
+  padding-block: 28px 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.page.wide { max-width: 1100px; }
+.page > * { min-width: 0; }
+
+h1, h2, h3, h4 {
+  font-family: var(--display);
+  font-weight: 600;
+  line-height: 1.2;
+  text-wrap: balance;
+  margin: 1.8em 0 0.5em;
+}
+h1 { font-size: 2.1rem; margin-top: 0.2em; }
+h2 { font-size: 1.45rem; padding-top: 0.6em; border-top: 1px solid var(--rule); }
+h3 { font-size: 1.15rem; }
+h4 { font-size: 1rem; }
+h3 code, h2 code { font-size: 0.95em; }
+p, ul, ol { max-width: 68ch; }
+li + li { margin-top: 0.2em; }
+
+code {
+  font: 0.88em/1.4 var(--mono);
+  background: var(--panel);
+  padding: 0.1em 0.3em;
+  border-radius: 3px;
+}
+pre {
+  background: var(--panel);
+  padding: 12px 14px;
+  overflow-x: auto;
+  border-radius: 4px;
+}
+pre code { background: none; padding: 0; }
+
+table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  margin: 1em 0;
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+}
+th, td {
+  text-align: left;
+  vertical-align: top;
+  padding: 6px 12px 6px 0;
+  border-bottom: 1px solid var(--rule);
+}
+th {
+  font: 500 0.78rem/1.3 var(--display);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+td:first-child { white-space: nowrap; }
+td code { white-space: nowrap; }
+
+.toc {
+  margin: 0 0 24px;
+  padding: 10px 14px;
+  background: var(--accent-soft);
+  border-radius: 4px;
+}
+.toc summary { cursor: pointer; font: 600 0.95rem/1.4 var(--display); }
+.toc ul { margin: 8px 0 0; padding-left: 18px; font-size: 0.92rem; }
+.toc ul ul { font-size: 0.88rem; }
+
+.foot {
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: 0.85rem;
+  padding-block: 16px 28px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.foot p { max-width: 1100px; margin: 0 auto; }
+
+@media (max-width: 480px) {
+  h1 { font-size: 1.7rem; }
+  .repo { margin-left: 0; }
+}

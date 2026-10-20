@@ -7,6 +7,7 @@
   "scripts": {
     "format": "prettier --write \"**/*.{json,md,ts}\"",
     "site": "bun scripts/site.ts",
+    "pages": "bun scripts/pages.ts",
     "range": "bun scripts/range.ts",
     "check": "bun run check:names && bun run check:format && bun run check:types && bun run check:codec && bun run check:schema && bun run check:book && bun run check:prose && bun run check:links",
     "check:names": "ls-lint",
@@ -16,7 +17,7 @@
     "check:schema": "bun scripts/validate.ts",
     "check:book": "bun scripts/book.ts --check",
     "check:prose": "vale --glob='!{dist,node_modules}/**' .",
-    "check:links": "lychee --no-progress --require-https=false --exclude-path dist .",
+    "check:links": "lychee --no-progress --require-https=false --exclude-path dist --exclude-path scripts/pages/page.html .",
     "live:native": "conformance/live/native/build.sh",
     "live:checks": "bun test ./conformance/live/checks --timeout 600000",
     "live:conform": "bun conformance/live/src/conform.ts",

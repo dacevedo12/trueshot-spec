@@ -913,7 +913,9 @@ for (const s of held) {
 put("README.md", [
   "# Trueshot",
   "",
-  `Generated from the [repository](../../) by \`bun run site\`. The [chapters](../../spec/README.md) hold for every range; each range below has its own book, every message it sends or takes, and how it differs from the range before it.`,
+  "A wire protocol specification for League of Legends game servers: what a server sends for a client to connect, load a match and play, and what the client does with it, written so that anyone can build a conforming server in any language.",
+  "",
+  "Read the [chapters](../../spec/README.md) in the order they give, since each builds on the ones before it; they hold for every client build covered. Then pick the range of builds you serve below. Each has a book that sets the chapters and what that range alone does together as one document, every message its builds send or take with the layout of each, and how it differs from the range before it. The field layouts and the [conformance vectors](../../conformance/) to check your work against are in the [repository](../../).",
   "",
   ...held.flatMap((s) => [
     `## [${s.name}](${s.folder}/README.md)`,
