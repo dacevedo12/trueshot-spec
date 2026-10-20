@@ -24,7 +24,7 @@
             "field": "size",
             "minus": 4
           },
-          "note": "One value per tally in the client's own list of tallies, a list from the client's data. Which tallies, and in what order, is not recorded for this range. An int takes 4 bytes, a float 4, a bool 1, a 64-bit int 8, and text a 16-bit length below 255 then that many bytes."
+          "note": "One value per tally of the match. Which tallies, and in what order, is not recorded for this range. An int takes 4 bytes, a float 4, a bool 1, a 64-bit int 8, and text a 16-bit length below 255 then that many bytes."
         }
       ]
     },
@@ -48,7 +48,7 @@
             "field": "size",
             "minus": 4
           },
-          "note": "One value per tally in the client's own list of tallies, in ascending byte order of the tallies' names: a list from the client's data, one shared and one per mode. An int takes 4 bytes, a float 4, a bool 1, a 64-bit int 8, and text a 16-bit length below 255 then that many bytes. Bytes left over have no effect. A nonzero count of champion kills marks first blood taken."
+          "note": "One value per tally of the match's mode, the tallies in ascending byte order of their names. An int takes 4 bytes, a float 4, a bool 1, a 64-bit int 8, and text a 16-bit length below 255 then that many bytes. Bytes left over have no effect. A nonzero count of champion kills marks first blood taken."
         }
       ]
     },
@@ -72,7 +72,7 @@
             "field": "size",
             "minus": 4
           },
-          "note": "One value per tally in the client's own list of tallies, in ascending byte order of the tallies' names: a list from the client's data, one shared and one per mode. An int takes 4 bytes, a float 4, a bool 1, a 64-bit int 8, and text a 16-bit length below 255 then that many bytes. Bytes left over have no effect. A nonzero count of champion kills marks first blood taken."
+          "note": "One value per tally of the match's mode, the tallies in ascending byte order of their names. An int takes 4 bytes, a float 4, a bool 1, a 64-bit int 8, and text a 16-bit length below 255 then that many bytes. Bytes left over have no effect. A nonzero count of champion kills marks first blood taken."
         }
       ]
     },

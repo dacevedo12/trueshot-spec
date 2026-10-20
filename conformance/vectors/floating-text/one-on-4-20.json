@@ -3,7 +3,7 @@
   "subject": "message",
   "message": "FloatingText",
   "version": "4.20.0.315",
-  "note": "Laid out as a 4.20.0.315 client reads it. A server's bytes after each text's zero byte carry no meaning; they are zero here.",
+  "note": "Laid out as a 4.20.0.315 client takes it. A server's bytes after each text's zero byte carry no meaning; they are zero here.",
   "bytes": "18 0d000040 000000400000000000001900000003000000203400",
   "fields": {
     "command": 24,

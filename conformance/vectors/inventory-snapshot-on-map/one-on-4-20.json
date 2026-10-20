@@ -3,7 +3,7 @@
   "subject": "message",
   "message": "InventorySnapshotOnMap",
   "version": "4.20.0.315",
-  "note": "Laid out as a 4.20.0.315 client reads it. A server's bytes after each text's zero byte carry no meaning; they are zero here.",
+  "note": "Laid out as a 4.20.0.315 client takes it. A server's bytes after each text's zero byte carry no meaning; they are zero here.",
   "bytes": "fe 070000402701 26040000000100e903000001010000000000000000000000000000000000000000000000000000000000110d0000060101d50700000701000000000000000000000000000000000080bf000080bf000080bf000080bf000080bf000080bf000080bf000080bf000080bf0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
   "fields": {
     "command": 254,

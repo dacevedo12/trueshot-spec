@@ -60,7 +60,7 @@
               {
                 "name": "unit",
                 "type": "u32",
-                "note": "The unit the path is for. A client that does not hold it misreads every entry after it."
+                "note": "The unit the path is for. Where a client does not hold it, the movements after it in the group go wrong too; a server sends only units the client holds."
               },
               {
                 "name": "teleportToken",

@@ -15,7 +15,7 @@
         {
           "name": "part",
           "type": "u8",
-          "note": "Which part of the screen. A client also acts on 2, reading element, number and unused as three values; what that lights up is not recorded. A client ignores any other value.",
+          "note": "Which part of the screen. A client also acts on 2, taking element, number and unused as three values; what that lights up is not recorded. A client ignores any other value.",
           "values": {
             "1": {
               "name": "hud",
@@ -23,7 +23,7 @@
             },
             "3": {
               "name": "minimap",
-              "note": "The minimap; a client reads element only, and acts on 0 only, its camera button."
+              "note": "The minimap; a client acts only where element is 0, its camera button, and number and unused have no effect."
             }
           }
         },

@@ -3,7 +3,7 @@
   "subject": "message",
   "message": "TeamChanged",
   "version": "4.17.0.267",
-  "note": "Laid out as a 4.17.0.267 client reads it. A server's bytes after each text's zero byte carry no meaning; they are zero here.",
+  "note": "Laid out as a 4.17.0.267 client takes it. A server's bytes after each text's zero byte carry no meaning; they are zero here.",
   "bytes": "d7 00000000 6c00004064000000",
   "fields": {
     "command": 215,

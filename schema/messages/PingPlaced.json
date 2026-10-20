@@ -50,17 +50,17 @@
             {
               "name": "playSound",
               "width": 1,
-              "note": "Set where the client plays a sound for it. A client reads this bit; that it acts on it this way is not recorded."
+              "note": "Set where the client plays a sound for it. That a client acts on it this way is not confirmed."
             },
             {
               "name": "showInChat",
               "width": 1,
-              "note": "Set where the client writes a line about it. A client reads this bit; that it acts on it this way is not recorded."
+              "note": "Set where the client writes a line about it. That a client acts on it this way is not confirmed."
             },
             {
               "name": "throttled",
               "width": 1,
-              "note": "Set where the player is pinging too often: a client places no ping, plays nothing and announces nothing, and only writes a notice in its own chat. A client reads this bit; that it acts on it this way is not recorded."
+              "note": "Set where the player is pinging too often: a client places no ping, plays nothing and announces nothing, and only writes a notice in its own chat. That a client acts on it this way is not confirmed."
             },
             {
               "name": "unused",

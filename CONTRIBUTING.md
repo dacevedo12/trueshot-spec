@@ -111,11 +111,8 @@ vocabulary rather than here.
 Where a layout is confirmed but a field's meaning is not, say so in a note.
 Those are two claims, and one can be settled while the other stays open.
 
-Write down what the wire carries. Never write down how a program is organised,
-decomposed, named, or commented, and never carry a line of one across.
-
-Do not record what another project does or fails to do. That describes their
-code, not this protocol. State what the client accepts.
+Write down what the wire carries and what a client does with it, and nothing
+else. State what the client accepts.
 
 ## What never gets committed
 
@@ -131,8 +128,8 @@ adjust the decoded fields to match, and say so in a note. Where a capture was
 taken from a server configured with stand-in names to begin with, the note says
 that instead.
 
-Text another project wrote is that project's own, not this protocol. A vector
-carrying it gets the same treatment.
+Text a server's operator wrote, such as a message of the day, is theirs rather
+than the protocol's. A vector carrying it gets the same treatment.
 
 A channel payload is enciphered on the wire. Decipher it before it becomes a
 vector, because a vector records what a message is, not what one connection's
@@ -250,6 +247,6 @@ Signed-off-by: Your Name <you@example.com>
   [Developer Certificate of Origin](DCO) and that you have followed the
   requirements on this page.
 
-`commitlint.config.js` holds the standard. The commit hook applies it as you
+`commitlint.config.ts` holds the standard. The commit hook applies it as you
 commit, and continuous integration applies it again to every commit pushed or
 proposed.

@@ -3,7 +3,7 @@
   "subject": "message",
   "message": "StopAnimation",
   "version": "4.17.0.267",
-  "note": "Laid out as a 4.17.0.267 client reads it. A server's bytes after each text's zero byte carry no meaning; they are zero here.",
+  "note": "Laid out as a 4.17.0.267 client takes it. A server's bytes after each text's zero byte carry no meaning; they are zero here.",
   "bytes": "29 1b000040 037370656c6c315f7370696e5f726967687400",
   "fields": {
     "command": 41,

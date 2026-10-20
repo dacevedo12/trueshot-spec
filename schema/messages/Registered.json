@@ -100,7 +100,7 @@
         {
           "name": "version",
           "type": "u32",
-          "note": "The build the client said it runs, carried back to it. Where the answer follows a request it is the number that request carried, 42000315. Where it does not, a server states the build itself."
+          "note": "The build the client said it runs, carried back to it. Where the answer follows a request it is the number that request carried. Where it does not, a server states the build itself."
         },
         {
           "name": "proof",

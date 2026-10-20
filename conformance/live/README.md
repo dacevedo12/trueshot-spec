@@ -46,7 +46,7 @@ Then name a client in an environment file kept outside version control (every
     # Optional: a program the client is run through, given the client and its arguments.
     TRUESHOT_LAUNCHER=
     # Optional: a command run as the client is stopped, given the id of the process the
-    # harness started, to stop what that process started in turn.
+    # harness started.
     TRUESHOT_STOP=
     # Optional: a command given a file path, which captures the client's window to it,
     # or the window whose id follows the path.
@@ -96,8 +96,7 @@ address, port, key in base64, and player id, separated by spaces:
 
     "League of Legends.exe" "" "" "" "127.0.0.1 5000 <key> 1"
 
-The key is arbitrary. Where a client runs under a compatibility layer, point
-`TRUESHOT_LAUNCHER` at whatever starts a Windows program there.
+The key is arbitrary.
 
 ## Serving a client started elsewhere
 

@@ -3,7 +3,7 @@
   "subject": "message",
   "message": "EffectRemovedGroup",
   "version": "4.17.0.267",
-  "note": "Laid out as a 4.17.0.267 client reads it. A server's bytes after each text's zero byte carry no meaning; they are zero here.",
+  "note": "Laid out as a 4.17.0.267 client takes it. A server's bytes after each text's zero byte carry no meaning; they are zero here.",
   "bytes": "94 00000000 beab070006190000400a00000000fa0000400100000000000100400100000000d40100400100000000e10100400100000000ee0100400000000000",
   "fields": {
     "command": 148,

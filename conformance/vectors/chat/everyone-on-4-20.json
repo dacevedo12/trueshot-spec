@@ -3,7 +3,7 @@
   "subject": "message",
   "message": "Chat",
   "version": "4.20.0.315",
-  "note": "Laid out as a 4.20.0.315 client writes it. Sent to everyone in the match. A client's bytes after the text's zero byte vary from send to send and carry no meaning; they are zero here.",
+  "note": "Laid out as a 4.20.0.315 client sends it. Sent to everyone in the match. A client's bytes after the text's zero byte vary from send to send and carry no meaning; they are zero here.",
   "bytes": "68 00000000 0000000000000000000000000009000000000000000000000000000000000000000000000000000000000000000000000068656c6c6f20616c6c00",
   "fields": {
     "command": 104,

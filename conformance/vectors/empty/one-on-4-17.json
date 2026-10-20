@@ -3,7 +3,7 @@
   "subject": "message",
   "message": "Empty",
   "version": "4.17.0.267",
-  "note": "Laid out as a 4.17.0.267 client reads it. Sent to a client watching the match. A server's bytes after each text's zero byte carry no meaning; they are zero here.",
+  "note": "Laid out as a 4.17.0.267 client takes it. Sent to a client watching the match. A server's bytes after each text's zero byte carry no meaning; they are zero here.",
   "bytes": "00 00000000",
   "fields": {
     "command": 0,

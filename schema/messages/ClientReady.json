@@ -24,7 +24,7 @@
         {
           "name": "maskedStatus",
           "type": "u32",
-          "note": "A value a client derives from its own state and the mask below; a server ignores it."
+          "note": "It varies from client to client; a server ignores it."
         },
         {
           "name": "mask",

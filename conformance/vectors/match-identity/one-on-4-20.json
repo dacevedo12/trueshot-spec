@@ -3,7 +3,7 @@
   "subject": "message",
   "message": "MatchIdentity",
   "version": "4.20.0.315",
-  "note": "Laid out as a 4.20.0.315 client reads it. Its player name and match number are stand-ins. A server's bytes after each text's zero byte carry no meaning; they are zero here.",
+  "note": "Laid out as a 4.20.0.315 client takes it. Its player name and match number are stand-ins. A server's bytes after each text's zero byte carry no meaning; they are zero here.",
   "bytes": "92 00000000 e803000000000000506c617965722031000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
   "fields": {
     "command": 146,

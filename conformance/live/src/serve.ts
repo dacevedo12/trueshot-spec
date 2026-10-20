@@ -1,6 +1,6 @@
 // Serve one client started some other way, from connecting into play, and
 // keep it there until it leaves. The client is launched with
-//   "" "" "" "127.0.0.1 <port> 17BLOhi6KZsTtldTsizvHg== 1"
+//   "" "" "" "127.0.0.1 <port> CokZRbAN15lr+Vviv9YYow== 1"
 //
 //   bun run live:serve <build> [port]
 import { KEY, Match } from "./match.ts";

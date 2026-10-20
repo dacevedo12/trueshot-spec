@@ -17,7 +17,7 @@ import { Layouts } from "../../../scripts/schema.ts";
 import { Session } from "./session.ts";
 
 // An arbitrary key. It is passed to the client at launch and means nothing.
-const KEY = "17BLOhi6KZsTtldTsizvHg==";
+const KEY = "CokZRbAN15lr+Vviv9YYow==";
 
 interface Seat {
   readonly playerId: string;

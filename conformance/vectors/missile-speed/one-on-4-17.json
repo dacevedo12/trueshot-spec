@@ -3,7 +3,7 @@
   "subject": "message",
   "message": "MissileSpeed",
   "version": "4.17.0.267",
-  "note": "Laid out as a 4.17.0.267 client reads it. A server's bytes after each text's zero byte carry no meaning; they are zero here.",
+  "note": "Laid out as a 4.17.0.267 client takes it. A server's bytes after each text's zero byte carry no meaning; they are zero here.",
   "bytes": "fe 021800400d01 0000fa430000403f",
   "fields": {
     "command": 254,

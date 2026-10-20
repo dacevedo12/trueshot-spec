@@ -84,12 +84,12 @@
         {
           "name": "marker",
           "type": "u32",
-          "note": "A value a client compares only to tell a region it already holds from a new one; what it names is not recorded. A server sends zero."
+          "note": "A region sent again with the same value is taken as the one already shown; what else it names is not recorded. A server sends zero."
         },
         {
           "name": "sightFrom",
           "type": "u32",
-          "note": "A value a client compares only to tell a region it already holds from a new one; what it names is not recorded. A server sends zero."
+          "note": "A region sent again with the same value is taken as the one already shown; what else it names is not recorded. A server sends zero."
         }
       ]
     },
