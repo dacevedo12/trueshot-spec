@@ -242,8 +242,33 @@ for (const season of seasons) {
       'preferred-dark-theme = "navy"',
       // Where GitHub Pages serves the book, which its not-found page links from.
       `site-url = "/${REPOSITORY.split("/")[4]}/${season.folder}/"`,
+      'additional-js = ["home.js"]',
+      'additional-css = ["home.css"]',
       "",
     ].join("\n"),
+  );
+  // The book's title in the bar leads back to the home page that lists every
+  // season, which sits one level above each book.
+  writeFileSync(
+    join(dir, "home.js"),
+    [
+      "document.addEventListener('DOMContentLoaded', () => {",
+      "  const title = document.querySelector('.menu-title');",
+      "  if (title === null) return;",
+      "  const home = document.createElement('a');",
+      "  home.href = (typeof path_to_root === 'string' ? path_to_root : '') + '../';",
+      "  home.title = 'Every season';",
+      "  home.className = 'home';",
+      "  home.textContent = title.textContent;",
+      "  title.textContent = '';",
+      "  title.appendChild(home);",
+      "});",
+      "",
+    ].join("\n"),
+  );
+  writeFileSync(
+    join(dir, "home.css"),
+    ".menu-title a.home { color: inherit; text-decoration: none; }\n.menu-title a.home:hover { text-decoration: underline; }\n",
   );
   console.log("wrote", dir);
 }
