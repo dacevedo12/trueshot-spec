@@ -127,6 +127,128 @@
       ]
     },
     {
+      "from": "3.11.0.306",
+      "until": "3.12.0.251",
+      "channel": "events",
+      "command": 54,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "note": "A client deletes any object holding the header's id; spawns nothing where it does not know the owner; kills the owner's earlier pet if it lives; makes the pet, replacing its script with script; gives it the owner's seat, its gold going to the owner; and registers it under the header's id and node. spellLevel, duration and effect have no effect.",
+      "fields": [
+        {
+          "name": "owner",
+          "type": "u32",
+          "note": "The unit it belongs to."
+        },
+        {
+          "name": "node",
+          "type": "u8",
+          "note": "Which network node it belongs to."
+        },
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where it stands, along one ground axis, in world units."
+        },
+        {
+          "name": "atY",
+          "type": "f32",
+          "note": "In height, in world units."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Along the other ground axis, in world units."
+        },
+        {
+          "name": "spellLevel",
+          "type": "i32",
+          "note": "The level of the spell that summoned it, plus one."
+        },
+        {
+          "name": "duration",
+          "type": "f32",
+          "note": "How long it lasts, in seconds."
+        },
+        {
+          "name": "damageBonus",
+          "type": "i32",
+          "note": "What is added to the damage it deals."
+        },
+        {
+          "name": "healthBonus",
+          "type": "i32",
+          "note": "What is added to its health."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "Its name, padded with zero bytes."
+        },
+        {
+          "name": "asset",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 32,
+          "note": "The name the client loads its art under, padded with zero bytes."
+        },
+        {
+          "name": "skin",
+          "type": "i32",
+          "note": "Which look it wears."
+        },
+        {
+          "name": "effect",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "An effect it carries, padded with zero bytes."
+        },
+        {
+          "name": "clone",
+          "type": "u32",
+          "note": "The unit it copies, or zero."
+        },
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "copyInventory",
+              "width": 1,
+              "note": "Set where it copies its owner's items."
+            },
+            {
+              "name": "clearOwnerTarget",
+              "width": 1,
+              "note": "Set where its owner's target is cleared."
+            },
+            {
+              "name": "minimapIcon",
+              "width": 1,
+              "note": "Set where it shows on the minimap."
+            },
+            {
+              "name": "unused",
+              "width": 5,
+              "note": "Unused; a server writes zero."
+            }
+          ],
+          "note": "How it behaves."
+        },
+        {
+          "name": "script",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 32,
+          "note": "The script that drives it, padded with zero bytes."
+        }
+      ]
+    },
+    {
       "from": "3.12.0.251",
       "until": "4.11.0.386",
       "channel": "events",

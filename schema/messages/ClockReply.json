@@ -36,6 +36,37 @@
       ]
     },
     {
+      "from": "3.11.0.306",
+      "until": "3.12.0.251",
+      "channel": "clock",
+      "command": 8,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "value",
+          "type": "u32",
+          "note": "A value the client takes from its connection; what it means is not recorded, and a server ignores it."
+        },
+        {
+          "name": "serverSaid",
+          "type": "f32",
+          "note": "What the server last said the clock stood at, in seconds."
+        },
+        {
+          "name": "clientSaid",
+          "type": "f32",
+          "note": "What the client's own clock stood at when that statement arrived, in seconds."
+        },
+        {
+          "name": "check",
+          "type": "bytes",
+          "size": 32,
+          "note": "Thirty-two bytes every client of this build sends alike; a server ignores them."
+        }
+      ]
+    },
+    {
       "from": "3.12.0.251",
       "until": "4.21.0.0",
       "channel": "clock",

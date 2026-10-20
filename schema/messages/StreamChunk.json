@@ -5,7 +5,7 @@
   "note": "What a server streaming a match sends to carry one fragment of a chunk or key frame of recorded messages (see spec/spectating.md). A chunk's facts come from its fragment 0. The fragments of a chunk come in order from 0, and the chunk is complete at index fragments − 1. A new fragment 0 drops an unfinished chunk, and a fragment with no chunk begun has no effect. The header carries zero.",
   "revisions": [
     {
-      "from": "3.12.0.251",
+      "from": "3.11.0.306",
       "until": "4.1.0.171",
       "channel": "events",
       "command": 237,
