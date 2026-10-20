@@ -1,6 +1,12 @@
 {
-  "note": "The seasons the generated site groups ranges of versions by, as the League of Legends Wiki groups its patch notes: a season starts with the preseason before it. A range belongs to the season its first build falls in. Each season links the wiki's list of its patches, and each range the notes of every patch it spans, at patchNotes with {patch} replaced by the patch's name.",
-  "patchNotes": "https://wiki.leagueoflegends.com/en-us/V{patch}",
+  "note": "The seasons the generated site groups ranges of versions by, as the League of Legends Wiki groups its patch notes: a season starts with the preseason before it. A range belongs to the season its first build falls in. Each season links the wiki's list of its patches, and each range the notes of every patch it spans, at patchNotes with {patch} replaced by the page's name: V and the patch's name, or the name patchPages gives where the wiki names a page otherwise.",
+  "patchNotes": "https://wiki.leagueoflegends.com/en-us/{patch}",
+  "patchPages": {
+    "3.1": "V3.01",
+    "3.2": "V3.02",
+    "3.3": "V3.03",
+    "3.4": "V3.04"
+  },
   "seasons": [
     {
       "name": "Season 1",

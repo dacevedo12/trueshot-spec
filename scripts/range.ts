@@ -5,8 +5,9 @@
 //     copy of it at <build>, so the two can differ.
 //   bun scripts/range.ts copy <model build> <from> <until>
 //     gives every definition with a revision covering <model build> a copy of
-//     that revision for the builds from <from> up to <until>, which nothing
-//     may cover yet.
+//     that revision for the builds from <from> up to <until>, leaving alone
+//     any definition that already covers part of them; run it again with
+//     another model to fill in what the first lacks.
 //
 // Both only lay out a starting point. A copied revision claims what its model
 // does until someone shows the new builds agree, so the tool lists what is
@@ -75,6 +76,7 @@ function namedNotes(value: unknown, path: string, out: string[]): void {
 const before = ranges();
 const changed: [string, Doc][] = [];
 const review: string[] = [];
+const skipped: string[] = [];
 const problems: string[] = [];
 
 for (const path of files) {
@@ -100,9 +102,8 @@ for (const path of files) {
           (r.until === undefined || compare(from, r.until) < 0),
       )
     ) {
-      problems.push(
-        `${path}: a revision already covers part of ${from} up to ${until}`,
-      );
+      // Already given, by this copy run earlier or one from another model.
+      skipped.push(path);
       continue;
     }
     const copy = ranged(source, span.from, span.until);
@@ -114,7 +115,11 @@ for (const path of files) {
 }
 
 if (changed.length === 0)
-  problems.push("no definition covers that build, so nothing changed");
+  problems.push(
+    skipped.length > 0
+      ? "every definition the model has already covers part of that span, so nothing changed"
+      : "no definition covers that build, so nothing changed",
+  );
 // A binding for one range holds for the range starting at its build alone, so
 // a split leaves the second half without it.
 if (command === "split") {
@@ -139,6 +144,8 @@ for (const [path, doc] of changed)
     join(ROOT, path),
     await prettier.format(JSON.stringify(doc), options),
   );
-console.log(`changed ${changed.length} definitions`);
+console.log(
+  `changed ${changed.length} definitions${skipped.length > 0 ? `, and left ${skipped.length} that already cover part of the span` : ""}`,
+);
 if (review.length > 0)
   console.log(`\nLeft to review:\n  ${review.join("\n  ")}`);

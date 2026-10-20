@@ -17,7 +17,11 @@ interface Season {
 const ROOT = join(import.meta.dir, "..");
 const data = JSON.parse(
   readFileSync(join(ROOT, "spec/seasons.json"), "utf8"),
-) as { patchNotes: string; seasons: Season[] };
+) as {
+  patchNotes: string;
+  patchPages?: Record<string, string>;
+  seasons: Season[];
+};
 const seasons: readonly Season[] = data.seasons;
 
 const span = (s: Season): Ranged => ({
@@ -46,7 +50,10 @@ const folderOf = (r: Ranged): string =>
 function patchesOf(r: Ranged): { name: string; url: string }[] {
   const link = (name: string): { name: string; url: string } => ({
     name,
-    url: data.patchNotes.replace("{patch}", name),
+    url: data.patchNotes.replace(
+      "{patch}",
+      data.patchPages?.[name] ?? `V${name}`,
+    ),
   });
   const inside = [r.from, ...checked.filter((b) => covers(r, b))].sort(
     compare,

@@ -178,14 +178,39 @@ that does not moves into the bindings of the ranges that do. Contributors to
 different ranges work in different directories, and a change to a chapter is a
 claim about every range at once.
 
-`bun run range copy <model build> <from> <until>` starts a range nothing covers
-yet: it gives every definition a copy of the revision its model build has, for
-the new builds, and lists the copied notes that name a build. `bun run range
-split <build>` starts a range inside one already covered, by splitting every
-revision there in two. Either is only a starting point. Each copy claims what
-its model does until the new builds bear it out, and `bun run check` lists
-every revision still without a vector, since no vector is copied: a vector is
-evidence of the builds it names.
+### Adding a range
+
+Work on a branch, since nothing below passes the checks until the end.
+
+1. Start the definitions. For builds nothing covers yet, `bun run range copy
+<model> <from> <until>` gives every definition a copy of the revision its
+   model build has. Take the nearest covered build as the model, and run it
+   again with the next nearest to fill in what the first lacks: Season 3, for
+   instance, copies from 4.1.0.171 and then from 1.0.0.126. For builds inside
+   a range already covered, `bun run range split <build>` splits every
+   revision there in two.
+2. Correct each copy against a client of the new builds, and remove the
+   revisions of messages those builds do not have. Where a copy turns out the
+   same as its neighbour in every respect, join the two into one revision
+   that covers both: the checks reject two revisions back to back that say the
+   same thing.
+3. Give every new revision a vector from the new builds, named for the range
+   it starts, as [conformance/](conformance/README.md) says. No vector is
+   copied, since a vector is evidence of the builds it names, so `bun run
+check` lists every revision still waiting for one. Once the definitions
+   cover the new builds, the live harness runs on them too and writes their
+   results.
+4. Move the prose. A fact the new range bears out in a span binding
+   widens the span: rename its directory to start or stop where the new range
+   does. One it does not bear out stays where it is, and what the new range
+   does there goes in a binding of its own. A chapter statement it does not
+   bear out moves into the bindings of the ranges that do.
+5. Review what the tools list: every copied note that names a build, and every
+   binding a split leaves behind. `bun run site` shows the new range against
+   its neighbours, where anything left as a copy stands out.
+
+A range's season comes from [spec/seasons.json](spec/seasons.json), which
+follows the wiki's grouping and is not changed to suit a range.
 
 ## Systems
 
