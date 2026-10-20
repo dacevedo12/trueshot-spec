@@ -185,16 +185,18 @@ claim about every range at once.
 
 Every message names the system it belongs to, and each system has a document in
 `spec/` that explains how its messages work together. Prose there describes
-behaviour and links the definitions; it never restates a layout. The table of
-messages at the end of each system document, and the page for each range of
-versions under `spec/reference/`, are generated: change the definitions, then
-run `bun run generate`, and never edit the generated parts by hand.
+behaviour and links the definitions; it never restates a layout. Nothing
+committed is generated from the definitions: the tables of a system's messages,
+the page of every message in a range and what changes between ranges are all
+written by `bun run site` into `dist/site`, so they cannot fall behind what
+they are drawn from. A system's chapter marks where its book sets the table of
+its messages with a `<!-- messages -->` line.
 
 ## Checks
 
 The tooling runs on [Bun](https://bun.com), in TypeScript. `bun run check` runs
 file naming, formatting, type checking, codec tests, schema validation, a check
-that the generated text is current, prose linting, and link checking.
+that every binding has its place, prose linting, and link checking.
 Continuous integration runs the same checks, so a local pass is a remote pass.
 
 Schema validation decodes every vector rather than taking its word. A vector

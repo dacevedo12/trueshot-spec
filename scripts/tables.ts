@@ -1,5 +1,5 @@
-// What the generator and the books both write about messages: the tables at
-// the end of each system's chapter, and the names of the ranges.
+// What the site and the books both write about messages: the table at the
+// end of each system's chapter in a book, and the names of the ranges.
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { compare, covers } from "./schema.ts";
@@ -52,34 +52,6 @@ function rangeName(r: Ranged): string {
     : `${first}–${twoParts(last)}`;
 }
 
-// Ranges where each starts as the one before stops read as one span, from the
-// first's name to the last's: 4.17, 4.18–4.19 and 4.20 together read 4.17–4.20.
-function spans(some: readonly Ranged[], all: readonly Ranged[]): string {
-  const runs: Ranged[][] = [];
-  for (const r of some) {
-    const run = runs[runs.length - 1];
-    const prev = run?.[run.length - 1];
-    if (
-      run !== undefined &&
-      prev !== undefined &&
-      all.indexOf(prev) + 1 === all.indexOf(r) &&
-      prev.until === r.from
-    )
-      run.push(r);
-    else runs.push([r]);
-  }
-  return runs
-    .map((run) => {
-      const first = run[0];
-      const last = run[run.length - 1];
-      if (first === undefined || last === undefined || first === last)
-        return first === undefined ? "" : rangeName(first);
-      const end = rangeName(last).split("–");
-      return `${twoParts(first.from)}–${end[end.length - 1] ?? ""}`;
-    })
-    .join(", ");
-}
-
 const revisionAt = (m: MessageFile, build: string): Revision | undefined =>
   m.revisions.find((r) => covers(r, build));
 
@@ -98,28 +70,6 @@ const by = (r: Revision | undefined): string =>
     : r?.direction === "bidirectional"
       ? "both"
       : "server";
-
-// The table a chapter carries in the repository: which ranges define each
-// message, leaving its command and channel to the reference pages.
-function chapterTable(
-  system: string,
-  ranges: readonly Ranged[],
-  link: string,
-): string {
-  const rows = messages
-    .filter((m) => m.system === system)
-    .map((m) => {
-      const where = ranges.filter((r) => revisionAt(m, r.from) !== undefined);
-      const span =
-        where.length === ranges.length ? "every range" : spans(where, ranges);
-      return `| [\`${m.message}\`](${link}${m.file}) | ${by(m.revisions[0])} | ${span} | ${firstSentence(m.note)} |`;
-    });
-  return [
-    "| Message | Sent by | Ranges | What it does |",
-    "| --- | --- | --- | --- |",
-    ...rows,
-  ].join("\n");
-}
 
 // The table a range's book carries: the messages that range defines, with
 // the command and channel each takes there.
@@ -146,12 +96,11 @@ function rangeTable(system: string, range: Ranged, link: string): string {
 
 export {
   by,
-  chapterTable,
+  checked,
   firstSentence,
   messages,
   rangeName,
   rangeTable,
   revisionAt,
-  spans,
 };
 export type { MessageFile };

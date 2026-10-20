@@ -6,7 +6,8 @@ ls:
 
   spec:
     .dir: kebab-case
-    .md: kebab-case
+    .md: kebab-case | regex:^README$
+    .json: kebab-case
 
   schema:
     .dir: kebab-case
@@ -42,7 +43,7 @@ ignore:
   - .git
   - .github
   - .githooks
-  - .claude
+  - dist
   - node_modules
   - conformance/live/node_modules
   - conformance/live/captures

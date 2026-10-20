@@ -67,8 +67,8 @@ error it shows or its crash report. Where `TRUESHOT_WINDOWS` lists windows, the
 harness captures any such window, notes its title, and ends the match there,
 so a run stops at the error rather than at its timeouts.
 
-That writes a results file named for the build, as `spec/reference` names
-one (`results/4-20-0-315.json`): the commit it ran at, each check's outcome,
+That writes a results file named for the build, with its dots as hyphens
+(`results/4-20-0-315.json`): the commit it ran at, each check's outcome,
 and each screenshot a person has to judge, with the sentence it should bear
 out. A results file is what a version range's coverage rests on, and anyone
 holding the same build can run the same commit and compare.

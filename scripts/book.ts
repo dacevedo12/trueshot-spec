@@ -1,16 +1,14 @@
 // One book per range of versions, put together from the specification.
 //
-//   bun scripts/book.ts          write dist/book/<range>.md
-//   bun scripts/book.ts --pdf    and dist/book/<range>.pdf, with pandoc and typst
+//   bun scripts/book.ts          write dist/site/<season>/<range>/book.md
+//   bun scripts/book.ts --pdf    and book.pdf beside it, with pandoc and typst
 //   bun scripts/book.ts --check  only check that every binding has its place
 //
-// The chapters under spec/ are the core, which holds for every range. What a
-// range alone does lives in spec/bindings/<range>/<chapter>.md, as entries
-// that each begin with a `<!-- place: name -->` line naming the place in the
-// chapter it fills: a `<!-- binding: name -->` line. A book takes the
-// chapters in the order IMPLEMENTING.md reads them, sets each binding's
-// entries in their places, keeps only its own range in each table of messages, and ends with
-// the range's reference page.
+// A book takes the chapters in the order spec/README.md reads them, sets each
+// binding's entries in their places (see scripts/bindings.ts), puts the
+// system's messages with their commands in that range at the
+// `<!-- messages -->` line of each system's chapter, and ends with the range's
+// messages page, which scripts/site.ts writes first.
 import {
   existsSync,
   mkdirSync,
@@ -19,13 +17,21 @@ import {
   writeFileSync,
 } from "node:fs";
 import { join } from "node:path";
-import { compare, ranges as coveredRanges } from "./schema.ts";
+import {
+  ANCHOR,
+  appliesTo,
+  bindings,
+  bindingsFor,
+  chapters,
+  placesOf,
+  sections,
+} from "./bindings.ts";
+import { ranges as coveredRanges } from "./schema.ts";
+import type { Ranged } from "./schema.ts";
+import { folderOf } from "./seasons.ts";
 import { rangeName, rangeTable } from "./tables.ts";
 
-interface Range {
-  readonly from: string;
-  readonly until?: string;
-}
+type Range = Ranged;
 
 const ROOT = join(import.meta.dir, "..");
 const REPOSITORY = "https://github.com/dacevedo12/trueshot-spec/blob/main";
@@ -34,70 +40,14 @@ const pdf = process.argv.includes("--pdf");
 const read = (path: string): string => readFileSync(join(ROOT, path), "utf8");
 
 const ranges: Range[] = coveredRanges();
-const slug = (build: string): string => build.replace(/\./g, "-");
-
-// The chapters, in the order IMPLEMENTING.md gives them.
-const order = read("IMPLEMENTING.md").split("## Reading order")[1] ?? "";
-const chapters = [
-  ...new Set(
-    [...order.matchAll(/\]\(spec\/([a-z-]+)\.md\)/g)].map((m) => m[1] ?? ""),
-  ),
-];
+const MESSAGES = /^<!-- messages -->$/m;
+const systems = (
+  JSON.parse(read("schema/meta/message.json")) as {
+    properties: { system: { enum: string[] } };
+  }
+).properties.system.enum;
 
 const problems: string[] = [];
-const ANCHOR = /^<!-- binding: ([a-z][a-z0-9-]*) -->$/gm;
-
-// The entries of one binding file, by the place each fills. An entry begins
-// at a `<!-- place: name -->` line and runs to the next, so it can hold
-// headings and lists of its own; the file's title is the chapter's.
-const PLACE = /^<!-- place: ([a-z][a-z0-9-]*) -->$/m;
-function sections(path: string): Map<string, string> {
-  const out = new Map<string, string>();
-  if (!existsSync(join(ROOT, path))) return out;
-  const parts = read(path).split(PLACE).slice(1);
-  for (let i = 0; i + 1 < parts.length; i += 2) {
-    const key = parts[i] ?? "";
-    if (out.has(key)) problems.push(`${path}: "${key}" is given twice`);
-    out.set(key, (parts[i + 1] ?? "").trim());
-  }
-  return out;
-}
-
-// A binding is named for the first build of its range, or for a span of
-// ranges as two builds joined by "--", the second where the span stops: one
-// that holds for every range from the first build up to the second.
-interface Binding {
-  readonly dir: string;
-  readonly from: string;
-  readonly until?: string;
-}
-const unslug = (s: string): string => s.replace(/-/g, ".");
-const bindings: Binding[] = (
-  existsSync(join(ROOT, "spec/bindings"))
-    ? readdirSync(join(ROOT, "spec/bindings")).sort()
-    : []
-).map((name) => {
-  const [from = "", until] = name.split("--");
-  return {
-    dir: `spec/bindings/${name}`,
-    from: unslug(from),
-    ...(until === undefined ? {} : { until: unslug(until) }),
-  };
-});
-const appliesTo = (b: Binding, r: Range): boolean =>
-  b.until === undefined
-    ? b.from === r.from
-    : compare(r.from, b.from) >= 0 &&
-      r.until !== undefined &&
-      compare(r.until, b.until) <= 0;
-// Spans first, then the range's own, so the narrower says the last word.
-const bindingsFor = (r: Range): Binding[] =>
-  bindings
-    .filter((b) => appliesTo(b, r))
-    .sort(
-      (x, y) =>
-        (x.until === undefined ? 1 : 0) - (y.until === undefined ? 1 : 0),
-    );
 
 // Every binding names ranges that exist, its entries have a place in their
 // chapter, and every place is named once.
@@ -114,10 +64,8 @@ for (const b of bindings) {
       );
       continue;
     }
-    const places = [...read(`spec/${chapter}.md`).matchAll(ANCHOR)].map(
-      (m) => m[1],
-    );
-    for (const key of sections(`${b.dir}/${file}`).keys()) {
+    const places = placesOf(chapter);
+    for (const key of sections(`${b.dir}/${file}`, problems).keys()) {
       if (!places.includes(key))
         problems.push(
           `${b.dir}/${file}: "${key}" has no place in spec/${chapter}.md`,
@@ -126,12 +74,29 @@ for (const b of bindings) {
   }
 }
 for (const chapter of chapters) {
-  const places = [...read(`spec/${chapter}.md`).matchAll(ANCHOR)].map(
-    (m) => m[1],
-  );
+  const places = placesOf(chapter);
   const twice = places.filter((p, i) => places.indexOf(p) !== i);
   for (const p of new Set(twice))
     problems.push(`spec/${chapter}.md: the place "${p}" is named twice`);
+}
+// Every system has a chapter in the reading order, with a place for its
+// messages, and every range has a season.
+for (const s of systems) {
+  if (!chapters.includes(s)) {
+    problems.push(
+      `spec/${s}.md: every system has a chapter in the reading order`,
+    );
+    continue;
+  }
+  if (!MESSAGES.test(read(`spec/${s}.md`)))
+    problems.push(`spec/${s}.md: no <!-- messages --> line`);
+}
+for (const r of ranges) {
+  try {
+    folderOf(r);
+  } catch (e) {
+    problems.push((e as Error).message);
+  }
 }
 
 if (problems.length > 0) {
@@ -156,17 +121,14 @@ function relink(text: string, base: string): string {
     if (chapter !== undefined && chapters.includes(chapter)) {
       return `](#${fragment ?? `chapter-${chapter}`})`;
     }
-    const reference = /^spec\/reference\/([0-9-]+)\.md$/.exec(resolved)?.[1];
-    if (reference !== undefined) return "](#appendix-messages)";
+    if (/^dist\/site\/.*\/messages\.md$/.test(resolved))
+      return "](#appendix-messages)";
     return `](${REPOSITORY}/${resolved}${fragment === undefined ? "" : `#${fragment}`})`;
   });
 }
 
 function chapterFor(chapter: string, range: Range): string {
   let text = read(`spec/${chapter}.md`);
-  // The line pointing a reader on the repository at the bindings goes; the
-  // book sets the entries in place.
-  text = text.replace(/^<!-- by range -->.*\n/gm, "");
   // A binding's links are written from where the binding sits.
   const entries = bindingsFor(range).map((b) => ({
     base: b.dir,
@@ -184,33 +146,40 @@ function chapterFor(chapter: string, range: Range): string {
     "",
   );
   text = text.replace(
-    /<!-- messages:begin -->([\s\S]*?)<!-- messages:end -->/,
-    () => rangeTable(chapter, range, "../schema/messages/"),
+    MESSAGES,
+    () =>
+      `## Messages\n\n${rangeTable(chapter, range, "../schema/messages/")}`,
   );
   text = text.replace(/^# (.+)$/m, `# $1 {#chapter-${chapter}}`);
   return relink(text, "spec");
 }
 
 function appendix(range: Range): string {
-  const path = `spec/reference/${slug(range.from)}.md`;
-  const text = read(path)
-    .replace(/^# .+$/m, "# Messages {#appendix-messages}")
-    .replace(/^Generated from .*?: do not edit by hand\. /m, "");
-  return relink(text, "spec/reference");
+  const dir = `dist/site/${folderOf(range)}`;
+  if (!existsSync(join(ROOT, dir, "messages.md"))) {
+    console.error(
+      `${dir}/messages.md is missing: run bun scripts/site.ts first`,
+    );
+    process.exit(1);
+  }
+  const text = read(`${dir}/messages.md`).replace(
+    /^# .+$/m,
+    "# Messages {#appendix-messages}",
+  );
+  return relink(text, dir);
 }
 
-// The opening every book shares, from IMPLEMENTING.md: the order the
-// chapters fall in, then its advice on checking work and on gaps.
+// The opening every book shares: the order the chapters fall in, from
+// spec/README.md, then the advice of IMPLEMENTING.md on checking work and on
+// gaps.
 const preface = ((): string => {
-  const [intro = "", reading = ""] =
-    read("IMPLEMENTING.md").split("## Reading order");
+  const reading = read("spec/README.md").split("## Reading order")[1] ?? "";
+  const intro = read("IMPLEMENTING.md");
   const blocks = reading.split(/\n\n+/).map((b) => b.trim());
   const parts = blocks.flatMap((lead, i) => {
     if (!lead.endsWith(":")) return [];
     const named = [
-      ...(blocks[i + 1] ?? "").matchAll(
-        /\[([^\]]+)\]\(spec\/([a-z-]+)\.md\)/g,
-      ),
+      ...(blocks[i + 1] ?? "").matchAll(/\[([^\]]+)\]\(([a-z-]+)\.md\)/g),
     ]
       .map((m) => ({ title: m[1] ?? "", chapter: m[2] ?? "" }))
       .filter((c) => c.chapter !== "versions");
@@ -241,7 +210,6 @@ const preface = ((): string => {
   );
 })();
 
-mkdirSync(join(ROOT, "dist", "book"), { recursive: true });
 for (const range of ranges) {
   const span =
     range.until === undefined
@@ -282,7 +250,8 @@ for (const range of ranges) {
       .filter((c) => c !== "versions")
       .map((c) => chapterFor(c, range)),
   ].join("\n\n");
-  const out = join(ROOT, "dist", "book", `${slug(range.from)}.md`);
+  const out = join(ROOT, "dist", "site", folderOf(range), "book.md");
+  mkdirSync(join(out, ".."), { recursive: true });
   writeFileSync(out, `${front}\n${body}\n\n${appendix(range)}`);
   console.log("wrote", out);
   if (pdf) {

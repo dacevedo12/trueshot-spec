@@ -9,32 +9,12 @@ A build is named the way its client reports it, in four parts. A range of
 builds starts at a build and runs up to, not including, another, and is named
 by its first two parts.
 
-<!-- ranges:begin -->
-
-| Range                                | From       | Up to      |
-| ------------------------------------ | ---------- | ---------- |
-| [1.0](reference/1-0-0-126.md)        | 1.0.0.126  | 1.0.0.127  |
-| [4.1](reference/4-1-0-171.md)        | 4.1.0.171  | 4.2.0.2718 |
-| [4.2](reference/4-2-0-2718.md)       | 4.2.0.2718 | 4.3.0.495  |
-| [4.3](reference/4-3-0-495.md)        | 4.3.0.495  | 4.4.0.1858 |
-| [4.4](reference/4-4-0-1858.md)       | 4.4.0.1858 | 4.5.0.260  |
-| [4.5](reference/4-5-0-260.md)        | 4.5.0.260  | 4.6.0.193  |
-| [4.6](reference/4-6-0-193.md)        | 4.6.0.193  | 4.7.0.296  |
-| [4.7](reference/4-7-0-296.md)        | 4.7.0.296  | 4.8.0.189  |
-| [4.8](reference/4-8-0-189.md)        | 4.8.0.189  | 4.9.0.239  |
-| [4.9](reference/4-9-0-239.md)        | 4.9.0.239  | 4.10.0.369 |
-| [4.10](reference/4-10-0-369.md)      | 4.10.0.369 | 4.11.0.386 |
-| [4.11](reference/4-11-0-386.md)      | 4.11.0.386 | 4.12.0.356 |
-| [4.12](reference/4-12-0-356.md)      | 4.12.0.356 | 4.13.0.265 |
-| [4.13](reference/4-13-0-265.md)      | 4.13.0.265 | 4.14.0.362 |
-| [4.14](reference/4-14-0-362.md)      | 4.14.0.362 | 4.15.0.238 |
-| [4.15](reference/4-15-0-238.md)      | 4.15.0.238 | 4.16.0.238 |
-| [4.16](reference/4-16-0-238.md)      | 4.16.0.238 | 4.17.0.233 |
-| [4.17](reference/4-17-0-233.md)      | 4.17.0.233 | 4.18.0.271 |
-| [4.18–4.19](reference/4-18-0-271.md) | 4.18.0.271 | 4.20.0.315 |
-| [4.20](reference/4-20-0-315.md)      | 4.20.0.315 | 4.21.0.0   |
-
-<!-- ranges:end -->
+The ranges are not listed here, since the definitions make them: every build
+at which a revision of any definition starts or stops begins a range, and the
+range runs to the next such build. `bun run site` lists them, grouped by the
+seasons in [seasons.json](seasons.json), which follows the
+[League of Legends Wiki](https://wiki.leagueoflegends.com/en-us/Patch) in
+counting a preseason as part of the season after it.
 
 Every build in a range is held to the same facts.
 
@@ -63,7 +43,7 @@ client. A chapter that opens by naming ranges holds for those alone.
 
 What one range alone does belongs in that range's binding rather than in the
 chapter. A binding is a directory under `spec/bindings`, named for the first
-build of its range as the reference pages are, with a file for each chapter it
+build of its range, with its dots as hyphens, with a file for each chapter it
 adds to. Each entry of such a file opens with a line naming a place the
 chapter marks, and says what the range does there. A statement in a binding
 holds for its range alone, so it names no range.
@@ -73,17 +53,15 @@ span: a directory named for two builds joined by `--`, which holds for every
 range from the first build up to the second. Where a span and a range both
 fill a place, the span's entry comes first.
 
-## Books
+## The site
 
-`bun run book` writes one book for each range: the chapters in the order
-[IMPLEMENTING.md](../IMPLEMENTING.md) reads them, the range's binding set in
-its places, each system's table of messages with the commands the range uses,
-and the range's reference page at the end. `bun run book -- --pdf` typesets
-them as well, given [pandoc](https://pandoc.org) and [typst](https://typst.app).
-
-## Per range
-
-Each range in the table above links a page that lists every message a build in
-it sends or takes, by system, with the layout of its body, generated from the
-definitions. Each system document also ends with a generated table of its
-messages, giving the ranges that define each.
+`bun run site` writes `dist/site`: a folder for each season, and in it a folder
+for each range. A range's folder holds its book, which reads the chapters in
+the order [the index](README.md) gives them with the range's bindings set in
+their places; every message a build in it sends or takes, by system, with the
+layout of its body; and what changes from the range before it, so a range can
+be read as the one before it and what differs. Its first page names the builds
+the range runs over, the patches they shipped in, the live checks that ran on
+them and the bindings that add to its chapters. `bun run site -- --pdf`
+typesets each book as well, given [pandoc](https://pandoc.org) and
+[typst](https://typst.app).

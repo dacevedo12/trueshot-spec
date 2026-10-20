@@ -27,7 +27,6 @@ library with reference documentation rather than as a written protocol, so
 that library is what defines this behaviour.
 
 <!-- binding: stock -->
-<!-- by range -->*Ranges add to this: [1.0](bindings/1-0-0-126/transport.md), [4.1–4.20](bindings/4-1-0-171--4-21-0-0/transport.md).*
 
 ## The packet header
 
@@ -47,7 +46,6 @@ A client discards any datagram shorter than the `minimumDatagram` constant of
 its range. A server MUST NOT send a shorter datagram.
 
 <!-- binding: connect-command -->
-<!-- by range -->*Ranges add to this: [4.1–4.20](bindings/4-1-0-171--4-21-0-0/transport.md).*
 
 ## Maximum transmission unit
 

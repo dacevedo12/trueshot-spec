@@ -50,17 +50,14 @@ to take, its count of reports, and its ping. A client goes on reporting after
 its progress reaches 100, up to the moment it is ready.
 
 <!-- binding: loading-player -->
-<!-- by range -->*Ranges add to this: [1.0](bindings/1-0-0-126/joining.md), [4.1–4.20](bindings/4-1-0-171--4-21-0-0/joining.md).*
 
 <!-- binding: loading-screen -->
-<!-- by range -->*Ranges add to this: [4.1–4.17](bindings/4-1-0-171--4-18-0-271/joining.md).*
 
 ## The spawn run
 
 Once a character is settled, a client sends `CharacterSelected`, once.
 
 <!-- binding: selected-early -->
-<!-- by range -->*Ranges add to this: [4.1–4.20](bindings/4-1-0-171--4-21-0-0/joining.md).*
 
 A server answers with `SpawnStart`, states everything on the field as play
 opens, and closes the run with `SpawnEnd`. A run carries:
@@ -96,34 +93,4 @@ by a `ClockSync`, and a client enters play once it has both. A server then
 sends `MatchStarted`, with other messages free to come between them. The first `ClockSync` carries 0, and so does `MatchStarted` (see
 [Time](time.md)).
 
-## Messages
-
-<!-- messages:begin -->
-
-| Message                                                          | Sent by | Ranges              | What it does                                                                                                                                                           |
-| ---------------------------------------------------------------- | ------- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`CharacterSelected`](../schema/messages/CharacterSelected.json) | client  | every range         | What a client sends once a character is settled on                                                                                                                     |
-| [`ClientReady`](../schema/messages/ClientReady.json)             | client  | every range         | What a client sends once it has loaded and is ready to play                                                                                                            |
-| [`ClientVersion`](../schema/messages/ClientVersion.json)         | client  | every range         | State which build it is                                                                                                                                                |
-| [`GameOptions`](../schema/messages/GameOptions.json)             | client  | 4.1–4.20            | What a client sends when a setting that a server needs to know about changes                                                                                           |
-| [`JoinSide`](../schema/messages/JoinSide.json)                   | client  | every range         | Ask for a seat on one of the two sides while the match is being put together                                                                                           |
-| [`LoadingProgress`](../schema/messages/LoadingProgress.json)     | client  | every range         | What a client sends while a match loads, saying how far it has got                                                                                                     |
-| [`MatchIdentity`](../schema/messages/MatchIdentity.json)         | server  | every range         | Tell a client which match this is and what its player is called                                                                                                        |
-| [`MatchStarted`](../schema/messages/MatchStarted.json)           | server  | every range         | Set when the match began                                                                                                                                               |
-| [`ModuleData`](../schema/messages/ModuleData.json)               | server  | 4.1–4.4             | Carry data to a module of the client's own                                                                                                                             |
-| [`ModulePacket`](../schema/messages/ModulePacket.json)           | client  | 4.1–4.4             | Carry data from a module of its own, often a message of its own that the module has taken over                                                                         |
-| [`QueryStatus`](../schema/messages/QueryStatus.json)             | client  | every range         | Ask a server for its state                                                                                                                                             |
-| [`QueryStatusAnswer`](../schema/messages/QueryStatusAnswer.json) | server  | every range         | What a server returns when asked whether it is ready                                                                                                                   |
-| [`Register`](../schema/messages/Register.json)                   | client  | every range         | What a client sends first                                                                                                                                              |
-| [`Registered`](../schema/messages/Registered.json)               | server  | every range         | What a server answers a registration with, naming a player in the match and the seat they occupy                                                                       |
-| [`Roster`](../schema/messages/Roster.json)                       | server  | every range         | Lay out both sides and who is on them, while the match is being put together                                                                                           |
-| [`SeatChampion`](../schema/messages/SeatChampion.json)           | server  | every range         | Say which champion a seat is playing, while the match is being put together                                                                                            |
-| [`SeatLoadProgress`](../schema/messages/SeatLoadProgress.json)   | server  | 1.0, 4.1–4.17, 4.20 | Tell everyone how far one seat has got through loading, and how it is holding up                                                                                       |
-| [`SeatName`](../schema/messages/SeatName.json)                   | server  | every range         | Say what a seat is called, while the match is being put together                                                                                                       |
-| [`SpawnEnd`](../schema/messages/SpawnEnd.json)                   | server  | every range         | Close the run of units it opened with                                                                                                                                  |
-| [`SpawnStart`](../schema/messages/SpawnStart.json)               | server  | every range         | Open the run of units a client is about to be told about                                                                                                               |
-| [`StartGame`](../schema/messages/StartGame.json)                 | server  | every range         | Begin play                                                                                                                                                             |
-| [`StatsRequest`](../schema/messages/StatsRequest.json)           | client  | every range         | What a client sends about itself: what it has detected running alongside it, and which appearance it believes it is wearing                                            |
-| [`VersionSync`](../schema/messages/VersionSync.json)             | server  | every range         | What a server sends once a client has said which build it runs: whether the two agree, which map to load, who is at the match, and everything else settled before play |
-
-<!-- messages:end -->
+<!-- messages -->

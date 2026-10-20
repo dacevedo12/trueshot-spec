@@ -52,7 +52,6 @@ A message says which book it means:
 A server MUST NOT name a champion book slot above 62.
 
 <!-- binding: book-size -->
-<!-- by range -->*Ranges add to this: [4.1–4.6](bindings/4-1-0-171--4-7-0-296/values.md).*
 
 ## Inventory slots
 
@@ -70,7 +69,6 @@ an item moves its spell with it. A client asks to swap only slots 0 to 6
 (`SwapItems`). A server MUST NOT name an inventory slot above 39.
 
 <!-- binding: inventory-size -->
-<!-- by range -->*Ranges add to this: [4.1–4.6](bindings/4-1-0-171--4-7-0-296/values.md).*
 
 ## Effect slots
 
