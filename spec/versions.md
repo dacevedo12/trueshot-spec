@@ -32,7 +32,9 @@ Every definition under `schema/` holds its facts in revisions, each naming the
 range it applies to (see [Messages](messages.md)). Where ranges differ, each
 has its own revision, and no revision is described by pointing at another. A
 message a range lacks has no revision covering that range, and what a chapter
-says about that message says nothing of that range.
+or a binding says about that message, or about a field or bit its revision for
+the range lacks, says nothing of that range. Each range's page in the site
+lists the messages its book names and the range lacks.
 
 ## In the prose
 

@@ -125,7 +125,7 @@
             {
               "name": "reportsToFile",
               "width": 1,
-              "note": "Set to have a client also write its reports to a file of its own, where it does not send them as event reports (features bit 18 clear)."
+              "note": "Set to have a client also write its reports to a file of its own."
             },
             {
               "name": "matched",
@@ -147,7 +147,7 @@
         {
           "name": "map",
           "type": "i32",
-          "note": "Which map to load. spec/movement.md keys the path origins by the same maps."
+          "note": "Which map to load. spec/space.md keys the path origins by the same maps."
         },
         {
           "name": "seats",
@@ -354,7 +354,7 @@
             {
               "name": "quickChat",
               "width": 1,
-              "note": "Quick chat: its keys and its panel."
+              "note": "Quick chat: its keys and its panel. A client given it fails while loading. A server sends it clear."
             },
             {
               "name": "missileWarning",
@@ -467,7 +467,7 @@
             {
               "name": "reportsToFile",
               "width": 1,
-              "note": "Set to have a client also write its reports to a file of its own, where it does not send them as event reports (features bit 18 clear)."
+              "note": "Set to have a client also write its reports to a file of its own."
             },
             {
               "name": "matched",
@@ -489,7 +489,7 @@
         {
           "name": "map",
           "type": "i32",
-          "note": "Which map to load. spec/movement.md keys the path origins by the same maps."
+          "note": "Which map to load. spec/space.md keys the path origins by the same maps."
         },
         {
           "name": "seats",
@@ -696,7 +696,7 @@
             {
               "name": "quickChat",
               "width": 1,
-              "note": "Quick chat: its keys and its panel."
+              "note": "Quick chat: its keys and its panel. A client given it fails while loading. A server sends it clear."
             },
             {
               "name": "missileWarning",
@@ -819,7 +819,7 @@
             {
               "name": "reportsToFile",
               "width": 1,
-              "note": "Set to have a client also write its reports to a file of its own, where it does not send them as event reports (features bit 18 clear)."
+              "note": "Set to have a client also write its reports to a file of its own, where it does not send them as event reports (features `eventReports` clear)."
             },
             {
               "name": "matched",
@@ -841,7 +841,7 @@
         {
           "name": "map",
           "type": "i32",
-          "note": "Which map to load. spec/movement.md keys the path origins by the same maps."
+          "note": "Which map to load. spec/space.md keys the path origins by the same maps."
         },
         {
           "name": "seats",
@@ -1048,7 +1048,7 @@
             {
               "name": "quickChat",
               "width": 1,
-              "note": "Quick chat: its keys and its panel."
+              "note": "Quick chat: its keys and its panel. A client given it fails while loading. A server sends it clear."
             },
             {
               "name": "missileWarning",
@@ -1205,7 +1205,7 @@
             {
               "name": "reportsToFile",
               "width": 1,
-              "note": "Set to have a client also write its reports to a file of its own, where it does not send them as event reports (features bit 18 clear)."
+              "note": "Set to have a client also write its reports to a file of its own, where it does not send them as event reports (features `eventReports` clear)."
             },
             {
               "name": "matched",
@@ -1227,7 +1227,7 @@
         {
           "name": "map",
           "type": "i32",
-          "note": "Which map to load. spec/movement.md keys the path origins by the same maps."
+          "note": "Which map to load. spec/space.md keys the path origins by the same maps."
         },
         {
           "name": "seats",
@@ -1434,7 +1434,7 @@
             {
               "name": "quickChat",
               "width": 1,
-              "note": "Quick chat: its keys and its panel."
+              "note": "Quick chat: its keys and its panel. A client given it fails while loading. A server sends it clear."
             },
             {
               "name": "missileWarning",
@@ -1596,7 +1596,7 @@
             {
               "name": "reportsToFile",
               "width": 1,
-              "note": "Set to have a client also write its reports to a file of its own, where it does not send them as event reports (features bit 18 clear)."
+              "note": "Set to have a client also write its reports to a file of its own, where it does not send them as event reports (features `eventReports` clear)."
             },
             {
               "name": "matched",
@@ -1618,7 +1618,7 @@
         {
           "name": "map",
           "type": "i32",
-          "note": "Which map to load. spec/movement.md keys the path origins by the same maps."
+          "note": "Which map to load. spec/space.md keys the path origins by the same maps."
         },
         {
           "name": "seats",
@@ -1825,7 +1825,7 @@
             {
               "name": "quickChat",
               "width": 1,
-              "note": "Quick chat: its keys and its panel."
+              "note": "Quick chat: its keys and its panel. A client given it fails while loading. A server sends it clear."
             },
             {
               "name": "missileWarning",
@@ -1987,7 +1987,7 @@
             {
               "name": "reportsToFile",
               "width": 1,
-              "note": "Set to have a client also write its reports to a file of its own, where it does not send them as event reports (features bit 18 clear)."
+              "note": "Set to have a client also write its reports to a file of its own, where it does not send them as event reports (features `eventReports` clear)."
             },
             {
               "name": "matched",
@@ -2009,7 +2009,7 @@
         {
           "name": "map",
           "type": "i32",
-          "note": "Which map to load. spec/movement.md keys the path origins by the same maps."
+          "note": "Which map to load. spec/space.md keys the path origins by the same maps."
         },
         {
           "name": "seats",
@@ -2216,7 +2216,7 @@
             {
               "name": "quickChat",
               "width": 1,
-              "note": "Quick chat: its keys and its panel."
+              "note": "Quick chat: its keys and its panel. A client given it fails while loading. A server sends it clear."
             },
             {
               "name": "missileWarning",
@@ -2373,7 +2373,7 @@
             {
               "name": "reportsToFile",
               "width": 1,
-              "note": "Set to have a client also write its reports to a file of its own, where it does not send them as event reports (features bit 18 clear)."
+              "note": "Set to have a client also write its reports to a file of its own, where it does not send them as event reports (features `eventReports` clear)."
             },
             {
               "name": "matched",
@@ -2395,7 +2395,7 @@
         {
           "name": "map",
           "type": "i32",
-          "note": "Which map to load. spec/movement.md keys the path origins by the same maps."
+          "note": "Which map to load. spec/space.md keys the path origins by the same maps."
         },
         {
           "name": "seats",
@@ -2602,7 +2602,7 @@
             {
               "name": "quickChat",
               "width": 1,
-              "note": "Quick chat: its keys and its panel."
+              "note": "Quick chat: its keys and its panel. A client given it fails while loading. A server sends it clear."
             },
             {
               "name": "missileWarning",
@@ -2754,7 +2754,7 @@
             {
               "name": "reportsToFile",
               "width": 1,
-              "note": "Set to have a client also write its reports to a file of its own, where it does not send them as event reports (features bit 18 clear)."
+              "note": "Set to have a client also write its reports to a file of its own, where it does not send them as event reports (features `eventReports` clear)."
             },
             {
               "name": "matched",
@@ -2776,7 +2776,7 @@
         {
           "name": "map",
           "type": "i32",
-          "note": "Which map to load. spec/movement.md keys the path origins by the same maps."
+          "note": "Which map to load. spec/space.md keys the path origins by the same maps."
         },
         {
           "name": "seats",
@@ -2983,7 +2983,7 @@
             {
               "name": "quickChat",
               "width": 1,
-              "note": "Quick chat: its keys and its panel."
+              "note": "Quick chat: its keys and its panel. A client given it fails while loading. A server sends it clear."
             },
             {
               "name": "missileWarning",
@@ -3150,7 +3150,7 @@
             {
               "name": "reportsToFile",
               "width": 1,
-              "note": "Set to have a client also write its reports to a file of its own, where it does not send them as event reports (features bit 18 clear)."
+              "note": "Set to have a client also write its reports to a file of its own, where it does not send them as event reports (features `eventReports` clear)."
             },
             {
               "name": "matched",
@@ -3172,7 +3172,7 @@
         {
           "name": "map",
           "type": "i32",
-          "note": "Which map to load. spec/movement.md keys the path origins by the same maps."
+          "note": "Which map to load. spec/space.md keys the path origins by the same maps."
         },
         {
           "name": "seats",
@@ -3379,7 +3379,7 @@
             {
               "name": "quickChat",
               "width": 1,
-              "note": "Quick chat: its keys and its panel."
+              "note": "Quick chat: its keys and its panel. A client given it fails while loading. A server sends it clear."
             },
             {
               "name": "missileWarning",
@@ -3546,7 +3546,7 @@
             {
               "name": "reportsToFile",
               "width": 1,
-              "note": "Set to have a client also write its reports to a file of its own, where it does not send them as event reports (features bit 18 clear)."
+              "note": "Set to have a client also write its reports to a file of its own, where it does not send them as event reports (features `eventReports` clear)."
             },
             {
               "name": "matched",
@@ -3568,7 +3568,7 @@
         {
           "name": "map",
           "type": "i32",
-          "note": "Which map to load. spec/movement.md keys the path origins by the same maps."
+          "note": "Which map to load. spec/space.md keys the path origins by the same maps."
         },
         {
           "name": "seats",
@@ -3775,7 +3775,7 @@
             {
               "name": "quickChat",
               "width": 1,
-              "note": "Quick chat: its keys and its panel."
+              "note": "Quick chat: its keys and its panel. A client given it fails while loading. A server sends it clear."
             },
             {
               "name": "missileWarning",
@@ -3942,7 +3942,7 @@
             {
               "name": "reportsToFile",
               "width": 1,
-              "note": "Set to have a client also write its reports to a file of its own, where it does not send them as event reports (features bit 18 clear)."
+              "note": "Set to have a client also write its reports to a file of its own, where it does not send them as event reports (features `eventReports` clear)."
             },
             {
               "name": "matched",
@@ -3964,7 +3964,7 @@
         {
           "name": "map",
           "type": "i32",
-          "note": "Which map to load. spec/movement.md keys the path origins by the same maps."
+          "note": "Which map to load. spec/space.md keys the path origins by the same maps."
         },
         {
           "name": "seats",
@@ -4178,7 +4178,7 @@
             {
               "name": "quickChat",
               "width": 1,
-              "note": "Quick chat: its keys and its panel."
+              "note": "Quick chat: its keys and its panel. A client given it fails while loading. A server sends it clear."
             },
             {
               "name": "missileWarning",
@@ -4340,7 +4340,7 @@
             {
               "name": "reportsToFile",
               "width": 1,
-              "note": "Set to have a client also write its reports to a file of its own, where it does not send them as event reports (features bit 18 clear)."
+              "note": "Set to have a client also write its reports to a file of its own, where it does not send them as event reports (features `eventReports` clear)."
             },
             {
               "name": "matched",
@@ -4362,7 +4362,7 @@
         {
           "name": "map",
           "type": "i32",
-          "note": "Which map to load. spec/movement.md keys the path origins by the same maps."
+          "note": "Which map to load. spec/space.md keys the path origins by the same maps."
         },
         {
           "name": "seats",
@@ -4576,7 +4576,7 @@
             {
               "name": "quickChat",
               "width": 1,
-              "note": "Quick chat: its keys and its panel."
+              "note": "Quick chat: its keys and its panel. A client given it fails while loading. A server sends it clear."
             },
             {
               "name": "missileWarning",
@@ -4758,7 +4758,7 @@
             {
               "name": "reportsToFile",
               "width": 1,
-              "note": "Set to have a client also write its reports to a file of its own, where it does not send them as event reports (features bit 18 clear)."
+              "note": "Set to have a client also write its reports to a file of its own, where it does not send them as event reports (features `eventReports` clear)."
             },
             {
               "name": "matched",
@@ -4780,7 +4780,7 @@
         {
           "name": "map",
           "type": "i32",
-          "note": "Which map to load. spec/movement.md keys the path origins by the same maps."
+          "note": "Which map to load. spec/space.md keys the path origins by the same maps."
         },
         {
           "name": "seats",
@@ -4994,7 +4994,7 @@
             {
               "name": "quickChat",
               "width": 1,
-              "note": "Quick chat: its keys and its panel."
+              "note": "Quick chat: its keys and its panel. A client given it fails while loading. A server sends it clear."
             },
             {
               "name": "missileWarning",
@@ -5171,7 +5171,7 @@
             {
               "name": "reportsToFile",
               "width": 1,
-              "note": "Set to have a client also write its reports to a file of its own, where it does not send them as event reports (features bit 18 clear)."
+              "note": "Set to have a client also write its reports to a file of its own, where it does not send them as event reports (features `eventReports` clear)."
             },
             {
               "name": "matched",
@@ -5193,7 +5193,7 @@
         {
           "name": "map",
           "type": "i32",
-          "note": "Which map to load. spec/movement.md keys the path origins by the same maps."
+          "note": "Which map to load. spec/space.md keys the path origins by the same maps."
         },
         {
           "name": "seats",
@@ -5407,7 +5407,7 @@
             {
               "name": "quickChat",
               "width": 1,
-              "note": "Quick chat: its keys and its panel."
+              "note": "Quick chat: its keys and its panel. A client given it fails while loading. A server sends it clear."
             },
             {
               "name": "missileWarning",
@@ -5604,7 +5604,7 @@
             {
               "name": "reportsToFile",
               "width": 1,
-              "note": "Set to have a client also write its reports to a file of its own, where it does not send them as event reports (features bit 18 clear)."
+              "note": "Set to have a client also write its reports to a file of its own, where it does not send them as event reports (features `eventReports` clear)."
             },
             {
               "name": "matched",
@@ -5626,7 +5626,7 @@
         {
           "name": "map",
           "type": "i32",
-          "note": "Which map to load. spec/movement.md keys the path origins by the same maps."
+          "note": "Which map to load. spec/space.md keys the path origins by the same maps."
         },
         {
           "name": "seats",
@@ -6059,7 +6059,7 @@
         {
           "name": "map",
           "type": "i32",
-          "note": "Which map to load. spec/movement.md keys the path origins by the same maps."
+          "note": "Which map to load. spec/space.md keys the path origins by the same maps."
         },
         {
           "name": "seats",

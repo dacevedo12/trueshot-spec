@@ -845,6 +845,30 @@ function rangePage(i: number, path: string): string[] {
     "",
     `${vectorsIn(range).length} vectors are laid out as a build in this range lays its messages out.`,
   ];
+  // Messages the range's book names, which the range has no revision of.
+  const told = [
+    ...chapters.map((c) =>
+      readFileSync(join(ROOT, "spec", `${c}.md`), "utf8"),
+    ),
+    ...bindingsFor(range).flatMap((b) =>
+      readdirSync(join(ROOT, b.dir)).map((f) =>
+        readFileSync(join(ROOT, b.dir, f), "utf8"),
+      ),
+    ),
+  ].join("\n");
+  const named = new Set(
+    [...told.matchAll(/`([A-Z][A-Za-z0-9]*)`/g)].map((m) => m[1]),
+  );
+  const absent = messages.filter(
+    (m) => named.has(m.message) && revisionAt(m, range.from) === undefined,
+  );
+  if (absent.length > 0)
+    lines.push(
+      "",
+      "## Named but not defined here",
+      "",
+      `The book names these, and no build in this range sends or takes them, so what it says of them says nothing of this range: ${absent.map((m) => `[\`${m.message}\`](${repo}schema/messages/${m.file})`).join(", ")}.`,
+    );
   if (lacks.length > 0)
     lines.push(
       "",

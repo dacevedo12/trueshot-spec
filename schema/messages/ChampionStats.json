@@ -39,7 +39,7 @@
         {
           "name": "size",
           "type": "u32",
-          "note": "The whole length of what follows the header, these four bytes included, in the low 16 bits; the high 16 are zero. A mismatch has no effect."
+          "note": "The whole length of what follows the header, these four bytes included, as a whole 32-bit count. A mismatch has no effect, and does not limit what a client takes."
         },
         {
           "name": "values",
@@ -63,7 +63,7 @@
         {
           "name": "size",
           "type": "u32",
-          "note": "The whole length of what follows the header, these four bytes included, in the low 16 bits; the high 16 are zero. A mismatch has no effect."
+          "note": "The whole length of what follows the header, these four bytes included, as a whole 32-bit count. A mismatch has no effect, and does not limit what a client takes."
         },
         {
           "name": "values",
@@ -87,7 +87,7 @@
         {
           "name": "size",
           "type": "u32",
-          "note": "How many bytes this shape occupies, counting these four."
+          "note": "The whole length of what follows the header, these four bytes included, as a whole 32-bit count. A mismatch has no effect, and does not limit what a client takes."
         },
         {
           "name": "values",

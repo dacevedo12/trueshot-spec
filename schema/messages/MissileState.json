@@ -479,7 +479,7 @@
         {
           "name": "speedChangeTime",
           "type": "f32",
-          "note": "How long that change takes, in seconds."
+          "note": "When the speed changes, in seconds from when the client creates the missile: once that much time has passed, a client adds the change to the speed, once. Where the speed never changes, a server sends the largest finite float, 340282346638528859811704183484516925440; zero or less takes effect at once."
         },
         {
           "name": "how",
@@ -643,7 +643,7 @@
         {
           "name": "speedChangeTime",
           "type": "f32",
-          "note": "How long that change takes, in seconds."
+          "note": "When the speed changes, in seconds from when the client creates the missile: once that much time has passed, a client adds the change to the speed, once. Where the speed never changes, a server sends the largest finite float, 340282346638528859811704183484516925440; zero or less takes effect at once."
         },
         {
           "name": "how",
@@ -772,17 +772,17 @@
         {
           "name": "unitAtX",
           "type": "f32",
-          "note": "Where the unit the missile follows stands, along one ground axis, in world units."
+          "note": "Where to place the casting unit, along one ground axis, in world units, unless the casting itself places it."
         },
         {
           "name": "unitAtY",
           "type": "f32",
-          "note": "Where the unit the missile follows stands, in height, in world units."
+          "note": "Its height, in world units."
         },
         {
           "name": "unitAtZ",
           "type": "f32",
-          "note": "Where the unit the missile follows stands, along the other ground axis, in world units."
+          "note": "Where to place the casting unit, along the other ground axis, in world units."
         },
         {
           "name": "age",
@@ -807,7 +807,7 @@
         {
           "name": "speedChangeTime",
           "type": "f32",
-          "note": "How long that change takes, in seconds. A server sends the float 2139095040, the bytes 00 00 FF 4E, not the bits 0x7F800000 of an endless float."
+          "note": "When the speed changes, in seconds from when the client creates the missile: once that much time has passed, a client adds the change to the speed, once. Where the speed never changes, a server sends the largest finite float, 340282346638528859811704183484516925440; zero or less takes effect at once."
         },
         {
           "name": "how",

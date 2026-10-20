@@ -57,13 +57,13 @@
         {
           "name": "version",
           "type": "u32",
-          "note": "The build the client said it runs, carried back to it: a server writes the build the request carried."
+          "note": "The build the client said it runs. Where the answer follows a request, a server writes the number that request carried, and otherwise the build itself. A client ignores it."
         },
         {
           "name": "proof",
           "type": "bytes",
           "size": 8,
-          "note": "The request's proof, carried back: a server writes the proof the request carried."
+          "note": "The eight bytes a request fills with its proof. Where the answer follows a request, a server writes what that request carried, and otherwise zero. A client ignores them."
         },
         {
           "name": "trailing",
@@ -100,19 +100,19 @@
         {
           "name": "version",
           "type": "u32",
-          "note": "The build the client said it runs, carried back to it. Where the answer follows a request it is the number that request carried. Where it does not, a server states the build itself."
+          "note": "The build the client said it runs. Where the answer follows a request, a server writes the number that request carried, and otherwise the build itself. A client ignores it."
         },
         {
           "name": "proof",
           "type": "bytes",
           "size": 8,
-          "note": "The eight bytes a request fills with its proof, carried back. Where the answer follows a request it repeats what that request carried. Where it does not, a server writes zero."
+          "note": "The eight bytes a request fills with its proof. Where the answer follows a request, a server writes what that request carried, and otherwise zero. A client ignores them."
         },
         {
           "name": "trailing",
           "type": "bytes",
           "size": 4,
-          "note": "Four bytes closing the record. A server writes zero."
+          "note": "Unused; a server writes zero."
         }
       ]
     }

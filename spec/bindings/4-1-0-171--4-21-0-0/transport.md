@@ -2,8 +2,8 @@
 
 <!-- place: stock -->
 
-What follows is what a client does **not** accept from stock ENet. A server
-built on an unmodified ENet 1.2.5 never completes a connection.
+The rest of this chapter says what a client does **not** accept from stock
+ENet. A server built on an unmodified ENet 1.2.5 never completes a connection.
 
 <!-- place: connect-command -->
 

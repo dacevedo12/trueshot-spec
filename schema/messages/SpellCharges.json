@@ -6,54 +6,6 @@
   "revisions": [
     {
       "from": "4.1.0.171",
-      "until": "4.18.0.271",
-      "channel": "events",
-      "command": 263,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "summonerSpell",
-          "type": "u8",
-          "note": "Whether the slot is a summoner slot rather than one of the unit's own.",
-          "values": {
-            "0": {
-              "name": "no"
-            },
-            "1": {
-              "name": "yes"
-            }
-          }
-        },
-        {
-          "name": "slot",
-          "type": "u32",
-          "note": "Which slot."
-        },
-        {
-          "name": "charges",
-          "type": "i32",
-          "note": "How many uses are left."
-        },
-        {
-          "name": "mostCharges",
-          "type": "i32",
-          "note": "How many uses it holds at most."
-        },
-        {
-          "name": "rechargeFor",
-          "type": "f32",
-          "note": "How long the next use has been coming back, in seconds."
-        },
-        {
-          "name": "rechargeTime",
-          "type": "f32",
-          "note": "How long a use takes to come back, in seconds."
-        }
-      ]
-    },
-    {
-      "from": "4.18.0.271",
       "until": "4.21.0.0",
       "channel": "events",
       "command": 263,
@@ -86,7 +38,7 @@
         {
           "name": "mostCharges",
           "type": "i32",
-          "note": "How many charges the slot can hold: -1 to keep the spell's own figure for its level, otherwise that many; 0 has the slot use no charges."
+          "note": "How many charges the slot can hold: any value below zero, -1 among them, keeps the spell's own figure for its level; 0 has the slot use no charges; anything above zero is that many."
         },
         {
           "name": "rechargeFor",

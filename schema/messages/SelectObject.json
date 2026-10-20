@@ -35,7 +35,7 @@
         {
           "name": "clientId",
           "type": "u32",
-          "note": "The client id of the client selecting. Zero is a client id like any other rather than an absence. A client sends zero."
+          "note": "The client id of the client selecting: the one its Registered gave it. Zero is a client id like any other rather than an absence."
         },
         {
           "name": "selected",
@@ -46,26 +46,6 @@
     },
     {
       "from": "4.11.0.386",
-      "until": "4.18.0.271",
-      "channel": "requests",
-      "command": 175,
-      "direction": "clientToServer",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "clientId",
-          "type": "u32",
-          "note": "The client id of the client selecting. Zero is a client id like any other rather than an absence. A client sends zero."
-        },
-        {
-          "name": "selected",
-          "type": "u32",
-          "note": "The network object now selected, or zero where none is."
-        }
-      ]
-    },
-    {
-      "from": "4.18.0.271",
       "until": "4.21.0.0",
       "channel": "requests",
       "command": 175,
@@ -75,7 +55,7 @@
         {
           "name": "clientId",
           "type": "u32",
-          "note": "The client id of the client selecting. Zero is a client id like any other rather than an absence."
+          "note": "The client id of the client selecting: the one its Registered gave it. Zero is a client id like any other rather than an absence."
         },
         {
           "name": "selected",

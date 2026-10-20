@@ -96,7 +96,7 @@
         {
           "name": "clientId",
           "type": "u32",
-          "note": "The client id the sender holds, counted from zero."
+          "note": "A client writes zero here."
         },
         {
           "name": "playerId",

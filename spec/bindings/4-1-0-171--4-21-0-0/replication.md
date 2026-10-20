@@ -56,7 +56,7 @@ Each row also gives the shape a sending end writes the value in.
 | 3     | 14 to 16 | Kills taken from no side, and whether anything is allowed to aim at it                                 | counted  |
 
 Bit 2 holds which of slots 0 to 3 can be cast from, one bit for each slot,
-set as a champion learns the spell in it, and bit 4 holds which summoner spells can be cast from, a server setting bits 4 and 5 of its mask. Bits 3 and 5 carry zero. [Sides and slots](../../values.md) numbers the slots.
+set as a champion learns the spell in it, and bit 4 holds which summoner spells can be cast from, as a mask in which a server sets its bits 4 and 5, one for each summoner slot. Bits 3 and 5 of the group carry zero. [Sides and slots](../../values.md) numbers the slots.
 
 Spell costs are keyed by slot: bit 8 carries what the spell in slot 0 costs,
 bit 9 slot 1, bit 10 slot 2 and bit 11 slot 3. Bits 12 to 27 belong to the same run, and a server writes zero in

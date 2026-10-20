@@ -53,8 +53,7 @@ travels elsewhere in the header, which is how a family numbers more messages
 than a byte holds. A revision records the identifier either way, and never the
 escape.
 
-Direction narrows it further. One value serves two messages travelling
-opposite ways within a family.
+Direction narrows it further, as [Directions](#directions) says.
 
 ## A container of several messages
 
@@ -191,7 +190,7 @@ elsewhere.
 ## What a field names
 
 A size, a count, or a rule about whether a field is present names an earlier
-field. Four forms are written:
+field. Five forms are written:
 
 - a name on its own, which is a field of the same enclosure;
 - a name, a full stop, and a run inside it, where that field is `bits`;
@@ -341,9 +340,9 @@ Opening a connection is not like that. Its steps come in a fixed order, from
 registering to the start of play, and [Joining a match](joining.md) sets them
 out.
 
-One thing during play behaves the same way. A client names each view report
-and sends it again until a server returns that name, so a server that returns
-nothing is sent the same report over and over.
+One thing during play behaves the same way. A client names each view report,
+`Camera`, and sends it again until a server returns that name in `CameraAck`,
+so a server that returns nothing is sent the same report over and over.
 
 ## Requests a server can ignore
 

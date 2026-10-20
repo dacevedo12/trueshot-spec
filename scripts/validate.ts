@@ -306,6 +306,19 @@ function checkRevisions(revisions: readonly Ranged[], where: string): void {
       }
     }
   }
+  // Two revisions back to back that say the same thing are one revision.
+  for (let i = 0; i + 1 < revisions.length; i += 1) {
+    const a = revisions[i];
+    const b = revisions[i + 1];
+    if (a === undefined || b === undefined || a.until !== b.from) continue;
+    const rest = (r: Ranged): string =>
+      JSON.stringify({ ...r, from: undefined, until: undefined });
+    if (rest(a) === rest(b))
+      fail(
+        where,
+        `revisions ${a.from} and ${b.from} are the same in every respect, so they are one revision from ${a.from} up to ${b.until ?? "the end"}`,
+      );
+  }
 }
 
 // A requirement belongs in spec/, where Vale reads it and where a reader

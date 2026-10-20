@@ -80,7 +80,7 @@
         {
           "name": "clientId",
           "type": "u32",
-          "note": "The client id of the client that asked."
+          "note": "A client writes zero; a server ignores it."
         },
         {
           "name": "how",
@@ -97,7 +97,8 @@
               "width": 7,
               "note": "Unused; a client may leave any value here, and a server ignores it."
             }
-          ]
+          ],
+          "note": "A client clears its lowest bit; the others vary from send to send, and a server ignores them."
         }
       ]
     }

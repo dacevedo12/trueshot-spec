@@ -14,4 +14,5 @@ A client draws its fog of war, or the map with no darkening, as `FogSet` and
 
 `UnitDiedOnMap`, `InventorySnapshotOnMap`, `FloatingTextOnMap` and
 `SpellSlotChangedForOwner` do not exist, so a server sends both audiences of
-`UnitDied` and `InventorySnapshot` under the one command.
+`UnitDied`, `InventorySnapshot`, `FloatingText` and `SpellSlotChanged` under
+the one command each.
