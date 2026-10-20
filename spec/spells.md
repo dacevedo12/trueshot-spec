@@ -15,6 +15,8 @@ ready with `SpellCooldown`, and, for a spell with uses, how many are left with
 Which slots a client lets its player cast from at all is a value of the
 champion's that [replication](replication.md) carries.
 
+<!-- binding: cast-sequence -->
+
 A spell that charges, such as one held down before it is let go, charges where
 the cast answer leaves its flags clear. The client then sends
 `SpellCharge` with the cursor's position as the charge goes on, where the spell
@@ -30,6 +32,8 @@ with `SpellUpgraded`, on the clock channel, and a client shows the new level;
 `SpellLevel` sets a level outright. The spell points a champion has to spend
 are what `LevelUp` carries. A server can set how far each
 spell can be raised, and at which champion levels, with `SpellRankLimits`.
+
+<!-- binding: levelling -->
 
 ## What a slot holds
 

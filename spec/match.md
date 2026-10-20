@@ -61,4 +61,13 @@ A client dropped during play connects again by itself, registers again, and send
 loading leaves instead. `SoftReconnect` rebuilds a client's world without a new connection, as
 [Objects and identifiers](objects.md) describes.
 
+<!-- binding: reconnecting -->
+
+## Staying connected
+
+How long a client waits on a server that has gone quiet, and what it sends
+meanwhile, is each range's own.
+
+<!-- binding: timeouts -->
+
 <!-- messages -->

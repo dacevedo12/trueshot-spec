@@ -31,8 +31,9 @@ not already hold the table cannot read a run.
 ## Which batches a client takes
 
 A client applies a unit's values from a batch only where the batch's `syncId`
-is greater than that of the last batch it applied for that unit and group. A client answers a batch with `TransientAck` whether or not it took the
-values. [Ordering](ordering.md) gives the rules for these numbers, when a
+is greater than that of the last batch it applied for that unit and group. A client answers a batch with `TransientAck` where it holds every unit the
+batch names, whether or not it took the values, and leaves a batch naming a
+unit it does not hold unanswered. [Ordering](ordering.md) gives the rules for these numbers, when a
 batch goes unanswered, and what they require of a server.
 
 ## Reading the tables

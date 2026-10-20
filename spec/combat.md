@@ -13,6 +13,13 @@ unit attacks.
 
 <!-- binding: stop-attack -->
 
+A client asks its champion to attack with a `MoveOrder` naming the unit. What
+the player then sees is what a server sends: the champion walking into range
+along a `WaypointGroup`, a swing for each `Attack`, a figure for each `Damage`,
+and the health bar moving as [replication](replication.md) states the health.
+
+<!-- binding: attack-sequence -->
+
 What a unit is attacking, whatever it is, is `TargetUnit`, which draws the
 targeting beam. That a unit is attacking a champion is `TargetHeldChampion`,
 which marks the unit's health bar with an indicator, and clears the mark when it

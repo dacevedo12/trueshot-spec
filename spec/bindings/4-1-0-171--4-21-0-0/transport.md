@@ -17,3 +17,8 @@ carry nothing a server reads, and a client fills them with anything.
 A server MUST take the peer id and the session id from those first bytes. The
 session id is then the byte every header carries, and a server that reads
 either field at ENet's width answers a client that never hears it.
+
+A client asks for 8 channels. A server's verify connect MUST state that count,
+and the throttle interval, acceleration and deceleration the connect command
+carried: a client abandons a connection whose verify connect states anything
+else.

@@ -40,7 +40,7 @@ reads the same three fields as a direction vector.
 `VersionSync` names the map to load by number. Two maps carry the name
 Summoner's Rift and differ, so the number is what identifies a map, and the
 name is only a label. What a map holds, and what it gives that nothing on the
-wire carries, a client takes from its own data for that map: its buildings
+wire carries, a client takes from its own data for that map (see [The client's data](data.md)): its buildings
 (see [Objects and identifiers](objects.md)), its spawn positions, and the
 origin its paths are measured from (see [Movement](movement.md)).
 

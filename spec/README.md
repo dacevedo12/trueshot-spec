@@ -37,34 +37,36 @@ consistent with one another:
    is measured against.
 8. [Sides and slots](values.md): sides, and how spell, item and effect slots
    are numbered.
+9. [The client's data](data.md): what a server takes from the files a client
+   installs.
 
 Then a match from end to end, which is enough for a client to join and play:
 
-9. [Joining a match](joining.md), from registering until play begins,
-   including what the loading screen shows.
-10. [The match](match.md): its clock, holding it, its end, and players leaving
+10. [Joining a match](joining.md), from registering until play begins,
+    including what the loading screen shows.
+11. [The match](match.md): its clock, holding it, its end, and players leaving
     and coming back.
-11. [Units](units.md): putting champions, minions, monsters, turrets and props
+12. [Units](units.md): putting champions, minions, monsters, turrets and props
     on the field.
-12. [Vision](vision.md): bringing units into a client's view.
-13. [Movement](movement.md): orders, paths and what their coordinates mean.
-14. [Replication](replication.md): the values of units a server keeps current,
+13. [Vision](vision.md): bringing units into a client's view.
+14. [Movement](movement.md): orders, paths and what their coordinates mean.
+15. [Replication](replication.md): the values of units a server keeps current,
     which no layout reaches.
 
 Then the systems a match is played with, in any order:
 
-15. [Combat](combat.md): attacks, damage, death and coming back.
-16. [Spells](spells.md): casting, levelling spells, and missiles.
-17. [Effects and looks](effects.md): lasting effects, particles and how units
+16. [Combat](combat.md): attacks, damage, death and coming back.
+17. [Spells](spells.md): casting, levelling spells, and missiles.
+18. [Effects and looks](effects.md): lasting effects, particles and how units
     look.
-18. [The shop](shop.md): what fills it, buying and selling.
-19. [Objectives](objectives.md): camps, capture points and score, and the
+19. [The shop](shop.md): what fills it, buying and selling.
+20. [Objectives](objectives.md): camps, capture points and score, and the
     events the whole match is told about.
-20. [Communication](communication.md): chat, pings, emotes and sound.
-21. [Votes](votes.md): surrender, and evening out a match.
-22. [The interface](interface.md): the view, input, tips, quests and the
+21. [Communication](communication.md): chat, pings, emotes and sound.
+22. [Votes](votes.md): surrender, and evening out a match.
+23. [The interface](interface.md): the view, input, tips, quests and the
     tutorial.
-23. [Watching a match](spectating.md): streaming a match to a client that
+24. [Watching a match](spectating.md): streaming a match to a client that
     watches over its connection.
 
 The transport is ENet 1.2.5 except where [Transport](transport.md) says

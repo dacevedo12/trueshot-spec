@@ -54,6 +54,8 @@ with `SwapItemsAnswer`. A server can also set a slot (`InventorySlot`), set the
 whole inventory (`InventorySnapshot`), change an item's charges
 (`ItemCharges`), or report an item used (`ItemUsed`).
 
+<!-- binding: buying -->
+
 ## Undo
 
 Where `VersionSync`'s features set shopUndo, the shop has an undo button, which

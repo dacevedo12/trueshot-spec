@@ -310,13 +310,14 @@ run holds its values one after another with nothing between them, in the order
 whatever selects them names them, lowest first. Each value takes one of two
 shapes.
 
-A value that counts takes seven bits from each byte, lowest seven first, and
-the top bit of a byte is set while another byte follows. Five bytes therefore
-carry anything a thirty two bit value holds.
+A value that counts is a thirty two bit unsigned integer, and a value with a
+sign travels as the same thirty two bits. It takes seven bits from each byte,
+lowest seven first, and the top bit of a byte is set while another byte
+follows. Five bytes therefore carry anything it holds.
 
 A value that measures takes one of three forms: a single byte of 255 meaning
 zero; a byte of 254 followed by four bytes; or four bytes on their own. The
-four bytes are the measure itself, lowest byte first.
+four bytes are the measure itself, a thirty two bit float, lowest byte first.
 
 Which of the three a value takes is settled by its own lowest byte, and a
 reading end tells them apart by the first byte it meets. A sending end MUST write

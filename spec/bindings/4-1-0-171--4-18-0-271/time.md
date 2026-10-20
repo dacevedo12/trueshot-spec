@@ -18,3 +18,9 @@ stays dead, how long an object lives, and how long a client waits before
 removing a dead unit (see [Objects and identifiers](../../objects.md)) run on it. A
 server that runs a match at other than normal speed MUST send `GameSpeed`
 with that speed, or those durations run apart from its own.
+
+<!-- place: clock-start -->
+
+A client's game clock does not run until the first `ClockSync` arrives, which
+sets it. After that it runs on the client's own timer, and a later
+`ClockSync` only corrects it, however long a server leaves between them.

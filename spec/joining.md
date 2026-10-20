@@ -20,6 +20,8 @@ A client's first payload is `Register`, on the registration channel.
 [Transport](transport.md) says how its proof is enciphered, and the note on
 `Registered` says what a server answers with: one answer for every seat.
 
+<!-- binding: registering -->
+
 ## Asking whether a server is ready
 
 A client then sends `QueryStatus` over and over. A server MUST answer each one
@@ -34,11 +36,15 @@ that it is not ready until it is.
 After an answer, a client sends `ClientVersion` once. A server answers with
 `VersionSync`, which names the map to load and everyone at the match.
 
+<!-- binding: version-check -->
+
 ## Taking a seat
 
 Straight after `VersionSync`, a client sends `JoinSide` on the roster channel.
 A server answers with one `Roster`, then a `SeatName` and a `SeatChampion` for
 each seat a player holds.
+
+<!-- binding: seats -->
 
 ## Loading
 
@@ -48,6 +54,8 @@ through loading. A server answers each report with
 own figures under the seat that reported: its progress, the seconds it expects
 to take, its count of reports, and its ping. A client goes on reporting after
 its progress reaches 100, up to the moment it is ready.
+
+<!-- binding: loading-others -->
 
 <!-- binding: loading-player -->
 
@@ -92,5 +100,7 @@ is still reporting its loading. A server MUST answer with `StartGame` followed
 by a `ClockSync`, and a client enters play once it has both. A server then
 sends `MatchStarted`, with other messages free to come between them. The first `ClockSync` carries 0, and so does `MatchStarted` (see
 [Time](time.md)).
+
+<!-- binding: waiting -->
 
 <!-- messages -->

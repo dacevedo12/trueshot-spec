@@ -111,6 +111,8 @@ channel, and the client returns that group's `syncId` in a `WaypointAck` (see
 `WaypointGroup` carrying back the path the order brought, unchanged, moves the
 champion along the route the client proposed.
 
+<!-- binding: prediction -->
+
 ## Marking the ground
 
 `NavigationFlags` marks the ground within circles. A server MUST NOT send

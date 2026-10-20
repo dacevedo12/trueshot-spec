@@ -33,6 +33,8 @@ A server sends `ClockSync` as play begins, with 0 (see
 [Joining a match](joining.md)), and again whenever it means a client's clock to
 catch up with its own.
 
+<!-- binding: clock-start -->
+
 `MatchStarted` gives the moment on the match clock at which the match began. A
 client counts the match's time, as it shows it, from that moment, and shows
 zero while the match clock is before it.
