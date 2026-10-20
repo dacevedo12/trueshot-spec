@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "FloatingText",
+  "version": "3.14.0.700",
+  "note": "Laid out as a 3.14.0.700 client takes it. A server's bytes after each text's zero byte carry no meaning; they are zero here.",
+  "bytes": "180d000040000000000000004000000000000019000000203400",
+  "fields": {
+    "command": 24,
+    "netId": 1073741837,
+    "extendedCommand": null,
+    "unused": 0,
+    "delay": 2,
+    "slot": 0,
+    "error": 0,
+    "colour": 0,
+    "style": 25,
+    "text": " 4"
+  }
+}

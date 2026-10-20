@@ -1,0 +1,18 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "MarkerMoved",
+  "version": "3.14.0.700",
+  "note": "Laid out as a 3.14.0.700 client takes it. A server's bytes after each text's zero byte carry no meaning; they are zero here.",
+  "bytes": "fe612300401401433537461997e4443039374696a5e444ab2a8144",
+  "fields": {
+    "command": 254,
+    "netId": 1073750881,
+    "extendedCommand": 276,
+    "fromX": 11725.3154296875,
+    "fromZ": 1828.7218017578125,
+    "toX": 11726.296875,
+    "toZ": 1829.174560546875,
+    "speed": 1033.3333740234375
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "PlayAnimation",
+  "version": "3.14.0.700",
+  "note": "Laid out as a 3.14.0.700 client takes it.",
+  "bytes": "b0761c00402500000000cdcc4c3e00000061636b3100",
+  "fields": {
+    "command": 176,
+    "netId": 1073749110,
+    "extendedCommand": null,
+    "flags": {
+      "locked": 1,
+      "lockedFromIdle": 0,
+      "noBlend": 1,
+      "loop": 0,
+      "keepEmotes": 0,
+      "unused": 1
+    },
+    "scaleTime": 107374592,
+    "startProgress": 8.688050478813866e-44,
+    "animation": "ack1"
+  }
+}

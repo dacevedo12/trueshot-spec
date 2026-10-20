@@ -91,6 +91,72 @@
       "note": "No start point or speed is carried: the animation starts from its beginning at normal speed. A client ignores the message while the unit's animation is frozen."
     },
     {
+      "from": "3.14.0.700",
+      "until": "3.15.0.244",
+      "channel": "events",
+      "command": 176,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 4,
+          "bits": [
+            {
+              "name": "locked",
+              "width": 1,
+              "note": "Set where no other animation can fade this one out."
+            },
+            {
+              "name": "lockedFromIdle",
+              "width": 1,
+              "note": "Set where idle animations cannot fade it out. It has no effect where locked is set."
+            },
+            {
+              "name": "noBlend",
+              "width": 1,
+              "note": "Set to switch to it at once rather than blend in."
+            },
+            {
+              "name": "loop",
+              "width": 1,
+              "note": "Set to loop it."
+            },
+            {
+              "name": "keepEmotes",
+              "width": 1,
+              "note": "Set to let an emote playing go on; clear stops it."
+            },
+            {
+              "name": "unused",
+              "width": 27,
+              "note": "Unused; a server writes zero."
+            }
+          ],
+          "note": "How the animation plays."
+        },
+        {
+          "name": "scaleTime",
+          "type": "f32",
+          "note": "A scale on how long it plays. A client ignores it."
+        },
+        {
+          "name": "startProgress",
+          "type": "f32",
+          "note": "How far into the animation it starts. A client ignores it."
+        },
+        {
+          "name": "animation",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "The animation's name, ended by a zero byte, the two taking at most 64 bytes. Nothing plays for a name the unit does not have."
+        }
+      ],
+      "note": "A client ignores scaleTime and startProgress, and plays at normal speed from the start. A unit holding a locked animation ignores the message. An animated building plays at normal speed, and keepEmotes has no effect on it."
+    },
+    {
       "from": "3.15.0.244",
       "until": "4.1.0.171",
       "channel": "events",
