@@ -242,6 +242,8 @@ for (const season of seasons) {
       `git-repository-url = "${REPOSITORY.replace(/\/blob\/main$/, "")}"`,
       'default-theme = "light"',
       'preferred-dark-theme = "navy"',
+      // Where GitHub Pages serves the book, which its not-found page links from.
+      `site-url = "/${REPOSITORY.split("/")[4]}/${season.folder}/"`,
       "",
     ].join("\n"),
   );

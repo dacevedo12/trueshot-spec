@@ -25,6 +25,10 @@ and leaves every design decision to you.
 
 ## Start here
 
+The specification is published as [one book for each season](https://dacevedo12.github.io/trueshot-spec/),
+which prints, or saves as a PDF, from its print button. Everything in this
+repository is what the books are made from.
+
 [IMPLEMENTING.md](IMPLEMENTING.md) says where to start: the book for the season
 of the client you serve, which `bun run site` puts together from this
 repository. Each chapter builds on the ones before it, so read it through once

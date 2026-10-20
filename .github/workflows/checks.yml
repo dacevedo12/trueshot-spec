@@ -23,7 +23,26 @@ jobs:
       - run: nix develop -c bun run pages
       # Every link in the built books resolves, anchors included.
       - run: nix develop -c lychee --offline --no-progress --include-fragments --exclude-path '404\.html$' 'dist/pages/**/*.html'
-      - uses: actions/upload-artifact@v7
+      - uses: actions/upload-pages-artifact@v3
         with:
-          name: pages
           path: dist/pages
+
+  # The books are what this repository makes, so every push to main that
+  # passes its checks publishes them.
+  publish:
+    name: publish the books
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: checks
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
