@@ -2,10 +2,10 @@
 // schema/, spec/ and conformance/. Nothing it writes is committed, so nothing
 // it says can drift from what it is drawn from.
 //
-//   bun scripts/site.ts   write the parts of each season's book, then the books
+//   bun scripts/parts.ts   write the parts of each season's book, then the books
 //
 // This writes, for each season, the parts of its book drawn from the
-// definitions, under dist/site/parts/<season>/:
+// definitions, under dist/parts/<season>/:
 //   about.md     the season's patches and their builds
 //   channels.md, families.md, messages/<system>.md and structs.md
 //                every channel, family header, message and struct, with each
@@ -13,7 +13,7 @@
 //   patches.md   each patch: its checks, and how it differs from the one before
 //   index.md     every message by name
 // scripts/book.ts then puts each season's book together as an mdBook under
-// dist/books/<season>/, which scripts/pages.ts builds.
+// dist/books/<season>/, which scripts/pages.ts builds into dist/site.
 import {
   existsSync,
   mkdirSync,
@@ -45,7 +45,7 @@ import {
 } from "./tables.ts";
 
 const ROOT = join(import.meta.dir, "..");
-const SITE = join(ROOT, "dist", "site");
+const SITE = join(ROOT, "dist", "parts");
 const json = <T>(path: string): T =>
   JSON.parse(readFileSync(join(ROOT, path), "utf8")) as T;
 const slug = (build: string): string => build.replace(/\./g, "-");
@@ -926,22 +926,22 @@ function aboutPart(season: readonly Range[]): string[] {
     "",
     ...patchRows(season),
     "",
-    "Everything in the chapters holds for every range of the book, except a passage set apart and headed with ranges, which holds for those alone. What the chapters say of a message says nothing of a range that has no layout for it. Each system's chapter ends with its messages, every layout each has by patch; the [index of messages](#appendix-index) finds any of them, and [the appendix on patches](#appendix-patches) gives each patch's checks and how it differs from the one before it.",
+    "What the chapters say of a message says nothing of a patch that has no layout for it. The [index of messages](#appendix-index) finds any message, and [the appendix on patches](#appendix-patches) gives each patch's checks and how it differs from the one before it.",
   ];
 }
 
 const held = seasons.filter((s) => ranges.some((r) => seasonOf(r) === s));
 for (const s of held) {
   const own = ranges.filter((r) => seasonOf(r) === s);
-  put(`parts/${s.folder}/about.md`, aboutPart(own));
+  put(`${s.folder}/about.md`, aboutPart(own));
   const layouts = layoutsParts(own);
-  put(`parts/${s.folder}/channels.md`, layouts.channels);
-  put(`parts/${s.folder}/families.md`, layouts.families);
-  put(`parts/${s.folder}/structs.md`, layouts.structs);
+  put(`${s.folder}/channels.md`, layouts.channels);
+  put(`${s.folder}/families.md`, layouts.families);
+  put(`${s.folder}/structs.md`, layouts.structs);
   for (const [system, lines] of layouts.systems)
-    put(`parts/${s.folder}/messages/${system}.md`, lines);
-  put(`parts/${s.folder}/patches.md`, patchesPart(own));
-  put(`parts/${s.folder}/index.md`, indexPart(own));
+    put(`${s.folder}/messages/${system}.md`, lines);
+  put(`${s.folder}/patches.md`, patchesPart(own));
+  put(`${s.folder}/index.md`, indexPart(own));
 }
 
 rmSync(SITE, { recursive: true, force: true });
@@ -958,5 +958,5 @@ const books = Bun.spawnSync(
 );
 if (books.exitCode !== 0) process.exit(books.exitCode);
 console.log(
-  `wrote the parts of ${held.length} books, over ${ranges.length} ranges, to dist/site`,
+  `wrote the parts of ${held.length} books, over ${ranges.length} ranges, to dist/parts`,
 );

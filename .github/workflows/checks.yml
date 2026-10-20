@@ -19,13 +19,12 @@ jobs:
       # `nix develop` runs.
       - run: nix develop -c bun install --frozen-lockfile
       - run: nix develop -c bun run check
-      - run: nix develop -c bun run site
-      - run: nix develop -c bun run pages
+      - run: nix develop -c bun run books
       # Every link in the built books resolves, anchors included.
-      - run: nix develop -c lychee --offline --no-progress --include-fragments --exclude-path '404\.html$' 'dist/pages/**/*.html'
+      - run: nix develop -c lychee --offline --no-progress --include-fragments --exclude-path '404\.html$' 'dist/site/**/*.html'
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist/pages
+          path: dist/site
 
   # The books are what this repository makes, so every push to main that
   # passes its checks publishes them.

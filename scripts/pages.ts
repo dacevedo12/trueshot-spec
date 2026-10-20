@@ -1,9 +1,10 @@
 // The site as web pages, for GitHub Pages: a home page linking each season's
 // book, and the books, which mdBook builds.
 //
-//   bun scripts/pages.ts   write dist/pages from dist/books
+//   bun scripts/pages.ts   write dist/site from dist/books
 //
-// Run `bun run site` first. Each book is built into dist/pages/<season>/; a
+// `bun run books` runs it after the books are put together. Each book is
+// built into dist/site/<season>/; a
 // reader prints one, or saves it as a PDF, from its print page.
 import {
   existsSync,
@@ -17,10 +18,10 @@ import { seasons } from "./seasons.ts";
 
 const ROOT = join(import.meta.dir, "..");
 const BOOKS = join(ROOT, "dist", "books");
-const OUT = join(ROOT, "dist", "pages");
+const OUT = join(ROOT, "dist", "site");
 
 if (!existsSync(BOOKS)) {
-  console.error("dist/books is missing: run bun run site first");
+  console.error("dist/books is missing: run bun run books");
   process.exit(1);
 }
 const held = seasons.filter((s) => existsSync(join(BOOKS, s.folder)));
@@ -81,5 +82,5 @@ ${held.map((s) => `<li><a href="${s.folder}/">${escape(s.name)}</a></li>`).join(
 `,
 );
 console.log(
-  `built ${held.length} books into dist/pages: ${readdirSync(OUT).join(", ")}`,
+  `built ${held.length} books into dist/site: ${readdirSync(OUT).join(", ")}`,
 );

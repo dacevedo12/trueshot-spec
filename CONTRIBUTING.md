@@ -7,7 +7,7 @@
 
 These are the house rules. They apply to every contributor, human or otherwise.
 If you came here to build a server rather than to change the specification,
-read [IMPLEMENTING.md](IMPLEMENTING.md) instead.
+read [the books](https://dacevedo12.github.io/trueshot-spec/) instead.
 
 ## Ways to contribute
 
@@ -160,17 +160,55 @@ revision, and never asserts a direction of change. Two ranges were observed;
 what lies between or beyond them is unknown, and prose that says one thing came
 before another claims more than anyone has established. This holds for the
 notes carried in the schema as much as for the documents, and both are
-checked. [Versions](spec/versions.md) says how a document states which builds a
-fact holds for.
+checked.
+
+### Ranges and coverage
+
+A build is named the way its client reports it, in four parts. A range of
+builds starts at a build and runs up to, not including, another, and is named
+by its first two parts. The definitions make the ranges: every build at which a
+revision of any definition starts or stops begins a range, and the range runs
+to the next such build. Every build in a range is held to the same facts.
+
+A range is checked against the client builds that
+[conformance/live/results](conformance/live/results/) holds a file for, one per
+build, each naming the commit its checks ran at and how each fared. A range
+claims the builds between its first and the last one whose checks all passed or
+were skipped, and claims nothing of a build outside it.
+
+A message a range lacks has no revision covering that range, and what a chapter
+or a passage says about that message, or about a field or bit its revision for
+the range lacks, says nothing of that range. A season's book lists, for each
+patch, the messages its chapters name and the patch lacks.
 
 ### Chapters and passages
 
 A chapter holds for every range, so a statement belongs in it only where every
-range bears it out. What some ranges' clients were seen to do goes in a passage
-for those ranges, at the point in the chapter it concerns, as
-[Versions](spec/versions.md) shows. A fact shown to hold for every range leaves
-its passage for the chapter itself, and a change to a chapter outside a passage
-is a claim about every range at once.
+range bears it out. A statement such as "a 4.17 client" holds for that range
+alone, and a 4.17 server is a server talking to a 4.17 client. What some
+ranges' clients were seen to do goes in a passage for those ranges, at the
+point in the chapter it concerns: a quotation headed with the ranges it holds
+for, after a comment naming its builds.
+
+```markdown
+<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+
+> **In 4.1–4.17**
+>
+> A client names no one in `Pause` or `Resume`.
+```
+
+A passage holds for every range from its first build up to, not including, the
+second, and says nothing of the others. The heading is for a reader and the
+comment for the tools: the checks hold the heading to the ranges the builds
+cover, and `bun scripts/book.ts --fix` writes it again where ranges are renamed.
+A statement in a passage holds for its ranges alone, so it names none. Where
+several passages stand together, the one beginning first comes first, and of
+two beginning together the wider.
+
+A fact shown to hold for every range leaves its passage for the chapter
+itself, and a change to a chapter outside a passage is a claim about every
+range at once.
 
 ### Adding a range
 
@@ -200,7 +238,7 @@ Work on a branch, since nothing below passes the checks until the end.
    range does there is a passage of its own beside it. A chapter statement it
    does not bear out moves into a passage for the ranges that do.
 5. Review what the tools list: every copied note that names a build, and every
-   passage that holds across a split. `bun run site` sets the new range against
+   passage that holds across a split. `bun run books` sets the new range against
    the one before it in its season's book, where anything left as a copy
    stands out.
 
@@ -212,12 +250,33 @@ closes. The boundaries are not moved to suit a range.
 
 Every message names the system it belongs to, and each system has a document in
 `spec/` that explains how its messages work together. Prose there describes
-behaviour and links the definitions; it never restates a layout. Nothing
-committed is generated from the definitions: the tables of a system's messages,
-every message's layouts and what changes between ranges are all written by
-`bun run site` into the season books under `dist/site`, so they cannot fall
-behind what they are drawn from. A system's chapter marks where its book sets the table of
-its messages with a `<!-- messages -->` line.
+behaviour and links the definitions; it never restates a layout.
+
+## The books
+
+The books are what this repository makes: one for each season, published at
+[dacevedo12.github.io/trueshot-spec](https://dacevedo12.github.io/trueshot-spec/)
+from every push to `main` that passes the checks. `bun run books` builds them
+into `dist/site` with [mdBook](https://rust-lang.github.io/mdBook/), as
+continuous integration does.
+
+A book reads the chapters in the order [spec/README.md](spec/README.md) gives
+them, a page each, with each passage that holds for some of the season's
+ranges, headed with those, and none of the others. Its seasons come from
+[spec/seasons.json](spec/seasons.json): a season runs from the first patch of
+its ranked play up to the next season's first, so a preseason belongs to the
+season it closes, and each season links the
+[League of Legends Wiki](https://wiki.leagueoflegends.com/en-us/Patch)'s list of
+its patches.
+
+Nothing committed is generated from the definitions, so nothing can fall behind
+what it is drawn from. A book sets what the definitions give at marks in the
+chapters: each system's messages, with every layout each has in the season, at
+its chapter's `<!-- messages -->` line, the channels at Transport's
+`<!-- channels -->` and the family headers at Messages' `<!-- families -->`.
+Its appendices give the structs, each patch's builds, notes and live checks and
+how it differs from the patch before it, and an index of messages. A book
+prints, or saves as a PDF, from its print button.
 
 ## Checks
 

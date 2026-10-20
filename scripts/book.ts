@@ -10,8 +10,8 @@
 // At each system's `<!-- messages -->` line it sets the system's messages with
 // every layout they have in the season, and at the `<!-- channels -->` and
 // `<!-- families -->` lines the channels and family headers. It ends with the
-// appendices. scripts/site.ts writes these parts first, under
-// dist/site/parts/<season>/, and scripts/pages.ts builds the books.
+// appendices. scripts/parts.ts writes these parts first, under
+// dist/parts/<season>/, and scripts/pages.ts builds the books.
 import {
   existsSync,
   mkdirSync,
@@ -117,9 +117,9 @@ function relink(text: string, base: string): string {
 }
 
 const part = (season: string, name: string): string => {
-  const path = `dist/site/parts/${season}/${name}.md`;
+  const path = `dist/parts/${season}/${name}.md`;
   if (!existsSync(join(ROOT, path))) {
-    console.error(`${path} is missing: run bun scripts/site.ts first`);
+    console.error(`${path} is missing: run bun scripts/parts.ts first`);
     process.exit(1);
   }
   return read(path);
@@ -161,17 +161,13 @@ function chapterFor(
   return relink(text.replace(/\n{3,}/g, "\n\n"), "spec");
 }
 
-// What every book says before its chapters: IMPLEMENTING.md's advice on
-// checking work and on gaps.
-const advice = relink(
-  read("IMPLEMENTING.md")
-    .split(/\n\n+/)
-    .map((b) => b.trim())
-    .filter((b) =>
-      /^(Check your work|Field layouts|If the specification)/.test(b),
-    )
-    .join("\n\n"),
-  ".",
+// What every book says before its chapters: the opening of spec/README.md,
+// which is the specification's own introduction.
+const introduction = relink(
+  (read("spec/README.md").split("## Reading order")[0] ?? "")
+    .replace(/^# .+\n/, "")
+    .trim(),
+  "spec",
 );
 
 // Links within a book name the page an anchor is on, since each chapter and
@@ -200,11 +196,15 @@ for (const season of seasons) {
   const pages = new Map<string, string>();
   pages.set(
     "about.md",
-    ["# About this book", "", part(season.folder, "about"), "", advice].join(
-      "\n",
-    ),
+    [
+      "# About this book",
+      "",
+      introduction,
+      "",
+      part(season.folder, "about"),
+    ].join("\n"),
   );
-  for (const c of chapters.filter((c) => c !== "versions"))
+  for (const c of chapters)
     pages.set(`${c}.md`, chapterFor(c, season.folder, own));
   pages.set("structs.md", part(season.folder, "structs"));
   pages.set("patches.md", part(season.folder, "patches"));
@@ -216,9 +216,7 @@ for (const season of seasons) {
     "",
     `[${title("about.md")}](about.md)`,
     "",
-    ...chapters
-      .filter((c) => c !== "versions")
-      .map((c) => `1. [${title(`${c}.md`)}](${c}.md)`),
+    ...chapters.map((c) => `1. [${title(`${c}.md`)}](${c}.md)`),
     "",
     "# Appendices",
     "",
