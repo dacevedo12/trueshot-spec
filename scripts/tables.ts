@@ -109,43 +109,6 @@ function spanName(some: readonly Ranged[], all: readonly Ranged[]): string {
 const anchorOf = (message: string): string =>
   `message-${message.toLowerCase()}`;
 
-// The table a season's book carries at the end of a system's chapter: each
-// message the season defines, with the command and channel it takes in each
-// span of the season's ranges.
-function seasonTable(
-  system: string,
-  season: readonly Ranged[],
-  all: readonly Ranged[],
-): string {
-  // Dashes set each column's share of the width, and the colons align it left.
-  const share = [26, 8, 26, 40];
-  const rule = share.map((n) => `:${"-".repeat(n)}`).join(" | ");
-  const rows = messages
-    .filter((m) => m.system === system)
-    .flatMap((m) => {
-      const here = season.filter((r) => revisionAt(m, r.from) !== undefined);
-      if (here.length === 0) return [];
-      const groups = new Map<string, Ranged[]>();
-      for (const r of here) {
-        const v = revisionAt(m, r.from);
-        const key = v === undefined ? "" : `${v.command} on ${v.channel}`;
-        groups.set(key, [...(groups.get(key) ?? []), r]);
-      }
-      const whole = here.length === season.length && groups.size === 1;
-      const command = [...groups]
-        .map(([key, rs]) => (whole ? key : `${key} (${spanName(rs, all)})`))
-        .join("; ");
-      return [
-        `| [\`${m.message}\`](#${anchorOf(m.message)}) | ${by(revisionAt(m, here[0]?.from ?? ""))} | ${command} | ${firstSentence(m.note)} |`,
-      ];
-    });
-  return [
-    "| Message | Sent by | Command | What it does |",
-    `| ${rule} |`,
-    ...rows,
-  ].join("\n");
-}
-
 export {
   by,
   checked,
@@ -154,7 +117,6 @@ export {
   anchorOf,
   rangeName,
   revisionAt,
-  seasonTable,
   spanName,
 };
 export type { MessageFile };

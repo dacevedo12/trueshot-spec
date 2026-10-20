@@ -17,7 +17,7 @@
     "check:schema": "bun scripts/validate.ts",
     "check:book": "bun scripts/book.ts --check",
     "check:prose": "vale --glob='!{dist,node_modules}/**' .",
-    "check:links": "lychee --no-progress --require-https=false --exclude-path dist --exclude-path scripts/pages/page.html .",
+    "check:links": "lychee --no-progress --require-https=false --exclude-path dist .",
     "live:native": "conformance/live/native/build.sh",
     "live:checks": "bun test ./conformance/live/checks --timeout 600000",
     "live:conform": "bun conformance/live/src/conform.ts",

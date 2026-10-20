@@ -2,8 +2,9 @@
 
 Read the specification front to back before writing code: the chapters in
 [spec/](spec/README.md), in the order its index gives them, or the book for the
-season of the client you serve, which `bun run site` puts together from them
-(`bun run site -- --pdf` typesets it too). The two say the same thing; a book
+season of the client you serve, which `bun run site` and `bun run pages` put
+together from them, and which prints, or saves as a PDF, from its print
+button. The two say the same thing; a book
 keeps only what holds for its season. Each chapter builds on the ones before
 it. Together they are meant to be enough to build a conforming server in any
 language, without reading another one.

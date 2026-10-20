@@ -1,23 +1,30 @@
-// One book per season, put together from the specification.
+// One book per season, put together from the specification as an mdBook.
 //
-//   bun scripts/book.ts          write dist/site/<season>.md
-//   bun scripts/book.ts --pdf    and <season>.pdf beside it, with pandoc and typst
-//   bun scripts/book.ts --check  only check the chapters' passages and places
+//   bun scripts/book.ts          write dist/books/<season>/
+//   bun scripts/book.ts --check  only check the chapters' passages and marks
 //   bun scripts/book.ts --fix    write each passage's heading from its builds
 //
-// A book takes the chapters in the order spec/README.md reads them, keeping
-// each passage that holds for some of the season's ranges, headed with those
-// ranges, and leaving out the rest (see scripts/passages.ts). At each system's
-// `<!-- messages -->` line it puts the system's messages with their commands
-// by range, and it ends with the appendices scripts/site.ts writes first under
-// dist/site/parts/<season>/.
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+// A book takes the chapters in the order spec/README.md reads them, a page
+// each, keeping each passage that holds for some of the season's ranges,
+// headed with those ranges, and leaving out the rest (see scripts/passages.ts).
+// At each system's `<!-- messages -->` line it sets the system's messages with
+// every layout they have in the season, and at the `<!-- channels -->` and
+// `<!-- families -->` lines the channels and family headers. It ends with the
+// appendices. scripts/site.ts writes these parts first, under
+// dist/site/parts/<season>/, and scripts/pages.ts builds the books.
+import {
+  existsSync,
+  mkdirSync,
+  readFileSync,
+  rmSync,
+  writeFileSync,
+} from "node:fs";
 import { join } from "node:path";
 import { chapters, holdsFor, passagesOf } from "./passages.ts";
 import { ranges as coveredRanges } from "./schema.ts";
 import type { Ranged } from "./schema.ts";
 import { seasonOf, seasons } from "./seasons.ts";
-import { seasonTable, spanName } from "./tables.ts";
+import { spanName } from "./tables.ts";
 
 type Range = Ranged;
 
@@ -25,7 +32,6 @@ const ROOT = join(import.meta.dir, "..");
 const REPOSITORY = "https://github.com/dacevedo12/trueshot-spec/blob/main";
 const check = process.argv.includes("--check");
 const fix = process.argv.includes("--fix");
-const pdf = process.argv.includes("--pdf");
 const read = (path: string): string => readFileSync(join(ROOT, path), "utf8");
 
 const ranges: Range[] = coveredRanges();
@@ -96,42 +102,18 @@ if (check || fix) {
   process.exit(0);
 }
 
-// A link between chapters becomes a link within the book, and a link to a
-// definition or a vector becomes one to the repository.
+// A link between chapters becomes a link to the chapter's page, and a link
+// to a definition or a vector becomes one to the repository.
 function relink(text: string, base: string): string {
   return text.replace(/\]\(([^)\s]+)\)/g, (whole, target: string) => {
     if (/^[a-z]+:/.test(target) || target.startsWith("#")) return whole;
     const [path = "", fragment] = target.split("#");
     const resolved = join(base, path).replace(/\\/g, "/");
     const chapter = /^spec\/([a-z-]+)\.md$/.exec(resolved)?.[1];
-    if (chapter !== undefined && chapters.includes(chapter)) {
-      return `](#${fragment ?? `chapter-${chapter}`})`;
-    }
+    if (chapter !== undefined && chapters.includes(chapter))
+      return `](${chapter}.md${fragment === undefined ? "" : `#${fragment}`})`;
     return `](${REPOSITORY}/${resolved}${fragment === undefined ? "" : `#${fragment}`})`;
   });
-}
-
-// A chapter as a season reads it: each passage that holds for some of its
-// ranges, headed with those, and none of the others, then its messages with
-// their commands by range.
-function chapterFor(chapter: string, season: readonly Range[]): string {
-  let text = read(`spec/${chapter}.md`);
-  for (const p of passagesOf(chapter)) {
-    const here = season.filter((r) => holdsFor(p, r));
-    text = text.replace(
-      p.whole,
-      here.length === 0
-        ? ""
-        : `::: {.ranges}\n**In ${spanName(here, ranges)}**\n\n${p.body}\n:::`,
-    );
-  }
-  text = text.replace(/\n{3,}/g, "\n\n");
-  text = text.replace(
-    MESSAGES,
-    () => `## Messages\n\n${seasonTable(chapter, season, ranges)}`,
-  );
-  text = text.replace(/^# (.+)$/m, `# $1 {#chapter-${chapter}}`);
-  return relink(text, "spec");
 }
 
 const part = (season: string, name: string): string => {
@@ -143,111 +125,125 @@ const part = (season: string, name: string): string => {
   return read(path);
 };
 
-// The opening every book shares: the order the chapters fall in, from
-// spec/README.md, then the advice of IMPLEMENTING.md on checking work and on
-// gaps.
-const preface = ((): string => {
-  const reading = read("spec/README.md").split("## Reading order")[1] ?? "";
-  const intro = read("IMPLEMENTING.md");
-  const blocks = reading.split(/\n\n+/).map((b) => b.trim());
-  const parts = blocks.flatMap((lead, i) => {
-    if (!lead.endsWith(":")) return [];
-    const named = [
-      ...(blocks[i + 1] ?? "").matchAll(/\[([^\]]+)\]\(([a-z-]+)\.md\)/g),
-    ]
-      .map((m) => ({ title: m[1] ?? "", chapter: m[2] ?? "" }))
-      .filter((c) => c.chapter !== "versions");
-    const first = named[0];
-    const last = named[named.length - 1];
-    if (first === undefined || last === undefined) return [];
-    const link = (c: { title: string; chapter: string }): string =>
-      `[${c.title}](#chapter-${c.chapter})`;
-    const span =
-      first === last ? link(first) : `${link(first)} to ${link(last)}`;
-    return [`- ${lead.replace(/\s+/g, " ")} ${span}.`];
-  });
-  const advice = intro
+// A chapter as a season reads it: each passage that holds for some of its
+// ranges, headed with those, and none of the others, with what the
+// definitions give set at its marks: a system's messages, the channels and
+// the family headers.
+function chapterFor(
+  chapter: string,
+  season: string,
+  own: readonly Range[],
+): string {
+  let text = read(`spec/${chapter}.md`);
+  for (const p of passagesOf(chapter)) {
+    const here = own.filter((r) => holdsFor(p, r));
+    text = text.replace(
+      p.whole,
+      here.length === 0
+        ? ""
+        : [`**In ${spanName(here, ranges)}**`, "", p.body]
+            .join("\n")
+            .split("\n")
+            .map((l) => (l === "" ? ">" : `> ${l}`))
+            .join("\n"),
+    );
+  }
+  const marks: [RegExp, string, string][] = [
+    [MESSAGES, "Messages", `messages/${chapter}`],
+    [/^<!-- channels -->$/m, "Channels", "channels"],
+    [/^<!-- families -->$/m, "Family headers", "families"],
+  ];
+  for (const [mark, title, name] of marks)
+    text = text.replace(mark, () => {
+      const body = part(season, name).trim();
+      return body === "" ? "" : `## ${title}\n\n${body}`;
+    });
+  return relink(text.replace(/\n{3,}/g, "\n\n"), "spec");
+}
+
+// What every book says before its chapters: IMPLEMENTING.md's advice on
+// checking work and on gaps.
+const advice = relink(
+  read("IMPLEMENTING.md")
     .split(/\n\n+/)
     .map((b) => b.trim())
     .filter((b) =>
       /^(Check your work|Field layouts|If the specification)/.test(b),
-    );
-  return relink(
-    [
-      "The chapters run in this order:",
-      "",
-      ...parts,
-      "",
-      advice.join("\n\n"),
-    ].join("\n"),
-    ".",
-  );
-})();
+    )
+    .join("\n\n"),
+  ".",
+);
 
+// Links within a book name the page an anchor is on, since each chapter and
+// appendix is a page of its own.
+function anchored(pages: Map<string, string>): Map<string, string> {
+  const home = new Map<string, string>();
+  for (const [page, text] of pages)
+    for (const m of text.matchAll(/\{#([a-z0-9-]+)\}/g))
+      home.set(m[1] ?? "", page);
+  const out = new Map<string, string>();
+  for (const [page, text] of pages)
+    out.set(
+      page,
+      text.replace(/\]\(#([a-z0-9-]+)\)/g, (whole, id: string) => {
+        const at = home.get(id);
+        return at === undefined || at === page ? whole : `](${at}#${id})`;
+      }),
+    );
+  return out;
+}
+
+rmSync(join(ROOT, "dist", "books"), { recursive: true, force: true });
 for (const season of seasons) {
   const own = ranges.filter((r) => seasonOf(r) === season);
   if (own.length === 0) continue;
-  const first = own[0]?.from ?? "";
-  const last = own[own.length - 1]?.until;
-  const span = last === undefined ? `${first} on` : `${first} up to ${last}`;
-  const front = [
-    "---",
-    `title: "Trueshot ${season.name}"`,
-    `subtitle: "The wire protocol of client builds ${span}"`,
-    "toc: true",
-    "---",
+  const pages = new Map<string, string>();
+  pages.set(
+    "about.md",
+    ["# About this book", "", part(season.folder, "about"), "", advice].join(
+      "\n",
+    ),
+  );
+  for (const c of chapters.filter((c) => c !== "versions"))
+    pages.set(`${c}.md`, chapterFor(c, season.folder, own));
+  pages.set("structs.md", part(season.folder, "structs"));
+  pages.set("patches.md", part(season.folder, "patches"));
+  pages.set("message-index.md", part(season.folder, "index"));
+  const title = (page: string): string =>
+    /^# (.+?)(?: \{#.*\})?$/m.exec(pages.get(page) ?? "")?.[1] ?? page;
+  const summary = [
+    "# Summary",
     "",
-    // Raw typesetting rules at the head of the body, after the template's own,
-    // so these take precedence: a chapter opens a page, and a table breaks
-    // across pages and is set ragged.
-    "```{=typst}",
-    "#show heading.where(level: 1): it => pagebreak(weak: true) + it",
-    "#show figure: set block(breakable: true)",
-    "#show table: set par(justify: false)",
-    "```",
+    `[${title("about.md")}](about.md)`,
     "",
+    ...chapters
+      .filter((c) => c !== "versions")
+      .map((c) => `1. [${title(`${c}.md`)}](${c}.md)`),
+    "",
+    "# Appendices",
+    "",
+    ...["structs.md", "patches.md", "message-index.md"].map(
+      (p) => `- [${title(p)}](${p})`,
+    ),
   ].join("\n");
-  // Versions says how the repository covers many ranges; a book says which
-  // it covers in its own opening instead.
-  const about = [
-    "# About this book {#chapter-versions}",
-    "",
-    part(season.folder, "about"),
-    "",
-    preface,
-  ].join("\n");
-  const body = [
-    about,
-    ...chapters.filter((c) => c !== "versions").map((c) => chapterFor(c, own)),
-    part(season.folder, "messages"),
-    part(season.folder, "patches"),
-    part(season.folder, "index"),
-  ].join("\n\n");
-  const out = join(ROOT, "dist", "site", `${season.folder}.md`);
-  mkdirSync(join(out, ".."), { recursive: true });
-  writeFileSync(out, `${front}\n${body}\n`);
-  console.log("wrote", out);
-  if (pdf) {
-    const made = Bun.spawnSync(
-      [
-        "pandoc",
-        out,
-        "--pdf-engine=typst",
-        "--number-sections",
-        "-V",
-        "section-numbering=1.1.1",
-        "-V",
-        "mainfont=Libertinus Serif",
-        "-V",
-        "codefont=DejaVu Sans Mono",
-        "-o",
-        out.replace(/\.md$/, ".pdf"),
-      ],
-      {
-        stderr: "inherit",
-      },
-    );
-    if (made.exitCode !== 0) process.exit(made.exitCode);
-    console.log("wrote", out.replace(/\.md$/, ".pdf"));
-  }
+  const dir = join(ROOT, "dist", "books", season.folder);
+  mkdirSync(join(dir, "src"), { recursive: true });
+  for (const [page, text] of anchored(pages))
+    writeFileSync(join(dir, "src", page), `${text.trim()}\n`);
+  writeFileSync(join(dir, "src", "SUMMARY.md"), `${summary}\n`);
+  writeFileSync(
+    join(dir, "book.toml"),
+    [
+      "[book]",
+      `title = "Trueshot ${season.name}"`,
+      'language = "en"',
+      "",
+      "[output.html]",
+      `git-repository-url = "${REPOSITORY.replace(/\/blob\/main$/, "")}"`,
+      'default-theme = "light"',
+      'preferred-dark-theme = "navy"',
+      "",
+    ].join("\n"),
+  );
+  console.log("wrote", dir);
 }

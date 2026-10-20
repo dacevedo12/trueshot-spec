@@ -2,16 +2,18 @@
 // schema/, spec/ and conformance/. Nothing it writes is committed, so nothing
 // it says can drift from what it is drawn from.
 //
-//   bun scripts/site.ts          write dist/site
-//   bun scripts/site.ts --pdf    and each book as a PDF too
+//   bun scripts/site.ts   write the parts of each season's book, then the books
 //
-// This writes dist/site/index.md, the home page, and for each season the parts
-// of its book drawn from the definitions, under dist/site/parts/<season>/:
-//   about.md     the season's ranges, its builds and its patches
-//   messages.md  every message and struct, with each layout it has
+// This writes, for each season, the parts of its book drawn from the
+// definitions, under dist/site/parts/<season>/:
+//   about.md     the season's patches and their builds
+//   channels.md, families.md, messages/<system>.md and structs.md
+//                every channel, family header, message and struct, with each
+//                layout it has, for the chapters that use them
 //   patches.md   each patch: its checks, and how it differs from the one before
 //   index.md     every message by name
-// scripts/book.ts then puts each season's book together as dist/site/<season>.md.
+// scripts/book.ts then puts each season's book together as an mdBook under
+// dist/books/<season>/, which scripts/pages.ts builds.
 import {
   existsSync,
   mkdirSync,
@@ -278,27 +280,35 @@ const inRanges = (here: readonly Range[], season: readonly Range[]): string =>
     ? "In every range of this book"
     : `In ${spanName(here, ranges)}`;
 
-function messagesPart(season: readonly Range[]): string[] {
-  const lines = [
-    "# Messages {#appendix-messages}",
-    "",
-    "Every message a build in this book sends or takes, by system, with each layout it has across the book's ranges and every note its definition carries. A layout is the message's body after the header its channel's family puts in front. A field present when `remaining` is set is present exactly where the payload has bytes left at that point.",
-    "",
-    "## Channels and families",
-  ];
+// The parts of a book drawn from the definitions: the channels, for the
+// Transport chapter; the family headers, for the Messages chapter; each
+// system's messages, for the system's chapter; and the structs they hold, for
+// an appendix of their own.
+interface Layouts {
+  readonly channels: string[];
+  readonly families: string[];
+  readonly systems: ReadonlyMap<string, string[]>;
+  readonly structs: string[];
+}
+function layoutsParts(season: readonly Range[]): Layouts {
+  const channels: string[] = [];
   for (const { revision, here } of within(channelRevisions, season))
-    lines.push(
+    channels.push(
       "",
-      `### Channels: ${inRanges(here, season).replace(/^In/, "in")}`,
+      `### ${inRanges(here, season)}`,
       "",
       "| Channel | Name | Family |",
       "| --- | --- | --- |",
       ...revision.channels.map((c) => `| ${c.id} | ${c.name} | ${c.family} |`),
     );
+  const families: string[] = [
+    "",
+    "A field present when `remaining` is set is present exactly where the payload has bytes left at that point.",
+  ];
   for (const { revision, here } of within(familyRevisions, season))
-    lines.push(
+    families.push(
       "",
-      `### Family headers: ${inRanges(here, season).replace(/^In/, "in")}`,
+      `### ${inRanges(here, season)}`,
       ...revision.families.flatMap((f) => [
         "",
         `The ${f.name} family:`,
@@ -324,20 +334,16 @@ function messagesPart(season: readonly Range[]): string[] {
       if (f.type === "array") hold([f.items]);
     }
   };
+  const bySystem = new Map<string, string[]>();
   for (const system of systems) {
-    const here = messages.filter(
-      (m) => within(m.revisions, season).length > 0,
+    const own = messages.filter(
+      (m) => m.system === system && within(m.revisions, season).length > 0,
     );
-    const own = here.filter((m) => m.system === system);
-    if (own.length === 0) continue;
-    lines.push(
+    const lines: string[] = [
       "",
-      `## ${system.charAt(0).toUpperCase() + system.slice(1)}`,
-      "",
-      `How these work together is in the [${system}](#chapter-${system}) chapter.`,
-    );
+      "Each message of this system in this book, with each layout it has across the book's patches and every note its definition carries. A layout is the message's body, after the header its channel's family puts in front (see [Messages](messages.md)).",
+    ];
     for (const m of own) {
-      const layouts = within(m.revisions, season);
       lines.push(
         "",
         `### \`${m.message}\` {#${anchorOf(m.message)}}`,
@@ -345,7 +351,7 @@ function messagesPart(season: readonly Range[]): string[] {
         "",
         `[Definition](${repo}schema/messages/${m.file}).`,
       );
-      for (const { revision: r, here: rs } of layouts) {
+      for (const { revision: r, here: rs } of within(m.revisions, season)) {
         hold(r.fields);
         lines.push(
           "",
@@ -366,21 +372,19 @@ function messagesPart(season: readonly Range[]): string[] {
         );
       }
     }
+    bySystem.set(system, own.length === 0 ? [] : lines);
   }
-  const order = [...held].sort();
-  if (order.length > 0)
-    lines.push(
-      "",
-      "# Structs {#appendix-structs}",
-      "",
-      "The groups of fields the messages above hold, each with the layout it has across the book's ranges.",
-    );
-  for (const name of order) {
+  const structLines: string[] = [
+    "# Structs {#appendix-structs}",
+    "",
+    "The groups of fields messages hold, each with the layout it has across the book's patches.",
+  ];
+  for (const name of [...held].sort()) {
     const s = structs.find((x) => x.struct === name);
     if (s === undefined) continue;
     const layouts = within(s.revisions, season);
     if (layouts.length === 0) continue;
-    lines.push(
+    structLines.push(
       "",
       `## \`${name}\` {#${structAnchor(name)}}`,
       ...[noted(s)].filter((n) => n !== "").flatMap((n) => ["", n]),
@@ -388,7 +392,7 @@ function messagesPart(season: readonly Range[]): string[] {
       `[Definition](${repo}schema/types/${s.file}).`,
     );
     for (const { revision, here } of layouts)
-      lines.push(
+      structLines.push(
         "",
         `### ${inRanges(here, season)}`,
         "",
@@ -403,7 +407,7 @@ function messagesPart(season: readonly Range[]): string[] {
         ),
       );
   }
-  return lines;
+  return { channels, families, systems: bySystem, structs: structLines };
 }
 
 // 2. What differs between two ranges.
@@ -782,7 +786,7 @@ function changesPart(prev: Range, range: Range): string[] {
         (p.body.split(/(?<=\.)\s/)[0] ?? "").replace(/\s+/g, " "),
       );
       passageLines.push(
-        `- In the [${chapter}](#chapter-${chapter}) chapter, a passage holds for ${is ? C : P} and not ${is ? P : C}: ${opening}`,
+        `- In the [${chapter}](${chapter}.md) chapter, a passage holds for ${is ? C : P} and not ${is ? P : C}: ${opening}`,
       );
     }
   section("Chapters", passageLines);
@@ -922,7 +926,7 @@ function aboutPart(season: readonly Range[]): string[] {
     "",
     ...patchRows(season),
     "",
-    "Everything in the chapters holds for every range of the book, except a passage set apart and headed with ranges, which holds for those alone. What the chapters say of a message says nothing of a range that has no layout for it; [the appendix on messages](#appendix-messages) gives each message's layouts by range, and [the appendix on patches](#appendix-patches) each patch's checks and how it differs from the one before it.",
+    "Everything in the chapters holds for every range of the book, except a passage set apart and headed with ranges, which holds for those alone. What the chapters say of a message says nothing of a range that has no layout for it. Each system's chapter ends with its messages, every layout each has by patch; the [index of messages](#appendix-index) finds any of them, and [the appendix on patches](#appendix-patches) gives each patch's checks and how it differs from the one before it.",
   ];
 }
 
@@ -930,17 +934,15 @@ const held = seasons.filter((s) => ranges.some((r) => seasonOf(r) === s));
 for (const s of held) {
   const own = ranges.filter((r) => seasonOf(r) === s);
   put(`parts/${s.folder}/about.md`, aboutPart(own));
-  put(`parts/${s.folder}/messages.md`, messagesPart(own));
+  const layouts = layoutsParts(own);
+  put(`parts/${s.folder}/channels.md`, layouts.channels);
+  put(`parts/${s.folder}/families.md`, layouts.families);
+  put(`parts/${s.folder}/structs.md`, layouts.structs);
+  for (const [system, lines] of layouts.systems)
+    put(`parts/${s.folder}/messages/${system}.md`, lines);
   put(`parts/${s.folder}/patches.md`, patchesPart(own));
   put(`parts/${s.folder}/index.md`, indexPart(own));
 }
-put("index.md", [
-  "# Trueshot",
-  "",
-  "A wire protocol specification for League of Legends game servers, with one book for each season it covers.",
-  "",
-  ...held.map((s) => `- [${s.name}](${s.folder}.md)`),
-]);
 
 rmSync(SITE, { recursive: true, force: true });
 for (const [path, text] of pages) {
@@ -948,12 +950,13 @@ for (const [path, text] of pages) {
   mkdirSync(dirname(full), { recursive: true });
   writeFileSync(full, text);
 }
-// The books go beside the home page, so a site is never left without them.
+// The books are put together from the parts at once, so the parts never stand
+// without them.
 const books = Bun.spawnSync(
   ["bun", join(ROOT, "scripts/book.ts"), ...process.argv.slice(2)],
   { stdout: "inherit", stderr: "inherit" },
 );
 if (books.exitCode !== 0) process.exit(books.exitCode);
 console.log(
-  `wrote the home page and ${held.length} books, over ${ranges.length} ranges, to dist/site`,
+  `wrote the parts of ${held.length} books, over ${ranges.length} ranges, to dist/site`,
 );

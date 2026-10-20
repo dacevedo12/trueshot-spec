@@ -366,3 +366,5 @@ Every revision carries at least one conformance vector. A message vector opens
 with its family's header and is read to the end.
 [conformance/](../conformance/) says how a vector is written and how to run
 one.
+
+<!-- families -->

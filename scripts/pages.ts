@@ -1,91 +1,85 @@
-// The site as web pages, for GitHub Pages: a home page and a book for each
-// season, rendered from dist/site.
+// The site as web pages, for GitHub Pages: a home page linking each season's
+// book, and the books, which mdBook builds.
 //
-//   bun scripts/pages.ts             write dist/pages from dist/site
-//   bun scripts/pages.ts --fragment  leave the home page without its document
-//                                    shell, for a host that adds its own
+//   bun scripts/pages.ts   write dist/pages from dist/books
 //
-// Run `bun run site` first. index.md becomes index.html and each season's
-// book <season>.html, with its PDF beside it where the site was built with
-// one. The books already link the repository on GitHub, and the home page's
-// links to a book follow it into HTML. Pages are rendered by pandoc, through
-// scripts/pages/page.html and scripts/pages/filter.lua.
+// Run `bun run site` first. Each book is built into dist/pages/<season>/; a
+// reader prints one, or saves it as a PDF, from its print page.
 import {
-  copyFileSync,
   existsSync,
   mkdirSync,
   readdirSync,
-  readFileSync,
   rmSync,
+  writeFileSync,
 } from "node:fs";
 import { join } from "node:path";
+import { seasons } from "./seasons.ts";
 
 const ROOT = join(import.meta.dir, "..");
-const SITE = join(ROOT, "dist", "site");
+const BOOKS = join(ROOT, "dist", "books");
 const OUT = join(ROOT, "dist", "pages");
-const fragment = process.argv.includes("--fragment");
 
-if (!existsSync(join(SITE, "index.md"))) {
-  console.error("dist/site is missing: run bun run site first");
+if (!existsSync(BOOKS)) {
+  console.error("dist/books is missing: run bun run site first");
   process.exit(1);
 }
-
-// Only the pages themselves: the parts a book is put together from stay out.
-const pages = readdirSync(SITE)
-  .filter((f) => f.endsWith(".md"))
-  .sort();
-const books = pages.filter((p) => p !== "index.md");
+const held = seasons.filter((s) => existsSync(join(BOOKS, s.folder)));
 
 rmSync(OUT, { recursive: true, force: true });
-mkdirSync(join(OUT, "assets"), { recursive: true });
-copyFileSync(
-  join(ROOT, "scripts/pages/site.css"),
-  join(OUT, "assets/site.css"),
-);
-
-const TEMPLATE = join(ROOT, "scripts/pages/page.html");
-const render = async (page: string): Promise<void> => {
-  const book = page !== "index.md";
-  const source = readFileSync(join(SITE, page), "utf8")
-    // A link to a book goes to its page; a PDF is linked only where one is.
-    .replace(/\]\(([a-z0-9-]+)\.md(#[^)]*)?\)/g, "]($1.html$2)")
-    .replace(/ \(\[PDF\]\(([a-z0-9-]+\.pdf)\)\)/g, (whole, pdf: string) =>
-      existsSync(join(SITE, pdf)) ? whole : "",
-    );
-  const title = (/^title: "(.+)"$/m.exec(source)?.[1] ?? "").replace(
-    /^Trueshot /,
-    "",
+mkdirSync(OUT, { recursive: true });
+for (const s of held) {
+  const made = Bun.spawnSync(
+    [
+      "mdbook",
+      "build",
+      join(BOOKS, s.folder),
+      "--dest-dir",
+      join(OUT, s.folder),
+    ],
+    { stdout: "inherit", stderr: "inherit" },
   );
-  const pdf = page.replace(/\.md$/, ".pdf");
-  const args = [
-    "pandoc",
-    "--from=markdown-smart",
-    "--to=html5",
-    `--template=${TEMPLATE}`,
-    "--quiet",
-    "--columns=100000",
-    "--variable=root:",
-    `--lua-filter=${join(ROOT, "scripts/pages/filter.lua")}`,
-    ...(book
-      ? [
-          `--variable=page-title:${title}`,
-          `--variable=crumbs:<span>${title}</span>${existsSync(join(SITE, pdf)) ? `<span><a href="${pdf}">PDF</a></span>` : ""}`,
-          "--variable=wide",
-          "--toc",
-          "--toc-depth=2",
-          "--number-sections",
-        ]
-      : []),
-    ...(fragment && !book ? ["--variable=fragment"] : []),
-    `--output=${join(OUT, page.replace(/\.md$/, ".html"))}`,
-  ];
-  const run = Bun.spawn(args, { stdin: "pipe", stderr: "inherit" });
-  run.stdin.write(source);
-  await run.stdin.end();
-  if ((await run.exited) !== 0) throw new Error(`pandoc failed on ${page}`);
-};
-await Promise.all(pages.map(render));
+  if (made.exitCode !== 0) process.exit(made.exitCode);
+}
 
-for (const f of readdirSync(SITE))
-  if (f.endsWith(".pdf")) copyFileSync(join(SITE, f), join(OUT, f));
-console.log(`wrote the home page and ${books.length} books to dist/pages`);
+// The home page names the specification and links each book, and nothing
+// else; it follows the books' own light and dark themes.
+const escape = (t: string): string =>
+  t.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+writeFileSync(
+  join(OUT, "index.html"),
+  `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trueshot</title>
+<style>
+:root { --bg: #ffffff; --fg: #333333; --muted: #6e6e6e; --link: #4183c4; }
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #161923; --fg: #bcbdd0; --muted: #8b8fa3; --link: #2b79a2; color-scheme: dark; }
+}
+body { margin: 0; background: var(--bg); color: var(--fg);
+  font: 16px/1.6 "Open Sans", system-ui, -apple-system, "Segoe UI", sans-serif; }
+main { max-width: 640px; margin: 0 auto; padding: 64px max(16px, env(safe-area-inset-left, 0px)) 48px; }
+h1 { font-size: 2.2rem; margin: 0 0 8px; }
+p { color: var(--muted); margin: 0 0 32px; }
+ul { list-style: none; padding: 0; margin: 0; }
+li { margin: 0 0 12px; font-size: 1.25rem; }
+a { color: var(--link); }
+</style>
+</head>
+<body>
+<main>
+<h1>Trueshot</h1>
+<p>A wire protocol specification for League of Legends game servers, with one book for each season it covers.</p>
+<ul>
+${held.map((s) => `<li><a href="${s.folder}/">${escape(s.name)}</a></li>`).join("\n")}
+</ul>
+</main>
+</body>
+</html>
+`,
+);
+console.log(
+  `built ${held.length} books into dist/pages: ${readdirSync(OUT).join(", ")}`,
+);

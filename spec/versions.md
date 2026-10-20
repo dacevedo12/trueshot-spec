@@ -67,13 +67,14 @@ two beginning together the wider.
 
 ## The books
 
-`bun run site` writes `dist/site`: a home page, and a book for each season. A
-book reads the chapters in the order [the index](README.md) gives them, with
-each passage that holds for some of the season's ranges, headed with those,
-and none of the others. Each system's chapter ends with its messages and the
-command each takes by range. The appendices give every message and struct with
-each layout it has in the season, and, for each patch, its builds, its notes and live checks, and how it differs
-from the patch before it.
-`bun run site -- --pdf` typesets each book as well, given
-[pandoc](https://pandoc.org) and [typst](https://typst.app), and `bun run pages`
-renders the home page and the books as web pages.
+`bun run site` puts together a book for each season, and `bun run pages`
+builds the books with [mdBook](https://rust-lang.github.io/mdBook/), with a
+home page that links them. A book reads the chapters in the order
+[the index](README.md) gives them, a page each, with each passage that holds
+for some of the season's ranges, headed with those, and none of the others.
+Each system's chapter ends with its messages, with every layout each has in
+the season; the Transport chapter ends with the channels and the Messages
+chapter with the family headers. The appendices give the structs, and, for
+each patch, its builds, its notes and live checks, and how it differs from the
+patch before it, and an index of messages. A book prints, or saves as a PDF,
+from its print button.

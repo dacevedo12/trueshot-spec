@@ -15,7 +15,7 @@
       each = f: nixpkgs.lib.genAttrs systems (system: f nixpkgs.legacyPackages.${system});
     in
     {
-      # Everything `bun run check` and `bun run book -- --pdf` call, at the
+      # Everything `bun run check`, `bun run site` and `bun run pages` call, at the
       # versions the lock file pins. Nothing here is needed by anyone who
       # installs the same tools another way.
       devShells = each (pkgs: {
@@ -24,8 +24,7 @@
             bun
             vale
             lychee
-            pandoc
-            typst
+            mdbook
           ];
         };
       });

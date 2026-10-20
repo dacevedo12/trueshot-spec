@@ -19,8 +19,10 @@ jobs:
       # `nix develop` runs.
       - run: nix develop -c bun install --frozen-lockfile
       - run: nix develop -c bun run check
-      - run: nix develop -c bun run site -- --pdf
+      - run: nix develop -c bun run site
       - run: nix develop -c bun run pages
+      # Every link in the built books resolves, anchors included.
+      - run: nix develop -c lychee --offline --no-progress --include-fragments --exclude-path '404\.html$' 'dist/pages/**/*.html'
       - uses: actions/upload-artifact@v7
         with:
           name: pages

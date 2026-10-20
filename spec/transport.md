@@ -138,3 +138,5 @@ already had, and a server MUST refuse a connection whose proof does not match.
 
 One deciphered channel payload. It opens with the header its family carries,
 and [Messages](messages.md) defines how a message is recorded.
+
+<!-- channels -->
