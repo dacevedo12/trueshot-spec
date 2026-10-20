@@ -76,10 +76,9 @@ const cell = (s: string): string =>
 interface StructFile {
   readonly struct: string;
   readonly file: string;
-  readonly revisions?: readonly (Ranged & {
+  readonly revisions: readonly (Ranged & {
     readonly fields: readonly Field[];
   })[];
-  readonly fields?: readonly Field[];
 }
 const structs: StructFile[] = readdirSync(join(ROOT, "schema/types"))
   .filter((f) => f.endsWith(".json"))
@@ -93,9 +92,7 @@ const structAt = (
   s: StructFile,
   build: string,
 ): readonly Field[] | undefined =>
-  s.revisions === undefined
-    ? s.fields
-    : s.revisions.find((r) => covers(r, build))?.fields;
+  s.revisions.find((r) => covers(r, build))?.fields;
 
 // The vectors, by the message or struct they lay out.
 interface Vector {

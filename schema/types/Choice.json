@@ -2,16 +2,38 @@
   "$schema": "../meta/struct.json",
   "struct": "Choice",
   "note": "One choice made before the match, and how far it was taken.",
-  "fields": [
+  "revisions": [
     {
-      "name": "choice",
-      "type": "u32",
-      "note": "Which choice, by the number the client knows it as. Zero where the place stands empty."
+      "from": "4.1.0.171",
+      "until": "4.18.0.271",
+      "fields": [
+        {
+          "name": "choice",
+          "type": "u32",
+          "note": "Which choice, by the number the client knows it as. Zero where the place stands empty."
+        },
+        {
+          "name": "rank",
+          "type": "u8",
+          "note": "How far it was taken."
+        }
+      ]
     },
     {
-      "name": "rank",
-      "type": "u8",
-      "note": "How far it was taken."
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "fields": [
+        {
+          "name": "choice",
+          "type": "u32",
+          "note": "Which choice, by the number the client knows it as. Zero where the place stands empty."
+        },
+        {
+          "name": "rank",
+          "type": "u8",
+          "note": "How far it was taken."
+        }
+      ]
     }
   ]
 }

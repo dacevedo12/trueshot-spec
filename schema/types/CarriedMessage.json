@@ -2,17 +2,23 @@
   "$schema": "../meta/struct.json",
   "struct": "CarriedMessage",
   "note": "One whole message carried inside another, behind the count of its bytes.",
-  "fields": [
+  "revisions": [
     {
-      "name": "size",
-      "type": "u16",
-      "note": "How many bytes the message occupies."
-    },
-    {
-      "name": "body",
-      "type": "bytes",
-      "size": "size",
-      "note": "The message itself, taking effect as though it had arrived on its own on the channel that carried the message holding it."
+      "from": "4.1.0.171",
+      "until": "4.21.0.0",
+      "fields": [
+        {
+          "name": "size",
+          "type": "u16",
+          "note": "How many bytes the message occupies."
+        },
+        {
+          "name": "body",
+          "type": "bytes",
+          "size": "size",
+          "note": "The message itself, taking effect as though it had arrived on its own on the channel that carried the message holding it."
+        }
+      ]
     }
   ]
 }

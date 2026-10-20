@@ -2,26 +2,32 @@
   "$schema": "../meta/struct.json",
   "struct": "HeldItem",
   "note": "One item a unit holds, as it is stated when the unit first comes into sight.",
-  "fields": [
+  "revisions": [
     {
-      "name": "slot",
-      "type": "u8",
-      "note": "Which slot it sits in."
-    },
-    {
-      "name": "inSlot",
-      "type": "u8",
-      "note": "How many of it are in that slot."
-    },
-    {
-      "name": "charges",
-      "type": "u8",
-      "note": "How many uses it carries."
-    },
-    {
-      "name": "item",
-      "type": "u32",
-      "note": "Which item, by the number the client knows it as."
+      "from": "4.1.0.171",
+      "until": "4.21.0.0",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot it sits in."
+        },
+        {
+          "name": "inSlot",
+          "type": "u8",
+          "note": "How many of it are in that slot."
+        },
+        {
+          "name": "charges",
+          "type": "u8",
+          "note": "How many uses it carries."
+        },
+        {
+          "name": "item",
+          "type": "u32",
+          "note": "Which item, by the number the client knows it as."
+        }
+      ]
     }
   ]
 }

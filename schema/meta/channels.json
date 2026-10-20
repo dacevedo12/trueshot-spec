@@ -24,7 +24,7 @@
   "$defs": {
     "revision": {
       "type": "object",
-      "required": ["from", "channels"],
+      "required": ["from", "until", "channels"],
       "additionalProperties": false,
       "properties": {
         "from": {

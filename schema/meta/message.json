@@ -135,7 +135,15 @@
     },
     "revision": {
       "type": "object",
-      "required": ["from", "channel", "command", "direction", "fields", "reliability"],
+      "required": [
+        "from",
+        "until",
+        "channel",
+        "command",
+        "direction",
+        "fields",
+        "reliability"
+      ],
       "additionalProperties": false,
       "properties": {
         "from": {
@@ -143,7 +151,7 @@
           "$ref": "#/$defs/version"
         },
         "until": {
-          "description": "Client version it stops applying to. Exclusive. Omit if open ended.",
+          "description": "Client version it stops applying to. Exclusive. Every revision names one, so nothing is claimed of a build no one has studied.",
           "$ref": "#/$defs/version"
         },
         "note": {

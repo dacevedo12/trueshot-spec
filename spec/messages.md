@@ -108,8 +108,8 @@ so nothing in a body is sized or governed by it.
 
 What counts as an earlier field depends on what encloses the field doing the
 naming. An item of an array reaches the fields of the body around it. The
-fields of a struct reach only each other, because a struct is defined once and
-used wherever it occurs, so it cannot depend on what surrounds any one use.
+fields of a struct reach only each other, because a struct is used wherever it
+occurs, so it cannot depend on what surrounds any one use.
 
 `remaining` means every byte from where the field begins to the end of what
 encloses it: the message body, or the byte length of the struct or array the
@@ -157,8 +157,11 @@ earlier field, or `remaining`, which repeats to the end of the enclosure. A
 size in bytes repeats until those bytes are consumed, which is how a run whose
 length travels as a byte count is recorded.
 
-**Structs.** A named group of fields, defined once in `schema/types` and used
-wherever it occurs. A struct occupies exactly the bytes its own fields occupy.
+**Structs.** A named group of fields, defined in `schema/types` and used
+wherever it occurs. A struct has revisions as a message does, and a message
+revision that holds one lies wholly within one of the struct's revisions, which
+gives the layout it holds there. A struct occupies exactly the bytes its own
+fields occupy.
 Where its length travels on the wire instead, the field states a size in bytes,
 as a literal or as the name of an earlier field. A sending end MUST write a
 struct's fields to fill that size exactly.
@@ -246,11 +249,9 @@ A value with no entry has no meaning this specification states.
 ## Revisions
 
 A revision covers a range of client versions, from one version inclusive to
-another exclusive. A range with no end runs as far as the specification itself
-reaches, which is the last version a packet header covers, rather than forever:
-nothing above the transport can be claimed for a version the transport does not
-describe. Ranges of one message never overlap, so every revision but the last states
-where it stops.
+another exclusive. Every revision states where it stops, so nothing is claimed for a build past
+the last one studied, until that build is shown to agree with it. Ranges of one message never
+overlap.
 
 A revision covers no version that `schema/protocol.json`, `schema/channels.json`
 and `schema/families.json` do not all describe, because a range none of them

@@ -2,55 +2,61 @@
   "$schema": "../meta/struct.json",
   "struct": "Appearance",
   "note": "One layer of what a unit looks like. Layers are stated in the order a client lays them on.",
-  "fields": [
+  "revisions": [
     {
-      "name": "assetSize",
-      "type": "u32",
-      "note": "How many bytes the name below occupies."
-    },
-    {
-      "name": "asset",
-      "type": "string",
-      "encoding": "utf8",
-      "size": "assetSize",
-      "note": "The name the client loads this layer's art under. It is not padded, and it carries no terminator."
-    },
-    {
-      "name": "skin",
-      "type": "u32",
-      "note": "Which look within that art."
-    },
-    {
-      "name": "how",
-      "type": "bits",
-      "size": 1,
-      "bits": [
+      "from": "4.1.0.171",
+      "until": "4.21.0.0",
+      "fields": [
         {
-          "name": "overrideSpells",
-          "width": 1,
-          "note": "Set where this layer replaces the unit's spells as well as its art."
+          "name": "assetSize",
+          "type": "u32",
+          "note": "How many bytes the name below occupies."
         },
         {
-          "name": "modelOnly",
-          "width": 1,
-          "note": "Set where it replaces the shape alone."
+          "name": "asset",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "assetSize",
+          "note": "The name the client loads this layer's art under. It is not padded, and it carries no terminator."
         },
         {
-          "name": "replacePackage",
-          "width": 1,
-          "note": "Set where it replaces the whole set of art and sound."
+          "name": "skin",
+          "type": "u32",
+          "note": "Which look within that art."
         },
         {
-          "name": "unused",
-          "width": 5,
-          "note": "Unused; a server writes zero."
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "overrideSpells",
+              "width": 1,
+              "note": "Set where this layer replaces the unit's spells as well as its art."
+            },
+            {
+              "name": "modelOnly",
+              "width": 1,
+              "note": "Set where it replaces the shape alone."
+            },
+            {
+              "name": "replacePackage",
+              "width": 1,
+              "note": "Set where it replaces the whole set of art and sound."
+            },
+            {
+              "name": "unused",
+              "width": 5,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "layer",
+          "type": "u32",
+          "note": "The name this layer answers to, so a later message can take it off."
         }
       ]
-    },
-    {
-      "name": "layer",
-      "type": "u32",
-      "note": "The name this layer answers to, so a later message can take it off."
     }
   ]
 }

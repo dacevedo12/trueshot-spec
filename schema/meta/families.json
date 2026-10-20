@@ -24,7 +24,7 @@
   "$defs": {
     "revision": {
       "type": "object",
-      "required": ["from", "families"],
+      "required": ["from", "until", "families"],
       "additionalProperties": false,
       "properties": {
         "from": {

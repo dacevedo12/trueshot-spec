@@ -2,47 +2,53 @@
   "$schema": "../meta/struct.json",
   "struct": "ParticleGroup",
   "note": "A set of drawn particles that share the art, the sound, and the place on a unit they hang from.",
-  "fields": [
+  "revisions": [
     {
-      "name": "package",
-      "type": "u32",
-      "note": "Which set of art and sound the client draws them with."
-    },
-    {
-      "name": "particle",
-      "type": "u32",
-      "note": "Which particle, by the number its name gives, as spec/objects.md works it out."
-    },
-    {
-      "name": "flags",
-      "type": "u16",
-      "note": "How each particle of the group behaves, one bit each, on a 4.17 client: 1 kept alive, not ending by itself; 2 of no effect; 4 scaled to the bound unit's bounding box and its effect scale (to 1 where the bound object cannot be attacked); 8 placed at the positions given rather than hung on bone and targetBone, made even where a nonzero boundTo is unknown and with an unknown target; 16 not turned to follow its direction; 32 simulated while off screen; 64 laid flat on the ground's slope, facing as forward (+Z where facing is zero); 128 facing its target; 256 driven by the bound unit's resource bar. Bits 9 to 15 have no effect."
-    },
-    {
-      "name": "targetBone",
-      "type": "u32",
-      "note": "Where on the unit aimed at they hang, by the number the name of that place gives, as spec/objects.md works it out."
-    },
-    {
-      "name": "bone",
-      "type": "u32",
-      "note": "Where on the unit that made them they hang, by the same reading."
-    },
-    {
-      "name": "particleCount",
-      "type": "u8",
-      "note": "How many particles follow."
-    },
-    {
-      "name": "particles",
-      "type": "array",
-      "count": "particleCount",
-      "note": "The particles themselves.",
-      "items": {
-        "type": "struct",
-        "struct": "Particle",
-        "name": "drawn"
-      }
+      "from": "4.1.0.171",
+      "until": "4.21.0.0",
+      "fields": [
+        {
+          "name": "package",
+          "type": "u32",
+          "note": "Which set of art and sound the client draws them with."
+        },
+        {
+          "name": "particle",
+          "type": "u32",
+          "note": "Which particle, by the number its name gives, as spec/objects.md works it out."
+        },
+        {
+          "name": "flags",
+          "type": "u16",
+          "note": "How each particle of the group behaves, one bit each, on a 4.17 client: 1 kept alive, not ending by itself; 2 of no effect; 4 scaled to the bound unit's bounding box and its effect scale (to 1 where the bound object cannot be attacked); 8 placed at the positions given rather than hung on bone and targetBone, made even where a nonzero boundTo is unknown and with an unknown target; 16 not turned to follow its direction; 32 simulated while off screen; 64 laid flat on the ground's slope, facing as forward (+Z where facing is zero); 128 facing its target; 256 driven by the bound unit's resource bar. Bits 9 to 15 have no effect."
+        },
+        {
+          "name": "targetBone",
+          "type": "u32",
+          "note": "Where on the unit aimed at they hang, by the number the name of that place gives, as spec/objects.md works it out."
+        },
+        {
+          "name": "bone",
+          "type": "u32",
+          "note": "Where on the unit that made them they hang, by the same reading."
+        },
+        {
+          "name": "particleCount",
+          "type": "u8",
+          "note": "How many particles follow."
+        },
+        {
+          "name": "particles",
+          "type": "array",
+          "count": "particleCount",
+          "note": "The particles themselves.",
+          "items": {
+            "type": "struct",
+            "struct": "Particle",
+            "name": "drawn"
+          }
+        }
+      ]
     }
   ]
 }

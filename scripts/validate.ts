@@ -122,6 +122,15 @@ interface MessageDoc {
 
 interface StructDoc {
   readonly struct: string;
+  readonly revisions: readonly (Ranged & {
+    readonly fields: readonly FieldLike[];
+  })[];
+}
+
+// A struct as one of its revisions lays it out.
+interface StructView {
+  readonly struct: string;
+  readonly from: string;
   readonly fields: readonly FieldLike[];
 }
 
@@ -757,7 +766,7 @@ const MULTI_BYTE = new Set([
 // Which fields would read a byte order the revision never declared.
 function needingOrder(
   fields: readonly FieldLike[] | undefined,
-  structs: ReadonlyMap<string, StructDoc>,
+  structs: ReadonlyMap<string, StructView>,
   seen: ReadonlySet<string> = new Set(),
 ): string[] {
   const found: string[] = [];
@@ -799,7 +808,7 @@ const asRecord = (value: unknown): Readonly<Record<string, unknown>> | null =>
 function walkPresence(
   fields: readonly FieldLike[] | undefined,
   given: unknown,
-  structs: ReadonlyMap<string, StructDoc>,
+  structs: ReadonlyMap<string, StructView>,
   prefix: string,
   note: Note,
   seen: ReadonlySet<string> = new Set(),
@@ -820,7 +829,7 @@ function walkPresence(
           definition.fields,
           value,
           structs,
-          `struct:${field.struct}`,
+          `struct:${field.struct}@${definition.from}`,
           note,
           new Set([...seen, field.struct ?? ""]),
         );
@@ -845,7 +854,7 @@ function walkPresence(
 
 function needingKey(
   fields: readonly FieldLike[] | undefined,
-  structs: ReadonlyMap<string, StructDoc>,
+  structs: ReadonlyMap<string, StructView>,
   seen: ReadonlySet<string> = new Set(),
 ): string[] {
   const found: string[] = [];
@@ -1063,8 +1072,11 @@ for (const file of listJson("types")) {
   structFiles.push({ path: file.path, doc });
 }
 for (const { path, doc } of structFiles) {
-  const seen = checkFields(doc.fields, new Map(), structNames, path);
-  if (seen.has("__open")) openStructs.add(doc.struct);
+  checkRevisions(doc.revisions, path);
+  for (const revision of doc.revisions) {
+    const seen = checkFields(revision.fields, new Map(), structNames, path);
+    if (seen.has("__open")) openStructs.add(doc.struct);
+  }
 }
 
 let growing = true;
@@ -1072,11 +1084,14 @@ while (growing) {
   growing = false;
   for (const { doc } of structFiles) {
     if (openStructs.has(doc.struct)) continue;
-    const last = doc.fields[doc.fields.length - 1];
+    const lasts = doc.revisions.map((r) => r.fields[r.fields.length - 1]);
     if (
-      last?.type === "struct" &&
-      last.size === undefined &&
-      openStructs.has(last.struct ?? "")
+      lasts.some(
+        (last) =>
+          last?.type === "struct" &&
+          last.size === undefined &&
+          openStructs.has(last.struct ?? ""),
+      )
     ) {
       openStructs.add(doc.struct);
       growing = true;
@@ -1084,10 +1099,34 @@ while (growing) {
   }
 }
 
-// What the codec reads a struct as.
-const structFields = new Map<string, readonly Field[]>(
-  [...structs].map(([name, doc]) => [name, doc.fields as readonly Field[]]),
-);
+// Every struct as the revision covering a version lays it out, and what the
+// codec reads each as there.
+const views = new Map<string, Map<string, StructView>>();
+const structsAt = (version: string): ReadonlyMap<string, StructView> => {
+  const known = views.get(version);
+  if (known) return known;
+  const made = new Map<string, StructView>();
+  for (const [name, doc] of structs) {
+    const revision = doc.revisions.find((r) => covers(r, version));
+    if (revision)
+      made.set(name, {
+        struct: name,
+        from: revision.from,
+        fields: revision.fields,
+      });
+  }
+  views.set(version, made);
+  return made;
+};
+const structFieldsAt = (
+  version: string,
+): ReadonlyMap<string, readonly Field[]> =>
+  new Map(
+    [...structsAt(version)].map(([name, view]) => [
+      name,
+      view.fields as readonly Field[],
+    ]),
+  );
 
 if (familiesAreValid) {
   (familiesDoc.revisions ?? []).forEach((revision, index) => {
@@ -1137,7 +1176,7 @@ if (familiesAreValid) {
       }
       // A header reads multi byte fields, so it needs an order established
       // across every range it applies to.
-      const bare = needingOrder(family.header, structs);
+      const bare = needingOrder(family.header, structsAt(revision.from));
       if (bare.length > 0) {
         for (const protocolRevision of protocolDoc.revisions ?? []) {
           if (!rangesOverlap(protocolRevision, revision)) continue;
@@ -1173,6 +1212,15 @@ if (familiesAreValid) {
   },
 );
 
+// The structs fields hold directly, and through records and arrays.
+const heldStructs = (fields: readonly FieldLike[] | undefined): string[] =>
+  (fields ?? []).flatMap((field) => [
+    ...(field.type === "struct" ? [field.struct ?? ""] : []),
+    ...(field.type === "record" ? heldStructs(field.fields) : []),
+    ...(field.type === "array" && field.items
+      ? heldStructs([field.items])
+      : []),
+  ]);
 const usedStructs = (fields: readonly FieldLike[] | undefined): string[] => {
   const found: string[] = [];
   for (const field of fields ?? []) {
@@ -1185,7 +1233,9 @@ const usedStructs = (fields: readonly FieldLike[] | undefined): string[] => {
 for (const { path, doc } of structFiles) {
   const trail = [doc.struct];
   const walk = (name: string): boolean => {
-    for (const next of usedStructs(structs.get(name)?.fields)) {
+    for (const next of usedStructs(
+      structs.get(name)?.revisions.flatMap((r) => r.fields),
+    )) {
       if (trail.includes(next)) {
         fail(
           path,
@@ -1323,7 +1373,28 @@ for (const { where, doc } of messages) {
       }
     }
 
-    const bare = needingOrder(revision.fields, structs);
+    // Every struct the revision holds has one revision for all of its range,
+    // so the layout cannot change partway through it.
+    for (const name of new Set(heldStructs(revision.fields))) {
+      const doc = structs.get(name);
+      if (!doc) continue;
+      if (
+        !doc.revisions.some(
+          (r) =>
+            covers(r, revision.from) &&
+            (r.until === undefined ||
+              (revision.until !== undefined &&
+                compareVersions(revision.until, r.until) <= 0)),
+        )
+      ) {
+        fail(
+          at,
+          `holds struct "${name}", and no one revision of it covers ${revision.from} up to ${revision.until ?? "the end"}`,
+        );
+      }
+    }
+
+    const bare = needingOrder(revision.fields, structsAt(revision.from));
     if (bare.length > 0) {
       for (const protocolRevision of protocolDoc.revisions ?? []) {
         if (!rangesOverlap(protocolRevision, revision)) continue;
@@ -1593,6 +1664,7 @@ if (existsSync(VECTOR_DIR)) {
         message: string;
         revision: MessageRevision;
       } | null = null;
+      let structView: StructView | null = null;
       if (doc.subject === "transport") {
         if (dir.name !== "transport") {
           fail(path, `sits under "${dir.name}" but its subject is transport`);
@@ -1606,13 +1678,21 @@ if (existsSync(VECTOR_DIR)) {
             `sits under "${dir.name}" but names struct "${doc.struct}"`,
           );
         }
-        const definition = structs.get(doc.struct ?? "");
-        if (!definition) {
+        if (!structs.has(doc.struct ?? "")) {
           fail(path, `names struct "${doc.struct}", which has no definition`);
           continue;
         }
+        const definition = structsAt(doc.version ?? "").get(doc.struct ?? "");
+        if (!definition) {
+          fail(
+            path,
+            `names struct "${doc.struct}", which has no revision covering ${doc.version}`,
+          );
+          continue;
+        }
         defined = definition.fields;
-        structCovered.add(definition.struct);
+        structView = definition;
+        structCovered.add(`${definition.struct}@${definition.from}`);
       } else {
         if (pascalFromKebab(dir.name) !== doc.message) {
           fail(
@@ -1694,7 +1774,7 @@ if (existsSync(VECTOR_DIR)) {
       }
 
       if (!protocolRevision.endian) {
-        const bare = needingOrder(defined, structs);
+        const bare = needingOrder(defined, structsAt(version));
         if (bare.length > 0) {
           fail(
             path,
@@ -1713,7 +1793,7 @@ if (existsSync(VECTOR_DIR)) {
       const start = 0;
       const layout = defined as readonly Field[];
       try {
-        const sealed = needingKey(defined, structs);
+        const sealed = needingKey(defined, structsAt(version));
         let cipher: Cipher | undefined;
         if (sealed.length > 0) {
           if (doc.key === undefined) {
@@ -1732,7 +1812,7 @@ if (existsSync(VECTOR_DIR)) {
           continue;
         }
         const context = {
-          structs: structFields,
+          structs: structFieldsAt(version),
           endian,
           ...(cipher === undefined ? {} : { cipher }),
         };
@@ -1799,7 +1879,7 @@ if (existsSync(VECTOR_DIR)) {
             walkPresence(
               owner.revision.fields,
               read.values,
-              structs,
+              structsAt(version),
               "",
               note,
             );
@@ -1807,8 +1887,8 @@ if (existsSync(VECTOR_DIR)) {
             walkPresence(
               defined,
               read.values,
-              structs,
-              `struct:${doc.struct}`,
+              structsAt(version),
+              `struct:${doc.struct}@${structView?.from ?? ""}`,
               note,
               new Set([doc.struct ?? ""]),
             );
@@ -1916,6 +1996,7 @@ type Ruled = [path: string, unseen: Presence["unseen"], rule: Presence];
 const presenceRules = (
   fields: readonly FieldLike[],
   prefix: string,
+  version: string,
 ): Ruled[] => {
   const ruled: Ruled[] = [];
   const collect = (
@@ -1932,12 +2013,12 @@ const presenceRules = (
         field.type === "struct" &&
         !seenStructs.has(field.struct ?? "")
       ) {
-        carriedStructs.add(field.struct ?? "");
-        const d = structs.get(field.struct ?? "");
+        const d = structsAt(version).get(field.struct ?? "");
+        if (d) carriedStructs.add(`${d.struct}@${d.from}`);
         if (d)
           collect(
             d.fields,
-            `struct:${field.struct}`,
+            `struct:${field.struct}@${d.from}`,
             new Set([...seenStructs, field.struct ?? ""]),
           );
       } else if (field.type === "array" && field.items) {
@@ -1948,7 +2029,11 @@ const presenceRules = (
   collect(
     fields,
     prefix,
-    new Set(prefix.startsWith("struct:") ? [prefix.slice(7)] : []),
+    new Set(
+      prefix.startsWith("struct:")
+        ? [prefix.slice(7).split("@")[0] ?? ""]
+        : [],
+    ),
   );
   return ruled;
 };
@@ -1999,7 +2084,7 @@ for (const { where, doc } of messages) {
     checkRules(
       where,
       `revision ${revision.from}`,
-      presenceRules(revision.fields, ""),
+      presenceRules(revision.fields, "", revision.from),
       (path) =>
         path.startsWith("struct:")
           ? `#${path}`
@@ -2030,20 +2115,23 @@ for (const { where, doc } of messages) {
 
 // A struct no message carries travels on its own, so vectors read it alone.
 for (const { path: where, doc } of structFiles) {
-  if (carriedStructs.has(doc.struct)) continue;
-  if (!structCovered.has(doc.struct)) {
-    fail(
+  for (const revision of doc.revisions) {
+    const key = `${doc.struct}@${revision.from}`;
+    if (carriedStructs.has(key)) continue;
+    if (!structCovered.has(key)) {
+      fail(
+        where,
+        `revision ${revision.from}: no message carries it and no vector reads it on its own, so nothing checks its layout against a recorded payload`,
+      );
+      continue;
+    }
+    checkRules(
       where,
-      "no message carries it and no vector reads it on its own, so nothing checks its layout against a recorded payload",
+      `struct ${doc.struct} revision ${revision.from}`,
+      presenceRules(revision.fields, `struct:${key}`, revision.from),
+      (path) => `#${path}`,
     );
-    continue;
   }
-  checkRules(
-    where,
-    `struct ${doc.struct}`,
-    presenceRules(doc.fields, `struct:${doc.struct}`),
-    (path) => `#${path}`,
-  );
 }
 
 if (problems.length > 0) {

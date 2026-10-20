@@ -103,10 +103,9 @@ interface MessageFile {
 
 interface StructFile {
   readonly struct: string;
-  readonly revisions?: readonly (Ranged & {
+  readonly revisions: readonly (Ranged & {
     readonly fields: readonly Field[];
   })[];
-  readonly fields?: readonly Field[];
 }
 
 interface Family {
@@ -221,10 +220,7 @@ class Layouts {
     for (const file of readdirSync(join(ROOT, "types"))) {
       if (!file.endsWith(".json")) continue;
       const struct = read<StructFile>(join(ROOT, "types", file));
-      const fields =
-        struct.revisions === undefined
-          ? struct.fields
-          : pick(struct.revisions, build)?.fields;
+      const fields = pick(struct.revisions, build)?.fields;
       if (fields !== undefined) structs.set(struct.struct, fields);
     }
     this.structs = structs;

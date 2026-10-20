@@ -3,22 +3,55 @@
   "$id": "urn:trueshot:schema:struct",
   "title": "Struct definition",
   "description": "Meta-schema for the reusable field groups in schema/types.",
-
   "type": "object",
-  "required": ["struct", "fields"],
+  "required": ["struct", "revisions"],
   "additionalProperties": false,
   "properties": {
-    "$schema": { "type": "string" },
+    "$schema": {
+      "type": "string"
+    },
     "struct": {
       "description": "Stable identity. Matches the file name.",
       "type": "string",
       "pattern": "^[A-Z][A-Za-z0-9]*$"
     },
-    "note": { "$ref": "urn:trueshot:schema:message#/$defs/note" },
-    "fields": {
+    "note": {
+      "$ref": "urn:trueshot:schema:message#/$defs/note"
+    },
+    "revisions": {
       "type": "array",
       "minItems": 1,
-      "items": { "$ref": "urn:trueshot:schema:message#/$defs/field" }
+      "items": {
+        "$ref": "#/$defs/revision"
+      }
+    }
+  },
+  "$defs": {
+    "revision": {
+      "description": "The struct's layout over a range of client versions, as the message revisions that hold it there read it.",
+      "type": "object",
+      "required": ["from", "until", "fields"],
+      "additionalProperties": false,
+      "properties": {
+        "from": {
+          "description": "First client version this revision applies to. Inclusive.",
+          "$ref": "urn:trueshot:schema:message#/$defs/version"
+        },
+        "until": {
+          "description": "Client version it stops applying to. Exclusive.",
+          "$ref": "urn:trueshot:schema:message#/$defs/version"
+        },
+        "note": {
+          "$ref": "urn:trueshot:schema:message#/$defs/note"
+        },
+        "fields": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "urn:trueshot:schema:message#/$defs/field"
+          }
+        }
+      }
     }
   }
 }

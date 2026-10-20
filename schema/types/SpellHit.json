@@ -2,16 +2,22 @@
   "$schema": "../meta/struct.json",
   "struct": "SpellHit",
   "note": "One unit a casting names as hit, and how it was hit.",
-  "fields": [
+  "revisions": [
     {
-      "name": "unit",
-      "type": "u32",
-      "note": "The unit hit."
-    },
-    {
-      "name": "result",
-      "type": "u8",
-      "note": "How the hit landed."
+      "from": "4.1.0.171",
+      "until": "4.21.0.0",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit hit."
+        },
+        {
+          "name": "result",
+          "type": "u8",
+          "note": "How the hit landed."
+        }
+      ]
     }
   ]
 }

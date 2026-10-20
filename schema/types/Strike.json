@@ -2,41 +2,47 @@
   "$schema": "../meta/struct.json",
   "struct": "Strike",
   "note": "One swing of a unit's own weapon: what it is aimed at, when it lands, and the missile it throws.",
-  "fields": [
+  "revisions": [
     {
-      "name": "target",
-      "type": "u32",
-      "note": "The unit swung at. A server sends a nonzero unit."
-    },
-    {
-      "name": "timing",
-      "type": "u8",
-      "note": "A shift in time: the value less 128, in hundredths of a second, from -1.28 to 1.27; 128 shifts nothing. It moves when the swing lets go and ends, and when the unit may next attack."
-    },
-    {
-      "name": "missile",
-      "type": "u32",
-      "note": "The name the missile this swing throws will answer to."
-    },
-    {
-      "name": "slot",
-      "type": "u8",
-      "note": "Which of the unit's attacks this is."
-    },
-    {
-      "name": "targetX",
-      "type": "f32",
-      "note": "Where the unit swung at stands, along one ground axis. Carried in the units a path uses rather than in world units, and a server sends a whole number. spec/movement.md says how the two relate."
-    },
-    {
-      "name": "targetY",
-      "type": "f32",
-      "note": "Where it stands, in height. Carried in world units."
-    },
-    {
-      "name": "targetZ",
-      "type": "f32",
-      "note": "Where it stands, along the other ground axis. It shares the reading of the first."
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "fields": [
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit swung at. A server sends a nonzero unit."
+        },
+        {
+          "name": "timing",
+          "type": "u8",
+          "note": "A shift in time: the value less 128, in hundredths of a second, from -1.28 to 1.27; 128 shifts nothing. It moves when the swing lets go and ends, and when the unit may next attack."
+        },
+        {
+          "name": "missile",
+          "type": "u32",
+          "note": "The name the missile this swing throws will answer to."
+        },
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which of the unit's attacks this is."
+        },
+        {
+          "name": "targetX",
+          "type": "f32",
+          "note": "Where the unit swung at stands, along one ground axis. Carried in the units a path uses rather than in world units, and a server sends a whole number. spec/movement.md says how the two relate."
+        },
+        {
+          "name": "targetY",
+          "type": "f32",
+          "note": "Where it stands, in height. Carried in world units."
+        },
+        {
+          "name": "targetZ",
+          "type": "f32",
+          "note": "Where it stands, along the other ground axis. It shares the reading of the first."
+        }
+      ]
     }
   ]
 }

@@ -2,48 +2,54 @@
   "$schema": "../meta/struct.json",
   "struct": "Death",
   "note": "How a unit died: who did it, with what, and how long it stays down.",
-  "fields": [
+  "revisions": [
     {
-      "name": "how",
-      "type": "bits",
-      "size": 1,
-      "bits": [
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "fields": [
         {
-          "name": "zombie",
-          "width": 1,
-          "note": "Set to leave the champion standing in a zombie state rather than dead: no death animation and no death screen."
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "zombie",
+              "width": 1,
+              "note": "Set to leave the champion standing in a zombie state rather than dead: no death animation and no death screen."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ]
         },
         {
-          "name": "unused",
-          "width": 7,
-          "note": "Unused; a server writes zero."
+          "name": "kind",
+          "type": "u32",
+          "note": "What sort of death this is."
+        },
+        {
+          "name": "killer",
+          "type": "u32",
+          "note": "The unit credited with it, or zero where nothing is."
+        },
+        {
+          "name": "damageType",
+          "type": "u8",
+          "note": "The sort of damage that finished it."
+        },
+        {
+          "name": "damageSource",
+          "type": "u8",
+          "note": "Where that damage came from."
+        },
+        {
+          "name": "stayDown",
+          "type": "f32",
+          "note": "How long the unit stays down, in seconds."
         }
       ]
-    },
-    {
-      "name": "kind",
-      "type": "u32",
-      "note": "What sort of death this is."
-    },
-    {
-      "name": "killer",
-      "type": "u32",
-      "note": "The unit credited with it, or zero where nothing is."
-    },
-    {
-      "name": "damageType",
-      "type": "u8",
-      "note": "The sort of damage that finished it."
-    },
-    {
-      "name": "damageSource",
-      "type": "u8",
-      "note": "Where that damage came from."
-    },
-    {
-      "name": "stayDown",
-      "type": "f32",
-      "note": "How long the unit stays down, in seconds."
     }
   ]
 }
