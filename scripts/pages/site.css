@@ -152,14 +152,64 @@ td:first-child { white-space: nowrap; }
 td code { white-space: nowrap; }
 
 .toc {
-  margin: 0 0 24px;
+  margin: 16px 0 0;
   padding: 10px 14px;
   background: var(--accent-soft);
   border-radius: 4px;
 }
 .toc summary { cursor: pointer; font: 600 0.95rem/1.4 var(--display); }
-.toc ul { margin: 8px 0 0; padding-left: 18px; font-size: 0.92rem; }
-.toc ul ul { font-size: 0.88rem; }
+.toc ul { list-style: none; margin: 8px 0 0; padding-left: 0; font-size: 0.9rem; }
+.toc ul ul { padding-left: 14px; font-size: 0.86rem; }
+.toc li + li { margin-top: 0.15em; }
+.toc a { color: var(--fg); text-decoration: none; }
+.toc a:hover { text-decoration: underline; }
+.toc a[aria-current] { color: var(--accent); font-weight: 600; }
+.toc .toc-section-number, .page .header-section-number {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  margin-right: 0.4em;
+}
+.frame .side {
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+@media (min-width: 1180px) {
+  .frame {
+    display: grid;
+    grid-template-columns: 300px minmax(0, 1fr);
+    gap: 32px;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+  .frame .side {
+    position: sticky;
+    top: calc(env(safe-area-inset-top, 0px) + 96px);
+    align-self: start;
+    max-height: calc(100vh - 112px);
+    overflow-y: auto;
+    padding-right: 0;
+  }
+  .frame .toc { margin: 24px 0; background: none; padding: 0; }
+  .frame .toc summary { pointer-events: none; list-style: none; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.8rem; color: var(--muted); }
+  .frame .toc summary::-webkit-details-marker { display: none; }
+  .frame .page { margin: 0; }
+}
+
+a.here {
+  margin-left: 0.25em;
+  font-weight: 400;
+  color: var(--muted);
+  text-decoration: none;
+  opacity: 0;
+}
+h1:hover a.here, h2:hover a.here, h3:hover a.here, h4:hover a.here, a.here:focus-visible { opacity: 1; }
+@media (hover: none) { a.here { opacity: 0.5; } }
+.rfc {
+  font: 600 0.82em/1 var(--display);
+  letter-spacing: 0.06em;
+}
+h2, h3 { scroll-margin-top: 110px; }
+h1 { scroll-margin-top: 110px; }
 
 .foot {
   border-top: 1px solid var(--rule);

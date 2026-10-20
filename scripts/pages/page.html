@@ -19,13 +19,53 @@ $endif$<header class="bar">
   </div>
   $if(tabs)$<nav class="tabs" aria-label="This range"><div class="tabs-in">$tabs$</div></nav>$endif$
 </header>
-<main class="page$if(wide)$ wide$endif$">
-$if(toc)$<details class="toc"><summary>Contents</summary>
+$if(toc)$<div class="frame">
+<aside class="side"><details class="toc"><summary>Contents</summary>
 $table-of-contents$
-</details>
-$endif$
+</details></aside>
+$endif$<main class="page$if(wide)$ wide$endif$">
 $body$
 </main>
+$if(toc)$</div>
+<script>
+// On a wide screen the contents stay open beside the page and mark the
+// section being read; on a narrow one they fold away above it.
+(() => {
+  const toc = document.querySelector(".toc");
+  const wide = window.matchMedia("(min-width: 1180px)");
+  const fit = () => { if (wide.matches) toc.open = true; };
+  fit();
+  wide.addEventListener("change", fit);
+  const links = new Map(
+    [...toc.querySelectorAll("a[href^='#']")].map((a) => [decodeURIComponent(a.hash.slice(1)), a]),
+  );
+  const heads = [...document.querySelectorAll("main h1[id], main h2[id], main h3[id]")]
+    .filter((h) => links.has(h.id));
+  let current = null;
+  const mark = () => {
+    let at = heads[0];
+    for (const h of heads) if (h.getBoundingClientRect().top < 120) at = h; else break;
+    const link = at && links.get(at.id);
+    if (link === current) return;
+    current?.removeAttribute("aria-current");
+    link?.setAttribute("aria-current", "location");
+    current = link;
+    if (link && wide.matches) {
+      const box = toc.getBoundingClientRect();
+      const r = link.getBoundingClientRect();
+      if (r.top < box.top || r.bottom > box.bottom) link.scrollIntoView({ block: "nearest" });
+    }
+  };
+  let queued = false;
+  document.addEventListener("scroll", () => {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(() => { queued = false; mark(); });
+  }, { passive: true });
+  mark();
+})();
+</script>
+$endif$
 <footer class="foot">
   <p>Generated from the specification by <code>bun run pages</code>. Released under CC0 1.0. Not affiliated with, endorsed by, or sponsored by Riot Games.</p>
 </footer>

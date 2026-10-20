@@ -910,10 +910,41 @@ for (const s of held) {
     ...own.map((r) => rangeRow(r, "")),
   ]);
 }
+// Every message, with the ranges that define it, each linked to the message
+// on that range's page.
+put("messages.md", [
+  "# Index of messages",
+  "",
+  "Every message the specification defines, by name, with the ranges whose builds send or take it. Each range links the message as that range lays it out.",
+  ...[...new Set(messages.map((m) => m.message.charAt(0)))]
+    .sort()
+    .flatMap((letter) => [
+      "",
+      `## ${letter}`,
+      "",
+      "| Message | System | Ranges |",
+      "| --- | --- | --- |",
+      ...messages
+        .filter((m) => m.message.charAt(0) === letter)
+        .map((m) => {
+          const where = ranges.filter(
+            (r) => revisionAt(m, r.from) !== undefined,
+          );
+          return `| \`${m.message}\` | ${m.system} | ${where
+            .map(
+              (r) =>
+                `[${rangeName(r)}](${folderOf(r)}/messages.md#${m.message.toLowerCase()})`,
+            )
+            .join(", ")} |`;
+        }),
+    ]),
+]);
 put("README.md", [
   "# Trueshot",
   "",
   "A wire protocol specification for League of Legends game servers: what a server sends for a client to connect, load a match and play, and what the client does with it, written so that anyone can build a conforming server in any language.",
+  "",
+  "The [index of messages](messages.md) finds any message in every range that defines it.",
   "",
   "Read the [chapters](../../spec/README.md) in the order they give, since each builds on the ones before it; they hold for every client build covered. Then pick the range of builds you serve below. Each has a book that sets the chapters and what that range alone does together as one document, every message its builds send or take with the layout of each, and how it differs from the range before it. The field layouts and the [conformance vectors](../../conformance/) to check your work against are in the [repository](../../).",
   "",

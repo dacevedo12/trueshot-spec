@@ -137,7 +137,14 @@ const render = async (page: string): Promise<void> => {
     ...(book || name === "messages.md" || name === "changes.md"
       ? ["--variable=wide"]
       : []),
-    ...(book ? ["--toc", "--toc-depth=2"] : []),
+    `--lua-filter=${join(ROOT, "scripts/pages/filter.lua")}`,
+    ...(book
+      ? ["--toc", "--toc-depth=2", "--number-sections"]
+      : name === "messages.md"
+        ? ["--toc", "--toc-depth=3"]
+        : name === "changes.md"
+          ? ["--toc", "--toc-depth=2"]
+          : []),
     ...(fragment && page === "README.md" ? ["--variable=fragment"] : []),
     `--output=${out}`,
   ];
