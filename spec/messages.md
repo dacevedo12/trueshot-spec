@@ -354,7 +354,11 @@ Quick chat is a feature a server leaves off. A client sends a quick chat on chan
 only where `VersionSync`'s features turn quick chat on. This specification
 records no layout for channel 6.
 
-<!-- binding: quick-chat -->
+<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+
+> **In 4.1–4.17**
+>
+> A client given the quick chat bit fails while loading. A server MUST NOT set that bit.
 
 ## Vectors
 

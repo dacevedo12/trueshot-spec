@@ -1,15 +1,14 @@
 # The specification
 
-These chapters are the source of the books, one for each season, that
-`bun run site` puts together under `dist/site`. To build a server, read your
-season's book: it sets each chapter beside what the season's ranges alone do,
-lists every message with its layouts by range, and says how each range differs
-from the one before it. This directory is where the text is written.
+These chapters are the specification, in the order below. Each season's book,
+which `bun run site` puts together, reads the same chapters keeping only what
+holds for that season, and adds what the definitions in [schema/](../schema/)
+give: each system's messages with their commands, every layout by patch, and
+how each patch differs from the one before it. Read whichever suits you.
 
 The chapters describe how a server and a client behave toward each other, and
-hold for every client build the specification covers. What some ranges alone do
-is in their bindings, under [bindings/](bindings/): each entry fills a place a
-chapter marks with a `<!-- binding: name -->` line, and a system's chapter
+hold for every client build the specification covers, except a passage set
+apart and headed with ranges, which holds for those alone. A system's chapter
 marks where its book sets its table of messages with a `<!-- messages -->`
 line. Field layouts are not here: they live in [schema/](../schema/), and the
 chapters link them.

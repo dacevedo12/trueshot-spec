@@ -30,9 +30,22 @@ Each kind of object has its own message:
 Several of these arrive on their own or inside the `EnterSight` that brings the
 unit into view (see [Vision](vision.md)): a client takes either.
 
-<!-- binding: props -->
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
-<!-- binding: before-selection -->
+> **In 1.0**
+>
+> A client builds a prop from the character its `MapProp` names, loading that
+> character from its own files when it has not already, and fails soon after the
+> prop comes near what it draws where it cannot load it. A server MUST name in
+> `MapProp` only characters the client can load.
+
+<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+
+> **In 4.1–4.17**
+>
+> A client drops a `CreateChampion` or a `CreateNeutral` that arrives before it
+> sends `CharacterSelected`, reconnecting included. A server MUST send them after
+> it receives `CharacterSelected`.
 
 `CharacterPreload` has a client load a character's art ahead of need.
 
@@ -46,6 +59,10 @@ champion out of the world. A unit's death is in [Combat](combat.md).
 A server can tell a client what a bot is thinking (`BotDebug`), weighing
 (`BotTargets`) or doing (`BotState`).
 
-<!-- binding: bots -->
+<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+
+> **In 4.1–4.17**
+>
+> None of `BotDebug`, `BotTargets` and `BotState` changes what a player sees.
 
 <!-- messages -->

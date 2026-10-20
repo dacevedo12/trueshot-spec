@@ -54,7 +54,15 @@ with `SwapItemsAnswer`. A server can also set a slot (`InventorySlot`), set the
 whole inventory (`InventorySnapshot`), change an item's charges
 (`ItemCharges`), or report an item used (`ItemUsed`).
 
-<!-- binding: buying -->
+<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+
+> **In 4.1–4.17**
+>
+> `ItemAdded` places the item and removes nothing: a server sends a
+> `RemoveItemAnswer` for each part an item built from others takes up. Gold
+> falls only as replication states the champion's gold. A purchase a server
+> never answers still plays the sound of buying and lists the item among recent
+> purchases, and places nothing and spends nothing.
 
 ## Undo
 

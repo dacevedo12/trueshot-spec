@@ -163,28 +163,22 @@ notes carried in the schema as much as for the documents, and both are
 checked. [Versions](spec/versions.md) says how a document states which builds a
 fact holds for.
 
-### Chapters and bindings
+### Chapters and passages
 
 A chapter holds for every range, so a statement belongs in it only where every
-range bears it out. What one range's client was seen to do goes in that range's
-binding, at the place in the chapter it concerns, and a chapter marks a new
-place with a `<!-- binding: name -->` line where a binding needs one. A fact
-shown to hold for every range moves from the bindings into the chapter.
-
-A new range is a new binding. Its definitions go in `schema/` as revisions of
-their own, its facts go in `spec/bindings/<first build>/`, and every chapter
-statement goes on holding only once the new range's client bears it out; one
-that does not moves into the bindings of the ranges that do. Contributors to
-different ranges work in different directories, and a change to a chapter is a
-claim about every range at once.
+range bears it out. What some ranges' clients were seen to do goes in a passage
+for those ranges, at the point in the chapter it concerns, as
+[Versions](spec/versions.md) shows. A fact shown to hold for every range leaves
+its passage for the chapter itself, and a change to a chapter outside a passage
+is a claim about every range at once.
 
 ### Adding a range
 
 Work on a branch, since nothing below passes the checks until the end.
 
-1. Start the definitions. For builds nothing covers yet, `bun run range copy
-<model> <from> <until>` gives every definition a copy of the revision its
-   model build has. Take the nearest covered build as the model, and run it
+1. Start the definitions. For builds nothing covers yet,
+   `bun run range copy <model> <from> <until>` gives every definition a copy of
+   the revision its model build has. Take the nearest covered build as the model, and run it
    again with the next nearest to fill in what the first lacks: Season 3, for
    instance, copies from 4.1.0.171 and then from 1.0.0.126. For builds inside
    a range already covered, `bun run range split <build>` splits every
@@ -196,17 +190,17 @@ Work on a branch, since nothing below passes the checks until the end.
    same thing.
 3. Give every new revision a vector from the new builds, named for the range
    it starts, as [conformance/](conformance/README.md) says. No vector is
-   copied, since a vector is evidence of the builds it names, so `bun run
-check` lists every revision still waiting for one. Once the definitions
+   copied, since a vector is evidence of the builds it names, so
+   `bun run check` lists every revision still waiting for one. Once the definitions
    cover the new builds, the live harness runs on them too and writes their
    results.
-4. Move the prose. A fact the new range bears out in a span binding
-   widens the span: rename its directory to start or stop where the new range
-   does. One it does not bear out stays where it is, and what the new range
-   does there goes in a binding of its own. A chapter statement it does not
-   bear out moves into the bindings of the ranges that do.
+4. Move the prose. A passage the new range bears out widens: its comment
+   starts or stops where the new range does, and `bun scripts/book.ts --fix`
+   heads it again. One it does not bear out stays as it is, and what the new
+   range does there is a passage of its own beside it. A chapter statement it
+   does not bear out moves into a passage for the ranges that do.
 5. Review what the tools list: every copied note that names a build, and every
-   binding a split leaves behind. `bun run site` sets the new range against
+   passage that holds across a split. `bun run site` sets the new range against
    the one before it in its season's book, where anything left as a copy
    stands out.
 
@@ -229,7 +223,8 @@ its messages with a `<!-- messages -->` line.
 
 The tooling runs on [Bun](https://bun.com), in TypeScript. `bun run check` runs
 file naming, formatting, type checking, codec tests, schema validation, a check
-that every binding has its place, prose linting, and link checking.
+that every passage is headed with the ranges it holds for, prose linting, and
+link checking.
 Continuous integration runs the same checks, so a local pass is a remote pass.
 
 Schema validation decodes every vector rather than taking its word. A vector

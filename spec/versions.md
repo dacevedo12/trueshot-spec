@@ -34,7 +34,7 @@ Every definition under `schema/` holds its facts in revisions, each naming the
 range it applies to (see [Messages](messages.md)). Where ranges differ, each
 has its own revision, and no revision is described by pointing at another. A
 message a range lacks has no revision covering that range, and what a chapter
-or a binding says about that message, or about a field or bit its revision for
+or a passage says about that message, or about a field or bit its revision for
 the range lacks, says nothing of that range. A season's book lists, for each
 range, the messages its chapters name and the range lacks.
 
@@ -45,24 +45,32 @@ names one. A statement such as "a 4.17 client" holds for that range alone and
 says nothing of the others, and a 4.17 server is a server talking to a 4.17
 client. A chapter that opens by naming ranges holds for those alone.
 
-What one range alone does belongs in that range's binding rather than in the
-chapter. A binding is a directory under `spec/bindings`, named for the first
-build of its range, with its dots as hyphens, with a file for each chapter it
-adds to. Each entry of such a file opens with a line naming a place the
-chapter marks, and says what the range does there. A statement in a binding
-holds for its range alone, so it names no range.
+What some ranges alone do sits in the chapter where it concerns, as a
+passage set apart: a quotation headed with the ranges it holds for, after a
+comment naming its builds.
 
-What several ranges do alike, and another does not, belongs in a binding for a
-span: a directory named for two builds joined by `--`, which holds for every
-range from the first build up to the second. Where several bindings fill a
-place, the widest span's entry comes first and the range's own last.
+```markdown
+<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+
+> **In 4.1–4.17**
+>
+> A client names no one in `Pause` or `Resume`.
+```
+
+A passage holds for every range from its first build up to, not including, the
+second, and says nothing of the others. The heading is for a reader and the
+comment for the tools: the checks hold the heading to the ranges the builds
+cover, and `bun scripts/book.ts --fix` writes it again where ranges are renamed.
+A statement in a passage holds for its ranges alone, so it names none. Where
+several passages stand together, the one beginning first comes first, and of
+two beginning together the wider.
 
 ## The books
 
 `bun run site` writes `dist/site`: a home page, and a book for each season. A
 book reads the chapters in the order [the index](README.md) gives them, with
-every binding that holds for some of the season's ranges set in its place and
-headed with those ranges. Each system's chapter ends with its messages and the
+each passage that holds for some of the season's ranges, headed with those,
+and none of the others. Each system's chapter ends with its messages and the
 command each takes by range. The appendices give every message and struct with
 each layout it has in the season, and, for each patch, its builds, its notes and live checks, and how it differs
 from the patch before it.

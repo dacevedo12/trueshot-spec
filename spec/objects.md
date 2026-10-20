@@ -21,7 +21,11 @@ with each other only where they agree with this document.
 A field's own definition gives its exact type. Where a field carries one of
 these, it carries it whole, at the width above.
 
-<!-- binding: identifiers -->
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
+
+> **In 1.0**
+>
+> A client takes a client id only from 0 to 252, and leaves on any other.
 
 ## How they relate
 
@@ -81,11 +85,33 @@ from, a client holds from the moment it loads the map.
 Leaving a client's sight removes nothing: `LeaveSight`, `LeaveLocalSight` and
 `LeaveTeamSight` hide an object, and it is held as before.
 
-<!-- binding: lifetimes -->
+<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+
+> **In 4.1–4.17**
+>
+> How each kind leaves a client's world:
+>
+> | Kind                 | Removed                                                                                                                                                                               | Its death                                                               |
+> | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+> | Champion             | by `ChampionRemoved`, at once                                                                                                                                                         | kills it; it is held, and comes back                                    |
+> | Minion, monster, pet | by the client, once it has been dead for its death time, 4 seconds unless its character says otherwise; a new `SpawnPet` for an owner removes that owner's pet before it              | starts that wait; a death naming no killer does nothing                 |
+> | Turret               | by the client, 1.2 seconds after its death, or after the time its `SpawnTurret` gives; a lane turret is held where `VersionSync`'s features keep destroyed turrets (`turretsPersist`) | kills it                                                                |
+> | Inhibitor, nexus     | never                                                                                                                                                                                 | `BuildingDied` plays its death; it is held, and an inhibitor comes back |
+> | Missile              | by `DestroyMissile`, by its flight ending, or once its caster is removed                                                                                                              |                                                                         |
+> | Particle             | by `KillParticle`, naming it in its body, or once its effect ends                                                                                                                     |                                                                         |
+> | Follower             | once the unit it follows is removed                                                                                                                                                   |                                                                         |
+> | Marker               | only by a soft reconnect                                                                                                                                                              |                                                                         |
+> | Region               | by `RegionRemoved`, once its lifetime runs out (a lifetime of 0 never does), or once the unit it follows is removed                                                                   |                                                                         |
 
 Regions are named by region ids, apart from net ids.
 
-<!-- binding: regions -->
+<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+
+> **In 4.1–4.17**
+>
+> A client fails on a `RegionMoved` naming a region it does not hold, one whose
+> lifetime has run out included, and a server MUST NOT send one. `RegionRemoved`
+> for a region a client does not hold does nothing.
 
 ### A soft reconnect
 
@@ -96,7 +122,17 @@ object rather than keeping the id on it. The second removes every object still
 marked. In between, a server sends again each object the client is to keep.
 Each range names the stage that marks; any other value removes.
 
-<!-- binding: soft-reconnect -->
+<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+
+> **In 4.1–4.17**
+>
+> The stage of `SoftReconnect` that marks is 0.
+
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
+>
+> The stage of `SoftReconnect` that marks is 1.
 
 ## Messages about objects a client does not hold
 
@@ -121,7 +157,12 @@ Nothing is held back for later, those paths aside: a message that arrives
 before the message creating what it names is lost. [Ordering](ordering.md)
 says what that requires of a server.
 
-<!-- binding: before-selection -->
+<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+
+> **In 4.1–4.17**
+>
+> A client drops game messages until it sends `CharacterSelected`, apart from the
+> few [Joining a match](joining.md) lists.
 
 ## A message naming its sender
 
@@ -177,7 +218,13 @@ minions a side sends out come from spawn points of their own, which are among
 the objects a map holds. On map 1 one of them is
 `__P_Order_Spawn_Barracks__C01`.
 
-<!-- binding: barracks -->
+<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+
+> **In 4.1–4.17**
+>
+> A client puts a minion on the field for a `SpawnFromBarracks` naming a spawn
+> point, and creates nothing for one naming an inhibitor such as
+> `Barracks_T1_C1`.
 
 No message creates these objects, so nothing a server sends could give a client
 a different identifier for one. A server MUST name each by the identifier its

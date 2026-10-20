@@ -18,8 +18,8 @@
 import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import * as prettier from "prettier";
-import { bindings } from "./bindings.ts";
-import { compare, covers, ranges } from "./schema.ts";
+import { chapters, passagesOf } from "./passages.ts";
+import { compare, covers } from "./schema.ts";
 import type { Ranged } from "./schema.ts";
 
 const ROOT = join(import.meta.dir, "..");
@@ -73,7 +73,6 @@ function namedNotes(value: unknown, path: string, out: string[]): void {
   }
 }
 
-const before = ranges();
 const changed: [string, Doc][] = [];
 const review: string[] = [];
 const skipped: string[] = [];
@@ -120,16 +119,16 @@ if (changed.length === 0)
       ? "every definition the model has already covers part of that span, so nothing changed"
       : "no definition covers that build, so nothing changed",
   );
-// A binding for one range holds for the range starting at its build alone, so
-// a split leaves the second half without it.
+// A passage holding across the split goes on holding on both sides of it,
+// which is worth a look.
 if (command === "split") {
   const at = args[0] ?? "";
-  const split = before.find((r) => covers(r, at) && r.from !== at);
-  for (const b of bindings)
-    if (split !== undefined && b.until === undefined && b.from === split.from)
-      review.push(
-        `${b.dir} holds for ${split.from} up to ${at} alone now; what still holds from ${at} goes in spec/bindings/${at.replace(/\./g, "-")}`,
-      );
+  for (const chapter of chapters)
+    for (const p of passagesOf(chapter))
+      if (compare(p.from, at) < 0 && compare(at, p.until) < 0)
+        review.push(
+          `spec/${chapter}.md:${p.line}: a passage holds across ${at}, on both sides of the split`,
+        );
 }
 if (problems.length > 0) {
   console.error(problems.join("\n"));

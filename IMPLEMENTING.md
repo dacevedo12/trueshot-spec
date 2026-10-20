@@ -1,17 +1,18 @@
 # Implementing a server
 
-Read the book for the season of the client you serve, front to back. `bun run
-site` writes one for each season into `dist/site`, and `bun run site -- --pdf`
-typesets them too. Each chapter builds on the ones before it. Together they are
-meant to be enough to build a conforming server in any language, without
-reading another one.
+Read the specification front to back before writing code: the chapters in
+[spec/](spec/README.md), in the order its index gives them, or the book for the
+season of the client you serve, which `bun run site` puts together from them
+(`bun run site -- --pdf` typesets it too). The two say the same thing; a book
+keeps only what holds for its season. Each chapter builds on the ones before
+it. Together they are meant to be enough to build a conforming server in any
+language, without reading another one.
 
-A book holds for every range of its season, except a passage headed with
-ranges, which holds for those alone. Its appendices give every message with
-each layout it has by range, and, for each patch, its live checks and how it
-differs from the patch before it. [Versions](spec/versions.md) says how the
-definitions and the chapters a book is made from state which builds a fact
-holds for.
+A chapter holds for every range, except a passage set apart and headed with
+ranges, which holds for those alone. A book adds what the definitions give:
+every message with each layout it has by range, and, for each patch, its live
+checks and how it differs from the patch before it. [Versions](spec/versions.md)
+says how the definitions and the chapters state which builds a fact holds for.
 
 Check your work against [conformance/](conformance/) as you go, rather than at
 the end. How you structure what you build is your business. The vectors are the

@@ -40,13 +40,23 @@ units within it. A server places one with `RegionAdded`, moves it with
 identifiers](objects.md) says how regions are named and when one ends. A region granting sight
 has a client clear its map's cover over it.
 
-<!-- binding: regions -->
+<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+
+> **In 4.1–4.17**
+>
+> A client makes only circular regions, and its regions see over walls or not as
+> the region says.
 
 ## Drawing the fog
 
 `FogSet` and `FogToggled` concern how a client draws its fog of war.
 
-<!-- binding: fog -->
+<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+
+> **In 4.1–4.17**
+>
+> A client draws its fog of war, or the map with no darkening, as `FogSet` and
+> `FogToggled` say. Neither changes what the client can see.
 
 ## Who is told what
 
@@ -66,7 +76,21 @@ out alike:
 
 Which of these forms a range has is in its definitions.
 
-<!-- binding: audiences -->
+<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+
+> **In 4.1–4.17**
+>
+> `UnitDiedOnMap`, `InventorySnapshotOnMap`, `FloatingTextOnMap` and
+> `SpellSlotChangedForOwner` do not exist, so a server sends both audiences of
+> `UnitDied`, `InventorySnapshot`, `FloatingText` and `SpellSlotChanged` under
+> the one command each.
+
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
+>
+> A server sends the narrower audience as a message of its own, and sends the
+> wider form only where every client is to know.
 
 Messages about a champion's own state, its gold, its inventory, its spells'
 levels, cooldowns and charges, and whether it can shop, are applied to the

@@ -2,30 +2,18 @@
 //
 //   bun scripts/book.ts          write dist/site/<season>.md
 //   bun scripts/book.ts --pdf    and <season>.pdf beside it, with pandoc and typst
-//   bun scripts/book.ts --check  only check that every binding has its place
+//   bun scripts/book.ts --check  only check the chapters' passages and places
+//   bun scripts/book.ts --fix    write each passage's heading from its builds
 //
-// A book takes the chapters in the order spec/README.md reads them, and sets
-// in each place a chapter marks every binding entry that holds for some of the
-// season's ranges, headed with the ranges it holds for (see
-// scripts/bindings.ts). At each system's `<!-- messages -->` line it puts the
-// system's messages with their commands by range, and it ends with the
-// appendices scripts/site.ts writes first under dist/site/parts/<season>/.
-import {
-  existsSync,
-  mkdirSync,
-  readdirSync,
-  readFileSync,
-  writeFileSync,
-} from "node:fs";
+// A book takes the chapters in the order spec/README.md reads them, keeping
+// each passage that holds for some of the season's ranges, headed with those
+// ranges, and leaving out the rest (see scripts/passages.ts). At each system's
+// `<!-- messages -->` line it puts the system's messages with their commands
+// by range, and it ends with the appendices scripts/site.ts writes first under
+// dist/site/parts/<season>/.
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import {
-  ANCHOR,
-  appliesTo,
-  bindings,
-  chapters,
-  placesOf,
-  sections,
-} from "./bindings.ts";
+import { chapters, holdsFor, passagesOf } from "./passages.ts";
 import { ranges as coveredRanges } from "./schema.ts";
 import type { Ranged } from "./schema.ts";
 import { seasonOf, seasons } from "./seasons.ts";
@@ -36,6 +24,7 @@ type Range = Ranged;
 const ROOT = join(import.meta.dir, "..");
 const REPOSITORY = "https://github.com/dacevedo12/trueshot-spec/blob/main";
 const check = process.argv.includes("--check");
+const fix = process.argv.includes("--fix");
 const pdf = process.argv.includes("--pdf");
 const read = (path: string): string => readFileSync(join(ROOT, path), "utf8");
 
@@ -49,35 +38,32 @@ const systems = (
 
 const problems: string[] = [];
 
-// Every binding names ranges that exist, its entries have a place in their
-// chapter, and every place is named once.
-for (const b of bindings) {
-  if (!ranges.some((r) => appliesTo(b, r)))
-    problems.push(
-      `${b.dir}: no range starts at that build, or lies in that span`,
-    );
-  for (const file of readdirSync(join(ROOT, b.dir))) {
-    const chapter = file.replace(/\.md$/, "");
-    if (!chapters.includes(chapter)) {
+// Every passage holds for some range, and its heading names the ranges its
+// builds cover; --fix writes the headings that say otherwise.
+for (const chapter of chapters) {
+  const passages = passagesOf(chapter, problems);
+  let text = read(`spec/${chapter}.md`);
+  for (const p of passages) {
+    const held = ranges.filter((r) => holdsFor(p, r));
+    if (held.length === 0) {
       problems.push(
-        `${b.dir}/${file}: no chapter spec/${chapter}.md in the reading order`,
+        `spec/${chapter}.md:${p.line}: no range lies wholly within ${p.from} up to ${p.until}`,
       );
       continue;
     }
-    const places = placesOf(chapter);
-    for (const key of sections(`${b.dir}/${file}`, problems).keys()) {
-      if (!places.includes(key))
-        problems.push(
-          `${b.dir}/${file}: "${key}" has no place in spec/${chapter}.md`,
-        );
-    }
+    const label = spanName(held, ranges);
+    if (label === p.label) continue;
+    if (fix)
+      text = text.replace(
+        p.whole,
+        p.whole.replace(`> **In ${p.label}**`, `> **In ${label}**`),
+      );
+    else
+      problems.push(
+        `spec/${chapter}.md:${p.line}: the passage is headed "In ${p.label}", and its builds are ${label} (bun scripts/book.ts --fix)`,
+      );
   }
-}
-for (const chapter of chapters) {
-  const places = placesOf(chapter);
-  const twice = places.filter((p, i) => places.indexOf(p) !== i);
-  for (const p of new Set(twice))
-    problems.push(`spec/${chapter}.md: the place "${p}" is named twice`);
+  if (fix) writeFileSync(join(ROOT, `spec/${chapter}.md`), text);
 }
 // Every system has a chapter in the reading order, with a place for its
 // messages, and every range has a season.
@@ -103,9 +89,9 @@ if (problems.length > 0) {
   console.error(problems.join("\n"));
   process.exit(1);
 }
-if (check) {
+if (check || fix) {
   console.log(
-    `Every binding has its place, across ${chapters.length} chapters and ${ranges.length} ranges.`,
+    `Every passage names the ranges it holds for, across ${chapters.length} chapters and ${ranges.length} ranges.`,
   );
   process.exit(0);
 }
@@ -125,37 +111,21 @@ function relink(text: string, base: string): string {
   });
 }
 
-// A chapter as a season reads it: every binding entry that holds for some of
-// its ranges, in its place and headed with those ranges, the widest span
-// first, then its messages with their commands by range.
-const startOf = (rs: readonly Range[]): number => {
-  const first = rs[0];
-  return first === undefined ? -1 : ranges.indexOf(first);
-};
+// A chapter as a season reads it: each passage that holds for some of its
+// ranges, headed with those, and none of the others, then its messages with
+// their commands by range.
 function chapterFor(chapter: string, season: readonly Range[]): string {
   let text = read(`spec/${chapter}.md`);
-  const held = bindings
-    .map((b) => ({ b, here: season.filter((r) => appliesTo(b, r)) }))
-    .filter(({ here }) => here.length > 0)
-    .sort(
-      (x, y) =>
-        y.here.length - x.here.length || startOf(x.here) - startOf(y.here),
-    )
-    .map(({ b, here }) => ({
-      base: b.dir,
-      label: spanName(here, ranges),
-      own: sections(`${b.dir}/${chapter}.md`),
-    }));
-  text = text.replace(ANCHOR, (_, key: string) =>
-    held
-      .flatMap(({ base, label, own }) => {
-        const entry = own.get(key);
-        return entry === undefined || entry === ""
-          ? []
-          : [`::: {.ranges}\n**In ${label}**\n\n${relink(entry, base)}\n:::`];
-      })
-      .join("\n\n"),
-  );
+  for (const p of passagesOf(chapter)) {
+    const here = season.filter((r) => holdsFor(p, r));
+    text = text.replace(
+      p.whole,
+      here.length === 0
+        ? ""
+        : `::: {.ranges}\n**In ${spanName(here, ranges)}**\n\n${p.body}\n:::`,
+    );
+  }
+  text = text.replace(/\n{3,}/g, "\n\n");
   text = text.replace(
     MESSAGES,
     () => `## Messages\n\n${seasonTable(chapter, season, ranges)}`,

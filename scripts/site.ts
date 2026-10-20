@@ -21,8 +21,7 @@ import {
   writeFileSync,
 } from "node:fs";
 import { dirname, join } from "node:path";
-import { bindingsFor, chapters, filled, sections } from "./bindings.ts";
-import type { Binding } from "./bindings.ts";
+import { chapters, holdsFor, passagesOf } from "./passages.ts";
 import { compare, covers, ranges as coveredRanges } from "./schema.ts";
 import type {
   Amount,
@@ -771,52 +770,22 @@ function changesPart(prev: Range, range: Range): string[] {
   }
   section("Structs", structLines);
 
-  // What the bindings set in place, chapter by chapter.
-  const before = filled(prev);
-  const after = filled(range);
-  const entry = (
-    chapter: string,
-    key: string,
-    from: readonly Binding[],
-  ): string =>
-    from
-      .map((b) => sections(`${b.dir}/${chapter}.md`).get(key) ?? "")
-      .join("\n\n");
-  const bindingLines: string[] = [];
-  for (const chapter of chapters) {
-    const a = before.get(chapter) ?? new Map<string, Binding[]>();
-    const b = after.get(chapter) ?? new Map<string, Binding[]>();
-    const keys = [...new Set([...a.keys(), ...b.keys()])];
-    for (const key of keys) {
-      const x = a.get(key);
-      const y = b.get(key);
-      const where = (bs: readonly Binding[]): string =>
-        bs
-          .map(
-            (bb) =>
-              `[${bb.dir.split("/").pop()}](${repo}${bb.dir}/${chapter}.md)`,
-          )
-          .join(", ");
-      const place = `the ${chapter} chapter's \`${key}\``;
-      if (x === undefined && y !== undefined)
-        bindingLines.push(
-          `- ${C} fills ${place}, from ${where(y)}, and ${P} does not.`,
-        );
-      else if (y === undefined && x !== undefined)
-        bindingLines.push(
-          `- ${P} fills ${place}, from ${where(x)}, and ${C} does not.`,
-        );
-      else if (
-        x !== undefined &&
-        y !== undefined &&
-        entry(chapter, key, x) !== entry(chapter, key, y)
-      )
-        bindingLines.push(
-          `- ${place} says one thing in ${P}, from ${where(x)}, and another in ${C}, from ${where(y)}.`,
-        );
+  // The passages of the chapters that hold for one of the two and not the
+  // other, each named by how it opens.
+  const passageLines: string[] = [];
+  for (const chapter of chapters)
+    for (const p of passagesOf(chapter)) {
+      const was = holdsFor(p, prev);
+      const is = holdsFor(p, range);
+      if (was === is) continue;
+      const opening = cell(
+        (p.body.split(/(?<=\.)\s/)[0] ?? "").replace(/\s+/g, " "),
+      );
+      passageLines.push(
+        `- In the [${chapter}](#chapter-${chapter}) chapter, a passage holds for ${is ? C : P} and not ${is ? P : C}: ${opening}`,
+      );
     }
-  }
-  section("Chapters", bindingLines);
+  section("Chapters", passageLines);
 
   section(
     "Only notes",
@@ -848,16 +817,18 @@ function patchesPart(season: readonly Range[]): string[] {
     const prev = ranges[i - 1];
     const ran = results.filter((r) => covers(range, r.build));
     const lacks = messages.filter((m) => gapAt(m, i));
-    const told = [
-      ...chapters.map((c) =>
-        readFileSync(join(ROOT, "spec", `${c}.md`), "utf8"),
-      ),
-      ...bindingsFor(range).flatMap((b) =>
-        readdirSync(join(ROOT, b.dir)).map((f) =>
-          readFileSync(join(ROOT, b.dir, f), "utf8"),
-        ),
-      ),
-    ].join("\n");
+    // What the chapters say to this range: each without the passages that
+    // hold for other ranges.
+    const told = chapters
+      .map((c) =>
+        passagesOf(c)
+          .filter((p) => !holdsFor(p, range))
+          .reduce(
+            (text, p) => text.replace(p.whole, ""),
+            readFileSync(join(ROOT, "spec", `${c}.md`), "utf8"),
+          ),
+      )
+      .join("\n");
     const named = new Set(
       [...told.matchAll(/`([A-Z][A-Za-z0-9]*)`/g)].map((m) => m[1]),
     );

@@ -51,7 +51,13 @@ A message says which book it means:
 
 A server MUST NOT name a champion book slot above 62.
 
-<!-- binding: book-size -->
+<!-- holds from 4.1.0.171 up to 4.7.0.296 -->
+
+> **In 4.1–4.6**
+>
+> A champion's own book ends at slot 60. A client ignores an `Autocast` or a `SpellToggled` naming a
+> slot above 60, and applies a `SpellInSlot` or a `SpellCostChanged` naming one
+> while reporting it as an error. A server MUST NOT name a champion book slot above 60.
 
 ## Inventory slots
 
@@ -68,7 +74,12 @@ An item is cast from the spell slot four above its inventory slot, and moving
 an item moves its spell with it. A client asks to swap only slots 0 to 6
 (`SwapItems`). A server MUST NOT name an inventory slot above 39.
 
-<!-- binding: inventory-size -->
+<!-- holds from 4.1.0.171 up to 4.7.0.296 -->
+
+> **In 4.1–4.6**
+>
+> A champion's inventory ends at slot 38. A client ignores a `RemoveItemAnswer`,
+> `InventorySlot`, `ItemAdded`, `ItemUsed` or `ItemCharges` naming a slot above 38. A server MUST NOT name an inventory slot above 38.
 
 ## Effect slots
 

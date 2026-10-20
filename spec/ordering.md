@@ -28,7 +28,11 @@ The messages creating a unit travel reliably on the events channel, while
 `Replication` and `WaypointGroup` travel unreliably on the transient channel,
 so either can overtake the message creating the unit it names.
 
-<!-- binding: replication-channel -->
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
+>
+> A server can instead send `Replication` reliably on the events channel.
 
 A client skips
 a unit it does not hold, and answers no batch that named one (see below), so a

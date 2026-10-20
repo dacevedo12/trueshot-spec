@@ -18,7 +18,15 @@ client answers with `CameraLock`, and set a point a player's view keeps to with
 `CameraBehaviour`. Where its range defines `ZoomReport`, a client reports a view
 drawn further out than it allows with it, which a server MAY ignore.
 
-<!-- binding: locked-view -->
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
+
+> **In 1.0**
+>
+> A client sends no `Camera` while its camera is locked. It takes the lock from
+> the player's own settings when `StartGame` arrives, locked where they say
+> nothing, and answers with `CameraLock`; `CameraLockSet` changes it for the
+> match without changing those settings. A server that needs a client's view
+> reports frees its camera with `CameraLockSet`.
 
 ## Input
 
@@ -46,7 +54,11 @@ and hide an objective panel (`ObjectiveShown`, `ObjectiveReplaced`,
 
 ## The tutorial
 
-<!-- binding: tutorial -->
+<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+
+> **In 4.1–4.17**
+>
+> A client is in the tutorial where the version answer names the mode TUTORIAL on map 12.
 
 In the tutorial, a server can put lines of the client's own text in its chat
 (`TutorialChatLine`), open the tutorial's popup (`TutorialPopup`), which the
