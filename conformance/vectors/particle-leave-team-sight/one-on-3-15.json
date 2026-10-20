@@ -1,0 +1,15 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ParticleLeaveTeamSight",
+  "version": "3.15.0.244",
+  "note": "Laid out as a 3.15.0.244 client takes it.",
+  "bytes": "e3000000009100004000",
+  "fields": {
+    "command": 227,
+    "netId": 0,
+    "extendedCommand": null,
+    "particle": 1073741969,
+    "team": 0
+  }
+}

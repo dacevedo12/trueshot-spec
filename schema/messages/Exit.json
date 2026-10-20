@@ -14,6 +14,16 @@
       "fields": []
     },
     {
+      "from": "3.15.0.244",
+      "until": "4.1.0.171",
+      "channel": "requests",
+      "command": 143,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window, as a reconnection fails, or on Shutdown or BotKick.",
+      "fields": []
+    },
+    {
       "from": "4.1.0.171",
       "until": "4.11.0.386",
       "channel": "requests",

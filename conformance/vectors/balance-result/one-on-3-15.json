@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "BalanceResult",
+  "version": "3.15.0.244",
+  "note": "Laid out as a 3.15.0.244 client takes it.",
+  "bytes": "fc0000000000010064000000000000000000000000000000",
+  "fields": {
+    "command": 252,
+    "netId": 0,
+    "extendedCommand": null,
+    "result": 0,
+    "inFavour": 1,
+    "against": 0,
+    "side": 100,
+    "gold": 0,
+    "experience": 0,
+    "turrets": 0
+  }
+}

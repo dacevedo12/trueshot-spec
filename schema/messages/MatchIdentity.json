@@ -20,6 +20,35 @@
       ]
     },
     {
+      "from": "3.15.0.244",
+      "until": "4.1.0.171",
+      "channel": "events",
+      "command": 146,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "game",
+          "type": "i64",
+          "note": "The match's identifier."
+        },
+        {
+          "name": "platform",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 32,
+          "note": "Which platform the match belongs to, written and padded as above."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "The player's name, padded with zero bytes."
+        }
+      ]
+    },
+    {
       "from": "4.1.0.171",
       "until": "4.11.0.386",
       "channel": "events",

@@ -1,0 +1,18 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "VoiceEvent",
+  "version": "3.15.0.244",
+  "note": "Laid out as a 3.15.0.244 client takes it.",
+  "bytes": "79000000007374616e642d696e00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000006e6f7468696e670000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100d2040000",
+  "fields": {
+    "command": 121,
+    "netId": 0,
+    "extendedCommand": null,
+    "folder": "stand-in",
+    "event": "nothing",
+    "callback": 1,
+    "kind": 0,
+    "handle": 1234
+  }
+}

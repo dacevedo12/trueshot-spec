@@ -20,6 +20,21 @@
       ]
     },
     {
+      "from": "3.15.0.244",
+      "until": "4.1.0.171",
+      "channel": "events",
+      "command": 194,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "startedAt",
+          "type": "f32",
+          "note": "When the match began, as a moment on the match clock, in seconds."
+        }
+      ]
+    },
+    {
       "from": "4.1.0.171",
       "until": "4.11.0.386",
       "channel": "events",

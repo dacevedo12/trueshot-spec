@@ -5,6 +5,38 @@
   "note": "What a server sends to pause or resume a named group of particle emitters. The header carries no object this acts on.",
   "revisions": [
     {
+      "from": "3.15.0.244",
+      "until": "4.1.0.171",
+      "channel": "events",
+      "command": 248,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "group",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 256,
+          "note": "The group's name, padded with zero bytes."
+        },
+        {
+          "name": "operation",
+          "type": "u32",
+          "note": "Nonzero to pause the emission, zero to resume it."
+        },
+        {
+          "name": "groupOperation",
+          "type": "u8",
+          "note": "What to do with the group. A client acts on 0 only, pausing or resuming the group's emission, and does nothing for any other value.",
+          "values": {
+            "0": {
+              "name": "emission"
+            }
+          }
+        }
+      ]
+    },
+    {
       "from": "4.1.0.171",
       "until": "4.11.0.386",
       "channel": "events",

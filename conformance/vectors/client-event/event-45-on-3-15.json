@@ -1,0 +1,26 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ClientEvent",
+  "version": "3.15.0.244",
+  "note": "Laid out as a 3.15.0.244 client takes it.",
+  "bytes": "a322000040451c000040d19cbd4394257f4361220b42000060410000803f000096431f000040",
+  "fields": {
+    "command": 163,
+    "netId": 1073741858,
+    "extendedCommand": null,
+    "event": 69,
+    "subject": 1073741852,
+    "kill": null,
+    "extra": null,
+    "assist": {
+      "time": 379.2251281738281,
+      "physical": 255.14678955078125,
+      "magical": 34.783573150634766,
+      "true": 14,
+      "share": 1,
+      "gold": 300,
+      "killer": 1073741855
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SoftReconnect",
+  "version": "3.15.0.244",
+  "note": "Laid out as a 3.15.0.244 client takes it.",
+  "bytes": "ef0000000000",
+  "fields": {
+    "command": 239,
+    "netId": 0,
+    "extendedCommand": null,
+    "stage": {
+      "stage": 0,
+      "unused": 0
+    }
+  }
+}

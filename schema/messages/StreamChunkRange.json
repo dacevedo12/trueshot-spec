@@ -5,6 +5,26 @@
   "note": "What a server streaming a match sends to say where the match proper begins in its chunks, and, once known, where it ends. The header carries zero.",
   "revisions": [
     {
+      "from": "3.15.0.244",
+      "until": "4.1.0.171",
+      "channel": "events",
+      "command": 236,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "startGameChunk",
+          "type": "u32",
+          "note": "The chunk the match proper begins with."
+        },
+        {
+          "name": "endGameChunk",
+          "type": "u32",
+          "note": "The match's last chunk, or zero while it runs."
+        }
+      ]
+    },
+    {
       "from": "4.1.0.171",
       "until": "4.11.0.386",
       "channel": "events",

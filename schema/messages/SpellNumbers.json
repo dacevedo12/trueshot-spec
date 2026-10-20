@@ -54,6 +54,74 @@
       ]
     },
     {
+      "from": "3.15.0.244",
+      "until": "4.1.0.171",
+      "channel": "events",
+      "command": 127,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "entryCount",
+          "type": "u16",
+          "note": "How many sets of numbers follow."
+        },
+        {
+          "name": "entries",
+          "type": "array",
+          "count": "entryCount",
+          "note": "The sets themselves.",
+          "items": {
+            "name": "entry",
+            "type": "record",
+            "fields": [
+              {
+                "name": "unit",
+                "type": "u32",
+                "note": "The unit whose spell this is."
+              },
+              {
+                "name": "slot",
+                "type": "u8",
+                "note": "Which slot."
+              },
+              {
+                "name": "values",
+                "type": "array",
+                "count": 5,
+                "note": "The numbers themselves, one place each.",
+                "items": {
+                  "name": "value",
+                  "type": "f32",
+                  "note": "One number."
+                }
+              },
+              {
+                "name": "hidden",
+                "type": "array",
+                "count": 5,
+                "note": "Which of those places the other side is not shown, one for each.",
+                "items": {
+                  "name": "fromEnemy",
+                  "type": "u8",
+                  "note": "Whether that place is kept from the other side.",
+                  "values": {
+                    "0": {
+                      "name": "shown"
+                    },
+                    "1": {
+                      "name": "hidden"
+                    }
+                  }
+                }
+              }
+            ],
+            "note": "The numbers for one spell, five places of them."
+          }
+        }
+      ]
+    },
+    {
       "from": "4.1.0.171",
       "until": "4.7.0.296",
       "channel": "events",

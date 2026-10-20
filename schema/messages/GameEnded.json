@@ -37,6 +37,39 @@
       ]
     },
     {
+      "from": "3.15.0.244",
+      "until": "4.1.0.171",
+      "channel": "events",
+      "command": 198,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "result",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "side100Won",
+              "width": 1,
+              "note": "Set where side 100 won, clear where side 200 did."
+            },
+            {
+              "name": "surrendered",
+              "width": 1,
+              "note": "Set aside for a match ended by surrender. It has no effect."
+            },
+            {
+              "name": "unused",
+              "width": 6,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ],
+      "note": "Arriving while the match still loads, it counts as a win or loss for the player's side and the client leaves at once. Otherwise the client ends the match on its screen and sends ClientFinished, except while playing a replay."
+    },
+    {
       "from": "4.1.0.171",
       "until": "4.11.0.386",
       "channel": "events",

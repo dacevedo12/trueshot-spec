@@ -5,6 +5,26 @@
   "note": "What a server sends to change how a unit's resource bar is shown. The header names the unit.",
   "revisions": [
     {
+      "from": "3.15.0.244",
+      "until": "4.1.0.171",
+      "channel": "events",
+      "command": 147,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unused",
+          "type": "u32",
+          "note": "Unused; its bytes carry no meaning. The header names the unit."
+        },
+        {
+          "name": "state",
+          "type": "i32",
+          "note": "Which way the resource is shown; a client sets the unit's resource bar by it, and what each value looks like depends on the unit's own data."
+        }
+      ]
+    },
+    {
       "from": "4.1.0.171",
       "until": "4.11.0.386",
       "channel": "events",

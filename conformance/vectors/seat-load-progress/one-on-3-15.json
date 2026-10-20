@@ -1,0 +1,22 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SeatLoadProgress",
+  "version": "3.15.0.244",
+  "note": "Laid out as a 3.15.0.244 client takes it.",
+  "bytes": "950000000009000000010000000000000000000000a01a3d4200007100",
+  "fields": {
+    "command": 149,
+    "netId": 0,
+    "extendedCommand": null,
+    "clientId": 9,
+    "player": "1",
+    "progress": 0,
+    "secondsLeft": 47.2760009765625,
+    "status": {
+      "count": 0,
+      "ping": 113,
+      "loaded": 0
+    }
+  }
+}

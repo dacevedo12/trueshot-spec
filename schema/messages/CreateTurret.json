@@ -5,6 +5,56 @@
   "note": "What a server sends to put a turret on the field. A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it. The header names the unit this is about.",
   "revisions": [
     {
+      "from": "3.15.0.244",
+      "until": "4.1.0.171",
+      "channel": "events",
+      "command": 157,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "turret",
+          "type": "u32",
+          "note": "The name the turret answers to, so later messages can name it."
+        },
+        {
+          "name": "node",
+          "type": "u8",
+          "note": "Which network node the object belongs to, in a field of its own."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "What this turret is called, so a client can tell one from another. Written out in full and padded with zero bytes to the width above."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "targetable",
+              "width": 1,
+              "note": "It has no effect: a turret's targetability comes by replication."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "targetableBy",
+          "type": "u32",
+          "note": "Who can target the turret. A server writes the value replication carries for the turret: 8388608 not its own side, 16777216 not the other side, 25165824 nobody, 33554432 everyone, anything else both sides. A client takes the turret's targetability from replication alone."
+        }
+      ],
+      "note": "A client matches name exactly against the map's turrets. With no match it only removes any object holding the id; a matched turret missing or dead is rebuilt before it takes the id."
+    },
+    {
       "from": "4.1.0.171",
       "until": "4.11.0.386",
       "channel": "events",

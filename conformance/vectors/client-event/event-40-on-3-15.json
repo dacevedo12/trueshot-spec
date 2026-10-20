@@ -1,0 +1,18 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ClientEvent",
+  "version": "3.15.0.244",
+  "note": "Laid out as a 3.15.0.244 client takes it.",
+  "bytes": "a322000040401a00004001",
+  "fields": {
+    "command": 163,
+    "netId": 1073741858,
+    "extendedCommand": null,
+    "event": 64,
+    "subject": 1073741850,
+    "kill": null,
+    "extra": 1,
+    "assist": null
+  }
+}

@@ -5,6 +5,15 @@
   "note": "What a client sends once it has connected again to a match it was playing, right after the server answers its registration. A client dropped while playing reconnects by itself; one dropped while loading leaves instead. It carries nothing of its own. The header carries zero.",
   "revisions": [
     {
+      "from": "3.15.0.244",
+      "until": "4.1.0.171",
+      "channel": "requests",
+      "command": 156,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": []
+    },
+    {
       "from": "4.1.0.171",
       "until": "4.11.0.386",
       "channel": "requests",

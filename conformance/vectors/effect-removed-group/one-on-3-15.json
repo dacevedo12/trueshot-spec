@@ -1,0 +1,47 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "EffectRemovedGroup",
+  "version": "3.15.0.244",
+  "note": "Laid out as a 3.15.0.244 client takes it.",
+  "bytes": "9400000000beab070006190000400a00000000fa0000400100000000000100400100000000d40100400100000000e10100400100000000ee0100400000000000",
+  "fields": {
+    "command": 148,
+    "netId": 0,
+    "extendedCommand": null,
+    "effect": 502718,
+    "count": 6,
+    "entries": [
+      {
+        "unit": 1073741849,
+        "slot": 10,
+        "timeLeft": 0
+      },
+      {
+        "unit": 1073742074,
+        "slot": 1,
+        "timeLeft": 0
+      },
+      {
+        "unit": 1073742080,
+        "slot": 1,
+        "timeLeft": 0
+      },
+      {
+        "unit": 1073742292,
+        "slot": 1,
+        "timeLeft": 0
+      },
+      {
+        "unit": 1073742305,
+        "slot": 1,
+        "timeLeft": 0
+      },
+      {
+        "unit": 1073742318,
+        "slot": 0,
+        "timeLeft": 0
+      }
+    ]
+  }
+}

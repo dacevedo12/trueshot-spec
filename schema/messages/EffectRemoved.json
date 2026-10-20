@@ -25,6 +25,31 @@
       ]
     },
     {
+      "from": "3.15.0.244",
+      "until": "4.1.0.171",
+      "channel": "events",
+      "command": 123,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot it sat in."
+        },
+        {
+          "name": "effect",
+          "type": "u32",
+          "note": "Which effect, by the number its name gives, as spec/objects.md works it out."
+        },
+        {
+          "name": "timeLeft",
+          "type": "f32",
+          "note": "How long the effect had left to run when it was taken off, in seconds."
+        }
+      ]
+    },
+    {
       "from": "4.1.0.171",
       "until": "4.11.0.386",
       "channel": "events",
