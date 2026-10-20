@@ -18,7 +18,13 @@ import {
   writeFileSync,
 } from "node:fs";
 import { dirname, join } from "node:path";
-import { bindingsFor, chapters, filled, sections } from "./bindings.ts";
+import {
+  bindingsFor,
+  chapters,
+  filled,
+  placesOf,
+  sections,
+} from "./bindings.ts";
 import type { Binding } from "./bindings.ts";
 import { compare, covers, ranges as coveredRanges } from "./schema.ts";
 import type {
@@ -703,6 +709,20 @@ function rangePage(i: number, path: string): string[] {
                 .join(", ")}.`,
           ),
         ]),
+    "",
+    "## Places",
+    "",
+    "Each place a chapter marks for its bindings, with the bindings that fill it for this range. Where none does, the chapter's own text is all the specification says there for this range, which is not a finding that the range does nothing more.",
+    "",
+    "| Chapter | Place | Filled by |",
+    "| --- | --- | --- |",
+    ...chapters.flatMap((chapter) => {
+      const own = filled(range).get(chapter);
+      return placesOf(chapter).map((key) => {
+        const by = own?.get(key) ?? [];
+        return `| [${chapter}](${repo}spec/${chapter}.md) | ${key} | ${by.length === 0 ? "" : by.map((b) => `[${b.dir.split("/").pop()}](${repo}${b.dir}/${chapter}.md)`).join(", ")} |`;
+      });
+    }),
     "",
     "## Live checks",
     "",

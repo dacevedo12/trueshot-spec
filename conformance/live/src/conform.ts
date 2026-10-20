@@ -70,8 +70,13 @@ for (const match of xml.matchAll(
   const inner = match[3] ?? "";
   const name = decode(/\bname="([^"]*)"/.exec(attributes)?.[1] ?? "");
   const suite = decode(/\bclassname="([^"]*)"/.exec(attributes)?.[1] ?? "");
-  const check = suite === "" ? name : `${suite} > ${name}`;
   const failure = /<failure\b[^>]*?message="([^"]*)"/.exec(inner);
+  // A suite's setup and teardown come out as checks with no name: one that
+  // failed says so as the suite's setup, and one that did not is no check.
+  const hook = name === "(unnamed)";
+  if (hook && failure === null) continue;
+  const label = hook ? "setup" : name;
+  const check = suite === "" ? label : `${suite} > ${label}`;
   if (failure !== null)
     outcomes.push({ check, outcome: "failed", why: decode(failure[1] ?? "") });
   else if (/<skipped\b/.test(inner))

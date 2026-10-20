@@ -7,6 +7,7 @@
   "scripts": {
     "format": "prettier --write \"**/*.{json,md,ts}\"",
     "site": "bun scripts/site.ts && bun scripts/book.ts",
+    "range": "bun scripts/range.ts",
     "check": "bun run check:names && bun run check:format && bun run check:types && bun run check:codec && bun run check:schema && bun run check:book && bun run check:prose && bun run check:links",
     "check:names": "ls-lint",
     "check:format": "prettier --check \"**/*.{json,md,ts}\"",

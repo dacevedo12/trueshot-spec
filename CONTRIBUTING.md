@@ -181,6 +181,15 @@ that does not moves into the bindings of the ranges that do. Contributors to
 different ranges work in different directories, and a change to a chapter is a
 claim about every range at once.
 
+`bun run range copy <model build> <from> <until>` starts a range nothing covers
+yet: it gives every definition a copy of the revision its model build has, for
+the new builds, and lists the copied notes that name a build. `bun run range
+split <build>` starts a range inside one already covered, by splitting every
+revision there in two. Either is only a starting point. Each copy claims what
+its model does until the new builds bear it out, and `bun run check` lists
+every revision still without a vector, since no vector is copied: a vector is
+evidence of the builds it names.
+
 ## Systems
 
 Every message names the system it belongs to, and each system has a document in
