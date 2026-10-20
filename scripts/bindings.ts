@@ -73,14 +73,18 @@ const appliesTo = (b: Binding, r: Ranged): boolean =>
     : compare(r.from, b.from) >= 0 &&
       r.until !== undefined &&
       compare(r.until, b.until) <= 0;
-// Spans first, then the range's own, so the narrower says the last word.
+// The widest span first, then narrower ones, then the range's own, so the
+// narrower says the last word.
 const bindingsFor = (r: Ranged): Binding[] =>
   bindings
     .filter((b) => appliesTo(b, r))
-    .sort(
-      (x, y) =>
-        (x.until === undefined ? 1 : 0) - (y.until === undefined ? 1 : 0),
-    );
+    .sort((x, y) => {
+      if (x.until === undefined || y.until === undefined)
+        return (
+          (x.until === undefined ? 1 : 0) - (y.until === undefined ? 1 : 0)
+        );
+      return compare(y.until, x.until) || compare(x.from, y.from);
+    });
 
 // What a range sets in each place of each chapter, as the binding files
 // hold it: chapter → place → the entries in the order the book sets them,

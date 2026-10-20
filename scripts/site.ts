@@ -2,7 +2,8 @@
 // versions, all drawn from schema/, spec/ and conformance/. Nothing it writes
 // is committed, so nothing it says can drift from what it is drawn from.
 //
-//   bun scripts/site.ts   write dist/site
+//   bun scripts/site.ts          write dist/site, with every range's book
+//   bun scripts/site.ts --pdf    and each book as a PDF too
 //
 // For every range, dist/site/<season>/<range>/ holds:
 //   README.md   what the range is: its builds, patches, checks and bindings
@@ -72,6 +73,10 @@ const span = (r: Ranged): string =>
 // climbs out of dist/site first.
 const pages = new Map<string, string>();
 const put = (path: string, lines: readonly string[]): void => {
+  if (pages.has(path))
+    throw new Error(
+      `two ranges are named alike and would both write ${path}; name one by its build`,
+    );
   pages.set(path, `${lines.join("\n").replace(/\n{3,}/g, "\n\n")}\n`);
 };
 const up = (path: string): string => "../".repeat(path.split("/").length + 1);
@@ -93,7 +98,6 @@ const structs: StructFile[] = readdirSync(join(ROOT, "schema/types"))
     file,
     ...json<Omit<StructFile, "file">>(`schema/types/${file}`),
   }));
-const structFile = new Map(structs.map((s) => [s.struct, s.file]));
 const structAt = (
   s: StructFile,
   build: string,
@@ -187,10 +191,6 @@ const presence = (p: Presence | undefined): string =>
     : p.equals !== undefined
       ? `${p.when} = ${([] as number[]).concat(p.equals).join(" or ")}`
       : `${p.when} set`;
-const lead = (note = ""): string => {
-  const end = note.search(/\.(\s|$)/);
-  return cell(end >= 0 ? note.slice(0, end + 1) : note);
-};
 const children = (f: Field): readonly Field[] =>
   f.type === "record"
     ? f.fields
@@ -198,33 +198,91 @@ const children = (f: Field): readonly Field[] =>
       ? f.items.fields
       : [];
 
-// 1. Every message of a range, by system.
+// 1. Every message of a range, by system, with every note its definition
+// carries, the headers its families put in front, the structs it holds and
+// the vectors that show it.
+interface FamilyDef {
+  readonly name: string;
+  readonly header: readonly Field[];
+}
+const familyRevisions = json<{
+  revisions: (Ranged & { families: FamilyDef[] })[];
+}>("schema/families.json").revisions;
+const noted = (x: unknown): string => {
+  const n = (x as { note?: string }).note;
+  return n === undefined || n === "" ? "" : n;
+};
 function messagesPage(range: Range, path: string): string[] {
   const repo = up(path);
-  const link = (s: string): string =>
-    `[${s}](${repo}schema/types/${structFile.get(s) ?? ""})`;
+  const link = (s: string): string => `[${s}](#struct-${s.toLowerCase()})`;
+  const valuesOf = (f: Field): string =>
+    Object.entries(f.values ?? {})
+      .map(([k, v]) => `${k} ${v.name}`)
+      .join(", ");
   const rows = (fields: readonly Field[], depth = 0): string[] =>
-    fields.flatMap((f) => [
-      `| ${"&nbsp;&nbsp;".repeat(depth)}${f.name} | ${cell(typeOf(f, link))}${
-        runs(f).length > 0
-          ? `: ${runs(f)
-              .map((b) => `${b.name} (${b.width})`)
-              .join(", ")}`
-          : ""
-      } | ${cell(presence(f.present))} | ${lead(f.note)} |`,
-      ...rows(children(f), depth + 1),
-    ]);
+    fields.flatMap((f) => {
+      const pad = "&nbsp;&nbsp;".repeat(depth);
+      const values = valuesOf(f);
+      let at = 0;
+      return [
+        `| ${pad}${f.name} | ${cell(typeOf(f, link))} | ${cell(presence(f.present))} | ${cell(noted(f))}${values === "" ? "" : ` Values: ${cell(values)}.`} |`,
+        ...runs(f).map((b) => {
+          const row = `| ${pad}&nbsp;&nbsp;${b.name} | bit ${at}${b.width === 1 ? "" : ` to ${at + b.width - 1}`} |  | ${cell(noted(b))} |`;
+          at += b.width;
+          return row;
+        }),
+        ...rows(children(f), depth + 1),
+      ];
+    });
+  const table = (fields: readonly Field[]): string[] =>
+    fields.length === 0
+      ? ["No body."]
+      : [
+          "| Field | Type | Present when | What it is |",
+          "| --- | --- | --- | --- |",
+          ...rows(fields),
+        ];
+  const families =
+    familyRevisions.find((r) => covers(r, range.from))?.families ?? [];
   const lines = [
     `# Messages of ${rangeName(range)}`,
     "",
-    `Every message a build from ${span(range)} sends or takes, by system, with the layout of its body after the header its channel's family puts in front. What each message and field means is in its definition, and how a system's messages work together is in the system's chapter.`,
+    `Every message a build from ${span(range)} sends or takes, by system, with every note its definition carries and the layout of its body after the header its channel's family puts in front. How a system's messages work together is in the system's chapter. A field present when \`remaining\` is set is present exactly where the payload has bytes left at that point.`,
     "",
     "## Channels",
     "",
     "| Channel | Name | Family |",
     "| --- | --- | --- |",
     ...range.channels.map((c) => `| ${c.id} | ${c.name} | ${c.family} |`),
+    "",
+    "## Families",
+    "",
+    "The header each family puts in front of every message on its channels.",
+    ...families.flatMap((f) => [
+      "",
+      `### The ${f.name} family`,
+      "",
+      ...table(f.header),
+    ]),
   ];
+  const held = new Set<string>();
+  const hold = (fields: readonly Field[]): void => {
+    for (const f of fields) {
+      const name =
+        f.type === "struct"
+          ? f.struct
+          : f.type === "array" && f.items.type === "struct"
+            ? f.items.struct
+            : undefined;
+      if (name !== undefined && !held.has(name)) {
+        held.add(name);
+        const s = structs.find((x) => x.struct === name);
+        if (s !== undefined) hold(structAt(s, range.from) ?? []);
+      }
+      hold(children(f));
+      if (f.type === "array") hold([f.items]);
+    }
+  };
   for (const s of systems) {
     const here = messages.filter(
       (m) => m.system === s && revisionAt(m, range.from) !== undefined,
@@ -239,21 +297,55 @@ function messagesPage(range: Range, path: string): string[] {
     for (const m of here) {
       const r = revisionAt(m, range.from);
       if (r === undefined) continue;
+      hold(r.fields);
+      const shown = vectors.filter(
+        (v) =>
+          v.message === m.message &&
+          v.version !== undefined &&
+          covers(r, v.version),
+      );
       lines.push(
         "",
         `### ${m.message}`,
         "",
-        `Command ${r.command} on ${r.channel}, ${by(r) === "both" ? "sent by either side" : `sent by the ${by(r)}`}, ${r.reliability}. [Definition](${repo}schema/messages/${m.file}).`,
+        `Command ${r.command} on ${r.channel}${(r.alsoOn ?? []).map((o) => `, or on ${o.channel} ${o.reliability}`).join("")}, ${by(r) === "both" ? "sent by either side" : `sent by the ${by(r)}`}, ${r.reliability}. The layout holds from ${r.from} up to ${r.until ?? "the end"}. [Definition](${repo}schema/messages/${m.file}).`,
+        ...[noted(m), noted(r)]
+          .filter((n) => n !== "")
+          .flatMap((n) => ["", n]),
+        "",
+        ...table(r.fields),
+        ...(shown.length === 0
+          ? []
+          : [
+              "",
+              `Vectors: ${shown
+                .map(
+                  (v) =>
+                    `[${v.path
+                      .split("/")
+                      .pop()
+                      ?.replace(/\.json$/, "")}](${repo}${v.path})`,
+                )
+                .join(", ")}.`,
+            ]),
       );
-      if (r.fields.length > 0)
-        lines.push(
-          "",
-          "| Field | Type | Present when | What it is |",
-          "| --- | --- | --- | --- |",
-          ...rows(r.fields),
-        );
-      else lines.push("", "No body.");
     }
+  }
+  const order = [...held].sort();
+  if (order.length > 0) lines.push("", "## Structs");
+  for (const name of order) {
+    const s = structs.find((x) => x.struct === name);
+    const fields = s === undefined ? undefined : structAt(s, range.from);
+    if (s === undefined || fields === undefined) continue;
+    lines.push(
+      "",
+      `### Struct ${name}`,
+      "",
+      `[Definition](${repo}schema/types/${s.file}).`,
+      ...[noted(s)].filter((n) => n !== "").flatMap((n) => ["", n]),
+      "",
+      ...table(fields),
+    );
   }
   return lines;
 }
@@ -301,9 +393,12 @@ const same = (a: unknown, b: unknown): boolean =>
   JSON.stringify(a) === JSON.stringify(b);
 
 // The differences between two field lists, one line each.
+// P names the earlier range and C the later.
 function fieldChanges(
   before: readonly Field[],
   after: readonly Field[],
+  P: string,
+  C: string,
 ): string[] {
   const a = flatten(before);
   const b = flatten(after);
@@ -315,15 +410,15 @@ function fieldChanges(
     if (was === undefined) {
       const after = b[b.indexOf(f) - 1];
       out.push(
-        `\`${f.path}\` is added (${f.type})${after === undefined ? " at the start" : `, after \`${after.path}\``}.`,
+        `\`${f.path}\` is in ${C} (${f.type})${after === undefined ? " at the start" : `, after \`${after.path}\``}, and not in ${P}.`,
       );
       continue;
     }
     if (was.type !== f.type)
-      out.push(`\`${f.path}\` changes from ${was.type} to ${f.type}.`);
+      out.push(`\`${f.path}\` is ${was.type} in ${P} and ${f.type} in ${C}.`);
     if (was.present !== f.present)
       out.push(
-        `\`${f.path}\` ${f.present === "" ? "is now always present" : `is now present when ${f.present}`}${was.present === "" ? "" : `, not when ${was.present}`}.`,
+        `\`${f.path}\` is ${was.present === "" ? "always present" : `present when ${was.present}`} in ${P}, and ${f.present === "" ? "always present" : `present when ${f.present}`} in ${C}.`,
       );
     if (was.values !== f.values) {
       const list = (v: string): string[] => (v === "" ? [] : v.split(", "));
@@ -331,9 +426,12 @@ function fieldChanges(
       const come = list(f.values).filter((v) => !list(was.values).includes(v));
       if (come.length > 0)
         out.push(
-          `\`${f.path}\` takes ${come.join(", ")}${gone.length > 0 ? `, where it took ${gone.join(", ")}` : ""}.`,
+          `\`${f.path}\` takes ${come.join(", ")} in ${C} and not in ${P}.`,
         );
-      else out.push(`\`${f.path}\` no longer takes ${gone.join(", ")}.`);
+      if (gone.length > 0)
+        out.push(
+          `\`${f.path}\` takes ${gone.join(", ")} in ${P} and not in ${C}.`,
+        );
     }
     const bitsWere = new Map(was.bits.map((x) => [x.name, x]));
     const bitsNow = new Map(f.bits.map((x) => [x.name, x]));
@@ -345,7 +443,7 @@ function fieldChanges(
       );
       if (!bitsWere.has(x.name) && y !== undefined) {
         out.push(
-          `\`${f.path}\` names bit ${x.at} \`${x.name}\`, where it was \`${y.name}\`.`,
+          `\`${f.path}\` names bit ${x.at} \`${y.name}\` in ${P} and \`${x.name}\` in ${C}.`,
         );
         renamed.add(x.name).add(y.name);
       }
@@ -354,24 +452,27 @@ function fieldChanges(
       if (renamed.has(x.name)) continue;
       const y = bitsWere.get(x.name);
       if (y === undefined)
-        out.push(`\`${f.path}\` gains \`${x.name}\` at bit ${x.at}.`);
+        out.push(
+          `\`${f.path}\` has \`${x.name}\` at bit ${x.at} in ${C}, and not in ${P}.`,
+        );
       else if (y.at !== x.at || y.width !== x.width)
         out.push(
-          `\`${f.path}.${x.name}\` moves from bit ${y.at} to bit ${x.at}${y.width === x.width ? "" : `, and from ${y.width} bits wide to ${x.width}`}.`,
+          `\`${f.path}.${x.name}\` is at bit ${y.at}${y.width === x.width ? "" : `, ${y.width} bits wide,`} in ${P} and at bit ${x.at}${y.width === x.width ? "" : `, ${x.width} bits wide,`} in ${C}.`,
         );
     }
     for (const y of was.bits)
       if (!bitsNow.has(y.name) && !renamed.has(y.name))
         out.push(
-          `\`${f.path}\` loses \`${y.name}\`, which was at bit ${y.at}.`,
+          `\`${f.path}\` has \`${y.name}\` at bit ${y.at} in ${P}, and not in ${C}.`,
         );
   }
   for (const f of a)
-    if (!now.has(f.path)) out.push(`\`${f.path}\` is removed.`);
+    if (!now.has(f.path))
+      out.push(`\`${f.path}\` is in ${P} and not in ${C}.`);
   const kept = (list: Flat[], other: Map<string, Flat>): string[] =>
     list.filter((f) => other.has(f.path)).map((f) => f.path);
   if (out.length === 0 && !same(kept(a, now), kept(b, old)))
-    out.push("The same fields come in a different order.");
+    out.push(`The same fields come in another order in ${C}.`);
   return out;
 }
 
@@ -380,26 +481,30 @@ interface Changed {
   readonly lines: readonly string[];
 }
 
-// Whether a range lacks a message the ranges either side of it both define.
+// Whether a range lacks a message that the nearest ranges on both sides of
+// the run of ranges lacking it define: a gap in what is recorded.
 const gapAt = (m: (typeof messages)[number], i: number): boolean => {
-  const [before, here, after] = [ranges[i - 1], ranges[i], ranges[i + 1]];
-  return (
-    before !== undefined &&
-    here !== undefined &&
-    after !== undefined &&
-    revisionAt(m, here.from) === undefined &&
-    revisionAt(m, before.from) !== undefined &&
-    revisionAt(m, after.from) !== undefined
-  );
+  const has = (k: number): boolean => {
+    const r = ranges[k];
+    return r !== undefined && revisionAt(m, r.from) !== undefined;
+  };
+  if (i < 0 || i >= ranges.length || has(i)) return false;
+  let before = i - 1;
+  while (before >= 0 && !has(before)) before -= 1;
+  let after = i + 1;
+  while (after < ranges.length && !has(after)) after += 1;
+  return before >= 0 && after < ranges.length;
 };
 
 function changesPage(prev: Range, range: Range, path: string): string[] {
   const i = ranges.indexOf(range);
+  const P = rangeName(prev);
+  const C = rangeName(range);
   const repo = up(path);
   const lines = [
-    `# What changes from ${rangeName(prev)} to ${rangeName(range)}`,
+    `# ${C} against ${P}`,
     "",
-    `What a build from ${span(range)} does differently from one from ${span(prev)}. Anything not named here is the same in both. The [messages](messages.md) page and the [book](book.md) give the whole of ${rangeName(range)}.`,
+    `Where a build from ${span(range)} differs from one from ${span(prev)}. Anything not named here is the same in both. The [messages](messages.md) page and the [book](book.md) give the whole of ${C}.`,
   ];
   const section = (title: string, body: readonly string[]): void => {
     if (body.length > 0) lines.push("", `## ${title}`, "", ...body);
@@ -416,7 +521,7 @@ function changesPage(prev: Range, range: Range, path: string): string[] {
     const b = revs.find((r) => covers(r, range.from));
     if (a !== b)
       header.push(
-        `- The ${what} change: see [${file.split("/")[1]}](${repo}${file}).`,
+        `- The ${what} differ: see [${file.split("/")[1]}](${repo}${file}).`,
       );
   }
   const ids = (cs: readonly Channel[]): Map<string, Channel> =>
@@ -427,16 +532,16 @@ function changesPage(prev: Range, range: Range, path: string): string[] {
     const w = was.get(c.name);
     if (w === undefined)
       header.push(
-        `- Channel ${c.id}, ${c.name}, is added, in the ${c.family} family.`,
+        `- Channel ${c.id}, ${c.name}, in the ${c.family} family, is in ${C} and not in ${P}.`,
       );
     else if (w.id !== c.id || w.family !== c.family)
       header.push(
-        `- Channel ${c.name} becomes ${c.id} in the ${c.family} family, where it was ${w.id} in the ${w.family} family.`,
+        `- Channel ${c.name} is ${w.id} in the ${w.family} family in ${P}, and ${c.id} in the ${c.family} family in ${C}.`,
       );
   }
   for (const c of prev.channels)
     if (!now.has(c.name))
-      header.push(`- Channel ${c.id}, ${c.name}, is removed.`);
+      header.push(`- Channel ${c.id}, ${c.name}, is in ${P} and not in ${C}.`);
   section("Transport", header);
 
   // The messages.
@@ -453,11 +558,12 @@ function changesPage(prev: Range, range: Range, path: string): string[] {
     let a = revisionAt(m, prev.from);
     const b = revisionAt(m, range.from);
     if (a === b) continue;
-    // A message the range before did not record is measured from the one
-    // before that.
+    // A message the range before did not record is measured from the
+    // nearest range before that does.
     if (a === undefined && b !== undefined && gapAt(m, i - 1)) {
       again.push(def(m.file, m.message));
-      a = revisionAt(m, ranges[i - 2]?.from ?? "");
+      for (let k = i - 2; k >= 0 && a === undefined; k -= 1)
+        a = revisionAt(m, ranges[k]?.from ?? "");
       if (a === b) continue;
     }
     if (b === undefined && a !== undefined && gapAt(m, i)) {
@@ -495,16 +601,20 @@ function changesPage(prev: Range, range: Range, path: string): string[] {
     }
     const out: string[] = [];
     if (a.command !== b.command)
-      out.push(`Its command changes from ${a.command} to ${b.command}.`);
+      out.push(
+        `Its command is ${a.command} in ${P} and ${b.command} in ${C}.`,
+      );
     if (a.channel !== b.channel)
-      out.push(`It moves from ${a.channel} to ${b.channel}.`);
+      out.push(`It travels on ${a.channel} in ${P} and ${b.channel} in ${C}.`);
     if (a.direction !== b.direction)
-      out.push(`It is now sent by the ${by(b)}, not the ${by(a)}.`);
+      out.push(`The ${by(a)} sends it in ${P}, and the ${by(b)} in ${C}.`);
     if (a.reliability !== b.reliability)
-      out.push(`It is now sent ${b.reliability}, not ${a.reliability}.`);
+      out.push(
+        `It is sent ${a.reliability} in ${P} and ${b.reliability} in ${C}.`,
+      );
     if (!same(a.alsoOn ?? [], b.alsoOn ?? []))
       out.push("The other channels it may come on change.");
-    out.push(...fieldChanges(a.fields, b.fields));
+    out.push(...fieldChanges(a.fields, b.fields, P, C));
     if (out.length === 0) out.push("Its layout changes in a detail.");
     const backing = vectorsIn(range).filter((v) => v.message === m.message);
     changed.push({
@@ -525,7 +635,7 @@ function changesPage(prev: Range, range: Range, path: string): string[] {
     });
   }
   section(
-    "Messages added",
+    `In ${C}, not in ${P}`,
     added.length === 0
       ? []
       : [
@@ -535,7 +645,7 @@ function changesPage(prev: Range, range: Range, path: string): string[] {
         ],
   );
   section(
-    "Messages removed",
+    `In ${P}, not in ${C}`,
     removed.length === 0
       ? []
       : [
@@ -549,7 +659,7 @@ function changesPage(prev: Range, range: Range, path: string): string[] {
     unrecorded.length === 0
       ? []
       : [
-          `The ranges either side of ${rangeName(range)} both define these, and ${rangeName(range)} does not: the specification says nothing of whether a build in it sends or takes them, rather than that it does not. ${unrecorded.join(", ")}.`,
+          `The nearest ranges on either side of ${C} that define these both do, and ${C} does not: the specification says nothing of whether a build in it sends or takes them, rather than that it does not. ${unrecorded.join(", ")}.`,
         ],
   );
   section(
@@ -557,23 +667,23 @@ function changesPage(prev: Range, range: Range, path: string): string[] {
     again.length === 0
       ? []
       : [
-          `${rangeName(prev)} does not record these, and the ranges either side of it both define them: ${again.join(", ")}. Where they differ from the range before ${rangeName(prev)}, they are under the messages changed.`,
+          `${P} does not record these, and the nearest ranges on either side of it that define them both do: ${again.join(", ")}. Where they differ from the nearest range before that does, they are under the layouts that differ.`,
         ],
   );
   section(
-    "Commands renumbered",
+    "Commands",
     renumbered.length === 0
       ? []
       : [
-          "These change only their command:",
+          "These differ only in their command:",
           "",
-          "| Message | Channel | Was | Now |",
+          `| Message | Channel | ${P} | ${C} |`,
           "| --- | --- | --- | --- |",
           ...renumbered,
         ],
   );
   section(
-    "Messages changed",
+    "Laid out differently",
     changed.flatMap((c) => [`- ${c.name}`, ...c.lines.map((l) => `  - ${l}`)]),
   );
 
@@ -584,12 +694,14 @@ function changesPage(prev: Range, range: Range, path: string): string[] {
     const b = structAt(s, range.from);
     if (a === b) continue;
     const name = `[\`${s.struct}\`](${repo}schema/types/${s.file})`;
-    if (a === undefined) structLines.push(`- ${name} is added.`);
-    else if (b === undefined) structLines.push(`- ${name} is removed.`);
+    if (a === undefined)
+      structLines.push(`- ${name} is in ${C} and not in ${P}.`);
+    else if (b === undefined)
+      structLines.push(`- ${name} is in ${P} and not in ${C}.`);
     else if (!same(withoutNotes(a), withoutNotes(b)))
       structLines.push(
         `- ${name}`,
-        ...fieldChanges(a, b).map((l) => `  - ${l}`),
+        ...fieldChanges(a, b, P, C).map((l) => `  - ${l}`),
       );
   }
   section("Structs", structLines);
@@ -623,11 +735,11 @@ function changesPage(prev: Range, range: Range, path: string): string[] {
       const place = `the ${chapter} chapter's \`${key}\``;
       if (x === undefined && y !== undefined)
         bindingLines.push(
-          `- ${rangeName(range)} fills ${place}, from ${where(y)}.`,
+          `- ${C} fills ${place}, from ${where(y)}, and ${P} does not.`,
         );
       else if (y === undefined && x !== undefined)
         bindingLines.push(
-          `- ${rangeName(range)} leaves ${place} empty, which ${where(x)} filled.`,
+          `- ${P} fills ${place}, from ${where(x)}, and ${C} does not.`,
         );
       else if (
         x !== undefined &&
@@ -635,7 +747,7 @@ function changesPage(prev: Range, range: Range, path: string): string[] {
         entry(chapter, key, x) !== entry(chapter, key, y)
       )
         bindingLines.push(
-          `- What ${place} says changes: ${where(y)}, where it was ${where(x)}.`,
+          `- ${place} says one thing in ${P}, from ${where(x)}, and another in ${C}, from ${where(y)}.`,
         );
     }
   }
@@ -660,7 +772,6 @@ function rangePage(i: number, path: string): string[] {
   const range = ranges[i];
   if (range === undefined) return [];
   const prev = ranges[i - 1];
-  const next = ranges[i + 1];
   const repo = up(path);
   const season = seasonOf(range);
   const ran = results.filter((r) => covers(range, r.build));
@@ -669,15 +780,7 @@ function rangePage(i: number, path: string): string[] {
     here.filter((m) => by(revisionAt(m, range.from)) === d).length;
   // What both neighbours define and this range does not: a gap, or a message
   // these builds alone go without.
-  const lacks =
-    prev === undefined || next === undefined
-      ? []
-      : messages.filter(
-          (m) =>
-            revisionAt(m, range.from) === undefined &&
-            revisionAt(m, prev.from) !== undefined &&
-            revisionAt(m, next.from) !== undefined,
-        );
+  const lacks = messages.filter((m) => gapAt(m, i));
   const lines = [
     `# ${rangeName(range)}`,
     "",
@@ -691,7 +794,7 @@ function rangePage(i: number, path: string): string[] {
     `- [Every message](messages.md): ${here.length} messages, ${count("server")} sent by the server, ${count("client")} by the client and ${count("both")} by either.`,
     ...(prev === undefined
       ? []
-      : [`- [What changes from ${rangeName(prev)}](changes.md).`]),
+      : [`- [How it differs from ${rangeName(prev)}](changes.md).`]),
     "",
     "## Bindings",
     "",
@@ -747,7 +850,7 @@ function rangePage(i: number, path: string): string[] {
       "",
       "## Not recorded",
       "",
-      `The ranges either side of this one both define these, and this one does not. The specification says nothing of whether a build in it sends or takes them: ${lacks.map((m) => `[\`${m.message}\`](${repo}schema/messages/${m.file})`).join(", ")}.`,
+      `The nearest ranges on either side of this one that define these both do, and this one does not. The specification says nothing of whether a build in it sends or takes them: ${lacks.map((m) => `[\`${m.message}\`](${repo}schema/messages/${m.file})`).join(", ")}.`,
     );
   return lines;
 }
@@ -786,7 +889,7 @@ for (const s of held) {
 put("README.md", [
   "# Trueshot",
   "",
-  `Generated from the [repository](../../) by \`bun run site\`. The [chapters](../../spec/README.md) hold for every range; each range below has its own book, every message it sends or takes, and what changes from the range before it.`,
+  `Generated from the [repository](../../) by \`bun run site\`. The [chapters](../../spec/README.md) hold for every range; each range below has its own book, every message it sends or takes, and how it differs from the range before it.`,
   "",
   ...held.flatMap((s) => [
     `## [${s.name}](${s.folder}/README.md)`,
@@ -805,6 +908,12 @@ for (const [path, text] of pages) {
   mkdirSync(dirname(full), { recursive: true });
   writeFileSync(full, text);
 }
+// The books go beside the pages, so a site is never left without them.
+const books = Bun.spawnSync(
+  ["bun", join(ROOT, "scripts/book.ts"), ...process.argv.slice(2)],
+  { stdout: "inherit", stderr: "inherit" },
+);
+if (books.exitCode !== 0) process.exit(books.exitCode);
 console.log(
   `wrote ${pages.size} pages for ${ranges.length} ranges in ${held.length} seasons to dist/site`,
 );

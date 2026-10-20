@@ -23,8 +23,8 @@ Every build in a range is held to the same facts.
 A range is checked against the client builds that
 [conformance/live/results](../conformance/live/results/) holds a file for, one
 per build, each naming the commit its checks ran at and how each fared. A range
-claims the builds between its first and the last one checked as well, on the
-strength of those checks, and claims nothing of a build outside it.
+claims the builds between its first and the last one whose checks all passed or
+were skipped, and claims nothing of a build outside it.
 
 ## In the definitions
 
@@ -50,8 +50,8 @@ holds for its range alone, so it names no range.
 
 What several ranges do alike, and another does not, belongs in a binding for a
 span: a directory named for two builds joined by `--`, which holds for every
-range from the first build up to the second. Where a span and a range both
-fill a place, the span's entry comes first.
+range from the first build up to the second. Where several bindings fill a
+place, the widest span's entry comes first and the range's own last.
 
 ## The site
 

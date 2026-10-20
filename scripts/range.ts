@@ -17,7 +17,8 @@
 import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import * as prettier from "prettier";
-import { compare, covers } from "./schema.ts";
+import { bindings } from "./bindings.ts";
+import { compare, covers, ranges } from "./schema.ts";
 import type { Ranged } from "./schema.ts";
 
 const ROOT = join(import.meta.dir, "..");
@@ -56,7 +57,8 @@ const ranged = (r: Revision, from: string, until: string): Revision => {
 
 // Notes anywhere in a revision that name a build, which a copy carries to
 // builds they were not written for.
-const NAMED = /\b\d+\.\d+(?:\.\d+\.\d+)?(?: to \d+\.\d+)? clients?\b/;
+const NAMED =
+  /\b\d+\.\d+(?:\.\d+\.\d+)?(?: to \d+\.\d+)? (?:clients?|servers?|builds?|ones?)\b|\b(?:from|on|in|before|after|up to) \d+\.\d+(?:\.\d+\.\d+)?\b/;
 function namedNotes(value: unknown, path: string, out: string[]): void {
   if (Array.isArray(value)) {
     value.forEach((v, i) => namedNotes(v, `${path}[${i}]`, out));
@@ -70,6 +72,7 @@ function namedNotes(value: unknown, path: string, out: string[]): void {
   }
 }
 
+const before = ranges();
 const changed: [string, Doc][] = [];
 const review: string[] = [];
 const problems: string[] = [];
@@ -103,13 +106,26 @@ for (const path of files) {
       continue;
     }
     const copy = ranged(source, span.from, span.until);
-    namedNotes(copy, `${path} ${from}`, review);
+    namedNotes(copy, `${path} ${from}: a copied note names a build`, review);
     revisions.push(copy);
     revisions.sort((a, b) => compare(a.from, b.from));
     changed.push([path, doc]);
   } else usage();
 }
 
+if (changed.length === 0)
+  problems.push("no definition covers that build, so nothing changed");
+// A binding for one range holds for the range starting at its build alone, so
+// a split leaves the second half without it.
+if (command === "split") {
+  const at = args[0] ?? "";
+  const split = before.find((r) => covers(r, at) && r.from !== at);
+  for (const b of bindings)
+    if (split !== undefined && b.until === undefined && b.from === split.from)
+      review.push(
+        `${b.dir} holds for ${split.from} up to ${at} alone now; what still holds from ${at} goes in spec/bindings/${at.replace(/\./g, "-")}`,
+      );
+}
 if (problems.length > 0) {
   console.error(problems.join("\n"));
   process.exit(1);
@@ -125,6 +141,4 @@ for (const [path, doc] of changed)
   );
 console.log(`changed ${changed.length} definitions`);
 if (review.length > 0)
-  console.log(
-    `\nThese copied notes name a build, and now sit in a revision for others:\n  ${review.join("\n  ")}`,
-  );
+  console.log(`\nLeft to review:\n  ${review.join("\n  ")}`);

@@ -27,14 +27,19 @@ const messages: readonly MessageFile[] = readdirSync(
     ...json<Omit<MessageFile, "file">>(`schema/messages/${file}`),
   }));
 
-// The builds the live checks have results for.
+// The builds the live checks bear out: those with a results file where no
+// check failed. A range claims these as well as its first build.
 const RESULTS = join(ROOT, "conformance/live/results");
 const checked: readonly string[] = existsSync(RESULTS)
   ? readdirSync(RESULTS)
       .filter((f) => f.endsWith(".json"))
-      .map(
-        (f) => json<{ build: string }>(`conformance/live/results/${f}`).build,
+      .map((f) =>
+        json<{ build: string; checks: { outcome: string }[] }>(
+          `conformance/live/results/${f}`,
+        ),
       )
+      .filter((r) => r.checks.every((c) => c.outcome !== "failed"))
+      .map((r) => r.build)
   : [];
 
 const twoParts = (build: string): string =>
