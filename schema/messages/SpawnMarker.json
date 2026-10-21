@@ -5,7 +5,7 @@
   "note": "What a server sends to create an unseen object at a place, which other messages can then name. A client first deletes any object it holds under the same id. The header carries zero.",
   "revisions": [
     {
-      "from": "3.10.0.237",
+      "from": "3.9.0.491",
       "until": "4.1.0.171",
       "channel": "events",
       "command": 256,

@@ -1,0 +1,42 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "WorldEvent",
+  "version": "3.9.0.491",
+  "note": "Laid out as a 3.9.0.491 client takes it.",
+  "bytes": "44000000002b20000040b3730040000000000000000000000000000000",
+  "fields": {
+    "command": 68,
+    "netId": 0,
+    "extendedCommand": null,
+    "event": 43,
+    "source": 1073741856,
+    "subject": 1073771443,
+    "stage": null,
+    "damage": null,
+    "spent": null,
+    "value": null,
+    "critical": null,
+    "spree": null,
+    "earned": null,
+    "heal": null,
+    "effect": {
+      "sourceKind": 0,
+      "script": 0,
+      "parentScript": 0,
+      "parentCaster": 0,
+      "parent": {
+        "source": 0,
+        "side": 0,
+        "category": 0,
+        "spellLevel": 0,
+        "unused": 0
+      }
+    },
+    "extra": null,
+    "assist": null,
+    "kill": null,
+    "monster": null,
+    "callout": null
+  }
+}
