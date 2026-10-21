@@ -54,6 +54,13 @@ unit into view (see [Vision](vision.md)): a client takes either.
 `TeamChanged` moves a unit to another side, and `ChampionRemoved` takes a
 champion out of the world. A unit's death is in [Combat](combat.md).
 
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> A client leaves the match when `ChampionRemoved` names its own champion. A
+> server MUST NOT send `ChampionRemoved` for a client's own champion.
+
 ## Bots
 
 A server can tell a client what a bot is thinking (`BotDebug`), weighing

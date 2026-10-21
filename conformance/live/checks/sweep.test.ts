@@ -40,6 +40,17 @@ interface Vector {
 
 const VECTORS = join(import.meta.dir, "..", "..", "vectors");
 
+// Whether build a comes before build b.
+function before(a: string, b: string): boolean {
+  const x = a.split(".").map(Number);
+  const y = b.split(".").map(Number);
+  for (let i = 0; i < Math.max(x.length, y.length); i++) {
+    const d = (x[i] ?? 0) - (y[i] ?? 0);
+    if (d !== 0) return d < 0;
+  }
+  return false;
+}
+
 function sweepFor(
   layouts: Layouts,
   build: string,
@@ -130,8 +141,12 @@ function sweepFor(
   const regions = new Set(
     out.filter((m) => m.name === "RegionAdded").map((m) => m.fields["marker"]),
   );
+  // spec/units.md: a 3.10 server MUST NOT remove a client's own champion, the
+  // only champion a sweep's match holds.
+  const ownChampion = before(build, "3.11.0.306");
   return out.filter(
     (m) =>
+      (m.name !== "ChampionRemoved" || !ownChampion) &&
       (m.name !== "SpellInSlot" || !markers.has(m.fields["unit"])) &&
       (m.name !== "RegionMoved" || regions.has(m.fields["region"])),
   );

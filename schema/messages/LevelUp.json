@@ -25,6 +25,27 @@
       ]
     },
     {
+      "from": "3.10.0.237",
+      "until": "3.11.0.306",
+      "channel": "events",
+      "command": 62,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "level",
+          "type": "u8",
+          "note": "The level now reached."
+        },
+        {
+          "name": "pointsToSpend",
+          "type": "u8",
+          "note": "How many spell points are left unspent."
+        }
+      ],
+      "note": "A client applies it only to a champion, and ignores it for any other unit."
+    },
+    {
       "from": "3.11.0.306",
       "until": "4.11.0.386",
       "channel": "events",
