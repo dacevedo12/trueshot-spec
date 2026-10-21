@@ -27,7 +27,7 @@
     },
     {
       "from": "3.11.0.306",
-      "until": "3.12.0.251",
+      "until": "4.1.0.171",
       "channel": "events",
       "command": 174,
       "direction": "serverToClient",
@@ -46,64 +46,6 @@
             {
               "name": "unused",
               "width": 5,
-              "note": "Unused; a server writes zero."
-            }
-          ]
-        },
-        {
-          "name": "messages",
-          "type": "array",
-          "size": "carried.size",
-          "note": "Whole messages of the same family, each behind its own length, that a client acts on as though they had arrived on their own.",
-          "items": {
-            "type": "struct",
-            "struct": "CarriedMessage",
-            "name": "message"
-          }
-        },
-        {
-          "name": "vitals",
-          "type": "record",
-          "present": {
-            "when": "remaining"
-          },
-          "note": "The unit's health. A server sends this message without it too, ending after the carried messages.",
-          "fields": [
-            {
-              "name": "maxHealth",
-              "type": "f32",
-              "note": "What the unit's health tops out at."
-            },
-            {
-              "name": "health",
-              "type": "f32",
-              "note": "What its health stands at."
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "from": "3.12.0.251",
-      "until": "4.1.0.171",
-      "channel": "events",
-      "command": 174,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "carried",
-          "type": "bits",
-          "size": 2,
-          "bits": [
-            {
-              "name": "size",
-              "width": 13,
-              "note": "How many bytes the messages below occupy in total."
-            },
-            {
-              "name": "unused",
-              "width": 3,
               "note": "Unused; a server writes zero."
             }
           ]

@@ -21,7 +21,7 @@
     },
     {
       "from": "3.11.0.306",
-      "until": "3.12.0.251",
+      "until": "4.1.0.171",
       "channel": "events",
       "command": 206,
       "direction": "serverToClient",
@@ -63,53 +63,6 @@
           "type": "i32",
           "present": {
             "when": "flags.changeType"
-          },
-          "note": "The side that sees the change, or 0 for every side."
-        }
-      ]
-    },
-    {
-      "from": "3.12.0.251",
-      "until": "4.1.0.171",
-      "channel": "events",
-      "command": 206,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "flags",
-          "type": "bits",
-          "size": 1,
-          "note": "What changes.",
-          "bits": [
-            {
-              "name": "show",
-              "width": 1,
-              "note": "Set to show the bar, clear to hide it."
-            },
-            {
-              "name": "changeType",
-              "width": 1,
-              "note": "Set where the bar's type changes; the type and side below apply only then."
-            },
-            {
-              "name": "unused",
-              "width": 6,
-              "note": "Unused; a server writes zero."
-            }
-          ]
-        },
-        {
-          "name": "barType",
-          "type": "u8",
-          "note": "Which sort of bar, applying only where changeType is set and side is the client's player's side or zero: 1 a unit's, 2 a champion's; any other value only makes sure the unit has a bar."
-        },
-        {
-          "name": "side",
-          "type": "i32",
-          "present": {
-            "when": "flags.changeType",
-            "unseen": "present"
           },
           "note": "The side that sees the change, or 0 for every side."
         }

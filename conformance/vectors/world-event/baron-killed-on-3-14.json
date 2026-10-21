@@ -4,25 +4,36 @@
   "message": "WorldEvent",
   "version": "3.14.0.700",
   "note": "Laid out as a 3.14.0.700 client takes it.",
-  "bytes": "44000000009822000040cf390040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000033dec5d70000000000000000",
+  "bytes": "44000000009000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
   "fields": {
     "command": 68,
     "netId": 0,
     "extendedCommand": null,
-    "event": 152,
-    "source": 1073741858,
-    "subject": 1073756623,
-    "map": null,
-    "inhibitorGold": null,
-    "inhibitorAssistCount": null,
-    "inhibitorAssists": null,
+    "event": 144,
+    "source": 0,
+    "subject": 0,
+    "stage": null,
+    "damage": null,
+    "spent": null,
+    "value": null,
+    "critical": null,
+    "spree": null,
+    "earned": null,
+    "heal": null,
+    "effect": null,
+    "extra": null,
+    "assist": null,
     "kill": {
       "gold": 0,
       "assistCount": 0,
-      "assists": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      "skinHash": 3620068915,
+      "assists": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    },
+    "monster": {
+      "skinHash": 0,
       "skin": 0,
       "side": 0
-    }
+    },
+    "callout": null,
+    "substitution": null
   }
 }

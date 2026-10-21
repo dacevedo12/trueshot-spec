@@ -26,7 +26,7 @@
     },
     {
       "from": "3.11.0.306",
-      "until": "3.12.0.251",
+      "until": "4.1.0.171",
       "channel": "events",
       "command": 220,
       "direction": "serverToClient",
@@ -48,48 +48,6 @@
             },
             "3": {
               "name": "changeState"
-            }
-          }
-        },
-        {
-          "name": "event",
-          "type": "u32",
-          "note": "Which cue or event."
-        },
-        {
-          "name": "parameter",
-          "type": "u32",
-          "note": "Which state, where the state changes."
-        }
-      ]
-    },
-    {
-      "from": "3.12.0.251",
-      "until": "4.1.0.171",
-      "channel": "events",
-      "command": 220,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "cue",
-          "type": "u8",
-          "note": "What to do.",
-          "values": {
-            "0": {
-              "name": "prepare"
-            },
-            "1": {
-              "name": "begin"
-            },
-            "2": {
-              "name": "end"
-            },
-            "3": {
-              "name": "changeState"
-            },
-            "4": {
-              "name": "trigger"
             }
           }
         },
