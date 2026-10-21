@@ -1,10 +1,10 @@
 {
   "build": "3.13.0.399",
   "layouts": "3.13.0.399",
-  "commit": "87f8052e4b28089b45fec40f28d7ae862a14165c",
+  "commit": "545f334f93f6e83a2bab7d9751441687f940caef",
   "modified": false,
   "runtime": "bun 1.4.2",
-  "date": "2026-10-20",
+  "date": "2026-10-21",
   "checks": [
     {
       "check": "communication > a client takes SystemMessage and stays in play",
@@ -67,12 +67,12 @@
     {
       "look": "sweep",
       "expect": "the client is in play, whatever the messages drew",
-      "outcome": "not captured"
+      "outcome": "to review"
     },
     {
       "look": "system-message",
       "expect": "the chat shows \"trueshot: a line of the server's own\"",
-      "outcome": "not captured"
+      "outcome": "to review"
     }
   ]
 }
