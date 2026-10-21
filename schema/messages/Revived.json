@@ -30,6 +30,36 @@
       ]
     },
     {
+      "from": "3.8.0.226",
+      "until": "3.9.0.491",
+      "channel": "events",
+      "command": 46,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where it returns, along one ground axis, in world units."
+        },
+        {
+          "name": "atY",
+          "type": "f32",
+          "note": "Where it returns, in height, in world units. A client places it there as given."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where it returns, along the other ground axis, in world units."
+        },
+        {
+          "name": "resource",
+          "type": "f32",
+          "note": "What its spendable resource stands at on return."
+        }
+      ]
+    },
+    {
       "from": "3.9.0.491",
       "until": "4.11.0.386",
       "channel": "events",

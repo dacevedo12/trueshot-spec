@@ -5,7 +5,7 @@
   "note": "What a server sends as a side votes on evening out a match: on the first vote it opens the vote's panel for that side, and each message adds one voter. A client sends BalanceVoteAnswer as its player votes. A client with no champion of its own ignores it. The header carries zero.",
   "revisions": [
     {
-      "from": "3.9.0.491",
+      "from": "3.8.0.226",
       "until": "4.1.0.171",
       "channel": "events",
       "command": 250,

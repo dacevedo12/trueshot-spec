@@ -1,0 +1,28 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "struct",
+  "struct": "Particle",
+  "version": "3.10.0.237",
+  "note": "Laid out as a 3.10.0.237 client takes it: the particle of the 3.11 vector of ParticlesCreated, which reads the same.",
+  "bytes": "740600404a110040740600400000000092f35b901d436bf392f35b901d436bf392f35b901d436bf3000000000000000000000000000000000000803f",
+  "fields": {
+    "target": 1073743476,
+    "particle": 1073746250,
+    "boundTo": 1073743476,
+    "settingsFrom": 0,
+    "atX": -3182,
+    "atY": 157.5638885498047,
+    "atZ": -3221,
+    "towardX": -3182,
+    "towardY": 157.5638885498047,
+    "towardZ": -3221,
+    "ownerX": -3182,
+    "ownerY": 157.5638885498047,
+    "ownerZ": -3221,
+    "facingX": 0,
+    "facingY": 0,
+    "facingZ": 0,
+    "runningFor": 0,
+    "scale": 1
+  }
+}

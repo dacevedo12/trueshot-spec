@@ -5,6 +5,691 @@
   "note": "What a server sends to say something happened that the whole match is told about. What sort of thing is named first, and the sort settles what follows. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "3.8.0.226",
+      "until": "3.9.0.491",
+      "channel": "events",
+      "command": 68,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "event",
+          "type": "u8",
+          "note": "Which event, from 0 to 140, and so which fields follow.",
+          "values": {
+            "0": {
+              "name": "removed"
+            },
+            "1": {
+              "name": "spawned"
+            },
+            "2": {
+              "name": "died"
+            },
+            "4": {
+              "name": "championDied"
+            },
+            "6": {
+              "name": "championKill"
+            },
+            "8": {
+              "name": "singleKill"
+            },
+            "9": {
+              "name": "doubleKill"
+            },
+            "15": {
+              "name": "damageTaken"
+            },
+            "16": {
+              "name": "damageDealt"
+            },
+            "23": {
+              "name": "goldSpent"
+            },
+            "24": {
+              "name": "goldEarned"
+            },
+            "25": {
+              "name": "consumableBought"
+            },
+            "26": {
+              "name": "criticalStrike"
+            },
+            "29": {
+              "name": "inhibitorKilled"
+            },
+            "30": {
+              "name": "inhibitorDied"
+            },
+            "31": {
+              "name": "inhibitorRespawningSoon"
+            },
+            "33": {
+              "name": "turretKilled"
+            },
+            "34": {
+              "name": "turretDied"
+            },
+            "35": {
+              "name": "minionKilled"
+            },
+            "36": {
+              "name": "minionDenied"
+            },
+            "37": {
+              "name": "monsterKilled"
+            },
+            "38": {
+              "name": "largeMonsterKilled"
+            },
+            "39": {
+              "name": "nexusKilled"
+            },
+            "40": {
+              "name": "nexusDied"
+            },
+            "41": {
+              "name": "heal"
+            },
+            "42": {
+              "name": "healCast"
+            },
+            "43": {
+              "name": "buff"
+            },
+            "44": {
+              "name": "crowdControl"
+            },
+            "45": {
+              "name": "killingSpree"
+            },
+            "52": {
+              "name": "killDuringSpree"
+            },
+            "59": {
+              "name": "doubleKillDuringSpree"
+            },
+            "60": {
+              "name": "tripleKillDuringSpree"
+            },
+            "61": {
+              "name": "quadraKillDuringSpree"
+            },
+            "64": {
+              "name": "deathAssist"
+            },
+            "65": {
+              "name": "playerQuit"
+            },
+            "66": {
+              "name": "playerLeft"
+            },
+            "67": {
+              "name": "playerReconnected"
+            },
+            "78": {
+              "name": "itemBought"
+            },
+            "79": {
+              "name": "itemSold"
+            },
+            "80": {
+              "name": "itemRemoved"
+            },
+            "81": {
+              "name": "itemCallout"
+            },
+            "82": {
+              "name": "itemChanged"
+            },
+            "101": {
+              "name": "minionsSpawned"
+            },
+            "102": {
+              "name": "welcome"
+            },
+            "103": {
+              "name": "startNoticeTwo"
+            },
+            "104": {
+              "name": "startNoticeThree"
+            },
+            "108": {
+              "name": "scoreboardOpened"
+            },
+            "131": {
+              "name": "dragonKilled"
+            },
+            "132": {
+              "name": "dragonKilledWatched"
+            },
+            "133": {
+              "name": "baronKilled"
+            },
+            "134": {
+              "name": "baronKilledWatched"
+            },
+            "135": {
+              "name": "spiderKilled"
+            },
+            "136": {
+              "name": "spiderKilledWatched"
+            },
+            "137": {
+              "name": "altarCaptured"
+            },
+            "138": {
+              "name": "altarCapturedWatched"
+            },
+            "139": {
+              "name": "wardPlaced"
+            },
+            "140": {
+              "name": "wardKilled"
+            }
+          }
+        },
+        {
+          "name": "source",
+          "type": "u32",
+          "note": "The unit the thing is credited to, or zero where none is."
+        },
+        {
+          "name": "subject",
+          "type": "u32",
+          "note": "The unit the thing happened to, or zero where none is named."
+        },
+        {
+          "name": "stage",
+          "type": "u8",
+          "note": "A client reads it and shows nothing for it; a server writes zero.",
+          "present": {
+            "when": "event",
+            "equals": 5
+          }
+        },
+        {
+          "name": "damage",
+          "type": "record",
+          "present": {
+            "when": "event",
+            "equals": [15, 16]
+          },
+          "note": "How much harm, and from what.",
+          "fields": [
+            {
+              "name": "physical",
+              "type": "f32",
+              "note": "Physical damage."
+            },
+            {
+              "name": "magical",
+              "type": "f32",
+              "note": "Magical damage."
+            },
+            {
+              "name": "true",
+              "type": "f32",
+              "note": "True damage."
+            },
+            {
+              "name": "sourceKind",
+              "type": "u8",
+              "note": "What sort of source it was.",
+              "values": {
+                "0": {
+                  "name": "spell"
+                },
+                "1": {
+                  "name": "item",
+                  "note": "An item the killer holds, named by script."
+                },
+                "2": {
+                  "name": "buff",
+                  "note": "An effect, named by script."
+                },
+                "3": {
+                  "name": "passive"
+                },
+                "4": {
+                  "name": "basicAttack"
+                }
+              }
+            },
+            {
+              "name": "script",
+              "type": "u32",
+              "note": "The spell or effect, by the number its name gives, shown by name."
+            },
+            {
+              "name": "parentScript",
+              "type": "u32",
+              "note": "The spell or effect it came from, by the number its name gives, shown by name."
+            },
+            {
+              "name": "parentCaster",
+              "type": "u32",
+              "note": "What it carries is not recorded for this range; a server writes zero."
+            },
+            {
+              "name": "parent",
+              "type": "bits",
+              "size": 2,
+              "note": "Where the spell or effect came from.",
+              "bits": [
+                {
+                  "name": "source",
+                  "width": 4,
+                  "note": "What sort of source the parent spell or effect is, numbered as sourceKind is."
+                },
+                {
+                  "name": "side",
+                  "width": 4,
+                  "note": "What it means is not recorded for this range; a server writes zero."
+                },
+                {
+                  "name": "category",
+                  "width": 4,
+                  "note": "A client sums two entries of this sort where this, the source kinds and both spells match, and, where this is zero, the subjects match too."
+                },
+                {
+                  "name": "spellLevel",
+                  "width": 3,
+                  "note": "The rank of the spell, as shown."
+                },
+                {
+                  "name": "unused",
+                  "width": 1,
+                  "note": "Unused; a server writes zero."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "spent",
+          "type": "u32",
+          "note": "How much gold, as shown.",
+          "present": {
+            "when": "event",
+            "equals": 23
+          }
+        },
+        {
+          "name": "value",
+          "type": "u32",
+          "note": "What it carries is not recorded for this range; a client does not show it.",
+          "present": {
+            "when": "event",
+            "equals": [25, 78, 79, 80, 82, 137, 138]
+          }
+        },
+        {
+          "name": "critical",
+          "type": "f32",
+          "note": "The critical strike's damage, as shown.",
+          "present": {
+            "when": "event",
+            "equals": 26
+          }
+        },
+        {
+          "name": "spree",
+          "type": "u32",
+          "note": "How many kills in a row, as shown.",
+          "present": {
+            "when": "event",
+            "equals": 45
+          }
+        },
+        {
+          "name": "earned",
+          "type": "record",
+          "present": {
+            "when": "event",
+            "equals": 24
+          },
+          "note": "Gold earned.",
+          "fields": [
+            {
+              "name": "gold",
+              "type": "f32",
+              "note": "How much gold, as shown."
+            },
+            {
+              "name": "detail",
+              "type": "u32",
+              "note": "What it carries is not recorded for this range; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "heal",
+          "type": "record",
+          "present": {
+            "when": "event",
+            "equals": [41, 42]
+          },
+          "note": "How much health, and from what.",
+          "fields": [
+            {
+              "name": "amount",
+              "type": "f32",
+              "note": "How much health, as shown."
+            },
+            {
+              "name": "sourceKind",
+              "type": "u8",
+              "note": "What sort of source it was.",
+              "values": {
+                "0": {
+                  "name": "spell"
+                },
+                "1": {
+                  "name": "item",
+                  "note": "An item the killer holds, named by script."
+                },
+                "2": {
+                  "name": "buff",
+                  "note": "An effect, named by script."
+                },
+                "3": {
+                  "name": "passive"
+                },
+                "4": {
+                  "name": "basicAttack"
+                }
+              }
+            },
+            {
+              "name": "script",
+              "type": "u32",
+              "note": "The spell or effect, by the number its name gives, shown by name."
+            },
+            {
+              "name": "parentScript",
+              "type": "u32",
+              "note": "The spell or effect it came from, by the number its name gives, shown by name."
+            },
+            {
+              "name": "parentCaster",
+              "type": "u32",
+              "note": "What it carries is not recorded for this range; a server writes zero."
+            },
+            {
+              "name": "parent",
+              "type": "bits",
+              "size": 2,
+              "note": "Where the spell or effect came from.",
+              "bits": [
+                {
+                  "name": "source",
+                  "width": 4,
+                  "note": "What sort of source the parent spell or effect is, numbered as sourceKind is."
+                },
+                {
+                  "name": "side",
+                  "width": 4,
+                  "note": "What it means is not recorded for this range; a server writes zero."
+                },
+                {
+                  "name": "category",
+                  "width": 4,
+                  "note": "A client sums two entries of this sort where this, the source kinds and both spells match, and, where this is zero, the subjects match too."
+                },
+                {
+                  "name": "spellLevel",
+                  "width": 3,
+                  "note": "The rank of the spell, as shown."
+                },
+                {
+                  "name": "unused",
+                  "width": 1,
+                  "note": "Unused; a server writes zero."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "effect",
+          "type": "record",
+          "present": {
+            "when": "event",
+            "equals": [43, 44]
+          },
+          "note": "The effect, and where it came from.",
+          "fields": [
+            {
+              "name": "sourceKind",
+              "type": "u8",
+              "note": "What sort of source it was.",
+              "values": {
+                "0": {
+                  "name": "spell"
+                },
+                "1": {
+                  "name": "item",
+                  "note": "An item the killer holds, named by script."
+                },
+                "2": {
+                  "name": "buff",
+                  "note": "An effect, named by script."
+                },
+                "3": {
+                  "name": "passive"
+                },
+                "4": {
+                  "name": "basicAttack"
+                }
+              }
+            },
+            {
+              "name": "script",
+              "type": "u32",
+              "note": "The spell or effect, by the number its name gives, shown by name."
+            },
+            {
+              "name": "parentScript",
+              "type": "u32",
+              "note": "The spell or effect it came from, by the number its name gives, shown by name."
+            },
+            {
+              "name": "parentCaster",
+              "type": "u32",
+              "note": "What it carries is not recorded for this range; a server writes zero."
+            },
+            {
+              "name": "parent",
+              "type": "bits",
+              "size": 2,
+              "note": "Where the spell or effect came from.",
+              "bits": [
+                {
+                  "name": "source",
+                  "width": 4,
+                  "note": "What sort of source the parent spell or effect is, numbered as sourceKind is."
+                },
+                {
+                  "name": "side",
+                  "width": 4,
+                  "note": "What it means is not recorded for this range; a server writes zero."
+                },
+                {
+                  "name": "category",
+                  "width": 4,
+                  "note": "A client sums two entries of this sort where this, the source kinds and both spells match, and, where this is zero, the subjects match too."
+                },
+                {
+                  "name": "spellLevel",
+                  "width": 3,
+                  "note": "The rank of the spell, as shown."
+                },
+                {
+                  "name": "unused",
+                  "width": 1,
+                  "note": "Unused; a server writes zero."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "extra",
+          "type": "bytes",
+          "note": "What it carries is not recorded for this range; a server writes zero.",
+          "size": 8,
+          "present": {
+            "when": "event",
+            "equals": 44
+          }
+        },
+        {
+          "name": "assist",
+          "type": "record",
+          "present": {
+            "when": "event",
+            "equals": 64
+          },
+          "note": "What one unit did toward a death.",
+          "fields": [
+            {
+              "name": "lastHit",
+              "type": "f32",
+              "note": "When it last dealt damage, in match seconds."
+            },
+            {
+              "name": "physical",
+              "type": "f32",
+              "note": "Physical damage it dealt."
+            },
+            {
+              "name": "magical",
+              "type": "f32",
+              "note": "Magical damage it dealt."
+            },
+            {
+              "name": "true",
+              "type": "f32",
+              "note": "True damage it dealt."
+            },
+            {
+              "name": "share",
+              "type": "f32",
+              "note": "What it carries is not recorded for this range; a server writes zero."
+            },
+            {
+              "name": "gold",
+              "type": "f32",
+              "note": "What it carries is not recorded for this range; a server writes zero."
+            },
+            {
+              "name": "credited",
+              "type": "u32",
+              "note": "What it carries is not recorded for this range; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "kill",
+          "type": "record",
+          "present": {
+            "when": "event",
+            "equals": [1, 2, 34, 37, 131, 132, 133, 134, 135, 136]
+          },
+          "note": "The reward, and who shared it.",
+          "fields": [
+            {
+              "name": "gold",
+              "type": "f32",
+              "note": "The gold the kill gave."
+            },
+            {
+              "name": "assistCount",
+              "type": "u32",
+              "note": "How many of the twelve places below name a unit."
+            },
+            {
+              "name": "assists",
+              "type": "array",
+              "count": 12,
+              "note": "The units that helped, then zeros.",
+              "items": {
+                "name": "helper",
+                "type": "u32",
+                "note": "A unit that helped, or zero."
+              }
+            }
+          ]
+        },
+        {
+          "name": "monster",
+          "type": "record",
+          "present": {
+            "when": "event",
+            "equals": [37, 131, 132, 133, 134, 135, 136]
+          },
+          "note": "Who took the monster.",
+          "fields": [
+            {
+              "name": "skinHash",
+              "type": "u32",
+              "note": "The number the name of the killer's look gives."
+            },
+            {
+              "name": "skin",
+              "type": "i32",
+              "note": "Which look the killer wears."
+            },
+            {
+              "name": "side",
+              "type": "u32",
+              "note": "The side that took it."
+            }
+          ]
+        },
+        {
+          "name": "callout",
+          "type": "record",
+          "present": {
+            "when": "event",
+            "equals": 81
+          },
+          "note": "The item a player pointed out, shown as the second name followed by the first in brackets.",
+          "fields": [
+            {
+              "name": "item",
+              "type": "u32",
+              "note": "The item, shown by name and number."
+            },
+            {
+              "name": "quantity",
+              "type": "u32",
+              "note": "How many, shown as two digits."
+            },
+            {
+              "name": "first",
+              "type": "bytes",
+              "note": "As a client lays a short text out: four bytes it ignores, up to fifteen characters ended by a zero byte in the next sixteen, the length as a u32, then 15 as a u32.",
+              "size": 28
+            },
+            {
+              "name": "second",
+              "type": "bytes",
+              "note": "As a client lays a short text out: four bytes it ignores, up to fifteen characters ended by a zero byte in the next sixteen, the length as a u32, then 15 as a u32.",
+              "size": 28
+            },
+            {
+              "name": "side",
+              "type": "u32",
+              "note": "The side of the player who pointed it out."
+            }
+          ]
+        }
+      ]
+    },
+    {
       "from": "3.9.0.491",
       "until": "3.10.0.237",
       "channel": "events",

@@ -25,6 +25,26 @@
       ]
     },
     {
+      "from": "3.8.0.226",
+      "until": "3.9.0.491",
+      "channel": "events",
+      "command": 11,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot, 0 to 37. A client ignores a higher one, and tells its screens the inventory changed either way."
+        },
+        {
+          "name": "left",
+          "type": "u8",
+          "note": "How many are left in the slot; zero empties it, item and charges cleared. Either way a client cancels any spell or action its player had picked."
+        }
+      ]
+    },
+    {
       "from": "3.9.0.491",
       "until": "4.18.0.271",
       "channel": "events",
