@@ -6,6 +6,59 @@
   "revisions": [
     {
       "from": "3.11.0.306",
+      "until": "3.12.0.251",
+      "channel": "events",
+      "command": 268,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "items",
+          "type": "array",
+          "count": 8,
+          "items": {
+            "name": "itemsEntry",
+            "type": "record",
+            "fields": [
+              {
+                "name": "item",
+                "type": "u32",
+                "note": "The item, or zero for an empty slot."
+              },
+              {
+                "name": "slot",
+                "type": "u8",
+                "note": "Which slot."
+              },
+              {
+                "name": "inSlot",
+                "type": "u8",
+                "note": "How many are in the slot."
+              },
+              {
+                "name": "charges",
+                "type": "u8",
+                "note": "How many charges it holds."
+              }
+            ]
+          },
+          "note": "Eight places, one per slot."
+        },
+        {
+          "name": "cooldowns",
+          "type": "array",
+          "count": 8,
+          "items": {
+            "name": "cooldown",
+            "type": "f32",
+            "note": "How long until the slot's item can be used again, in seconds."
+          },
+          "note": "One per slot. A client applies a slot's wait only where the slot holds an item and the value is not -1."
+        }
+      ]
+    },
+    {
+      "from": "3.12.0.251",
       "until": "4.21.0.0",
       "channel": "events",
       "command": 268,

@@ -1,0 +1,22 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "EnterLocalSight",
+  "version": "3.11.0.306",
+  "note": "Laid out as a 3.11.0.306 client takes it.",
+  "bytes": "ae0e17a6ff00000000000000000000",
+  "fields": {
+    "command": 174,
+    "netId": 4289074958,
+    "extendedCommand": null,
+    "carried": {
+      "size": 0,
+      "unused": 0
+    },
+    "messages": [],
+    "vitals": {
+      "maxHealth": 0,
+      "health": 0
+    }
+  }
+}

@@ -32,6 +32,32 @@
     },
     {
       "from": "3.11.0.306",
+      "until": "3.12.0.251",
+      "channel": "events",
+      "command": 37,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "count",
+          "type": "u16",
+          "note": "How many units follow. A client reads it as signed, so a count above 32767 carries none."
+        },
+        {
+          "name": "targets",
+          "type": "array",
+          "count": "count",
+          "items": {
+            "name": "target",
+            "type": "u32",
+            "note": "A unit struck."
+          },
+          "note": "The units struck, in order."
+        }
+      ]
+    },
+    {
+      "from": "3.12.0.251",
       "until": "4.11.0.386",
       "channel": "events",
       "command": 37,

@@ -42,6 +42,45 @@
     },
     {
       "from": "3.11.0.306",
+      "until": "3.12.0.251",
+      "channel": "events",
+      "command": 150,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "reset",
+              "width": 1,
+              "note": "Set where the unit returns to its own voice; no name follows."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ],
+          "note": "Whether to reset."
+        },
+        {
+          "name": "voice",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "The voice's name, ended by a zero byte.",
+          "present": {
+            "when": "flags.reset",
+            "equals": 0
+          }
+        }
+      ]
+    },
+    {
+      "from": "3.12.0.251",
       "until": "4.1.0.171",
       "channel": "events",
       "command": 150,

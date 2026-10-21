@@ -79,13 +79,8 @@
               "note": "Set where it is driven by the client's own decisions."
             },
             {
-              "name": "targetable",
-              "width": 1,
-              "note": "Set where it can be aimed at."
-            },
-            {
               "name": "unused",
-              "width": 2,
+              "width": 3,
               "note": "Unused; a server writes zero."
             }
           ],
@@ -119,11 +114,6 @@
           "name": "level",
           "type": "u16",
           "note": "The level it starts at."
-        },
-        {
-          "name": "onlyVisibleTo",
-          "type": "u32",
-          "note": "The unit that alone can see it, or zero."
         }
       ]
     },

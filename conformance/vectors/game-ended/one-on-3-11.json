@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "GameEnded",
+  "version": "3.11.0.306",
+  "note": "Laid out as a 3.11.0.306 client takes it.",
+  "bytes": "c60000000001",
+  "fields": {
+    "command": 198,
+    "netId": 0,
+    "extendedCommand": null,
+    "result": {
+      "side100Won": 1,
+      "unused": 0
+    }
+  }
+}
