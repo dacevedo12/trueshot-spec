@@ -32,6 +32,57 @@
       ]
     },
     {
+      "from": "3.5.0.68",
+      "until": "3.6.0.388",
+      "channel": "events",
+      "command": 91,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "rules",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "pausing",
+              "width": 1,
+              "note": "Set where holding the match is allowed."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "features",
+          "type": "bits",
+          "size": 4,
+          "bits": [
+            {
+              "name": "altUnitDisplay",
+              "width": 1,
+              "note": "Shows units' health and experience bars and their character display from another set of the client's data."
+            },
+            {
+              "name": "balanceVoteCommands",
+              "width": 1,
+              "note": "The chat commands /equalize and /noequalize."
+            },
+            {
+              "name": "unused",
+              "width": 30,
+              "note": "Unused; a server writes zero."
+            }
+          ],
+          "note": "Which optional features the match turns on. A client takes them from the first StartGame only."
+        }
+      ],
+      "note": "A client past spawning ignores it."
+    },
+    {
       "from": "3.6.0.388",
       "until": "4.11.0.386",
       "channel": "events",
