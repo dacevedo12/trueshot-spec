@@ -974,6 +974,15 @@ const familyDefAt = (
   return null;
 };
 
+// A family as the families revision covering a version defines it.
+const familyDefOn = (
+  name: string | undefined,
+  version: string,
+): FamilyDef | null => {
+  const r = (familiesDoc.revisions ?? []).find((x) => covers(x, version));
+  return (r?.families ?? []).find((f) => f.name === name) ?? null;
+};
+
 // The values a family's plain command field can hold: what its width allows,
 // less anything the family keeps for framing.
 const plainRange = (
@@ -1759,7 +1768,9 @@ if (existsSync(VECTOR_DIR)) {
           covered.add(`${message.message}@${revision.from}@${doc.channel}`);
         }
         const channel = channelAt(revision.channel, revision);
-        const family = channel && familyDefAt(channel.family, revision);
+        // A vector reads as its own build frames a message, which a revision
+        // reaching across a change of family header does not settle alone.
+        const family = channel && familyDefOn(channel.family, version);
         if (!family) {
           fail(
             path,
