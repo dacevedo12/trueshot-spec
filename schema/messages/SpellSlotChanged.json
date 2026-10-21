@@ -5,6 +5,126 @@
   "note": "What a server sends to change one thing about a spell already in a unit's slot. The kind settles what follows it. The header names the unit this is about.",
   "revisions": [
     {
+      "from": "3.7.0.328",
+      "until": "3.8.0.226",
+      "channel": "events",
+      "command": 23,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "which",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "slot",
+              "width": 6,
+              "note": "Which slot. A champion's own spells count from 0."
+            },
+            {
+              "name": "summonerSlots",
+              "width": 1,
+              "note": "Set where slot names a summoner spell's slot, clear for the unit's own spells; every kind obeys it."
+            },
+            {
+              "name": "unused",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What changes. A client does nothing for any other value.",
+          "values": {
+            "0": {
+              "name": "targeting",
+              "note": "Sets how the spell is aimed; one byte follows."
+            },
+            "1": {
+              "name": "name"
+            },
+            "2": {
+              "name": "range",
+              "note": "Sets how far it is cast; a float follows."
+            },
+            "3": {
+              "name": "icon",
+              "note": "Sets which icon it shows; one byte follows."
+            },
+            "4": {
+              "name": "offsetTargets",
+              "note": "Sets the units it is cast from; a count and that many units follow."
+            }
+          }
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "The name the client loads the spell under, ended by a zero byte. A client shows the named spell's icon in the slot.",
+          "present": {
+            "when": "kind",
+            "equals": 1
+          }
+        },
+        {
+          "name": "targeting",
+          "type": "u8",
+          "present": {
+            "when": "kind",
+            "equals": 0
+          },
+          "note": "How the spell is aimed."
+        },
+        {
+          "name": "range",
+          "type": "f32",
+          "present": {
+            "when": "kind",
+            "equals": 2
+          },
+          "note": "How far the spell is cast, in world units."
+        },
+        {
+          "name": "icon",
+          "type": "u8",
+          "present": {
+            "when": "kind",
+            "equals": 3
+          },
+          "note": "Which icon the spell shows."
+        },
+        {
+          "name": "targetCount",
+          "type": "u8",
+          "present": {
+            "when": "kind",
+            "equals": 4
+          },
+          "note": "How many units follow."
+        },
+        {
+          "name": "targets",
+          "type": "array",
+          "count": "targetCount",
+          "present": {
+            "when": "kind",
+            "equals": 4
+          },
+          "note": "The units the spell is cast from.",
+          "items": {
+            "name": "target",
+            "type": "u32",
+            "note": "One unit."
+          }
+        }
+      ]
+    },
+    {
       "from": "3.8.0.226",
       "until": "4.18.0.271",
       "channel": "events",

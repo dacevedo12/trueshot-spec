@@ -105,6 +105,259 @@
       ]
     },
     {
+      "from": "3.7.0.328",
+      "until": "3.8.0.226",
+      "channel": "events",
+      "command": 83,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "agreement",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "buildMatches",
+              "width": 1,
+              "note": "Set where the client's build is one the server serves."
+            },
+            {
+              "name": "reportsToFile",
+              "width": 1,
+              "note": "Set to have a client also write its reports to a file of its own."
+            },
+            {
+              "name": "matched",
+              "width": 1,
+              "note": "Set where the match was put together rather than made by hand."
+            },
+            {
+              "name": "reportingReady",
+              "width": 1,
+              "note": "Set where the reporting settings below are to be used."
+            },
+            {
+              "name": "unused",
+              "width": 4,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "map",
+          "type": "i32",
+          "note": "Which map to load. spec/space.md keys the path origins by the same maps."
+        },
+        {
+          "name": "seats",
+          "type": "array",
+          "count": 12,
+          "note": "Every place at the match, held or empty.",
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
+        },
+        {
+          "name": "build",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 256,
+          "note": "Which build the server serves. Written out in full and padded with zero bytes to the width above."
+        },
+        {
+          "name": "mode",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "Which way the match is played, written and padded as above."
+        },
+        {
+          "name": "teamName",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 97,
+          "note": "What one side is called where it plays as a standing team, written and padded as above."
+        },
+        {
+          "name": "teamTag",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 25,
+          "note": "The short form of that name, written and padded as above."
+        },
+        {
+          "name": "otherTeamName",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 97,
+          "note": "What the other side is called, under the same terms."
+        },
+        {
+          "name": "otherTeamTag",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 25,
+          "note": "The short form of that one."
+        },
+        {
+          "name": "metricsHost",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 256,
+          "note": "Where a client reports figures about the match, written and padded as above."
+        },
+        {
+          "name": "metricsPath",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 256,
+          "note": "What it asks for there, written and padded as above."
+        },
+        {
+          "name": "metricsPort",
+          "type": "u16",
+          "note": "Which port it reaches that at."
+        },
+        {
+          "name": "reportingHost",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 256,
+          "note": "Where a client reports how the match went, written and padded as above."
+        },
+        {
+          "name": "reportingPath",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 256,
+          "note": "What it asks for there, written and padded as above."
+        },
+        {
+          "name": "reportingPort",
+          "type": "u16",
+          "note": "Which port it reaches that at."
+        },
+        {
+          "name": "altReportingHost",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 256,
+          "note": "A second, test place to report to, written and padded as above."
+        },
+        {
+          "name": "altReportingPath",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 256,
+          "note": "What it asks for there, written and padded as above."
+        },
+        {
+          "name": "altReportingPort",
+          "type": "u16",
+          "note": "Which port it reaches that at."
+        },
+        {
+          "name": "tip",
+          "type": "i8",
+          "note": "Which note the client shows before play."
+        },
+        {
+          "name": "tipColour",
+          "type": "i8",
+          "note": "Which colouring it shows it in."
+        },
+        {
+          "name": "tipDuration",
+          "type": "i8",
+          "note": "Which display time to hold the note up for, applying only where tips are enabled and shown somewhere. tip, tipColour and tipDuration each select one of the notes, colourings and display times a client defines, tip counted modulo the number of notes. Where a value selects none, or the time is not above zero, a client shows no note."
+        },
+        {
+          "name": "tipFlags",
+          "type": "bits",
+          "note": "How the note is shown. A client sends these four bytes back in ClientReady, as it has corrected them.",
+          "size": 1,
+          "bits": [
+            {
+              "name": "enabled",
+              "width": 1,
+              "note": "Set where there is a note. A client shows the note only where this and loadingScreen or inGame are set, and shows none where tip, tipColour or tipDuration names nothing."
+            },
+            {
+              "name": "replay",
+              "width": 1,
+              "note": "Of no effect; a client clears it, with enabled, while playing a replay."
+            },
+            {
+              "name": "loadingScreen",
+              "width": 1,
+              "note": "Set to show the note on the loading screen."
+            },
+            {
+              "name": "inGame",
+              "width": 1,
+              "note": "Set to show the note during play, in a box on the screen."
+            },
+            {
+              "name": "cycle",
+              "width": 1,
+              "note": "Set to have the box during play show every note in turn."
+            },
+            {
+              "name": "unused",
+              "width": 3,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "features",
+          "type": "bits",
+          "note": "Which parts of the match are turned on, one bit each.",
+          "size": 4,
+          "bits": [
+            {
+              "name": "altUnitDisplay",
+              "width": 1,
+              "note": "Shows units' health and experience bars and their character display from another set of the client's data."
+            },
+            {
+              "name": "balanceVoteCommands",
+              "width": 1,
+              "note": "The chat commands /equalize and /noequalize."
+            },
+            {
+              "name": "keyboardDisplay",
+              "width": 1,
+              "note": "Shows the match on a keyboard that has a display of its own."
+            },
+            {
+              "name": "menuBack",
+              "width": 1,
+              "note": "Turns on the client's newer options and menus."
+            },
+            {
+              "name": "wallJumps",
+              "width": 1,
+              "note": "Has no effect; a server writes zero."
+            },
+            {
+              "name": "audioBackend",
+              "width": 1,
+              "note": "Which sound system the client uses; which setting picks which is not recorded."
+            },
+            {
+              "name": "unused",
+              "width": 26,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ]
+    },
+    {
       "from": "3.8.0.226",
       "until": "3.9.0.491",
       "channel": "events",

@@ -5,6 +5,39 @@
   "note": "What a server sends to change what a spell costs the player it is sent to. The header names that player's champion.",
   "revisions": [
     {
+      "from": "3.7.0.328",
+      "until": "3.8.0.226",
+      "channel": "events",
+      "command": 260,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "costType",
+          "type": "u32",
+          "note": "How the amount applies.",
+          "values": {
+            "0": {
+              "name": "flat"
+            },
+            "1": {
+              "name": "multiplier"
+            }
+          }
+        },
+        {
+          "name": "slot",
+          "type": "i32",
+          "note": "Which spell slot."
+        },
+        {
+          "name": "amount",
+          "type": "f32",
+          "note": "The amount."
+        }
+      ]
+    },
+    {
       "from": "3.8.0.226",
       "until": "4.21.0.0",
       "channel": "events",

@@ -5,6 +5,39 @@
   "note": "What a server sends to make a champion's clicks attack the ground. It changes what its own player's clicks do; for any other champion it changes nothing a client shows. A client ignores it where the id names no champion. The header carries zero.",
   "revisions": [
     {
+      "from": "3.7.0.328",
+      "until": "3.8.0.226",
+      "channel": "events",
+      "command": 257,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "champion",
+          "type": "u32",
+          "note": "The champion."
+        },
+        {
+          "name": "mode",
+          "type": "u32",
+          "note": "Which clicks attack the ground. A client tells no other nonzero value apart.",
+          "values": {
+            "0": {
+              "name": "off"
+            },
+            "1": {
+              "name": "move",
+              "note": "A move click."
+            },
+            "2": {
+              "name": "select",
+              "note": "A select click."
+            }
+          }
+        }
+      ]
+    },
+    {
       "from": "3.8.0.226",
       "until": "3.12.0.251",
       "channel": "events",

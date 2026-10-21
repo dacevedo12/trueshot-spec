@@ -217,6 +217,44 @@
       "note": "There is no byte for ending a charge: the casting follows the sync id."
     },
     {
+      "from": "3.7.0.328",
+      "until": "3.8.0.226",
+      "channel": "events",
+      "command": 181,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u32",
+          "note": "It settles whether a client brings the caster's position in line for this cast, and nothing else."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "endCharge",
+              "width": 1,
+              "note": "Set where the cast ends a charge: a client drops the message unless the caster is charging that same spell. Clear lets a client charge a spell that charges, sending SpellCharge as it does."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "cast",
+          "type": "struct",
+          "struct": "SpellCast",
+          "note": "The casting."
+        }
+      ]
+    },
+    {
       "from": "3.8.0.226",
       "until": "3.11.0.306",
       "channel": "events",

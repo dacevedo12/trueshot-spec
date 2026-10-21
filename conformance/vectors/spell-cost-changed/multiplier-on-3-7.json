@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SpellCostChanged",
+  "version": "3.7.0.328",
+  "note": "Laid out as a 3.7.0.328 client takes it.",
+  "bytes": "fe1a00004004010100000000000000000080bf",
+  "fields": {
+    "command": 254,
+    "netId": 1073741850,
+    "extendedCommand": 260,
+    "costType": 1,
+    "slot": 0,
+    "amount": -1
+  }
+}
