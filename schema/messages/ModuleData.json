@@ -5,7 +5,7 @@
   "note": "What a server sends to carry data to a module of the client's own. A client takes it even before it is ready to play. With kind 4, or any kind other than 1 and 2, a client acts on what the data carries as on a message that had arrived. What kinds 1 and 2 do is not shown. A server need send none.",
   "revisions": [
     {
-      "from": "3.5.0.68",
+      "from": "3.04.0.78",
       "until": "4.1.0.171",
       "channel": "events",
       "command": 221,

@@ -32,6 +32,34 @@
       ]
     },
     {
+      "from": "3.04.0.78",
+      "until": "3.5.0.68",
+      "channel": "events",
+      "command": 91,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "rules",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "pausing",
+              "width": 1,
+              "note": "Set where holding the match is allowed."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ],
+      "note": "A client past spawning ignores it."
+    },
+    {
       "from": "3.5.0.68",
       "until": "3.6.0.388",
       "channel": "events",
