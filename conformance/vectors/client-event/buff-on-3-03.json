@@ -1,0 +1,39 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ClientEvent",
+  "version": "3.03.0.198",
+  "note": "Laid out as a 3.03.0.198 client takes it.",
+  "bytes": "a31f0000402a19000040000000000000000000000000000000",
+  "fields": {
+    "command": 163,
+    "netId": 1073741855,
+    "event": 42,
+    "subject": 1073741849,
+    "stage": null,
+    "damage": null,
+    "spent": null,
+    "value": null,
+    "critical": null,
+    "spree": null,
+    "earned": null,
+    "heal": null,
+    "effect": {
+      "sourceKind": 0,
+      "script": 0,
+      "parentScript": 0,
+      "parentCaster": 0,
+      "parent": {
+        "source": 0,
+        "side": 0,
+        "category": 0,
+        "spellLevel": 0,
+        "unused": 0
+      }
+    },
+    "assist": null,
+    "kill": null,
+    "monster": null,
+    "callout": null
+  }
+}

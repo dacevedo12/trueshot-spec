@@ -1,0 +1,24 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "InhibitorDied",
+  "system": "combat",
+  "note": "What a server sends when an inhibitor is destroyed. The header names the inhibitor.",
+  "revisions": [
+    {
+      "from": "3.03.0.198",
+      "until": "3.04.0.78",
+      "channel": "events",
+      "command": 138,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "attacker",
+          "type": "u32",
+          "note": "A client reads it and does nothing with it."
+        }
+      ],
+      "note": "A client counts one more inhibitor down for the inhibitor's side and announces it. Only an inhibitor takes it."
+    }
+  ]
+}
