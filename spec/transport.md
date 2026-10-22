@@ -45,9 +45,9 @@ that library is what defines this behaviour.
 > connect states another channel count, or other throttle values, than its
 > connect asked for.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 3.03.0.198 up to 4.21.0.0 -->
 
-> **In 4.1–4.20**
+> **In 3.03–4.20**
 >
 > The rest of this chapter says what a client does **not** accept from stock
 > ENet. A server built on an unmodified ENet 1.2.5 never completes a connection.
@@ -69,9 +69,29 @@ without.
 A client discards any datagram shorter than the `minimumDatagram` constant of
 its range. A server MUST NOT send a shorter datagram.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 3.03.0.198 up to 3.13.0.399 -->
 
-> **In 4.1–4.20**
+> **In 3.03–3.12**
+>
+> ## The connect command
+>
+> A client's connect command takes ENet's layout, except that two of its fields
+> carry one byte of meaning each. The peer id is the first of the two bytes ENet
+> gives it, and the session id is the first of the four. The bytes after each
+> carry nothing a server reads, and a client fills them with anything.
+>
+> A server MUST take the peer id and the session id from those first bytes. The
+> session id is then the byte every header carries, and a server that reads
+> either field at ENet's width answers a client that never hears it.
+>
+> A client asks for 7 channels. A server's verify connect MUST state that count,
+> and the throttle interval, acceleration and deceleration the connect command
+> carried: a client abandons a connection whose verify connect states anything
+> else.
+
+<!-- holds from 3.13.0.399 up to 4.21.0.0 -->
+
+> **In 3.13–4.20**
 >
 > ## The connect command
 >
