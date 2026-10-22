@@ -9222,7 +9222,7 @@
     },
     {
       "from": "4.1.0.171",
-      "until": "4.15.0.238",
+      "until": "4.14.0.362",
       "channel": "events",
       "command": 33,
       "direction": "serverToClient",
@@ -9419,7 +9419,7 @@
       "note": "A client ignores the whole message unless it holds killer. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
     },
     {
-      "from": "4.15.0.238",
+      "from": "4.14.0.362",
       "until": "4.16.0.238",
       "channel": "events",
       "command": 33,
