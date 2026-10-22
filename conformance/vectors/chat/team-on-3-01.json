@@ -1,0 +1,18 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "Chat",
+  "version": "3.01.0.1",
+  "note": "Laid out as a 3.01.0.1 client takes it.",
+  "bytes": "68000000000000000000010000000e00000068656c6c6f207374616e642d696e00",
+  "fields": {
+    "command": 104,
+    "clientId": 0,
+    "netId": 0,
+    "localized": 0,
+    "audience": 1,
+    "textLength": 14,
+    "text": "hello stand-in",
+    "terminator": "00"
+  }
+}

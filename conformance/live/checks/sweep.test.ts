@@ -144,9 +144,10 @@ function sweepFor(
   // spec/units.md: a 3.10 server MUST NOT remove a client's own champion, the
   // only champion a sweep's match holds.
   const ownChampion = before(build, "3.11.0.306");
-  // spec/effects.md: a 3.04 server MUST NOT send EmitterPause, which that
-  // client also reads as ChatAllowance.
-  const emitterPause = before(build, "3.5.0.68");
+  // spec/effects.md: a 3.02 to 3.04 server MUST NOT send EmitterPause, which
+  // those clients also read as ChatAllowance.
+  const emitterPause =
+    !before(build, "3.02.0.30") && before(build, "3.5.0.68");
   return out.filter(
     (m) =>
       (m.name !== "ChampionRemoved" || !ownChampion) &&

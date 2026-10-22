@@ -52,6 +52,62 @@
       ]
     },
     {
+      "from": "3.01.0.1",
+      "until": "3.02.0.30",
+      "channel": "chat",
+      "command": 104,
+      "direction": "bidirectional",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the sender."
+        },
+        {
+          "name": "netId",
+          "type": "u32",
+          "note": "The entity a receiving end attributes the text to where the seat does not name one. Where the seat names a speaker, that is what a receiving end uses instead."
+        },
+        {
+          "name": "localized",
+          "type": "u8",
+          "note": "Whether the text is a phrase to show as it stands, or a key naming one the receiving end looks up and fills in from the parameters. Both ends send it clear."
+        },
+        {
+          "name": "audience",
+          "type": "i32",
+          "note": "Who the message reaches.",
+          "values": {
+            "0": {
+              "name": "everyone"
+            },
+            "1": {
+              "name": "team"
+            }
+          }
+        },
+        {
+          "name": "textLength",
+          "type": "u32",
+          "note": "The length of the text, counted in bytes and excluding the byte that ends it. A 4.17 client sends at most 255 bytes of text. A client shows the text to its first zero byte."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "textLength",
+          "note": "The line, at most 127 characters."
+        },
+        {
+          "name": "terminator",
+          "type": "bytes",
+          "size": 1,
+          "note": "A zero byte closing the text."
+        }
+      ]
+    },
+    {
       "from": "3.02.0.30",
       "until": "4.18.0.271",
       "channel": "chat",

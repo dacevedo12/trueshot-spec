@@ -23,9 +23,9 @@ named group of emitters with `EmitterPause`, and drive a value of a unit's
 lasting particles from something that changes, such as a capture point or the
 unit's resource, with `ParticleSource`.
 
-<!-- holds from 3.04.0.78 up to 3.5.0.68 -->
+<!-- holds from 3.02.0.30 up to 3.5.0.68 -->
 
-> **In 3.04**
+> **In 3.02–3.04**
 >
 > A client that takes `EmitterPause` goes on to do what `ChatAllowance` does,
 > reading the first four bytes of the group's name as the lines left. A server
