@@ -31,19 +31,27 @@ type Enet = typeof import("enet-js");
 
 // The library whose header matches the build's, as schema/protocol.json lays
 // it out: the release's own, whose session id fills four bytes and whose peer
-// id fills two; the one-byte form; or that form after four bytes more.
+// id fills two, taking datagrams up to the release's largest or to 996 bytes;
+// the one-byte form; or that form after four bytes more.
 function library(layouts: Layouts): string {
-  const header = layouts.protocol.transport.header;
+  const transport = layouts.protocol.transport;
+  const header = transport.header;
+  const small = transport.constants.some(
+    (c) => c.name === "maximumTransmissionUnit" && c.value === 996,
+  );
   const kind = header.some((f) => f.name === "addressCheck")
     ? "address-check"
     : header.some(
           (f) => f.name === "peer" && f.type === "bits" && f.size === 2,
         )
-      ? "stock"
+      ? small
+        ? "stock-small"
+        : "stock"
       : "plain";
   const variable = {
     "address-check": "TRUESHOT_ENET_ADDRESS_CHECK",
     stock: "TRUESHOT_ENET_STOCK",
+    "stock-small": "TRUESHOT_ENET_STOCK_SMALL",
     plain: "TRUESHOT_ENET_PLAIN",
   }[kind];
   const named = Bun.env[variable];
