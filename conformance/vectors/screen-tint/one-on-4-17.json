@@ -2,9 +2,9 @@
   "$schema": "../../../schema/meta/vector.json",
   "subject": "message",
   "message": "ScreenTint",
-  "version": "4.17.0.267",
-  "note": "Laid out as a 4.17.0.267 client takes it. A server's bytes after each text's zero byte carry no meaning; they are zero here.",
-  "bytes": "db 00000000 010000803e64000000320000ffcdcc4c3e",
+  "version": "4.17.0.233",
+  "note": "Laid out as a 4.17.0.233 client takes it.",
+  "bytes": "db00000000010000803e64000000320000ffcdcc4c3e",
   "fields": {
     "command": 219,
     "netId": 0,

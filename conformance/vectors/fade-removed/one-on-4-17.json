@@ -2,9 +2,9 @@
   "$schema": "../../../schema/meta/vector.json",
   "subject": "message",
   "message": "FadeRemoved",
-  "version": "4.17.0.267",
-  "note": "Laid out as a 4.17.0.267 client takes it. A server's bytes after each text's zero byte carry no meaning; they are zero here.",
-  "bytes": "32 ac000040 0100",
+  "version": "4.17.0.233",
+  "note": "Laid out as a 4.17.0.233 client takes it.",
+  "bytes": "32ac0000400100",
   "fields": {
     "command": 50,
     "netId": 1073741996,

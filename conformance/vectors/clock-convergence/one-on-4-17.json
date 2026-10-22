@@ -2,15 +2,14 @@
   "$schema": "../../../schema/meta/vector.json",
   "subject": "message",
   "message": "ClockConvergence",
-  "version": "4.17.0.267",
-  "note": "Laid out as a 4.17.0.267 client takes it. A server's bytes after each text's zero byte carry no meaning; they are zero here.",
-  "bytes": "76 00000000 00000000ece42e3fece42e3f",
+  "version": "4.17.0.233",
+  "note": "Laid out as a 4.17.0.233 client takes it.",
+  "bytes": "760000000000000000ece42e3f",
   "fields": {
     "command": 118,
     "netId": 0,
     "extendedCommand": null,
     "clientTime": 0,
-    "roundTrip": 0.683180570602417,
-    "convergence": 0.683180570602417
+    "roundTrip": 0.683180570602417
   }
 }

@@ -1,0 +1,89 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "DeathHistory",
+  "version": "4.1.0.171",
+  "note": "Laid out as a 4.1.0.171 client takes it.",
+  "bytes": "211a0000401e000040009a984100030000006a0d5b440100101e0000401a0000400553dc04000000000000000000da6fa543000000000553dc041e00004010406a0d5b440100001e0000401a0000400553dc0400000000000553dc041e00004010406a0d5b4401002f1e0000401a0000400553dc040000000000000000000553dc041e0000401040",
+  "fields": {
+    "command": 33,
+    "netId": 1073741850,
+    "extendedCommand": null,
+    "killer": 1073741854,
+    "span": 19.0751953125,
+    "sourceType": 0,
+    "entryCount": 3,
+    "entries": [
+      {
+        "time": 876.2095947265625,
+        "count": 1,
+        "event": 16,
+        "source": 1073741854,
+        "target": 1073741850,
+        "script": 81548037,
+        "category": 0,
+        "sourceObject": 0,
+        "damage": {
+          "physical": 0,
+          "magical": 330.87384033203125,
+          "true": 0
+        },
+        "healing": null,
+        "parentScript": 81548037,
+        "parentCaster": 1073741854,
+        "parent": {
+          "source": 0,
+          "side": 1,
+          "category": 0,
+          "spellLevel": 4,
+          "unused": 0
+        },
+        "buff": null
+      },
+      {
+        "time": 876.2095947265625,
+        "count": 1,
+        "event": 0,
+        "source": 1073741854,
+        "target": 1073741850,
+        "script": 81548037,
+        "category": 0,
+        "sourceObject": 0,
+        "damage": null,
+        "healing": null,
+        "parentScript": 81548037,
+        "parentCaster": 1073741854,
+        "parent": {
+          "source": 0,
+          "side": 1,
+          "category": 0,
+          "spellLevel": 4,
+          "unused": 0
+        },
+        "buff": null
+      },
+      {
+        "time": 876.2095947265625,
+        "count": 1,
+        "event": 47,
+        "source": 1073741854,
+        "target": 1073741850,
+        "script": 81548037,
+        "category": 0,
+        "sourceObject": 0,
+        "damage": null,
+        "healing": 0,
+        "parentScript": 81548037,
+        "parentCaster": 1073741854,
+        "parent": {
+          "source": 0,
+          "side": 1,
+          "category": 0,
+          "spellLevel": 4,
+          "unused": 0
+        },
+        "buff": null
+      }
+    ]
+  }
+}

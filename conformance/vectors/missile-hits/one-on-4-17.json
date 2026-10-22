@@ -2,9 +2,9 @@
   "$schema": "../../../schema/meta/vector.json",
   "subject": "message",
   "message": "MissileHits",
-  "version": "4.17.0.267",
-  "note": "Laid out as a 4.17.0.267 client takes it. A server's bytes after each text's zero byte carry no meaning; they are zero here.",
-  "bytes": "26 0d010040 0100d8000040",
+  "version": "4.17.0.233",
+  "note": "Laid out as a 4.17.0.233 client takes it.",
+  "bytes": "260d0100400100d8000040",
   "fields": {
     "command": 38,
     "netId": 1073742093,

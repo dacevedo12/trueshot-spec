@@ -2,19 +2,19 @@
   "$schema": "../../../schema/meta/vector.json",
   "subject": "message",
   "message": "HealthBar",
-  "version": "4.17.0.267",
-  "note": "Laid out as a 4.17.0.267 client takes it. A server's bytes after each text's zero byte carry no meaning; they are zero here.",
-  "bytes": "ce c7000040 0031",
+  "version": "4.17.0.233",
+  "note": "Laid out as a 4.17.0.233 client takes it.",
+  "bytes": "cec7000040023100000000",
   "fields": {
     "command": 206,
     "netId": 1073742023,
     "extendedCommand": null,
     "flags": {
       "show": 0,
-      "changeType": 0,
+      "changeType": 1,
       "unused": 0
     },
     "barType": 49,
-    "side": null
+    "side": 0
   }
 }

@@ -2,9 +2,9 @@
   "$schema": "../../../schema/meta/vector.json",
   "subject": "message",
   "message": "StopAttack",
-  "version": "4.17.0.267",
-  "note": "Laid out as a 4.17.0.267 client takes it.",
-  "bytes": "34 f3000040 3501004011",
+  "version": "4.17.0.233",
+  "note": "Laid out as a 4.17.0.233 client takes it.",
+  "bytes": "34f30000403501004011",
   "fields": {
     "command": 52,
     "netId": 1073742067,
@@ -16,7 +16,6 @@
       "forceStop": 0,
       "summonerSpell": 0,
       "destroyMissile": 1,
-      "completeCast": 0,
       "unused": 0
     }
   }
