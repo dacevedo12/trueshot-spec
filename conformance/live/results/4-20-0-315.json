@@ -1,10 +1,10 @@
 {
   "build": "4.20.0.315",
   "layouts": "4.20.0.315",
-  "commit": "60a7c4cfc80e3ae1167bcaf324028875d5c5a54d",
+  "commit": "1bf6d511cac6e49705930d8bd21e41f5bda7833b",
   "modified": false,
   "runtime": "bun 1.4.2",
-  "date": "2026-10-19",
+  "date": "2026-10-22",
   "checks": [
     {
       "check": "communication > a client takes SystemMessage and stays in play",
@@ -37,14 +37,6 @@
     {
       "check": "joining > a client stays in play for 30 seconds",
       "outcome": "passed"
-    },
-    {
-      "check": "movement > (unnamed)",
-      "outcome": "skipped"
-    },
-    {
-      "check": "movement > (unnamed)",
-      "outcome": "skipped"
     },
     {
       "check": "movement > a champion brought into view is drawn and walks its path",
