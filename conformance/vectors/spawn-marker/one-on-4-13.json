@@ -1,0 +1,18 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SpawnMarker",
+  "version": "4.13.0.265",
+  "note": "Laid out as a 4.13.0.265 client takes it.",
+  "bytes": "fe000000000001210000404000004844000000000000c843",
+  "fields": {
+    "command": 254,
+    "netId": 0,
+    "extendedCommand": 256,
+    "unit": 1073741857,
+    "node": 64,
+    "x": 800,
+    "y": 0,
+    "z": 400
+  }
+}
