@@ -1,10 +1,10 @@
 {
   "build": "4.10.0.369",
   "layouts": "4.10.0.369",
-  "commit": "47d62c05edad22e0c72b12e33020c8aabf27f282",
+  "commit": "2126c0cfad2b0f6c790d2228f92218472bf19c0c",
   "modified": false,
   "runtime": "bun 1.4.2",
-  "date": "2026-10-19",
+  "date": "2026-10-22",
   "checks": [
     {
       "check": "communication > a client takes SystemMessage and stays in play",
@@ -39,14 +39,6 @@
       "outcome": "passed"
     },
     {
-      "check": "movement > (unnamed)",
-      "outcome": "skipped"
-    },
-    {
-      "check": "movement > (unnamed)",
-      "outcome": "skipped"
-    },
-    {
       "check": "movement > a champion brought into view is drawn and walks its path",
       "outcome": "skipped"
     },
@@ -75,12 +67,12 @@
     {
       "look": "sweep",
       "expect": "the client is in play, whatever the messages drew",
-      "outcome": "to review"
+      "outcome": "not captured"
     },
     {
       "look": "system-message",
       "expect": "the chat shows \"trueshot: a line of the server's own\"",
-      "outcome": "to review"
+      "outcome": "not captured"
     }
   ]
 }
