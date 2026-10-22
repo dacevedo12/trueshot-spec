@@ -4,13 +4,13 @@
   "message": "SurrenderStatus",
   "version": "4.20.0.315",
   "note": "Laid out as a 4.20.0.315 client takes it.",
-  "bytes": "a5 00000000 01000000000064000000",
+  "bytes": "a5000000000000000001006400",
   "fields": {
     "command": 165,
     "netId": 0,
     "extendedCommand": null,
-    "reason": 1,
-    "inFavour": 0,
+    "reason": 0,
+    "inFavour": 1,
     "against": 0,
     "side": 100
   }

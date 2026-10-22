@@ -442,7 +442,7 @@
     },
     {
       "from": "4.13.0.265",
-      "until": "4.21.0.0",
+      "until": "4.20.0.315",
       "channel": "events",
       "command": 176,
       "direction": "serverToClient",
@@ -481,6 +481,77 @@
             {
               "name": "unused",
               "width": 27,
+              "note": "Unused; a server writes zero."
+            }
+          ],
+          "note": "How the animation plays."
+        },
+        {
+          "name": "scaleTime",
+          "type": "f32",
+          "note": "A scale on how long it plays."
+        },
+        {
+          "name": "startProgress",
+          "type": "f32",
+          "note": "How far into the animation it starts."
+        },
+        {
+          "name": "speed",
+          "type": "f32",
+          "note": "How fast it plays."
+        },
+        {
+          "name": "animation",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "The animation's name, ended by a zero byte, the two taking at most 64 bytes. Nothing plays for a name the unit does not have."
+        }
+      ],
+      "note": "scaleTime and startProgress are applied only where above zero. A unit holding a locked animation ignores the message. An animated building plays at normal speed, and keepEmotes has no effect on it."
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 176,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "locked",
+              "width": 1,
+              "note": "Set where no other animation can fade this one out."
+            },
+            {
+              "name": "lockedFromIdle",
+              "width": 1,
+              "note": "Set where idle animations cannot fade it out. It has no effect where locked is set."
+            },
+            {
+              "name": "noBlend",
+              "width": 1,
+              "note": "Set to switch to it at once rather than blend in."
+            },
+            {
+              "name": "loop",
+              "width": 1,
+              "note": "Set to hold the last frame once an animation that does not loop ends."
+            },
+            {
+              "name": "keepEmotes",
+              "width": 1,
+              "note": "Set to let an emote playing go on; clear stops it."
+            },
+            {
+              "name": "unused",
+              "width": 3,
               "note": "Unused; a server writes zero."
             }
           ],

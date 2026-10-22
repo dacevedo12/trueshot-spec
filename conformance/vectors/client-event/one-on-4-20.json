@@ -4,20 +4,28 @@
   "message": "ClientEvent",
   "version": "4.20.0.315",
   "note": "Laid out as a 4.20.0.315 client takes it.",
-  "bytes": "a3 1b010040 24d70200400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+  "bytes": "a301000040050000000000",
   "fields": {
     "command": 163,
-    "netId": 1073742107,
+    "netId": 1073741825,
     "extendedCommand": null,
-    "event": 36,
-    "subject": 1073742551,
-    "kill": {
-      "gold": 0,
-      "assistCount": 0,
-      "assists": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    },
-    "extra": null,
+    "event": 5,
+    "subject": 0,
+    "stage": 0,
+    "damage": null,
+    "spent": null,
+    "value": null,
+    "critical": null,
+    "spree": null,
+    "earned": null,
+    "heal": null,
+    "effect": null,
+    "buff": null,
     "assist": null,
-    "value": null
+    "kill": null,
+    "monster": null,
+    "callout": null,
+    "substitution": null,
+    "undo": null
   }
 }

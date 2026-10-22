@@ -3,19 +3,19 @@
   "subject": "message",
   "message": "AppearancePushed",
   "version": "4.20.0.315",
-  "note": "Laid out as a 4.20.0.315 client takes it. A server's bytes after each text's zero byte carry no meaning; they are zero here.",
-  "bytes": "97 16050040 02d9030000ffffffff5a6564536861646f7700",
+  "note": "Laid out as a 4.20.0.315 client takes it.",
+  "bytes": "97160500400002d90300ffffffff5a6564536861646f7700",
   "fields": {
     "command": 151,
     "netId": 1073743126,
     "extendedCommand": null,
-    "entry": 252162,
     "how": {
       "overrideSpells": 0,
       "modelOnly": 0,
       "replacePackage": 0,
       "unused": 0
     },
+    "entry": 252162,
     "skin": -1,
     "asset": "ZedShadow"
   }

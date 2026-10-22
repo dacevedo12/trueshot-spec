@@ -3,8 +3,8 @@
   "subject": "message",
   "message": "VoiceOverride",
   "version": "4.20.0.315",
-  "note": "Laid out as a 4.20.0.315 client takes it. A server's bytes after each text's zero byte carry no meaning; they are zero here.",
-  "bytes": "96 05000040 f65f65766f5f5100",
+  "note": "Laid out as a 4.20.0.315 client takes it.",
+  "bytes": "9605000040f65f65766f5f5100",
   "fields": {
     "command": 150,
     "netId": 1073741829,
@@ -13,7 +13,6 @@
       "reset": 0,
       "unused": 123
     },
-    "voice": "_evo_Q",
-    "leftover": null
+    "voice": "_evo_Q"
   }
 }

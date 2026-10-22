@@ -3,14 +3,13 @@
   "subject": "message",
   "message": "ClockConvergence",
   "version": "4.20.0.315",
-  "note": "Laid out as a 4.20.0.315 client takes it. A server's bytes after each text's zero byte carry no meaning; they are zero here.",
-  "bytes": "76 00000000 00000000b734803fb734803f",
+  "note": "Laid out as a 4.20.0.315 client takes it.",
+  "bytes": "760000000000000000b734803f",
   "fields": {
     "command": 118,
     "netId": 0,
     "extendedCommand": null,
     "clientTime": 0,
-    "roundTrip": 1.0016087293624878,
-    "convergence": 1.0016087293624878
+    "roundTrip": 1.0016087293624878
   }
 }

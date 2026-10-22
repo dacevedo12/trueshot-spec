@@ -39,7 +39,7 @@
     },
     {
       "from": "3.8.0.226",
-      "until": "4.21.0.0",
+      "until": "4.20.0.315",
       "channel": "events",
       "command": 260,
       "direction": "serverToClient",
@@ -54,6 +54,39 @@
               "name": "flat"
             },
             "1": {
+              "name": "multiplier"
+            }
+          }
+        },
+        {
+          "name": "slot",
+          "type": "i32",
+          "note": "Which spell slot."
+        },
+        {
+          "name": "amount",
+          "type": "f32",
+          "note": "The amount."
+        }
+      ]
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 260,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "costType",
+          "type": "u8",
+          "note": "How the amount applies. A client ignores any other value, 0 among them.",
+          "values": {
+            "1": {
+              "name": "flat"
+            },
+            "2": {
               "name": "multiplier"
             }
           }

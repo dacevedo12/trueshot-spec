@@ -1,0 +1,22 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ScoreAdded",
+  "version": "4.18.0.271",
+  "note": "Laid out as a 4.18.0.271 client takes it.",
+  "bytes": "d9000000000600004003025d0000204200002042",
+  "fields": {
+    "command": 217,
+    "netId": 0,
+    "extendedCommand": null,
+    "champion": 1073741830,
+    "category": 3,
+    "event": 2,
+    "flags": {
+      "callout": 1,
+      "unused": 46
+    },
+    "points": 40,
+    "total": 40
+  }
+}

@@ -123,10 +123,15 @@
         {
           "name": "groupOperation",
           "type": "u32",
-          "note": "What to do with the group. A client acts on 0 only, pausing or resuming the group's emission, and does nothing for any other value.",
+          "note": "What to do with the group. A client does nothing for any other value.",
           "values": {
-            "0": {
-              "name": "emission"
+            "1": {
+              "name": "emission",
+              "note": "Pause the group's emission where operation is nonzero, and resume it where it is zero."
+            },
+            "2": {
+              "name": "restart",
+              "note": "Start every emitter in the group again from now; operation is not read."
             }
           }
         }

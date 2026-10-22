@@ -8922,7 +8922,7 @@
     },
     {
       "from": "4.18.0.271",
-      "until": "4.21.0.0",
+      "until": "4.20.0.315",
       "channel": "events",
       "command": 84,
       "direction": "serverToClient",
@@ -9140,6 +9140,243 @@
           "name": "reportingMessages",
           "type": "array",
           "count": 19,
+          "note": "Which of the reports a client sends are wanted, one place each.",
+          "items": {
+            "name": "wanted",
+            "type": "u8",
+            "note": "Whether that report is wanted.",
+            "values": {
+              "0": {
+                "name": "no"
+              },
+              "1": {
+                "name": "yes"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 84,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "agreement",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "buildMatches",
+              "width": 1,
+              "note": "Set where the client's build is one the server serves."
+            },
+            {
+              "name": "logMetrics",
+              "width": 1,
+              "note": "Set to have the client also write its figures about the match to a file of its own."
+            },
+            {
+              "name": "matched",
+              "width": 1,
+              "note": "Set where the match was put together rather than made by hand."
+            },
+            {
+              "name": "reportingReady",
+              "width": 1,
+              "note": "Set where the reporting settings below are to be used."
+            },
+            {
+              "name": "unused",
+              "width": 4,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "map",
+          "type": "i32",
+          "note": "Which map to load. spec/space.md keys the path origins by the same maps."
+        },
+        {
+          "name": "seats",
+          "type": "array",
+          "count": 12,
+          "note": "Every place at the match, held or empty.",
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
+        },
+        {
+          "name": "build",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 256,
+          "note": "Which build the server serves. Written out in full and padded with zero bytes to the width above."
+        },
+        {
+          "name": "mode",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "Which way the match is played, written and padded as above."
+        },
+        {
+          "name": "platform",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 32,
+          "note": "Which platform the match belongs to, written and padded as above."
+        },
+        {
+          "name": "variants",
+          "type": "array",
+          "count": 8,
+          "note": "The variations the match is played under, one place each. A place stands empty where none applies.",
+          "items": {
+            "name": "variant",
+            "type": "string",
+            "encoding": "utf8",
+            "size": 64,
+            "note": "One variation. Written out in full and padded with zero bytes to the width above."
+          }
+        },
+        {
+          "name": "variantCount",
+          "type": "u8",
+          "note": "How many of the places above are filled."
+        },
+        {
+          "name": "teamName",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 97,
+          "note": "What one side is called where it plays as a standing team, written and padded as above."
+        },
+        {
+          "name": "teamTag",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 25,
+          "note": "The short form of that name, written and padded as above."
+        },
+        {
+          "name": "otherTeamName",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 97,
+          "note": "What the other side is called, under the same terms."
+        },
+        {
+          "name": "otherTeamTag",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 25,
+          "note": "The short form of that one."
+        },
+        {
+          "name": "metricsHost",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 256,
+          "note": "Where a client reports figures about the match, written and padded as above."
+        },
+        {
+          "name": "metricsPath",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 256,
+          "note": "What it asks for there, written and padded as above."
+        },
+        {
+          "name": "metricsPort",
+          "type": "u16",
+          "note": "Which port it reaches that at."
+        },
+        {
+          "name": "reportingHost",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 256,
+          "note": "Where a client reports how the match went, written and padded as above."
+        },
+        {
+          "name": "reportingPath",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 256,
+          "note": "What it asks for there, written and padded as above."
+        },
+        {
+          "name": "reportingPort",
+          "type": "u16",
+          "note": "Which port it reaches that at."
+        },
+        {
+          "name": "altReportingHost",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 256,
+          "note": "A second such place, written and padded as above."
+        },
+        {
+          "name": "altReportingPath",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 256,
+          "note": "What it asks for there, written and padded as above."
+        },
+        {
+          "name": "altReportingPort",
+          "type": "u16",
+          "note": "Which port it reaches that at."
+        },
+        {
+          "name": "tip",
+          "type": "i8",
+          "note": "Which note the client shows before play."
+        },
+        {
+          "name": "tipColour",
+          "type": "i8",
+          "note": "Which colouring it shows it in."
+        },
+        {
+          "name": "tipDuration",
+          "type": "i8",
+          "note": "How long the note shows: 1 is 10 seconds; no other value is defined. Any other value makes the note invalid; a client then clears the tips bit and returns the value negated in ClientReady, 0 as -128."
+        },
+        {
+          "name": "tipFlags",
+          "type": "i8",
+          "note": "Bits from the lowest: 0 shows notes at all; 1 is only returned in ClientReady; 2 shows the note on the loading screen; 3 shows it in play; 4 cycles through every note. A note shows only where bit 0 and bit 2 or 3 are set. Bits 5 to 7 are unused. A client watching a recorded match clears bits 0 and 1."
+        },
+        {
+          "name": "features",
+          "type": "u64",
+          "note": "Which parts of the match are turned on, one bit each from the lowest: 0 balancing votes, 1 the new options menu, 2 the old options menu, 3 quick chat, 4 warning of missiles from unseen ground, 5 animated cursors, 6 shop undo, 8 marking the targets of line missiles, 9 marking a champion under another's control, 10 the alternative bounty rules, 12 turret range indicators, 14 particles named per look, 15 network figures, 16 hardware figures, 17 lag figures, 18 a newer reporting library, 19 logging the server's address, 20 jungle timers, 21 route figures, 24 keeping a recorded match's clock in step, 26 the active-item display, 27 the minion farming bounty, 28 teleporting to fallen turrets, 29 unshared character states, 30 sight between any units, 31 the old outline under the pointer, 32 the new inventory display. Bits 7, 11, 13, 22, 23, 25 and 33 to 63 change nothing. A server sets at least one bit."
+        },
+        {
+          "name": "disabledItems",
+          "type": "array",
+          "count": 64,
+          "note": "Items nobody can buy in this match, one place each. A place holds zero where nothing is barred.",
+          "items": {
+            "name": "item",
+            "type": "u32",
+            "note": "One item, by the number the client knows it as."
+          }
+        },
+        {
+          "name": "reportingMessages",
+          "type": "array",
+          "count": 18,
           "note": "Which of the reports a client sends are wanted, one place each.",
           "items": {
             "name": "wanted",

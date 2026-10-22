@@ -14,8 +14,8 @@
       "fields": [
         {
           "name": "slot",
-          "type": "u32",
-          "note": "Which slot's spell."
+          "type": "i32",
+          "note": "Which slot's spell, from 0 to 63. A client does nothing for any other value."
         },
         {
           "name": "time",

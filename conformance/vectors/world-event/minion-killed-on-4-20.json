@@ -1,0 +1,40 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "WorldEvent",
+  "version": "4.20.0.315",
+  "note": "Laid out as a 4.20.0.315 client takes it.",
+  "bytes": "45000000002601000040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+  "fields": {
+    "command": 69,
+    "netId": 0,
+    "extendedCommand": null,
+    "event": 38,
+    "source": 1073741825,
+    "subject": 0,
+    "stage": null,
+    "damage": null,
+    "spent": null,
+    "value": null,
+    "critical": null,
+    "spree": null,
+    "earned": null,
+    "heal": null,
+    "effect": null,
+    "buff": null,
+    "assist": null,
+    "kill": {
+      "gold": 0,
+      "assistCount": 0,
+      "assists": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    },
+    "monster": null,
+    "callout": null,
+    "substitution": null,
+    "undo": null,
+    "map": null,
+    "inhibitorGold": null,
+    "inhibitorAssistCount": null,
+    "inhibitorAssists": null
+  }
+}

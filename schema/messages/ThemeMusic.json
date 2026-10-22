@@ -6,6 +6,26 @@
   "revisions": [
     {
       "from": "4.17.0.233",
+      "until": "4.20.0.315",
+      "channel": "events",
+      "command": 96,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "champion",
+          "type": "u32",
+          "note": "The champion."
+        },
+        {
+          "name": "track",
+          "type": "u32",
+          "note": "Which of the skin's music tracks, counting from zero."
+        }
+      ]
+    },
+    {
+      "from": "4.20.0.315",
       "until": "4.21.0.0",
       "channel": "events",
       "command": 96,
@@ -21,6 +41,11 @@
           "name": "track",
           "type": "u32",
           "note": "Which of the skin's music tracks, counting from zero."
+        },
+        {
+          "name": "secondTrack",
+          "type": "u32",
+          "note": "A second track, counting from zero, or 268435455 for none. A client takes a value past the skin's tracks as none."
         }
       ]
     }

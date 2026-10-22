@@ -201,22 +201,22 @@
         {
           "name": "point",
           "type": "u8",
-          "note": "Which point, for source 0. It has no effect unless source is 0."
+          "note": "Which point, for source 1. It has no effect unless source is 1."
         },
         {
           "name": "source",
           "type": "u32",
           "note": "What drives it. Any other value drives it from nothing.",
           "values": {
-            "0": {
+            "1": {
               "name": "capturePoint",
               "note": "How far the point is taken (CapturePointChanged)."
             },
-            "1": {
+            "2": {
               "name": "resource",
               "note": "The unit's resource bar."
             },
-            "2": {
+            "3": {
               "name": "resourceSmoothed",
               "note": "The unit's resource bar, smoothed over time."
             }
