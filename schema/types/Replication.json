@@ -4,7 +4,240 @@
   "note": "What has changed about one unit. A flag byte says which groups of values follow, and each group that follows says which of its values it holds and carries them as a run of bytes. The groups follow in a fixed order that is not the order of the flags: the last flag's values come before the one before it, and the rest run in flag order. spec/replication.md says what settles the reading of a run, and records what a champion's groups carry.",
   "revisions": [
     {
-      "from": "3.03.0.198",
+      "from": "3.02.0.30",
+      "until": "3.04.0.78",
+      "fields": [
+        {
+          "name": "present",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "group0",
+              "width": 1,
+              "note": "Set where this group's values follow."
+            },
+            {
+              "name": "group1",
+              "width": 1,
+              "note": "Set where this group's values follow."
+            },
+            {
+              "name": "group2",
+              "width": 1,
+              "note": "Set where this group's values follow."
+            },
+            {
+              "name": "group3",
+              "width": 1,
+              "note": "Set where this group's values follow."
+            },
+            {
+              "name": "group4",
+              "width": 1,
+              "note": "Set where this group's values follow. They come after every other group's, whatever the flags. A server sends it clear."
+            },
+            {
+              "name": "group5",
+              "width": 1,
+              "note": "Set where this group's values follow. They come before group 4's."
+            },
+            {
+              "name": "unused",
+              "width": 2,
+              "note": "Unused; a server writes zero. A presence byte with no group set is valid."
+            }
+          ]
+        },
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit whose values these are."
+        },
+        {
+          "name": "group0",
+          "type": "record",
+          "present": {
+            "when": "present.group0"
+          },
+          "note": "The values of group 0, where the flag says they follow.",
+          "fields": [
+            {
+              "name": "which",
+              "type": "u32",
+              "note": "Says which of the group's values follow, one bit each, lowest first."
+            },
+            {
+              "name": "values",
+              "type": "array",
+              "count": {
+                "field": "which",
+                "bitsSet": true
+              },
+              "note": "The values themselves, four bytes each, in the order the bits above name them.",
+              "items": {
+                "name": "value",
+                "type": "bytes",
+                "size": 4,
+                "note": "One value, as spec/replication.md says to read it."
+              }
+            }
+          ]
+        },
+        {
+          "name": "group1",
+          "type": "record",
+          "present": {
+            "when": "present.group1"
+          },
+          "note": "The values of group 1, where the flag says they follow.",
+          "fields": [
+            {
+              "name": "which",
+              "type": "u32",
+              "note": "Says which of the group's values follow, one bit each, lowest first."
+            },
+            {
+              "name": "values",
+              "type": "array",
+              "count": {
+                "field": "which",
+                "bitsSet": true
+              },
+              "note": "The values themselves, four bytes each, in the order the bits above name them.",
+              "items": {
+                "name": "value",
+                "type": "bytes",
+                "size": 4,
+                "note": "One value, as spec/replication.md says to read it."
+              }
+            }
+          ]
+        },
+        {
+          "name": "group2",
+          "type": "record",
+          "present": {
+            "when": "present.group2"
+          },
+          "note": "The values of group 2, where the flag says they follow.",
+          "fields": [
+            {
+              "name": "which",
+              "type": "u32",
+              "note": "Says which of the group's values follow, one bit each, lowest first."
+            },
+            {
+              "name": "values",
+              "type": "array",
+              "count": {
+                "field": "which",
+                "bitsSet": true
+              },
+              "note": "The values themselves, four bytes each, in the order the bits above name them.",
+              "items": {
+                "name": "value",
+                "type": "bytes",
+                "size": 4,
+                "note": "One value, as spec/replication.md says to read it."
+              }
+            }
+          ]
+        },
+        {
+          "name": "group3",
+          "type": "record",
+          "present": {
+            "when": "present.group3"
+          },
+          "note": "The values of group 3, where the flag says they follow.",
+          "fields": [
+            {
+              "name": "which",
+              "type": "u32",
+              "note": "Says which of the group's values follow, one bit each, lowest first."
+            },
+            {
+              "name": "values",
+              "type": "array",
+              "count": {
+                "field": "which",
+                "bitsSet": true
+              },
+              "note": "The values themselves, four bytes each, in the order the bits above name them.",
+              "items": {
+                "name": "value",
+                "type": "bytes",
+                "size": 4,
+                "note": "One value, as spec/replication.md says to read it."
+              }
+            }
+          ]
+        },
+        {
+          "name": "group5",
+          "type": "record",
+          "present": {
+            "when": "present.group5"
+          },
+          "note": "The values of group 5, where the flag says they follow.",
+          "fields": [
+            {
+              "name": "which",
+              "type": "u32",
+              "note": "Says which of the group's values follow, one bit each, lowest first."
+            },
+            {
+              "name": "values",
+              "type": "array",
+              "count": {
+                "field": "which",
+                "bitsSet": true
+              },
+              "note": "The values themselves, four bytes each, in the order the bits above name them.",
+              "items": {
+                "name": "value",
+                "type": "bytes",
+                "size": 4,
+                "note": "One value, as spec/replication.md says to read it."
+              }
+            }
+          ]
+        },
+        {
+          "name": "group4",
+          "type": "record",
+          "present": {
+            "when": "present.group4"
+          },
+          "note": "The values of group 4, where the flag says they follow. For a 4.17 client it comes last, after group 5. A server sends its flag clear.",
+          "fields": [
+            {
+              "name": "which",
+              "type": "u32",
+              "note": "Says which of the group's values follow, one bit each, lowest first."
+            },
+            {
+              "name": "values",
+              "type": "array",
+              "count": {
+                "field": "which",
+                "bitsSet": true
+              },
+              "note": "The values themselves, four bytes each, in the order the bits above name them.",
+              "items": {
+                "name": "value",
+                "type": "bytes",
+                "size": 4,
+                "note": "One value, as spec/replication.md says to read it."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "from": "3.04.0.78",
       "until": "4.21.0.0",
       "fields": [
         {

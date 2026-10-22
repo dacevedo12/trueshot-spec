@@ -78,6 +78,82 @@
       }
     },
     {
+      "from": "3.02.0.30",
+      "until": "3.03.0.198",
+      "endian": "little",
+      "note": "The header 3.02 clients read and write: stock ENet's.",
+      "cipher": {
+        "name": "Blowfish",
+        "mode": "ECB",
+        "blockSize": 8,
+        "blockEndian": "big",
+        "keySize": 16,
+        "note": "There is no padding. Trailing bytes that do not fill a block travel unchanged, so a payload shorter than one block is never enciphered at all."
+      },
+      "transport": {
+        "base": {
+          "name": "ENet",
+          "version": "1.2.5",
+          "note": "Stock ENet interoperates: the header and the commands are the release's own, and of the constants only the largest datagram differs. A client abandons a connection whose verify connect states another channel count, or other throttle values, than its connect asked for."
+        },
+        "header": [
+          {
+            "name": "sessionId",
+            "type": "bytes",
+            "size": 4,
+            "note": "The four bytes the client put in its connect command, carried unchanged on every packet. A client drops a packet carrying any other four."
+          },
+          {
+            "name": "peer",
+            "type": "bits",
+            "size": 2,
+            "endian": "big",
+            "bits": [
+              {
+                "name": "peerId",
+                "width": 15,
+                "note": "32767 marks an unassigned peer, which is what a connecting client sends. A server gives the client peer 0."
+              },
+              {
+                "name": "sentTimeFlag",
+                "width": 1,
+                "note": "Set when the header carries a sent time."
+              }
+            ]
+          },
+          {
+            "name": "sentTime",
+            "type": "u16",
+            "endian": "big",
+            "present": {
+              "when": "peer.sentTimeFlag"
+            },
+            "note": "Milliseconds since the connection opened."
+          }
+        ],
+        "constants": [
+          {
+            "name": "maximumPeerId",
+            "value": 32767,
+            "stock": 32767,
+            "note": "Follows from the peer id occupying fifteen bits."
+          },
+          {
+            "name": "maximumTransmissionUnit",
+            "value": 996,
+            "stock": 4096,
+            "note": "A client asks for 1400 in its connect command, and takes no datagram larger than 996 bytes."
+          },
+          {
+            "name": "minimumDatagram",
+            "value": 8,
+            "stock": 8,
+            "note": "A client discards any datagram shorter than this many bytes."
+          }
+        ]
+      }
+    },
+    {
       "from": "3.03.0.198",
       "until": "4.20.0.315",
       "endian": "little",

@@ -35,6 +35,16 @@ that library is what defines this behaviour.
 > verify connect states another channel count, or other throttle values, than its
 > connect asked for, and stock ENet states the client's own.
 
+<!-- holds from 3.02.0.30 up to 3.03.0.198 -->
+
+> **In 3.02**
+>
+> Stock ENet 1.2.5 serves a client with one change: a client takes no datagram
+> larger than 996 bytes, so a server MUST NOT send one. The header and the
+> commands are the release's own. A client abandons a connection whose verify
+> connect states another channel count, or other throttle values, than its
+> connect asked for.
+
 <!-- holds from 4.1.0.171 up to 4.21.0.0 -->
 
 > **In 4.1–4.20**

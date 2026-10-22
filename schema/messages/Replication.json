@@ -224,7 +224,37 @@
       ]
     },
     {
-      "from": "3.03.0.198",
+      "from": "3.02.0.30",
+      "until": "3.04.0.78",
+      "channel": "transient",
+      "command": 196,
+      "direction": "serverToClient",
+      "reliability": "unreliable",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u32",
+          "note": "Names this batch of changes. spec/replication.md says which batches a client takes values from."
+        },
+        {
+          "name": "unitCount",
+          "type": "u8",
+          "note": "How many units follow."
+        },
+        {
+          "name": "units",
+          "type": "array",
+          "count": "unitCount",
+          "items": {
+            "name": "unit",
+            "type": "struct",
+            "struct": "Replication"
+          }
+        }
+      ]
+    },
+    {
+      "from": "3.04.0.78",
       "until": "4.1.0.171",
       "channel": "transient",
       "command": 196,
