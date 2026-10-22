@@ -1075,18 +1075,6 @@
           "name": "spawnAt",
           "type": "f32",
           "note": "When it arrives, as a moment on the match clock, in seconds."
-        },
-        {
-          "name": "behaviour",
-          "type": "u8",
-          "note": "It has no effect."
-        },
-        {
-          "name": "script",
-          "type": "string",
-          "encoding": "utf8",
-          "size": 32,
-          "note": "It has no effect."
         }
       ],
       "note": "The monster faces from where it stands toward the facing point, or along +Z where the two are the same. Its spawnAnimation plays only where named and time is left to spawn, and it cannot be targeted while it plays. A client drops the message while its map's navigation data is unloaded."

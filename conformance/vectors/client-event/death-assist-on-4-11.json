@@ -11,16 +11,28 @@
     "extendedCommand": null,
     "event": 69,
     "subject": 1073741843,
-    "kill": null,
-    "extra": null,
+    "stage": null,
+    "damage": null,
+    "spent": null,
+    "value": null,
+    "critical": null,
+    "spree": null,
+    "earned": null,
+    "heal": null,
+    "effect": null,
+    "buff": null,
     "assist": {
-      "time": 0,
+      "lastHit": 0,
       "physical": 0,
       "magical": 0,
       "true": 0,
       "share": 0,
       "gold": 0,
-      "killer": 0
-    }
+      "credited": 0
+    },
+    "kill": null,
+    "monster": null,
+    "callout": null,
+    "substitution": null
   }
 }

@@ -91,18 +91,18 @@
           "note": "The match's identifier."
         },
         {
+          "name": "label",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 32,
+          "note": "A text a client writes to its log and keeps, ended by a zero byte within the field."
+        },
+        {
           "name": "platform",
           "type": "string",
           "encoding": "utf8",
           "size": 32,
           "note": "Which platform the match belongs to, written and padded as above."
-        },
-        {
-          "name": "name",
-          "type": "string",
-          "encoding": "utf8",
-          "size": 128,
-          "note": "The player's name, padded with zero bytes."
         }
       ]
     },
