@@ -46,7 +46,7 @@
     },
     {
       "from": "4.1.0.171",
-      "until": "4.11.0.386",
+      "until": "4.10.0.369",
       "channel": "clock",
       "command": 117,
       "direction": "serverToClient",
@@ -66,6 +66,26 @@
           "name": "convergence",
           "type": "f32",
           "note": "How long the two clocks take to agree, in seconds. It has no effect on a client."
+        }
+      ]
+    },
+    {
+      "from": "4.10.0.369",
+      "until": "4.11.0.386",
+      "channel": "clock",
+      "command": 117,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientTime",
+          "type": "f32",
+          "note": "The client's clock, in seconds, as the client reported it."
+        },
+        {
+          "name": "roundTrip",
+          "type": "f32",
+          "note": "The round trip time the server measures, in seconds."
         }
       ]
     },

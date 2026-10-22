@@ -81,7 +81,7 @@
     },
     {
       "from": "4.1.0.171",
-      "until": "4.11.0.386",
+      "until": "4.10.0.369",
       "channel": "events",
       "command": 149,
       "direction": "serverToClient",
@@ -124,6 +124,45 @@
             "equals": 1
           },
           "note": "One byte where no name follows. Unused; its byte carries no meaning."
+        }
+      ]
+    },
+    {
+      "from": "4.10.0.369",
+      "until": "4.11.0.386",
+      "channel": "events",
+      "command": 149,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "reset",
+              "width": 1,
+              "note": "Set where the unit returns to its own voice; no name follows."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ],
+          "note": "Whether to reset."
+        },
+        {
+          "name": "voice",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "The voice's name, ended by a zero byte.",
+          "present": {
+            "when": "flags.reset",
+            "equals": 0
+          }
         }
       ]
     },

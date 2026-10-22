@@ -155,7 +155,7 @@
     },
     {
       "from": "4.1.0.171",
-      "until": "4.11.0.386",
+      "until": "4.10.0.369",
       "channel": "events",
       "command": 132,
       "direction": "serverToClient",
@@ -180,6 +180,48 @@
               "name": "unused",
               "width": 1,
               "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "timeLeft",
+          "type": "f32",
+          "note": "How long is left, in seconds."
+        },
+        {
+          "name": "outOf",
+          "type": "f32",
+          "note": "The whole cooldown the time left is shown against, taken only where above zero and above timeLeft; otherwise, as for -1, a client keeps its own, replacing it with timeLeft only where that is larger or the spell was not cooling down."
+        }
+      ]
+    },
+    {
+      "from": "4.10.0.369",
+      "until": "4.11.0.386",
+      "channel": "events",
+      "command": 132,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "which",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "slot",
+              "width": 6,
+              "note": "Which slot."
+            },
+            {
+              "name": "summonerSpell",
+              "width": 1,
+              "note": "Set where the slot counts among the summoner slots, so that 0 and 1 name those two."
+            },
+            {
+              "name": "speakWhenReady",
+              "width": 1,
+              "note": "Set where the champion says something once the wait is over; a client does so for its own champion's fourth slot."
             }
           ]
         },

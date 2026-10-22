@@ -2,18 +2,17 @@
   "$schema": "../../../schema/meta/vector.json",
   "subject": "message",
   "message": "VoiceOverride",
-  "version": "4.10.0.379",
-  "note": "Laid out as a 4.10.0.379 client takes it.",
-  "bytes": "951b000040005f65766f5f5700",
+  "version": "4.10.0.369",
+  "note": "Laid out as a 4.10.0.369 client takes it.",
+  "bytes": "95190000400000",
   "fields": {
     "command": 149,
-    "netId": 1073741851,
+    "netId": 1073741849,
     "extendedCommand": null,
     "flags": {
       "reset": 0,
       "unused": 0
     },
-    "voice": "_evo_W",
-    "leftover": null
+    "voice": ""
   }
 }

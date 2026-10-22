@@ -2,8 +2,8 @@
   "$schema": "../../../schema/meta/vector.json",
   "subject": "message",
   "message": "SpellCooldown",
-  "version": "4.10.0.379",
-  "note": "Laid out as a 4.10.0.379 client takes it.",
+  "version": "4.10.0.369",
+  "note": "Laid out as a 4.10.0.369 client takes it.",
   "bytes": "84220000400000000000000080bf",
   "fields": {
     "command": 132,
@@ -12,7 +12,7 @@
     "which": {
       "slot": 0,
       "summonerSpell": 0,
-      "unused": 0
+      "speakWhenReady": 0
     },
     "timeLeft": 0,
     "outOf": -1

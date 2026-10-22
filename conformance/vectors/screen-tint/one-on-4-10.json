@@ -2,17 +2,17 @@
   "$schema": "../../../schema/meta/vector.json",
   "subject": "message",
   "message": "ScreenTint",
-  "version": "4.10.0.379",
-  "note": "Laid out as a 4.10.0.379 client takes it.",
-  "bytes": "da00000000010000803e64000000320000ffcdcc4c3e",
+  "version": "4.10.0.369",
+  "note": "Laid out as a 4.10.0.369 client takes it.",
+  "bytes": "da00000000010000803e000000000000000000000000",
   "fields": {
     "command": 218,
     "netId": 0,
     "extendedCommand": null,
     "fadeIn": 1,
     "time": 0.25,
-    "side": 100,
-    "colour": 4278190130,
-    "weight": 0.20000000298023224
+    "side": 0,
+    "colour": 0,
+    "weight": 0
   }
 }

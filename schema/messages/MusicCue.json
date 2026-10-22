@@ -96,7 +96,7 @@
     },
     {
       "from": "4.1.0.171",
-      "until": "4.11.0.386",
+      "until": "4.10.0.369",
       "channel": "events",
       "command": 219,
       "direction": "serverToClient",
@@ -121,6 +121,45 @@
             },
             "4": {
               "name": "trigger"
+            }
+          }
+        },
+        {
+          "name": "event",
+          "type": "u32",
+          "note": "Which cue or event."
+        },
+        {
+          "name": "parameter",
+          "type": "u32",
+          "note": "Which state, where the state changes."
+        }
+      ]
+    },
+    {
+      "from": "4.10.0.369",
+      "until": "4.11.0.386",
+      "channel": "events",
+      "command": 219,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "cue",
+          "type": "u8",
+          "note": "What to do. A client takes any other value and does nothing.",
+          "values": {
+            "0": {
+              "name": "prepare"
+            },
+            "1": {
+              "name": "begin"
+            },
+            "2": {
+              "name": "end"
+            },
+            "3": {
+              "name": "changeState"
             }
           }
         },

@@ -2,19 +2,19 @@
   "$schema": "../../../schema/meta/vector.json",
   "subject": "message",
   "message": "HealthBar",
-  "version": "4.10.0.379",
-  "note": "Laid out as a 4.10.0.379 client takes it.",
-  "bytes": "cdc70000400031",
+  "version": "4.10.0.369",
+  "note": "Laid out as a 4.10.0.369 client takes it.",
+  "bytes": "cd19000040fe0000000000",
   "fields": {
     "command": 205,
-    "netId": 1073742023,
+    "netId": 1073741849,
     "extendedCommand": null,
     "flags": {
       "show": 0,
-      "changeType": 0,
-      "unused": 0
+      "changeType": 1,
+      "unused": 63
     },
-    "barType": 49,
-    "side": null
+    "barType": 0,
+    "side": 0
   }
 }
