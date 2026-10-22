@@ -1,0 +1,15 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "struct",
+  "struct": "SpellHit",
+  "version": "4.16.0.238",
+  "note": "Laid out as a 4.16.0.238 client takes it: one unit struck, where it was struck.",
+  "bytes": "24000040000096440000bf42000020c401",
+  "fields": {
+    "unit": 1073741860,
+    "atX": 1200.0,
+    "atY": 95.5,
+    "atZ": -640.0,
+    "result": 1
+  }
+}

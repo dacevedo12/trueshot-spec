@@ -36,6 +36,53 @@
     },
     {
       "from": "4.1.0.171",
+      "until": "4.16.0.238",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit hit."
+        },
+        {
+          "name": "result",
+          "type": "u8",
+          "note": "How the hit landed."
+        }
+      ]
+    },
+    {
+      "from": "4.16.0.238",
+      "until": "4.17.0.233",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit hit."
+        },
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where the hit is, along one ground axis, in world units. A client gives it to the missile it makes for this hit."
+        },
+        {
+          "name": "atY",
+          "type": "f32",
+          "note": "Where the hit is, in height, in world units. A client gives it to the missile it makes for this hit."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where the hit is, along the other ground axis, in world units. A client gives it to the missile it makes for this hit."
+        },
+        {
+          "name": "result",
+          "type": "u8",
+          "note": "How the hit landed."
+        }
+      ]
+    },
+    {
+      "from": "4.17.0.233",
       "until": "4.21.0.0",
       "fields": [
         {

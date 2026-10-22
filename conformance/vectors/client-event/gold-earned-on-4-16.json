@@ -1,0 +1,35 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ClientEvent",
+  "version": "4.16.0.238",
+  "note": "Laid out as a 4.16.0.238 client takes it.",
+  "bytes": "a31f0000401819000040000000000000000000000000",
+  "fields": {
+    "command": 163,
+    "netId": 1073741855,
+    "extendedCommand": null,
+    "event": 24,
+    "subject": 1073741849,
+    "stage": null,
+    "damage": null,
+    "spent": null,
+    "value": null,
+    "critical": null,
+    "spree": null,
+    "earned": {
+      "gold": 0,
+      "detail": 0,
+      "subDetail": 0
+    },
+    "heal": null,
+    "effect": null,
+    "buff": null,
+    "assist": null,
+    "kill": null,
+    "monster": null,
+    "callout": null,
+    "substitution": null,
+    "undo": null
+  }
+}
