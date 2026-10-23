@@ -28,7 +28,7 @@ that library is what defines this behaviour.
 
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
-> **In 1.0**
+> **In 1.0.0.126**
 >
 > Stock ENet 1.2.5 serves a client as it stands: the header, the constants and
 > the commands are the release's own. A client abandons a connection whose

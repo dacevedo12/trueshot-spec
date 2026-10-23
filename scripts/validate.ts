@@ -1550,15 +1550,16 @@ const rangeStarts = ((): string[] | null => {
   }
 })();
 
-// The ending a vector for this version takes: "-on-" and the first two parts
-// of the first build of the range it falls in.
+// The ending a vector for this version takes: "-on-" and the patch of the
+// first build of the range it falls in, its first two parts or, for a 1.0
+// patch, the whole build, with hyphens for dots.
 const rangeSuffix = (version: string): string | undefined => {
   const from = (rangeStarts ?? [])
     .filter((start) => compareVersions(start, version) <= 0)
     .at(-1);
   return from === undefined
     ? undefined
-    : `-on-${from.split(".").slice(0, 2).join("-")}`;
+    : `-on-${(from.startsWith("1.0.") ? from.split(".") : from.split(".").slice(0, 2)).join("-")}`;
 };
 
 let vectorCount = 0;

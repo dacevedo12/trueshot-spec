@@ -7,7 +7,7 @@ which of its values follow.
 
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
-> **In 1.0**
+> **In 1.0.0.126**
 >
 > The groups follow in the order 0 to 4, and nothing gives a group's length:
 > each value is four bytes, so a group takes four bytes for its set of values and
@@ -69,7 +69,7 @@ Each row gives the group and bits that name a value and what the value is.
 
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
-> **In 1.0**
+> **In 1.0.0.126**
 >
 > Each row also gives the type a value is written in.
 >

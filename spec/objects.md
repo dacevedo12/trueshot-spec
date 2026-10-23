@@ -23,7 +23,7 @@ these, it carries it whole, at the width above.
 
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
-> **In 1.0**
+> **In 1.0.0.126**
 >
 > A client takes a client id only from 0 to 252, and leaves on any other.
 

@@ -20,7 +20,7 @@ drawn further out than it allows with it, which a server MAY ignore.
 
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
-> **In 1.0**
+> **In 1.0.0.126**
 >
 > A client sends no `Camera` while its camera is locked. It takes the lock from
 > the player's own settings when `StartGame` arrives, locked where they say

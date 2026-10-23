@@ -32,7 +32,7 @@ unit into view (see [Vision](vision.md)): a client takes either.
 
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
-> **In 1.0**
+> **In 1.0.0.126**
 >
 > A client builds a prop from the character its `MapProp` names, loading that
 > character from its own files when it has not already, and fails soon after the

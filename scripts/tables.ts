@@ -42,12 +42,14 @@ const checked: readonly string[] = existsSync(RESULTS)
       .map((r) => r.build)
   : [];
 
+// The patch a build belongs to: its first two parts, or the whole build for a
+// 1.0 patch, which is named by it.
 const twoParts = (build: string): string =>
-  build.split(".").slice(0, 2).join(".");
+  build.startsWith("1.0.") ? build : build.split(".").slice(0, 2).join(".");
 
-// A range is named for its first build's first two parts, and, where the
-// builds checked within it reach a later pair, that pair after a dash:
-// 4.18–4.19 for the range from 4.18.0.271 whose last checked build is a 4.19.
+// A range is named for its first build's patch, and, where the builds checked
+// within it reach a later patch, that patch after a dash: 4.18–4.19 for the
+// range from 4.18.0.271 whose last checked build is a 4.19.
 function rangeName(r: Ranged): string {
   const inside = checked.filter((b) => covers(r, b)).sort(compare);
   const last = inside[inside.length - 1];

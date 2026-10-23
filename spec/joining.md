@@ -115,7 +115,7 @@ its progress reaches 100, up to the moment it is ready.
 
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
-> **In 1.0**
+> **In 1.0.0.126**
 >
 > A client writes zero where its player id goes in `LoadingProgress`.
 
