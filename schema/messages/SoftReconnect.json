@@ -5,7 +5,7 @@
   "note": "What a server sends, in pairs, to rebuild a client's world without a new connection: the first marks what the client holds, the second deletes whatever is still marked. The header carries zero.",
   "revisions": [
     {
-      "from": "1.0.0.151",
+      "from": "1.0.0.150",
       "until": "3.01.0.1",
       "channel": "events",
       "command": 236,

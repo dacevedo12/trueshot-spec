@@ -1,0 +1,23 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SpellSlotChanged",
+  "version": "1.0.0.150",
+  "note": "Laid out as a 1.0.0.150 client takes it.",
+  "bytes": "17210000400205",
+  "fields": {
+    "command": 23,
+    "netId": 1073741857,
+    "which": {
+      "slot": 2,
+      "summonerSlots": 0,
+      "unused": 0
+    },
+    "kind": 5,
+    "name": null,
+    "targeting": null,
+    "range": null,
+    "icon": null,
+    "offsetFrom": null
+  }
+}
