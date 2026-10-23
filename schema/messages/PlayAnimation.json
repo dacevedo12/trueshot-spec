@@ -442,7 +442,7 @@
     },
     {
       "from": "4.13.0.265",
-      "until": "4.20.0.315",
+      "until": "4.18.0.271",
       "channel": "events",
       "command": 176,
       "direction": "serverToClient",
@@ -512,7 +512,7 @@
       "note": "scaleTime and startProgress are applied only where above zero. A unit holding a locked animation ignores the message. An animated building plays at normal speed, and keepEmotes has no effect on it."
     },
     {
-      "from": "4.20.0.315",
+      "from": "4.18.0.271",
       "until": "4.21.0.0",
       "channel": "events",
       "command": 176,

@@ -275,6 +275,123 @@
     },
     {
       "from": "4.18.0.271",
+      "until": "4.20.0.315",
+      "channel": "events",
+      "command": 35,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "The side the region belongs to."
+        },
+        {
+          "name": "kind",
+          "type": "i32",
+          "note": "What sort of region it is. A client makes one only for 0, a circle.",
+          "values": {
+            "0": {
+              "name": "circle"
+            }
+          }
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the client the region answers to."
+        },
+        {
+          "name": "otherUnit",
+          "type": "u32",
+          "note": "A second unit a client looks up and keeps with the region, or zero."
+        },
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit the region follows, or zero where it stands still."
+        },
+        {
+          "name": "marker",
+          "type": "u32",
+          "note": "The name the region answers to, which RegionRemoved names to take it away."
+        },
+        {
+          "name": "sightFrom",
+          "type": "u32",
+          "note": "The unit whose sight the region grants, or zero."
+        },
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where the region sits, along one ground axis, in world units."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where it sits, along the other, in world units."
+        },
+        {
+          "name": "lifetime",
+          "type": "f32",
+          "note": "How long it lasts, in seconds. A lifetime of 0 never runs out."
+        },
+        {
+          "name": "lineOfSightRadius",
+          "type": "f32",
+          "note": "How far out the region's line of sight is reckoned, in world units."
+        },
+        {
+          "name": "grassRadius",
+          "type": "f32",
+          "note": "How far out it grows cover, in world units."
+        },
+        {
+          "name": "sizeMultiplier",
+          "type": "f32",
+          "note": "What its stated radius is scaled by."
+        },
+        {
+          "name": "sizeAdditive",
+          "type": "f32",
+          "note": "What is added to its stated radius after scaling, in world units."
+        },
+        {
+          "name": "does",
+          "type": "bits",
+          "size": 4,
+          "bits": [
+            {
+              "name": "lineOfSight",
+              "width": 1,
+              "note": "Set where walls and terrain cut the region's sight."
+            },
+            {
+              "name": "grantSight",
+              "width": 1,
+              "note": "Set to turn on the region's sight; sightFrom and revealHidden apply only where it is set. Where it is set, a client clears its map's cover over the region."
+            },
+            {
+              "name": "revealHidden",
+              "width": 1,
+              "note": "Set to show hidden units within it, where grantSight is set."
+            },
+            {
+              "name": "unused",
+              "width": 29,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "baseRadius",
+          "type": "f32",
+          "note": "The region's radius, in world units."
+        }
+      ]
+    },
+    {
+      "from": "4.20.0.315",
       "until": "4.21.0.0",
       "channel": "events",
       "command": 35,
