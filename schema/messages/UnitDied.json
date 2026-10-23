@@ -35,6 +35,59 @@
       ]
     },
     {
+      "from": "1.0.0.152",
+      "until": "1.0.0.154",
+      "channel": "events",
+      "command": 155,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "killer",
+          "type": "u32",
+          "note": "The unit credited with the death."
+        },
+        {
+          "name": "damageType",
+          "type": "u8",
+          "note": "Unused; a server writes zero."
+        },
+        {
+          "name": "damageSource",
+          "type": "u8",
+          "note": "Read only for a minion a champion killed, whose kill a client shows another way where it is 7; a server writes zero."
+        },
+        {
+          "name": "stayDown",
+          "type": "f32",
+          "note": "How long the unit stays down, in seconds."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "standing",
+              "width": 1,
+              "note": "Set to leave the unit standing as a husk rather than dead: no time of death, and for a champion no death animation and no death screen. A turret kept after death behaves so whatever this says."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "Which kill a client announces for killer: zero a neutral monster's, nonzero a minion's."
+        }
+      ],
+      "note": "Where killer names a unit it knows, a client announces the kill for that unit, then the one kind picks. Where the unit is not already dead, it cancels the unit's cast and attack, and only where killer is nonzero puts the unit down, by stayDown and standing."
+    },
+    {
       "from": "1.0.0.154",
       "until": "3.01.0.1",
       "channel": "events",

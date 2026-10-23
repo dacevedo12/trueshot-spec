@@ -5,7 +5,7 @@
   "note": "What a server sends to tell a client something happened. The sort is named first and settles what follows; unlike WorldEvent it carries no source apart from what the sort itself carries. The header names the unit the event is about.",
   "revisions": [
     {
-      "from": "1.0.0.154",
+      "from": "1.0.0.152",
       "until": "3.01.0.1",
       "channel": "events",
       "command": 160,
@@ -131,6 +131,27 @@
             "78": {
               "name": "itemChanged"
             },
+            "79": {
+              "name": "surrenderVoteStarted"
+            },
+            "80": {
+              "name": "surrenderVoteCast"
+            },
+            "81": {
+              "name": "surrenderAlreadyVoted"
+            },
+            "82": {
+              "name": "surrenderFailed"
+            },
+            "83": {
+              "name": "surrenderTooEarly"
+            },
+            "84": {
+              "name": "surrenderAgreed"
+            },
+            "85": {
+              "name": "surrenderVoteSpam"
+            },
             "88": {
               "name": "minionsSpawned"
             },
@@ -143,8 +164,47 @@
             "91": {
               "name": "startNoticeThree"
             },
+            "92": {
+              "name": "startNoticeFour"
+            },
+            "93": {
+              "name": "startNoticeFive"
+            },
+            "94": {
+              "name": "alert"
+            },
             "95": {
               "name": "scoreboardOpened"
+            },
+            "98": {
+              "name": "pointANeutralized"
+            },
+            "99": {
+              "name": "pointBNeutralized"
+            },
+            "100": {
+              "name": "pointCNeutralized"
+            },
+            "101": {
+              "name": "pointDNeutralized"
+            },
+            "102": {
+              "name": "pointENeutralized"
+            },
+            "103": {
+              "name": "pointACaptured"
+            },
+            "104": {
+              "name": "pointBCaptured"
+            },
+            "105": {
+              "name": "pointCCaptured"
+            },
+            "106": {
+              "name": "pointDCaptured"
+            },
+            "107": {
+              "name": "pointECaptured"
             },
             "116": {
               "name": "dragonKilled"
@@ -643,6 +703,64 @@
               "note": "The side of the player who pointed it out."
             }
           ]
+        },
+        {
+          "name": "votes",
+          "type": "record",
+          "present": {
+            "when": "event",
+            "equals": [79, 80, 82, 84, 85]
+          },
+          "note": "The count a client shows in the vote's notice.",
+          "fields": [
+            {
+              "name": "inFavour",
+              "type": "u32",
+              "note": "How many voted for."
+            },
+            {
+              "name": "against",
+              "type": "u32",
+              "note": "How many voted against."
+            },
+            {
+              "name": "side",
+              "type": "u16",
+              "note": "The side voting."
+            }
+          ]
+        },
+        {
+          "name": "alert",
+          "type": "record",
+          "present": {
+            "when": "event",
+            "equals": 94
+          },
+          "note": "Two numbers the alert's text shows.",
+          "fields": [
+            {
+              "name": "first",
+              "type": "u32",
+              "note": "The first."
+            },
+            {
+              "name": "second",
+              "type": "u32",
+              "note": "The second."
+            }
+          ]
+        },
+        {
+          "name": "number",
+          "type": "u32",
+          "present": {
+            "when": "event",
+            "equals": [
+              89, 90, 91, 92, 93, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107
+            ]
+          },
+          "note": "A number the notice's text shows: for 89 to 93 the map's."
         }
       ]
     },
