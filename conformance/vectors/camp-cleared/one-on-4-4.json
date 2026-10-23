@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "CampCleared",
+  "version": "4.4.0.1858",
+  "note": "Laid out as a 4.4.0.1858 client takes it.",
+  "bytes": "c200000000220000400700000000",
+  "fields": {
+    "command": 194,
+    "netId": 0,
+    "extendedCommand": null,
+    "killer": 1073741858,
+    "camp": 7,
+    "does": {
+      "speak": 0,
+      "firstSide": 0,
+      "unused": 0
+    }
+  }
+}
