@@ -22,9 +22,9 @@ The exceptions are few:
 >
 > `MapPropChanged` gives when its change begins in seconds of match time.
 
-<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+<!-- holds from 4.18.0.271 up to 4.21.0.0 -->
 
-> **In 4.20**
+> **In 4.18–4.20**
 >
 > `MapPropChanged` gives when its change begins in milliseconds of match time.
 

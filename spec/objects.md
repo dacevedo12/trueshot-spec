@@ -128,9 +128,9 @@ Each range names the stage that marks; any other value removes.
 >
 > The stage of `SoftReconnect` that marks is 0.
 
-<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+<!-- holds from 4.18.0.271 up to 4.21.0.0 -->
 
-> **In 4.20**
+> **In 4.18–4.20**
 >
 > The stage of `SoftReconnect` that marks is 1.
 

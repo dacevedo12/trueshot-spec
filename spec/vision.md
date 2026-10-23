@@ -76,9 +76,9 @@ out alike:
 
 Which of these forms a range has is in its definitions.
 
-<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
-> **In 4.1–4.17**
+> **In 4.1–4.19**
 >
 > `UnitDiedOnMap`, `InventorySnapshotOnMap`, `FloatingTextOnMap` and
 > `SpellSlotChangedForOwner` do not exist, so a server sends both audiences of

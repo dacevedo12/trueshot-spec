@@ -76,9 +76,9 @@ names.
 >
 > The action of `BotKick` that means leave is 4.
 
-<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+<!-- holds from 4.18.0.271 up to 4.21.0.0 -->
 
-> **In 4.20**
+> **In 4.18–4.20**
 >
 > The action of `BotKick` that means leave is 5.
 
