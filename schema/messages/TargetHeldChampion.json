@@ -20,6 +20,21 @@
       ]
     },
     {
+      "from": "1.0.0.154",
+      "until": "3.01.0.1",
+      "channel": "events",
+      "command": 189,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The champion being attacked."
+        }
+      ]
+    },
+    {
       "from": "3.01.0.1",
       "until": "4.1.0.171",
       "channel": "events",

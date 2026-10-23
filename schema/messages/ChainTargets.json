@@ -36,6 +36,37 @@
       ]
     },
     {
+      "from": "1.0.0.154",
+      "until": "3.01.0.1",
+      "channel": "events",
+      "command": 105,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "count",
+          "type": "i32",
+          "note": "How many of the slots are used, 0 to 32."
+        },
+        {
+          "name": "caster",
+          "type": "u32",
+          "note": "The unit casting the missile."
+        },
+        {
+          "name": "targets",
+          "type": "array",
+          "count": 32,
+          "items": {
+            "name": "target",
+            "type": "u32",
+            "note": "A unit, in the order struck."
+          },
+          "note": "Always 32 slots; those past count have no effect."
+        }
+      ]
+    },
+    {
       "from": "3.01.0.1",
       "until": "4.11.0.386",
       "channel": "events",

@@ -5,6 +5,26 @@
   "note": "What a server sends when a building is destroyed. The header names the unit this is about.",
   "revisions": [
     {
+      "from": "1.0.0.154",
+      "until": "3.01.0.1",
+      "channel": "events",
+      "command": 135,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "attacker",
+          "type": "u32",
+          "note": "The unit that destroyed it."
+        },
+        {
+          "name": "lastChampion",
+          "type": "u32",
+          "note": "For an inhibitor, the unit credited with destroying it; zero credits the attacker. A client reads it for nothing else."
+        }
+      ]
+    },
+    {
       "from": "3.01.0.1",
       "until": "4.1.0.171",
       "channel": "events",

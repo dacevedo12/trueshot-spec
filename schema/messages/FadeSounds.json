@@ -20,6 +20,21 @@
       ]
     },
     {
+      "from": "1.0.0.154",
+      "until": "3.01.0.1",
+      "channel": "events",
+      "command": 92,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "time",
+          "type": "f32",
+          "note": "How long the sounds take to fade; the unit is not recorded."
+        }
+      ]
+    },
+    {
       "from": "3.01.0.1",
       "until": "4.11.0.386",
       "channel": "events",

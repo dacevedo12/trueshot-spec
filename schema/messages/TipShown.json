@@ -46,6 +46,47 @@
       ]
     },
     {
+      "from": "1.0.0.154",
+      "until": "3.01.0.1",
+      "channel": "events",
+      "command": 82,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "body",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "What the note says. Written out in full and padded with zero bytes to the width above."
+        },
+        {
+          "name": "heading",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "What the note is headed with, written and padded as above."
+        },
+        {
+          "name": "image",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "The name the client loads a picture for the note under, written and padded as above."
+        },
+        {
+          "name": "what",
+          "type": "u8",
+          "note": "What the client does with the note."
+        },
+        {
+          "name": "tip",
+          "type": "u32",
+          "note": "The name this note answers to, so a later message can name it."
+        }
+      ]
+    },
+    {
       "from": "3.01.0.1",
       "until": "4.11.0.386",
       "channel": "events",

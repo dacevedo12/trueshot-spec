@@ -5,6 +5,41 @@
   "note": "What a client sends when a script it runs turns a unit to face a point. A server need do nothing with it. The header names the unit turned.",
   "revisions": [
     {
+      "from": "1.0.0.154",
+      "until": "3.01.0.1",
+      "channel": "requests",
+      "command": 77,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "directionX",
+          "type": "f32",
+          "note": "Which way the unit now faces, as a direction of length one, along one ground axis."
+        },
+        {
+          "name": "directionY",
+          "type": "f32",
+          "note": "Which way the unit now faces, as a direction of length one, in height."
+        },
+        {
+          "name": "directionZ",
+          "type": "f32",
+          "note": "Which way the unit now faces, as a direction of length one, along the other ground axis."
+        },
+        {
+          "name": "unused",
+          "type": "u8",
+          "note": "A client writes zero."
+        },
+        {
+          "name": "unknown",
+          "type": "f32",
+          "note": "A client never writes these bytes, so they carry whatever it held there; a server ignores them."
+        }
+      ]
+    },
+    {
       "from": "3.01.0.1",
       "until": "3.12.0.251",
       "channel": "requests",

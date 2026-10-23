@@ -26,6 +26,64 @@
       "note": "It carries no other messages: the body is the unit's health alone, always present."
     },
     {
+      "from": "1.0.0.154",
+      "until": "3.01.0.1",
+      "channel": "events",
+      "command": 171,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "carried",
+          "type": "bits",
+          "size": 2,
+          "bits": [
+            {
+              "name": "size",
+              "width": 11,
+              "note": "How many bytes the messages below occupy in total."
+            },
+            {
+              "name": "unused",
+              "width": 5,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "messages",
+          "type": "array",
+          "size": "carried.size",
+          "note": "Whole messages of the same family, each behind its own length, that a client acts on as though they had arrived on their own.",
+          "items": {
+            "type": "struct",
+            "struct": "CarriedMessage",
+            "name": "message"
+          }
+        },
+        {
+          "name": "vitals",
+          "type": "record",
+          "present": {
+            "when": "remaining"
+          },
+          "note": "The unit's health. A client reads it for a champion, a minion, a turret, a map prop or another unit with a mind, past the end of the message where it is missing, so a server sends it for those; for a building or a missile it ends after the carried messages.",
+          "fields": [
+            {
+              "name": "maxHealth",
+              "type": "f32",
+              "note": "What the unit's health tops out at."
+            },
+            {
+              "name": "health",
+              "type": "f32",
+              "note": "What its health stands at."
+            }
+          ]
+        }
+      ]
+    },
+    {
       "from": "3.01.0.1",
       "until": "4.1.0.171",
       "channel": "events",

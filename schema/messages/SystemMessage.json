@@ -5,6 +5,28 @@
   "note": "What a server sends to put a line of its own in a client's chat. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.154",
+      "until": "3.01.0.1",
+      "channel": "events",
+      "command": 244,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "source",
+          "type": "u32",
+          "note": "The unit the line is credited to, or zero where none is."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 512,
+          "note": "The line itself. Written out in full and padded with zero bytes to the width above."
+        }
+      ]
+    },
+    {
       "from": "3.01.0.1",
       "until": "4.1.0.171",
       "channel": "events",

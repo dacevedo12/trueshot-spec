@@ -68,6 +68,69 @@
       "note": "A client ignores the message where champion names no champion it holds."
     },
     {
+      "from": "1.0.0.154",
+      "until": "3.01.0.1",
+      "channel": "events",
+      "command": 214,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "champion",
+          "type": "u32",
+          "note": "The champion whose score it is."
+        },
+        {
+          "name": "category",
+          "type": "u8",
+          "note": "Which part of the score.",
+          "values": {
+            "0": {
+              "name": "offense"
+            },
+            "1": {
+              "name": "defense"
+            },
+            "2": {
+              "name": "combat"
+            },
+            "3": {
+              "name": "objective"
+            }
+          }
+        },
+        {
+          "name": "event",
+          "type": "u8",
+          "note": "What earned it."
+        },
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "callout",
+              "width": 1,
+              "note": "Set where the client announces it."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ],
+          "note": "How it is shown."
+        },
+        {
+          "name": "points",
+          "type": "f32",
+          "note": "How much is added."
+        }
+      ],
+      "note": "A client ignores the message where player names no champion it holds."
+    },
+    {
       "from": "3.01.0.1",
       "until": "4.1.0.171",
       "channel": "events",

@@ -5,6 +5,45 @@
   "note": "What a server sends to put an object on the field that follows a unit. The header names the unit followed.",
   "revisions": [
     {
+      "from": "1.0.0.154",
+      "until": "3.01.0.1",
+      "channel": "events",
+      "command": 238,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "follower",
+          "type": "u32",
+          "note": "The name the new object answers to."
+        },
+        {
+          "name": "node",
+          "type": "u8",
+          "note": "Which network node it belongs to."
+        },
+        {
+          "name": "skin",
+          "type": "i32",
+          "note": "Which look it wears."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "Its name, padded with zero bytes."
+        },
+        {
+          "name": "asset",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The name the client loads its art under, padded with zero bytes."
+        }
+      ]
+    },
+    {
       "from": "3.01.0.1",
       "until": "4.1.0.171",
       "channel": "events",

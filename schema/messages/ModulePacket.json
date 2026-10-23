@@ -5,6 +5,32 @@
   "note": "What a client sends to carry data from a module of its own, often a message of its own that the module has taken over. A server need do nothing with it. The header carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.154",
+      "until": "3.01.0.1",
+      "channel": "requests",
+      "command": 220,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What the data is for."
+        },
+        {
+          "name": "length",
+          "type": "u16",
+          "note": "How many bytes of data follow; at most 1024."
+        },
+        {
+          "name": "data",
+          "type": "bytes",
+          "size": "length",
+          "note": "Data for a module of the client's own, which the message only carries."
+        }
+      ]
+    },
+    {
       "from": "3.01.0.1",
       "until": "4.1.0.171",
       "channel": "requests",

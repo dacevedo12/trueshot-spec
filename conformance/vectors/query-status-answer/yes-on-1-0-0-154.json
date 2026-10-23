@@ -1,0 +1,13 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "QueryStatusAnswer",
+  "version": "1.0.0.154",
+  "note": "Laid out as a 1.0.0.154 client takes it.",
+  "bytes": "860000000001",
+  "fields": {
+    "command": 134,
+    "netId": 0,
+    "ready": 1
+  }
+}

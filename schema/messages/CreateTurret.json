@@ -5,6 +5,34 @@
   "note": "What a server sends to put a turret on the field. A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it. The header names the unit this is about.",
   "revisions": [
     {
+      "from": "1.0.0.154",
+      "until": "3.01.0.1",
+      "channel": "events",
+      "command": 154,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "turret",
+          "type": "u32",
+          "note": "The name the turret answers to, so later messages can name it."
+        },
+        {
+          "name": "node",
+          "type": "u8",
+          "note": "Which network node the object belongs to, in a field of its own."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "What this turret is called, so a client can tell one from another. Written out in full and padded with zero bytes to the width above."
+        }
+      ],
+      "note": "A client matches name exactly against the map's turrets. With no match it only removes any object holding the id; a matched turret missing or dead is rebuilt before it takes the id."
+    },
+    {
       "from": "3.01.0.1",
       "until": "4.1.0.171",
       "channel": "events",

@@ -163,6 +163,37 @@
       "note": "A client answers each with WaypointAck, naming this sync id and listing, in order, each unit whose path carried a teleport token with that token."
     },
     {
+      "from": "1.0.0.154",
+      "until": "3.01.0.1",
+      "channel": "events",
+      "command": 97,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u32",
+          "note": "Names this statement of movement."
+        },
+        {
+          "name": "movementCount",
+          "type": "u16",
+          "note": "How many units follow."
+        },
+        {
+          "name": "movements",
+          "type": "array",
+          "count": "movementCount",
+          "note": "What each unit is told to do.",
+          "items": {
+            "name": "movement",
+            "type": "struct",
+            "struct": "MovementAtSpeed"
+          }
+        }
+      ]
+    },
+    {
       "from": "3.01.0.1",
       "until": "4.11.0.386",
       "channel": "events",

@@ -156,6 +156,36 @@
       "note": "What a server sends to set units walking paths, which each walks at its own speed."
     },
     {
+      "from": "1.0.0.154",
+      "until": "3.01.0.1",
+      "channel": "transient",
+      "command": 94,
+      "direction": "serverToClient",
+      "reliability": "unreliable",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u32",
+          "note": "Names this group. A client returns it to say the group arrived."
+        },
+        {
+          "name": "movementCount",
+          "type": "u16",
+          "note": "How many units the group moves. A client reads it as signed, so a count above 32767 carries none."
+        },
+        {
+          "name": "movements",
+          "type": "array",
+          "count": "movementCount",
+          "items": {
+            "name": "movement",
+            "type": "struct",
+            "struct": "Movement"
+          }
+        }
+      ]
+    },
+    {
       "from": "3.01.0.1",
       "until": "4.11.0.386",
       "channel": "transient",

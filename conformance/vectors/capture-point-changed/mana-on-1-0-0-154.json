@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "CapturePointChanged",
+  "version": "1.0.0.154",
+  "note": "Laid out as a 1.0.0.154 client takes it.",
+  "bytes": "d0000000000001000040006400000000",
+  "fields": {
+    "command": 208,
+    "netId": 0,
+    "point": 0,
+    "unit": 1073741825,
+    "resourceKind": 0,
+    "side": 100,
+    "change": 0
+  }
+}

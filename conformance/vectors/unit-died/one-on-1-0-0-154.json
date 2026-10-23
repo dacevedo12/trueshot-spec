@@ -1,0 +1,21 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "UnitDied",
+  "version": "1.0.0.154",
+  "note": "Laid out as a 1.0.0.154 client takes it.",
+  "bytes": "9b01000040020000400000000000000000000000400000",
+  "fields": {
+    "command": 155,
+    "netId": 1073741825,
+    "killer": 1073741826,
+    "damageType": 0,
+    "damageSource": 0,
+    "stayDown": 2,
+    "how": {
+      "standing": 0,
+      "unused": 0
+    },
+    "kind": 0
+  }
+}

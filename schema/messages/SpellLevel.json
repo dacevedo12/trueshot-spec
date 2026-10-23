@@ -21,6 +21,21 @@
       "note": "It carries no level: a client raises the spell in the slot by one level each time, to at most 6."
     },
     {
+      "from": "1.0.0.154",
+      "until": "3.01.0.1",
+      "channel": "events",
+      "command": 88,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u32",
+          "note": "Which slot. A client raises that slot's level by one, to at most 6."
+        }
+      ]
+    },
+    {
       "from": "3.01.0.1",
       "until": "4.5.0.260",
       "channel": "events",

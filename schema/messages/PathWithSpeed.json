@@ -98,6 +98,98 @@
       "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning."
     },
     {
+      "from": "1.0.0.154",
+      "until": "3.01.0.1",
+      "channel": "events",
+      "command": 129,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "i32",
+          "note": "The unit's movement count."
+        },
+        {
+          "name": "speed",
+          "type": "f32",
+          "note": "The speed to move at, in world units a second."
+        },
+        {
+          "name": "gravity",
+          "type": "f32",
+          "note": "The arc's gravity, for a leap, in units of 150 world units a second squared. Zero or less moves the unit flat."
+        },
+        {
+          "name": "arcX",
+          "type": "f32",
+          "note": "Where the arc begins, in world units."
+        },
+        {
+          "name": "arcZ",
+          "type": "f32",
+          "note": "Where the arc begins, in world units."
+        },
+        {
+          "name": "facing",
+          "type": "u8",
+          "note": "Which way the unit faces as it moves.",
+          "values": {
+            "0": {
+              "name": "along",
+              "note": "The way it moves."
+            },
+            "1": {
+              "name": "keep",
+              "note": "The way it faced."
+            }
+          }
+        },
+        {
+          "name": "follow",
+          "type": "u32",
+          "note": "A unit to follow, or zero for none."
+        },
+        {
+          "name": "followDistance",
+          "type": "f32",
+          "note": "How near to keep to it, in world units. It takes effect only where follow is not zero."
+        },
+        {
+          "name": "backOff",
+          "type": "f32",
+          "note": "How far to fall back from it, in world units. It takes effect only where follow is not zero."
+        },
+        {
+          "name": "travelTime",
+          "type": "f32",
+          "note": "How long the move takes, in seconds. It takes effect only where follow is not zero."
+        },
+        {
+          "name": "points",
+          "type": "array",
+          "count": "remaining",
+          "items": {
+            "name": "pointsEntry",
+            "type": "record",
+            "fields": [
+              {
+                "name": "x",
+                "type": "f32",
+                "note": "A point on the path, in world units."
+              },
+              {
+                "name": "z",
+                "type": "f32",
+                "note": "A point on the path, in world units."
+              }
+            ]
+          },
+          "note": "The path's points, to the end of the message. A client takes the ground's height for each."
+        }
+      ]
+    },
+    {
       "from": "3.01.0.1",
       "until": "4.1.0.171",
       "channel": "events",

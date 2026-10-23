@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "QuestEvent",
+  "version": "1.0.0.154",
+  "note": "Laid out as a 1.0.0.154 client sends it.",
+  "bytes": "ca010000400009000000",
+  "fields": {
+    "command": 202,
+    "netId": 1073741825,
+    "event": 0,
+    "quest": 9
+  }
+}

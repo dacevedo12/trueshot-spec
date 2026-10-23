@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "CancelTargeting",
+  "version": "1.0.0.154",
+  "note": "Laid out as a 1.0.0.154 client takes it.",
+  "bytes": "840100004002",
+  "fields": {
+    "command": 132,
+    "netId": 1073741825,
+    "which": {
+      "slot": 2,
+      "summonerSpell": 0,
+      "unused": 0
+    }
+  }
+}

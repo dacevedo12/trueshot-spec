@@ -1,0 +1,13 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "PlayEmote",
+  "version": "1.0.0.154",
+  "note": "Laid out as a 1.0.0.154 client sends it.",
+  "bytes": "450100004001",
+  "fields": {
+    "command": 69,
+    "netId": 1073741825,
+    "emote": 1
+  }
+}
