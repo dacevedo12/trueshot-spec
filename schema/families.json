@@ -60,6 +60,62 @@
       ]
     },
     {
+      "from": "1.0.0.151",
+      "until": "1.0.0.152",
+      "families": [
+        {
+          "name": "game",
+          "note": "The simulation itself: what a client asks for, and what the server says happened.",
+          "command": {
+            "field": "command",
+            "reserved": [255]
+          },
+          "header": [
+            {
+              "name": "command",
+              "type": "u8",
+              "note": "255 introduces a container of several messages rather than a message of its own, which spec/messages.md describes."
+            },
+            {
+              "name": "netId",
+              "type": "u32",
+              "note": "A network object the message concerns. Which object, and whether it is the origin or the subject, is settled by each message rather than here, and some messages carry a value naming none."
+            }
+          ]
+        },
+        {
+          "name": "session",
+          "note": "The match and who is in it, rather than the simulation: text between players, and the roster.",
+          "command": {
+            "field": "command"
+          },
+          "header": [
+            {
+              "name": "command",
+              "type": "u8"
+            }
+          ]
+        },
+        {
+          "name": "registration",
+          "note": "Establishing a connection. The one family whose first message travels before a cipher state exists.",
+          "command": {
+            "field": "command"
+          },
+          "header": [
+            {
+              "name": "command",
+              "type": "u8"
+            }
+          ]
+        },
+        {
+          "name": "chat",
+          "header": []
+        }
+      ]
+    },
+    {
       "from": "1.0.0.152",
       "until": "3.6.0.388",
       "families": [

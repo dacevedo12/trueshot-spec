@@ -52,6 +52,53 @@
       ]
     },
     {
+      "from": "1.0.0.151",
+      "until": "1.0.0.152",
+      "channel": "chat",
+      "command": 0,
+      "direction": "bidirectional",
+      "reliability": "reliable",
+      "note": "A line of chat. A client sends one as its player says something, and shows one a server sends in its chat box.",
+      "fields": [
+        {
+          "name": "speaker",
+          "type": "u32",
+          "note": "The client id the line is from. A client sends its own. From a server, a client shows the line with the name and champion of the player holding that client id, coloured for their side, and with no name for a client id nobody holds; 4294967295 shows the line as said to everyone with no name, less its first three bytes."
+        },
+        {
+          "name": "audience",
+          "type": "u32",
+          "note": "1 for the speaker's side alone, which a client shows without a tag; any other value from a server is shown tagged as said to everyone. A client sends 0 where its player began the line with the all-chat prefix, which it leaves out of the text, and 1 otherwise.",
+          "values": {
+            "0": {
+              "name": "everyone"
+            },
+            "1": {
+              "name": "team"
+            }
+          }
+        },
+        {
+          "name": "textLength",
+          "type": "u32",
+          "note": "The length of the text in bytes, without the byte that ends it. Its value changes nothing a client does."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "size": "textLength",
+          "encoding": "utf8",
+          "note": "The line; a client sends at most 127 bytes of it, and reads it up to the zero byte that ends it."
+        },
+        {
+          "name": "terminator",
+          "type": "bytes",
+          "size": 1,
+          "note": "A zero byte closing the text."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.152",
       "until": "3.02.0.30",
       "channel": "chat",
