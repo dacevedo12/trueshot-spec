@@ -34,39 +34,6 @@
     },
     {
       "from": "4.1.0.171",
-      "until": "4.2.0.2718",
-      "channel": "events",
-      "command": 239,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "flags",
-          "type": "bits",
-          "size": 1,
-          "bits": [
-            {
-              "name": "enabled",
-              "width": 1,
-              "note": "Set where the shop can be used."
-            },
-            {
-              "name": "force",
-              "width": 1,
-              "note": "Set where it can be used wherever the champion stands."
-            },
-            {
-              "name": "unused",
-              "width": 6,
-              "note": "Unused; a server writes zero."
-            }
-          ],
-          "note": "Whether it can be used."
-        }
-      ]
-    },
-    {
-      "from": "4.2.0.2718",
       "until": "4.11.0.386",
       "channel": "events",
       "command": 239,

@@ -32,58 +32,6 @@
     },
     {
       "from": "3.01.0.1",
-      "until": "4.1.0.171",
-      "channel": "events",
-      "command": 37,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "count",
-          "type": "u16",
-          "note": "How many units follow. A client reads it as signed, so a count above 32767 carries none."
-        },
-        {
-          "name": "targets",
-          "type": "array",
-          "count": "count",
-          "items": {
-            "name": "target",
-            "type": "u32",
-            "note": "A unit struck."
-          },
-          "note": "The units struck, in order."
-        }
-      ]
-    },
-    {
-      "from": "4.1.0.171",
-      "until": "4.2.0.2718",
-      "channel": "events",
-      "command": 37,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "count",
-          "type": "u16",
-          "note": "How many units follow."
-        },
-        {
-          "name": "targets",
-          "type": "array",
-          "count": "count",
-          "items": {
-            "name": "target",
-            "type": "u32",
-            "note": "A unit struck."
-          },
-          "note": "The units struck, in order."
-        }
-      ]
-    },
-    {
-      "from": "4.2.0.2718",
       "until": "4.11.0.386",
       "channel": "events",
       "command": 37,

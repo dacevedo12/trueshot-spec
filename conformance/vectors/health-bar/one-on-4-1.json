@@ -4,17 +4,17 @@
   "message": "HealthBar",
   "version": "4.1.0.171",
   "note": "Laid out as a 4.1.0.171 client takes it.",
-  "bytes": "cd19000040fc00",
+  "bytes": "cd19000040fe0000000000",
   "fields": {
     "command": 205,
     "netId": 1073741849,
     "extendedCommand": null,
     "flags": {
       "show": 0,
-      "changeType": 0,
+      "changeType": 1,
       "unused": 63
     },
     "barType": 0,
-    "side": null
+    "side": 0
   }
 }
