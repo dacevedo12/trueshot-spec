@@ -99,7 +99,7 @@
     },
     {
       "from": "4.1.0.171",
-      "until": "4.3.0.495",
+      "until": "4.2.0.2718",
       "channel": "events",
       "command": 197,
       "direction": "serverToClient",
@@ -131,7 +131,7 @@
       "note": "Arriving while the match still loads, it counts as a win or loss for the player's side and the client leaves at once. Otherwise the client ends the match on its screen and sends ClientFinished, except while playing a replay."
     },
     {
-      "from": "4.3.0.495",
+      "from": "4.2.0.2718",
       "until": "4.4.0.1858",
       "channel": "events",
       "command": 197,

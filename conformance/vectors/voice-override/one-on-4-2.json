@@ -1,0 +1,18 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "VoiceOverride",
+  "version": "4.2.0.2718",
+  "note": "Laid out as a 4.2.0.2718 client takes it.",
+  "bytes": "95190000400000",
+  "fields": {
+    "command": 149,
+    "netId": 1073741849,
+    "extendedCommand": null,
+    "flags": {
+      "reset": 0,
+      "unused": 0
+    },
+    "voice": ""
+  }
+}
