@@ -79,6 +79,10 @@ function sweepFor(
     const b = build.split(".").map(Number);
     return a.reduce((t, x, i) => t * 1_000_000 + Math.abs(x - (b[i] ?? 0)), 0);
   };
+  // EnterSight: a 1.0 server sends the view of a champion, which a 1.0
+  // client reads past the end of a message without it, and the only unit a
+  // sweep's match holds is the client's own champion.
+  const viewless = before(build, "3.01.0.1");
   const best = new Map<
     string,
     { name: string; channel: string; fields: Values; distance: number }
@@ -121,6 +125,8 @@ function sweepFor(
       } catch {
         continue;
       }
+      if (v.message === "EnterSight" && viewless && fields["view"] == null)
+        continue;
       const key = `${v.message}/${channel}`;
       const d = distance(v.version);
       const held = best.get(key);
