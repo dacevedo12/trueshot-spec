@@ -37,6 +37,53 @@
     },
     {
       "from": "3.01.0.1",
+      "until": "3.6.0.388",
+      "channel": "events",
+      "command": 110,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "item",
+          "type": "u32",
+          "note": "Which item, by the number the client knows it as."
+        },
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "The slot it went to. A client rejects the message from 38 up."
+        },
+        {
+          "name": "inSlot",
+          "type": "u8",
+          "note": "How many of the item the slot holds; zero leaves the slot as it was. The slot's charges come from the item's own data."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "unused",
+              "width": 6,
+              "note": "Unused; a server writes zero."
+            },
+            {
+              "name": "announce",
+              "width": 1,
+              "note": "Set to announce the purchase: a client shows it where the unit is on its side (or it plays a replay), the item's own data allows it, the player's setting asks for it, and the same item was not bought in the last 5 seconds, a repeat within them restarting the wait."
+            },
+            {
+              "name": "unused7",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "from": "3.6.0.388",
       "until": "4.11.0.386",
       "channel": "events",
       "command": 110,
