@@ -129,47 +129,6 @@
     },
     {
       "from": "4.11.0.386",
-      "until": "4.18.0.271",
-      "channel": "events",
-      "command": 219,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "fadeIn",
-          "type": "u8",
-          "note": "Nonzero brings a tint in, and the colour and weight below follow; 0 takes it away, and they do not."
-        },
-        {
-          "name": "time",
-          "type": "f32",
-          "note": "How long the change takes, in seconds."
-        },
-        {
-          "name": "side",
-          "type": "i32",
-          "note": "Which side sees it."
-        },
-        {
-          "name": "colour",
-          "type": "u32",
-          "note": "The tint, as blue, green, red and opacity bytes.",
-          "present": {
-            "when": "fadeIn"
-          }
-        },
-        {
-          "name": "weight",
-          "type": "f32",
-          "note": "How strongly it applies at most.",
-          "present": {
-            "when": "fadeIn"
-          }
-        }
-      ]
-    },
-    {
-      "from": "4.20.0.315",
       "until": "4.21.0.0",
       "channel": "events",
       "command": 219,
