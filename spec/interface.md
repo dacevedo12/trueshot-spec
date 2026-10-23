@@ -54,9 +54,9 @@ and hide an objective panel (`ObjectiveShown`, `ObjectiveReplaced`,
 
 ## The tutorial
 
-<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
-> **In 4.1–4.17**
+> **In 4.1–4.19**
 >
 > A client is in the tutorial where the version answer names the mode TUTORIAL on map 12.
 

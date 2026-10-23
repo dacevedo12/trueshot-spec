@@ -10,9 +10,9 @@ caller's vote. A client answers with `SurrenderVote`, and a server tells the sid
 where the vote stands with `SurrenderStatus`. A server can say whether a champion's player can call a vote at all with
 `SurrenderAllowed`, which turns the choice in the client's menu on or off.
 
-<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
-> **In 4.1–4.17**
+> **In 4.1–4.19**
 >
 > A client ignores `SurrenderVoteCalled` that arrives before its own champion is on the field.
 
@@ -31,5 +31,14 @@ vote. `BalanceResult` says how the vote ended, or why it could not be held.
 > Where the version answer's features turn the commands on, a client also sends
 > a vote against as its player types `/noequalize`: `BalanceVoteRefused`, laid
 > out as `BalanceVote` with only its first fields filled.
+
+<!-- holds from 4.18.0.271 up to 4.20.0.315 -->
+
+> **In 4.18–4.19**
+>
+> Where the version answer's features turn the commands on, a client also sends
+> a vote against as its player types `/noequalize`: `BalanceVoteRefused`, laid
+> out as `BalanceVote` with every field zero but the flags' bits from 2 up,
+> which carry nothing.
 
 <!-- messages -->

@@ -27,9 +27,24 @@ in them it reads; their contents are the client's own.
 
 > **In 4.1–4.17**
 >
+> The client has maps 1, 8, 10 and 12, and no map 11.
+
+<!-- holds from 4.18.0.271 up to 4.20.0.315 -->
+
+> **In 4.18–4.19**
+>
+> The client has maps 1, 8, 10, 11 and 12. Map 11's buildings are not scene
+> objects: its object list below holds them, named by the same rules, with
+> `Turret_OrderTurretShrine` and `Turret_ChaosTurretShrine` for its shrine
+> turrets, and the client creates them from it as it does scene objects. Map 11
+> has no ground grid.
+
+<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
+
+> **In 4.1–4.19**
+>
 > A client installs its files under one root, with the paths below; an install
-> that packs them into archives keeps the same paths inside. The client has maps
-> 1, 8, 10 and 12, and no map 11.
+> that packs them into archives keeps the same paths inside.
 >
 > **Buildings.** `LEVELS/Map1/Scene/room.dsc` lists a map's scene objects, one
 > line each: a file name and a quality number. Each object's own file, `.sco` as

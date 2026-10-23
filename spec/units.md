@@ -39,9 +39,9 @@ unit into view (see [Vision](vision.md)): a client takes either.
 > prop comes near what it draws where it cannot load it. A server MUST name in
 > `MapProp` only characters the client can load.
 
-<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
-> **In 4.1–4.17**
+> **In 4.1–4.19**
 >
 > A client drops a `CreateChampion` or a `CreateNeutral` that arrives before it
 > sends `CharacterSelected`, reconnecting included. A server MUST send them after
@@ -66,9 +66,9 @@ champion out of the world. A unit's death is in [Combat](combat.md).
 A server can tell a client what a bot is thinking (`BotDebug`), weighing
 (`BotTargets`) or doing (`BotState`).
 
-<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
-> **In 4.1–4.17**
+> **In 4.1–4.19**
 >
 > None of `BotDebug`, `BotTargets` and `BotState` changes what a player sees.
 

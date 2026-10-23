@@ -13,9 +13,9 @@ against.
 `GameSpeed` sets how fast the match runs. `StatTick` asks every unit's stats to
 advance by a span of seconds.
 
-<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
-> **In 4.1–4.17**
+> **In 4.1–4.19**
 >
 > `GameSpeed` sets how fast a client's game clock runs (see
 > [Time](time.md)), from 0 to 10 times normal, and shows the new speed over
@@ -34,12 +34,19 @@ identifiers](objects.md)).
 >
 > A client names no one in `Pause` or `Resume`.
 
+<!-- holds from 4.18.0.271 up to 4.20.0.315 -->
+
+> **In 4.18–4.19**
+>
+> A client puts 0 in the client id of `Pause` and `Resume`, the same id as the
+> first seat's, so a server takes no seat from that field.
+
 A server holds the match with `Paused`, carrying how long the hold can last, in
 seconds.
 
-<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
-> **In 4.1–4.17**
+> **In 4.1–4.19**
 >
 > A client begins a hold only where the time `Paused` carries is above zero and the
 > match is not already held, and shows a tournament's hold, crediting the seat that asked,
@@ -55,9 +62,9 @@ A server ends the match with `GameEnded`, saying which side won, and takes the
 interface down with `HudDisabled`. A client shows the win or loss for its player's
 side and sends `ClientFinished` once, except while playing a replay.
 
-<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
-> **In 4.1–4.17**
+> **In 4.1–4.19**
 >
 > A client that receives `GameEnded` while still loading leaves at once.
 
@@ -85,9 +92,9 @@ names.
 A server tells the others that a player's client dropped with
 `PlayerDisconnected`.
 
-<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
-> **In 4.1–4.17**
+> **In 4.1–4.19**
 >
 > A client shows a notice in chat for `PlayerDisconnected`.
 
@@ -119,9 +126,9 @@ loading leaves instead. `SoftReconnect` rebuilds a client's world without a new 
 > A client the server drops with the reason that means its player was away
 > shows that, and does not connect again.
 
-<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
-> **In 4.1–4.17**
+> **In 4.1–4.19**
 >
 > `Reconnected` announces that another player came back. A client shows it for
 > an ally, or for anyone while it watches the match, and only notes it where it
@@ -141,9 +148,9 @@ meanwhile, is each range's own.
 > for 5 seconds in play, it shows its player that it is trying to reconnect, and
 > clears the notice as soon as anything arrives.
 
-<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
-> **In 4.1–4.17**
+> **In 4.1–4.19**
 >
 > Before loading is done, a client waits 60 seconds for an acknowledgement rather
 > than 15. In play it sends nothing on its own to show it is still there: what it

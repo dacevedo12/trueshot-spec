@@ -40,9 +40,9 @@ units within it. A server places one with `RegionAdded`, moves it with
 identifiers](objects.md) says how regions are named and when one ends. A region granting sight
 has a client clear its map's cover over it.
 
-<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
-> **In 4.1–4.17**
+> **In 4.1–4.19**
 >
 > A client makes only circular regions, and its regions see over walls or not as
 > the region says.
@@ -51,9 +51,9 @@ has a client clear its map's cover over it.
 
 `FogSet` and `FogToggled` concern how a client draws its fog of war.
 
-<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
-> **In 4.1–4.17**
+> **In 4.1–4.19**
 >
 > A client draws its fog of war, or the map with no darkening, as `FogSet` and
 > `FogToggled` say. Neither changes what the client can see.

@@ -28,9 +28,9 @@ A client's first payload is `Register`, on the registration channel.
 > offers its player to wait another 30 seconds or to give up, and leaves on
 > giving up.
 
-<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
-> **In 4.1–4.17**
+> **In 4.1–4.19**
 >
 > A client knows the answer meant for it by the player id it registered as, not by
 > the client id, and takes the client id that answer carries as its own. Every
@@ -55,9 +55,9 @@ that it is not ready until it is.
 After an answer, a client sends `ClientVersion` once. A server answers with
 `VersionSync`, which names the map to load and everyone at the match.
 
-<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
-> **In 4.1–4.17**
+> **In 4.1–4.19**
 >
 > A client loads only where `VersionSync` sets `agreement.buildMatches`. With it
 > clear, the client shows its player its own version text beside the one the
@@ -68,9 +68,9 @@ After an answer, a client sends `ClientVersion` once. A server answers with
 > metrics to a file of its own and report to the addresses the message carries.
 >
 > No bit of `features` is needed for a match to load, and a match with every bit
-> clear has none of the features. A client's own defaults are in its file
-> `DATA/CFG/defaults/GameFeatures.cfg`, one key for each bit in the order of the
-> bits; a server that wants a client's usual behaviour can start from it, and
+> clear has none of the features. A client's own defaults for most of the bits
+> are in its file `DATA/CFG/defaults/GameFeatures.cfg`, one key each, though not
+> in the order of the bits; a server that wants a client's usual behaviour can start from it, and
 > leaves the bits that report metrics clear.
 
 ## Taking a seat
@@ -79,9 +79,9 @@ Straight after `VersionSync`, a client sends `JoinSide` on the roster channel.
 A server answers with one `Roster`, then a `SeatName` and a `SeatChampion` for
 each seat a player holds.
 
-<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
-> **In 4.1–4.17**
+> **In 4.1–4.19**
 >
 > Every seat a player holds needs its place in `Roster`, its `SeatName` and its
 > `SeatChampion`. A seat a bot holds needs none of them, since `VersionSync` lists
@@ -101,9 +101,9 @@ own figures under the seat that reported: its progress, the seconds it expects
 to take, its count of reports, and its ping. A client goes on reporting after
 its progress reaches 100, up to the moment it is ready.
 
-<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
-> **In 4.1–4.17**
+> **In 4.1–4.19**
 >
 > A client waits on no other seat. Each `SeatLoadProgress` updates the card of
 > the seat it names, a client draws its own card only as a server returns its
@@ -127,9 +127,9 @@ its progress reaches 100, up to the moment it is ready.
 > server MUST put the seat's player id in `SeatLoadProgress`: the loading screen
 > shows a seat's card from the `VersionSync` seat with that id.
 
-<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
-> **In 4.1–4.17**
+> **In 4.1–4.19**
 >
 > ## The loading screen
 >
@@ -234,9 +234,9 @@ sends `MatchStarted`, with other messages free to come between them. The first `
 > A client whose connection drops before play begins ends rather than connecting
 > again.
 
-<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
-> **In 4.1–4.17**
+> **In 4.1–4.19**
 >
 > Between `ClientReady` and `StartGame` a client keeps its loading screen up with
 > its own progress full, and sends `LoadingProgress` again about every half a

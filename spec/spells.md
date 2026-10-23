@@ -15,9 +15,9 @@ ready with `SpellCooldown`, and, for a spell with uses, how many are left with
 Which slots a client lets its player cast from at all is a value of the
 champion's that [replication](replication.md) carries.
 
-<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
-> **In 4.1–4.17**
+> **In 4.1–4.19**
 >
 > `SpellCastAnswer` is both the answer to the client that asked and what every
 > client sees of the cast; there is nothing else to send it. Its casting record
@@ -53,9 +53,9 @@ with `SpellUpgraded`, on the clock channel, and a client shows the new level;
 are what `LevelUp` carries. A server can set how far each
 spell can be raised, and at which champion levels, with `SpellRankLimits`.
 
-<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
-> **In 4.1–4.17**
+> **In 4.1–4.19**
 >
 > A client spends the point as it sends `UpgradeSpell`, and asks only where the
 > champion has a point to spend, is of the level the slot requires, and the spell

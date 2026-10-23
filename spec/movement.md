@@ -111,9 +111,9 @@ channel, and the client returns that group's `syncId` in a `WaypointAck` (see
 `WaypointGroup` carrying back the path the order brought, unchanged, moves the
 champion along the route the client proposed.
 
-<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
-> **In 4.1–4.17**
+> **In 4.1–4.19**
 >
 > Where its player has movement prediction on, a client starts its champion
 > toward the point it asked for, and puts it back where it was if no path arrives

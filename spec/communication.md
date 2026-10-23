@@ -10,9 +10,9 @@ or to a side. A server puts a line of its own in a client's chat with
 `ChatAllowance`. Messages players exchange outside a match do not travel on
 this connection at all.
 
-<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
-> **In 4.1–4.17**
+> **In 4.1–4.19**
 >
 > A client shows how many lines `ChatAllowance` leaves its player.
 
@@ -22,9 +22,9 @@ A client marks a point on the map with `MapPing`, and a server shows the ping to
 everyone meant to see it with `PingPlaced`. A client asks to play an emote with
 `PlayEmote`, and a server shows it with `EmotePlayed`.
 
-<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
-> **In 4.1–4.17**
+> **In 4.1–4.19**
 >
 > A client places no ping for one its server marks as throttled, and only notes
 > in its own chat that the player is pinging too often. `VoiceCommand` and

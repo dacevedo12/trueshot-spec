@@ -37,9 +37,9 @@ allowing for how late the statement arrived. A client answers with
 statement arrived, so a server can measure the round trip. A server can report
 the round trip it measured with `ClockConvergence`.
 
-<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
-> **In 4.1–4.17**
+> **In 4.1–4.19**
 >
 > A client takes the round trip `ClockConvergence` reports into its allowance for lateness.
 
@@ -47,9 +47,9 @@ A server sends `ClockSync` as play begins, with 0 (see
 [Joining a match](joining.md)), and again whenever it means a client's clock to
 catch up with its own.
 
-<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
-> **In 4.1–4.17**
+> **In 4.1–4.19**
 >
 > A client's game clock does not run until the first `ClockSync` arrives, which
 > sets it. After that it runs on the client's own timer, and a later
@@ -69,9 +69,9 @@ Moments on the match clock include:
 
 A server MUST state each of these on the clock it sends in `ClockSync`.
 
-<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
-> **In 4.1–4.17**
+> **In 4.1–4.19**
 >
 > ## The game clock
 >

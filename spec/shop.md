@@ -54,9 +54,9 @@ with `SwapItemsAnswer`. A server can also set a slot (`InventorySlot`), set the
 whole inventory (`InventorySnapshot`), change an item's charges
 (`ItemCharges`), or report an item used (`ItemUsed`).
 
-<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
-> **In 4.1–4.17**
+> **In 4.1–4.19**
 >
 > `ItemAdded` places the item and removes nothing: a server sends a
 > `RemoveItemAnswer` for each part an item built from others takes up. Gold

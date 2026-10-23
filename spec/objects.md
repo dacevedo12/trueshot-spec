@@ -85,9 +85,9 @@ from, a client holds from the moment it loads the map.
 Leaving a client's sight removes nothing: `LeaveSight`, `LeaveLocalSight` and
 `LeaveTeamSight` hide an object, and it is held as before.
 
-<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
-> **In 4.1–4.17**
+> **In 4.1–4.19**
 >
 > How each kind leaves a client's world:
 >
@@ -105,9 +105,9 @@ Leaving a client's sight removes nothing: `LeaveSight`, `LeaveLocalSight` and
 
 Regions are named by region ids, apart from net ids.
 
-<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
-> **In 4.1–4.17**
+> **In 4.1–4.19**
 >
 > A client fails on a `RegionMoved` naming a region it does not hold, one whose
 > lifetime has run out included, and a server MUST NOT send one. `RegionRemoved`
@@ -157,9 +157,9 @@ Nothing is held back for later, those paths aside: a message that arrives
 before the message creating what it names is lost. [Ordering](ordering.md)
 says what that requires of a server.
 
-<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
-> **In 4.1–4.17**
+> **In 4.1–4.19**
 >
 > A client drops game messages until it sends `CharacterSelected`, apart from the
 > few [Joining a match](joining.md) lists.
@@ -218,9 +218,9 @@ minions a side sends out come from spawn points of their own, which are among
 the objects a map holds. On map 1 one of them is
 `__P_Order_Spawn_Barracks__C01`.
 
-<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
-> **In 4.1–4.17**
+> **In 4.1–4.19**
 >
 > A client puts a minion on the field for a `SpawnFromBarracks` naming a spawn
 > point, and creates nothing for one naming an inhibitor such as

@@ -17,9 +17,9 @@ server tells clients watching a match when a camp is next due with `CampTimer`.
 On a map won on score, a server binds each capture point to a unit with
 `CapturePointChanged`, and `TeamScore` sets each side's score.
 
-<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
-> **In 4.1–4.17**
+> **In 4.1–4.19**
 >
 > Everything a client shows of a capture point (who holds it, where it stands,
 > how far it is taken) comes from the unit `CapturePointChanged` binds it to, so a
@@ -32,9 +32,9 @@ On a map won on score, a server binds each capture point to a unit with
 A server can name the unit holding the Ascension with `AscendedUnit`, and send
 `RespawnPoint` about points a champion returns to life at.
 
-<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
-> **In 4.1–4.17**
+> **In 4.1–4.19**
 >
 > A client acts on `RespawnPoint` only where its screen has such a panel.
 
