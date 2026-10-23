@@ -345,7 +345,7 @@
     },
     {
       "from": "4.1.0.171",
-      "until": "4.6.0.193",
+      "until": "4.5.0.260",
       "channel": "events",
       "command": 123,
       "direction": "serverToClient",
@@ -472,7 +472,7 @@
       "note": "A client deletes any object holding the new unit's id first, and does nothing more where it cannot make the unit. owner is only who gets the gold the unit earns; clone, where nonzero, is copied, state and inventory; onlyVisibleTo, zero or unknown, restricts nothing."
     },
     {
-      "from": "4.6.0.193",
+      "from": "4.5.0.260",
       "until": "4.11.0.386",
       "channel": "events",
       "command": 123,

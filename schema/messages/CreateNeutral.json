@@ -585,7 +585,7 @@
     },
     {
       "from": "4.2.0.2718",
-      "until": "4.6.0.193",
+      "until": "4.5.0.260",
       "channel": "events",
       "command": 98,
       "direction": "serverToClient",
@@ -758,7 +758,7 @@
       "note": "The monster faces from where it stands toward the facing point, or along +Z where the two are the same. Its spawnAnimation plays only where named and time is left to spawn, and it cannot be targeted while it plays. A client drops the message while its map's navigation data is unloaded."
     },
     {
-      "from": "4.6.0.193",
+      "from": "4.5.0.260",
       "until": "4.9.0.239",
       "channel": "events",
       "command": 98,
