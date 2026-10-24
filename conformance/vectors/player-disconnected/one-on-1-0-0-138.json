@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "PlayerDisconnected",
+  "version": "1.0.0.138",
+  "note": "Laid out as a 1.0.0.138 client takes it.",
+  "bytes": "a3000000000100004000",
+  "fields": {
+    "command": 163,
+    "netId": 0,
+    "champion": 1073741825,
+    "flags": {
+      "toEnemies": 0,
+      "unused": 0
+    }
+  }
+}

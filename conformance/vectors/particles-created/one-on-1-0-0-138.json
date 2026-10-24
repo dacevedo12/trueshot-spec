@@ -1,0 +1,42 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ParticlesCreated",
+  "version": "1.0.0.138",
+  "note": "Laid out as a 1.0.0.138 client takes it.",
+  "bytes": "8f000000000169e35800200000000000000000000100000000000000000000000092f3000016436bf3a1f10000164386f192f3000016436bf300000000000000000000803f00000000",
+  "fields": {
+    "command": 143,
+    "netId": 0,
+    "groupCount": 1,
+    "groups": [
+      {
+        "particle": 5825385,
+        "flags": 32,
+        "targetBone": 0,
+        "bone": 0,
+        "particleCount": 1,
+        "particles": [
+          {
+            "target": 0,
+            "particle": 0,
+            "boundTo": 0,
+            "atX": -3182,
+            "atY": 150,
+            "atZ": -3221,
+            "towardX": -3679,
+            "towardY": 150,
+            "towardZ": -3706,
+            "ownerX": -3182,
+            "ownerY": 150,
+            "ownerZ": -3221,
+            "facingX": 0,
+            "facingY": 0,
+            "facingZ": 1,
+            "runningFor": 0
+          }
+        ]
+      }
+    ]
+  }
+}

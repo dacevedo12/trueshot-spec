@@ -57,6 +57,58 @@
       ]
     },
     {
+      "from": "1.0.0.138",
+      "until": "1.0.0.139",
+      "channel": "events",
+      "command": 230,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "champion",
+          "type": "u32",
+          "note": "The champion."
+        },
+        {
+          "name": "statistic",
+          "type": "u8",
+          "note": "Which count. A value past those named has no defined effect.",
+          "values": {
+            "0": {
+              "name": "pointCaptured"
+            },
+            "1": {
+              "name": "pointNeutralised"
+            },
+            "2": {
+              "name": "killWhileAttackingPoint"
+            },
+            "3": {
+              "name": "teamObjective"
+            },
+            "4": {
+              "name": "defendedPointNeutralised"
+            },
+            "5": {
+              "name": "killWhileDefendingPoint"
+            },
+            "6": {
+              "name": "timeDefendingPoint"
+            },
+            "7": {
+              "name": "lastStand"
+            },
+            "8": {
+              "name": "captureAssist"
+            },
+            "9": {
+              "name": "neutraliseAssist"
+            }
+          }
+        }
+      ]
+    },
+    {
       "from": "1.0.0.139",
       "until": "1.0.0.141",
       "channel": "events",

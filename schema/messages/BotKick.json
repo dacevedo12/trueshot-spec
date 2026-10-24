@@ -5,6 +5,27 @@
   "note": "What a server sends to have a client it takes for a program rather than a player leave the match. The header carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.138",
+      "until": "1.0.0.139",
+      "channel": "events",
+      "command": 234,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "action",
+          "type": "u8",
+          "note": "What to do. A client acts on 4 only.",
+          "values": {
+            "4": {
+              "name": "leave",
+              "note": "Leave the match at once, as one abandoning it, with nothing shown, sending Exit as it goes."
+            }
+          }
+        }
+      ]
+    },
+    {
       "from": "1.0.0.139",
       "until": "1.0.0.141",
       "channel": "events",

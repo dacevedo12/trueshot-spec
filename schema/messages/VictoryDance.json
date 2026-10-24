@@ -20,6 +20,21 @@
       ]
     },
     {
+      "from": "1.0.0.138",
+      "until": "1.0.0.139",
+      "channel": "events",
+      "command": 208,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "orderWon",
+          "type": "u8",
+          "note": "Nonzero where side 100 won, zero where side 200 won."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.139",
       "until": "1.0.0.141",
       "channel": "events",

@@ -1,0 +1,18 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "Paused",
+  "version": "1.0.0.138",
+  "note": "Laid out as a 1.0.0.138 client takes it.",
+  "bytes": "ac00000000010000003c00000001",
+  "fields": {
+    "command": 172,
+    "netId": 0,
+    "clientId": 1,
+    "timeLeft": 60,
+    "how": {
+      "tournament": 1,
+      "unused": 0
+    }
+  }
+}

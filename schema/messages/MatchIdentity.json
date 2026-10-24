@@ -20,6 +20,28 @@
       ]
     },
     {
+      "from": "1.0.0.138",
+      "until": "1.0.0.139",
+      "channel": "events",
+      "command": 155,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "game",
+          "type": "i64",
+          "note": "The match's identifier."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "The player's name, padded with zero bytes."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.139",
       "until": "1.0.0.144",
       "channel": "events",

@@ -20,6 +20,21 @@
       ]
     },
     {
+      "from": "1.0.0.138",
+      "until": "1.0.0.139",
+      "channel": "requests",
+      "command": 138,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "item",
+          "type": "u32",
+          "note": "Which item, by the number the client knows it as."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.139",
       "until": "1.0.0.144",
       "channel": "requests",

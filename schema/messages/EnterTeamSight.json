@@ -20,6 +20,21 @@
       ]
     },
     {
+      "from": "1.0.0.138",
+      "until": "1.0.0.139",
+      "channel": "events",
+      "command": 236,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "side",
+          "type": "u8",
+          "note": "Which side the unit came into or out of the view of."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.139",
       "until": "1.0.0.141",
       "channel": "events",

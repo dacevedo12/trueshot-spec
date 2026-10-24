@@ -5,6 +5,21 @@
   "note": "What a server sends naming a bot's state. It changes nothing a client shows. The header names the unit.",
   "revisions": [
     {
+      "from": "1.0.0.138",
+      "until": "1.0.0.139",
+      "channel": "events",
+      "command": 182,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "state",
+          "type": "i32",
+          "note": "The state."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.139",
       "until": "1.0.0.144",
       "channel": "events",

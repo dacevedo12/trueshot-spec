@@ -49,6 +49,46 @@
       ]
     },
     {
+      "from": "1.0.0.138",
+      "until": "1.0.0.139",
+      "channel": "events",
+      "command": 222,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit: a champion, minion, turret or other unit."
+        },
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which of the effects' inputs to drive."
+        },
+        {
+          "name": "point",
+          "type": "u8",
+          "note": "Which point, for source 0. It has no effect unless source is 0."
+        },
+        {
+          "name": "source",
+          "type": "u8",
+          "note": "What drives it. Any other value drives it from nothing. Any other value clears the binding.",
+          "values": {
+            "0": {
+              "name": "capturePoint",
+              "note": "How far the point is taken (CapturePointChanged)."
+            },
+            "1": {
+              "name": "resource",
+              "note": "The unit's resource bar."
+            }
+          }
+        }
+      ]
+    },
+    {
       "from": "1.0.0.139",
       "until": "1.0.0.141",
       "channel": "events",

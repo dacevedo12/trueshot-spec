@@ -23,6 +23,26 @@
           "note": "A unit whose name the announcement carries, or zero for an announcement that names none. A client shows nothing where it does not know the unit."
         }
       ]
+    },
+    {
+      "channel": "events",
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "announcement",
+          "type": "u32",
+          "note": "Which of the client's 28 announcements, 0 to 27. The text of each is the client's own and is not recorded here; a client fails on any other value."
+        },
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "A unit whose name the announcement carries, or zero for an announcement that names none. A client shows nothing where it does not know the unit."
+        }
+      ],
+      "from": "1.0.0.138",
+      "until": "1.0.0.139",
+      "command": 136
     }
   ]
 }

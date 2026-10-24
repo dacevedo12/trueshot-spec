@@ -5,6 +5,21 @@
   "note": "What a client sends once it has connected again to a match it was playing, right after the server answers its registration. A client dropped while playing reconnects by itself; one dropped while loading leaves instead. It carries nothing of its own. The header carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.138",
+      "until": "1.0.0.139",
+      "channel": "requests",
+      "command": 167,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "loading",
+          "type": "u8",
+          "note": "Zero once the client has taken StartGame, 1 before it."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.139",
       "until": "1.0.0.143",
       "channel": "requests",

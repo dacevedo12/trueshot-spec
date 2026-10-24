@@ -48,6 +48,49 @@
       ]
     },
     {
+      "from": "1.0.0.138",
+      "until": "1.0.0.139",
+      "channel": "events",
+      "command": 166,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "locks",
+          "type": "u32",
+          "note": "Each lock set flips.",
+          "values": {
+            "1": {
+              "name": "cameraLock",
+              "note": "Locking the camera."
+            },
+            "2": {
+              "name": "movement"
+            },
+            "4": {
+              "name": "spells"
+            },
+            "8": {
+              "name": "summonerSpells"
+            },
+            "16": {
+              "name": "shop"
+            },
+            "32": {
+              "name": "chat"
+            },
+            "64": {
+              "name": "minimapMovement",
+              "note": "Moving by the minimap."
+            },
+            "128": {
+              "name": "cameraMovement"
+            }
+          }
+        }
+      ]
+    },
+    {
       "from": "1.0.0.139",
       "until": "1.0.0.144",
       "channel": "events",

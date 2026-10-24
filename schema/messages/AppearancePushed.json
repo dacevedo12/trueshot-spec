@@ -33,6 +33,39 @@
       "note": "No skin is carried."
     },
     {
+      "from": "1.0.0.138",
+      "until": "1.0.0.139",
+      "channel": "events",
+      "command": 162,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "entry",
+          "type": "u32",
+          "note": "Names this look, so that AppearancePopped can name it."
+        },
+        {
+          "name": "overrideSpells",
+          "type": "u8",
+          "note": "Set where the unit's spells change with it. Any nonzero value sets it."
+        },
+        {
+          "name": "modelOnly",
+          "type": "u8",
+          "note": "Set where only the model changes. Any nonzero value sets it."
+        },
+        {
+          "name": "asset",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "The name the client loads it under, ended by a zero byte. The name and its zero byte take at most 64 bytes."
+        }
+      ],
+      "note": "A client stops a basic attack the unit is making first. Looks stack: the newest shows, and AppearancePopped takes away the one its entry names. An animated building instead looks for a look of the same name whose skin equals entry, adds the look under skin where it finds none, and how has no effect on it."
+    },
+    {
       "from": "1.0.0.139",
       "until": "1.0.0.144",
       "channel": "events",

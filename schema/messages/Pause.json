@@ -42,6 +42,44 @@
       ]
     },
     {
+      "from": "1.0.0.138",
+      "until": "1.0.0.139",
+      "channel": "requests",
+      "command": 172,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "A client writes 4294967295, the client id of no client."
+        },
+        {
+          "name": "timeLeft",
+          "type": "i32",
+          "note": "A client leaves it unwritten; its bytes carry no meaning."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "tournament",
+              "width": 1,
+              "note": "A client sends it clear."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a client writes zero."
+            }
+          ]
+        }
+      ],
+      "note": "A client sends the same values in every Pause, as each field states."
+    },
+    {
       "from": "1.0.0.139",
       "until": "1.0.0.144",
       "channel": "requests",
