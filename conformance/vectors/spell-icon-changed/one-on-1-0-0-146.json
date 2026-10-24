@@ -1,17 +1,17 @@
 {
   "$schema": "../../../schema/meta/vector.json",
   "subject": "message",
-  "message": "SpellSlotOffset",
+  "message": "SpellIconChanged",
   "version": "1.0.0.146",
   "note": "Laid out as a 1.0.0.146 client takes it.",
-  "bytes": "34000000000000000000",
+  "bytes": "33000000000000",
   "fields": {
-    "command": 52,
+    "command": 51,
     "netId": 0,
     "which": {
       "slot": 0,
       "summonerSlots": 0
     },
-    "offsetFrom": 0
+    "icon": 0
   }
 }
