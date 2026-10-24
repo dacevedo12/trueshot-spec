@@ -5,7 +5,7 @@
   "note": "What a server sends to put a turret on the field. A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it. The header names the unit this is about.",
   "revisions": [
     {
-      "from": "1.0.0.148",
+      "from": "1.0.0.147",
       "until": "1.0.0.150",
       "channel": "events",
       "command": 157,
