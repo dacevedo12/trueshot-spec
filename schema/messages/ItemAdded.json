@@ -36,6 +36,36 @@
       "note": "There is no charges field: a client takes an item's charges from the item's own data."
     },
     {
+      "from": "1.0.0.131",
+      "until": "1.0.0.132",
+      "channel": "events",
+      "command": 114,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "The slot it went to. A client rejects the message from 38 up."
+        },
+        {
+          "name": "item",
+          "type": "u32",
+          "note": "Which item, by the number the client knows it as."
+        },
+        {
+          "name": "inSlot",
+          "type": "u8",
+          "note": "How many of the item the slot holds; zero leaves the slot as it was. The slot's charges come from the item's own data."
+        },
+        {
+          "name": "activate",
+          "type": "u8",
+          "note": "Nonzero readies the item's own spell, in the slot four past the item's, and has the client answer with RemoveItem for it."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.132",
       "until": "1.0.0.135",
       "channel": "events",

@@ -15,6 +15,15 @@
       "note": "What a server sends to take a unit out of what a client can see; the client stops drawing it. The header names the unit."
     },
     {
+      "from": "1.0.0.131",
+      "until": "1.0.0.132",
+      "channel": "events",
+      "command": 84,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": []
+    },
+    {
       "from": "1.0.0.132",
       "until": "1.0.0.138",
       "channel": "events",

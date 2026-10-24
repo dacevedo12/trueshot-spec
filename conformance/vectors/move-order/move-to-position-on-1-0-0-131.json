@@ -1,0 +1,33 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "MoveOrder",
+  "version": "1.0.0.131",
+  "note": "Laid out as a 1.0.0.131 client sends it.",
+  "bytes": "75010000400218591744686e2543461fc2430000000060ec01000000000000000000",
+  "fields": {
+    "command": 117,
+    "netId": 1073741825,
+    "kind": 2,
+    "targetX": 605.39208984375,
+    "targetY": 165.4312744140625,
+    "targetZ": 388.24432373046875,
+    "target": 0,
+    "movement": {
+      "header": {
+        "hasTeleportToken": 0,
+        "unused": 30256,
+        "pointCount": 1,
+        "unusedHigh": 0
+      },
+      "path": {
+        "unit": 0,
+        "teleportToken": null,
+        "flags": [],
+        "firstX": 0,
+        "firstZ": 0,
+        "steps": []
+      }
+    }
+  }
+}

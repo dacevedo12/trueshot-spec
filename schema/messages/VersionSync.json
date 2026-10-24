@@ -105,6 +105,115 @@
       ]
     },
     {
+      "from": "1.0.0.131",
+      "until": "1.0.0.132",
+      "channel": "events",
+      "command": 87,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "agreement",
+          "type": "u8",
+          "note": "Nonzero where the build the client runs matches, which a client needs to load; zero has it show both versions and end."
+        },
+        {
+          "name": "map",
+          "type": "i32",
+          "note": "Which map to load. spec/space.md keys the path origins by the same maps."
+        },
+        {
+          "name": "seats",
+          "type": "array",
+          "count": 12,
+          "note": "Every place at the match, held or empty.",
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
+        },
+        {
+          "name": "build",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 256,
+          "note": "Which build the server serves. Written out in full and padded with zero bytes to the width above."
+        },
+        {
+          "name": "mode",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "Which way the match is played, written and padded as above."
+        },
+        {
+          "name": "teamName",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 25,
+          "note": "What one side is called where it plays as a standing team, written and padded as above."
+        },
+        {
+          "name": "teamTag",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 7,
+          "note": "The short form of that name, written and padded as above."
+        },
+        {
+          "name": "otherTeamName",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 25,
+          "note": "What the other side is called, under the same terms."
+        },
+        {
+          "name": "otherTeamTag",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 7,
+          "note": "The short form of that one."
+        },
+        {
+          "name": "metricsHost",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 1024,
+          "note": "Where a client reports figures about the match, written and padded as above."
+        },
+        {
+          "name": "metricsPath",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 1024,
+          "note": "What it asks for there, written and padded as above."
+        },
+        {
+          "name": "metricsPort",
+          "type": "u16",
+          "note": "Which port it reaches that at."
+        },
+        {
+          "name": "reporting",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "reportsToFile",
+              "width": 1,
+              "note": "Set to have a client also write its reports to a file of its own."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ]
+    },
+    {
       "from": "1.0.0.132",
       "until": "1.0.0.138",
       "channel": "events",

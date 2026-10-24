@@ -25,6 +25,26 @@
       ]
     },
     {
+      "from": "1.0.0.131",
+      "until": "1.0.0.132",
+      "channel": "events",
+      "command": 242,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "owner",
+          "type": "u32",
+          "note": "The champion credited."
+        },
+        {
+          "name": "amount",
+          "type": "f32",
+          "note": "How much gold. 0.95 is what a champion earns for each step it stands still."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.132",
       "until": "1.0.0.135",
       "channel": "events",

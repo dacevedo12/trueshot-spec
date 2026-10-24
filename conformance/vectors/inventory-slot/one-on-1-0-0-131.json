@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "InventorySlot",
+  "version": "1.0.0.131",
+  "note": "Laid out as a 1.0.0.131 client takes it.",
+  "bytes": "560100004001e90300000100",
+  "fields": {
+    "command": 86,
+    "netId": 1073741825,
+    "slot": 1,
+    "item": 1001,
+    "count": 1,
+    "charges": 0
+  }
+}

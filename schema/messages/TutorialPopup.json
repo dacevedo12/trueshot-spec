@@ -22,6 +22,23 @@
       ]
     },
     {
+      "from": "1.0.0.131",
+      "until": "1.0.0.132",
+      "channel": "events",
+      "command": 187,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "A key into the client's own text for the popup's body. The text ends at its first zero byte, which falls within the field."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.132",
       "until": "1.0.0.135",
       "channel": "events",

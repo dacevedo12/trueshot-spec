@@ -5,6 +5,36 @@
   "note": "What a server sends to give a unit's resource bar colours of its own, or to take them back. The header names the unit.",
   "revisions": [
     {
+      "from": "1.0.0.131",
+      "until": "1.0.0.132",
+      "channel": "events",
+      "command": 153,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unused",
+          "type": "u32",
+          "note": "Unused; its bytes carry no meaning. The header names the unit."
+        },
+        {
+          "name": "on",
+          "type": "u8",
+          "note": "Nonzero gives the bar the two colours below; zero takes them back, and a client reads neither."
+        },
+        {
+          "name": "fill",
+          "type": "u32",
+          "note": "The colour the bar fills with up to the unit's current amount, with its alpha in the top byte, which the bar's own fading scales."
+        },
+        {
+          "name": "lost",
+          "type": "u32",
+          "note": "The colour of what the unit has just lost, drawn from its current amount up to a mark that falls back toward it over time; alpha as above."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.132",
       "until": "1.0.0.135",
       "channel": "events",

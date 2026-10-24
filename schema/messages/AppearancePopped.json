@@ -21,6 +21,21 @@
       "note": "A 1.0.0.126 client can also take away every look laid over the unit on this command. Whether it does, and whether before or after taking away the look entry names, is not recorded."
     },
     {
+      "from": "1.0.0.131",
+      "until": "1.0.0.132",
+      "channel": "events",
+      "command": 106,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "entry",
+          "type": "u32",
+          "note": "The look, by the name AppearancePushed gave it."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.132",
       "until": "1.0.0.138",
       "channel": "events",

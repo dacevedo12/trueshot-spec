@@ -1,0 +1,19 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "RespawnPoint",
+  "version": "1.0.0.131",
+  "note": "Laid out as a 1.0.0.131 client takes it.",
+  "bytes": "de000000000001640000000000000000007a44000000000000fa44",
+  "fields": {
+    "command": 222,
+    "netId": 0,
+    "action": 0,
+    "point": 1,
+    "side": 100,
+    "clientId": 0,
+    "x": 1000,
+    "y": 0,
+    "z": 2000
+  }
+}

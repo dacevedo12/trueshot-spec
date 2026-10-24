@@ -5,6 +5,15 @@
   "note": "What a server sends to have a client leave the match at once, as one abandoning it, sending Exit as it goes. It carries nothing of its own. The header carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.131",
+      "until": "1.0.0.132",
+      "channel": "events",
+      "command": 244,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": []
+    },
+    {
       "from": "1.0.0.132",
       "until": "1.0.0.135",
       "channel": "events",

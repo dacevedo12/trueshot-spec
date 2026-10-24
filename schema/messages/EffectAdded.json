@@ -63,6 +63,64 @@
       ]
     },
     {
+      "from": "1.0.0.131",
+      "until": "1.0.0.132",
+      "channel": "events",
+      "command": 191,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which of the unit's effect slots it sits in."
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What sort of effect it is."
+        },
+        {
+          "name": "count",
+          "type": "u8",
+          "note": "How many of it are stacked there."
+        },
+        {
+          "name": "hidden",
+          "type": "u8",
+          "note": "Whether the client keeps it off the unit's display.",
+          "values": {
+            "0": {
+              "name": "shown"
+            },
+            "1": {
+              "name": "hidden"
+            }
+          }
+        },
+        {
+          "name": "effect",
+          "type": "u32",
+          "note": "Which effect, by the number its name gives, as spec/objects.md works it out."
+        },
+        {
+          "name": "runningFor",
+          "type": "f32",
+          "note": "How long it has already run, in seconds."
+        },
+        {
+          "name": "lasts",
+          "type": "f32",
+          "note": "How long it runs in total, in seconds."
+        },
+        {
+          "name": "caster",
+          "type": "u32",
+          "note": "The unit that put it there."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.132",
       "until": "1.0.0.135",
       "channel": "events",

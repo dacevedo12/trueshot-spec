@@ -25,6 +25,62 @@
       ]
     },
     {
+      "from": "1.0.0.131",
+      "until": "1.0.0.132",
+      "channel": "events",
+      "command": 67,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "element",
+          "type": "u8",
+          "note": "What to light up on the main controls. A client ignores any value above 8.",
+          "values": {
+            "0": {
+              "name": "spell",
+              "note": "A spell's button; number names its slot, 0 to 3."
+            },
+            "1": {
+              "name": "spellUpgrade",
+              "note": "Nothing is shown."
+            },
+            "2": {
+              "name": "summonerSpell",
+              "note": "A summoner spell's button; number names its slot, 0 or 1."
+            },
+            "3": {
+              "name": "recall"
+            },
+            "4": {
+              "name": "shop",
+              "note": "Nothing is shown."
+            },
+            "5": {
+              "name": "gold"
+            },
+            "6": {
+              "name": "experience",
+              "note": "Sized to the progress through the level."
+            },
+            "7": {
+              "name": "health",
+              "note": "Sized to the health left."
+            },
+            "8": {
+              "name": "mana",
+              "note": "Nothing is shown."
+            }
+          }
+        },
+        {
+          "name": "number",
+          "type": "u8",
+          "note": "Which slot, for a spell or a summoner spell; it has no effect otherwise. A client accepts any value, and a slot beyond those named has no defined effect."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.132",
       "until": "1.0.0.144",
       "channel": "events",

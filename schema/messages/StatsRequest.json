@@ -15,6 +15,15 @@
       "note": "A client sends no body."
     },
     {
+      "from": "1.0.0.131",
+      "until": "1.0.0.132",
+      "channel": "requests",
+      "command": 89,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": []
+    },
+    {
       "from": "1.0.0.132",
       "until": "1.0.0.138",
       "channel": "requests",

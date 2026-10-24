@@ -25,6 +25,26 @@
       ]
     },
     {
+      "from": "1.0.0.131",
+      "until": "1.0.0.132",
+      "channel": "events",
+      "command": 68,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "from",
+          "type": "u8",
+          "note": "The slot the item left."
+        },
+        {
+          "name": "to",
+          "type": "u8",
+          "note": "The slot it went to."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.132",
       "until": "1.0.0.144",
       "channel": "events",

@@ -35,6 +35,36 @@
       ]
     },
     {
+      "from": "1.0.0.131",
+      "until": "1.0.0.132",
+      "channel": "requests",
+      "command": 112,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "what",
+          "type": "u8",
+          "note": "What happened to the tip.",
+          "values": {
+            "0": {
+              "name": "clicked",
+              "note": "The player clicked the tip: once per tip, and only while no tip's dialogue is open."
+            },
+            "1": {
+              "name": "closed",
+              "note": "The player closed the tip's dialogue."
+            }
+          }
+        },
+        {
+          "name": "tip",
+          "type": "u32",
+          "note": "Which tip, as TipShown named it."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.132",
       "until": "1.0.0.138",
       "channel": "requests",
