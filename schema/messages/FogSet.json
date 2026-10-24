@@ -33,6 +33,21 @@
       ]
     },
     {
+      "from": "1.0.0.135",
+      "until": "1.0.0.136",
+      "channel": "events",
+      "command": 183,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "hidden",
+          "type": "u8",
+          "note": "Zero draws the fog of war; any other value draws the map with no darkening."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.136",
       "until": "1.0.0.138",
       "channel": "events",

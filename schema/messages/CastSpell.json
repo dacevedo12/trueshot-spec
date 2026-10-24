@@ -67,6 +67,68 @@
       ]
     },
     {
+      "from": "1.0.0.135",
+      "until": "1.0.0.136",
+      "channel": "requests",
+      "command": 165,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "summonerSpell",
+              "width": 1,
+              "note": "Set where the slot is a summoner spell's."
+            },
+            {
+              "name": "slot",
+              "width": 7,
+              "note": "Which slot is being cast from. A client sends 0, 1 or 2, for the champion's first three spells."
+            }
+          ]
+        },
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "A point on the ground the cast is described by, along one axis, in world units."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "The height of the place aimed at."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "The same point, along the other axis, in world units."
+        },
+        {
+          "name": "endX",
+          "type": "f32",
+          "note": "The second point of what aims the spell: the same as x and z for a point or a unit; for a line dragged out, its far end, cut to the spell's length; for a cone, its far point."
+        },
+        {
+          "name": "endY",
+          "type": "f32",
+          "note": "The height of where the cast ends."
+        },
+        {
+          "name": "endZ",
+          "type": "f32",
+          "note": "The second point, along the other axis, in world units."
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit aimed at; for a spell that takes no aim, the caster itself, with its own position in both points. Zero only where no unit is aimed at."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.136",
       "until": "1.0.0.138",
       "channel": "requests",

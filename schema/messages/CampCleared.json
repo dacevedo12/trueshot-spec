@@ -30,6 +30,31 @@
       ]
     },
     {
+      "from": "1.0.0.135",
+      "until": "1.0.0.136",
+      "channel": "events",
+      "command": 206,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "A unit whose side picks the marker: side 100 for one of side 100, side 200 otherwise."
+        },
+        {
+          "name": "camp",
+          "type": "u32",
+          "note": "Which camp. A client ignores a camp it does not know, but for the timer."
+        },
+        {
+          "name": "active",
+          "type": "u8",
+          "note": "The camp's state for that side, kept as it stands; nonzero where it is active."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.136",
       "until": "1.0.0.138",
       "channel": "events",
