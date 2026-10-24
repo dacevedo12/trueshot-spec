@@ -5,7 +5,7 @@
   "note": "What a server sends to tell a client something happened. The sort is named first and settles what follows; unlike WorldEvent it carries no source apart from what the sort itself carries. The header names the unit the event is about.",
   "revisions": [
     {
-      "from": "1.0.0.131",
+      "from": "1.0.0.130",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 171,

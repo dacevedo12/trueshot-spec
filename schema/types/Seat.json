@@ -4,6 +4,64 @@
   "note": "One place at the match: who holds it, what they brought, and what the client shows for them.",
   "revisions": [
     {
+      "from": "1.0.0.130",
+      "until": "1.0.0.131",
+      "fields": [
+        {
+          "name": "player",
+          "type": "i64",
+          "note": "Which player holds the place, or a negative number where it stands empty. It has a player identifier's width."
+        },
+        {
+          "name": "level",
+          "type": "u16",
+          "note": "The level the seat holder has reached across matches. A 4.17 client does not draw it on the loading screen."
+        },
+        {
+          "name": "summoner",
+          "type": "u32",
+          "note": "The spell in one of the seat's summoner slots, as the name hash of the spell; drawn as its icon on the loading screen. It has no effect on a bot's seat."
+        },
+        {
+          "name": "otherSummoner",
+          "type": "u32",
+          "note": "The spell in the other."
+        },
+        {
+          "name": "flags",
+          "type": "u8",
+          "note": "How the seat is treated. Two bits take effect on a 4.17 client: bit 0, set where a bot holds the seat, which the loading screen then shows from the bot fields below as already loaded; and bit 1, set to show the seat's champion on the loading screen in its skin's vintage art. The others have no effect."
+        },
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "The side the seat is on, or zero where it stands empty."
+        },
+        {
+          "name": "botName",
+          "type": "bytes",
+          "size": 28,
+          "note": "What the seat is called where nobody holds it, written and padded as above. A 28-byte text the client takes as it stands in its own memory: bytes 4 to 19 hold the text, the u32 at 20 its length and the u32 at 24 a capacity that must be 15 or less, so the text holds at most 15 bytes; bytes 0 to 3 are not read."
+        },
+        {
+          "name": "botAsset",
+          "type": "bytes",
+          "size": 28,
+          "note": "The name the client loads art for it under where nobody holds it, written and padded as above. A 28-byte text the client takes as it stands in its own memory: bytes 4 to 19 hold the text, the u32 at 20 its length and the u32 at 24 a capacity that must be 15 or less, so the text holds at most 15 bytes; bytes 0 to 3 are not read."
+        },
+        {
+          "name": "botDifficulty",
+          "type": "i32",
+          "note": "How well it plays where nobody holds it: 0 beginner, 1 intermediate, 2 advanced, 3 top, 4 tutorial, 5 intro. A 4.17 client draws it nowhere and picks the bot's summoner spells by it."
+        },
+        {
+          "name": "icon",
+          "type": "i32",
+          "note": "Which profile icon the client shows on the seat's loading-screen card; a negative number, or one with no art, shows icon 0's."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.131",
       "until": "1.0.0.148",
       "fields": [
