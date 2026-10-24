@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "JoinSide",
+  "version": "1.0.0.146",
+  "note": "Laid out as a 1.0.0.146 client sends it.",
+  "bytes": "640000000000000064000000",
+  "fields": {
+    "command": 100,
+    "padding": "000000",
+    "clientId": 0,
+    "side": 100
+  }
+}

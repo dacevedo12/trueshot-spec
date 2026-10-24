@@ -98,7 +98,7 @@
       "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning."
     },
     {
-      "from": "1.0.0.147",
+      "from": "1.0.0.146",
       "until": "1.0.0.150",
       "channel": "events",
       "command": 132,

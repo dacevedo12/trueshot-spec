@@ -5,6 +5,21 @@
   "note": "What a server sends to say whether a champion can use the shop. The header names the champion.",
   "revisions": [
     {
+      "from": "1.0.0.146",
+      "until": "1.0.0.147",
+      "channel": "events",
+      "command": 240,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "enabled",
+          "type": "u8",
+          "note": "Set where the shop can be used. Any nonzero value sets it."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.147",
       "until": "1.0.0.150",
       "channel": "events",

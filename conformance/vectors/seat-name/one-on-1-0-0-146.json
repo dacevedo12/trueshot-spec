@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SeatName",
+  "version": "1.0.0.146",
+  "note": "Laid out as a 1.0.0.146 client takes it.",
+  "bytes": "6600000000000000 01000000 000000000000000009000000506c61796572203100",
+  "fields": {
+    "command": 102,
+    "padding": "00000000000000",
+    "player": "1",
+    "skin": 0,
+    "nameLength": 9,
+    "name": "Player 1",
+    "terminator": "00"
+  }
+}

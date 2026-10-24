@@ -1,0 +1,57 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "CooldownSet",
+  "system": "spells",
+  "note": "What a client sends where a script of its own sets a spell slot's cooldown. The header names the unit.",
+  "revisions": [
+    {
+      "from": "1.0.0.146",
+      "until": "1.0.0.147",
+      "channel": "requests",
+      "command": 134,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "which",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "slot",
+              "width": 7,
+              "note": "Which slot."
+            },
+            {
+              "name": "summonerSpell",
+              "width": 1,
+              "note": "Set where the slot counts among the summoner slots, so that 0 and 1 name those two."
+            }
+          ]
+        },
+        {
+          "name": "cooldown",
+          "type": "f32",
+          "note": "The cooldown set, in seconds."
+        },
+        {
+          "name": "then",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "unset",
+              "width": 1,
+              "note": "Always clear."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Never written by a client."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

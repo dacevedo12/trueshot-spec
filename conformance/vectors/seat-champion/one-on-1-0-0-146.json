@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SeatChampion",
+  "version": "1.0.0.146",
+  "note": "Laid out as a 1.0.0.146 client takes it.",
+  "bytes": "6500000000000000 01000000 0000000000000000090000004b6173736164696e00",
+  "fields": {
+    "command": 101,
+    "padding": "00000000000000",
+    "player": "1",
+    "skin": 0,
+    "assetLength": 9,
+    "asset": "Kassadin",
+    "terminator": "00"
+  }
+}

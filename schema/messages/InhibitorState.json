@@ -49,6 +49,50 @@
       ]
     },
     {
+      "from": "1.0.0.146",
+      "until": "1.0.0.147",
+      "channel": "events",
+      "command": 42,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 2,
+          "bits": [
+            {
+              "name": "duration",
+              "width": 15,
+              "note": "How long the state lasts, in seconds; zero where alive is set."
+            },
+            {
+              "name": "unused",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "life",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "alive",
+              "width": 1,
+              "note": "Set while the inhibitor stands, with duration zero; clear while a state lasts the duration given."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ]
+    },
+    {
       "from": "1.0.0.147",
       "until": "4.11.0.386",
       "channel": "events",

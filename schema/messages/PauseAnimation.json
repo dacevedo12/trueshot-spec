@@ -28,6 +28,21 @@
       ]
     },
     {
+      "from": "1.0.0.146",
+      "until": "1.0.0.147",
+      "channel": "events",
+      "command": 113,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "paused",
+          "type": "u8",
+          "note": "Set to pause, clear to resume. Any nonzero value sets it."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.147",
       "until": "1.0.0.150",
       "channel": "events",

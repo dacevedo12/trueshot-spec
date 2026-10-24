@@ -31,6 +31,32 @@
       ]
     },
     {
+      "from": "1.0.0.146",
+      "until": "1.0.0.147",
+      "channel": "roster",
+      "command": 100,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "padding",
+          "type": "bytes",
+          "size": 3,
+          "note": "Never written by a client."
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the client asking."
+        },
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "The side it asks for."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.147",
       "until": "4.21.0.0",
       "channel": "roster",

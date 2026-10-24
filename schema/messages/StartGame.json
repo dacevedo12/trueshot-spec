@@ -32,6 +32,39 @@
       ]
     },
     {
+      "from": "1.0.0.146",
+      "until": "1.0.0.147",
+      "channel": "events",
+      "command": 92,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "rules",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "pausing",
+              "width": 1,
+              "note": "Set where holding the match is allowed."
+            },
+            {
+              "name": "notice",
+              "width": 1,
+              "note": "Set to post a notice in chat as play begins."
+            },
+            {
+              "name": "unused",
+              "width": 6,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ],
+      "note": "A client past spawning ignores it."
+    },
+    {
       "from": "1.0.0.147",
       "until": "1.0.0.150",
       "channel": "events",
