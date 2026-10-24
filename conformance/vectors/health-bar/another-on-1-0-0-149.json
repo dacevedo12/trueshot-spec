@@ -1,0 +1,19 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "HealthBar",
+  "version": "1.0.0.149",
+  "note": "Laid out as a 1.0.0.149 client takes it.",
+  "bytes": "ce0100004000",
+  "fields": {
+    "command": 206,
+    "netId": 1073741825,
+    "flags": {
+      "show": 0,
+      "changeType": 0,
+      "unused": 0
+    },
+    "barType": null,
+    "side": null
+  }
+}

@@ -20,6 +20,21 @@
       ]
     },
     {
+      "from": "1.0.0.149",
+      "until": "1.0.0.150",
+      "channel": "events",
+      "command": 180,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit. Where it has no light, nothing happens."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.150",
       "until": "3.01.0.1",
       "channel": "events",

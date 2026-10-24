@@ -1,0 +1,47 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "SpellSlotSpell",
+  "system": "spells",
+  "note": "What a server sends to load another spell into a unit's slot. The header names the unit.",
+  "revisions": [
+    {
+      "from": "1.0.0.149",
+      "until": "1.0.0.150",
+      "command": 50,
+      "channel": "events",
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "which",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "slot",
+              "width": 6,
+              "note": "Which slot. A champion's own spells count from 0."
+            },
+            {
+              "name": "summonerSlots",
+              "width": 1,
+              "note": "Set where slot names a summoner spell's slot, clear for the unit's own spells; every kind obeys it."
+            },
+            {
+              "name": "unused",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "The name the client loads the spell under, ended by a zero byte. A client shows the named spell's icon in the slot."
+        }
+      ]
+    }
+  ]
+}

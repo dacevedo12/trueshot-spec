@@ -65,6 +65,66 @@
       ]
     },
     {
+      "from": "1.0.0.149",
+      "until": "1.0.0.150",
+      "channel": "events",
+      "command": 133,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "category",
+          "type": "u32",
+          "note": "Which input, as a set of bits.",
+          "values": {
+            "1": {
+              "name": "cameraLocking"
+            },
+            "2": {
+              "name": "movement"
+            },
+            "4": {
+              "name": "abilities"
+            },
+            "8": {
+              "name": "summonerSpells"
+            },
+            "16": {
+              "name": "shop"
+            },
+            "32": {
+              "name": "chat"
+            },
+            "64": {
+              "name": "minimapMovement"
+            },
+            "128": {
+              "name": "cameraMovement"
+            }
+          }
+        },
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "locked",
+              "width": 1,
+              "note": "Set to lock, clear to unlock."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ],
+          "note": "Whether to lock."
+        }
+      ],
+      "note": "A client ignores it while playing a replay."
+    },
+    {
       "from": "1.0.0.150",
       "until": "3.01.0.1",
       "channel": "events",

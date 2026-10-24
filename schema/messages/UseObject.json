@@ -20,6 +20,21 @@
       ]
     },
     {
+      "from": "1.0.0.149",
+      "until": "1.0.0.150",
+      "channel": "requests",
+      "command": 60,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit to use."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.150",
       "until": "4.11.0.386",
       "channel": "requests",

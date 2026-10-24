@@ -74,6 +74,103 @@
       ]
     },
     {
+      "from": "1.0.0.149",
+      "until": "1.0.0.150",
+      "channel": "events",
+      "command": 76,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "champion",
+          "type": "u32",
+          "note": "The name the champion answers to, so later messages can name it."
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the player the champion belongs to, or 4294967295 where it belongs to none, as a bot's does. A client takes the champion carrying its own client id as its own."
+        },
+        {
+          "name": "node",
+          "type": "u8",
+          "note": "Which network node the object belongs to, in a field of its own."
+        },
+        {
+          "name": "skillLevel",
+          "type": "u8",
+          "note": "It has no effect."
+        },
+        {
+          "name": "side",
+          "type": "u8",
+          "note": "Nonzero for side 100, zero for side 200."
+        },
+        {
+          "name": "bot",
+          "type": "u8",
+          "note": "Nonzero where a bot plays the seat; its shown name is then the client's own bot name for asset, and name has no effect."
+        },
+        {
+          "name": "rank",
+          "type": "u8",
+          "note": "It has no effect."
+        },
+        {
+          "name": "spawnIndex",
+          "type": "u8",
+          "note": "Where the champion first stands and faces. From 0 to 5, its side's base position plus the offset the map sets for the side's head count (players and bots) and this index plus one, facing as the map sets for them. A client works out the head count itself, counting SpawnStart's bots in it. From 6 up, the base position itself, facing along +X. Movement or sight data replaces it."
+        },
+        {
+          "name": "skin",
+          "type": "i32",
+          "note": "Which look it wears."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "What the seat holding it is called. Written out in full and padded with zero bytes to the width above."
+        },
+        {
+          "name": "asset",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 40,
+          "note": "The name the client loads its art and sound under, written and padded as above."
+        },
+        {
+          "name": "stayDown",
+          "type": "f32",
+          "note": "How long it stays down, in seconds, where it is already down."
+        },
+        {
+          "name": "downFor",
+          "type": "f32",
+          "note": "How long it has already been down, in seconds."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "down",
+              "width": 3,
+              "note": "0 alive; 1 dead but acting on (the state a champion that keeps acting after death is in), where stayDown and downFor have no effect; 2 down, having been down for downFor with stayDown left. A client takes 3 to 7 as 0."
+            },
+            {
+              "name": "unused",
+              "width": 5,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ],
+      "note": "The champion takes the id in champion, not the header's; a client first removes any object holding that id. For the client's own seat, name also becomes its own player's name. A client drops the message while its map's navigation data is unloaded, as early in a reconnection."
+    },
+    {
       "from": "1.0.0.150",
       "until": "3.01.0.1",
       "channel": "events",

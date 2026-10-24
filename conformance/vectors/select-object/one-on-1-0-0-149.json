@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SelectObject",
+  "version": "1.0.0.149",
+  "note": "Laid out as a 1.0.0.149 client sends it.",
+  "bytes": "af000000000000000001000040",
+  "fields": {
+    "command": 175,
+    "netId": 0,
+    "clientId": 0,
+    "selected": 1073741825
+  }
+}

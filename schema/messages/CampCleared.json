@@ -30,6 +30,43 @@
       ]
     },
     {
+      "from": "1.0.0.149",
+      "until": "1.0.0.150",
+      "channel": "events",
+      "command": 195,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "killer",
+          "type": "u32",
+          "note": "The champion credited with emptying the camp, or zero for none. Where the camp has no buff side and no line of its own, a client has that champion speak a line for it, whatever speak says."
+        },
+        {
+          "name": "camp",
+          "type": "u32",
+          "note": "Which camp. A client ignores a camp it does not know, but for the timer."
+        },
+        {
+          "name": "does",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "speak",
+              "width": 1,
+              "note": "Set to have the client play the line for a camp revealed or a buff taken, to the client's own side."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ]
+    },
+    {
       "from": "1.0.0.150",
       "until": "3.01.0.1",
       "channel": "events",

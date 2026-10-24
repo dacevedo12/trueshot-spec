@@ -14,6 +14,52 @@
       "fields": []
     },
     {
+      "from": "1.0.0.149",
+      "until": "1.0.0.150",
+      "channel": "requests",
+      "command": 82,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "maskedStatus",
+          "type": "u32",
+          "note": "It varies from client to client; a server ignores it."
+        },
+        {
+          "name": "mask",
+          "type": "u32",
+          "note": "A random value the client picks to mask the one above."
+        },
+        {
+          "name": "tipChosen",
+          "type": "u8",
+          "note": "Which tip the client is set to show."
+        },
+        {
+          "name": "tipColour",
+          "type": "u8",
+          "note": "How it is coloured."
+        },
+        {
+          "name": "tipDuration",
+          "type": "u8",
+          "note": "How long it stays, as an entry among the display times in the client's own settings rather than a length of time."
+        },
+        {
+          "name": "loadingTips",
+          "type": "u8",
+          "note": "As VersionSync gave it."
+        },
+        {
+          "name": "playingTips",
+          "type": "u8",
+          "note": "As VersionSync gave it."
+        }
+      ],
+      "note": "The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero. The three module fields are always zero."
+    },
+    {
       "from": "1.0.0.150",
       "until": "3.01.0.1",
       "channel": "requests",

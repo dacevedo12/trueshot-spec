@@ -21,6 +21,21 @@
       "note": "A client sends it for a Replication batch only where it holds every unit the batch names, or the batch names none."
     },
     {
+      "from": "1.0.0.149",
+      "until": "1.0.0.150",
+      "channel": "requests",
+      "command": 168,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u32",
+          "note": "Which batch is being acknowledged, as the batch named itself."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.150",
       "until": "3.01.0.1",
       "channel": "requests",

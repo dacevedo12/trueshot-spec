@@ -1,0 +1,28 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "NavigationFlags",
+  "version": "1.0.0.149",
+  "note": "Laid out as a 1.0.0.149 client takes it.",
+  "bytes": "430000000002000100000000007a440000fa4400007a430100000000803b4500007a450000fa4302000000",
+  "fields": {
+    "command": 67,
+    "netId": 0,
+    "count": 2,
+    "syncId": 1,
+    "circles": [
+      {
+        "x": 1000,
+        "z": 2000,
+        "radius": 250,
+        "flags": 1
+      },
+      {
+        "x": 3000,
+        "z": 4000,
+        "radius": 500,
+        "flags": 2
+      }
+    ]
+  }
+}

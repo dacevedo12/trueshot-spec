@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "UpgradeSpell",
+  "version": "1.0.0.149",
+  "note": "Laid out as a 1.0.0.149 client sends it.",
+  "bytes": "3b010000400100",
+  "fields": {
+    "command": 59,
+    "netId": 1073741825,
+    "slot": 1,
+    "how": {
+      "evolve": 0,
+      "unused": 0
+    }
+  }
+}

@@ -14,6 +14,15 @@
       "fields": []
     },
     {
+      "from": "1.0.0.149",
+      "until": "1.0.0.150",
+      "channel": "requests",
+      "command": 204,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": []
+    },
+    {
       "from": "1.0.0.150",
       "until": "3.01.0.1",
       "channel": "requests",

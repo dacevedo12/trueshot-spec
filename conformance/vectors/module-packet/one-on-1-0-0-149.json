@@ -1,0 +1,15 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ModulePacket",
+  "version": "1.0.0.149",
+  "note": "Laid out as a 1.0.0.149 client sends it.",
+  "bytes": "df0000000004040000000000",
+  "fields": {
+    "command": 223,
+    "netId": 0,
+    "kind": 4,
+    "length": 4,
+    "data": "00000000"
+  }
+}
