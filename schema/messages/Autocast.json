@@ -21,6 +21,21 @@
       "note": "It names one slot: there is no slot for a critical strike."
     },
     {
+      "from": "1.0.0.139",
+      "until": "1.0.0.140",
+      "channel": "events",
+      "command": 34,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "i8",
+          "note": "The slot cast by itself, from 0 to 51; -1 leaves none."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.140",
       "until": "1.0.0.144",
       "channel": "events",

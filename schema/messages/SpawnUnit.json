@@ -5,6 +5,125 @@
   "note": "What a server sends to put a minion-like unit on the field, such as a ward. The header names the unit that put it there.",
   "revisions": [
     {
+      "from": "1.0.0.139",
+      "until": "1.0.0.140",
+      "channel": "events",
+      "command": 131,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The name the new unit answers to."
+        },
+        {
+          "name": "node",
+          "type": "u8",
+          "note": "Which network node the unit belongs to."
+        },
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where it stands, along one ground axis, in world units."
+        },
+        {
+          "name": "atY",
+          "type": "f32",
+          "note": "Where it stands, in height, in world units."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where it stands, along the other ground axis, in world units."
+        },
+        {
+          "name": "skin",
+          "type": "i32",
+          "note": "Which look it wears."
+        },
+        {
+          "name": "clone",
+          "type": "u32",
+          "note": "The unit it copies, or zero."
+        },
+        {
+          "name": "team",
+          "type": "bits",
+          "size": 4,
+          "bits": [
+            {
+              "name": "team",
+              "width": 9,
+              "note": "Which side, as a team number."
+            },
+            {
+              "name": "unused",
+              "width": 23,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "ignoreCollision",
+              "width": 1,
+              "note": "Set where it does not block the way."
+            },
+            {
+              "name": "ward",
+              "width": 1,
+              "note": "Set where it is a ward."
+            },
+            {
+              "name": "bot",
+              "width": 1,
+              "note": "Set where it is driven by the client's own decisions."
+            },
+            {
+              "name": "targetable",
+              "width": 1,
+              "note": "Set where the unit can be aimed at."
+            },
+            {
+              "name": "unused",
+              "width": 4,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "targetableToTeam",
+          "type": "u32",
+          "note": "Read, then overwritten; a client keeps nothing of it."
+        },
+        {
+          "name": "visibilitySize",
+          "type": "f32",
+          "note": "How large it counts as for sight, in world units."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "Its name, padded with zero bytes."
+        },
+        {
+          "name": "asset",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The name the client loads its art under, padded with zero bytes."
+        }
+      ],
+      "note": "A client deletes any object holding the new unit's id first, and does nothing more where it cannot make the unit. owner is only who gets the gold the unit earns; clone, where nonzero, is copied, state and inventory; onlyVisibleTo, zero or unknown, restricts nothing."
+    },
+    {
       "from": "1.0.0.140",
       "until": "1.0.0.141",
       "channel": "events",
