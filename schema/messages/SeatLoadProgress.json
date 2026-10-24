@@ -74,6 +74,76 @@
       ]
     },
     {
+      "from": "1.0.0.133",
+      "until": "1.0.0.134",
+      "channel": "transient",
+      "command": 158,
+      "direction": "serverToClient",
+      "reliability": "unreliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id this is about."
+        },
+        {
+          "name": "player",
+          "type": "i64",
+          "note": "Who occupies it."
+        },
+        {
+          "name": "progress",
+          "type": "f32",
+          "note": "How far through loading it is, from zero to one hundred."
+        },
+        {
+          "name": "secondsLeft",
+          "type": "f32",
+          "note": "How much longer it is expected to take, in seconds."
+        },
+        {
+          "name": "status",
+          "type": "bits",
+          "size": 4,
+          "bits": [
+            {
+              "name": "count",
+              "width": 16,
+              "note": "It rises with each report, not always by one."
+            },
+            {
+              "name": "ping",
+              "width": 15,
+              "note": "Round trip time the client measures, in milliseconds."
+            },
+            {
+              "name": "loaded",
+              "width": 1,
+              "note": "Set in every report whose progress stands at one hundred, and in no other."
+            }
+          ],
+          "note": "Copied with the rest; no reader of it is known."
+        },
+        {
+          "name": "done",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "loaded",
+              "width": 1,
+              "note": "Set where the seat has loaded; a client then shows no time left."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ]
+    },
+    {
       "from": "1.0.0.134",
       "until": "1.0.0.135",
       "channel": "transient",
