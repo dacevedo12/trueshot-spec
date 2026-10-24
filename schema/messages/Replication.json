@@ -17,11 +17,7 @@
           "type": "u32",
           "note": "Names this batch of changes. spec/replication.md says which batches a client takes values from."
         },
-        {
-          "name": "unitCount",
-          "type": "u8",
-          "note": "How many units follow."
-        },
+        { "name": "unitCount", "type": "u8", "note": "How many units follow." },
         {
           "name": "units",
           "type": "array",
@@ -75,9 +71,7 @@
               {
                 "name": "group0",
                 "type": "record",
-                "present": {
-                  "when": "present.group0"
-                },
+                "present": { "when": "present.group0" },
                 "fields": [
                   {
                     "name": "which",
@@ -87,10 +81,7 @@
                   {
                     "name": "values",
                     "type": "array",
-                    "count": {
-                      "field": "which",
-                      "bitsSet": true
-                    },
+                    "count": { "field": "which", "bitsSet": true },
                     "note": "The values themselves, four bytes each, in the order the bits above name them.",
                     "items": {
                       "name": "value",
@@ -104,9 +95,7 @@
               {
                 "name": "group1",
                 "type": "record",
-                "present": {
-                  "when": "present.group1"
-                },
+                "present": { "when": "present.group1" },
                 "fields": [
                   {
                     "name": "which",
@@ -116,10 +105,7 @@
                   {
                     "name": "values",
                     "type": "array",
-                    "count": {
-                      "field": "which",
-                      "bitsSet": true
-                    },
+                    "count": { "field": "which", "bitsSet": true },
                     "note": "The values themselves, four bytes each, in the order the bits above name them.",
                     "items": {
                       "name": "value",
@@ -133,9 +119,7 @@
               {
                 "name": "group2",
                 "type": "record",
-                "present": {
-                  "when": "present.group2"
-                },
+                "present": { "when": "present.group2" },
                 "fields": [
                   {
                     "name": "which",
@@ -145,10 +129,7 @@
                   {
                     "name": "values",
                     "type": "array",
-                    "count": {
-                      "field": "which",
-                      "bitsSet": true
-                    },
+                    "count": { "field": "which", "bitsSet": true },
                     "note": "The values themselves, four bytes each, in the order the bits above name them.",
                     "items": {
                       "name": "value",
@@ -162,9 +143,7 @@
               {
                 "name": "group3",
                 "type": "record",
-                "present": {
-                  "when": "present.group3"
-                },
+                "present": { "when": "present.group3" },
                 "fields": [
                   {
                     "name": "which",
@@ -174,10 +153,7 @@
                   {
                     "name": "values",
                     "type": "array",
-                    "count": {
-                      "field": "which",
-                      "bitsSet": true
-                    },
+                    "count": { "field": "which", "bitsSet": true },
                     "note": "The values themselves, four bytes each, in the order the bits above name them.",
                     "items": {
                       "name": "value",
@@ -191,9 +167,7 @@
               {
                 "name": "group4",
                 "type": "record",
-                "present": {
-                  "when": "present.group4"
-                },
+                "present": { "when": "present.group4" },
                 "fields": [
                   {
                     "name": "which",
@@ -203,10 +177,7 @@
                   {
                     "name": "values",
                     "type": "array",
-                    "count": {
-                      "field": "which",
-                      "bitsSet": true
-                    },
+                    "count": { "field": "which", "bitsSet": true },
                     "note": "The values themselves, four bytes each, in the order the bits above name them.",
                     "items": {
                       "name": "value",
@@ -224,6 +195,28 @@
       ]
     },
     {
+      "from": "1.0.0.142",
+      "until": "1.0.0.143",
+      "channel": "transient",
+      "command": 208,
+      "direction": "serverToClient",
+      "reliability": "unreliable",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u32",
+          "note": "Names this batch of changes. spec/replication.md says which batches a client takes values from."
+        },
+        { "name": "unitCount", "type": "u8", "note": "How many units follow." },
+        {
+          "name": "units",
+          "type": "array",
+          "count": "unitCount",
+          "items": { "name": "unit", "type": "struct", "struct": "Replication" }
+        }
+      ]
+    },
+    {
       "from": "1.0.0.143",
       "until": "1.0.0.144",
       "channel": "transient",
@@ -236,20 +229,12 @@
           "type": "u32",
           "note": "Names this batch of changes. spec/replication.md says which batches a client takes values from."
         },
-        {
-          "name": "unitCount",
-          "type": "u8",
-          "note": "How many units follow."
-        },
+        { "name": "unitCount", "type": "u8", "note": "How many units follow." },
         {
           "name": "units",
           "type": "array",
           "count": "unitCount",
-          "items": {
-            "name": "unit",
-            "type": "struct",
-            "struct": "Replication"
-          }
+          "items": { "name": "unit", "type": "struct", "struct": "Replication" }
         }
       ]
     },
@@ -266,20 +251,12 @@
           "type": "u32",
           "note": "Names this batch of changes. spec/replication.md says which batches a client takes values from."
         },
-        {
-          "name": "unitCount",
-          "type": "u8",
-          "note": "How many units follow."
-        },
+        { "name": "unitCount", "type": "u8", "note": "How many units follow." },
         {
           "name": "units",
           "type": "array",
           "count": "unitCount",
-          "items": {
-            "name": "unit",
-            "type": "struct",
-            "struct": "Replication"
-          }
+          "items": { "name": "unit", "type": "struct", "struct": "Replication" }
         }
       ]
     },
@@ -296,20 +273,12 @@
           "type": "u32",
           "note": "Names this batch of changes. spec/replication.md says which batches a client takes values from."
         },
-        {
-          "name": "unitCount",
-          "type": "u8",
-          "note": "How many units follow."
-        },
+        { "name": "unitCount", "type": "u8", "note": "How many units follow." },
         {
           "name": "units",
           "type": "array",
           "count": "unitCount",
-          "items": {
-            "name": "unit",
-            "type": "struct",
-            "struct": "Replication"
-          }
+          "items": { "name": "unit", "type": "struct", "struct": "Replication" }
         }
       ]
     },
@@ -326,20 +295,12 @@
           "type": "u32",
           "note": "Names this batch of changes. spec/replication.md says which batches a client takes values from."
         },
-        {
-          "name": "unitCount",
-          "type": "u8",
-          "note": "How many units follow."
-        },
+        { "name": "unitCount", "type": "u8", "note": "How many units follow." },
         {
           "name": "units",
           "type": "array",
           "count": "unitCount",
-          "items": {
-            "name": "unit",
-            "type": "struct",
-            "struct": "Replication"
-          }
+          "items": { "name": "unit", "type": "struct", "struct": "Replication" }
         }
       ]
     },
@@ -356,20 +317,12 @@
           "type": "u32",
           "note": "Names this batch of changes. spec/replication.md says which batches a client takes values from."
         },
-        {
-          "name": "unitCount",
-          "type": "u8",
-          "note": "How many units follow."
-        },
+        { "name": "unitCount", "type": "u8", "note": "How many units follow." },
         {
           "name": "units",
           "type": "array",
           "count": "unitCount",
-          "items": {
-            "name": "unit",
-            "type": "struct",
-            "struct": "Replication"
-          }
+          "items": { "name": "unit", "type": "struct", "struct": "Replication" }
         }
       ]
     },
@@ -386,20 +339,12 @@
           "type": "u32",
           "note": "Names this batch of changes. spec/replication.md says which batches a client takes values from."
         },
-        {
-          "name": "unitCount",
-          "type": "u8",
-          "note": "How many units follow."
-        },
+        { "name": "unitCount", "type": "u8", "note": "How many units follow." },
         {
           "name": "units",
           "type": "array",
           "count": "unitCount",
-          "items": {
-            "name": "unit",
-            "type": "struct",
-            "struct": "Replication"
-          }
+          "items": { "name": "unit", "type": "struct", "struct": "Replication" }
         }
       ]
     },
@@ -416,20 +361,12 @@
           "type": "u32",
           "note": "Names this batch of changes. spec/replication.md says which batches a client takes values from."
         },
-        {
-          "name": "unitCount",
-          "type": "u8",
-          "note": "How many units follow."
-        },
+        { "name": "unitCount", "type": "u8", "note": "How many units follow." },
         {
           "name": "units",
           "type": "array",
           "count": "unitCount",
-          "items": {
-            "name": "unit",
-            "type": "struct",
-            "struct": "Replication"
-          }
+          "items": { "name": "unit", "type": "struct", "struct": "Replication" }
         }
       ]
     },
@@ -453,20 +390,12 @@
           "type": "u32",
           "note": "Names this batch of changes. spec/replication.md says which batches a client takes values from."
         },
-        {
-          "name": "unitCount",
-          "type": "u8",
-          "note": "How many units follow."
-        },
+        { "name": "unitCount", "type": "u8", "note": "How many units follow." },
         {
           "name": "units",
           "type": "array",
           "count": "unitCount",
-          "items": {
-            "name": "unit",
-            "type": "struct",
-            "struct": "Replication"
-          }
+          "items": { "name": "unit", "type": "struct", "struct": "Replication" }
         }
       ]
     }

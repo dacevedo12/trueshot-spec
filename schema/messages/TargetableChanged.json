@@ -1,0 +1,28 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "TargetableChanged",
+  "system": "units",
+  "note": "What a server sends to change whether a unit can be aimed at, and by which sides. The header names the unit.",
+  "revisions": [
+    {
+      "from": "1.0.0.142",
+      "until": "1.0.0.143",
+      "channel": "events",
+      "command": 242,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "targetable",
+          "type": "u8",
+          "note": "Nonzero where the unit can be aimed at."
+        },
+        {
+          "name": "targetableToTeam",
+          "type": "u32",
+          "note": "Which sides can aim at it, as a set of bits, kept as it stands."
+        }
+      ]
+    }
+  ]
+}

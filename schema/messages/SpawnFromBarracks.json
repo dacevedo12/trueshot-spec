@@ -45,6 +45,46 @@
       ]
     },
     {
+      "from": "1.0.0.142",
+      "until": "1.0.0.143",
+      "channel": "events",
+      "command": 3,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The name the unit answers to, so later messages can name it."
+        },
+        {
+          "name": "node",
+          "type": "u8",
+          "note": "Which network node the unit belongs to, in a field of its own rather than as part of the name that follows."
+        },
+        {
+          "name": "wave",
+          "type": "u8",
+          "note": "Which run of units it belongs to."
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What sort of unit it is."
+        },
+        {
+          "name": "damageBonus",
+          "type": "i16",
+          "note": "What is added to the damage it deals."
+        },
+        {
+          "name": "healthBonus",
+          "type": "i16",
+          "note": "What is added to the health it holds."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.143",
       "until": "3.14.0.700",
       "channel": "events",

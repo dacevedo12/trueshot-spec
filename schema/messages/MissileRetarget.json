@@ -5,6 +5,36 @@
   "note": "What a server sends to change what a missile flies at. The header names the missile.",
   "revisions": [
     {
+      "from": "1.0.0.142",
+      "until": "1.0.0.143",
+      "channel": "events",
+      "command": 252,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit it now flies at, or a name no unit answers to for none."
+        },
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Where it now flies to, along one ground axis, in world units."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "In height, in world units."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Along the other ground axis, in world units."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.143",
       "until": "1.0.0.144",
       "channel": "events",

@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "CreateTurret",
+  "version": "1.0.0.142",
+  "note": "Laid out as a 1.0.0.142 client takes it.",
+  "bytes": "a70500004005000040405475727265745f54315f435f30325f410000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+  "fields": {
+    "command": 167,
+    "netId": 1073741829,
+    "turret": 1073741829,
+    "node": 64,
+    "name": "Turret_T1_C_02_A",
+    "state": {
+      "targetable": 0,
+      "unused": 0
+    },
+    "targetableToTeam": 0
+  }
+}

@@ -5,6 +5,54 @@
   "note": "What a client sends while its player charges a spell, and as the charge ends. A spell charges where its cast answer (SpellCastAnswer) leaves the end-of-charge flag clear. A client sends updates at the spell's own interval, at least 0.1 seconds, where the spell has one; it ends the charge as the key is pressed again, or released where casting on release, or as the window loses focus. The header names the sender's champion.",
   "revisions": [
     {
+      "from": "1.0.0.142",
+      "until": "1.0.0.143",
+      "channel": "requests",
+      "command": 244,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "summonerSpell",
+              "width": 1,
+              "note": "Set where the slot is a summoner spell's."
+            },
+            {
+              "name": "slot",
+              "width": 7,
+              "note": "The spell's slot."
+            }
+          ],
+          "note": "Which spell, and whether the charge ends."
+        },
+        {
+          "name": "end",
+          "type": "u8",
+          "note": "Set as the charge ends, clear for an update. A whole byte."
+        },
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Where the cursor points on the ground, in world units."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "Its height, in world units."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Where the cursor points on the ground, in world units."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.143",
       "until": "1.0.0.144",
       "channel": "requests",

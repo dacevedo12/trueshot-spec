@@ -1,0 +1,12 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ResyncEnded",
+  "version": "1.0.0.142",
+  "note": "Laid out as a 1.0.0.142 client takes it. Every value is zero or empty.",
+  "bytes": "4b00000000",
+  "fields": {
+    "command": 75,
+    "netId": 0
+  }
+}
