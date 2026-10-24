@@ -1,0 +1,124 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "WaypointGroup",
+  "version": "1.0.0.140",
+  "note": "Laid out as a 1.0.0.140 client takes it.",
+  "bytes": "6700000000e9030000010000000a0001000040303c0073f687f56bf7e1f7fcfca4fd1900f6016c024e045a0519191919290635079709fb0a",
+  "fields": {
+    "command": 103,
+    "netId": 0,
+    "syncId": 1001,
+    "movementCount": 1,
+    "movements": [
+      {
+        "header": {
+          "hasTeleportToken": 0,
+          "unused": 0,
+          "pointCount": 10,
+          "unusedHigh": 0
+        },
+        "path": {
+          "unit": 1073741825,
+          "teleportToken": null,
+          "flags": [
+            {
+              "xIsStep": 0,
+              "zIsStep": 0
+            },
+            {
+              "xIsStep": 0,
+              "zIsStep": 0
+            },
+            {
+              "xIsStep": 1,
+              "zIsStep": 1
+            },
+            {
+              "xIsStep": 0,
+              "zIsStep": 0
+            },
+            {
+              "xIsStep": 0,
+              "zIsStep": 0
+            },
+            {
+              "xIsStep": 1,
+              "zIsStep": 1
+            },
+            {
+              "xIsStep": 1,
+              "zIsStep": 1
+            },
+            {
+              "xIsStep": 0,
+              "zIsStep": 0
+            },
+            {
+              "xIsStep": 0,
+              "zIsStep": 0
+            }
+          ],
+          "firstX": -2445,
+          "firstZ": -2681,
+          "steps": [
+            {
+              "xStep": null,
+              "xWhole": -2197,
+              "zStep": null,
+              "zWhole": -2079
+            },
+            {
+              "xStep": null,
+              "xWhole": -772,
+              "zStep": null,
+              "zWhole": -604
+            },
+            {
+              "xStep": 25,
+              "xWhole": null,
+              "zStep": 0,
+              "zWhole": null
+            },
+            {
+              "xStep": null,
+              "xWhole": 502,
+              "zStep": null,
+              "zWhole": 620
+            },
+            {
+              "xStep": null,
+              "xWhole": 1102,
+              "zStep": null,
+              "zWhole": 1370
+            },
+            {
+              "xStep": 25,
+              "xWhole": null,
+              "zStep": 25,
+              "zWhole": null
+            },
+            {
+              "xStep": 25,
+              "xWhole": null,
+              "zStep": 25,
+              "zWhole": null
+            },
+            {
+              "xStep": null,
+              "xWhole": 1577,
+              "zStep": null,
+              "zWhole": 1845
+            },
+            {
+              "xStep": null,
+              "xWhole": 2455,
+              "zStep": null,
+              "zWhole": 2811
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

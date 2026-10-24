@@ -163,6 +163,52 @@
       "note": "What a client sends as its player orders the champion somewhere. The header names the champion."
     },
     {
+      "from": "1.0.0.140",
+      "until": "1.0.0.141",
+      "channel": "requests",
+      "command": 120,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What is being asked for.",
+          "values": {
+            "2": {
+              "name": "moveToPosition"
+            },
+            "3": {
+              "name": "attack"
+            },
+            "10": {
+              "name": "stop"
+            }
+          }
+        },
+        {
+          "name": "targetX",
+          "type": "f32",
+          "note": "Where the order points, along one ground axis. Carried in world units rather than in the units a path uses."
+        },
+        {
+          "name": "targetZ",
+          "type": "f32",
+          "note": "Where the order points, along the other."
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The network object the order is aimed at, or zero where it is aimed at open ground."
+        },
+        {
+          "name": "movement",
+          "type": "struct",
+          "struct": "Movement"
+        }
+      ]
+    },
+    {
       "from": "1.0.0.141",
       "until": "1.0.0.144",
       "channel": "requests",

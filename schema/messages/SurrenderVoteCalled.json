@@ -67,6 +67,69 @@
       ]
     },
     {
+      "from": "1.0.0.140",
+      "until": "1.0.0.141",
+      "channel": "events",
+      "command": 212,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "countAsYes",
+              "width": 1,
+              "note": "Applies only where side is the client's own: set shows caller voting yes, clear voting no, opening the menu or not."
+            },
+            {
+              "name": "openTheMenu",
+              "width": 1,
+              "note": "Set where the vote opens: a client of side opens the vote's panel from seats and closesIn, which have no other effect; every client is told a vote began, with caller, inFavour, against and side."
+            },
+            {
+              "name": "unused",
+              "width": 6,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "caller",
+          "type": "u32",
+          "note": "The unit that called the vote."
+        },
+        {
+          "name": "inFavour",
+          "type": "u8",
+          "note": "How many have voted for."
+        },
+        {
+          "name": "against",
+          "type": "u8",
+          "note": "How many have voted against."
+        },
+        {
+          "name": "seats",
+          "type": "u8",
+          "note": "How many seats can vote."
+        },
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "Which side is voting."
+        },
+        {
+          "name": "closesIn",
+          "type": "f32",
+          "note": "How long the vote stays open, in seconds."
+        }
+      ],
+      "note": "A client ignores it unless its menu and its own champion both exist."
+    },
+    {
       "from": "1.0.0.141",
       "until": "1.0.0.144",
       "channel": "events",

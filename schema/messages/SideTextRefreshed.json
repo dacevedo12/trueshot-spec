@@ -22,6 +22,23 @@
       ]
     },
     {
+      "from": "1.0.0.140",
+      "until": "1.0.0.141",
+      "channel": "events",
+      "command": 187,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "A key into the client's own text, which it looks up and shows. The text ends at its first zero byte, which falls within the field."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.141",
       "until": "1.0.0.144",
       "channel": "events",

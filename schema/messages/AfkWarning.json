@@ -14,6 +14,15 @@
       "fields": []
     },
     {
+      "from": "1.0.0.140",
+      "until": "1.0.0.141",
+      "channel": "events",
+      "command": 194,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": []
+    },
+    {
       "from": "1.0.0.141",
       "until": "1.0.0.144",
       "channel": "events",

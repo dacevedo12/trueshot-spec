@@ -5,6 +5,15 @@
   "note": "What a server sends to take every look laid over a unit away. The header names the unit.",
   "revisions": [
     {
+      "from": "1.0.0.140",
+      "until": "1.0.0.141",
+      "channel": "events",
+      "command": 211,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": []
+    },
+    {
       "from": "1.0.0.141",
       "until": "1.0.0.144",
       "channel": "events",
