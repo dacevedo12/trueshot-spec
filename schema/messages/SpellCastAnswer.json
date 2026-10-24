@@ -217,6 +217,27 @@
       "note": "There is no byte for ending a charge: the casting follows the sync id."
     },
     {
+      "from": "1.0.0.136",
+      "until": "1.0.0.138",
+      "channel": "events",
+      "command": 190,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u32",
+          "note": "It settles whether a client brings the caster's position in line for this cast, and nothing else."
+        },
+        {
+          "name": "cast",
+          "type": "struct",
+          "struct": "SpellCast",
+          "note": "The casting."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.138",
       "until": "1.0.0.139",
       "channel": "events",

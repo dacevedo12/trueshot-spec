@@ -54,6 +54,55 @@
       ]
     },
     {
+      "from": "1.0.0.136",
+      "until": "1.0.0.138",
+      "channel": "events",
+      "command": 132,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "entryCount",
+          "type": "u16",
+          "note": "How many sets of numbers follow."
+        },
+        {
+          "name": "entries",
+          "type": "array",
+          "count": "entryCount",
+          "note": "The sets themselves.",
+          "items": {
+            "name": "entry",
+            "type": "record",
+            "fields": [
+              {
+                "name": "unit",
+                "type": "u32",
+                "note": "The unit whose spell this is."
+              },
+              {
+                "name": "slot",
+                "type": "u8",
+                "note": "Which slot."
+              },
+              {
+                "name": "values",
+                "type": "array",
+                "count": 3,
+                "note": "The numbers themselves, one place each.",
+                "items": {
+                  "name": "value",
+                  "type": "f32",
+                  "note": "One number."
+                }
+              }
+            ],
+            "note": "The numbers for one spell, five places of them."
+          }
+        }
+      ]
+    },
+    {
       "from": "1.0.0.138",
       "until": "1.0.0.144",
       "channel": "events",

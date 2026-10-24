@@ -5,6 +5,21 @@
   "note": "What a server sends when a building is destroyed. The header names the unit this is about.",
   "revisions": [
     {
+      "from": "1.0.0.136",
+      "until": "1.0.0.138",
+      "channel": "events",
+      "command": 143,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "attacker",
+          "type": "u32",
+          "note": "The unit that destroyed it."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.138",
       "until": "1.0.0.139",
       "channel": "events",

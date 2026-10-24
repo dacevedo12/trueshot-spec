@@ -73,6 +73,82 @@
       ]
     },
     {
+      "from": "1.0.0.136",
+      "until": "1.0.0.138",
+      "channel": "events",
+      "command": 105,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "result",
+              "width": 7,
+              "note": "How the damage landed, and so what a client shows over the unit hurt. 4 shows the amount, 3 shows it as a critical strike, and 2 shows the word for a dodge in place of an amount.",
+              "values": {
+                "0": {
+                  "name": "invulnerable",
+                  "note": "A notice, no number."
+                },
+                "1": {
+                  "name": "silent",
+                  "note": "Nothing shown."
+                },
+                "2": {
+                  "name": "dodge",
+                  "note": "A notice."
+                },
+                "3": {
+                  "name": "critical",
+                  "note": "The number, as a critical."
+                },
+                "4": {
+                  "name": "normal",
+                  "note": "The number."
+                },
+                "5": {
+                  "name": "miss",
+                  "note": "A notice in the dodge style."
+                },
+                "6": {
+                  "name": "normal6",
+                  "note": "As 4."
+                },
+                "7": {
+                  "name": "normal7",
+                  "note": "As 4."
+                }
+              }
+            },
+            {
+              "name": "unused",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit hurt."
+        },
+        {
+          "name": "source",
+          "type": "u32",
+          "note": "The unit dealing it. A client shows nothing, notices included, unless it holds both target and source; the figure drifts from source toward target, and a champion source has the amount added to its damage dealt."
+        },
+        {
+          "name": "amount",
+          "type": "f32",
+          "note": "How much."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.138",
       "until": "1.0.0.144",
       "channel": "events",

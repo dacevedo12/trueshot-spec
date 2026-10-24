@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SpellCooldown",
+  "version": "1.0.0.136",
+  "note": "Laid out as a 1.0.0.136 client takes it.",
+  "bytes": "8b01000040810000f041",
+  "fields": {
+    "command": 139,
+    "netId": 1073741825,
+    "which": {
+      "slot": 1,
+      "summonerSpell": 1
+    },
+    "timeLeft": 30
+  }
+}

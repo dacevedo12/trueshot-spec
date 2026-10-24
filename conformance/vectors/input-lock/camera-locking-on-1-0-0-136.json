@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "InputLock",
+  "version": "1.0.0.136",
+  "note": "Laid out as a 1.0.0.136 client takes it.",
+  "bytes": "8a000000000100000000",
+  "fields": {
+    "command": 138,
+    "netId": 0,
+    "category": 1,
+    "locked": 0
+  }
+}

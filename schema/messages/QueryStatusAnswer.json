@@ -20,6 +20,29 @@
       ]
     },
     {
+      "from": "1.0.0.136",
+      "until": "1.0.0.138",
+      "channel": "events",
+      "command": 142,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "ready",
+          "type": "u8",
+          "note": "Whether the server is ready. While answers say it is not, a client keeps asking and goes no further, which spec/joining.md sets out.",
+          "values": {
+            "0": {
+              "name": "no"
+            },
+            "1": {
+              "name": "yes"
+            }
+          }
+        }
+      ]
+    },
+    {
       "from": "1.0.0.138",
       "until": "1.0.0.139",
       "channel": "events",

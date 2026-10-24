@@ -94,6 +94,92 @@
       ]
     },
     {
+      "from": "1.0.0.136",
+      "until": "1.0.0.138",
+      "channel": "events",
+      "command": 145,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "A key into the client's own text for the quest. It applies to activate only."
+        },
+        {
+          "name": "icon",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "The quest's icon. It applies to activate only."
+        },
+        {
+          "name": "tooltip",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "A key into the client's own text for its tooltip. It applies to activate only."
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "Which tracker it goes in. A tracker that is full holds a new quest back until it has room.",
+          "values": {
+            "0": {
+              "name": "primary"
+            },
+            "1": {
+              "name": "secondary"
+            }
+          }
+        },
+        {
+          "name": "action",
+          "type": "u8",
+          "note": "What to do. A client ignores any other value.",
+          "values": {
+            "0": {
+              "name": "activate",
+              "note": "Add the quest."
+            },
+            "1": {
+              "name": "complete",
+              "note": "Announce it done, or failed, for about four seconds, and take it from the tracker five seconds later."
+            },
+            "2": {
+              "name": "remove",
+              "note": "Take it from the tracker at once; a quest held back takes its place."
+            }
+          }
+        },
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "first",
+              "width": 1,
+              "note": "For activate, set to have the client report the pointer passing over the quest (QuestEvent); for complete, set where the quest succeeded."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ],
+          "note": "What a flag means depends on action."
+        },
+        {
+          "name": "quest",
+          "type": "i32",
+          "note": "The quest's number, which QuestEvent returns."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.138",
       "until": "1.0.0.139",
       "channel": "events",

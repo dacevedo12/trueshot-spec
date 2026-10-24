@@ -1,0 +1,40 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "SpellRangeChanged",
+  "system": "spells",
+  "note": "What a server sends to change how far the spell in one of a unit's slots is cast. The header names the unit.",
+  "revisions": [
+    {
+      "from": "1.0.0.136",
+      "until": "1.0.0.138",
+      "channel": "events",
+      "command": 241,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "which",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "slot",
+              "width": 7,
+              "note": "Which slot."
+            },
+            {
+              "name": "unused",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "range",
+          "type": "f32",
+          "note": "How far the spell is cast from now on, in world units."
+        }
+      ]
+    }
+  ]
+}

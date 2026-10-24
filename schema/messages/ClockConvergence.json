@@ -25,6 +25,26 @@
       ]
     },
     {
+      "from": "1.0.0.136",
+      "until": "1.0.0.138",
+      "channel": "clock",
+      "command": 122,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientTime",
+          "type": "f32",
+          "note": "The client's clock, in seconds, as the client reported it."
+        },
+        {
+          "name": "roundTrip",
+          "type": "f32",
+          "note": "The round trip time the server measures, in seconds."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.138",
       "until": "1.0.0.144",
       "channel": "clock",

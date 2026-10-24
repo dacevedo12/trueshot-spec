@@ -49,6 +49,44 @@
       "note": "No name is carried: a client stops whatever animation the unit is playing, blending out over a fixed time."
     },
     {
+      "from": "1.0.0.136",
+      "until": "1.0.0.138",
+      "channel": "events",
+      "command": 43,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "fade",
+              "width": 1,
+              "note": "Set where the animation fades out."
+            },
+            {
+              "name": "ignoreLock",
+              "width": 1,
+              "note": "Set where a lock on the animation is ignored."
+            },
+            {
+              "name": "stopAll",
+              "width": 1,
+              "note": "Set where every animation stops when the name below is empty."
+            },
+            {
+              "name": "unused",
+              "width": 5,
+              "note": "Unused; a server writes zero."
+            }
+          ],
+          "note": "How it stops."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.138",
       "until": "1.0.0.144",
       "channel": "events",

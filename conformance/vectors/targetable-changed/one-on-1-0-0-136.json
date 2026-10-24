@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "TargetableChanged",
+  "version": "1.0.0.136",
+  "note": "Laid out as a 1.0.0.136 client takes it.",
+  "bytes": "ef000000000000000000",
+  "fields": {
+    "command": 239,
+    "netId": 0,
+    "targetable": 0,
+    "targetableToTeam": 0
+  }
+}

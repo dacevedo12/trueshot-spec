@@ -30,6 +30,43 @@
       ]
     },
     {
+      "from": "1.0.0.136",
+      "until": "1.0.0.138",
+      "channel": "events",
+      "command": 204,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "camp",
+          "type": "u32",
+          "note": "Which camp. A client ignores a camp it does not know, but for the timer."
+        },
+        {
+          "name": "does",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "active",
+              "width": 1,
+              "note": "Set where the camp is active, clear where it is cleared."
+            },
+            {
+              "name": "sideOrder",
+              "width": 1,
+              "note": "Set to clear side 100's marker of the camp, clear to clear side 200's."
+            },
+            {
+              "name": "unused",
+              "width": 6,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ]
+    },
+    {
       "from": "1.0.0.138",
       "until": "1.0.0.139",
       "channel": "events",

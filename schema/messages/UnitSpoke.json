@@ -5,6 +5,48 @@
   "note": "What a client sends when a script it runs makes a unit say something. A server need do nothing with it. The header names the unit speaking.",
   "revisions": [
     {
+      "from": "1.0.0.136",
+      "until": "1.0.0.138",
+      "channel": "requests",
+      "command": 27,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "A value the client takes from the unit that speaks; what it names is not recorded."
+        },
+        {
+          "name": "unknown",
+          "type": "f32",
+          "note": "A client writes 1073741824."
+        },
+        {
+          "name": "unknownToo",
+          "type": "u32",
+          "note": "A client writes zero."
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "A client writes zero."
+        },
+        {
+          "name": "unused",
+          "type": "u8",
+          "note": "A client writes zero."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "What the unit says, ended by a zero byte; the two take at most 1024 bytes."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.138",
       "until": "1.0.0.144",
       "channel": "requests",

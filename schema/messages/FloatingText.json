@@ -43,6 +43,48 @@
       ]
     },
     {
+      "from": "1.0.0.136",
+      "until": "1.0.0.138",
+      "channel": "events",
+      "command": 27,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unused",
+          "type": "u32",
+          "note": "Unused; a server writes zero."
+        },
+        {
+          "name": "delay",
+          "type": "f32",
+          "note": "Unused; a server writes 2."
+        },
+        {
+          "name": "slot",
+          "type": "i32",
+          "note": "Where the text goes. 0 floats it over the unit while the unit is in the client's own view, the text looked up as a key into the client's own text. 1 to 50 writes it, in colour, to that line of a debugging display, only where the unit is the one the player has selected. A client does nothing for any other value."
+        },
+        {
+          "name": "error",
+          "type": "u8",
+          "note": "Nonzero has a client ignore the whole message."
+        },
+        {
+          "name": "colour",
+          "type": "u8",
+          "note": "The text's colour on the debugging display; it has no effect for slot 0."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "The text, ended by a zero byte; the two take at most 1024 bytes."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.138",
       "until": "1.0.0.144",
       "channel": "events",

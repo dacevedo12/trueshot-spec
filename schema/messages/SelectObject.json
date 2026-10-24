@@ -25,6 +25,26 @@
       ]
     },
     {
+      "from": "1.0.0.136",
+      "until": "1.0.0.138",
+      "channel": "requests",
+      "command": 184,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the client selecting: the one its Registered gave it. Zero is a client id like any other rather than an absence."
+        },
+        {
+          "name": "selected",
+          "type": "u32",
+          "note": "The network object now selected, or zero where none is."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.138",
       "until": "1.0.0.139",
       "channel": "requests",

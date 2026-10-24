@@ -5,6 +5,27 @@
   "note": "What a server sends naming the units a bot is weighing. It changes nothing a client shows. The header names the unit.",
   "revisions": [
     {
+      "from": "1.0.0.136",
+      "until": "1.0.0.138",
+      "channel": "events",
+      "command": 109,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "targets",
+          "type": "array",
+          "count": 5,
+          "items": {
+            "name": "target",
+            "type": "u32",
+            "note": "A unit."
+          },
+          "note": "Five units."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.138",
       "until": "1.0.0.144",
       "channel": "events",

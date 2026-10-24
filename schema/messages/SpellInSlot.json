@@ -30,6 +30,31 @@
       ]
     },
     {
+      "from": "1.0.0.136",
+      "until": "1.0.0.138",
+      "channel": "events",
+      "command": 116,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit whose slot this is."
+        },
+        {
+          "name": "spell",
+          "type": "u32",
+          "note": "Which spell, by the number its name gives, as spec/objects.md works it out."
+        },
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.138",
       "until": "1.0.0.144",
       "channel": "events",

@@ -149,6 +149,32 @@
       ]
     },
     {
+      "from": "1.0.0.136",
+      "until": "1.0.0.138",
+      "channel": "events",
+      "command": 141,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "groupCount",
+          "type": "u8",
+          "note": "How many sets follow."
+        },
+        {
+          "name": "groups",
+          "type": "array",
+          "count": "groupCount",
+          "note": "The sets themselves.",
+          "items": {
+            "type": "struct",
+            "struct": "ParticleGroup",
+            "name": "group"
+          }
+        }
+      ]
+    },
+    {
       "from": "1.0.0.138",
       "until": "1.0.0.139",
       "channel": "events",

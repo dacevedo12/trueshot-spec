@@ -1,0 +1,24 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "EffectRemovedGroup",
+  "version": "1.0.0.136",
+  "note": "Laid out as a 1.0.0.136 client takes it.",
+  "bytes": "9c00000000e464220c0201000040010300004001",
+  "fields": {
+    "command": 156,
+    "netId": 0,
+    "effect": 203580644,
+    "count": 2,
+    "entries": [
+      {
+        "unit": 1073741825,
+        "slot": 1
+      },
+      {
+        "unit": 1073741827,
+        "slot": 1
+      }
+    ]
+  }
+}

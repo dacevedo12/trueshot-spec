@@ -72,6 +72,77 @@
       ]
     },
     {
+      "from": "1.0.0.136",
+      "until": "1.0.0.138",
+      "channel": "events",
+      "command": 219,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "A name: an animation's, a particle's or a look's, by the change below. The name ends at its first zero byte; the bytes after it carry no meaning."
+        },
+        {
+          "name": "first",
+          "type": "f32",
+          "note": "For animate, when the animation starts, in seconds of match time."
+        },
+        {
+          "name": "second",
+          "type": "f32",
+          "note": "For animate, how long the animation runs, in seconds."
+        },
+        {
+          "name": "prop",
+          "type": "u32",
+          "note": "The object changed."
+        },
+        {
+          "name": "value",
+          "type": "u32",
+          "note": "A value the change uses: for animate, the animation's flags; for linkEffect, the particle effect value; for look, the look's number."
+        },
+        {
+          "name": "change",
+          "type": "u8",
+          "note": "What changes. A client does nothing for any other value, nor where prop names no prop it holds.",
+          "values": {
+            "0": {
+              "name": "animate",
+              "note": "Play the animation name, with value as its flags, starting at first (match time in seconds) for second seconds; option nonzero removes the prop afterwards. effect and point have no effect."
+            },
+            "1": {
+              "name": "linkEffect",
+              "note": "Drive the prop's particle value effect from capture point point; a client refuses the change where option is not zero. name, first, second and value have no effect."
+            },
+            "2": {
+              "name": "look",
+              "note": "Change the prop's look to name, numbered value. The rest have no effect."
+            }
+          }
+        },
+        {
+          "name": "option",
+          "type": "u8",
+          "note": "For animate, nonzero to remove the prop after the animation; for linkEffect, zero."
+        },
+        {
+          "name": "effect",
+          "type": "u8",
+          "note": "For linkEffect, which of the prop's effect values to drive."
+        },
+        {
+          "name": "point",
+          "type": "u8",
+          "note": "For linkEffect, which capture point drives it."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.138",
       "until": "1.0.0.139",
       "channel": "events",

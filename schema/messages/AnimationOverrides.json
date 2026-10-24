@@ -32,6 +32,32 @@
       "note": "A length of zero, or above 2147483647, gives an empty name and occupies no bytes after it. A server sends lengths from 0 to 2147483647."
     },
     {
+      "from": "1.0.0.136",
+      "until": "1.0.0.138",
+      "channel": "events",
+      "command": 111,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "pairCount",
+          "type": "u8",
+          "note": "How many pairs follow."
+        },
+        {
+          "name": "pairs",
+          "type": "array",
+          "count": "pairCount",
+          "note": "Each pair naming what is replaced and what replaces it.",
+          "items": {
+            "name": "pair",
+            "type": "struct",
+            "struct": "AnimationOverride"
+          }
+        }
+      ]
+    },
+    {
       "from": "1.0.0.138",
       "until": "1.0.0.144",
       "channel": "events",
