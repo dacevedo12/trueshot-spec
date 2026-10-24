@@ -27,6 +27,29 @@
       ]
     },
     {
+      "from": "1.0.0.134",
+      "until": "1.0.0.135",
+      "channel": "events",
+      "command": 226,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit this is about."
+        },
+        {
+          "name": "icon",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The name the client loads the unit's minimap mark under, which it changes only where the name differs from the one it shows. Written out in full and padded with zero bytes to the width above."
+        }
+      ],
+      "note": "A client does nothing unless unit is a unit it holds that can be attacked."
+    },
+    {
       "from": "1.0.0.135",
       "until": "1.0.0.136",
       "channel": "events",

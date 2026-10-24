@@ -20,6 +20,21 @@
       ]
     },
     {
+      "from": "1.0.0.134",
+      "until": "1.0.0.135",
+      "channel": "events",
+      "command": 216,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "show",
+          "type": "u8",
+          "note": "Set to show the bar, clear to hide it. Zero hides it, any other value shows it."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.135",
       "until": "1.0.0.136",
       "channel": "events",

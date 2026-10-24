@@ -43,6 +43,43 @@
       "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning."
     },
     {
+      "from": "1.0.0.134",
+      "until": "1.0.0.135",
+      "channel": "events",
+      "command": 194,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "i32",
+          "note": "The unit's movement count."
+        },
+        {
+          "name": "points",
+          "type": "array",
+          "count": "remaining",
+          "items": {
+            "name": "pointsEntry",
+            "type": "record",
+            "fields": [
+              {
+                "name": "x",
+                "type": "f32",
+                "note": "A point on the path, in world units."
+              },
+              {
+                "name": "z",
+                "type": "f32",
+                "note": "A point on the path, in world units."
+              }
+            ]
+          },
+          "note": "The path's points, to the end of the message. A client takes the ground's height for each."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.135",
       "until": "1.0.0.136",
       "channel": "events",

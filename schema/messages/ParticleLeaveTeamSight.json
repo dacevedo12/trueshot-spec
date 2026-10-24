@@ -26,6 +26,26 @@
       "note": "A client ignores the message where particle names none it holds."
     },
     {
+      "from": "1.0.0.134",
+      "until": "1.0.0.135",
+      "channel": "events",
+      "command": 242,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "particle",
+          "type": "u32",
+          "note": "The particle."
+        },
+        {
+          "name": "team",
+          "type": "u8",
+          "note": "Which side, by an index."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.135",
       "until": "1.0.0.136",
       "channel": "events",

@@ -30,6 +30,31 @@
       ]
     },
     {
+      "from": "1.0.0.134",
+      "until": "1.0.0.135",
+      "channel": "events",
+      "command": 168,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot."
+        },
+        {
+          "name": "left",
+          "type": "u8",
+          "note": "How many are left in it; zero empties the slot."
+        },
+        {
+          "name": "charges",
+          "type": "u8",
+          "note": "How many charges it holds."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.135",
       "until": "1.0.0.136",
       "channel": "events",

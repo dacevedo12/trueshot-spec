@@ -5,6 +5,76 @@
   "note": "What a server sends to set where a missile starts from and how fast it travels, which restarts its flight. The header names the missile.",
   "revisions": [
     {
+      "from": "1.0.0.134",
+      "until": "1.0.0.135",
+      "channel": "events",
+      "command": 66,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "driver",
+          "type": "u8",
+          "note": "How the missile is driven; only 1, homing, exists."
+        },
+        {
+          "name": "kind",
+          "type": "u32",
+          "note": "Must be 1, or the block is ignored."
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit homed on."
+        },
+        {
+          "name": "height",
+          "type": "f32",
+          "note": "Added to the target's height."
+        },
+        {
+          "name": "targetX",
+          "type": "f32",
+          "note": "The point homed on, which the client refreshes from the target while it exists."
+        },
+        {
+          "name": "targetY",
+          "type": "f32",
+          "note": "Its height."
+        },
+        {
+          "name": "targetZ",
+          "type": "f32",
+          "note": "Its other ground axis."
+        },
+        {
+          "name": "motionA",
+          "type": "f32",
+          "note": "A value of the homing motion; what it does is not recorded."
+        },
+        {
+          "name": "motionB",
+          "type": "f32",
+          "note": "Another."
+        },
+        {
+          "name": "motionC",
+          "type": "f32",
+          "note": "Another."
+        },
+        {
+          "name": "motionD",
+          "type": "f32",
+          "note": "Another."
+        },
+        {
+          "name": "last",
+          "type": "u32",
+          "note": "Kept with the homing; what it does is not recorded."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.135",
       "until": "1.0.0.136",
       "channel": "events",
