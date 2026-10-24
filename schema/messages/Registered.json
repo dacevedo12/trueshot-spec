@@ -31,6 +31,32 @@
       ]
     },
     {
+      "from": "1.0.0.141",
+      "until": "1.0.0.142",
+      "channel": "registration",
+      "command": 0,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "leading",
+          "type": "bytes",
+          "size": 3,
+          "note": "Unused; a server writes zero."
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id playerId holds. Where playerId is the client's own, the client takes this client id as its own and goes on. A watching client takes the champion of the player holding this client id as its own, so a server answers one with a client id no player in the streamed match holds (see spec/spectating.md)."
+        },
+        {
+          "name": "playerId",
+          "type": "i64",
+          "note": "The player the answer is for; a client takes it only where this is its own player id, and reads nothing after it."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.142",
       "until": "4.18.0.271",
       "channel": "registration",

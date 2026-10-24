@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "CooldownSet",
+  "version": "1.0.0.141",
+  "note": "Laid out as a 1.0.0.141 client sends it.",
+  "bytes": "8c000000000000000000",
+  "fields": {
+    "command": 140,
+    "netId": 0,
+    "which": {
+      "slot": 0,
+      "summonerSpell": 0
+    },
+    "cooldown": 0
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "EnterSight",
+  "version": "1.0.0.141",
+  "note": "Laid out as a 1.0.0.141 client takes it.",
+  "bytes": "c601000040000000000000000000000000000000000000",
+  "fields": {
+    "command": 198,
+    "netId": 1073741825,
+    "carried": {
+      "size": 0,
+      "unused": 0
+    },
+    "messages": [],
+    "itemCount": 0,
+    "items": [],
+    "view": {
+      "hasShields": 0,
+      "magicShield": null,
+      "physicalShield": null,
+      "shield": null,
+      "appearanceCount": 0,
+      "appearance": [],
+      "targetable": 0,
+      "targetableToTeam": 0,
+      "movementState": {
+        "movementKind": 0,
+        "syncId": 0,
+        "movement": null,
+        "movementAtSpeed": null,
+        "atX": null,
+        "atZ": null,
+        "facingX": null,
+        "facingZ": null
+      }
+    }
+  }
+}
