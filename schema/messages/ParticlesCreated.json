@@ -12,7 +12,11 @@
       "direction": "serverToClient",
       "reliability": "reliable",
       "fields": [
-        { "name": "groupCount", "type": "u8", "note": "How many sets follow." },
+        {
+          "name": "groupCount",
+          "type": "u8",
+          "note": "How many sets follow."
+        },
         {
           "name": "groups",
           "type": "array",
@@ -145,20 +149,28 @@
       ]
     },
     {
-      "from": "1.0.0.145",
+      "from": "1.0.0.144",
       "until": "1.0.0.146",
       "channel": "events",
       "command": 136,
       "direction": "serverToClient",
       "reliability": "reliable",
       "fields": [
-        { "name": "groupCount", "type": "u8", "note": "How many sets follow." },
+        {
+          "name": "groupCount",
+          "type": "u8",
+          "note": "How many sets follow."
+        },
         {
           "name": "groups",
           "type": "array",
           "count": "groupCount",
           "note": "The sets themselves.",
-          "items": { "type": "struct", "struct": "ParticleGroup", "name": "group" }
+          "items": {
+            "type": "struct",
+            "struct": "ParticleGroup",
+            "name": "group"
+          }
         }
       ]
     },
@@ -170,13 +182,21 @@
       "direction": "serverToClient",
       "reliability": "reliable",
       "fields": [
-        { "name": "groupCount", "type": "u8", "note": "How many sets follow." },
+        {
+          "name": "groupCount",
+          "type": "u8",
+          "note": "How many sets follow."
+        },
         {
           "name": "groups",
           "type": "array",
           "count": "groupCount",
           "note": "The sets themselves.",
-          "items": { "type": "struct", "struct": "ParticleGroup", "name": "group" }
+          "items": {
+            "type": "struct",
+            "struct": "ParticleGroup",
+            "name": "group"
+          }
         }
       ]
     },
@@ -188,13 +208,21 @@
       "direction": "serverToClient",
       "reliability": "reliable",
       "fields": [
-        { "name": "groupCount", "type": "u8", "note": "How many sets follow." },
+        {
+          "name": "groupCount",
+          "type": "u8",
+          "note": "How many sets follow."
+        },
         {
           "name": "groups",
           "type": "array",
           "count": "groupCount",
           "note": "The sets themselves.",
-          "items": { "type": "struct", "struct": "ParticleGroup", "name": "group" }
+          "items": {
+            "type": "struct",
+            "struct": "ParticleGroup",
+            "name": "group"
+          }
         }
       ]
     },
@@ -206,13 +234,21 @@
       "direction": "serverToClient",
       "reliability": "reliable",
       "fields": [
-        { "name": "groupCount", "type": "u8", "note": "How many sets follow." },
+        {
+          "name": "groupCount",
+          "type": "u8",
+          "note": "How many sets follow."
+        },
         {
           "name": "groups",
           "type": "array",
           "count": "groupCount",
           "note": "The sets themselves.",
-          "items": { "type": "struct", "struct": "ParticleGroup", "name": "group" }
+          "items": {
+            "type": "struct",
+            "struct": "ParticleGroup",
+            "name": "group"
+          }
         }
       ]
     },
@@ -224,13 +260,21 @@
       "direction": "serverToClient",
       "reliability": "reliable",
       "fields": [
-        { "name": "groupCount", "type": "u8", "note": "How many sets follow." },
+        {
+          "name": "groupCount",
+          "type": "u8",
+          "note": "How many sets follow."
+        },
         {
           "name": "groups",
           "type": "array",
           "count": "groupCount",
           "note": "The sets themselves.",
-          "items": { "type": "struct", "struct": "ParticleGroup", "name": "group" }
+          "items": {
+            "type": "struct",
+            "struct": "ParticleGroup",
+            "name": "group"
+          }
         }
       ]
     },
@@ -242,13 +286,21 @@
       "direction": "serverToClient",
       "reliability": "reliable",
       "fields": [
-        { "name": "groupCount", "type": "u8", "note": "How many sets follow." },
+        {
+          "name": "groupCount",
+          "type": "u8",
+          "note": "How many sets follow."
+        },
         {
           "name": "groups",
           "type": "array",
           "count": "groupCount",
           "note": "The sets themselves.",
-          "items": { "type": "struct", "struct": "ParticleGroup", "name": "group" }
+          "items": {
+            "type": "struct",
+            "struct": "ParticleGroup",
+            "name": "group"
+          }
         }
       ]
     }

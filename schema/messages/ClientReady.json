@@ -14,6 +14,27 @@
       "fields": []
     },
     {
+      "from": "1.0.0.144",
+      "until": "1.0.0.145",
+      "channel": "requests",
+      "command": 82,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "maskedStatus",
+          "type": "u32",
+          "note": "It varies from client to client; a server ignores it."
+        },
+        {
+          "name": "mask",
+          "type": "u32",
+          "note": "A random value the client picks to mask the one above."
+        }
+      ],
+      "note": "The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero. The three module fields are always zero."
+    },
+    {
       "from": "1.0.0.145",
       "until": "1.0.0.150",
       "channel": "requests",
