@@ -1,0 +1,27 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "RegionAdded",
+  "version": "1.0.0.143",
+  "note": "Laid out as a 1.0.0.143 client takes it.",
+  "bytes": "7e0000000000000000000000000000484400007a44000000000080bb440000a04000000000000000000000000000000000",
+  "fields": {
+    "command": 126,
+    "netId": 0,
+    "kind": 0,
+    "clientId": 0,
+    "sightRadius": 800,
+    "atX": 1000,
+    "atY": 0,
+    "atZ": 1500,
+    "lifetime": 5,
+    "marker": 0,
+    "does": {
+      "flag": 0,
+      "second": 0,
+      "unused": 0
+    },
+    "extra": 0,
+    "otherExtra": 0
+  }
+}

@@ -50,6 +50,51 @@
       ]
     },
     {
+      "from": "1.0.0.143",
+      "until": "1.0.0.144",
+      "channel": "events",
+      "command": 51,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Where the unit stands, in world units; a client keeps this height rather than the ground's."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "Its height, in world units."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Where it stands, in world units."
+        },
+        {
+          "name": "facingX",
+          "type": "f32",
+          "note": "The way it faces."
+        },
+        {
+          "name": "facingY",
+          "type": "f32",
+          "note": "The way it faces."
+        },
+        {
+          "name": "facingZ",
+          "type": "f32",
+          "note": "The way it faces."
+        },
+        {
+          "name": "syncId",
+          "type": "i32",
+          "note": "The unit's movement count."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.144",
       "until": "4.11.0.386",
       "channel": "events",

@@ -91,6 +91,87 @@
       "note": "No start point or speed is carried: the animation starts from its beginning at normal speed. A client ignores the message while the unit's animation is frozen."
     },
     {
+      "from": "1.0.0.143",
+      "until": "1.0.0.144",
+      "channel": "events",
+      "command": 188,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 4,
+          "bits": [
+            {
+              "name": "loop",
+              "width": 1,
+              "note": "Set to loop it."
+            },
+            {
+              "name": "holdLastFrame",
+              "width": 1,
+              "note": "Set to hold its last frame once it ends."
+            },
+            {
+              "name": "queue",
+              "width": 1,
+              "note": "Set to play it once the animation playing ends, rather than now."
+            },
+            {
+              "name": "queueLast",
+              "width": 1,
+              "note": "Set to play it after every animation already waiting."
+            },
+            {
+              "name": "replaceable",
+              "width": 1,
+              "note": "Set to let the next animation queued after it start at once."
+            },
+            {
+              "name": "locked",
+              "width": 1,
+              "note": "Set where the unit ignores this message while the animation plays."
+            },
+            {
+              "name": "noBlend",
+              "width": 1,
+              "note": "Set to switch to it at once rather than blend in."
+            },
+            {
+              "name": "lockedFromIdle",
+              "width": 1,
+              "note": "Set where idle animations cannot fade it out."
+            },
+            {
+              "name": "reserved",
+              "width": 1,
+              "note": "What it does is not recorded for this range; a server writes zero."
+            },
+            {
+              "name": "unused",
+              "width": 23,
+              "note": "Unused; a server writes zero."
+            }
+          ],
+          "note": "How the animation plays."
+        },
+        {
+          "name": "scaleTime",
+          "type": "f32",
+          "note": "Where above zero, how many seconds the animation is stretched or squeezed to last."
+        },
+        {
+          "name": "animation",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "The animation's name, ended by a zero byte, the two taking at most 64 bytes. Nothing plays for a name the unit does not have."
+        }
+      ],
+      "note": "A unit playing a locked animation ignores the message. A client stops any emote playing first, and plays at normal speed."
+    },
+    {
       "from": "1.0.0.144",
       "until": "1.0.0.150",
       "channel": "events",

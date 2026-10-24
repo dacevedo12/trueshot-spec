@@ -55,6 +55,50 @@
       ]
     },
     {
+      "from": "1.0.0.143",
+      "until": "1.0.0.144",
+      "channel": "requests",
+      "command": 48,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "positionX",
+          "type": "f32"
+        },
+        {
+          "name": "positionY",
+          "type": "f32"
+        },
+        {
+          "name": "positionZ",
+          "type": "f32"
+        },
+        {
+          "name": "directionX",
+          "type": "f32"
+        },
+        {
+          "name": "directionY",
+          "type": "f32"
+        },
+        {
+          "name": "directionZ",
+          "type": "f32"
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the client the view belongs to."
+        },
+        {
+          "name": "syncId",
+          "type": "u8",
+          "note": "Names this report, counting up as the view moves. A client sends the report again until a server returns the name."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.144",
       "until": "4.11.0.386",
       "channel": "requests",

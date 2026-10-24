@@ -48,6 +48,47 @@
       "note": "What a client sends for every WaypointGroup it takes. The header names no object: it carries zero."
     },
     {
+      "from": "1.0.0.143",
+      "until": "1.0.0.144",
+      "channel": "requests",
+      "command": 125,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u32",
+          "note": "Which group is being acknowledged, as the group named itself."
+        },
+        {
+          "name": "relocationCount",
+          "type": "u8",
+          "note": "How many relocations follow. Answering WaypointGroup a client counts them; answering a path for one unit it sends only syncId and this byte, unwritten, on the transient channel, and no relocations, so a server reads nothing in it there."
+        },
+        {
+          "name": "relocations",
+          "type": "array",
+          "count": "relocationCount",
+          "items": {
+            "name": "relocation",
+            "type": "record",
+            "fields": [
+              {
+                "name": "unit",
+                "type": "u32",
+                "note": "The unit the token belonged to."
+              },
+              {
+                "name": "token",
+                "type": "u8",
+                "note": "The token that arrived with it."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
       "from": "1.0.0.144",
       "until": "1.0.0.150",
       "channel": "requests",

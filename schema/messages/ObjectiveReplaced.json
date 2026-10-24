@@ -23,6 +23,23 @@
       ]
     },
     {
+      "from": "1.0.0.143",
+      "until": "1.0.0.144",
+      "channel": "events",
+      "command": 14,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "The objective. The text ends at its first zero byte, which falls within the field."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.144",
       "until": "4.21.0.0",
       "channel": "events",

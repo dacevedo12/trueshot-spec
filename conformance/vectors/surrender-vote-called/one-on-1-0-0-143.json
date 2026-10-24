@@ -1,0 +1,23 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SurrenderVoteCalled",
+  "version": "1.0.0.143",
+  "note": "Laid out as a 1.0.0.143 client takes it.",
+  "bytes": "d60000000003010000400100056400000000007042",
+  "fields": {
+    "command": 214,
+    "netId": 0,
+    "how": {
+      "countAsYes": 1,
+      "openTheMenu": 1,
+      "unused": 0
+    },
+    "caller": 1073741825,
+    "inFavour": 1,
+    "against": 0,
+    "seats": 5,
+    "side": 100,
+    "closesIn": 60
+  }
+}

@@ -38,6 +38,39 @@
       ]
     },
     {
+      "from": "1.0.0.143",
+      "until": "1.0.0.144",
+      "channel": "requests",
+      "command": 218,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "event",
+          "type": "u8",
+          "note": "What the player did. Pointing and leaving are sent only for a quest activated with its first flag set; a click at most once in three seconds.",
+          "values": {
+            "0": {
+              "name": "enter",
+              "note": "The pointer came over the quest."
+            },
+            "1": {
+              "name": "leave",
+              "note": "The pointer left it."
+            },
+            "2": {
+              "name": "click"
+            }
+          }
+        },
+        {
+          "name": "quest",
+          "type": "i32",
+          "note": "The quest's number, as QuestUpdated gave it."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.144",
       "until": "1.0.0.150",
       "channel": "requests",

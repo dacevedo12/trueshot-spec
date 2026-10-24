@@ -5,6 +5,26 @@
   "note": "What a server sends as a particle comes into what one side can see. The header carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.143",
+      "until": "1.0.0.144",
+      "channel": "events",
+      "command": 239,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "particle",
+          "type": "u32",
+          "note": "The particle."
+        },
+        {
+          "name": "team",
+          "type": "u8",
+          "note": "Which side, by an index."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.144",
       "until": "1.0.0.150",
       "channel": "events",

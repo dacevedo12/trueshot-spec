@@ -1,0 +1,33 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "ShopHighlighted",
+  "system": "interface",
+  "note": "What a server sends to make a shop element blink once, as a tutorial does. The header carries zero.",
+  "revisions": [
+    {
+      "from": "1.0.0.143",
+      "until": "1.0.0.144",
+      "command": 186,
+      "channel": "events",
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "element",
+          "type": "u8",
+          "note": "A shop element blinks once, where the shop window is open. Element 0 is the buy button, 1 the sell button, 2 the shop item number names, 3 the item second names within the category number names, and 4 the recommended item number names. A client ignores any value above 4."
+        },
+        {
+          "name": "number",
+          "type": "u8",
+          "note": "Which of the element's entries."
+        },
+        {
+          "name": "second",
+          "type": "u8",
+          "note": "For the shop's element 3, which item within the category; a client reads nothing here otherwise."
+        }
+      ]
+    }
+  ]
+}

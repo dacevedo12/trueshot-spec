@@ -35,6 +35,36 @@
       ]
     },
     {
+      "from": "1.0.0.143",
+      "until": "1.0.0.144",
+      "channel": "events",
+      "command": 175,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "reason",
+          "type": "u32",
+          "note": "Why the vote stands where it does."
+        },
+        {
+          "name": "inFavour",
+          "type": "u8",
+          "note": "How many voted for."
+        },
+        {
+          "name": "against",
+          "type": "u8",
+          "note": "How many voted against."
+        },
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "Which side."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.144",
       "until": "1.0.0.147",
       "channel": "events",

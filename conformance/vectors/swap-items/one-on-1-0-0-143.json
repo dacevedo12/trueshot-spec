@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SwapItems",
+  "version": "1.0.0.143",
+  "note": "Laid out as a 1.0.0.143 client sends it.",
+  "bytes": "23010000400002",
+  "fields": {
+    "command": 35,
+    "netId": 1073741825,
+    "from": 0,
+    "to": 2
+  }
+}

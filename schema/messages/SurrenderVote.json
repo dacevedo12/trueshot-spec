@@ -32,6 +32,33 @@
       ]
     },
     {
+      "from": "1.0.0.143",
+      "until": "1.0.0.144",
+      "channel": "requests",
+      "command": 174,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "inFavour",
+              "width": 1,
+              "note": "Set where the answer is yes. A client sends it clear."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Always clear."
+            }
+          ]
+        }
+      ]
+    },
+    {
       "from": "1.0.0.144",
       "until": "1.0.0.150",
       "channel": "requests",

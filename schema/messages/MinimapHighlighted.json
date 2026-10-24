@@ -18,6 +18,21 @@
           "note": "Which part of the minimap blinks. A client acts on 0 alone, its camera button, and ignores any other value."
         }
       ]
+    },
+    {
+      "from": "1.0.0.143",
+      "until": "1.0.0.144",
+      "command": 20,
+      "channel": "events",
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "element",
+          "type": "u8",
+          "note": "The minimap; a client acts on element 0 only, its camera button, and only once it knows its own champion. Any other value is ignored."
+        }
+      ]
     }
   ]
 }

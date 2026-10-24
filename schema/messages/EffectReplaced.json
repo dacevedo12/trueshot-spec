@@ -35,6 +35,36 @@
       ]
     },
     {
+      "from": "1.0.0.143",
+      "until": "1.0.0.144",
+      "channel": "events",
+      "command": 50,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which of the unit's effect slots."
+        },
+        {
+          "name": "runningFor",
+          "type": "f32",
+          "note": "How long the effect has already run, in seconds."
+        },
+        {
+          "name": "lasts",
+          "type": "f32",
+          "note": "How long it runs in total, in seconds."
+        },
+        {
+          "name": "caster",
+          "type": "u32",
+          "note": "The unit that put it there."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.144",
       "until": "4.11.0.386",
       "channel": "events",

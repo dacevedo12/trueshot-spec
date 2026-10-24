@@ -48,6 +48,53 @@
       "note": "A client takes each entry as it takes an EffectRemoved for that unit."
     },
     {
+      "from": "1.0.0.143",
+      "until": "1.0.0.144",
+      "channel": "events",
+      "command": 157,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "effect",
+          "type": "u32",
+          "note": "Which effect, by the number its name gives."
+        },
+        {
+          "name": "count",
+          "type": "u8",
+          "note": "How many units follow."
+        },
+        {
+          "name": "entries",
+          "type": "array",
+          "count": "count",
+          "items": {
+            "name": "entriesEntry",
+            "type": "record",
+            "fields": [
+              {
+                "name": "unit",
+                "type": "u32",
+                "note": "The unit carrying the effect."
+              },
+              {
+                "name": "slot",
+                "type": "u8",
+                "note": "Which slot it sat in."
+              },
+              {
+                "name": "timeLeft",
+                "type": "f32",
+                "note": "How long it had left to run, in seconds."
+              }
+            ]
+          },
+          "note": "The units, one place each."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.144",
       "until": "1.0.0.150",
       "channel": "events",

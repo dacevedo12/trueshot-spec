@@ -25,6 +25,27 @@
       ]
     },
     {
+      "from": "1.0.0.143",
+      "until": "1.0.0.144",
+      "channel": "events",
+      "command": 17,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit granted it."
+        },
+        {
+          "name": "amount",
+          "type": "f32",
+          "note": "How much."
+        }
+      ],
+      "note": "Where the unit is the client's own champion below its highest level, a client also shows the amount on its experience display."
+    },
+    {
       "from": "1.0.0.144",
       "until": "3.15.0.244",
       "channel": "events",

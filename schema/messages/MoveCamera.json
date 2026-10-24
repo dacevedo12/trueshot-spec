@@ -74,6 +74,74 @@
       ]
     },
     {
+      "from": "1.0.0.143",
+      "until": "1.0.0.144",
+      "channel": "events",
+      "command": 39,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "fromWhereItIs",
+              "width": 1,
+              "note": "Set to start from where the camera stands, fromX, fromY and fromZ having no effect; clear to start from them."
+            },
+            {
+              "name": "unused1",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
+            {
+              "name": "unused",
+              "width": 6,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "fromX",
+          "type": "f32",
+          "note": "Where the view starts, along one ground axis, in world units."
+        },
+        {
+          "name": "fromY",
+          "type": "f32",
+          "note": "Where the view starts, in height, in world units."
+        },
+        {
+          "name": "fromZ",
+          "type": "f32",
+          "note": "Where the view starts, along the other ground axis, in world units."
+        },
+        {
+          "name": "toX",
+          "type": "f32",
+          "note": "Where the view ends, along one ground axis, in world units."
+        },
+        {
+          "name": "toY",
+          "type": "f32",
+          "note": "Where the view ends, in height, in world units."
+        },
+        {
+          "name": "toZ",
+          "type": "f32",
+          "note": "Where the view ends, along the other ground axis, in world units."
+        },
+        {
+          "name": "travelTime",
+          "type": "f32",
+          "note": "How long the view takes to get there, in seconds. The view moves at an even speed over the distance along the ground."
+        }
+      ],
+      "note": "Where the header names a champion, only the client whose own champion it is moves its view; others take the message and do nothing. Where the header carries zero, a client moves its view to to over travelTime, how and from having no effect."
+    },
+    {
       "from": "1.0.0.144",
       "until": "4.11.0.386",
       "channel": "events",

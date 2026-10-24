@@ -127,6 +127,129 @@
       ]
     },
     {
+      "from": "1.0.0.143",
+      "until": "1.0.0.144",
+      "channel": "events",
+      "command": 221,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "note": "A client takes the prop's id from prop, not from the header. A scenery prop is turned by pitch, then yaw, then roll, each about the fixed world axes; none is negated or wrapped. An active prop only turns about the up axis, to face the ground direction its x and z give, and faces +z where both are zero.",
+      "fields": [
+        {
+          "name": "prop",
+          "type": "u32",
+          "note": "The name the prop answers to, so later messages can name it."
+        },
+        {
+          "name": "node",
+          "type": "u8",
+          "note": "Which network node the object belongs to. It is a field of its own, not the leading byte of the name beside it."
+        },
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where the prop stands, along one ground axis, in world units."
+        },
+        {
+          "name": "atY",
+          "type": "f32",
+          "note": "Where the prop stands, in height, in world units."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where the prop stands, along the other ground axis, in world units."
+        },
+        {
+          "name": "rotationX",
+          "type": "f32",
+          "note": "For scenery, the pitch in degrees: a turn about the x axis, positive turning +y toward +z. For an active prop, x of the direction it faces."
+        },
+        {
+          "name": "rotationY",
+          "type": "f32",
+          "note": "For scenery, the yaw in degrees: a turn about the up axis, positive turning +z toward +x, so yaw 0 faces +z and 90 faces +x. For an active prop, y of its facing, which does not turn it."
+        },
+        {
+          "name": "rotationZ",
+          "type": "f32",
+          "note": "For scenery, the roll in degrees: a turn about the z axis, positive turning +x toward +y. For an active prop, z of the direction it faces."
+        },
+        {
+          "name": "offsetX",
+          "type": "f32",
+          "note": "What is added to where it stands, along one ground axis, in world units."
+        },
+        {
+          "name": "offsetY",
+          "type": "f32",
+          "note": "What is added to where it stands, in height, in world units."
+        },
+        {
+          "name": "offsetZ",
+          "type": "f32",
+          "note": "What is added to where it stands, along the other ground axis, in world units."
+        },
+        {
+          "name": "side",
+          "type": "bits",
+          "note": "The side the prop belongs to. A server sends 300, the neutral side.",
+          "size": 4,
+          "bits": [
+            {
+              "name": "side",
+              "width": 9,
+              "note": "The prop's side."
+            },
+            {
+              "name": "unused",
+              "width": 23,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "skillLevel",
+          "type": "u8",
+          "note": "Unused; a server writes zero."
+        },
+        {
+          "name": "rank",
+          "type": "u8",
+          "note": "How far it is advanced."
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What sort of prop it is; a client makes nothing for any other value. A client first deletes any object holding the prop's id, whatever the kind.",
+          "values": {
+            "0": {
+              "name": "active",
+              "note": "Uses name, asset, skin, side, position, the three rotations and rank; not offset or scale."
+            },
+            "1": {
+              "name": "scenery",
+              "note": "Uses name, asset, skin, position, rotation (pitch, yaw, roll in degrees), offset and scale; not side or rank. Where the map has a placement point of the same name, its position is used instead; where a scenery prop of that name already stands there, it is reused and takes the new id."
+            }
+          }
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "What this prop is called, so a client can tell one from another. Written out in full and padded with zero bytes to the width above."
+        },
+        {
+          "name": "asset",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The name the client loads its art and sound under, written and padded as above."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.144",
       "until": "1.0.0.147",
       "channel": "events",

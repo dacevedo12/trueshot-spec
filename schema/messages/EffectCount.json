@@ -40,6 +40,41 @@
       ]
     },
     {
+      "from": "1.0.0.143",
+      "until": "1.0.0.144",
+      "channel": "events",
+      "command": 31,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot."
+        },
+        {
+          "name": "count",
+          "type": "u8",
+          "note": "How many are stacked there now."
+        },
+        {
+          "name": "timeLeft",
+          "type": "f32",
+          "note": "How long it has left to run, in seconds. With runningFor it adds up to the whole run the effect was added with."
+        },
+        {
+          "name": "runningFor",
+          "type": "f32",
+          "note": "How long it has already run, in seconds."
+        },
+        {
+          "name": "caster",
+          "type": "u32",
+          "note": "The unit that put it there."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.144",
       "until": "4.21.0.0",
       "channel": "events",

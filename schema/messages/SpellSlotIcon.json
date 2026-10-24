@@ -5,6 +5,38 @@
   "note": "What a server sends to change which icon a unit's slot shows. The header names the unit.",
   "revisions": [
     {
+      "from": "1.0.0.143",
+      "until": "1.0.0.144",
+      "command": 54,
+      "channel": "events",
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "which",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "slot",
+              "width": 7,
+              "note": "Which slot. A champion's own spells count from 0."
+            },
+            {
+              "name": "summonerSlots",
+              "width": 1,
+              "note": "Set where slot names a summoner spell's slot, clear for the unit's own spells; every kind obeys it."
+            }
+          ]
+        },
+        {
+          "name": "icon",
+          "type": "u8",
+          "note": "Which icon the spell shows."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.144",
       "until": "1.0.0.147",
       "command": 51,

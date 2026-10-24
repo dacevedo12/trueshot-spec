@@ -34,6 +34,35 @@
       "note": "A client cancels the aiming only where that slot, in the book named, is being aimed, and otherwise does nothing."
     },
     {
+      "from": "1.0.0.143",
+      "until": "1.0.0.144",
+      "channel": "events",
+      "command": 141,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "which",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "slot",
+              "width": 7,
+              "note": "Which slot."
+            },
+            {
+              "name": "summonerSpell",
+              "width": 1,
+              "note": "Set where the slot is a summoner slot."
+            }
+          ],
+          "note": "Which spell."
+        }
+      ],
+      "note": "A client cancels the aiming only where that slot is being aimed, and otherwise does nothing."
+    },
+    {
       "from": "1.0.0.144",
       "until": "1.0.0.147",
       "channel": "events",

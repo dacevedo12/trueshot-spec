@@ -34,6 +34,21 @@
       ]
     },
     {
+      "from": "1.0.0.143",
+      "until": "1.0.0.144",
+      "channel": "events",
+      "command": 127,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "locked",
+          "type": "u8",
+          "note": "Set to lock the camera, clear to free it. Any nonzero value sets it."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.144",
       "until": "1.0.0.147",
       "channel": "events",

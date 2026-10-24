@@ -20,6 +20,21 @@
       ]
     },
     {
+      "from": "1.0.0.143",
+      "until": "1.0.0.144",
+      "channel": "events",
+      "command": 16,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "client",
+          "type": "u32",
+          "note": "The client, by the seat it occupies."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.144",
       "until": "4.21.0.0",
       "channel": "events",

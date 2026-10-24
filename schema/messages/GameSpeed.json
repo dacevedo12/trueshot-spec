@@ -20,6 +20,21 @@
       ]
     },
     {
+      "from": "1.0.0.143",
+      "until": "1.0.0.144",
+      "channel": "events",
+      "command": 19,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "speed",
+          "type": "f32",
+          "note": "How fast, 1 being normal. A client keeps it between 0 and 10."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.144",
       "until": "4.21.0.0",
       "channel": "events",

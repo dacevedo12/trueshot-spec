@@ -5,6 +5,38 @@
   "note": "What a server sends to have a slot's targeting work from another unit. The header names the unit.",
   "revisions": [
     {
+      "from": "1.0.0.143",
+      "until": "1.0.0.144",
+      "command": 55,
+      "channel": "events",
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "which",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "slot",
+              "width": 7,
+              "note": "Which slot. A champion's own spells count from 0."
+            },
+            {
+              "name": "summonerSlots",
+              "width": 1,
+              "note": "Set where slot names a summoner spell's slot, clear for the unit's own spells; every kind obeys it."
+            }
+          ]
+        },
+        {
+          "name": "offsetFrom",
+          "type": "u32",
+          "note": "The unit the slot's targeting indicator works from instead of the caster, while the client holds it; one it does not hold resets this to none."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.144",
       "until": "1.0.0.147",
       "command": 52,

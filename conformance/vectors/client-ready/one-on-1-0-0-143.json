@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ClientReady",
+  "version": "1.0.0.143",
+  "note": "Laid out as a 1.0.0.143 client sends it.",
+  "bytes": "58000000000000000000000000",
+  "fields": {
+    "command": 88,
+    "netId": 0,
+    "maskedStatus": 0,
+    "mask": 0
+  }
+}

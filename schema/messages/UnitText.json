@@ -126,6 +126,115 @@
       ]
     },
     {
+      "from": "1.0.0.143",
+      "until": "1.0.0.144",
+      "channel": "events",
+      "command": 28,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit to float it over: one that can be damaged."
+        },
+        {
+          "name": "style",
+          "type": "u8",
+          "note": "How the line looks, from 0 to 24. A client shows debug lines to nobody.",
+          "values": {
+            "0": {
+              "name": "invulnerable"
+            },
+            "1": {
+              "name": "special"
+            },
+            "2": {
+              "name": "heal"
+            },
+            "3": {
+              "name": "manaHeal"
+            },
+            "4": {
+              "name": "manaDamage"
+            },
+            "5": {
+              "name": "dodge"
+            },
+            "6": {
+              "name": "physicalCritical"
+            },
+            "7": {
+              "name": "experience"
+            },
+            "8": {
+              "name": "gold"
+            },
+            "9": {
+              "name": "level"
+            },
+            "10": {
+              "name": "disable"
+            },
+            "11": {
+              "name": "questReceived"
+            },
+            "12": {
+              "name": "questComplete"
+            },
+            "13": {
+              "name": "score"
+            },
+            "14": {
+              "name": "physicalDamage"
+            },
+            "15": {
+              "name": "magicDamage"
+            },
+            "16": {
+              "name": "trueDamage"
+            },
+            "17": {
+              "name": "enemyPhysicalDamage"
+            },
+            "18": {
+              "name": "enemyMagicDamage"
+            },
+            "19": {
+              "name": "enemyTrueDamage"
+            },
+            "20": {
+              "name": "enemyPhysicalCritical"
+            },
+            "21": {
+              "name": "countdown"
+            },
+            "22": {
+              "name": "damage"
+            },
+            "23": {
+              "name": "critical"
+            },
+            "24": {
+              "name": "debug"
+            }
+          }
+        },
+        {
+          "name": "number",
+          "type": "i32",
+          "note": "A number put into the text where it asks for one."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "A key into the client's own text. The text ends at its first zero byte, which falls within the field."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.144",
       "until": "3.02.0.30",
       "channel": "events",

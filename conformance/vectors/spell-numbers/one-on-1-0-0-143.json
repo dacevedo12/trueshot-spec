@@ -1,0 +1,25 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SpellNumbers",
+  "version": "1.0.0.143",
+  "note": "Laid out as a 1.0.0.143 client takes it.",
+  "bytes": "86000000000200010000403d0000be420000000000000000010000403f00001643008089430000c843",
+  "fields": {
+    "command": 134,
+    "netId": 0,
+    "entryCount": 2,
+    "entries": [
+      {
+        "unit": 1073741825,
+        "slot": 61,
+        "values": [95, 0, 0]
+      },
+      {
+        "unit": 1073741825,
+        "slot": 63,
+        "values": [150, 275, 400]
+      }
+    ]
+  }
+}

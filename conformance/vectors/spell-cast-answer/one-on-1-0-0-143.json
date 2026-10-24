@@ -1,0 +1,57 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SpellCastAnswer",
+  "version": "1.0.0.143",
+  "note": "Laid out as a 1.0.0.143 client takes it.",
+  "bytes": "c10100004007000000006700fb28840500000000010000803f01000040010000400080bb44000048420080bb440080bb44000048420080bb440101000040000000000000000000000000000000803e000000000000003f000000410000c84200010000704200007a440000484200007a44",
+  "fields": {
+    "command": 193,
+    "netId": 1073741825,
+    "syncId": 7,
+    "endCharge": 0,
+    "cast": {
+      "size": 103,
+      "spell": 92547323,
+      "cast": 0,
+      "level": 1,
+      "attackSpeed": 1,
+      "caster": 1073741825,
+      "chainOwner": 1073741825,
+      "targetX": 1500,
+      "targetY": 50,
+      "targetZ": 1500,
+      "targetEndX": 1500,
+      "targetEndY": 50,
+      "targetEndZ": 1500,
+      "hitCount": 1,
+      "hits": [
+        {
+          "unit": 1073741825,
+          "atX": 0,
+          "atY": 0,
+          "atZ": 0,
+          "result": 0
+        }
+      ],
+      "castTime": 0.25,
+      "extraCastTime": 0,
+      "totalTime": 0.5,
+      "cooldown": 8,
+      "startedAt": 100,
+      "how": {
+        "basicAttack": 0,
+        "secondBasicAttack": 0,
+        "forced": 0,
+        "overrideCastPosition": 0,
+        "clicked": 0,
+        "unused": 0
+      },
+      "slot": 1,
+      "cost": 60,
+      "launchX": 1000,
+      "launchY": 50,
+      "launchZ": 1000
+    }
+  }
+}

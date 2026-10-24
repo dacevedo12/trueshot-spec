@@ -52,6 +52,54 @@
       ]
     },
     {
+      "from": "1.0.0.143",
+      "until": "1.0.0.144",
+      "channel": "events",
+      "command": 57,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "keepAnimating",
+              "width": 1,
+              "note": "Set to let the attack's animation play on after the stop."
+            },
+            {
+              "name": "forceCast",
+              "width": 1,
+              "note": "Set to make the attack land first where it has not already."
+            },
+            {
+              "name": "forceStop",
+              "width": 1,
+              "note": "Set to stop the attack outright; a client does so anyway where it cannot see the unit, and keepAnimating and forceCast then have no effect."
+            },
+            {
+              "name": "summonerSpell",
+              "width": 1,
+              "note": "Set where the slot stopped is a summoner spell's."
+            },
+            {
+              "name": "destroyMissile",
+              "width": 1,
+              "note": "Set to destroy the attack's missile, where it has one."
+            },
+            {
+              "name": "unused",
+              "width": 3,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ],
+      "note": "Whatever the flags, a client then clears the unit's attack."
+    },
+    {
       "from": "1.0.0.144",
       "until": "1.0.0.150",
       "channel": "events",

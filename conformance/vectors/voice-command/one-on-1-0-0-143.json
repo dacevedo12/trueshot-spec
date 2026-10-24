@@ -1,0 +1,23 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "VoiceCommand",
+  "version": "1.0.0.143",
+  "note": "Laid out as a 1.0.0.143 client takes it.",
+  "bytes": "4a22000040000000290000000000000001000000",
+  "fields": {
+    "command": 74,
+    "netId": 1073741858,
+    "padding1": 0,
+    "padding2": 0,
+    "call": 41,
+    "target": 0,
+    "flags": {
+      "highlight": 1,
+      "ping": 0,
+      "unused": 0
+    },
+    "padding3": 0,
+    "padding4": 0
+  }
+}

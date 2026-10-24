@@ -20,6 +20,21 @@
       ]
     },
     {
+      "from": "1.0.0.143",
+      "until": "1.0.0.144",
+      "channel": "events",
+      "command": 52,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "fade",
+          "type": "i16",
+          "note": "The fade, by the name FadeTo gave it."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.144",
       "until": "4.11.0.386",
       "channel": "events",
