@@ -6,21 +6,6 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
-      "channel": "requests",
-      "command": 63,
-      "direction": "clientToServer",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "target",
-          "type": "u32",
-          "note": "The unit to use."
-        }
-      ]
-    },
-    {
-      "from": "1.0.0.128",
       "until": "1.0.0.144",
       "channel": "requests",
       "command": 63,

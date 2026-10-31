@@ -6,21 +6,6 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
-      "channel": "requests",
-      "command": 5,
-      "direction": "clientToServer",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "handle",
-          "type": "u32",
-          "note": "The number the VoiceEvent carried."
-        }
-      ]
-    },
-    {
-      "from": "1.0.0.128",
       "until": "4.21.0.0",
       "channel": "requests",
       "command": 5,

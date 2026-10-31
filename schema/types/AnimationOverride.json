@@ -5,36 +5,6 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
-      "fields": [
-        {
-          "name": "fromLength",
-          "type": "u32",
-          "note": "How many bytes the name below occupies."
-        },
-        {
-          "name": "from",
-          "type": "string",
-          "encoding": "utf8",
-          "size": "fromLength",
-          "note": "The name of what is replaced. It is not padded and carries nothing closing it."
-        },
-        {
-          "name": "toLength",
-          "type": "u32",
-          "note": "How many bytes the name below occupies."
-        },
-        {
-          "name": "to",
-          "type": "string",
-          "encoding": "utf8",
-          "size": "toLength",
-          "note": "The name of what replaces it, written as above."
-        }
-      ]
-    },
-    {
-      "from": "1.0.0.128",
       "until": "4.21.0.0",
       "fields": [
         {
