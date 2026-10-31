@@ -11,7 +11,9 @@
           "note": "The simulation itself: what a client asks for, and what the server says happened.",
           "command": {
             "field": "command",
-            "reserved": [255]
+            "reserved": [
+              255
+            ]
           },
           "header": [
             {
@@ -60,7 +62,7 @@
       ]
     },
     {
-      "from": "1.0.0.129",
+      "from": "1.0.0.128",
       "until": "1.0.0.152",
       "families": [
         {
@@ -68,7 +70,9 @@
           "note": "The simulation itself: what a client asks for, and what the server says happened.",
           "command": {
             "field": "command",
-            "reserved": [255]
+            "reserved": [
+              255
+            ]
           },
           "header": [
             {
@@ -124,7 +128,9 @@
           "note": "The simulation itself: what a client asks for, and what the server says happened.",
           "command": {
             "field": "command",
-            "reserved": [255]
+            "reserved": [
+              255
+            ]
           },
           "header": [
             {
@@ -178,7 +184,10 @@
             "field": "command",
             "escape": 254,
             "extendedField": "extendedCommand",
-            "reserved": [254, 255]
+            "reserved": [
+              254,
+              255
+            ]
           },
           "header": [
             {

@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "Resumed",
+  "version": "1.0.0.128",
+  "note": "Laid out as a 1.0.0.128 client takes it.",
+  "bytes": "0a000000000100000001",
+  "fields": {
+    "command": 10,
+    "netId": 0,
+    "clientId": 1,
+    "how": {
+      "afterCountdown": 1,
+      "unused": 0
+    }
+  }
+}

@@ -105,6 +105,51 @@
       ]
     },
     {
+      "from": "1.0.0.128",
+      "until": "1.0.0.129",
+      "channel": "events",
+      "command": 87,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "agreement",
+          "type": "u8",
+          "note": "Nonzero where the build the client runs matches, which a client needs to load; zero has it show both versions and end."
+        },
+        {
+          "name": "map",
+          "type": "i32",
+          "note": "Which map to load. spec/space.md keys the path origins by the same maps."
+        },
+        {
+          "name": "seats",
+          "type": "array",
+          "count": 12,
+          "note": "Every place at the match, held or empty.",
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
+        },
+        {
+          "name": "build",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 256,
+          "note": "Which build the server serves. Written out in full and padded with zero bytes to the width above."
+        },
+        {
+          "name": "mode",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "Which way the match is played, written and padded as above."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.129",
       "until": "1.0.0.131",
       "channel": "events",
