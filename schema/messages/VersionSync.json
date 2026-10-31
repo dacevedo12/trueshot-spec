@@ -17,7 +17,11 @@
           "type": "u8",
           "note": "Must be 1: any other value has the client report a build mismatch and leave."
         },
-        { "name": "map", "type": "i32", "note": "Which map to load." },
+        {
+          "name": "map",
+          "type": "i32",
+          "note": "Which map to load."
+        },
         {
           "name": "seats",
           "type": "array",
@@ -101,7 +105,7 @@
       ]
     },
     {
-      "from": "1.0.0.130",
+      "from": "1.0.0.129",
       "until": "1.0.0.131",
       "channel": "events",
       "command": 87,
@@ -123,7 +127,11 @@
           "type": "array",
           "count": 12,
           "note": "Every place at the match, held or empty.",
-          "items": { "name": "seat", "type": "struct", "struct": "Seat" }
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
         },
         {
           "name": "build",
@@ -196,7 +204,11 @@
               "width": 1,
               "note": "Set to have a client also write its reports to a file of its own."
             },
-            { "name": "unused", "width": 7, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
           ]
         }
       ]
@@ -224,7 +236,11 @@
           "type": "array",
           "count": 12,
           "note": "Every place at the match, held or empty.",
-          "items": { "name": "seat", "type": "struct", "struct": "Seat" }
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
         },
         {
           "name": "build",
@@ -297,7 +313,11 @@
               "width": 1,
               "note": "Set to have a client also write its reports to a file of its own."
             },
-            { "name": "unused", "width": 7, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
           ]
         }
       ]
@@ -325,7 +345,11 @@
           "type": "array",
           "count": 12,
           "note": "Every place at the match, held or empty.",
-          "items": { "name": "seat", "type": "struct", "struct": "Seat" }
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
         },
         {
           "name": "build",
@@ -398,7 +422,11 @@
               "width": 1,
               "note": "Set to have a client also write its reports to a file of its own."
             },
-            { "name": "unused", "width": 7, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
           ]
         }
       ]
@@ -426,7 +454,11 @@
           "type": "array",
           "count": 12,
           "note": "Every place at the match, held or empty.",
-          "items": { "name": "seat", "type": "struct", "struct": "Seat" }
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
         },
         {
           "name": "build",
@@ -499,7 +531,11 @@
               "width": 1,
               "note": "Set to have a client also write its reports to a file of its own."
             },
-            { "name": "unused", "width": 7, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
           ]
         }
       ]
@@ -527,7 +563,11 @@
           "type": "array",
           "count": 12,
           "note": "Every place at the match, held or empty.",
-          "items": { "name": "seat", "type": "struct", "struct": "Seat" }
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
         },
         {
           "name": "build",
@@ -605,7 +645,11 @@
               "width": 1,
               "note": "Set where the match was put together rather than made by hand."
             },
-            { "name": "unused", "width": 6, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 6,
+              "note": "Unused; a server writes zero."
+            }
           ]
         }
       ]
@@ -633,7 +677,11 @@
           "type": "array",
           "count": 12,
           "note": "Every place at the match, held or empty.",
-          "items": { "name": "seat", "type": "struct", "struct": "Seat" }
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
         },
         {
           "name": "build",
@@ -711,7 +759,11 @@
               "width": 1,
               "note": "Set where the match was put together rather than made by hand."
             },
-            { "name": "unused", "width": 6, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 6,
+              "note": "Unused; a server writes zero."
+            }
           ]
         }
       ]
@@ -739,7 +791,11 @@
           "type": "array",
           "count": 12,
           "note": "Every place at the match, held or empty.",
-          "items": { "name": "seat", "type": "struct", "struct": "Seat" }
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
         },
         {
           "name": "build",
@@ -817,7 +873,11 @@
               "width": 1,
               "note": "Set where the match was put together rather than made by hand."
             },
-            { "name": "unused", "width": 6, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 6,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -875,7 +935,11 @@
               "width": 1,
               "note": "Set where the match was put together rather than made by hand."
             },
-            { "name": "unused", "width": 5, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 5,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -888,7 +952,11 @@
           "type": "array",
           "count": 12,
           "note": "Every place at the match, held or empty.",
-          "items": { "name": "seat", "type": "struct", "struct": "Seat" }
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
         },
         {
           "name": "build",
@@ -1006,7 +1074,11 @@
               "width": 1,
               "note": "Set where the match was put together rather than made by hand."
             },
-            { "name": "unused", "width": 5, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 5,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -1019,7 +1091,11 @@
           "type": "array",
           "count": 12,
           "note": "Every place at the match, held or empty.",
-          "items": { "name": "seat", "type": "struct", "struct": "Seat" }
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
         },
         {
           "name": "build",
@@ -1137,7 +1213,11 @@
               "width": 1,
               "note": "Set where the match was put together rather than made by hand."
             },
-            { "name": "unused", "width": 5, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 5,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -1150,7 +1230,11 @@
           "type": "array",
           "count": 12,
           "note": "Every place at the match, held or empty.",
-          "items": { "name": "seat", "type": "struct", "struct": "Seat" }
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
         },
         {
           "name": "build",
@@ -1259,7 +1343,11 @@
               "width": 1,
               "note": "Set to have the box during play show every note in turn."
             },
-            { "name": "unused", "width": 3, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 3,
+              "note": "Unused; a server writes zero."
+            }
           ]
         }
       ]
@@ -1292,7 +1380,11 @@
               "width": 1,
               "note": "Set where the match was put together rather than made by hand."
             },
-            { "name": "unused", "width": 5, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 5,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -1305,7 +1397,11 @@
           "type": "array",
           "count": 12,
           "note": "Every place at the match, held or empty.",
-          "items": { "name": "seat", "type": "struct", "struct": "Seat" }
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
         },
         {
           "name": "build",
@@ -1414,7 +1510,11 @@
               "width": 1,
               "note": "Set to have the box during play show every note in turn."
             },
-            { "name": "unused", "width": 3, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 3,
+              "note": "Unused; a server writes zero."
+            }
           ]
         }
       ]
@@ -1447,7 +1547,11 @@
               "width": 1,
               "note": "Set where the match was put together rather than made by hand."
             },
-            { "name": "unused", "width": 5, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 5,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -1460,7 +1564,11 @@
           "type": "array",
           "count": 12,
           "note": "Every place at the match, held or empty.",
-          "items": { "name": "seat", "type": "struct", "struct": "Seat" }
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
         },
         {
           "name": "build",
@@ -1569,7 +1677,11 @@
               "width": 1,
               "note": "Set to have the box during play show every note in turn."
             },
-            { "name": "unused", "width": 3, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 3,
+              "note": "Unused; a server writes zero."
+            }
           ]
         }
       ]
@@ -1607,7 +1719,11 @@
               "width": 1,
               "note": "Set where the reporting settings below are to be used."
             },
-            { "name": "unused", "width": 4, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 4,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -1620,7 +1736,11 @@
           "type": "array",
           "count": 12,
           "note": "Every place at the match, held or empty.",
-          "items": { "name": "seat", "type": "struct", "struct": "Seat" }
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
         },
         {
           "name": "build",
@@ -1767,7 +1887,11 @@
               "width": 1,
               "note": "Set to have the box during play show every note in turn."
             },
-            { "name": "unused", "width": 3, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 3,
+              "note": "Unused; a server writes zero."
+            }
           ]
         }
       ]
@@ -1805,7 +1929,11 @@
               "width": 1,
               "note": "Set where the reporting settings below are to be used."
             },
-            { "name": "unused", "width": 4, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 4,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -1818,7 +1946,11 @@
           "type": "array",
           "count": 12,
           "note": "Every place at the match, held or empty.",
-          "items": { "name": "seat", "type": "struct", "struct": "Seat" }
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
         },
         {
           "name": "build",
@@ -1965,7 +2097,11 @@
               "width": 1,
               "note": "Set to have the box during play show every note in turn."
             },
-            { "name": "unused", "width": 3, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 3,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -1994,7 +2130,11 @@
               "width": 1,
               "note": "Turns on the client's newer options and menus."
             },
-            { "name": "unused", "width": 28, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 28,
+              "note": "Unused; a server writes zero."
+            }
           ]
         }
       ]
@@ -2032,7 +2172,11 @@
               "width": 1,
               "note": "Set where the reporting settings below are to be used."
             },
-            { "name": "unused", "width": 4, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 4,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -2045,7 +2189,11 @@
           "type": "array",
           "count": 12,
           "note": "Every place at the match, held or empty.",
-          "items": { "name": "seat", "type": "struct", "struct": "Seat" }
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
         },
         {
           "name": "build",
@@ -2192,7 +2340,11 @@
               "width": 1,
               "note": "Set to have the box during play show every note in turn."
             },
-            { "name": "unused", "width": 3, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 3,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -2231,7 +2383,11 @@
               "width": 1,
               "note": "Which sound system the client uses; which setting picks which is not recorded."
             },
-            { "name": "unused", "width": 26, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 26,
+              "note": "Unused; a server writes zero."
+            }
           ]
         }
       ]
@@ -2274,7 +2430,11 @@
               "width": 1,
               "note": "Set to turn on an optional cosmetic effect."
             },
-            { "name": "unused", "width": 3, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 3,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -2287,7 +2447,11 @@
           "type": "array",
           "count": 12,
           "note": "Every place at the match, held or empty.",
-          "items": { "name": "seat", "type": "struct", "struct": "Seat" }
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
         },
         {
           "name": "build",
@@ -2434,7 +2598,11 @@
               "width": 1,
               "note": "Set to have the box during play show every note in turn."
             },
-            { "name": "unused", "width": 3, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 3,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -2478,7 +2646,11 @@
               "width": 1,
               "note": "Cursors of several frames move on a frame every 0.15 seconds of play; clear, they show their first frame."
             },
-            { "name": "unused", "width": 25, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 25,
+              "note": "Unused; a server writes zero."
+            }
           ]
         }
       ]
@@ -2521,7 +2693,11 @@
               "width": 1,
               "note": "Set to turn on an optional cosmetic effect."
             },
-            { "name": "unused", "width": 3, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 3,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -2534,7 +2710,11 @@
           "type": "array",
           "count": 12,
           "note": "Every place at the match, held or empty.",
-          "items": { "name": "seat", "type": "struct", "struct": "Seat" }
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
         },
         {
           "name": "build",
@@ -2681,7 +2861,11 @@
               "width": 1,
               "note": "Set to have the box during play show every note in turn."
             },
-            { "name": "unused", "width": 3, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 3,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -2735,7 +2919,11 @@
               "width": 1,
               "note": "While aiming a line spell, the units it would hit are outlined."
             },
-            { "name": "unused", "width": 23, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 23,
+              "note": "Unused; a server writes zero."
+            }
           ]
         }
       ]
@@ -2790,7 +2978,11 @@
           "type": "array",
           "count": 12,
           "note": "Every place at the match, held or empty.",
-          "items": { "name": "seat", "type": "struct", "struct": "Seat" }
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
         },
         {
           "name": "build",
@@ -2937,7 +3129,11 @@
               "width": 1,
               "note": "Set to have the box during play show every note in turn."
             },
-            { "name": "unused", "width": 3, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 3,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -2991,7 +3187,11 @@
               "width": 1,
               "note": "While aiming a line spell, the units it would hit are outlined."
             },
-            { "name": "unused", "width": 23, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 23,
+              "note": "Unused; a server writes zero."
+            }
           ]
         }
       ]
@@ -3046,7 +3246,11 @@
           "type": "array",
           "count": 12,
           "note": "Every place at the match, held or empty.",
-          "items": { "name": "seat", "type": "struct", "struct": "Seat" }
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
         },
         {
           "name": "build",
@@ -3193,7 +3397,11 @@
               "width": 1,
               "note": "Set to have the box during play show every note in turn."
             },
-            { "name": "unused", "width": 3, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 3,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -3217,7 +3425,11 @@
               "width": 1,
               "note": "With menuBack2, a second key that closes the pause and options menu. Alone, the minimap's showing of neutral camps follows the player's settings rather than the minimap's own."
             },
-            { "name": "menuBack2", "width": 1, "note": "Of use only with menuBack." },
+            {
+              "name": "menuBack2",
+              "width": 1,
+              "note": "Of use only with menuBack."
+            },
             {
               "name": "missileWarning",
               "width": 1,
@@ -3248,13 +3460,21 @@
               "width": 1,
               "note": "While aiming a line spell, the units it would hit are outlined."
             },
-            { "name": "bit10", "width": 1, "note": "Has no effect." },
+            {
+              "name": "bit10",
+              "width": 1,
+              "note": "Has no effect."
+            },
             {
               "name": "championIndicator",
               "width": 1,
               "note": "The mark over the player's champion, where their own setting also asks for it."
             },
-            { "name": "unused", "width": 20, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 20,
+              "note": "Unused; a server writes zero."
+            }
           ]
         }
       ]
@@ -3309,7 +3529,11 @@
           "type": "array",
           "count": 12,
           "note": "Every place at the match, held or empty.",
-          "items": { "name": "seat", "type": "struct", "struct": "Seat" }
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
         },
         {
           "name": "build",
@@ -3456,7 +3680,11 @@
               "width": 1,
               "note": "Set to have the box during play show every note in turn."
             },
-            { "name": "unused", "width": 3, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 3,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -3480,7 +3708,11 @@
               "width": 1,
               "note": "With menuBack2, a second key that closes the pause and options menu. Alone, the minimap's showing of neutral camps follows the player's settings rather than the minimap's own."
             },
-            { "name": "menuBack2", "width": 1, "note": "Of use only with menuBack." },
+            {
+              "name": "menuBack2",
+              "width": 1,
+              "note": "Of use only with menuBack."
+            },
             {
               "name": "missileWarning",
               "width": 1,
@@ -3526,7 +3758,11 @@
               "width": 1,
               "note": "Changes the order of the kinds of minion within a wave."
             },
-            { "name": "unused", "width": 19, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 19,
+              "note": "Unused; a server writes zero."
+            }
           ]
         }
       ]
@@ -3581,7 +3817,11 @@
           "type": "array",
           "count": 12,
           "note": "Every place at the match, held or empty.",
-          "items": { "name": "seat", "type": "struct", "struct": "Seat" }
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
         },
         {
           "name": "build",
@@ -3728,7 +3968,11 @@
               "width": 1,
               "note": "Set to have the box during play show every note in turn."
             },
-            { "name": "unused", "width": 3, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 3,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -3752,7 +3996,11 @@
               "width": 1,
               "note": "With menuBack2, a second key that closes the pause and options menu. Alone, the minimap's showing of neutral camps follows the player's settings rather than the minimap's own."
             },
-            { "name": "menuBack2", "width": 1, "note": "Of use only with menuBack." },
+            {
+              "name": "menuBack2",
+              "width": 1,
+              "note": "Of use only with menuBack."
+            },
             {
               "name": "quickChat",
               "width": 1,
@@ -3808,7 +4056,11 @@
               "width": 1,
               "note": "Enemy turrets' ranges, where the player's setting also asks for them; clear, they are never drawn."
             },
-            { "name": "unused", "width": 17, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 17,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -3874,7 +4126,11 @@
           "type": "array",
           "count": 12,
           "note": "Every place at the match, held or empty.",
-          "items": { "name": "seat", "type": "struct", "struct": "Seat" }
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
         },
         {
           "name": "build",
@@ -4039,7 +4295,11 @@
               "width": 1,
               "note": "Set to have the box during play show every note in turn."
             },
-            { "name": "unused", "width": 3, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 3,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -4063,7 +4323,11 @@
               "width": 1,
               "note": "With menuBack2, a second key that closes the pause and options menu. Alone, the minimap's showing of neutral camps follows the player's settings rather than the minimap's own."
             },
-            { "name": "menuBack2", "width": 1, "note": "Of use only with menuBack." },
+            {
+              "name": "menuBack2",
+              "width": 1,
+              "note": "Of use only with menuBack."
+            },
             {
               "name": "quickChat",
               "width": 1,
@@ -4119,19 +4383,31 @@
               "width": 1,
               "note": "Enemy turrets' ranges, where the player's setting also asks for them; clear, they are never drawn."
             },
-            { "name": "bit14", "width": 1, "note": "Unused; a server writes zero." },
+            {
+              "name": "bit14",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "skinParticles",
               "width": 1,
               "note": "Skin-specific particle effects for units in a skin other than the first."
             },
-            { "name": "bit16", "width": 1, "note": "Unused; a server writes zero." },
+            {
+              "name": "bit16",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "hardwareMetrics",
               "width": 1,
               "note": "A report of hardware and frame rate at the end of the match."
             },
-            { "name": "unused", "width": 13, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 13,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -4197,7 +4473,11 @@
           "type": "array",
           "count": 12,
           "note": "Every place at the match, held or empty.",
-          "items": { "name": "seat", "type": "struct", "struct": "Seat" }
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
         },
         {
           "name": "build",
@@ -4362,7 +4642,11 @@
               "width": 1,
               "note": "Set to have the box during play show every note in turn."
             },
-            { "name": "unused", "width": 3, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 3,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -4381,7 +4665,11 @@
               "width": 1,
               "note": "With menuBack2, a second key that closes the pause and options menu. Alone, the minimap's showing of neutral camps follows the player's settings rather than the minimap's own."
             },
-            { "name": "menuBack2", "width": 1, "note": "Of use only with menuBack." },
+            {
+              "name": "menuBack2",
+              "width": 1,
+              "note": "Of use only with menuBack."
+            },
             {
               "name": "quickChat",
               "width": 1,
@@ -4437,19 +4725,31 @@
               "width": 1,
               "note": "Enemy turrets' ranges, where the player's setting also asks for them; clear, they are never drawn."
             },
-            { "name": "bit14", "width": 1, "note": "Unused; a server writes zero." },
+            {
+              "name": "bit14",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "skinParticles",
               "width": 1,
               "note": "Skin-specific particle effects for units in a skin other than the first."
             },
-            { "name": "bit16", "width": 1, "note": "Unused; a server writes zero." },
+            {
+              "name": "bit16",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "hardwareMetrics",
               "width": 1,
               "note": "A report of hardware and frame rate at the end of the match."
             },
-            { "name": "unused", "width": 14, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 14,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -4515,7 +4815,11 @@
           "type": "array",
           "count": 12,
           "note": "Every place at the match, held or empty.",
-          "items": { "name": "seat", "type": "struct", "struct": "Seat" }
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
         },
         {
           "name": "build",
@@ -4680,7 +4984,11 @@
               "width": 1,
               "note": "Set to have the box during play show every note in turn."
             },
-            { "name": "unused", "width": 3, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 3,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -4699,7 +5007,11 @@
               "width": 1,
               "note": "With menuBack2, a second key that closes the pause and options menu. Alone, the minimap's showing of neutral camps follows the player's settings rather than the minimap's own."
             },
-            { "name": "menuBack2", "width": 1, "note": "Of use only with menuBack." },
+            {
+              "name": "menuBack2",
+              "width": 1,
+              "note": "Of use only with menuBack."
+            },
             {
               "name": "quickChat",
               "width": 1,
@@ -4755,13 +5067,21 @@
               "width": 1,
               "note": "Enemy turrets' ranges, where the player's setting also asks for them; clear, they are never drawn."
             },
-            { "name": "bit14", "width": 1, "note": "Unused; a server writes zero." },
+            {
+              "name": "bit14",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "skinParticles",
               "width": 1,
               "note": "Skin-specific particle effects for units in a skin other than the first."
             },
-            { "name": "bit16", "width": 1, "note": "Unused; a server writes zero." },
+            {
+              "name": "bit16",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "hardwareMetrics",
               "width": 1,
@@ -4777,7 +5097,11 @@
               "width": 1,
               "note": "It changes nothing a client shows."
             },
-            { "name": "unused", "width": 12, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 12,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -4843,7 +5167,11 @@
           "type": "array",
           "count": 12,
           "note": "Every place at the match, held or empty.",
-          "items": { "name": "seat", "type": "struct", "struct": "Seat" }
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
         },
         {
           "name": "build",
@@ -5008,7 +5336,11 @@
               "width": 1,
               "note": "Set to have the box during play show every note in turn."
             },
-            { "name": "unused", "width": 3, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 3,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -5027,7 +5359,11 @@
               "width": 1,
               "note": "With menuBack2, a second key that closes the pause and options menu. Alone, the minimap's showing of neutral camps follows the player's settings rather than the minimap's own."
             },
-            { "name": "menuBack2", "width": 1, "note": "Of use only with menuBack." },
+            {
+              "name": "menuBack2",
+              "width": 1,
+              "note": "Of use only with menuBack."
+            },
             {
               "name": "quickChat",
               "width": 1,
@@ -5083,19 +5419,31 @@
               "width": 1,
               "note": "Enemy turrets' ranges, where the player's setting also asks for them; clear, they are never drawn."
             },
-            { "name": "bit14", "width": 1, "note": "Unused; a server writes zero." },
+            {
+              "name": "bit14",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "skinParticles",
               "width": 1,
               "note": "Skin-specific particle effects for units in a skin other than the first."
             },
-            { "name": "bit16", "width": 1, "note": "Unused; a server writes zero." },
+            {
+              "name": "bit16",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "hardwareMetrics",
               "width": 1,
               "note": "A report of hardware and frame rate at the end of the match."
             },
-            { "name": "bit18", "width": 1, "note": "Unused; a server writes zero." },
+            {
+              "name": "bit18",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "lagMetrics",
               "width": 1,
@@ -5116,7 +5464,11 @@
               "width": 1,
               "note": "An extra option for drawing particles, in effect from the match's start; what it changes on screen is not recorded."
             },
-            { "name": "unused", "width": 9, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 9,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -5139,7 +5491,14 @@
             "name": "wanted",
             "type": "u8",
             "note": "Whether that report is wanted.",
-            "values": { "0": { "name": "no" }, "1": { "name": "yes" } }
+            "values": {
+              "0": {
+                "name": "no"
+              },
+              "1": {
+                "name": "yes"
+              }
+            }
           }
         }
       ]
@@ -5194,7 +5553,11 @@
           "type": "array",
           "count": 12,
           "note": "Every place at the match, held or empty.",
-          "items": { "name": "seat", "type": "struct", "struct": "Seat" }
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
         },
         {
           "name": "build",
@@ -5359,7 +5722,11 @@
               "width": 1,
               "note": "Set to have the box during play show every note in turn."
             },
-            { "name": "unused", "width": 3, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 3,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -5378,7 +5745,11 @@
               "width": 1,
               "note": "With menuBack2, a second key that closes the pause and options menu. Alone, the minimap's showing of neutral camps follows the player's settings rather than the minimap's own."
             },
-            { "name": "menuBack2", "width": 1, "note": "Of use only with menuBack." },
+            {
+              "name": "menuBack2",
+              "width": 1,
+              "note": "Of use only with menuBack."
+            },
             {
               "name": "quickChat",
               "width": 1,
@@ -5439,8 +5810,16 @@
               "width": 1,
               "note": "Enemy turrets' ranges, where the player's setting also asks for them; clear, they are never drawn."
             },
-            { "name": "bit15", "width": 1, "note": "Unused; a server writes zero." },
-            { "name": "bit16", "width": 1, "note": "Unused; a server writes zero." },
+            {
+              "name": "bit15",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
+            {
+              "name": "bit16",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "networkMetrics",
               "width": 1,
@@ -5451,7 +5830,11 @@
               "width": 1,
               "note": "A report of hardware and frame rate at the end of the match."
             },
-            { "name": "bit19", "width": 1, "note": "Unused; a server writes zero." },
+            {
+              "name": "bit19",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "lagMetrics",
               "width": 1,
@@ -5472,7 +5855,11 @@
               "width": 1,
               "note": "An extra option for drawing particles, in effect from the match's start; what it changes on screen is not recorded."
             },
-            { "name": "unused", "width": 8, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 8,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -5495,7 +5882,14 @@
             "name": "wanted",
             "type": "u8",
             "note": "Whether that report is wanted.",
-            "values": { "0": { "name": "no" }, "1": { "name": "yes" } }
+            "values": {
+              "0": {
+                "name": "no"
+              },
+              "1": {
+                "name": "yes"
+              }
+            }
           }
         }
       ]
@@ -5550,7 +5944,11 @@
           "type": "array",
           "count": 12,
           "note": "Every place at the match, held or empty.",
-          "items": { "name": "seat", "type": "struct", "struct": "Seat" }
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
         },
         {
           "name": "build",
@@ -5715,7 +6113,11 @@
               "width": 1,
               "note": "Set to have the box during play show every note in turn."
             },
-            { "name": "unused", "width": 3, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 3,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -5734,7 +6136,11 @@
               "width": 1,
               "note": "With menuBack2, a second key that closes the pause and options menu. Alone, the minimap's showing of neutral camps follows the player's settings rather than the minimap's own."
             },
-            { "name": "menuBack2", "width": 1, "note": "Of use only with menuBack." },
+            {
+              "name": "menuBack2",
+              "width": 1,
+              "note": "Of use only with menuBack."
+            },
             {
               "name": "quickChat",
               "width": 1,
@@ -5795,8 +6201,16 @@
               "width": 1,
               "note": "Enemy turrets' ranges, where the player's setting also asks for them; clear, they are never drawn."
             },
-            { "name": "bit15", "width": 1, "note": "Unused; a server writes zero." },
-            { "name": "bit16", "width": 1, "note": "Unused; a server writes zero." },
+            {
+              "name": "bit15",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
+            {
+              "name": "bit16",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "networkMetrics",
               "width": 1,
@@ -5807,7 +6221,11 @@
               "width": 1,
               "note": "A report of hardware and frame rate at the end of the match."
             },
-            { "name": "bit19", "width": 1, "note": "Unused; a server writes zero." },
+            {
+              "name": "bit19",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "lagMetrics",
               "width": 1,
@@ -5828,7 +6246,11 @@
               "width": 1,
               "note": "An extra option for drawing particles, in effect from the match's start; what it changes on screen is not recorded."
             },
-            { "name": "unused", "width": 8, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 8,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -5851,7 +6273,14 @@
             "name": "wanted",
             "type": "u8",
             "note": "Whether that report is wanted.",
-            "values": { "0": { "name": "no" }, "1": { "name": "yes" } }
+            "values": {
+              "0": {
+                "name": "no"
+              },
+              "1": {
+                "name": "yes"
+              }
+            }
           }
         }
       ]
@@ -5906,7 +6335,11 @@
           "type": "array",
           "count": 12,
           "note": "Every place at the match, held or empty.",
-          "items": { "name": "seat", "type": "struct", "struct": "Seat" }
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
         },
         {
           "name": "build",
@@ -6071,7 +6504,11 @@
               "width": 1,
               "note": "Set to have the box during play show every note in turn."
             },
-            { "name": "unused", "width": 3, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 3,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -6090,7 +6527,11 @@
               "width": 1,
               "note": "With menuBack2, a second key that closes the pause and options menu. Alone, the minimap's showing of neutral camps follows the player's settings rather than the minimap's own."
             },
-            { "name": "menuBack2", "width": 1, "note": "Of use only with menuBack." },
+            {
+              "name": "menuBack2",
+              "width": 1,
+              "note": "Of use only with menuBack."
+            },
             {
               "name": "quickChat",
               "width": 1,
@@ -6151,8 +6592,16 @@
               "width": 1,
               "note": "Enemy turrets' ranges, where the player's setting also asks for them; clear, they are never drawn."
             },
-            { "name": "bit15", "width": 1, "note": "Unused; a server writes zero." },
-            { "name": "bit16", "width": 1, "note": "Unused; a server writes zero." },
+            {
+              "name": "bit15",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
+            {
+              "name": "bit16",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "networkMetrics",
               "width": 1,
@@ -6163,7 +6612,11 @@
               "width": 1,
               "note": "A report of hardware and frame rate at the end of the match."
             },
-            { "name": "bit19", "width": 1, "note": "Unused; a server writes zero." },
+            {
+              "name": "bit19",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "lagMetrics",
               "width": 1,
@@ -6179,7 +6632,11 @@
               "width": 1,
               "note": "It changes nothing a client shows."
             },
-            { "name": "unused", "width": 9, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 9,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -6202,7 +6659,14 @@
             "name": "wanted",
             "type": "u8",
             "note": "Whether that report is wanted.",
-            "values": { "0": { "name": "no" }, "1": { "name": "yes" } }
+            "values": {
+              "0": {
+                "name": "no"
+              },
+              "1": {
+                "name": "yes"
+              }
+            }
           }
         }
       ]
@@ -6257,7 +6721,11 @@
           "type": "array",
           "count": 12,
           "note": "Every place at the match, held or empty.",
-          "items": { "name": "seat", "type": "struct", "struct": "Seat" }
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
         },
         {
           "name": "build",
@@ -6422,7 +6890,11 @@
               "width": 1,
               "note": "Set to have the box during play show every note in turn."
             },
-            { "name": "unused", "width": 3, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 3,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -6441,7 +6913,11 @@
               "width": 1,
               "note": "With menuBack2, a second key that closes the pause and options menu. Alone, the minimap's showing of neutral camps follows the player's settings rather than the minimap's own."
             },
-            { "name": "menuBack2", "width": 1, "note": "Of use only with menuBack." },
+            {
+              "name": "menuBack2",
+              "width": 1,
+              "note": "Of use only with menuBack."
+            },
             {
               "name": "quickChat",
               "width": 1,
@@ -6497,19 +6973,31 @@
               "width": 1,
               "note": "Enemy turrets' ranges, where the player's setting also asks for them; clear, they are never drawn."
             },
-            { "name": "bit14", "width": 1, "note": "Unused; a server writes zero." },
+            {
+              "name": "bit14",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "skinParticles",
               "width": 1,
               "note": "Skin-specific particle effects for units in a skin other than the first."
             },
-            { "name": "bit16", "width": 1, "note": "Unused; a server writes zero." },
+            {
+              "name": "bit16",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "hardwareMetrics",
               "width": 1,
               "note": "A report of hardware and frame rate at the end of the match."
             },
-            { "name": "bit18", "width": 1, "note": "Unused; a server writes zero." },
+            {
+              "name": "bit18",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "lagMetrics",
               "width": 1,
@@ -6525,7 +7013,11 @@
               "width": 1,
               "note": "It changes nothing a client shows."
             },
-            { "name": "unused", "width": 10, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 10,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -6548,7 +7040,14 @@
             "name": "wanted",
             "type": "u8",
             "note": "Whether that report is wanted.",
-            "values": { "0": { "name": "no" }, "1": { "name": "yes" } }
+            "values": {
+              "0": {
+                "name": "no"
+              },
+              "1": {
+                "name": "yes"
+              }
+            }
           }
         }
       ]
@@ -6603,7 +7102,11 @@
           "type": "array",
           "count": 12,
           "note": "Every place at the match, held or empty.",
-          "items": { "name": "seat", "type": "struct", "struct": "Seat" }
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
         },
         {
           "name": "build",
@@ -6768,7 +7271,11 @@
               "width": 1,
               "note": "Set to have the box during play show every note in turn."
             },
-            { "name": "unused", "width": 3, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 3,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -6787,7 +7294,11 @@
               "width": 1,
               "note": "With menuBack2, a second key that closes the pause and options menu. Alone, the minimap's showing of neutral camps follows the player's settings rather than the minimap's own."
             },
-            { "name": "menuBack2", "width": 1, "note": "Of use only with menuBack." },
+            {
+              "name": "menuBack2",
+              "width": 1,
+              "note": "Of use only with menuBack."
+            },
             {
               "name": "quickChat",
               "width": 1,
@@ -6843,7 +7354,11 @@
               "width": 1,
               "note": "Enemy turrets' ranges, where the player's setting also asks for them; clear, they are never drawn."
             },
-            { "name": "bit14", "width": 1, "note": "Unused; a server writes zero." },
+            {
+              "name": "bit14",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "skinParticles",
               "width": 1,
@@ -6874,14 +7389,26 @@
               "width": 1,
               "note": "It changes nothing a client shows."
             },
-            { "name": "bit21", "width": 1, "note": "Unused; a server writes zero." },
-            { "name": "bit22", "width": 1, "note": "Unused; a server writes zero." },
+            {
+              "name": "bit21",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
+            {
+              "name": "bit22",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "traceroute",
               "width": 1,
               "note": "A trace of the route to the server, begun after this message and reported later, where reporting is on."
             },
-            { "name": "unused", "width": 32, "note": "Unused; a server writes zero." },
+            {
+              "name": "unused",
+              "width": 32,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "unusedHigh",
               "width": 8,
@@ -6909,7 +7436,14 @@
             "name": "wanted",
             "type": "u8",
             "note": "Whether that report is wanted.",
-            "values": { "0": { "name": "no" }, "1": { "name": "yes" } }
+            "values": {
+              "0": {
+                "name": "no"
+              },
+              "1": {
+                "name": "yes"
+              }
+            }
           }
         }
       ]
@@ -6964,7 +7498,11 @@
           "type": "array",
           "count": 12,
           "note": "Every place at the match, held or empty.",
-          "items": { "name": "seat", "type": "struct", "struct": "Seat" }
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
         },
         {
           "name": "build",
@@ -7129,7 +7667,11 @@
               "width": 1,
               "note": "Set to have the box during play show every note in turn."
             },
-            { "name": "unused", "width": 3, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 3,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -7148,7 +7690,11 @@
               "width": 1,
               "note": "With menuBack2, a second key that closes the pause and options menu. Alone, the minimap's showing of neutral camps follows the player's settings rather than the minimap's own."
             },
-            { "name": "menuBack2", "width": 1, "note": "Of use only with menuBack." },
+            {
+              "name": "menuBack2",
+              "width": 1,
+              "note": "Of use only with menuBack."
+            },
             {
               "name": "quickChat",
               "width": 1,
@@ -7204,7 +7750,11 @@
               "width": 1,
               "note": "Enemy turrets' ranges, where the player's setting also asks for them; clear, they are never drawn."
             },
-            { "name": "bit14", "width": 1, "note": "Unused; a server writes zero." },
+            {
+              "name": "bit14",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "skinParticles",
               "width": 1,
@@ -7235,7 +7785,11 @@
               "width": 1,
               "note": "It changes nothing a client shows."
             },
-            { "name": "bit21", "width": 1, "note": "Unused; a server writes zero." },
+            {
+              "name": "bit21",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "jungleTimers",
               "width": 1,
@@ -7246,7 +7800,11 @@
               "width": 1,
               "note": "A trace of the route to the server, begun after this message and reported later, where reporting is on."
             },
-            { "name": "unused", "width": 32, "note": "Unused; a server writes zero." },
+            {
+              "name": "unused",
+              "width": 32,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "unusedHigh",
               "width": 8,
@@ -7274,7 +7832,14 @@
             "name": "wanted",
             "type": "u8",
             "note": "Whether that report is wanted.",
-            "values": { "0": { "name": "no" }, "1": { "name": "yes" } }
+            "values": {
+              "0": {
+                "name": "no"
+              },
+              "1": {
+                "name": "yes"
+              }
+            }
           }
         }
       ]
@@ -7329,7 +7894,11 @@
           "type": "array",
           "count": 12,
           "note": "Every place at the match, held or empty.",
-          "items": { "name": "seat", "type": "struct", "struct": "Seat" }
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
         },
         {
           "name": "build",
@@ -7494,7 +8063,11 @@
               "width": 1,
               "note": "Set to have the box during play show every note in turn."
             },
-            { "name": "unused", "width": 3, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 3,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -7513,7 +8086,11 @@
               "width": 1,
               "note": "With menuBack2, a second key that closes the pause and options menu. Alone, the minimap's showing of neutral camps follows the player's settings rather than the minimap's own."
             },
-            { "name": "menuBack2", "width": 1, "note": "Of use only with menuBack." },
+            {
+              "name": "menuBack2",
+              "width": 1,
+              "note": "Of use only with menuBack."
+            },
             {
               "name": "quickChat",
               "width": 1,
@@ -7569,7 +8146,11 @@
               "width": 1,
               "note": "Enemy turrets' ranges, where the player's setting also asks for them; clear, they are never drawn."
             },
-            { "name": "bit14", "width": 1, "note": "Unused; a server writes zero." },
+            {
+              "name": "bit14",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "skinParticles",
               "width": 1,
@@ -7600,7 +8181,11 @@
               "width": 1,
               "note": "It changes nothing a client shows."
             },
-            { "name": "bit21", "width": 1, "note": "Unused; a server writes zero." },
+            {
+              "name": "bit21",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "jungleTimers",
               "width": 1,
@@ -7611,7 +8196,11 @@
               "width": 1,
               "note": "A trace of the route to the server, begun after this message and reported later, where reporting is on."
             },
-            { "name": "unused", "width": 32, "note": "Unused; a server writes zero." },
+            {
+              "name": "unused",
+              "width": 32,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "unusedHigh",
               "width": 8,
@@ -7639,7 +8228,14 @@
             "name": "wanted",
             "type": "u8",
             "note": "Whether that report is wanted.",
-            "values": { "0": { "name": "no" }, "1": { "name": "yes" } }
+            "values": {
+              "0": {
+                "name": "no"
+              },
+              "1": {
+                "name": "yes"
+              }
+            }
           }
         }
       ]
@@ -7694,7 +8290,11 @@
           "type": "array",
           "count": 12,
           "note": "Every place at the match, held or empty.",
-          "items": { "name": "seat", "type": "struct", "struct": "Seat" }
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
         },
         {
           "name": "build",
@@ -7866,7 +8466,11 @@
               "width": 1,
               "note": "Set to have the box during play show every note in turn."
             },
-            { "name": "unused", "width": 3, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 3,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -7885,7 +8489,11 @@
               "width": 1,
               "note": "With menuBack2, a second key that closes the pause and options menu. Alone, the minimap's showing of neutral camps follows the player's settings rather than the minimap's own."
             },
-            { "name": "menuBack2", "width": 1, "note": "Of use only with menuBack." },
+            {
+              "name": "menuBack2",
+              "width": 1,
+              "note": "Of use only with menuBack."
+            },
             {
               "name": "quickChat",
               "width": 1,
@@ -7911,7 +8519,11 @@
               "width": 1,
               "note": "The shop's undo; clear, it is never enabled."
             },
-            { "name": "bit8", "width": 1, "note": "Unused; a server writes zero." },
+            {
+              "name": "bit8",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "skillshotOutline",
               "width": 1,
@@ -7937,7 +8549,11 @@
               "width": 1,
               "note": "Enemy turrets' ranges, where the player's setting also asks for them; clear, they are never drawn."
             },
-            { "name": "bit14", "width": 1, "note": "Unused; a server writes zero." },
+            {
+              "name": "bit14",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "skinParticles",
               "width": 1,
@@ -7978,7 +8594,11 @@
               "width": 1,
               "note": "A trace of the route to the server, begun after this message and reported later, where reporting is on."
             },
-            { "name": "unused", "width": 32, "note": "Unused; a server writes zero." },
+            {
+              "name": "unused",
+              "width": 32,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "unusedHigh",
               "width": 9,
@@ -8006,7 +8626,14 @@
             "name": "wanted",
             "type": "u8",
             "note": "Whether that report is wanted.",
-            "values": { "0": { "name": "no" }, "1": { "name": "yes" } }
+            "values": {
+              "0": {
+                "name": "no"
+              },
+              "1": {
+                "name": "yes"
+              }
+            }
           }
         }
       ]
@@ -8061,7 +8688,11 @@
           "type": "array",
           "count": 12,
           "note": "Every place at the match, held or empty.",
-          "items": { "name": "seat", "type": "struct", "struct": "Seat" }
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
         },
         {
           "name": "build",
@@ -8233,7 +8864,11 @@
               "width": 1,
               "note": "Set to have the box during play show every note in turn."
             },
-            { "name": "unused", "width": 3, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 3,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -8252,7 +8887,11 @@
               "width": 1,
               "note": "With menuBack2, a second key that closes the pause and options menu. Alone, the minimap's showing of neutral camps follows the player's settings rather than the minimap's own."
             },
-            { "name": "menuBack2", "width": 1, "note": "Of use only with menuBack." },
+            {
+              "name": "menuBack2",
+              "width": 1,
+              "note": "Of use only with menuBack."
+            },
             {
               "name": "quickChat",
               "width": 1,
@@ -8278,7 +8917,11 @@
               "width": 1,
               "note": "The shop's undo; clear, it is never enabled."
             },
-            { "name": "bit8", "width": 1, "note": "Unused; a server writes zero." },
+            {
+              "name": "bit8",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "skillshotOutline",
               "width": 1,
@@ -8304,7 +8947,11 @@
               "width": 1,
               "note": "Enemy turrets' ranges, where the player's setting also asks for them; clear, they are never drawn."
             },
-            { "name": "bit14", "width": 1, "note": "Unused; a server writes zero." },
+            {
+              "name": "bit14",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "skinParticles",
               "width": 1,
@@ -8345,15 +8992,31 @@
               "width": 1,
               "note": "A trace of the route to the server, begun after this message and reported later, where reporting is on."
             },
-            { "name": "bit23", "width": 1, "note": "Unused; a server writes zero." },
-            { "name": "bit24", "width": 1, "note": "Unused; a server writes zero." },
-            { "name": "bit25", "width": 1, "note": "Unused; a server writes zero." },
+            {
+              "name": "bit23",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
+            {
+              "name": "bit24",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
+            {
+              "name": "bit25",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "clockSync",
               "width": 1,
               "note": "The game's clock is nudged to keep with the system's at normal speed; in a replay, play follows the game's clock."
             },
-            { "name": "unused", "width": 32, "note": "Unused; a server writes zero." },
+            {
+              "name": "unused",
+              "width": 32,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "unusedHigh",
               "width": 5,
@@ -8381,7 +9044,14 @@
             "name": "wanted",
             "type": "u8",
             "note": "Whether that report is wanted.",
-            "values": { "0": { "name": "no" }, "1": { "name": "yes" } }
+            "values": {
+              "0": {
+                "name": "no"
+              },
+              "1": {
+                "name": "yes"
+              }
+            }
           }
         }
       ]
@@ -8436,7 +9106,11 @@
           "type": "array",
           "count": 12,
           "note": "Every place at the match, held or empty.",
-          "items": { "name": "seat", "type": "struct", "struct": "Seat" }
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
         },
         {
           "name": "build",
@@ -8608,7 +9282,11 @@
               "width": 1,
               "note": "Set to have the box during play show every note in turn."
             },
-            { "name": "unused", "width": 3, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 3,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -8627,7 +9305,11 @@
               "width": 1,
               "note": "With menuBack2, a second key that closes the pause and options menu. Alone, the minimap's showing of neutral camps follows the player's settings rather than the minimap's own."
             },
-            { "name": "menuBack2", "width": 1, "note": "Of use only with menuBack." },
+            {
+              "name": "menuBack2",
+              "width": 1,
+              "note": "Of use only with menuBack."
+            },
             {
               "name": "quickChat",
               "width": 1,
@@ -8648,7 +9330,11 @@
               "width": 1,
               "note": "The shop's undo; clear, it is never enabled."
             },
-            { "name": "bit7", "width": 1, "note": "Unused; a server writes zero." },
+            {
+              "name": "bit7",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "skillshotOutline",
               "width": 1,
@@ -8664,13 +9350,21 @@
               "width": 1,
               "note": "Another reckoning of kill and assist gold: kill gold and the assist pool grow with time, a run of assists adds gold, and assists and minion gold shorten a run of deaths."
             },
-            { "name": "bit11", "width": 1, "note": "Unused; a server writes zero." },
+            {
+              "name": "bit11",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "turretRange",
               "width": 1,
               "note": "Enemy turrets' ranges, where the player's setting also asks for them; clear, they are never drawn."
             },
-            { "name": "bit13", "width": 1, "note": "Unused; a server writes zero." },
+            {
+              "name": "bit13",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "skinParticles",
               "width": 1,
@@ -8711,15 +9405,31 @@
               "width": 1,
               "note": "A trace of the route to the server, begun after this message and reported later, where reporting is on."
             },
-            { "name": "bit22", "width": 1, "note": "Unused; a server writes zero." },
-            { "name": "bit23", "width": 1, "note": "Unused; a server writes zero." },
-            { "name": "bit24", "width": 1, "note": "Unused; a server writes zero." },
+            {
+              "name": "bit22",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
+            {
+              "name": "bit23",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
+            {
+              "name": "bit24",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "clockSync",
               "width": 1,
               "note": "The game's clock is nudged to keep with the system's at normal speed; in a replay, play follows the game's clock."
             },
-            { "name": "unused", "width": 32, "note": "Unused; a server writes zero." },
+            {
+              "name": "unused",
+              "width": 32,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "unusedHigh",
               "width": 6,
@@ -8747,7 +9457,14 @@
             "name": "wanted",
             "type": "u8",
             "note": "Whether that report is wanted.",
-            "values": { "0": { "name": "no" }, "1": { "name": "yes" } }
+            "values": {
+              "0": {
+                "name": "no"
+              },
+              "1": {
+                "name": "yes"
+              }
+            }
           }
         }
       ]
@@ -8802,7 +9519,11 @@
           "type": "array",
           "count": 12,
           "note": "Every place at the match, held or empty.",
-          "items": { "name": "seat", "type": "struct", "struct": "Seat" }
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
         },
         {
           "name": "build",
@@ -8974,7 +9695,11 @@
               "width": 1,
               "note": "Set to have the box during play show every note in turn."
             },
-            { "name": "unused", "width": 3, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 3,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -8993,7 +9718,11 @@
               "width": 1,
               "note": "With menuBack2, a second key that closes the pause and options menu. Alone, the minimap's showing of neutral camps follows the player's settings rather than the minimap's own."
             },
-            { "name": "menuBack2", "width": 1, "note": "Of use only with menuBack." },
+            {
+              "name": "menuBack2",
+              "width": 1,
+              "note": "Of use only with menuBack."
+            },
             {
               "name": "quickChat",
               "width": 1,
@@ -9014,7 +9743,11 @@
               "width": 1,
               "note": "The shop's undo; clear, it is never enabled."
             },
-            { "name": "bit7", "width": 1, "note": "Unused; a server writes zero." },
+            {
+              "name": "bit7",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "skillshotOutline",
               "width": 1,
@@ -9030,13 +9763,21 @@
               "width": 1,
               "note": "Another reckoning of kill and assist gold: kill gold and the assist pool grow with time, a run of assists adds gold, and assists and minion gold shorten a run of deaths."
             },
-            { "name": "bit11", "width": 1, "note": "Unused; a server writes zero." },
+            {
+              "name": "bit11",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "turretRange",
               "width": 1,
               "note": "Enemy turrets' ranges, where the player's setting also asks for them; clear, they are never drawn."
             },
-            { "name": "bit13", "width": 1, "note": "Unused; a server writes zero." },
+            {
+              "name": "bit13",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "skinParticles",
               "width": 1,
@@ -9077,15 +9818,31 @@
               "width": 1,
               "note": "A trace of the route to the server, begun after this message and reported later, where reporting is on."
             },
-            { "name": "bit22", "width": 1, "note": "Unused; a server writes zero." },
-            { "name": "bit23", "width": 1, "note": "Unused; a server writes zero." },
-            { "name": "bit24", "width": 1, "note": "Unused; a server writes zero." },
+            {
+              "name": "bit22",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
+            {
+              "name": "bit23",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
+            {
+              "name": "bit24",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "clockSync",
               "width": 1,
               "note": "The game's clock is nudged to keep with the system's at normal speed; in a replay, play follows the game's clock."
             },
-            { "name": "bit26", "width": 1, "note": "Unused; a server writes zero." },
+            {
+              "name": "bit26",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "farmBounty",
               "width": 1,
@@ -9101,7 +9858,11 @@
               "width": 1,
               "note": "A unit's can-move, can-attack, can-cast and like states are set on or off rather than counted up and down."
             },
-            { "name": "unused", "width": 32, "note": "Unused; a server writes zero." },
+            {
+              "name": "unused",
+              "width": 32,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "unusedHigh",
               "width": 2,
@@ -9129,7 +9890,14 @@
             "name": "wanted",
             "type": "u8",
             "note": "Whether that report is wanted.",
-            "values": { "0": { "name": "no" }, "1": { "name": "yes" } }
+            "values": {
+              "0": {
+                "name": "no"
+              },
+              "1": {
+                "name": "yes"
+              }
+            }
           }
         }
       ]
@@ -9184,7 +9952,11 @@
           "type": "array",
           "count": 12,
           "note": "Every place at the match, held or empty.",
-          "items": { "name": "seat", "type": "struct", "struct": "Seat" }
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
         },
         {
           "name": "build",
@@ -9356,7 +10128,11 @@
               "width": 1,
               "note": "Set to have the box during play show every note in turn."
             },
-            { "name": "unused", "width": 3, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 3,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -9375,7 +10151,11 @@
               "width": 1,
               "note": "With menuBack2, a second key that closes the pause and options menu. Alone, the minimap's showing of neutral camps follows the player's settings rather than the minimap's own."
             },
-            { "name": "menuBack2", "width": 1, "note": "Of use only with menuBack." },
+            {
+              "name": "menuBack2",
+              "width": 1,
+              "note": "Of use only with menuBack."
+            },
             {
               "name": "quickChat",
               "width": 1,
@@ -9511,7 +10291,11 @@
               "width": 1,
               "note": "A unit's can-move, can-attack, can-cast and like states are set on or off rather than counted up and down."
             },
-            { "name": "unused", "width": 2, "note": "Unused; a server writes zero." },
+            {
+              "name": "unused",
+              "width": 2,
+              "note": "Unused; a server writes zero."
+            },
             {
               "name": "unusedHigh",
               "width": 32,
@@ -9539,7 +10323,14 @@
             "name": "wanted",
             "type": "u8",
             "note": "Whether that report is wanted.",
-            "values": { "0": { "name": "no" }, "1": { "name": "yes" } }
+            "values": {
+              "0": {
+                "name": "no"
+              },
+              "1": {
+                "name": "yes"
+              }
+            }
           }
         }
       ]
@@ -9577,7 +10368,11 @@
               "width": 1,
               "note": "Set where the reporting settings below are to be used."
             },
-            { "name": "unused", "width": 4, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 4,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -9590,7 +10385,11 @@
           "type": "array",
           "count": 12,
           "note": "Every place at the match, held or empty.",
-          "items": { "name": "seat", "type": "struct", "struct": "Seat" }
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
         },
         {
           "name": "build",
@@ -9761,7 +10560,14 @@
             "name": "wanted",
             "type": "u8",
             "note": "Whether that report is wanted.",
-            "values": { "0": { "name": "no" }, "1": { "name": "yes" } }
+            "values": {
+              "0": {
+                "name": "no"
+              },
+              "1": {
+                "name": "yes"
+              }
+            }
           }
         }
       ]
@@ -9799,7 +10605,11 @@
               "width": 1,
               "note": "Set where the reporting settings below are to be used."
             },
-            { "name": "unused", "width": 4, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 4,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -9812,7 +10622,11 @@
           "type": "array",
           "count": 12,
           "note": "Every place at the match, held or empty.",
-          "items": { "name": "seat", "type": "struct", "struct": "Seat" }
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
         },
         {
           "name": "build",
@@ -9983,7 +10797,14 @@
             "name": "wanted",
             "type": "u8",
             "note": "Whether that report is wanted.",
-            "values": { "0": { "name": "no" }, "1": { "name": "yes" } }
+            "values": {
+              "0": {
+                "name": "no"
+              },
+              "1": {
+                "name": "yes"
+              }
+            }
           }
         }
       ]

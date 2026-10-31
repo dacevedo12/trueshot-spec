@@ -1,0 +1,25 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "WorldEvent",
+  "version": "1.0.0.129",
+  "note": "Laid out as a 1.0.0.129 client takes it.",
+  "bytes": "4a000000000120000040b3730040",
+  "fields": {
+    "command": 74,
+    "netId": 0,
+    "event": 1,
+    "source": 1073741856,
+    "subject": 1073771443,
+    "damage": null,
+    "spent": null,
+    "value": null,
+    "critical": null,
+    "spree": null,
+    "earned": null,
+    "heal": null,
+    "effect": null,
+    "assist": null,
+    "kill": null
+  }
+}
