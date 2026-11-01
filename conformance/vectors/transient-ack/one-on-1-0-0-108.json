@@ -1,0 +1,13 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "TransientAck",
+  "version": "1.0.0.108",
+  "note": "Laid out as a 1.0.0.108 client sends it.",
+  "bytes": "8e0000000007000000",
+  "fields": {
+    "command": 142,
+    "netId": 0,
+    "syncId": 7
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "MovementBounds",
+  "version": "1.0.0.108",
+  "note": "Laid out as a 1.0.0.108 client takes it.",
+  "bytes": "8b0000000000c0da450000484200c0da450000fa43",
+  "fields": {
+    "command": 139,
+    "netId": 0,
+    "x": 7000,
+    "y": 50,
+    "z": 7000,
+    "radius": 500
+  }
+}

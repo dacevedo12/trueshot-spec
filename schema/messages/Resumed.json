@@ -5,6 +5,16 @@
   "note": "What a server sends to take the match off hold. The header names a champion: that of the player who resumed the match.",
   "revisions": [
     {
+      "from": "1.0.0.108",
+      "until": "1.0.0.109",
+      "channel": "events",
+      "command": 152,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client resumes the match at once where it is held, and announces no one."
+    },
+    {
       "from": "1.0.0.109",
       "until": "1.0.0.110",
       "channel": "events",
