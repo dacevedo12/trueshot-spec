@@ -5,6 +5,32 @@
   "note": "What a server sends to start drawing sets of particles. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.125",
+      "until": "1.0.0.126",
+      "channel": "events",
+      "command": 139,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "groupCount",
+          "type": "u8",
+          "note": "How many sets follow."
+        },
+        {
+          "name": "groups",
+          "type": "array",
+          "count": "groupCount",
+          "note": "The sets themselves.",
+          "items": {
+            "type": "struct",
+            "struct": "ParticleGroup",
+            "name": "group"
+          }
+        }
+      ]
+    },
+    {
       "from": "1.0.0.126",
       "until": "1.0.0.132",
       "channel": "events",

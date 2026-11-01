@@ -5,6 +5,37 @@
   "note": "What a server sends when a unit comes into what one client can see. The header names the unit this is about.",
   "revisions": [
     {
+      "from": "1.0.0.125",
+      "until": "1.0.0.126",
+      "channel": "events",
+      "command": 180,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "vitals",
+          "type": "record",
+          "present": {
+            "when": "remaining"
+          },
+          "note": "The unit's health. Where a client already holds the unit, it reads these from body offset 2 whatever the carried size, so a server carries messages here only where they create the unit, and sends the vitals right after them.",
+          "fields": [
+            {
+              "name": "maxHealth",
+              "type": "f32",
+              "note": "What the unit's health tops out at."
+            },
+            {
+              "name": "health",
+              "type": "f32",
+              "note": "What its health stands at. A client holds it to between zero and maxHealth."
+            }
+          ]
+        }
+      ],
+      "note": "It carries no other messages: the body is the unit's health alone, always present."
+    },
+    {
       "from": "1.0.0.126",
       "until": "1.0.0.128",
       "channel": "events",

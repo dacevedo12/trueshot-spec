@@ -5,6 +5,16 @@
   "note": "What a server sends to begin play. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.125",
+      "until": "1.0.0.126",
+      "channel": "events",
+      "command": 95,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client past spawning ignores it."
+    },
+    {
       "from": "1.0.0.126",
       "until": "1.0.0.132",
       "channel": "events",
