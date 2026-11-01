@@ -38,21 +38,6 @@
           "note": "Where the arc begins, in world units."
         },
         {
-          "name": "facing",
-          "type": "i8",
-          "note": "Which way the unit faces as it moves.",
-          "values": {
-            "0": {
-              "name": "along",
-              "note": "The way it moves."
-            },
-            "1": {
-              "name": "keep",
-              "note": "The way it faced."
-            }
-          }
-        },
-        {
           "name": "follow",
           "type": "u32",
           "note": "A unit to follow, or zero for none."
@@ -68,9 +53,19 @@
           "note": "How far to fall back from it, in world units. It takes effect only where follow is not zero."
         },
         {
-          "name": "travelTime",
-          "type": "f32",
-          "note": "How long the move takes, in seconds. It takes effect only where follow is not zero."
+          "name": "facing",
+          "type": "i8",
+          "note": "Which way the unit faces as it moves.",
+          "values": {
+            "0": {
+              "name": "along",
+              "note": "The way it moves."
+            },
+            "1": {
+              "name": "keep",
+              "note": "The way it faced."
+            }
+          }
         },
         {
           "name": "points",

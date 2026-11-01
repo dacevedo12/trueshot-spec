@@ -34,47 +34,11 @@
           "note": "Everything else a client needs to draw the unit. A server sends it for a champion, a minion or another unit with a mind, which a client reads past the end of the message without it, and ends the message after the items for any other unit.",
           "fields": [
             {
-              "name": "hasShields",
-              "type": "u8",
-              "note": "Not zero where three f32 values follow; zero sets all three to zero.",
-              "values": {
-                "0": {
-                  "name": "no"
-                },
-                "1": {
-                  "name": "yes"
-                }
-              }
-            },
-            {
-              "name": "magicShield",
-              "type": "f32",
-              "note": "How much of the unit's shielding turns aside one sort of damage.",
-              "present": {
-                "when": "hasShields"
-              }
-            },
-            {
-              "name": "physicalShield",
-              "type": "f32",
-              "note": "How much turns aside the other.",
-              "present": {
-                "when": "hasShields"
-              }
-            },
-            {
-              "name": "shield",
-              "type": "f32",
-              "note": "How much turns aside either.",
-              "present": {
-                "when": "hasShields"
-              }
-            },
-            {
               "name": "movementState",
               "type": "record",
               "present": {
-                "when": "remaining"
+                "when": "remaining",
+                "unseen": "absent"
               },
               "note": "Where the unit stands, followed by the direction it faces.",
               "fields": [
