@@ -5,7 +5,7 @@
   "note": "What a server sends to move units. It carries a number a client returns to say it has taken the group in. The header carries zero or names the object this is about, and a client accepts either.",
   "revisions": [
     {
-      "from": "1.0.0.108",
+      "from": "1.0.0.107",
       "until": "1.0.0.109",
       "channel": "transient",
       "command": 133,
