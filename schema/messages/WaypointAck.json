@@ -53,7 +53,7 @@
       "channel": "requests",
       "command": 122,
       "direction": "clientToServer",
-      "reliability": "reliable",
+      "reliability": "unsequenced",
       "fields": [
         {
           "name": "syncId",
@@ -94,7 +94,7 @@
       "channel": "requests",
       "command": 123,
       "direction": "clientToServer",
-      "reliability": "reliable",
+      "reliability": "unsequenced",
       "fields": [
         {
           "name": "syncId",
@@ -135,7 +135,7 @@
       "channel": "requests",
       "command": 125,
       "direction": "clientToServer",
-      "reliability": "reliable",
+      "reliability": "unsequenced",
       "fields": [
         {
           "name": "syncId",
@@ -176,7 +176,7 @@
       "channel": "requests",
       "command": 119,
       "direction": "clientToServer",
-      "reliability": "reliable",
+      "reliability": "unsequenced",
       "fields": [
         {
           "name": "syncId",
@@ -217,7 +217,7 @@
       "channel": "requests",
       "command": 116,
       "direction": "clientToServer",
-      "reliability": "reliable",
+      "reliability": "unsequenced",
       "fields": [
         {
           "name": "syncId",
@@ -258,7 +258,7 @@
       "channel": "requests",
       "command": 118,
       "direction": "clientToServer",
-      "reliability": "reliable",
+      "reliability": "unsequenced",
       "fields": [
         {
           "name": "syncId",
@@ -299,7 +299,7 @@
       "channel": "requests",
       "command": 119,
       "direction": "clientToServer",
-      "reliability": "reliable",
+      "reliability": "unsequenced",
       "fields": [
         {
           "name": "syncId",
@@ -340,7 +340,7 @@
       "channel": "requests",
       "command": 119,
       "direction": "clientToServer",
-      "reliability": "reliable",
+      "reliability": "unsequenced",
       "fields": [
         {
           "name": "syncId",

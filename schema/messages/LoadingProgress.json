@@ -79,7 +79,7 @@
       "channel": "requests",
       "command": 25,
       "direction": "clientToServer",
-      "reliability": "reliable",
+      "reliability": "unreliable",
       "fields": [
         {
           "name": "clientId",
@@ -148,7 +148,7 @@
       "channel": "requests",
       "command": 22,
       "direction": "clientToServer",
-      "reliability": "reliable",
+      "reliability": "unreliable",
       "fields": [
         {
           "name": "clientId",
@@ -217,7 +217,7 @@
       "channel": "requests",
       "command": 22,
       "direction": "clientToServer",
-      "reliability": "reliable",
+      "reliability": "unreliable",
       "fields": [
         {
           "name": "clientId",
@@ -269,7 +269,7 @@
       "channel": "requests",
       "command": 22,
       "direction": "clientToServer",
-      "reliability": "reliable",
+      "reliability": "unreliable",
       "fields": [
         {
           "name": "clientId",

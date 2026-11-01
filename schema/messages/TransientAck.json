@@ -26,7 +26,7 @@
       "channel": "requests",
       "command": 176,
       "direction": "clientToServer",
-      "reliability": "reliable",
+      "reliability": "unsequenced",
       "fields": [
         {
           "name": "syncId",
@@ -41,7 +41,7 @@
       "channel": "requests",
       "command": 177,
       "direction": "clientToServer",
-      "reliability": "reliable",
+      "reliability": "unsequenced",
       "fields": [
         {
           "name": "syncId",
@@ -56,7 +56,7 @@
       "channel": "requests",
       "command": 179,
       "direction": "clientToServer",
-      "reliability": "reliable",
+      "reliability": "unsequenced",
       "fields": [
         {
           "name": "syncId",
@@ -71,7 +71,7 @@
       "channel": "requests",
       "command": 177,
       "direction": "clientToServer",
-      "reliability": "reliable",
+      "reliability": "unsequenced",
       "fields": [
         {
           "name": "syncId",
@@ -86,7 +86,7 @@
       "channel": "requests",
       "command": 179,
       "direction": "clientToServer",
-      "reliability": "reliable",
+      "reliability": "unsequenced",
       "fields": [
         {
           "name": "syncId",
@@ -101,7 +101,7 @@
       "channel": "requests",
       "command": 178,
       "direction": "clientToServer",
-      "reliability": "reliable",
+      "reliability": "unsequenced",
       "fields": [
         {
           "name": "syncId",
@@ -116,7 +116,7 @@
       "channel": "requests",
       "command": 168,
       "direction": "clientToServer",
-      "reliability": "reliable",
+      "reliability": "unsequenced",
       "fields": [
         {
           "name": "syncId",
@@ -131,7 +131,7 @@
       "channel": "requests",
       "command": 165,
       "direction": "clientToServer",
-      "reliability": "reliable",
+      "reliability": "unsequenced",
       "fields": [
         {
           "name": "syncId",
@@ -146,7 +146,7 @@
       "channel": "requests",
       "command": 168,
       "direction": "clientToServer",
-      "reliability": "reliable",
+      "reliability": "unsequenced",
       "fields": [
         {
           "name": "syncId",
@@ -161,7 +161,7 @@
       "channel": "requests",
       "command": 167,
       "direction": "clientToServer",
-      "reliability": "reliable",
+      "reliability": "unsequenced",
       "fields": [
         {
           "name": "syncId",
@@ -176,7 +176,7 @@
       "channel": "requests",
       "command": 168,
       "direction": "clientToServer",
-      "reliability": "reliable",
+      "reliability": "unsequenced",
       "fields": [
         {
           "name": "syncId",

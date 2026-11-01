@@ -60,7 +60,7 @@
       "channel": "requests",
       "command": 48,
       "direction": "clientToServer",
-      "reliability": "reliable",
+      "reliability": "unreliable",
       "fields": [
         {
           "name": "positionX",
@@ -104,7 +104,7 @@
       "channel": "requests",
       "command": 45,
       "direction": "clientToServer",
-      "reliability": "reliable",
+      "reliability": "unreliable",
       "fields": [
         {
           "name": "positionX",
@@ -148,7 +148,7 @@
       "channel": "requests",
       "command": 46,
       "direction": "clientToServer",
-      "reliability": "reliable",
+      "reliability": "unreliable",
       "fields": [
         {
           "name": "positionX",
