@@ -129,7 +129,14 @@ function decodeMessage(
     ...(cipher === undefined ? {} : { cipher }),
   };
   const body = decodeFields(revision.fields, bytes, header.offset, context);
-  if (body.offset !== bytes.length && name !== "Registered") {
+  // Where the sender pads to whole blocks, what follows the fields short of a
+  // block is that padding.
+  const { blockSize, padded } = layouts.protocol.cipher;
+  const pads =
+    padded?.includes(toServer ? "clientToServer" : "serverToClient") ?? false;
+  const left = bytes.length - body.offset;
+  const padding = pads && left < blockSize && bytes.length % blockSize === 0;
+  if (left !== 0 && !padding && name !== "Registered") {
     throw new CodecError(
       `${name} leaves ${bytes.length - body.offset} bytes unread`,
     );

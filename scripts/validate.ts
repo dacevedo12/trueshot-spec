@@ -73,7 +73,13 @@ interface Ranged {
 
 interface ProtocolRevision extends Ranged {
   readonly endian?: Endian | undefined;
-  readonly cipher?: { readonly keySize?: number | undefined } | undefined;
+  readonly cipher?:
+    | {
+        readonly keySize?: number | undefined;
+        readonly blockSize?: number | undefined;
+        readonly padded?: readonly Direction[] | undefined;
+      }
+    | undefined;
   readonly transport?:
     { readonly header?: readonly FieldLike[] | undefined } | undefined;
 }
@@ -1855,7 +1861,23 @@ if (existsSync(VECTOR_DIR)) {
           ...(cipher === undefined ? {} : { cipher }),
         };
         const read = decodeFields(layout, payload, start, context);
-        if (doc.subject !== "transport" && read.offset !== payload.length) {
+        // Where the sender pads to whole blocks, what follows the fields
+        // short of a block is that padding.
+        const block = protocolRevision.cipher?.blockSize ?? 0;
+        const left = payload.length - read.offset;
+        const padding =
+          claim !== null &&
+          (protocolRevision.cipher?.padded?.includes(
+            claim.revision.direction,
+          ) ??
+            false) &&
+          left < block &&
+          payload.length % block === 0;
+        if (
+          doc.subject !== "transport" &&
+          read.offset !== payload.length &&
+          !padding
+        ) {
           fail(
             path,
             `decodes ${read.offset} of ${payload.length} bytes, leaving ${payload.length - read.offset} unread`,

@@ -78,6 +78,16 @@
           "description": "Key length in bytes. Both ends hold the key before a connection opens, so nothing on the wire carries it.",
           "type": "integer",
           "minimum": 1
+        },
+        "padded": {
+          "description": "The directions whose sender pads each payload to a whole number of blocks and enciphers all of it. The bytes it adds follow the message's own fields and hold nothing in particular. Where this is absent, no direction pads.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["clientToServer", "serverToClient"]
+          },
+          "uniqueItems": true,
+          "minItems": 1
         }
       }
     },

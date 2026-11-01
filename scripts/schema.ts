@@ -132,7 +132,11 @@ interface Constant {
 
 interface Protocol extends Ranged {
   readonly endian: Endian;
-  readonly cipher: { readonly blockSize: number; readonly keySize: number };
+  readonly cipher: {
+    readonly blockSize: number;
+    readonly keySize: number;
+    readonly padded?: readonly ("clientToServer" | "serverToClient")[];
+  };
   readonly transport: {
     readonly header: readonly Field[];
     readonly constants: readonly Constant[];
