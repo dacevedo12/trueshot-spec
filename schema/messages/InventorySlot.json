@@ -5,7 +5,7 @@
   "note": "What a server sends to set one slot of a unit's inventory. The header names the unit. A client empties the slot, then fills it where count is above zero, and refreshes the shop where the unit is its own champion.",
   "revisions": [
     {
-      "from": "1.0.0.114",
+      "from": "1.0.0.113",
       "until": "1.0.0.117",
       "channel": "events",
       "command": 82,
