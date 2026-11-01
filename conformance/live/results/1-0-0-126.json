@@ -1,19 +1,11 @@
 {
   "build": "1.0.0.126",
   "layouts": "1.0.0.126",
-  "commit": "7de67cd0c7b812386e2e86cceac15aeaeaf5e98e",
-  "modified": false,
+  "commit": "4f423d436b73cf6264c88150451c6874cd0e0173",
+  "modified": true,
   "runtime": "bun 1.4.2",
-  "date": "2026-10-19",
+  "date": "2026-10-31",
   "checks": [
-    {
-      "check": "communication > (unnamed)",
-      "outcome": "skipped"
-    },
-    {
-      "check": "communication > (unnamed)",
-      "outcome": "skipped"
-    },
     {
       "check": "communication > a client takes SystemMessage and stays in play",
       "outcome": "skipped"
@@ -48,15 +40,15 @@
     },
     {
       "check": "movement > a champion brought into view is drawn and walks its path",
-      "outcome": "passed"
+      "outcome": "skipped"
     },
     {
       "check": "movement > a champion taken out of view is no longer drawn",
-      "outcome": "passed"
+      "outcome": "skipped"
     },
     {
       "check": "movement > a client answers WaypointGroup with WaypointAck",
-      "outcome": "passed"
+      "outcome": "skipped"
     },
     {
       "check": "sweep > a client answers VoiceEvent with VoiceEventDone",
@@ -73,19 +65,9 @@
   ],
   "looks": [
     {
-      "look": "walked",
-      "expect": "the champion stands on the field, away from the fountain, having walked",
-      "outcome": "to review"
-    },
-    {
-      "look": "hidden",
-      "expect": "the champion is no longer drawn on the field",
-      "outcome": "to review"
-    },
-    {
       "look": "sweep",
       "expect": "the client is in play, whatever the messages drew",
-      "outcome": "to review"
+      "outcome": "not captured"
     }
   ]
 }
