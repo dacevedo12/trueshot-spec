@@ -5,7 +5,7 @@
   "note": "What a server sends to turn kinds of input off where they are on, or on where they are off. A client acts on the change at once only where exactly one lock is set; any other value still changes what is locked, and takes effect as the player next tries. The header carries zero.",
   "revisions": [
     {
-      "from": "1.0.0.120",
+      "from": "1.0.0.119",
       "until": "1.0.0.124",
       "channel": "events",
       "command": 157,
