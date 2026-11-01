@@ -167,10 +167,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              10,
-              11
-            ]
+            "equals": [10, 11]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -278,10 +275,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              20,
-              67
-            ]
+            "equals": [20, 67]
           }
         },
         {
@@ -323,10 +317,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              36,
-              37
-            ]
+            "equals": [36, 37]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -719,10 +710,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              10,
-              11
-            ]
+            "equals": [10, 11]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -830,10 +818,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              20,
-              67
-            ]
+            "equals": [20, 67]
           }
         },
         {
@@ -875,10 +860,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              36,
-              37
-            ]
+            "equals": [36, 37]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -1275,10 +1257,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              10,
-              11
-            ]
+            "equals": [10, 11]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -1386,10 +1365,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              20,
-              67
-            ]
+            "equals": [20, 67]
           }
         },
         {
@@ -1431,10 +1407,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              36,
-              37
-            ]
+            "equals": [36, 37]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -1831,10 +1804,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              10,
-              11
-            ]
+            "equals": [10, 11]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -1942,10 +1912,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              20,
-              67
-            ]
+            "equals": [20, 67]
           }
         },
         {
@@ -1987,10 +1954,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              36,
-              37
-            ]
+            "equals": [36, 37]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -2396,10 +2360,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              10,
-              11
-            ]
+            "equals": [10, 11]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -2507,10 +2468,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              20,
-              67
-            ]
+            "equals": [20, 67]
           }
         },
         {
@@ -2552,10 +2510,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              36,
-              37
-            ]
+            "equals": [36, 37]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -2992,10 +2947,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              13,
-              14
-            ]
+            "equals": [13, 14]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -3103,10 +3055,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              23,
-              75
-            ]
+            "equals": [23, 75]
           }
         },
         {
@@ -3148,10 +3097,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              39,
-              40
-            ]
+            "equals": [39, 40]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -3588,10 +3534,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              13,
-              14
-            ]
+            "equals": [13, 14]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -3699,10 +3642,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              23,
-              75
-            ]
+            "equals": [23, 75]
           }
         },
         {
@@ -3744,10 +3684,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              39,
-              40
-            ]
+            "equals": [39, 40]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -4170,10 +4107,7 @@
           "note": "A client reads it and shows nothing for it; a server writes zero.",
           "present": {
             "when": "event",
-            "equals": [
-              3,
-              4
-            ]
+            "equals": [3, 4]
           }
         },
         {
@@ -4182,10 +4116,7 @@
           "note": "Read with the stage and shown nowhere; a server writes zero.",
           "present": {
             "when": "event",
-            "equals": [
-              3,
-              4
-            ]
+            "equals": [3, 4]
           }
         },
         {
@@ -4195,10 +4126,7 @@
           "note": "Unused; a server writes zero.",
           "present": {
             "when": "event",
-            "equals": [
-              3,
-              4
-            ]
+            "equals": [3, 4]
           }
         },
         {
@@ -4206,10 +4134,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              14,
-              15
-            ]
+            "equals": [14, 15]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -4317,10 +4242,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              24,
-              76
-            ]
+            "equals": [24, 76]
           }
         },
         {
@@ -4362,10 +4284,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              40,
-              41
-            ]
+            "equals": [40, 41]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -4792,10 +4711,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              13,
-              14
-            ]
+            "equals": [13, 14]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -4903,10 +4819,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              23,
-              75
-            ]
+            "equals": [23, 75]
           }
         },
         {
@@ -4948,10 +4861,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              39,
-              40
-            ]
+            "equals": [39, 40]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -5381,10 +5291,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              13,
-              14
-            ]
+            "equals": [13, 14]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -5492,10 +5399,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              23,
-              75
-            ]
+            "equals": [23, 75]
           }
         },
         {
@@ -5537,10 +5441,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              39,
-              40
-            ]
+            "equals": [39, 40]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -6003,10 +5904,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              13,
-              14
-            ]
+            "equals": [13, 14]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -6114,10 +6012,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              23,
-              75
-            ]
+            "equals": [23, 75]
           }
         },
         {
@@ -6159,10 +6054,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              39,
-              40
-            ]
+            "equals": [39, 40]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -6636,10 +6528,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              14,
-              15
-            ]
+            "equals": [14, 15]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -6747,10 +6636,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              24,
-              76
-            ]
+            "equals": [24, 76]
           }
         },
         {
@@ -6792,10 +6678,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              40,
-              41
-            ]
+            "equals": [40, 41]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -7274,10 +7157,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              14,
-              15
-            ]
+            "equals": [14, 15]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -7385,10 +7265,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              24,
-              76
-            ]
+            "equals": [24, 76]
           }
         },
         {
@@ -7430,10 +7307,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              40,
-              41
-            ]
+            "equals": [40, 41]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -7912,10 +7786,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              14,
-              15
-            ]
+            "equals": [14, 15]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -8023,10 +7894,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              24,
-              76
-            ]
+            "equals": [24, 76]
           }
         },
         {
@@ -8068,10 +7936,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              40,
-              41
-            ]
+            "equals": [40, 41]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -8562,10 +8427,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              14,
-              15
-            ]
+            "equals": [14, 15]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -8673,10 +8535,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              24,
-              76
-            ]
+            "equals": [24, 76]
           }
         },
         {
@@ -8718,10 +8577,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              40,
-              41
-            ]
+            "equals": [40, 41]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -8934,12 +8790,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              117,
-              118,
-              119,
-              120
-            ]
+            "equals": [117, 118, 119, 120]
           },
           "note": "Who took the monster.",
           "fields": [
@@ -9233,10 +9084,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              14,
-              15
-            ]
+            "equals": [14, 15]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -9344,10 +9192,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              24,
-              76
-            ]
+            "equals": [24, 76]
           }
         },
         {
@@ -9389,10 +9234,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              40,
-              41
-            ]
+            "equals": [40, 41]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -9605,12 +9447,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              117,
-              118,
-              119,
-              120
-            ]
+            "equals": [117, 118, 119, 120]
           },
           "note": "Who took the monster.",
           "fields": [
@@ -9901,10 +9738,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              14,
-              15
-            ]
+            "equals": [14, 15]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -10012,10 +9846,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              24,
-              76
-            ]
+            "equals": [24, 76]
           }
         },
         {
@@ -10057,10 +9888,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              40,
-              41
-            ]
+            "equals": [40, 41]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -10273,12 +10101,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              116,
-              117,
-              118,
-              119
-            ]
+            "equals": [116, 117, 118, 119]
           },
           "note": "Who took the monster.",
           "fields": [
@@ -10569,10 +10392,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              14,
-              15
-            ]
+            "equals": [14, 15]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -10680,10 +10500,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              24,
-              76
-            ]
+            "equals": [24, 76]
           }
         },
         {
@@ -10725,10 +10542,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              40,
-              41
-            ]
+            "equals": [40, 41]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -10977,12 +10791,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              116,
-              117,
-              118,
-              119
-            ]
+            "equals": [116, 117, 118, 119]
           },
           "note": "Who took the monster.",
           "fields": [
@@ -11041,13 +10850,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              78,
-              79,
-              81,
-              83,
-              84
-            ]
+            "equals": [78, 79, 81, 83, 84]
           },
           "note": "The count a client shows in the vote's notice.",
           "fields": [
@@ -11095,21 +10898,7 @@
           "present": {
             "when": "event",
             "equals": [
-              88,
-              89,
-              90,
-              91,
-              92,
-              97,
-              98,
-              99,
-              100,
-              101,
-              102,
-              103,
-              104,
-              105,
-              106
+              88, 89, 90, 91, 92, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106
             ]
           },
           "note": "A number the notice's text shows: for 89 to 93 the map's."
@@ -11357,10 +11146,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              14,
-              15
-            ]
+            "equals": [14, 15]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -11468,10 +11254,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              24,
-              76
-            ]
+            "equals": [24, 76]
           }
         },
         {
@@ -11513,10 +11296,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              40,
-              41
-            ]
+            "equals": [40, 41]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -11765,14 +11545,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              116,
-              117,
-              118,
-              119,
-              120,
-              121
-            ]
+            "equals": [116, 117, 118, 119, 120, 121]
           },
           "note": "Who took the monster.",
           "fields": [
@@ -11831,13 +11604,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              78,
-              79,
-              81,
-              83,
-              84
-            ]
+            "equals": [78, 79, 81, 83, 84]
           },
           "note": "The count a client shows in the vote's notice.",
           "fields": [
@@ -11885,21 +11652,7 @@
           "present": {
             "when": "event",
             "equals": [
-              88,
-              89,
-              90,
-              91,
-              92,
-              97,
-              98,
-              99,
-              100,
-              101,
-              102,
-              103,
-              104,
-              105,
-              106
+              88, 89, 90, 91, 92, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106
             ]
           },
           "note": "A number the notice's text shows: for 89 to 93 the map's."
@@ -12153,10 +11906,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              14,
-              15
-            ]
+            "equals": [14, 15]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -12264,12 +12014,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              24,
-              76,
-              122,
-              123
-            ]
+            "equals": [24, 76, 122, 123]
           }
         },
         {
@@ -12311,10 +12056,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              40,
-              41
-            ]
+            "equals": [40, 41]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -12563,14 +12305,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              116,
-              117,
-              118,
-              119,
-              120,
-              121
-            ]
+            "equals": [116, 117, 118, 119, 120, 121]
           },
           "note": "Who took the monster.",
           "fields": [
@@ -12629,13 +12364,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              78,
-              79,
-              81,
-              83,
-              84
-            ]
+            "equals": [78, 79, 81, 83, 84]
           },
           "note": "The count a client shows in the vote's notice.",
           "fields": [
@@ -12683,21 +12412,7 @@
           "present": {
             "when": "event",
             "equals": [
-              88,
-              89,
-              90,
-              91,
-              92,
-              97,
-              98,
-              99,
-              100,
-              101,
-              102,
-              103,
-              104,
-              105,
-              106
+              88, 89, 90, 91, 92, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106
             ]
           },
           "note": "A number the notice's text shows: for 89 to 93 the map's."
@@ -12951,10 +12666,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              14,
-              15
-            ]
+            "equals": [14, 15]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -13062,12 +12774,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              24,
-              76,
-              122,
-              123
-            ]
+            "equals": [24, 76, 122, 123]
           }
         },
         {
@@ -13109,10 +12816,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              40,
-              41
-            ]
+            "equals": [40, 41]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -13361,14 +13065,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              116,
-              117,
-              118,
-              119,
-              120,
-              121
-            ]
+            "equals": [116, 117, 118, 119, 120, 121]
           },
           "note": "Who took the monster.",
           "fields": [
@@ -13427,13 +13124,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              78,
-              79,
-              81,
-              83,
-              84
-            ]
+            "equals": [78, 79, 81, 83, 84]
           },
           "note": "The count a client shows in the vote's notice.",
           "fields": [
@@ -13481,21 +13172,7 @@
           "present": {
             "when": "event",
             "equals": [
-              88,
-              89,
-              90,
-              91,
-              92,
-              97,
-              98,
-              99,
-              100,
-              101,
-              102,
-              103,
-              104,
-              105,
-              106
+              88, 89, 90, 91, 92, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106
             ]
           },
           "note": "A number the notice's text shows: for 89 to 93 the map's."
@@ -13749,10 +13426,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              14,
-              15
-            ]
+            "equals": [14, 15]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -13860,13 +13534,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              24,
-              76,
-              78,
-              122,
-              123
-            ]
+            "equals": [24, 76, 78, 122, 123]
           }
         },
         {
@@ -13908,10 +13576,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              40,
-              41
-            ]
+            "equals": [40, 41]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -14160,14 +13825,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              116,
-              117,
-              118,
-              119,
-              120,
-              121
-            ]
+            "equals": [116, 117, 118, 119, 120, 121]
           },
           "note": "Who took the monster.",
           "fields": [
@@ -14226,13 +13884,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              79,
-              80,
-              82,
-              84,
-              85
-            ]
+            "equals": [79, 80, 82, 84, 85]
           },
           "note": "The count a client shows in the vote's notice.",
           "fields": [
@@ -14280,21 +13932,7 @@
           "present": {
             "when": "event",
             "equals": [
-              89,
-              90,
-              91,
-              92,
-              93,
-              98,
-              99,
-              100,
-              101,
-              102,
-              103,
-              104,
-              105,
-              106,
-              107
+              89, 90, 91, 92, 93, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107
             ]
           },
           "note": "A number the notice's text shows: for 89 to 93 the map's."
@@ -14488,10 +14126,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              14,
-              15
-            ]
+            "equals": [14, 15]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -14599,13 +14234,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              24,
-              76,
-              78,
-              122,
-              123
-            ]
+            "equals": [24, 76, 78, 122, 123]
           }
         },
         {
@@ -14647,10 +14276,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              40,
-              41
-            ]
+            "equals": [40, 41]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -14899,14 +14525,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              116,
-              117,
-              118,
-              119,
-              120,
-              121
-            ]
+            "equals": [116, 117, 118, 119, 120, 121]
           },
           "note": "Who took the monster.",
           "fields": [
@@ -15149,10 +14768,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              14,
-              15
-            ]
+            "equals": [14, 15]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -15260,13 +14876,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              24,
-              76,
-              78,
-              131,
-              132
-            ]
+            "equals": [24, 76, 78, 131, 132]
           }
         },
         {
@@ -15308,10 +14918,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              40,
-              41
-            ]
+            "equals": [40, 41]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -15560,14 +15167,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              125,
-              126,
-              127,
-              128,
-              129,
-              130
-            ]
+            "equals": [125, 126, 127, 128, 129, 130]
           },
           "note": "Who took the monster.",
           "fields": [
@@ -15819,10 +15419,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              15,
-              16
-            ]
+            "equals": [15, 16]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -15930,13 +15527,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              25,
-              77,
-              79,
-              132,
-              133
-            ]
+            "equals": [25, 77, 79, 132, 133]
           }
         },
         {
@@ -15978,10 +15569,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              41,
-              42
-            ]
+            "equals": [41, 42]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -16198,17 +15786,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              1,
-              2,
-              34,
-              126,
-              127,
-              128,
-              129,
-              130,
-              131
-            ]
+            "equals": [1, 2, 34, 126, 127, 128, 129, 130, 131]
           },
           "note": "The reward, and who shared it.",
           "fields": [
@@ -16240,14 +15818,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              126,
-              127,
-              128,
-              129,
-              130,
-              131
-            ]
+            "equals": [126, 127, 128, 129, 130, 131]
           },
           "note": "Who took the monster.",
           "fields": [
@@ -16508,10 +16079,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              15,
-              16
-            ]
+            "equals": [15, 16]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -16619,15 +16187,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              25,
-              78,
-              79,
-              80,
-              82,
-              135,
-              136
-            ]
+            "equals": [25, 78, 79, 80, 82, 135, 136]
           }
         },
         {
@@ -16674,10 +16234,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              41,
-              42
-            ]
+            "equals": [41, 42]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -16765,10 +16322,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              43,
-              44
-            ]
+            "equals": [43, 44]
           },
           "note": "The effect, and where it came from.",
           "fields": [
@@ -16907,18 +16461,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              1,
-              2,
-              34,
-              37,
-              129,
-              130,
-              131,
-              132,
-              133,
-              134
-            ]
+            "equals": [1, 2, 34, 37, 129, 130, 131, 132, 133, 134]
           },
           "note": "The reward, and who shared it.",
           "fields": [
@@ -16950,15 +16493,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              37,
-              129,
-              130,
-              131,
-              132,
-              133,
-              134
-            ]
+            "equals": [37, 129, 130, 131, 132, 133, 134]
           },
           "note": "Who took the monster.",
           "fields": [
@@ -17224,10 +16759,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              15,
-              16
-            ]
+            "equals": [15, 16]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -17335,15 +16867,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              25,
-              78,
-              79,
-              80,
-              82,
-              137,
-              138
-            ]
+            "equals": [25, 78, 79, 80, 82, 137, 138]
           }
         },
         {
@@ -17390,10 +16914,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              41,
-              42
-            ]
+            "equals": [41, 42]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -17481,10 +17002,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              43,
-              44
-            ]
+            "equals": [43, 44]
           },
           "note": "The effect, and where it came from.",
           "fields": [
@@ -17623,18 +17141,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              1,
-              2,
-              34,
-              37,
-              131,
-              132,
-              133,
-              134,
-              135,
-              136
-            ]
+            "equals": [1, 2, 34, 37, 131, 132, 133, 134, 135, 136]
           },
           "note": "The reward, and who shared it.",
           "fields": [
@@ -17666,15 +17173,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              37,
-              131,
-              132,
-              133,
-              134,
-              135,
-              136
-            ]
+            "equals": [37, 131, 132, 133, 134, 135, 136]
           },
           "note": "Who took the monster.",
           "fields": [
@@ -17943,10 +17442,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              15,
-              16
-            ]
+            "equals": [15, 16]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -18057,16 +17553,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              25,
-              78,
-              79,
-              80,
-              82,
-              83,
-              138,
-              139
-            ]
+            "equals": [25, 78, 79, 80, 82, 83, 138, 139]
           }
         },
         {
@@ -18113,10 +17600,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              41,
-              42
-            ]
+            "equals": [41, 42]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -18207,10 +17691,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              43,
-              44
-            ]
+            "equals": [43, 44]
           },
           "note": "The effect, and where it came from.",
           "fields": [
@@ -18352,18 +17833,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              1,
-              2,
-              34,
-              37,
-              132,
-              133,
-              134,
-              135,
-              136,
-              137
-            ]
+            "equals": [1, 2, 34, 37, 132, 133, 134, 135, 136, 137]
           },
           "note": "The reward, and who shared it.",
           "fields": [
@@ -18395,15 +17865,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              37,
-              132,
-              133,
-              134,
-              135,
-              136,
-              137
-            ]
+            "equals": [37, 132, 133, 134, 135, 136, 137]
           },
           "note": "Who took the monster.",
           "fields": [
@@ -18672,10 +18134,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              15,
-              16
-            ]
+            "equals": [15, 16]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -18784,16 +18243,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              25,
-              78,
-              79,
-              80,
-              82,
-              83,
-              138,
-              139
-            ]
+            "equals": [25, 78, 79, 80, 82, 83, 138, 139]
           }
         },
         {
@@ -18840,10 +18290,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              41,
-              42
-            ]
+            "equals": [41, 42]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -18932,10 +18379,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              43,
-              44
-            ]
+            "equals": [43, 44]
           },
           "note": "The effect, and where it came from.",
           "fields": [
@@ -19075,18 +18519,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              1,
-              2,
-              34,
-              37,
-              132,
-              133,
-              134,
-              135,
-              136,
-              137
-            ]
+            "equals": [1, 2, 34, 37, 132, 133, 134, 135, 136, 137]
           },
           "note": "The reward, and who shared it.",
           "fields": [
@@ -19118,15 +18551,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              37,
-              132,
-              133,
-              134,
-              135,
-              136,
-              137
-            ]
+            "equals": [37, 132, 133, 134, 135, 136, 137]
           },
           "note": "Who took the monster.",
           "fields": [
@@ -19401,10 +18826,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              16,
-              17
-            ]
+            "equals": [16, 17]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -19513,16 +18935,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              26,
-              81,
-              82,
-              83,
-              85,
-              86,
-              141,
-              142
-            ]
+            "equals": [26, 81, 82, 83, 85, 86, 141, 142]
           }
         },
         {
@@ -19569,10 +18982,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              44,
-              45
-            ]
+            "equals": [44, 45]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -19661,10 +19071,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              46,
-              47
-            ]
+            "equals": [46, 47]
           },
           "note": "The effect, and where it came from.",
           "fields": [
@@ -19804,19 +19211,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              1,
-              2,
-              36,
-              37,
-              40,
-              135,
-              136,
-              137,
-              138,
-              139,
-              140
-            ]
+            "equals": [1, 2, 36, 37, 40, 135, 136, 137, 138, 139, 140]
           },
           "note": "The reward, and who shared it.",
           "fields": [
@@ -19848,15 +19243,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              40,
-              135,
-              136,
-              137,
-              138,
-              139,
-              140
-            ]
+            "equals": [40, 135, 136, 137, 138, 139, 140]
           },
           "note": "Who took the monster.",
           "fields": [
@@ -20131,10 +19518,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              16,
-              17
-            ]
+            "equals": [16, 17]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -20243,16 +19627,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              26,
-              85,
-              86,
-              87,
-              89,
-              90,
-              145,
-              146
-            ]
+            "equals": [26, 85, 86, 87, 89, 90, 145, 146]
           }
         },
         {
@@ -20299,10 +19674,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              44,
-              45
-            ]
+            "equals": [44, 45]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -20391,10 +19763,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              46,
-              47
-            ]
+            "equals": [46, 47]
           },
           "note": "The effect, and where it came from.",
           "fields": [
@@ -20534,20 +19903,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              1,
-              2,
-              36,
-              37,
-              38,
-              40,
-              139,
-              140,
-              141,
-              142,
-              143,
-              144
-            ]
+            "equals": [1, 2, 36, 37, 38, 40, 139, 140, 141, 142, 143, 144]
           },
           "note": "The reward, and who shared it.",
           "fields": [
@@ -20579,15 +19935,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              40,
-              139,
-              140,
-              141,
-              142,
-              143,
-              144
-            ]
+            "equals": [40, 139, 140, 141, 142, 143, 144]
           },
           "note": "Who took the monster.",
           "fields": [
@@ -20871,10 +20219,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              15,
-              16
-            ]
+            "equals": [15, 16]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -20983,16 +20328,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              25,
-              86,
-              87,
-              88,
-              90,
-              91,
-              148,
-              149
-            ]
+            "equals": [25, 86, 87, 88, 90, 91, 148, 149]
           }
         },
         {
@@ -21039,10 +20375,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              45,
-              46
-            ]
+            "equals": [45, 46]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -21131,10 +20464,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              47,
-              48
-            ]
+            "equals": [47, 48]
           },
           "note": "The effect, and where it came from.",
           "fields": [
@@ -21274,22 +20604,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              1,
-              2,
-              35,
-              36,
-              37,
-              39,
-              140,
-              141,
-              142,
-              143,
-              144,
-              145,
-              146,
-              147
-            ]
+            "equals": [1, 2, 35, 36, 37, 39, 140, 141, 142, 143, 144, 145, 146, 147]
           },
           "note": "The reward, and who shared it.",
           "fields": [
@@ -21321,17 +20636,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              39,
-              140,
-              141,
-              142,
-              143,
-              144,
-              145,
-              146,
-              147
-            ]
+            "equals": [39, 140, 141, 142, 143, 144, 145, 146, 147]
           },
           "note": "Who took the monster.",
           "fields": [
@@ -21618,10 +20923,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              15,
-              16
-            ]
+            "equals": [15, 16]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -21730,16 +21032,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              25,
-              86,
-              87,
-              88,
-              90,
-              91,
-              149,
-              150
-            ]
+            "equals": [25, 86, 87, 88, 90, 91, 149, 150]
           }
         },
         {
@@ -21791,10 +21084,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              45,
-              46
-            ]
+            "equals": [45, 46]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -21883,10 +21173,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              47,
-              48
-            ]
+            "equals": [47, 48]
           },
           "note": "The effect, and where it came from.",
           "fields": [
@@ -22026,22 +21313,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              1,
-              2,
-              35,
-              36,
-              37,
-              39,
-              141,
-              142,
-              143,
-              144,
-              145,
-              146,
-              147,
-              148
-            ]
+            "equals": [1, 2, 35, 36, 37, 39, 141, 142, 143, 144, 145, 146, 147, 148]
           },
           "note": "The reward, and who shared it.",
           "fields": [
@@ -22073,17 +21345,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              39,
-              141,
-              142,
-              143,
-              144,
-              145,
-              146,
-              147,
-              148
-            ]
+            "equals": [39, 141, 142, 143, 144, 145, 146, 147, 148]
           },
           "note": "Who took the monster.",
           "fields": [
@@ -22396,10 +21658,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              15,
-              16
-            ]
+            "equals": [15, 16]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -22508,16 +21767,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              25,
-              86,
-              87,
-              88,
-              90,
-              91,
-              151,
-              152
-            ]
+            "equals": [25, 86, 87, 88, 90, 91, 151, 152]
           }
         },
         {
@@ -22569,10 +21819,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              45,
-              46
-            ]
+            "equals": [45, 46]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -22661,10 +21908,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              47,
-              48
-            ]
+            "equals": [47, 48]
           },
           "note": "The effect, and where it came from.",
           "fields": [
@@ -22804,22 +22048,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              1,
-              2,
-              35,
-              36,
-              37,
-              39,
-              143,
-              144,
-              145,
-              146,
-              147,
-              148,
-              149,
-              150
-            ]
+            "equals": [1, 2, 35, 36, 37, 39, 143, 144, 145, 146, 147, 148, 149, 150]
           },
           "note": "The reward, and who shared it.",
           "fields": [
@@ -22851,17 +22080,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              39,
-              143,
-              144,
-              145,
-              146,
-              147,
-              148,
-              149,
-              150
-            ]
+            "equals": [39, 143, 144, 145, 146, 147, 148, 149, 150]
           },
           "note": "Who took the monster.",
           "fields": [
@@ -23177,10 +22396,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              15,
-              16
-            ]
+            "equals": [15, 16]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -23289,16 +22505,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              25,
-              86,
-              87,
-              88,
-              90,
-              91,
-              151,
-              152
-            ]
+            "equals": [25, 86, 87, 88, 90, 91, 151, 152]
           }
         },
         {
@@ -23350,10 +22557,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              45,
-              46
-            ]
+            "equals": [45, 46]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -23442,10 +22646,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              47,
-              48
-            ]
+            "equals": [47, 48]
           },
           "note": "The effect, and where it came from.",
           "fields": [
@@ -23596,22 +22797,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              1,
-              2,
-              35,
-              36,
-              37,
-              39,
-              143,
-              144,
-              145,
-              146,
-              147,
-              148,
-              149,
-              150
-            ]
+            "equals": [1, 2, 35, 36, 37, 39, 143, 144, 145, 146, 147, 148, 149, 150]
           },
           "note": "The reward, and who shared it.",
           "fields": [
@@ -23643,17 +22829,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              39,
-              143,
-              144,
-              145,
-              146,
-              147,
-              148,
-              149,
-              150
-            ]
+            "equals": [39, 143, 144, 145, 146, 147, 148, 149, 150]
           },
           "note": "Who took the monster.",
           "fields": [
@@ -23969,10 +23145,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              15,
-              16
-            ]
+            "equals": [15, 16]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -24081,16 +23254,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              25,
-              87,
-              88,
-              89,
-              91,
-              92,
-              152,
-              153
-            ]
+            "equals": [25, 87, 88, 89, 91, 92, 152, 153]
           }
         },
         {
@@ -24142,10 +23306,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              46,
-              47
-            ]
+            "equals": [46, 47]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -24234,10 +23395,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              48,
-              49
-            ]
+            "equals": [48, 49]
           },
           "note": "The effect, and where it came from.",
           "fields": [
@@ -24388,22 +23546,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              1,
-              2,
-              36,
-              37,
-              38,
-              40,
-              144,
-              145,
-              146,
-              147,
-              148,
-              149,
-              150,
-              151
-            ]
+            "equals": [1, 2, 36, 37, 38, 40, 144, 145, 146, 147, 148, 149, 150, 151]
           },
           "note": "The reward, and who shared it.",
           "fields": [
@@ -24435,17 +23578,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              40,
-              144,
-              145,
-              146,
-              147,
-              148,
-              149,
-              150,
-              151
-            ]
+            "equals": [40, 144, 145, 146, 147, 148, 149, 150, 151]
           },
           "note": "Who took the monster.",
           "fields": [
@@ -24761,10 +23894,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              15,
-              16
-            ]
+            "equals": [15, 16]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -24873,16 +24003,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              25,
-              87,
-              88,
-              89,
-              91,
-              92,
-              152,
-              153
-            ]
+            "equals": [25, 87, 88, 89, 91, 92, 152, 153]
           }
         },
         {
@@ -24934,10 +24055,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              46,
-              47
-            ]
+            "equals": [46, 47]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -25026,10 +24144,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              48,
-              49
-            ]
+            "equals": [48, 49]
           },
           "note": "The effect, and where it came from.",
           "fields": [
@@ -25180,22 +24295,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              1,
-              2,
-              36,
-              37,
-              38,
-              40,
-              144,
-              145,
-              146,
-              147,
-              148,
-              149,
-              150,
-              151
-            ]
+            "equals": [1, 2, 36, 37, 38, 40, 144, 145, 146, 147, 148, 149, 150, 151]
           },
           "note": "The reward, and who shared it.",
           "fields": [
@@ -25227,17 +24327,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              40,
-              144,
-              145,
-              146,
-              147,
-              148,
-              149,
-              150,
-              151
-            ]
+            "equals": [40, 144, 145, 146, 147, 148, 149, 150, 151]
           },
           "note": "Who took the monster.",
           "fields": [
@@ -25553,10 +24643,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              15,
-              16
-            ]
+            "equals": [15, 16]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -25665,16 +24752,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              25,
-              87,
-              88,
-              89,
-              91,
-              92,
-              153,
-              154
-            ]
+            "equals": [25, 87, 88, 89, 91, 92, 153, 154]
           }
         },
         {
@@ -25726,10 +24804,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              46,
-              47
-            ]
+            "equals": [46, 47]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -25818,10 +24893,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              48,
-              49
-            ]
+            "equals": [48, 49]
           },
           "note": "The effect, and where it came from.",
           "fields": [
@@ -25972,22 +25044,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              1,
-              2,
-              36,
-              37,
-              38,
-              40,
-              145,
-              146,
-              147,
-              148,
-              149,
-              150,
-              151,
-              152
-            ]
+            "equals": [1, 2, 36, 37, 38, 40, 145, 146, 147, 148, 149, 150, 151, 152]
           },
           "note": "The reward, and who shared it.",
           "fields": [
@@ -26019,17 +25076,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              40,
-              145,
-              146,
-              147,
-              148,
-              149,
-              150,
-              151,
-              152
-            ]
+            "equals": [40, 145, 146, 147, 148, 149, 150, 151, 152]
           },
           "note": "Who took the monster.",
           "fields": [
@@ -26348,10 +25395,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              15,
-              16
-            ]
+            "equals": [15, 16]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -26460,16 +25504,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              25,
-              87,
-              88,
-              89,
-              92,
-              93,
-              154,
-              155
-            ]
+            "equals": [25, 87, 88, 89, 92, 93, 154, 155]
           }
         },
         {
@@ -26521,10 +25556,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              46,
-              47
-            ]
+            "equals": [46, 47]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -26613,10 +25645,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              48,
-              49
-            ]
+            "equals": [48, 49]
           },
           "note": "The effect, and where it came from.",
           "fields": [
@@ -26767,22 +25796,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              1,
-              2,
-              36,
-              37,
-              38,
-              40,
-              146,
-              147,
-              148,
-              149,
-              150,
-              151,
-              152,
-              153
-            ]
+            "equals": [1, 2, 36, 37, 38, 40, 146, 147, 148, 149, 150, 151, 152, 153]
           },
           "note": "The reward, and who shared it.",
           "fields": [
@@ -26814,17 +25828,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              40,
-              146,
-              147,
-              148,
-              149,
-              150,
-              151,
-              152,
-              153
-            ]
+            "equals": [40, 146, 147, 148, 149, 150, 151, 152, 153]
           },
           "note": "Who took the monster.",
           "fields": [
@@ -27169,10 +26173,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              15,
-              16
-            ]
+            "equals": [15, 16]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -27281,16 +26282,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              25,
-              91,
-              92,
-              93,
-              96,
-              97,
-              158,
-              159
-            ]
+            "equals": [25, 91, 92, 93, 96, 97, 158, 159]
           }
         },
         {
@@ -27342,10 +26334,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              46,
-              47
-            ]
+            "equals": [46, 47]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -27434,10 +26423,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              48,
-              49
-            ]
+            "equals": [48, 49]
           },
           "note": "The effect, and where it came from.",
           "fields": [
@@ -27588,22 +26574,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              1,
-              2,
-              36,
-              37,
-              38,
-              40,
-              150,
-              151,
-              152,
-              153,
-              154,
-              155,
-              156,
-              157
-            ]
+            "equals": [1, 2, 36, 37, 38, 40, 150, 151, 152, 153, 154, 155, 156, 157]
           },
           "note": "The reward, and who shared it.",
           "fields": [
@@ -27635,17 +26606,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              40,
-              150,
-              151,
-              152,
-              153,
-              154,
-              155,
-              156,
-              157
-            ]
+            "equals": [40, 150, 151, 152, 153, 154, 155, 156, 157]
           },
           "note": "Who took the monster.",
           "fields": [
@@ -27990,10 +26951,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              15,
-              16
-            ]
+            "equals": [15, 16]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -28102,16 +27060,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              25,
-              91,
-              92,
-              93,
-              96,
-              97,
-              159,
-              160
-            ]
+            "equals": [25, 91, 92, 93, 96, 97, 159, 160]
           }
         },
         {
@@ -28163,10 +27112,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              46,
-              47
-            ]
+            "equals": [46, 47]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -28255,10 +27201,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              48,
-              49
-            ]
+            "equals": [48, 49]
           },
           "note": "The effect, and where it came from.",
           "fields": [
@@ -28409,22 +27352,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              1,
-              2,
-              36,
-              37,
-              38,
-              40,
-              151,
-              152,
-              153,
-              154,
-              155,
-              156,
-              157,
-              158
-            ]
+            "equals": [1, 2, 36, 37, 38, 40, 151, 152, 153, 154, 155, 156, 157, 158]
           },
           "note": "The reward, and who shared it.",
           "fields": [
@@ -28456,17 +27384,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              40,
-              151,
-              152,
-              153,
-              154,
-              155,
-              156,
-              157,
-              158
-            ]
+            "equals": [40, 151, 152, 153, 154, 155, 156, 157, 158]
           },
           "note": "Who took the monster.",
           "fields": [
@@ -28817,10 +27735,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              15,
-              16
-            ]
+            "equals": [15, 16]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -28937,16 +27852,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              25,
-              91,
-              92,
-              93,
-              96,
-              97,
-              159,
-              160
-            ]
+            "equals": [25, 91, 92, 93, 96, 97, 159, 160]
           }
         },
         {
@@ -28998,10 +27904,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              46,
-              47
-            ]
+            "equals": [46, 47]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -29098,10 +28001,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              48,
-              49
-            ]
+            "equals": [48, 49]
           },
           "note": "The effect, and where it came from.",
           "fields": [
@@ -29260,22 +28160,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              1,
-              2,
-              36,
-              37,
-              38,
-              40,
-              151,
-              152,
-              153,
-              154,
-              155,
-              156,
-              157,
-              158
-            ]
+            "equals": [1, 2, 36, 37, 38, 40, 151, 152, 153, 154, 155, 156, 157, 158]
           },
           "note": "The reward, and who shared it.",
           "fields": [
@@ -29307,17 +28192,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              40,
-              151,
-              152,
-              153,
-              154,
-              155,
-              156,
-              157,
-              158
-            ]
+            "equals": [40, 151, 152, 153, 154, 155, 156, 157, 158]
           },
           "note": "Who took the monster.",
           "fields": [
@@ -29668,10 +28543,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              15,
-              16
-            ]
+            "equals": [15, 16]
           },
           "note": "How much harm, and from what.",
           "fields": [
@@ -29793,16 +28665,7 @@
           "note": "What it carries is not recorded for this range; a client does not show it.",
           "present": {
             "when": "event",
-            "equals": [
-              25,
-              91,
-              92,
-              93,
-              96,
-              97,
-              159,
-              160
-            ]
+            "equals": [25, 91, 92, 93, 96, 97, 159, 160]
           }
         },
         {
@@ -29854,10 +28717,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              46,
-              47
-            ]
+            "equals": [46, 47]
           },
           "note": "How much health, and from what.",
           "fields": [
@@ -29959,10 +28819,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              48,
-              49
-            ]
+            "equals": [48, 49]
           },
           "note": "The effect, and where it came from.",
           "fields": [
@@ -30126,22 +28983,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              1,
-              2,
-              36,
-              37,
-              38,
-              40,
-              151,
-              152,
-              153,
-              154,
-              155,
-              156,
-              157,
-              158
-            ]
+            "equals": [1, 2, 36, 37, 38, 40, 151, 152, 153, 154, 155, 156, 157, 158]
           },
           "note": "The reward, and who shared it.",
           "fields": [
@@ -30173,17 +29015,7 @@
           "type": "record",
           "present": {
             "when": "event",
-            "equals": [
-              40,
-              151,
-              152,
-              153,
-              154,
-              155,
-              156,
-              157,
-              158
-            ]
+            "equals": [40, 151, 152, 153, 154, 155, 156, 157, 158]
           },
           "note": "Who took the monster.",
           "fields": [
