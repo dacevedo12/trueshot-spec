@@ -5,6 +5,26 @@
   "note": "What a server sends to confirm an item left a slot. The header names the unit this is about.",
   "revisions": [
     {
+      "from": "1.0.0.109",
+      "until": "1.0.0.110",
+      "channel": "events",
+      "command": 50,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot, 0 to 37. A client drops the message from 38 up."
+        },
+        {
+          "name": "left",
+          "type": "u8",
+          "note": "How many are left in the slot; zero empties it, item and charges cleared. Either way a client cancels any spell or action its player had picked."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.110",
       "until": "1.0.0.128",
       "channel": "events",

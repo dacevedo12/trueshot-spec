@@ -5,6 +5,16 @@
   "note": "What a server sends to put a unit into its death. The header names the unit.",
   "revisions": [
     {
+      "from": "1.0.0.109",
+      "until": "1.0.0.110",
+      "channel": "events",
+      "command": 36,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "Nothing follows the header: a client marks the unit dead and starts its death at once, for no set time."
+    },
+    {
       "from": "1.0.0.110",
       "until": "1.0.0.124",
       "channel": "events",

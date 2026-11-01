@@ -5,6 +5,26 @@
   "note": "What a client sends to be rid of an item, either by selling it or by discarding it. The header names the sender's champion.",
   "revisions": [
     {
+      "from": "1.0.0.109",
+      "until": "1.0.0.110",
+      "channel": "requests",
+      "command": 49,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot."
+        },
+        {
+          "name": "sell",
+          "type": "u8",
+          "note": "A client sends 1 from the shop or a hotkey, and 0 after an answer to a purchase."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.110",
       "until": "1.0.0.126",
       "channel": "requests",

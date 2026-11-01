@@ -5,6 +5,32 @@
   "note": "What a server sends to bring a dead champion back at a place, with full health. The header names the champion. A client keeps the champion's level, experience, gold, maxima and spell ranks, sets it on the nearest open ground, plays the coming back, and for its own champion moves the camera onto it where the player asked for that.",
   "revisions": [
     {
+      "from": "1.0.0.109",
+      "until": "1.0.0.110",
+      "channel": "events",
+      "command": 86,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "A client reads nothing here."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "A client reads nothing here."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "A client reads nothing here."
+        }
+      ],
+      "note": "A client returns the champion where it already stands."
+    },
+    {
       "from": "1.0.0.110",
       "until": "1.0.0.117",
       "channel": "events",

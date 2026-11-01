@@ -5,6 +5,15 @@
   "note": "What a server sends to close the box of text SideTextShown opened. It carries nothing of its own. The header carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.109",
+      "until": "1.0.0.110",
+      "channel": "events",
+      "command": 170,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": []
+    },
+    {
       "from": "1.0.0.110",
       "until": "1.0.0.111",
       "channel": "events",

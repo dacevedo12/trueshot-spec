@@ -5,6 +5,15 @@
   "note": "What a client sends once a character is settled on. It carries nothing of its own. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.109",
+      "until": "1.0.0.110",
+      "channel": "requests",
+      "command": 15,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": []
+    },
+    {
       "from": "1.0.0.110",
       "until": "1.0.0.111",
       "channel": "requests",

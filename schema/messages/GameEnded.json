@@ -5,6 +5,22 @@
   "note": "What a server sends to end the match and say which side won. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.109",
+      "until": "1.0.0.110",
+      "channel": "events",
+      "command": 14,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "result",
+          "type": "u8",
+          "note": "Nonzero where side 100 won, zero where side 200 did; a client counts a win where its own side is the one that won."
+        }
+      ],
+      "note": "Arriving while the match still loads, it counts as a win or loss for the player's side and the client leaves at once. Otherwise the client ends the match on its screen and sends ClientFinished, except while playing a replay."
+    },
+    {
       "from": "1.0.0.110",
       "until": "1.0.0.111",
       "channel": "events",

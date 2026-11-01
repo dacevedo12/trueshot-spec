@@ -5,6 +5,21 @@
   "note": "What a server sends to make part of the minimap blink, as a tutorial does.",
   "revisions": [
     {
+      "from": "1.0.0.109",
+      "until": "1.0.0.110",
+      "command": 180,
+      "channel": "events",
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "element",
+          "type": "u8",
+          "note": "Which part of the minimap blinks. A client acts on 0 alone, its camera button, and only once it knows its own champion; it ignores any other value."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.110",
       "until": "1.0.0.128",
       "command": 20,

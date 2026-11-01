@@ -5,6 +5,26 @@
   "note": "What a server sends to open the run of units a client is about to be told about. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.109",
+      "until": "1.0.0.110",
+      "channel": "events",
+      "command": 5,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "botsOnOneSide",
+          "type": "u8",
+          "note": "How many bots play on side 100. A client adds it to that side's head count, which picks the set of spawn positions and facings it places champions by (CreateChampion's spawnIndex)."
+        },
+        {
+          "name": "botsOnTheOther",
+          "type": "u8",
+          "note": "The other. It shares the reading above."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.110",
       "until": "1.0.0.117",
       "channel": "events",

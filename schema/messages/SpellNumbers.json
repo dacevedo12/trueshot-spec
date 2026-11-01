@@ -5,6 +5,55 @@
   "note": "What a server sends to fill in the numbers a client shows beside a unit's spells. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.109",
+      "until": "1.0.0.110",
+      "channel": "events",
+      "command": 183,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "entryCount",
+          "type": "u16",
+          "note": "How many sets of numbers follow. A client ignores the whole message where they do not all fit in it."
+        },
+        {
+          "name": "entries",
+          "type": "array",
+          "count": "entryCount",
+          "note": "The sets themselves.",
+          "items": {
+            "name": "entry",
+            "type": "record",
+            "fields": [
+              {
+                "name": "unit",
+                "type": "u32",
+                "note": "The unit whose spell this is."
+              },
+              {
+                "name": "slot",
+                "type": "u8",
+                "note": "Which slot."
+              },
+              {
+                "name": "values",
+                "type": "array",
+                "count": 3,
+                "note": "The numbers themselves, one place each.",
+                "items": {
+                  "name": "value",
+                  "type": "f32",
+                  "note": "One number."
+                }
+              }
+            ],
+            "note": "The numbers for one spell, five places of them."
+          }
+        }
+      ]
+    },
+    {
       "from": "1.0.0.110",
       "until": "1.0.0.111",
       "channel": "events",

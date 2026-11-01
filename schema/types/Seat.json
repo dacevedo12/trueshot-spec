@@ -4,6 +4,32 @@
   "note": "One place at the match: who holds it, what they brought, and what the client shows for them.",
   "revisions": [
     {
+      "from": "1.0.0.109",
+      "until": "1.0.0.110",
+      "fields": [
+        {
+          "name": "player",
+          "type": "i64",
+          "note": "Which player holds the place, or a negative number where it stands empty. It has a player identifier's width."
+        },
+        {
+          "name": "level",
+          "type": "u16",
+          "note": "The level the seat holder has reached across matches. A 4.17 client does not draw it on the loading screen."
+        },
+        {
+          "name": "summoner",
+          "type": "u32",
+          "note": "The spell in one of the seat's summoner slots, as the name hash of the spell; drawn as its icon on the loading screen. It has no effect on a bot's seat."
+        },
+        {
+          "name": "otherSummoner",
+          "type": "u32",
+          "note": "The spell in the other."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.110",
       "until": "1.0.0.124",
       "fields": [

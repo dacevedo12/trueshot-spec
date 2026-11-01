@@ -5,6 +5,32 @@
   "note": "What a server sends to grant a unit gold. The header names the unit whose death earned the gold, as source does.",
   "revisions": [
     {
+      "from": "1.0.0.109",
+      "until": "1.0.0.110",
+      "channel": "events",
+      "command": 27,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit granted it."
+        },
+        {
+          "name": "source",
+          "type": "u32",
+          "note": "What it came from, or zero where nothing did."
+        },
+        {
+          "name": "amount",
+          "type": "f32",
+          "note": "How much."
+        }
+      ],
+      "note": "Where amount is above 0.5, unit is the client's own champion and source names a unit it holds, a client floats the gold over the source. Otherwise, where it holds the unit, it shows the amount on the unit as a gain or a loss, and nothing for zero; where that appears is not recorded."
+    },
+    {
       "from": "1.0.0.110",
       "until": "1.0.0.124",
       "channel": "events",

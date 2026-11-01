@@ -5,6 +5,37 @@
   "note": "What a server sends to keep its champion's orders within a circle. A client pulls an order to a point outside onto the circle's edge before sending it, and drops an order at an object outside. The header carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.109",
+      "until": "1.0.0.110",
+      "channel": "events",
+      "command": 140,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "The circle's centre, in world units."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "The centre's height, in world units."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "The circle's centre, in world units."
+        },
+        {
+          "name": "radius",
+          "type": "f32",
+          "note": "The circle's radius, in world units. Zero lifts the bounds; a negative radius counts as zero."
+        }
+      ],
+      "note": "A client keeps its camera within the circle, and nothing else."
+    },
+    {
       "from": "1.0.0.110",
       "until": "1.0.0.128",
       "channel": "events",

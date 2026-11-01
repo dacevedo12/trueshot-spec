@@ -5,6 +5,27 @@
   "note": "What a server sends to grant a unit experience. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.109",
+      "until": "1.0.0.110",
+      "channel": "events",
+      "command": 28,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit granted it."
+        },
+        {
+          "name": "amount",
+          "type": "f32",
+          "note": "How much."
+        }
+      ],
+      "note": "Where the unit is the client's own champion below its highest level, a client also shows the amount on its experience display."
+    },
+    {
       "from": "1.0.0.110",
       "until": "1.0.0.144",
       "channel": "events",
