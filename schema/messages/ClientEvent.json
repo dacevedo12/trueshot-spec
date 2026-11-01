@@ -160,7 +160,7 @@
         {
           "name": "subject",
           "type": "u32",
-          "note": "The unit the event is about."
+          "note": "The unit the event is about; for a death, the unit that made the kill."
         },
         {
           "name": "damage",
@@ -500,13 +500,8 @@
             "when": "event",
             "equals": 0
           },
-          "note": "Who made the kill; nothing else a client shows.",
+          "note": "Nothing a client shows; the unit before it names the killer.",
           "fields": [
-            {
-              "name": "killer",
-              "type": "u32",
-              "note": "The unit that made the kill."
-            },
             {
               "name": "unread",
               "type": "bytes",
