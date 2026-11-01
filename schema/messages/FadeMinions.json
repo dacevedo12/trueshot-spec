@@ -5,6 +5,31 @@
   "note": "What a server sends to fade one side's minions. The header carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.122",
+      "until": "1.0.0.123",
+      "channel": "events",
+      "command": 204,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "side",
+          "type": "u8",
+          "note": "Which side, or zero for both."
+        },
+        {
+          "name": "amount",
+          "type": "f32",
+          "note": "The opacity they fade to, from 0 for unseen to 1 for solid."
+        },
+        {
+          "name": "time",
+          "type": "f32",
+          "note": "How long the fade takes, in seconds."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.123",
       "until": "1.0.0.124",
       "channel": "events",

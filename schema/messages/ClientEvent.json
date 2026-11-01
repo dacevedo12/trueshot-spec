@@ -5,7 +5,7 @@
   "note": "What a server sends to tell a client something happened. The sort is named first and settles what follows; unlike WorldEvent it carries no source apart from what the sort itself carries. The header names the unit the event is about.",
   "revisions": [
     {
-      "from": "1.0.0.123",
+      "from": "1.0.0.122",
       "until": "1.0.0.124",
       "channel": "events",
       "command": 165,
@@ -509,8 +509,13 @@
             "when": "event",
             "equals": 0
           },
-          "note": "Nothing a client shows; the unit before it names the killer.",
+          "note": "Who made the kill; nothing else a client shows.",
           "fields": [
+            {
+              "name": "killer",
+              "type": "u32",
+              "note": "The unit that made the kill."
+            },
             {
               "name": "unread",
               "type": "bytes",

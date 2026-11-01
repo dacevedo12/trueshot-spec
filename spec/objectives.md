@@ -17,9 +17,9 @@ server tells clients watching a match when a camp is next due with `CampTimer`.
 On a map won on score, a server binds each capture point to a unit with
 `CapturePointChanged`, and `TeamScore` sets each side's score.
 
-<!-- holds from 1.0.0.123 up to 1.0.0.124 -->
+<!-- holds from 1.0.0.122 up to 1.0.0.124 -->
 
-> **In 1.0.0.123**
+> **In 1.0.0.122–1.0.0.123**
 >
 > No unit stands behind a point: a server sets each point outright with
 > `CapturePointValue`, which says who holds it, how far it is taken and how fast

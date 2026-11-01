@@ -1,0 +1,23 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "PingPlaced",
+  "version": "1.0.0.122",
+  "note": "Laid out as a 1.0.0.122 client takes it.",
+  "bytes": "440100004000007a44000000000000fa44000000000100004010",
+  "fields": {
+    "command": 68,
+    "netId": 1073741825,
+    "atX": 1000,
+    "atY": 0,
+    "atZ": 2000,
+    "target": 0,
+    "source": 1073741825,
+    "how": {
+      "unusedLow": 0,
+      "playSound": 1,
+      "showInChat": 0,
+      "unused": 0
+    }
+  }
+}
