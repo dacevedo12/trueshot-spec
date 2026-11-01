@@ -6,16 +6,16 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
-      "note": "Nothing follows the header: a client marks the unit dead and starts its death at once, for no set time.",
+      "until": "1.0.0.128",
       "channel": "events",
       "command": 30,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "Nothing follows the header: a client marks the unit dead and starts its death at once, for no set time."
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.131",
       "channel": "events",
       "command": 30,

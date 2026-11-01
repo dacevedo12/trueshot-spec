@@ -7,36 +7,36 @@
   "bytes": "8c000000000169e358002000000000000000000001000000004c0000400100004092f3000016436bf3a1f10000164386f192f3000016436bf300000000000000000000803f00000000",
   "fields": {
     "command": 140,
-    "netId": 0,
     "groupCount": 1,
     "groups": [
       {
-        "particle": 5825385,
-        "flags": 32,
-        "targetBone": 0,
         "bone": 0,
+        "flags": 32,
+        "particle": 5825385,
         "particleCount": 1,
         "particles": [
           {
-            "target": 0,
-            "id": 1073741900,
-            "caster": 1073741825,
             "atX": -3182,
             "atY": 150,
             "atZ": -3221,
-            "towardX": -3679,
-            "towardY": 150,
-            "towardZ": -3706,
-            "ownerX": -3182,
-            "ownerY": 150,
-            "ownerZ": -3221,
+            "boundTo": 1073741825,
             "facingX": 0,
             "facingY": 0,
             "facingZ": 1,
-            "runningFor": 0
+            "ownerX": -3182,
+            "ownerY": 150,
+            "ownerZ": -3221,
+            "particle": 1073741900,
+            "runningFor": 0,
+            "target": 0,
+            "towardX": -3679,
+            "towardY": 150,
+            "towardZ": -3706
           }
-        ]
+        ],
+        "targetBone": 0
       }
-    ]
+    ],
+    "netId": 0
   }
 }

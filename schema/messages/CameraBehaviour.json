@@ -6,8 +6,7 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
-      "note": "Only the client whose own champion the header names applies it.",
+      "until": "1.0.0.128",
       "channel": "events",
       "command": 118,
       "direction": "serverToClient",
@@ -28,10 +27,11 @@
           "type": "f32",
           "note": "Along the other ground axis, in world units."
         }
-      ]
+      ],
+      "note": "Only the client whose own champion the header names applies it."
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 118,

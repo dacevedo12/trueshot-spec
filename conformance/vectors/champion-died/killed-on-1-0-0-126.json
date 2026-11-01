@@ -7,10 +7,14 @@
   "bytes": "61010000400200004000000000204100",
   "fields": {
     "command": 97,
-    "netId": 1073741825,
+    "damageSource": 0,
+    "damageType": 0,
+    "how": {
+      "unused": 0,
+      "zombie": 0
+    },
     "killer": 1073741826,
-    "unused": 0,
-    "stayDown": 10.0,
-    "zombie": 0
+    "netId": 1073741825,
+    "stayDown": 10
   }
 }

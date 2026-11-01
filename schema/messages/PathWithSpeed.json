@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "events",
       "command": 136,
       "direction": "serverToClient",
@@ -39,7 +39,7 @@
         },
         {
           "name": "facing",
-          "type": "u8",
+          "type": "i8",
           "note": "Which way the unit faces as it moves.",
           "values": {
             "0": {
@@ -98,7 +98,7 @@
       "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning."
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 136,

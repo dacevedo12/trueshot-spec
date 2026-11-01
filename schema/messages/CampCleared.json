@@ -6,14 +6,14 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "events",
       "command": 203,
       "direction": "serverToClient",
       "reliability": "reliable",
       "fields": [
         {
-          "name": "killer",
+          "name": "unit",
           "type": "u32",
           "note": "The champion credited with emptying the camp. A client uses it only to choose a side: side 100 where the killer is on side 100, side 200 otherwise."
         },
@@ -23,14 +23,14 @@
           "note": "Which camp. A client ignores the message for a camp it does not know."
         },
         {
-          "name": "state",
+          "name": "active",
           "type": "u8",
-          "note": "The camp's state for that side; all eight bits count. What it carries is not recorded."
+          "note": "The camp's state for that side, kept as it stands; nonzero where it is active."
         }
       ]
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 203,

@@ -6,8 +6,7 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
-      "note": "A client always moves its view from where it stands to toX, toY and toZ over travelTime; how, fromX, fromY and fromZ have no effect.",
+      "until": "1.0.0.128",
       "channel": "events",
       "command": 39,
       "direction": "serverToClient",
@@ -21,7 +20,7 @@
             {
               "name": "fromWhereItIs",
               "width": 1,
-              "note": "A client ignores it; a server writes zero."
+              "note": "Set to start from where the camera stands, fromX, fromY and fromZ having no effect; clear to start from them."
             },
             {
               "name": "unused1",
@@ -34,22 +33,22 @@
               "note": "Unused; a server writes zero."
             }
           ],
-          "note": "A client ignores it."
+          "note": "How the view moves. A client ignores it where the header carries zero."
         },
         {
           "name": "fromX",
           "type": "f32",
-          "note": "A client ignores it; a server writes zero."
+          "note": "Where the view starts, along one ground axis, in world units."
         },
         {
           "name": "fromY",
           "type": "f32",
-          "note": "A client ignores it; a server writes zero."
+          "note": "Where the view starts, in height, in world units."
         },
         {
           "name": "fromZ",
           "type": "f32",
-          "note": "A client ignores it; a server writes zero."
+          "note": "Where the view starts, along the other ground axis, in world units."
         },
         {
           "name": "toX",
@@ -71,10 +70,11 @@
           "type": "f32",
           "note": "How long the view takes to get there, in seconds. The view moves at an even speed over the distance along the ground."
         }
-      ]
+      ],
+      "note": "Where the header names a champion, only the client whose own champion it is moves its view; others take the message and do nothing. Where the header carries zero, a client moves its view to to over travelTime, how and from having no effect."
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.144",
       "channel": "events",
       "command": 39,

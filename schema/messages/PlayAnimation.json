@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "events",
       "command": 184,
       "direction": "serverToClient",
@@ -18,62 +18,57 @@
           "size": 4,
           "bits": [
             {
-              "name": "unused0",
+              "name": "loop",
               "width": 1,
-              "note": "No effect is recorded; a server sends zero."
+              "note": "Set to loop it."
             },
             {
-              "name": "bit1",
+              "name": "holdLastFrame",
               "width": 1,
-              "note": "Changes how the animation plays; what it changes is not recorded."
+              "note": "Set to hold its last frame once it ends."
             },
             {
-              "name": "unused2",
+              "name": "queue",
               "width": 1,
-              "note": "No effect is recorded; a server sends zero."
+              "note": "Set to play it once the animation playing ends, rather than now."
             },
             {
-              "name": "bit3",
+              "name": "queueLast",
               "width": 1,
-              "note": "Changes how the animation plays; what it changes is not recorded."
+              "note": "Set to play it after every animation already waiting."
             },
             {
-              "name": "bit4",
+              "name": "replaceable",
               "width": 1,
-              "note": "Changes how the animation plays; what it changes is not recorded."
+              "note": "Set to let the next animation queued after it start at once."
             },
             {
-              "name": "bit5",
+              "name": "locked",
               "width": 1,
-              "note": "Changes how the animation plays; what it changes is not recorded."
+              "note": "Locks the unit's animation, where one of the client's own settings is on; later animations sent for the unit are then ignored."
             },
             {
-              "name": "bit6",
+              "name": "noBlend",
               "width": 1,
-              "note": "Locks the unit's animation, where one of the client's own settings is on."
+              "note": "Set to switch to it at once rather than blend in."
             },
             {
-              "name": "unused7",
+              "name": "lockedFromIdle",
               "width": 1,
-              "note": "No effect is recorded; a server sends zero."
+              "note": "Set where idle animations cannot fade it out."
             },
             {
-              "name": "bit8",
+              "name": "reserved",
               "width": 1,
-              "note": "Changes how the animation plays; what it changes is not recorded."
+              "note": "What it does is not recorded for this range; a server writes zero."
             },
             {
-              "name": "bit9",
-              "width": 1,
-              "note": "Changes how the animation plays; what it changes is not recorded."
-            },
-            {
-              "name": "unusedHigh",
-              "width": 22,
+              "name": "unused",
+              "width": 23,
               "note": "No effect is recorded; a server sends zero."
             }
           ],
-          "note": "How the animation plays. How these bits answer to the 4.17 ones is not recorded."
+          "note": "No effect is recorded; a server sends zero."
         },
         {
           "name": "scaleTime",
@@ -88,10 +83,10 @@
           "note": "The animation's name, ended by a zero byte. Nothing plays for a name the unit does not have."
         }
       ],
-      "note": "No start point or speed is carried: the animation starts from its beginning at normal speed. A client ignores the message while the unit's animation is frozen."
+      "note": "No start point is carried: the animation starts from its beginning. A unit whose animation has been locked ignores the message."
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 184,

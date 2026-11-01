@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "events",
       "command": 144,
       "direction": "serverToClient",
@@ -31,7 +31,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": 128,
-          "note": "A key into the client's own text, taken to be its tooltip; what the client does with it is not recorded. It applies to activate only."
+          "note": "A key into the client's own text. It applies to activate only."
         },
         {
           "name": "kind",
@@ -43,9 +43,6 @@
             },
             "1": {
               "name": "secondary"
-            },
-            "2": {
-              "name": "objective"
             }
           }
         },
@@ -56,15 +53,15 @@
           "values": {
             "0": {
               "name": "activate",
-              "note": "Add the quest, with the three strings, kind, quest and first."
+              "note": "Add the quest."
             },
             "1": {
               "name": "complete",
-              "note": "Complete it, with quest, kind and first; the strings have no effect."
+              "note": "Announce it done, or failed, for about four seconds, and take it from the tracker five seconds later."
             },
             "2": {
               "name": "remove",
-              "note": "Take it from the tracker, with quest and kind."
+              "note": "Take it from the tracker at once; a quest held back takes its place."
             }
           }
         },
@@ -94,7 +91,7 @@
       ]
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 144,

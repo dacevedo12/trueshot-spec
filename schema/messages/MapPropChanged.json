@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "events",
       "command": 218,
       "direction": "serverToClient",
@@ -17,7 +17,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": 64,
-          "note": "A name: an animation's or a particle's, by the change below. The name ends at its first zero byte; the bytes after it carry no meaning."
+          "note": "The name of the animation, for animate; a client reads it for no other change. The name ends at its first zero byte, and the bytes after it carry no meaning."
         },
         {
           "name": "first",
@@ -37,7 +37,7 @@
         {
           "name": "value",
           "type": "u32",
-          "note": "A value the change uses: for animate, the animation's flags; for linkEffect, the particle effect value."
+          "note": "A value the change uses: for animate, the animation's flags; for linkEffect, the particle effect value; for look, the look's number."
         },
         {
           "name": "change",
@@ -51,6 +51,10 @@
             "1": {
               "name": "linkEffect",
               "note": "Drive the prop's particle value effect from capture point point; a client refuses the change where option is not zero. name, first, second and value have no effect."
+            },
+            "2": {
+              "name": "look",
+              "note": "Change the prop's look to name, numbered value. The rest have no effect."
             }
           }
         },
@@ -72,7 +76,7 @@
       ]
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 218,

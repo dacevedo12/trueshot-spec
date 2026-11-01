@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "events",
       "command": 37,
       "direction": "serverToClient",
@@ -28,10 +28,10 @@
           "note": "How much."
         }
       ],
-      "note": "A client shows the gold rising from the unit only where amount is above 0.5, unit is its own champion, and source names a unit it holds."
+      "note": "Where amount is above 0.5, unit is the client's own champion and source names a unit it holds, a client floats the gold over the source. Otherwise, where it holds the unit, it shows the amount on the unit as a gain or a loss, and nothing for zero; where that appears is not recorded."
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.144",
       "channel": "events",
       "command": 37,

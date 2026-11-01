@@ -6,21 +6,21 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
+      "command": 20,
       "channel": "events",
       "direction": "serverToClient",
       "reliability": "reliable",
-      "command": 20,
       "fields": [
         {
           "name": "element",
           "type": "u8",
-          "note": "Which part of the minimap blinks. A client acts on 0 alone, its camera button, and ignores any other value."
+          "note": "Which part of the minimap blinks. A client acts on 0 alone, its camera button, and only once it knows its own champion; it ignores any other value."
         }
       ]
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.144",
       "command": 20,
       "channel": "events",

@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "events",
       "command": 82,
       "direction": "serverToClient",
@@ -19,11 +19,15 @@
           "values": {
             "1": {
               "name": "hud",
-              "note": "The main controls, with element and number as in HudHighlighted."
+              "note": "The main controls, with element as in HudHighlighted."
+            },
+            "2": {
+              "name": "shop",
+              "note": "A shop element blinks or stops, where the shop window is open. A client takes only elements 0 to 4. Element 0 is the buy button, 1 the sell button, 2 the shop item number names, 3 the item second names within the category number names, and 4 the recommended item number names."
             },
             "3": {
               "name": "minimap",
-              "note": "The minimap; a client acts only where element is 0, its camera button, and number and unused have no effect."
+              "note": "The minimap; a client acts on element 0 only, its camera button."
             }
           }
         },
@@ -38,7 +42,7 @@
           "note": "Which slot, as in HudHighlighted."
         },
         {
-          "name": "unused",
+          "name": "second",
           "type": "u8",
           "note": "A third value where part is 2; a server writes zero otherwise."
         },
@@ -63,7 +67,7 @@
       ]
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 82,

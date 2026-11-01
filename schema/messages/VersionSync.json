@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "events",
       "command": 87,
       "direction": "serverToClient",
@@ -15,97 +15,42 @@
         {
           "name": "agreement",
           "type": "u8",
-          "note": "Must be 1: any other value has the client report a build mismatch and leave."
+          "note": "Must be 1: any other value has the client report a build mismatch and leave. For 0 it also shows both versions."
         },
         {
           "name": "map",
           "type": "i32",
-          "note": "Which map to load."
+          "note": "Which map to load. spec/space.md keys the path origins by the same maps."
         },
         {
           "name": "seats",
           "type": "array",
           "count": 12,
+          "note": "Every place at the match, held or empty.",
           "items": {
             "name": "seat",
-            "type": "record",
-            "fields": [
-              {
-                "name": "player",
-                "type": "i64",
-                "note": "Which player holds the place."
-              },
-              {
-                "name": "level",
-                "type": "u16",
-                "note": "What this carries is not recorded."
-              },
-              {
-                "name": "summoner",
-                "type": "u32",
-                "note": "What this carries is not recorded."
-              },
-              {
-                "name": "otherSummoner",
-                "type": "u32",
-                "note": "What this carries is not recorded."
-              },
-              {
-                "name": "flags",
-                "type": "u8",
-                "note": "What this carries is not recorded."
-              },
-              {
-                "name": "side",
-                "type": "i32",
-                "note": "What this carries is not recorded."
-              },
-              {
-                "name": "firstName",
-                "type": "string",
-                "size": 28,
-                "encoding": "utf8",
-                "note": "What this carries is not recorded."
-              },
-              {
-                "name": "secondName",
-                "type": "string",
-                "size": 28,
-                "encoding": "utf8",
-                "note": "What this carries is not recorded."
-              },
-              {
-                "name": "firstNumber",
-                "type": "i32",
-                "note": "What this carries is not recorded."
-              },
-              {
-                "name": "lastNumber",
-                "type": "i32",
-                "note": "Applied to the player the place names, where it is zero or more."
-              }
-            ]
-          },
-          "note": "Every place at the match, held or empty."
+            "type": "struct",
+            "struct": "Seat"
+          }
         },
         {
           "name": "build",
           "type": "string",
-          "size": 256,
           "encoding": "utf8",
-          "note": "Which build the server serves, shown and not checked."
+          "size": 256,
+          "note": "Which build the server serves, shown and not checked. Written out in full and padded with zero bytes to the width above; a client reads it up to the first zero byte."
         },
         {
           "name": "mode",
           "type": "string",
-          "size": 128,
           "encoding": "utf8",
-          "note": "Which way the match is played."
+          "size": 128,
+          "note": "Which way the match is played, written and padded as above."
         }
       ]
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.129",
       "channel": "events",
       "command": 87,

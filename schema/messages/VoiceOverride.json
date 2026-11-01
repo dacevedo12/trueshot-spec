@@ -6,26 +6,29 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "events",
       "command": 158,
       "direction": "serverToClient",
       "reliability": "reliable",
       "fields": [
         {
-          "name": "reset",
-          "type": "u8",
-          "note": "Whether to reset. A name follows any value other than 1, so a server sends only 0 or 1.",
-          "values": {
-            "0": {
-              "name": "change",
-              "note": "The name below follows."
-            },
-            "1": {
+          "name": "flags",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
               "name": "reset",
-              "note": "The unit returns to its own voice; nothing follows."
+              "width": 1,
+              "note": "Set where the unit returns to its own voice; no name follows."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
             }
-          }
+          ],
+          "note": "Whether to reset. The whole byte is read, and a name follows any value other than 1, so a server sends only 0 or 1."
         },
         {
           "name": "voice",
@@ -34,14 +37,14 @@
           "size": "terminated",
           "note": "The voice's name, ended by a zero byte.",
           "present": {
-            "when": "reset",
+            "when": "flags.reset",
             "equals": 0
           }
         }
       ]
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 158,

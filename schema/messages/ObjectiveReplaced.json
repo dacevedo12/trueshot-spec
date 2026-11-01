@@ -6,8 +6,7 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
-      "note": "A client ignores it where it has no objective panel.",
+      "until": "1.0.0.128",
       "channel": "events",
       "command": 14,
       "direction": "serverToClient",
@@ -20,10 +19,11 @@
           "size": 128,
           "note": "The objective. The text ends at its first zero byte, which falls within the field."
         }
-      ]
+      ],
+      "note": "A client ignores it where it has no objective panel."
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.144",
       "channel": "events",
       "command": 14,

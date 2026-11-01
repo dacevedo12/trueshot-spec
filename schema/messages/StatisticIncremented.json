@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "events",
       "command": 227,
       "direction": "serverToClient",
@@ -20,7 +20,7 @@
         {
           "name": "statistic",
           "type": "u8",
-          "note": "Which count, from 0 to 9. A client does not check the range, so a value past 9 changes something that is not a count; a server sends only those named.",
+          "note": "Which count, from 0 to 9. A client does not check the range, so a value past 9 has no defined effect; a server sends only those named.",
           "values": {
             "0": {
               "name": "pointCaptured"
@@ -57,7 +57,7 @@
       ]
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 227,

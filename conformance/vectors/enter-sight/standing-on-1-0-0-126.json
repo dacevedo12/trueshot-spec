@@ -7,30 +7,31 @@
   "bytes": "c20100004001000000e90300000100000000000000000000803f030100000000007a4400007a44000000000000803f",
   "fields": {
     "command": 194,
-    "netId": 1073741825,
     "itemCount": 1,
     "items": [
       {
-        "slot": 0,
-        "first": 0,
-        "second": 0,
-        "itemId": 1001
+        "charges": 0,
+        "inSlot": 0,
+        "item": 1001,
+        "slot": 0
       }
     ],
-    "hasVector": 1,
-    "vector": {
-      "x": 0,
-      "y": 0,
-      "z": 1
-    },
-    "movementKind": 3,
-    "syncId": 1,
-    "path": null,
-    "standing": {
-      "x": 1000,
-      "z": 1000,
-      "directionX": 0,
-      "directionZ": 1
+    "netId": 1073741825,
+    "view": {
+      "hasShields": 1,
+      "magicShield": 0,
+      "movementState": {
+        "atX": 1000,
+        "atZ": 1000,
+        "facingX": 0,
+        "facingZ": 1,
+        "movement": null,
+        "movementAtSpeed": null,
+        "movementKind": 3,
+        "syncId": 1
+      },
+      "physicalShield": 0,
+      "shield": 1
     }
   }
 }

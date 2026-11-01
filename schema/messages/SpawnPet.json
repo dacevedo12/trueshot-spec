@@ -6,17 +6,17 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
-      "note": "A client gives the pet its owner's side.",
+      "until": "1.0.0.128",
       "channel": "events",
       "command": 60,
       "direction": "serverToClient",
       "reliability": "reliable",
+      "note": "The header names the owner, and a client handles the message only where it holds that unit. It kills the owner's earlier pet if that lives, then makes the pet under pet and node with the owner's side and sight, as the owner's pet. It deletes no object first; where one already holds pet, both answer to it.",
       "fields": [
         {
-          "name": "owner",
+          "name": "pet",
           "type": "u32",
-          "note": "The unit it belongs to."
+          "note": "The id the pet answers to, which a client gives it together with node. The header names the owner."
         },
         {
           "name": "node",
@@ -41,12 +41,12 @@
         {
           "name": "spellLevel",
           "type": "i32",
-          "note": "The level of the spell that summoned it, plus one. A client uses it only in some states of the owner, which are not recorded."
+          "note": "The level of the spell that summoned it, plus one. A client uses it only where the owner belongs to its own network node."
         },
         {
-          "name": "unused",
-          "type": "u32",
-          "note": "Unused; a server writes zero."
+          "name": "duration",
+          "type": "f32",
+          "note": "How long it lasts, in seconds. A client reads nothing of it."
         },
         {
           "name": "damageBonus",
@@ -82,7 +82,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": 64,
-          "note": "An effect it carries, padded with zero bytes. A client uses it only in some states of the owner, which are not recorded."
+          "note": "An effect it carries, padded with zero bytes. A client uses it only where the owner belongs to its own network node."
         },
         {
           "name": "clone",
@@ -120,14 +120,14 @@
           "note": "The script that drives it, padded with zero bytes."
         },
         {
-          "name": "withOwner",
+          "name": "minimapIcon",
           "type": "u8",
           "note": "Not zero, where the owner is a champion, to class the pet with its owner for display. What that changes on screen is not recorded."
         }
       ]
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.129",
       "channel": "events",
       "command": 60,

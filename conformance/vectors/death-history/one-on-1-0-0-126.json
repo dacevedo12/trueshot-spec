@@ -6,57 +6,63 @@
   "note": "Laid out as a 1.0.0.126 client takes it.",
   "bytes": "24 01000040 0100004000002041000000003e000000020000000000f04201000a01000040010000400000c842000000000000000000000000000000000000000001000040000000000000ec420100010100004001000040",
   "fields": {
-    "command": 36,
-    "netId": 1073741825,
-    "killer": 1073741825,
-    "span": 10,
-    "sourceType": {
-      "type": 0,
-      "unused": 0
-    },
     "blobLength": 62,
-    "entryCount": 2,
+    "command": 36,
     "entries": [
       {
-        "time": 120,
+        "assist": null,
         "count": 1,
-        "event": 10,
-        "source": 1073741825,
-        "target": null,
+        "critical": null,
         "damage": {
-          "struck": 1073741825,
-          "physical": 100,
           "magical": 0,
-          "true": 0,
-          "between": "0000000000000000",
-          "script": 0,
-          "sourceObject": 1073741825,
           "parent": {
-            "first": 0,
-            "second": 0,
-            "third": 0,
+            "category": 0,
+            "side": 0,
+            "source": 0,
+            "spellLevel": 0,
             "unused": 0
-          }
+          },
+          "parentCaster": 1073741825,
+          "parentScript": 0,
+          "physical": 100,
+          "script": 0,
+          "sourceKind": 0,
+          "true": 0
         },
-        "healing": null,
-        "buff": null,
-        "short": null,
-        "medium": null,
-        "long": null
+        "earned": null,
+        "effect": null,
+        "event": 10,
+        "heal": null,
+        "kill": null,
+        "source": 1073741825,
+        "spent": null,
+        "spree": null,
+        "target": 1073741825,
+        "time": 120,
+        "value": null
       },
       {
-        "time": 118,
+        "assist": null,
         "count": 1,
-        "event": 1,
-        "source": 1073741825,
-        "target": 1073741825,
+        "critical": null,
         "damage": null,
-        "healing": null,
-        "buff": null,
-        "short": null,
-        "medium": null,
-        "long": null
+        "earned": null,
+        "effect": null,
+        "event": 1,
+        "heal": null,
+        "kill": null,
+        "source": 1073741825,
+        "spent": null,
+        "spree": null,
+        "target": 1073741825,
+        "time": 118,
+        "value": null
       }
-    ]
+    ],
+    "entryCount": 2,
+    "killer": 1073741825,
+    "netId": 1073741825,
+    "sourceType": 0,
+    "span": 10
   }
 }

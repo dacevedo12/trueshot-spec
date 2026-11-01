@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "events",
       "command": 104,
       "direction": "serverToClient",
@@ -20,7 +20,7 @@
             {
               "name": "result",
               "width": 7,
-              "note": "How the damage landed, and so what a client shows over the unit hurt. 4 shows the amount, 3 shows it as a critical strike, and 2 shows the word for a dodge in place of an amount. Any value above 5 shows as 4.",
+              "note": "How the damage landed, and so what a client shows over the unit hurt. 4 shows the amount, 3 shows it as a critical strike, and 2 shows the word for a dodge in place of an amount; any value above 5 shows as 4.",
               "values": {
                 "0": {
                   "name": "invulnerable",
@@ -45,6 +45,14 @@
                 "5": {
                   "name": "miss",
                   "note": "A notice in the dodge style."
+                },
+                "6": {
+                  "name": "normal6",
+                  "note": "As 4."
+                },
+                "7": {
+                  "name": "normal7",
+                  "note": "As 4."
                 }
               }
             },
@@ -63,7 +71,7 @@
         {
           "name": "source",
           "type": "u32",
-          "note": "The unit dealing it. A client shows nothing, notices included, unless it holds both target and source; the figure drifts from source toward target, and a champion source has the amount added to its damage dealt."
+          "note": "The unit dealing it. A client shows nothing, notices included, unless it holds target and target can be attacked; it does not need to hold source, and a champion source has the amount added to its damage dealt."
         },
         {
           "name": "amount",
@@ -73,7 +81,7 @@
       ]
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.129",
       "channel": "events",
       "command": 104,

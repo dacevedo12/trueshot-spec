@@ -6,8 +6,7 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
-      "note": "The body ends after camp. The monster faces from where it stands toward the facing point, or along a default facing where the two are the same. A client drops the message while its map is not loaded.",
+      "until": "1.0.0.128",
       "channel": "events",
       "command": 102,
       "direction": "serverToClient",
@@ -90,11 +89,11 @@
           "note": "A further name the unit answers to, written and padded as above."
         },
         {
-          "name": "spawnAnimation",
+          "name": "campIcon",
           "type": "string",
           "encoding": "utf8",
           "size": 64,
-          "note": "The name the client loads what it does on arriving under, written and padded as above."
+          "note": "A name the client gives the camp it sets up for the unit where it holds no camp of that number yet; it has no effect where the camp already exists. What the client shows by it is not recorded."
         },
         {
           "name": "side",
@@ -132,10 +131,11 @@
           "type": "u32",
           "note": "Which camp the unit belongs to. A client adds the unit to that camp where a CampMarker has placed it first, and to no camp otherwise."
         }
-      ]
+      ],
+      "note": "The body ends after camp. The monster faces from where it stands toward the facing point, or along +Z where the two are the same, and a client drops the message while its map's navigation data is unloaded."
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 102,

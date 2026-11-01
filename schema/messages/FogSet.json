@@ -6,34 +6,21 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "events",
       "command": 180,
       "direction": "serverToClient",
       "reliability": "reliable",
       "fields": [
         {
-          "name": "state",
-          "type": "bits",
-          "size": 1,
-          "bits": [
-            {
-              "name": "drawn",
-              "width": 1,
-              "note": "Set to draw the fog, clear to draw the map with no darkening. Any bit of its byte set counts as this one set."
-            },
-            {
-              "name": "unused",
-              "width": 7,
-              "note": "A client takes any bit set here as drawn set; a server writes zero."
-            }
-          ],
-          "note": "Whether the fog is drawn."
+          "name": "hidden",
+          "type": "u8",
+          "note": "A client takes any bit set here as drawn set; a server writes zero."
         }
       ]
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 180,

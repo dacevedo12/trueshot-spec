@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "events",
       "command": 159,
       "direction": "serverToClient",
@@ -18,9 +18,9 @@
           "note": "Names this look, so that AppearancePopped can name it."
         },
         {
-          "name": "how",
+          "name": "overrideSpells",
           "type": "u8",
-          "note": "What the look changes. Which of its bits a client acts on is not recorded."
+          "note": "Set where the unit's spells change with it. Any nonzero value sets it."
         },
         {
           "name": "asset",
@@ -30,10 +30,10 @@
           "note": "The name the client loads it under, ended by a zero byte. The name and its zero byte take at most 64 bytes."
         }
       ],
-      "note": "No skin is carried."
+      "note": "No skin is carried; the look wears the unit's own skin. A client first stops a basic attack the unit is making; looks stack, the newest shows, and AppearancePopped takes away the one its entry names."
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 159,

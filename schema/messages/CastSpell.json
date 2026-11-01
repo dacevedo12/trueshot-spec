@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "requests",
       "command": 162,
       "direction": "clientToServer",
@@ -37,7 +37,7 @@
         {
           "name": "y",
           "type": "f32",
-          "note": "The same point, in height, in world units."
+          "note": "The same point, in height, in world units: the height of the place aimed at."
         },
         {
           "name": "z",
@@ -47,12 +47,12 @@
         {
           "name": "endX",
           "type": "f32",
-          "note": "The second point of what aims the spell: the same as the first for a point or a unit; for a line dragged out, its far end; for a cone, its far point."
+          "note": "The second point of what aims the spell; for a spell that takes no aim it is the caster's own position, the same as the first."
         },
         {
           "name": "endY",
           "type": "f32",
-          "note": "The second point, in height, in world units."
+          "note": "The second point, in height, in world units: the height of where the cast ends."
         },
         {
           "name": "endZ",
@@ -62,12 +62,12 @@
         {
           "name": "target",
           "type": "u32",
-          "note": "The unit aimed at, or zero where no unit is aimed at."
+          "note": "The unit aimed at; for a spell that takes no aim, the caster itself, with its own position in both points. Zero only where no unit is aimed at."
         }
       ]
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.132",
       "channel": "requests",
       "command": 162,

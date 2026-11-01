@@ -6,22 +6,21 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "events",
       "direction": "serverToClient",
       "reliability": "reliable",
       "command": 123,
-      "note": "On this range a region stands where the message places it; RegionAttached places one that follows a unit. A region matching one the client holds in view, sightRadius, the first three bits of does, marker, sightFrom and position only gives that one the new lifetime.",
       "fields": [
         {
-          "name": "view",
+          "name": "kind",
           "type": "u32",
           "note": "Whose map shows the region: 0 side 100's, 1 side 200's, 2 everyone's, 3 side 300's, 4 any other. A client takes the value as it stands, so 100 or 200 here matches no one, and draws the region only where it is 2 or names the player's own side."
         },
         {
-          "name": "unused",
+          "name": "clientId",
           "type": "u32",
-          "note": "Unused; a server writes zero."
+          "note": "Unused; a client reads nothing here."
         },
         {
           "name": "sightRadius",
@@ -31,7 +30,7 @@
         {
           "name": "atX",
           "type": "f32",
-          "note": "Where it stands, in world units."
+          "note": "Where it stands, along one ground axis, in world units."
         },
         {
           "name": "atY",
@@ -41,7 +40,7 @@
         {
           "name": "atZ",
           "type": "f32",
-          "note": "Where it stands, in world units."
+          "note": "Where it stands, along the other ground axis, in world units."
         },
         {
           "name": "lifetime",
@@ -49,7 +48,7 @@
           "note": "How long it lasts, in seconds. A client counts it down and removes the region once it reaches zero, so zero or less removes it at once."
         },
         {
-          "name": "clientId",
+          "name": "marker",
           "type": "u32",
           "note": "The id the client keeps the region under. Zero has the client pick one."
         },
@@ -57,44 +56,40 @@
           "name": "does",
           "type": "bits",
           "size": 4,
+          "note": "What the region does.",
           "bits": [
             {
-              "name": "grantSight",
+              "name": "flag",
               "width": 1,
-              "note": "Set where the region shows the map; where view is 2, a client also sets revealHidden. What else it changes is not recorded."
+              "note": "Where kind is 2 and this bit is set, a client also sets the bit after it."
             },
             {
-              "name": "revealHidden",
+              "name": "second",
               "width": 1,
-              "note": "What this changes on a client is not recorded."
-            },
-            {
-              "name": "attached",
-              "width": 1,
-              "note": "Its value has no effect; a server writes zero."
+              "note": "Kept with the region; a client also sets it where kind is 2 and flag is set. It changes nothing a client shows."
             },
             {
               "name": "unused",
-              "width": 29,
-              "note": "Unused; a server writes zero."
+              "width": 30,
+              "note": "Its value has no effect; a server writes zero."
             }
-          ],
-          "note": "What the region does."
+          ]
         },
         {
-          "name": "marker",
+          "name": "extra",
           "type": "u32",
-          "note": "A region sent again with the same value is taken as the one already shown; what else it names is not recorded. A server sends zero."
+          "note": "Kept with the region; it changes nothing a client shows. A server writes zero."
         },
         {
-          "name": "sightFrom",
+          "name": "otherExtra",
           "type": "u32",
           "note": "A region sent again with the same value is taken as the one already shown; what else it names is not recorded. A server sends zero."
         }
-      ]
+      ],
+      "note": "On this range a region stands where the message places it; RegionAttached places one that follows a unit. A region matching one the client holds in kind, sightRadius, the first three bits of does, extra, otherExtra and position only gives that one the new lifetime."
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.132",
       "channel": "events",
       "direction": "serverToClient",

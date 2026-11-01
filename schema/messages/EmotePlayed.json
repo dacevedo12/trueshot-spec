@@ -6,21 +6,6 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
-      "channel": "events",
-      "command": 72,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "emote",
-          "type": "u32",
-          "note": "Which emote, by the number the client knows it as. A client plays its default emote for a number past the end of its list."
-        }
-      ]
-    },
-    {
-      "from": "1.0.0.127",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 72,

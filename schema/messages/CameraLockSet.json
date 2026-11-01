@@ -6,35 +6,22 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
-      "note": "A client answers at once with CameraLock, returning the state byte as it arrived.",
+      "until": "1.0.0.128",
       "channel": "events",
       "command": 124,
       "direction": "serverToClient",
       "reliability": "reliable",
       "fields": [
         {
-          "name": "state",
-          "type": "bits",
-          "size": 1,
-          "bits": [
-            {
-              "name": "locked",
-              "width": 1,
-              "note": "Set to lock the camera, clear to free it."
-            },
-            {
-              "name": "unused",
-              "width": 7,
-              "note": "A server writes zero. A client keeps these bits with the rest of the byte and returns them in CameraLock; what else they do is not recorded."
-            }
-          ],
-          "note": "Whether the camera is locked."
+          "name": "locked",
+          "type": "u8",
+          "note": "Nonzero to lock the camera, zero to free it; a client tests the whole byte, so any set bit locks it."
         }
-      ]
+      ],
+      "note": "A client answers at once with CameraLock, returning the state byte as it arrived. While the game holds a forced lock, it keeps the byte and sends it only as that lock lifts."
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 124,

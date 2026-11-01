@@ -3,13 +3,15 @@
   "subject": "message",
   "message": "SeatName",
   "version": "1.0.0.126",
-  "note": "Laid out as a 1.0.0.126 client takes it. Its identifiers are stand-ins.",
-  "bytes": "660000000000000001000000000000000000000000000000506c6179657200",
+  "note": "Laid out as a 1.0.0.126 client takes it.",
+  "bytes": "660000000000000001000000000000000000000009000000506c61796572203100",
   "fields": {
     "command": 102,
-    "leading": "00000000000000",
+    "padding": "00000000000000",
     "player": "1",
-    "between": "0000000000000000",
-    "name": "Player"
+    "skin": 0,
+    "nameLength": 9,
+    "name": "Player 1",
+    "terminator": "00"
   }
 }

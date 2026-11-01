@@ -6,29 +6,29 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "clock",
       "command": 8,
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [
         {
-          "name": "clientId",
+          "name": "value",
           "type": "u32",
           "note": "The client id the sender holds."
         },
         {
           "name": "serverSaid",
           "type": "f32",
-          "note": "The time the server stated, carried back."
+          "note": "The time the server last stated, in seconds, carried back as it arrived."
         },
         {
           "name": "clientSaid",
           "type": "f32",
-          "note": "What the client's clock reads after taking it."
+          "note": "What the client's own clock reads, in seconds, just after it set itself from that statement."
         },
         {
-          "name": "digest",
+          "name": "check",
           "type": "bytes",
           "size": 32,
           "note": "The same thirty two bytes from every client of the build; they carry nothing a server needs."
@@ -36,7 +36,7 @@
       ]
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "3.12.0.251",
       "channel": "clock",
       "command": 8,

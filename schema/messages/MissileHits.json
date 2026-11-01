@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "events",
       "command": 40,
       "direction": "serverToClient",
@@ -15,7 +15,7 @@
         {
           "name": "count",
           "type": "u16",
-          "note": "How many units follow. A count of zero or above 32767 carries no units, so a server sends at most 32767."
+          "note": "How many units follow. A client reads it as signed, so a count of zero or above 32767 carries no units, and a server sends at most 32767."
         },
         {
           "name": "targets",
@@ -31,7 +31,7 @@
       ]
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.144",
       "channel": "events",
       "command": 40,

@@ -6,75 +6,6 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
-      "channel": "events",
-      "command": 79,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "champion",
-          "type": "u32",
-          "note": "The name the champion answers to, so later messages can name it."
-        },
-        {
-          "name": "clientId",
-          "type": "u32",
-          "note": "The client id of the player the champion belongs to. A client takes the champion carrying its own client id as its own."
-        },
-        {
-          "name": "node",
-          "type": "u8",
-          "note": "What this carries is not recorded."
-        },
-        {
-          "name": "between",
-          "type": "u8",
-          "note": "Unused; a server writes zero."
-        },
-        {
-          "name": "side",
-          "type": "u8",
-          "note": "Not zero for side 100, zero for 200."
-        },
-        {
-          "name": "bot",
-          "type": "u8",
-          "note": "Set where nobody holds it."
-        },
-        {
-          "name": "after",
-          "type": "u8",
-          "note": "Unused; a server writes zero."
-        },
-        {
-          "name": "spawnIndex",
-          "type": "u8",
-          "note": "Which of its side's starting places it begins at."
-        },
-        {
-          "name": "skin",
-          "type": "i32",
-          "note": "Which look it wears."
-        },
-        {
-          "name": "name",
-          "type": "string",
-          "size": 40,
-          "encoding": "utf8",
-          "note": "What the seat holding it is called."
-        },
-        {
-          "name": "asset",
-          "type": "string",
-          "size": 128,
-          "encoding": "utf8",
-          "note": "The champion it is."
-        }
-      ]
-    },
-    {
-      "from": "1.0.0.127",
       "until": "1.0.0.128",
       "channel": "events",
       "command": 79,
@@ -109,7 +40,7 @@
         {
           "name": "bot",
           "type": "u8",
-          "note": "Nonzero where a bot plays the seat; its shown name is then the client's own bot name for asset, and name has no effect."
+          "note": "Nonzero where a bot plays the seat and nobody holds it; its shown name is then the client's own bot name for asset, and name has no effect."
         },
         {
           "name": "rank",
@@ -138,7 +69,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": 128,
-          "note": "The name the client loads its art and sound under, written and padded as above."
+          "note": "The champion it is: the name the client loads its art and sound under, written and padded as above."
         }
       ],
       "note": "The champion takes the id in champion, not the header's; a client first removes any object holding that id. For the client's own seat, name also becomes its own player's name. A client drops the message while its map's navigation data is unloaded, as early in a reconnection."

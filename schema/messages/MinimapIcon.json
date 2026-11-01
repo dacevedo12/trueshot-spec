@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "events",
       "command": 225,
       "direction": "serverToClient",
@@ -21,13 +21,14 @@
           "name": "icon",
           "type": "string",
           "encoding": "utf8",
-          "size": "terminated",
+          "size": 64,
           "note": "The name the client loads the mark under, ended by a zero byte. A client changes nothing where it is the mark already drawn."
         }
-      ]
+      ],
+      "note": "A client does nothing unless unit is a unit it holds that can be attacked."
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 225,

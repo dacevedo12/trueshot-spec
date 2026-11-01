@@ -6,12 +6,9 @@
   "note": "Laid out as a 1.0.0.126 client takes it.",
   "bytes": "89 00000000 0100000001",
   "fields": {
-    "command": 137,
-    "netId": 0,
     "category": 1,
-    "state": {
-      "locked": 1,
-      "unused": 0
-    }
+    "command": 137,
+    "locked": 1,
+    "netId": 0
   }
 }

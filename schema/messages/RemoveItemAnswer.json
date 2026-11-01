@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "events",
       "command": 11,
       "direction": "serverToClient",
@@ -20,12 +20,12 @@
         {
           "name": "left",
           "type": "u8",
-          "note": "How many are left in the slot; zero empties it."
+          "note": "How many are left in the slot; zero empties it, item and charges cleared. Either way a client cancels any spell or action its player had picked."
         }
       ]
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "3.9.0.491",
       "channel": "events",
       "command": 11,

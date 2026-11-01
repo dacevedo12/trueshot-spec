@@ -7,14 +7,24 @@
   "bytes": "c20100004000000001000000",
   "fields": {
     "command": 194,
-    "netId": 1073741825,
     "itemCount": 0,
     "items": [],
-    "hasVector": 0,
-    "vector": null,
-    "movementKind": 0,
-    "syncId": 1,
-    "path": null,
-    "standing": null
+    "netId": 1073741825,
+    "view": {
+      "hasShields": 0,
+      "magicShield": null,
+      "movementState": {
+        "atX": null,
+        "atZ": null,
+        "facingX": null,
+        "facingZ": null,
+        "movement": null,
+        "movementAtSpeed": null,
+        "movementKind": 0,
+        "syncId": 1
+      },
+      "physicalShield": null,
+      "shield": null
+    }
   }
 }

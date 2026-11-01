@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "events",
       "command": 160,
       "direction": "serverToClient",
@@ -17,10 +17,11 @@
           "type": "u32",
           "note": "The player's champion, matched against the owner of each champion the client knows."
         }
-      ]
+      ],
+      "note": "A client shows a chat notice naming the player in their side's colour, and nothing where player names no champion it knows, names its own champion, or the match is not under way."
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 160,

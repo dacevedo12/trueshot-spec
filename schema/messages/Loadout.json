@@ -6,17 +6,18 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "events",
       "command": 44,
       "direction": "serverToClient",
       "reliability": "reliable",
+      "note": "A client's shop is set up by the Loadout of its own champion: until that arrives the shop opens empty, with no items, no suggested items and no builds, and is drawn at a size that does not fit the screen. A server sends one for every champion at spawning, between SpawnStart and SpawnEnd.",
       "fields": [
         {
           "name": "runes",
           "type": "array",
           "count": 30,
-          "note": "The runes set before the match, thirty places. A place holds zero where nothing was set.",
+          "note": "The runes set before the match, thirty places.",
           "items": {
             "name": "rune",
             "type": "u32",
@@ -36,9 +37,14 @@
         },
         {
           "name": "choices",
-          "type": "bytes",
-          "size": 400,
-          "note": "The choices made alongside them. How a client divides these bytes is not recorded; a server sends zero where nothing was chosen."
+          "type": "array",
+          "count": 80,
+          "note": "The choices made alongside them, 400 bytes that a client keeps as one block.",
+          "items": {
+            "name": "choice",
+            "type": "struct",
+            "struct": "Choice"
+          }
         },
         {
           "name": "level",
@@ -48,7 +54,7 @@
       ]
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.144",
       "channel": "events",
       "command": 44,

@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "events",
       "command": 166,
       "direction": "serverToClient",
@@ -18,9 +18,14 @@
           "note": "The unit credited with the death."
         },
         {
-          "name": "unused",
-          "type": "u16",
+          "name": "damageType",
+          "type": "u8",
           "note": "Unused; a server writes zero."
+        },
+        {
+          "name": "damageSource",
+          "type": "u8",
+          "note": "Read only for a minion a champion killed, whose kill a client shows another way where it is 7; a server writes zero."
         },
         {
           "name": "stayDown",
@@ -30,12 +35,13 @@
         {
           "name": "standing",
           "type": "u8",
-          "note": "Any value other than zero leaves the unit standing rather than dead, with no death animation."
+          "note": "Any nonzero value leaves the unit standing rather than dead. A champion then plays no death animation; minions and turrets play theirs whatever this says."
         }
-      ]
+      ],
+      "note": "Where killer names a unit it knows, a client announces the kill for that unit, then the one kind picks. Where the unit is not already dead, it cancels the unit's cast and attack, and only where killer is nonzero puts the unit down, by stayDown and standing."
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 166,

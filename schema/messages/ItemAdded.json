@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "events",
       "command": 114,
       "direction": "serverToClient",
@@ -25,18 +25,18 @@
         {
           "name": "inSlot",
           "type": "u8",
-          "note": "How many of it are in that slot now. Zero places nothing."
+          "note": "How many of the item the slot holds now; zero leaves the slot as it was. The slot's charges come from the item's own data."
         },
         {
-          "name": "flag",
+          "name": "activate",
           "type": "u8",
-          "note": "What this carries is not recorded. Where it is not zero and the slot holds an item, a client refreshes the slot and sends RemoveItem for it with sell clear. A server sends zero."
+          "note": "What this carries is not recorded. Where it is not zero, a client refreshes the slot and, where the slot holds an item, sends RemoveItem for it with sell clear; a server sends zero."
         }
       ],
       "note": "There is no charges field: a client takes an item's charges from the item's own data."
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 114,

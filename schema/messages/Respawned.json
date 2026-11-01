@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "events",
       "command": 77,
       "direction": "serverToClient",
@@ -20,32 +20,7 @@
         {
           "name": "y",
           "type": "f32",
-          "note": "Where it comes back, in height, in world units. A client takes the height from the ground; any other use is not recorded."
-        },
-        {
-          "name": "z",
-          "type": "f32",
-          "note": "Where it comes back, along the other ground axis, in world units."
-        }
-      ]
-    },
-    {
-      "from": "1.0.0.127",
-      "until": "1.0.0.128",
-      "channel": "events",
-      "command": 77,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "x",
-          "type": "f32",
-          "note": "Where it comes back, along one ground axis, in world units."
-        },
-        {
-          "name": "y",
-          "type": "f32",
-          "note": "Where it comes back, in height, in world units. A client places it there as given."
+          "note": "Where it comes back, in height, in world units."
         },
         {
           "name": "z",

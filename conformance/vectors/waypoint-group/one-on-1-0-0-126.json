@@ -7,36 +7,38 @@
   "bytes": "64000000000200000001000100020001000040010047f5d3f43bf7d3f4",
   "fields": {
     "command": 100,
-    "netId": 0,
-    "syncId": 2,
     "movementCount": 1,
     "movements": [
       {
         "header": {
           "hasTeleportToken": 1,
-          "unused": 0,
           "pointCount": 2,
+          "unused": 0,
           "unusedHigh": 0
         },
-        "unit": 1073741825,
-        "teleportToken": 1,
-        "flags": [
-          {
-            "xIsStep": 0,
-            "zIsStep": 0
-          }
-        ],
-        "firstX": -2745,
-        "firstZ": -2861,
-        "steps": [
-          {
-            "xStep": null,
-            "xWhole": -2245,
-            "zStep": null,
-            "zWhole": -2861
-          }
-        ]
+        "path": {
+          "firstX": -2745,
+          "firstZ": -2861,
+          "flags": [
+            {
+              "xIsStep": 0,
+              "zIsStep": 0
+            }
+          ],
+          "steps": [
+            {
+              "xStep": null,
+              "xWhole": -2245,
+              "zStep": null,
+              "zWhole": -2861
+            }
+          ],
+          "teleportToken": 1,
+          "unit": 1073741825
+        }
       }
-    ]
+    ],
+    "netId": 0,
+    "syncId": 2
   }
 }

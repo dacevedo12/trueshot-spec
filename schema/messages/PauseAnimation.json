@@ -6,29 +6,6 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
-      "channel": "events",
-      "command": 116,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "state",
-          "type": "u8",
-          "note": "Whether to pause. A server sends only 0 or 1; what other values do is not recorded.",
-          "values": {
-            "0": {
-              "name": "resume"
-            },
-            "1": {
-              "name": "pause"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "from": "1.0.0.127",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 116,

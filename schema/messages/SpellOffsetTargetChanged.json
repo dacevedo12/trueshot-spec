@@ -6,11 +6,11 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
+      "command": 55,
       "channel": "events",
       "direction": "serverToClient",
       "reliability": "reliable",
-      "command": 55,
       "fields": [
         {
           "name": "which",
@@ -23,7 +23,7 @@
               "note": "Which slot. A champion's own spells count from 0."
             },
             {
-              "name": "summonerSpell",
+              "name": "summonerSlots",
               "width": 1,
               "note": "Set where the slot counts among the summoner slots, so that 0 and 1 name those two."
             }
@@ -32,12 +32,12 @@
         {
           "name": "target",
           "type": "u32",
-          "note": "The unit the spell is cast from. A client takes an id it does not know as no unit."
+          "note": "The unit the slot's targeting indicator works from instead of the caster. A client takes an id it does not hold as no unit."
         }
       ]
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.144",
       "command": 55,
       "channel": "events",

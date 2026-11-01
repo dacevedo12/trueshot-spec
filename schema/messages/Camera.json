@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "requests",
       "command": 48,
       "direction": "clientToServer",
@@ -29,33 +29,30 @@
         },
         {
           "name": "directionX",
-          "type": "f32",
-          "note": "What this carries is not recorded."
+          "type": "f32"
         },
         {
           "name": "directionY",
-          "type": "f32",
-          "note": "What this carries is not recorded."
+          "type": "f32"
         },
         {
           "name": "directionZ",
-          "type": "f32",
-          "note": "What this carries is not recorded."
+          "type": "f32"
         },
         {
           "name": "clientId",
           "type": "u32",
-          "note": "The client id the sender holds."
+          "note": "The client id the sender holds: that of the client the view belongs to."
         },
         {
           "name": "syncId",
           "type": "u8",
-          "note": "The report's number, counting up as the view moves."
+          "note": "Names this report, counting up as the view moves. A client sends the report again until a server returns the name."
         }
       ]
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.144",
       "channel": "requests",
       "command": 48,

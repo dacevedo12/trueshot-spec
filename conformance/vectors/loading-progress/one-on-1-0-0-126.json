@@ -6,20 +6,20 @@
   "note": "Laid out as a 1.0.0.126 client sends it. Its identifiers are stand-ins.",
   "bytes": "190000000000000000000000000000000000000000ac1c954100009b00f0",
   "fields": {
-    "command": 25,
-    "netId": 0,
     "clientId": 0,
-    "playerId": "0",
-    "percent": 0,
+    "command": 25,
+    "done": {
+      "loaded": 0,
+      "unused": 120
+    },
     "eta": 18.638999938964844,
+    "netId": 0,
+    "percent": 0,
+    "playerId": "0",
     "status": {
       "count": 0,
       "ping": 155,
       "unused": 0
-    },
-    "state": {
-      "loaded": 0,
-      "unused": 120
     }
   }
 }

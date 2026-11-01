@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "transient",
       "command": 157,
       "direction": "serverToClient",
@@ -25,7 +25,7 @@
         {
           "name": "progress",
           "type": "f32",
-          "note": "How far through loading it is, to 100."
+          "note": "How far through loading it is, from zero to one hundred."
         },
         {
           "name": "secondsLeft",
@@ -40,27 +40,28 @@
             {
               "name": "count",
               "width": 16,
-              "note": "How many times this has been reported."
+              "note": "It rises with each report, not always by one."
             },
             {
               "name": "ping",
               "width": 15,
-              "note": "The round trip, in milliseconds."
+              "note": "Round trip time the client measures, in milliseconds."
             },
             {
-              "name": "unused",
+              "name": "loaded",
               "width": 1,
-              "note": "Carries nothing."
+              "note": "Set in every report whose progress stands at one hundred, and in no other."
             }
-          ]
+          ],
+          "note": "Copied with the rest; no reader of it is known."
         },
         {
-          "name": "state",
+          "name": "done",
           "type": "bits",
           "size": 1,
           "bits": [
             {
-              "name": "ready",
+              "name": "loaded",
               "width": 1,
               "note": "Set once loading is done."
             },
@@ -74,7 +75,7 @@
       ]
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.132",
       "channel": "transient",
       "command": 157,

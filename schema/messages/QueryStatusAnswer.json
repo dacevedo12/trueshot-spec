@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "events",
       "command": 141,
       "direction": "serverToClient",
@@ -15,12 +15,20 @@
         {
           "name": "ready",
           "type": "u8",
-          "note": "Whether the server is ready; any value but zero ends the client's wait."
+          "note": "Whether the server is ready; any value but zero ends the client's wait. While answers say it is not, a client keeps asking and goes no further, which spec/joining.md sets out.",
+          "values": {
+            "0": {
+              "name": "no"
+            },
+            "1": {
+              "name": "yes"
+            }
+          }
         }
       ]
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 141,

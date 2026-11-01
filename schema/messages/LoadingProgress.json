@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "requests",
       "command": 25,
       "direction": "clientToServer",
@@ -15,7 +15,7 @@
         {
           "name": "clientId",
           "type": "u32",
-          "note": "The client id the sender holds."
+          "note": "The client id the sender holds, that is, the id of the client reporting."
         },
         {
           "name": "playerId",
@@ -25,12 +25,12 @@
         {
           "name": "percent",
           "type": "f32",
-          "note": "How far loading has got, to 100."
+          "note": "How far loading has got, from zero to one hundred."
         },
         {
           "name": "eta",
           "type": "f32",
-          "note": "How many seconds it expects to take still."
+          "note": "How many seconds the client expects loading still to take."
         },
         {
           "name": "status",
@@ -40,22 +40,22 @@
             {
               "name": "count",
               "width": 16,
-              "note": "How many times this has been reported."
+              "note": "It rises with each report, not always by one."
             },
             {
               "name": "ping",
               "width": 15,
-              "note": "The round trip, in milliseconds."
+              "note": "The round trip time the client measures, in milliseconds."
             },
             {
               "name": "unused",
               "width": 1,
-              "note": "Carries nothing."
+              "note": "Never written by a client; it carries nothing."
             }
           ]
         },
         {
-          "name": "state",
+          "name": "done",
           "type": "bits",
           "size": 1,
           "bits": [
@@ -67,14 +67,14 @@
             {
               "name": "unused",
               "width": 7,
-              "note": "Carries nothing."
+              "note": "Carries nothing; a client never writes these bits."
             }
           ]
         }
       ]
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.144",
       "channel": "requests",
       "command": 25,

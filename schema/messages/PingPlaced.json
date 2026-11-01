@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "events",
       "command": 70,
       "direction": "serverToClient",
@@ -50,17 +50,17 @@
             {
               "name": "playSound",
               "width": 1,
-              "note": "Set where the client plays a sound for it. That a client acts on it this way is not confirmed."
+              "note": "Set where the client plays a sound for it. A client plays one only where category is 0 or 1."
             },
             {
               "name": "showInChat",
               "width": 1,
-              "note": "Set where the client writes a line about it. That a client acts on it this way is not confirmed."
+              "note": "Set where the client writes a line about it."
             },
             {
               "name": "throttled",
               "width": 1,
-              "note": "Set where the player is pinging too often: a client places no ping, plays nothing and announces nothing, and only writes a notice in its own chat. That a client acts on it this way is not confirmed."
+              "note": "Set where the player is pinging too often: a client places no ping, plays nothing and announces nothing, and only writes a notice in its own chat."
             },
             {
               "name": "unused",
@@ -69,10 +69,11 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "A client drops the whole message where category is past its own list of categories."
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 70,

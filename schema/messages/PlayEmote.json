@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "requests",
       "command": 76,
       "direction": "clientToServer",
@@ -15,12 +15,12 @@
         {
           "name": "emote",
           "type": "u32",
-          "note": "Which emote, by the number the client knows it as. A client sends nothing where no emote matches."
+          "note": "Which emote, by its place in the client's list. A client sends nothing where no emote matches."
         }
       ]
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.132",
       "channel": "requests",
       "command": 76,

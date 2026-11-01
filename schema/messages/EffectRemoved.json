@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "events",
       "command": 127,
       "direction": "serverToClient",
@@ -20,12 +20,12 @@
         {
           "name": "effect",
           "type": "u32",
-          "note": "Which effect, by the number its name gives, as spec/objects.md works it out. A client does nothing where the unit carries no such effect."
+          "note": "Which effect, by the number its name gives, as spec/objects.md works it out."
         }
       ]
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 127,

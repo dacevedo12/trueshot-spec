@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "events",
       "command": 152,
       "direction": "serverToClient",
@@ -16,11 +16,18 @@
           "name": "game",
           "type": "i64",
           "note": "The match's identifier. A client only logs it."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "The player's name, padded with zero bytes. A client reads nothing of it."
         }
       ]
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.129",
       "channel": "events",
       "command": 152,

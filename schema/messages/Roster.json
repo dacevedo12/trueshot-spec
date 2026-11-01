@@ -6,17 +6,17 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "roster",
       "command": 103,
       "direction": "serverToClient",
       "reliability": "reliable",
       "fields": [
         {
-          "name": "leading",
+          "name": "padding",
           "type": "bytes",
           "size": 3,
-          "note": "Unused; a server writes zero."
+          "note": "Unused; a client reads nothing here."
         },
         {
           "name": "sideRoom",
@@ -29,30 +29,32 @@
           "note": "How many side 200 has room for."
         },
         {
-          "name": "between",
+          "name": "gap",
           "type": "bytes",
           "size": 4,
-          "note": "Unused; a server writes zero."
+          "note": "Unused; a client reads nothing here."
         },
         {
           "name": "side",
           "type": "array",
           "count": 24,
+          "note": "The players on side 100, twenty four places of a player identifier's width; the client copies as many as sideRoom says. sideTaken says how many of the leading places carry a player, and the rest hold zero.",
           "items": {
             "name": "player",
-            "type": "i64"
-          },
-          "note": "The players on side 100; the client copies as many as sideRoom says."
+            "type": "i64",
+            "note": "One player."
+          }
         },
         {
           "name": "otherSide",
           "type": "array",
           "count": 24,
+          "note": "The players on side 200, read the same way under otherSideRoom and otherSideTaken.",
           "items": {
             "name": "player",
-            "type": "i64"
-          },
-          "note": "The players on side 200, read the same way."
+            "type": "i64",
+            "note": "One player."
+          }
         },
         {
           "name": "sideTaken",
@@ -67,7 +69,7 @@
       ]
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.147",
       "channel": "roster",
       "command": 103,

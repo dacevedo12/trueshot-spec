@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "registration",
       "command": 0,
       "direction": "serverToClient",
@@ -21,17 +21,17 @@
         {
           "name": "clientId",
           "type": "u32",
-          "note": "The client id the named player holds, from 0 to 252. A client whose own player this names takes it as its own."
+          "note": "The client id playerId holds. Where playerId is the client's own, the client takes this client id as its own and goes on."
         },
         {
           "name": "playerId",
           "type": "i64",
-          "note": "Who occupies that seat."
+          "note": "Who occupies that seat; a client takes the answer only where this is its own player id, and reads nothing after it."
         }
       ]
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.142",
       "channel": "registration",
       "command": 0,

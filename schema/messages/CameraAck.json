@@ -6,21 +6,6 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
-      "channel": "events",
-      "command": 46,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "syncId",
-          "type": "u8",
-          "note": "The number of the report it answers."
-        }
-      ]
-    },
-    {
-      "from": "1.0.0.127",
       "until": "1.0.0.144",
       "channel": "events",
       "command": 46,

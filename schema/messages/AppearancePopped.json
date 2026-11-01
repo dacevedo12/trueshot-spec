@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "events",
       "command": 106,
       "direction": "serverToClient",
@@ -18,10 +18,10 @@
           "note": "The look, by the name AppearancePushed gave it."
         }
       ],
-      "note": "A 1.0.0.126 client can also take away every look laid over the unit on this command. Whether it does, and whether before or after taking away the look entry names, is not recorded."
+      "note": "A client also takes away every look laid over the unit on this command, and does so before it looks for the one entry names, so the unit is left with no look laid over it."
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 106,

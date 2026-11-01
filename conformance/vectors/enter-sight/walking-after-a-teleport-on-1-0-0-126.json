@@ -7,49 +7,61 @@
   "bytes": "c2010000400000020200000001000300010000400109b1f43df42869f541f6ec",
   "fields": {
     "command": 194,
-    "netId": 1073741825,
     "itemCount": 0,
     "items": [],
-    "hasVector": 0,
-    "vector": null,
-    "movementKind": 2,
-    "syncId": 2,
-    "path": {
-      "header": {
-        "hasTeleportToken": 1,
-        "unused": 0,
-        "pointCount": 3,
-        "unusedHigh": 0
+    "netId": 1073741825,
+    "view": {
+      "hasShields": 0,
+      "magicShield": null,
+      "movementState": {
+        "atX": null,
+        "atZ": null,
+        "facingX": null,
+        "facingZ": null,
+        "movement": {
+          "header": {
+            "hasTeleportToken": 1,
+            "pointCount": 3,
+            "unused": 0,
+            "unusedHigh": 0
+          },
+          "path": {
+            "firstX": -2895,
+            "firstZ": -3011,
+            "flags": [
+              {
+                "xIsStep": 1,
+                "zIsStep": 0
+              },
+              {
+                "xIsStep": 0,
+                "zIsStep": 1
+              }
+            ],
+            "steps": [
+              {
+                "xStep": 40,
+                "xWhole": null,
+                "zStep": null,
+                "zWhole": -2711
+              },
+              {
+                "xStep": null,
+                "xWhole": -2495,
+                "zStep": -20,
+                "zWhole": null
+              }
+            ],
+            "teleportToken": 1,
+            "unit": 1073741825
+          }
+        },
+        "movementAtSpeed": null,
+        "movementKind": 2,
+        "syncId": 2
       },
-      "unit": 1073741825,
-      "teleportToken": 1,
-      "flags": [
-        {
-          "xIsStep": 1,
-          "zIsStep": 0
-        },
-        {
-          "xIsStep": 0,
-          "zIsStep": 1
-        }
-      ],
-      "firstX": -2895,
-      "firstZ": -3011,
-      "steps": [
-        {
-          "xStep": 40,
-          "xWhole": null,
-          "zStep": null,
-          "zWhole": -2711
-        },
-        {
-          "xStep": null,
-          "xWhole": -2495,
-          "zStep": -20,
-          "zWhole": null
-        }
-      ]
-    },
-    "standing": null
+      "physicalShield": null,
+      "shield": null
+    }
   }
 }

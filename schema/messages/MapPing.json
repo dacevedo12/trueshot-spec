@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "requests",
       "command": 90,
       "direction": "clientToServer",
@@ -20,7 +20,7 @@
         {
           "name": "y",
           "type": "f32",
-          "note": "Its height, in world units."
+          "note": "The height of the place pinged, in world units."
         },
         {
           "name": "z",
@@ -34,26 +34,36 @@
         },
         {
           "name": "kind",
-          "type": "bits",
-          "size": 1,
-          "note": "Which mark it is.",
-          "bits": [
-            {
-              "name": "category",
-              "width": 4,
-              "note": "Which sort of mark. What each value names is not recorded."
+          "type": "u8",
+          "note": "Which mark it is. A client sends any of the seven below, and 1 where the mark shows a direction of attack.",
+          "values": {
+            "0": {
+              "name": "here"
             },
-            {
-              "name": "unused",
-              "width": 4,
-              "note": "Unused; a client may leave any value here, and a server ignores it."
+            "1": {
+              "name": "attackDirection"
+            },
+            "2": {
+              "name": "danger"
+            },
+            "3": {
+              "name": "targetUnaccountedFor"
+            },
+            "4": {
+              "name": "onMyWay"
+            },
+            "5": {
+              "name": "fallBack"
+            },
+            "6": {
+              "name": "comeHere"
             }
-          ]
+          }
         }
       ]
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.132",
       "channel": "requests",
       "command": 90,

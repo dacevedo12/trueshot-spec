@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "requests",
       "command": 122,
       "direction": "clientToServer",
@@ -15,12 +15,12 @@
         {
           "name": "syncId",
           "type": "u32",
-          "note": "The number of the group it answers."
+          "note": "The number of the group it answers, as the group named itself."
         },
         {
           "name": "relocationCount",
           "type": "u8",
-          "note": "How many of the group's paths carried a teleport token."
+          "note": "How many relocations follow: answering a group, how many of its paths carried a teleport token. Answering a path for one unit, a client sends only syncId and this byte, unwritten, on the transient channel, and no relocations, so a server reads nothing in it there."
         },
         {
           "name": "relocations",
@@ -33,22 +33,22 @@
               {
                 "name": "unit",
                 "type": "u32",
-                "note": "The unit."
+                "note": "The unit the token belonged to."
               },
               {
                 "name": "token",
                 "type": "u8",
-                "note": "The token its path carried."
+                "note": "The token that arrived with it."
               }
             ]
           },
           "note": "Each of those, in the group's order."
         }
       ],
-      "note": "What a client sends for every WaypointGroup it takes. The header names no object: it carries zero."
+      "note": "What a client sends for every WaypointGroup it takes, and for every WaypointGroupAtSpeed. The header names no object: it carries zero."
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.132",
       "channel": "requests",
       "command": 122,

@@ -6,26 +6,6 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
-      "channel": "events",
-      "command": 101,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "firstCount",
-          "type": "u8",
-          "note": "What this carries is not recorded."
-        },
-        {
-          "name": "secondCount",
-          "type": "u8",
-          "note": "What this carries is not recorded."
-        }
-      ]
-    },
-    {
-      "from": "1.0.0.127",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 101,

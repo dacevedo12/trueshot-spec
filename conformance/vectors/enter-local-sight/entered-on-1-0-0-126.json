@@ -8,7 +8,9 @@
   "fields": {
     "command": 181,
     "netId": 1073741825,
-    "maxHealth": 500,
-    "health": 250
+    "vitals": {
+      "health": 250,
+      "maxHealth": 500
+    }
   }
 }

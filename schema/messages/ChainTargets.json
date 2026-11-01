@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "events",
       "command": 111,
       "direction": "serverToClient",
@@ -20,7 +20,7 @@
         {
           "name": "caster",
           "type": "u32",
-          "note": "The unit casting the missile. A client ignores the message where it does not hold it."
+          "note": "The unit casting the missile. Where a client does not hold it, the client starts no missile, though a missile it already holds under the header's name still takes the targets."
         },
         {
           "name": "targets",
@@ -36,7 +36,7 @@
       ]
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 111,

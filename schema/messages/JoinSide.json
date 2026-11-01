@@ -6,14 +6,14 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "roster",
       "command": 100,
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [
         {
-          "name": "leading",
+          "name": "padding",
           "type": "bytes",
           "size": 3,
           "note": "Arbitrary; it carries no meaning."
@@ -21,7 +21,7 @@
         {
           "name": "clientId",
           "type": "u32",
-          "note": "The client id the sender holds."
+          "note": "The client id the sender holds, that is, the id of the client asking."
         },
         {
           "name": "side",
@@ -31,7 +31,7 @@
       ]
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.147",
       "channel": "roster",
       "command": 100,

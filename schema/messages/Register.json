@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "registration",
       "command": 0,
       "direction": "clientToServer",
@@ -21,7 +21,7 @@
         {
           "name": "clientId",
           "type": "u32",
-          "note": "Zero."
+          "note": "A client writes zero here."
         },
         {
           "name": "playerId",
@@ -32,12 +32,12 @@
           "name": "proof",
           "type": "i64",
           "enciphered": true,
-          "note": "The player identifier, enciphered under the key both ends already hold."
+          "note": "The player id enciphered with the 16-byte key both ends already hold; a plain copy where the client has no key."
         }
       ]
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.142",
       "channel": "registration",
       "command": 0,

@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "events",
       "command": 6,
       "direction": "serverToClient",
@@ -33,27 +33,14 @@
           "note": "The circle's radius, in world units. Zero lifts the bounds; a negative radius counts as zero."
         },
         {
-          "name": "flags",
-          "type": "bits",
-          "size": 1,
-          "bits": [
-            {
-              "name": "camera",
-              "width": 1,
-              "note": "Set to keep the camera within the circle too. Clear leaves the camera as it was, bound or not. Any bit of its byte set counts as this one set."
-            },
-            {
-              "name": "unused",
-              "width": 7,
-              "note": "A client takes any bit set here as camera set; a server writes zero."
-            }
-          ],
-          "note": "What else the circle holds."
+          "name": "camera",
+          "type": "u8",
+          "note": "A client takes any bit set here as camera set; a server writes zero."
         }
       ]
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.147",
       "channel": "events",
       "command": 6,

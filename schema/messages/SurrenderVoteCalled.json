@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "events",
       "command": 210,
       "direction": "serverToClient",
@@ -25,7 +25,7 @@
             {
               "name": "openTheMenu",
               "width": 1,
-              "note": "Set where the vote opens: a client of side opens the vote's panel from seats and closesIn, which have no other effect; every client announces that a vote began."
+              "note": "Set where the vote opens: a client of side opens the vote's panel from seats and closesIn, which have no other effect; every client with a player of its own announces that a vote began, with caller, inFavour, against and side."
             },
             {
               "name": "unused",
@@ -64,10 +64,11 @@
           "type": "f32",
           "note": "How long the vote stays open, in seconds."
         }
-      ]
+      ],
+      "note": "A client ignores it unless its menu and its own champion both exist."
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 210,

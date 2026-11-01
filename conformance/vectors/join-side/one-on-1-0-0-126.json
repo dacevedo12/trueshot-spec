@@ -6,9 +6,9 @@
   "note": "Laid out as a 1.0.0.126 client sends it. Its identifiers are stand-ins.",
   "bytes": "64bc9e000000000064000000",
   "fields": {
-    "command": 100,
-    "leading": "bc9e00",
     "clientId": 0,
+    "command": 100,
+    "padding": "bc9e00",
     "side": 100
   }
 }

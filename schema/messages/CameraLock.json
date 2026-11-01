@@ -6,8 +6,7 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
-      "note": "A client sends it at once on each CameraLockSet, with state as that message carried it, all eight bits included.",
+      "until": "1.0.0.128",
       "channel": "requests",
       "command": 134,
       "direction": "clientToServer",
@@ -26,7 +25,7 @@
             {
               "name": "unused",
               "width": 7,
-              "note": "As CameraLockSet carried them; zero where a server writes zero."
+              "note": "As CameraLockSet carried them; zero in a report the client makes on its own."
             }
           ]
         },
@@ -35,10 +34,11 @@
           "type": "u32",
           "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
         }
-      ]
+      ],
+      "note": "A client sends it on each CameraLockSet with state as that message carried it, all eight bits included, and also as its player sets the lock or the game forces a lock or lifts one. While a forced lock holds, a CameraLockSet or player setting is kept and sent only as that lock lifts."
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.132",
       "channel": "requests",
       "command": 134,

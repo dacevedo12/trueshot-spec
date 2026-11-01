@@ -6,11 +6,12 @@
   "revisions": [
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.128",
       "channel": "events",
       "command": 217,
       "direction": "serverToClient",
       "reliability": "reliable",
+      "note": "A client takes the prop's id from prop, not from the header. A scenery prop is turned by pitch, then yaw, then roll, each about the fixed world axes; none is negated or wrapped. An active prop only turns about the up axis, to face the ground direction its x and z give, and faces +z where both are zero.",
       "fields": [
         {
           "name": "prop",
@@ -38,39 +39,39 @@
           "note": "Where the prop stands, along the other ground axis, in world units."
         },
         {
-          "name": "firstX",
+          "name": "rotationX",
           "type": "f32",
           "note": "A vector's part along one ground axis, used for either kind. What this carries is not recorded."
         },
         {
-          "name": "firstY",
+          "name": "rotationY",
           "type": "f32",
-          "note": "A vector's part in height, used for either kind. What this carries is not recorded."
+          "note": "For scenery, the yaw in degrees: a turn about the up axis, positive turning +z toward +x, so yaw 0 faces +z and 90 faces +x. For an active prop, y of its facing, which does not turn it."
         },
         {
-          "name": "firstZ",
+          "name": "rotationZ",
           "type": "f32",
           "note": "A vector's part along the other ground axis, used for either kind. What this carries is not recorded."
         },
         {
-          "name": "secondX",
+          "name": "offsetX",
           "type": "f32",
           "note": "A second vector's part along one ground axis, used only where kind is 1. What this carries is not recorded."
         },
         {
-          "name": "secondY",
+          "name": "offsetY",
           "type": "f32",
           "note": "A second vector's part in height, used only where kind is 1. What this carries is not recorded."
         },
         {
-          "name": "secondZ",
+          "name": "offsetZ",
           "type": "f32",
           "note": "A second vector's part along the other ground axis, used only where kind is 1. What this carries is not recorded."
         },
         {
           "name": "side",
           "type": "bits",
-          "note": "The side the prop belongs to.",
+          "note": "The side the prop belongs to. A server sends 300, the neutral side.",
           "size": 4,
           "bits": [
             {
@@ -86,27 +87,27 @@
           ]
         },
         {
-          "name": "unused",
+          "name": "skillLevel",
           "type": "u8",
           "note": "Unused; a server writes zero."
         },
         {
-          "name": "skillLevel",
+          "name": "rank",
           "type": "u8",
-          "note": "Used only where kind is 0. What this carries is not recorded."
+          "note": "How far it is advanced."
         },
         {
           "name": "kind",
           "type": "u8",
-          "note": "What sort of prop it is; a client makes nothing for any other value.",
+          "note": "What sort of prop it is; a client makes nothing for any other value. A client first deletes any object holding the prop's id, whatever the kind.",
           "values": {
             "0": {
-              "name": "fromAsset",
-              "note": "A prop built from asset."
+              "name": "active",
+              "note": "Uses name, asset, skin, side, position, the three rotations and rank; not offset or scale."
             },
             "1": {
-              "name": "attached",
-              "note": "A prop attached to the object named in name."
+              "name": "scenery",
+              "note": "Uses name, asset, skin, position, rotation (pitch, yaw, roll in degrees), offset and scale; not side or rank. Where the map has a placement point of the same name, its position is used instead; where a scenery prop of that name already stands there, it is reused and takes the new id."
             }
           }
         },
@@ -122,12 +123,12 @@
           "type": "string",
           "encoding": "utf8",
           "size": 64,
-          "note": "The name of the character the client loads the prop's art and sound under, written and padded as above. A client given one it lacks fails soon after, once the prop is near what it draws."
+          "note": "The name of the character the client loads the prop's art and sound under, written and padded as above."
         }
       ]
     },
     {
-      "from": "1.0.0.127",
+      "from": "1.0.0.128",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 217,
