@@ -88,6 +88,11 @@
           },
           "uniqueItems": true,
           "minItems": 1
+        },
+        "keyForm": {
+          "description": "How a client takes the key from its launch argument: base64, decoded, or text, its first keySize characters taken as they stand. Where this is absent, base64.",
+          "type": "string",
+          "enum": ["base64", "text"]
         }
       }
     },

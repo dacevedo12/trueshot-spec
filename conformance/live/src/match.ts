@@ -275,7 +275,14 @@ class Match {
   #register(peer: Peer, channelId: number, payload: Uint8Array): void {
     const channel = this.layouts.channelById(channelId);
     if (channel?.name !== "registration") return;
-    const key = Uint8Array.from(Buffer.from(KEY, "base64"));
+    // The key the client takes from the same launch argument, as its build
+    // reads it.
+    const { keyForm, keySize } = this.layouts.protocol.cipher;
+    const key = Uint8Array.from(
+      keyForm === "text"
+        ? Buffer.from(KEY.slice(0, keySize), "ascii")
+        : Buffer.from(KEY, "base64"),
+    );
     const session = new Session(
       this.layouts,
       this.#host,

@@ -136,6 +136,7 @@ interface Protocol extends Ranged {
     readonly blockSize: number;
     readonly keySize: number;
     readonly padded?: readonly ("clientToServer" | "serverToClient")[];
+    readonly keyForm?: "base64" | "text";
   };
   readonly transport: {
     readonly header: readonly Field[];
