@@ -5,6 +5,15 @@
   "note": "What a server sends to hide the objective panel. It carries nothing of its own. The header carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.110",
+      "until": "1.0.0.111",
+      "channel": "events",
+      "command": 161,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": []
+    },
+    {
       "from": "1.0.0.111",
       "until": "1.0.0.117",
       "channel": "events",

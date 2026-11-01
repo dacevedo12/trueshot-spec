@@ -1,0 +1,13 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "PauseAnimation",
+  "version": "1.0.0.110",
+  "note": "Laid out as a 1.0.0.110 client takes it.",
+  "bytes": "6d0100004000",
+  "fields": {
+    "command": 109,
+    "netId": 1073741825,
+    "paused": 0
+  }
+}

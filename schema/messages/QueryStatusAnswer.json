@@ -5,6 +5,29 @@
   "note": "What a server returns when asked whether it is ready. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.110",
+      "until": "1.0.0.111",
+      "channel": "events",
+      "command": 133,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "ready",
+          "type": "u8",
+          "note": "Whether the server is ready; any value but zero ends the client's wait. While answers say it is not, a client keeps asking and goes no further, which spec/joining.md sets out.",
+          "values": {
+            "0": {
+              "name": "no"
+            },
+            "1": {
+              "name": "yes"
+            }
+          }
+        }
+      ]
+    },
+    {
       "from": "1.0.0.111",
       "until": "1.0.0.117",
       "channel": "events",

@@ -5,6 +5,22 @@
   "note": "What a server sends to take a look AppearancePushed laid over a unit away. The header names the unit.",
   "revisions": [
     {
+      "from": "1.0.0.110",
+      "until": "1.0.0.111",
+      "channel": "events",
+      "command": 100,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "entry",
+          "type": "u32",
+          "note": "The look, by the name AppearancePushed gave it."
+        }
+      ],
+      "note": "A client also takes away every look laid over the unit on this command, and does so before it looks for the one entry names, so the unit is left with no look laid over it."
+    },
+    {
       "from": "1.0.0.111",
       "until": "1.0.0.117",
       "channel": "events",

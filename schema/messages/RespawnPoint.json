@@ -5,6 +5,37 @@
   "note": "What a server sends about the points a champion can choose to return to life at. A client acts on it only where its screen has a panel of such points. The header carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.110",
+      "until": "1.0.0.111",
+      "channel": "events",
+      "command": 210,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "action",
+          "type": "u8",
+          "note": "What to do. A client ignores any other value.",
+          "values": {
+            "0": {
+              "name": "offer",
+              "note": "Turn the choice of respawn points on, shown while the champion is dead, and offer point in it. A point offered after the choice is first shown has no effect, and one numbered below the count of capture points held has none either."
+            },
+            "1": {
+              "name": "select",
+              "note": "Highlight point as the one chosen."
+            }
+          }
+        },
+        {
+          "name": "point",
+          "type": "u8",
+          "note": "Which point."
+        }
+      ],
+      "note": "A client ignores it unless it shows the respawn point panel."
+    },
+    {
       "from": "1.0.0.111",
       "until": "1.0.0.117",
       "channel": "events",

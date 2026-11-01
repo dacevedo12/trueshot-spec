@@ -146,9 +146,9 @@ short to fill one, and a payload shorter than a block.
 There is no padding. Trailing bytes that do not fill a block travel unchanged,
 so a payload shorter than one block travels entirely in the clear.
 
-<!-- holds from 1.0.0.111 up to 1.0.0.116 -->
+<!-- holds from 1.0.0.110 up to 1.0.0.116 -->
 
-> **In 1.0.0.111–1.0.0.114**
+> **In 1.0.0.110–1.0.0.114**
 >
 > A client pads what it sends to a whole number of blocks and enciphers all of
 > it. The bytes it adds follow the message's own fields to the end of the
@@ -163,6 +163,14 @@ another cipher, because a client accepts no other.
 Both ends hold the key before a connection opens. Nothing on the wire
 negotiates it, and no exchange derives it. A client receives it as a launch
 argument, in base64.
+
+<!-- holds from 1.0.0.110 up to 1.0.0.111 -->
+
+> **In 1.0.0.110**
+>
+> A client decodes nothing: its key is the first sixteen characters of the
+> argument, as they stand. A key both this and later builds take alike is
+> sixteen characters of text.
 
 Registration is what associates that key with a connection. The request
 carries a field enciphered under the key while the rest of it

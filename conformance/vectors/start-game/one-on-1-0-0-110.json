@@ -1,0 +1,12 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "StartGame",
+  "version": "1.0.0.110",
+  "note": "Laid out as a 1.0.0.110 client takes it.",
+  "bytes": "5a00000000",
+  "fields": {
+    "command": 90,
+    "netId": 0
+  }
+}
