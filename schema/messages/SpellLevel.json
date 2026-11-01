@@ -5,6 +5,22 @@
   "note": "What a server sends to set the level of one of a unit's spells. The header names the unit this is about.",
   "revisions": [
     {
+      "from": "1.0.0.118",
+      "until": "1.0.0.119",
+      "channel": "events",
+      "command": 90,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u32",
+          "note": "Which slot. A client raises that slot's level by one, to at most 6."
+        }
+      ],
+      "note": "It carries no level: a client raises the spell in the slot by one level each time, to at most 6."
+    },
+    {
       "from": "1.0.0.119",
       "until": "1.0.0.124",
       "channel": "events",

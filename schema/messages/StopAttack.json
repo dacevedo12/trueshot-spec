@@ -5,6 +5,54 @@
   "note": "What a server sends to break off an attack a unit is making. The header names the unit acting.",
   "revisions": [
     {
+      "from": "1.0.0.118",
+      "until": "1.0.0.119",
+      "channel": "events",
+      "command": 55,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "keepAnimating",
+              "width": 1,
+              "note": "Set to let the attack's animation play on after the stop."
+            },
+            {
+              "name": "forceCast",
+              "width": 1,
+              "note": "Set to make the attack land first where it has not already."
+            },
+            {
+              "name": "forceStop",
+              "width": 1,
+              "note": "Set to stop the current cast outright; clear, a client stops the attack the ordinary way."
+            },
+            {
+              "name": "summonerSpell",
+              "width": 1,
+              "note": "Picks which spells the stop applies to: set, the summoner spells; clear, the unit's own. A unit with no summoner spells, such as any unit that is not a champion, stops nothing when this is set."
+            },
+            {
+              "name": "destroyMissile",
+              "width": 1,
+              "note": "Set to destroy the attack's missile, where it has one."
+            },
+            {
+              "name": "unused",
+              "width": 3,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ],
+      "note": "Whatever the flags, a client then clears the unit's attack."
+    },
+    {
       "from": "1.0.0.119",
       "until": "1.0.0.124",
       "channel": "events",

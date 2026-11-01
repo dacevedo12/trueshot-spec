@@ -5,6 +5,21 @@
   "note": "What a server sends to stop a particle a client is drawing. The header names the particle.",
   "revisions": [
     {
+      "from": "1.0.0.118",
+      "until": "1.0.0.119",
+      "channel": "events",
+      "command": 59,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "particle",
+          "type": "u32",
+          "note": "The particle to stop."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.119",
       "until": "1.0.0.124",
       "channel": "events",

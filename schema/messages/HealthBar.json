@@ -5,6 +5,21 @@
   "note": "What a server sends about a unit's health bar. The header names the unit.",
   "revisions": [
     {
+      "from": "1.0.0.118",
+      "until": "1.0.0.119",
+      "channel": "events",
+      "command": 206,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "show",
+          "type": "u8",
+          "note": "Any value other than zero shows the bar; zero hides it."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.119",
       "until": "1.0.0.123",
       "channel": "events",

@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "CampCleared",
+  "version": "1.0.0.118",
+  "note": "Laid out as a 1.0.0.118 client takes it.",
+  "bytes": "c3000000000100",
+  "fields": {
+    "command": 195,
+    "netId": 0,
+    "camp": 1,
+    "active": 0
+  }
+}

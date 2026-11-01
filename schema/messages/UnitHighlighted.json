@@ -5,6 +5,21 @@
   "note": "What a server sends to outline a unit with a pulsing light, as a tutorial does, until UnitHighlightRemoved. The header carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.118",
+      "until": "1.0.0.119",
+      "channel": "events",
+      "command": 88,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit: one that can be damaged."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.119",
       "until": "1.0.0.124",
       "channel": "events",

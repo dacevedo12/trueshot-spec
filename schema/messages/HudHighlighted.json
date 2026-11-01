@@ -5,6 +5,62 @@
   "note": "What a server sends to light up part of the screen, as a tutorial does. Only HudHighlightToggled turns it off. The header carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.118",
+      "until": "1.0.0.119",
+      "channel": "events",
+      "command": 64,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "element",
+          "type": "u8",
+          "note": "What to light up on the main controls, 0 to 8; a client ignores a larger value. 4, 5 and 6 each name a part of a second panel; which part each value names is not recorded.",
+          "values": {
+            "0": {
+              "name": "spell",
+              "note": "A spell's button; number names its slot, 0 to 3."
+            },
+            "1": {
+              "name": "spellUpgrade",
+              "note": "Nothing is shown."
+            },
+            "2": {
+              "name": "summonerSpell",
+              "note": "A summoner spell's button; number names its slot, 0 or 1."
+            },
+            "3": {
+              "name": "recall"
+            },
+            "4": {
+              "name": "shop",
+              "note": "Nothing is shown."
+            },
+            "5": {
+              "name": "gold"
+            },
+            "6": {
+              "name": "experience",
+              "note": "Sized to the progress through the level."
+            },
+            "7": {
+              "name": "health",
+              "note": "Sized to the health left."
+            },
+            "8": {
+              "name": "mana",
+              "note": "Nothing is shown."
+            }
+          }
+        },
+        {
+          "name": "number",
+          "type": "u8",
+          "note": "Which slot, for a spell or a summoner spell; it has no effect for 4, 5 or 6."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.119",
       "until": "1.0.0.124",
       "channel": "events",

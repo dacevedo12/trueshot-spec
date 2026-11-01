@@ -5,6 +5,21 @@
   "note": "What a server sends to turn the drawing of the fog of war on or off. It changes only what is drawn. The header carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.118",
+      "until": "1.0.0.119",
+      "channel": "events",
+      "command": 173,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "hidden",
+          "type": "u8",
+          "note": "A client takes any bit set here as drawn set; a server writes zero."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.119",
       "until": "1.0.0.124",
       "channel": "events",

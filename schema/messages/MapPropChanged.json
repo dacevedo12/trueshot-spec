@@ -5,6 +5,59 @@
   "note": "What a server sends to change something about a prop already on the map. The kind of change is named inside it, and the fields around the kind keep one layout whatever it is. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.118",
+      "until": "1.0.0.119",
+      "channel": "events",
+      "command": 209,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "change",
+          "type": "u8",
+          "note": "What changes. A client ignores any other value.",
+          "values": {
+            "0": {
+              "name": "apply",
+              "note": "Apply name to the prop."
+            },
+            "1": {
+              "name": "linkEffect",
+              "note": "Drive the prop's effect value effect from capture point point; a client ignores it unless option is zero."
+            }
+          }
+        },
+        {
+          "name": "prop",
+          "type": "u32",
+          "note": "The object changed."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "What is applied, for apply; written and padded with zero bytes."
+        },
+        {
+          "name": "option",
+          "type": "u8",
+          "note": "For linkEffect, zero."
+        },
+        {
+          "name": "effect",
+          "type": "u8",
+          "note": "For linkEffect, which of the prop's effect values to drive."
+        },
+        {
+          "name": "point",
+          "type": "u8",
+          "note": "For linkEffect, which capture point drives it."
+        }
+      ],
+      "note": "A client ignores the message for a prop it does not know. Whatever the change, it then reads the same bytes again as grouped effects: where the ninth byte of name is not zero, it adds that many effects from the bytes after it, so a name of nine or more characters adds effects besides."
+    },
+    {
       "from": "1.0.0.119",
       "until": "1.0.0.123",
       "channel": "events",

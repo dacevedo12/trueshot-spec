@@ -5,6 +5,42 @@
   "note": "What a server sends to say a unit died, to everyone who can see it. The header names the unit this is about.",
   "revisions": [
     {
+      "from": "1.0.0.118",
+      "until": "1.0.0.119",
+      "channel": "events",
+      "command": 159,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "killer",
+          "type": "u32",
+          "note": "The unit credited with the death."
+        },
+        {
+          "name": "damageType",
+          "type": "u8",
+          "note": "Unused; a server writes zero."
+        },
+        {
+          "name": "damageSource",
+          "type": "u8",
+          "note": "Read only for a minion a champion killed, whose kill a client shows another way where it is 7; a server writes zero."
+        },
+        {
+          "name": "stayDown",
+          "type": "f32",
+          "note": "How long the unit stays down, in seconds."
+        },
+        {
+          "name": "standing",
+          "type": "u8",
+          "note": "Any nonzero value leaves the unit standing rather than dead. A champion then plays no death animation; minions and turrets play theirs whatever this says."
+        }
+      ],
+      "note": "Where killer names a unit it knows, a client announces the kill for that unit, then the one kind picks. Where the unit is not already dead, it cancels the unit's cast and attack, and only where killer is nonzero puts the unit down, by stayDown and standing."
+    },
+    {
       "from": "1.0.0.119",
       "until": "1.0.0.124",
       "channel": "events",

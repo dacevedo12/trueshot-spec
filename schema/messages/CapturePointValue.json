@@ -5,6 +5,42 @@
   "note": "What a server sends when a point one side can take from the other changes. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.118",
+      "until": "1.0.0.119",
+      "channel": "events",
+      "command": 210,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "note": "A client ignores it unless it shows the capture point panel. A client keeps one record per point, making every point up to this one, and projects each from value and rate as time passes.",
+      "fields": [
+        {
+          "name": "value",
+          "type": "f32",
+          "note": "How far the point is taken, from -100 to 100: toward side 100 where positive, side 200 where negative. A client shows how full it is as the value without its sign."
+        },
+        {
+          "name": "rate",
+          "type": "f32",
+          "note": "How fast value changes, in units a second."
+        },
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "Who holds the point: 100 or 200, or 300 where it is neutral."
+        },
+        {
+          "name": "point",
+          "type": "u8",
+          "note": "Which point, 0 to 255."
+        },
+        {
+          "name": "state",
+          "type": "u8",
+          "note": "Zero to label the point by its name; above zero to label it with that number as a multiplier."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.119",
       "until": "1.0.0.123",
       "channel": "events",
