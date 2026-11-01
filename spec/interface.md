@@ -18,9 +18,9 @@ client answers with `CameraLock`, and set a point a player's view keeps to with
 `CameraBehaviour`. Where its range defines `ZoomReport`, a client reports a view
 drawn further out than it allows with it, which a server MAY ignore.
 
-<!-- holds from 1.0.0.118 up to 1.0.0.120 -->
+<!-- holds from 1.0.0.117 up to 1.0.0.120 -->
 
-> **In 1.0.0.118–1.0.0.119**
+> **In 1.0.0.117–1.0.0.119**
 >
 > `Camera` names one point, the one the view looks at, in place of where the
 > view sits and which way it faces.

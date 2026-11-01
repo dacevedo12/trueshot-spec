@@ -5,7 +5,7 @@
   "note": "What a server sends to set a unit walking along a path, facing the way it walks. The header names the unit. A client answers every one at once, unsequenced on the transient channel, with ten bytes: WaypointAck's command, a net id of zero, this sync id, and one byte that is arbitrary and carries no meaning. It applies it only where the sync id is not older than the last the unit took (as UnitStopped).",
   "revisions": [
     {
-      "from": "1.0.0.118",
+      "from": "1.0.0.117",
       "until": "1.0.0.119",
       "channel": "events",
       "command": 186,
