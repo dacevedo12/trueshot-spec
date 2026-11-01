@@ -5,6 +5,21 @@
   "note": "What a server sends to say a unit played an emote. The header names the champion playing the emote.",
   "revisions": [
     {
+      "from": "1.0.0.123",
+      "until": "1.0.0.124",
+      "channel": "events",
+      "command": 70,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "emote",
+          "type": "u32",
+          "note": "Which emote, by its place in the client's list; one past the list plays nothing."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.124",
       "until": "1.0.0.132",
       "channel": "events",

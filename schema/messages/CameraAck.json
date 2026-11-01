@@ -5,6 +5,21 @@
   "note": "What a server returns for a view report, naming the report it answers. The header names the champion of the player it is sent to.",
   "revisions": [
     {
+      "from": "1.0.0.123",
+      "until": "1.0.0.124",
+      "channel": "events",
+      "command": 45,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u8",
+          "note": "The name the report carried. A client sends the report again until this comes back."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.124",
       "until": "1.0.0.144",
       "channel": "events",

@@ -1,0 +1,18 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "MapPropChanged",
+  "version": "1.0.0.123",
+  "note": "Laid out as a 1.0.0.123 client takes it.",
+  "bytes": "d300000000004200004049646c65310000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+  "fields": {
+    "command": 211,
+    "netId": 0,
+    "change": 0,
+    "prop": 1073741890,
+    "name": "Idle1",
+    "option": 0,
+    "effect": 0,
+    "point": 0
+  }
+}

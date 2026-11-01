@@ -5,6 +5,22 @@
   "note": "What a client sends to put a point into a spell. The header names the sender's champion.",
   "revisions": [
     {
+      "from": "1.0.0.123",
+      "until": "1.0.0.124",
+      "channel": "requests",
+      "command": 61,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot is being raised: 0 to 3, for the champion's own spells, though a client does not hold itself to that range."
+        }
+      ],
+      "note": "A client takes the point off its own count before it sends this. There is no evolution point."
+    },
+    {
       "from": "1.0.0.124",
       "until": "1.0.0.128",
       "channel": "requests",

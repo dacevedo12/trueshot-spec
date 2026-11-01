@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SpellIconChanged",
+  "version": "1.0.0.123",
+  "note": "Laid out as a 1.0.0.123 client takes it.",
+  "bytes": "35000000000000",
+  "fields": {
+    "command": 53,
+    "netId": 0,
+    "which": {
+      "slot": 0,
+      "summonerSlots": 0
+    },
+    "icon": 0
+  }
+}

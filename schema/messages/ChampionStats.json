@@ -5,6 +5,144 @@
   "note": "What a server sends to set a champion's tallies for the scoreboard. The header names the champion.",
   "revisions": [
     {
+      "from": "1.0.0.123",
+      "until": "1.0.0.124",
+      "channel": "events",
+      "command": 73,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "keptA",
+          "type": "array",
+          "count": 3,
+          "note": "Kept with the champion; a client shows nothing of it.",
+          "items": {
+            "name": "value",
+            "type": "i32"
+          }
+        },
+        {
+          "name": "deaths",
+          "type": "i32",
+          "note": "How many times the champion has died."
+        },
+        {
+          "name": "minionKills",
+          "type": "i32",
+          "note": "How many minions it has killed, neutral ones aside."
+        },
+        {
+          "name": "kills",
+          "type": "i32",
+          "note": "How many champions it has killed. Each side's kill total is the sum over its champions. Where any champion's is above zero, a client takes first blood as taken: it raises no first-blood event and adds no first-blood bonus to a kill's value after that."
+        },
+        {
+          "name": "structureKills",
+          "type": "i32",
+          "note": "One kind of structure it has destroyed."
+        },
+        {
+          "name": "otherStructureKills",
+          "type": "i32",
+          "note": "The other kind of structure it has destroyed."
+        },
+        {
+          "name": "keptB",
+          "type": "i32",
+          "note": "Kept with the champion; a client shows nothing of it."
+        },
+        {
+          "name": "neutralKills",
+          "type": "i32",
+          "note": "How many neutral minions it has killed."
+        },
+        {
+          "name": "gap",
+          "type": "bytes",
+          "size": 12,
+          "note": "A client takes nothing from these bytes. A server writes zero."
+        },
+        {
+          "name": "keptC",
+          "type": "array",
+          "count": 3,
+          "note": "Kept with the champion; a client shows nothing of it.",
+          "items": {
+            "name": "value",
+            "type": "i32"
+          }
+        },
+        {
+          "name": "goldTotal",
+          "type": "f32",
+          "note": "The gold it has earned in all, shown rounded down."
+        },
+        {
+          "name": "keptD",
+          "type": "array",
+          "count": 9,
+          "note": "Kept with the champion; a client shows nothing of it.",
+          "items": {
+            "name": "value",
+            "type": "i32"
+          }
+        },
+        {
+          "name": "keptE",
+          "type": "array",
+          "count": 2,
+          "note": "Kept with the champion; a client shows nothing of it.",
+          "items": {
+            "name": "value",
+            "type": "f32"
+          }
+        },
+        {
+          "name": "keptF",
+          "type": "u8",
+          "note": "Kept with the champion; a client shows nothing of it."
+        },
+        {
+          "name": "padding",
+          "type": "bytes",
+          "size": 3,
+          "note": "A client takes nothing from these bytes. A server writes zero."
+        },
+        {
+          "name": "keptG",
+          "type": "array",
+          "count": 8,
+          "note": "Kept with the champion; a client shows nothing of it.",
+          "items": {
+            "name": "value",
+            "type": "i32"
+          }
+        },
+        {
+          "name": "keptH",
+          "type": "array",
+          "count": 13,
+          "note": "Kept with the champion; a client shows nothing of it.",
+          "items": {
+            "name": "value",
+            "type": "f32"
+          }
+        },
+        {
+          "name": "keptI",
+          "type": "i32",
+          "note": "Kept with the champion; a client shows nothing of it."
+        },
+        {
+          "name": "assists",
+          "type": "i32",
+          "note": "How many kills it has assisted."
+        }
+      ],
+      "note": "A fixed record of the champion's tallies. A client shows kills, deaths and assists, minionKills and neutralKills together as its minion count, the two structure kills together as its building count, and goldTotal; GoldEarned adds to goldTotal between these messages."
+    },
+    {
       "from": "1.0.0.124",
       "until": "1.0.0.132",
       "channel": "events",

@@ -5,6 +5,21 @@
   "note": "What a server sends to pause or resume a unit's animation. The header names the unit.",
   "revisions": [
     {
+      "from": "1.0.0.123",
+      "until": "1.0.0.124",
+      "channel": "events",
+      "command": 112,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "paused",
+          "type": "u8",
+          "note": "Set to pause, clear to resume. Any nonzero value sets it."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.124",
       "until": "1.0.0.132",
       "channel": "events",

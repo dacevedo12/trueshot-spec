@@ -5,6 +5,27 @@
   "note": "What a server sends to set a side's score, where a match is won on score. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.123",
+      "until": "1.0.0.124",
+      "channel": "events",
+      "command": 213,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "note": "A client ignores it unless it shows the capture point panel. Each score shows as a whole number, divided by 100 and rounded toward zero.",
+      "fields": [
+        {
+          "name": "sideScore",
+          "type": "i32",
+          "note": "The score side 100 now stands at."
+        },
+        {
+          "name": "otherSideScore",
+          "type": "i32",
+          "note": "The score side 200 now stands at."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.124",
       "until": "1.0.0.125",
       "channel": "events",
