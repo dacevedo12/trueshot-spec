@@ -5,6 +5,16 @@
   "note": "What a client sends to hold a match. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.124",
+      "until": "1.0.0.125",
+      "channel": "requests",
+      "command": 167,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client sends it only where its own settings allow holding the match, and only while the match is not held."
+    },
+    {
       "from": "1.0.0.125",
       "until": "1.0.0.126",
       "channel": "requests",
