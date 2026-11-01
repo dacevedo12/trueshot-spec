@@ -5,6 +5,29 @@
   "note": "What a server sends to change what a client draws for a unit on its map. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.116",
+      "until": "1.0.0.117",
+      "channel": "events",
+      "command": 214,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit this is about. A client ignores the message where it does not hold the unit or the unit has no minimap icon."
+        },
+        {
+          "name": "icon",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The name the client loads the mark under, ended by a zero byte. A client changes nothing where it is the mark already drawn."
+        }
+      ],
+      "note": "A client does nothing unless unit is a unit it holds that can be attacked."
+    },
+    {
       "from": "1.0.0.117",
       "until": "1.0.0.119",
       "channel": "events",

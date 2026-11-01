@@ -5,7 +5,7 @@
   "note": "What a server sends to confirm a unit's spell went up a level. The header names the unit this is about. Arriving on the events channel instead, it raises the spell as well, and a client shows the new level either way.",
   "revisions": [
     {
-      "from": "1.0.0.117",
+      "from": "1.0.0.116",
       "until": "1.0.0.128",
       "channel": "clock",
       "command": 24,

@@ -5,6 +5,15 @@
   "note": "What a server sends to end the resynchronising a client began on its own Reconnected, after which it takes spawns again as they come.",
   "revisions": [
     {
+      "from": "1.0.0.116",
+      "until": "1.0.0.117",
+      "channel": "events",
+      "command": 69,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": []
+    },
+    {
       "from": "1.0.0.117",
       "until": "1.0.0.119",
       "channel": "events",

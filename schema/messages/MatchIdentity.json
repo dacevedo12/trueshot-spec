@@ -5,6 +5,28 @@
   "note": "What a server sends to tell a client which match this is and what its player is called. The header carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.116",
+      "until": "1.0.0.117",
+      "channel": "events",
+      "command": 145,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "game",
+          "type": "i64",
+          "note": "The match's identifier. A client only logs it."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "The player's name, padded with zero bytes. A client reads nothing of it."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.117",
       "until": "1.0.0.119",
       "channel": "events",

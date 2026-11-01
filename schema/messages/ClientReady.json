@@ -5,6 +5,16 @@
   "note": "What a client sends once it has loaded and is ready to play. It comes unprompted, before any start of play reaches the client. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.116",
+      "until": "1.0.0.117",
+      "channel": "requests",
+      "command": 81,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero. The three module fields are always zero."
+    },
+    {
       "from": "1.0.0.117",
       "until": "1.0.0.119",
       "channel": "requests",
