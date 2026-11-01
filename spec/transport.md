@@ -146,9 +146,9 @@ short to fill one, and a payload shorter than a block.
 There is no padding. Trailing bytes that do not fill a block travel unchanged,
 so a payload shorter than one block travels entirely in the clear.
 
-<!-- holds from 1.0.0.112 up to 1.0.0.116 -->
+<!-- holds from 1.0.0.111 up to 1.0.0.116 -->
 
-> **In 1.0.0.112–1.0.0.114**
+> **In 1.0.0.111–1.0.0.114**
 >
 > A client pads what it sends to a whole number of blocks and enciphers all of
 > it. The bytes it adds follow the message's own fields to the end of the
