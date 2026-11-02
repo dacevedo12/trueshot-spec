@@ -5,6 +5,21 @@
   "note": "What a client sends once a voice event (VoiceEvent) of kind 0 that asked for it has played, or at once where the client could not play the event. The header carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.106",
+      "until": "1.0.0.107",
+      "channel": "requests",
+      "command": 177,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "handle",
+          "type": "u32",
+          "note": "The number the VoiceEvent carried."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.107",
       "until": "1.0.0.109",
       "channel": "requests",

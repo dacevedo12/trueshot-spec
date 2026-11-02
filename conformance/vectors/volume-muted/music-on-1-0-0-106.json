@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "VolumeMuted",
+  "version": "1.0.0.106",
+  "note": "Laid out as a 1.0.0.106 client takes it.",
+  "bytes": "b6000000000101",
+  "fields": {
+    "command": 182,
+    "netId": 0,
+    "category": 1,
+    "state": {
+      "muted": 1,
+      "unused": 0
+    }
+  }
+}

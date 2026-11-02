@@ -5,6 +5,32 @@
   "note": "What a server sends to put a champion back on the field. The header names the unit this is about.",
   "revisions": [
     {
+      "from": "1.0.0.106",
+      "until": "1.0.0.107",
+      "channel": "events",
+      "command": 83,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "A client reads nothing here."
+        },
+        {
+          "name": "atY",
+          "type": "f32",
+          "note": "A client reads nothing here."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "A client reads nothing here."
+        }
+      ],
+      "note": "A client returns the champion where it already stands."
+    },
+    {
       "from": "1.0.0.107",
       "until": "1.0.0.109",
       "channel": "events",

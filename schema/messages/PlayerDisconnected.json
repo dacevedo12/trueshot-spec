@@ -5,6 +5,22 @@
   "note": "What a server sends as a player's client drops out. The header carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.106",
+      "until": "1.0.0.107",
+      "channel": "events",
+      "command": 127,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "champion",
+          "type": "u32",
+          "note": "The player's champion, matched against the owner of each champion the client knows."
+        }
+      ],
+      "note": "A client shows a chat notice naming the player in their side's colour, and nothing where player names no champion it knows, names its own champion, or the match is not under way."
+    },
+    {
       "from": "1.0.0.107",
       "until": "1.0.0.109",
       "channel": "events",

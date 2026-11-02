@@ -5,6 +5,39 @@
   "note": "What a client sends as its player points at a quest in the tracker (QuestUpdated), stops pointing at it, or clicks it. The header names the sender's champion.",
   "revisions": [
     {
+      "from": "1.0.0.106",
+      "until": "1.0.0.107",
+      "channel": "requests",
+      "command": 144,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "event",
+          "type": "u8",
+          "note": "What the player did. Pointing and leaving are sent only for a quest activated with its first flag set; a click at most once in three seconds.",
+          "values": {
+            "0": {
+              "name": "enter",
+              "note": "The pointer came over the quest."
+            },
+            "1": {
+              "name": "leave",
+              "note": "The pointer left it."
+            },
+            "2": {
+              "name": "click"
+            }
+          }
+        },
+        {
+          "name": "quest",
+          "type": "i32",
+          "note": "The quest's number, as QuestUpdated gave it."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.107",
       "until": "1.0.0.109",
       "channel": "requests",

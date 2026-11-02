@@ -5,6 +5,40 @@
   "note": "What a server sends to play a voice event. The header carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.106",
+      "until": "1.0.0.107",
+      "channel": "events",
+      "command": 148,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "folder",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The event's folder. It has no effect where kind is 1."
+        },
+        {
+          "name": "event",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The event's name; for kind 1, the conversation's."
+        },
+        {
+          "name": "callback",
+          "type": "u8",
+          "note": "Nonzero asks the client to send VoiceEventDone once the event has played. A client sends it at once where it cannot play the event, whatever this holds."
+        },
+        {
+          "name": "handle",
+          "type": "u32",
+          "note": "A number a client returns in VoiceEventDone."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.107",
       "until": "1.0.0.109",
       "channel": "events",

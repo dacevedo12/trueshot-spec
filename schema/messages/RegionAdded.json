@@ -5,6 +5,90 @@
   "note": "What a server sends to place a region on the ground: a patch that grants sight, blocks the way, or grows cover. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.106",
+      "until": "1.0.0.107",
+      "channel": "events",
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "command": 99,
+      "fields": [
+        {
+          "name": "kind",
+          "type": "u32",
+          "note": "Whose map shows the region: 0 side 100's, 1 side 200's, 2 everyone's, 3 side 300's, 4 any other. A client takes the value as it stands, so 100 or 200 here matches no one, and draws the region only where it is 2 or names the player's own side."
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "Unused; a client reads nothing here."
+        },
+        {
+          "name": "sightRadius",
+          "type": "f32",
+          "note": "How far the region shows the map around it, in world units, zero or more."
+        },
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where it stands, along one ground axis, in world units."
+        },
+        {
+          "name": "atY",
+          "type": "f32",
+          "note": "Its height, in world units."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where it stands, along the other ground axis, in world units."
+        },
+        {
+          "name": "lifetime",
+          "type": "f32",
+          "note": "How long it lasts, in seconds. A client counts it down and removes the region once it reaches zero, so zero or less removes it at once."
+        },
+        {
+          "name": "marker",
+          "type": "u32",
+          "note": "The id the client keeps the region under. Zero has the client pick one."
+        },
+        {
+          "name": "does",
+          "type": "bits",
+          "size": 4,
+          "note": "What the region does.",
+          "bits": [
+            {
+              "name": "flag",
+              "width": 1,
+              "note": "Where kind is 2 and this bit is set, a client also sets the bit after it."
+            },
+            {
+              "name": "second",
+              "width": 1,
+              "note": "Kept with the region; a client also sets it where kind is 2 and flag is set. It changes nothing a client shows."
+            },
+            {
+              "name": "unused",
+              "width": 30,
+              "note": "Its value has no effect; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "extra",
+          "type": "u32",
+          "note": "Kept with the region; it changes nothing a client shows. A server writes zero."
+        },
+        {
+          "name": "otherExtra",
+          "type": "u32",
+          "note": "A region sent again with the same value is taken as the one already shown; what else it names is not recorded. A server sends zero."
+        }
+      ],
+      "note": "On this range a region stands where the message places it; RegionAttached places one that follows a unit. A region matching one the client holds in kind, sightRadius, the first three bits of does, extra, otherExtra and position only gives that one the new lifetime."
+    },
+    {
       "from": "1.0.0.107",
       "until": "1.0.0.109",
       "channel": "events",

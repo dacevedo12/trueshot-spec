@@ -5,6 +5,82 @@
   "note": "What a client sends while a match loads, saying how far it has got. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.106",
+      "until": "1.0.0.107",
+      "channel": "requests",
+      "command": 124,
+      "direction": "clientToServer",
+      "reliability": "unreliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id the sender holds, that is, the id of the client reporting."
+        },
+        {
+          "name": "playerId",
+          "type": "i64",
+          "note": "Zero."
+        },
+        {
+          "name": "percent",
+          "type": "f32",
+          "note": "How far loading has got, from zero to one hundred."
+        },
+        {
+          "name": "eta",
+          "type": "f32",
+          "note": "How many seconds the client expects loading still to take."
+        },
+        {
+          "name": "status",
+          "type": "bits",
+          "size": 4,
+          "bits": [
+            {
+              "name": "count",
+              "width": 16,
+              "note": "It rises with each report, not always by one."
+            },
+            {
+              "name": "ping",
+              "width": 15,
+              "note": "The round trip time the client measures, in milliseconds."
+            },
+            {
+              "name": "unused",
+              "width": 1,
+              "note": "Never written by a client; it carries nothing."
+            }
+          ]
+        },
+        {
+          "name": "done",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "loaded",
+              "width": 1,
+              "note": "Set once loading is done."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Carries nothing; a client never writes these bits."
+            }
+          ]
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "A text the client also keeps, at most 63 characters, ended by a zero byte. What it says is not recorded; a server ignores it."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.107",
       "until": "1.0.0.109",
       "channel": "requests",
