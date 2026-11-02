@@ -5,6 +5,24 @@
   "note": "What a server sends to replace the text of the objective panel, showing the panel if it is hidden. The header carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.103",
+      "until": "1.0.0.104",
+      "channel": "events",
+      "command": 160,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "The objective, ended by a zero byte."
+        }
+      ],
+      "note": "A client ignores it where it has no objective panel."
+    },
+    {
       "from": "1.0.0.104",
       "until": "1.0.0.107",
       "channel": "events",

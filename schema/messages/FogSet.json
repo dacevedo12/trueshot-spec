@@ -5,6 +5,16 @@
   "note": "What a server sends to turn the drawing of the fog of war on or off. It changes only what is drawn. The header carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.103",
+      "until": "1.0.0.104",
+      "channel": "events",
+      "command": 137,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client turns its fog of war on."
+    },
+    {
       "from": "1.0.0.104",
       "until": "1.0.0.107",
       "channel": "events",
