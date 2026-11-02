@@ -5,7 +5,7 @@
   "note": "What a server sends to say what has changed about units a client can see. It is the most frequent thing a server sends. The header names no object: it carries zero.",
   "revisions": [
     {
-      "from": "1.0.0.101",
+      "from": "1.0.0.100",
       "until": "1.0.0.103",
       "channel": "transient",
       "command": 138,

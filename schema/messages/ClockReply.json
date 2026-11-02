@@ -5,7 +5,7 @@
   "note": "What a client sends back when a server states the match clock, carrying both readings so the server can tell how far apart they are. The header names no object: it carries zero.",
   "revisions": [
     {
-      "from": "1.0.0.101",
+      "from": "1.0.0.100",
       "until": "1.0.0.103",
       "channel": "clock",
       "command": 86,
