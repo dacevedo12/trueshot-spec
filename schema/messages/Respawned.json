@@ -5,7 +5,7 @@
   "note": "What a server sends to bring a dead champion back at a place, with full health. The header names the champion. A client keeps the champion's level, experience, gold, maxima and spell ranks, sets it on the nearest open ground, plays the coming back, and for its own champion moves the camera onto it where the player asked for that.",
   "revisions": [
     {
-      "from": "1.0.0.102",
+      "from": "1.0.0.101",
       "until": "1.0.0.103",
       "channel": "events",
       "command": 83,
