@@ -5,7 +5,7 @@
   "note": "What a server sends to say one unit hurt another. A client shows the figure and nothing more: the health it shows for the unit is what replication carries, and this message leaves it as it was. The header names the unit hurt, as target does.",
   "revisions": [
     {
-      "from": "1.0.0.103",
+      "from": "1.0.0.102",
       "until": "1.0.0.110",
       "channel": "events",
       "command": 23,

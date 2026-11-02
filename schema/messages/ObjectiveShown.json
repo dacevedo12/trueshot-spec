@@ -5,6 +5,23 @@
   "note": "What a server sends to show the objective panel with a text. The header carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.102",
+      "until": "1.0.0.103",
+      "channel": "events",
+      "command": 156,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "The objective, ended by a zero byte."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.103",
       "until": "1.0.0.104",
       "channel": "events",

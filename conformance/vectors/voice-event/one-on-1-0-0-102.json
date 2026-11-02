@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "VoiceEvent",
+  "version": "1.0.0.102",
+  "note": "Laid out as a 1.0.0.102 client takes it.",
+  "bytes": "8d000000005475746f7269616c5f45787472615f566963746f727931000000000000000000000000000000000000000000000000000000000000000000000000000000000001",
+  "fields": {
+    "command": 141,
+    "netId": 0,
+    "event": "Tutorial_Extra_Victory1",
+    "callback": 1
+  }
+}

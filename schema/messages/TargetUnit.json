@@ -5,6 +5,22 @@
   "note": "What a server sends to say what a unit is attacking, whatever the unit attacked is. A client takes down whatever it was drawing for that unit's last target and draws for the new one where the target and the unit's own settings allow. The header names the unit acting.",
   "revisions": [
     {
+      "from": "1.0.0.102",
+      "until": "1.0.0.103",
+      "channel": "events",
+      "command": 74,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit being attacked, or zero where it is attacking nothing."
+        }
+      ],
+      "note": "Only a turret takes it, drawing its beam to target."
+    },
+    {
       "from": "1.0.0.103",
       "until": "1.0.0.107",
       "channel": "events",

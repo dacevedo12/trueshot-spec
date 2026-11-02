@@ -5,6 +5,38 @@
   "note": "What a server sends to move units. It carries a number a client returns to say it has taken the group in. The header carries zero or names the object this is about, and a client accepts either.",
   "revisions": [
     {
+      "from": "1.0.0.102",
+      "until": "1.0.0.103",
+      "channel": "transient",
+      "command": 130,
+      "direction": "serverToClient",
+      "reliability": "unreliable",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u32",
+          "note": "The number of this statement; a client applies a path to a unit only where it is not behind the last the unit took. A client returns it in WaypointAck to say the group arrived."
+        },
+        {
+          "name": "movementCount",
+          "type": "u16",
+          "note": "How many paths follow, one for each unit. A client reads it as signed, so a count above 32767 counts as none, as zero does, and a client still answers."
+        },
+        {
+          "name": "movements",
+          "type": "array",
+          "count": "movementCount",
+          "items": {
+            "name": "movement",
+            "type": "struct",
+            "struct": "Movement"
+          },
+          "note": "One path for each unit."
+        }
+      ],
+      "note": "What a server sends to set units walking paths, which each walks at its own speed."
+    },
+    {
       "from": "1.0.0.103",
       "until": "1.0.0.107",
       "channel": "transient",

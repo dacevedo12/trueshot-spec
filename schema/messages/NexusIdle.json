@@ -5,6 +5,15 @@
   "note": "What a server sends to put each nexus into its idle particles. The header carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.102",
+      "until": "1.0.0.103",
+      "channel": "events",
+      "command": 180,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": []
+    },
+    {
       "from": "1.0.0.103",
       "until": "1.0.0.104",
       "channel": "events",
