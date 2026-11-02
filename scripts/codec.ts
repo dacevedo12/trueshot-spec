@@ -187,10 +187,9 @@ function amount(spec: Amount, scope: Values, index: number | null): number {
     typeof spec === "string"
       ? Number(value)
       : "minus" in spec
-        ? Number(value) - spec.minus
+        ? Math.max(0, Number(value) - spec.minus)
         : bitsSet(BigInt(value as number | bigint));
-  if (!Number.isInteger(n) || n < 0)
-    return bail(`"${String(spec)}" is not a count`);
+  if (!Number.isInteger(n) || n < 0) return bail(`"${named}" is not a count`);
   return n;
 }
 

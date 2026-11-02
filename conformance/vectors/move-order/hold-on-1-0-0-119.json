@@ -1,0 +1,33 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "MoveOrder",
+  "version": "1.0.0.119",
+  "note": "Laid out as a 1.0.0.119 client sends a hold order: a path of no points, so only the unit follows the count.",
+  "bytes": "71010000400100007a44000000000080bb44000000000000000001000040",
+  "fields": {
+    "command": 113,
+    "netId": 1073741825,
+    "target": 0,
+    "targetX": 1000,
+    "targetY": 0,
+    "targetZ": 1500,
+    "kind": 1,
+    "movement": {
+      "header": {
+        "hasTeleportToken": 0,
+        "unused": 0,
+        "pointCount": 0,
+        "unusedHigh": 0
+      },
+      "path": {
+        "unit": 1073741825,
+        "teleportToken": null,
+        "flags": [],
+        "firstX": null,
+        "firstZ": null,
+        "steps": []
+      }
+    }
+  }
+}

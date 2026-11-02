@@ -550,7 +550,8 @@
               "type": "integer",
               "minimum": 1
             }
-          }
+          },
+          "description": "The value of an earlier field less a fixed amount, and none where the field holds less than that."
         },
         {
           "type": "object",

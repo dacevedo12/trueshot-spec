@@ -1,0 +1,54 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "MoveOrder",
+  "version": "1.0.0.138",
+  "note": "Laid out as a 1.0.0.138 client sends a move along a path whose steps state each coordinate both ways.",
+  "bytes": "78010000400200007a440080bb44000000000000030001000040096efa3df905a8f400f4d6",
+  "fields": {
+    "command": 120,
+    "netId": 1073741825,
+    "target": 0,
+    "targetX": 1000,
+    "targetZ": 1500,
+    "kind": 2,
+    "movement": {
+      "header": {
+        "hasTeleportToken": 0,
+        "unused": 0,
+        "pointCount": 3,
+        "unusedHigh": 0
+      },
+      "path": {
+        "unit": 1073741825,
+        "teleportToken": null,
+        "flags": [
+          {
+            "xIsStep": 1,
+            "zIsStep": 0
+          },
+          {
+            "xIsStep": 0,
+            "zIsStep": 1
+          }
+        ],
+        "firstX": -1426,
+        "firstZ": -1731,
+        "steps": [
+          {
+            "xStep": 5,
+            "xWhole": null,
+            "zStep": null,
+            "zWhole": -2904
+          },
+          {
+            "xStep": null,
+            "xWhole": -3072,
+            "zStep": -42,
+            "zWhole": null
+          }
+        ]
+      }
+    }
+  }
+}
