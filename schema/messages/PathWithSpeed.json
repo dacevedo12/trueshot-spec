@@ -5,7 +5,7 @@
   "note": "What a server sends to set a unit moving along a path at a speed of its own, perhaps in an arc or following another unit. The header names the unit. A client answers every one at once, as it answers Path, whatever its sync id. It applies it only where the sync id is not older than the last the unit took (as UnitStopped).",
   "revisions": [
     {
-      "from": "1.0.0.100",
+      "from": "1.0.0.99",
       "until": "1.0.0.103",
       "channel": "events",
       "command": 89,
