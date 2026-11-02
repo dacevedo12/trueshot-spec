@@ -10,7 +10,7 @@
         {
           "name": "size",
           "type": "u16",
-          "note": "How many bytes the casting holds after this field. Where it differs from the bytes the fields after it take, a 4.17 client gives the cast no spell."
+          "note": "How many bytes the casting takes, this field included. Where it differs from the bytes the casting takes, a client gives the cast no spell."
         },
         {
           "name": "spell",
@@ -184,7 +184,7 @@
         {
           "name": "size",
           "type": "u16",
-          "note": "How many bytes the casting holds after this field. Where it differs from the bytes the fields after it take, a 4.17 client gives the cast no spell."
+          "note": "How many bytes the casting takes, this field included. Where it differs from the bytes the casting takes, a client gives the cast no spell."
         },
         {
           "name": "spell",
@@ -358,7 +358,7 @@
         {
           "name": "size",
           "type": "u16",
-          "note": "How many bytes the casting holds after this field. Where it differs from the bytes the fields after it take, a 4.17 client gives the cast no spell."
+          "note": "How many bytes the casting takes, this field included. Where it differs from the bytes the casting takes, a client gives the cast no spell."
         },
         {
           "name": "spell",
@@ -547,7 +547,7 @@
         {
           "name": "size",
           "type": "u16",
-          "note": "How many bytes the casting holds after this field. Where it differs from the bytes the fields after it take, a 4.17 client gives the cast no spell."
+          "note": "How many bytes the casting takes, this field included. Where it differs from the bytes the casting takes, a client gives the cast no spell."
         },
         {
           "name": "spell",
@@ -736,7 +736,7 @@
         {
           "name": "size",
           "type": "u16",
-          "note": "How many bytes the casting holds after this field. Where it differs from the bytes the fields after it take, a 4.17 client gives the cast no spell."
+          "note": "How many bytes the casting takes, this field included. Where it differs from the bytes the casting takes, a client gives the cast no spell."
         },
         {
           "name": "spell",
