@@ -5,6 +5,32 @@
   "note": "What a server sends to set what sits in one of a unit's item slots. It answers no request: a client clears the slot named and puts what follows in its place whether or not anything asked for it, so a server sends it to units nobody is buying for. The header names the unit this is about.",
   "revisions": [
     {
+      "from": "1.0.0.98",
+      "until": "1.0.0.99",
+      "channel": "events",
+      "command": 46,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "The slot it went to, 0 to 36. A client rejects the message from 37 up."
+        },
+        {
+          "name": "item",
+          "type": "u32",
+          "note": "Which item, by the number the client knows it as."
+        },
+        {
+          "name": "inSlot",
+          "type": "u8",
+          "note": "How many of the item the slot holds now; zero leaves the slot as it was. The slot's charges come from the item's own data."
+        }
+      ],
+      "note": "There is no charges field: a client takes an item's charges from the item's own data."
+    },
+    {
       "from": "1.0.0.99",
       "until": "1.0.0.103",
       "channel": "events",
