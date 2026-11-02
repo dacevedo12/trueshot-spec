@@ -5,6 +5,16 @@
   "note": "What a client sends once a voice event (VoiceEvent) of kind 0 that asked for it has played, or at once where the client could not play the event. The header carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.97",
+      "until": "1.0.0.98",
+      "channel": "requests",
+      "command": 168,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client names no event: the message is its header alone."
+    },
+    {
       "from": "1.0.0.98",
       "until": "1.0.0.103",
       "channel": "requests",

@@ -5,6 +5,15 @@
   "note": "What a server sends to warn the player that they seem to be away, in a popup with one button that only closes it. It carries nothing of its own. The header carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.97",
+      "until": "1.0.0.98",
+      "channel": "events",
+      "command": 151,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": []
+    },
+    {
       "from": "1.0.0.98",
       "until": "1.0.0.103",
       "channel": "events",
