@@ -497,6 +497,11 @@ class Match {
     ) {
       let syncId = 1_000;
       s.on("MoveOrder", (m: Message) => {
+        // An order that takes no path, such as holding position, has no
+        // points to walk.
+        const movement = m.fields["movement"] as
+          { header?: { pointCount?: number } } | undefined;
+        if (movement?.header?.pointCount === 0) return;
         syncId += 1;
         s.send(
           "WaypointGroup",
