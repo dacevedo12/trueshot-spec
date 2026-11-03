@@ -5,7 +5,7 @@
   "note": "What a server sends to tell everyone how far one seat has got through loading, and how it is holding up. A later report supersedes an earlier one, so losing one costs nothing. The header names no object: it carries zero.",
   "revisions": [
     {
-      "from": "1.0.0.87",
+      "from": "1.0.0.86",
       "until": "1.0.0.97",
       "channel": "transient",
       "command": 122,

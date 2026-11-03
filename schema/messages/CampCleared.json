@@ -5,7 +5,7 @@
   "note": "What a server sends as a camp of units that belong to no side is emptied. A client marks the camp empty, even one that had just filled. The header names no object: it carries zero.",
   "revisions": [
     {
-      "from": "1.0.0.87",
+      "from": "1.0.0.86",
       "until": "1.0.0.97",
       "channel": "events",
       "command": 189,
