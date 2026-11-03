@@ -5,7 +5,7 @@
   "note": "What a server sends to say where a missile is and what it is doing. The header names the unit casting, as the casting inside does.",
   "revisions": [
     {
-      "from": "1.0.0.75",
+      "from": "1.0.0.74",
       "until": "1.0.0.79",
       "channel": "events",
       "command": 64,
@@ -92,7 +92,11 @@
           "type": "f32",
           "note": "Where to place the casting unit, along one ground axis, in world units, unless the casting itself places it."
         },
-        { "name": "unitAtY", "type": "f32", "note": "Its height, in world units." },
+        {
+          "name": "unitAtY",
+          "type": "f32",
+          "note": "Its height, in world units."
+        },
         {
           "name": "unitAtZ",
           "type": "f32",
@@ -108,7 +112,11 @@
               "width": 1,
               "note": "Set where the missile has bounced. It applies only where age is above zero: a client then moves the missile to its position and places it again from the caster's position, the end and the facing."
             },
-            { "name": "unused", "width": 7, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -208,7 +216,11 @@
           "type": "f32",
           "note": "Where to place the casting unit, along one ground axis, in world units, unless the casting itself places it."
         },
-        { "name": "unitAtY", "type": "f32", "note": "Its height, in world units." },
+        {
+          "name": "unitAtY",
+          "type": "f32",
+          "note": "Its height, in world units."
+        },
         {
           "name": "unitAtZ",
           "type": "f32",
@@ -224,7 +236,11 @@
               "width": 1,
               "note": "Set where the missile has bounced. It applies only where age is above zero: a client then moves the missile to its position and places it again from the caster's position, the end and the facing."
             },
-            { "name": "unused", "width": 7, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -324,7 +340,11 @@
           "type": "f32",
           "note": "Where to place the casting unit, along one ground axis, in world units, unless the casting itself places it."
         },
-        { "name": "unitAtY", "type": "f32", "note": "Its height, in world units." },
+        {
+          "name": "unitAtY",
+          "type": "f32",
+          "note": "Its height, in world units."
+        },
         {
           "name": "unitAtZ",
           "type": "f32",
@@ -340,7 +360,11 @@
               "width": 1,
               "note": "Set where the missile has bounced. It applies only where age is above zero: a client then moves the missile to its position and places it again from the caster's position, the end and the facing."
             },
-            { "name": "unused", "width": 7, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -440,7 +464,11 @@
           "type": "f32",
           "note": "Where to place the casting unit, along one ground axis, in world units, unless the casting itself places it."
         },
-        { "name": "unitAtY", "type": "f32", "note": "Its height, in world units." },
+        {
+          "name": "unitAtY",
+          "type": "f32",
+          "note": "Its height, in world units."
+        },
         {
           "name": "unitAtZ",
           "type": "f32",
@@ -456,7 +484,11 @@
               "width": 1,
               "note": "Set where the missile has bounced. It applies only where age is above zero: a client then moves the missile to its position and places it again from the caster's position, the end and the facing."
             },
-            { "name": "unused", "width": 7, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -556,7 +588,11 @@
           "type": "f32",
           "note": "Where to place the casting unit, along one ground axis, in world units, unless the casting itself places it."
         },
-        { "name": "unitAtY", "type": "f32", "note": "Its height, in world units." },
+        {
+          "name": "unitAtY",
+          "type": "f32",
+          "note": "Its height, in world units."
+        },
         {
           "name": "unitAtZ",
           "type": "f32",
@@ -572,7 +608,11 @@
               "width": 1,
               "note": "Set where the missile has bounced. It applies only where age is above zero: a client then moves the missile to its position and places it again from the caster's position, the end and the facing."
             },
-            { "name": "unused", "width": 7, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -672,7 +712,11 @@
           "type": "f32",
           "note": "Where to place the casting unit, along one ground axis, in world units, unless the casting itself places it."
         },
-        { "name": "unitAtY", "type": "f32", "note": "Its height, in world units." },
+        {
+          "name": "unitAtY",
+          "type": "f32",
+          "note": "Its height, in world units."
+        },
         {
           "name": "unitAtZ",
           "type": "f32",
@@ -693,7 +737,11 @@
               "width": 1,
               "note": "Set where the missile has bounced. It applies only where age is above zero: a client then moves the missile to its position and places it again from the caster's position, the end and the facing."
             },
-            { "name": "unused", "width": 7, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -793,7 +841,11 @@
           "type": "f32",
           "note": "Where to place the casting unit, along one ground axis, in world units, unless the casting itself places it."
         },
-        { "name": "unitAtY", "type": "f32", "note": "Its height, in world units." },
+        {
+          "name": "unitAtY",
+          "type": "f32",
+          "note": "Its height, in world units."
+        },
         {
           "name": "unitAtZ",
           "type": "f32",
@@ -814,7 +866,11 @@
               "width": 1,
               "note": "Set where the missile has bounced. It applies only where age is above zero: a client then moves the missile to its position and places it again from the caster's position, the end and the facing."
             },
-            { "name": "unused", "width": 7, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -914,7 +970,11 @@
           "type": "f32",
           "note": "Where to place the casting unit, along one ground axis, in world units, unless the casting itself places it."
         },
-        { "name": "unitAtY", "type": "f32", "note": "Its height, in world units." },
+        {
+          "name": "unitAtY",
+          "type": "f32",
+          "note": "Its height, in world units."
+        },
         {
           "name": "unitAtZ",
           "type": "f32",
@@ -935,7 +995,11 @@
               "width": 1,
               "note": "Set where the missile has bounced. It applies only where age is above zero: a client then moves the missile to its position and places it again from the caster's position, the end and the facing."
             },
-            { "name": "unused", "width": 7, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -1035,7 +1099,11 @@
           "type": "f32",
           "note": "Where to place the casting unit, along one ground axis, in world units, unless the casting itself places it."
         },
-        { "name": "unitAtY", "type": "f32", "note": "Its height, in world units." },
+        {
+          "name": "unitAtY",
+          "type": "f32",
+          "note": "Its height, in world units."
+        },
         {
           "name": "unitAtZ",
           "type": "f32",
@@ -1056,7 +1124,11 @@
               "width": 1,
               "note": "Set where the missile has bounced. It applies only where age is above zero: a client then moves the missile to its position and places it again from the caster's position, the end and the facing."
             },
-            { "name": "unused", "width": 7, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -1171,7 +1243,11 @@
           "type": "f32",
           "note": "Where to place the casting unit, along one ground axis, in world units, unless the casting itself places it."
         },
-        { "name": "unitAtY", "type": "f32", "note": "Its height, in world units." },
+        {
+          "name": "unitAtY",
+          "type": "f32",
+          "note": "Its height, in world units."
+        },
         {
           "name": "unitAtZ",
           "type": "f32",
@@ -1197,7 +1273,11 @@
               "width": 1,
               "note": "Set where the missile has bounced. It applies only where age is above zero: a client then moves the missile to its position and places it again from the caster's position, the end and the facing."
             },
-            { "name": "unused", "width": 7, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -1312,7 +1392,11 @@
           "type": "f32",
           "note": "Where to place the casting unit, along one ground axis, in world units, unless the casting itself places it."
         },
-        { "name": "unitAtY", "type": "f32", "note": "Its height, in world units." },
+        {
+          "name": "unitAtY",
+          "type": "f32",
+          "note": "Its height, in world units."
+        },
         {
           "name": "unitAtZ",
           "type": "f32",
@@ -1338,7 +1422,11 @@
               "width": 1,
               "note": "Set where the missile has bounced. It applies only where age is above zero: a client then moves the missile to its position and places it again from the caster's position, the end and the facing."
             },
-            { "name": "unused", "width": 7, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -1453,7 +1541,11 @@
           "type": "f32",
           "note": "Where to place the casting unit, along one ground axis, in world units, unless the casting itself places it."
         },
-        { "name": "unitAtY", "type": "f32", "note": "Its height, in world units." },
+        {
+          "name": "unitAtY",
+          "type": "f32",
+          "note": "Its height, in world units."
+        },
         {
           "name": "unitAtZ",
           "type": "f32",
@@ -1479,7 +1571,11 @@
               "width": 1,
               "note": "Set where the missile has bounced. It applies only where age is above zero: a client then moves the missile to its position and places it again from the caster's position, the end and the facing."
             },
-            { "name": "unused", "width": 7, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -1594,7 +1690,11 @@
           "type": "f32",
           "note": "Where to place the casting unit, along one ground axis, in world units, unless the casting itself places it."
         },
-        { "name": "unitAtY", "type": "f32", "note": "Its height, in world units." },
+        {
+          "name": "unitAtY",
+          "type": "f32",
+          "note": "Its height, in world units."
+        },
         {
           "name": "unitAtZ",
           "type": "f32",
@@ -1620,7 +1720,11 @@
               "width": 1,
               "note": "Set where the missile has bounced. It applies only where age is above zero: a client then moves the missile to its position and places it again from the caster's position, the end and the facing."
             },
-            { "name": "unused", "width": 7, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -1735,7 +1839,11 @@
           "type": "f32",
           "note": "Where to place the casting unit, along one ground axis, in world units, unless the casting itself places it."
         },
-        { "name": "unitAtY", "type": "f32", "note": "Its height, in world units." },
+        {
+          "name": "unitAtY",
+          "type": "f32",
+          "note": "Its height, in world units."
+        },
         {
           "name": "unitAtZ",
           "type": "f32",
@@ -1761,7 +1869,11 @@
               "width": 1,
               "note": "Set where the missile has bounced. It applies only where age is above zero: a client then moves the missile to its position and places it again from the caster's position, the end and the facing."
             },
-            { "name": "unused", "width": 7, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -1876,7 +1988,11 @@
           "type": "f32",
           "note": "Where to place the casting unit, along one ground axis, in world units, unless the casting itself places it."
         },
-        { "name": "unitAtY", "type": "f32", "note": "Its height, in world units." },
+        {
+          "name": "unitAtY",
+          "type": "f32",
+          "note": "Its height, in world units."
+        },
         {
           "name": "unitAtZ",
           "type": "f32",
@@ -1907,7 +2023,11 @@
               "width": 1,
               "note": "Set where the missile has bounced. It applies only where age is above zero: a client then moves the missile to its position and places it again from the caster's position, the end and the facing."
             },
-            { "name": "unused", "width": 7, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -2022,7 +2142,11 @@
           "type": "f32",
           "note": "Where to place the casting unit, along one ground axis, in world units, unless the casting itself places it."
         },
-        { "name": "unitAtY", "type": "f32", "note": "Its height, in world units." },
+        {
+          "name": "unitAtY",
+          "type": "f32",
+          "note": "Its height, in world units."
+        },
         {
           "name": "unitAtZ",
           "type": "f32",
@@ -2053,7 +2177,11 @@
               "width": 1,
               "note": "Set where the missile has bounced. It applies only where age is above zero: a client then moves the missile to its position and places it again from the caster's position, the end and the facing."
             },
-            { "name": "unused", "width": 7, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -2168,7 +2296,11 @@
           "type": "f32",
           "note": "Where to place the casting unit, along one ground axis, in world units, unless the casting itself places it."
         },
-        { "name": "unitAtY", "type": "f32", "note": "Its height, in world units." },
+        {
+          "name": "unitAtY",
+          "type": "f32",
+          "note": "Its height, in world units."
+        },
         {
           "name": "unitAtZ",
           "type": "f32",
@@ -2199,7 +2331,11 @@
               "width": 1,
               "note": "Set where the missile has bounced. It applies only where age is above zero: a client then moves the missile to its position and places it again from the caster's position, the end and the facing."
             },
-            { "name": "unused", "width": 7, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -2314,7 +2450,11 @@
           "type": "f32",
           "note": "Where to place the casting unit, along one ground axis, in world units, unless the casting itself places it."
         },
-        { "name": "unitAtY", "type": "f32", "note": "Its height, in world units." },
+        {
+          "name": "unitAtY",
+          "type": "f32",
+          "note": "Its height, in world units."
+        },
         {
           "name": "unitAtZ",
           "type": "f32",
@@ -2345,7 +2485,11 @@
               "width": 1,
               "note": "Set where the missile has bounced. It applies only where age is above zero: a client then moves the missile to its position and places it again from the caster's position, the end and the facing."
             },
-            { "name": "unused", "width": 7, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -2460,7 +2604,11 @@
           "type": "f32",
           "note": "Where to place the casting unit, along one ground axis, in world units, unless the casting itself places it."
         },
-        { "name": "unitAtY", "type": "f32", "note": "Its height, in world units." },
+        {
+          "name": "unitAtY",
+          "type": "f32",
+          "note": "Its height, in world units."
+        },
         {
           "name": "unitAtZ",
           "type": "f32",
@@ -2501,7 +2649,11 @@
               "width": 1,
               "note": "Set where the missile has bounced. It applies only where age is above zero: a client then moves the missile to its position and places it again from the caster's position, the end and the facing."
             },
-            { "name": "unused", "width": 7, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -2616,7 +2768,11 @@
           "type": "f32",
           "note": "Where to place the casting unit, along one ground axis, in world units, unless the casting itself places it."
         },
-        { "name": "unitAtY", "type": "f32", "note": "Its height, in world units." },
+        {
+          "name": "unitAtY",
+          "type": "f32",
+          "note": "Its height, in world units."
+        },
         {
           "name": "unitAtZ",
           "type": "f32",
@@ -2657,7 +2813,11 @@
               "width": 1,
               "note": "Set where the missile has bounced. It applies only where age is above zero: a client then moves the missile to its position and places it again from the caster's position, the end and the facing."
             },
-            { "name": "unused", "width": 7, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -2772,7 +2932,11 @@
           "type": "f32",
           "note": "Where to place the casting unit, along one ground axis, in world units, unless the casting itself places it."
         },
-        { "name": "unitAtY", "type": "f32", "note": "Its height, in world units." },
+        {
+          "name": "unitAtY",
+          "type": "f32",
+          "note": "Its height, in world units."
+        },
         {
           "name": "unitAtZ",
           "type": "f32",
@@ -2813,7 +2977,11 @@
               "width": 1,
               "note": "Set where the missile has bounced. It applies only where age is above zero: a client then moves the missile to its position and places it again from the caster's position, the end and the facing."
             },
-            { "name": "unused", "width": 7, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -2928,7 +3096,11 @@
           "type": "f32",
           "note": "Where to place the casting unit, along one ground axis, in world units, unless the casting itself places it."
         },
-        { "name": "unitAtY", "type": "f32", "note": "Its height, in world units." },
+        {
+          "name": "unitAtY",
+          "type": "f32",
+          "note": "Its height, in world units."
+        },
         {
           "name": "unitAtZ",
           "type": "f32",
@@ -2969,7 +3141,11 @@
               "width": 1,
               "note": "Set where the missile has bounced. It applies only where age is above zero: a client then moves the missile to its position and places it again from the caster's position, the end and the facing."
             },
-            { "name": "unused", "width": 7, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -3084,7 +3260,11 @@
           "type": "f32",
           "note": "Where to place the casting unit, along one ground axis, in world units, unless the casting itself places it."
         },
-        { "name": "unitAtY", "type": "f32", "note": "Its height, in world units." },
+        {
+          "name": "unitAtY",
+          "type": "f32",
+          "note": "Its height, in world units."
+        },
         {
           "name": "unitAtZ",
           "type": "f32",
@@ -3125,7 +3305,11 @@
               "width": 1,
               "note": "Set where the missile has already turned off something it struck."
             },
-            { "name": "unused", "width": 7, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
