@@ -5,7 +5,7 @@
   "note": "What a client sends first. It arrives before the connection has a cipher state, so the payload travels in the clear apart from the proof.",
   "revisions": [
     {
-      "from": "1.0.0.83",
+      "from": "1.0.0.82",
       "until": "1.0.0.128",
       "channel": "registration",
       "command": 0,

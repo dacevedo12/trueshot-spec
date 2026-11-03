@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "StopAnimation",
+  "version": "1.0.0.82",
+  "note": "Laid out as a 1.0.0.82 client takes it.",
+  "bytes": "630100004000000000",
+  "fields": {
+    "command": 99,
+    "netId": 1073741825,
+    "flags": {
+      "unusedLow": 0,
+      "unlock": 0,
+      "unusedHigh": 0
+    }
+  }
+}
