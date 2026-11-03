@@ -5,7 +5,7 @@
   "note": "What a client sends to tell a server what it wants a unit to do. The path it carries is what the client would take; where the unit actually goes is whatever the server answers with. The header names the sender's champion.",
   "revisions": [
     {
-      "from": "1.0.0.74",
+      "from": "1.0.0.72",
       "until": "1.0.0.79",
       "channel": "requests",
       "command": 20,

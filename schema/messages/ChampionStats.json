@@ -5,6 +5,34 @@
   "note": "What a server sends to set a champion's tallies for the scoreboard. The header names the champion.",
   "revisions": [
     {
+      "from": "1.0.0.72",
+      "until": "1.0.0.74",
+      "channel": "events",
+      "command": 176,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "keptA",
+          "type": "bytes",
+          "size": 20,
+          "note": "Kept with the champion; a client shows nothing of it."
+        },
+        {
+          "name": "kills",
+          "type": "i32",
+          "note": "How many champions it has killed. Above zero, a client counts the champion's first kill as made."
+        },
+        {
+          "name": "keptB",
+          "type": "bytes",
+          "size": 176,
+          "note": "Kept with the champion; a client shows nothing of it."
+        }
+      ],
+      "note": "A fixed record of the champion's tallies, which a client keeps whole and shows none of. It acts only on kills."
+    },
+    {
       "from": "1.0.0.74",
       "until": "1.0.0.82",
       "channel": "events",

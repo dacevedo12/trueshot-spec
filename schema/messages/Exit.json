@@ -5,6 +5,16 @@
   "note": "What a client sends as it leaves. It carries nothing of its own. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.72",
+      "until": "1.0.0.74",
+      "channel": "requests",
+      "command": 118,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window, as a reconnection fails, or on Shutdown or BotKick.",
+      "fields": []
+    },
+    {
       "from": "1.0.0.74",
       "until": "1.0.0.82",
       "channel": "requests",

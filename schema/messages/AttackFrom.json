@@ -5,6 +5,57 @@
   "note": "What a server sends to say a unit is swinging at another, carrying where the swinging unit stands as well as what it swings at. The header names the unit acting.",
   "revisions": [
     {
+      "from": "1.0.0.72",
+      "until": "1.0.0.74",
+      "channel": "events",
+      "command": 54,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit swung at. A client throws the swing at it."
+        },
+        {
+          "name": "timing",
+          "type": "f32",
+          "note": "A shift in time, in seconds, from the moment the message arrives. It moves when the swing lets go and ends, and when the unit may next attack."
+        },
+        {
+          "name": "missile",
+          "type": "u32",
+          "note": "The name the missile this swing throws will answer to. Zero for a swing that throws none."
+        },
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which of the unit's attacks this is."
+        },
+        {
+          "name": "unread",
+          "type": "bytes",
+          "size": 4,
+          "note": "A client reads nothing here. A server writes zero."
+        },
+        {
+          "name": "fromX",
+          "type": "f32",
+          "note": "Where the swinging unit stands, along one ground axis, in world units. Where the unit stands more than 400 units from this point, a client first moves it there; nearer, the point has no effect."
+        },
+        {
+          "name": "fromY",
+          "type": "f32",
+          "note": "Where it stands, in height, in world units."
+        },
+        {
+          "name": "fromZ",
+          "type": "f32",
+          "note": "Where it stands, along the other, in world units."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.74",
       "until": "1.0.0.79",
       "channel": "events",

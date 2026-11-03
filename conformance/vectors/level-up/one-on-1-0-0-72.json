@@ -1,0 +1,15 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "LevelUp",
+  "version": "1.0.0.72",
+  "note": "Laid out as a 1.0.0.72 client takes it.",
+  "bytes": "2f000000010000400201",
+  "fields": {
+    "command": 47,
+    "padding": "000000",
+    "netId": 1073741825,
+    "level": 2,
+    "pointsToSpend": 1
+  }
+}

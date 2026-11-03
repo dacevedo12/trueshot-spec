@@ -5,6 +5,21 @@
   "note": "What a server sends to say a client has reconnected. The header carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.72",
+      "until": "1.0.0.74",
+      "channel": "events",
+      "command": 121,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "client",
+          "type": "u32",
+          "note": "The client, by the seat it occupies."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.74",
       "until": "1.0.0.82",
       "channel": "events",
