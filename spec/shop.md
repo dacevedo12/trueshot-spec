@@ -39,6 +39,12 @@ A client asks to buy with `BuyItem`, to sell or throw away an item with
 and closing the shop sends nothing, except in the tutorial, where opening it
 sends `TutorialShopOpened`.
 
+<!-- holds from 1.0.0.66 up to 1.0.0.70 -->
+
+> **In 1.0.0.66**
+>
+> A client never asks to swap two slots: it has no `SwapItems`.
+
 A client asks to buy only where shopping is allowed (`ShopEnabled`), with the
 champion near its side's shop, dead, or allowed to shop from anywhere; where the
 item is one it sells, not barred, and priced, after any substitution, within
