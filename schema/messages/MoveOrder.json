@@ -6,6 +6,129 @@
   "revisions": [
     {
       "from": "1.0.0.82",
+      "until": "1.0.0.83",
+      "channel": "requests",
+      "command": 20,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What the order is.",
+          "values": {
+            "2": {
+              "name": "moveToPosition"
+            },
+            "3": {
+              "name": "attack"
+            },
+            "10": {
+              "name": "stop"
+            }
+          }
+        },
+        {
+          "name": "targetX",
+          "type": "f32",
+          "note": "Where the order points, along one ground axis. Carried in world units rather than in the units a path uses."
+        },
+        {
+          "name": "targetY",
+          "type": "f32",
+          "note": "The height of the place ordered."
+        },
+        {
+          "name": "targetZ",
+          "type": "f32",
+          "note": "Where the order points, along the other ground axis."
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The network object the order is aimed at, or zero where it is aimed at open ground."
+        },
+        {
+          "name": "movement",
+          "type": "record",
+          "fields": [
+            {
+              "name": "header",
+              "type": "bits",
+              "size": 4,
+              "bits": [
+                {
+                  "name": "hasTeleportToken",
+                  "width": 1,
+                  "note": "Set where a token sits beside the unit. A client sends it clear, so a token travels only from a server."
+                },
+                {
+                  "name": "unused",
+                  "width": 15,
+                  "note": "Unused; a client reads nothing here."
+                },
+                {
+                  "name": "pointCount",
+                  "width": 15,
+                  "note": "How many points the path holds. A client takes none, or more than 2048, as no path and reads nothing more of the movement."
+                },
+                {
+                  "name": "unusedHigh",
+                  "width": 1,
+                  "note": "Unused; a client reads nothing here."
+                }
+              ]
+            },
+            {
+              "name": "path",
+              "type": "record",
+              "fields": [
+                {
+                  "name": "unit",
+                  "type": "u32",
+                  "note": "The unit the path belongs to."
+                },
+                {
+                  "name": "teleportToken",
+                  "type": "u8",
+                  "present": {
+                    "when": "header.hasTeleportToken"
+                  },
+                  "note": "Tells one relocation from another. spec/movement.md says what a receiving end does with it."
+                },
+                {
+                  "name": "points",
+                  "type": "array",
+                  "count": "header.pointCount",
+                  "note": "Every point of the path, each stated whole. A client reads them even for a unit it does not hold.",
+                  "items": {
+                    "name": "point",
+                    "type": "record",
+                    "fields": [
+                      {
+                        "name": "x",
+                        "type": "i16",
+                        "note": "Along one ground axis, in the units spec/movement.md gives."
+                      },
+                      {
+                        "name": "z",
+                        "type": "i16",
+                        "note": "Along the other."
+                      }
+                    ]
+                  }
+                }
+              ],
+              "note": "Everything the movement carries beyond its first byte."
+            }
+          ],
+          "note": "Every point after the first."
+        }
+      ],
+      "note": "What a client sends as its player gives an order. The header names the unit ordered: the player's champion, or a unit it controls alongside, which gets its own copy of the order."
+    },
+    {
+      "from": "1.0.0.83",
       "until": "1.0.0.110",
       "channel": "requests",
       "command": 20,

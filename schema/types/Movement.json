@@ -5,6 +5,81 @@
   "revisions": [
     {
       "from": "1.0.0.82",
+      "until": "1.0.0.83",
+      "fields": [
+        {
+          "name": "header",
+          "type": "bits",
+          "size": 4,
+          "bits": [
+            {
+              "name": "hasTeleportToken",
+              "width": 1,
+              "note": "Set where a token sits beside the unit. A client sends it clear, so a token travels only from a server."
+            },
+            {
+              "name": "unused",
+              "width": 15,
+              "note": "Unused; a client reads nothing here."
+            },
+            {
+              "name": "pointCount",
+              "width": 15,
+              "note": "How many points the path holds. A client takes none, or more than 2048, as no path and reads nothing more of the movement."
+            },
+            {
+              "name": "unusedHigh",
+              "width": 1,
+              "note": "Unused; a client reads nothing here."
+            }
+          ]
+        },
+        {
+          "name": "path",
+          "type": "record",
+          "fields": [
+            {
+              "name": "unit",
+              "type": "u32",
+              "note": "The unit the path belongs to."
+            },
+            {
+              "name": "teleportToken",
+              "type": "u8",
+              "present": {
+                "when": "header.hasTeleportToken"
+              },
+              "note": "Tells one relocation from another. spec/movement.md says what a receiving end does with it."
+            },
+            {
+              "name": "points",
+              "type": "array",
+              "count": "header.pointCount",
+              "note": "Every point of the path, each stated whole. A client reads them even for a unit it does not hold.",
+              "items": {
+                "name": "point",
+                "type": "record",
+                "fields": [
+                  {
+                    "name": "x",
+                    "type": "i16",
+                    "note": "Along one ground axis, in the units spec/movement.md gives."
+                  },
+                  {
+                    "name": "z",
+                    "type": "i16",
+                    "note": "Along the other."
+                  }
+                ]
+              }
+            }
+          ],
+          "note": "Everything the movement carries beyond its first byte."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.83",
       "until": "1.0.0.141",
       "fields": [
         {

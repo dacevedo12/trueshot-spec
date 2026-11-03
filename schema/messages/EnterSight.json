@@ -6,6 +6,119 @@
   "revisions": [
     {
       "from": "1.0.0.82",
+      "until": "1.0.0.83",
+      "channel": "events",
+      "command": 59,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "view",
+          "type": "record",
+          "note": "Everything else a client needs to draw the unit. A server sends it for a champion, a minion or another unit with a mind, which a client reads past the end of the message without it, and ends the message after the items for any other unit.",
+          "fields": [
+            {
+              "name": "movementState",
+              "type": "record",
+              "present": {
+                "when": "remaining",
+                "unseen": "absent"
+              },
+              "note": "Where the unit stands, followed by the direction it faces.",
+              "fields": [
+                {
+                  "name": "movementKind",
+                  "type": "u8",
+                  "note": "What follows the sync id: 0 nothing, 1 a path walked at a set speed, 2 a path, 3 a point the unit stands at. A client reads nothing more for any other value.",
+                  "values": {
+                    "0": {
+                      "name": "nothing"
+                    },
+                    "1": {
+                      "name": "movingAtASpeed"
+                    },
+                    "2": {
+                      "name": "moving"
+                    },
+                    "3": {
+                      "name": "standing"
+                    }
+                  }
+                },
+                {
+                  "name": "syncId",
+                  "type": "u32",
+                  "note": "The number of this statement about the unit; a client takes a path or a point only where it is not behind the last one the unit took."
+                },
+                {
+                  "name": "movement",
+                  "type": "struct",
+                  "struct": "Movement",
+                  "note": "Every point after the first.",
+                  "present": {
+                    "when": "movementKind",
+                    "equals": 2
+                  }
+                },
+                {
+                  "name": "movementAtSpeed",
+                  "type": "struct",
+                  "struct": "MovementAtSpeed",
+                  "note": "Where the unit is going, and how a server makes it travel. WaypointGroupAtSpeed carries the same shape.",
+                  "present": {
+                    "when": "movementKind",
+                    "equals": 1,
+                    "unseen": "present"
+                  }
+                },
+                {
+                  "name": "atX",
+                  "type": "f32",
+                  "note": "Along one ground axis, in world units; the height is the ground's.",
+                  "present": {
+                    "when": "movementKind",
+                    "equals": 3
+                  }
+                },
+                {
+                  "name": "atZ",
+                  "type": "f32",
+                  "note": "Along the other ground axis.",
+                  "present": {
+                    "when": "movementKind",
+                    "equals": 3
+                  }
+                },
+                {
+                  "name": "facingX",
+                  "type": "f32",
+                  "note": "Which way it faces, along one ground axis.",
+                  "present": {
+                    "when": "movementKind",
+                    "equals": 3
+                  }
+                },
+                {
+                  "name": "facingZ",
+                  "type": "f32",
+                  "note": "Which way it faces, along the other.",
+                  "present": {
+                    "when": "movementKind",
+                    "equals": 3
+                  }
+                }
+              ]
+            }
+          ],
+          "present": {
+            "when": "remaining"
+          }
+        }
+      ],
+      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit."
+    },
+    {
+      "from": "1.0.0.83",
       "until": "1.0.0.97",
       "channel": "events",
       "command": 59,
