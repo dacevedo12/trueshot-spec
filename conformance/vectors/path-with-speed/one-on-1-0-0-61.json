@@ -1,0 +1,28 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "PathWithSpeed",
+  "version": "1.0.0.61",
+  "note": "Laid out as a 1.0.0.61 client takes it.",
+  "bytes": "4e0000000100004002000000000096440000000000007a440000fa4400007a440000fa440080bb4400401c45",
+  "fields": {
+    "command": 78,
+    "padding": "000000",
+    "netId": 1073741825,
+    "syncId": 2,
+    "speed": 1200,
+    "gravity": 0,
+    "arcX": 1000,
+    "arcZ": 2000,
+    "points": [
+      {
+        "x": 1000,
+        "z": 2000
+      },
+      {
+        "x": 1500,
+        "z": 2500
+      }
+    ]
+  }
+}

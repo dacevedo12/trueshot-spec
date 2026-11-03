@@ -1,0 +1,27 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "LoadingProgress",
+  "version": "1.0.0.61",
+  "note": "Laid out as a 1.0.0.61 client sends it.",
+  "bytes": "710000000000000000000000000000000000000000000000ac1c954100009b000000",
+  "fields": {
+    "command": 113,
+    "padding": "000000",
+    "netId": 0,
+    "clientId": 0,
+    "playerId": "0",
+    "percent": 0,
+    "eta": 18.638999938964844,
+    "status": {
+      "count": 0,
+      "ping": 155,
+      "unused": 0
+    },
+    "done": {
+      "loaded": 0,
+      "unused": 0
+    },
+    "text": ""
+  }
+}

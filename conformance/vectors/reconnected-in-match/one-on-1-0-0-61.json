@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ReconnectedInMatch",
+  "version": "1.0.0.61",
+  "note": "Laid out as a 1.0.0.61 client sends it.",
+  "bytes": "750000000000000000",
+  "fields": {
+    "command": 117,
+    "padding": "000000",
+    "netId": 0,
+    "loading": 0
+  }
+}

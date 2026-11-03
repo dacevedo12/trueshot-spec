@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "RegionRemoved",
+  "version": "1.0.0.61",
+  "note": "Laid out as a 1.0.0.61 client takes it.",
+  "bytes": "540000000000000001000000",
+  "fields": {
+    "command": 84,
+    "padding": "000000",
+    "netId": 0,
+    "region": 1
+  }
+}

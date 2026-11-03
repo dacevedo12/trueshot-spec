@@ -5,6 +5,22 @@
   "note": "What a server sends to lock the camera to the champion or free it. A client answers with CameraLock, except while playing a replay, and ignores the message while something of its own holds the camera. The header carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.61",
+      "until": "1.0.0.63",
+      "channel": "events",
+      "command": 127,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "locked",
+          "type": "u8",
+          "note": "Nonzero to lock the camera, zero to free it; a client tests the whole byte, so any set bit locks it."
+        }
+      ],
+      "note": "A client answers at once with CameraLock, returning the state byte as it arrived. While the game holds a forced lock, it keeps the byte and sends it only as that lock lifts."
+    },
+    {
       "from": "1.0.0.63",
       "until": "1.0.0.74",
       "channel": "events",

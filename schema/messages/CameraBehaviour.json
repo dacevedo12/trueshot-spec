@@ -5,6 +5,32 @@
   "note": "What a server sends to set a point a champion's player's view keeps to. The header names the champion.",
   "revisions": [
     {
+      "from": "1.0.0.61",
+      "until": "1.0.0.63",
+      "channel": "events",
+      "command": 94,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Along one ground axis, in world units."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "In height, in world units."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Along the other ground axis, in world units."
+        }
+      ],
+      "note": "Only the client whose own champion the header names applies it."
+    },
+    {
       "from": "1.0.0.63",
       "until": "1.0.0.74",
       "channel": "events",

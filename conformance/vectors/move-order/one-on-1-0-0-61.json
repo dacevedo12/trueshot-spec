@@ -1,0 +1,18 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "MoveOrder",
+  "version": "1.0.0.61",
+  "note": "Laid out as a 1.0.0.61 client sends it.",
+  "bytes": "14000000010000400100007a44000000000080bb4400000000",
+  "fields": {
+    "command": 20,
+    "padding": "000000",
+    "netId": 1073741825,
+    "kind": 1,
+    "targetX": 1000,
+    "targetY": 0,
+    "targetZ": 1500,
+    "target": 0
+  }
+}

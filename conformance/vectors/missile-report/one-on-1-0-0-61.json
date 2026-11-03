@@ -1,0 +1,33 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "MissileReport",
+  "version": "1.0.0.61",
+  "note": "Laid out as a 1.0.0.61 client sends it.",
+  "bytes": "3f000000a6000040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+  "fields": {
+    "command": 63,
+    "padding": "000000",
+    "netId": 1073741990,
+    "atX": 0,
+    "atY": 0,
+    "atZ": 0,
+    "unknownAX": 0,
+    "unknownAY": 0,
+    "unknownAZ": 0,
+    "travelX": 0,
+    "travelY": 0,
+    "travelZ": 0,
+    "velocityX": 0,
+    "velocityY": 0,
+    "velocityZ": 0,
+    "endX": 0,
+    "endY": 0,
+    "endZ": 0,
+    "targetX": 0,
+    "targetY": 0,
+    "targetZ": 0,
+    "flag": 0,
+    "cast": "0000"
+  }
+}

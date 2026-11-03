@@ -5,6 +5,21 @@
   "note": "What a server sends to undo a fade on a unit. The header names the unit.",
   "revisions": [
     {
+      "from": "1.0.0.61",
+      "until": "1.0.0.63",
+      "channel": "events",
+      "command": 137,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "fade",
+          "type": "i16",
+          "note": "The fade, by the name FadeTo gave it. A client does nothing where no fade on the unit has that name."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.63",
       "until": "1.0.0.74",
       "channel": "events",

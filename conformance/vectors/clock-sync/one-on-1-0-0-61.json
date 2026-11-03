@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ClockSync",
+  "version": "1.0.0.61",
+  "note": "Laid out as a 1.0.0.61 client takes it.",
+  "bytes": "4a0000000000000000000000",
+  "fields": {
+    "command": 74,
+    "padding": "000000",
+    "netId": 0,
+    "elapsed": 0
+  }
+}
