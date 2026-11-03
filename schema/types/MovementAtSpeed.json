@@ -4,6 +4,87 @@
   "note": "What one unit is told to do where a server states how it travels: the same path of points as the compact shape, with the terms of its travel stated before them.",
   "revisions": [
     {
+      "from": "1.0.0.79",
+      "until": "1.0.0.81",
+      "fields": [
+        {
+          "name": "header",
+          "type": "bits",
+          "size": 4,
+          "bits": [
+            {
+              "name": "hasTeleportToken",
+              "width": 1,
+              "note": "Set where a token sits beside the unit. A client sends it clear, so a token travels only from a server."
+            },
+            {
+              "name": "unused",
+              "width": 15,
+              "note": "Unused; a client reads nothing here."
+            },
+            {
+              "name": "pointCount",
+              "width": 15,
+              "note": "How many points the path holds. A client takes none, or more than 2048, as no path and reads nothing more of the movement."
+            },
+            {
+              "name": "unusedHigh",
+              "width": 1,
+              "note": "Unused; a client reads nothing here."
+            }
+          ]
+        },
+        {
+          "name": "path",
+          "type": "record",
+          "fields": [
+            {
+              "name": "unit",
+              "type": "u32",
+              "note": "The unit the path belongs to."
+            },
+            {
+              "name": "teleportToken",
+              "type": "u8",
+              "present": {
+                "when": "header.hasTeleportToken"
+              },
+              "note": "Tells one relocation from another, as in the compact shape (see spec/movement.md)."
+            },
+            {
+              "name": "terms",
+              "type": "struct",
+              "struct": "SpeedParams",
+              "note": "How the unit is made to travel."
+            },
+            {
+              "name": "points",
+              "type": "array",
+              "count": "header.pointCount",
+              "note": "Every point of the path, each stated in world units. A client reads them even for a unit it does not hold, and takes each point's height from the ground.",
+              "items": {
+                "name": "point",
+                "type": "record",
+                "fields": [
+                  {
+                    "name": "x",
+                    "type": "f32",
+                    "note": "Along one ground axis, in world units."
+                  },
+                  {
+                    "name": "z",
+                    "type": "f32",
+                    "note": "Along the other, in world units."
+                  }
+                ]
+              }
+            }
+          ],
+          "note": "Everything the movement carries beyond its first byte."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.81",
       "until": "1.0.0.83",
       "fields": [
