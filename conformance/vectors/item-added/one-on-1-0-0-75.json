@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ItemAdded",
+  "version": "1.0.0.75",
+  "note": "Laid out as a 1.0.0.75 client takes it.",
+  "bytes": "2a0000000100004000e903000001",
+  "fields": {
+    "command": 42,
+    "padding": "000000",
+    "netId": 1073741825,
+    "slot": 0,
+    "item": 1001,
+    "inSlot": 1
+  }
+}

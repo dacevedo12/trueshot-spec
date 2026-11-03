@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "CameraAck",
+  "version": "1.0.0.75",
+  "note": "Laid out as a 1.0.0.75 client takes it.",
+  "bytes": "720000000100004001",
+  "fields": {
+    "command": 114,
+    "padding": "000000",
+    "netId": 1073741825,
+    "syncId": 1
+  }
+}

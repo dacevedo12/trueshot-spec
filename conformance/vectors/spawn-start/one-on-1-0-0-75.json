@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SpawnStart",
+  "version": "1.0.0.75",
+  "note": "Laid out as a 1.0.0.75 client takes it.",
+  "bytes": "050000000000000000",
+  "fields": {
+    "command": 5,
+    "padding": "000000",
+    "netId": 0,
+    "count": 0
+  }
+}
