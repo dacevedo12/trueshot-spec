@@ -5,6 +5,79 @@
   "note": "What a server sends to place a region that follows a unit, showing the map around it until it runs out or the unit is gone. A region matching one the client holds in view, sightRadius, the first three bits of does, marker, sightFrom and unit only gives that one the new lifetime.",
   "revisions": [
     {
+      "from": "1.0.0.81",
+      "until": "1.0.0.82",
+      "channel": "events",
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "command": 92,
+      "fields": [
+        {
+          "name": "kind",
+          "type": "u32",
+          "note": "Whose map shows the region: 0 side 100's, 1 side 200's, 2 everyone's, 3 side 300's, 4 any other. A client takes the value as it stands, so 100 or 200 here matches no one, and draws the region only where it is 2 or names the player's own side."
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "Unused; a client reads nothing here."
+        },
+        {
+          "name": "sightRadius",
+          "type": "f32",
+          "note": "How far the region shows the map around it, in world units, zero or more. Zero takes the unit's own sight radius, followed as it changes, or a default where it has none."
+        },
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit the region follows. A client ignores the message where it does not know the unit."
+        },
+        {
+          "name": "lifetime",
+          "type": "f32",
+          "note": "How long it lasts, in seconds. A client counts it down and removes the region once it reaches zero or less, so one that starts at zero or less goes at its first count."
+        },
+        {
+          "name": "marker",
+          "type": "u32",
+          "note": "The region's id, which RegionRemoved names; zero has the client pick one of its own. A region that matches one the client holds in kind, sightRadius, the first three bits of does, extra, otherExtra and unit only renews that one's lifetime; the id is not compared."
+        },
+        {
+          "name": "does",
+          "type": "bits",
+          "size": 4,
+          "note": "What the region does.",
+          "bits": [
+            {
+              "name": "flag",
+              "width": 1,
+              "note": "Set where the region shows the map; where kind is 2, a client also sets does.second. What else it changes is not recorded."
+            },
+            {
+              "name": "second",
+              "width": 1,
+              "note": "Kept with the region; a client also sets it where kind is 2 and flag is set. It changes nothing a client shows."
+            },
+            {
+              "name": "unused",
+              "width": 30,
+              "note": "Its value has no effect, because a client always sets this bit itself; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "extra",
+          "type": "u32",
+          "note": "Kept with the region; it changes nothing a client shows. A server writes zero."
+        },
+        {
+          "name": "otherExtra",
+          "type": "u32",
+          "note": "A region sent again with the same value is taken as the one already shown; what else it names is not recorded. A server sends zero."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.82",
       "until": "1.0.0.97",
       "channel": "events",

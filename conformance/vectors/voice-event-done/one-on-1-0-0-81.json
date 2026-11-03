@@ -1,0 +1,12 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "VoiceEventDone",
+  "version": "1.0.0.81",
+  "note": "Laid out as a 1.0.0.81 client sends it.",
+  "bytes": "a300000000",
+  "fields": {
+    "command": 163,
+    "netId": 0
+  }
+}

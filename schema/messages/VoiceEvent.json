@@ -5,6 +5,28 @@
   "note": "What a server sends to play a voice event. The header carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.81",
+      "until": "1.0.0.82",
+      "channel": "events",
+      "command": 135,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "event",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The event's name. A client sends no VoiceEventDone for a name that names no event it holds."
+        },
+        {
+          "name": "callback",
+          "type": "u8",
+          "note": "Bit 0 set asks the client to send VoiceEventDone once the event has finished playing."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.82",
       "until": "1.0.0.97",
       "channel": "events",

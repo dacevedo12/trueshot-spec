@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SurrenderVote",
+  "version": "1.0.0.81",
+  "note": "Laid out as a 1.0.0.81 client sends it.",
+  "bytes": "9e0000000001",
+  "fields": {
+    "command": 158,
+    "netId": 0,
+    "how": {
+      "inFavour": 1,
+      "unused": 0
+    }
+  }
+}

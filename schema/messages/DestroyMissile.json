@@ -5,6 +5,15 @@
   "note": "What a server sends to be rid of a missile a client is drawing. The header names the missile.",
   "revisions": [
     {
+      "from": "1.0.0.81",
+      "until": "1.0.0.82",
+      "channel": "events",
+      "command": 106,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": []
+    },
+    {
       "from": "1.0.0.82",
       "until": "1.0.0.97",
       "channel": "events",

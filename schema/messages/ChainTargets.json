@@ -5,6 +5,37 @@
   "note": "What a server sends to name the units a chain missile will strike in turn. The header names the missile. Where the client already holds the missile, the missile takes the list; otherwise the list waits for the caster's next chain missile.",
   "revisions": [
     {
+      "from": "1.0.0.81",
+      "until": "1.0.0.82",
+      "channel": "events",
+      "command": 107,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "count",
+          "type": "i32",
+          "note": "How many of the slots are used, 0 to 32; 0 clears every target the client holds. A client given more than 32 fails."
+        },
+        {
+          "name": "caster",
+          "type": "u32",
+          "note": "The unit casting the missile. Where a client does not hold it, the client starts no missile, though a missile it already holds under the header's name still takes the targets."
+        },
+        {
+          "name": "targets",
+          "type": "array",
+          "count": 32,
+          "items": {
+            "name": "target",
+            "type": "u32",
+            "note": "A unit, in the order struck."
+          },
+          "note": "Always 32 slots; those past count have no effect."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.82",
       "until": "1.0.0.97",
       "channel": "events",

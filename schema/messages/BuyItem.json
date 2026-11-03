@@ -5,6 +5,21 @@
   "note": "What a client sends to buy an item from the shop. The header names the sender's champion.",
   "revisions": [
     {
+      "from": "1.0.0.81",
+      "until": "1.0.0.82",
+      "channel": "requests",
+      "command": 41,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "item",
+          "type": "u32",
+          "note": "Which item, by the number the client knows it as."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.82",
       "until": "1.0.0.97",
       "channel": "requests",

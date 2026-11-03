@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SpellNameChanged",
+  "version": "1.0.0.81",
+  "note": "Laid out as a 1.0.0.81 client takes it.",
+  "bytes": "ad0100004000446973696e7465677261746500",
+  "fields": {
+    "command": 173,
+    "netId": 1073741825,
+    "which": {
+      "slot": 0,
+      "summonerSlots": 0
+    },
+    "name": "Disintegrate"
+  }
+}
