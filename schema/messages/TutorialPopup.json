@@ -5,7 +5,7 @@
   "note": "What a server sends to open the tutorial's popup: a caption, this text and a single button, which a client answers with TutorialPopupClosed. A client has one such popup; a second message replaces its text. The header carries zero.",
   "revisions": [
     {
-      "from": "1.0.0.66",
+      "from": "1.0.0.63",
       "until": "1.0.0.74",
       "channel": "events",
       "command": 143,
