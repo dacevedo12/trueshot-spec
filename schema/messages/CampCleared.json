@@ -5,6 +5,27 @@
   "note": "What a server sends as a camp of units that belong to no side is emptied. A client marks the camp empty, even one that had just filled. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.96",
+      "until": "1.0.0.97",
+      "channel": "events",
+      "command": 189,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "camp",
+          "type": "u8",
+          "note": "Which camp. A client ignores the message for a camp it does not know."
+        },
+        {
+          "name": "active",
+          "type": "u8",
+          "note": "The camp's state, kept as it stands; nonzero where it is active."
+        }
+      ],
+      "note": "The header has no effect. A client keeps one state for the camp, shared by both sides."
+    },
+    {
       "from": "1.0.0.97",
       "until": "1.0.0.98",
       "channel": "events",

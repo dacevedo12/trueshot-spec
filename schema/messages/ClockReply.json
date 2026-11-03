@@ -5,6 +5,31 @@
   "note": "What a client sends back when a server states the match clock, carrying both readings so the server can tell how far apart they are. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.96",
+      "until": "1.0.0.97",
+      "channel": "clock",
+      "command": 85,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "value",
+          "type": "u32",
+          "note": "The client id the sender holds."
+        },
+        {
+          "name": "serverSaid",
+          "type": "f32",
+          "note": "The time the server last stated, in seconds, carried back as it arrived."
+        },
+        {
+          "name": "clientSaid",
+          "type": "f32",
+          "note": "What the client's own clock reads, in seconds, just after it set itself from that statement."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.97",
       "until": "1.0.0.103",
       "channel": "clock",

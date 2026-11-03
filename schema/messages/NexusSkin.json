@@ -5,6 +5,26 @@
   "note": "What a server sends to change how one side's nexus looks. The header carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.96",
+      "until": "1.0.0.97",
+      "channel": "events",
+      "command": 174,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "side",
+          "type": "u8",
+          "note": "Which side."
+        },
+        {
+          "name": "skin",
+          "type": "u32",
+          "note": "Which look."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.97",
       "until": "1.0.0.98",
       "channel": "events",

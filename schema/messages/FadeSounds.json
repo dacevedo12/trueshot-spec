@@ -5,6 +5,21 @@
   "note": "What a server sends to fade a client's sound effects out. The header carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.96",
+      "until": "1.0.0.97",
+      "channel": "events",
+      "command": 180,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "time",
+          "type": "f32",
+          "note": "How long the fade takes, in seconds on the match clock; a client fades its main sound effects out over that time."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.97",
       "until": "1.0.0.98",
       "channel": "events",

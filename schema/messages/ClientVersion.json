@@ -5,6 +5,33 @@
   "note": "What a client sends to state which build it is. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.96",
+      "until": "1.0.0.97",
+      "channel": "requests",
+      "command": 71,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clock",
+          "type": "f32",
+          "note": "The client's own clock as it sends this, in seconds."
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id the sender holds: that of the client reporting."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "ascii",
+          "size": 256,
+          "note": "The build the client runs, as text ending at a zero byte; the bytes after that zero carry nothing."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.97",
       "until": "1.0.0.103",
       "channel": "requests",

@@ -1,0 +1,89 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "VersionSync",
+  "version": "1.0.0.96",
+  "note": "Laid out as a 1.0.0.96 client takes it.",
+  "bytes": "4800000000010100000001000000000000001e000000000000000000ffffffffffffffff00000000000000000000ffffffffffffffff00000000000000000000ffffffffffffffff00000000000000000000ffffffffffffffff00000000000000000000ffffffffffffffff00000000000000000000ffffffffffffffff00000000000000000000ffffffffffffffff00000000000000000000ffffffffffffffff00000000000000000000ffffffffffffffff00000000000000000000ffffffffffffffff00000000000000000000ffffffffffffffff0000000000000000000056657273696f6e20312e302e302e313236205b5055424c49435d0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+  "fields": {
+    "command": 72,
+    "netId": 0,
+    "agreement": 1,
+    "map": 1,
+    "seats": [
+      {
+        "player": "1",
+        "level": 30,
+        "summoner": 0,
+        "otherSummoner": 0
+      },
+      {
+        "player": "-1",
+        "level": 0,
+        "summoner": 0,
+        "otherSummoner": 0
+      },
+      {
+        "player": "-1",
+        "level": 0,
+        "summoner": 0,
+        "otherSummoner": 0
+      },
+      {
+        "player": "-1",
+        "level": 0,
+        "summoner": 0,
+        "otherSummoner": 0
+      },
+      {
+        "player": "-1",
+        "level": 0,
+        "summoner": 0,
+        "otherSummoner": 0
+      },
+      {
+        "player": "-1",
+        "level": 0,
+        "summoner": 0,
+        "otherSummoner": 0
+      },
+      {
+        "player": "-1",
+        "level": 0,
+        "summoner": 0,
+        "otherSummoner": 0
+      },
+      {
+        "player": "-1",
+        "level": 0,
+        "summoner": 0,
+        "otherSummoner": 0
+      },
+      {
+        "player": "-1",
+        "level": 0,
+        "summoner": 0,
+        "otherSummoner": 0
+      },
+      {
+        "player": "-1",
+        "level": 0,
+        "summoner": 0,
+        "otherSummoner": 0
+      },
+      {
+        "player": "-1",
+        "level": 0,
+        "summoner": 0,
+        "otherSummoner": 0
+      },
+      {
+        "player": "-1",
+        "level": 0,
+        "summoner": 0,
+        "otherSummoner": 0
+      }
+    ],
+    "build": "Version 1.0.0.126 [PUBLIC]"
+  }
+}
