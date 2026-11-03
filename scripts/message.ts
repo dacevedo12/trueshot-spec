@@ -25,7 +25,13 @@ function headerValues(
   header: Values,
 ): Values {
   const out: Record<string, Value> = {};
-  for (const field of family.header) out[field.name] = header[field.name] ?? 0;
+  // A field the caller leaves out is zero: bytes of zero where it is bytes.
+  for (const field of family.header)
+    out[field.name] =
+      header[field.name] ??
+      (field.type === "bytes" && typeof field.size === "number"
+        ? "00".repeat(field.size)
+        : 0);
   const spec = family.command;
   if (spec === undefined) return out;
   const wide =
