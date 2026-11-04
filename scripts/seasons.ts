@@ -58,7 +58,8 @@ function patchesOf(r: Ranged): { name: string; url: string }[] {
   const inside = [r.from, ...checked.filter((b) => covers(r, b))].sort(
     compare,
   );
-  if (r.from.startsWith("1.0.")) return [...new Set(inside)].map(link);
+  if (r.from.startsWith("0.") || r.from.startsWith("1.0."))
+    return [...new Set(inside)].map(link);
   const [major = "", first = ""] = r.from.split(".");
   const last = (inside[inside.length - 1] ?? r.from).split(".")[1] ?? first;
   const out: { name: string; url: string }[] = [];

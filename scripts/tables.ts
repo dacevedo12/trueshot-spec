@@ -43,9 +43,11 @@ const checked: readonly string[] = existsSync(RESULTS)
   : [];
 
 // The patch a build belongs to: its first two parts, or the whole build for a
-// 1.0 patch, which is named by it.
+// beta or 1.0 patch, which is named by it.
 const twoParts = (build: string): string =>
-  build.startsWith("1.0.") ? build : build.split(".").slice(0, 2).join(".");
+  build.startsWith("0.") || build.startsWith("1.0.")
+    ? build
+    : build.split(".").slice(0, 2).join(".");
 
 // A range is named for its first build's patch, and, where the builds checked
 // within it reach a later patch, that patch after a dash: 4.18–4.19 for the
