@@ -39,9 +39,9 @@ A client asks to buy with `BuyItem`, to sell or throw away an item with
 and closing the shop sends nothing, except in the tutorial, where opening it
 sends `TutorialShopOpened`.
 
-<!-- holds from 1.0.0.28 up to 1.0.0.70 -->
+<!-- holds from 1.0.0.25 up to 1.0.0.70 -->
 
-> **In 1.0.0.28–1.0.0.66**
+> **In 1.0.0.25–1.0.0.66**
 >
 > A client never asks to swap two slots: it has no `SwapItems`.
 

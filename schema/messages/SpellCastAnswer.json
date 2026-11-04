@@ -5,7 +5,7 @@
   "note": "What a server sends to say a unit is casting a spell. The header names the unit casting, as the casting inside does.",
   "revisions": [
     {
-      "from": "1.0.0.28",
+      "from": "1.0.0.25",
       "until": "1.0.0.58",
       "channel": "events",
       "command": 36,
@@ -542,7 +542,11 @@
               "width": 1,
               "note": "Set where the cast ends a charge: a client drops the message unless the caster is charging that same spell. Clear lets a client charge a spell that charges, sending SpellCharge as it does."
             },
-            { "name": "unused", "width": 7, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -576,7 +580,11 @@
               "width": 1,
               "note": "Set where the cast ends a charge: a client drops the message unless the caster is charging that same spell. Clear lets a client charge a spell that charges, sending SpellCharge as it does."
             },
-            { "name": "unused", "width": 7, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -610,7 +618,11 @@
               "width": 1,
               "note": "Set where the cast ends a charge: a client drops the message unless the caster is charging that same spell. Clear lets a client charge a spell that charges, sending SpellCharge as it does."
             },
-            { "name": "unused", "width": 7, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -644,7 +656,11 @@
               "width": 1,
               "note": "Set where the cast ends a charge: a client drops the message unless the caster is charging that same spell. Clear lets a client charge a spell that charges, sending SpellCharge as it does."
             },
-            { "name": "unused", "width": 7, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -678,7 +694,11 @@
               "width": 1,
               "note": "Set where the cast ends a charge: a client drops the message unless the caster is charging that same spell. Clear lets a client charge a spell that charges, sending SpellCharge as it does."
             },
-            { "name": "unused", "width": 7, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -712,7 +732,11 @@
               "width": 1,
               "note": "Set where the cast ends a charge: a client drops the message unless the caster is charging that same spell. Clear lets a client charge a spell that charges, sending SpellCharge as it does."
             },
-            { "name": "unused", "width": 7, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -746,7 +770,11 @@
               "width": 1,
               "note": "Set where the cast ends a charge: a client drops the message unless the caster is charging that same spell. Clear lets a client charge a spell that charges, sending SpellCharge as it does."
             },
-            { "name": "unused", "width": 7, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -780,7 +808,11 @@
               "width": 1,
               "note": "Set where the cast ends a charge: a client drops the message unless the caster is charging that same spell. Clear lets a client charge a spell that charges, sending SpellCharge as it does."
             },
-            { "name": "unused", "width": 7, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
@@ -814,7 +846,11 @@
               "width": 1,
               "note": "Set where it ends a charged cast; a client acts on it only while that spell is charging. Clear, a charged cast by the client's own champion starts the charge display."
             },
-            { "name": "unused", "width": 7, "note": "Unused; a server writes zero." }
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
           ]
         },
         {
