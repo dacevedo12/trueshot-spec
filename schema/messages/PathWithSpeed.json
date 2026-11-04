@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "PathWithSpeed",
   "system": "movement",
-  "note": "What a server sends to set a unit moving along a path at a speed of its own, perhaps in an arc or following another unit. The header names the unit. A client answers every one at once, as it answers Path, whatever its sync id. It applies it only where the sync id is not older than the last the unit took (as UnitStopped).",
+  "note": "What a server sends to set a unit moving along a path at a speed of its own, perhaps in an arc. The header names the unit.",
   "revisions": [
     {
       "from": "0.8.13.26",
@@ -60,7 +60,7 @@
           "note": "The path's points, to the end of the message. A client takes the ground's height for each, and passes over a remainder shorter than a point."
         }
       ],
-      "note": "A client acknowledges nothing and drops no path as stale."
+      "note": "A client acknowledges nothing and drops no path as stale. No unit to follow is carried."
     },
     {
       "from": "0.9.22.14",
@@ -118,7 +118,7 @@
           "note": "The path's points, to the end of the message. A client takes the ground's height for each, and passes over a remainder shorter than a point."
         }
       ],
-      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning."
+      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning. A client answers every one at once, as it answers Path, whatever its sync id. It applies it only where the sync id is not older than the last the unit took (as UnitStopped). A unit can follow another unit."
     },
     {
       "from": "1.0.0.63",
@@ -176,7 +176,7 @@
           "note": "The path's points, to the end of the message. A client takes the ground's height for each, and passes over a remainder shorter than a point."
         }
       ],
-      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning."
+      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning. A client answers every one at once, as it answers Path, whatever its sync id. It applies it only where the sync id is not older than the last the unit took (as UnitStopped). A unit can follow another unit."
     },
     {
       "from": "1.0.0.74",
@@ -234,7 +234,7 @@
           "note": "The path's points, to the end of the message. A client takes the ground's height for each, and passes over a remainder shorter than a point."
         }
       ],
-      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning."
+      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning. A client answers every one at once, as it answers Path, whatever its sync id. It applies it only where the sync id is not older than the last the unit took (as UnitStopped). A unit can follow another unit."
     },
     {
       "from": "1.0.0.82",
@@ -292,7 +292,7 @@
           "note": "The path's points, to the end of the message. A client takes the ground's height for each, and passes over a remainder shorter than a point."
         }
       ],
-      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning."
+      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning. A client answers every one at once, as it answers Path, whatever its sync id. It applies it only where the sync id is not older than the last the unit took (as UnitStopped). A unit can follow another unit."
     },
     {
       "from": "1.0.0.97",
@@ -350,7 +350,7 @@
           "note": "The path's points, to the end of the message. A client takes the ground's height for each, and passes over a remainder shorter than a point."
         }
       ],
-      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning."
+      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning. A client answers every one at once, as it answers Path, whatever its sync id. It applies it only where the sync id is not older than the last the unit took (as UnitStopped). A unit can follow another unit."
     },
     {
       "from": "1.0.0.103",
@@ -408,7 +408,7 @@
           "note": "The path's points, to the end of the message. A client takes the ground's height for each, and passes over a remainder shorter than a point."
         }
       ],
-      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning."
+      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning. A client answers every one at once, as it answers Path, whatever its sync id. It applies it only where the sync id is not older than the last the unit took (as UnitStopped). A unit can follow another unit."
     },
     {
       "from": "1.0.0.107",
@@ -466,7 +466,7 @@
           "note": "The path's points, to the end of the message. A client takes the ground's height for each, and passes over a remainder shorter than a point."
         }
       ],
-      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning."
+      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning. A client answers every one at once, as it answers Path, whatever its sync id. It applies it only where the sync id is not older than the last the unit took (as UnitStopped). A unit can follow another unit."
     },
     {
       "from": "1.0.0.108",
@@ -539,7 +539,7 @@
           "note": "The path's points, to the end of the message. A client takes the ground's height for each, and passes over a remainder shorter than a point."
         }
       ],
-      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning."
+      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning. A client answers every one at once, as it answers Path, whatever its sync id. It applies it only where the sync id is not older than the last the unit took (as UnitStopped). A unit can follow another unit."
     },
     {
       "from": "1.0.0.109",
@@ -612,7 +612,7 @@
           "note": "The path's points, to the end of the message. A client takes the ground's height for each, and passes over a remainder shorter than a point."
         }
       ],
-      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning."
+      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning. A client answers every one at once, as it answers Path, whatever its sync id. It applies it only where the sync id is not older than the last the unit took (as UnitStopped). A unit can follow another unit."
     },
     {
       "from": "1.0.0.110",
@@ -700,7 +700,7 @@
           "note": "The path's points, to the end of the message. A client takes the ground's height for each, and passes over a remainder shorter than a point."
         }
       ],
-      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning."
+      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning. A client answers every one at once, as it answers Path, whatever its sync id. It applies it only where the sync id is not older than the last the unit took (as UnitStopped). A unit can follow another unit."
     },
     {
       "from": "1.0.0.111",
@@ -793,7 +793,7 @@
           "note": "The path's points, to the end of the message. A client takes the ground's height for each, and passes over a remainder shorter than a point."
         }
       ],
-      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning."
+      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning. A client answers every one at once, as it answers Path, whatever its sync id. It applies it only where the sync id is not older than the last the unit took (as UnitStopped). A unit can follow another unit."
     },
     {
       "from": "1.0.0.117",
@@ -886,7 +886,7 @@
           "note": "The path's points, to the end of the message. A client takes the ground's height for each, and passes over a remainder shorter than a point."
         }
       ],
-      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning."
+      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning. A client answers every one at once, as it answers Path, whatever its sync id. It applies it only where the sync id is not older than the last the unit took (as UnitStopped). A unit can follow another unit."
     },
     {
       "from": "1.0.0.119",
@@ -979,7 +979,7 @@
           "note": "The path's points, to the end of the message. A client takes the ground's height for each, and passes over a remainder shorter than a point."
         }
       ],
-      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning."
+      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning. A client answers every one at once, as it answers Path, whatever its sync id. It applies it only where the sync id is not older than the last the unit took (as UnitStopped). A unit can follow another unit."
     },
     {
       "from": "1.0.0.124",
@@ -1072,7 +1072,7 @@
           "note": "The path's points, to the end of the message. A client takes the ground's height for each, and passes over a remainder shorter than a point."
         }
       ],
-      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning."
+      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning. A client answers every one at once, as it answers Path, whatever its sync id. It applies it only where the sync id is not older than the last the unit took (as UnitStopped). A unit can follow another unit."
     },
     {
       "from": "1.0.0.128",
@@ -1164,7 +1164,8 @@
           },
           "note": "The path's points, to the end of the message. A client takes the ground's height for each."
         }
-      ]
+      ],
+      "note": "A client answers every one at once, as it answers Path, whatever its sync id. It applies it only where the sync id is not older than the last the unit took (as UnitStopped). A unit can follow another unit."
     },
     {
       "from": "1.0.0.132",
@@ -1256,7 +1257,8 @@
           },
           "note": "The path's points, to the end of the message. A client takes the ground's height for each."
         }
-      ]
+      ],
+      "note": "A client answers every one at once, as it answers Path, whatever its sync id. It applies it only where the sync id is not older than the last the unit took (as UnitStopped). A unit can follow another unit."
     },
     {
       "from": "1.0.0.138",
@@ -1348,7 +1350,8 @@
           },
           "note": "The path's points, to the end of the message. A client takes the ground's height for each."
         }
-      ]
+      ],
+      "note": "A client answers every one at once, as it answers Path, whatever its sync id. It applies it only where the sync id is not older than the last the unit took (as UnitStopped). A unit can follow another unit."
     },
     {
       "from": "1.0.0.139",
@@ -1440,7 +1443,8 @@
           },
           "note": "The path's points, to the end of the message. A client takes the ground's height for each."
         }
-      ]
+      ],
+      "note": "A client answers every one at once, as it answers Path, whatever its sync id. It applies it only where the sync id is not older than the last the unit took (as UnitStopped). A unit can follow another unit."
     },
     {
       "from": "1.0.0.144",
@@ -1532,7 +1536,8 @@
           },
           "note": "The path's points, to the end of the message. A client takes the ground's height for each."
         }
-      ]
+      ],
+      "note": "A client answers every one at once, as it answers Path, whatever its sync id. It applies it only where the sync id is not older than the last the unit took (as UnitStopped). A unit can follow another unit."
     },
     {
       "from": "1.0.0.150",
@@ -1624,7 +1629,8 @@
           },
           "note": "The path's points, to the end of the message. A client takes the ground's height for each."
         }
-      ]
+      ],
+      "note": "A client answers every one at once, as it answers Path, whatever its sync id. It applies it only where the sync id is not older than the last the unit took (as UnitStopped). A unit can follow another unit."
     },
     {
       "from": "1.0.0.152",
@@ -1716,7 +1722,8 @@
           },
           "note": "The path's points, to the end of the message. A client takes the ground's height for each."
         }
-      ]
+      ],
+      "note": "A client answers every one at once, as it answers Path, whatever its sync id. It applies it only where the sync id is not older than the last the unit took (as UnitStopped). A unit can follow another unit."
     },
     {
       "from": "3.01.0.1",
@@ -1808,7 +1815,8 @@
           },
           "note": "The path's points, to the end of the message. A client takes the ground's height for each."
         }
-      ]
+      ],
+      "note": "A client answers every one at once, as it answers Path, whatever its sync id. It applies it only where the sync id is not older than the last the unit took (as UnitStopped). A unit can follow another unit."
     },
     {
       "from": "4.1.0.171",
@@ -1900,7 +1908,8 @@
           },
           "note": "The path's points, to the end of the message. A client takes the ground's height for each."
         }
-      ]
+      ],
+      "note": "A client answers every one at once, as it answers Path, whatever its sync id. It applies it only where the sync id is not older than the last the unit took (as UnitStopped). A unit can follow another unit."
     },
     {
       "from": "4.11.0.386",
@@ -1992,7 +2001,8 @@
           },
           "note": "The path's points, to the end of the message. A client takes the ground's height for each."
         }
-      ]
+      ],
+      "note": "A client answers every one at once, as it answers Path, whatever its sync id. It applies it only where the sync id is not older than the last the unit took (as UnitStopped). A unit can follow another unit."
     },
     {
       "from": "4.15.0.238",
@@ -2084,7 +2094,8 @@
           },
           "note": "The path's points, to the end of the message. A client takes the ground's height for each."
         }
-      ]
+      ],
+      "note": "A client answers every one at once, as it answers Path, whatever its sync id. It applies it only where the sync id is not older than the last the unit took (as UnitStopped). A unit can follow another unit."
     },
     {
       "from": "4.17.0.233",
@@ -2176,7 +2187,8 @@
           },
           "note": "The path's points, to the end of the message. A client takes the ground's height for each."
         }
-      ]
+      ],
+      "note": "A client answers every one at once, as it answers Path, whatever its sync id. It applies it only where the sync id is not older than the last the unit took (as UnitStopped). A unit can follow another unit."
     },
     {
       "from": "4.18.0.271",
@@ -2268,7 +2280,8 @@
           },
           "note": "The path's points, to the end of the message. A client takes the ground's height for each."
         }
-      ]
+      ],
+      "note": "A client answers every one at once, as it answers Path, whatever its sync id. It applies it only where the sync id is not older than the last the unit took (as UnitStopped). A unit can follow another unit."
     }
   ]
 }

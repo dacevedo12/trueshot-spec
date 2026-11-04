@@ -25,7 +25,7 @@
             {
               "name": "slot",
               "width": 7,
-              "note": "Which slot is being cast from, from 0 to 50. A client sends nothing for a slot above 50."
+              "note": "Which slot is being cast from, from 0 to 22. A client still sends a larger slot, its low seven bits only."
             }
           ]
         },

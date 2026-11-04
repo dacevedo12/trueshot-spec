@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "CreateNeutral",
   "system": "units",
-  "note": "What a server sends to put a unit that belongs to no side on the field. A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it. The header names the unit this is about.",
+  "note": "What a server sends to put a unit that belongs to no side on the field. The header names the unit this is about.",
   "revisions": [
     {
       "from": "0.8.13.26",
@@ -49,14 +49,14 @@
           "type": "string",
           "encoding": "utf8",
           "size": 64,
-          "note": "The name the client loads its art and sound under, written and padded as above."
+          "note": "The name the client loads its art and sound under, written and padded as above. The name and its zero byte fit in the 64 bytes; a client fails on a longer one."
         },
         {
           "name": "uniqueName",
           "type": "string",
           "encoding": "utf8",
           "size": 64,
-          "note": "A further name the unit answers to, written and padded as above."
+          "note": "A further name the unit answers to, written and padded as above. The name and its zero byte fit in the 64 bytes; a client fails on a longer one."
         },
         {
           "name": "side",
@@ -71,12 +71,12 @@
         {
           "name": "healthBonus",
           "type": "i32",
-          "note": "What is added to the health it holds."
+          "note": "What is added to its maximum health, three times over: the unit stands at full health, at its base maximum plus three times this."
         },
         {
           "name": "roaming",
           "type": "u32",
-          "note": "How the monster wanders. It has no effect.",
+          "note": "How the monster wanders.",
           "values": {
             "0": {
               "name": "inactive"
@@ -92,10 +92,10 @@
         {
           "name": "camp",
           "type": "u32",
-          "note": "Which camp the unit belongs to. A client adds the unit to that camp where a CampMarker has placed it first, and to no camp otherwise."
+          "note": "Which camp the unit belongs to. Where a client shows camps on its map, the first unit naming a camp places that camp at the unit's position."
         }
       ],
-      "note": "A client leaves the monster facing as it was made. A client adds damageBonus to the damage the unit deals twice over."
+      "note": "A server sends it on its own, on the channel given here. A client leaves the monster facing as it was made. A client adds damageBonus to the damage the unit deals twice over."
     },
     {
       "from": "0.9.22.14",
@@ -203,7 +203,7 @@
           "note": "Which camp the unit belongs to. A client adds the unit to that camp where a CampMarker has placed it first, and to no camp otherwise."
         }
       ],
-      "note": "A client leaves the monster facing as it was made. A client adds damageBonus to the damage the unit deals twice over."
+      "note": "A client leaves the monster facing as it was made. A client adds damageBonus to the damage the unit deals twice over. A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it."
     },
     {
       "from": "1.0.0.63",
@@ -311,7 +311,7 @@
           "note": "Which camp the unit belongs to. A client adds the unit to that camp where a CampMarker has placed it first, and to no camp otherwise."
         }
       ],
-      "note": "A client leaves the monster facing as it was made, and drops the message while its map's navigation data is unloaded. A client adds damageBonus to the damage the unit deals twice over."
+      "note": "A client leaves the monster facing as it was made, and drops the message while its map's navigation data is unloaded. A client adds damageBonus to the damage the unit deals twice over. A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it."
     },
     {
       "from": "1.0.0.103",
@@ -424,7 +424,7 @@
           "note": "Kept with the camp; a client does nothing more with it. A server writes zero."
         }
       ],
-      "note": "A client leaves the monster facing as it was made, and drops the message while its map's navigation data is unloaded."
+      "note": "A client leaves the monster facing as it was made, and drops the message while its map's navigation data is unloaded. A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it."
     },
     {
       "from": "1.0.0.104",
@@ -552,7 +552,7 @@
           "note": "Kept with the camp; a client does nothing more with it. A server writes zero."
         }
       ],
-      "note": "The monster faces from where it stands toward the facing point, or along +Z where the two are the same, and a client drops the message while its map's navigation data is unloaded."
+      "note": "The monster faces from where it stands toward the facing point, or along +Z where the two are the same, and a client drops the message while its map's navigation data is unloaded. A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it."
     },
     {
       "from": "1.0.0.110",
@@ -680,7 +680,7 @@
           "note": "Kept with the camp; a client does nothing more with it. A server writes zero."
         }
       ],
-      "note": "The monster faces from where it stands toward the facing point, or along +Z where the two are the same, and a client drops the message while its map's navigation data is unloaded."
+      "note": "The monster faces from where it stands toward the facing point, or along +Z where the two are the same, and a client drops the message while its map's navigation data is unloaded. A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it."
     },
     {
       "from": "1.0.0.117",
@@ -808,7 +808,7 @@
           "note": "Kept with the camp; a client does nothing more with it. A server writes zero."
         }
       ],
-      "note": "The monster faces from where it stands toward the facing point, or along +Z where the two are the same, and a client drops the message while its map's navigation data is unloaded."
+      "note": "The monster faces from where it stands toward the facing point, or along +Z where the two are the same, and a client drops the message while its map's navigation data is unloaded. A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it."
     },
     {
       "from": "1.0.0.119",
@@ -936,7 +936,7 @@
           "note": "Kept with the camp; a client does nothing more with it. A server writes zero."
         }
       ],
-      "note": "The monster faces from where it stands toward the facing point, or along +Z where the two are the same, and a client drops the message while its map's navigation data is unloaded."
+      "note": "The monster faces from where it stands toward the facing point, or along +Z where the two are the same, and a client drops the message while its map's navigation data is unloaded. A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it."
     },
     {
       "from": "1.0.0.124",
@@ -1066,7 +1066,7 @@
           "note": "Which camp the unit belongs to. A client adds the unit to that camp where a CampMarker has placed it first, and to no camp otherwise."
         }
       ],
-      "note": "The body ends after camp. The monster faces from where it stands toward the facing point, or along +Z where the two are the same, and a client drops the message while its map's navigation data is unloaded."
+      "note": "The body ends after camp. The monster faces from where it stands toward the facing point, or along +Z where the two are the same, and a client drops the message while its map's navigation data is unloaded. A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it."
     },
     {
       "from": "1.0.0.128",
@@ -1196,7 +1196,7 @@
           "note": "Which camp the unit belongs to. A client adds the unit to that camp where a CampMarker has placed it first, and to no camp otherwise."
         }
       ],
-      "note": "The monster faces from where it stands toward the facing point, or along +Z where the two are the same. A client drops the message while its map's navigation data is unloaded."
+      "note": "The monster faces from where it stands toward the facing point, or along +Z where the two are the same. A client drops the message while its map's navigation data is unloaded. A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it."
     },
     {
       "from": "1.0.0.132",
@@ -1326,7 +1326,7 @@
           "note": "Which camp the unit belongs to. A client adds the unit to that camp where a CampMarker has placed it first, and to no camp otherwise."
         }
       ],
-      "note": "The monster faces from where it stands toward the facing point, or along +Z where the two are the same. A client drops the message while its map's navigation data is unloaded."
+      "note": "The monster faces from where it stands toward the facing point, or along +Z where the two are the same. A client drops the message while its map's navigation data is unloaded. A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it."
     },
     {
       "from": "1.0.0.138",
@@ -1466,7 +1466,7 @@
           "note": "What makes the unit known to a side that cannot see it."
         }
       ],
-      "note": "The monster faces from where it stands toward the facing point, or along +Z where the two are the same. A client drops the message while its map's navigation data is unloaded."
+      "note": "The monster faces from where it stands toward the facing point, or along +Z where the two are the same. A client drops the message while its map's navigation data is unloaded. A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it."
     },
     {
       "from": "1.0.0.144",
@@ -1606,7 +1606,7 @@
           "note": "What makes the unit known to a side that cannot see it."
         }
       ],
-      "note": "The monster faces from where it stands toward the facing point, or along +Z where the two are the same. A client drops the message while its map's navigation data is unloaded."
+      "note": "The monster faces from where it stands toward the facing point, or along +Z where the two are the same. A client drops the message while its map's navigation data is unloaded. A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it."
     },
     {
       "from": "1.0.0.150",
@@ -1746,7 +1746,7 @@
           "note": "What makes the unit known to a side that cannot see it."
         }
       ],
-      "note": "The monster faces from where it stands toward the facing point, or along +Z where the two are the same. A client drops the message while its map's navigation data is unloaded."
+      "note": "The monster faces from where it stands toward the facing point, or along +Z where the two are the same. A client drops the message while its map's navigation data is unloaded. A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it."
     },
     {
       "from": "3.01.0.1",
@@ -1886,7 +1886,7 @@
           "note": "What makes the unit known to a side that cannot see it."
         }
       ],
-      "note": "The monster faces from where it stands toward the facing point, or along +Z where the two are the same. A client drops the message while its map's navigation data is unloaded."
+      "note": "The monster faces from where it stands toward the facing point, or along +Z where the two are the same. A client drops the message while its map's navigation data is unloaded. A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it."
     },
     {
       "from": "3.11.0.306",
@@ -2031,7 +2031,7 @@
           "note": "The level it starts at."
         }
       ],
-      "note": "The monster faces from where it stands toward the facing point, or along +Z where the two are the same. A client drops the message while its map's navigation data is unloaded."
+      "note": "The monster faces from where it stands toward the facing point, or along +Z where the two are the same. A client drops the message while its map's navigation data is unloaded. A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it."
     },
     {
       "from": "4.1.0.171",
@@ -2183,7 +2183,7 @@
           "note": "The level it starts at."
         }
       ],
-      "note": "The monster faces from where it stands toward the facing point, or along +Z where the two are the same. A client drops the message while its map's navigation data is unloaded."
+      "note": "The monster faces from where it stands toward the facing point, or along +Z where the two are the same. A client drops the message while its map's navigation data is unloaded. A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it."
     },
     {
       "from": "4.2.0.2718",
@@ -2345,7 +2345,7 @@
           "note": "How much of its arrival has already passed, in seconds."
         }
       ],
-      "note": "The monster faces from where it stands toward the facing point, or along +Z where the two are the same. Its spawnAnimation plays only where named and time is left to spawn, and it cannot be targeted while it plays. A client drops the message while its map's navigation data is unloaded."
+      "note": "The monster faces from where it stands toward the facing point, or along +Z where the two are the same. Its spawnAnimation plays only where named and time is left to spawn, and it cannot be targeted while it plays. A client drops the message while its map's navigation data is unloaded. A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it."
     },
     {
       "from": "4.9.0.239",
@@ -2500,7 +2500,7 @@
           "note": "When it arrives, as a moment on the match clock, in seconds."
         }
       ],
-      "note": "The monster faces from where it stands toward the facing point, or along +Z where the two are the same. Its spawnAnimation plays only where named and time is left to spawn, and it cannot be targeted while it plays. A client drops the message while its map's navigation data is unloaded."
+      "note": "The monster faces from where it stands toward the facing point, or along +Z where the two are the same. Its spawnAnimation plays only where named and time is left to spawn, and it cannot be targeted while it plays. A client drops the message while its map's navigation data is unloaded. A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it."
     },
     {
       "from": "4.11.0.386",
@@ -2655,7 +2655,7 @@
           "note": "When it arrives, as a moment on the match clock, in seconds."
         }
       ],
-      "note": "The monster faces from where it stands toward the facing point, or along +Z where the two are the same. Its spawnAnimation plays only where named and time is left to spawn, and it cannot be targeted while it plays. A client drops the message while its map's navigation data is unloaded."
+      "note": "The monster faces from where it stands toward the facing point, or along +Z where the two are the same. Its spawnAnimation plays only where named and time is left to spawn, and it cannot be targeted while it plays. A client drops the message while its map's navigation data is unloaded. A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it."
     },
     {
       "from": "4.12.0.356",
@@ -2815,7 +2815,7 @@
           "note": "It has no effect."
         }
       ],
-      "note": "The monster faces from where it stands toward the facing point, or along +Z where the two are the same. Its spawnAnimation plays only where named and time is left to spawn, and it cannot be targeted while it plays. A client drops the message while its map's navigation data is unloaded."
+      "note": "The monster faces from where it stands toward the facing point, or along +Z where the two are the same. Its spawnAnimation plays only where named and time is left to spawn, and it cannot be targeted while it plays. A client drops the message while its map's navigation data is unloaded. A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it."
     },
     {
       "from": "4.18.0.271",
@@ -2969,7 +2969,8 @@
           "type": "f32",
           "note": "When it arrives, as a moment on the match clock, in seconds."
         }
-      ]
+      ],
+      "note": "A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it."
     }
   ]
 }

@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "SpellUpgraded",
   "system": "spells",
-  "note": "What a server sends to confirm a unit's spell went up a level. The header names the unit this is about. Arriving on the events channel instead, it raises the spell as well, and a client shows the new level either way.",
+  "note": "What a server sends to confirm a unit's spell went up a level. The header names the unit this is about.",
   "revisions": [
     {
       "from": "0.8.13.26",
@@ -27,7 +27,8 @@
           "type": "u8",
           "note": "How many spell points are left unspent."
         }
-      ]
+      ],
+      "note": "A client handles it the same on every channel: it sets the slot's level and the points left."
     },
     {
       "from": "1.0.0.106",
@@ -52,7 +53,8 @@
           "type": "u8",
           "note": "How many spell points are left unspent."
         }
-      ]
+      ],
+      "note": "Arriving on the events channel instead, it raises the spell as well, and a client shows the new level either way."
     },
     {
       "from": "1.0.0.110",
@@ -77,7 +79,8 @@
           "type": "u8",
           "note": "How many spell points are left unspent."
         }
-      ]
+      ],
+      "note": "Arriving on the events channel instead, it raises the spell as well, and a client shows the new level either way."
     },
     {
       "from": "1.0.0.128",
@@ -102,7 +105,8 @@
           "type": "u8",
           "note": "How many spell points are left unspent."
         }
-      ]
+      ],
+      "note": "Arriving on the events channel instead, it raises the spell as well, and a client shows the new level either way."
     },
     {
       "from": "1.0.0.144",
@@ -127,7 +131,8 @@
           "type": "u8",
           "note": "How many spell points are left unspent."
         }
-      ]
+      ],
+      "note": "Arriving on the events channel instead, it raises the spell as well, and a client shows the new level either way."
     }
   ]
 }

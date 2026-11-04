@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "Registered",
   "system": "joining",
-  "note": "What a server answers a registration with, naming a player in the match and the seat they occupy. It shares its command value with the request it answers, which travels the other way, and it is one fixed size. Straight after a request a server sends one answer for every seat, and every one of them carries that request's build and proof back.",
+  "note": "What a server answers a registration with, naming a player in the match and the seat they occupy. It shares its command value with the request it answers, which travels the other way, and it is one fixed size.",
   "revisions": [
     {
       "from": "0.8.13.26",
@@ -26,7 +26,7 @@
         {
           "name": "playerId",
           "type": "i64",
-          "note": "Who occupies that seat; a client takes the answer only where this is its own player id, and reads nothing after it."
+          "note": "Who occupies that seat. A client keeps the pair of clientId and playerId from every answer, and takes the answer as its own only where this is its own player id; it reads nothing after it."
         }
       ]
     },
@@ -54,7 +54,8 @@
           "type": "i64",
           "note": "The player the answer is for; a client takes it only where this is its own player id, and reads nothing after it."
         }
-      ]
+      ],
+      "note": "Straight after a request a server sends one answer for every seat, and every one of them carries that request's build and proof back."
     },
     {
       "from": "1.0.0.142",
@@ -97,7 +98,8 @@
           "size": 4,
           "note": "Unused; a server writes zero."
         }
-      ]
+      ],
+      "note": "Straight after a request a server sends one answer for every seat, and every one of them carries that request's build and proof back."
     },
     {
       "from": "4.18.0.271",
@@ -140,7 +142,8 @@
           "size": 4,
           "note": "Unused; a server writes zero."
         }
-      ]
+      ],
+      "note": "Straight after a request a server sends one answer for every seat, and every one of them carries that request's build and proof back."
     }
   ]
 }

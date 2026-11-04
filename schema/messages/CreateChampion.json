@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "CreateChampion",
   "system": "units",
-  "note": "What a server sends to put a champion on the field. It arrives on its own and also inside EnterSight. The header carries zero or names the object this is about; a client accepts either.",
+  "note": "What a server sends to put a champion on the field. The header carries zero or names the object this is about; a client accepts either.",
   "revisions": [
     {
       "from": "0.8.13.26",
@@ -25,7 +25,7 @@
         {
           "name": "clientId",
           "type": "u32",
-          "note": "The client id of the player the champion belongs to, or 4294967295 where it belongs to none, as a bot's does. A client takes the champion carrying its own client id as its own."
+          "note": "The client id of the player the champion belongs to. A client takes the champion carrying its own client id as its own, and any other as belonging to no client of its own."
         },
         {
           "name": "side",
@@ -35,7 +35,7 @@
         {
           "name": "flag",
           "type": "u8",
-          "note": "Passed to the champion as it is made; what it changes is not recorded. A server writes zero."
+          "note": "Passed to the champion as it is made; what it changes is not recorded."
         },
         {
           "name": "name",
@@ -49,10 +49,10 @@
           "type": "string",
           "encoding": "utf8",
           "size": "terminated",
-          "note": "The champion it is, ended by a zero byte; a client keeps at most 64 bytes of it."
+          "note": "The champion it is, ended by a zero byte; the two take at most 64 bytes, and a client fails on a longer one."
         }
       ],
-      "note": "The champion takes the id in champion. A client stands it at its side's one spawn point."
+      "note": "The champion takes the id in champion. A server sends it on its own. A client stands it at its side's one fixed spawn point, or at 6000, 0, 6000 where that point is not set."
     },
     {
       "from": "0.9.22.14",
@@ -112,7 +112,7 @@
           "note": "The champion it is: the name the client loads its art and sound under, written and padded as above."
         }
       ],
-      "note": "The champion takes the id in champion, not the header's; a client first removes any object holding that id. For the client's own seat, name also becomes its own player's name. A client stands the champion at its side's one spawn point."
+      "note": "The champion takes the id in champion, not the header's; a client first removes any object holding that id. For the client's own seat, name also becomes its own player's name. A client stands the champion at its side's one spawn point. It arrives on its own and also inside EnterSight."
     },
     {
       "from": "0.9.25.21",
@@ -177,7 +177,7 @@
           "note": "The champion it is: the name the client loads its art and sound under, written and padded as above."
         }
       ],
-      "note": "The champion takes the id in champion, not the header's; a client first removes any object holding that id. For the client's own seat, name also becomes its own player's name."
+      "note": "The champion takes the id in champion, not the header's; a client first removes any object holding that id. For the client's own seat, name also becomes its own player's name. It arrives on its own and also inside EnterSight."
     },
     {
       "from": "1.0.0.63",
@@ -242,7 +242,7 @@
           "note": "The champion it is: the name the client loads its art and sound under, written and padded as above."
         }
       ],
-      "note": "The champion takes the id in champion, not the header's; a client first removes any object holding that id. For the client's own seat, name also becomes its own player's name. A client drops the message while its map's navigation data is unloaded, as early in a reconnection."
+      "note": "The champion takes the id in champion, not the header's; a client first removes any object holding that id. For the client's own seat, name also becomes its own player's name. A client drops the message while its map's navigation data is unloaded, as early in a reconnection. It arrives on its own and also inside EnterSight."
     },
     {
       "from": "1.0.0.105",
@@ -312,7 +312,7 @@
           "note": "The champion it is: the name the client loads its art and sound under, written and padded as above."
         }
       ],
-      "note": "The champion takes the id in champion, not the header's; a client first removes any object holding that id. For the client's own seat, name also becomes its own player's name. A client drops the message while its map's navigation data is unloaded, as early in a reconnection."
+      "note": "The champion takes the id in champion, not the header's; a client first removes any object holding that id. For the client's own seat, name also becomes its own player's name. A client drops the message while its map's navigation data is unloaded, as early in a reconnection. It arrives on its own and also inside EnterSight."
     },
     {
       "from": "1.0.0.110",
@@ -382,7 +382,7 @@
           "note": "The champion it is: the name the client loads its art and sound under, written and padded as above."
         }
       ],
-      "note": "The champion takes the id in champion, not the header's; a client first removes any object holding that id. For the client's own seat, name also becomes its own player's name. A client drops the message while its map's navigation data is unloaded, as early in a reconnection."
+      "note": "The champion takes the id in champion, not the header's; a client first removes any object holding that id. For the client's own seat, name also becomes its own player's name. A client drops the message while its map's navigation data is unloaded, as early in a reconnection. It arrives on its own and also inside EnterSight."
     },
     {
       "from": "1.0.0.117",
@@ -452,7 +452,7 @@
           "note": "The champion it is: the name the client loads its art and sound under, written and padded as above."
         }
       ],
-      "note": "The champion takes the id in champion, not the header's; a client first removes any object holding that id. For the client's own seat, name also becomes its own player's name. A client drops the message while its map's navigation data is unloaded, as early in a reconnection."
+      "note": "The champion takes the id in champion, not the header's; a client first removes any object holding that id. For the client's own seat, name also becomes its own player's name. A client drops the message while its map's navigation data is unloaded, as early in a reconnection. It arrives on its own and also inside EnterSight."
     },
     {
       "from": "1.0.0.119",
@@ -522,7 +522,7 @@
           "note": "The champion it is: the name the client loads its art and sound under, written and padded as above."
         }
       ],
-      "note": "The champion takes the id in champion, not the header's; a client first removes any object holding that id. For the client's own seat, name also becomes its own player's name. A client drops the message while its map's navigation data is unloaded, as early in a reconnection."
+      "note": "The champion takes the id in champion, not the header's; a client first removes any object holding that id. For the client's own seat, name also becomes its own player's name. A client drops the message while its map's navigation data is unloaded, as early in a reconnection. It arrives on its own and also inside EnterSight."
     },
     {
       "from": "1.0.0.124",
@@ -592,7 +592,7 @@
           "note": "The champion it is: the name the client loads its art and sound under, written and padded as above."
         }
       ],
-      "note": "The champion takes the id in champion, not the header's; a client first removes any object holding that id. For the client's own seat, name also becomes its own player's name. A client drops the message while its map's navigation data is unloaded, as early in a reconnection."
+      "note": "The champion takes the id in champion, not the header's; a client first removes any object holding that id. For the client's own seat, name also becomes its own player's name. A client drops the message while its map's navigation data is unloaded, as early in a reconnection. It arrives on its own and also inside EnterSight."
     },
     {
       "from": "1.0.0.128",
@@ -662,7 +662,7 @@
           "note": "The name the client loads its art and sound under, written and padded as above."
         }
       ],
-      "note": "The champion takes the id in champion, not the header's; a client first removes any object holding that id. For the client's own seat, name also becomes its own player's name. A client drops the message while its map's navigation data is unloaded, as early in a reconnection."
+      "note": "The champion takes the id in champion, not the header's; a client first removes any object holding that id. For the client's own seat, name also becomes its own player's name. A client drops the message while its map's navigation data is unloaded, as early in a reconnection. It arrives on its own and also inside EnterSight."
     },
     {
       "from": "1.0.0.132",
@@ -732,7 +732,7 @@
           "note": "The name the client loads its art and sound under, written and padded as above."
         }
       ],
-      "note": "The champion takes the id in champion, not the header's; a client first removes any object holding that id. For the client's own seat, name also becomes its own player's name. A client drops the message while its map's navigation data is unloaded, as early in a reconnection."
+      "note": "The champion takes the id in champion, not the header's; a client first removes any object holding that id. For the client's own seat, name also becomes its own player's name. A client drops the message while its map's navigation data is unloaded, as early in a reconnection. It arrives on its own and also inside EnterSight."
     },
     {
       "from": "1.0.0.138",
@@ -802,7 +802,7 @@
           "note": "The name the client loads its art and sound under, written and padded as above."
         }
       ],
-      "note": "The champion takes the id in champion, not the header's; a client first removes any object holding that id. For the client's own seat, name also becomes its own player's name. A client drops the message while its map's navigation data is unloaded, as early in a reconnection."
+      "note": "The champion takes the id in champion, not the header's; a client first removes any object holding that id. For the client's own seat, name also becomes its own player's name. A client drops the message while its map's navigation data is unloaded, as early in a reconnection. It arrives on its own and also inside EnterSight."
     },
     {
       "from": "1.0.0.143",
@@ -899,7 +899,7 @@
           ]
         }
       ],
-      "note": "The champion takes the id in champion, not the header's; a client first removes any object holding that id. For the client's own seat, name also becomes its own player's name. A client drops the message while its map's navigation data is unloaded, as early in a reconnection."
+      "note": "The champion takes the id in champion, not the header's; a client first removes any object holding that id. For the client's own seat, name also becomes its own player's name. A client drops the message while its map's navigation data is unloaded, as early in a reconnection. It arrives on its own and also inside EnterSight."
     },
     {
       "from": "1.0.0.144",
@@ -996,7 +996,7 @@
           ]
         }
       ],
-      "note": "The champion takes the id in champion, not the header's; a client first removes any object holding that id. For the client's own seat, name also becomes its own player's name. A client drops the message while its map's navigation data is unloaded, as early in a reconnection."
+      "note": "The champion takes the id in champion, not the header's; a client first removes any object holding that id. For the client's own seat, name also becomes its own player's name. A client drops the message while its map's navigation data is unloaded, as early in a reconnection. It arrives on its own and also inside EnterSight."
     },
     {
       "from": "1.0.0.147",
@@ -1093,7 +1093,7 @@
           ]
         }
       ],
-      "note": "The champion takes the id in champion, not the header's; a client first removes any object holding that id. For the client's own seat, name also becomes its own player's name. A client drops the message while its map's navigation data is unloaded, as early in a reconnection."
+      "note": "The champion takes the id in champion, not the header's; a client first removes any object holding that id. For the client's own seat, name also becomes its own player's name. A client drops the message while its map's navigation data is unloaded, as early in a reconnection. It arrives on its own and also inside EnterSight."
     },
     {
       "from": "1.0.0.150",
@@ -1190,7 +1190,7 @@
           ]
         }
       ],
-      "note": "The champion takes the id in champion, not the header's; a client first removes any object holding that id. For the client's own seat, name also becomes its own player's name. A client drops the message while its map's navigation data is unloaded, as early in a reconnection."
+      "note": "The champion takes the id in champion, not the header's; a client first removes any object holding that id. For the client's own seat, name also becomes its own player's name. A client drops the message while its map's navigation data is unloaded, as early in a reconnection. It arrives on its own and also inside EnterSight."
     },
     {
       "from": "3.01.0.1",
@@ -1287,7 +1287,7 @@
           ]
         }
       ],
-      "note": "The champion takes the id in champion, not the header's; a client first removes any object holding that id. For the client's own seat, name also becomes its own player's name. A client drops the message while its map's navigation data is unloaded, as early in a reconnection."
+      "note": "The champion takes the id in champion, not the header's; a client first removes any object holding that id. For the client's own seat, name also becomes its own player's name. A client drops the message while its map's navigation data is unloaded, as early in a reconnection. It arrives on its own and also inside EnterSight."
     },
     {
       "from": "3.10.0.237",
@@ -1389,7 +1389,7 @@
           ]
         }
       ],
-      "note": "The champion takes the id in champion, not the header's; a client first removes any object holding that id. For the client's own seat, name also becomes its own player's name. A client drops the message while its map's navigation data is unloaded, as early in a reconnection."
+      "note": "The champion takes the id in champion, not the header's; a client first removes any object holding that id. For the client's own seat, name also becomes its own player's name. A client drops the message while its map's navigation data is unloaded, as early in a reconnection. It arrives on its own and also inside EnterSight."
     },
     {
       "from": "4.11.0.386",
@@ -1491,7 +1491,7 @@
           ]
         }
       ],
-      "note": "The champion takes the id in champion, not the header's; a client first removes any object holding that id. For the client's own seat, name also becomes its own player's name. A client drops the message while its map's navigation data is unloaded, as early in a reconnection."
+      "note": "The champion takes the id in champion, not the header's; a client first removes any object holding that id. For the client's own seat, name also becomes its own player's name. A client drops the message while its map's navigation data is unloaded, as early in a reconnection. It arrives on its own and also inside EnterSight."
     },
     {
       "from": "4.18.0.271",
@@ -1609,7 +1609,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It arrives on its own and also inside EnterSight."
     }
   ]
 }

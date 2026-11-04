@@ -18,7 +18,7 @@
           "note": "The unit that destroyed it. Only an inhibitor reads it; a client reads nothing here for any other building."
         }
       ],
-      "note": "A server sends it for no nexus. A client takes a building it names away four seconds later, and a nexus it takes away leaves the client failing at its next game event. A nexus falls with GameEnded."
+      "note": "A server sends it for no nexus. A client takes a building it names away four seconds later, turrets and the nexus included, and a nexus it takes away leaves the client failing at its next game event. An inhibitor stays: a client plays its destruction and raises a game event carrying attacker. A nexus falls with GameEnded."
     },
     {
       "from": "0.9.22.14",

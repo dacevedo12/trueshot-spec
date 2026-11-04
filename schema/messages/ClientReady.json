@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "ClientReady",
   "system": "joining",
-  "note": "What a client sends once it has loaded and is ready to play. It comes unprompted, before any start of play reaches the client. The header names no object: it carries zero.",
+  "note": "What a client sends once it has loaded and is ready to play. The header names no object: it carries zero.",
   "revisions": [
     {
       "from": "0.8.13.26",
@@ -12,7 +12,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero. The three module fields are always zero."
+      "note": "The message is the header alone. A client sends it at once on SpawnEnd."
     },
     {
       "from": "1.0.0.110",
@@ -21,8 +21,7 @@
       "command": 81,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": [],
-      "note": "The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero. The three module fields are always zero."
+      "fields": []
     },
     {
       "from": "1.0.0.117",
@@ -31,8 +30,7 @@
       "command": 82,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": [],
-      "note": "The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero. The three module fields are always zero."
+      "fields": []
     },
     {
       "from": "1.0.0.119",
@@ -41,8 +39,7 @@
       "command": 83,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": [],
-      "note": "The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero. The three module fields are always zero."
+      "fields": []
     },
     {
       "from": "1.0.0.124",
@@ -51,8 +48,7 @@
       "command": 85,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": [],
-      "note": "The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero. The three module fields are always zero."
+      "fields": []
     },
     {
       "from": "1.0.0.132",
@@ -61,8 +57,7 @@
       "command": 86,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": [],
-      "note": "The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero. The three module fields are always zero."
+      "fields": []
     },
     {
       "from": "1.0.0.133",
@@ -82,8 +77,7 @@
           "type": "u32",
           "note": "A random value the client picks to mask the one above."
         }
-      ],
-      "note": "The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero. The three module fields are always zero."
+      ]
     },
     {
       "from": "1.0.0.138",
@@ -103,8 +97,7 @@
           "type": "u32",
           "note": "A random value the client picks to mask the one above."
         }
-      ],
-      "note": "The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero. The three module fields are always zero."
+      ]
     },
     {
       "from": "1.0.0.144",
@@ -124,8 +117,7 @@
           "type": "u32",
           "note": "A random value the client picks to mask the one above."
         }
-      ],
-      "note": "The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero. The three module fields are always zero."
+      ]
     },
     {
       "from": "1.0.0.145",
@@ -171,7 +163,7 @@
           "note": "As VersionSync gave it."
         }
       ],
-      "note": "The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero. The three module fields are always zero."
+      "note": "The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero."
     },
     {
       "from": "1.0.0.150",
@@ -244,7 +236,7 @@
           ]
         }
       ],
-      "note": "The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero. The three module fields are always zero."
+      "note": "The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero."
     },
     {
       "from": "3.01.0.1",
@@ -317,7 +309,7 @@
           ]
         }
       ],
-      "note": "The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero. The three module fields are always zero."
+      "note": "The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero."
     },
     {
       "from": "4.5.0.260",
@@ -380,7 +372,7 @@
           ]
         }
       ],
-      "note": "The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero. The three module fields are always zero."
+      "note": "The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero."
     },
     {
       "from": "4.11.0.386",
@@ -443,7 +435,7 @@
           ]
         }
       ],
-      "note": "The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero. The three module fields are always zero."
+      "note": "The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero."
     },
     {
       "from": "4.13.0.265",

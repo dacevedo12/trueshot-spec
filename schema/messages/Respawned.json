@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "Respawned",
   "system": "combat",
-  "note": "What a server sends to bring a dead champion back at a place, with full health. The header names the champion. A client keeps the champion's level, experience, gold, maxima and spell ranks, sets it on the nearest open ground, plays the coming back, and for its own champion moves the camera onto it where the player asked for that.",
+  "note": "What a server sends to bring a dead champion back at a place. The header names the champion. A client keeps the champion's level, experience, gold, maxima and spell ranks, sets it on the nearest open ground, and plays the coming back.",
   "revisions": [
     {
       "from": "0.8.13.26",
@@ -28,7 +28,7 @@
           "note": "A client reads nothing here."
         }
       ],
-      "note": "A client returns the champion where it already stands."
+      "note": "A client returns the champion to the nearest open ground to where it already stands."
     },
     {
       "from": "0.9.22.14",
@@ -54,7 +54,7 @@
           "note": "A client reads nothing here."
         }
       ],
-      "note": "A client returns the champion where it already stands."
+      "note": "A client returns the champion where it already stands. The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
     },
     {
       "from": "1.0.0.63",
@@ -80,7 +80,7 @@
           "note": "A client reads nothing here."
         }
       ],
-      "note": "A client returns the champion where it already stands."
+      "note": "A client returns the champion where it already stands. The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
     },
     {
       "from": "1.0.0.74",
@@ -106,7 +106,7 @@
           "note": "A client reads nothing here."
         }
       ],
-      "note": "A client returns the champion where it already stands."
+      "note": "A client returns the champion where it already stands. The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
     },
     {
       "from": "1.0.0.82",
@@ -132,7 +132,7 @@
           "note": "A client reads nothing here."
         }
       ],
-      "note": "A client returns the champion where it already stands."
+      "note": "A client returns the champion where it already stands. The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
     },
     {
       "from": "1.0.0.97",
@@ -158,7 +158,7 @@
           "note": "A client reads nothing here."
         }
       ],
-      "note": "A client returns the champion where it already stands."
+      "note": "A client returns the champion where it already stands. The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
     },
     {
       "from": "1.0.0.103",
@@ -184,7 +184,7 @@
           "note": "A client reads nothing here."
         }
       ],
-      "note": "A client returns the champion where it already stands."
+      "note": "A client returns the champion where it already stands. The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
     },
     {
       "from": "1.0.0.107",
@@ -210,7 +210,7 @@
           "note": "A client reads nothing here."
         }
       ],
-      "note": "A client returns the champion where it already stands."
+      "note": "A client returns the champion where it already stands. The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
     },
     {
       "from": "1.0.0.109",
@@ -236,7 +236,7 @@
           "note": "A client reads nothing here."
         }
       ],
-      "note": "A client returns the champion where it already stands."
+      "note": "A client returns the champion where it already stands. The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
     },
     {
       "from": "1.0.0.110",
@@ -261,7 +261,8 @@
           "type": "f32",
           "note": "Where it comes back, along the other ground axis, in world units."
         }
-      ]
+      ],
+      "note": "The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
     },
     {
       "from": "1.0.0.117",
@@ -286,7 +287,8 @@
           "type": "f32",
           "note": "Where it comes back, along the other ground axis, in world units."
         }
-      ]
+      ],
+      "note": "The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
     },
     {
       "from": "1.0.0.119",
@@ -311,7 +313,8 @@
           "type": "f32",
           "note": "Where it comes back, along the other ground axis, in world units."
         }
-      ]
+      ],
+      "note": "The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
     },
     {
       "from": "1.0.0.124",
@@ -336,7 +339,8 @@
           "type": "f32",
           "note": "Where it comes back, along the other ground axis, in world units."
         }
-      ]
+      ],
+      "note": "The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
     },
     {
       "from": "1.0.0.128",
@@ -366,7 +370,8 @@
           "type": "f32",
           "note": "Its resource, such as mana, once back."
         }
-      ]
+      ],
+      "note": "The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
     },
     {
       "from": "1.0.0.132",
@@ -396,7 +401,8 @@
           "type": "f32",
           "note": "Its resource, such as mana, once back."
         }
-      ]
+      ],
+      "note": "The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
     },
     {
       "from": "1.0.0.138",
@@ -426,7 +432,8 @@
           "type": "f32",
           "note": "Its resource, such as mana, once back."
         }
-      ]
+      ],
+      "note": "The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
     },
     {
       "from": "1.0.0.144",
@@ -456,7 +463,8 @@
           "type": "f32",
           "note": "Its resource, such as mana, once back."
         }
-      ]
+      ],
+      "note": "The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
     },
     {
       "from": "1.0.0.150",
@@ -486,7 +494,8 @@
           "type": "f32",
           "note": "Its resource, such as mana, once back."
         }
-      ]
+      ],
+      "note": "The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
     },
     {
       "from": "3.01.0.1",
@@ -516,7 +525,8 @@
           "type": "f32",
           "note": "Its resource, such as mana, once back."
         }
-      ]
+      ],
+      "note": "The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
     },
     {
       "from": "3.9.0.491",
@@ -541,7 +551,8 @@
           "type": "f32",
           "note": "Its resource, such as mana, once back."
         }
-      ]
+      ],
+      "note": "The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
     },
     {
       "from": "4.11.0.386",
@@ -566,7 +577,8 @@
           "type": "f32",
           "note": "Its resource, such as mana, once back."
         }
-      ]
+      ],
+      "note": "The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
     }
   ]
 }

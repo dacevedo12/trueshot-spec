@@ -11,7 +11,7 @@
       "command": 68,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client takes it and changes nothing it shows.",
+      "note": "For every unit not dead, a client adds its health regeneration times seconds to its health, and its mana regeneration times seconds to its mana, each held between zero and its maximum.",
       "fields": [
         {
           "name": "seconds",

@@ -18,7 +18,7 @@
           "note": "Nonzero where side 100 won, zero where side 200 did; a client counts a win where its own side is the one that won."
         }
       ],
-      "note": "Arriving while the match still loads, it counts as a win or loss for the player's side and the client leaves at once. Otherwise the client ends the match on its screen and sends ClientFinished, except while playing a replay."
+      "note": "A client counts a win where its own side is 100 and result is nonzero, or its side is 200 and result is zero, and a loss otherwise. It ends the match on its screen and sends ClientFinished. A client fails where its own player does not yet exist."
     },
     {
       "from": "1.0.0.110",

@@ -15,7 +15,7 @@
         {
           "name": "state",
           "type": "u32",
-          "note": "What state the inhibitor takes. A client ignores any other value.",
+          "note": "What state the inhibitor takes. Any other value becomes the inhibitor's state and changes nothing shown; a later 0 or 1 still applies. A state equal to the one held changes nothing but the duration.",
           "values": {
             "0": {
               "name": "down",

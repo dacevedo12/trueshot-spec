@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "QueryStatusAnswer",
   "system": "joining",
-  "note": "What a server returns when asked whether it is ready. The header names no object: it carries zero.",
+  "note": "What a server returns when asked whether it is ready. The header names no object: a server writes zero.",
   "revisions": [
     {
       "from": "0.8.13.26",

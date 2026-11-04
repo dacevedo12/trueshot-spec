@@ -45,7 +45,7 @@
             {
               "name": "locked",
               "width": 1,
-              "note": "Locks the unit's animation, where one of the client's own settings is on; later animations sent for the unit are then ignored."
+              "note": "Locks the unit's animation, where one of the client's own settings is on."
             },
             {
               "name": "noBlend",
@@ -65,10 +65,10 @@
             {
               "name": "unused",
               "width": 23,
-              "note": "No effect is recorded; a server sends zero."
+              "note": "What it does is not recorded for this range; a server writes zero."
             }
           ],
-          "note": "No effect is recorded; a server sends zero."
+          "note": "How the animation plays and is queued."
         },
         {
           "name": "scaleTime",
@@ -83,7 +83,7 @@
           "note": "The animation's name, ended by a zero byte. Nothing plays for a name the unit does not have."
         }
       ],
-      "note": "No start point is carried: the animation starts from its beginning. A unit whose animation has been locked ignores the message."
+      "note": "No start point is carried: the animation starts from its beginning."
     },
     {
       "from": "1.0.0.110",

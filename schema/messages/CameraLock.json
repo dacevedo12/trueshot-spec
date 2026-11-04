@@ -25,7 +25,7 @@
             {
               "name": "unused",
               "width": 7,
-              "note": "As CameraLockSet carried them; zero in a report the client makes on its own."
+              "note": "Unused; a client writes zero."
             }
           ]
         },
@@ -35,7 +35,7 @@
           "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
         }
       ],
-      "note": "A client sends it on each CameraLockSet with state as that message carried it, all eight bits included, and also as its player sets the lock or the game forces a lock or lifts one. While a forced lock holds, a CameraLockSet or player setting is kept and sent only as that lock lifts."
+      "note": "A client sends it as its player sets the lock, carrying the new state; while a forced lock holds, the player's setting is dropped. As the client's champion dies, a forced lock starts and it sends 0; as the champion comes back, the lock lifts and it sends the state held before the death."
     },
     {
       "from": "0.9.22.14",

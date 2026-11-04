@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "VersionSync",
   "system": "joining",
-  "note": "What a server sends once a client has said which build it runs: whether the two agree, which map to load, who is at the match, and everything else settled before play. The header names no object: it carries zero.",
+  "note": "What a server sends once a client has said which build it runs, saying whether the two agree. The header names no object: it carries zero.",
   "revisions": [
     {
       "from": "0.8.13.26",
@@ -15,16 +15,17 @@
         {
           "name": "agreement",
           "type": "u8",
-          "note": "Must be 1: any other value has the client report a build mismatch and leave. For 0 it also shows both versions."
+          "note": "1 lets the client go on into the game. For 0 a client shows both versions and leaves; for any other value it leaves, showing nothing."
         },
         {
           "name": "build",
           "type": "string",
           "encoding": "utf8",
           "size": "terminated",
-          "note": "The server's version, ended by a zero byte. A client keeps at most 512 bytes of it."
+          "note": "The server's version, ended by a zero byte; the two take at most 512 bytes, and a client fails on a longer one."
         }
-      ]
+      ],
+      "note": "It carries only agreement and build."
     },
     {
       "from": "0.9.22.14",
@@ -62,7 +63,8 @@
           "size": 256,
           "note": "Which build the server serves, shown and not checked. Written out in full and padded with zero bytes to the width above; a client reads it up to the first zero byte."
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "1.0.0.74",
@@ -100,7 +102,8 @@
           "size": 256,
           "note": "Which build the server serves, shown and not checked. Written out in full and padded with zero bytes to the width above; a client reads it up to the first zero byte."
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "1.0.0.82",
@@ -138,7 +141,8 @@
           "size": 256,
           "note": "Which build the server serves, shown and not checked. Written out in full and padded with zero bytes to the width above; a client reads it up to the first zero byte."
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "1.0.0.97",
@@ -176,7 +180,8 @@
           "size": 256,
           "note": "Which build the server serves, shown and not checked. Written out in full and padded with zero bytes to the width above; a client reads it up to the first zero byte."
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "1.0.0.103",
@@ -214,7 +219,8 @@
           "size": 256,
           "note": "Which build the server serves, shown and not checked. Written out in full and padded with zero bytes to the width above; a client reads it up to the first zero byte."
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "1.0.0.104",
@@ -259,7 +265,8 @@
           "size": 128,
           "note": "Which way the match is played, written and padded as above."
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "1.0.0.107",
@@ -304,7 +311,8 @@
           "size": 128,
           "note": "Which way the match is played, written and padded as above."
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "1.0.0.110",
@@ -349,7 +357,8 @@
           "size": 128,
           "note": "Which way the match is played, written and padded as above."
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "1.0.0.117",
@@ -394,7 +403,8 @@
           "size": 128,
           "note": "Which way the match is played, written and padded as above."
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "1.0.0.119",
@@ -439,7 +449,8 @@
           "size": 128,
           "note": "Which way the match is played, written and padded as above."
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "1.0.0.124",
@@ -484,7 +495,8 @@
           "size": 128,
           "note": "Which way the match is played, written and padded as above."
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "1.0.0.128",
@@ -529,7 +541,8 @@
           "size": 128,
           "note": "Which way the match is played, written and padded as above."
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "1.0.0.129",
@@ -638,7 +651,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "1.0.0.131",
@@ -747,7 +761,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "1.0.0.132",
@@ -856,7 +871,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "1.0.0.138",
@@ -965,7 +981,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "1.0.0.140",
@@ -1079,7 +1096,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "1.0.0.144",
@@ -1193,7 +1211,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "1.0.0.145",
@@ -1332,7 +1351,8 @@
           "type": "u8",
           "note": "Nonzero shows it during play, from time to time."
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "1.0.0.147",
@@ -1471,7 +1491,8 @@
           "type": "u8",
           "note": "Nonzero shows it during play, from time to time."
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "1.0.0.148",
@@ -1610,7 +1631,8 @@
           "type": "u8",
           "note": "Nonzero shows it during play, from time to time."
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "1.0.0.150",
@@ -1777,7 +1799,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "1.0.0.151",
@@ -1944,7 +1967,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "3.01.0.1",
@@ -2111,7 +2135,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "3.04.0.78",
@@ -2321,7 +2346,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "3.6.0.388",
@@ -2564,7 +2590,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "3.7.0.328",
@@ -2817,7 +2844,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "3.8.0.226",
@@ -3080,7 +3108,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "3.9.0.491",
@@ -3353,7 +3382,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "3.10.0.237",
@@ -3621,7 +3651,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "3.11.0.306",
@@ -3904,7 +3935,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "3.12.0.251",
@@ -4192,7 +4224,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "3.13.0.399",
@@ -4501,7 +4534,8 @@
             "note": "One item, by the number the client knows it as."
           }
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "3.14.0.700",
@@ -4848,7 +4882,8 @@
             "note": "One item, by the number the client knows it as."
           }
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "3.15.0.244",
@@ -5190,7 +5225,8 @@
             "note": "One item, by the number the client knows it as."
           }
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "4.2.0.2718",
@@ -5542,7 +5578,8 @@
             "note": "One item, by the number the client knows it as."
           }
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "4.3.0.495",
@@ -5928,7 +5965,8 @@
             }
           }
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "4.5.0.260",
@@ -6319,7 +6357,8 @@
             }
           }
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "4.6.0.193",
@@ -6710,7 +6749,8 @@
             }
           }
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "4.7.0.296",
@@ -7096,7 +7136,8 @@
             }
           }
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "4.8.0.189",
@@ -7477,7 +7518,8 @@
             }
           }
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "4.9.0.239",
@@ -7873,7 +7915,8 @@
             }
           }
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "4.10.0.369",
@@ -8269,7 +8312,8 @@
             }
           }
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "4.11.0.386",
@@ -8665,7 +8709,8 @@
             }
           }
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "4.12.0.356",
@@ -9063,7 +9108,8 @@
             }
           }
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "4.14.0.362",
@@ -9481,7 +9527,8 @@
             }
           }
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "4.15.0.238",
@@ -9894,7 +9941,8 @@
             }
           }
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "4.16.0.238",
@@ -10327,7 +10375,8 @@
             }
           }
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "4.17.0.233",
@@ -10760,7 +10809,8 @@
             }
           }
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "4.18.0.271",
@@ -10997,7 +11047,8 @@
             }
           }
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
       "from": "4.20.0.315",
@@ -11234,7 +11285,8 @@
             }
           }
         }
-      ]
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
     }
   ]
 }

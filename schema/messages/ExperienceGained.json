@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "ExperienceGained",
   "system": "replication",
-  "note": "What a server sends to grant a unit experience. The header names no object: it carries zero.",
+  "note": "What a server sends to say a unit gained experience. The header names no object: a server writes zero.",
   "revisions": [
     {
       "from": "0.8.13.26",
@@ -15,15 +15,15 @@
         {
           "name": "unit",
           "type": "u32",
-          "note": "The unit granted it."
+          "note": "The unit granted it, one with a mind, such as a champion or a minion. A client does nothing for a unit it does not know."
         },
         {
           "name": "amount",
           "type": "f32",
-          "note": "How much."
+          "note": "How much. A client shows a value below zero or from 100000 up as well."
         }
       ],
-      "note": "Where the unit is the client's own champion below its highest level, a client also shows the amount on its experience display."
+      "note": "It changes no unit's experience: a client only floats the amount as text over the unit, where the player's floating-text settings allow."
     },
     {
       "from": "1.0.0.110",

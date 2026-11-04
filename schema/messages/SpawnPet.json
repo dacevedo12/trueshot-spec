@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "SpawnPet",
   "system": "units",
-  "note": "What a server sends to put a pet on the field. The header names the pet. A server sends it to clients watching a match.",
+  "note": "What a server sends to put a pet on the field.",
   "revisions": [
     {
       "from": "0.8.13.26",
@@ -11,7 +11,7 @@
       "command": 32,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "The header names the owner, and a client handles the message only where it holds that unit. It kills the owner's earlier pet if that lives, then makes the pet under pet and node with the owner's side and sight, as the owner's pet. It deletes no object first; where one already holds pet, both answer to it.",
+      "note": "The header names the owner, and every client that holds that unit handles the message. A client kills the owner's earlier pet if that lives, then makes the pet under pet and node with the owner's side, as the owner's pet. It deletes no object first; where one already holds pet, both answer to it.",
       "fields": [
         {
           "name": "pet",
@@ -82,7 +82,7 @@
         {
           "name": "clone",
           "type": "u32",
-          "note": "The unit it copies, or zero."
+          "note": "The unit it copies, or zero. For a minion-like pet, a client only links the pet to that unit, where it holds it, and copies nothing of it."
         }
       ]
     },
@@ -93,7 +93,7 @@
       "command": 32,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "The header names the owner, and a client handles the message only where it holds that unit. It kills the owner's earlier pet if that lives, then makes the pet under pet and node with the owner's side and sight, as the owner's pet. It deletes no object first; where one already holds pet, both answer to it.",
+      "note": "The header names the owner, and a client handles the message only where it holds that unit. It kills the owner's earlier pet if that lives, then makes the pet under pet and node with the owner's side and sight, as the owner's pet. It deletes no object first; where one already holds pet, both answer to it. The header names the pet. A server sends it to clients watching a match.",
       "fields": [
         {
           "name": "pet",
@@ -193,7 +193,7 @@
       "command": 32,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "The header names the owner, and a client handles the message only where it holds that unit. It kills the owner's earlier pet if that lives, then makes the pet under pet and node with the owner's side and sight, as the owner's pet. It deletes no object first; where one already holds pet, both answer to it.",
+      "note": "The header names the owner, and a client handles the message only where it holds that unit. It kills the owner's earlier pet if that lives, then makes the pet under pet and node with the owner's side and sight, as the owner's pet. It deletes no object first; where one already holds pet, both answer to it. The header names the pet. A server sends it to clients watching a match.",
       "fields": [
         {
           "name": "pet",
@@ -300,7 +300,7 @@
       "command": 32,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "The header names the owner, and a client handles the message only where it holds that unit. It kills the owner's earlier pet if that lives, then makes the pet under pet and node with the owner's side and sight, as the owner's pet. It deletes no object first; where one already holds pet, both answer to it.",
+      "note": "The header names the owner, and a client handles the message only where it holds that unit. It kills the owner's earlier pet if that lives, then makes the pet under pet and node with the owner's side and sight, as the owner's pet. It deletes no object first; where one already holds pet, both answer to it. The header names the pet. A server sends it to clients watching a match.",
       "fields": [
         {
           "name": "pet",
@@ -412,7 +412,7 @@
       "command": 32,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "The header names the owner, and a client handles the message only where it holds that unit. It kills the owner's earlier pet if that lives, then makes the pet under pet and node with the owner's side and sight, as the owner's pet. It deletes no object first; where one already holds pet, both answer to it.",
+      "note": "The header names the owner, and a client handles the message only where it holds that unit. It kills the owner's earlier pet if that lives, then makes the pet under pet and node with the owner's side and sight, as the owner's pet. It deletes no object first; where one already holds pet, both answer to it. The header names the pet. A server sends it to clients watching a match.",
       "fields": [
         {
           "name": "pet",
@@ -529,7 +529,7 @@
       "command": 57,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "The header names the owner, and a client handles the message only where it holds that unit. It kills the owner's earlier pet if that lives, then makes the pet under pet and node with the owner's side and sight, as the owner's pet. It deletes no object first; where one already holds pet, both answer to it.",
+      "note": "The header names the owner, and a client handles the message only where it holds that unit. It kills the owner's earlier pet if that lives, then makes the pet under pet and node with the owner's side and sight, as the owner's pet. It deletes no object first; where one already holds pet, both answer to it. The header names the pet. A server sends it to clients watching a match.",
       "fields": [
         {
           "name": "pet",
@@ -646,7 +646,7 @@
       "command": 58,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "The header names the owner, and a client handles the message only where it holds that unit. It kills the owner's earlier pet if that lives, then makes the pet under pet and node with the owner's side and sight, as the owner's pet. It deletes no object first; where one already holds pet, both answer to it.",
+      "note": "The header names the owner, and a client handles the message only where it holds that unit. It kills the owner's earlier pet if that lives, then makes the pet under pet and node with the owner's side and sight, as the owner's pet. It deletes no object first; where one already holds pet, both answer to it. The header names the pet. A server sends it to clients watching a match.",
       "fields": [
         {
           "name": "pet",
@@ -763,7 +763,7 @@
       "command": 59,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "The header names the owner, and a client handles the message only where it holds that unit. It kills the owner's earlier pet if that lives, then makes the pet under pet and node with the owner's side and sight, as the owner's pet. It deletes no object first; where one already holds pet, both answer to it.",
+      "note": "The header names the owner, and a client handles the message only where it holds that unit. It kills the owner's earlier pet if that lives, then makes the pet under pet and node with the owner's side and sight, as the owner's pet. It deletes no object first; where one already holds pet, both answer to it. The header names the pet. A server sends it to clients watching a match.",
       "fields": [
         {
           "name": "pet",
@@ -880,7 +880,7 @@
       "command": 60,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "The header names the owner, and a client handles the message only where it holds that unit. It kills the owner's earlier pet if that lives, then makes the pet under pet and node with the owner's side and sight, as the owner's pet. It deletes no object first; where one already holds pet, both answer to it.",
+      "note": "The header names the owner, and a client handles the message only where it holds that unit. It kills the owner's earlier pet if that lives, then makes the pet under pet and node with the owner's side and sight, as the owner's pet. It deletes no object first; where one already holds pet, both answer to it. The header names the pet. A server sends it to clients watching a match.",
       "fields": [
         {
           "name": "pet",
@@ -997,7 +997,7 @@
       "command": 60,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "The header names the owner, and a client handles the message only where it holds that unit. It kills the owner's earlier pet if that lives, then makes the pet under pet and node with the owner's side and sight, as the owner's pet. It deletes no object first; where one already holds pet, both answer to it.",
+      "note": "The header names the owner, and a client handles the message only where it holds that unit. It kills the owner's earlier pet if that lives, then makes the pet under pet and node with the owner's side and sight, as the owner's pet. It deletes no object first; where one already holds pet, both answer to it. The header names the pet. A server sends it to clients watching a match.",
       "fields": [
         {
           "name": "pet",
@@ -1119,7 +1119,7 @@
       "command": 60,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "The header names the owner, and a client handles the message only where it holds that unit. It kills the owner's earlier pet if that lives, then makes the pet under pet and node with the owner's side and sight, as the owner's pet. It deletes no object first; where one already holds pet, both answer to it.",
+      "note": "The header names the owner, and a client handles the message only where it holds that unit. It kills the owner's earlier pet if that lives, then makes the pet under pet and node with the owner's side and sight, as the owner's pet. It deletes no object first; where one already holds pet, both answer to it. The header names the pet. A server sends it to clients watching a match.",
       "fields": [
         {
           "name": "pet",
@@ -1241,7 +1241,7 @@
       "command": 60,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "The header names the owner, and a client handles the message only where it holds that unit. It kills the owner's earlier pet if that lives, then makes the pet under pet and node, replacing its script with script, gives it the owner's seat, and takes it as the owner's pet. It deletes no object first; where one already holds pet, both answer to it. duration has no effect.",
+      "note": "The header names the owner, and a client handles the message only where it holds that unit. It kills the owner's earlier pet if that lives, then makes the pet under pet and node, replacing its script with script, gives it the owner's seat, and takes it as the owner's pet. It deletes no object first; where one already holds pet, both answer to it. duration has no effect. The header names the pet. A server sends it to clients watching a match.",
       "fields": [
         {
           "name": "pet",
@@ -1363,7 +1363,7 @@
       "command": 60,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client spawns nothing where it does not know the owner; kills the owner's earlier pet if it lives; makes the pet, replacing its script with script; gives it the owner's seat; and registers it under the header's id and node. It deletes no object first; where one already holds the header's id, both answer to it. duration has no effect.",
+      "note": "A client spawns nothing where it does not know the owner; kills the owner's earlier pet if it lives; makes the pet, replacing its script with script; gives it the owner's seat; and registers it under the header's id and node. It deletes no object first; where one already holds the header's id, both answer to it. duration has no effect. The header names the pet. A server sends it to clients watching a match.",
       "fields": [
         {
           "name": "owner",
@@ -1485,7 +1485,7 @@
       "command": 60,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client deletes any object holding the header's id; spawns nothing where it does not know the owner; kills the owner's earlier pet if it lives; makes the pet, replacing its script with script; gives it the owner's seat; and registers it under the header's id and node. duration has no effect.",
+      "note": "A client deletes any object holding the header's id; spawns nothing where it does not know the owner; kills the owner's earlier pet if it lives; makes the pet, replacing its script with script; gives it the owner's seat; and registers it under the header's id and node. duration has no effect. The header names the pet. A server sends it to clients watching a match.",
       "fields": [
         {
           "name": "owner",
@@ -1607,7 +1607,7 @@
       "command": 57,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client deletes any object holding the header's id; spawns nothing where it does not know the owner; kills the owner's earlier pet if it lives; makes the pet, replacing its script with script; gives it the owner's seat, its gold going to the owner; and registers it under the header's id and node. spellLevel, duration and effect have no effect.",
+      "note": "A client deletes any object holding the header's id; spawns nothing where it does not know the owner; kills the owner's earlier pet if it lives; makes the pet, replacing its script with script; gives it the owner's seat, its gold going to the owner; and registers it under the header's id and node. spellLevel, duration and effect have no effect. The header names the pet. A server sends it to clients watching a match.",
       "fields": [
         {
           "name": "owner",
@@ -1729,7 +1729,7 @@
       "command": 57,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client deletes any object holding the header's id; spawns nothing where it does not know the owner; kills the owner's earlier pet if it lives; makes the pet, replacing its script with script; gives it the owner's seat, its gold going to the owner; and registers it under the header's id and node. spellLevel, duration and effect have no effect.",
+      "note": "A client deletes any object holding the header's id; spawns nothing where it does not know the owner; kills the owner's earlier pet if it lives; makes the pet, replacing its script with script; gives it the owner's seat, its gold going to the owner; and registers it under the header's id and node. spellLevel, duration and effect have no effect. The header names the pet. A server sends it to clients watching a match.",
       "fields": [
         {
           "name": "owner",
@@ -1851,7 +1851,7 @@
       "command": 54,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client deletes any object holding the header's id; spawns nothing where it does not know the owner; kills the owner's earlier pet if it lives; makes the pet, replacing its script with script; gives it the owner's seat, its gold going to the owner; and registers it under the header's id and node. spellLevel, duration and effect have no effect.",
+      "note": "A client deletes any object holding the header's id; spawns nothing where it does not know the owner; kills the owner's earlier pet if it lives; makes the pet, replacing its script with script; gives it the owner's seat, its gold going to the owner; and registers it under the header's id and node. spellLevel, duration and effect have no effect. The header names the pet. A server sends it to clients watching a match.",
       "fields": [
         {
           "name": "owner",
@@ -2091,7 +2091,7 @@
           "note": "The script that drives it, padded with zero bytes."
         }
       ],
-      "note": "A client deletes any object holding the header's id; spawns nothing where it does not know the owner; kills the owner's earlier pet if it lives; makes the pet, replacing its script with script; gives it the owner's seat, its gold going to the owner; and registers it under the header's id and node. spellLevel, duration and effect have no effect."
+      "note": "A client deletes any object holding the header's id; spawns nothing where it does not know the owner; kills the owner's earlier pet if it lives; makes the pet, replacing its script with script; gives it the owner's seat, its gold going to the owner; and registers it under the header's id and node. spellLevel, duration and effect have no effect. The header names the pet. A server sends it to clients watching a match."
     },
     {
       "from": "4.11.0.386",
@@ -2218,7 +2218,7 @@
           "note": "The script that drives it, padded with zero bytes."
         }
       ],
-      "note": "A client deletes any object holding the header's id; spawns nothing where it does not know the owner; kills the owner's earlier pet if it lives; makes the pet, replacing its script with script; gives it the owner's seat, its gold going to the owner; and registers it under the header's id and node. spellLevel, duration and effect have no effect."
+      "note": "A client deletes any object holding the header's id; spawns nothing where it does not know the owner; kills the owner's earlier pet if it lives; makes the pet, replacing its script with script; gives it the owner's seat, its gold going to the owner; and registers it under the header's id and node. spellLevel, duration and effect have no effect. The header names the pet. A server sends it to clients watching a match."
     },
     {
       "from": "4.20.0.315",
@@ -2350,7 +2350,7 @@
           "note": "The script that drives it, padded with zero bytes."
         }
       ],
-      "note": "A client deletes any object holding the header's id; spawns nothing where it does not know the owner; kills the owner's earlier pet if it lives; makes the pet, replacing its script with script; gives it the owner's seat, its gold going to the owner; and registers it under the header's id and node. spellLevel, duration and effect have no effect."
+      "note": "A client deletes any object holding the header's id; spawns nothing where it does not know the owner; kills the owner's earlier pet if it lives; makes the pet, replacing its script with script; gives it the owner's seat, its gold going to the owner; and registers it under the header's id and node. spellLevel, duration and effect have no effect. The header names the pet. A server sends it to clients watching a match."
     }
   ]
 }

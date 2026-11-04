@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "PingPlaced",
   "system": "communication",
-  "note": "What a server sends to show a ping on the map to everyone meant to see it. The header names the champion that placed the ping, as source does.",
+  "note": "What a server sends to show a ping on the map to everyone meant to see it.",
   "revisions": [
     {
       "from": "0.8.13.26",
@@ -38,7 +38,7 @@
           "note": "A client reads nothing here."
         }
       ],
-      "note": "A client marks atX and atZ on each of its two map views, and only while it shows a map."
+      "note": "A client marks atX and atZ on each of its two map views, and only while it shows a map. The header can carry zero."
     },
     {
       "from": "0.9.22.14",
@@ -74,7 +74,7 @@
           "note": "The unit that placed it."
         }
       ],
-      "note": "A client drops the message where the player who placed it is muted. Where target is a unit it can name, it shows a notice for it."
+      "note": "A client drops the message where the player who placed it is muted. Where target is a unit it can name, it shows a notice for it. The header names the champion that placed the ping, as source does."
     },
     {
       "from": "1.0.0.104",
@@ -132,7 +132,7 @@
           ]
         }
       ],
-      "note": "A client drops the message where the player who placed it is muted. Where target is a unit it can name, it shows a notice for it."
+      "note": "A client drops the message where the player who placed it is muted. Where target is a unit it can name, it shows a notice for it. The header names the champion that placed the ping, as source does."
     },
     {
       "from": "1.0.0.110",
@@ -190,7 +190,7 @@
           ]
         }
       ],
-      "note": "A client drops the message where the player who placed it is muted. Where target is a unit it can name, it shows a notice for it."
+      "note": "A client drops the message where the player who placed it is muted. Where target is a unit it can name, it shows a notice for it. The header names the champion that placed the ping, as source does."
     },
     {
       "from": "1.0.0.117",
@@ -248,7 +248,7 @@
           ]
         }
       ],
-      "note": "A client drops the message where the player who placed it is muted. Where target is a unit it can name, it shows a notice for it."
+      "note": "A client drops the message where the player who placed it is muted. Where target is a unit it can name, it shows a notice for it. The header names the champion that placed the ping, as source does."
     },
     {
       "from": "1.0.0.119",
@@ -311,7 +311,7 @@
           ]
         }
       ],
-      "note": "A client drops the message where the player who placed it is muted. Where target is a unit it can name, it shows a notice for it."
+      "note": "A client drops the message where the player who placed it is muted. Where target is a unit it can name, it shows a notice for it. The header names the champion that placed the ping, as source does."
     },
     {
       "from": "1.0.0.123",
@@ -379,7 +379,7 @@
           ]
         }
       ],
-      "note": "A client drops the whole message where category is past its own list of categories."
+      "note": "A client drops the whole message where category is past its own list of categories. The header names the champion that placed the ping, as source does."
     },
     {
       "from": "1.0.0.124",
@@ -447,7 +447,7 @@
           ]
         }
       ],
-      "note": "A client drops the whole message where category is past its own list of categories."
+      "note": "A client drops the whole message where category is past its own list of categories. The header names the champion that placed the ping, as source does."
     },
     {
       "from": "1.0.0.128",
@@ -515,7 +515,7 @@
           ]
         }
       ],
-      "note": "A client drops the whole message where category is past its own list of categories."
+      "note": "A client drops the whole message where category is past its own list of categories. The header names the champion that placed the ping, as source does."
     },
     {
       "from": "1.0.0.132",
@@ -583,7 +583,7 @@
           ]
         }
       ],
-      "note": "A client drops the whole message where category is past its own list of categories."
+      "note": "A client drops the whole message where category is past its own list of categories. The header names the champion that placed the ping, as source does."
     },
     {
       "from": "1.0.0.138",
@@ -651,7 +651,7 @@
           ]
         }
       ],
-      "note": "A client drops the whole message where category is past its own list of categories."
+      "note": "A client drops the whole message where category is past its own list of categories. The header names the champion that placed the ping, as source does."
     },
     {
       "from": "1.0.0.144",
@@ -719,7 +719,7 @@
           ]
         }
       ],
-      "note": "A client drops the whole message where category is past its own list of categories."
+      "note": "A client drops the whole message where category is past its own list of categories. The header names the champion that placed the ping, as source does."
     },
     {
       "from": "1.0.0.148",
@@ -782,7 +782,7 @@
           ]
         }
       ],
-      "note": "A client drops the whole message where category is past its own list of categories."
+      "note": "A client drops the whole message where category is past its own list of categories. The header names the champion that placed the ping, as source does."
     },
     {
       "from": "1.0.0.150",
@@ -845,7 +845,7 @@
           ]
         }
       ],
-      "note": "A client drops the whole message where category is past its own list of categories."
+      "note": "A client drops the whole message where category is past its own list of categories. The header names the champion that placed the ping, as source does."
     },
     {
       "from": "4.11.0.386",
@@ -908,7 +908,7 @@
           ]
         }
       ],
-      "note": "A client drops the whole message where category is past its own list of categories."
+      "note": "A client drops the whole message where category is past its own list of categories. The header names the champion that placed the ping, as source does."
     },
     {
       "from": "4.18.0.271",
@@ -998,7 +998,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "The header names the champion that placed the ping, as source does."
     }
   ]
 }

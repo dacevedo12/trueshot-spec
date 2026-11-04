@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "EnterSight",
   "system": "vision",
-  "note": "What a server sends when a unit comes into what a side can see. It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say. The header names the unit this is about.",
+  "note": "What a server sends when a unit comes into what a side can see. The header names the unit this is about.",
   "revisions": [
     {
       "from": "0.8.13.26",
@@ -15,7 +15,7 @@
         {
           "name": "view",
           "type": "record",
-          "note": "Everything else a client needs to draw the unit. A server sends it for a champion, a minion or another unit with a mind, which a client reads past the end of the message without it, and ends the message after the items for any other unit.",
+          "note": "Everything else a client needs to draw the unit. A server sends it for a champion, a minion or another unit with a mind, and ends the message after the items for any other unit.",
           "fields": [
             {
               "name": "movementState",
@@ -29,7 +29,7 @@
                 {
                   "name": "movementKind",
                   "type": "u8",
-                  "note": "What follows the sync id: 0 nothing, 1 a path walked at a set speed, 2 a path, 3 a point the unit stands at. A client reads nothing more for any other value.",
+                  "note": "What follows the sync id: 0 nothing, 1 a path walked at a set speed, 2 a path, 3 a point the unit stands at.",
                   "values": {
                     "0": {
                       "name": "nothing"
@@ -48,7 +48,7 @@
                 {
                   "name": "syncId",
                   "type": "u32",
-                  "note": "The number of this statement about the unit; a client takes a path or a point only where it is not behind the last one the unit took."
+                  "note": "The number of this statement about the unit."
                 },
                 {
                   "name": "movement",
@@ -228,7 +228,7 @@
           }
         }
       ],
-      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit."
+      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit. It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say."
     },
     {
       "from": "1.0.0.58",
@@ -341,7 +341,7 @@
           }
         }
       ],
-      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit."
+      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit. It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say."
     },
     {
       "from": "1.0.0.61",
@@ -454,7 +454,7 @@
           }
         }
       ],
-      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit."
+      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit. It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say."
     },
     {
       "from": "1.0.0.74",
@@ -567,7 +567,7 @@
           }
         }
       ],
-      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit."
+      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit. It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say."
     },
     {
       "from": "1.0.0.81",
@@ -680,7 +680,7 @@
           }
         }
       ],
-      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit."
+      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit. It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say."
     },
     {
       "from": "1.0.0.82",
@@ -793,7 +793,7 @@
           }
         }
       ],
-      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit."
+      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit. It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say."
     },
     {
       "from": "1.0.0.83",
@@ -906,7 +906,7 @@
           }
         }
       ],
-      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit."
+      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit. It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say."
     },
     {
       "from": "1.0.0.97",
@@ -1035,7 +1035,7 @@
           }
         }
       ],
-      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit."
+      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit. It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say."
     },
     {
       "from": "1.0.0.103",
@@ -1164,7 +1164,7 @@
           }
         }
       ],
-      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit."
+      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit. It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say."
     },
     {
       "from": "1.0.0.107",
@@ -1293,7 +1293,7 @@
           }
         }
       ],
-      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit."
+      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit. It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say."
     },
     {
       "from": "1.0.0.110",
@@ -1422,7 +1422,7 @@
           }
         }
       ],
-      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit."
+      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit. It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say."
     },
     {
       "from": "1.0.0.111",
@@ -1587,7 +1587,7 @@
           }
         }
       ],
-      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit."
+      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit. It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say."
     },
     {
       "from": "1.0.0.117",
@@ -1752,7 +1752,7 @@
           }
         }
       ],
-      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit."
+      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit. It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say."
     },
     {
       "from": "1.0.0.119",
@@ -1917,7 +1917,7 @@
           }
         }
       ],
-      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit."
+      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit. It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say."
     },
     {
       "from": "1.0.0.124",
@@ -2082,7 +2082,7 @@
           }
         }
       ],
-      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit."
+      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit. It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say."
     },
     {
       "from": "1.0.0.125",
@@ -2247,7 +2247,7 @@
           }
         }
       ],
-      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit."
+      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit. It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say."
     },
     {
       "from": "1.0.0.126",
@@ -2412,7 +2412,7 @@
           }
         }
       ],
-      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit."
+      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit. It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say."
     },
     {
       "from": "1.0.0.128",
@@ -2576,7 +2576,8 @@
             "when": "remaining"
           }
         }
-      ]
+      ],
+      "note": "It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say."
     },
     {
       "from": "1.0.0.132",
@@ -2740,7 +2741,8 @@
             "when": "remaining"
           }
         }
-      ]
+      ],
+      "note": "It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say."
     },
     {
       "from": "1.0.0.135",
@@ -2904,7 +2906,8 @@
             "when": "remaining"
           }
         }
-      ]
+      ],
+      "note": "It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say."
     },
     {
       "from": "1.0.0.136",
@@ -3068,7 +3071,8 @@
             "when": "remaining"
           }
         }
-      ]
+      ],
+      "note": "It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say."
     },
     {
       "from": "1.0.0.138",
@@ -3286,7 +3290,8 @@
             "when": "remaining"
           }
         }
-      ]
+      ],
+      "note": "It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say."
     },
     {
       "from": "1.0.0.139",
@@ -3504,7 +3509,8 @@
             "when": "remaining"
           }
         }
-      ]
+      ],
+      "note": "It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say."
     },
     {
       "from": "1.0.0.141",
@@ -3722,7 +3728,8 @@
             "when": "remaining"
           }
         }
-      ]
+      ],
+      "note": "It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say."
     },
     {
       "from": "1.0.0.143",
@@ -3930,7 +3937,8 @@
             "when": "remaining"
           }
         }
-      ]
+      ],
+      "note": "It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say."
     },
     {
       "from": "1.0.0.144",
@@ -4138,7 +4146,8 @@
             "when": "remaining"
           }
         }
-      ]
+      ],
+      "note": "It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say."
     },
     {
       "from": "1.0.0.150",
@@ -4346,7 +4355,8 @@
             "when": "remaining"
           }
         }
-      ]
+      ],
+      "note": "It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say."
     },
     {
       "from": "3.01.0.1",
@@ -4554,7 +4564,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say."
     },
     {
       "from": "3.6.0.388",
@@ -4762,7 +4773,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say."
     },
     {
       "from": "3.11.0.306",
@@ -4995,7 +5007,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say."
     },
     {
       "from": "4.1.0.171",
@@ -5257,7 +5270,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say."
     },
     {
       "from": "4.11.0.386",
@@ -5519,7 +5533,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say."
     },
     {
       "from": "4.18.0.271",
@@ -5769,7 +5784,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say."
     }
   ]
 }

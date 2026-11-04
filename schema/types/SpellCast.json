@@ -75,7 +75,7 @@
         {
           "name": "hitCount",
           "type": "u8",
-          "note": "How many units the casting names as hit."
+          "note": "How many units the casting names as hit, at most 32. A client sets no bound of its own."
         },
         {
           "name": "hits",

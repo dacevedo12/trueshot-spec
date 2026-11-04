@@ -20,13 +20,13 @@
         {
           "name": "flags",
           "type": "u16",
-          "note": "Bit 3 changes how the particle hangs off boundTo; a server writes the others zero."
+          "note": "Bit 3 set hangs the particle off neither boundTo nor target. Bit 2 set, where boundTo is given, has the particle take its scale from boundTo. Bit 0 sets a further option of the particle's. A server writes the others zero."
         },
         {
           "name": "unknown",
           "type": "bytes",
           "size": 12,
-          "note": "What this holds is not recorded. A server writes zero."
+          "note": "Passed to the particle as it is made; what it holds is not recorded."
         },
         {
           "name": "boundTo",
@@ -38,17 +38,17 @@
           "type": "string",
           "encoding": "utf8",
           "size": 64,
-          "note": "The effect's name. Where it is empty, a client makes nothing. Written out in full and padded with zero bytes to the width above."
+          "note": "The effect's name. A client fails where it is empty, and still makes a particle for a name it does not know. Written out in full and padded with zero bytes to the width above."
         },
         {
           "name": "unknownB",
           "type": "u32",
-          "note": "What this holds is not recorded. A server writes zero."
+          "note": "The point on boundTo the particle hangs from."
         },
         {
           "name": "atX",
           "type": "f32",
-          "note": "Where it starts, along one ground axis, in world units."
+          "note": "Where it starts, along one ground axis, in world units; used only where target is zero."
         },
         {
           "name": "atY",
@@ -68,7 +68,7 @@
         {
           "name": "unknownC",
           "type": "u32",
-          "note": "What this holds is not recorded. A server writes zero."
+          "note": "The point on target the particle is aimed at."
         }
       ],
       "note": "One particle, made from its effect's name."

@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "PlaceTurret",
   "system": "units",
-  "note": "What a server sends to make a turret. The header names no object: it carries zero.",
+  "note": "What a server sends to make a turret.",
   "revisions": [
     {
       "from": "0.8.13.26",
@@ -47,7 +47,8 @@
           "type": "u8",
           "note": "Nonzero for side 100, zero for side 200."
         }
-      ]
+      ],
+      "note": "The header names an existing turret object, and the new turret takes that object's position."
     }
   ]
 }

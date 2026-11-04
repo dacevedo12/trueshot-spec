@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "UnitStopped",
   "system": "movement",
-  "note": "What a server sends to stop a unit where it stands. The header names the unit. A client applies it only where its sync id is not older than the last the unit took, counting a wrap: this message, PathWithSpeed and Path share one count per unit, starting at -1.",
+  "note": "What a server sends to stop a unit where it stands. The header names the unit.",
   "revisions": [
     {
       "from": "0.8.13.26",
@@ -42,7 +42,8 @@
           "type": "f32",
           "note": "The way it faces."
         }
-      ]
+      ],
+      "note": "It carries no sync id: a client always applies the position and facing, then stops the unit."
     },
     {
       "from": "0.9.22.14",
@@ -87,7 +88,8 @@
           "type": "i32",
           "note": "The unit's movement count. A client drops the message where it is behind the last the unit took by less than 1073741824."
         }
-      ]
+      ],
+      "note": "A client applies it only where its sync id is not older than the last the unit took, counting a wrap: this message, PathWithSpeed and Path share one count per unit, starting at -1."
     },
     {
       "from": "1.0.0.110",
@@ -132,7 +134,8 @@
           "type": "i32",
           "note": "The unit's movement count. A client drops the message where it is behind the last the unit took by less than 1073741824."
         }
-      ]
+      ],
+      "note": "A client applies it only where its sync id is not older than the last the unit took, counting a wrap: this message, PathWithSpeed and Path share one count per unit, starting at -1."
     },
     {
       "from": "1.0.0.124",
@@ -177,7 +180,8 @@
           "type": "i32",
           "note": "The unit's movement count. A client drops the message where it is behind the last the unit took by less than 1073741824."
         }
-      ]
+      ],
+      "note": "A client applies it only where its sync id is not older than the last the unit took, counting a wrap: this message, PathWithSpeed and Path share one count per unit, starting at -1."
     },
     {
       "from": "1.0.0.128",
@@ -222,7 +226,8 @@
           "type": "i32",
           "note": "The unit's movement count."
         }
-      ]
+      ],
+      "note": "A client applies it only where its sync id is not older than the last the unit took, counting a wrap: this message, PathWithSpeed and Path share one count per unit, starting at -1."
     },
     {
       "from": "1.0.0.144",
@@ -267,7 +272,8 @@
           "type": "i32",
           "note": "The unit's movement count."
         }
-      ]
+      ],
+      "note": "A client applies it only where its sync id is not older than the last the unit took, counting a wrap: this message, PathWithSpeed and Path share one count per unit, starting at -1."
     },
     {
       "from": "4.11.0.386",
@@ -312,7 +318,8 @@
           "type": "i32",
           "note": "The unit's movement count."
         }
-      ]
+      ],
+      "note": "A client applies it only where its sync id is not older than the last the unit took, counting a wrap: this message, PathWithSpeed and Path share one count per unit, starting at -1."
     }
   ]
 }

@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "MoveOrder",
   "system": "movement",
-  "note": "What a client sends to tell a server what it wants a unit to do. The path it carries is what the client would take; where the unit actually goes is whatever the server answers with. The header names the sender's champion.",
+  "note": "What a client sends to tell a server what it wants a unit to do. The header names the sender's champion.",
   "revisions": [
     {
       "from": "0.8.13.26",
@@ -31,7 +31,7 @@
         {
           "name": "targetX",
           "type": "f32",
-          "note": "Where the order points, along one ground axis. Carried in world units rather than in the units a path uses."
+          "note": "Where the order points, along one ground axis, in world units."
         },
         {
           "name": "targetY",
@@ -49,7 +49,7 @@
           "note": "The network object the order is aimed at, or zero where it is aimed at open ground."
         }
       ],
-      "note": "What a client sends as its player gives an order. The header names the unit ordered: the player's champion, or a unit it controls alongside, which gets its own copy of the order."
+      "note": "What a client sends as its player gives an order. It carries no path. The header names the unit ordered: the player's champion, or a unit it controls alongside, which gets its own copy of the order."
     },
     {
       "from": "1.0.0.63",
@@ -172,7 +172,7 @@
           "note": "Every point after the first."
         }
       ],
-      "note": "What a client sends as its player gives an order. The header names the unit ordered: the player's champion, or a unit it controls alongside, which gets its own copy of the order."
+      "note": "What a client sends as its player gives an order. The header names the unit ordered: the player's champion, or a unit it controls alongside, which gets its own copy of the order. The path it carries is what the client would take; where the unit actually goes is whatever the server answers with."
     },
     {
       "from": "1.0.0.79",
@@ -295,7 +295,7 @@
           "note": "Every point after the first."
         }
       ],
-      "note": "What a client sends as its player gives an order. The header names the unit ordered: the player's champion, or a unit it controls alongside, which gets its own copy of the order."
+      "note": "What a client sends as its player gives an order. The header names the unit ordered: the player's champion, or a unit it controls alongside, which gets its own copy of the order. The path it carries is what the client would take; where the unit actually goes is whatever the server answers with."
     },
     {
       "from": "1.0.0.83",
@@ -481,7 +481,7 @@
           "note": "Every point after the first."
         }
       ],
-      "note": "What a client sends as its player gives an order. The header names the unit ordered: the player's champion, or a unit it controls alongside, which gets its own copy of the order."
+      "note": "What a client sends as its player gives an order. The header names the unit ordered: the player's champion, or a unit it controls alongside, which gets its own copy of the order. The path it carries is what the client would take; where the unit actually goes is whatever the server answers with."
     },
     {
       "from": "1.0.0.110",
@@ -667,7 +667,7 @@
           "note": "Every point after the first."
         }
       ],
-      "note": "What a client sends as its player gives an order. The header names the unit ordered: the player's champion, or a unit it controls alongside, which gets its own copy of the order."
+      "note": "What a client sends as its player gives an order. The header names the unit ordered: the player's champion, or a unit it controls alongside, which gets its own copy of the order. The path it carries is what the client would take; where the unit actually goes is whatever the server answers with."
     },
     {
       "from": "1.0.0.111",
@@ -853,7 +853,7 @@
           "note": "Every point after the first."
         }
       ],
-      "note": "What a client sends as its player gives an order. The header names the unit ordered: the player's champion, or a unit it controls alongside, which gets its own copy of the order."
+      "note": "What a client sends as its player gives an order. The header names the unit ordered: the player's champion, or a unit it controls alongside, which gets its own copy of the order. The path it carries is what the client would take; where the unit actually goes is whatever the server answers with."
     },
     {
       "from": "1.0.0.117",
@@ -1039,7 +1039,7 @@
           "note": "Every point after the first."
         }
       ],
-      "note": "What a client sends as its player gives an order. The header names the unit ordered: the player's champion, or a unit it controls alongside, which gets its own copy of the order."
+      "note": "What a client sends as its player gives an order. The header names the unit ordered: the player's champion, or a unit it controls alongside, which gets its own copy of the order. The path it carries is what the client would take; where the unit actually goes is whatever the server answers with."
     },
     {
       "from": "1.0.0.119",
@@ -1225,7 +1225,7 @@
           "note": "Every point after the first."
         }
       ],
-      "note": "What a client sends as its player gives an order. The header names the unit ordered: the player's champion, or a unit it controls alongside, which gets its own copy of the order."
+      "note": "What a client sends as its player gives an order. The header names the unit ordered: the player's champion, or a unit it controls alongside, which gets its own copy of the order. The path it carries is what the client would take; where the unit actually goes is whatever the server answers with."
     },
     {
       "from": "1.0.0.124",
@@ -1411,7 +1411,7 @@
           "note": "Every point after the first."
         }
       ],
-      "note": "What a client sends as its player gives an order. The header names the unit ordered: the player's champion, or a unit it controls alongside, which gets its own copy of the order."
+      "note": "What a client sends as its player gives an order. The header names the unit ordered: the player's champion, or a unit it controls alongside, which gets its own copy of the order. The path it carries is what the client would take; where the unit actually goes is whatever the server answers with."
     },
     {
       "from": "1.0.0.128",
@@ -1595,7 +1595,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "The path it carries is what the client would take; where the unit actually goes is whatever the server answers with."
     },
     {
       "from": "1.0.0.132",
@@ -1779,7 +1780,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "The path it carries is what the client would take; where the unit actually goes is whatever the server answers with."
     },
     {
       "from": "1.0.0.138",
@@ -1958,7 +1960,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "The path it carries is what the client would take; where the unit actually goes is whatever the server answers with."
     },
     {
       "from": "1.0.0.141",
@@ -2004,7 +2007,8 @@
           "type": "struct",
           "struct": "Movement"
         }
-      ]
+      ],
+      "note": "The path it carries is what the client would take; where the unit actually goes is whatever the server answers with."
     },
     {
       "from": "1.0.0.144",
@@ -2050,7 +2054,8 @@
           "type": "struct",
           "struct": "Movement"
         }
-      ]
+      ],
+      "note": "The path it carries is what the client would take; where the unit actually goes is whatever the server answers with."
     },
     {
       "from": "1.0.0.150",
@@ -2096,7 +2101,8 @@
           "type": "struct",
           "struct": "Movement"
         }
-      ]
+      ],
+      "note": "The path it carries is what the client would take; where the unit actually goes is whatever the server answers with."
     },
     {
       "from": "3.01.0.1",
@@ -2142,7 +2148,8 @@
           "type": "struct",
           "struct": "Movement"
         }
-      ]
+      ],
+      "note": "The path it carries is what the client would take; where the unit actually goes is whatever the server answers with."
     },
     {
       "from": "4.11.0.386",
@@ -2188,7 +2195,8 @@
           "type": "struct",
           "struct": "Movement"
         }
-      ]
+      ],
+      "note": "The path it carries is what the client would take; where the unit actually goes is whatever the server answers with."
     }
   ]
 }

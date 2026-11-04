@@ -11,13 +11,13 @@
       "command": 86,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client's shop is set up by the Loadout of its own champion: until that arrives the shop opens empty, with no items, no suggested items and no builds, and is drawn at a size that does not fit the screen. A server sends one for every champion at spawning, between SpawnStart and SpawnEnd.",
+      "note": "A client shows the champion's icon and sets its two summoner slots from summoners.",
       "fields": [
         {
           "name": "runes",
           "type": "array",
           "count": 8,
-          "note": "The runes set before the match, thirty places.",
+          "note": "The runes set before the match.",
           "items": {
             "name": "rune",
             "type": "u32",
@@ -32,7 +32,7 @@
           "items": {
             "name": "summoner",
             "type": "u32",
-            "note": "One spell."
+            "note": "One spell. Zero leaves the slot as it was."
           }
         },
         {

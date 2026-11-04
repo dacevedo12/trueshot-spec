@@ -30,7 +30,7 @@
         {
           "name": "effect",
           "type": "u32",
-          "note": "Which effect, by the number its name gives, as spec/objects.md works it out. A server never sends zero. A client adds nothing for an effect it does not know."
+          "note": "Which effect, by the number its name gives, as spec/objects.md works it out. A client adds nothing for an effect it does not know."
         },
         {
           "name": "lasts",

@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "SpawnStart",
   "system": "joining",
-  "note": "What a server sends to open the run of units a client is about to be told about. The header names no object: it carries zero.",
+  "note": "What a server sends to open the run of units a client is about to be told about. The header names no object: a server writes zero.",
   "revisions": [
     {
       "from": "0.8.13.26",

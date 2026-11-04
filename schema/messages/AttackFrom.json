@@ -30,7 +30,7 @@
         {
           "name": "fromX",
           "type": "f32",
-          "note": "Where the swinging unit stands, along one ground axis, in world units. Where the unit stands more than 400 units from this point, a client first moves it there; nearer, the point has no effect."
+          "note": "Where the swinging unit stands, along one ground axis, in world units. A client stops the unit's movement and places it at this point, height included, even where it does not know target and no swing follows."
         },
         {
           "name": "fromY",

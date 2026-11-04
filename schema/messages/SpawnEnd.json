@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "SpawnEnd",
   "system": "joining",
-  "note": "What a server sends to close the run of units it opened with. The header names no object: it carries zero.",
+  "note": "What a server sends to close the run of units it opened with. The header names no object: a server writes zero.",
   "revisions": [
     {
       "from": "0.8.13.26",
@@ -11,7 +11,8 @@
       "command": 12,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client answers it at once with ClientReady."
     },
     {
       "from": "1.0.0.110",

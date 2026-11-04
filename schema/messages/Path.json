@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "Path",
   "system": "movement",
-  "note": "What a server sends to set a unit walking along a path, facing the way it walks. The header names the unit. A client answers every one at once, unsequenced on the transient channel, with ten bytes: WaypointAck's command, a net id of zero, this sync id, and one byte that is arbitrary and carries no meaning. It applies it only where the sync id is not older than the last the unit took (as UnitStopped).",
+  "note": "What a server sends to set a unit walking along a path, facing the way it walks. The header names the unit.",
   "revisions": [
     {
       "from": "0.8.13.26",
@@ -40,7 +40,7 @@
           "note": "The path's points, to the end of the message. A client takes the ground's height for each, and passes over a remainder shorter than a point."
         }
       ],
-      "note": "A client acknowledges nothing and drops no path as stale."
+      "note": "A client acknowledges nothing and drops no path as stale. A body shorter than 4 bytes leaves a client failing."
     },
     {
       "from": "0.9.22.14",
@@ -78,7 +78,7 @@
           "note": "The path's points, to the end of the message. A client takes the ground's height for each, and passes over a remainder shorter than a point."
         }
       ],
-      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning."
+      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning. A client answers every one at once, unsequenced on the transient channel, with ten bytes: WaypointAck's command, a net id of zero, this sync id, and one byte that is arbitrary and carries no meaning. It applies it only where the sync id is not older than the last the unit took (as UnitStopped)."
     },
     {
       "from": "1.0.0.63",
@@ -116,7 +116,7 @@
           "note": "The path's points, to the end of the message. A client takes the ground's height for each, and passes over a remainder shorter than a point."
         }
       ],
-      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning."
+      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning. A client answers every one at once, unsequenced on the transient channel, with ten bytes: WaypointAck's command, a net id of zero, this sync id, and one byte that is arbitrary and carries no meaning. It applies it only where the sync id is not older than the last the unit took (as UnitStopped)."
     },
     {
       "from": "1.0.0.74",
@@ -154,7 +154,7 @@
           "note": "The path's points, to the end of the message. A client takes the ground's height for each, and passes over a remainder shorter than a point."
         }
       ],
-      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning."
+      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning. A client answers every one at once, unsequenced on the transient channel, with ten bytes: WaypointAck's command, a net id of zero, this sync id, and one byte that is arbitrary and carries no meaning. It applies it only where the sync id is not older than the last the unit took (as UnitStopped)."
     },
     {
       "from": "1.0.0.82",
@@ -192,7 +192,7 @@
           "note": "The path's points, to the end of the message. A client takes the ground's height for each, and passes over a remainder shorter than a point."
         }
       ],
-      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning."
+      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning. A client answers every one at once, unsequenced on the transient channel, with ten bytes: WaypointAck's command, a net id of zero, this sync id, and one byte that is arbitrary and carries no meaning. It applies it only where the sync id is not older than the last the unit took (as UnitStopped)."
     },
     {
       "from": "1.0.0.97",
@@ -230,7 +230,7 @@
           "note": "The path's points, to the end of the message. A client takes the ground's height for each, and passes over a remainder shorter than a point."
         }
       ],
-      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning."
+      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning. A client answers every one at once, unsequenced on the transient channel, with ten bytes: WaypointAck's command, a net id of zero, this sync id, and one byte that is arbitrary and carries no meaning. It applies it only where the sync id is not older than the last the unit took (as UnitStopped)."
     },
     {
       "from": "1.0.0.103",
@@ -268,7 +268,7 @@
           "note": "The path's points, to the end of the message. A client takes the ground's height for each, and passes over a remainder shorter than a point."
         }
       ],
-      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning."
+      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning. A client answers every one at once, unsequenced on the transient channel, with ten bytes: WaypointAck's command, a net id of zero, this sync id, and one byte that is arbitrary and carries no meaning. It applies it only where the sync id is not older than the last the unit took (as UnitStopped)."
     },
     {
       "from": "1.0.0.107",
@@ -306,7 +306,7 @@
           "note": "The path's points, to the end of the message. A client takes the ground's height for each, and passes over a remainder shorter than a point."
         }
       ],
-      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning."
+      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning. A client answers every one at once, unsequenced on the transient channel, with ten bytes: WaypointAck's command, a net id of zero, this sync id, and one byte that is arbitrary and carries no meaning. It applies it only where the sync id is not older than the last the unit took (as UnitStopped)."
     },
     {
       "from": "1.0.0.109",
@@ -344,7 +344,7 @@
           "note": "The path's points, to the end of the message. A client takes the ground's height for each, and passes over a remainder shorter than a point."
         }
       ],
-      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning."
+      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning. A client answers every one at once, unsequenced on the transient channel, with ten bytes: WaypointAck's command, a net id of zero, this sync id, and one byte that is arbitrary and carries no meaning. It applies it only where the sync id is not older than the last the unit took (as UnitStopped)."
     },
     {
       "from": "1.0.0.110",
@@ -382,7 +382,7 @@
           "note": "The path's points, to the end of the message. A client takes the ground's height for each, and passes over a remainder shorter than a point."
         }
       ],
-      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning."
+      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning. A client answers every one at once, unsequenced on the transient channel, with ten bytes: WaypointAck's command, a net id of zero, this sync id, and one byte that is arbitrary and carries no meaning. It applies it only where the sync id is not older than the last the unit took (as UnitStopped)."
     },
     {
       "from": "1.0.0.111",
@@ -420,7 +420,7 @@
           "note": "The path's points, to the end of the message. A client takes the ground's height for each, and passes over a remainder shorter than a point."
         }
       ],
-      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning."
+      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning. A client answers every one at once, unsequenced on the transient channel, with ten bytes: WaypointAck's command, a net id of zero, this sync id, and one byte that is arbitrary and carries no meaning. It applies it only where the sync id is not older than the last the unit took (as UnitStopped)."
     },
     {
       "from": "1.0.0.117",
@@ -458,7 +458,7 @@
           "note": "The path's points, to the end of the message. A client takes the ground's height for each, and passes over a remainder shorter than a point."
         }
       ],
-      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning."
+      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning. A client answers every one at once, unsequenced on the transient channel, with ten bytes: WaypointAck's command, a net id of zero, this sync id, and one byte that is arbitrary and carries no meaning. It applies it only where the sync id is not older than the last the unit took (as UnitStopped)."
     },
     {
       "from": "1.0.0.119",
@@ -496,7 +496,7 @@
           "note": "The path's points, to the end of the message. A client takes the ground's height for each, and passes over a remainder shorter than a point."
         }
       ],
-      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning."
+      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning. A client answers every one at once, unsequenced on the transient channel, with ten bytes: WaypointAck's command, a net id of zero, this sync id, and one byte that is arbitrary and carries no meaning. It applies it only where the sync id is not older than the last the unit took (as UnitStopped)."
     },
     {
       "from": "1.0.0.124",
@@ -534,7 +534,7 @@
           "note": "The path's points, to the end of the message. A client takes the ground's height for each, and passes over a remainder shorter than a point."
         }
       ],
-      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning."
+      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning. A client answers every one at once, unsequenced on the transient channel, with ten bytes: WaypointAck's command, a net id of zero, this sync id, and one byte that is arbitrary and carries no meaning. It applies it only where the sync id is not older than the last the unit took (as UnitStopped)."
     },
     {
       "from": "1.0.0.125",
@@ -572,7 +572,7 @@
           "note": "The path's points, to the end of the message. A client takes the ground's height for each, and passes over a remainder shorter than a point."
         }
       ],
-      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning."
+      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning. A client answers every one at once, unsequenced on the transient channel, with ten bytes: WaypointAck's command, a net id of zero, this sync id, and one byte that is arbitrary and carries no meaning. It applies it only where the sync id is not older than the last the unit took (as UnitStopped)."
     },
     {
       "from": "1.0.0.126",
@@ -610,7 +610,7 @@
           "note": "The path's points, to the end of the message. A client takes the ground's height for each, and passes over a remainder shorter than a point."
         }
       ],
-      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning."
+      "note": "A client answers every one at once, before applying it, with WaypointAck: ten bytes holding this sync id and a last byte, where the relocation count sits, that is arbitrary and carries no meaning. A client answers every one at once, unsequenced on the transient channel, with ten bytes: WaypointAck's command, a net id of zero, this sync id, and one byte that is arbitrary and carries no meaning. It applies it only where the sync id is not older than the last the unit took (as UnitStopped)."
     },
     {
       "from": "1.0.0.128",
@@ -647,7 +647,8 @@
           },
           "note": "The path's points, to the end of the message. A client takes the ground's height for each."
         }
-      ]
+      ],
+      "note": "A client answers every one at once, unsequenced on the transient channel, with ten bytes: WaypointAck's command, a net id of zero, this sync id, and one byte that is arbitrary and carries no meaning. It applies it only where the sync id is not older than the last the unit took (as UnitStopped)."
     },
     {
       "from": "1.0.0.132",
@@ -684,7 +685,8 @@
           },
           "note": "The path's points, to the end of the message. A client takes the ground's height for each."
         }
-      ]
+      ],
+      "note": "A client answers every one at once, unsequenced on the transient channel, with ten bytes: WaypointAck's command, a net id of zero, this sync id, and one byte that is arbitrary and carries no meaning. It applies it only where the sync id is not older than the last the unit took (as UnitStopped)."
     },
     {
       "from": "1.0.0.135",
@@ -721,7 +723,8 @@
           },
           "note": "The path's points, to the end of the message. A client takes the ground's height for each."
         }
-      ]
+      ],
+      "note": "A client answers every one at once, unsequenced on the transient channel, with ten bytes: WaypointAck's command, a net id of zero, this sync id, and one byte that is arbitrary and carries no meaning. It applies it only where the sync id is not older than the last the unit took (as UnitStopped)."
     },
     {
       "from": "1.0.0.136",
@@ -758,7 +761,8 @@
           },
           "note": "The path's points, to the end of the message. A client takes the ground's height for each."
         }
-      ]
+      ],
+      "note": "A client answers every one at once, unsequenced on the transient channel, with ten bytes: WaypointAck's command, a net id of zero, this sync id, and one byte that is arbitrary and carries no meaning. It applies it only where the sync id is not older than the last the unit took (as UnitStopped)."
     },
     {
       "from": "1.0.0.138",
@@ -795,7 +799,8 @@
           },
           "note": "The path's points, to the end of the message. A client takes the ground's height for each."
         }
-      ]
+      ],
+      "note": "A client answers every one at once, unsequenced on the transient channel, with ten bytes: WaypointAck's command, a net id of zero, this sync id, and one byte that is arbitrary and carries no meaning. It applies it only where the sync id is not older than the last the unit took (as UnitStopped)."
     },
     {
       "from": "1.0.0.139",
@@ -832,7 +837,8 @@
           },
           "note": "The path's points, to the end of the message. A client takes the ground's height for each."
         }
-      ]
+      ],
+      "note": "A client answers every one at once, unsequenced on the transient channel, with ten bytes: WaypointAck's command, a net id of zero, this sync id, and one byte that is arbitrary and carries no meaning. It applies it only where the sync id is not older than the last the unit took (as UnitStopped)."
     },
     {
       "from": "1.0.0.141",
@@ -869,7 +875,8 @@
           },
           "note": "The path's points, to the end of the message. A client takes the ground's height for each."
         }
-      ]
+      ],
+      "note": "A client answers every one at once, unsequenced on the transient channel, with ten bytes: WaypointAck's command, a net id of zero, this sync id, and one byte that is arbitrary and carries no meaning. It applies it only where the sync id is not older than the last the unit took (as UnitStopped)."
     },
     {
       "from": "1.0.0.144",
@@ -906,7 +913,8 @@
           },
           "note": "The path's points, to the end of the message. A client takes the ground's height for each."
         }
-      ]
+      ],
+      "note": "A client answers every one at once, unsequenced on the transient channel, with ten bytes: WaypointAck's command, a net id of zero, this sync id, and one byte that is arbitrary and carries no meaning. It applies it only where the sync id is not older than the last the unit took (as UnitStopped)."
     },
     {
       "from": "1.0.0.150",
@@ -943,7 +951,8 @@
           },
           "note": "The path's points, to the end of the message. A client takes the ground's height for each."
         }
-      ]
+      ],
+      "note": "A client answers every one at once, unsequenced on the transient channel, with ten bytes: WaypointAck's command, a net id of zero, this sync id, and one byte that is arbitrary and carries no meaning. It applies it only where the sync id is not older than the last the unit took (as UnitStopped)."
     },
     {
       "from": "3.01.0.1",
@@ -980,7 +989,8 @@
           },
           "note": "The path's points, to the end of the message. A client takes the ground's height for each."
         }
-      ]
+      ],
+      "note": "A client answers every one at once, unsequenced on the transient channel, with ten bytes: WaypointAck's command, a net id of zero, this sync id, and one byte that is arbitrary and carries no meaning. It applies it only where the sync id is not older than the last the unit took (as UnitStopped)."
     },
     {
       "from": "4.1.0.171",
@@ -1017,7 +1027,8 @@
           },
           "note": "The path's points, to the end of the message. A client takes the ground's height for each."
         }
-      ]
+      ],
+      "note": "A client answers every one at once, unsequenced on the transient channel, with ten bytes: WaypointAck's command, a net id of zero, this sync id, and one byte that is arbitrary and carries no meaning. It applies it only where the sync id is not older than the last the unit took (as UnitStopped)."
     },
     {
       "from": "4.11.0.386",
@@ -1054,7 +1065,8 @@
           },
           "note": "The path's points, to the end of the message. A client takes the ground's height for each."
         }
-      ]
+      ],
+      "note": "A client answers every one at once, unsequenced on the transient channel, with ten bytes: WaypointAck's command, a net id of zero, this sync id, and one byte that is arbitrary and carries no meaning. It applies it only where the sync id is not older than the last the unit took (as UnitStopped)."
     }
   ]
 }

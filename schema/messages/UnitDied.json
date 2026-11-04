@@ -25,7 +25,7 @@
         {
           "name": "damageSource",
           "type": "u8",
-          "note": "Read only for a minion a champion killed, whose kill a client shows another way where it is 7; a server writes zero."
+          "note": "Unused; a server writes zero."
         },
         {
           "name": "stayDown",
@@ -33,7 +33,7 @@
           "note": "How long the unit stays down, in seconds."
         }
       ],
-      "note": "Where killer names a unit it knows, a client announces the kill for that unit, then the one kind picks. Where the unit is not already dead, it cancels the unit's cast and attack, and only where killer is nonzero puts the unit down, by stayDown and standing."
+      "note": "A client does nothing more for a unit already dead, or where killer is zero. Otherwise, whether or not it knows killer, it puts the unit down for stayDown: dead, with no health, its movement, cast and attack stopped. For a minion whose killer, or the killer's owner, is the player's own champion, it then shows a kill notice."
     },
     {
       "from": "1.0.0.103",

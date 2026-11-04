@@ -15,7 +15,7 @@
         {
           "name": "token",
           "type": "u32",
-          "note": "Names this report: its low 24 bits count up by one with each one the client sends, and its high 8 bits hold the byte below."
+          "note": "Names this report: its low 24 bits count up by one with each numbered request the client sends, of any kind, and its high 8 bits hold the byte below."
         },
         {
           "name": "clientByte",
@@ -30,12 +30,12 @@
             {
               "name": "slot",
               "width": 7,
-              "note": "Which slot."
+              "note": "Which slot, 0 to 22."
             },
             {
               "name": "summonerSpell",
               "width": 1,
-              "note": "Set where the slot counts among the summoner slots, so that 0 and 1 name those two."
+              "note": "Set where a script names the unit's second set of spells."
             }
           ]
         },

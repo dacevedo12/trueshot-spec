@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "Damage",
   "system": "combat",
-  "note": "What a server sends to say one unit hurt another. A client shows the figure and nothing more: the health it shows for the unit is what replication carries, and this message leaves it as it was. The header names the unit hurt, as target does.",
+  "note": "What a server sends to say one unit hurt another. The header names the unit hurt, as target does.",
   "revisions": [
     {
       "from": "0.8.13.26",
@@ -18,7 +18,7 @@
           "values": {
             "0": {
               "name": "invulnerable",
-              "note": "A notice, no number."
+              "note": "A notice, no number, shown on every thirtieth such message a client receives, across all units."
             },
             "1": {
               "name": "silent",
@@ -38,7 +38,7 @@
             },
             "5": {
               "name": "miss",
-              "note": "A notice in the dodge style."
+              "note": "A notice of its own."
             }
           },
           "type": "u8"
@@ -58,7 +58,8 @@
           "type": "f32",
           "note": "How much."
         }
-      ]
+      ],
+      "note": "For results 3, 4 and any above 5, a client takes amount off the target's health, held at its maximum, but leaves the health as it was where the new value would be zero or less. Where the header names the client's own champion and the target is a champion, an amount above zero can bring up the low-health screen effect."
     },
     {
       "from": "0.9.22.14",
@@ -134,7 +135,8 @@
           "type": "f32",
           "note": "How much."
         }
-      ]
+      ],
+      "note": "A client shows the figure and nothing more: the health it shows for the unit is what replication carries, and this message leaves it as it was."
     },
     {
       "from": "0.9.25.24",
@@ -210,7 +212,8 @@
           "type": "f32",
           "note": "How much."
         }
-      ]
+      ],
+      "note": "A client shows the figure and nothing more: the health it shows for the unit is what replication carries, and this message leaves it as it was."
     },
     {
       "from": "1.0.0.110",
@@ -286,7 +289,8 @@
           "type": "f32",
           "note": "How much."
         }
-      ]
+      ],
+      "note": "A client shows the figure and nothing more: the health it shows for the unit is what replication carries, and this message leaves it as it was."
     },
     {
       "from": "1.0.0.117",
@@ -362,7 +366,8 @@
           "type": "f32",
           "note": "How much."
         }
-      ]
+      ],
+      "note": "A client shows the figure and nothing more: the health it shows for the unit is what replication carries, and this message leaves it as it was."
     },
     {
       "from": "1.0.0.119",
@@ -438,7 +443,8 @@
           "type": "f32",
           "note": "How much."
         }
-      ]
+      ],
+      "note": "A client shows the figure and nothing more: the health it shows for the unit is what replication carries, and this message leaves it as it was."
     },
     {
       "from": "1.0.0.124",
@@ -514,7 +520,8 @@
           "type": "f32",
           "note": "How much."
         }
-      ]
+      ],
+      "note": "A client shows the figure and nothing more: the health it shows for the unit is what replication carries, and this message leaves it as it was."
     },
     {
       "from": "1.0.0.128",
@@ -590,7 +597,8 @@
           "type": "f32",
           "note": "How much."
         }
-      ]
+      ],
+      "note": "A client shows the figure and nothing more: the health it shows for the unit is what replication carries, and this message leaves it as it was."
     },
     {
       "from": "1.0.0.129",
@@ -666,7 +674,8 @@
           "type": "f32",
           "note": "How much."
         }
-      ]
+      ],
+      "note": "A client shows the figure and nothing more: the health it shows for the unit is what replication carries, and this message leaves it as it was."
     },
     {
       "from": "1.0.0.132",
@@ -742,7 +751,8 @@
           "type": "f32",
           "note": "How much."
         }
-      ]
+      ],
+      "note": "A client shows the figure and nothing more: the health it shows for the unit is what replication carries, and this message leaves it as it was."
     },
     {
       "from": "1.0.0.138",
@@ -835,7 +845,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "A client shows the figure and nothing more: the health it shows for the unit is what replication carries, and this message leaves it as it was."
     },
     {
       "from": "1.0.0.144",
@@ -928,7 +939,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "A client shows the figure and nothing more: the health it shows for the unit is what replication carries, and this message leaves it as it was."
     },
     {
       "from": "1.0.0.147",
@@ -1029,7 +1041,8 @@
           "type": "f32",
           "note": "How much."
         }
-      ]
+      ],
+      "note": "A client shows the figure and nothing more: the health it shows for the unit is what replication carries, and this message leaves it as it was."
     },
     {
       "from": "1.0.0.150",
@@ -1130,7 +1143,8 @@
           "type": "f32",
           "note": "How much."
         }
-      ]
+      ],
+      "note": "A client shows the figure and nothing more: the health it shows for the unit is what replication carries, and this message leaves it as it was."
     },
     {
       "from": "3.01.0.1",
@@ -1231,7 +1245,8 @@
           "type": "f32",
           "note": "How much."
         }
-      ]
+      ],
+      "note": "A client shows the figure and nothing more: the health it shows for the unit is what replication carries, and this message leaves it as it was."
     },
     {
       "from": "4.11.0.386",
@@ -1332,7 +1347,8 @@
           "type": "f32",
           "note": "How much."
         }
-      ]
+      ],
+      "note": "A client shows the figure and nothing more: the health it shows for the unit is what replication carries, and this message leaves it as it was."
     },
     {
       "from": "4.18.0.271",
@@ -1415,7 +1431,8 @@
           "type": "u32",
           "note": "The unit that hurt it."
         }
-      ]
+      ],
+      "note": "A client shows the figure and nothing more: the health it shows for the unit is what replication carries, and this message leaves it as it was."
     }
   ]
 }

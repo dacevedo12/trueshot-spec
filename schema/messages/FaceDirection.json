@@ -28,7 +28,7 @@
           "note": "The direction faced, along the other ground axis."
         }
       ],
-      "note": "Where towardX and towardZ are both zero, a client does not turn the unit at once, but it still keeps the zero direction as the one the unit is to face. What follows from that is not recorded."
+      "note": "Where towardX and towardZ are both zero, a client does nothing."
     },
     {
       "from": "0.9.22.14",

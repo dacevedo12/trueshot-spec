@@ -15,12 +15,12 @@
         {
           "name": "slot",
           "type": "u8",
-          "note": "The slot it went to, 0 to 36. A larger value than 36 has no defined effect."
+          "note": "The slot it went to, 0 to 14. A larger value than 14 has no defined effect."
         },
         {
           "name": "item",
           "type": "u32",
-          "note": "Which item, by the number the client knows it as."
+          "note": "Which item, by the number the client knows it as. For an item it does not know, a client empties the slot and still takes inSlot."
         },
         {
           "name": "inSlot",

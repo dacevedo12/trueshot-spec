@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "UnitSpoke",
   "system": "communication",
-  "note": "What a client sends when a script it runs makes a unit say something. A server need do nothing with it. The header names the unit speaking.",
+  "note": "What a client sends when a unit says something on its screen. A server need do nothing with it. The header names the unit speaking.",
   "revisions": [
     {
       "from": "0.8.13.26",
@@ -30,7 +30,7 @@
         {
           "name": "kind",
           "type": "u8",
-          "note": "A client writes zero."
+          "note": "0 for text a client sends on a script's behalf. 1 for one of the client's own error texts, each distinct text sent once per session."
         },
         {
           "name": "unused",

@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "RegionAdded",
   "system": "vision",
-  "note": "What a server sends to place a region on the ground: a patch that grants sight, blocks the way, or grows cover. The header names no object: it carries zero.",
+  "note": "What a server sends to place a region on the ground: a patch that grants sight, blocks the way, or grows cover. The header names no object: a server writes zero.",
   "revisions": [
     {
       "from": "0.8.13.26",
@@ -45,7 +45,7 @@
         {
           "name": "lifetime",
           "type": "f32",
-          "note": "How long it lasts, in seconds. A client counts it down and removes the region once it reaches zero, so zero or less removes it at once."
+          "note": "How long it lasts, in seconds. A client counts it down and removes the region once it reaches zero or less, so one that starts at zero or less goes at its first count."
         },
         {
           "name": "marker",
@@ -61,12 +61,12 @@
             {
               "name": "flag",
               "width": 1,
-              "note": "Where kind is 2 and this bit is set, a client also sets the bit after it."
+              "note": "Where kind is 2, a client sets this bit and the one after it itself, whatever was sent."
             },
             {
               "name": "second",
               "width": 1,
-              "note": "Kept with the region; a client also sets it where kind is 2 and flag is set. It changes nothing a client shows."
+              "note": "Kept with the region; a client also sets it where kind is 2."
             },
             {
               "name": "unused",
@@ -81,7 +81,7 @@
           "note": "Kept with the region; it changes nothing a client shows. A server writes zero."
         }
       ],
-      "note": "On this range a region stands where the message places it; RegionAttached places one that follows a unit. A region matching one the client holds in kind, sightRadius, the first three bits of does, extra, otherExtra and position only gives that one the new lifetime."
+      "note": "On this range a region stands where the message places it; RegionAttached places one that follows a unit. Every RegionAdded adds a region; where marker repeats an id the client holds, both regions are kept under that id."
     },
     {
       "from": "0.9.22.14",

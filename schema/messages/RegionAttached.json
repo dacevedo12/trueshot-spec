@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "RegionAttached",
   "system": "vision",
-  "note": "What a server sends to place a region that follows a unit, showing the map around it until it runs out or the unit is gone. A region matching one the client holds in view, sightRadius, the first three bits of does, marker, sightFrom and unit only gives that one the new lifetime.",
+  "note": "What a server sends to place a region that follows a unit, showing the map around it until it runs out or the unit is gone.",
   "revisions": [
     {
       "from": "0.8.13.26",
@@ -40,7 +40,7 @@
         {
           "name": "marker",
           "type": "u32",
-          "note": "The region's id, which RegionRemoved names; zero has the client pick one of its own. A region that matches one the client holds in kind, sightRadius, the first three bits of does, extra, otherExtra and unit only renews that one's lifetime; the id is not compared."
+          "note": "The region's id, which RegionRemoved names; zero has the client pick one of its own."
         },
         {
           "name": "does",
@@ -51,12 +51,12 @@
             {
               "name": "flag",
               "width": 1,
-              "note": "Set where the region shows the map; where kind is 2, a client also sets does.second. What else it changes is not recorded."
+              "note": "Set where the region shows the map. Where kind is 2, a client sets this bit and does.second itself, whatever was sent."
             },
             {
               "name": "second",
               "width": 1,
-              "note": "Kept with the region; a client also sets it where kind is 2 and flag is set. It changes nothing a client shows."
+              "note": "Kept with the region; a client also sets it where kind is 2. It changes nothing a client shows."
             },
             {
               "name": "unused",
@@ -70,7 +70,8 @@
           "type": "u32",
           "note": "Kept with the region; it changes nothing a client shows. A server writes zero."
         }
-      ]
+      ],
+      "note": "Every RegionAttached adds a region; nothing is compared, and a repeated marker gives two regions under one id."
     },
     {
       "from": "0.9.22.14",
@@ -143,7 +144,8 @@
           "type": "u32",
           "note": "A region sent again with the same value is taken as the one already shown; what else it names is not recorded. A server sends zero."
         }
-      ]
+      ],
+      "note": "A region matching one the client holds in view, sightRadius, the first three bits of does, marker, sightFrom and unit only gives that one the new lifetime."
     },
     {
       "from": "1.0.0.63",
@@ -216,7 +218,8 @@
           "type": "u32",
           "note": "A region sent again with the same value is taken as the one already shown; what else it names is not recorded. A server sends zero."
         }
-      ]
+      ],
+      "note": "A region matching one the client holds in view, sightRadius, the first three bits of does, marker, sightFrom and unit only gives that one the new lifetime."
     },
     {
       "from": "1.0.0.74",
@@ -289,7 +292,8 @@
           "type": "u32",
           "note": "A region sent again with the same value is taken as the one already shown; what else it names is not recorded. A server sends zero."
         }
-      ]
+      ],
+      "note": "A region matching one the client holds in view, sightRadius, the first three bits of does, marker, sightFrom and unit only gives that one the new lifetime."
     },
     {
       "from": "1.0.0.82",
@@ -362,7 +366,8 @@
           "type": "u32",
           "note": "A region sent again with the same value is taken as the one already shown; what else it names is not recorded. A server sends zero."
         }
-      ]
+      ],
+      "note": "A region matching one the client holds in view, sightRadius, the first three bits of does, marker, sightFrom and unit only gives that one the new lifetime."
     },
     {
       "from": "1.0.0.97",
@@ -435,7 +440,8 @@
           "type": "u32",
           "note": "A region sent again with the same value is taken as the one already shown; what else it names is not recorded. A server sends zero."
         }
-      ]
+      ],
+      "note": "A region matching one the client holds in view, sightRadius, the first three bits of does, marker, sightFrom and unit only gives that one the new lifetime."
     },
     {
       "from": "1.0.0.103",
@@ -508,7 +514,8 @@
           "type": "u32",
           "note": "A region sent again with the same value is taken as the one already shown; what else it names is not recorded. A server sends zero."
         }
-      ]
+      ],
+      "note": "A region matching one the client holds in view, sightRadius, the first three bits of does, marker, sightFrom and unit only gives that one the new lifetime."
     },
     {
       "from": "1.0.0.107",
@@ -581,7 +588,8 @@
           "type": "u32",
           "note": "A region sent again with the same value is taken as the one already shown; what else it names is not recorded. A server sends zero."
         }
-      ]
+      ],
+      "note": "A region matching one the client holds in view, sightRadius, the first three bits of does, marker, sightFrom and unit only gives that one the new lifetime."
     },
     {
       "from": "1.0.0.109",
@@ -654,7 +662,8 @@
           "type": "u32",
           "note": "A region sent again with the same value is taken as the one already shown; what else it names is not recorded. A server sends zero."
         }
-      ]
+      ],
+      "note": "A region matching one the client holds in view, sightRadius, the first three bits of does, marker, sightFrom and unit only gives that one the new lifetime."
     },
     {
       "from": "1.0.0.110",
@@ -727,7 +736,8 @@
           "type": "u32",
           "note": "A region sent again with the same value is taken as the one already shown; what else it names is not recorded. A server sends zero."
         }
-      ]
+      ],
+      "note": "A region matching one the client holds in view, sightRadius, the first three bits of does, marker, sightFrom and unit only gives that one the new lifetime."
     },
     {
       "from": "1.0.0.124",
@@ -800,7 +810,8 @@
           "type": "u32",
           "note": "A region sent again with the same value is taken as the one already shown; what else it names is not recorded. A server sends zero."
         }
-      ]
+      ],
+      "note": "A region matching one the client holds in view, sightRadius, the first three bits of does, marker, sightFrom and unit only gives that one the new lifetime."
     },
     {
       "from": "1.0.0.128",
@@ -873,7 +884,8 @@
           "type": "u32",
           "note": "Kept the same way; a server writes zero."
         }
-      ]
+      ],
+      "note": "A region matching one the client holds in view, sightRadius, the first three bits of does, marker, sightFrom and unit only gives that one the new lifetime."
     },
     {
       "from": "1.0.0.139",
@@ -946,7 +958,8 @@
           "type": "u32",
           "note": "Kept the same way; a server writes zero."
         }
-      ]
+      ],
+      "note": "A region matching one the client holds in view, sightRadius, the first three bits of does, marker, sightFrom and unit only gives that one the new lifetime."
     },
     {
       "from": "1.0.0.144",
@@ -1019,7 +1032,8 @@
           "type": "u32",
           "note": "Kept the same way; a server writes zero."
         }
-      ]
+      ],
+      "note": "A region matching one the client holds in view, sightRadius, the first three bits of does, marker, sightFrom and unit only gives that one the new lifetime."
     },
     {
       "from": "1.0.0.150",
@@ -1077,7 +1091,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "A region matching one the client holds in view, sightRadius, the first three bits of does, marker, sightFrom and unit only gives that one the new lifetime."
     },
     {
       "from": "3.01.0.1",
@@ -1150,7 +1165,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "A region matching one the client holds in view, sightRadius, the first three bits of does, marker, sightFrom and unit only gives that one the new lifetime."
     }
   ]
 }
