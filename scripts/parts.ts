@@ -424,6 +424,21 @@ function rendered<T extends Ranged>(
   return out;
 }
 
+// The ranges a part of a book holds for, as the site's build picker reads
+// them: each range's bounds, from:until, separated by semicolons.
+const tagOf = (here: readonly Ranged[]): string => {
+  const spans: { from: string; until: string }[] = [];
+  for (const r of here) {
+    const last = spans[spans.length - 1];
+    if (last !== undefined && last.until === r.from)
+      last.until = r.until ?? "";
+    else spans.push({ from: r.from, until: r.until ?? "" });
+  }
+  return spans.map((x) => `${x.from}:${x.until}`).join(";");
+};
+const opened = (here: readonly Ranged[]): string =>
+  `<div class="build" data-ranges="${tagOf(here)}">`;
+
 // Where each message's layout for a range sits in its book, for the map of
 // each range.
 const layoutAnchors = new Map<string, string>();
@@ -495,6 +510,8 @@ function layoutsParts(season: readonly Range[]): Layouts {
     for (const m of own) {
       lines.push(
         "",
+        opened(within(m.revisions, season).flatMap((x) => x.here)),
+        "",
         `### \`${m.message}\` {#${anchorOf(m.message)}}`,
         ...[noted(m)].filter((n) => n !== "").flatMap((n) => ["", n]),
         "",
@@ -521,6 +538,8 @@ function layoutsParts(season: readonly Range[]): Layouts {
           layoutAnchors.set(`${m.message}@${x.from}`, anchor);
         lines.push(
           "",
+          opened(here),
+          "",
           `#### ${inRanges(here, season)} {#${anchor}}`,
           "",
           ...carriage(rs, season),
@@ -540,8 +559,11 @@ function layoutsParts(season: readonly Range[]): Layouts {
                 compare(a.version as string, b.version as string),
               ),
           ),
+          "",
+          "</div>",
         );
       }
+      lines.push("", "</div>");
     }
     bySystem.set(system, own.length === 0 ? [] : lines);
   }
@@ -1091,7 +1113,10 @@ function patchesPart(season: readonly Range[]): string[] {
             : `[\`${m.message}\`](${repo}schema/messages/${m.file})`,
         )
         .join(", ");
+    if (season.indexOf(range) > 0) lines.push("", "</div>");
     lines.push(
+      "",
+      opened([range]),
       "",
       `## ${rangeName(range)} {#${rangeAnchor(range)}}`,
       "",
@@ -1150,6 +1175,7 @@ function patchesPart(season: readonly Range[]): string[] {
     if (prev !== undefined && seasonOf(prev) === seasonOf(range))
       lines.push("", ...changesPart(prev, range));
   }
+  if (season.length > 0) lines.push("", "</div>");
   return lines;
 }
 

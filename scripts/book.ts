@@ -125,6 +125,19 @@ const part = (season: string, name: string): string => {
   return read(path);
 };
 
+// The ranges a part holds for, as the site's build picker reads them: spans
+// of ranges that follow one another, from:until, separated by semicolons.
+function tagOf(here: readonly Ranged[]): string {
+  const spans: { from: string; until: string }[] = [];
+  for (const r of here) {
+    const last = spans[spans.length - 1];
+    if (last !== undefined && last.until === r.from)
+      last.until = r.until ?? "";
+    else spans.push({ from: r.from, until: r.until ?? "" });
+  }
+  return spans.map((x) => `${x.from}:${x.until}`).join(";");
+}
+
 // A chapter as a season reads it: each passage that holds for some of its
 // ranges, headed with those, and none of the others, with what the
 // definitions give set at its marks: a system's messages, the channels and
@@ -145,11 +158,17 @@ function chapterFor(
         ? ""
         : here.length === own.length
           ? `${p.body}\n`
-          : [`**In ${spanName(here, ranges)}**`, "", p.body]
-              .join("\n")
-              .split("\n")
-              .map((l) => (l === "" ? ">" : `> ${l}`))
-              .join("\n"),
+          : [
+              `<div class="build" data-ranges="${tagOf(here)}">`,
+              "",
+              [`**In ${spanName(here, ranges)}**`, "", p.body]
+                .join("\n")
+                .split("\n")
+                .map((l) => (l === "" ? ">" : `> ${l}`))
+                .join("\n"),
+              "",
+              "</div>",
+            ].join("\n"),
     );
   }
   // A message the book has is named by a link to its section; one no build of
@@ -288,7 +307,7 @@ for (const season of seasons) {
       'preferred-dark-theme = "navy"',
       // Where GitHub Pages serves the book, which its not-found page links from.
       `site-url = "/${REPOSITORY.split("/")[4]}/${season.folder}/"`,
-      'additional-js = ["home.js"]',
+      'additional-js = ["home.js", "build.js"]',
       'additional-css = ["home.css"]',
       "",
     ].join("\n"),
@@ -314,7 +333,66 @@ for (const season of seasons) {
   );
   writeFileSync(
     join(dir, "home.css"),
-    ".menu-title a.home { color: inherit; text-decoration: none; }\n.menu-title a.home:hover { text-decoration: underline; }\n",
+    [
+      ".menu-title a.home { color: inherit; text-decoration: none; }",
+      ".menu-title a.home:hover { text-decoration: underline; }",
+      ".build-pick { margin: 0 8px; font-size: 1.4rem; }",
+      ".build-pick select { font: inherit; color: var(--fg); background: var(--bg); border: 1px solid var(--theme-popup-border); border-radius: 4px; padding: 2px 4px; }",
+      "",
+    ].join("\n"),
+  );
+  // A picker in the bar narrows the book to one range: every part tagged
+  // with ranges that do not hold it is hidden. Without scripts, and in print,
+  // the whole book shows, each part under the heading naming its ranges.
+  const picks = own.map((r) => ({
+    name: spanName([r], ranges),
+    from: r.from,
+  }));
+  writeFileSync(
+    join(dir, "build.js"),
+    [
+      `const RANGES = ${JSON.stringify(picks)};`,
+      `const STORE = "trueshot-build-${season.folder}";`,
+      "const parts = (v) => v.split('.').map(Number);",
+      "const before = (a, b) => {",
+      "  const x = parts(a), y = parts(b);",
+      "  for (let i = 0; i < Math.max(x.length, y.length); i++) {",
+      "    const d = (x[i] ?? 0) - (y[i] ?? 0);",
+      "    if (d !== 0) return d < 0;",
+      "  }",
+      "  return false;",
+      "};",
+      "const holds = (tag, build) =>",
+      "  tag.split(';').some((p) => {",
+      "    const [from, until] = p.split(':');",
+      "    return !before(build, from) && (until === '' || before(build, until));",
+      "  });",
+      "function apply(build) {",
+      "  for (const el of document.querySelectorAll('.build[data-ranges]'))",
+      "    el.hidden = build !== '' && !holds(el.dataset.ranges, build);",
+      "}",
+      "document.addEventListener('DOMContentLoaded', () => {",
+      "  const bar = document.querySelector('.right-buttons');",
+      "  if (bar === null || RANGES.length < 2) return;",
+      "  const label = document.createElement('label');",
+      "  label.className = 'build-pick';",
+      "  label.textContent = 'Build ';",
+      "  const pick = document.createElement('select');",
+      "  pick.add(new Option('Every build', ''));",
+      "  for (const r of RANGES) pick.add(new Option(r.name, r.from));",
+      "  let saved = '';",
+      "  try { saved = localStorage.getItem(STORE) ?? ''; } catch {}",
+      "  if (RANGES.some((r) => r.from === saved)) pick.value = saved;",
+      "  pick.addEventListener('change', () => {",
+      "    try { localStorage.setItem(STORE, pick.value); } catch {}",
+      "    apply(pick.value);",
+      "  });",
+      "  label.appendChild(pick);",
+      "  bar.prepend(label);",
+      "  apply(pick.value);",
+      "});",
+      "",
+    ].join("\n"),
   );
   console.log("wrote", dir);
 }
