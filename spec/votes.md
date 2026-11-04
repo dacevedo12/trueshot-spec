@@ -19,7 +19,7 @@ menu on or off.
 
 <!-- holds from 0.9.22.16 up to 0.9.25.21 -->
 
-> **In 0.9.22.16–0.9.22.18**
+> **In 0.9.22.16–0.9.25.20**
 >
 > A client has no panel for the vote. `SurrenderVoteCalled` only announces a
 > vote, as just cast or as cast already, and a client's player votes by typing.
@@ -28,7 +28,7 @@ menu on or off.
 
 <!-- holds from 0.8.13.26 up to 0.9.22.16 -->
 
-> **In 0.8.13.26–0.9.22.14**
+> **In 0.8.13.26–0.9.22.15**
 >
 > There is no surrender vote: a client sends and takes no message about one.
 

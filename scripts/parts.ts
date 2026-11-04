@@ -224,35 +224,71 @@ const valuesOf = (f: Field): string =>
   Object.entries(f.values ?? {})
     .map(([k, v]) => `${k} ${v.name}`)
     .join(", ");
-const rows = (fields: readonly Field[], depth = 0): string[] =>
+// A row for each field, named by its path from the body, as the patches
+// appendix names it: a field of a record follows a dot, and a field of each
+// item of an array follows `[].`.
+interface Row {
+  readonly name: string;
+  readonly type: string;
+  readonly present: string;
+  readonly what: string;
+}
+const rows = (fields: readonly Field[], prefix = ""): Row[] =>
   fields.flatMap((f) => {
-    const pad = "&nbsp;&nbsp;".repeat(depth);
+    const name = `${prefix}${f.name}`;
     const values = valuesOf(f);
     let at = 0;
     return [
-      `| ${pad}${f.name} | ${cell(typeOf(f, structLink))} | ${cell(presence(f.present))} | ${cell(noted(f))}${values === "" ? "" : ` Values: ${cell(values)}.`} |`,
+      {
+        name,
+        type: typeOf(f, structLink),
+        present: presence(f.present),
+        what: `${noted(f)}${values === "" ? "" : ` Values: ${values}.`}`,
+      },
       ...runs(f).map((b) => {
-        const row = `| ${pad}&nbsp;&nbsp;${b.name} | bit ${at}${b.width === 1 ? "" : ` to ${at + b.width - 1}`} |  | ${cell(noted(b))} |`;
+        const row = {
+          name: `${name}.${b.name}`,
+          type: `bit ${at}${b.width === 1 ? "" : ` to ${at + b.width - 1}`}`,
+          present: "",
+          what: noted(b),
+        };
         at += b.width;
         return row;
       }),
-      ...rows(children(f), depth + 1),
+      ...rows(children(f), `${name}${f.type === "array" ? "[]" : ""}.`),
     ];
   });
-const table = (fields: readonly Field[]): string[] =>
-  fields.length === 0
-    ? ["No body."]
-    : [
+// A table leaves out the column for when a field is present where no field
+// of it has a rule.
+const table = (fields: readonly Field[]): string[] => {
+  if (fields.length === 0) return ["No body."];
+  const all = rows(fields);
+  const ruled = all.some((r) => r.present !== "");
+  return ruled
+    ? [
         "| Field | Type | Present when | What it is |",
         "| --- | --- | --- | --- |",
-        ...rows(fields),
+        ...all.map(
+          (r) =>
+            `| ${cell(r.name)} | ${cell(r.type)} | ${cell(r.present)} | ${cell(r.what)} |`,
+        ),
+      ]
+    : [
+        "| Field | Type | What it is |",
+        "| --- | --- | --- |",
+        ...all.map(
+          (r) => `| ${cell(r.name)} | ${cell(r.type)} | ${cell(r.what)} |`,
+        ),
       ];
+};
 const vectorLinks = (shown: readonly Vector[]): string[] =>
   shown.length === 0
     ? []
     : [
         "",
-        `Vectors: ${shown
+        `<details><summary>Vectors (${shown.length})</summary>`,
+        "",
+        shown
           .map(
             (v) =>
               `[${v.path
@@ -260,7 +296,9 @@ const vectorLinks = (shown: readonly Vector[]): string[] =>
                 .pop()
                 ?.replace(/\.json$/, "")}](${repo}${v.path})`,
           )
-          .join(", ")}.`,
+          .join(", "),
+        "",
+        "</details>",
       ];
 
 // The revisions of a list that cover some of a season's ranges, each with
@@ -295,6 +333,8 @@ function carriage(
   const commands = new Set(rs.map((r) => r.command));
   if (how.size === 1 && commands.size === 1)
     return [`Command ${first.command} ${carried(first)}.`];
+  // Where its numbering or carriage changes within the layout, a table gives
+  // each set of builds its own.
   const where = (r: MessageRevision): string =>
     spanName(
       season.filter((x) => covers(r, x.from)),
@@ -302,11 +342,17 @@ function carriage(
     );
   if (how.size === 1)
     return [
-      `Command ${rs.map((r) => `${r.command} in ${where(r)}`).join(", ")}; ${carried(first)}.`,
+      `Carried ${carried(first)}, under these commands:`,
+      "",
+      "| Builds | Command |",
+      "| --- | --- |",
+      ...rs.map((r) => `| ${where(r)} | ${r.command} |`),
     ];
-  return rs.map(
-    (r) => `- In ${where(r)}: command ${r.command} ${carried(r)}.`,
-  );
+  return [
+    "| Builds | Command | Carried |",
+    "| --- | --- | --- |",
+    ...rs.map((r) => `| ${where(r)} | ${r.command} | ${cell(carried(r))} |`),
+  ];
 }
 
 // The parts of a book drawn from the definitions: the channels, for the
@@ -319,6 +365,9 @@ interface Layouts {
   readonly systems: ReadonlyMap<string, string[]>;
   readonly structs: string[];
 }
+// Where each message's layout for a range sits in its book, for the map of
+// each range.
+const layoutAnchors = new Map<string, string>();
 function layoutsParts(season: readonly Range[]): Layouts {
   const channels: string[] = [];
   for (const { revision, here } of within(channelRevisions, season))
@@ -396,9 +445,12 @@ function layoutsParts(season: readonly Range[]): Layouts {
       }
       for (const { revisions: rs, here } of groups) {
         const r = rs[0] as MessageRevision;
+        const anchor = `${anchorOf(m.message)}-${slug((here[0] ?? r).from)}`;
+        for (const x of here)
+          layoutAnchors.set(`${m.message}@${x.from}`, anchor);
         lines.push(
           "",
-          `#### ${inRanges(here, season)}`,
+          `#### ${inRanges(here, season)} {#${anchor}}`,
           "",
           ...carriage(rs, season),
           ...[noted(r)].filter((n) => n !== "").flatMap((n) => ["", n]),
@@ -896,8 +948,26 @@ function patchesPart(season: readonly Range[]): string[] {
   const lines = [
     "# Patches {#appendix-patches}",
     "",
-    "What is particular to each patch this book covers: the builds it shipped, the live checks that ran on them, what the specification leaves unrecorded there, and how it differs from the patch before it. Where builds of two patches are held to the same facts, they share a section.",
+    "What is particular to each patch this book covers: the builds it shipped, the live checks that ran on them, every message it carries, what the specification leaves unrecorded there, and how it differs from the patch before it. Where builds of two patches are held to the same facts, they share a section.",
   ];
+  // Messages the chapters name that no build of this book has, said once.
+  const prose = chapters
+    .map((c) => readFileSync(join(ROOT, "spec", `${c}.md`), "utf8"))
+    .join("\n");
+  const mentioned = new Set(
+    [...prose.matchAll(/`([A-Z][A-Za-z0-9]*)`/g)].map((m) => m[1]),
+  );
+  const never = messages
+    .filter(
+      (m) =>
+        mentioned.has(m.message) && within(m.revisions, season).length === 0,
+    )
+    .sort((a, b) => a.message.localeCompare(b.message));
+  if (never.length > 0)
+    lines.push(
+      "",
+      `No build of this book has these, though the chapters name them, so what the chapters say of them says nothing of this book: ${never.map((m) => `[\`${m.message}\`](${repo}schema/messages/${m.file})`).join(", ")}.`,
+    );
   for (const range of season) {
     const i = ranges.indexOf(range);
     const prev = ranges[i - 1];
@@ -919,7 +989,10 @@ function patchesPart(season: readonly Range[]): string[] {
       [...told.matchAll(/`([A-Z][A-Za-z0-9]*)`/g)].map((m) => m[1]),
     );
     const absent = messages.filter(
-      (m) => named.has(m.message) && revisionAt(m, range.from) === undefined,
+      (m) =>
+        named.has(m.message) &&
+        revisionAt(m, range.from) === undefined &&
+        within(m.revisions, season).length > 0,
     );
     const list = (ms: readonly (typeof messages)[number][]): string =>
       ms
@@ -957,7 +1030,30 @@ function patchesPart(season: readonly Range[]): string[] {
     if (absent.length > 0)
       lines.push(
         "",
-        `The chapters name these, and no build in this range sends or takes them, so what they say of them says nothing of this range: ${list(absent)}.`,
+        `Other ranges of this book have these, and this one does not, so what the chapters say of them says nothing of it: ${list(absent)}.`,
+      );
+    // Every message this range carries, with where its layout is.
+    const carriedHere = messages
+      .map((m) => ({ m, r: revisionAt(m, range.from) }))
+      .filter(
+        (x): x is { m: (typeof messages)[number]; r: MessageRevision } =>
+          x.r !== undefined,
+      )
+      .sort((a, b) => a.m.message.localeCompare(b.m.message));
+    if (carriedHere.length > 0)
+      lines.push(
+        "",
+        `<details><summary>Every message of this range (${carriedHere.length})</summary>`,
+        "",
+        "| Message | Command |",
+        "| --- | --- |",
+        ...carriedHere.map(({ m, r }) => {
+          const at = layoutAnchors.get(`${m.message}@${range.from}`);
+          const name = `\`${m.message}\``;
+          return `| ${at === undefined ? name : `[${name}](#${at})`} | ${r.command} |`;
+        }),
+        "",
+        "</details>",
       );
     // A range is set against the one before it in the same book; the first of
     // a season stands on its own, since the season before has a book of its
@@ -977,11 +1073,11 @@ function indexPart(season: readonly Range[]): string[] {
   return [
     "# Index of messages {#appendix-index}",
     "",
-    "| Message | System | Ranges |",
-    "| --- | --- | --- |",
+    "| Message | Sent by | System | Ranges |",
+    "| --- | --- | --- | --- |",
     ...own.map(
       (m) =>
-        `| [\`${m.message}\`](#${anchorOf(m.message)}) | ${m.system} | ${spanName(
+        `| [\`${m.message}\`](#${anchorOf(m.message)}) | ${by(m.revisions.find((r) => within([r], season).length > 0))} | ${m.system} | ${spanName(
           season.filter((r) => revisionAt(m, r.from) !== undefined),
           ranges,
         )} |`,

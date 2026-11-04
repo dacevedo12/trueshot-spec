@@ -128,7 +128,7 @@ travel unchanged, so a payload shorter than one block travels in the clear.
 
 <!-- holds from 0.8.13.26 up to 1.0.0.116 -->
 
-> **In 0.8.13.26–1.0.0.114**
+> **In 0.8.13.26–1.0.0.115**
 >
 > A client pads what it sends to a whole number of blocks and enciphers all of
 > it. The bytes it adds follow the message's own fields to the end of the

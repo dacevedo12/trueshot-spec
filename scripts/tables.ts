@@ -52,7 +52,28 @@ const twoParts = (build: string): string =>
 // A range is named for its first build's patch, and, where the builds checked
 // within it reach a later patch, that patch after a dash: 4.18–4.19 for the
 // range from 4.18.0.271 whose last checked build is a 4.19.
+// A beta or 1.0 range is named by its bounds instead, so every build it holds
+// is named: its first build, and the last before the range that follows.
+const wholeBuilds = (build: string): boolean =>
+  build.startsWith("0.") || build.startsWith("1.0.");
+function lastBuild(r: Ranged): string | undefined {
+  if (r.until === undefined) return undefined;
+  const parts = r.until.split(".").map(Number);
+  const tail = parts[3];
+  if (tail === undefined || tail === 0) return undefined;
+  parts[3] = tail - 1;
+  return parts.join(".");
+}
+function boundsName(r: Ranged): string {
+  const last = lastBuild(r);
+  if (last === undefined)
+    return r.until === undefined
+      ? `${r.from} on`
+      : `${r.from} up to ${r.until}`;
+  return last === r.from ? r.from : `${r.from}–${last}`;
+}
 function rangeName(r: Ranged): string {
+  if (wholeBuilds(r.from)) return boundsName(r);
   const inside = checked.filter((b) => covers(r, b)).sort(compare);
   const last = inside[inside.length - 1];
   const first = twoParts(r.from);
@@ -103,8 +124,14 @@ function spanName(some: readonly Ranged[], all: readonly Ranged[]): string {
       const last = run[run.length - 1];
       if (first === undefined || last === undefined) return "";
       if (first === last) return rangeName(first);
+      if (wholeBuilds(first.from) && wholeBuilds(last.from))
+        return boundsName(
+          last.until === undefined
+            ? { from: first.from }
+            : { from: first.from, until: last.until },
+        );
       const end = rangeName(last).split("–");
-      return `${twoParts(first.from)}–${end[end.length - 1] ?? ""}`;
+      return `${wholeBuilds(first.from) ? first.from : twoParts(first.from)}–${end[end.length - 1] ?? ""}`;
     })
     .join(", ");
 }

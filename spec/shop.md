@@ -40,7 +40,7 @@ sends `TutorialShopOpened`.
 
 <!-- holds from 0.8.13.26 up to 1.0.0.70 -->
 
-> **In 0.8.13.26–1.0.0.66**
+> **In 0.8.13.26–1.0.0.69**
 >
 > A client never asks to swap two slots: it has no `SwapItems`.
 

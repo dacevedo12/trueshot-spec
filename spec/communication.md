@@ -41,7 +41,7 @@ unmute a kind of sound (`VolumeMuted`) and fade sound effects out
 
 <!-- holds from 0.9.22.14 up to 0.9.25.21 -->
 
-> **In 0.9.22.14–0.9.22.18**
+> **In 0.9.22.14–0.9.25.20**
 >
 > `VoiceEvent` carries only the event's name and asks for no answer.
 

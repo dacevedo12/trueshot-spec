@@ -47,7 +47,7 @@ shop, with `InputLock` or `InputLockToggled`.
 
 <!-- holds from 0.9.22.16 up to 0.9.25.36 -->
 
-> **In 0.9.22.16–0.9.25.24**
+> **In 0.9.22.16–0.9.25.35**
 >
 > A client locks and unlocks its own input too, and tells the server each time:
 > `InputLocksFlipped` for the locks it flipped, as when a camera move a script
@@ -56,7 +56,7 @@ shop, with `InputLock` or `InputLockToggled`.
 
 <!-- holds from 0.9.22.14 up to 0.9.22.16 -->
 
-> **In 0.9.22.14**
+> **In 0.9.22.14–0.9.22.15**
 >
 > A server locks and unlocks input with `InputLockToggled` alone. A client
 > flips locks of its own too, and tells the server which with
@@ -64,7 +64,7 @@ shop, with `InputLock` or `InputLockToggled`.
 
 <!-- holds from 0.8.13.26 up to 0.9.22.14 -->
 
-> **In 0.8.13.26**
+> **In 0.8.13.26–0.9.22.13**
 >
 > No message locks a client's input, in either direction.
 

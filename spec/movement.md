@@ -81,7 +81,7 @@ server.
 
 <!-- holds from 0.8.13.26 up to 1.0.0.61 -->
 
-> **In 0.8.13.26–1.0.0.58**
+> **In 0.8.13.26–1.0.0.60**
 >
 > A path carries no flag and no token, so nothing relocates a unit: every path
 > is walked.
@@ -116,7 +116,7 @@ champion moves only along a path a server sends.
 
 <!-- holds from 0.8.13.26 up to 1.0.0.63 -->
 
-> **In 0.8.13.26–1.0.0.61**
+> **In 0.8.13.26–1.0.0.62**
 >
 > An order carries no path: only its destination, in world floats. A server
 > works out the route itself and sends it in the path that answers the order.
