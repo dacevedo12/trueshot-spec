@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "InputLocksFlipped",
+  "version": "0.9.25.24",
+  "note": "Laid out as a 0.9.25.24 client sends it. Every value is zero or empty.",
+  "bytes": "7c0000000000000080000000",
+  "fields": {
+    "command": 124,
+    "padding": "000000",
+    "netId": 0,
+    "locks": 128
+  }
+}

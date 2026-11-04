@@ -18,9 +18,9 @@ client answers with `CameraLock`, and set a point a player's view keeps to with
 `CameraBehaviour`. Where its range defines `ZoomReport`, a client reports a view
 drawn further out than it allows with it, which a server MAY ignore.
 
-<!-- holds from 1.0.0.25 up to 1.0.0.120 -->
+<!-- holds from 0.9.25.24 up to 1.0.0.120 -->
 
-> **In 1.0.0.25–1.0.0.119**
+> **In 0.9.25.24–1.0.0.119**
 >
 > `Camera` names one point, the one the view looks at, in place of where the
 > view sits and which way it faces.
@@ -39,6 +39,15 @@ drawn further out than it allows with it, which a server MAY ignore.
 
 A server can lock or unlock kinds of input, such as movement, spells or the
 shop, with `InputLock` and `InputLockToggled`.
+
+<!-- holds from 0.9.25.24 up to 0.9.25.36 -->
+
+> **In 0.9.25.24**
+>
+> A client locks and unlocks its own input too, and tells the server each time:
+> `InputLocksFlipped` for the locks it flipped, as when a camera move a script
+> drives starts and ends, and `InputLockChanged` for the locks it set or
+> cleared.
 
 ## The minimap and text on screen
 

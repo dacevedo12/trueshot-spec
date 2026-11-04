@@ -5,6 +5,15 @@
   "note": "What a server sends to close a client's shop. The header carries zero.",
   "revisions": [
     {
+      "from": "0.9.25.24",
+      "until": "0.9.25.36",
+      "channel": "events",
+      "command": 147,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": []
+    },
+    {
       "from": "0.9.25.36",
       "until": "1.0.0.74",
       "channel": "events",

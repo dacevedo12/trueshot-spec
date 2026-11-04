@@ -1,0 +1,25 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "MoveCamera",
+  "version": "0.9.25.24",
+  "note": "Laid out as a 0.9.25.24 client takes it.",
+  "bytes": "8300000001000040000000000000000000000000000000fa44000000000000fa440000803f",
+  "fields": {
+    "command": 131,
+    "padding": "000000",
+    "netId": 1073741825,
+    "how": {
+      "fromWhereItIs": 0,
+      "unused1": 0,
+      "unused": 0
+    },
+    "fromX": 0,
+    "fromY": 0,
+    "fromZ": 0,
+    "toX": 2000,
+    "toY": 0,
+    "toZ": 2000,
+    "travelTime": 1
+  }
+}

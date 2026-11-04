@@ -5,6 +5,22 @@
   "note": "What a server sends when a building is destroyed. The header names the unit this is about.",
   "revisions": [
     {
+      "from": "0.9.25.24",
+      "until": "0.9.25.36",
+      "channel": "events",
+      "command": 73,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "attacker",
+          "type": "u32",
+          "note": "The unit that destroyed it. Only an inhibitor reads it; a client reads nothing here for any other building."
+        }
+      ],
+      "note": "A server sends it for no nexus. A client takes a building it names away four seconds later, and a nexus it takes away leaves the client failing at its next game event. A nexus falls with GameEnded."
+    },
+    {
       "from": "0.9.25.36",
       "until": "1.0.0.61",
       "channel": "events",

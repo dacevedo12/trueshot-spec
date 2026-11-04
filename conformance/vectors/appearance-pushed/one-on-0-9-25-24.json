@@ -1,0 +1,15 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "AppearancePushed",
+  "version": "0.9.25.24",
+  "note": "Laid out as a 0.9.25.24 client takes it.",
+  "bytes": "5a0000000100004002000000416e6e696500",
+  "fields": {
+    "command": 90,
+    "padding": "000000",
+    "netId": 1073741825,
+    "entry": 2,
+    "asset": "Annie"
+  }
+}

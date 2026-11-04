@@ -1,0 +1,56 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "InputLockChanged",
+  "system": "interface",
+  "note": "What a client sends after locking or unlocking kinds of its own input. The header carries zero.",
+  "revisions": [
+    {
+      "from": "0.9.25.24",
+      "until": "0.9.25.36",
+      "channel": "requests",
+      "command": 148,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "locks",
+          "type": "u32",
+          "note": "Which input, as a set of bits.",
+          "values": {
+            "1": {
+              "name": "cameraLock",
+              "note": "Locking the camera."
+            },
+            "2": {
+              "name": "movement"
+            },
+            "4": {
+              "name": "spells"
+            },
+            "8": {
+              "name": "summonerSpells"
+            },
+            "16": {
+              "name": "shop"
+            },
+            "32": {
+              "name": "chat"
+            },
+            "64": {
+              "name": "minimapMovement",
+              "note": "Moving by the minimap."
+            },
+            "128": {
+              "name": "cameraMovement"
+            }
+          }
+        },
+        {
+          "name": "locked",
+          "type": "u8",
+          "note": "Set where it locked them, clear where it unlocked them."
+        }
+      ]
+    }
+  ]
+}

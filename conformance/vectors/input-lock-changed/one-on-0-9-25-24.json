@@ -1,0 +1,15 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "InputLockChanged",
+  "version": "0.9.25.24",
+  "note": "Laid out as a 0.9.25.24 client sends it. Every value is zero or empty.",
+  "bytes": "94000000000000001000000001",
+  "fields": {
+    "command": 148,
+    "padding": "000000",
+    "netId": 0,
+    "locks": 16,
+    "locked": 1
+  }
+}
