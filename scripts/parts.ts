@@ -759,6 +759,25 @@ function fieldChanges(
   return out;
 }
 
+// Every note a revision gives, by the path of what it describes: "" for the
+// layout itself.
+function notesByPath(r: {
+  note?: string;
+  fields: readonly Field[];
+}): Map<string, string> {
+  const out = new Map<string, string>([["", r.note ?? ""]]);
+  const walk = (fields: readonly Field[], prefix: string): void => {
+    for (const f of fields) {
+      const path = `${prefix}${f.name}`;
+      out.set(path, noted(f));
+      for (const b of runs(f)) out.set(`${path}.${b.name}`, noted(b));
+      walk(children(f), `${path}${f.type === "array" ? "[]" : ""}.`);
+    }
+  };
+  walk(r.fields, "");
+  return out;
+}
+
 interface Changed {
   readonly name: string;
   readonly lines: readonly string[];
@@ -861,6 +880,7 @@ function changesPart(prev: Range, range: Range): string[] {
   const removed: string[] = [];
   const changed: Changed[] = [];
   const notesOnly: string[] = [];
+  const noteLines: string[] = [];
   const unrecorded: string[] = [];
   const again: string[] = [];
   const renumbered: { link: string; channel: string; a: number; b: number }[] =
@@ -910,6 +930,18 @@ function changesPart(prev: Range, range: Range): string[] {
     if (same(strip(a), strip(b))) {
       if (!same({ ...a, from: 0, until: 0 }, { ...b, from: 0, until: 0 }))
         notesOnly.push(def(m.file, m.message));
+      // What each changed note says now, and said before.
+      const was = notesByPath(a);
+      for (const [path, note] of notesByPath(b))
+        if (was.get(path) !== note)
+          noteLines.push(
+            `- ${def(m.file, m.message)}, ${path === "" ? "its layout" : `\`${path}\``}: ${note === "" ? "no note" : `“${note}”`}, where ${P} has ${(was.get(path) ?? "") === "" ? "none" : `“${was.get(path)}”`}`,
+          );
+      for (const [path, note] of was)
+        if (!notesByPath(b).has(path) && note !== "")
+          noteLines.push(
+            `- ${def(m.file, m.message)}, \`${path}\`: no note, where ${P} has “${note}”`,
+          );
       continue;
     }
     if (
@@ -1063,9 +1095,9 @@ function changesPart(prev: Range, range: Range): string[] {
     notesOnly.length === 0
       ? []
       : [
-          "These read the same on the wire, and only their notes change:",
+          `These read the same on the wire, and only their notes change. What each says in ${C}:`,
           "",
-          notesOnly.join(", "),
+          ...noteLines,
         ],
   );
   if (lines.length === 3) lines.push("", "Nothing differs on the wire.");
