@@ -123,7 +123,7 @@
           "name": "cast",
           "type": "struct",
           "struct": "SpellCast",
-          "note": "Where what the casting throws leaves from, along the other ground axis, in world units."
+          "note": "The casting that threw it."
         }
       ],
       "note": "A client reads neither a speed nor a part of the missile's life spent. Neither the ground-height rule for endY nor a trail moved on by an age is confirmed. A client places the casting's second unit, where it holds that unit, where the thrower stood rather than with the casting unit."
@@ -247,7 +247,7 @@
           "name": "cast",
           "type": "struct",
           "struct": "SpellCast",
-          "note": "Where what the casting throws leaves from, along the other ground axis, in world units."
+          "note": "The casting that threw it."
         }
       ],
       "note": "A client reads neither a speed nor a part of the missile's life spent. Neither the ground-height rule for endY nor a trail moved on by an age is confirmed. A client places the casting's second unit, where it holds that unit, where the thrower stood rather than with the casting unit."
@@ -371,7 +371,7 @@
           "name": "cast",
           "type": "struct",
           "struct": "SpellCast",
-          "note": "Where what the casting throws leaves from, along the other ground axis, in world units."
+          "note": "The casting that threw it."
         }
       ],
       "note": "A client reads neither a speed nor a part of the missile's life spent. Neither the ground-height rule for endY nor a trail moved on by an age is confirmed. A client places the casting's second unit, where it holds that unit, where the thrower stood rather than with the casting unit."
@@ -495,7 +495,7 @@
           "name": "cast",
           "type": "struct",
           "struct": "SpellCast",
-          "note": "Where what the casting throws leaves from, along the other ground axis, in world units."
+          "note": "The casting that threw it."
         }
       ],
       "note": "A client reads neither a speed nor a part of the missile's life spent. Neither the ground-height rule for endY nor a trail moved on by an age is confirmed. A client places the casting's second unit, where it holds that unit, where the thrower stood rather than with the casting unit."
@@ -619,7 +619,7 @@
           "name": "cast",
           "type": "struct",
           "struct": "SpellCast",
-          "note": "Where what the casting throws leaves from, along the other ground axis, in world units."
+          "note": "The casting that threw it."
         }
       ],
       "note": "A client reads neither a speed nor a part of the missile's life spent. Neither the ground-height rule for endY nor a trail moved on by an age is confirmed. A client places the casting's second unit, where it holds that unit, where the thrower stood rather than with the casting unit."
@@ -743,7 +743,7 @@
           "name": "cast",
           "type": "struct",
           "struct": "SpellCast",
-          "note": "Where what the casting throws leaves from, along the other ground axis, in world units."
+          "note": "The casting that threw it."
         }
       ],
       "note": "A client reads neither a speed nor a part of the missile's life spent. Neither the ground-height rule for endY nor a trail moved on by an age is confirmed. A client places the casting's second unit, where it holds that unit, where the thrower stood rather than with the casting unit."
@@ -867,7 +867,7 @@
           "name": "cast",
           "type": "struct",
           "struct": "SpellCast",
-          "note": "Where what the casting throws leaves from, along the other ground axis, in world units."
+          "note": "The casting that threw it."
         }
       ],
       "note": "A client reads neither a speed nor a part of the missile's life spent. Neither the ground-height rule for endY nor a trail moved on by an age is confirmed. A client places the casting's second unit, where it holds that unit, where the thrower stood rather than with the casting unit."
@@ -991,7 +991,7 @@
           "name": "cast",
           "type": "struct",
           "struct": "SpellCast",
-          "note": "Where what the casting throws leaves from, along the other ground axis, in world units."
+          "note": "The casting that threw it."
         }
       ],
       "note": "A client reads neither a speed nor a part of the missile's life spent. Neither the ground-height rule for endY nor a trail moved on by an age is confirmed. A client places the casting's second unit, where it holds that unit, where the thrower stood rather than with the casting unit."
@@ -1115,7 +1115,7 @@
           "name": "cast",
           "type": "struct",
           "struct": "SpellCast",
-          "note": "Where what the casting throws leaves from, along the other ground axis, in world units."
+          "note": "The casting that threw it."
         }
       ],
       "note": "A client reads neither a speed nor a part of the missile's life spent. Neither the ground-height rule for endY nor a trail moved on by an age is confirmed. A client places the casting's second unit, where it holds that unit, where the thrower stood rather than with the casting unit."
@@ -1244,7 +1244,7 @@
           "name": "cast",
           "type": "struct",
           "struct": "SpellCast",
-          "note": "Where what the casting throws leaves from, along the other ground axis, in world units."
+          "note": "The casting that threw it."
         }
       ],
       "note": "A client reads a speed but no part of the missile's life spent. Neither the ground-height rule for endY nor a trail moved on by an age is confirmed. A client places the casting's second unit, where it holds that unit, where the thrower stood rather than with the casting unit."
@@ -1373,7 +1373,7 @@
           "name": "cast",
           "type": "struct",
           "struct": "SpellCast",
-          "note": "Where what the casting throws leaves from, along the other ground axis, in world units."
+          "note": "The casting that threw it."
         }
       ],
       "note": "A client reads a speed but no part of the missile's life spent. Neither the ground-height rule for endY nor a trail moved on by an age is confirmed."
@@ -1502,7 +1502,7 @@
           "name": "cast",
           "type": "struct",
           "struct": "SpellCast",
-          "note": "Where what the casting throws leaves from, along the other ground axis, in world units."
+          "note": "The casting that threw it."
         }
       ],
       "note": "A client reads a speed but no part of the missile's life spent. Neither the ground-height rule for endY nor a trail moved on by an age is confirmed."
@@ -1631,7 +1631,7 @@
           "name": "cast",
           "type": "struct",
           "struct": "SpellCast",
-          "note": "Where what the casting throws leaves from, along the other ground axis, in world units."
+          "note": "The casting that threw it."
         }
       ],
       "note": "A client reads a speed but no part of the missile's life spent. Neither the ground-height rule for endY nor a trail moved on by an age is confirmed."
@@ -1780,7 +1780,7 @@
           "name": "cast",
           "type": "struct",
           "struct": "SpellCast",
-          "note": "Where what the casting throws leaves from, along the other ground axis, in world units."
+          "note": "The casting that threw it."
         }
       ],
       "note": "A client reads both a speed and a part of the missile's life spent. Neither the ground-height rule for endY nor a trail moved on by an age is confirmed."
@@ -1929,7 +1929,7 @@
           "name": "cast",
           "type": "struct",
           "struct": "SpellCast",
-          "note": "Where what the casting throws leaves from, along the other ground axis, in world units."
+          "note": "The casting that threw it."
         }
       ],
       "note": "A client reads both a speed and a part of the missile's life spent. Neither the ground-height rule for endY nor a trail moved on by an age is confirmed."
@@ -2078,7 +2078,7 @@
           "name": "cast",
           "type": "struct",
           "struct": "SpellCast",
-          "note": "Where what the casting throws leaves from, along the other ground axis, in world units."
+          "note": "The casting that threw it."
         }
       ],
       "note": "A client reads both a speed and a part of the missile's life spent. Neither the ground-height rule for endY nor a trail moved on by an age is confirmed."
@@ -2227,7 +2227,7 @@
           "name": "cast",
           "type": "struct",
           "struct": "SpellCast",
-          "note": "Where what the casting throws leaves from, along the other ground axis, in world units."
+          "note": "The casting that threw it."
         }
       ],
       "note": "A client reads both a speed and a part of the missile's life spent. Neither the ground-height rule for endY nor a trail moved on by an age is confirmed."
