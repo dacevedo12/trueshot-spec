@@ -63,6 +63,13 @@ taken up only once it has moved something.
 A client leaves the flag clear in what it sends, so a token travels only
 from a server.
 
+<!-- holds from 1.0.0.58 up to 1.0.0.61 -->
+
+> **In 1.0.0.58**
+>
+> A path carries no flag and no token, so nothing relocates a unit: every path
+> is walked.
+
 A client answers every group of movements it takes in, naming the group and
 listing the units the group asked it to relocate along with the tokens that
 did it. It lists every movement in the group that carried a token, whether or
