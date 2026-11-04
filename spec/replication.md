@@ -1,9 +1,9 @@
 # Replication
 
-The most frequent thing a server sends is a statement of what has changed about
-the units a client can see. `schema/messages/Replication.json` records its
-layout: for each unit, the groups of values it carries, and for each group,
-which of its values follow.
+A server states what has changed about the units a client can see with
+`Replication`. Its layout gives, for each unit, the groups of values it
+carries, and for each group, which of its values follow. What the values are
+follows from the unit.
 
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
@@ -31,37 +31,43 @@ which of its values follow.
 > each behind the length of its run. A sending end MUST write each group's length
 > as the number of bytes its run takes.
 >
-> Each value in a run takes one of the two shapes [spec/messages.md](messages.md)
-> records, and which shape a value takes is not on the wire.
-
-That much a layout reaches. What the values are it does not, and this document
-says what settles them.
+> Each value takes one of two shapes, and the table row naming it says which.
+> Nothing on the wire carries a table, a field name, a width or a shape, so an
+> end that does not already hold the table cannot read a run.
+>
+> A value that counts is a thirty two bit unsigned integer, and a value with a
+> sign travels as the same thirty two bits. It takes seven bits from each byte,
+> lowest seven first, and the top bit of a byte is set while another byte
+> follows. Five bytes therefore carry anything it holds.
+>
+> A value that measures takes one of three forms: a single byte of 255 meaning
+> zero; a byte of 254 followed by four bytes; or four bytes on their own. The
+> four bytes are the measure itself, a thirty two bit float, lowest byte first.
+> A sending end MUST write the byte of 254 before a measure whose lowest byte is
+> 254 or 255, and MUST NOT write it before any other. A measure written plain
+> therefore never begins with either, so its first byte says which form it
+> takes.
 
 ## What settles a reading
 
 A run is a sequence of values with nothing between them, in the order the set
 bits name them, lowest first.
 
-The bit that names a value means different things for different units. A
-champion, a turret, a minion, a prop, a unit belonging to no side and a
-building each answer to their own table, so the same bit in the same group is
-one value on one unit and another on the next. A sending end MUST write the
-table the unit it names answers to.
+The bit that names a value means different things for different units.
+Champions, turrets, minions and units belonging to no side, props, and
+buildings each answer to a table of their own, so the same bit in the same
+group is one value on one unit and another on the next. A sending end MUST
+write the table the unit it names answers to.
 
 Which table a unit answers to follows from the message that put it on the
-field and the names that message carried. A building, which no message
-creates, answers to the building table of the map loaded.
-
-Nothing on the wire carries a table, a field name, or a width. An end that does
-not already hold the table cannot read a run.
+field (see [Units](units.md)). A building, which no message creates, answers to
+the building table of the map loaded.
 
 ## Which batches a client takes
 
-A client applies a unit's values from a batch only where the batch's `syncId`
-is greater than that of the last batch it applied for that unit and group. A client answers a batch with `TransientAck` where it holds every unit the
-batch names, whether or not it took the values, and leaves a batch naming a
-unit it does not hold unanswered. [Ordering](ordering.md) gives the rules for these numbers, when a
-batch goes unanswered, and what they require of a server.
+A client answers a batch with `TransientAck` where it holds every unit the
+batch names, whether or not it took the values. [Ordering](ordering.md) says
+which batches a client takes, and what that requires of a server.
 
 ## Reading the tables
 
@@ -231,17 +237,15 @@ Each row gives the group and bits that name a value and what the value is.
 > Bit 2 holds which of slots 0 to 3 can be cast from, one bit for each slot,
 > set as a champion learns the spell in it, and bit 4 holds which summoner spells can be cast from, as a mask in which a server sets its bits 4 and 5, one for each summoner slot. Bits 3 and 5 of the group carry zero. [Sides and slots](values.md) numbers the slots.
 >
-> Spell costs are keyed by slot: bit 8 carries what the spell in slot 0 costs,
-> bit 9 slot 1, bit 10 slot 2 and bit 11 slot 3. Bits 12 to 27 belong to the same run, and a server writes zero in
-> them.
+> Bits 8 to 11 carry what the spells in slots 0 to 3 cost. A server sets bits 8
+> to 27 together and writes zero in bits 12 to 27. It leaves bits 6 and 7, and
+> group 1 bit 31, clear.
 >
-> What a champion is doing, group 1 bit 0, is 0x800007 as a server writes it.
->
-> Bits 6 and 7 hold the points a champion has for evolving a spell and the set of spells that have evolved, and bits 8 to 27 hold spell costs. A server sets bits 8 to 27 together, writing zero at every place no spell fills, and leaves 6 and 7 clear. Both are counted.
+> A server writes 0x800007 in group 1 bit 0.
 >
 > ### What a client shows from this table
 >
-> A client shows a champion's values by this table:
+> A client shows, for a champion:
 >
 > - its health and resource bars, as they stand (group 3 bits 0 and 1) out of
 >   their greatest (bits 2 and 3);
@@ -250,33 +254,26 @@ Each row gives the group and bits that name a value and what the value is.
 > - its gold (group 0 bit 0);
 > - in the panel under its portrait, ability power (group 1 bit 6), armour (bit
 >   9), spell resistance (bit 10), movement speed (group 3 bit 10), and attack
->   speed as the champion's own base attack speed times group 1 bit 19.
+>   speed as the champion's own base attack speed times group 1 bit 19;
+> - in its panel of statistics, group 1 bit 21 as cooldown reduction, its size
+>   as a percent whatever its sign; bits 28 and 29 as life steal and spell vamp,
+>   and bit 30 as tenacity, each a fraction shown as a percent; and bits 24 and
+>   26 as flat penetration of armour and of spell resistance.
 >
-> The attack damage that panel shows is the client's own figure for the
-> champion's level, with group 1 bit 14 added to it and drawn as a bonus.
+> The attack damage the panel under the portrait shows is the client's own
+> figure for the champion's level, with group 1 bit 14 added to it and drawn as
+> a bonus.
 >
 > Until a champion's first batch arrives, the panel shows figures the client
 > holds for that champion. Once one arrives, it shows the values batches carry,
 > and armour, spell resistance, ability power and movement speed read 0 where no
 > batch has carried them.
 >
-> A client's panel of champion statistics shows these values of group 1:
->
-> - bit 19 as a multiplier on the champion's attack speed;
-> - bit 21 as cooldown reduction, its size as a percent whatever its sign;
-> - bits 28 and 29 as life steal and spell vamp, each a fraction shown as a
->   percent;
-> - bit 30 as tenacity, a fraction shown as a percent;
-> - bits 24 and 26 as flat penetration of armour and of spell resistance.
->
-> A server leaves bit 31 clear.
->
 > Each percent penetration field carries the share of armour or spell resistance
 > left standing, 1 where nothing is cut through. The panel shows what two of them
 > cut through together, as 200 percent less both shares in percent: bit 25 of
 > group 1 with bit 0 of group 2 for armour, and bit 27 of group 1 with bit 1 of
-> group 2 for spell resistance. Shares of 0.8 and 0.9 show as 30 percent, and a
-> champion sent neither shows 200 percent.
+> group 2 for spell resistance.
 >
 > A spell's cooldown lasts its base length times one plus the modifier at bit 21,
 > so a reduction is carried as a negative fraction and the panel shows its size.
@@ -326,9 +323,9 @@ Each row gives the group and bits that name a value and what the value is.
 >
 > ## A building
 >
-> Inhibitors and nexuses. [spec/messages.md](messages.md) says how the
-> identifier of each is worked out from its name, which is how a receiving end
-> knows one no message ever created. Where a server replicates a map's buildings, it sends these two groups and
+> Inhibitors and nexuses, each named by the identifier
+> [Objects and identifiers](objects.md#net-ids-of-what-a-map-holds) gives its
+> name. Where a server replicates a map's buildings, it sends these two groups and
 > nothing else. On map 8 it replicates none.
 >
 > | Group | Bits   | Value                                                       | Shape    |
@@ -369,7 +366,6 @@ scoreboard with `ChampionStats`. A server can also add to a unit's shield
 (`HealthBar`, `ResourceDisplay`), change the sort of resource it has
 (`ResourceKindChanged`), set the highest level a champion reaches
 (`LevelCap`), and count minions killed, scores and deeds (`MinionKillCount`,
-`ScoreAdded`, `StatisticIncremented`). A client acknowledges each batch with
-`TransientAck`.
+`ScoreAdded`, `StatisticIncremented`).
 
 <!-- messages -->

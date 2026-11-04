@@ -27,20 +27,22 @@ unit's resource, with `ParticleSource`.
 
 > **In 3.02–3.04**
 >
-> A client that takes `EmitterPause` goes on to do what `ChatAllowance` does,
-> reading the first four bytes of the group's name as the lines left. A server
-> MUST NOT send `EmitterPause`.
+> A client takes `EmitterPause` as a `ChatAllowance`, the first four bytes of
+> the group's name standing as the lines left. A server MUST NOT send
+> `EmitterPause`.
 
 ## Looks and animation
 
 A server lays a new look over a unit's own with `AppearancePushed`; looks
 stack, the newest showing, and `AppearancePopped` and `AppearanceCleared` take
 them away. `AnimationOverrides` has a unit play one set of movements wherever it
-would have played another. A server can also play, stop, pause and advance
-a unit's animations (`PlayAnimation`, `StopAnimation`, `PauseAnimation`,
-`AnimationAdvanced`), fade a unit or a side's minions (`FadeTo`, `FadeRemoved`,
-`FadeMinions`), set how each nexus looks (`NexusIdle`, `NexusSkin`), tint a
-side's screens (`ScreenTint`), and change the voice a unit speaks with
-(`VoiceOverride`).
+would have played another. A server can also:
+
+- play, stop, pause and advance a unit's animations (`PlayAnimation`,
+  `StopAnimation`, `PauseAnimation`, `AnimationAdvanced`);
+- fade a unit or a side's minions (`FadeTo`, `FadeRemoved`, `FadeMinions`);
+- set how each nexus looks (`NexusIdle`, `NexusSkin`);
+- tint a side's screens (`ScreenTint`);
+- change the voice a unit speaks with (`VoiceOverride`).
 
 <!-- messages -->

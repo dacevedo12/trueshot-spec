@@ -9,10 +9,6 @@ one or more revisions. A revision carries the value identifying the message,
 the channel it travels on, its direction, how the transport delivers it, and
 the fields of its body.
 
-This document defines the vocabulary those files are written in, together with
-the container and the shapes of values that vocabulary relies on. It records no
-message's layout: those live in `schema/`.
-
 ## Families
 
 Every channel carries one family of messages, and `schema/channels.json` says
@@ -26,9 +22,7 @@ A family whose header carries no command field has one message each way on
 each channel it rides, read from the payload's first byte; its revisions number
 that message 0.
 
-What selects the header is the family, not the channel. A channel carrying a
-family is how the two connect, and reading a payload against the wrong family
-decodes something rather than failing.
+The family, not the channel, selects the header.
 
 A revision names the channel it travels on, and names any others in `alsoOn`.
 Those channels carry the same family, so the command value means the same
@@ -46,23 +40,27 @@ where that value sits on the wire. That value is not a field of the message: it
 belongs to the header, along with anything else the family carries before a
 body begins.
 
-A family keeps some values of the leading byte for framing rather than for
-messages where it needs them, and `schema/families.json` lists which. One such
-value means the real identifier is wider than a byte and
-travels elsewhere in the header, which is how a family numbers more messages
-than a byte holds. A revision records the identifier either way, and never the
-escape.
+A family can keep some values of the leading byte for framing rather than for
+messages, and `schema/families.json` lists which. Where a family names an
+escape, that value means the real identifier is wider than a byte and travels
+elsewhere in the header, which is how a family numbers more messages than a
+byte holds. A revision records the identifier either way, and never the escape.
 
-Direction narrows it further, as [Directions](#directions) says.
+## Directions
+
+A revision states whether it travels `clientToServer`, `serverToClient`, or
+`bidirectional`. Direction is part of what identifies a message, so one value
+serves two messages travelling opposite ways within a family. A bidirectional
+revision claims that value both ways.
 
 ## A container of several messages
 
-One value the game family keeps for framing introduces a container rather than
-a message: a run of several messages gathered into one payload, which a reading
-end unwraps and reads one by one as though each had arrived on its own. A
-container carries no header, so nothing in `schema/messages` describes one, and
-a reading end MUST NOT read the value that introduces it as a command. The
-value is 255.
+Where the game family keeps 255 for framing, that value introduces a container
+rather than a message: a run of several messages gathered into one payload,
+which a reading end unwraps and reads one by one as though each had arrived on
+its own. A container carries no header, so nothing in `schema/messages`
+describes one, and a reading end MUST NOT read the value that introduces it as
+a command.
 
 A container is the byte 255, then a count of entries in one byte, then the
 entries one after another. The first entry is a length in one byte, the
@@ -80,11 +78,13 @@ flags and size:
 
 The body follows. Each entry, given the command and object identifier it
 carries as its header, is a message read as though it had arrived on its own.
-An entry whose command is 254 carries the wider
-identifier in the first two bytes of its body, so that, with the command and
-object identifier before it, it reads as the extended form of the header does.
+Where the family's escape is 254, an entry whose command is 254 carries the
+wider identifier in the first two bytes of its body, so that, with the command
+and object identifier before it, it reads as the extended form of the header
+does.
 
-A server MAY send a container on the events channel. A client sends none.
+Where the game family keeps 255, a server MAY send a container on the events
+channel. A client sends none.
 
 ## Reading a body
 
@@ -121,17 +121,14 @@ it is the last field too, and so is any struct whose own last field is one of
 these.
 
 A body ends where its last field ends, with one exception: a client accepts a
-`Registered` carrying bytes past its record, and takes no meaning from them.
-This document extends the exception to no other message. A sender MUST write the fields a revision lists
-and nothing after them.
+`Registered` carrying bytes past its record, and takes no meaning from them. A
+sender MUST write the fields a revision lists and nothing after them.
 
 ## Byte order
 
 A revision of `schema/protocol.json` states the byte order that covers a
 version range, and every multi byte field in that range is read that way. A
 field that differs states its own order, which overrides the range.
-
-Every range states an order.
 
 ## The types
 
@@ -160,19 +157,15 @@ length travels as a byte count is recorded.
 wherever it occurs. A struct has revisions as a message does, and a message
 revision that holds one lies wholly within one of the struct's revisions, which
 gives the layout it holds there. A struct occupies exactly the bytes its own
-fields occupy.
-Where its length travels on the wire instead, the field states a size in bytes,
-as a literal or as the name of an earlier field. A sending end MUST write a
-struct's fields to fill that size exactly.
+fields occupy. Where its length travels on the wire instead, the field states a
+size in bytes, as a literal or as the name of an earlier field. A sending end
+MUST write a struct's fields to fill that size exactly.
 
 **Bits.** A field of one or more bytes divided into named runs, whose widths
 total exactly the bits those bytes hold. No run is wider than 32 bits. The
-bytes are read as one little endian word whatever the range's byte order,
-because the runs are positions in that word rather than fields of their own,
-unless the field states big, when its first byte is the word's highest.
-The runs are listed from the least significant bit upward: the first run
-occupies the low bits, and each one after it the bits above. A run is read as
-an unsigned integer of its own width.
+bytes form one little endian word whatever the range's byte order, or a big
+endian one where the field says so. Runs are listed from the least significant
+bit upward, and each reads as an unsigned integer of its own width.
 
 **Bit arrays.** A run of the same group of bit runs, repeated a stated number
 of times. The groups follow one another from the low bits of the first byte
@@ -204,8 +197,12 @@ field. Five forms are written:
 
 Nothing else is computed.
 
-A rule about whether a field is present states a value the named field carries,
-or a set of values, any one of which satisfies it. Without one, any
+## Presence
+
+A field states a presence rule when it occupies bytes only under a condition,
+and a field whose condition does not hold occupies no bytes at all. The rule
+names an earlier field or bit run holding an integer, and states a value it
+carries, or a set of values, any one of which satisfies it. Without one, any
 value other than zero satisfies the rule. A field its own rule left out holds
 no value, so a rule naming that field does not hold either.
 
@@ -215,27 +212,19 @@ where it has ended, so a message whose sender stops early reads as one whose
 later fields are absent. A sender that stops early MUST stop where a field
 under such a rule begins.
 
+A rule can mark one of its sides `unseen`; that side's layout is the one the
+field states.
+
 ## A field that travels enciphered
 
 A payload is enciphered as a whole once a connection has a cipher state, and a
-message says nothing about that. One case is different: a payload that travels
-before any cipher state exists can still carry a single field enciphered under
-the key both ends hold, and a field states when it does.
+message says nothing about that. Before a cipher state exists, a payload can
+carry one field enciphered under the key both ends hold, and the field says so.
 
 Such a field occupies whole cipher blocks, because a field filling part of one
 would travel half in the clear. Its recorded value is what the bytes mean once
 deciphered, so a reader deciphers the field alone and leaves the payload around
 it untouched.
-
-## Presence
-
-A field states a presence rule when it occupies bytes only under a condition.
-The rule names an earlier field or bit run holding an integer, and where the
-condition is a value rather than a flag, the value it takes. A field whose
-condition does not hold occupies no bytes at all.
-
-A rule can mark one of its sides `unseen`: no vector shows that side in this
-message, and its layout is the one the field states.
 
 ## Enumerated values
 
@@ -248,19 +237,14 @@ A value with no entry has no meaning this specification states.
 ## Revisions
 
 A revision covers a range of client versions, from one version inclusive to
-another exclusive. Every revision states where it stops, so nothing is claimed for a build past
-the last one studied, until that build is shown to agree with it. Ranges of one message never
-overlap.
+another exclusive. Every revision states where it stops. Ranges of one message
+never overlap. A version no revision of a message covers has no such message: a
+client there neither sends nor takes it, and what a chapter says of it does not
+apply.
 
 A revision covers no version that `schema/protocol.json`, `schema/channels.json`
 and `schema/families.json` do not all describe, because a range none of them
 reaches has no header, no byte order, and no channel to travel on.
-
-A revision travels on a channel, which `schema/channels.json` defines, and
-names any further channels carrying the same layout, as Families above says. For
-each it states how the transport delivers it: reliable, unreliable, or
-unsequenced.
-Every revision states this for itself.
 
 ## Names and notes
 
@@ -275,10 +259,7 @@ never takes the name of a field enclosing it.
 
 Anything in `schema/` carries a note wherever a fact needs words: a revision, a
 field, a run of bits, a value. A note states what the wire carries and what
-each end does. It carries no
-requirement keyword, because a requirement belongs here in `spec/` where a
-reader looks for one, and it describes no moment in time, because a note that
-says a thing changed leaves a reader guessing which version it changed in.
+each end does. It carries no requirement keyword and says nothing changed.
 
 ## How a message is delivered
 
@@ -288,71 +269,15 @@ another supersedes can be lost, and one that carries an account of what
 happened cannot. A server MUST send a message with the delivery its revision
 states.
 
-## Directions
+## Quick chat
 
-A revision states whether it travels `clientToServer`, `serverToClient`, or
-`bidirectional`. Direction is part of what identifies a message, so one value
-serves two messages travelling opposite ways within a family. A bidirectional
-revision claims that value both ways.
+<!-- holds from 3.13.0.399 up to 4.21.0.0 -->
 
-## Values a layout cannot reach
-
-A run of bytes is sometimes carried whose contents a layout cannot describe,
-because reading them apart needs to know each value's width and kind and the
-wire carries neither. Both ends hold that knowledge before a match begins, as
-they hold the origin a path is measured against.
-
-Such a run is recorded as the bytes it is, with a length beside it and a note
-saying what settles the reading. A server relays or produces it whole.
-
-How the values sit in the run is another matter, and that much is recorded. A
-run holds its values one after another with nothing between them, in the order
-whatever selects them names them, lowest first. Each value takes one of two
-shapes.
-
-A value that counts is a thirty two bit unsigned integer, and a value with a
-sign travels as the same thirty two bits. It takes seven bits from each byte,
-lowest seven first, and the top bit of a byte is set while another byte
-follows. Five bytes therefore carry anything it holds.
-
-A value that measures takes one of three forms: a single byte of 255 meaning
-zero; a byte of 254 followed by four bytes; or four bytes on their own. The
-four bytes are the measure itself, a thirty two bit float, lowest byte first.
-
-Which of the three a value takes is settled by its own lowest byte, and a
-reading end tells them apart by the first byte it meets. A sending end MUST write
-the byte of 254 before a value whose lowest byte is 254 or 255. A sending end
-MUST NOT write it before any other value. A measure written plain therefore
-never begins with either. That is what makes the first byte enough: 255 alone is zero, 254
-says the four bytes after it are the measure, and anything else is already the
-lowest byte of one.
-
-Reading a run therefore needs to know, for each value, which of the two shapes
-it takes. Nothing on the wire says, and it is not settled by position alone, so
-an end that does not already know cannot read one.
-
-## What follows what
-
-Most of what a client sends stands on its own: it moves, selects, marks the
-map, buys and sells in whatever order a player acts, and a server refusing one
-of those does not change what comes next.
-
-Opening a connection is not like that. Its steps come in a fixed order, from
-registering to the start of play, and [Joining a match](joining.md) sets them
-out.
-
-One thing during play behaves the same way. A client names each view report,
-`Camera`, and sends it again until a server returns that name in `CameraAck`,
-so a server that returns nothing is sent the same report over and over.
-
-## Requests a server can ignore
-
-A client sends `ZoomReport`, where its range defines it, when its view is drawn
-further out than it allows; a server MAY ignore one.
-
-Quick chat is a feature a server leaves off. A client sends a quick chat on channel 6
-only where `VersionSync`'s features turn quick chat on. This specification
-records no layout for channel 6.
+> **In 3.13–4.20**
+>
+> Quick chat is a feature a server leaves off. A client sends a quick chat on
+> channel 6 only where `VersionSync`'s features turn quick chat on. This
+> specification records no layout for channel 6.
 
 <!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 

@@ -3,24 +3,24 @@
 Which clocks a match runs on, and which of them each time on the wire is
 measured against.
 
-## Units
+## How a time is carried
 
 A time is in seconds, as a 32-bit float, unless its definition says otherwise.
 A field is either a moment, read against a clock, or a duration, which starts
 when the message arrives. Every definition says which.
 
-The exceptions are few:
+Exceptions:
 
 - `Paused` carries the time left in a hold as a whole number of seconds.
-- A stream's chunk and key frame intervals (`StreamMetadata`), and the time
-  between two of its records (`StreamRecord`), are in milliseconds.
-- `MapPropChanged` gives when its change begins in the unit its range states.
+- A stream's chunk and key frame intervals (`StreamMetadata`) are in
+  milliseconds.
 
-<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 
-> **In 4.1–4.17**
+> **In 4.17**
 >
-> `MapPropChanged` gives when its change begins in seconds of match time.
+> The time between two of a stream's records (`StreamRecord`) is in
+> milliseconds.
 
 <!-- holds from 4.18.0.271 up to 4.21.0.0 -->
 
@@ -33,8 +33,7 @@ The exceptions are few:
 The match runs on a server's clock, which counts seconds from 0 as play begins.
 `ClockSync` states where it stands, and a client sets its own clock to that,
 allowing for how late the statement arrived. A client answers with
-`ClockReply`, carrying what the server said and what its own clock read as the
-statement arrived, so a server can measure the round trip. A server can report
+`ClockReply`, from which a server measures the round trip. A server can report
 the round trip it measured with `ClockConvergence`.
 
 <!-- holds from 4.1.0.171 up to 4.20.0.315 -->
@@ -43,7 +42,7 @@ the round trip it measured with `ClockConvergence`.
 >
 > A client takes the round trip `ClockConvergence` reports into its allowance for lateness.
 
-A server sends `ClockSync` as play begins, with 0 (see
+A server sends `ClockSync` with 0 as play begins (see
 [Joining a match](joining.md)), and again whenever it means a client's clock to
 catch up with its own.
 
@@ -51,7 +50,7 @@ catch up with its own.
 
 > **In 4.1–4.19**
 >
-> A client's game clock does not run until the first `ClockSync` arrives, which
+> A client's match clock does not run until the first `ClockSync` arrives, which
 > sets it. After that it runs on the client's own timer, and a later
 > `ClockSync` only corrects it, however long a server leaves between them.
 
@@ -61,8 +60,8 @@ zero while the match clock is before it.
 
 Moments on the match clock include:
 
-- when a monster arrives (`CreateNeutral`'s `spawnAt`);
-- when a prop's animation starts (`MapPropChanged`);
+- when a monster arrives (`CreateNeutral`'s `spawnAt`, where it carries one);
+- when a prop's animation starts (`MapPropChanged`, where it carries one);
 - when an assisting unit last dealt damage (`ClientEvent`);
 - when a champion's passive comes off cooldown (see
   [Replication](replication.md)).

@@ -39,6 +39,8 @@ On a map won on score, a server binds each capture point to a unit with
 > and only once one point is known. Reaching a score ends nothing: the match ends
 > as any match does (see [The match](match.md)).
 
+## Other map objectives
+
 A server can name the unit holding the Ascension with `AscendedUnit`, and send
 `RespawnPoint` about points a champion returns to life at.
 
@@ -46,13 +48,13 @@ A server can name the unit holding the Ascension with `AscendedUnit`, and send
 
 > **In 4.1–4.19**
 >
-> A client acts on `RespawnPoint` only where its screen has such a panel.
+> A client acts on `RespawnPoint` only where it shows the capture point panel.
 
 ## Events the match is told about
 
 `WorldEvent` says something happened that the whole match is told about: the
 match's welcome and its first notices, minions coming out, an inhibitor or a
-great monster falling, a player leaving. The sort it names settles what follows
-it, and each sort's note in its definition says what a client shows for it.
+great monster falling, a player leaving. The sort it names settles the rest of
+the message and what a client shows.
 
 <!-- messages -->

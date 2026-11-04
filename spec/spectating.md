@@ -1,8 +1,7 @@
-# Watching a match over the connection
+# Watching a match
 
 A client can watch a match that a server streams to it over the same
-connection a player uses, rather than playing in it. This document says how the
-stream is laid out and in what order its parts go. Layouts live in `schema/`.
+connection a player uses, rather than playing in it.
 
 ## What marks a watching client
 
@@ -45,10 +44,9 @@ no `LoadingProgress`.
 
    Either way it skips none after that. A client takes a key frame only where
    it is the first one sent and arrives before the chunk after the last chunk
-   of setting up; otherwise it keeps it but plays on from that chunk. A client
-   sent every chunk from 1 catches up at speed, and fails partway through a
-   long catch-up, so a server SHOULD join a client late once a match is more
-   than a few minutes in.
+   of setting up; otherwise it keeps it but plays on from that chunk. A server
+   SHOULD join a client late once a match is more than a few minutes in: a
+   client sent every chunk from 1 fails partway through a long catch-up.
 
 5. As the match ends, a server sends `StreamChunkRange` again naming its last
    chunk, then that chunk. Once it has arrived the client takes no more of the
@@ -59,19 +57,25 @@ The stream's chunks run for `chunkTimeInterval` each and its key frames for
 
 ## What a chunk holds
 
-A chunk is the messages a server sent the players of the match, one
-[`StreamRecord`](../schema/types/StreamRecord.json) after another, each
-written against the one before it to save space. A reader keeps the last
-record's time, command and object, and recovers a record's own:
+A chunk is the messages a server sent the players of the match, one record
+after another.
 
-- its time, from a time difference, as the last record's time plus that many
-  milliseconds;
-- its command, where the record leaves it out, as the last record's;
-- its object, from an object difference, as the last record's object plus
-  that signed difference.
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 
-A message is the command, the object and the body, laid out as a game message
-is (see [Messages](messages.md)). A record never holds a container.
+> **In 4.17**
+>
+> Each record is a [`StreamRecord`](../schema/types/StreamRecord.json),
+> written against the one before it to save space. A reader keeps the last
+> record's time, command and object, and recovers a record's own:
+>
+> - its time, from a time difference, as the last record's time plus that many
+>   milliseconds;
+> - its command, where the record leaves it out, as the last record's;
+> - its object, from an object difference, as the last record's object plus
+>   that signed difference.
+>
+> A message is the command, the object and the body, laid out as a game message
+> is (see [Messages](messages.md)). A record never holds a container.
 
 A client plays records as the stream's clock reaches their time, records of
 time zero at once, and the first record with a time above zero sets its clock.
@@ -84,9 +88,8 @@ answer on: `VersionSync` first. A client whose own build differs from the one
 goes on by itself afterwards.
 
 A key frame is laid out as a chunk is, and holds the whole world as it stands
-at that point. A client joined late plays the chunks of setting up, then the
-key frame, then goes on from the chunk the key frame names, or, where it names
-none, from the chunk its number implies (see `StreamChunk`). The chunks between
-the last of setting up and that one are never played.
+at that point. A client joined late goes on after it from the chunk the key
+frame names, or, where it names none, from the chunk its number implies (see
+`StreamChunk`).
 
 <!-- messages -->

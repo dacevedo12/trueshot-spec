@@ -1,7 +1,6 @@
 # The shop
 
-How the shop works: what fills it, what a client asks for, and what a server
-answers. Layouts live in `schema/`.
+What fills the shop, what a client asks for, and what a server answers.
 
 ## What fills it
 
@@ -10,7 +9,7 @@ a server decides is which of those items a match lets a player buy, and whether
 the shop has a player to show them to.
 
 A client sets its shop up for its own champion, from the champion's
-`CreateChampion` (the one carrying the client's own client id) and
+`CreateChampion` (the one carrying its own client id) and
 then that champion's `Loadout`. Until the `Loadout` arrives, its shop opens
 empty and too big for the screen: no items, no suggested items, no builds.
 Given its own champion's `Loadout`, it shows every item and the items it
@@ -47,8 +46,8 @@ sends `TutorialShopOpened`.
 
 A client asks to buy only where shopping is allowed (`ShopEnabled`), with the
 champion near its side's shop, dead, or allowed to shop from anywhere; where the
-item is one it sells, not barred, and priced, after any substitution, within
-the champion's gold; where the item is not one a player holds only one of and
+item is one the match sells and priced, after any substitution, within the
+champion's gold; where the item is not one a player holds only one of and
 holds already; and where a slot is free, unless the item can be used in the
 shop. For an item built from others, it asks only where the champion holds a
 free slot or a part of it, everything the item requires, and gold for what

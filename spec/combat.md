@@ -1,8 +1,6 @@
 # Combat
 
-Attacks, damage, death and coming back. A client asks its champion to attack
-with an order (see [Movement](movement.md)); everything after that is the
-server's to say. Spells are in [Spells](spells.md).
+Attacks, damage, death and coming back. Spells are in [Spells](spells.md).
 
 ## Attacking
 
@@ -17,7 +15,8 @@ unit attacks.
 >
 > After `StopAttack`, a client clears the unit's attack whatever the message's flags ask besides.
 
-A client asks its champion to attack with a `MoveOrder` naming the unit. What
+A client asks its champion to attack with a `MoveOrder` naming the unit (see
+[Movement](movement.md)). What
 the player then sees is what a server sends: the champion walking into range
 along a `WaypointGroup`, a swing for each `Attack`, a figure for each `Damage`,
 and the health bar moving as [replication](replication.md) states the health.
@@ -44,7 +43,7 @@ and the health bar moving as [replication](replication.md) states the health.
 What a unit is attacking, whatever it is, is `TargetUnit`, which draws the
 targeting beam. That a unit is attacking a champion is `TargetHeldChampion`,
 which marks the unit's health bar with an indicator, and clears the mark when it
-names no such champion. A server MUST send the two together. `HoverTarget` and
+names no such champion. Where both exist, a server MUST send the two together. `HoverTarget` and
 `HoverIndicator` set and show the unit a unit's hover indicator points at, and
 `AttackIndicators` shows or hides a unit's attack indicators.
 
@@ -52,9 +51,7 @@ A champion's clicks can be made to attack the ground with `GroundAttackMode`.
 
 ## Damage
 
-A server reports damage with `Damage`. A client shows the figure and nothing
-more: the health a client shows comes from [replication](replication.md), which
-this message leaves as it was.
+A server reports damage with `Damage`.
 
 <!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
@@ -64,8 +61,8 @@ this message leaves as it was.
 
 ## Death
 
-A champion's death is `ChampionDied`, any other unit's `UnitDied`, and a
-building's `BuildingDied`. Either of the first two can leave the unit standing
+A champion's death is `ChampionDied`, any other unit's `UnitDied`, a
+building's `BuildingDied`, and an inhibitor's `InhibitorDied`. Either of the first two can leave the unit standing
 as a husk rather than dead, without its death animation or death screen.
 `ForceDeath` puts a unit into its death.
 
@@ -78,10 +75,8 @@ as a husk rather than dead, without its death animation or death screen.
 
 How long a champion stays down is `DeathTimer`. Whether a client draws the world
 without colour while its champion is down is `GreyscaleWhenDead`. What led to a
-death is `DeathHistory`, which a client lays out for its player. A server MUST
-size each entry as its kind's layout states.
-
-An inhibitor's state, and how long it lasts, is `InhibitorState`.
+death is `DeathHistory`, which a client lays out for its player. An inhibitor's
+state, and how long it lasts, is `InhibitorState`.
 
 <!-- holds from 4.20.0.315 up to 4.21.0.0 -->
 
@@ -95,13 +90,9 @@ An inhibitor's state, and how long it lasts, is `InhibitorState`.
 dead champion back at a place of its choosing with `Respawned`, which keeps the
 champion's level, gold and spell ranks and restores its health.
 
-<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
+## Using a unit
 
-> **In 4.1–4.19**
->
-> ## Using a unit
->
-> A client sends `UseObject` as its player right-clicks a unit that can be
-> used, and also, for a unit its champion is attacking, as that unit changes side.
+A client sends `UseObject` as its player right-clicks a unit that can be used,
+and also, for a unit its champion is attacking, as that unit changes side.
 
 <!-- messages -->

@@ -7,13 +7,15 @@ server in any language, without reading another one. Each builds on the ones
 before it, so read them in order.
 
 A chapter holds for every client build covered, except a passage set apart and
-headed with ranges, which holds for those alone. Field layouts are not restated
-in prose: they live in [schema/](../schema/), machine readable, and each
-system's chapter ends with its messages and every layout each has.
+headed with ranges, which holds for those alone. What a chapter says of a
+message holds wherever that message has a layout: a build with no layout for a
+message has no such message, and nothing said of it applies there. Field
+layouts are not restated in prose: they live in [schema/](../schema/), machine
+readable, and each system's chapter ends with its messages and every layout each
+has. Where a field's meaning is undetermined, its note says so.
 
-Check your work against [conformance/](../conformance/) as you go, rather than
-at the end. How you structure what you build is your business. The vectors are
-the measure this specification provides of whether it is right.
+Check your work against [conformance/](../conformance/) as you go; its vectors
+are this specification's measure of a conforming server.
 
 If the specification does not answer something you need, do not fill the gap
 with a guess and carry on. That is a defect worth reporting, and
@@ -23,8 +25,7 @@ with a guess and carry on. That is a defect worth reporting, and
 
 The foundations come first, since everything else is written in their terms:
 
-1. [Transport](transport.md), which carries everything else. Vectors for it
-   live in `conformance/vectors/transport` and `conformance/vectors/cipher`.
+1. [Transport](transport.md), which carries everything else.
 2. [Messages](messages.md), which defines how a message is recorded, what a
    family puts in front of one, and how to read a file in `schema/messages`.
 
@@ -72,9 +73,3 @@ Then the systems a match is played with, in any order:
     tutorial.
 23. [Watching a match](spectating.md): streaming a match to a client that
     watches over its connection.
-
-The transport is ENet 1.2.5 except where [Transport](transport.md) says
-otherwise. Above the transport, the specification covers registering, the
-requests a client sends, the clock, what a server says happened, what changes
-about a unit, chat, and the seats before play. Where a field's meaning is
-undetermined, its note says so.

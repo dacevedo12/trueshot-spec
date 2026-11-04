@@ -17,7 +17,7 @@ are worked out.
 
 ## Directions
 
-A direction is carried as a vector, not as an angle, with one exception below.
+A direction is carried as a vector, not as an angle:
 
 - A unit's facing in the movement state `EnterSight` carries is a pair along
   the ground, x and z.
@@ -25,24 +25,29 @@ A direction is carried as a vector, not as an angle, with one exception below.
   `Camera` carry x, y and z.
 - `FaceDirection` carries x, y and z, and turns the unit to face along them,
   over the time it gives where its flags say so, and at once otherwise.
-- `CreateNeutral` carries a point to face rather than a direction: the monster
-  faces from where it stands toward that point, or along +z where the two are
-  the same.
-- A champion carries no facing of its own when created: it faces as its map's
-  table of spawn positions says (see `CreateChampion`).
 
-The exception is a prop of scenery: `MapProp` gives its turn as pitch, yaw and
-roll, in degrees, where yaw 0 faces +z and yaw 90 faces +x. An active prop
-reads the same three fields as a direction vector.
+A champion carries no facing of its own when created: it faces as its map's
+table of spawn positions says (see `CreateChampion`).
+
+<!-- holds from 1.0.0.104 up to 4.21.0.0 -->
+
+> **In 1.0.0.104–4.20**
+>
+> `CreateNeutral` carries a point to face rather than a direction: the monster
+> faces from where it stands toward that point, or along +z where the two are
+> the same.
+
+A prop of scenery carries angles instead: `MapProp` gives its turn as pitch,
+yaw and roll, in degrees, where yaw 0 faces +z and yaw 90 faces +x. For an
+active prop, the same three fields are a direction vector.
 
 ## Maps
 
-`VersionSync` names the map to load by number. Two maps carry the name
-Summoner's Rift and differ, so the number is what identifies a map, and the
-name is only a label. What a map holds, and what it gives that nothing on the
-wire carries, a client takes from its own data for that map (see [The client's data](data.md)): its buildings
-(see [Objects and identifiers](objects.md)), its spawn positions, and the
-origin its paths are measured from (see [Movement](movement.md)).
+`VersionSync` names the map to load by number. The name is only a label: two
+different maps share the name Summoner's Rift. A client takes a map's buildings
+(see [Objects and identifiers](objects.md)), spawn positions and path origin
+(see [Movement](movement.md)) from its own data (see
+[The client's data](data.md)).
 
 | `map` | Map                  | Origin of its paths |
 | ----- | -------------------- | ------------------- |

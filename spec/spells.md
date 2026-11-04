@@ -10,7 +10,8 @@ is casting and carries the whole casting: the spell, its level, its target, its
 timings and the missile it will send. A client shows the cast from that answer;
 `CastSpell` alone shows nothing. A server then sets how long until the slot is
 ready with `SpellCooldown`, and, for a spell with uses, how many are left with
-`SpellCharges`.
+`SpellCharges`. A client reports a cooldown it sets by itself with
+`CooldownSet`.
 
 Which slots a client lets its player cast from at all is a value of the
 champion's that [replication](replication.md) carries.
@@ -37,18 +38,19 @@ champion's that [replication](replication.md) carries.
 > level above zero, its castable bit is set, it is off cooldown, its cost is
 > within the champion's mana, and the champion's action state allows casting.
 
-A spell that charges, such as one held down before it is let go, charges where
-the cast answer leaves its flags clear. The client then sends
-`SpellCharge` with the cursor's position as the charge goes on, where the spell
-updates at all, and once more as the charge ends.
+A spell held down before it is let go charges where the cast answer leaves its
+flags clear. While it charges, a client sends `SpellCharge` with the cursor's
+position, and once more as the charge ends.
 
-A server ends a spell's aiming on a client with `CancelTargeting`, and sets
-which spells a unit casts by itself with `Autocast`.
+A server ends a spell's aiming on a client with `CancelTargeting`, shows and
+takes away a spell's targeter on a client's own champion with
+`SpellTargeterShown` and `SpellTargeterHidden`, and sets which spells a unit
+casts by itself with `Autocast`.
 
 ## Levelling
 
 A client asks to put a point into a spell with `UpgradeSpell`. A server answers
-with `SpellUpgraded`, on the clock channel, and a client shows the new level;
+with `SpellUpgraded`, and a client shows the new level;
 `SpellLevel` sets a level outright. The spell points a champion has to spend
 are what `LevelUp` carries. A server can set how far each
 spell can be raised, and at which champion levels, with `SpellRankLimits`.
@@ -67,7 +69,10 @@ spell can be raised, and at which champion levels, with `SpellRankLimits`.
 
 `SpellInSlot` puts a spell in a slot. `SpellSlotChanged` changes one thing about
 a spell already there: how it is aimed, its name, its ranges, its icon, or the
-units it is cast from. `SpellToggled` turns a spell on or off, `SpellNumbers`
+units it is cast from. `SpellTargetingChanged`, `SpellNameChanged`,
+`SpellRangeChanged`, `SpellIconChanged` and `SpellOffsetTargetChanged` each
+change one of these alone, and `SpellSlotChangedForOwner` changes a slot as
+`SpellSlotChanged` does, for the owner's client alone. `SpellToggled` turns a spell on or off, `SpellNumbers`
 fills in the numbers a client shows beside a unit's spells, and
 `SpellCostChanged` changes what a spell costs. A server can also draw rings
 around its player's cursor with `CursorRings`.
@@ -84,5 +89,8 @@ flies at with `MissileRetarget` and how fast with `MissileSpeed`, says what it
 struck with `MissileHits`, and is rid of it with `DestroyMissile`. A missile that
 bounces from unit to unit does so with `BounceMissile`, and a server can
 name in advance the units a chain missile will strike with `ChainTargets`.
+`MissileCourse` sets where a missile starts and how fast it flies, and restarts
+its flight. A client reports where a missile that flies straight is, and where
+it is going, with `MissileReport`, which a server MAY ignore.
 
 <!-- messages -->

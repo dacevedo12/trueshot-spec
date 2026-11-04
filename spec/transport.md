@@ -12,19 +12,15 @@ Four layers carry a message to a socket.
    channels.
 3. A cipher covers each channel payload.
 4. A message occupies the deciphered payload, opening with the header its
-   family carries.
+   family carries, as [Messages](messages.md) defines.
 
-Layers 1 and 2 are the transport, and this document covers them. The cipher and
-everything above it belong to the protocol, and this document covers the cipher
-because nothing above it can be read without one.
+This chapter covers layers 1 to 3.
 
 ## Stock ENet
 
 This document does not restate ENet. Connection setup, acknowledgement,
 sequence numbers, retransmission, throttling, and fragmentation behave as
-[ENet 1.2.5](http://enet.bespin.org) defines them. ENet is published as a C
-library with reference documentation rather than as a written protocol, so
-that library is what defines this behaviour.
+[ENet 1.2.5](http://enet.bespin.org) defines them.
 
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
@@ -39,11 +35,10 @@ that library is what defines this behaviour.
 
 > **In 3.02**
 >
-> Stock ENet 1.2.5 serves a client with one change: a client takes no datagram
-> larger than 996 bytes, so a server MUST NOT send one. The header and the
-> commands are the release's own. A client abandons a connection whose verify
-> connect states another channel count, or other throttle values, than its
-> connect asked for.
+> Stock ENet 1.2.5 serves a client once its transmission unit is clamped (see
+> below). The header and the commands are the release's own. A client abandons
+> a connection whose verify connect states another channel count, or other
+> throttle values, than its connect asked for.
 
 <!-- holds from 3.03.0.198 up to 4.21.0.0 -->
 
@@ -58,10 +53,9 @@ that library is what defines this behaviour.
 use the layout recorded for the version it serves, because a client establishes no
 connection under any other layout.
 
-The layout is the delta. Everything else about the transport is ENet, so a
-header built from the schema is necessary to reach a client and not sufficient
-on its own. Where a field's content is free rather than fixed, the note beside
-it in the schema says so.
+A header built from the schema is necessary to reach a client, and not
+sufficient on its own. Where a field's content is free rather than fixed, its
+note in the schema says so.
 
 `conformance/vectors/transport` holds a header with a sent time and one
 without.
@@ -69,9 +63,9 @@ without.
 A client discards any datagram shorter than the `minimumDatagram` constant of
 its range. A server MUST NOT send a shorter datagram.
 
-<!-- holds from 3.03.0.198 up to 3.13.0.399 -->
+<!-- holds from 3.03.0.198 up to 4.21.0.0 -->
 
-> **In 3.03–3.12**
+> **In 3.03–4.20**
 >
 > ## The connect command
 >
@@ -84,45 +78,38 @@ its range. A server MUST NOT send a shorter datagram.
 > session id is then the byte every header carries, and a server that reads
 > either field at ENet's width answers a client that never hears it.
 >
-> A client asks for 7 channels. A server's verify connect MUST state that count,
-> and the throttle interval, acceleration and deceleration the connect command
-> carried: a client abandons a connection whose verify connect states anything
-> else.
+> A server's verify connect MUST state the channel count, and the throttle
+> interval, acceleration and deceleration, the connect command carried: a
+> client abandons a connection whose verify connect states anything else.
+
+<!-- holds from 3.03.0.198 up to 3.13.0.399 -->
+
+> **In 3.03–3.12**
+>
+> A client asks for 7 channels.
 
 <!-- holds from 3.13.0.399 up to 4.21.0.0 -->
 
 > **In 3.13–4.20**
 >
-> ## The connect command
->
-> A client's connect command takes ENet's layout, except that two of its fields
-> carry one byte of meaning each. The peer id is the first of the two bytes ENet
-> gives it, and the session id is the first of the four. The bytes after each
-> carry nothing a server reads, and a client fills them with anything.
->
-> A server MUST take the peer id and the session id from those first bytes. The
-> session id is then the byte every header carries, and a server that reads
-> either field at ENet's width answers a client that never hears it.
->
-> A client asks for 8 channels. A server's verify connect MUST state that count,
-> and the throttle interval, acceleration and deceleration the connect command
-> carried: a client abandons a connection whose verify connect states anything
-> else.
+> A client asks for 8 channels.
 
 ## Maximum transmission unit
 
 A client asks for a transmission unit of 1400 bytes, and discards any datagram
 whose UDP payload, packet header included, exceeds the
-`maximumTransmissionUnit` constant of its range.
+`maximumTransmissionUnit` constant of its range. A server MUST NOT send a larger
+datagram.
 
-A server MUST accept a connection at a transmission unit no greater than that
-constant, by clamping the value the client asks for. Capping its own sending
-without clamping the negotiated value is not sufficient, because ENet derives
-fragment sizes from the negotiated value and still emits datagrams above the
-limit.
+<!-- holds from 1.0.0.127 up to 4.21.0.0 -->
 
-A server that does not clamp loses every message whose datagram exceeds the
-constant, while the handshake, whose datagrams are small, still completes.
+> **In 1.0.0.127–4.20**
+>
+> That constant is below what a client asks for. A server MUST accept a
+> connection at a transmission unit no greater than the constant, by clamping
+> the value the client asks for. Capping its own sending without clamping the
+> negotiated value is not sufficient, because ENet derives fragment sizes from
+> the negotiated value and still emits datagrams above the limit.
 
 ## The cipher
 
@@ -133,18 +120,11 @@ field it carries enciphered as proof. Everything after that is enciphered, on
 every channel and in both directions, the answer to that request included.
 
 `schema/protocol.json` records which cipher, in which mode, and the shape of a
-block. A standard implementation of Blowfish interoperates with a client.
+block. A server MUST use that cipher; a client accepts no other. A standard
+implementation of Blowfish interoperates with a client.
 
-Blowfish is an old algorithm, and a library that still carries it does not
-always offer it by default. OpenSSL 3.0 provides it only through a legacy provider
-that stays off unless something enables it, so anything built on that version
-reports the algorithm as unsupported until the provider is turned on.
-
-`conformance/vectors/cipher` covers a whole block, a payload with a tail too
-short to fill one, and a payload shorter than a block.
-
-There is no padding. Trailing bytes that do not fill a block travel unchanged,
-so a payload shorter than one block travels entirely in the clear.
+What a server sends carries no padding. Trailing bytes that do not fill a block
+travel unchanged, so a payload shorter than one block travels in the clear.
 
 <!-- holds from 0.8.13.26 up to 1.0.0.116 -->
 
@@ -152,17 +132,22 @@ so a payload shorter than one block travels entirely in the clear.
 >
 > A client pads what it sends to a whole number of blocks and enciphers all of
 > it. The bytes it adds follow the message's own fields to the end of the
-> payload and hold nothing in particular. What a client is sent carries no
-> padding.
+> payload and hold nothing in particular.
 
-A server MUST NOT substitute
-another cipher, because a client accepts no other.
+<!-- holds from 1.0.0.116 up to 4.21.0.0 -->
+
+> **In 1.0.0.116–4.20**
+>
+> What a client sends carries no padding either.
+
+`conformance/vectors/cipher` covers a whole block, a payload with a tail too
+short to fill one, and a payload shorter than a block.
 
 ### The key
 
 Both ends hold the key before a connection opens. Nothing on the wire
 negotiates it, and no exchange derives it. A client receives it as a launch
-argument, in base64.
+argument.
 
 <!-- holds from 0.8.13.26 up to 1.0.0.111 -->
 
@@ -172,18 +157,15 @@ argument, in base64.
 > argument, as they stand. A key both this and later builds take alike is
 > sixteen characters of text.
 
-Registration is what associates that key with a connection. The request
-carries a field enciphered under the key while the rest of it
-travels in the clear, and a server that deciphers that field and finds what it
-expects has learned that the other end holds the key. Nothing is negotiated,
-and nothing is derived: the exchange proves possession of something both ends
-already had, and a server MUST refuse a connection whose proof does not match.
+<!-- holds from 1.0.0.111 up to 4.21.0.0 -->
 
-`schema/messages` records the exchange itself, as `Register` and `Registered`.
+> **In 1.0.0.111–4.20**
+>
+> The argument holds the key in base64.
 
-## What a message is
-
-One deciphered channel payload. It opens with the header its family carries,
-and [Messages](messages.md) defines how a message is recorded.
+Registration associates the key with a connection. `Register` travels in the
+clear apart from one field enciphered under the key, and a server MUST refuse a
+connection whose deciphered field is not what it expects. `schema/messages`
+records the exchange, as `Register` and `Registered`.
 
 <!-- channels -->

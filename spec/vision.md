@@ -7,13 +7,24 @@ and what lies inside it is whatever the server has brought into view.
 ## Bringing a unit into view
 
 A server brings a unit into what a client's side can see with `EnterSight`. It
-states everything a client needs to draw the unit at once: its looks, its items,
-its shields, where it stands or which path it walks, and, in what follows, its
-health and resource. It can also carry whole messages of the game family, such
-as the `CreateTurret` or `CreateNeutral` that makes the unit, which a client
-reads as though each had arrived on its own. Where a layout marks the last
-parts of the body as present while bytes remain, a body ends early once the
-unit has nothing more to say, and those parts are left out from the end.
+states everything a client needs to draw the unit at once: its looks, its
+shields, where it stands or which path it walks, and, in what follows, its
+health and resource. A body MAY end early where its layout marks the remaining
+parts as present only while bytes remain.
+
+<!-- holds from 1.0.0.97 up to 4.21.0.0 -->
+
+> **In 1.0.0.97–4.20**
+>
+> `EnterSight` also states the unit's items.
+
+<!-- holds from 1.0.0.138 up to 4.21.0.0 -->
+
+> **In 1.0.0.138–4.20**
+>
+> `EnterSight` can also carry whole messages of the game family, such as the
+> `CreateTurret` or `CreateNeutral` that makes the unit, each taking effect as
+> though it had arrived on its own.
 
 A client does not draw a champion that no `EnterSight` has placed: given only
 its `CreateChampion`, a client shows the champion's portrait and spells and
@@ -27,8 +38,8 @@ whole side.
 ## Losing sight
 
 `LeaveSight`, `LeaveLocalSight` and `LeaveTeamSight` take a unit out of the
-matching view. Leaving a view hides a unit and does not remove it, so a client
-still holds it (see [Objects and identifiers](objects.md)). `LeaveLocalSight` naming a client's own champion changes
+matching view, and leave it held (see [Objects and identifiers](objects.md)).
+`LeaveLocalSight` naming a client's own champion changes
 nothing it shows. Particles come into and leave a side's view with
 `ParticleEnterTeamSight` and `ParticleLeaveTeamSight`.
 
@@ -49,7 +60,7 @@ has a client clear its map's cover over it.
 
 ## Drawing the fog
 
-`FogSet` and `FogToggled` concern how a client draws its fog of war.
+`FogSet` and `FogToggled` change how a client draws its fog of war.
 
 <!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
@@ -64,18 +75,6 @@ A client acts on a message about whichever unit it names, its own champion or
 another, so what a client knows is whatever a server sends it. A server
 decides, message by message, which clients to tell.
 
-Some messages exist in more than one form, each for its own audience, laid
-out alike:
-
-| For every client    | For the clients that can see the unit | For the unit's own client  |
-| ------------------- | ------------------------------------- | -------------------------- |
-| `UnitDied`          | `UnitDiedOnMap`                       |                            |
-| `InventorySnapshot` | `InventorySnapshotOnMap`              |                            |
-| `FloatingText`      | `FloatingTextOnMap`                   |                            |
-| `SpellSlotChanged`  |                                       | `SpellSlotChangedForOwner` |
-
-Which of these forms a range has is in its definitions.
-
 <!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
 > **In 4.1–4.19**
@@ -88,6 +87,16 @@ Which of these forms a range has is in its definitions.
 <!-- holds from 4.20.0.315 up to 4.21.0.0 -->
 
 > **In 4.20**
+>
+> Some messages exist in more than one form, each for its own audience, laid
+> out alike:
+>
+> | For every client    | For the clients that can see the unit | For the unit's own client  |
+> | ------------------- | ------------------------------------- | -------------------------- |
+> | `UnitDied`          | `UnitDiedOnMap`                       |                            |
+> | `InventorySnapshot` | `InventorySnapshotOnMap`              |                            |
+> | `FloatingText`      | `FloatingTextOnMap`                   |                            |
+> | `SpellSlotChanged`  |                                       | `SpellSlotChangedForOwner` |
 >
 > A server sends the narrower audience as a message of its own, and sends the
 > wider form only where every client is to know.
@@ -114,7 +123,7 @@ A client also acts on what it is told about a unit it holds but cannot see:
 - an animation plays on a hidden unit, which comes into view part way through
   it.
 
-A client holds whatever it is sent, shown or not. A server SHOULD NOT send a
+A server SHOULD NOT send a
 client what its side cannot see, beyond what keeps its world consistent.
 
 <!-- messages -->

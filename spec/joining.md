@@ -1,24 +1,22 @@
 # Joining a match
 
-What passes between a client and a server from the moment a client connects
-until play begins. The steps below come in this order, each
-following the one before it. Layouts live in `schema/`; this
-document says what follows what.
+What passes between a client and a server from connection until play begins,
+in order.
 
 ## Starting a client
 
 A client learns where to connect from its command line. It takes three
 arguments it needs nothing in, which can be empty, and then a fourth holding
 four words separated by single spaces: the server's IPv4 address, its UDP port,
-the key in base64, and the player id the client registers as. The client
+the key (see [Transport](transport.md)), and the player id the client registers
+as. The client
 connects to that address and port, registers as that player, and enciphers its
-proof under that key (see [Transport](transport.md)).
+proof under that key.
 
 ## Registering
 
-A client's first payload is `Register`, on the registration channel.
-[Transport](transport.md) says how its proof is enciphered, and the note on
-`Registered` says what a server answers with: one answer for every seat.
+A client's first payload is `Register`, on the registration channel. The note
+on `Registered` says what a server answers with: one answer for every seat.
 
 <!-- holds from 4.1.0.171 up to 4.21.0.0 -->
 
@@ -36,8 +34,7 @@ A client's first payload is `Register`, on the registration channel.
 > the client id, and takes the client id that answer carries as its own. Every
 > other answer tells it which client id stands for which player, which it uses for
 > names, sides and loading cards: the first answer for a client id stands, and a
-> later one for the same client id changes nothing. A seat a bot holds needs no
-> answer. A client takes an answer whenever it arrives, while loading or in play,
+> later one for the same client id changes nothing. A client takes an answer whenever it arrives, while loading or in play,
 > and one saying a client has dropped changes nothing it shows. An answer for its
 > own player id arriving during play has it send `ReconnectedInMatch`.
 
@@ -46,13 +43,12 @@ A client's first payload is `Register`, on the registration channel.
 A client then sends `QueryStatus` over and over. A server MUST answer each one
 with `QueryStatusAnswer`, including those that come after its first ready
 answer. While the answers say the server is not ready, a client stays on a
-black screen and keeps asking; once an answer says it is ready, the client goes
-on to the next step. A server that needs time before a match can begin answers
+black screen and keeps asking. A server that needs time before a match can begin answers
 that it is not ready until it is.
 
 ## Stating a build
 
-After an answer, a client sends `ClientVersion` once. A server answers with
+Once an answer says the server is ready, a client sends `ClientVersion` once. A server answers with
 `VersionSync`, which names the map to load and everyone at the match.
 
 <!-- holds from 4.1.0.171 up to 4.20.0.315 -->
@@ -70,8 +66,8 @@ After an answer, a client sends `ClientVersion` once. A server answers with
 > No bit of `features` is needed for a match to load, and a match with every bit
 > clear has none of the features. A client's own defaults for most of the bits
 > are in its file `DATA/CFG/defaults/GameFeatures.cfg`, one key each, though not
-> in the order of the bits; a server that wants a client's usual behaviour can start from it, and
-> leaves the bits that report metrics clear.
+> in the order of the bits. A server MAY start from those defaults, and leaves the
+> bits that report metrics clear.
 
 ## Taking a seat
 
@@ -84,32 +80,26 @@ each seat a player holds.
 > **In 4.1–4.19**
 >
 > Every seat a player holds needs its place in `Roster`, its `SeatName` and its
-> `SeatChampion`. A seat a bot holds needs none of them, since `VersionSync` lists
-> the bots. A client loads a seat it lacks them for as an empty card, shows a
-> named seat with no `Registered` or no `SeatLoadProgress` as not connected, and
-> shows no champion on a seat without its `SeatChampion`. A later `SeatName` or
-> `SeatChampion` replaces the one before it. A client whose own seat `Roster`
+> `SeatChampion`; a client shows a seat it lacks them for as an empty card. A
+> later `SeatName` replaces the one before it. A client whose own seat `Roster`
 > leaves out knows no side for its player, and announcements meant for allies do
 > not show.
 
 ## Loading
 
 A client reports how far loading has got with `LoadingProgress`, repeatedly
-through loading. A server answers each report with
-`SeatLoadProgress` on the transient channel. The answer carries the report's
-own figures under the seat that reported: its progress, the seconds it expects
-to take, its count of reports, and its ping. A client goes on reporting after
-its progress reaches 100, up to the moment it is ready.
+through loading. A server answers each report with `SeatLoadProgress` on the
+transient channel, carrying the report's figures under the seat that reported.
+A client goes on reporting after its progress reaches 100, until play begins.
 
 <!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
 > **In 4.1–4.19**
 >
 > A client waits on no other seat. Each `SeatLoadProgress` updates the card of
-> the seat it names, a client draws its own card only as a server returns its
-> own reports, and a seat a bot holds shows as loaded from `VersionSync` alone.
-> `SpawnStart`, `SpawnEnd` and `StartGame` are what move a client on, and
-> `StartGame` alone ends loading. A server that means its players to begin
+> the seat it names, and a client draws its own card only as a server returns its
+> own reports. `SpawnStart`, `SpawnEnd` and `StartGame` are what move a client
+> on, and `StartGame` alone ends the loading screen. A server that means its players to begin
 > together sends `StartGame` to none of them until every client has sent
 > `ClientReady`.
 
@@ -133,10 +123,8 @@ its progress reaches 100, up to the moment it is ready.
 >
 > ## The loading screen
 >
-> What a client draws while it loads comes from what it has been sent by
-> then. Until it sends `CharacterSelected`, a client takes only `VersionSync`,
-> `QueryStatusAnswer`, `MatchIdentity`, `SeatLoadProgress` and `GameEnded`
-> among the game messages, and drops the rest, `Loadout` included.
+> What a client draws while it loads comes from what it has been sent by then
+> (see the spawn run below for what it takes before `CharacterSelected`).
 >
 > A player's card is built from several messages. Its place on the screen is that seat's
 > place in the `Roster`, and its name is that player's `SeatName`. The
@@ -224,8 +212,8 @@ the `syncId` of the batch before it.
 A client sends `ClientReady` after `SpawnEnd` and after those answers, while it
 is still reporting its loading. A server MUST answer with `StartGame` followed
 by a `ClockSync`, and a client enters play once it has both. A server then
-sends `MatchStarted`, with other messages free to come between them. The first `ClockSync` carries 0, and so does `MatchStarted` (see
-[Time](time.md)).
+sends `MatchStarted`, with other messages free to come between them. The first
+`ClockSync` carries 0, and so does `MatchStarted` (see [Time](time.md)).
 
 <!-- holds from 4.1.0.171 up to 4.21.0.0 -->
 

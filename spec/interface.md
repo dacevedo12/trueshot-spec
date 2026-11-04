@@ -6,17 +6,22 @@ tutorial.
 
 ## The view
 
-A client reports where its view sits and which way it faces with `Camera`, and a
-server answers each report with `CameraAck`, naming it, as
-[Ordering](ordering.md) requires. A client tells a server what it has
+A client reports where its view sits and which way it faces with `Camera`,
+which a server answers (see [Ordering](ordering.md)). A client tells a server what it has
 selected with `SelectObject`, and as it locks its view to its champion or
 releases it with `CameraLock`.
 
 A server carries a client's view from one place to another with `MoveCamera`. A
 server can also lock or free a client's camera with `CameraLockSet`, which the
 client answers with `CameraLock`, and set a point a player's view keeps to with
-`CameraBehaviour`. Where its range defines `ZoomReport`, a client reports a view
-drawn further out than it allows with it, which a server MAY ignore.
+`CameraBehaviour`.
+
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
+>
+> A client reports a view drawn further out than it allows with `ZoomReport`; a
+> server MAY ignore it.
 
 <!-- holds from 0.9.25.24 up to 1.0.0.120 -->
 
@@ -37,8 +42,8 @@ drawn further out than it allows with it, which a server MAY ignore.
 
 ## Input
 
-A server can lock or unlock kinds of input, such as movement, spells or the
-shop, with `InputLock` and `InputLockToggled`.
+A server locks or unlocks kinds of input, such as movement, spells or the
+shop, with `InputLock` or `InputLockToggled`.
 
 <!-- holds from 0.9.22.16 up to 0.9.25.36 -->
 
@@ -63,13 +68,17 @@ shop, with `InputLock` and `InputLockToggled`.
 >
 > No message locks a client's input, in either direction.
 
-## The minimap and text on screen
+## The minimap, text and highlights
 
 `MinimapIcon` changes what a client draws for a unit on its map. A server can
 float text over a unit (`FloatingText`, `UnitText`), warn a player who seems
 to be away (`AfkWarning`), and tell a champion something has come about
 (`Situation`). `ClientEvent` tells a client something happened that concerns a
 unit; the sort it names settles what follows it.
+
+A server lights up parts of the screen and units with `HudHighlighted`,
+`HudHighlightToggled`, `UiHighlight`, `UnitHighlighted` and
+`UnitHighlightRemoved`.
 
 ## Tips, quests and objectives
 
@@ -88,13 +97,10 @@ and hide an objective panel (`ObjectiveShown`, `ObjectiveReplaced`,
 
 > **In 4.1–4.19**
 >
-> A client is in the tutorial where the version answer names the mode TUTORIAL on map 12.
+> A client is in the tutorial where `VersionSync` names the mode TUTORIAL on map 12.
 
 In the tutorial, a server can put lines of the client's own text in its chat
-(`TutorialChatLine`), open the tutorial's popup (`TutorialPopup`), which the
-client answers with `TutorialPopupClosed`, and light up parts of the screen and
-units (`HudHighlighted`, `HudHighlightToggled`, `UiHighlight`,
-`UnitHighlighted`, `UnitHighlightRemoved`); these highlights work outside the
-tutorial too.
+(`TutorialChatLine`) and open the tutorial's popup (`TutorialPopup`), which the
+client answers with `TutorialPopupClosed`.
 
 <!-- messages -->

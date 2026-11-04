@@ -1,10 +1,7 @@
 # Objects and identifiers
 
-How the things a match is about are named on the wire, and what a client holds
-of them: the identifiers every system uses, how they relate, and when an
-object comes into a client's world and leaves it. A message that names
-something a client does not hold does nothing, so a server's messages agree
-with each other only where they agree with this document.
+How the things a match is about are named on the wire, and when an object
+enters and leaves a client's world.
 
 ## The identifiers
 
@@ -15,11 +12,13 @@ with each other only where they agree with this document.
 | Seat       | a place in a side list | the order of a side's player ids in `Roster`                                          | an empty place    |
 | Net id     | 32 bits, unsigned      | chosen by the server for what it creates; worked out from a name for what a map holds | 0                 |
 | Node       | 8 bits, unsigned       | the owning client's client id plus 1, or 0 for an object no client owns               | 0                 |
-| Region id  | 32 bits, unsigned      | chosen by the server for each region, and carried by `RegionAdded`                    | (none stated)     |
+| Region id  | 32 bits, unsigned      | chosen by the server for each region, and carried by `RegionAdded`                    | none              |
 | Name hash  | 32 bits, unsigned      | worked out from the name of a spell, an effect, a particle or a bone                  | 0                 |
 
 A field's own definition gives its exact type. Where a field carries one of
 these, it carries it whole, at the width above.
+
+A server MUST give each player a client id from 0 to 252.
 
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
@@ -44,9 +43,6 @@ A champion carries the client id of the player it belongs to, or 4294967295
 for a bot's champion. The `CreateChampion` carrying a client's own client id
 makes that champion the client's own.
 
-A server MUST give each player a client id from 0 to 252. A client given a
-greater one fails as it connects.
-
 ## Net ids
 
 A net id names one object in a client's world: a unit, a missile, a particle,
@@ -61,120 +57,10 @@ naming a unit, an owner or a target carry one too.
   the same match, except in a soft reconnect (see below). A client that still
   holds the earlier object creates the new one but keeps the net id on the old
   one, so messages naming it reach the old object, and removing either leaves
-  the id naming neither. A server cannot always tell when a client has removed
-  an object, since some removals follow a client's own pace.
+  the id naming neither.
 
-`CreateTurret` gives a net id to a turret the map already holds, matched by
-name. Given to a turret that already has one, it gives it a second, and both
-name it.
-
-## Nodes
-
-A create message carries a node beside the object's net id. A server sends the
-owning client's client id plus 1, or 0 for an object no client owns. Nothing a
-player sees depends on it.
-
-## What a client holds
-
-A client holds an object from the message that creates it until the message,
-or the end of its life, that removes it. Creating messages are listed in
-[Units](units.md), and several can arrive inside the `EnterSight` that brings
-a unit into view. What a map holds, its buildings and the points minions come
-from, a client holds from the moment it loads the map.
-
-Leaving a client's sight removes nothing: `LeaveSight`, `LeaveLocalSight` and
-`LeaveTeamSight` hide an object, and it is held as before.
-
-<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
-
-> **In 4.1–4.19**
->
-> How each kind leaves a client's world:
->
-> | Kind                 | Removed                                                                                                                                                                               | Its death                                                               |
-> | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-> | Champion             | by `ChampionRemoved`, at once                                                                                                                                                         | kills it; it is held, and comes back                                    |
-> | Minion, monster, pet | by the client, once it has been dead for its death time, 4 seconds unless its character says otherwise; a new `SpawnPet` for an owner removes that owner's pet before it              | starts that wait; a death naming no killer does nothing                 |
-> | Turret               | by the client, 1.2 seconds after its death, or after the time its `SpawnTurret` gives; a lane turret is held where `VersionSync`'s features keep destroyed turrets (`turretsPersist`) | kills it                                                                |
-> | Inhibitor, nexus     | never                                                                                                                                                                                 | `BuildingDied` plays its death; it is held, and an inhibitor comes back |
-> | Missile              | by `DestroyMissile`, by its flight ending, or once its caster is removed                                                                                                              |                                                                         |
-> | Particle             | by `KillParticle`, naming it in its body, or once its effect ends                                                                                                                     |                                                                         |
-> | Follower             | once the unit it follows is removed                                                                                                                                                   |                                                                         |
-> | Marker               | only by a soft reconnect                                                                                                                                                              |                                                                         |
-> | Region               | by `RegionRemoved`, once its lifetime runs out (a lifetime of 0 never does), or once the unit it follows is removed                                                                   |                                                                         |
-
-Regions are named by region ids, apart from net ids.
-
-<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
-
-> **In 4.1–4.19**
->
-> A client fails on a `RegionMoved` naming a region it does not hold, one whose
-> lifetime has run out included, and a server MUST NOT send one. `RegionRemoved`
-> for a region a client does not hold does nothing.
-
-### A soft reconnect
-
-`SoftReconnect` rebuilds a client's world without a new connection, in two
-halves. The first marks every unit and every object kept until a checkpoint,
-inhibitors aside. A create message for a marked net id replaces the marked
-object rather than keeping the id on it. The second removes every object still
-marked. In between, a server sends again each object the client is to keep.
-Each range names the stage that marks; any other value removes.
-
-<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
-
-> **In 4.1–4.17**
->
-> The stage of `SoftReconnect` that marks is 0.
-
-<!-- holds from 4.18.0.271 up to 4.21.0.0 -->
-
-> **In 4.18–4.20**
->
-> The stage of `SoftReconnect` that marks is 1.
-
-## Messages about objects a client does not hold
-
-A message whose header names a net id the client does not hold, or whose body
-names one it needs, does nothing, and the client answers nothing for it.
-Creating messages are the exception, and so are these:
-
-- `SpawnPet` takes the net id in its header for the new pet, but does nothing
-  where the owner its body names is not held; `CreateFollower` does nothing
-  where the unit it follows is not held.
-- A `WaypointGroup` or `WaypointGroupAtSpeed` path for a unit not yet held is
-  applied once an object takes that net id, and its `WaypointAck` is sent as
-  usual. A server does not rely on this, and sends the creating message first.
-- A `Replication` batch skips the units a client does not hold, and goes
-  unanswered (see [Ordering](ordering.md)).
-- `SoundPlayed` naming an owner the client does not hold plays the sound with
-  no place.
-- `EnterSight` and `EnterLocalSight` act on the messages they carry whether or
-  not the client holds the unit they name.
-
-Nothing is held back for later, those paths aside: a message that arrives
-before the message creating what it names is lost. [Ordering](ordering.md)
-says what that requires of a server.
-
-<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
-
-> **In 4.1–4.19**
->
-> A client drops game messages until it sends `CharacterSelected`, apart from the
-> few [Joining a match](joining.md) lists.
-
-## A message naming its sender
-
-A message that names a player names them with a value the sender chose. A
-receiving client acts on that value, associating the message with a player and
-applying whatever the viewer has set for them, whatever connection the message
-arrived on.
-
-A server MUST therefore set any field naming the sender from the connection the
-message arrived on. A server MUST NOT copy the value the message carried. Relaying
-what arrived lets one player send messages that every other client attributes
-to another.
+A create message carries a node beside the object's net id. Nothing a player
+sees depends on it.
 
 ## Net ids of what a map holds
 
@@ -215,8 +101,7 @@ The identifiers with that top byte are these:
 
 The `Barracks` names above belong to inhibitors, whatever the name says. The
 minions a side sends out come from spawn points of their own, which are among
-the objects a map holds. On map 1 one of them is
-`__P_Order_Spawn_Barracks__C01`.
+the objects a map holds.
 
 <!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
@@ -226,9 +111,98 @@ the objects a map holds. On map 1 one of them is
 > point, and creates nothing for one naming an inhibitor such as
 > `Barracks_T1_C1`.
 
-No message creates these objects, so nothing a server sends could give a client
-a different identifier for one. A server MUST name each by the identifier its
-name gives.
+A server MUST name each object a map holds by the identifier its name gives.
+
+`CreateTurret` gives a net id to a turret the map already holds, matched by
+name. Given to a turret that already has one, it gives it a second, and both
+name it.
+
+## What a client holds
+
+A client holds an object from the message that creates it until the message,
+or the end of its life, that removes it. Creating messages are listed in
+[Units](units.md), and several can arrive inside the `EnterSight` that brings
+a unit into view. What a map holds, a client holds from the moment it loads the
+map.
+
+Leaving a client's sight removes nothing: `LeaveSight`, `LeaveLocalSight` and
+`LeaveTeamSight` hide an object, and it is held as before.
+
+<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
+
+> **In 4.1–4.19**
+>
+> How each kind leaves a client's world:
+>
+> | Kind                 | Removed                                                                                                                                                                               | Its death                                                               |
+> | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+> | Champion             | by `ChampionRemoved`, at once                                                                                                                                                         | kills it; it is held, and comes back                                    |
+> | Minion, monster, pet | by the client, once it has been dead for its death time, 4 seconds unless its character says otherwise; a new `SpawnPet` for an owner removes that owner's pet before it              | starts that wait; a death naming no killer does nothing                 |
+> | Turret               | by the client, 1.2 seconds after its death, or after the time its `SpawnTurret` gives; a lane turret is held where `VersionSync`'s features keep destroyed turrets (`turretsPersist`) | kills it                                                                |
+> | Inhibitor, nexus     | never                                                                                                                                                                                 | `BuildingDied` plays its death; it is held, and an inhibitor comes back |
+> | Missile              | by `DestroyMissile`, by its flight ending, or once its caster is removed                                                                                                              |                                                                         |
+> | Particle             | by `KillParticle`, naming it in its body, or once its effect ends                                                                                                                     |                                                                         |
+> | Follower             | once the unit it follows is removed                                                                                                                                                   |                                                                         |
+> | Marker               | only by a soft reconnect                                                                                                                                                              |                                                                         |
+> | Region               | by `RegionRemoved`, once its lifetime runs out (a lifetime of 0 never does), or once the unit it follows is removed                                                                   |                                                                         |
+
+<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
+
+> **In 4.1–4.19**
+>
+> A client fails on a `RegionMoved` naming a region it does not hold, one whose
+> lifetime has run out included, and a server MUST NOT send one. `RegionRemoved`
+> for a region a client does not hold does nothing.
+
+### A soft reconnect
+
+`SoftReconnect` rebuilds a client's world without a new connection, in two
+halves. The first marks every unit and every object kept until a checkpoint,
+inhibitors aside. A create message for a marked net id replaces the marked
+object rather than keeping the id on it. The second removes every object still
+marked. In between, a server sends again each object the client is to keep.
+Of the stages, one marks and any other removes.
+
+<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+
+> **In 4.1–4.17**
+>
+> The stage of `SoftReconnect` that marks is 0.
+
+<!-- holds from 4.18.0.271 up to 4.21.0.0 -->
+
+> **In 4.18–4.20**
+>
+> The stage of `SoftReconnect` that marks is 1.
+
+## Messages about objects a client does not hold
+
+A message whose header names a net id the client does not hold, or whose body
+names one it needs, does nothing, and the client answers nothing for it.
+Creating messages are the exception, and so are these:
+
+- `SpawnPet` takes the net id in its header for the new pet, but does nothing
+  where the owner its body names is not held; `CreateFollower` does nothing
+  where the unit it follows is not held.
+- A `WaypointGroup` or `WaypointGroupAtSpeed` path for a unit not yet held is
+  applied once an object takes that net id, and its `WaypointAck` is sent as
+  usual. A server SHOULD send the creating message first.
+- A `Replication` batch skips the units a client does not hold, and goes
+  unanswered (see [Ordering](ordering.md)).
+- `SoundPlayed` naming an owner the client does not hold plays the sound with
+  no place.
+- `EnterSight` and `EnterLocalSight` act on the messages they carry whether or
+  not the client holds the unit they name.
+
+Nothing is held back for later, those paths aside: a message that arrives
+before the message creating what it names is lost. [Ordering](ordering.md)
+says what that requires of a server.
+
+## A message naming its sender
+
+A server MUST set any field naming the sender from the connection the message
+arrived on, and MUST NOT copy the value the message carried; otherwise one
+player can send messages every other client attributes to another.
 
 ## Name hashes
 

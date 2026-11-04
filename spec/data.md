@@ -2,13 +2,9 @@
 
 What a server needs that no message carries, and takes from the files a client
 installs: the buildings and spawn points of a map, the ground units walk on,
-and the figures of champions, items and spells. A client reads the same files,
-so a server that takes its figures from elsewhere states a match the client
-draws differently.
-
-Nothing here is part of the protocol, and none of it is copied into this
-repository. This chapter says which files hold what a server needs and what
-in them it reads; their contents are the client's own.
+and the figures of champions, items and spells. None of this is carried on
+the wire. A server SHOULD take its figures from these files: a client draws a
+match from them, and figures from elsewhere disagree with what it shows.
 
 ## What a server reads
 
@@ -21,7 +17,7 @@ in them it reads; their contents are the client's own.
   paths and from which [Movement](movement.md) takes the origin of a path.
 - **The figures**: each champion's base statistics, each item's price and what
   it is built from, and each spell's cooldowns, costs and ranges, which a server
-  states through [replication](replication.md) and the casting record.
+  states through [replication](replication.md) and `SpellCast`.
 
 <!-- holds from 4.1.0.171 up to 4.18.0.271 -->
 
@@ -34,7 +30,7 @@ in them it reads; their contents are the client's own.
 > **In 4.18–4.19**
 >
 > The client has maps 1, 8, 10, 11 and 12. Map 11's buildings are not scene
-> objects: its object list below holds them, named by the same rules, with
+> objects: its `MapObjects.mob` holds them, named by the same rules, with
 > `Turret_OrderTurretShrine` and `Turret_ChaosTurretShrine` for its shrine
 > turrets, and the client creates them from it as it does scene objects. Map 11
 > has no ground grid.
@@ -55,9 +51,9 @@ in them it reads; their contents are the client's own.
 > holds. On map 1 the names run `Turret_T<side>_<lane>_<number>` for a lane
 > turret, `Barracks_T<side>_<lane>1` for an inhibitor and `HQ_T<side>` for a
 > nexus, side 1 for Order and 2 for Chaos and lanes `L`, `C` and `R`, with a
-> shrine turret for each side; the numbers differ between the sides, so a server
-> reads the names from the files. `CreateTurret` names a building by its name
-> with `_A` after it, and a client ignores one naming no building.
+> shrine turret for each side; the numbers differ between the sides, and a
+> server MUST take the names from the files. `CreateTurret` names a building by
+> its name with `_A` after it, and one naming no building does nothing.
 >
 > **Objects and spawn points.** `LEVELS/Map1/Scene/MapObjects.mob` holds the
 > objects that are not buildings: each side's spawn point, `__Spawn_T1` and
@@ -76,8 +72,8 @@ in them it reads; their contents are the client's own.
 > itself, facing along +X.
 >
 > **The ground.** A client walks units on `LEVELS/Map1/AIPath.aimesh_ngrid`, a
-> binary grid whose name the mode's navigation setting gives. Its layout is not
-> recorded here.
+> binary grid whose name the mode's navigation setting gives. Its layout is
+> unspecified.
 >
 > **The figures.** Each is an inibin file: a champion's base statistics in
 > `DATA/Characters/<Champion>/<Champion>.inibin`; an item, its price among its

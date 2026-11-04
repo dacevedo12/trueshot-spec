@@ -17,9 +17,8 @@ advance by a span of seconds.
 
 > **In 4.1–4.19**
 >
-> `GameSpeed` sets how fast a client's game clock runs (see
-> [Time](time.md)), from 0 to 10 times normal, and shows the new speed over
-> its champion; sent during a hold, it takes effect as the match resumes. A client
+> A client shows the speed `GameSpeed` sets over its champion; sent during a
+> hold, it takes effect as the match resumes. A client
 > changes nothing it shows for `StatTick`.
 
 ## Holding and resuming
@@ -74,8 +73,7 @@ side and sends `ClientFinished` once, except while playing a replay.
 
 A client leaving as one abandoning the match sends `Exit`: as its player quits
 or closes the window, as a reconnection fails, or on a server's `Shutdown`, which has it leave at once. A client also
-leaves at once on `BotKick` with the action that means leave, which each range
-names.
+leaves at once on `BotKick` with the action that means leave.
 
 <!-- holds from 4.1.0.171 up to 4.18.0.271 -->
 
@@ -113,13 +111,11 @@ loading leaves instead. `SoftReconnect` rebuilds a client's world without a new 
 > stands, and a `ClockSync`.
 >
 > A client dropped during play connects again to the same address and port, and
-> shows its player that it is reconnecting until it is back. It registers again,
-> sends `ReconnectedInMatch` as the answer naming it arrives, and goes on where it
+> shows its player that it is reconnecting until it is back. It goes on where it
 > was: it asks for no status and no version, loads nothing, and keeps every
-> seat, name and identifier it held. A server answers with `SoftReconnect`'s
-> stage that marks, then a message creating each unit the client is to hold,
-> each of which replaces whatever the client held under its identifier, then the
-> stage that sweeps away whatever is still marked. A server MUST NOT send
+> seat, name and identifier it held. A server answers with `SoftReconnect`,
+> sending between its two stages a message creating each unit the client is to
+> hold. A server MUST NOT send
 > `SpawnStart` to a client coming back this way: it returns the client to
 > spawning, from which only another `StartGame` brings it back into play.
 >
@@ -134,14 +130,11 @@ loading leaves instead. `SoftReconnect` rebuilds a client's world without a new 
 > an ally, or for anyone while it watches the match, and only notes it where it
 > names its own client.
 
-## Staying connected
-
-How long a client waits on a server that has gone quiet, and what it sends
-meanwhile, is each range's own.
-
 <!-- holds from 4.1.0.171 up to 4.21.0.0 -->
 
 > **In 4.1–4.20**
+>
+> ## Staying connected
 >
 > Once loading is done, a client gives up on a connection where a reliable
 > message it sent goes unacknowledged for 15 seconds. Where it has heard nothing
