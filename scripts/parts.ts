@@ -442,6 +442,9 @@ const opened = (here: readonly Ranged[]): string =>
 // Where each message's layout for a range sits in its book, for the map of
 // each range.
 const layoutAnchors = new Map<string, string>();
+// Which structs each book's appendix lays out, keyed by struct and the book's
+// first range.
+const structsShown = new Set<string>();
 function layoutsParts(season: readonly Range[]): Layouts {
   const channels: string[] = [];
   for (const { here, lines } of rendered(
@@ -577,6 +580,7 @@ function layoutsParts(season: readonly Range[]): Layouts {
     if (s === undefined) continue;
     const layouts = within(s.revisions, season);
     if (layouts.length === 0) continue;
+    structsShown.add(`${name}@${season[0]?.from ?? ""}`);
     structLines.push(
       "",
       `## \`${name}\` {#${structAnchor(name)}}`,
@@ -1003,10 +1007,11 @@ function changesPart(prev: Range, range: Range): string[] {
     const a = structAt(s, prev.from);
     const b = structAt(s, range.from);
     if (a === b) continue;
-    const name =
-      within(s.revisions, seasonRanges(range)).length > 0
-        ? `[\`${s.struct}\`](#${structAnchor(s.struct)})`
-        : `[\`${s.struct}\`](${repo}schema/types/${s.file})`;
+    const name = structsShown.has(
+      `${s.struct}@${seasonRanges(range)[0]?.from ?? ""}`,
+    )
+      ? `[\`${s.struct}\`](#${structAnchor(s.struct)})`
+      : `[\`${s.struct}\`](${repo}schema/types/${s.file})`;
     if (a === undefined)
       structLines.push(`- ${name} is in ${C} and not in ${P}.`);
     else if (b === undefined)
@@ -1027,8 +1032,14 @@ function changesPart(prev: Range, range: Range): string[] {
       const was = holdsFor(p, prev);
       const is = holdsFor(p, range);
       if (was === is) continue;
+      // Quoted here, a passage's links to the repository point at it whole.
       const opening = cell(
-        (p.body.split(/(?<=\.)\s/)[0] ?? "").replace(/\s+/g, " "),
+        (p.body.split(/(?<=\.)\s/)[0] ?? "")
+          .replace(/\s+/g, " ")
+          .replace(
+            /\]\(\.\.\/([^)]+)\)/g,
+            (_, path: string) => `](${repo}${path})`,
+          ),
       );
       passageLines.push(
         `- In the [${chapter}](${chapter}.md) chapter, a passage holds for ${is ? C : P} and not ${is ? P : C}: ${opening}`,
