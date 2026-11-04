@@ -5,7 +5,7 @@
   "note": "What a server sends to name the units a chain missile will strike in turn. The header names the missile. Where the client already holds the missile, the missile takes the list; otherwise the list waits for the caster's next chain missile.",
   "revisions": [
     {
-      "from": "0.9.22.18",
+      "from": "0.9.22.16",
       "until": "0.9.25.36",
       "channel": "events",
       "command": 103,
