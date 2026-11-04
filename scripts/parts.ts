@@ -215,9 +215,22 @@ interface FamilyDef {
 const familyRevisions = json<{
   revisions: (Ranged & { families: FamilyDef[] })[];
 }>("schema/families.json").revisions;
+// A note naming a chapter by its file names it by its title, linked.
+const titles = new Map(
+  chapters.map((c) => [
+    c,
+    /^# (.+)$/m.exec(
+      readFileSync(join(ROOT, "spec", `${c}.md`), "utf8"),
+    )?.[1] ?? c,
+  ]),
+);
 const noted = (x: unknown): string => {
   const n = (x as { note?: string }).note;
-  return n === undefined || n === "" ? "" : n;
+  return n === undefined || n === ""
+    ? ""
+    : n.replace(/`?spec\/([a-z-]+)\.md`?/g, (whole, c: string) =>
+        titles.has(c) ? `[${titles.get(c)}](${c}.md)` : whole,
+      );
 };
 const structLink = (s: string): string => `[${s}](#${structAnchor(s)})`;
 const valuesOf = (f: Field): string =>
@@ -361,39 +374,97 @@ function carriage(
 // an appendix of their own.
 interface Layouts {
   readonly channels: string[];
+  readonly protocol: string[];
   readonly families: string[];
   readonly systems: ReadonlyMap<string, string[]>;
   readonly structs: string[];
 }
+const protocolRevisions = json<{
+  revisions: (Ranged & {
+    endian: string;
+    cipher: {
+      name: string;
+      mode: string;
+      blockSize: number;
+      blockEndian: string;
+      keySize: number;
+      padded?: string[];
+      keyForm?: string;
+    };
+    transport: {
+      base: { name: string; version: string };
+      header: Field[];
+      constants: {
+        name: string;
+        value: number;
+        stock: number;
+        note?: string;
+      }[];
+    };
+  })[];
+}>("schema/protocol.json").revisions;
+// Revisions of a list that render alike for this season's ranges read as one,
+// under the ranges they hold for together.
+function rendered<T extends Ranged>(
+  revisions: readonly T[],
+  season: readonly Range[],
+  render: (r: T) => string[],
+): { here: Range[]; lines: string[] }[] {
+  const out: { here: Range[]; lines: string[] }[] = [];
+  for (const { revision, here } of within(revisions, season)) {
+    const lines = render(revision);
+    const last = out[out.length - 1];
+    if (
+      last !== undefined &&
+      JSON.stringify(last.lines) === JSON.stringify(lines)
+    )
+      last.here.push(...here);
+    else out.push({ here: [...here], lines });
+  }
+  return out;
+}
+
 // Where each message's layout for a range sits in its book, for the map of
 // each range.
 const layoutAnchors = new Map<string, string>();
 function layoutsParts(season: readonly Range[]): Layouts {
   const channels: string[] = [];
-  for (const { revision, here } of within(channelRevisions, season))
-    channels.push(
-      "",
-      `### ${inRanges(here, season)}`,
-      "",
+  for (const { here, lines } of rendered(
+    channelRevisions,
+    season,
+    (revision) => [
       "| Channel | Name | Family |",
       "| --- | --- | --- |",
       ...revision.channels.map((c) => `| ${c.id} | ${c.name} | ${c.family} |`),
-    );
+    ],
+  ))
+    channels.push("", `### ${inRanges(here, season)}`, "", ...lines);
+  const protocol: string[] = [];
+  for (const { here, lines } of rendered(protocolRevisions, season, (r) => [
+    `${r.transport.base.name} ${r.transport.base.version} beneath; ${r.endian}-endian fields. ${r.cipher.name} in ${r.cipher.mode} mode over ${r.cipher.blockSize}-byte blocks, each read ${r.cipher.blockEndian}-endian, under a ${r.cipher.keySize}-byte key given ${r.cipher.keyForm === "text" ? "as text" : "in base64"}. ${(r.cipher.padded ?? []).includes("clientToServer") ? "A client pads what it sends to whole blocks." : "Neither end pads."}`,
+    "",
+    ...table(r.transport.header),
+    "",
+    "| Constant | Value | Stock ENet | What it is |",
+    "| --- | --- | --- | --- |",
+    ...r.transport.constants.map(
+      (c) => `| ${c.name} | ${c.value} | ${c.stock} | ${cell(c.note ?? "")} |`,
+    ),
+  ]))
+    protocol.push("", `### ${inRanges(here, season)}`, "", ...lines);
   const families: string[] = [
     "",
     "A field present when `remaining` is set is present exactly where the payload has bytes left at that point.",
   ];
-  for (const { revision, here } of within(familyRevisions, season))
-    families.push(
+  for (const { here, lines } of rendered(familyRevisions, season, (revision) =>
+    revision.families.flatMap((f) => [
       "",
-      `### ${inRanges(here, season)}`,
-      ...revision.families.flatMap((f) => [
-        "",
-        `The ${f.name} family:`,
-        "",
-        ...table(f.header),
-      ]),
-    );
+      `The ${f.name} family:`,
+      "",
+      ...(f.header.length === 0 ? ["No header."] : table(f.header)),
+    ]),
+  ))
+    families.push("", `### ${inRanges(here, season)}`, ...lines);
   const held = new Set<string>();
   const hold = (fields: readonly Field[]): void => {
     for (const f of fields) {
@@ -507,7 +578,13 @@ function layoutsParts(season: readonly Range[]): Layouts {
         ),
       );
   }
-  return { channels, families, systems: bySystem, structs: structLines };
+  return {
+    channels,
+    protocol,
+    families,
+    systems: bySystem,
+    structs: structLines,
+  };
 }
 
 // 2. What differs between two ranges.
@@ -565,8 +642,17 @@ function fieldChanges(
   const old = new Map(a.map((f) => [f.path, f]));
   const now = new Map(b.map((f) => [f.path, f]));
   const out: string[] = [];
+  // A field inside one that comes or goes with it is said with its root.
+  const under = (path: string, roots: ReadonlySet<string>): boolean =>
+    [...roots].some(
+      (r) =>
+        r !== path && (path.startsWith(`${r}.`) || path.startsWith(`${r}[]`)),
+    );
+  const came = new Set(b.filter((f) => !old.has(f.path)).map((f) => f.path));
+  const went = new Set(a.filter((f) => !now.has(f.path)).map((f) => f.path));
   for (const f of b) {
     const was = old.get(f.path);
+    if (was === undefined && under(f.path, came)) continue;
     if (was === undefined) {
       const after = b[b.indexOf(f) - 1];
       out.push(
@@ -627,7 +713,7 @@ function fieldChanges(
         );
   }
   for (const f of a)
-    if (!now.has(f.path))
+    if (!now.has(f.path) && !under(f.path, went))
       out.push(`\`${f.path}\` is in ${P} and not in ${C}.`);
   const kept = (list: Flat[], other: Map<string, Flat>): string[] =>
     list.filter((f) => other.has(f.path)).map((f) => f.path);
@@ -895,7 +981,10 @@ function changesPart(prev: Range, range: Range): string[] {
     const a = structAt(s, prev.from);
     const b = structAt(s, range.from);
     if (a === b) continue;
-    const name = `[\`${s.struct}\`](${repo}schema/types/${s.file})`;
+    const name =
+      within(s.revisions, seasonRanges(range)).length > 0
+        ? `[\`${s.struct}\`](#${structAnchor(s.struct)})`
+        : `[\`${s.struct}\`](${repo}schema/types/${s.file})`;
     if (a === undefined)
       structLines.push(`- ${name} is in ${C} and not in ${P}.`);
     else if (b === undefined)
@@ -1104,7 +1193,7 @@ function aboutPart(season: readonly Range[]): string[] {
     "",
     ...patchRows(season),
     "",
-    "What the chapters say of a message says nothing of a patch that has no layout for it. The [index of messages](#appendix-index) finds any message, and [the appendix on patches](#appendix-patches) gives each patch's checks and how it differs from the one before it.",
+    "What the chapters say of a message says nothing of a patch that has no layout for it. A message the chapters name with a link is one this book has; one named without a link is one no build of this book has. The [index of messages](#appendix-index) finds any message, and [the appendix on patches](#appendix-patches) gives each patch's checks, every message it carries, and how it differs from the one before it.",
   ];
 }
 
@@ -1114,6 +1203,7 @@ for (const s of held) {
   put(`${s.folder}/about.md`, aboutPart(own));
   const layouts = layoutsParts(own);
   put(`${s.folder}/channels.md`, layouts.channels);
+  put(`${s.folder}/protocol.md`, layouts.protocol);
   put(`${s.folder}/families.md`, layouts.families);
   put(`${s.folder}/structs.md`, layouts.structs);
   for (const [system, lines] of layouts.systems)

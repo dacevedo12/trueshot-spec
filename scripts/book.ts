@@ -21,10 +21,10 @@ import {
 } from "node:fs";
 import { join } from "node:path";
 import { chapters, holdsFor, passagesOf } from "./passages.ts";
-import { ranges as coveredRanges } from "./schema.ts";
+import { covers, ranges as coveredRanges } from "./schema.ts";
 import type { Ranged } from "./schema.ts";
 import { seasonOf, seasons } from "./seasons.ts";
-import { spanName } from "./tables.ts";
+import { anchorOf, messages, spanName } from "./tables.ts";
 
 type Range = Ranged;
 
@@ -137,19 +137,45 @@ function chapterFor(
   let text = read(`spec/${chapter}.md`);
   for (const p of passagesOf(chapter)) {
     const here = own.filter((r) => holdsFor(p, r));
+    // A passage that holds for every range of the book reads as the rest of
+    // the chapter does there.
     text = text.replace(
       p.whole,
       here.length === 0
         ? ""
-        : [`**In ${spanName(here, ranges)}**`, "", p.body]
-            .join("\n")
-            .split("\n")
-            .map((l) => (l === "" ? ">" : `> ${l}`))
-            .join("\n"),
+        : here.length === own.length
+          ? `${p.body}\n`
+          : [`**In ${spanName(here, ranges)}**`, "", p.body]
+              .join("\n")
+              .split("\n")
+              .map((l) => (l === "" ? ">" : `> ${l}`))
+              .join("\n"),
     );
   }
+  // A message the book has is named by a link to its section; one no build of
+  // the book has is named in code alone.
+  const held = new Set(
+    messages
+      .filter((m) =>
+        m.revisions.some((r) => own.some((x) => covers(r, x.from))),
+      )
+      .map((m) => m.message),
+  );
+  text = text
+    .split(/(^```[\s\S]*?^```$)/m)
+    .map((piece) =>
+      piece.startsWith("```")
+        ? piece
+        : piece.replace(
+            /(?<![[`\w])`([A-Z][A-Za-z0-9]+)`(?![\]`(])/g,
+            (whole, name: string) =>
+              held.has(name) ? `[\`${name}\`](#${anchorOf(name)})` : whole,
+          ),
+    )
+    .join("");
   const marks: [RegExp, string, string][] = [
     [MESSAGES, "Messages", `messages/${chapter}`],
+    [/^<!-- protocol -->$/m, "Packet headers and constants", "protocol"],
     [/^<!-- channels -->$/m, "Channels", "channels"],
     [/^<!-- families -->$/m, "Family headers", "families"],
   ];

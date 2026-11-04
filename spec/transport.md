@@ -49,9 +49,11 @@ sequence numbers, retransmission, throttling, and fragmentation behave as
 
 ## The packet header
 
-`schema/protocol.json` gives the layout, one per version range. A server MUST
-use the layout recorded for the version it serves, because a client establishes no
-connection under any other layout.
+Each range has its own header, below with the constants it is read under. A
+server MUST use the layout of the version it serves, because a client
+establishes no connection under any other layout.
+
+<!-- protocol -->
 
 A header built from the schema is necessary to reach a client, and not
 sufficient on its own. Where a field's content is free rather than fixed, its
