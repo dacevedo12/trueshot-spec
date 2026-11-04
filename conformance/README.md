@@ -24,7 +24,9 @@ expected to import. Read the files, feed them to your own code, and compare.
   `another`, `a-third` and so on.
 - A vector that declares a version ends its name with `-on-` and the range
   that version falls in, written as the first two parts of the range's first
-  build joined by a hyphen: `with-sent-time-on-4-20`, `one-on-1-0`.
+  build joined by a hyphen, or the whole build where its patch is named by
+  it, as a beta's or a 1.0 patch's is: `with-sent-time-on-4-20`,
+  `one-on-1-0-0-126`.
 
 Every file declares a `subject` saying which of the five it is, and a `note`
 in plain words. `schema/meta/vector.json` is the machine readable definition of
