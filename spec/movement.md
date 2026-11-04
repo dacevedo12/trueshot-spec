@@ -111,9 +111,9 @@ channel, and the client returns that group's `syncId` in a `WaypointAck` (see
 `WaypointGroup` carrying back the path the order brought, unchanged, moves the
 champion along the route the client proposed.
 
-<!-- holds from 1.0.0.61 up to 1.0.0.63 -->
+<!-- holds from 1.0.0.58 up to 1.0.0.63 -->
 
-> **In 1.0.0.61**
+> **In 1.0.0.58–1.0.0.61**
 >
 > An order carries no path: only its destination, in world floats. A server
 > works out the route itself and sends it in the `WaypointGroup` that answers

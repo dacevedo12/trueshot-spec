@@ -5,6 +5,21 @@
   "note": "What a server sends to open the run of units a client is about to be told about. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "1.0.0.58",
+      "until": "1.0.0.61",
+      "channel": "events",
+      "command": 5,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "count",
+          "type": "u8",
+          "note": "A client reads nothing here. A server writes zero."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.61",
       "until": "1.0.0.104",
       "channel": "events",

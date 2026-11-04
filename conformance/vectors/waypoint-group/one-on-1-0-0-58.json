@@ -1,0 +1,35 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "WaypointGroup",
+  "version": "1.0.0.58",
+  "note": "Laid out as a 1.0.0.58 client takes it.",
+  "bytes": "790000000000000002000000010002000100004000007a440080bb44000096440000c844",
+  "fields": {
+    "command": 121,
+    "padding": "000000",
+    "netId": 0,
+    "syncId": 2,
+    "movementCount": 1,
+    "movements": [
+      {
+        "header": {
+          "pointCount": 2
+        },
+        "path": {
+          "unit": 1073741825,
+          "points": [
+            {
+              "x": 1000,
+              "z": 1500
+            },
+            {
+              "x": 1200,
+              "z": 1600
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

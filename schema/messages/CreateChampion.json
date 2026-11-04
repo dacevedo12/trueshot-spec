@@ -5,7 +5,7 @@
   "note": "What a server sends to put a champion on the field. It arrives on its own and also inside EnterSight. The header carries zero or names the object this is about; a client accepts either.",
   "revisions": [
     {
-      "from": "1.0.0.61",
+      "from": "1.0.0.58",
       "until": "1.0.0.105",
       "channel": "events",
       "command": 6,
