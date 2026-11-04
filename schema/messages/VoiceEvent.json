@@ -5,6 +5,23 @@
   "note": "What a server sends to play a voice event. The header carries zero.",
   "revisions": [
     {
+      "from": "0.9.22.18",
+      "until": "0.9.25.21",
+      "channel": "events",
+      "command": 132,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "event",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The event's name, ended by a zero byte. A client reads nothing after it."
+        }
+      ]
+    },
+    {
       "from": "0.9.25.21",
       "until": "0.9.25.36",
       "channel": "events",

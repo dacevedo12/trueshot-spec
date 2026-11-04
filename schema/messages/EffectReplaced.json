@@ -5,6 +5,31 @@
   "note": "What a server sends to put a lasting effect in a slot that already holds one, keeping the slot rather than taking the old one off first. The header names the unit carrying the effect, which can differ from the caster named inside.",
   "revisions": [
     {
+      "from": "0.9.22.18",
+      "until": "0.9.25.21",
+      "channel": "events",
+      "command": 38,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which of the unit's effect slots. A client fails where it is above 31."
+        },
+        {
+          "name": "lasts",
+          "type": "f32",
+          "note": "How long it runs from now, in seconds. A client applies a value below zero as given; a server sends zero or more."
+        },
+        {
+          "name": "caster",
+          "type": "u32",
+          "note": "The unit that put it there. Where the client holds no such unit, it leaves the effect with no caster."
+        }
+      ]
+    },
+    {
       "from": "0.9.25.21",
       "until": "1.0.0.82",
       "channel": "events",

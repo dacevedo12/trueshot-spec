@@ -1,0 +1,23 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "SurrenderFailed",
+  "system": "votes",
+  "note": "What a server sends when a surrender vote fails, to say how long until another can be called. The header carries zero.",
+  "revisions": [
+    {
+      "from": "0.9.22.18",
+      "until": "0.9.25.21",
+      "channel": "events",
+      "command": 161,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "secondsLeft",
+          "type": "f32",
+          "note": "How long until a vote can be called again, in seconds. A client announces it."
+        }
+      ]
+    }
+  ]
+}

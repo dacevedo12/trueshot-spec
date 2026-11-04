@@ -5,6 +5,31 @@
   "note": "What a server sends to make a shop element blink once, as a tutorial does. The header carries zero.",
   "revisions": [
     {
+      "from": "0.9.22.18",
+      "until": "0.9.25.21",
+      "command": 158,
+      "channel": "events",
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "element",
+          "type": "u8",
+          "note": "A shop element blinks once, where the shop window is open. Element 0 is the buy button, 1 the sell button, 2 the shop item number names, and 3 the item second names within the category number names. A client fails for any larger value."
+        },
+        {
+          "name": "number",
+          "type": "u8",
+          "note": "Which of the element's entries."
+        },
+        {
+          "name": "second",
+          "type": "u8",
+          "note": "For the shop's element 3, which item within the category; a client reads nothing here otherwise."
+        }
+      ]
+    },
+    {
       "from": "0.9.25.21",
       "until": "0.9.25.36",
       "command": 158,
