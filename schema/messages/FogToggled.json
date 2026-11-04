@@ -5,7 +5,7 @@
   "note": "What a server sends to turn the drawing of the fog of war off where it is on, or on where it is off. It changes only what is drawn: what can be seen is still what a server sends. It carries nothing of its own. The header carries zero.",
   "revisions": [
     {
-      "from": "1.0.0.25",
+      "from": "0.9.25.36",
       "until": "1.0.0.63",
       "channel": "events",
       "command": 125,

@@ -2,6 +2,9 @@
   "note": "The seasons the generated site groups ranges of versions by. A season runs from the first patch of its ranked play up to the next season's first, so the preseason before a season belongs to the season it closes. A range belongs to the season its first build falls in. Each season links the League of Legends Wiki's list of its patches, and each range the notes of every patch it spans, at patchNotes with {patch} replaced by the page's name: V and the patch's name, or the name patchPages gives where the wiki names a page otherwise. The wiki lists a preseason with the season after it.",
   "patchNotes": "https://wiki.leagueoflegends.com/en-us/{patch}",
   "patchPages": {
+    "0.9.25.36": "V0.9.25.34",
+    "1.0.0.25": "V1.0.0.32",
+    "1.0.0.28": "V1.0.0.32",
     "3.1": "V3.01",
     "3.2": "V3.02",
     "3.3": "V3.03",
@@ -9,8 +12,15 @@
   },
   "seasons": [
     {
+      "name": "Beta",
+      "folder": "beta",
+      "until": "1.0.0.0",
+      "patches": "https://wiki.leagueoflegends.com/en-us/Patch#Beta_Stage"
+    },
+    {
       "name": "Season 1",
       "folder": "season-1",
+      "from": "1.0.0.0",
       "until": "1.0.0.130",
       "patches": "https://wiki.leagueoflegends.com/en-us/Patch/Season_One"
     },
