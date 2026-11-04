@@ -280,6 +280,35 @@ const inRanges = (here: readonly Range[], season: readonly Range[]): string =>
     ? "In every range of this book"
     : `In ${spanName(here, ranges)}`;
 
+type MessageRevision = (typeof messages)[number]["revisions"][number];
+// How a layout travels: its command, channel, sender and delivery. Where the
+// revisions sharing a layout number it differently, each number names its
+// ranges.
+const carried = (r: MessageRevision): string =>
+  `on ${r.channel}${(r.alsoOn ?? []).map((o) => `, or on ${o.channel} ${o.reliability}`).join("")}, ${by(r) === "both" ? "sent by either side" : `sent by the ${by(r)}`}, ${r.reliability}`;
+function carriage(
+  rs: readonly MessageRevision[],
+  season: readonly Range[],
+): string[] {
+  const first = rs[0] as MessageRevision;
+  const how = new Set(rs.map(carried));
+  const commands = new Set(rs.map((r) => r.command));
+  if (how.size === 1 && commands.size === 1)
+    return [`Command ${first.command} ${carried(first)}.`];
+  const where = (r: MessageRevision): string =>
+    spanName(
+      season.filter((x) => covers(r, x.from)),
+      ranges,
+    );
+  if (how.size === 1)
+    return [
+      `Command ${rs.map((r) => `${r.command} in ${where(r)}`).join(", ")}; ${carried(first)}.`,
+    ];
+  return rs.map(
+    (r) => `- In ${where(r)}: command ${r.command} ${carried(r)}.`,
+  );
+}
+
 // The parts of a book drawn from the definitions: the channels, for the
 // Transport chapter; the family headers, for the Messages chapter; each
 // system's messages, for the system's chapter; and the structs they hold, for
@@ -351,23 +380,42 @@ function layoutsParts(season: readonly Range[]): Layouts {
         "",
         `[Definition](${repo}schema/messages/${m.file}).`,
       );
+      // Neighbouring revisions that lay the body out alike, and differ only in
+      // how the message is numbered or carried, share one layout.
+      const groups: { revisions: MessageRevision[]; here: Range[] }[] = [];
+      let last = "";
       for (const { revision: r, here: rs } of within(m.revisions, season)) {
         hold(r.fields);
+        const body = JSON.stringify([noted(r), table(r.fields)]);
+        const open = groups[groups.length - 1];
+        if (open !== undefined && body === last) {
+          open.revisions.push(r);
+          open.here.push(...rs);
+        } else groups.push({ revisions: [r], here: [...rs] });
+        last = body;
+      }
+      for (const { revisions: rs, here } of groups) {
+        const r = rs[0] as MessageRevision;
         lines.push(
           "",
-          `#### ${inRanges(rs, season)}`,
+          `#### ${inRanges(here, season)}`,
           "",
-          `Command ${r.command} on ${r.channel}${(r.alsoOn ?? []).map((o) => `, or on ${o.channel} ${o.reliability}`).join("")}, ${by(r) === "both" ? "sent by either side" : `sent by the ${by(r)}`}, ${r.reliability}. This layout holds from ${r.from} up to ${r.until ?? "the end"}.`,
+          ...carriage(rs, season),
           ...[noted(r)].filter((n) => n !== "").flatMap((n) => ["", n]),
           "",
           ...table(r.fields),
           ...vectorLinks(
-            vectors.filter(
-              (v) =>
-                v.message === m.message &&
-                v.version !== undefined &&
-                covers(r, v.version),
-            ),
+            vectors
+              .filter(
+                (v) =>
+                  v.message === m.message &&
+                  v.version !== undefined &&
+                  rs.some((x) => covers(x, v.version as string)) &&
+                  season.some((x) => covers(x, v.version as string)),
+              )
+              .sort((a, b) =>
+                compare(a.version as string, b.version as string),
+              ),
           ),
         );
       }
@@ -556,6 +604,36 @@ const gapAt = (m: (typeof messages)[number], i: number): boolean => {
   return before >= 0 && after < ranges.length;
 };
 
+// Commands that move together: a run of messages on one channel whose
+// commands all shift by the same amount, as a renumbering moves them.
+function shifts(
+  moved: readonly { link: string; channel: string; a: number; b: number }[],
+): string[] {
+  const sorted = [...moved].sort(
+    (x, y) => x.channel.localeCompare(y.channel) || x.a - y.a,
+  );
+  const runs: (typeof sorted)[] = [];
+  for (const m of sorted) {
+    const run = runs[runs.length - 1];
+    const last = run?.[run.length - 1];
+    if (
+      run !== undefined &&
+      last !== undefined &&
+      last.channel === m.channel &&
+      last.b - last.a === m.b - m.a
+    )
+      run.push(m);
+    else runs.push([m]);
+  }
+  const span = (lo: number, hi: number): string =>
+    lo === hi ? `${lo}` : `${lo}–${hi}`;
+  return runs.map((run) => {
+    const first = run[0] as (typeof run)[number];
+    const last = run[run.length - 1] as (typeof run)[number];
+    return `| ${first.channel} | ${span(first.a, last.a)} | ${span(first.b, last.b)} | ${run.map((m) => m.link).join(", ")} |`;
+  });
+}
+
 function changesPart(prev: Range, range: Range): string[] {
   const i = ranges.indexOf(range);
   const P = rangeName(prev);
@@ -610,7 +688,8 @@ function changesPart(prev: Range, range: Range): string[] {
   const notesOnly: string[] = [];
   const unrecorded: string[] = [];
   const again: string[] = [];
-  const renumbered: string[] = [];
+  const renumbered: { link: string; channel: string; a: number; b: number }[] =
+    [];
   // A message this book holds links to its section; one only another
   // season's book holds, to its definition.
   const inBook = new Set(
@@ -662,9 +741,12 @@ function changesPart(prev: Range, range: Range): string[] {
       a.command !== b.command &&
       same(strip(a), strip({ ...b, command: a.command }))
     ) {
-      renumbered.push(
-        `| ${def(m.file, m.message)} | ${b.channel} | ${a.command} | ${b.command} |`,
-      );
+      renumbered.push({
+        link: def(m.file, m.message),
+        channel: b.channel,
+        a: a.command,
+        b: b.command,
+      });
       continue;
     }
     const out: string[] = [];
@@ -743,11 +825,11 @@ function changesPart(prev: Range, range: Range): string[] {
     renumbered.length === 0
       ? []
       : [
-          "These differ only in their command:",
+          "These differ only in their command. Each row is a run of commands moved by the same amount:",
           "",
-          `| Message | Channel | ${P} | ${C} |`,
+          `| Channel | ${P} | ${C} | Messages |`,
           "| --- | --- | --- | --- |",
-          ...renumbered,
+          ...shifts(renumbered),
         ],
   );
   section(

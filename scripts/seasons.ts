@@ -48,24 +48,31 @@ const folderOf = (r: Ranged): string =>
 // from its first build's to its last checked build's. A 1.0 patch is named
 // by its whole build.
 function patchesOf(r: Ranged): { name: string; url: string }[] {
-  const link = (name: string): { name: string; url: string } => ({
-    name,
-    url: data.patchNotes.replace(
-      "{patch}",
-      data.patchPages?.[name] ?? `V${name}`,
-    ),
-  });
+  // Named as the wiki names its page, so a build the wiki files under another
+  // patch shows that patch's name.
+  const link = (name: string): { name: string; url: string } => {
+    const page = data.patchPages?.[name] ?? `V${name}`;
+    return {
+      name: page.replace(/^V/, ""),
+      url: data.patchNotes.replace("{patch}", page),
+    };
+  };
+  // A page named twice is linked once.
+  const once = (
+    links: { name: string; url: string }[],
+  ): { name: string; url: string }[] =>
+    links.filter((l, i) => links.findIndex((x) => x.url === l.url) === i);
   const inside = [r.from, ...checked.filter((b) => covers(r, b))].sort(
     compare,
   );
   if (r.from.startsWith("0.") || r.from.startsWith("1.0."))
-    return [...new Set(inside)].map(link);
+    return once([...new Set(inside)].map(link));
   const [major = "", first = ""] = r.from.split(".");
   const last = (inside[inside.length - 1] ?? r.from).split(".")[1] ?? first;
   const out: { name: string; url: string }[] = [];
   for (let minor = Number(first); minor <= Number(last); minor += 1)
     out.push(link(`${major}.${minor}`));
-  return out;
+  return once(out);
 }
 
 export { folderOf, patchesOf, seasonOf, seasons };

@@ -204,7 +204,16 @@ for (const season of seasons) {
       part(season.folder, "about"),
     ].join("\n"),
   );
-  for (const c of chapters)
+  // A system's chapter stays out of a book none of whose ranges carry any of
+  // its messages: there is nothing in it the book's builds do.
+  const shown = chapters.filter(
+    (c) =>
+      !(
+        systems.includes(c) &&
+        part(season.folder, `messages/${c}`).trim() === ""
+      ),
+  );
+  for (const c of shown)
     pages.set(`${c}.md`, chapterFor(c, season.folder, own));
   pages.set("structs.md", part(season.folder, "structs"));
   pages.set("patches.md", part(season.folder, "patches"));
@@ -216,7 +225,7 @@ for (const season of seasons) {
     "",
     `[${title("about.md")}](about.md)`,
     "",
-    ...chapters.map((c) => `1. [${title(`${c}.md`)}](${c}.md)`),
+    ...shown.map((c) => `1. [${title(`${c}.md`)}](${c}.md)`),
     "",
     "# Appendices",
     "",
@@ -226,6 +235,17 @@ for (const season of seasons) {
   ].join("\n");
   const dir = join(ROOT, "dist", "books", season.folder);
   mkdirSync(join(dir, "src"), { recursive: true });
+  // A link to a chapter the book leaves out keeps only its words.
+  const left = chapters.filter((c) => !shown.includes(c));
+  for (const [page, text] of pages)
+    pages.set(
+      page,
+      text.replace(
+        /\[([^\]]+)\]\(([a-z-]+)\.md(?:#[^)]*)?\)/g,
+        (whole, words: string, c: string) =>
+          left.includes(c) ? words : whole,
+      ),
+    );
   for (const [page, text] of anchored(pages))
     writeFileSync(join(dir, "src", page), `${text.trim()}\n`);
   writeFileSync(join(dir, "src", "SUMMARY.md"), `${summary}\n`);
