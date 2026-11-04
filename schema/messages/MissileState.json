@@ -5,6 +5,85 @@
   "note": "What a server sends to say where a missile is and what it is doing. The header names the unit casting, as the casting inside does.",
   "revisions": [
     {
+      "from": "0.9.22.14",
+      "until": "0.9.22.16",
+      "channel": "events",
+      "command": 63,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where the missile is, along one ground axis, in world units."
+        },
+        {
+          "name": "atY",
+          "type": "f32",
+          "note": "Where the missile is, in height, in world units."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where the missile is, along the other ground axis, in world units."
+        },
+        {
+          "name": "keptX",
+          "type": "f32",
+          "note": "A value along one ground axis that a line missile keeps and reports back in MissileReport. Any other missile reads nothing here."
+        },
+        {
+          "name": "keptY",
+          "type": "f32",
+          "note": "The same, in height."
+        },
+        {
+          "name": "keptZ",
+          "type": "f32",
+          "note": "The same, along the other ground axis."
+        },
+        {
+          "name": "directionX",
+          "type": "f32",
+          "note": "The way a line missile travels, along one ground axis: the client scales it by the missile's speed and adds it to the position. Any other missile reads nothing here."
+        },
+        {
+          "name": "directionY",
+          "type": "f32",
+          "note": "The same, in height."
+        },
+        {
+          "name": "directionZ",
+          "type": "f32",
+          "note": "The same, along the other ground axis."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "flag",
+              "width": 1,
+              "note": "Changes how a line missile is set up; any other missile reads nothing here."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "cast",
+          "type": "struct",
+          "struct": "SpellCast",
+          "note": "The casting that threw it."
+        }
+      ],
+      "note": "A client sets every missile at atX to atZ, and reads the rest of the prefix for a line missile alone."
+    },
+    {
       "from": "0.9.22.16",
       "until": "1.0.0.58",
       "channel": "events",

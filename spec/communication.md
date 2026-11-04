@@ -39,9 +39,9 @@ also set a champion's skin music (`ThemeMusic`), drive the music
 (`MusicCue`), mute or unmute a kind of sound (`VolumeMuted`) and fade sound
 effects out (`FadeSounds`).
 
-<!-- holds from 0.9.22.16 up to 0.9.25.21 -->
+<!-- holds from 0.9.22.14 up to 0.9.25.21 -->
 
-> **In 0.9.22.16–0.9.22.18**
+> **In 0.9.22.14–0.9.22.18**
 >
 > A client answers no voice event: `VoiceEvent` carries only the event's name.
 

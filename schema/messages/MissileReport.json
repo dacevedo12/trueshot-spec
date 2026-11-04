@@ -5,6 +5,73 @@
   "note": "What a client sends to report where a missile that flies straight is and where it is going. A server need do nothing with it. The header names the missile.",
   "revisions": [
     {
+      "from": "0.9.22.14",
+      "until": "0.9.22.16",
+      "channel": "requests",
+      "command": 63,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where the missile is, in world units, along one ground axis."
+        },
+        {
+          "name": "atY",
+          "type": "f32",
+          "note": "Where the missile is, in world units, in height."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where the missile is, in world units, along the other ground axis."
+        },
+        {
+          "name": "keptX",
+          "type": "f32",
+          "note": "What the line missile keeps from MissileState's keptX."
+        },
+        {
+          "name": "keptY",
+          "type": "f32",
+          "note": "The same, in height."
+        },
+        {
+          "name": "keptZ",
+          "type": "f32",
+          "note": "The same, along the other ground axis."
+        },
+        {
+          "name": "directionX",
+          "type": "f32",
+          "note": "The way the line missile travels, along one ground axis."
+        },
+        {
+          "name": "directionY",
+          "type": "f32",
+          "note": "The same, in height."
+        },
+        {
+          "name": "directionZ",
+          "type": "f32",
+          "note": "The same, along the other ground axis."
+        },
+        {
+          "name": "flag",
+          "type": "u8",
+          "note": "The line missile's flag, as MissileState carried it."
+        },
+        {
+          "name": "cast",
+          "type": "bytes",
+          "size": 128,
+          "note": "A description of the cast the missile belongs to, with whatever stood in memory after it up to the field's end."
+        }
+      ],
+      "note": "A client sends it always 173 bytes long, header included. A line missile writes every field; any other missile writes only atX to atZ and the cast, and leaves the rest unwritten."
+    },
+    {
       "from": "0.9.22.16",
       "until": "1.0.0.63",
       "channel": "requests",

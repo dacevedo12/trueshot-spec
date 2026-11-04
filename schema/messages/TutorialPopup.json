@@ -5,6 +5,23 @@
   "note": "What a server sends to open the tutorial's popup: a caption, this text and a single button, which a client answers with TutorialPopupClosed. A client has one such popup; a second message replaces its text. The header carries zero.",
   "revisions": [
     {
+      "from": "0.9.22.14",
+      "until": "0.9.22.16",
+      "channel": "events",
+      "command": 144,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "A key into the client's own text for the popup's body. A client copies the whole field first, so the text ends at a zero byte within it."
+        }
+      ]
+    },
+    {
       "from": "0.9.22.16",
       "until": "0.9.25.36",
       "channel": "events",

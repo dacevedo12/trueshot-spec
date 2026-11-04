@@ -5,7 +5,7 @@
   "note": "What a server sends to stop a unit where it stands. The header names the unit. A client applies it only where its sync id is not older than the last the unit took, counting a wrap: this message, PathWithSpeed and Path share one count per unit, starting at -1.",
   "revisions": [
     {
-      "from": "0.9.22.16",
+      "from": "0.9.22.14",
       "until": "1.0.0.110",
       "channel": "events",
       "command": 24,

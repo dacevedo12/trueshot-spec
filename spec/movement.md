@@ -63,9 +63,9 @@ taken up only once it has moved something.
 A client leaves the flag clear in what it sends, so a token travels only
 from a server.
 
-<!-- holds from 0.9.22.16 up to 1.0.0.61 -->
+<!-- holds from 0.9.22.14 up to 1.0.0.61 -->
 
-> **In 0.9.22.16–1.0.0.58**
+> **In 0.9.22.14–1.0.0.58**
 >
 > A path carries no flag and no token, so nothing relocates a unit: every path
 > is walked.
@@ -118,9 +118,9 @@ channel, and the client returns that group's `syncId` in a `WaypointAck` (see
 `WaypointGroup` carrying back the path the order brought, unchanged, moves the
 champion along the route the client proposed.
 
-<!-- holds from 0.9.22.16 up to 1.0.0.63 -->
+<!-- holds from 0.9.22.14 up to 1.0.0.63 -->
 
-> **In 0.9.22.16–1.0.0.61**
+> **In 0.9.22.14–1.0.0.61**
 >
 > An order carries no path: only its destination, in world floats. A server
 > works out the route itself and sends it in the `WaypointGroup` that answers
