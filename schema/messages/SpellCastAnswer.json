@@ -5,6 +5,23 @@
   "note": "What a server sends to say a unit is casting a spell. The header names the unit casting, as the casting inside does.",
   "revisions": [
     {
+      "from": "1.0.0.28",
+      "until": "1.0.0.58",
+      "channel": "events",
+      "command": 36,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "cast",
+          "type": "struct",
+          "struct": "SpellCast",
+          "note": "Where what the casting throws leaves from, along the other ground axis, in world units."
+        }
+      ],
+      "note": "There is no byte for ending a charge: the casting follows the sync id. A client fails where the casting's size is wrong, for it then casts with no spell."
+    },
+    {
       "from": "1.0.0.58",
       "until": "1.0.0.61",
       "channel": "events",

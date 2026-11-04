@@ -4,6 +4,58 @@
   "note": "What one unit is told to do, in the compact shape: a path of points on the ground plane, each after the first stated against the one before it. Other shapes of movement exist, and which one a payload holds is settled by the message carrying it rather than by anything inside the movement.",
   "revisions": [
     {
+      "from": "1.0.0.28",
+      "until": "1.0.0.58",
+      "fields": [
+        {
+          "name": "header",
+          "type": "bits",
+          "size": 2,
+          "bits": [
+            {
+              "name": "pointCount",
+              "width": 16,
+              "note": "How many points the path holds. A client takes none as no path and reads nothing more of the message. It sets no upper bound, and reads a count from 32768 up as negative, which no server sends."
+            }
+          ]
+        },
+        {
+          "name": "path",
+          "type": "record",
+          "fields": [
+            {
+              "name": "unit",
+              "type": "u32",
+              "note": "The unit the path belongs to."
+            },
+            {
+              "name": "points",
+              "type": "array",
+              "count": "header.pointCount",
+              "note": "Every point of the path, each stated in world units. A client reads them even for a unit it does not hold, and takes each point's height from the ground.",
+              "items": {
+                "name": "point",
+                "type": "record",
+                "fields": [
+                  {
+                    "name": "x",
+                    "type": "f32",
+                    "note": "Along one ground axis, in world units."
+                  },
+                  {
+                    "name": "z",
+                    "type": "f32",
+                    "note": "Along the other, in world units."
+                  }
+                ]
+              }
+            }
+          ],
+          "note": "Everything the movement carries after its point count."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.58",
       "until": "1.0.0.61",
       "fields": [

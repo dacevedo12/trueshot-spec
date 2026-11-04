@@ -1,0 +1,41 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "WaypointGroupAtSpeed",
+  "version": "1.0.0.28",
+  "note": "Laid out as a 1.0.0.28 client takes it.",
+  "bytes": "7a000000000000000500000001000200010000400080a2430000000000007a440080bb4400007a440080bb44000096440000c844",
+  "fields": {
+    "command": 122,
+    "padding": "000000",
+    "netId": 0,
+    "syncId": 5,
+    "movementCount": 1,
+    "movements": [
+      {
+        "header": {
+          "pointCount": 2
+        },
+        "path": {
+          "unit": 1073741825,
+          "terms": {
+            "speed": 325,
+            "gravity": 0,
+            "fromX": 1000,
+            "fromZ": 1500
+          },
+          "points": [
+            {
+              "x": 1000,
+              "z": 1500
+            },
+            {
+              "x": 1200,
+              "z": 1600
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
