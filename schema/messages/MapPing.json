@@ -5,6 +5,37 @@
   "note": "What a client sends to mark a point on the map for the others. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "0.8.13.26",
+      "until": "0.9.22.14",
+      "channel": "requests",
+      "command": 25,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the player pinging."
+        },
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Where on the map, along one ground axis, in world units."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "The height of the place pinged, in world units."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Where on the map, along the other ground axis, in world units."
+        }
+      ],
+      "note": "A client also sends it from the alert button on its HUD, naming its champion's own place and writing nothing in particular where the target goes."
+    },
+    {
       "from": "0.9.22.14",
       "until": "1.0.0.96",
       "channel": "requests",

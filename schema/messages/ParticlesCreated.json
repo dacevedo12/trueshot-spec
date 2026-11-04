@@ -5,6 +5,75 @@
   "note": "What a server sends to start drawing sets of particles. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "0.8.13.26",
+      "until": "0.9.22.14",
+      "channel": "events",
+      "command": 21,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "particle",
+          "type": "u32",
+          "note": "The name this particle answers to, so later messages can name it."
+        },
+        {
+          "name": "flags",
+          "type": "u16",
+          "note": "Bit 3 changes how the particle hangs off boundTo; a server writes the others zero."
+        },
+        {
+          "name": "unknown",
+          "type": "bytes",
+          "size": 12,
+          "note": "What this holds is not recorded. A server writes zero."
+        },
+        {
+          "name": "boundTo",
+          "type": "u32",
+          "note": "The unit the particle hangs off, or zero."
+        },
+        {
+          "name": "effect",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The effect's name. Where it is empty, a client makes nothing. Written out in full and padded with zero bytes to the width above."
+        },
+        {
+          "name": "unknownB",
+          "type": "u32",
+          "note": "What this holds is not recorded. A server writes zero."
+        },
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where it starts, along one ground axis, in world units."
+        },
+        {
+          "name": "atY",
+          "type": "f32",
+          "note": "Its height."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Along the other ground axis."
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit the particle is aimed at, or zero."
+        },
+        {
+          "name": "unknownC",
+          "type": "u32",
+          "note": "What this holds is not recorded. A server writes zero."
+        }
+      ],
+      "note": "One particle, made from its effect's name."
+    },
+    {
       "from": "0.9.22.14",
       "until": "1.0.0.110",
       "channel": "events",

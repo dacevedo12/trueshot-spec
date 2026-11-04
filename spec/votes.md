@@ -19,9 +19,9 @@ where the vote stands with `SurrenderStatus`. A server can say whether a champio
 > Where a vote fails, `SurrenderFailed` says how long until another can be
 > called.
 
-<!-- holds from 0.9.22.14 up to 0.9.22.16 -->
+<!-- holds from 0.8.13.26 up to 0.9.22.16 -->
 
-> **In 0.9.22.14**
+> **In 0.8.13.26–0.9.22.14**
 >
 > There is no surrender vote: a client sends and takes no message about one.
 

@@ -1,0 +1,15 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ClockConvergence",
+  "version": "0.8.13.26",
+  "note": "Laid out as a 0.8.13.26 client takes it.",
+  "bytes": "4f004f0000000000000020410000803e",
+  "fields": {
+    "echo": 79,
+    "command": 79,
+    "netId": 0,
+    "clientTime": 10,
+    "roundTrip": 0.25
+  }
+}

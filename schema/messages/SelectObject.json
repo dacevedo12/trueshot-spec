@@ -5,6 +5,26 @@
   "note": "What a client sends as the object it has selected changes. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "0.8.13.26",
+      "until": "0.9.22.14",
+      "channel": "requests",
+      "command": 65,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the client selecting: the one its Registered gave it. Zero is a client id like any other rather than an absence."
+        },
+        {
+          "name": "selected",
+          "type": "u32",
+          "note": "A client writes zero here."
+        }
+      ]
+    },
+    {
       "from": "0.9.22.14",
       "until": "1.0.0.74",
       "channel": "requests",

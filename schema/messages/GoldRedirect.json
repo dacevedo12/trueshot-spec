@@ -5,6 +5,21 @@
   "note": "What a server sends to send the gold a unit earns to another. The header names the unit.",
   "revisions": [
     {
+      "from": "0.8.13.26",
+      "until": "0.9.22.14",
+      "channel": "events",
+      "command": 92,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit that receives the gold."
+        }
+      ]
+    },
+    {
       "from": "0.9.22.14",
       "until": "1.0.0.63",
       "channel": "events",

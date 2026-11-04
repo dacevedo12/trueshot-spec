@@ -1,0 +1,18 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "CameraLock",
+  "version": "0.8.13.26",
+  "note": "Laid out as a 0.8.13.26 client sends it.",
+  "bytes": "40004000000000000000000000",
+  "fields": {
+    "echo": 64,
+    "command": 64,
+    "netId": 0,
+    "state": {
+      "locked": 0,
+      "unused": 0
+    },
+    "clientId": 0
+  }
+}

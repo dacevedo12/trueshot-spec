@@ -1,0 +1,27 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ClientEvent",
+  "version": "0.8.13.26",
+  "note": "Laid out as a 0.8.13.26 client takes it.",
+  "bytes": "6e006e001f0000403519000040000000000000000000000000",
+  "fields": {
+    "echo": 110,
+    "command": 110,
+    "netId": 1073741855,
+    "event": 53,
+    "subject": 1073741849,
+    "damage": null,
+    "spent": null,
+    "critical": null,
+    "spree": null,
+    "earned": null,
+    "heal": null,
+    "effect": null,
+    "assist": {
+      "lastHit": 0,
+      "physical": 0,
+      "magical": 0
+    }
+  }
+}

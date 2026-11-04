@@ -5,6 +5,28 @@
   "note": "What a server sends once a client has said which build it runs: whether the two agree, which map to load, who is at the match, and everything else settled before play. The header names no object: it carries zero.",
   "revisions": [
     {
+      "from": "0.8.13.26",
+      "until": "0.9.22.14",
+      "channel": "events",
+      "command": 72,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "agreement",
+          "type": "u8",
+          "note": "Must be 1: any other value has the client report a build mismatch and leave. For 0 it also shows both versions."
+        },
+        {
+          "name": "build",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "The server's version, ended by a zero byte. A client keeps at most 512 bytes of it."
+        }
+      ]
+    },
+    {
       "from": "0.9.22.14",
       "until": "1.0.0.74",
       "channel": "events",

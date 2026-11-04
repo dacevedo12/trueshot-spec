@@ -437,27 +437,29 @@ class Match {
       this.#reach("seated");
     });
 
-    s.on("LoadingProgress", (m: Message) => {
-      const status = m.fields["status"] as Values | null;
-      const state = m.fields["state"] as Values | null;
-      s.send(
-        "SeatLoadProgress",
-        {
-          clientId: seat.clientId,
-          player: seat.playerId,
-          progress: Number(m.fields["percent"] ?? 0),
-          secondsLeft: Number(m.fields["eta"] ?? 0),
-          count: Number(status?.["count"] ?? 0),
-          ping: Number(status?.["ping"] ?? 0),
-          status: {
+    // A build that reports no loading progress has nothing here to answer.
+    if (this.layouts.messages.has("LoadingProgress"))
+      s.on("LoadingProgress", (m: Message) => {
+        const status = m.fields["status"] as Values | null;
+        const state = m.fields["state"] as Values | null;
+        s.send(
+          "SeatLoadProgress",
+          {
+            clientId: seat.clientId,
+            player: seat.playerId,
+            progress: Number(m.fields["percent"] ?? 0),
+            secondsLeft: Number(m.fields["eta"] ?? 0),
             count: Number(status?.["count"] ?? 0),
             ping: Number(status?.["ping"] ?? 0),
+            status: {
+              count: Number(status?.["count"] ?? 0),
+              ping: Number(status?.["ping"] ?? 0),
+            },
+            state: { ready: Number(state?.["loaded"] ?? 0) },
           },
-          state: { ready: Number(state?.["loaded"] ?? 0) },
-        },
-        ANSWER,
-      );
-    });
+          ANSWER,
+        );
+      });
 
     s.on("CharacterSelected", () => {
       this.#reach("selected");

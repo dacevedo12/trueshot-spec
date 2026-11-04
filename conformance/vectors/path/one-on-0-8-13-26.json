@@ -1,0 +1,24 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "Path",
+  "version": "0.8.13.26",
+  "note": "Laid out as a 0.8.13.26 client takes it.",
+  "bytes": "50005000010000400100000000007a440000fa440080bb4400401c45",
+  "fields": {
+    "echo": 80,
+    "command": 80,
+    "netId": 1073741825,
+    "syncId": 1,
+    "points": [
+      {
+        "x": 1000,
+        "z": 2000
+      },
+      {
+        "x": 1500,
+        "z": 2500
+      }
+    ]
+  }
+}

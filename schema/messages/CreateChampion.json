@@ -5,6 +5,56 @@
   "note": "What a server sends to put a champion on the field. It arrives on its own and also inside EnterSight. The header carries zero or names the object this is about; a client accepts either.",
   "revisions": [
     {
+      "from": "0.8.13.26",
+      "until": "0.9.22.14",
+      "channel": "events",
+      "command": 6,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "champion",
+          "type": "u32",
+          "note": "The name the champion answers to, so later messages can name it."
+        },
+        {
+          "name": "node",
+          "type": "u8",
+          "note": "Which network node the object belongs to, in a field of its own."
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the player the champion belongs to, or 4294967295 where it belongs to none, as a bot's does. A client takes the champion carrying its own client id as its own."
+        },
+        {
+          "name": "side",
+          "type": "u8",
+          "note": "Nonzero for side 100, zero for side 200."
+        },
+        {
+          "name": "flag",
+          "type": "u8",
+          "note": "Passed to the champion as it is made; what it changes is not recorded. A server writes zero."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 40,
+          "note": "What the seat holding it is called. Written out in full and padded with zero bytes to the width above."
+        },
+        {
+          "name": "asset",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "The champion it is, ended by a zero byte; a client keeps at most 64 bytes of it."
+        }
+      ],
+      "note": "The champion takes the id in champion. A client stands it at its side's one spawn point."
+    },
+    {
       "from": "0.9.22.14",
       "until": "0.9.25.21",
       "channel": "events",

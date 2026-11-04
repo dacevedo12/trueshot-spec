@@ -1,0 +1,25 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "EnterSight",
+  "version": "0.8.13.26",
+  "note": "Laid out as a 0.8.13.26 client takes it.",
+  "bytes": "3b003b0001000040030000000000000000000000000000000000000000",
+  "fields": {
+    "echo": 59,
+    "command": 59,
+    "netId": 1073741825,
+    "view": {
+      "movementState": {
+        "movementKind": 3,
+        "syncId": 0,
+        "movement": null,
+        "movementAtSpeed": null,
+        "atX": 0,
+        "atZ": 0,
+        "facingX": 0,
+        "facingZ": 0
+      }
+    }
+  }
+}

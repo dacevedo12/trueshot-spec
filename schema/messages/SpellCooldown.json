@@ -5,6 +5,45 @@
   "note": "What a server sends to set how long until one of a unit's spells is ready. The header names the unit this is about.",
   "revisions": [
     {
+      "from": "0.8.13.26",
+      "until": "0.9.22.14",
+      "channel": "events",
+      "command": 33,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unread",
+          "type": "bytes",
+          "size": 5,
+          "note": "A client reads nothing here. A server writes zero."
+        },
+        {
+          "name": "which",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "slot",
+              "width": 7,
+              "note": "Which slot."
+            },
+            {
+              "name": "summonerSpell",
+              "width": 1,
+              "note": "Set where the slot counts among the summoner slots, so that 0 and 1 name those two."
+            }
+          ]
+        },
+        {
+          "name": "timeLeft",
+          "type": "f32",
+          "note": "How long is left, in seconds."
+        }
+      ],
+      "note": "It carries no whole cooldown to show the time left against."
+    },
+    {
       "from": "0.9.22.14",
       "until": "1.0.0.110",
       "channel": "events",

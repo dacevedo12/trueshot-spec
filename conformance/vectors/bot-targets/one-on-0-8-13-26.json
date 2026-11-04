@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "BotTargets",
+  "version": "0.8.13.26",
+  "note": "Laid out as a 0.8.13.26 client takes it.",
+  "bytes": "6c006c00010000400100004000000000000000000000000000000000",
+  "fields": {
+    "echo": 108,
+    "command": 108,
+    "netId": 1073741825,
+    "targets": [1073741825, 0, 0, 0, 0]
+  }
+}

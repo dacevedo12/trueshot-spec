@@ -5,6 +5,38 @@
   "note": "What a server sends to say where a missile is and what it is doing. The header names the unit casting, as the casting inside does.",
   "revisions": [
     {
+      "from": "0.8.13.26",
+      "until": "0.9.22.14",
+      "channel": "events",
+      "command": 67,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where the missile is, along one ground axis, in world units."
+        },
+        {
+          "name": "atY",
+          "type": "f32",
+          "note": "Where the missile is, in height, in world units."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where the missile is, along the other ground axis, in world units."
+        },
+        {
+          "name": "cast",
+          "type": "struct",
+          "struct": "SpellCast",
+          "note": "The casting that threw it."
+        }
+      ],
+      "note": "A client sets the missile at atX to atZ; a client checks them to be finite."
+    },
+    {
       "from": "0.9.22.14",
       "until": "0.9.22.16",
       "channel": "events",

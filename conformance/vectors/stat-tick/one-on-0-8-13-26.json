@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "StatTick",
+  "version": "0.8.13.26",
+  "note": "Laid out as a 0.8.13.26 client takes it.",
+  "bytes": "44004400000000000000803f",
+  "fields": {
+    "echo": 68,
+    "command": 68,
+    "netId": 0,
+    "seconds": 1
+  }
+}

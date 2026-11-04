@@ -1,0 +1,15 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "VersionSync",
+  "version": "0.8.13.26",
+  "note": "Laid out as a 0.8.13.26 client takes it.",
+  "bytes": "48004800000000000156657273696f6e20312e302e302e313236205b5055424c49435d00",
+  "fields": {
+    "echo": 72,
+    "command": 72,
+    "netId": 0,
+    "agreement": 1,
+    "build": "Version 1.0.0.126 [PUBLIC]"
+  }
+}

@@ -5,6 +5,24 @@
   "note": "Text one player sends the others during a match. Messages players exchange outside a match do not travel on this connection at all.",
   "revisions": [
     {
+      "from": "0.8.13.26",
+      "until": "0.9.22.14",
+      "channel": "chat",
+      "command": 0,
+      "direction": "bidirectional",
+      "reliability": "reliable",
+      "note": "A line of chat. A client sends one as its player says something, and shows one a server sends in its chat box.",
+      "fields": [
+        {
+          "name": "text",
+          "type": "string",
+          "size": "terminated",
+          "encoding": "utf8",
+          "note": "The line, ended by a zero byte. The message is the text alone, with nothing in front of it."
+        }
+      ]
+    },
+    {
       "from": "0.9.22.14",
       "until": "1.0.0.151",
       "channel": "chat",

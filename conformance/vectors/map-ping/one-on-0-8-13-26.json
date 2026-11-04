@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "MapPing",
+  "version": "0.8.13.26",
+  "note": "Laid out as a 0.8.13.26 client sends it.",
+  "bytes": "19001900000000000000000000007a44000000000000fa44",
+  "fields": {
+    "echo": 25,
+    "command": 25,
+    "netId": 0,
+    "clientId": 0,
+    "x": 1000,
+    "y": 0,
+    "z": 2000
+  }
+}

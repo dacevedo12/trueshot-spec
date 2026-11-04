@@ -5,6 +5,46 @@
   "note": "What a server sends to stop a unit where it stands. The header names the unit. A client applies it only where its sync id is not older than the last the unit took, counting a wrap: this message, PathWithSpeed and Path share one count per unit, starting at -1.",
   "revisions": [
     {
+      "from": "0.8.13.26",
+      "until": "0.9.22.14",
+      "channel": "events",
+      "command": 24,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Where the unit stands, in world units; a client keeps this height rather than the ground's."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "Its height, in world units."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Where it stands, in world units."
+        },
+        {
+          "name": "facingX",
+          "type": "f32",
+          "note": "The way it faces."
+        },
+        {
+          "name": "facingY",
+          "type": "f32",
+          "note": "The way it faces."
+        },
+        {
+          "name": "facingZ",
+          "type": "f32",
+          "note": "The way it faces."
+        }
+      ]
+    },
+    {
       "from": "0.9.22.14",
       "until": "1.0.0.110",
       "channel": "events",

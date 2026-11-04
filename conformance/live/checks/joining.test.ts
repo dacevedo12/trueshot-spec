@@ -56,6 +56,10 @@ describe.skipIf(s === undefined)("joining", () => {
         netId: 0,
         state: { locked: 0, unused: 0 },
       });
+    } else if (s !== undefined && layoutsOf(s).messages.has("Respawned")) {
+      // A build with no way to set the lock frees the camera as its own
+      // champion comes back.
+      session.send("Respawned", { netId: match.seat.netId });
     }
     await session.next("Camera", { seen: true, timeout: 30_000 });
   }, 40_000);

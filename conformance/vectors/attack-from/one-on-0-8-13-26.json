@@ -1,0 +1,19 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "AttackFrom",
+  "version": "0.8.13.26",
+  "note": "Laid out as a 0.8.13.26 client takes it.",
+  "bytes": "3a003a000100004002000040000000430120004000007a44000000000080bb44",
+  "fields": {
+    "echo": 58,
+    "command": 58,
+    "netId": 1073741825,
+    "target": 1073741826,
+    "timing": 128,
+    "missile": 1073750017,
+    "fromX": 1000,
+    "fromY": 0,
+    "fromZ": 1500
+  }
+}

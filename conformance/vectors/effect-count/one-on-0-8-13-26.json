@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "EffectCount",
+  "version": "0.8.13.26",
+  "note": "Laid out as a 0.8.13.26 client takes it.",
+  "bytes": "530053000100004003020000804002000040",
+  "fields": {
+    "echo": 83,
+    "command": 83,
+    "netId": 1073741825,
+    "slot": 3,
+    "count": 2,
+    "timeLeft": 4,
+    "caster": 1073741826
+  }
+}

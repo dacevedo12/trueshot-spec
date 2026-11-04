@@ -1,0 +1,24 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ParticlesCreated",
+  "version": "0.8.13.26",
+  "note": "Laid out as a 0.8.13.26 client takes it.",
+  "bytes": "150015000000000014010040000000000000000000000000000001000040466f756e7461696e4865616c2e74726f790000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000080bb44000000000080bb440000000000000000",
+  "fields": {
+    "echo": 21,
+    "command": 21,
+    "netId": 0,
+    "particle": 1073742100,
+    "flags": 0,
+    "unknown": "000000000000000000000000",
+    "boundTo": 1073741825,
+    "effect": "FountainHeal.troy",
+    "unknownB": 0,
+    "atX": 1500,
+    "atY": 0,
+    "atZ": 1500,
+    "target": 0,
+    "unknownC": 0
+  }
+}

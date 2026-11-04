@@ -1,0 +1,21 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "Camera",
+  "version": "0.8.13.26",
+  "note": "Laid out as a 0.8.13.26 client sends it.",
+  "bytes": "3f003f00000000000080bb440000e1440000614400000000000040bf0000003f0000000001",
+  "fields": {
+    "echo": 63,
+    "command": 63,
+    "netId": 0,
+    "atX": 1500,
+    "atY": 1800,
+    "atZ": 900,
+    "facingX": 0,
+    "facingY": -0.75,
+    "facingZ": 0.5,
+    "clientId": 0,
+    "syncId": 1
+  }
+}

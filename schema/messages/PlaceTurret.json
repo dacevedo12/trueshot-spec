@@ -1,0 +1,53 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "PlaceTurret",
+  "system": "units",
+  "note": "What a server sends to make a turret. The header names no object: it carries zero.",
+  "revisions": [
+    {
+      "from": "0.8.13.26",
+      "until": "0.9.22.14",
+      "channel": "events",
+      "command": 55,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "turret",
+          "type": "u32",
+          "note": "The name the turret answers to, so later messages can name it."
+        },
+        {
+          "name": "node",
+          "type": "u8",
+          "note": "Which network node the object belongs to, in a field of its own."
+        },
+        {
+          "name": "unread",
+          "type": "bytes",
+          "size": 12,
+          "note": "A client reads nothing here. A server writes zero."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "What this turret is called. Written out in full and padded with zero bytes to the width above."
+        },
+        {
+          "name": "asset",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The character it is. Written and padded as above."
+        },
+        {
+          "name": "side",
+          "type": "u8",
+          "note": "Nonzero for side 100, zero for side 200."
+        }
+      ]
+    }
+  ]
+}

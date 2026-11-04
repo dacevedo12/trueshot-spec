@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ClockReply",
+  "version": "0.8.13.26",
+  "note": "Laid out as a 0.8.13.26 client sends it.",
+  "bytes": "4e004e0000000000000000000000000000000000",
+  "fields": {
+    "echo": 78,
+    "command": 78,
+    "netId": 0,
+    "value": 0,
+    "serverSaid": 0,
+    "clientSaid": 0
+  }
+}

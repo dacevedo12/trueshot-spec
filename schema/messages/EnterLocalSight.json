@@ -5,6 +5,37 @@
   "note": "What a server sends when a unit comes into what one client can see. The header names the unit this is about.",
   "revisions": [
     {
+      "from": "0.8.13.26",
+      "until": "0.9.22.14",
+      "channel": "events",
+      "command": 61,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "vitals",
+          "type": "record",
+          "present": {
+            "when": "remaining"
+          },
+          "note": "The unit's health. A client reads nothing here.",
+          "fields": [
+            {
+              "name": "maxHealth",
+              "type": "f32",
+              "note": "A client reads nothing here."
+            },
+            {
+              "name": "health",
+              "type": "f32",
+              "note": "A client reads nothing here."
+            }
+          ]
+        }
+      ],
+      "note": "A client reads none of the body: it shows the unit and reads nothing more."
+    },
+    {
       "from": "0.9.22.14",
       "until": "1.0.0.61",
       "channel": "events",

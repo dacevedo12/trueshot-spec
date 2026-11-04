@@ -1,0 +1,38 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "ValueGroup3",
+  "system": "replication",
+  "note": "What a server sends to set values of group 3 on a unit. The header names the unit.",
+  "revisions": [
+    {
+      "from": "0.8.13.26",
+      "until": "0.9.22.14",
+      "channel": "events",
+      "command": 52,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "which",
+          "type": "u32",
+          "note": "Says which of the group's values follow, one bit each, lowest first."
+        },
+        {
+          "name": "values",
+          "type": "array",
+          "count": {
+            "field": "which",
+            "bitsSet": true
+          },
+          "note": "The values themselves, four bytes each, in the order the bits above name them. A client reads one only for a bit below the number of values the unit holds in the group, and nothing after the bits where the unit holds no such group.",
+          "items": {
+            "name": "value",
+            "type": "bytes",
+            "size": 4,
+            "note": "One value."
+          }
+        }
+      ]
+    }
+  ]
+}

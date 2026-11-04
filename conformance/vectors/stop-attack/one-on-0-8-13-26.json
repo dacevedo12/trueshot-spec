@@ -1,0 +1,15 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "StopAttack",
+  "version": "0.8.13.26",
+  "note": "Laid out as a 0.8.13.26 client takes it.",
+  "bytes": "30003000010000400000",
+  "fields": {
+    "echo": 48,
+    "command": 48,
+    "netId": 1073741825,
+    "keepAnimating": 0,
+    "forceCast": 0
+  }
+}
