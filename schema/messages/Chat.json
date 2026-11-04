@@ -155,7 +155,7 @@
         {
           "name": "textLength",
           "type": "u32",
-          "note": "The length of the text, counted in bytes and excluding the byte that ends it. A 4.17 client sends at most 255 bytes of text. A client shows the text to its first zero byte."
+          "note": "The length of the text, counted in bytes and excluding the byte that ends it. A client shows the text to its first zero byte."
         },
         {
           "name": "text",

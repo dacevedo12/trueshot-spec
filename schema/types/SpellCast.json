@@ -886,7 +886,7 @@
           "name": "hits",
           "type": "array",
           "count": "hitCount",
-          "note": "The units the casting hits, each a unit then a one-byte result; a 4.17 client takes at most 32.",
+          "note": "",
           "items": {
             "type": "struct",
             "struct": "SpellHit",
@@ -1060,7 +1060,7 @@
           "name": "hits",
           "type": "array",
           "count": "hitCount",
-          "note": "The units the casting hits, each a unit then a one-byte result; a 4.17 client takes at most 32.",
+          "note": "",
           "items": {
             "type": "struct",
             "struct": "SpellHit",
@@ -1254,7 +1254,7 @@
           "name": "hits",
           "type": "array",
           "count": "hitCount",
-          "note": "The units the casting hits, each a unit then a one-byte result; a 4.17 client takes at most 32.",
+          "note": "",
           "items": {
             "type": "struct",
             "struct": "SpellHit",

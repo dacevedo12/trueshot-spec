@@ -175,7 +175,7 @@
           "present": {
             "when": "present.group4"
           },
-          "note": "The values of group 4, where the flag says they follow. For a 4.17 client it comes last, after group 5. A server sends its flag clear.",
+          "note": "The values of group 4, where the flag says they follow. A server sends its flag clear.",
           "fields": [
             {
               "name": "which",
@@ -408,7 +408,7 @@
           "present": {
             "when": "present.group4"
           },
-          "note": "The values of group 4, where the flag says they follow. For a 4.17 client it comes last, after group 5. A server sends its flag clear.",
+          "note": "The values of group 4, where the flag says they follow. A server sends its flag clear.",
           "fields": [
             {
               "name": "which",
