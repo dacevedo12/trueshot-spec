@@ -49,14 +49,14 @@ Then a match from end to end, which is enough for a client to join and play:
 
 9. [Joining a match](joining.md), from registering until play begins,
    including what the loading screen shows.
-10. [The match](match.md): its clock, holding it, its end, and players leaving
-    and coming back.
-11. [Units](units.md): putting champions, minions, monsters, turrets and props
+10. [Units](units.md): putting champions, minions, monsters, turrets and props
     on the field.
-12. [Vision](vision.md): bringing units into a client's view.
-13. [Movement](movement.md): orders, paths and what their coordinates mean.
-14. [Replication](replication.md): the values of units a server keeps current,
+11. [Vision](vision.md): bringing units into a client's view.
+12. [Movement](movement.md): orders, paths and what their coordinates mean.
+13. [Replication](replication.md): the values of units a server keeps current,
     which no layout reaches.
+14. [The match](match.md): its clock, holding it, its end, and players leaving
+    and coming back.
 
 Then the systems a match is played with, in any order:
 
@@ -66,10 +66,12 @@ Then the systems a match is played with, in any order:
     look.
 18. [The shop](shop.md): what fills it, buying and selling.
 19. [Objectives](objectives.md): camps, capture points and score, and the
-    events the whole match is told about.
+    events a match tells its clients about.
 20. [Communication](communication.md): chat, pings, emotes and sound.
 21. [Votes](votes.md): surrender, and evening out a match.
-22. [The interface](interface.md): the view, input, tips, quests and the
-    tutorial.
-23. [Watching a match](spectating.md): streaming a match to a client that
+22. [The interface](interface.md): the view, input, the minimap and text on
+    screen.
+23. [Tutorial and guidance](guidance.md): tips, quests, objectives, highlights
+    and the tutorial.
+24. [Watching a match](spectating.md): streaming a match to a client that
     watches over its connection.

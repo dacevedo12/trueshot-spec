@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "QuestUpdated",
-  "system": "interface",
+  "system": "guidance",
   "note": "What a server sends to add a quest to the quest tracker, complete it or remove it. The header carries zero.",
   "revisions": [
     {

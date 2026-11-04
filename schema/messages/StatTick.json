@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "StatTick",
-  "system": "match",
+  "system": "replication",
   "note": "What a server sends to advance every unit's stats by a span of time. The header carries zero.",
   "revisions": [
     {

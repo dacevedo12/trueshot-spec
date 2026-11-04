@@ -503,9 +503,20 @@ function layoutsParts(season: readonly Range[]): Layouts {
   };
   const bySystem = new Map<string, string[]>();
   for (const system of systems) {
-    const own = messages.filter(
-      (m) => m.system === system && within(m.revisions, season).length > 0,
-    );
+    // In the order the chapter first names them, then the rest by name.
+    const prose = readFileSync(join(ROOT, "spec", `${system}.md`), "utf8");
+    const at = (name: string): number => {
+      const i = prose.indexOf(`\`${name}\``);
+      return i < 0 ? Number.MAX_SAFE_INTEGER : i;
+    };
+    const own = messages
+      .filter(
+        (m) => m.system === system && within(m.revisions, season).length > 0,
+      )
+      .sort(
+        (a, b) =>
+          at(a.message) - at(b.message) || a.message.localeCompare(b.message),
+      );
     const lines: string[] = [
       "",
       "Each message of this system in this book, with each layout it has across the book's patches and every note its definition carries. A layout is the message's body, after the header its channel's family puts in front (see [Messages](messages.md)).",

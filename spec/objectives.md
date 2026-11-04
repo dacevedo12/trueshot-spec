@@ -1,8 +1,8 @@
 # Objectives
 
 The parts of a map players compete for besides each other: neutral camps,
-points a side can capture and a score, and the events the whole match is told
-about.
+points a side can capture and a score, and the events a match tells its
+clients about.
 
 ## Camps
 
@@ -50,11 +50,12 @@ A server can name the unit holding the Ascension with `AscendedUnit`, and send
 >
 > A client acts on `RespawnPoint` only where it shows the capture point panel.
 
-## Events the match is told about
+## Events
 
 `WorldEvent` says something happened that the whole match is told about: the
 match's welcome and its first notices, minions coming out, an inhibitor or a
-great monster falling, a player leaving. The sort it names settles the rest of
-the message and what a client shows.
+great monster falling, a player leaving. `ClientEvent` tells one client
+something happened that concerns a unit. Each names a sort, from one table of
+events, and the sort settles the rest of the message and what a client shows.
 
 <!-- messages -->

@@ -1,8 +1,8 @@
 # The interface
 
 What a client shows its player besides the field: the view and camera, input
-locks, the minimap, text and highlights over the screen, tips, quests and the
-tutorial.
+locks, the minimap and text over the screen. Tips, quests, highlights and the
+tutorial are in [Tutorial and guidance](guidance.md).
 
 ## The view
 
@@ -68,39 +68,10 @@ shop, with `InputLock` or `InputLockToggled`.
 >
 > No message locks a client's input, in either direction.
 
-## The minimap, text and highlights
+## The minimap and text on screen
 
 `MinimapIcon` changes what a client draws for a unit on its map. A server can
 float text over a unit (`FloatingText`, `UnitText`), warn a player who seems
-to be away (`AfkWarning`), and tell a champion something has come about
-(`Situation`). `ClientEvent` tells a client something happened that concerns a
-unit; the sort it names settles what follows it.
-
-A server lights up parts of the screen and units with `HudHighlighted`,
-`HudHighlightToggled`, `UiHighlight`, `UnitHighlighted` and
-`UnitHighlightRemoved`.
-
-## Tips, quests and objectives
-
-A server puts a tip in front of a player with `TipShown`, addressed to that
-player's champion, and a client reports a click on it, or the tip being closed,
-with `TipEvent`. A server can add, complete and remove quests in the quest
-tracker with `QuestUpdated`, and a client reports the pointer passing over a
-quest, and a click on it, with `QuestEvent`. A server can also show, change
-and hide an objective panel (`ObjectiveShown`, `ObjectiveReplaced`,
-`ObjectiveHidden`) and a box of text at the side of the screen
-(`SideTextShown`, `SideTextRefreshed`, `SideTextHidden`).
-
-## The tutorial
-
-<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
-
-> **In 4.1–4.19**
->
-> A client is in the tutorial where `VersionSync` names the mode TUTORIAL on map 12.
-
-In the tutorial, a server can put lines of the client's own text in its chat
-(`TutorialChatLine`) and open the tutorial's popup (`TutorialPopup`), which the
-client answers with `TutorialPopupClosed`.
+to be away (`AfkWarning`), and take the interface down (`HudDisabled`).
 
 <!-- messages -->

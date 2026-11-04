@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "QuestEvent",
-  "system": "interface",
+  "system": "guidance",
   "note": "What a client sends as its player points at a quest in the tracker (QuestUpdated), stops pointing at it, or clicks it. The header names the sender's champion.",
   "revisions": [
     {

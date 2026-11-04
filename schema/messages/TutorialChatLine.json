@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "TutorialChatLine",
-  "system": "interface",
+  "system": "guidance",
   "note": "What a server sends to put a line of the client's own text in its chat, as a line from the game. The header carries zero.",
   "revisions": [
     {

@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/message.json",
   "message": "ClientEvent",
-  "system": "interface",
+  "system": "objectives",
   "note": "What a server sends to tell a client something happened. The sort is named first and settles what follows; unlike WorldEvent it carries no source apart from what the sort itself carries. The header names the unit the event is about.",
   "revisions": [
     {
