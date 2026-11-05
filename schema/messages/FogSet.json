@@ -33,9 +33,9 @@
       "reliability": "reliable",
       "fields": [
         {
-          "name": "hidden",
+          "name": "shown",
           "type": "u8",
-          "note": "A client takes any bit set here as drawn set; a server writes zero."
+          "note": "Nonzero turns the fog of war on; zero turns it off."
         }
       ]
     },
@@ -48,9 +48,9 @@
       "reliability": "reliable",
       "fields": [
         {
-          "name": "hidden",
+          "name": "shown",
           "type": "u8",
-          "note": "A client takes any bit set here as drawn set; a server writes zero."
+          "note": "Nonzero turns the fog of war on; zero turns it off."
         }
       ]
     },
@@ -63,9 +63,9 @@
       "reliability": "reliable",
       "fields": [
         {
-          "name": "hidden",
+          "name": "shown",
           "type": "u8",
-          "note": "A client takes any bit set here as drawn set; a server writes zero."
+          "note": "Nonzero turns the fog of war on; zero turns it off."
         }
       ]
     },
@@ -78,9 +78,9 @@
       "reliability": "reliable",
       "fields": [
         {
-          "name": "hidden",
+          "name": "shown",
           "type": "u8",
-          "note": "A client takes any bit set here as drawn set; a server writes zero."
+          "note": "Nonzero turns the fog of war on; zero turns it off."
         }
       ]
     },
@@ -93,9 +93,9 @@
       "reliability": "reliable",
       "fields": [
         {
-          "name": "hidden",
+          "name": "shown",
           "type": "u8",
-          "note": "A client takes any bit set here as drawn set; a server writes zero."
+          "note": "Nonzero turns the fog of war on; zero turns it off."
         }
       ]
     },
@@ -108,9 +108,9 @@
       "reliability": "reliable",
       "fields": [
         {
-          "name": "hidden",
+          "name": "shown",
           "type": "u8",
-          "note": "A client takes any bit set here as drawn set; a server writes zero."
+          "note": "Nonzero turns the fog of war on; zero turns it off."
         }
       ]
     },
@@ -123,9 +123,9 @@
       "reliability": "reliable",
       "fields": [
         {
-          "name": "hidden",
+          "name": "shown",
           "type": "u8",
-          "note": "A client takes any bit set here as drawn set; a server writes zero."
+          "note": "Nonzero turns the fog of war on; zero turns it off."
         }
       ]
     },
@@ -138,9 +138,9 @@
       "reliability": "reliable",
       "fields": [
         {
-          "name": "hidden",
+          "name": "shown",
           "type": "u8",
-          "note": "A client takes any bit set here as drawn set; a server writes zero."
+          "note": "Nonzero turns the fog of war on; zero turns it off."
         }
       ]
     },
@@ -153,29 +153,14 @@
       "reliability": "reliable",
       "fields": [
         {
-          "name": "hidden",
+          "name": "shown",
           "type": "u8",
-          "note": "A client takes any bit set here as drawn set; a server writes zero."
+          "note": "Nonzero turns the fog of war on; zero turns it off."
         }
       ]
     },
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.128",
-      "channel": "events",
-      "command": 180,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "hidden",
-          "type": "u8",
-          "note": "A client takes any bit set here as drawn set; a server writes zero."
-        }
-      ]
-    },
-    {
-      "from": "1.0.0.128",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 180,
@@ -183,9 +168,9 @@
       "reliability": "reliable",
       "fields": [
         {
-          "name": "hidden",
+          "name": "shown",
           "type": "u8",
-          "note": "Zero draws the fog of war; any other value draws the map with no darkening."
+          "note": "Nonzero turns the fog of war on; zero turns it off."
         }
       ]
     },
@@ -198,9 +183,9 @@
       "reliability": "reliable",
       "fields": [
         {
-          "name": "hidden",
+          "name": "shown",
           "type": "u8",
-          "note": "Zero draws the fog of war; any other value draws the map with no darkening."
+          "note": "Nonzero turns the fog of war on; zero turns it off."
         }
       ]
     },
@@ -213,9 +198,9 @@
       "reliability": "reliable",
       "fields": [
         {
-          "name": "hidden",
+          "name": "shown",
           "type": "u8",
-          "note": "Zero draws the fog of war; any other value draws the map with no darkening."
+          "note": "Nonzero turns the fog of war on; zero turns it off."
         }
       ]
     },
@@ -228,9 +213,9 @@
       "reliability": "reliable",
       "fields": [
         {
-          "name": "hidden",
+          "name": "shown",
           "type": "u8",
-          "note": "Zero draws the fog of war; any other value draws the map with no darkening."
+          "note": "Nonzero turns the fog of war on; zero turns it off."
         }
       ]
     },
@@ -243,9 +228,9 @@
       "reliability": "reliable",
       "fields": [
         {
-          "name": "hidden",
+          "name": "shown",
           "type": "u8",
-          "note": "Zero draws the fog of war; any other value draws the map with no darkening."
+          "note": "Nonzero turns the fog of war on; zero turns it off."
         }
       ]
     },
@@ -258,9 +243,9 @@
       "reliability": "reliable",
       "fields": [
         {
-          "name": "hidden",
+          "name": "shown",
           "type": "u8",
-          "note": "Zero turns the fog of war's darkening off, drawing the map with none; any other value turns it on."
+          "note": "Nonzero turns the fog of war on; zero turns it off."
         }
       ]
     },
@@ -273,9 +258,9 @@
       "reliability": "reliable",
       "fields": [
         {
-          "name": "hidden",
+          "name": "shown",
           "type": "u8",
-          "note": "Zero draws the fog of war; any other value draws the map with no darkening."
+          "note": "Nonzero turns the fog of war on; zero turns it off."
         }
       ]
     },

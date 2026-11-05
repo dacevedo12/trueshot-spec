@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "ClientFinished",
   "system": "match",
-  "note": "What a client sends when it has finished with the match. The header names no object: it carries zero.",
+  "note": "What a client sends when it has finished with the match.",
   "revisions": [
     {
       "from": "0.8.13.26",
@@ -112,7 +112,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "A client sends it each time GameEnded arrives after the match has started."
+      "note": "A client sends it each time GameEnded arrives after the match has started. The header carries the client's own champion's net id."
     },
     {
       "from": "1.0.0.144",
@@ -162,7 +162,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "It is sent once, at the end."
+      "note": "It is sent once, as the end of the match is handled, and not while playing a replay. The header names no object: it carries zero."
     }
   ]
 }

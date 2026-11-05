@@ -181,7 +181,7 @@
       "command": 150,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window, as a reconnection fails, or on Shutdown or a BotKick whose first byte is 4. The header carries the id the client holds for its own player.",
+      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window, as a reconnection fails, or on Shutdown or a BotKick whose first byte is 4. The header carries the client's own champion's net id.",
       "fields": []
     },
     {
@@ -231,7 +231,7 @@
       "command": 143,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window, as a reconnection fails, or on Shutdown or BotKick. The header names no object: it carries zero.",
+      "note": "A client sends it only as it quits by abandoning the match; a match that reaches its end sends none. The header names no object: it carries zero.",
       "fields": []
     },
     {

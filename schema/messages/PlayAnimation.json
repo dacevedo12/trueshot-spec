@@ -878,19 +878,19 @@
               "note": "Set where the unit ignores this message while the animation plays."
             },
             {
-              "name": "noBlend",
+              "name": "noRestart",
               "width": 1,
-              "note": "Set to switch to it at once rather than blend in."
+              "note": "Where the same animation already plays on the unit, a client keeps it and starts nothing new."
             },
             {
-              "name": "lockedFromIdle",
+              "name": "noFadeIn",
               "width": 1,
-              "note": "Set where idle animations cannot fade it out."
+              "note": "The switch is instant, with no blend; only where the animation starts at once rather than queued."
             },
             {
-              "name": "reserved",
+              "name": "jumpToEnd",
               "width": 1,
-              "note": "What it does is not recorded for this range; a server writes zero."
+              "note": "The animation is held at its end: without loop or holdLastFrame it ends at once, and with holdLastFrame it shows its last frame."
             },
             {
               "name": "unused",
@@ -959,19 +959,19 @@
               "note": "Set where the unit ignores this message while the animation plays."
             },
             {
-              "name": "noBlend",
+              "name": "noRestart",
               "width": 1,
-              "note": "Set to switch to it at once rather than blend in."
+              "note": "Where the same animation already plays on the unit, a client keeps it and starts nothing new."
             },
             {
-              "name": "lockedFromIdle",
+              "name": "noFadeIn",
               "width": 1,
-              "note": "Set where idle animations cannot fade it out."
+              "note": "The switch is instant, with no blend; only where the animation starts at once rather than queued."
             },
             {
-              "name": "reserved",
+              "name": "jumpToEnd",
               "width": 1,
-              "note": "What it does is not recorded for this range; a server writes zero."
+              "note": "The animation is held at its end: without loop or holdLastFrame it ends at once, and with holdLastFrame it shows its last frame."
             },
             {
               "name": "unused",
@@ -1040,19 +1040,19 @@
               "note": "Set where the unit ignores this message while the animation plays."
             },
             {
-              "name": "noBlend",
+              "name": "noRestart",
               "width": 1,
-              "note": "Set to switch to it at once rather than blend in."
+              "note": "Where the same animation already plays on the unit, a client keeps it and starts nothing new."
             },
             {
-              "name": "lockedFromIdle",
+              "name": "noFadeIn",
               "width": 1,
-              "note": "Set where idle animations cannot fade it out."
+              "note": "The switch is instant, with no blend; only where the animation starts at once rather than queued."
             },
             {
-              "name": "reserved",
+              "name": "jumpToEnd",
               "width": 1,
-              "note": "What it does is not recorded for this range; a server writes zero."
+              "note": "The animation is held at its end: without loop or holdLastFrame it ends at once, and with holdLastFrame it shows its last frame."
             },
             {
               "name": "unused",
@@ -1121,19 +1121,19 @@
               "note": "Set where the unit ignores this message while the animation plays."
             },
             {
-              "name": "noBlend",
+              "name": "noRestart",
               "width": 1,
-              "note": "Set to switch to it at once rather than blend in."
+              "note": "Where the same animation already plays on the unit, a client keeps it and starts nothing new."
             },
             {
-              "name": "lockedFromIdle",
+              "name": "noFadeIn",
               "width": 1,
-              "note": "Set where idle animations cannot fade it out."
+              "note": "The switch is instant, with no blend; only where the animation starts at once rather than queued."
             },
             {
-              "name": "reserved",
+              "name": "jumpToEnd",
               "width": 1,
-              "note": "What it does is not recorded for this range; a server writes zero."
+              "note": "The animation is held at its end: without loop or holdLastFrame it ends at once, and with holdLastFrame it shows its last frame."
             },
             {
               "name": "unused",
@@ -1202,19 +1202,19 @@
               "note": "Set where the unit ignores this message while the animation plays."
             },
             {
-              "name": "noBlend",
+              "name": "noRestart",
               "width": 1,
-              "note": "Set to switch to it at once rather than blend in."
+              "note": "Where the same animation already plays on the unit, a client keeps it and starts nothing new."
             },
             {
-              "name": "lockedFromIdle",
+              "name": "noFadeIn",
               "width": 1,
-              "note": "Set where idle animations cannot fade it out."
+              "note": "The switch is instant, with no blend; only where the animation starts at once rather than queued."
             },
             {
-              "name": "reserved",
+              "name": "jumpToEnd",
               "width": 1,
-              "note": "What it does is not recorded for this range; a server writes zero."
+              "note": "The animation is held at its end: without loop or holdLastFrame it ends at once, and with holdLastFrame it shows its last frame."
             },
             {
               "name": "unused",
@@ -1283,19 +1283,19 @@
               "note": "Set where the unit ignores this message while the animation plays."
             },
             {
-              "name": "noBlend",
+              "name": "noRestart",
               "width": 1,
-              "note": "Set to switch to it at once rather than blend in."
+              "note": "Where the same animation already plays on the unit, a client keeps it and starts nothing new."
             },
             {
-              "name": "lockedFromIdle",
+              "name": "noFadeIn",
               "width": 1,
-              "note": "Set where idle animations cannot fade it out."
+              "note": "The switch is instant, with no blend; only where the animation starts at once rather than queued."
             },
             {
-              "name": "reserved",
+              "name": "jumpToEnd",
               "width": 1,
-              "note": "What it does is not recorded for this range; a server writes zero."
+              "note": "The animation is held at its end: without loop or holdLastFrame it ends at once, and with holdLastFrame it shows its last frame."
             },
             {
               "name": "unused",
@@ -1364,19 +1364,19 @@
               "note": "Set where the unit ignores this message while the animation plays."
             },
             {
-              "name": "noBlend",
+              "name": "noRestart",
               "width": 1,
-              "note": "Set to switch to it at once rather than blend in."
+              "note": "Where the same animation already plays on the unit, a client keeps it and starts nothing new."
             },
             {
-              "name": "lockedFromIdle",
+              "name": "noFadeIn",
               "width": 1,
-              "note": "Set where idle animations cannot fade it out."
+              "note": "The switch is instant, with no blend; only where the animation starts at once rather than queued."
             },
             {
-              "name": "reserved",
+              "name": "jumpToEnd",
               "width": 1,
-              "note": "What it does is not recorded for this range; a server writes zero."
+              "note": "The animation is held at its end: without loop or holdLastFrame it ends at once, and with holdLastFrame it shows its last frame."
             },
             {
               "name": "unused",
@@ -1445,19 +1445,19 @@
               "note": "Set where the unit ignores this message while the animation plays."
             },
             {
-              "name": "noBlend",
+              "name": "noRestart",
               "width": 1,
-              "note": "Set to switch to it at once rather than blend in."
+              "note": "Where the same animation already plays on the unit, a client keeps it and starts nothing new."
             },
             {
-              "name": "lockedFromIdle",
+              "name": "noFadeIn",
               "width": 1,
-              "note": "Set where idle animations cannot fade it out."
+              "note": "The switch is instant, with no blend; only where the animation starts at once rather than queued."
             },
             {
-              "name": "reserved",
+              "name": "jumpToEnd",
               "width": 1,
-              "note": "What it does is not recorded for this range; a server writes zero."
+              "note": "The animation is held at its end: without loop or holdLastFrame it ends at once, and with holdLastFrame it shows its last frame."
             },
             {
               "name": "unused",
@@ -1526,19 +1526,19 @@
               "note": "Set where the unit ignores this message while the animation plays."
             },
             {
-              "name": "noBlend",
+              "name": "noRestart",
               "width": 1,
-              "note": "Set to switch to it at once rather than blend in."
+              "note": "Where the same animation already plays on the unit, a client keeps it and starts nothing new."
             },
             {
-              "name": "lockedFromIdle",
+              "name": "noFadeIn",
               "width": 1,
-              "note": "Set where idle animations cannot fade it out."
+              "note": "The switch is instant, with no blend; only where the animation starts at once rather than queued."
             },
             {
-              "name": "reserved",
+              "name": "jumpToEnd",
               "width": 1,
-              "note": "What it does is not recorded for this range; a server writes zero."
+              "note": "The animation is held at its end: without loop or holdLastFrame it ends at once, and with holdLastFrame it shows its last frame."
             },
             {
               "name": "unused",
@@ -1764,9 +1764,9 @@
               "note": "Set to switch to it at once rather than blend in."
             },
             {
-              "name": "loop",
+              "name": "holdLastFrame",
               "width": 1,
-              "note": "Set to loop it."
+              "note": "Where a non-looping animation ends, it stays on its last frame. Whether an animation loops comes from the animation's own data."
             },
             {
               "name": "keepEmotes",
@@ -1830,9 +1830,9 @@
               "note": "Set to switch to it at once rather than blend in."
             },
             {
-              "name": "loop",
+              "name": "holdLastFrame",
               "width": 1,
-              "note": "Set to loop it."
+              "note": "Where a non-looping animation ends, it stays on its last frame. Whether an animation loops comes from the animation's own data."
             },
             {
               "name": "keepEmotes",
@@ -1896,9 +1896,9 @@
               "note": "Set to switch to it at once rather than blend in."
             },
             {
-              "name": "loop",
+              "name": "holdLastFrame",
               "width": 1,
-              "note": "Set to loop it."
+              "note": "Where a non-looping animation ends, it stays on its last frame. Whether an animation loops comes from the animation's own data."
             },
             {
               "name": "keepEmotes",
@@ -1962,9 +1962,9 @@
               "note": "Set to switch to it at once rather than blend in."
             },
             {
-              "name": "loop",
+              "name": "holdLastFrame",
               "width": 1,
-              "note": "Set to loop it."
+              "note": "Where a non-looping animation ends, it stays on its last frame. Whether an animation loops comes from the animation's own data."
             },
             {
               "name": "keepEmotes",
@@ -2028,9 +2028,9 @@
               "note": "Set to switch to it at once rather than blend in."
             },
             {
-              "name": "loop",
+              "name": "holdLastFrame",
               "width": 1,
-              "note": "Set to loop it."
+              "note": "Where a non-looping animation ends, it stays on its last frame. Whether an animation loops comes from the animation's own data."
             },
             {
               "name": "keepEmotes",
@@ -2099,9 +2099,9 @@
               "note": "Set to switch to it at once rather than blend in."
             },
             {
-              "name": "loop",
+              "name": "holdLastFrame",
               "width": 1,
-              "note": "Set to hold the last frame once an animation that does not loop ends."
+              "note": "Where a non-looping animation ends, it stays on its last frame. Whether an animation loops comes from the animation's own data."
             },
             {
               "name": "keepEmotes",
