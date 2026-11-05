@@ -114,7 +114,7 @@
         {
           "name": "kind",
           "type": "u8",
-          "note": "A client writes zero."
+          "note": "A client writes 1 where the line reports an error in a script, and 0 otherwise."
         },
         {
           "name": "unused",
@@ -124,7 +124,7 @@
         {
           "name": "unusedToo",
           "type": "u32",
-          "note": "A client writes zero."
+          "note": "Where a level script makes a unit speak, a client writes the third value that script gave; otherwise zero."
         },
         {
           "name": "text",

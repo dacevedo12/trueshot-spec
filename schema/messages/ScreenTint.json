@@ -517,7 +517,7 @@
         {
           "name": "side",
           "type": "i32",
-          "note": "Which side sees it."
+          "note": "Which side sees it: 0 every client, and any other value only a client whose own player is on that side. A client with no player of its own takes only 0 and 100."
         },
         {
           "name": "colour",

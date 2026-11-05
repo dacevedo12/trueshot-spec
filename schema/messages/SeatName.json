@@ -106,12 +106,12 @@
         {
           "name": "skin",
           "type": "i32",
-          "note": "Which look the seat's champion wears."
+          "note": "Which look the seat's champion wears. A client reads nothing here."
         },
         {
           "name": "nameLength",
           "type": "u32",
-          "note": "How many bytes the name below occupies, counting the byte that ends it."
+          "note": "How many bytes the name below occupies, counting the byte that ends it. A client reads nothing here: it reads the name up to its zero byte."
         },
         {
           "name": "name",

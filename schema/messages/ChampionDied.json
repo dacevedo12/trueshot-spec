@@ -699,7 +699,7 @@
         {
           "name": "damageType",
           "type": "u8",
-          "note": "Unused; a server writes zero.",
+          "note": "Unused; a client reads nothing here.",
           "values": {
             "0": {
               "name": "physical"
@@ -715,7 +715,7 @@
         {
           "name": "damageSource",
           "type": "u8",
-          "note": "Read only for a minion a champion killed, whose kill a client shows another way where it is 7; a server writes zero.",
+          "note": "Unused; a client reads nothing here.",
           "values": {
             "0": {
               "name": "raw"
@@ -768,7 +768,7 @@
             {
               "name": "zombie",
               "width": 1,
-              "note": "Set to leave the champion standing in a zombie state rather than dead: no death animation and no death screen."
+              "note": "Set to leave the champion standing in a zombie state rather than dead: no death animation and no death screen. A client tests the whole byte, so any nonzero byte gives a zombie."
             },
             {
               "name": "unused",

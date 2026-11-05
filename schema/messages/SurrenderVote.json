@@ -608,17 +608,17 @@
             {
               "name": "inFavour",
               "width": 1,
-              "note": "Set where the answer is yes. A client sends it clear."
+              "note": "Set where the answer is yes, as from the panel's yes button or the surrender command; clear for a no."
             },
             {
               "name": "unused",
               "width": 7,
-              "note": "Always clear."
+              "note": "A client leaves these bits unwritten; they carry no meaning, and a server ignores them."
             }
           ]
         }
       ],
-      "note": "It answers a call to surrender."
+      "note": "A client sends it to start a vote as well as to answer one: the surrender chat command sends it in favour whether or not a vote is open, and the vote panel's buttons and the chat command that votes no answer one."
     },
     {
       "from": "1.0.0.144",

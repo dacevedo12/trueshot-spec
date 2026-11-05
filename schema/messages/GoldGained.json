@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "GoldGained",
   "system": "replication",
-  "note": "What a server sends to grant a unit gold. The header names the unit whose death earned the gold, as source does.",
+  "note": "What a server sends to show a unit gaining gold. The header names the unit whose death earned the gold, as source does.",
   "revisions": [
     {
       "from": "0.8.13.26",
@@ -105,7 +105,8 @@
           "type": "f32",
           "note": "How much."
         }
-      ]
+      ],
+      "note": "A client only floats the amount as text: the gold the unit holds does not change. Where unit is the client's own champion, amount is above 0.5 and source names a unit the client holds other than its own player, the text floats over source; otherwise it floats over unit, as a gain where amount is above zero and a loss where it is below."
     },
     {
       "from": "1.0.0.144",
@@ -130,7 +131,8 @@
           "type": "f32",
           "note": "How much."
         }
-      ]
+      ],
+      "note": "It grants the unit gold."
     }
   ]
 }

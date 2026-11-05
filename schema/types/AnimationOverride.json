@@ -10,7 +10,7 @@
         {
           "name": "fromLength",
           "type": "u32",
-          "note": "How many bytes the name below occupies."
+          "note": "How many bytes the name below occupies, where it is from 1 to 2147483647."
         },
         {
           "name": "from",
@@ -22,7 +22,7 @@
         {
           "name": "toLength",
           "type": "u32",
-          "note": "How many bytes the name below occupies."
+          "note": "How many bytes the name below occupies, where it is from 1 to 2147483647."
         },
         {
           "name": "to",

@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "1.0.0.124",
-      "until": "1.0.0.144",
+      "until": "1.0.0.128",
       "channel": "requests",
       "command": 63,
       "direction": "clientToServer",
@@ -18,6 +18,22 @@
           "note": "The unit to use."
         }
       ]
+    },
+    {
+      "from": "1.0.0.128",
+      "until": "1.0.0.144",
+      "channel": "requests",
+      "command": 63,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit to use."
+        }
+      ],
+      "note": "A client also sends it as a unit its champion is attacking changes side (TeamChanged), whether usable or not."
     },
     {
       "from": "1.0.0.144",

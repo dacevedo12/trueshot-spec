@@ -995,7 +995,7 @@
         {
           "name": "agreement",
           "type": "u8",
-          "note": "Nonzero where the build the client runs matches, which a client needs to load; zero has it show both versions and end."
+          "note": "1 has a client load. 0 has it show both versions and end; any value from 2 to 255 also has it end, without showing them."
         },
         {
           "name": "map",
@@ -1087,7 +1087,7 @@
             {
               "name": "matched",
               "width": 1,
-              "note": "Set where the match was put together rather than made by hand."
+              "note": "Set to hide all chat: a client refuses to send a line to all players and shows a notice instead, a different one where it is watching the match."
             },
             {
               "name": "unused",

@@ -1473,7 +1473,7 @@
         {
           "name": "marker",
           "type": "u32",
-          "note": "The region's id, which RegionRemoved names; 4294967295 has the client pick one of its own. A region sent again with the same id, kind and radius changes the one held rather than adding another."
+          "note": "The region's id, which RegionRemoved names; 0 has the client pick one of its own."
         },
         {
           "name": "does",
@@ -1494,22 +1494,22 @@
             {
               "name": "unused",
               "width": 30,
-              "note": "Unused; a server writes zero."
+              "note": "Unused; a server writes zero. A client clears it itself before storing the region."
             }
           ]
         },
         {
           "name": "extra",
           "type": "u32",
-          "note": "Kept with the region as it stands; what it does is not recorded. A server writes zero."
+          "note": "Kept with the region as it stands, and compared in matching a region already held; what else it does is not recorded. A server writes zero."
         },
         {
           "name": "otherExtra",
           "type": "u32",
-          "note": "Kept the same way; a server writes zero."
+          "note": "Kept and compared the same way; a server writes zero."
         }
       ],
-      "note": "A region grants sight, blocks the way, or grows cover."
+      "note": "A region grants sight, blocks the way, or grows cover. A region matching one the client holds in clientId (after taking 4294967294 as 4294967295), sightRadius, the first three bits of does, extra, otherExtra and position only resets that one's lifetime to the new one; its id is not compared, and nothing new is added."
     },
     {
       "from": "1.0.0.144",

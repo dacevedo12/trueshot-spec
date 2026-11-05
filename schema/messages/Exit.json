@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "Exit",
   "system": "match",
-  "note": "What a client sends as it leaves. It carries nothing of its own. The header names no object: it carries zero.",
+  "note": "What a client sends as it leaves. It carries nothing of its own.",
   "revisions": [
     {
       "from": "0.9.22.14",
@@ -181,7 +181,7 @@
       "command": 150,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window, as a reconnection fails, or on Shutdown or BotKick.",
+      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window, as a reconnection fails, or on Shutdown or a BotKick whose first byte is 4. The header carries the id the client holds for its own player.",
       "fields": []
     },
     {
@@ -191,7 +191,7 @@
       "command": 143,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window, as a reconnection fails, or on Shutdown or BotKick.",
+      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window, as a reconnection fails, or on Shutdown or BotKick. The header names no object: it carries zero.",
       "fields": []
     },
     {
@@ -201,7 +201,7 @@
       "command": 140,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window, as a reconnection fails, or on Shutdown or BotKick.",
+      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window, as a reconnection fails, or on Shutdown or BotKick. The header names no object: it carries zero.",
       "fields": []
     },
     {
@@ -211,7 +211,7 @@
       "command": 143,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window, as a reconnection fails, or on Shutdown or BotKick.",
+      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window, as a reconnection fails, or on Shutdown or BotKick. The header names no object: it carries zero.",
       "fields": []
     },
     {
@@ -221,7 +221,7 @@
       "command": 142,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window, as a reconnection fails, or on Shutdown or BotKick.",
+      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window, as a reconnection fails, or on Shutdown or BotKick. The header names no object: it carries zero.",
       "fields": []
     },
     {
@@ -231,7 +231,7 @@
       "command": 143,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window, as a reconnection fails, or on Shutdown or BotKick.",
+      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window, as a reconnection fails, or on Shutdown or BotKick. The header names no object: it carries zero.",
       "fields": []
     },
     {
@@ -241,7 +241,8 @@
       "command": 143,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "The header names no object: it carries zero."
     }
   ]
 }

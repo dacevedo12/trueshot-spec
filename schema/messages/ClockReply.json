@@ -296,7 +296,7 @@
         {
           "name": "value",
           "type": "u32",
-          "note": "A value the client takes from its connection; what it means is not recorded, and a server ignores it."
+          "note": "The client id the sender holds, as it sends in clientId in Camera and CameraLock."
         },
         {
           "name": "serverSaid",
@@ -306,7 +306,7 @@
         {
           "name": "clientSaid",
           "type": "f32",
-          "note": "What the client's own clock stood at when that statement arrived, in seconds."
+          "note": "What the client's own clock reads, in seconds, just after it set itself from that statement: elapsed plus its smoothed estimate of the delay."
         },
         {
           "name": "check",

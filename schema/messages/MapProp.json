@@ -1587,15 +1587,15 @@
         {
           "name": "kind",
           "type": "u8",
-          "note": "What sort of prop it is; a client makes nothing for any other value. A client first deletes any object holding the prop's id, whatever the kind.",
+          "note": "What sort of prop it is; a client makes nothing for any other value. It deletes no object first: where one already holds the prop's id, both stay.",
           "values": {
             "0": {
               "name": "active",
-              "note": "Uses name, asset, skin, side, position, the three rotations and rank; not offset or scale."
+              "note": "Uses name, asset, side, position, the three rotations and rank; not offset."
             },
             "1": {
               "name": "scenery",
-              "note": "Uses name, asset, skin, position, rotation (pitch, yaw, roll in degrees), offset and scale; not side or rank. Where the map has a placement point of the same name, its position is used instead; where a scenery prop of that name already stands there, it is reused and takes the new id."
+              "note": "Uses name, asset, position, rotation (pitch, yaw, roll in degrees) and offset; not side or rank. Where the map has a placement point of the same name, its position is used instead; where a scenery prop of that name already stands there, it is reused and takes the new id."
             }
           }
         },

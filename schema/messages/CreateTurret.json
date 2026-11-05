@@ -576,7 +576,7 @@
           "note": "Read, then overwritten; a client keeps nothing of it."
         }
       ],
-      "note": "A client matches name exactly against the map's turrets. With no match it only removes any object holding the id; a matched turret missing or dead is rebuilt before it takes the id. A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it."
+      "note": "A client matches name exactly against the map's turrets; a matched turret missing or dead is rebuilt before it takes the id. A server names one of the map's turrets: with no match, or on a map with none, a client fails. A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it."
     },
     {
       "from": "1.0.0.143",

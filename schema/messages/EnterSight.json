@@ -3419,7 +3419,7 @@
               "present": {
                 "when": "remaining"
               },
-              "note": "Where the unit is and what it is doing on the ground. A client reads it for a champion or a minion, and a server sends it for those; for another unit with a mind the message ends before it.",
+              "note": "Where the unit is and what it is doing on the ground. A client reads it, after targetableToTeam, for every unit with a mind: a champion, a minion or another; a server sends it for those.",
               "fields": [
                 {
                   "name": "movementKind",

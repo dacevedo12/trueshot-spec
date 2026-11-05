@@ -911,17 +911,17 @@
         {
           "name": "unit",
           "type": "u32",
-          "note": "The unit the region follows. A client takes the region even where it does not hold the unit."
+          "note": "The unit the region follows. Where the client does not hold the unit, it drops the whole message and makes no region."
         },
         {
           "name": "lifetime",
           "type": "f32",
-          "note": "How long it lasts, in seconds. A client counts it down and removes the region once it reaches zero or less. Whether one that starts at zero or less is kept is not recorded."
+          "note": "How long it lasts, in seconds. A client counts it down and removes the region once it reaches zero or less; one that starts at zero or less goes at the client's next update."
         },
         {
           "name": "marker",
           "type": "u32",
-          "note": "The region's id, which RegionRemoved names; 4294967295 has the client pick one of its own. A region sent again with the same id, kind and radius changes the one held rather than adding another."
+          "note": "The region's id, which RegionRemoved names; 4294967295 has the client pick one of its own."
         },
         {
           "name": "does",
@@ -949,15 +949,15 @@
         {
           "name": "extra",
           "type": "u32",
-          "note": "Kept with the region as it stands; what it does is not recorded. A server writes zero."
+          "note": "Kept with the region, and compared in matching a region already held, so a region differing only here is added as a new one. A server writes zero."
         },
         {
           "name": "otherExtra",
           "type": "u32",
-          "note": "Kept the same way; a server writes zero."
+          "note": "Kept and compared the same way; a server writes zero."
         }
       ],
-      "note": "A region matching one the client holds in view, sightRadius, the first three bits of does, marker, sightFrom and unit only gives that one the new lifetime."
+      "note": "A region matching one the client holds in kind, sightRadius, the first three bits of does (as the client sets them itself), extra, otherExtra and unit only has its lifetime replaced by the new one; marker and clientId are not compared, and nothing new is added."
     },
     {
       "from": "1.0.0.144",

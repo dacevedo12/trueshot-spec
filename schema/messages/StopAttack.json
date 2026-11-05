@@ -531,7 +531,7 @@
             {
               "name": "forceStop",
               "width": 1,
-              "note": "Set to stop the attack outright; a client does so anyway where it cannot see the unit, and keepAnimating and forceCast then have no effect."
+              "note": "Set to stop the attack outright; keepAnimating, forceCast and destroyMissile still apply, so an attack not yet landed lands first where forceCast is set. Clear, a client may keep the attack going, by the unit's state and the attack's own data."
             },
             {
               "name": "summonerSpell",

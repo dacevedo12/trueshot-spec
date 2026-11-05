@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "EffectReplacedGroup",
   "system": "effects",
-  "note": "What a server sends to replace one effect with another on several units at once. The header names no object it acts on: the units are listed below.",
+  "note": "What a server sends about the effect in one slot of several units at once. The header names no object it acts on: the units are listed below.",
   "revisions": [
     {
       "from": "1.0.0.82",
@@ -285,7 +285,7 @@
         {
           "name": "lasts",
           "type": "f32",
-          "note": "How long it runs in total, in seconds."
+          "note": "How long it has left to run, in seconds from when the message arrives. runningFor moves neither its start nor its end."
         },
         {
           "name": "count",
@@ -319,7 +319,8 @@
           },
           "note": "The units, one place each."
         }
-      ]
+      ],
+      "note": "A client takes each entry as it takes an EffectReplaced for that unit, with the two times above: there is no effect number, so it re-times the effect already in the slot, and does nothing where the slot is empty."
     },
     {
       "from": "1.0.0.144",
@@ -371,7 +372,8 @@
           },
           "note": "The units, one place each."
         }
-      ]
+      ],
+      "note": "It replaces one effect with another on each unit."
     }
   ]
 }

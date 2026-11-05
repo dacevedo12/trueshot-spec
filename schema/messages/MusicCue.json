@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "MusicCue",
   "system": "communication",
-  "note": "What a server sends to drive the music a client plays. The header names the champion of the player it is sent to.",
+  "note": "What a server sends to drive the music a client plays.",
   "revisions": [
     {
       "from": "1.0.0.124",
@@ -250,7 +250,8 @@
           "type": "u32",
           "note": "Which cue or event."
         }
-      ]
+      ],
+      "note": "The header names a champion: a client acts on the message for any champion it holds, not only its own."
     },
     {
       "from": "1.0.0.141",
@@ -281,7 +282,8 @@
           "type": "u32",
           "note": "Which cue or event."
         }
-      ]
+      ],
+      "note": "The header names the champion of the player it is sent to."
     },
     {
       "from": "1.0.0.144",
@@ -312,7 +314,8 @@
           "type": "u32",
           "note": "Which cue or event."
         }
-      ]
+      ],
+      "note": "The header names the champion of the player it is sent to."
     },
     {
       "from": "1.0.0.150",
@@ -343,7 +346,8 @@
           "type": "u32",
           "note": "Which cue or event."
         }
-      ]
+      ],
+      "note": "The header names the champion of the player it is sent to."
     },
     {
       "from": "3.01.0.1",
@@ -374,7 +378,8 @@
           "type": "u32",
           "note": "Which cue or event."
         }
-      ]
+      ],
+      "note": "The header names the champion of the player it is sent to."
     },
     {
       "from": "3.6.0.388",
@@ -413,7 +418,8 @@
           "type": "u32",
           "note": "Which state, where the state changes."
         }
-      ]
+      ],
+      "note": "The header names the champion of the player it is sent to."
     },
     {
       "from": "4.1.0.171",
@@ -452,7 +458,8 @@
           "type": "u32",
           "note": "Which state, where the state changes."
         }
-      ]
+      ],
+      "note": "The header names the champion of the player it is sent to."
     },
     {
       "from": "4.11.0.386",
@@ -494,7 +501,8 @@
           "type": "u32",
           "note": "Which state, where the state changes."
         }
-      ]
+      ],
+      "note": "The header names the champion of the player it is sent to."
     }
   ]
 }

@@ -206,7 +206,8 @@
           "type": "u8",
           "note": "Which side, by an index."
         }
-      ]
+      ],
+      "note": "A client ignores a particle it does not hold. A server names only a particle: where particle names another object the client holds, a client fails."
     },
     {
       "from": "1.0.0.141",

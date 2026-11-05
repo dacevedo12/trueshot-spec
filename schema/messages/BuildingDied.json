@@ -307,14 +307,15 @@
         {
           "name": "attacker",
           "type": "u32",
-          "note": "The unit that destroyed it."
+          "note": "The unit that destroyed it. A client reads nothing here."
         },
         {
           "name": "lastChampion",
           "type": "u32",
           "note": "Unused; a client reads nothing here."
         }
-      ]
+      ],
+      "note": "A client reads nothing after the header. It plays the destruction once for each building and ignores any repeat."
     },
     {
       "from": "1.0.0.144",

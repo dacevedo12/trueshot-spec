@@ -653,10 +653,10 @@
           "type": "string",
           "encoding": "utf8",
           "size": "terminated",
-          "note": "The name the client loads it under, ended by a zero byte. The name and its zero byte take at most 64 bytes."
+          "note": "The name the client loads it under, ended by a zero byte."
         }
       ],
-      "note": "A client stops a basic attack the unit is making first. Looks stack: the newest shows, and AppearancePopped takes away the one its entry names. An animated building instead looks for a look of the same name whose skin equals entry, adds the look under skin where it finds none, and how has no effect on it."
+      "note": "A client stops a basic attack the unit is making first. Looks stack: the newest shows, and AppearancePopped takes away the one its entry names. A building ignores it."
     },
     {
       "from": "1.0.0.144",

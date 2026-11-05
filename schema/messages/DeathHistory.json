@@ -15258,7 +15258,7 @@
           }
         }
       ],
-      "note": "A client ignores the whole message unless it holds killer. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
+      "note": "A client ignores the whole message where killer is zero. Where it does not hold killer, it still takes span, sourceType and the entries, and leaves only the killer's side unrecorded. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
     },
     {
       "from": "1.0.0.141",

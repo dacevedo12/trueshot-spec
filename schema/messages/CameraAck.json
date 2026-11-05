@@ -156,7 +156,7 @@
     },
     {
       "from": "1.0.0.124",
-      "until": "1.0.0.144",
+      "until": "1.0.0.128",
       "channel": "events",
       "command": 46,
       "direction": "serverToClient",
@@ -166,6 +166,21 @@
           "name": "syncId",
           "type": "u8",
           "note": "The name the report carried. A client takes it only where it is at most 127 past the last name it took, counting round past 255, and sends the report again until it does."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.128",
+      "until": "1.0.0.144",
+      "channel": "events",
+      "command": 46,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u8",
+          "note": "The name the report carried. A client sends the report again until this comes back."
         }
       ]
     },

@@ -897,7 +897,7 @@
         {
           "name": "entryCount",
           "type": "u16",
-          "note": "How many sets of numbers follow."
+          "note": "How many sets of numbers follow. A client ignores the whole message where that many entries of 17 bytes run past its end."
         },
         {
           "name": "entries",
@@ -916,7 +916,7 @@
               {
                 "name": "slot",
                 "type": "u8",
-                "note": "Which slot."
+                "note": "Which slot: 0 to 59 a spell from a separate table of the unit's other spells; 60 to 119 the unit's own slot, less 60; 120 and up a summoner slot, less 120. A client skips the entry where the unit has no summoner slots."
               },
               {
                 "name": "values",
@@ -930,7 +930,7 @@
                 }
               }
             ],
-            "note": "The numbers for one spell, five places of them."
+            "note": "The numbers for one spell, three places of them. A client skips an entry whose unit it does not hold."
           }
         }
       ]

@@ -147,7 +147,7 @@
           "note": "Which spell."
         }
       ],
-      "note": "A client cancels the aiming only where that slot is being aimed, and otherwise does nothing. A server sends it to clients watching a match."
+      "note": "A client cancels the aiming only where that slot is being aimed, and otherwise does nothing. It acts on the message for any champion it holds, watching a match or not."
     },
     {
       "from": "1.0.0.144",

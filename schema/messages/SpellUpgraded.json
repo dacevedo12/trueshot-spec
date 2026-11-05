@@ -106,7 +106,7 @@
           "note": "How many spell points are left unspent."
         }
       ],
-      "note": "Arriving on the events channel instead, it raises the spell as well, and a client shows the new level either way."
+      "note": "A client takes it the same on every channel: it sets the slot's level to level, at most 6, and keeps pointsLeft."
     },
     {
       "from": "1.0.0.144",

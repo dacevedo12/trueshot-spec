@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "EffectReplaced",
   "system": "effects",
-  "note": "What a server sends to put a lasting effect in a slot that already holds one, keeping the slot rather than taking the old one off first. The header names the unit carrying the effect, which can differ from the caster named inside.",
+  "note": "What a server sends about a lasting effect in a slot that already holds one. The header names the unit carrying the effect, which can differ from the caster named inside.",
   "revisions": [
     {
       "from": "0.8.13.26",
@@ -290,14 +290,15 @@
         {
           "name": "lasts",
           "type": "f32",
-          "note": "How long it runs in total, in seconds."
+          "note": "How long it has left to run, in seconds from when the message arrives. A client counts the effect as starting at arrival: runningFor moves neither its start nor its end."
         },
         {
           "name": "caster",
           "type": "u32",
           "note": "The unit that put it there."
         }
-      ]
+      ],
+      "note": "It carries no effect number: a client re-times the effect already in the slot and takes caster as its caster again. Where the slot is empty, nothing happens."
     },
     {
       "from": "1.0.0.144",
@@ -327,7 +328,8 @@
           "type": "u32",
           "note": "The unit that put it there."
         }
-      ]
+      ],
+      "note": "It puts a lasting effect in the slot, keeping the slot rather than taking the old one off first."
     },
     {
       "from": "4.11.0.386",
@@ -357,7 +359,8 @@
           "type": "u32",
           "note": "The unit that put it there."
         }
-      ]
+      ],
+      "note": "It puts a lasting effect in the slot, keeping the slot rather than taking the old one off first."
     }
   ]
 }

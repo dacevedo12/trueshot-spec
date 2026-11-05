@@ -1070,7 +1070,7 @@
           "note": "The champion's character name, which is also its unique name."
         }
       ],
-      "note": "A client first deletes any object it holds under the same id."
+      "note": "A client deletes no object first: where one already holds the id, both answer to it."
     },
     {
       "from": "1.0.0.141",

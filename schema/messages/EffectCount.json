@@ -500,24 +500,25 @@
         {
           "name": "count",
           "type": "u8",
-          "note": "How many are stacked there now."
+          "note": "How many are stacked there now. 0 takes the effect off."
         },
         {
           "name": "timeLeft",
           "type": "f32",
-          "note": "How long it has left to run, in seconds. With runningFor it adds up to the whole run the effect was added with."
+          "note": "How long it has left to run, in seconds from when the message arrives."
         },
         {
           "name": "runningFor",
           "type": "f32",
-          "note": "How long it has already run, in seconds."
+          "note": "How long it has already run, in seconds: a client counts its start that long before the message arrived."
         },
         {
           "name": "caster",
           "type": "u32",
           "note": "The unit that put it there."
         }
-      ]
+      ],
+      "note": "Where the slot is empty, the whole message does nothing."
     },
     {
       "from": "1.0.0.144",

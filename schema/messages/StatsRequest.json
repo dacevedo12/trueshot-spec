@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "StatsRequest",
   "system": "joining",
-  "note": "What a client sends about itself: what it has detected running alongside it, and which appearance it believes it is wearing. The header names the sender's champion.",
+  "note": "What a client sends about itself. The header names the sender's champion.",
   "revisions": [
     {
       "from": "1.0.0.104",
@@ -99,7 +99,8 @@
       "command": 92,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "It carries nothing of its own. A client sends it from its score panel."
     },
     {
       "from": "1.0.0.144",
@@ -141,7 +142,8 @@
           "type": "u32",
           "note": "One of three values a client reports about software it has detected alongside itself. A client sends zero."
         }
-      ]
+      ],
+      "note": "It says what the client has detected running alongside it."
     },
     {
       "from": "4.8.0.189",
@@ -166,7 +168,8 @@
           "type": "u32",
           "note": "A value standing for that appearance's content."
         }
-      ]
+      ],
+      "note": "It says what the client has detected running alongside it, and which appearance it believes it is wearing."
     },
     {
       "from": "4.11.0.386",
@@ -191,7 +194,8 @@
           "type": "u32",
           "note": "A value standing for that appearance's content."
         }
-      ]
+      ],
+      "note": "It says what the client has detected running alongside it, and which appearance it believes it is wearing."
     },
     {
       "from": "4.12.0.356",
@@ -226,7 +230,8 @@
           "type": "u32",
           "note": "A value standing for that appearance's content."
         }
-      ]
+      ],
+      "note": "It says what the client has detected running alongside it, and which appearance it believes it is wearing."
     }
   ]
 }

@@ -503,7 +503,7 @@
         {
           "name": "camp",
           "type": "u32",
-          "note": "Which camp. A client ignores a camp it does not know, but for the timer."
+          "note": "Which camp. A client does nothing for a camp it does not know."
         },
         {
           "name": "does",
@@ -528,7 +528,7 @@
           ]
         }
       ],
-      "note": "A client marks the camp empty, even one that had just filled."
+      "note": "A client marks the camp empty for the one side sideOrder picks, even one that had just filled."
     },
     {
       "from": "1.0.0.141",

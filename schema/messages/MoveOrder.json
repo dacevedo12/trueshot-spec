@@ -1839,7 +1839,7 @@
                 {
                   "name": "unused",
                   "width": 15,
-                  "note": "Unused; a client reads nothing here."
+                  "note": "A client sends whatever it held in these bits; they carry no meaning, and a server ignores them."
                 },
                 {
                   "name": "pointCount",
@@ -1849,7 +1849,7 @@
                 {
                   "name": "unusedHigh",
                   "width": 9,
-                  "note": "Unused; a client reads nothing here."
+                  "note": "A client sends whatever it held in these bits; they carry no meaning, and a server ignores them."
                 }
               ]
             },
@@ -1956,7 +1956,7 @@
                   }
                 }
               ],
-              "note": "Everything the movement carries beyond its first byte."
+              "note": "Everything the movement carries beyond its first four bytes."
             }
           ]
         }

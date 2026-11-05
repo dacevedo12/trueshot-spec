@@ -54,8 +54,7 @@
           "type": "i64",
           "note": "The player the answer is for; a client takes it only where this is its own player id, and reads nothing after it."
         }
-      ],
-      "note": "Straight after a request a server sends one answer for every seat, and every one of them carries that request's build and proof back."
+      ]
     },
     {
       "from": "1.0.0.142",

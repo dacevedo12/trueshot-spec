@@ -167,7 +167,7 @@
         {
           "name": "flags",
           "type": "u8",
-          "note": "How the seat is treated. Two bits take effect: bit 0, set where a bot holds the seat, which the loading screen then shows from the bot fields below as already loaded; and bit 1, set to show the seat's champion on the loading screen in its skin's vintage art. The others have no effect."
+          "note": "How the seat is treated. A client tests the whole byte: any nonzero value makes it a bot's seat, which the loading screen then shows from the bot fields below as already loaded. No bit is read on its own."
         },
         {
           "name": "side",
@@ -179,14 +179,14 @@
           "type": "string",
           "encoding": "utf8",
           "size": 64,
-          "note": "What the seat is called where nobody holds it, written and padded as above."
+          "note": "What the seat is called where nobody holds it, written and padded as above. A client reads nothing here."
         },
         {
           "name": "botAsset",
           "type": "string",
           "encoding": "utf8",
           "size": 64,
-          "note": "The name the client loads art for it under where nobody holds it, written and padded as above."
+          "note": "The name the client loads art for it under where nobody holds it, written and padded as above. A bot seat's loading card shows its name from this, looked up in the client's own text."
         },
         {
           "name": "botDifficulty",

@@ -134,7 +134,7 @@
             {
               "name": "pausing",
               "width": 1,
-              "note": "Set where holding the match is allowed."
+              "note": "Set to have a client that is not watching the match show a notice in its chat that pausing is allowed. A client keeps nothing of it, and it limits no pausing."
             },
             {
               "name": "unused",
@@ -144,7 +144,7 @@
           ]
         }
       ],
-      "note": "A client past spawning ignores it."
+      "note": "A client skips the start only once the match has ended or it is leaving: after GameEnded, Shutdown or an exit. Before, during and after spawning, it starts again."
     },
     {
       "from": "1.0.0.144",

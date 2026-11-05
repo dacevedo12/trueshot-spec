@@ -105,9 +105,10 @@
         {
           "name": "emote",
           "type": "u8",
-          "note": "Which emote, by the number the client knows it as. A client plays an animation on the champion for 0, 1 and 2, a different one each, and none for 3."
+          "note": "Which emote, by the number the client knows it as. A client plays an animation on the champion for each of 0, 1, 2 and 3, a different one each, and none for any higher value."
         }
-      ]
+      ],
+      "note": "A client ignores the message while the champion is dead."
     },
     {
       "from": "1.0.0.144",

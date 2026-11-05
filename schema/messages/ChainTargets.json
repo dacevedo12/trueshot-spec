@@ -578,7 +578,7 @@
           "note": "Always 32 slots; those past count have no effect."
         }
       ],
-      "note": "Where the client already holds the missile, the missile takes the list; otherwise the list waits for the caster's next chain missile."
+      "note": "A client drops the message unless the match is running, it holds caster, and caster has a cast in progress. It keeps the list for the caster's next chain missile, even where it already holds the missile."
     },
     {
       "from": "1.0.0.144",

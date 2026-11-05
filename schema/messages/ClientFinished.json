@@ -112,7 +112,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "It is sent once, at the end."
+      "note": "A client sends it each time GameEnded arrives after the match has started."
     },
     {
       "from": "1.0.0.144",

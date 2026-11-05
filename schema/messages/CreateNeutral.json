@@ -1561,7 +1561,7 @@
         {
           "name": "camp",
           "type": "u32",
-          "note": "Which camp the unit belongs to. A client adds the unit to that camp where a CampMarker has placed it first, and to no camp otherwise."
+          "note": "Which camp the unit belongs to. Where the client does not know the camp, it creates it at the unit's own position (atX, atY, atZ), with campIcon, effectSide and revealEvent, and adds the unit to it. Where it knows the camp, a nonzero effectSide changes the camp's side."
         },
         {
           "name": "effectSide",

@@ -553,7 +553,7 @@
             {
               "name": "unused",
               "width": 7,
-              "note": "Unused; a client writes zero."
+              "note": "A client sends back the whole byte it holds: after CameraLockSet, the byte it received, unchanged."
             }
           ]
         },
@@ -563,7 +563,7 @@
           "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
         }
       ],
-      "note": "A client sends it whenever its lock changes: by the player, or as the game forces a lock or lifts one. It sends none while playing a replay."
+      "note": "A client sends it every time its lock is set, even to the same value: by the player, by CameraLockSet, or as the game forces a lock or lifts one."
     },
     {
       "from": "1.0.0.144",

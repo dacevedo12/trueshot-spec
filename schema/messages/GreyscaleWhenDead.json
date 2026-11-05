@@ -560,7 +560,7 @@
             {
               "name": "enabled",
               "width": 1,
-              "note": "Set where the world is drawn without colour. Clear, it does not stop a client drawing the world without colour while its champion is down."
+              "note": "Set where the world is drawn without colour while the champion is down; clear, it is drawn in colour. It starts set as the champion is created."
             },
             {
               "name": "unused",

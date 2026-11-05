@@ -2633,7 +2633,7 @@
             {
               "name": "unused",
               "width": 7,
-              "note": "Unused; a server writes zero."
+              "note": "Unused; a server writes zero. A client tests the whole byte for bounced, so a set bit here counts as bounced."
             }
           ]
         },

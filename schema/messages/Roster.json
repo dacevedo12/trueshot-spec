@@ -85,12 +85,12 @@
         {
           "name": "sideRoom",
           "type": "u32",
-          "note": "How many seats the first side has room for."
+          "note": "How many seats the first side has room for, and so how many leading places of side a client copies. A server sends at most 24: a client refuses a count above 48 and keeps the one before, and for 25 to 48 copies on past the side's places into the fields after them."
         },
         {
           "name": "otherSideRoom",
           "type": "u32",
-          "note": "How many the other has room for."
+          "note": "How many the other has room for, under the same terms."
         },
         {
           "name": "gap",
@@ -102,7 +102,7 @@
           "name": "side",
           "type": "array",
           "count": 24,
-          "note": "The players on one side, twenty four places. The count below says how many of the leading places carry a player; the rest hold zero. A place cannot be read on its own, because zero is an identifier a match gives out as well as what an unused place holds. It has a player identifier's width.",
+          "note": "The players on one side, twenty four places. A client copies as many leading places as sideRoom gives; the rest hold zero. A place cannot be read on its own, because zero is an identifier a match gives out as well as what an unused place holds. It has a player identifier's width.",
           "items": {
             "name": "player",
             "type": "i64",
@@ -113,7 +113,7 @@
           "name": "otherSide",
           "type": "array",
           "count": 24,
-          "note": "The players on the other, under the same reading and its own count.",
+          "note": "The players on the other, under the same reading, as many as otherSideRoom gives.",
           "items": {
             "name": "player",
             "type": "i64",
@@ -123,12 +123,12 @@
         {
           "name": "sideTaken",
           "type": "u32",
-          "note": "How many of the leading places on the first side carry a player."
+          "note": "How many of the leading places on the first side carry a player. A client keeps it, and it limits nothing."
         },
         {
           "name": "otherSideTaken",
           "type": "u32",
-          "note": "How many on the other."
+          "note": "How many on the other, under the same terms."
         }
       ]
     },

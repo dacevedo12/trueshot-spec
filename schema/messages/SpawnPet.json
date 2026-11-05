@@ -1475,7 +1475,7 @@
         {
           "name": "spellLevel",
           "type": "i32",
-          "note": "The level of the spell that summoned it, plus one. A client uses it only where the owner is on its own side."
+          "note": "The level of the spell that summoned it, plus one. A client uses it only where the owner belongs to its own network node, so only for its own units and never while watching a match."
         },
         {
           "name": "duration",
@@ -1516,7 +1516,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": 64,
-          "note": "An effect it carries, padded with zero bytes. A client uses it only where the owner is on its own side."
+          "note": "An effect it carries, padded with zero bytes. A client uses it only where the owner belongs to its own network node, as for spellLevel."
         },
         {
           "name": "clone",
@@ -1531,7 +1531,7 @@
             {
               "name": "copyInventory",
               "width": 1,
-              "note": "Set where it copies its owner's items."
+              "note": "Set to tie the pet to the unit clone names. A client ties it to clone whatever this bit says, so the bit adds nothing."
             },
             {
               "name": "clearOwnerTarget",

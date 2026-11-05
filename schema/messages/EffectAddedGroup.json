@@ -816,7 +816,7 @@
         {
           "name": "lasts",
           "type": "f32",
-          "note": "How long it runs in total, in seconds."
+          "note": "How long it has left to run, in seconds from when the message arrives: the whole run is runningFor plus lasts."
         },
         {
           "name": "count",
@@ -849,12 +849,12 @@
               {
                 "name": "stacks",
                 "type": "u8",
-                "note": "How many are stacked there."
+                "note": "How many are stacked there. 0 takes the effect out of the slot."
               },
               {
                 "name": "hidden",
                 "type": "u8",
-                "note": "Whether the client keeps it off the unit's display."
+                "note": "Whether the client keeps it off the unit's display: 1 hides it, and any other value shows it."
               }
             ]
           },

@@ -90,14 +90,15 @@
         {
           "name": "maskedStatus",
           "type": "u32",
-          "note": "It varies from client to client; a server ignores it."
+          "note": "A status, masked. Taken by exclusive or with mask and with the client's own champion id, it gives 262917615 where the client's check of itself found a fault, and any other value otherwise. While watching a match, a client leaves this and mask unset, so they carry no meaning."
         },
         {
           "name": "mask",
           "type": "u32",
           "note": "A random value the client picks to mask the one above."
         }
-      ]
+      ],
+      "note": "It comes unprompted, before any start of play reaches the client."
     },
     {
       "from": "1.0.0.144",

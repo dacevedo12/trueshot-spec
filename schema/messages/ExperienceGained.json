@@ -69,7 +69,7 @@
     },
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.144",
+      "until": "1.0.0.128",
       "channel": "events",
       "command": 17,
       "direction": "serverToClient",
@@ -87,6 +87,27 @@
         }
       ],
       "note": "A client floats the amount over any champion it holds, except while playing a replay."
+    },
+    {
+      "from": "1.0.0.128",
+      "until": "1.0.0.144",
+      "channel": "events",
+      "command": 17,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit granted it. A server names a champion: a client fails for any other unit."
+        },
+        {
+          "name": "amount",
+          "type": "f32",
+          "note": "How much."
+        }
+      ],
+      "note": "A client floats the amount over the champion, except while watching a match. Where the unit is the client's own champion below its highest level, it also shows the amount on its experience display."
     },
     {
       "from": "1.0.0.144",

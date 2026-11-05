@@ -540,9 +540,10 @@
           "type": "string",
           "encoding": "ascii",
           "size": 256,
-          "note": "The build, as text. The text ends at a zero byte."
+          "note": "The build as text: a fixed word, the build number, then the build type in square brackets. The text ends at a zero byte."
         }
-      ]
+      ],
+      "note": "A client does not send it while watching a match."
     },
     {
       "from": "1.0.0.141",

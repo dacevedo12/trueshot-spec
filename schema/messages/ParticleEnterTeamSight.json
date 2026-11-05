@@ -22,7 +22,8 @@
           "type": "u8",
           "note": "Which side, by an index."
         }
-      ]
+      ],
+      "note": "A client ignores it: it reads nothing and changes nothing."
     },
     {
       "from": "1.0.0.141",

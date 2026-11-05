@@ -1015,11 +1015,11 @@
             },
             "2": {
               "name": "shop",
-              "note": "A shop element blinks or stops, where the shop window is open. A client takes only elements 0 to 4. Element 0 is the buy button, 1 the sell button, 2 the shop item number names, 3 the item second names within the category number names, and 4 the recommended item number names."
+              "note": "A shop element blinks or stops, where the shop window is open. Element 0 is the buy button, 1 the sell button, 2 the shop item number names, 3 the item second names within the category number names, and 4 the recommended item number names. A client does not bound element here: from 5 up it has no defined effect."
             },
             "3": {
               "name": "minimap",
-              "note": "The minimap; a client acts on element 0 only, its camera button."
+              "note": "The minimap; a client does nothing for it, on or off."
             }
           }
         },

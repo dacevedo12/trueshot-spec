@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "CameraLockSet",
   "system": "interface",
-  "note": "What a server sends to lock the camera to the champion or free it. A client answers with CameraLock, except while playing a replay. The header names no object: a server writes zero.",
+  "note": "What a server sends to lock the camera to the champion or free it. A client answers with CameraLock. The header names no object: a server writes zero.",
   "revisions": [
     {
       "from": "0.9.22.14",
@@ -290,7 +290,7 @@
           "note": "Set to lock the camera, clear to free it. Any nonzero value sets it."
         }
       ],
-      "note": "A client ignores the message while something of its own holds the camera."
+      "note": "A client answers at once with CameraLock, returning the byte as it arrived. While the game holds the camera itself, it keeps the byte, and applies it and sends CameraLock only as that hold ends."
     },
     {
       "from": "1.0.0.144",
@@ -306,7 +306,7 @@
           "note": "Set to lock the camera, clear to free it. Any nonzero value sets it."
         }
       ],
-      "note": "A client ignores the message while something of its own holds the camera."
+      "note": "A client ignores the message while something of its own holds the camera. It sends no CameraLock while playing a replay."
     },
     {
       "from": "1.0.0.147",
@@ -335,7 +335,7 @@
           "note": "Whether the camera is locked."
         }
       ],
-      "note": "A client ignores the message while something of its own holds the camera."
+      "note": "A client ignores the message while something of its own holds the camera. It sends no CameraLock while playing a replay."
     },
     {
       "from": "1.0.0.150",
@@ -364,7 +364,7 @@
           "note": "Whether the camera is locked."
         }
       ],
-      "note": "A client ignores the message while something of its own holds the camera."
+      "note": "A client ignores the message while something of its own holds the camera. It sends no CameraLock while playing a replay."
     },
     {
       "from": "3.01.0.1",
@@ -393,7 +393,7 @@
           "note": "Whether the camera is locked."
         }
       ],
-      "note": "A client ignores the message while something of its own holds the camera."
+      "note": "A client ignores the message while something of its own holds the camera. It sends no CameraLock while playing a replay."
     },
     {
       "from": "4.1.0.171",
@@ -422,7 +422,7 @@
           "note": "Whether the camera is locked."
         }
       ],
-      "note": "A client ignores the message while something of its own holds the camera."
+      "note": "A client ignores the message while something of its own holds the camera. It sends no CameraLock while playing a replay."
     },
     {
       "from": "4.11.0.386",
@@ -451,7 +451,7 @@
           "note": "Whether the camera is locked."
         }
       ],
-      "note": "A client ignores the message while something of its own holds the camera."
+      "note": "A client ignores the message while something of its own holds the camera. It sends no CameraLock while playing a replay."
     }
   ]
 }

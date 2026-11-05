@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "VictoryDance",
   "system": "match",
-  "note": "What a server sends to set every unit on a side moving as winners or losers do: a winning champion dances, a losing one stands idle, and other units play a win or loss animation where they have one. It ends nothing and changes nothing else on screen. The header carries zero.",
+  "note": "What a server sends to set units moving as winners or losers do. It ends nothing and changes nothing else on screen. The header carries zero.",
   "revisions": [
     {
       "from": "1.0.0.123",
@@ -137,7 +137,8 @@
           "type": "u8",
           "note": "Nonzero where side 100 won, zero where side 200 won."
         }
-      ]
+      ],
+      "note": "A client moves every unit that belongs to a side, on both sides: those of the winning side as winners, those of the other as losers. A winning champion dances, a losing one stands idle, and other units play a win or loss animation where they have one."
     },
     {
       "from": "1.0.0.141",
@@ -152,7 +153,8 @@
           "type": "u8",
           "note": "Nonzero where side 100 won, zero where side 200 won."
         }
-      ]
+      ],
+      "note": "It sets every unit on a side moving as winners or losers do: a winning champion dances, a losing one stands idle, and other units play a win or loss animation where they have one."
     },
     {
       "from": "1.0.0.144",
@@ -167,7 +169,8 @@
           "type": "u8",
           "note": "Nonzero where side 100 won, zero where side 200 won."
         }
-      ]
+      ],
+      "note": "It sets every unit on a side moving as winners or losers do: a winning champion dances, a losing one stands idle, and other units play a win or loss animation where they have one."
     },
     {
       "from": "1.0.0.150",
@@ -182,7 +185,8 @@
           "type": "u8",
           "note": "Nonzero where side 100 won, zero where side 200 won."
         }
-      ]
+      ],
+      "note": "It sets every unit on a side moving as winners or losers do: a winning champion dances, a losing one stands idle, and other units play a win or loss animation where they have one."
     },
     {
       "from": "3.01.0.1",
@@ -197,7 +201,8 @@
           "type": "u8",
           "note": "Nonzero where side 100 won, zero where side 200 won."
         }
-      ]
+      ],
+      "note": "It sets every unit on a side moving as winners or losers do: a winning champion dances, a losing one stands idle, and other units play a win or loss animation where they have one."
     },
     {
       "from": "4.1.0.171",
@@ -212,7 +217,8 @@
           "type": "u8",
           "note": "Nonzero where side 100 won, zero where side 200 won."
         }
-      ]
+      ],
+      "note": "It sets every unit on a side moving as winners or losers do: a winning champion dances, a losing one stands idle, and other units play a win or loss animation where they have one."
     },
     {
       "from": "4.11.0.386",
@@ -227,7 +233,8 @@
           "type": "u8",
           "note": "Nonzero where side 100 won, zero where side 200 won."
         }
-      ]
+      ],
+      "note": "It sets every unit on a side moving as winners or losers do: a winning champion dances, a losing one stands idle, and other units play a win or loss animation where they have one."
     }
   ]
 }

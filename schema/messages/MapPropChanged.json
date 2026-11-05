@@ -850,7 +850,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": 64,
-          "note": "A name: an animation's, a particle's or a look's, by the change below. The name ends at its first zero byte; the bytes after it carry no meaning."
+          "note": "A name: an animation's or a particle's, by the change below. The name ends at its first zero byte; the bytes after it carry no meaning."
         },
         {
           "name": "first",
@@ -870,16 +870,16 @@
         {
           "name": "value",
           "type": "u32",
-          "note": "A value the change uses: for animate, the animation's flags; for linkEffect, the particle effect value; for look, the look's number."
+          "note": "A value the change uses: for animate, the animation's flags; for linkEffect, the particle effect value."
         },
         {
           "name": "change",
           "type": "u8",
-          "note": "What changes. A client does nothing for any other value, nor where prop names no prop it holds.",
+          "note": "What changes. A client acts only on 0 and 1, and does nothing for any other value, nor where prop names no prop it holds.",
           "values": {
             "0": {
               "name": "animate",
-              "note": "Play the animation name, with value as its flags, starting at first (match time in seconds) for second seconds; option nonzero removes the prop afterwards. effect and point have no effect."
+              "note": "Play the animation name, with value as its flags, starting at first (match time in seconds) for second seconds. option, effect and point have no effect."
             },
             "1": {
               "name": "linkEffect",
@@ -887,14 +887,14 @@
             },
             "2": {
               "name": "look",
-              "note": "Change the prop's look to name, numbered value. The rest have no effect."
+              "note": "A client does nothing for it."
             }
           }
         },
         {
           "name": "option",
           "type": "u8",
-          "note": "For animate, nonzero to remove the prop after the animation; for linkEffect, zero."
+          "note": "For linkEffect, zero: a client refuses the change otherwise. It has no effect for animate."
         },
         {
           "name": "effect",

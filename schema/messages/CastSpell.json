@@ -1141,7 +1141,7 @@
             {
               "name": "slot",
               "width": 7,
-              "note": "Which slot is being cast from. A client sends 0, 1 or 2, for the champion's first three spells."
+              "note": "Which slot is being cast from: whichever slot is being aimed, 0 to 51, the champion's fourth spell included."
             }
           ]
         },

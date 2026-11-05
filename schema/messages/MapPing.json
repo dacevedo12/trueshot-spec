@@ -468,7 +468,7 @@
         {
           "name": "kind",
           "type": "u8",
-          "note": "Which mark it is. A client sends any of the seven below, and 1 where the mark shows a direction of attack.",
+          "note": "Which mark it is. A client sends any of the seven below, and 1 where the mark shows a direction of attack. It writes only the low 4 bits: the high 4 carry no meaning, and a server ignores them.",
           "values": {
             "0": {
               "name": "here"
@@ -493,7 +493,8 @@
             }
           }
         }
-      ]
+      ],
+      "note": "While watching a match, a client places the mark only on its own screen and sends nothing."
     },
     {
       "from": "1.0.0.144",

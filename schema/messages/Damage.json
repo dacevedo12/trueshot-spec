@@ -770,11 +770,11 @@
             {
               "name": "result",
               "width": 7,
-              "note": "How the damage landed, and so what a client shows over the unit hurt. 4 shows the amount, 3 shows it as a critical strike, and 2 shows the word for a dodge in place of an amount.",
+              "note": "How the damage landed, and so what a client shows over the unit hurt: 4 and 6 to 127 show the amount, 3 shows it as a critical strike, 2 shows the word for a dodge, 5 the word for a miss, 0 the word for invulnerable, and 1 nothing.",
               "values": {
                 "0": {
                   "name": "invulnerable",
-                  "note": "A notice, no number."
+                  "note": "The word for invulnerable, no number."
                 },
                 "1": {
                   "name": "silent",
@@ -782,7 +782,7 @@
                 },
                 "2": {
                   "name": "dodge",
-                  "note": "A notice."
+                  "note": "The word for a dodge."
                 },
                 "3": {
                   "name": "critical",
@@ -794,7 +794,7 @@
                 },
                 "5": {
                   "name": "miss",
-                  "note": "A notice in the dodge style."
+                  "note": "The word for a miss."
                 },
                 "6": {
                   "name": "normal6",
@@ -821,7 +821,7 @@
         {
           "name": "source",
           "type": "u32",
-          "note": "The unit dealing it. A client shows nothing, notices included, unless it holds both target and source; the figure drifts from source toward target, and a champion source has the amount added to its damage dealt."
+          "note": "The unit dealing it. A client needs to hold only target: the figure drifts from source toward target, and a champion source has the amount added to its damage dealt, which is skipped where the client does not hold source."
         },
         {
           "name": "amount",
@@ -836,7 +836,7 @@
             {
               "name": "kind",
               "width": 4,
-              "note": "What sort of damage it is, which sets how a client colours the figure: 0 red, 1 purple and 2 white. Values from 3 up show as 0 does."
+              "note": "What sort of damage it is, which sets how a client colours the figure: 0 red, 1 purple and 2 white. A client reads the low 4 bits only, so 16 shows as 0 and 17 as 1; low bits from 3 to 15 show as 0 does."
             },
             {
               "name": "unused",
@@ -846,7 +846,7 @@
           ]
         }
       ],
-      "note": "A client shows the figure and nothing more: the health it shows for the unit is what replication carries, and this message leaves it as it was."
+      "note": "The health a client shows for the unit is what replication carries, and this message leaves it as it was. Where target is the client's own champion and a critical or plain amount is above zero, a client also flashes the screen."
     },
     {
       "from": "1.0.0.144",
