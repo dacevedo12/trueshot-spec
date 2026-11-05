@@ -38,7 +38,7 @@
           "name": "side",
           "type": "array",
           "count": 24,
-          "note": "The players on side 100, twenty four places of a player identifier's width; the client copies as many as sideRoom says. sideTaken says how many of the leading places carry a player, and the rest hold zero.",
+          "note": "The players on side 100, twenty four places of a player identifier's width; the client copies as many as sideRoom says, so a server keeps sideRoom at 24 or less; a larger one has no defined effect. sideTaken says how many of the leading places carry a player, and the rest hold zero.",
           "items": {
             "name": "player",
             "type": "i64",
@@ -49,7 +49,7 @@
           "name": "otherSide",
           "type": "array",
           "count": 24,
-          "note": "The players on side 200, read the same way under otherSideRoom and otherSideTaken.",
+          "note": "The players on side 200, read the same way under otherSideRoom and otherSideTaken, with otherSideRoom kept at 24 or less.",
           "items": {
             "name": "player",
             "type": "i64",

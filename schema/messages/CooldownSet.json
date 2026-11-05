@@ -62,12 +62,12 @@
             {
               "name": "slot",
               "width": 7,
-              "note": "Which slot."
+              "note": "Which slot. For a slot outside the unit's range a client sends 0."
             },
             {
               "name": "summonerSpell",
               "width": 1,
-              "note": "Set where the slot counts among the summoner slots, so that 0 and 1 name those two."
+              "note": "Set where the slot is one from 4 to 40; slot still carries that slot's own number."
             }
           ]
         },

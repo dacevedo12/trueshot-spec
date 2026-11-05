@@ -38,7 +38,7 @@
         {
           "name": "agreement",
           "type": "u8",
-          "note": "Must be 1: any other value has the client report a build mismatch and leave. For 0 it also shows both versions."
+          "note": "Nonzero where the builds agree, letting the client go on into the game. For 0 a client shows both versions, reports a build mismatch and leaves."
         },
         {
           "name": "map",

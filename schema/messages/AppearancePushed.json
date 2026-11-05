@@ -45,10 +45,10 @@
           "type": "string",
           "encoding": "utf8",
           "size": "terminated",
-          "note": "The name the client loads it under, ended by a zero byte. The name and its zero byte take at most 64 bytes."
+          "note": "The name the client loads it under, ended by a zero byte."
         }
       ],
-      "note": "No skin is carried; the look wears the unit's own skin. A client first stops a basic attack the unit is making; looks stack, the newest shows, and AppearancePopped takes away the one its entry names."
+      "note": "No skin is carried; while any pushed look is in force, the newest shows with skin 0, and nothing changes where its name is that of the look already shown. A client first stops a basic attack the unit is making; looks stack, and AppearancePopped takes away the one its entry names."
     },
     {
       "from": "0.9.25.36",

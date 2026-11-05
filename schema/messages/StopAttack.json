@@ -41,7 +41,7 @@
             {
               "name": "keepAnimating",
               "width": 1,
-              "note": "Set to let the attack's animation play on after the stop."
+              "note": "Set to let the attack's animation play on after the stop. It applies only where forceStop is clear."
             },
             {
               "name": "forceCast",
@@ -61,7 +61,7 @@
             {
               "name": "destroyMissile",
               "width": 1,
-              "note": "Set to destroy the attack's missile, where it has one."
+              "note": "Set to destroy the attack's missile, where it has one. It applies only where forceStop is set and a cast is under way."
             },
             {
               "name": "unused",

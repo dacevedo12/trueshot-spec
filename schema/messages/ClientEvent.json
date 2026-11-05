@@ -1810,7 +1810,7 @@
         {
           "name": "event",
           "type": "u8",
-          "note": "Which event, from 0 to 73, and so which fields follow.",
+          "note": "Which event, from 0 to 73, and so which fields follow. A value above 73 has no defined effect.",
           "values": {
             "0": {
               "name": "died"

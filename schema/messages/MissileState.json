@@ -221,7 +221,7 @@
             {
               "name": "bounced",
               "width": 1,
-              "note": "Set where the missile has bounced. It applies only where age is above zero: a client then moves the missile to its position and places it again from the caster's position, the end and the facing."
+              "note": "Set where the missile has bounced. A client tests the whole byte, so any set bit counts. For a missile it already holds that flies in a straight line, a client then starts the line again from the caster's position, raised by the missile's height above the ground, aiming it from where the missile now is."
             },
             {
               "name": "unused",

@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "Camera",
   "system": "interface",
-  "note": "What a client sends to say where its view sits and which way it faces. It is sent once where a server answers it, and again and again where a server does not. The header names no object: it carries zero.",
+  "note": "What a client sends to say where its view sits and which way it faces. Each report is sent once where a server answers it, and again and again where a server does not. The header names no object: it carries zero.",
   "revisions": [
     {
       "from": "0.8.13.26",
@@ -135,9 +135,10 @@
         {
           "name": "syncId",
           "type": "u8",
-          "note": "Names this report, counting up as the view moves. A client sends the report again until a server returns the name."
+          "note": "Names this report, counting up as the view moves and wrapping after 255. A client sends the report again until a server returns the name."
         }
-      ]
+      ],
+      "note": "A client sends a new report each time its view moves more than 200 units, at most one every tenth of a second, and sends an unanswered one again after twice its ping, in seconds, plus 1/30 of a second. While its view is locked it sends none."
     },
     {
       "from": "1.0.0.74",

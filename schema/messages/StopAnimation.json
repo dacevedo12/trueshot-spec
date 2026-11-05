@@ -59,7 +59,7 @@
             {
               "name": "unlock",
               "width": 1,
-              "note": "Set to release the unit's animation lock in every case. Clear releases it only where the unit's own state allows; the animation stops either way."
+              "note": "Set to release the unit's animation lock in every case. Clear releases it only where the unit's own data allows; where the lock stays held, the animation does not stop."
             },
             {
               "name": "unusedHigh",
@@ -70,7 +70,7 @@
           "note": "How it stops."
         }
       ],
-      "note": "No name is carried: a client stops whatever animation the unit is playing, blending out over a fixed time."
+      "note": "No name is carried. A client does nothing for a dead unit; otherwise it stops the animation the unit is playing, blending out over a fixed time, unless the unit's animation lock stays held."
     },
     {
       "from": "1.0.0.63",

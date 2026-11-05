@@ -32,7 +32,7 @@
         {
           "name": "targeting",
           "type": "u8",
-          "note": "How the spell is aimed, 0 to 7. A client keeps a larger value and reports it as an error, but builds no new aiming for it, so the slot keeps the aiming it had; no value asks for the spell's own default."
+          "note": "How the spell is aimed, 0 to 6. A client fails for any larger value; no value asks for the spell's own default."
         }
       ]
     },

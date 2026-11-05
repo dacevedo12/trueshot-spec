@@ -128,7 +128,7 @@
         {
           "name": "view",
           "type": "record",
-          "note": "Everything else a client needs to draw the unit. A server sends it for a champion, a minion or another unit with a mind, which a client reads past the end of the message without it, and ends the message after the items for any other unit.",
+          "note": "Everything else a client needs to draw the unit. A server sends it for a champion, a minion or another unit with a mind, which a client reads past the end of the message without it. For any other unit a server ends the message before it, and a client reads none of the body.",
           "fields": [
             {
               "name": "movementState",

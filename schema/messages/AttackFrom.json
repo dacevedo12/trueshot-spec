@@ -65,7 +65,7 @@
         {
           "name": "missile",
           "type": "u32",
-          "note": "The name the missile this swing throws will answer to. Zero for a swing that throws none."
+          "note": "The name the missile this swing throws will answer to."
         },
         {
           "name": "slot",
@@ -75,7 +75,7 @@
         {
           "name": "fromX",
           "type": "f32",
-          "note": "Where the swinging unit stands, along one ground axis, in world units. Where the unit stands more than 400 units from this point, a client first moves it there; nearer, the point has no effect."
+          "note": "Where the swinging unit stands, along one ground axis, in world units. Where the unit stands more than 400 units from this point, measured along the ground alone, a client first moves it there; nearer, the point has no effect."
         },
         {
           "name": "fromY",

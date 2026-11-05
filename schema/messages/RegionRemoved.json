@@ -31,7 +31,7 @@
         {
           "name": "region",
           "type": "u32",
-          "note": "The region to take away, by the name RegionAdded gave it."
+          "note": "The region to take away, by the id RegionAdded or RegionAttached gave it. A client takes away every region it holds under that id."
         }
       ]
     },

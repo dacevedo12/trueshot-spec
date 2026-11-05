@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "TutorialPopupClosed",
   "system": "guidance",
-  "note": "What a client sends as its player presses the button of the tutorial's popup (TutorialPopup), or closes a tip in the tutorial. It carries nothing of its own. The header carries zero.",
+  "note": "What a client sends as its player presses the button of the tutorial's popup (TutorialPopup). It carries nothing of its own. The header carries zero.",
   "revisions": [
     {
       "from": "0.9.22.14",
@@ -20,7 +20,8 @@
       "command": 144,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client also sends it as its player closes a tip in the tutorial."
     },
     {
       "from": "1.0.0.74",
@@ -29,7 +30,8 @@
       "command": 145,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client also sends it as its player closes a tip in the tutorial."
     },
     {
       "from": "1.0.0.82",
@@ -38,7 +40,8 @@
       "command": 149,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client also sends it as its player closes a tip in the tutorial."
     },
     {
       "from": "1.0.0.97",
@@ -47,7 +50,8 @@
       "command": 150,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client also sends it as its player closes a tip in the tutorial."
     },
     {
       "from": "1.0.0.98",
@@ -56,7 +60,8 @@
       "command": 151,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client also sends it as its player closes a tip in the tutorial."
     },
     {
       "from": "1.0.0.103",
@@ -65,7 +70,8 @@
       "command": 153,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client also sends it as its player closes a tip in the tutorial."
     },
     {
       "from": "1.0.0.104",
@@ -74,7 +80,8 @@
       "command": 158,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client also sends it as its player closes a tip in the tutorial."
     },
     {
       "from": "1.0.0.107",
@@ -83,7 +90,8 @@
       "command": 159,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client also sends it as its player closes a tip in the tutorial."
     },
     {
       "from": "1.0.0.109",
@@ -92,7 +100,8 @@
       "command": 160,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client also sends it as its player closes a tip in the tutorial."
     },
     {
       "from": "1.0.0.110",
@@ -101,7 +110,8 @@
       "command": 202,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client also sends it as its player closes a tip in the tutorial."
     },
     {
       "from": "1.0.0.111",
@@ -110,7 +120,8 @@
       "command": 203,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client also sends it as its player closes a tip in the tutorial."
     },
     {
       "from": "1.0.0.117",
@@ -119,7 +130,8 @@
       "command": 204,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client also sends it as its player closes a tip in the tutorial."
     },
     {
       "from": "1.0.0.119",
@@ -128,7 +140,8 @@
       "command": 205,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client also sends it as its player closes a tip in the tutorial."
     },
     {
       "from": "1.0.0.123",
@@ -137,7 +150,8 @@
       "command": 206,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client also sends it as its player closes a tip in the tutorial."
     },
     {
       "from": "1.0.0.124",
@@ -146,7 +160,8 @@
       "command": 211,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client also sends it as its player closes a tip in the tutorial."
     },
     {
       "from": "1.0.0.125",
@@ -155,7 +170,8 @@
       "command": 212,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client also sends it as its player closes a tip in the tutorial."
     },
     {
       "from": "1.0.0.126",
@@ -164,7 +180,8 @@
       "command": 213,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client also sends it as its player closes a tip in the tutorial."
     },
     {
       "from": "1.0.0.132",
@@ -173,7 +190,8 @@
       "command": 214,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client also sends it as its player closes a tip in the tutorial."
     },
     {
       "from": "1.0.0.135",
@@ -182,7 +200,8 @@
       "command": 216,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client also sends it as its player closes a tip in the tutorial."
     },
     {
       "from": "1.0.0.136",
@@ -191,7 +210,8 @@
       "command": 214,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client also sends it as its player closes a tip in the tutorial."
     },
     {
       "from": "1.0.0.138",
@@ -200,7 +220,8 @@
       "command": 216,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client also sends it as its player closes a tip in the tutorial."
     },
     {
       "from": "1.0.0.139",
@@ -209,7 +230,8 @@
       "command": 215,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client also sends it as its player closes a tip in the tutorial."
     },
     {
       "from": "1.0.0.141",
@@ -218,7 +240,8 @@
       "command": 217,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client also sends it as its player closes a tip in the tutorial."
     },
     {
       "from": "1.0.0.144",
@@ -227,7 +250,8 @@
       "command": 204,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client also sends it as its player closes a tip in the tutorial."
     },
     {
       "from": "1.0.0.150",
@@ -236,7 +260,8 @@
       "command": 201,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client also sends it as its player closes a tip in the tutorial."
     },
     {
       "from": "3.01.0.1",
@@ -245,7 +270,8 @@
       "command": 204,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client also sends it as its player closes a tip in the tutorial."
     },
     {
       "from": "4.1.0.171",
@@ -254,7 +280,8 @@
       "command": 203,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client also sends it as its player closes a tip in the tutorial."
     },
     {
       "from": "4.11.0.386",
@@ -263,7 +290,8 @@
       "command": 204,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client also sends it as its player closes a tip in the tutorial."
     }
   ]
 }

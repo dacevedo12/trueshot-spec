@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "0.8.13.26",
-      "until": "1.0.0.82",
+      "until": "0.9.22.14",
       "channel": "events",
       "command": 46,
       "direction": "serverToClient",
@@ -21,6 +21,26 @@
           "name": "to",
           "type": "u8",
           "note": "The slot it went to, 0 to 14. A client swaps the two slots named whatever their values, so a server keeps both within range."
+        }
+      ]
+    },
+    {
+      "from": "0.9.22.14",
+      "until": "1.0.0.82",
+      "channel": "events",
+      "command": 46,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "from",
+          "type": "u8",
+          "note": "The slot the item left, 0 to 36. A client swaps the two slots named whatever their values, so a server keeps both within range."
+        },
+        {
+          "name": "to",
+          "type": "u8",
+          "note": "The slot it went to, 0 to 36. A client swaps the two slots named whatever their values, so a server keeps both within range."
         }
       ]
     },

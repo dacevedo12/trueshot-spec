@@ -118,7 +118,7 @@
           "note": "How long the vote stays open, in seconds."
         }
       ],
-      "note": "A client ignores it unless its menu and its own champion both exist."
+      "note": "A client fails where it has no player of its own, or, for its own side, no game screen. Without its vote panel it opens no panel and records no vote, but still announces that a vote began where openTheMenu is set."
     },
     {
       "from": "0.9.25.36",

@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "0.8.13.26",
-      "until": "1.0.0.82",
+      "until": "0.9.22.14",
       "channel": "events",
       "command": 44,
       "direction": "serverToClient",
@@ -16,6 +16,26 @@
           "name": "slot",
           "type": "u8",
           "note": "Which slot, 0 to 14. A larger value than 14 has no defined effect."
+        },
+        {
+          "name": "left",
+          "type": "u8",
+          "note": "How many are left in the slot; zero empties it, item and charges cleared."
+        }
+      ]
+    },
+    {
+      "from": "0.9.22.14",
+      "until": "1.0.0.82",
+      "channel": "events",
+      "command": 44,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot, 0 to 36. A larger value than 36 has no defined effect."
         },
         {
           "name": "left",

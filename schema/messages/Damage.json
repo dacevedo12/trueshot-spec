@@ -154,7 +154,7 @@
             {
               "name": "result",
               "width": 7,
-              "note": "How the damage landed, and so what a client shows over the unit hurt. 4 shows the amount, 3 shows it as a critical strike, and 2 shows the word for a dodge in place of an amount; any value above 5 shows as 4.",
+              "note": "How the damage landed, and so what a client shows over the unit hurt: 0 the word for invulnerable, 1 nothing, 2 the word for a dodge, 3 the amount as a critical strike, 4 the amount, and 5 the word for a miss; any value above 5 shows as 4. A client shows the amount cut down to a whole number.",
               "values": {
                 "0": {
                   "name": "invulnerable",
@@ -205,7 +205,7 @@
         {
           "name": "source",
           "type": "u32",
-          "note": "The unit dealing it. A client shows nothing, notices included, unless it holds target and target can be attacked; it does not need to hold source, and a champion source has the amount added to its damage dealt."
+          "note": "The unit dealing it. A client shows nothing, notices included, unless it holds target and target can be attacked; it does not need to hold source, and a champion source has the amount added to its damage dealt where result is 3, 4 or above 5."
         },
         {
           "name": "amount",

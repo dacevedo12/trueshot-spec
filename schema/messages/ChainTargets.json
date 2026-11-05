@@ -47,7 +47,7 @@
         {
           "name": "count",
           "type": "i32",
-          "note": "How many of the slots are used, 0 to 32; 0 leaves the targets the client holds as they are. A client given more than 32 fails."
+          "note": "How many of the slots are used, 0 to 32; 0 or less leaves the targets the client holds as they are. A client sets no bound, and more than 32 has no defined effect."
         },
         {
           "name": "caster",
@@ -66,7 +66,7 @@
           "note": "Always 32 slots; those past count have no effect."
         }
       ],
-      "note": "Where the client already holds the missile, the missile takes the list; otherwise the list waits for the caster's next chain missile."
+      "note": "Where the client already holds the missile, the missile takes the list, and so does the caster's current cast; otherwise the list waits for the caster's next chain missile."
     },
     {
       "from": "0.9.25.36",

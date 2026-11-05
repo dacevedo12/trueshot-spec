@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "0.8.13.26",
-      "until": "1.0.0.110",
+      "until": "0.9.22.14",
       "channel": "events",
       "command": 28,
       "direction": "serverToClient",
@@ -16,6 +16,27 @@
           "name": "unit",
           "type": "u32",
           "note": "The unit granted it, one with a mind, such as a champion or a minion. A client does nothing for a unit it does not know."
+        },
+        {
+          "name": "amount",
+          "type": "f32",
+          "note": "How much. A client shows a value below zero or from 100000 up as well."
+        }
+      ],
+      "note": "It changes no unit's experience: a client only floats the amount as text over the unit, where the player's floating-text settings allow."
+    },
+    {
+      "from": "0.9.22.14",
+      "until": "1.0.0.110",
+      "channel": "events",
+      "command": 28,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit granted it, a champion. A client fails for any other unit it holds, and does nothing for a unit it does not know."
         },
         {
           "name": "amount",

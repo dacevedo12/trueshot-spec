@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "TutorialShopOpened",
   "system": "shop",
-  "note": "What a client in the tutorial sends as its player opens the shop. A client is in the tutorial where the version answer names the mode TUTORIAL and the map's own data marks it as a tutorial map, as map 12's does; elsewhere it never sends this. It carries nothing of its own. The header carries zero.",
+  "note": "What a client sends as its player opens the shop. It carries nothing of its own. The header carries zero.",
   "revisions": [
     {
       "from": "0.9.22.16",
@@ -11,7 +11,8 @@
       "command": 150,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client sends it each time the shop opens, on any map and in any mode. While input lock 16 holds, the shop does not open and it sends nothing."
     },
     {
       "from": "0.9.25.36",
@@ -20,7 +21,8 @@
       "command": 148,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client sends it only in the tutorial: where the version answer names the mode TUTORIAL and the map's own data marks it as a tutorial map, as map 12's does; elsewhere it never sends this."
     },
     {
       "from": "1.0.0.74",
@@ -29,7 +31,8 @@
       "command": 149,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client sends it only in the tutorial: where the version answer names the mode TUTORIAL and the map's own data marks it as a tutorial map, as map 12's does; elsewhere it never sends this."
     },
     {
       "from": "1.0.0.82",
@@ -38,7 +41,8 @@
       "command": 153,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client sends it only in the tutorial: where the version answer names the mode TUTORIAL and the map's own data marks it as a tutorial map, as map 12's does; elsewhere it never sends this."
     },
     {
       "from": "1.0.0.97",
@@ -47,7 +51,8 @@
       "command": 154,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client sends it only in the tutorial: where the version answer names the mode TUTORIAL and the map's own data marks it as a tutorial map, as map 12's does; elsewhere it never sends this."
     },
     {
       "from": "1.0.0.98",
@@ -56,7 +61,8 @@
       "command": 155,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client sends it only in the tutorial: where the version answer names the mode TUTORIAL and the map's own data marks it as a tutorial map, as map 12's does; elsewhere it never sends this."
     },
     {
       "from": "1.0.0.103",
@@ -65,7 +71,8 @@
       "command": 157,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client sends it only in the tutorial: where the version answer names the mode TUTORIAL and the map's own data marks it as a tutorial map, as map 12's does; elsewhere it never sends this."
     },
     {
       "from": "1.0.0.104",
@@ -74,7 +81,8 @@
       "command": 162,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client sends it only in the tutorial: where the version answer names the mode TUTORIAL and the map's own data marks it as a tutorial map, as map 12's does; elsewhere it never sends this."
     },
     {
       "from": "1.0.0.107",
@@ -83,7 +91,8 @@
       "command": 163,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client sends it only in the tutorial: where the version answer names the mode TUTORIAL and the map's own data marks it as a tutorial map, as map 12's does; elsewhere it never sends this."
     },
     {
       "from": "1.0.0.109",
@@ -92,7 +101,8 @@
       "command": 164,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client sends it only in the tutorial: where the version answer names the mode TUTORIAL and the map's own data marks it as a tutorial map, as map 12's does; elsewhere it never sends this."
     },
     {
       "from": "1.0.0.110",
@@ -101,7 +111,8 @@
       "command": 91,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client sends it only in the tutorial: where the version answer names the mode TUTORIAL and the map's own data marks it as a tutorial map, as map 12's does; elsewhere it never sends this."
     },
     {
       "from": "1.0.0.117",
@@ -110,7 +121,8 @@
       "command": 92,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client sends it only in the tutorial: where the version answer names the mode TUTORIAL and the map's own data marks it as a tutorial map, as map 12's does; elsewhere it never sends this."
     },
     {
       "from": "1.0.0.119",
@@ -119,7 +131,8 @@
       "command": 93,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client sends it only in the tutorial: where the version answer names the mode TUTORIAL and the map's own data marks it as a tutorial map, as map 12's does; elsewhere it never sends this."
     },
     {
       "from": "1.0.0.124",
@@ -128,7 +141,8 @@
       "command": 96,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client sends it only in the tutorial: where the version answer names the mode TUTORIAL and the map's own data marks it as a tutorial map, as map 12's does; elsewhere it never sends this."
     },
     {
       "from": "1.0.0.132",
@@ -137,7 +151,8 @@
       "command": 97,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client sends it only in the tutorial: where the version answer names the mode TUTORIAL and the map's own data marks it as a tutorial map, as map 12's does; elsewhere it never sends this."
     },
     {
       "from": "1.0.0.138",
@@ -146,7 +161,8 @@
       "command": 99,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client sends it only in the tutorial: where the version answer names the mode TUTORIAL and the map's own data marks it as a tutorial map, as map 12's does; elsewhere it never sends this."
     },
     {
       "from": "1.0.0.144",
@@ -155,7 +171,8 @@
       "command": 93,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client sends it only in the tutorial: where the version answer names the mode TUTORIAL and the map's own data marks it as a tutorial map, as map 12's does; elsewhere it never sends this."
     },
     {
       "from": "1.0.0.150",
@@ -164,7 +181,8 @@
       "command": 90,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client sends it only in the tutorial: where the version answer names the mode TUTORIAL and the map's own data marks it as a tutorial map, as map 12's does; elsewhere it never sends this."
     },
     {
       "from": "3.01.0.1",
@@ -173,7 +191,8 @@
       "command": 92,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client sends it only in the tutorial: where the version answer names the mode TUTORIAL and the map's own data marks it as a tutorial map, as map 12's does; elsewhere it never sends this."
     },
     {
       "from": "4.11.0.386",
@@ -182,7 +201,8 @@
       "command": 93,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client sends it only in the tutorial: where the version answer names the mode TUTORIAL and the map's own data marks it as a tutorial map, as map 12's does; elsewhere it never sends this."
     }
   ]
 }

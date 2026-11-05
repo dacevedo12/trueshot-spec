@@ -11,7 +11,7 @@
       "command": 115,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window, as a reconnection fails, or on Shutdown or BotKick.",
+      "note": "A client sends it once, as it leaves without a result: as its player confirms quitting or the window is asked to close, or as its player gives up reconnecting after the connection is lost, or loses it where reconnecting is turned off. It sends none after GameEnded, and none on Shutdown or BotKick.",
       "fields": []
     },
     {

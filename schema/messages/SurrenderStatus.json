@@ -15,7 +15,7 @@
         {
           "name": "reason",
           "type": "u32",
-          "note": "Why the vote stands where it does. A client acts on 0 to 4 and ignores the message for any other value; 1 resets the vote only where side is the client's own. A client with no player of its own, as while spectating, shows only 0 and 4."
+          "note": "Why the vote stands where it does. A client acts on 0 to 4 and ignores the message for any other value; 0 resets the vote whatever side is, and 1 resets it only where side is the client's own. A client announces 0, 2, 3 and 4 whether or not it has a player of its own, and fails on 1 without one."
         },
         {
           "name": "inFavour",

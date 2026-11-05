@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "Loadout",
   "system": "shop",
-  "note": "What a server sends to lay out everything a champion brought to the match: the runes set before it began, its summoner slots, the choices made alongside them, and what its wards look like. The header names the unit this is about.",
+  "note": "What a server sends to lay out everything a champion brought to the match: the runes set before it began, its summoner slots and the choices made alongside them. The header names the unit this is about.",
   "revisions": [
     {
       "from": "0.8.13.26",
@@ -648,7 +648,7 @@
       "command": 41,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client's shop is set up by the Loadout of its own champion: until that arrives the shop opens empty, with no items, no suggested items and no builds, and is drawn at a size that does not fit the screen. A server sends one for every champion at spawning, between SpawnStart and SpawnEnd.",
+      "note": "A client's shop is set up by the Loadout of its own champion: until that arrives the shop opens empty, with no items, no suggested items and no builds, and is drawn at a size that does not fit the screen. A server sends one for every champion at spawning, between SpawnStart and SpawnEnd. It also says what the champion's wards look like.",
       "fields": [
         {
           "name": "runes",
@@ -702,7 +702,7 @@
       "command": 42,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client's shop is set up by the Loadout of its own champion: until that arrives the shop opens empty, with no items, no suggested items and no builds, and is drawn at a size that does not fit the screen. A server sends one for every champion at spawning, between SpawnStart and SpawnEnd.",
+      "note": "A client's shop is set up by the Loadout of its own champion: until that arrives the shop opens empty, with no items, no suggested items and no builds, and is drawn at a size that does not fit the screen. A server sends one for every champion at spawning, between SpawnStart and SpawnEnd. It also says what the champion's wards look like.",
       "fields": [
         {
           "name": "runes",
@@ -811,7 +811,8 @@
           "type": "u8",
           "note": "What the champion's wards look like."
         }
-      ]
+      ],
+      "note": "It also says what the champion's wards look like."
     }
   ]
 }

@@ -80,7 +80,7 @@
           "note": "What this turret is called, so a client can tell one from another. Written out in full and padded with zero bytes to the width above."
         }
       ],
-      "note": "A client matches name exactly against the map's turrets. With no match it only removes any object holding the id; a matched turret missing or dead is rebuilt before it takes the id. A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it."
+      "note": "A client matches name against the map's turrets, ignoring case. With no match it does nothing; a matched turret takes the id and node, and one missing or dead is not rebuilt. A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it."
     },
     {
       "from": "1.0.0.110",

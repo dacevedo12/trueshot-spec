@@ -179,7 +179,7 @@
         {
           "name": "healthBonus",
           "type": "i32",
-          "note": "What is added to the health it holds."
+          "note": "What is added to the health it holds, three times over: the unit's maximum and current health both end at its base health plus three times this, and not below 0."
         },
         {
           "name": "roaming",
@@ -200,7 +200,7 @@
         {
           "name": "camp",
           "type": "u32",
-          "note": "Which camp the unit belongs to. A client adds the unit to that camp where a CampMarker has placed it first, and to no camp otherwise."
+          "note": "Which camp the unit belongs to. Where no camp of that number exists yet, a client makes one at the unit's own position, not at campAt, and adds the unit to it."
         }
       ],
       "note": "A client leaves the monster facing as it was made. A client adds damageBonus to the damage the unit deals twice over. A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it."

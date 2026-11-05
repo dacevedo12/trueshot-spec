@@ -150,7 +150,7 @@
         {
           "name": "bot",
           "type": "u8",
-          "note": "Nonzero where a bot plays the seat and nobody holds it; its shown name is then the client's own bot name for asset, and name has no effect."
+          "note": "Nonzero where a bot plays the seat and nobody holds it. A client only keeps it; the shown name is name as sent."
         },
         {
           "name": "spawnIndex",

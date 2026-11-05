@@ -39,18 +39,15 @@
           "bits": [
             {
               "name": "count",
-              "width": 16,
-              "note": "It rises with each report, not always by one."
+              "width": 16
             },
             {
               "name": "ping",
-              "width": 15,
-              "note": "Round trip time the client measures, in milliseconds."
+              "width": 15
             },
             {
               "name": "loaded",
-              "width": 1,
-              "note": "Set in every report whose progress stands at one hundred, and in no other."
+              "width": 1
             }
           ],
           "note": "Copied with the rest; no reader of it is known."
@@ -63,7 +60,7 @@
             {
               "name": "loaded",
               "width": 1,
-              "note": "Set once loading is done."
+              "note": "Where set, a client shows secondsLeft as zero."
             },
             {
               "name": "unused",

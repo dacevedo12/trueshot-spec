@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "ClientFinished",
   "system": "match",
-  "note": "What a client sends when it has finished with the match. It is sent once, at the end. The header names no object: it carries zero.",
+  "note": "What a client sends when it has finished with the match. The header names no object: it carries zero.",
   "revisions": [
     {
       "from": "0.8.13.26",
@@ -11,7 +11,8 @@
       "command": 17,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "A client sends it each time GameEnded arrives."
     },
     {
       "from": "1.0.0.110",
@@ -20,7 +21,8 @@
       "command": 137,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "It is sent once, at the end."
     },
     {
       "from": "1.0.0.111",
@@ -29,7 +31,8 @@
       "command": 138,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "It is sent once, at the end."
     },
     {
       "from": "1.0.0.117",
@@ -38,7 +41,8 @@
       "command": 139,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "It is sent once, at the end."
     },
     {
       "from": "1.0.0.119",
@@ -47,7 +51,8 @@
       "command": 140,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "It is sent once, at the end."
     },
     {
       "from": "1.0.0.124",
@@ -56,7 +61,8 @@
       "command": 144,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "It is sent once, at the end."
     },
     {
       "from": "1.0.0.126",
@@ -65,7 +71,8 @@
       "command": 145,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "It is sent once, at the end."
     },
     {
       "from": "1.0.0.132",
@@ -74,7 +81,8 @@
       "command": 146,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "It is sent once, at the end."
     },
     {
       "from": "1.0.0.138",
@@ -83,7 +91,8 @@
       "command": 148,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "It is sent once, at the end."
     },
     {
       "from": "1.0.0.139",
@@ -92,7 +101,8 @@
       "command": 147,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "It is sent once, at the end."
     },
     {
       "from": "1.0.0.144",
@@ -101,7 +111,8 @@
       "command": 141,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "It is sent once, at the end."
     },
     {
       "from": "1.0.0.150",
@@ -110,7 +121,8 @@
       "command": 138,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "It is sent once, at the end."
     },
     {
       "from": "3.01.0.1",
@@ -119,7 +131,8 @@
       "command": 141,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "It is sent once, at the end."
     },
     {
       "from": "4.1.0.171",
@@ -128,7 +141,8 @@
       "command": 140,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "It is sent once, at the end."
     },
     {
       "from": "4.11.0.386",
@@ -137,7 +151,8 @@
       "command": 141,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "It is sent once, at the end."
     }
   ]
 }

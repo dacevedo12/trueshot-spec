@@ -74,7 +74,7 @@
           "note": "The unit that placed it."
         }
       ],
-      "note": "A client drops the message where the player who placed it is muted. Where target is a unit it can name, it shows a notice for it. The header names the champion that placed the ping, as source does."
+      "note": "Where target is a unit it holds, of a kind that takes notices, a client shows a notice for it. The header names the champion that placed the ping, as source does."
     },
     {
       "from": "1.0.0.104",

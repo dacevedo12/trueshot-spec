@@ -114,7 +114,7 @@
         {
           "name": "clone",
           "type": "u32",
-          "note": "The unit it copies, or zero."
+          "note": "The unit the new unit is linked to as a clone, or zero."
         },
         {
           "name": "team",
@@ -151,7 +151,7 @@
           ]
         }
       ],
-      "note": "A client deletes any object holding the new unit's id first, and does nothing more where it cannot make the unit. clone, where nonzero, is copied, state and inventory. The header names the unit that put it there."
+      "note": "A client gives the new unit its id and node, deleting nothing first. Where clone names a unit it holds, a client only links the new unit to it as a clone and copies nothing of it; zero or an unknown id leaves no link. The header names the unit that put it there."
     },
     {
       "from": "1.0.0.63",

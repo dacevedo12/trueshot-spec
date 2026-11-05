@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "SurrenderVote",
   "system": "votes",
-  "note": "What a client sends to answer a call to surrender. The header names no object: it carries zero.",
+  "note": "What a client sends to vote on surrendering. The header names no object: it carries zero.",
   "revisions": [
     {
       "from": "0.9.22.16",
@@ -20,16 +20,17 @@
             {
               "name": "inFavour",
               "width": 1,
-              "note": "Set where the answer is yes. A client sends it clear."
+              "note": "Set where the answer is yes."
             },
             {
               "name": "unused",
               "width": 7,
-              "note": "Always clear."
+              "note": "A client writes no value of its own here; a server ignores them."
             }
           ]
         }
-      ]
+      ],
+      "note": "A client sends it as its player votes, by button or chat command, whether or not a vote is open."
     },
     {
       "from": "0.9.25.36",
@@ -56,7 +57,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It answers a call to surrender."
     },
     {
       "from": "1.0.0.74",
@@ -83,7 +85,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It answers a call to surrender."
     },
     {
       "from": "1.0.0.82",
@@ -110,7 +113,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It answers a call to surrender."
     },
     {
       "from": "1.0.0.97",
@@ -137,7 +141,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It answers a call to surrender."
     },
     {
       "from": "1.0.0.98",
@@ -164,7 +169,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It answers a call to surrender."
     },
     {
       "from": "1.0.0.103",
@@ -191,7 +197,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It answers a call to surrender."
     },
     {
       "from": "1.0.0.104",
@@ -218,7 +225,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It answers a call to surrender."
     },
     {
       "from": "1.0.0.107",
@@ -245,7 +253,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It answers a call to surrender."
     },
     {
       "from": "1.0.0.109",
@@ -272,7 +281,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It answers a call to surrender."
     },
     {
       "from": "1.0.0.110",
@@ -299,7 +309,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It answers a call to surrender."
     },
     {
       "from": "1.0.0.111",
@@ -326,7 +337,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It answers a call to surrender."
     },
     {
       "from": "1.0.0.117",
@@ -353,7 +365,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It answers a call to surrender."
     },
     {
       "from": "1.0.0.119",
@@ -380,7 +393,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It answers a call to surrender."
     },
     {
       "from": "1.0.0.124",
@@ -407,7 +421,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It answers a call to surrender."
     },
     {
       "from": "1.0.0.125",
@@ -434,7 +449,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It answers a call to surrender."
     },
     {
       "from": "1.0.0.126",
@@ -461,7 +477,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It answers a call to surrender."
     },
     {
       "from": "1.0.0.132",
@@ -488,7 +505,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It answers a call to surrender."
     },
     {
       "from": "1.0.0.135",
@@ -515,7 +533,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It answers a call to surrender."
     },
     {
       "from": "1.0.0.136",
@@ -542,7 +561,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It answers a call to surrender."
     },
     {
       "from": "1.0.0.138",
@@ -569,7 +589,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It answers a call to surrender."
     },
     {
       "from": "1.0.0.139",
@@ -596,7 +617,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It answers a call to surrender."
     },
     {
       "from": "1.0.0.144",
@@ -623,7 +645,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It answers a call to surrender."
     },
     {
       "from": "1.0.0.150",
@@ -650,7 +673,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It answers a call to surrender."
     },
     {
       "from": "3.01.0.1",
@@ -677,7 +701,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It answers a call to surrender."
     },
     {
       "from": "4.1.0.171",
@@ -704,7 +729,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It answers a call to surrender."
     },
     {
       "from": "4.11.0.386",
@@ -731,7 +757,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It answers a call to surrender."
     },
     {
       "from": "4.18.0.271",
@@ -758,7 +785,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "It answers a call to surrender."
     }
   ]
 }
