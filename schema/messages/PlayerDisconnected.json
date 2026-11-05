@@ -13,9 +13,9 @@
       "reliability": "reliable",
       "fields": [
         {
-          "name": "champion",
+          "name": "clientId",
           "type": "u32",
-          "note": "The player's client id, matched against the client id of the player owning each champion the client knows."
+          "note": "The player's client id, matched against the client id CreateChampion gave each champion the client knows."
         }
       ],
       "note": "A client shows a chat notice naming the player that client id belongs to, whenever its interface exists: in a neutral colour where it has no champion of its own, and otherwise coloured for whether that player is on its own side."
@@ -61,9 +61,9 @@
       "reliability": "reliable",
       "fields": [
         {
-          "name": "champion",
+          "name": "clientId",
           "type": "u32",
-          "note": "The player's client id, matched against the client id of the player owning each champion the client knows."
+          "note": "The player's client id, matched against the client id CreateChampion gave each champion the client knows."
         }
       ],
       "note": "A client shows a chat notice naming the player that client id belongs to, whenever its interface exists: in a neutral colour where it has no champion of its own, and otherwise coloured for whether that player is on its own side."
@@ -237,9 +237,9 @@
       "reliability": "reliable",
       "fields": [
         {
-          "name": "champion",
+          "name": "clientId",
           "type": "u32",
-          "note": "The player's client id, matched against the client id of the player owning each champion the client knows."
+          "note": "The player's client id, matched against the client id CreateChampion gave each champion the client knows."
         }
       ],
       "note": "A client shows a chat notice naming the player that client id belongs to, whenever its interface exists: coloured for whether that player is on its own side where it has a champion of its own and is not watching the match, and otherwise in that player's side's colour."

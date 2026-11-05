@@ -38,19 +38,22 @@
           "size": 4,
           "bits": [
             {
-              "name": "count",
-              "width": 16
+              "name": "unusedLow",
+              "width": 16,
+              "note": "Unused; a server writes zero."
             },
             {
               "name": "ping",
-              "width": 15
+              "width": 15,
+              "note": "Drawn as the seat's ping indicator."
             },
             {
-              "name": "loaded",
-              "width": 1
+              "name": "unusedHigh",
+              "width": 1,
+              "note": "Unused; a server writes zero."
             }
           ],
-          "note": "Copied with the rest; no reader of it is known."
+          "note": "Only ping is read."
         },
         {
           "name": "done",
@@ -65,9 +68,16 @@
             {
               "name": "unused",
               "width": 7,
-              "note": "Carries nothing."
+              "note": "Unused; a server writes zero."
             }
           ]
+        },
+        {
+          "name": "statusText",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "Read once done.loaded is set and the bar is nearly full: a client compares it, ignoring case, with a fixed phrase saying champions are being spawned, and shows a spawning label where it matches and a ready label otherwise. Padded with zero bytes."
         }
       ]
     },

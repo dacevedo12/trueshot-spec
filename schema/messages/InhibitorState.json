@@ -29,8 +29,8 @@
         },
         {
           "name": "duration",
-          "type": "i32",
-          "note": "How long the state lasts, in seconds."
+          "type": "u32",
+          "note": "How long the state lasts, in seconds. A client stores it whatever state the message holds."
         }
       ]
     },

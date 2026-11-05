@@ -118,16 +118,17 @@
           "note": "Names this fade, so that FadeRemoved can name it."
         },
         {
-          "name": "time",
-          "type": "f32",
-          "note": "How long the fade takes, in seconds."
-        },
-        {
           "name": "target",
           "type": "f32",
           "note": "The opacity it fades to, from 0 for unseen to 1 for solid."
+        },
+        {
+          "name": "time",
+          "type": "f32",
+          "note": "How long the fade takes, in seconds."
         }
-      ]
+      ],
+      "note": "Each FadeTo adds a fade, with its id, target and time, to the unit's stack of fades. The unit fades from its current opacity to the target in a straight line over the time. FadeRemoved names the id of the fade it takes away."
     },
     {
       "from": "1.0.0.97",

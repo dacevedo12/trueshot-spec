@@ -5,39 +5,6 @@
   "note": "What a server sends to say what a seat is called, while the match is being put together.",
   "revisions": [
     {
-      "from": "0.8.13.26",
-      "until": "0.9.22.14",
-      "channel": "roster",
-      "command": 102,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "padding",
-          "type": "bytes",
-          "size": 7,
-          "note": "Unused; a client reads nothing here."
-        },
-        {
-          "name": "player",
-          "type": "i64",
-          "note": "Whose name this is. It has a player identifier's width."
-        },
-        {
-          "name": "skin",
-          "type": "i32",
-          "note": "Which look the seat's champion wears."
-        },
-        {
-          "name": "name",
-          "type": "string",
-          "encoding": "utf8",
-          "size": "terminated",
-          "note": "Ended by a zero byte."
-        }
-      ]
-    },
-    {
       "from": "0.9.22.14",
       "until": "1.0.0.128",
       "channel": "roster",

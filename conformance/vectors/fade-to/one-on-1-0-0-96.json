@@ -4,12 +4,12 @@
   "message": "FadeTo",
   "version": "1.0.0.96",
   "note": "Laid out as a 1.0.0.96 client takes it.",
-  "bytes": "900100004007000000003f0000803e",
+  "bytes": "900100004007000000803e0000003f",
   "fields": {
     "command": 144,
     "netId": 1073741825,
     "fade": 7,
-    "time": 0.5,
-    "target": 0.25
+    "target": 0.25,
+    "time": 0.5
   }
 }

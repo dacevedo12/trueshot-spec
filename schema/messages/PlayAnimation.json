@@ -18,57 +18,42 @@
           "size": 4,
           "bits": [
             {
+              "name": "unusedLow",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
+            {
               "name": "loop",
               "width": 1,
-              "note": "Set to loop it."
+              "note": "Set to loop the animation: it starts over once it ends."
             },
             {
               "name": "holdLastFrame",
               "width": 1,
-              "note": "Set to hold its last frame once it ends."
+              "note": "Set to hold the last frame once the animation ends; it stops advancing there. Wins over loop."
             },
             {
-              "name": "queue",
+              "name": "fadeOthers",
               "width": 1,
-              "note": "Set to play it once the animation playing ends, rather than now."
+              "note": "Set to freeze the animations already playing and fade them to nothing over the blend time. They are not removed."
             },
             {
-              "name": "queueLast",
+              "name": "freezeOthers",
               "width": 1,
-              "note": "Set to play it after every animation already waiting."
+              "note": "Set to freeze the animations already playing, fade them out over the blend time, then remove them."
             },
             {
-              "name": "replaceable",
+              "name": "dropOthers",
               "width": 1,
-              "note": "Set to let the next animation queued after it start at once."
-            },
-            {
-              "name": "locked",
-              "width": 1,
-              "note": "Locks the unit's animation, where one of the client's own settings is on."
-            },
-            {
-              "name": "noBlend",
-              "width": 1,
-              "note": "Set to switch to it at once rather than blend in."
-            },
-            {
-              "name": "lockedFromIdle",
-              "width": 1,
-              "note": "Set where idle animations cannot fade it out."
-            },
-            {
-              "name": "reserved",
-              "width": 1,
-              "note": "What it does is not recorded for this range; a server writes zero."
+              "note": "Set to remove the animations already playing at once, with no fade."
             },
             {
               "name": "unused",
-              "width": 23,
-              "note": "What it does is not recorded for this range; a server writes zero."
+              "width": 26,
+              "note": "Unused; a server writes zero."
             }
           ],
-          "note": "How the animation plays and is queued."
+          "note": "How the animation plays, as a set of bits."
         },
         {
           "name": "scaleTime",
@@ -83,7 +68,7 @@
           "note": "The animation's name, ended by a zero byte. Nothing plays for a name the unit does not have."
         }
       ],
-      "note": "No start point is carried: the animation starts from its beginning."
+      "note": "Every play blends in over a blend time of 0.2 seconds. Without loop or holdLastFrame, an animation that ends is removed, except that where it was the unit's only animation and the unit has an idle, a client fades back to the idle, looping. No start point is carried: the animation starts from its beginning."
     },
     {
       "from": "0.9.22.14",
@@ -99,57 +84,52 @@
           "size": 4,
           "bits": [
             {
+              "name": "unusedLow",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
+            {
               "name": "loop",
               "width": 1,
-              "note": "Set to loop it."
+              "note": "Set to loop the animation: it starts over once it ends."
             },
             {
               "name": "holdLastFrame",
               "width": 1,
-              "note": "Set to hold its last frame once it ends."
+              "note": "Set to hold the last frame once the animation ends; it stops advancing there. Wins over loop."
             },
             {
-              "name": "queue",
+              "name": "fadeOthers",
               "width": 1,
-              "note": "Set to play it once the animation playing ends, rather than now."
+              "note": "Set to freeze the animations already playing and fade them to nothing over the blend time. They are not removed."
             },
             {
-              "name": "queueLast",
+              "name": "freezeOthers",
               "width": 1,
-              "note": "Set to play it after every animation already waiting."
+              "note": "Set to freeze the animations already playing, fade them out over the blend time, then remove them."
             },
             {
-              "name": "replaceable",
+              "name": "dropOthers",
               "width": 1,
-              "note": "Set to let the next animation queued after it start at once."
+              "note": "Set to remove the animations already playing at once, with no fade."
             },
             {
               "name": "locked",
               "width": 1,
-              "note": "Locks the unit's animation, where one of the client's own settings is on."
+              "note": "Set to lock the unit's animation: once the animation plays, a client refuses every later animation played on the unit, unless the unit's own character data opts out."
             },
             {
-              "name": "noBlend",
+              "name": "fadeAtEnd",
               "width": 1,
-              "note": "Set to switch to it at once rather than blend in."
-            },
-            {
-              "name": "lockedFromIdle",
-              "width": 1,
-              "note": "Set where idle animations cannot fade it out."
-            },
-            {
-              "name": "reserved",
-              "width": 1,
-              "note": "What it does is not recorded for this range; a server writes zero."
+              "note": "Only where loop is clear: set to start fading the animation out once its time left is at or below the blend time."
             },
             {
               "name": "unused",
-              "width": 23,
-              "note": "What it does is not recorded for this range; a server writes zero."
+              "width": 24,
+              "note": "Unused; a server writes zero."
             }
           ],
-          "note": "How the animation plays and is queued."
+          "note": "How the animation plays, as a set of bits."
         },
         {
           "name": "scaleTime",
@@ -164,7 +144,7 @@
           "note": "The animation's name, ended by a zero byte. Nothing plays for a name the unit does not have."
         }
       ],
-      "note": "No start point is carried: the animation starts from its beginning. A unit whose animation has been locked ignores the message."
+      "note": "Every play blends in over a blend time of 0.2 seconds. Without loop or holdLastFrame, an animation that ends is removed, except that where it was the unit's only animation and the unit has an idle, a client fades back to the idle, looping. No start point is carried: the animation starts from its beginning. A unit whose animation has been locked ignores the message."
     },
     {
       "from": "1.0.0.58",
@@ -180,57 +160,62 @@
           "size": 4,
           "bits": [
             {
+              "name": "unusedLow",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
+            {
               "name": "loop",
               "width": 1,
-              "note": "Set to loop it."
+              "note": "Set to loop the animation: it starts over once it ends."
             },
             {
               "name": "holdLastFrame",
               "width": 1,
-              "note": "Set to hold its last frame once it ends."
+              "note": "Set to hold the last frame once the animation ends; it stops advancing there. Wins over loop."
             },
             {
-              "name": "queue",
+              "name": "fadeOthers",
               "width": 1,
-              "note": "Set to play it once the animation playing ends, rather than now."
+              "note": "Set to freeze the animations already playing and fade them to nothing over the blend time. They are not removed."
             },
             {
-              "name": "queueLast",
+              "name": "freezeOthers",
               "width": 1,
-              "note": "Set to play it after every animation already waiting."
+              "note": "Set to freeze the animations already playing, fade them out over the blend time, then remove them."
             },
             {
-              "name": "replaceable",
+              "name": "dropOthers",
               "width": 1,
-              "note": "Set to let the next animation queued after it start at once."
+              "note": "Set to remove the animations already playing at once, with no fade."
             },
             {
               "name": "locked",
               "width": 1,
-              "note": "Locks the unit's animation, where one of the client's own settings is off."
+              "note": "Set to lock the unit's animation: once the animation plays, a client refuses every later animation played on the unit, unless the unit's own character data opts out. A client applies the lock only where one of its own settings is on, as it is by default."
             },
             {
-              "name": "noBlend",
+              "name": "fadeAtEnd",
               "width": 1,
-              "note": "Set to switch to it at once rather than blend in."
+              "note": "Only where loop is clear: set to start fading the animation out once its time left is at or below the blend time."
             },
             {
-              "name": "lockedFromIdle",
+              "name": "syncPhase",
               "width": 1,
-              "note": "Set where idle animations cannot fade it out."
+              "note": "Only together with loop: where an animation already playing on the unit is the same one, the new one starts at that animation's current fraction of its length, where that fraction lies strictly between 0 and 1."
             },
             {
-              "name": "reserved",
+              "name": "noFadeIn",
               "width": 1,
-              "note": "What it does is not recorded for this range; a server writes zero."
+              "note": "Set to show the animation at full weight at once, with no blend in. Animations that fadeOthers or freezeOthers fade out then vanish at once."
             },
             {
               "name": "unused",
-              "width": 23,
-              "note": "What it does is not recorded for this range; a server writes zero."
+              "width": 22,
+              "note": "Unused; a server writes zero."
             }
           ],
-          "note": "How the animation plays and is queued."
+          "note": "How the animation plays, as a set of bits."
         },
         {
           "name": "scaleTime",
@@ -245,7 +230,7 @@
           "note": "The animation's name, ended by a zero byte. Nothing plays for a name the unit does not have."
         }
       ],
-      "note": "No start point is carried: the animation starts from its beginning. A unit whose animation has been locked ignores the message."
+      "note": "Every play blends in over a blend time of 0.2 seconds unless noFadeIn is set. Without loop or holdLastFrame, an animation that ends is removed, except that where it was the unit's only animation and the unit has an idle, a client fades back to the idle, looping. No start point is carried: the animation starts from its beginning. A unit whose animation has been locked ignores the message."
     },
     {
       "from": "1.0.0.110",
@@ -261,57 +246,62 @@
           "size": 4,
           "bits": [
             {
+              "name": "unusedLow",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
+            {
               "name": "loop",
               "width": 1,
-              "note": "Set to loop it."
+              "note": "Set to loop the animation: it starts over once it ends."
             },
             {
               "name": "holdLastFrame",
               "width": 1,
-              "note": "Set to hold its last frame once it ends."
+              "note": "Set to hold the last frame once the animation ends; it stops advancing there. Wins over loop."
             },
             {
-              "name": "queue",
+              "name": "fadeOthers",
               "width": 1,
-              "note": "Set to play it once the animation playing ends, rather than now."
+              "note": "Set to freeze the animations already playing and fade them to nothing over the blend time. They are not removed."
             },
             {
-              "name": "queueLast",
+              "name": "freezeOthers",
               "width": 1,
-              "note": "Set to play it after every animation already waiting."
+              "note": "Set to freeze the animations already playing, fade them out over the blend time, then remove them."
             },
             {
-              "name": "replaceable",
+              "name": "dropOthers",
               "width": 1,
-              "note": "Set to let the next animation queued after it start at once."
+              "note": "Set to remove the animations already playing at once, with no fade."
             },
             {
               "name": "locked",
               "width": 1,
-              "note": "Locks the unit's animation, where one of the client's own settings is on; later animations sent for the unit are then ignored."
+              "note": "Set to lock the unit's animation: once the animation plays, a client refuses every later animation played on the unit, unless the unit's own character data opts out. A client applies the lock only where one of its own settings is on, as it is by default."
             },
             {
-              "name": "noBlend",
+              "name": "fadeAtEnd",
               "width": 1,
-              "note": "Set to switch to it at once rather than blend in."
+              "note": "Only where loop is clear: set to start fading the animation out once its time left is at or below the blend time."
             },
             {
-              "name": "lockedFromIdle",
+              "name": "syncPhase",
               "width": 1,
-              "note": "Set where idle animations cannot fade it out."
+              "note": "Only together with loop: where an animation already playing on the unit is the same one, the new one starts at that animation's current fraction of its length, where that fraction lies strictly between 0 and 1."
             },
             {
-              "name": "reserved",
+              "name": "noFadeIn",
               "width": 1,
-              "note": "What it does is not recorded for this range; a server writes zero."
+              "note": "Set to show the animation at full weight at once, with no blend in. Animations that fadeOthers or freezeOthers fade out then vanish at once."
             },
             {
               "name": "unused",
-              "width": 23,
-              "note": "No effect is recorded; a server sends zero."
+              "width": 22,
+              "note": "Unused; a server writes zero."
             }
           ],
-          "note": "No effect is recorded; a server sends zero."
+          "note": "How the animation plays, as a set of bits."
         },
         {
           "name": "scaleTime",
@@ -326,7 +316,7 @@
           "note": "The animation's name, ended by a zero byte. Nothing plays for a name the unit does not have."
         }
       ],
-      "note": "No start point is carried: the animation starts from its beginning. A unit whose animation has been locked ignores the message."
+      "note": "Every play blends in over a blend time of 0.2 seconds unless noFadeIn is set. Without loop or holdLastFrame, an animation that ends is removed, except that where it was the unit's only animation and the unit has an idle, a client fades back to the idle, looping. No start point is carried: the animation starts from its beginning. A unit whose animation has been locked ignores the message."
     },
     {
       "from": "1.0.0.111",
@@ -342,57 +332,62 @@
           "size": 4,
           "bits": [
             {
+              "name": "unusedLow",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
+            {
               "name": "loop",
               "width": 1,
-              "note": "Set to loop it."
+              "note": "Set to loop the animation: it starts over once it ends."
             },
             {
               "name": "holdLastFrame",
               "width": 1,
-              "note": "Set to hold its last frame once it ends."
+              "note": "Set to hold the last frame once the animation ends; it stops advancing there. Wins over loop."
             },
             {
-              "name": "queue",
+              "name": "fadeOthers",
               "width": 1,
-              "note": "Set to play it once the animation playing ends, rather than now."
+              "note": "Set to freeze the animations already playing and fade them to nothing over the blend time. They are not removed."
             },
             {
-              "name": "queueLast",
+              "name": "freezeOthers",
               "width": 1,
-              "note": "Set to play it after every animation already waiting."
+              "note": "Set to freeze the animations already playing, fade them out over the blend time, then remove them."
             },
             {
-              "name": "replaceable",
+              "name": "dropOthers",
               "width": 1,
-              "note": "Set to let the next animation queued after it start at once."
+              "note": "Set to remove the animations already playing at once, with no fade."
             },
             {
               "name": "locked",
               "width": 1,
-              "note": "Locks the unit's animation, where one of the client's own settings is on; later animations sent for the unit are then ignored."
+              "note": "Set to lock the unit's animation: once the animation plays, a client refuses every later animation played on the unit, unless the unit's own character data opts out. A client applies the lock only where one of its own settings is on, as it is by default."
             },
             {
-              "name": "noBlend",
+              "name": "fadeAtEnd",
               "width": 1,
-              "note": "Set to switch to it at once rather than blend in."
+              "note": "Only where loop is clear: set to start fading the animation out once its time left is at or below the blend time."
             },
             {
-              "name": "lockedFromIdle",
+              "name": "syncPhase",
               "width": 1,
-              "note": "Set where idle animations cannot fade it out."
+              "note": "Only together with loop: where an animation already playing on the unit is the same one, the new one starts at that animation's current fraction of its length, where that fraction lies strictly between 0 and 1."
             },
             {
-              "name": "reserved",
+              "name": "noFadeIn",
               "width": 1,
-              "note": "What it does is not recorded for this range; a server writes zero."
+              "note": "Set to show the animation at full weight at once, with no blend in. Animations that fadeOthers or freezeOthers fade out then vanish at once."
             },
             {
               "name": "unused",
-              "width": 23,
-              "note": "No effect is recorded; a server sends zero."
+              "width": 22,
+              "note": "Unused; a server writes zero."
             }
           ],
-          "note": "No effect is recorded; a server sends zero."
+          "note": "How the animation plays, as a set of bits."
         },
         {
           "name": "scaleTime",
@@ -407,7 +402,7 @@
           "note": "The animation's name, ended by a zero byte. Nothing plays for a name the unit does not have."
         }
       ],
-      "note": "No start point is carried: the animation starts from its beginning. A unit whose animation has been locked ignores the message."
+      "note": "Every play blends in over a blend time of 0.2 seconds unless noFadeIn is set. Without loop or holdLastFrame, an animation that ends is removed, except that where it was the unit's only animation and the unit has an idle, a client fades back to the idle, looping. No start point is carried: the animation starts from its beginning. A unit whose animation has been locked ignores the message."
     },
     {
       "from": "1.0.0.117",
@@ -423,57 +418,62 @@
           "size": 4,
           "bits": [
             {
+              "name": "unusedLow",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
+            {
               "name": "loop",
               "width": 1,
-              "note": "Set to loop it."
+              "note": "Set to loop the animation: it starts over once it ends."
             },
             {
               "name": "holdLastFrame",
               "width": 1,
-              "note": "Set to hold its last frame once it ends."
+              "note": "Set to hold the last frame once the animation ends; it stops advancing there. Wins over loop."
             },
             {
-              "name": "queue",
+              "name": "fadeOthers",
               "width": 1,
-              "note": "Set to play it once the animation playing ends, rather than now."
+              "note": "Set to freeze the animations already playing and fade them to nothing over the blend time. They are not removed."
             },
             {
-              "name": "queueLast",
+              "name": "freezeOthers",
               "width": 1,
-              "note": "Set to play it after every animation already waiting."
+              "note": "Set to freeze the animations already playing, fade them out over the blend time, then remove them."
             },
             {
-              "name": "replaceable",
+              "name": "dropOthers",
               "width": 1,
-              "note": "Set to let the next animation queued after it start at once."
+              "note": "Set to remove the animations already playing at once, with no fade."
             },
             {
               "name": "locked",
               "width": 1,
-              "note": "Locks the unit's animation, where one of the client's own settings is on; later animations sent for the unit are then ignored."
+              "note": "Set to lock the unit's animation: once the animation plays, a client refuses every later animation played on the unit, unless the unit's own character data opts out. A client applies the lock only where one of its own settings is on, as it is by default."
             },
             {
-              "name": "noBlend",
+              "name": "fadeAtEnd",
               "width": 1,
-              "note": "Set to switch to it at once rather than blend in."
+              "note": "Only where loop is clear: set to start fading the animation out once its time left is at or below the blend time."
             },
             {
-              "name": "lockedFromIdle",
+              "name": "syncPhase",
               "width": 1,
-              "note": "Set where idle animations cannot fade it out."
+              "note": "Only together with loop: where an animation already playing on the unit is the same one, the new one starts at that animation's current fraction of its length, where that fraction lies strictly between 0 and 1."
             },
             {
-              "name": "reserved",
+              "name": "noFadeIn",
               "width": 1,
-              "note": "What it does is not recorded for this range; a server writes zero."
+              "note": "Set to show the animation at full weight at once, with no blend in. Animations that fadeOthers or freezeOthers fade out then vanish at once."
             },
             {
               "name": "unused",
-              "width": 23,
-              "note": "No effect is recorded; a server sends zero."
+              "width": 22,
+              "note": "Unused; a server writes zero."
             }
           ],
-          "note": "No effect is recorded; a server sends zero."
+          "note": "How the animation plays, as a set of bits."
         },
         {
           "name": "scaleTime",
@@ -488,7 +488,7 @@
           "note": "The animation's name, ended by a zero byte. Nothing plays for a name the unit does not have."
         }
       ],
-      "note": "No start point is carried: the animation starts from its beginning. A unit whose animation has been locked ignores the message."
+      "note": "Every play blends in over a blend time of 0.2 seconds unless noFadeIn is set. Without loop or holdLastFrame, an animation that ends is removed, except that where it was the unit's only animation and the unit has an idle, a client fades back to the idle, looping. No start point is carried: the animation starts from its beginning. A unit whose animation has been locked ignores the message."
     },
     {
       "from": "1.0.0.119",
@@ -504,57 +504,62 @@
           "size": 4,
           "bits": [
             {
+              "name": "unusedLow",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
+            {
               "name": "loop",
               "width": 1,
-              "note": "Set to loop it."
+              "note": "Set to loop the animation: it starts over once it ends."
             },
             {
               "name": "holdLastFrame",
               "width": 1,
-              "note": "Set to hold its last frame once it ends."
+              "note": "Set to hold the last frame once the animation ends; it stops advancing there. Wins over loop."
             },
             {
-              "name": "queue",
+              "name": "fadeOthers",
               "width": 1,
-              "note": "Set to play it once the animation playing ends, rather than now."
+              "note": "Set to freeze the animations already playing and fade them to nothing over the blend time. They are not removed."
             },
             {
-              "name": "queueLast",
+              "name": "freezeOthers",
               "width": 1,
-              "note": "Set to play it after every animation already waiting."
+              "note": "Set to freeze the animations already playing, fade them out over the blend time, then remove them."
             },
             {
-              "name": "replaceable",
+              "name": "dropOthers",
               "width": 1,
-              "note": "Set to let the next animation queued after it start at once."
+              "note": "Set to remove the animations already playing at once, with no fade."
             },
             {
               "name": "locked",
               "width": 1,
-              "note": "Locks the unit's animation, where one of the client's own settings is on; later animations sent for the unit are then ignored."
+              "note": "Set to lock the unit's animation: once the animation plays, a client refuses every later animation played on the unit, unless the unit's own character data opts out. A client applies the lock only where one of its own settings is on, as it is by default."
             },
             {
-              "name": "noBlend",
+              "name": "fadeAtEnd",
               "width": 1,
-              "note": "Set to switch to it at once rather than blend in."
+              "note": "Only where loop is clear: set to start fading the animation out once its time left is at or below the blend time."
             },
             {
-              "name": "lockedFromIdle",
+              "name": "syncPhase",
               "width": 1,
-              "note": "Set where idle animations cannot fade it out."
+              "note": "Only together with loop: where an animation already playing on the unit is the same one, the new one starts at that animation's current fraction of its length, where that fraction lies strictly between 0 and 1."
             },
             {
-              "name": "reserved",
+              "name": "noFadeIn",
               "width": 1,
-              "note": "What it does is not recorded for this range; a server writes zero."
+              "note": "Set to show the animation at full weight at once, with no blend in. Animations that fadeOthers or freezeOthers fade out then vanish at once."
             },
             {
               "name": "unused",
-              "width": 23,
-              "note": "No effect is recorded; a server sends zero."
+              "width": 22,
+              "note": "Unused; a server writes zero."
             }
           ],
-          "note": "No effect is recorded; a server sends zero."
+          "note": "How the animation plays, as a set of bits."
         },
         {
           "name": "scaleTime",
@@ -569,7 +574,7 @@
           "note": "The animation's name, ended by a zero byte. Nothing plays for a name the unit does not have."
         }
       ],
-      "note": "No start point is carried: the animation starts from its beginning. A unit whose animation has been locked ignores the message."
+      "note": "Every play blends in over a blend time of 0.2 seconds unless noFadeIn is set. Without loop or holdLastFrame, an animation that ends is removed, except that where it was the unit's only animation and the unit has an idle, a client fades back to the idle, looping. No start point is carried: the animation starts from its beginning. A unit whose animation has been locked ignores the message."
     },
     {
       "from": "1.0.0.124",
@@ -585,57 +590,62 @@
           "size": 4,
           "bits": [
             {
+              "name": "unusedLow",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
+            {
               "name": "loop",
               "width": 1,
-              "note": "Set to loop it."
+              "note": "Set to loop the animation: it starts over once it ends."
             },
             {
               "name": "holdLastFrame",
               "width": 1,
-              "note": "Set to hold its last frame once it ends."
+              "note": "Set to hold the last frame once the animation ends; it stops advancing there. Wins over loop."
             },
             {
-              "name": "queue",
+              "name": "fadeOthers",
               "width": 1,
-              "note": "Set to play it once the animation playing ends, rather than now."
+              "note": "Set to freeze the animations already playing and fade them to nothing over the blend time. They are not removed."
             },
             {
-              "name": "queueLast",
+              "name": "freezeOthers",
               "width": 1,
-              "note": "Set to play it after every animation already waiting."
+              "note": "Set to freeze the animations already playing, fade them out over the blend time, then remove them."
             },
             {
-              "name": "replaceable",
+              "name": "dropOthers",
               "width": 1,
-              "note": "Set to let the next animation queued after it start at once."
+              "note": "Set to remove the animations already playing at once, with no fade."
             },
             {
               "name": "locked",
               "width": 1,
-              "note": "Locks the unit's animation, where one of the client's own settings is on; later animations sent for the unit are then ignored."
+              "note": "Set to lock the unit's animation: once the animation plays, a client refuses every later animation played on the unit, unless the unit's own character data opts out. A client applies the lock only where one of its own settings is on, as it is by default."
             },
             {
-              "name": "noBlend",
+              "name": "fadeAtEnd",
               "width": 1,
-              "note": "Set to switch to it at once rather than blend in."
+              "note": "Only where loop is clear: set to start fading the animation out once its time left is at or below the blend time."
             },
             {
-              "name": "lockedFromIdle",
+              "name": "syncPhase",
               "width": 1,
-              "note": "Set where idle animations cannot fade it out."
+              "note": "Only together with loop: where an animation already playing on the unit is the same one, the new one starts at that animation's current fraction of its length, where that fraction lies strictly between 0 and 1."
             },
             {
-              "name": "reserved",
+              "name": "noFadeIn",
               "width": 1,
-              "note": "What it does is not recorded for this range; a server writes zero."
+              "note": "Set to show the animation at full weight at once, with no blend in. Animations that fadeOthers or freezeOthers fade out then vanish at once."
             },
             {
               "name": "unused",
-              "width": 23,
-              "note": "No effect is recorded; a server sends zero."
+              "width": 22,
+              "note": "Unused; a server writes zero."
             }
           ],
-          "note": "No effect is recorded; a server sends zero."
+          "note": "How the animation plays, as a set of bits."
         },
         {
           "name": "scaleTime",
@@ -650,7 +660,7 @@
           "note": "The animation's name, ended by a zero byte. Nothing plays for a name the unit does not have."
         }
       ],
-      "note": "No start point is carried: the animation starts from its beginning. A unit whose animation has been locked ignores the message."
+      "note": "Every play blends in over a blend time of 0.2 seconds unless noFadeIn is set. Without loop or holdLastFrame, an animation that ends is removed, except that where it was the unit's only animation and the unit has an idle, a client fades back to the idle, looping. No start point is carried: the animation starts from its beginning. A unit whose animation has been locked ignores the message."
     },
     {
       "from": "1.0.0.125",
@@ -666,57 +676,62 @@
           "size": 4,
           "bits": [
             {
+              "name": "unusedLow",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
+            {
               "name": "loop",
               "width": 1,
-              "note": "Set to loop it."
+              "note": "Set to loop the animation: it starts over once it ends."
             },
             {
               "name": "holdLastFrame",
               "width": 1,
-              "note": "Set to hold its last frame once it ends."
+              "note": "Set to hold the last frame once the animation ends; it stops advancing there. Wins over loop."
             },
             {
-              "name": "queue",
+              "name": "fadeOthers",
               "width": 1,
-              "note": "Set to play it once the animation playing ends, rather than now."
+              "note": "Set to freeze the animations already playing and fade them to nothing over the blend time. They are not removed."
             },
             {
-              "name": "queueLast",
+              "name": "freezeOthers",
               "width": 1,
-              "note": "Set to play it after every animation already waiting."
+              "note": "Set to freeze the animations already playing, fade them out over the blend time, then remove them."
             },
             {
-              "name": "replaceable",
+              "name": "dropOthers",
               "width": 1,
-              "note": "Set to let the next animation queued after it start at once."
+              "note": "Set to remove the animations already playing at once, with no fade."
             },
             {
               "name": "locked",
               "width": 1,
-              "note": "Locks the unit's animation, where one of the client's own settings is on; later animations sent for the unit are then ignored."
+              "note": "Set to lock the unit's animation: once the animation plays, a client refuses every later animation played on the unit, unless the unit's own character data opts out. A client applies the lock only where one of its own settings is on, as it is by default."
             },
             {
-              "name": "noBlend",
+              "name": "fadeAtEnd",
               "width": 1,
-              "note": "Set to switch to it at once rather than blend in."
+              "note": "Only where loop is clear: set to start fading the animation out once its time left is at or below the blend time."
             },
             {
-              "name": "lockedFromIdle",
+              "name": "syncPhase",
               "width": 1,
-              "note": "Set where idle animations cannot fade it out."
+              "note": "Only together with loop: where an animation already playing on the unit is the same one, the new one starts at that animation's current fraction of its length, where that fraction lies strictly between 0 and 1."
             },
             {
-              "name": "reserved",
+              "name": "noFadeIn",
               "width": 1,
-              "note": "What it does is not recorded for this range; a server writes zero."
+              "note": "Set to show the animation at full weight at once, with no blend in. Animations that fadeOthers or freezeOthers fade out then vanish at once."
             },
             {
               "name": "unused",
-              "width": 23,
-              "note": "No effect is recorded; a server sends zero."
+              "width": 22,
+              "note": "Unused; a server writes zero."
             }
           ],
-          "note": "No effect is recorded; a server sends zero."
+          "note": "How the animation plays, as a set of bits."
         },
         {
           "name": "scaleTime",
@@ -731,7 +746,7 @@
           "note": "The animation's name, ended by a zero byte. Nothing plays for a name the unit does not have."
         }
       ],
-      "note": "No start point is carried: the animation starts from its beginning. A unit whose animation has been locked ignores the message."
+      "note": "Every play blends in over a blend time of 0.2 seconds unless noFadeIn is set. Without loop or holdLastFrame, an animation that ends is removed, except that where it was the unit's only animation and the unit has an idle, a client fades back to the idle, looping. No start point is carried: the animation starts from its beginning. A unit whose animation has been locked ignores the message."
     },
     {
       "from": "1.0.0.126",
@@ -747,57 +762,62 @@
           "size": 4,
           "bits": [
             {
+              "name": "unusedLow",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
+            {
               "name": "loop",
               "width": 1,
-              "note": "Set to loop it."
+              "note": "Set to loop the animation: it starts over once it ends."
             },
             {
               "name": "holdLastFrame",
               "width": 1,
-              "note": "Set to hold its last frame once it ends."
+              "note": "Set to hold the last frame once the animation ends; it stops advancing there. Wins over loop."
             },
             {
-              "name": "queue",
+              "name": "fadeOthers",
               "width": 1,
-              "note": "Set to play it once the animation playing ends, rather than now."
+              "note": "Set to freeze the animations already playing and fade them to nothing over the blend time. They are not removed."
             },
             {
-              "name": "queueLast",
+              "name": "freezeOthers",
               "width": 1,
-              "note": "Set to play it after every animation already waiting."
+              "note": "Set to freeze the animations already playing, fade them out over the blend time, then remove them."
             },
             {
-              "name": "replaceable",
+              "name": "dropOthers",
               "width": 1,
-              "note": "Set to let the next animation queued after it start at once."
+              "note": "Set to remove the animations already playing at once, with no fade."
             },
             {
               "name": "locked",
               "width": 1,
-              "note": "Locks the unit's animation, where one of the client's own settings is on; later animations sent for the unit are then ignored."
+              "note": "Set to lock the unit's animation: once the animation plays, a client refuses every later animation played on the unit, unless the unit's own character data opts out. A client applies the lock only where one of its own settings is on, as it is by default."
             },
             {
-              "name": "noBlend",
+              "name": "fadeAtEnd",
               "width": 1,
-              "note": "Set to switch to it at once rather than blend in."
+              "note": "Only where loop is clear: set to start fading the animation out once its time left is at or below the blend time."
             },
             {
-              "name": "lockedFromIdle",
+              "name": "syncPhase",
               "width": 1,
-              "note": "Set where idle animations cannot fade it out."
+              "note": "Only together with loop: where an animation already playing on the unit is the same one, the new one starts at that animation's current fraction of its length, where that fraction lies strictly between 0 and 1."
             },
             {
-              "name": "reserved",
+              "name": "noFadeIn",
               "width": 1,
-              "note": "What it does is not recorded for this range; a server writes zero."
+              "note": "Set to show the animation at full weight at once, with no blend in. Animations that fadeOthers or freezeOthers fade out then vanish at once."
             },
             {
               "name": "unused",
-              "width": 23,
-              "note": "No effect is recorded; a server sends zero."
+              "width": 22,
+              "note": "Unused; a server writes zero."
             }
           ],
-          "note": "How it plays, as a set of bits."
+          "note": "How the animation plays, as a set of bits."
         },
         {
           "name": "scaleTime",
@@ -812,7 +832,7 @@
           "note": "The animation's name, ended by a zero byte. Nothing plays for a name the unit does not have."
         }
       ],
-      "note": "No start point is carried: the animation starts from its beginning. A unit whose animation has been locked ignores the message."
+      "note": "Every play blends in over a blend time of 0.2 seconds unless noFadeIn is set. Without loop or holdLastFrame, an animation that ends is removed, except that where it was the unit's only animation and the unit has an idle, a client fades back to the idle, looping. No start point is carried: the animation starts from its beginning. A unit whose animation has been locked ignores the message."
     },
     {
       "from": "1.0.0.128",
