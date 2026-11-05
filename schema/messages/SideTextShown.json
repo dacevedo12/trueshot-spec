@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "SideTextShown",
   "system": "guidance",
-  "note": "What a server sends to show a box of text at the right edge of the screen. The header carries zero.",
+  "note": "What a server sends to show a box of text at the right edge of the screen. The header names no object: a server writes zero.",
   "revisions": [
     {
       "from": "0.9.22.16",

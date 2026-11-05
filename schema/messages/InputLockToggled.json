@@ -222,7 +222,7 @@
           }
         }
       ],
-      "note": "A client acts on the change at once only where exactly one lock is set; any other value still changes what is locked, and takes effect as the player next tries."
+      "note": "A client acts on the change at once only where locks is 1, 4, 8, 16, 32 or 128; any other value still changes what is locked, and takes effect as the player next tries."
     },
     {
       "from": "1.0.0.97",
@@ -706,7 +706,7 @@
           }
         }
       ],
-      "note": "A client acts on the change at once only where exactly one lock is set; any other value still changes what is locked, and takes effect as the player next tries."
+      "note": "A client acts on the change at once only where locks is 1, 4, 8, 16, 32 or 128; any other value still changes what is locked, and takes effect as the player next tries."
     },
     {
       "from": "1.0.0.132",

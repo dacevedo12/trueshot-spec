@@ -78,7 +78,7 @@
             {
               "name": "pausing",
               "width": 1,
-              "note": "Set where holding the match is allowed."
+              "note": "Where set, a client announces that pausing is allowed, except while playing a replay. It keeps nothing of it."
             },
             {
               "name": "unused",
@@ -88,7 +88,7 @@
           ]
         }
       ],
-      "note": "A client past spawning ignores it."
+      "note": "A client ignores it once the match has ended or while it is leaving, and acts on it again where it is repeated."
     },
     {
       "from": "1.0.0.132",

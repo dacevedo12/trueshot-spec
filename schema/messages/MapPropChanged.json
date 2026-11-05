@@ -444,7 +444,7 @@
         {
           "name": "value",
           "type": "u32",
-          "note": "A value the change uses: for animate, the animation's flags; for linkEffect, the particle effect value; for look, the look's number."
+          "note": "A value the change uses: for animate, the animation's flags; for linkEffect, the particle effect value."
         },
         {
           "name": "change",
@@ -453,7 +453,7 @@
           "values": {
             "0": {
               "name": "animate",
-              "note": "Play the animation name, with value as its flags, starting at first (match time in seconds) for second seconds; option nonzero removes the prop afterwards. effect and point have no effect."
+              "note": "Play the animation name, with value as its flags, starting at first (match time in seconds) for second seconds; an animation of that name already playing with the same flags is not started again. option, effect and point have no effect."
             },
             "1": {
               "name": "linkEffect",
@@ -461,14 +461,14 @@
             },
             "2": {
               "name": "look",
-              "note": "Change the prop's look to name, numbered value. The rest have no effect."
+              "note": "A client does nothing."
             }
           }
         },
         {
           "name": "option",
           "type": "u8",
-          "note": "For animate, nonzero to remove the prop after the animation; for linkEffect, zero."
+          "note": "For linkEffect, zero; a client reads it for no other change."
         },
         {
           "name": "effect",

@@ -109,7 +109,7 @@
         {
           "name": "slot",
           "type": "i32",
-          "note": "Where the text goes. 0 floats it over the unit while the unit is in the client's own view, the text looked up as a key into the client's own text. 1 to 50 writes it, in colour, to that line of a debugging display, only where the unit is the one the player has selected. A client does nothing for any other value."
+          "note": "Where the text goes. 0 floats it over the unit while the unit is in the client's own view. 1 to 50 writes it, in colour, to that line of a debugging display, only where the unit is the one the player has selected. A client does nothing for any other value."
         },
         {
           "name": "error",
@@ -126,7 +126,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": "terminated",
-          "note": "The text, ended by a zero byte; the two take at most 1024 bytes."
+          "note": "The text, ended by a zero byte."
         }
       ]
     },

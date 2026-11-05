@@ -124,6 +124,22 @@
     },
     {
       "from": "1.0.0.110",
+      "until": "1.0.0.138",
+      "channel": "requests",
+      "command": 5,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "handle",
+          "type": "u32",
+          "note": "The number the VoiceEvent carried."
+        }
+      ],
+      "note": "A client sends it at once where it could not play the event."
+    },
+    {
+      "from": "1.0.0.138",
       "until": "4.21.0.0",
       "channel": "requests",
       "command": 5,

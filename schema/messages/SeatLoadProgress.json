@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "SeatLoadProgress",
   "system": "joining",
-  "note": "What a server sends to tell everyone how far one seat has got through loading, and how it is holding up. A later report supersedes an earlier one, so losing one costs nothing. The header names no object: it carries zero.",
+  "note": "What a server sends to tell everyone how far one seat has got through loading, and how it is holding up. A later report supersedes an earlier one, so losing one costs nothing. The header names no object: a server writes zero.",
   "revisions": [
     {
       "from": "0.9.22.14",
@@ -957,7 +957,7 @@
             {
               "name": "loaded",
               "width": 1,
-              "note": "Set in every report whose progress stands at one hundred, and in no other."
+              "note": "It carries no defined value."
             }
           ],
           "note": "Copied with the rest; no reader of it is known."

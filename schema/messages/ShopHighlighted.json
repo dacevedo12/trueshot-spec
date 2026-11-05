@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "ShopHighlighted",
   "system": "guidance",
-  "note": "What a server sends to make a shop element blink once, as a tutorial does. The header carries zero.",
+  "note": "What a server sends to make a shop element blink once, as a tutorial does. The header names no object: a server writes zero.",
   "revisions": [
     {
       "from": "0.9.22.16",

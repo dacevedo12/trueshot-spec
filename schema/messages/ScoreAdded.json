@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "ScoreAdded",
   "system": "replication",
-  "note": "What a server sends to add to a player's score. The header carries zero.",
+  "note": "What a server sends to add to a player's score. The header names no object: a server writes zero.",
   "revisions": [
     {
       "from": "1.0.0.124",

@@ -2276,7 +2276,7 @@
         {
           "name": "view",
           "type": "record",
-          "note": "Everything else a client needs to draw the unit. A server sends it for a champion, a minion or another unit with a mind, which a client reads past the end of the message without it, and ends the message after the items for any other unit.",
+          "note": "Everything else a client needs to draw the unit. A server sends it for a champion, a minion or another unit with a mind, which a client reads past the end of the message without it.",
           "fields": [
             {
               "name": "hasShields",
@@ -2321,7 +2321,7 @@
               "present": {
                 "when": "remaining"
               },
-              "note": "Where the unit stands, followed by the direction it faces.",
+              "note": "Where the unit stands; only a movementKind of 3 is followed by the direction it faces.",
               "fields": [
                 {
                   "name": "movementKind",

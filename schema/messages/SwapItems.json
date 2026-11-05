@@ -135,12 +135,12 @@
         {
           "name": "from",
           "type": "u8",
-          "note": "The slot the item leaves, 0 to 5."
+          "note": "The slot the item leaves, at most 37."
         },
         {
           "name": "to",
           "type": "u8",
-          "note": "The slot it goes to, 0 to 5. A client never sends the slot named by from."
+          "note": "The slot it goes to, at most 37. A client never sends the slot named by from."
         }
       ]
     },

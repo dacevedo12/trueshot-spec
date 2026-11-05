@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "TipEvent",
   "system": "guidance",
-  "note": "What a client sends about a tip it has shown or dismissed. The header names the sender's champion.",
+  "note": "What a client sends about a tip it has shown or dismissed.",
   "revisions": [
     {
       "from": "1.0.0.104",
@@ -216,7 +216,7 @@
     },
     {
       "from": "1.0.0.124",
-      "until": "1.0.0.132",
+      "until": "1.0.0.126",
       "channel": "requests",
       "command": 112,
       "direction": "clientToServer",
@@ -243,6 +243,37 @@
           "note": "Which tip, as TipShown named it."
         }
       ]
+    },
+    {
+      "from": "1.0.0.126",
+      "until": "1.0.0.132",
+      "channel": "requests",
+      "command": 112,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "what",
+          "type": "u8",
+          "note": "What happened to the tip.",
+          "values": {
+            "0": {
+              "name": "clicked",
+              "note": "The player clicked the tip: once per tip, and only while no tip's dialogue is open."
+            },
+            "1": {
+              "name": "closed",
+              "note": "The player closed the tip's dialogue."
+            }
+          }
+        },
+        {
+          "name": "tip",
+          "type": "u32",
+          "note": "Which tip, as TipShown named it."
+        }
+      ],
+      "note": "Where what is 0, the header names the champion the TipShown named; where it is 1, the sender's champion."
     },
     {
       "from": "1.0.0.132",
@@ -272,7 +303,8 @@
           "type": "u32",
           "note": "Which tip, as TipShown named it."
         }
-      ]
+      ],
+      "note": "The header names the sender's champion."
     },
     {
       "from": "1.0.0.138",
@@ -302,7 +334,8 @@
           "type": "u32",
           "note": "Which tip, as TipShown named it."
         }
-      ]
+      ],
+      "note": "The header names the sender's champion."
     },
     {
       "from": "1.0.0.144",
@@ -332,7 +365,8 @@
           "type": "u32",
           "note": "Which tip, as TipShown named it."
         }
-      ]
+      ],
+      "note": "The header names the sender's champion."
     },
     {
       "from": "1.0.0.150",
@@ -362,7 +396,8 @@
           "type": "u32",
           "note": "Which tip, as TipShown named it."
         }
-      ]
+      ],
+      "note": "The header names the sender's champion."
     },
     {
       "from": "3.01.0.1",
@@ -392,7 +427,8 @@
           "type": "u32",
           "note": "Which tip, as TipShown named it."
         }
-      ]
+      ],
+      "note": "The header names the sender's champion."
     },
     {
       "from": "4.11.0.386",
@@ -422,7 +458,8 @@
           "type": "u32",
           "note": "Which tip, as TipShown named it."
         }
-      ]
+      ],
+      "note": "The header names the sender's champion."
     },
     {
       "from": "4.18.0.271",
@@ -442,7 +479,8 @@
           "type": "u32",
           "note": "Which tip: the value TipShown carried."
         }
-      ]
+      ],
+      "note": "The header names the sender's champion."
     }
   ]
 }

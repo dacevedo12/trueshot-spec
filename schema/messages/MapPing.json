@@ -294,7 +294,7 @@
         {
           "name": "kind",
           "type": "u8",
-          "note": "Which mark it is. A client sends any of the seven below, and 1 where the mark shows a direction of attack.",
+          "note": "Which mark it is. A client sends any of the seven below, and 1 where the mark shows a direction of attack. It writes only the low four bits; the high four carry no meaning.",
           "values": {
             "0": {
               "name": "here"

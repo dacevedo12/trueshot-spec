@@ -399,7 +399,7 @@
     },
     {
       "from": "1.0.0.124",
-      "until": "1.0.0.128",
+      "until": "1.0.0.126",
       "channel": "requests",
       "command": 48,
       "direction": "clientToServer",
@@ -443,6 +443,54 @@
           "note": "Names this report, counting up as the view moves. A client sends the report again until a server returns the name."
         }
       ]
+    },
+    {
+      "from": "1.0.0.126",
+      "until": "1.0.0.128",
+      "channel": "requests",
+      "command": 48,
+      "direction": "clientToServer",
+      "reliability": "unreliable",
+      "fields": [
+        {
+          "name": "positionX",
+          "type": "f32",
+          "note": "Where the view stands, along one ground axis."
+        },
+        {
+          "name": "positionY",
+          "type": "f32",
+          "note": "Its height."
+        },
+        {
+          "name": "positionZ",
+          "type": "f32",
+          "note": "Along the other ground axis."
+        },
+        {
+          "name": "directionX",
+          "type": "f32"
+        },
+        {
+          "name": "directionY",
+          "type": "f32"
+        },
+        {
+          "name": "directionZ",
+          "type": "f32"
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id the sender holds: that of the client the view belongs to."
+        },
+        {
+          "name": "syncId",
+          "type": "u8",
+          "note": "Names this report, counting up as the view moves. A client sends the report again until a server returns the name."
+        }
+      ],
+      "note": "A client sends no report while the camera is locked. It sends a new report, with the next syncId, only where at least 0.1 seconds have passed since the last and the view has moved more than 200 units or turned; it sends a report that goes unanswered again after a delay that follows the round trip."
     },
     {
       "from": "1.0.0.128",

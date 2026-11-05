@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "RegionAdded",
   "system": "vision",
-  "note": "What a server sends to place a region on the ground: a patch that grants sight, blocks the way, or grows cover. The header names no object: a server writes zero.",
+  "note": "What a server sends to place a region on the ground. The header names no object: a server writes zero.",
   "revisions": [
     {
       "from": "0.8.13.26",
@@ -1102,7 +1102,7 @@
         {
           "name": "kind",
           "type": "u32",
-          "note": "Whose map shows the region: 0 side 100's, 1 side 200's, 2 everyone's, 3 side 300's, 4 any other. A client takes the value as it stands, so 100 or 200 here matches no one, and draws the region only where it is 2 or names the player's own side."
+          "note": "Whose map shows the region: 0 side 100's, 1 side 200's, 2 everyone's, 3 side 300's, 4 any other. A client takes the value as it stands, so 100 or 200 here matches no one, and draws the region only where it is 2 or names the player's own side. A client watching the match takes the side it watches as its own, and draws every region while it watches both."
         },
         {
           "name": "clientId",
@@ -1256,7 +1256,8 @@
           "type": "u32",
           "note": "Kept the same way; a server writes zero."
         }
-      ]
+      ],
+      "note": "A region grants sight, blocks the way, or grows cover."
     },
     {
       "from": "1.0.0.132",
@@ -1339,7 +1340,8 @@
           "type": "u32",
           "note": "Kept the same way; a server writes zero."
         }
-      ]
+      ],
+      "note": "A region grants sight, blocks the way, or grows cover."
     },
     {
       "from": "1.0.0.138",
@@ -1422,7 +1424,8 @@
           "type": "u32",
           "note": "Kept the same way; a server writes zero."
         }
-      ]
+      ],
+      "note": "A region grants sight, blocks the way, or grows cover."
     },
     {
       "from": "1.0.0.139",
@@ -1505,7 +1508,8 @@
           "type": "u32",
           "note": "Kept the same way; a server writes zero."
         }
-      ]
+      ],
+      "note": "A region grants sight, blocks the way, or grows cover."
     },
     {
       "from": "1.0.0.144",
@@ -1588,7 +1592,8 @@
           "type": "u32",
           "note": "Kept the same way; a server writes zero."
         }
-      ]
+      ],
+      "note": "A region grants sight, blocks the way, or grows cover."
     },
     {
       "from": "1.0.0.150",
@@ -1656,7 +1661,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "A region grants sight, blocks the way, or grows cover."
     },
     {
       "from": "3.01.0.1",
@@ -1724,7 +1730,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "A region grants sight, blocks the way, or grows cover."
     },
     {
       "from": "4.1.0.171",
@@ -1836,7 +1843,8 @@
           "type": "f32",
           "note": "The region's radius, in world units."
         }
-      ]
+      ],
+      "note": "A region grants sight, blocks the way, or grows cover."
     },
     {
       "from": "4.18.0.271",
@@ -1953,7 +1961,8 @@
           "type": "f32",
           "note": "The region's radius, in world units."
         }
-      ]
+      ],
+      "note": "A region grants sight, blocks the way, or grows cover."
     },
     {
       "from": "4.20.0.315",
@@ -2061,7 +2070,8 @@
           "type": "f32",
           "note": "The radius the three size figures above are applied to, in world units."
         }
-      ]
+      ],
+      "note": "A region grants sight, blocks the way, or grows cover."
     }
   ]
 }

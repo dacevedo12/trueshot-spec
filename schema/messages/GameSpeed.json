@@ -182,6 +182,22 @@
     },
     {
       "from": "1.0.0.110",
+      "until": "1.0.0.126",
+      "channel": "events",
+      "command": 19,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "speed",
+          "type": "f32",
+          "note": "How fast, 1 being normal."
+        }
+      ],
+      "note": "Sent while paused, it takes effect on resuming."
+    },
+    {
+      "from": "1.0.0.126",
       "until": "1.0.0.144",
       "channel": "events",
       "command": 19,
@@ -191,7 +207,7 @@
         {
           "name": "speed",
           "type": "f32",
-          "note": "How fast, 1 being normal. A client keeps it between 0 and 10."
+          "note": "How fast, 1 being normal. Zero stops the clock as a pause does, and a client then holds any later GameSpeed until the game resumes."
         }
       ],
       "note": "Sent while paused, it takes effect on resuming."

@@ -1769,7 +1769,7 @@
           "note": "The name the client loads its art under, padded with zero bytes."
         }
       ],
-      "note": "A client deletes any object holding the new unit's id first, and does nothing more where it cannot make the unit. clone, where nonzero, is copied, state and inventory. The header names the unit that put it there."
+      "note": "A client deletes no object first: where one already holds the new unit's id, both answer to it. While resynchronising, it drops a SpawnUnit naming an id it holds, or with an empty asset. It does nothing more where it cannot make the unit. clone, where nonzero, is copied, state and inventory."
     },
     {
       "from": "1.0.0.129",

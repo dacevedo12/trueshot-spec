@@ -424,7 +424,7 @@
         {
           "name": "damageSource",
           "type": "u8",
-          "note": "Read only for a minion a champion killed, whose kill a client shows another way where it is 7; a server writes zero.",
+          "note": "Unused; a server writes zero.",
           "values": {
             "0": {
               "name": "raw"

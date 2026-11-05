@@ -370,7 +370,7 @@
         {
           "name": "damageSource",
           "type": "u8",
-          "note": "Read only for a minion a champion killed, whose kill a client shows another way where it is 7; a server writes zero."
+          "note": "Unused; a server writes zero."
         },
         {
           "name": "stayDown",
@@ -383,7 +383,7 @@
           "note": "Any nonzero value leaves the unit standing rather than dead. A champion then plays no death animation; minions and turrets play theirs whatever this says."
         }
       ],
-      "note": "Where killer names a unit it knows, a client announces the kill for that unit, then the one kind picks. Where the unit is not already dead, it cancels the unit's cast and attack, and only where killer is nonzero puts the unit down, by stayDown and standing."
+      "note": "Where the unit is already dead, a client does nothing with the message, and announces nothing. Otherwise it cancels the unit's cast and attack; then, only where killer is nonzero, it puts the unit down by stayDown and standing and announces the death, credited to no unit where it does not hold killer. Whatever the unit's kind adds follows."
     },
     {
       "from": "1.0.0.128",

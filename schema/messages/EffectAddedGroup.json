@@ -599,7 +599,7 @@
         {
           "name": "lasts",
           "type": "f32",
-          "note": "How long it runs in total, in seconds."
+          "note": "How long it has left to run from when it arrives, in seconds."
         },
         {
           "name": "count",
@@ -637,7 +637,7 @@
               {
                 "name": "hidden",
                 "type": "u8",
-                "note": "Whether the client keeps it off the unit's display."
+                "note": "1 keeps it off the unit's display; any other value shows it."
               }
             ]
           },

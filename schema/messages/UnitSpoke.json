@@ -72,7 +72,7 @@
         {
           "name": "kind",
           "type": "u8",
-          "note": "A client writes zero."
+          "note": "0 for a unit's speech; a client writes 1 where it sends the text of a script error it caught, under the first unit it holds that can carry it."
         },
         {
           "name": "unused",

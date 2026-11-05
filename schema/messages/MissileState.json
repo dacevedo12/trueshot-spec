@@ -965,7 +965,7 @@
             {
               "name": "bounced",
               "width": 1,
-              "note": "Set where the missile has bounced. It applies only where age is above zero: a client then moves the missile to its position and places it again from the caster's position, the end and the facing."
+              "note": "Set where the missile has bounced. For a missile the client holds that flies straight, a client then sets its end to casterAt raised by the missile's height above the ground, and its travel to that end less its position; for any other missile the client holds it has no effect."
             },
             {
               "name": "unused",
@@ -981,7 +981,7 @@
           "note": "The casting that threw it."
         }
       ],
-      "note": "A client reads neither a speed nor a part of the missile's life spent. Neither the ground-height rule for endY nor a trail moved on by an age is confirmed. A client places the casting's second unit, where it holds that unit, where the thrower stood rather than with the casting unit. The header names the unit casting, as the casting inside does."
+      "note": "A client reads no single speed and no part of the missile's life spent. Neither the ground-height rule for endY nor a trail moved on by an age is confirmed. A client places the casting's second unit, where it holds that unit, where the thrower stood rather than with the casting unit. The header names the unit casting, as the casting inside does."
     },
     {
       "from": "1.0.0.97",
@@ -2325,7 +2325,7 @@
             {
               "name": "bounced",
               "width": 1,
-              "note": "Set where the missile has bounced. It applies only where age is above zero: a client then moves the missile to its position and places it again from the caster's position, the end and the facing."
+              "note": "Set where the missile has bounced; a client takes any nonzero byte as set. Only a missile that flies straight uses it; any other missile ignores it, with casterAt, end and facing."
             },
             {
               "name": "unused",

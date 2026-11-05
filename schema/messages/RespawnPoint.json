@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "RespawnPoint",
   "system": "objectives",
-  "note": "What a server sends about the points a champion can choose to return to life at. A client acts on it only where its screen has a panel of such points. The header carries zero.",
+  "note": "What a server sends about the points a champion can choose to return to life at. A client acts on it only where its screen has a panel of such points. The header names no object: a server writes zero.",
   "revisions": [
     {
       "from": "1.0.0.110",

@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "SpellNumbers",
   "system": "spells",
-  "note": "What a server sends to fill in the numbers a client shows beside a unit's spells. The header names no object: it carries zero.",
+  "note": "What a server sends to fill in the numbers a client shows beside a unit's spells. The header names no object: a server writes zero.",
   "revisions": [
     {
       "from": "0.9.25.21",
@@ -756,7 +756,7 @@
           "name": "entries",
           "type": "array",
           "count": "entryCount",
-          "note": "The sets themselves.",
+          "note": "The sets themselves. A client skips a set naming a unit it does not hold.",
           "items": {
             "name": "entry",
             "type": "record",
@@ -769,7 +769,7 @@
               {
                 "name": "slot",
                 "type": "u8",
-                "note": "Which slot."
+                "note": "Which slot: 60 to 119 name the unit's own spell slot, less 60, and 120 and up a summoner slot, less 120, the set skipped for a unit that has none. What 0 to 59 name is not recorded."
               },
               {
                 "name": "values",
@@ -783,7 +783,7 @@
                 }
               }
             ],
-            "note": "The numbers for one spell, five places of them."
+            "note": "The numbers for one spell, three of them."
           }
         }
       ]

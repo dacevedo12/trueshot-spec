@@ -1079,7 +1079,7 @@
       "command": 60,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "The header names the owner, and a client handles the message only where it holds that unit. It kills the owner's earlier pet if that lives, then makes the pet under pet and node with the owner's side and sight, as the owner's pet. It deletes no object first; where one already holds pet, both answer to it. The header names the pet. A server sends it to clients watching a match.",
+      "note": "The header names the owner, and a client handles the message only where it holds that unit. It kills the owner's earlier pet if that lives, then makes the pet under pet and node with the owner's side and sight, as the owner's pet. It deletes no object first; where one already holds pet, both answer to it.",
       "fields": [
         {
           "name": "pet",

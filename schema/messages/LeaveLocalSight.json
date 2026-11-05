@@ -96,12 +96,22 @@
     },
     {
       "from": "1.0.0.124",
-      "until": "1.0.0.144",
+      "until": "1.0.0.126",
       "channel": "events",
       "command": 58,
       "direction": "serverToClient",
       "reliability": "reliable",
       "fields": []
+    },
+    {
+      "from": "1.0.0.126",
+      "until": "1.0.0.144",
+      "channel": "events",
+      "command": 58,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "It changes nothing a client shows for any unit, and a client ignores it while playing a replay."
     },
     {
       "from": "1.0.0.144",

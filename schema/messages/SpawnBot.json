@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "SpawnBot",
   "system": "units",
-  "note": "What a server sends to create a champion played by a bot. A client first deletes any object it holds under the same id. The header carries zero.",
+  "note": "What a server sends to create a champion played by a bot. The header names no object: a server writes zero.",
   "revisions": [
     {
       "from": "1.0.0.110",
@@ -679,7 +679,8 @@
           "size": 64,
           "note": "The champion's character name, which is also its unique name."
         }
-      ]
+      ],
+      "note": "A client deletes no object first: where one already holds the id, both answer to it."
     },
     {
       "from": "1.0.0.132",
@@ -756,7 +757,8 @@
           "size": 64,
           "note": "The champion's character name, which is also its unique name."
         }
-      ]
+      ],
+      "note": "A client first deletes any object it holds under the same id."
     },
     {
       "from": "1.0.0.135",
@@ -833,7 +835,8 @@
           "size": 64,
           "note": "The champion's character name, which is also its unique name."
         }
-      ]
+      ],
+      "note": "A client first deletes any object it holds under the same id."
     },
     {
       "from": "1.0.0.136",
@@ -910,7 +913,8 @@
           "size": 64,
           "note": "The champion's character name, which is also its unique name."
         }
-      ]
+      ],
+      "note": "A client first deletes any object it holds under the same id."
     },
     {
       "from": "1.0.0.138",
@@ -987,7 +991,8 @@
           "size": 64,
           "note": "The champion's character name, which is also its unique name."
         }
-      ]
+      ],
+      "note": "A client first deletes any object it holds under the same id."
     },
     {
       "from": "1.0.0.139",
@@ -1064,7 +1069,8 @@
           "size": 64,
           "note": "The champion's character name, which is also its unique name."
         }
-      ]
+      ],
+      "note": "A client first deletes any object it holds under the same id."
     },
     {
       "from": "1.0.0.141",
@@ -1141,7 +1147,8 @@
           "size": 64,
           "note": "The champion's character name, which is also its unique name."
         }
-      ]
+      ],
+      "note": "A client first deletes any object it holds under the same id."
     },
     {
       "from": "1.0.0.144",
@@ -1218,7 +1225,8 @@
           "size": 64,
           "note": "The champion's character name, which is also its unique name."
         }
-      ]
+      ],
+      "note": "A client first deletes any object it holds under the same id."
     },
     {
       "from": "1.0.0.147",
@@ -1295,7 +1303,8 @@
           "size": 64,
           "note": "The champion's character name, which is also its unique name."
         }
-      ]
+      ],
+      "note": "A client first deletes any object it holds under the same id."
     },
     {
       "from": "1.0.0.150",
@@ -1372,7 +1381,8 @@
           "size": 64,
           "note": "The champion's character name, which is also its unique name."
         }
-      ]
+      ],
+      "note": "A client first deletes any object it holds under the same id."
     },
     {
       "from": "3.01.0.1",
@@ -1449,7 +1459,8 @@
           "size": 64,
           "note": "The champion's character name, which is also its unique name."
         }
-      ]
+      ],
+      "note": "A client first deletes any object it holds under the same id."
     },
     {
       "from": "4.1.0.171",
@@ -1526,7 +1537,8 @@
           "size": 64,
           "note": "The champion's character name, which is also its unique name."
         }
-      ]
+      ],
+      "note": "A client first deletes any object it holds under the same id."
     },
     {
       "from": "4.11.0.386",
@@ -1603,7 +1615,8 @@
           "size": 64,
           "note": "The champion's character name, which is also its unique name."
         }
-      ]
+      ],
+      "note": "A client first deletes any object it holds under the same id."
     }
   ]
 }

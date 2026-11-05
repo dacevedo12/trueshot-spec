@@ -86,7 +86,7 @@
           "note": "Which side, by an index."
         }
       ],
-      "note": "A client ignores the message where particle names none it holds."
+      "note": "A client ignores the message where particle names none it holds, and fails where it names an object that is not a particle."
     },
     {
       "from": "1.0.0.128",

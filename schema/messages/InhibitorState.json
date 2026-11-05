@@ -165,11 +165,11 @@
         {
           "name": "state",
           "type": "u32",
-          "note": "What state the inhibitor takes. A client ignores any other value.",
+          "note": "What state the inhibitor takes. For any other value a client shows nothing but keeps it as the inhibitor's state, so a later 0 or 1 is applied even where it repeats the state before.",
           "values": {
             "0": {
               "name": "down",
-              "note": "The inhibitor is down for duration."
+              "note": "The inhibitor goes down."
             },
             "1": {
               "name": "restored",

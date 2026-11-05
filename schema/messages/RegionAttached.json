@@ -749,7 +749,7 @@
         {
           "name": "kind",
           "type": "u32",
-          "note": "Whose map shows the region: 0 side 100's, 1 side 200's, 2 everyone's, 3 side 300's, 4 any other. A client takes the value as it stands, so 100 or 200 here matches no one, and draws the region only where it is 2 or names the player's own side."
+          "note": "Whose map shows the region: 0 side 100's, 1 side 200's, 2 everyone's, 3 side 300's, 4 any other. A client takes the value as it stands, so 100 or 200 here matches no one, and draws the region only where it is 2 or names the player's own side. A client watching the match takes the side it watches as its own, and draws every region while it watches both."
         },
         {
           "name": "clientId",
@@ -785,7 +785,7 @@
             {
               "name": "flag",
               "width": 1,
-              "note": "Set where the region shows the map; where kind is 2, a client also sets does.second. What else it changes is not recorded."
+              "note": "Where kind is 2 and this bit is set, a client also sets does.second. The region shows the map whether or not it is set."
             },
             {
               "name": "second",
@@ -809,8 +809,7 @@
           "type": "u32",
           "note": "A region sent again with the same value is taken as the one already shown; what else it names is not recorded. A server sends zero."
         }
-      ],
-      "note": "A region matching one the client holds in view, sightRadius, the first three bits of does, marker, sightFrom and unit only gives that one the new lifetime."
+      ]
     },
     {
       "from": "1.0.0.128",

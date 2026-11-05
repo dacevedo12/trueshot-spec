@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "SideTextHidden",
   "system": "guidance",
-  "note": "What a server sends to close the box of text SideTextShown opened. It carries nothing of its own. The header carries zero.",
+  "note": "What a server sends to close the box of text SideTextShown opened. It carries nothing of its own. The header names no object: a server writes zero.",
   "revisions": [
     {
       "from": "0.9.22.16",

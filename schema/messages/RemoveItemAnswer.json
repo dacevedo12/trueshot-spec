@@ -146,7 +146,7 @@
     },
     {
       "from": "1.0.0.110",
-      "until": "1.0.0.128",
+      "until": "1.0.0.126",
       "channel": "events",
       "command": 11,
       "direction": "serverToClient",
@@ -163,6 +163,27 @@
           "note": "How many are left in the slot; zero empties it, item and charges cleared. Either way a client cancels any spell or action its player had picked."
         }
       ]
+    },
+    {
+      "from": "1.0.0.126",
+      "until": "1.0.0.128",
+      "channel": "events",
+      "command": 11,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot, 0 to 37. A client drops the message from 38 up."
+        },
+        {
+          "name": "left",
+          "type": "u8",
+          "note": "How many are left in the slot; zero empties it, item and charges cleared. Either way a client cancels any spell or action its player had picked."
+        }
+      ],
+      "note": "A client takes it only for a champion, and ignores it for any other unit."
     },
     {
       "from": "1.0.0.128",

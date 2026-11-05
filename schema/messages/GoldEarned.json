@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "GoldEarned",
   "system": "replication",
-  "note": "What a server sends a client watching a match to credit a champion with gold. The header carries zero.",
+  "note": "What a server sends to credit a champion with gold. The header carries zero.",
   "revisions": [
     {
       "from": "1.0.0.120",
@@ -100,7 +100,7 @@
         {
           "name": "amount",
           "type": "f32",
-          "note": "How much gold. 0.95 is what a champion earns for each step it stands still."
+          "note": "How much gold."
         }
       ]
     },
@@ -122,7 +122,8 @@
           "type": "f32",
           "note": "How much gold. 0.95 is what a champion earns for each step it stands still."
         }
-      ]
+      ],
+      "note": "A server sends it to clients watching a match."
     },
     {
       "from": "1.0.0.135",
@@ -142,7 +143,8 @@
           "type": "f32",
           "note": "How much gold. 0.95 is what a champion earns for each step it stands still."
         }
-      ]
+      ],
+      "note": "A server sends it to clients watching a match."
     },
     {
       "from": "1.0.0.136",
@@ -162,7 +164,8 @@
           "type": "f32",
           "note": "How much gold. 0.95 is what a champion earns for each step it stands still."
         }
-      ]
+      ],
+      "note": "A server sends it to clients watching a match."
     },
     {
       "from": "1.0.0.138",
@@ -182,7 +185,8 @@
           "type": "f32",
           "note": "How much gold. 0.95 is what a champion earns for each step it stands still."
         }
-      ]
+      ],
+      "note": "A server sends it to clients watching a match."
     },
     {
       "from": "1.0.0.139",
@@ -202,7 +206,8 @@
           "type": "f32",
           "note": "How much gold. 0.95 is what a champion earns for each step it stands still."
         }
-      ]
+      ],
+      "note": "A server sends it to clients watching a match."
     },
     {
       "from": "1.0.0.141",
@@ -222,7 +227,8 @@
           "type": "f32",
           "note": "How much gold. 0.95 is what a champion earns for each step it stands still."
         }
-      ]
+      ],
+      "note": "A server sends it to clients watching a match."
     },
     {
       "from": "1.0.0.144",
@@ -242,7 +248,8 @@
           "type": "f32",
           "note": "How much gold. 0.95 is what a champion earns for each step it stands still."
         }
-      ]
+      ],
+      "note": "A server sends it to clients watching a match."
     },
     {
       "from": "1.0.0.150",
@@ -262,7 +269,8 @@
           "type": "f32",
           "note": "How much gold. 0.95 is what a champion earns for each step it stands still."
         }
-      ]
+      ],
+      "note": "A server sends it to clients watching a match."
     },
     {
       "from": "3.01.0.1",
@@ -282,7 +290,8 @@
           "type": "f32",
           "note": "How much gold. 0.95 is what a champion earns for each step it stands still."
         }
-      ]
+      ],
+      "note": "A server sends it to clients watching a match."
     },
     {
       "from": "4.1.0.171",
@@ -302,7 +311,8 @@
           "type": "f32",
           "note": "How much gold. 0.95 is what a champion earns for each step it stands still."
         }
-      ]
+      ],
+      "note": "A server sends it to clients watching a match."
     },
     {
       "from": "4.11.0.386",
@@ -322,7 +332,8 @@
           "type": "f32",
           "note": "How much gold. 0.95 is what a champion earns for each step it stands still."
         }
-      ]
+      ],
+      "note": "A server sends it to clients watching a match."
     }
   ]
 }

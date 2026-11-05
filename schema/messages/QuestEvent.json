@@ -356,7 +356,8 @@
               "note": "The pointer left it."
             },
             "2": {
-              "name": "click"
+              "name": "click",
+              "note": "The player clicked the quest: at most once in three seconds for each quest, whether or not its first flag was set."
             }
           }
         },

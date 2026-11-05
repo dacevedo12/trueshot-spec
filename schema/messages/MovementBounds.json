@@ -316,7 +316,7 @@
     },
     {
       "from": "1.0.0.110",
-      "until": "1.0.0.128",
+      "until": "1.0.0.126",
       "channel": "events",
       "command": 6,
       "direction": "serverToClient",
@@ -346,6 +346,42 @@
           "name": "camera",
           "type": "u8",
           "note": "A client takes any bit set here as camera set; a server writes zero."
+        }
+      ],
+      "note": "A client pulls an order to a point outside onto the circle's edge before sending it, and drops an order at an object outside."
+    },
+    {
+      "from": "1.0.0.126",
+      "until": "1.0.0.128",
+      "channel": "events",
+      "command": 6,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "The circle's centre, in world units."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "The centre's height, in world units."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "The circle's centre, in world units."
+        },
+        {
+          "name": "radius",
+          "type": "f32",
+          "note": "The circle's radius, in world units. Zero lifts the bounds; a negative radius counts as zero."
+        },
+        {
+          "name": "camera",
+          "type": "u8",
+          "note": "Nonzero also keeps the client's camera inside the circle, a negative radius counting as zero for it. The bounds on the champion's orders apply whatever this holds."
         }
       ],
       "note": "A client pulls an order to a point outside onto the circle's edge before sending it, and drops an order at an object outside."

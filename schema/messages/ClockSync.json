@@ -242,7 +242,8 @@
           "type": "f32",
           "note": "How long the match has run, in seconds."
         }
-      ]
+      ],
+      "note": "A client sets its clock to elapsed plus the round trip it keeps from ClockConvergence, and answers at once with ClockReply. It drops the message where it has no game clock yet."
     },
     {
       "from": "1.0.0.132",

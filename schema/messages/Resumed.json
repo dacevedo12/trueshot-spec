@@ -135,7 +135,7 @@
         {
           "name": "clientId",
           "type": "u32",
-          "note": "The client id of the player who resumed the match, announced in chat in their side's colour where their champion is known and afterCountdown is clear; 4294967295 announces no one."
+          "note": "The client id of the player who resumed the match, announced in chat by the name the client's list of players gives it, where afterCountdown is clear: to a player in the colour of an ally where the resumer is on its side and of an enemy otherwise, and to a client watching the match in the resumer's side's colour. 4294967295 announces no one."
         },
         {
           "name": "how",

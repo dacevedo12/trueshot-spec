@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "ScreenTint",
   "system": "effects",
-  "note": "What a server sends to tint a side's screens, or to take a tint away. The header carries zero.",
+  "note": "What a server sends to tint a side's screens, or to take a tint away. The header names no object: a server writes zero.",
   "revisions": [
     {
       "from": "1.0.0.113",

@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "SideTextRefreshed",
   "system": "guidance",
-  "note": "What a server sends to change the text in the box SideTextShown opened, in place. The header carries zero.",
+  "note": "What a server sends to change the text in the box SideTextShown opened, in place. The header names no object: a server writes zero.",
   "revisions": [
     {
       "from": "0.9.22.16",

@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "SpawnFromBarracks",
   "system": "units",
-  "note": "What a server sends to put a unit on the field from the place its side sends them out of. The header names the unit this is about.",
+  "note": "What a server sends to put a unit on the field from the place its side sends them out of.",
   "revisions": [
     {
       "from": "0.8.13.26",
@@ -293,7 +293,7 @@
     },
     {
       "from": "1.0.0.110",
-      "until": "1.0.0.128",
+      "until": "1.0.0.126",
       "channel": "events",
       "command": 3,
       "direction": "serverToClient",
@@ -330,6 +330,47 @@
           "note": "What is added to the health it holds."
         }
       ]
+    },
+    {
+      "from": "1.0.0.126",
+      "until": "1.0.0.128",
+      "channel": "events",
+      "command": 3,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The name the unit answers to, so later messages can name it."
+        },
+        {
+          "name": "node",
+          "type": "u8",
+          "note": "Which network node the unit belongs to, in a field of its own rather than as part of the name that follows."
+        },
+        {
+          "name": "wave",
+          "type": "u8",
+          "note": "Which run of units it belongs to."
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What sort of unit it is, from 0 to 3; a client spawns nothing for any other value."
+        },
+        {
+          "name": "damageBonus",
+          "type": "i16",
+          "note": "What is added to the damage it deals."
+        },
+        {
+          "name": "healthBonus",
+          "type": "i16",
+          "note": "What is added to the health it holds."
+        }
+      ],
+      "note": "The header names the barracks the unit comes out of, and a client ignores the message under any other header; the new unit's id is unit. A client deletes no object first. While resynchronising, it drops a message naming an id it holds, or with kind above 4."
     },
     {
       "from": "1.0.0.128",
@@ -370,7 +411,7 @@
           "note": "What is added to the health it holds."
         }
       ],
-      "note": "It arrives on its own and also inside EnterSight."
+      "note": "It arrives on its own and also inside EnterSight. The header names the unit this is about."
     },
     {
       "from": "1.0.0.143",
@@ -416,7 +457,7 @@
           "note": "What is added to the health it holds."
         }
       ],
-      "note": "It arrives on its own and also inside EnterSight."
+      "note": "It arrives on its own and also inside EnterSight. The header names the unit this is about."
     },
     {
       "from": "3.14.0.700",
@@ -467,7 +508,7 @@
           "note": "The level it starts at."
         }
       ],
-      "note": "It arrives on its own and also inside EnterSight."
+      "note": "It arrives on its own and also inside EnterSight. The header names the unit this is about."
     },
     {
       "from": "4.18.0.271",
@@ -518,7 +559,7 @@
           "note": "The level it starts at."
         }
       ],
-      "note": "It arrives on its own and also inside EnterSight."
+      "note": "It arrives on its own and also inside EnterSight. The header names the unit this is about."
     }
   ]
 }

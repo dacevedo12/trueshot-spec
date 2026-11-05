@@ -171,7 +171,7 @@
         {
           "name": "kind",
           "type": "u16",
-          "note": "999 where the client passed the data through its own transform, 2 where it did not. A client sends kind 999 under command 237 and kind 2 under 238."
+          "note": "999 where the client passed the data through its own transform, 2 where it did not. A client sends both under command 237; a second sender sends 999 under 236. Nothing is sent under 238."
         },
         {
           "name": "length",

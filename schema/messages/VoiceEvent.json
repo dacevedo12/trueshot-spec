@@ -448,14 +448,14 @@
           "type": "string",
           "encoding": "utf8",
           "size": 64,
-          "note": "The event's folder. It has no effect where kind is 1."
+          "note": "The event's folder."
         },
         {
           "name": "event",
           "type": "string",
           "encoding": "utf8",
           "size": 64,
-          "note": "The event's name; for kind 1, the conversation's."
+          "note": "The event's name."
         },
         {
           "name": "callback",

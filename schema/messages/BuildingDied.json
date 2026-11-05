@@ -257,7 +257,7 @@
         {
           "name": "attacker",
           "type": "u32",
-          "note": "The unit that destroyed it."
+          "note": "The unit that destroyed it. A client reads nothing here."
         }
       ]
     },
