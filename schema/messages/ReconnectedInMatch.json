@@ -63,7 +63,7 @@
         {
           "name": "loading",
           "type": "u8",
-          "note": "Zero once the client has taken StartGame, 1 before it."
+          "note": "Zero while the match StartGame began is running, 1 otherwise: before StartGame, and once the match has ended."
         }
       ],
       "note": "A client sends it once it has connected again to a match it was playing. A client dropped while playing reconnects by itself; one dropped while loading leaves instead."

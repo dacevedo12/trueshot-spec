@@ -376,7 +376,7 @@
         {
           "name": "lifetime",
           "type": "f32",
-          "note": "How long it lasts, in seconds. A client counts it down and removes the region once it reaches zero, so zero or less removes it at once."
+          "note": "How long it lasts, in seconds. A client counts it down and removes the region once it reaches zero or less, so one that starts at zero or less goes at its first count."
         },
         {
           "name": "marker",
@@ -402,7 +402,7 @@
             {
               "name": "unused",
               "width": 30,
-              "note": "Its value has no effect; a server writes zero."
+              "note": "Its value has no effect, and a client clears the first of these bits itself; a server writes zero."
             }
           ]
         },
@@ -414,10 +414,10 @@
         {
           "name": "otherExtra",
           "type": "u32",
-          "note": "A region sent again with the same value is taken as the one already shown; what else it names is not recorded. A server sends zero."
+          "note": "Kept with the region; what it names is not recorded. A server sends zero."
         }
       ],
-      "note": "On this range a region stands where the message places it; RegionAttached places one that follows a unit. A region matching one the client holds in kind, sightRadius, the first three bits of does, extra, otherExtra and position only gives that one the new lifetime."
+      "note": "On this range a region stands where the message places it; RegionAttached places one that follows a unit."
     },
     {
       "from": "1.0.0.97",

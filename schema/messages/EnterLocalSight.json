@@ -142,12 +142,12 @@
           "present": {
             "when": "remaining"
           },
-          "note": "The unit's health. Where a client already holds the unit, it reads these from body offset 2 whatever the carried size, so a server carries messages here only where they create the unit, and sends the vitals right after them.",
+          "note": "The unit's health. A client reads it only for a unit with a mind; for any other unit it reads nothing of the body.",
           "fields": [
             {
               "name": "maxHealth",
               "type": "f32",
-              "note": "What the unit's health tops out at."
+              "note": "What the unit's health tops out at. A client keeps it at zero or above."
             },
             {
               "name": "health",

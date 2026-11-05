@@ -79,10 +79,10 @@
         {
           "name": "speed",
           "type": "f32",
-          "note": "How fast, 1 being normal. A client keeps it between 0 and 10."
+          "note": "How fast, 1 being normal; 0 pauses the game."
         }
       ],
-      "note": "Sent while paused, it takes effect on resuming."
+      "note": "It takes effect at once: a nonzero speed sent while paused resumes the game."
     },
     {
       "from": "1.0.0.97",

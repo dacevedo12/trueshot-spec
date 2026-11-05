@@ -6,13 +6,23 @@
   "revisions": [
     {
       "from": "0.8.13.26",
-      "until": "1.0.0.110",
+      "until": "1.0.0.96",
       "channel": "requests",
       "command": 17,
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
       "note": "A client sends it each time GameEnded arrives."
+    },
+    {
+      "from": "1.0.0.96",
+      "until": "1.0.0.110",
+      "channel": "requests",
+      "command": 17,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client sends it each time GameEnded arrives once the match has started, and not for one that arrives while the match still loads."
     },
     {
       "from": "1.0.0.110",

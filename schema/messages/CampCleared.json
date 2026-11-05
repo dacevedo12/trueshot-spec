@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "CampCleared",
   "system": "objectives",
-  "note": "What a server sends as a camp of units that belong to no side is emptied. A client marks the camp empty, even one that had just filled. The header names no object: it carries zero.",
+  "note": "What a server sends as a camp of units that belong to no side is emptied. The header names no object: it carries zero.",
   "revisions": [
     {
       "from": "1.0.0.86",
@@ -44,7 +44,7 @@
           "note": "The camp's state, kept as it stands; nonzero where it is active."
         }
       ],
-      "note": "The header has no effect. A client keeps one state for the camp, shared by both sides."
+      "note": "The header has no effect. A client keeps one state for the camp, shared by both sides. A client marks the camp empty, even one that had just filled."
     },
     {
       "from": "1.0.0.98",
@@ -65,7 +65,7 @@
           "note": "The camp's state, kept as it stands; nonzero where it is active."
         }
       ],
-      "note": "The header has no effect. A client keeps one state for the camp, shared by both sides."
+      "note": "The header has no effect. A client keeps one state for the camp, shared by both sides. A client marks the camp empty, even one that had just filled."
     },
     {
       "from": "1.0.0.103",
@@ -86,7 +86,7 @@
           "note": "The camp's state, kept as it stands; nonzero where it is active."
         }
       ],
-      "note": "The header has no effect. A client keeps one state for the camp, shared by both sides."
+      "note": "The header has no effect. A client keeps one state for the camp, shared by both sides. A client marks the camp empty, even one that had just filled."
     },
     {
       "from": "1.0.0.104",
@@ -107,7 +107,7 @@
           "note": "The camp's state, kept as it stands; nonzero where it is active."
         }
       ],
-      "note": "The header has no effect. A client keeps one state for the camp, shared by both sides."
+      "note": "The header has no effect. A client keeps one state for the camp, shared by both sides. A client marks the camp empty, even one that had just filled."
     },
     {
       "from": "1.0.0.107",
@@ -128,7 +128,7 @@
           "note": "The camp's state, kept as it stands; nonzero where it is active."
         }
       ],
-      "note": "The header has no effect. A client keeps one state for the camp, shared by both sides."
+      "note": "The header has no effect. A client keeps one state for the camp, shared by both sides. A client marks the camp empty, even one that had just filled."
     },
     {
       "from": "1.0.0.109",
@@ -149,7 +149,7 @@
           "note": "The camp's state, kept as it stands; nonzero where it is active."
         }
       ],
-      "note": "The header has no effect. A client keeps one state for the camp, shared by both sides."
+      "note": "The header has no effect. A client keeps one state for the camp, shared by both sides. A client marks the camp empty, even one that had just filled."
     },
     {
       "from": "1.0.0.110",
@@ -170,7 +170,7 @@
           "note": "The camp's state, kept as it stands; nonzero where it is active."
         }
       ],
-      "note": "The header has no effect. A client keeps one state for the camp, shared by both sides."
+      "note": "The header has no effect. A client keeps one state for the camp, shared by both sides. A client marks the camp empty, even one that had just filled."
     },
     {
       "from": "1.0.0.111",
@@ -191,7 +191,7 @@
           "note": "The camp's state, kept as it stands; nonzero where it is active."
         }
       ],
-      "note": "The header has no effect. A client keeps one state for the camp, shared by both sides."
+      "note": "The header has no effect. A client keeps one state for the camp, shared by both sides. A client marks the camp empty, even one that had just filled."
     },
     {
       "from": "1.0.0.117",
@@ -212,7 +212,7 @@
           "note": "The camp's state, kept as it stands; nonzero where it is active."
         }
       ],
-      "note": "The header has no effect. A client keeps one state for the camp, shared by both sides."
+      "note": "The header has no effect. A client keeps one state for the camp, shared by both sides. A client marks the camp empty, even one that had just filled."
     },
     {
       "from": "1.0.0.119",
@@ -233,7 +233,7 @@
           "note": "The camp's state, kept as it stands; nonzero where it is active."
         }
       ],
-      "note": "The header has no effect. A client keeps one state for the camp, shared by both sides."
+      "note": "The header has no effect. A client keeps one state for the camp, shared by both sides. A client marks the camp empty, even one that had just filled."
     },
     {
       "from": "1.0.0.123",
@@ -254,7 +254,7 @@
           "note": "The camp's state for that side, kept as it stands; nonzero where it is active."
         }
       ],
-      "note": "The header names the champion credited with emptying the camp. A client uses it only to choose a side: side 100 where the champion is on side 100, side 200 otherwise."
+      "note": "The header names the champion credited with emptying the camp. A client uses it only to choose a side: side 100 where the champion is on side 100, side 200 otherwise. A client marks the camp empty, even one that had just filled."
     },
     {
       "from": "1.0.0.124",
@@ -275,7 +275,7 @@
           "note": "The camp's state for that side, kept as it stands; nonzero where it is active."
         }
       ],
-      "note": "The header names the champion credited with emptying the camp. A client uses it only to choose a side: side 100 where the champion is on side 100, side 200 otherwise."
+      "note": "The header names the champion credited with emptying the camp. A client uses it only to choose a side: side 100 where the champion is on side 100, side 200 otherwise. A client marks the camp empty, even one that had just filled."
     },
     {
       "from": "1.0.0.125",
@@ -300,7 +300,8 @@
           "type": "u8",
           "note": "The camp's state for that side, kept as it stands; nonzero where it is active."
         }
-      ]
+      ],
+      "note": "A client marks the camp empty, even one that had just filled."
     },
     {
       "from": "1.0.0.126",
@@ -325,7 +326,8 @@
           "type": "u8",
           "note": "The camp's state for that side, kept as it stands; nonzero where it is active."
         }
-      ]
+      ],
+      "note": "A client marks the camp empty, even one that had just filled."
     },
     {
       "from": "1.0.0.128",
@@ -350,7 +352,8 @@
           "type": "u8",
           "note": "The camp's state for that side, kept as it stands; nonzero where it is active."
         }
-      ]
+      ],
+      "note": "A client marks the camp empty, even one that had just filled."
     },
     {
       "from": "1.0.0.132",
@@ -375,7 +378,8 @@
           "type": "u8",
           "note": "The camp's state for that side, kept as it stands; nonzero where it is active."
         }
-      ]
+      ],
+      "note": "A client marks the camp empty, even one that had just filled."
     },
     {
       "from": "1.0.0.135",
@@ -400,7 +404,8 @@
           "type": "u8",
           "note": "The camp's state for that side, kept as it stands; nonzero where it is active."
         }
-      ]
+      ],
+      "note": "A client marks the camp empty, even one that had just filled."
     },
     {
       "from": "1.0.0.136",
@@ -437,7 +442,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "A client marks the camp empty, even one that had just filled."
     },
     {
       "from": "1.0.0.138",
@@ -479,7 +485,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "A client marks the camp empty, even one that had just filled."
     },
     {
       "from": "1.0.0.139",
@@ -521,7 +528,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "A client marks the camp empty, even one that had just filled."
     },
     {
       "from": "1.0.0.141",
@@ -563,7 +571,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "A client marks the camp empty, even one that had just filled."
     },
     {
       "from": "1.0.0.142",
@@ -605,7 +614,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "A client marks the camp empty, even one that had just filled."
     },
     {
       "from": "1.0.0.143",
@@ -642,7 +652,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "A client marks the camp empty, even one that had just filled."
     },
     {
       "from": "1.0.0.144",
@@ -679,7 +690,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "A client marks the camp empty, even one that had just filled."
     },
     {
       "from": "1.0.0.150",
@@ -716,7 +728,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "A client marks the camp empty, even one that had just filled."
     },
     {
       "from": "3.01.0.1",
@@ -753,7 +766,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "A client marks the camp empty, even one that had just filled."
     },
     {
       "from": "3.12.0.251",
@@ -795,7 +809,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "A client marks the camp empty, even one that had just filled."
     },
     {
       "from": "4.1.0.171",
@@ -832,7 +847,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "A client marks the camp empty, even one that had just filled."
     },
     {
       "from": "4.4.0.1858",
@@ -874,7 +890,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "A client marks the camp empty, even one that had just filled."
     },
     {
       "from": "4.9.0.239",
@@ -926,7 +943,8 @@
           "type": "f32",
           "note": "The game time, in seconds, when the camp fills again. The largest finite 32-bit float means now."
         }
-      ]
+      ],
+      "note": "A client marks the camp empty, even one that had just filled."
     },
     {
       "from": "4.11.0.386",
@@ -978,7 +996,8 @@
           "type": "f32",
           "note": "The game time, in seconds, when the camp fills again. The largest finite 32-bit float means now."
         }
-      ]
+      ],
+      "note": "A client marks the camp empty, even one that had just filled."
     },
     {
       "from": "4.18.0.271",
@@ -1025,7 +1044,8 @@
             }
           ]
         }
-      ]
+      ],
+      "note": "A client marks the camp empty, even one that had just filled."
     }
   ]
 }

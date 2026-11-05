@@ -15,7 +15,7 @@
         {
           "name": "lasts",
           "type": "f32",
-          "note": "How long the effect has left to run, in seconds: a client takes it as the timeLeft of an EffectCount."
+          "note": "The whole run of the effect, in seconds, counted from its start: a client takes it as the timeLeft of an EffectCount."
         },
         {
           "name": "runningFor",

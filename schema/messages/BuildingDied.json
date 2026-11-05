@@ -107,7 +107,7 @@
         {
           "name": "attacker",
           "type": "u32",
-          "note": "The unit that destroyed it."
+          "note": "The unit that destroyed it. A client reads it only for a nexus; for any other building it reads nothing of the message after the header."
         }
       ]
     },

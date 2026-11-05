@@ -89,7 +89,7 @@
           "note": "What is added to the health it holds."
         }
       ],
-      "note": "It arrives on its own and also inside EnterSight. The header names the barracks, and a client handles the message only where it holds that barracks; the new unit's id is in unit."
+      "note": "The header names the barracks, and a client handles the message only where it holds that barracks; the new unit's id is in unit."
     },
     {
       "from": "1.0.0.58",
@@ -170,8 +170,7 @@
           "type": "i16",
           "note": "What is added to the health it holds."
         }
-      ],
-      "note": "It arrives on its own and also inside EnterSight."
+      ]
     },
     {
       "from": "1.0.0.82",
@@ -199,7 +198,7 @@
         {
           "name": "kind",
           "type": "u8",
-          "note": "What sort of unit it is, from 0 to 3; a client spawns nothing for any other value."
+          "note": "What sort of unit it is, from 0 to 3; any other value has no defined effect."
         },
         {
           "name": "damageBonus",
@@ -211,8 +210,7 @@
           "type": "i16",
           "note": "What is added to the health it holds."
         }
-      ],
-      "note": "It arrives on its own and also inside EnterSight."
+      ]
     },
     {
       "from": "1.0.0.97",
@@ -252,8 +250,7 @@
           "type": "i16",
           "note": "What is added to the health it holds."
         }
-      ],
-      "note": "It arrives on its own and also inside EnterSight."
+      ]
     },
     {
       "from": "1.0.0.103",
@@ -293,8 +290,7 @@
           "type": "i16",
           "note": "What is added to the health it holds."
         }
-      ],
-      "note": "It arrives on its own and also inside EnterSight."
+      ]
     },
     {
       "from": "1.0.0.107",
@@ -334,8 +330,7 @@
           "type": "i16",
           "note": "What is added to the health it holds."
         }
-      ],
-      "note": "It arrives on its own and also inside EnterSight."
+      ]
     },
     {
       "from": "1.0.0.110",
@@ -375,8 +370,7 @@
           "type": "i16",
           "note": "What is added to the health it holds."
         }
-      ],
-      "note": "It arrives on its own and also inside EnterSight."
+      ]
     },
     {
       "from": "1.0.0.128",

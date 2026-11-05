@@ -5193,7 +5193,7 @@
         {
           "name": "killer",
           "type": "u32",
-          "note": "The unit credited with the death. A client ignores the whole message where this is zero, and fails where it does not hold this unit."
+          "note": "The unit credited with the death. A client ignores the whole message where this is zero; where it does not hold this unit, it keeps the history with no killer and shows no killer name."
         },
         {
           "name": "span",
@@ -5203,17 +5203,17 @@
         {
           "name": "sourceType",
           "type": "u32",
-          "note": "What sort of source the killer was. A client keeps only the low 4 bits, signed, and acts on them only where it holds killer."
+          "note": "What sort of source the killer was. A client keeps only the low 4 bits, signed. 1 to 4 each show a fixed label of the client's own, whether or not it holds killer. 5 shows the killer's champion name where the client holds killer and it is a champion. Any other value shows the killer's own name where the client holds it, and a fixed placeholder otherwise."
         },
         {
           "name": "blobLength",
           "type": "u32",
-          "note": "How many bytes the entries below take together. A client reads exactly that many; zero, or a value above 2147483647, carries no entries. A client reads it as signed: from 2147483648 up it reads nothing more."
+          "note": "How many bytes the entries below take together. A client reads exactly that many; zero, or a value above 2147483647, carries no entries. A client reads it as signed: from 2147483648 up it reads nothing more. A client does not check it against the message's own length, so a server keeps it within the message and starts every entry inside these bytes."
         },
         {
           "name": "entryCount",
           "type": "u32",
-          "note": "How many entries follow. Read as signed: from 2147483648 up it parses no entries."
+          "note": "How many entries follow. Read as signed: from 2147483648 up it parses no entries. A client fails where it claims more entries than blobLength holds."
         },
         {
           "name": "entries",
@@ -5715,7 +5715,7 @@
           }
         }
       ],
-      "note": "A client ignores the whole message where killer is zero; a killer it does not hold brings it down. Each entry's size after source follows from event alone."
+      "note": "A client ignores the whole message where killer is zero. Each entry's size after source follows from event alone."
     },
     {
       "from": "1.0.0.97",

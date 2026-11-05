@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "CameraAck",
   "system": "interface",
-  "note": "What a server returns for a view report, naming the report it answers. The header names the champion of the player it is sent to.",
+  "note": "What a server returns for a view report, naming the report it answers. A server names in the header the champion of the player it is sent to.",
   "revisions": [
     {
       "from": "0.8.13.26",

@@ -190,7 +190,7 @@
         {
           "name": "timeLeft",
           "type": "f32",
-          "note": "How long it has left to run, in seconds. With runningFor it adds up to the whole run the effect was added with."
+          "note": "The whole run of the effect, in seconds, counted from its start: a client ends it this less runningFor from now."
         },
         {
           "name": "runningFor",

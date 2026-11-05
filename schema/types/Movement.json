@@ -279,7 +279,7 @@
             {
               "name": "pointCount",
               "width": 7,
-              "note": "How many points the path holds; a sending end writes at least one. A receiving end refuses a movement claiming none and takes nothing further from it."
+              "note": "How many points the path holds; a sending end writes at least one. A client takes a movement claiming none as the end of the whole group: it reads no movement after it."
             },
             {
               "name": "unusedHigh",
@@ -295,7 +295,7 @@
             {
               "name": "unit",
               "type": "u32",
-              "note": "The unit the path belongs to."
+              "note": "The unit the path belongs to. A server names only a unit the client holds and can move: for any other, a client reads the unit and the token alone and misreads everything after them."
             },
             {
               "name": "teleportToken",
@@ -385,7 +385,7 @@
               }
             }
           ],
-          "note": "Everything the movement carries beyond its first byte."
+          "note": "Everything the movement carries beyond its first four bytes."
         }
       ]
     },

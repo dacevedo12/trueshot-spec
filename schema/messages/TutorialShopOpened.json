@@ -42,7 +42,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "A client sends it only in the tutorial: where the version answer names the mode TUTORIAL and the map's own data marks it as a tutorial map, as map 12's does; elsewhere it never sends this."
+      "note": "A client sends it whenever its player opens the shop, in every mode and on every map."
     },
     {
       "from": "1.0.0.97",

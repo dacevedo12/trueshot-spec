@@ -50,7 +50,7 @@
           "note": "The champion being attacked."
         }
       ],
-      "note": "A client marks the unit where target is nonzero, names a champion the client holds and the unit is on the other side, drawing an indicator on the unit's health bar unless the unit's data turns it off; any other target clears the mark."
+      "note": "A client marks the unit where target is nonzero and is the client's own champion, drawing an indicator on the unit's health bar unless the unit's data turns it off; any other target clears the mark."
     },
     {
       "from": "1.0.0.97",

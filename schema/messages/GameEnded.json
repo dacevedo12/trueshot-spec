@@ -22,7 +22,7 @@
     },
     {
       "from": "1.0.0.58",
-      "until": "1.0.0.110",
+      "until": "1.0.0.96",
       "channel": "events",
       "command": 14,
       "direction": "serverToClient",
@@ -35,6 +35,22 @@
         }
       ],
       "note": "A client counts a win where its own side is 100 and result is nonzero, or its side is 200 and result is zero, and a loss otherwise. Arriving while the match still loads, it records the result and the client leaves at once, sending nothing; where its own player does not yet exist, it shows an error and leaves as one abandoning the match. Once the match runs, it ends the match on its screen and sends ClientFinished, counting a win where its own player does not exist."
+    },
+    {
+      "from": "1.0.0.96",
+      "until": "1.0.0.110",
+      "channel": "events",
+      "command": 14,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "result",
+          "type": "u8",
+          "note": "Nonzero where side 100 won, zero where side 200 did; a client counts a win where its own side is the one that won."
+        }
+      ],
+      "note": "A client counts a win where its own side is 100 and result is nonzero, or its side is 200 and result is zero, and a loss otherwise. Arriving while the match still loads, it records the result and the client leaves at once, sending nothing; where its own player does not yet exist, it first shows an error. Once the match runs, it ends the match on its screen and sends ClientFinished, counting a win where its own player does not exist."
     },
     {
       "from": "1.0.0.110",

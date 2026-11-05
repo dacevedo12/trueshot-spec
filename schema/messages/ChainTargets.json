@@ -175,7 +175,7 @@
         {
           "name": "count",
           "type": "i32",
-          "note": "How many of the slots are used, 0 to 32; 0 clears every target the client holds. A client given more than 32 fails."
+          "note": "How many of the slots are used, 0 to 32. 0 clears every target the client holds; a negative value sets none and clears none. Any other count sets that many targets and leaves the rest as they were. A client given more than 32 fails."
         },
         {
           "name": "caster",
@@ -189,12 +189,12 @@
           "items": {
             "name": "target",
             "type": "u32",
-            "note": "A unit, in the order struck."
+            "note": "A unit, in the order struck. A client keeps a unit it does not know as no unit."
           },
           "note": "Always 32 slots; those past count have no effect."
         }
       ],
-      "note": "Where the client already holds the missile, the missile takes the list; otherwise the list waits for the caster's next chain missile."
+      "note": "Where the client holds the caster, the caster's current cast takes the list, whether or not the client holds the missile. A missile the client holds under the header's name takes the list as well. A client drops the message while the match is still loading."
     },
     {
       "from": "1.0.0.97",

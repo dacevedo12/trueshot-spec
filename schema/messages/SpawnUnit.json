@@ -601,7 +601,7 @@
           ]
         }
       ],
-      "note": "A client deletes any object holding the new unit's id first, and does nothing more where it cannot make the unit. clone, where nonzero, is copied, state and inventory. The header names the unit that put it there."
+      "note": "A client deletes no object first; where one already holds the new unit's id, both answer to it. It does nothing more where it cannot make the unit. clone, where nonzero, is copied, state and inventory. The header names the unit that put it there; a client reads nothing of it."
     },
     {
       "from": "1.0.0.97",

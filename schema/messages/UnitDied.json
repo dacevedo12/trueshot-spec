@@ -37,7 +37,7 @@
     },
     {
       "from": "0.9.22.14",
-      "until": "1.0.0.103",
+      "until": "1.0.0.96",
       "channel": "events",
       "command": 34,
       "direction": "serverToClient",
@@ -65,6 +65,37 @@
         }
       ],
       "note": "A client does nothing for a unit already dead. Otherwise it stops the unit's cast and attack and, where killer is nonzero, puts the unit down for stayDown, whether or not it knows killer, and shows what that kind of unit shows for a kill, for a minion only where killer is on another side."
+    },
+    {
+      "from": "1.0.0.96",
+      "until": "1.0.0.103",
+      "channel": "events",
+      "command": 34,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "killer",
+          "type": "u32",
+          "note": "The unit credited with the death."
+        },
+        {
+          "name": "damageType",
+          "type": "u8",
+          "note": "Unused; a server writes zero."
+        },
+        {
+          "name": "damageSource",
+          "type": "u8",
+          "note": "Unused; a server writes zero."
+        },
+        {
+          "name": "stayDown",
+          "type": "f32",
+          "note": "How long the unit stays down, in seconds."
+        }
+      ],
+      "note": "A client does nothing for a unit already dead. Otherwise it stops the unit's cast and attack and, where killer is nonzero, puts the unit down for stayDown, whether or not it knows killer, and shows what that kind of unit shows for a kill, for a minion only where killer, or the unit that owns killer, is the client's own champion and on another side."
     },
     {
       "from": "1.0.0.103",
