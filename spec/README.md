@@ -14,6 +14,10 @@ layouts are not restated in prose: they live in [schema/](../schema/), machine
 readable, and each system's chapter ends with its messages and every layout each
 has. Where a field's meaning is undetermined, its note says so.
 
+The rules of the game are out of scope: how much a spell deals, what an item
+costs, how fast a champion levels. A server decides those; the specification
+says how it tells a client the results.
+
 Check your work against [conformance/](../conformance/) as you go; its vectors
 are this specification's measure of a conforming server.
 
