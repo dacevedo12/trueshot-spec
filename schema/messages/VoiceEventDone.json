@@ -22,7 +22,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "A client names no event: the message is its header alone. It answers only a voice event of kind 0, and a client sends it at once where it could not play the event."
+      "note": "A client names no event: the message is its header alone. It sends none for an event with an empty name or one it does not know."
     },
     {
       "from": "1.0.0.74",

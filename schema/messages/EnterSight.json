@@ -241,7 +241,7 @@
         {
           "name": "view",
           "type": "record",
-          "note": "Everything else a client needs to draw the unit. A server sends it for a champion, a minion or another unit with a mind, which a client reads past the end of the message without it, and ends the message after the items for any other unit.",
+          "note": "Everything else a client needs to draw the unit. A server sends it for a champion, a minion or another unit with a mind, which a client reads past the end of the message without it. A client ignores it for a turret, and reads nothing of it for any other unit.",
           "fields": [
             {
               "name": "movementState",
@@ -341,7 +341,7 @@
           }
         }
       ],
-      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit. It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say."
+      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit. It states everything a client needs to draw the unit at once."
     },
     {
       "from": "1.0.0.61",

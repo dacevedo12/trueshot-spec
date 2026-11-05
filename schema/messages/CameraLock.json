@@ -39,7 +39,7 @@
     },
     {
       "from": "0.9.22.14",
-      "until": "1.0.0.74",
+      "until": "1.0.0.58",
       "channel": "requests",
       "command": 60,
       "direction": "clientToServer",
@@ -69,6 +69,39 @@
         }
       ],
       "note": "A client sends it on each CameraLockSet with state as that message carried it, all eight bits included, and also as its player sets the lock or the game forces a lock or lifts one. While a forced lock holds, a CameraLockSet or player setting is dropped. As a forced lock begins, a client keeps the state then in force and sends it as the lock lifts; a second forced lock during the first sends its own state and keeps nothing new."
+    },
+    {
+      "from": "1.0.0.58",
+      "until": "1.0.0.74",
+      "channel": "requests",
+      "command": 60,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "locked",
+              "width": 1,
+              "note": "Set while the view follows a unit."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "As CameraLockSet carried them; zero in a report the client makes on its own."
+            }
+          ]
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
+        }
+      ],
+      "note": "A client sends it on each CameraLockSet with state as that message carried it, all eight bits included, and also as its player sets the lock, as the game forces the view free and as that forcing lifts. A forced free view is sent at once, with state zero. While it holds, a CameraLockSet or player setting is dropped; as it lifts, a client sends the state in force just before it began. Where the client's own champion is made while the view is locked, a client sends state 1 again."
     },
     {
       "from": "1.0.0.74",

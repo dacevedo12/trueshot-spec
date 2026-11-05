@@ -34,7 +34,7 @@
           "note": "Nonzero to lock the camera, zero to free it; a client tests the whole byte, so any set bit locks it."
         }
       ],
-      "note": "A client answers at once with CameraLock, returning the state byte as it arrived. While the game holds a forced lock, it keeps the byte and sends it only as that lock lifts."
+      "note": "A client answers at once with CameraLock, returning the state byte as it arrived. While the game forces the view free, a client ignores the message and sends nothing for it, then or later."
     },
     {
       "from": "1.0.0.63",

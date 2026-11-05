@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "TransientAck",
   "system": "replication",
-  "note": "What a client sends to say a batch of changes arrived, naming which batch. It is sent for a batch whose values the client dropped as well as for one it took. The header names no object: it carries zero.",
+  "note": "What a client sends to say a batch of changes arrived, naming which batch. The header names no object: it carries zero.",
   "revisions": [
     {
       "from": "0.9.22.14",
@@ -289,7 +289,8 @@
           "type": "u32",
           "note": "Which batch is being acknowledged, as the batch named itself."
         }
-      ]
+      ],
+      "note": "It is sent for a batch whose values the client dropped as well as for one it took."
     },
     {
       "from": "1.0.0.132",
@@ -304,7 +305,8 @@
           "type": "u32",
           "note": "Which batch is being acknowledged, as the batch named itself."
         }
-      ]
+      ],
+      "note": "It is sent for a batch whose values the client dropped as well as for one it took."
     },
     {
       "from": "1.0.0.135",
@@ -319,7 +321,8 @@
           "type": "u32",
           "note": "Which batch is being acknowledged, as the batch named itself."
         }
-      ]
+      ],
+      "note": "It is sent for a batch whose values the client dropped as well as for one it took."
     },
     {
       "from": "1.0.0.136",
@@ -334,7 +337,8 @@
           "type": "u32",
           "note": "Which batch is being acknowledged, as the batch named itself."
         }
-      ]
+      ],
+      "note": "It is sent for a batch whose values the client dropped as well as for one it took."
     },
     {
       "from": "1.0.0.138",
@@ -349,7 +353,8 @@
           "type": "u32",
           "note": "Which batch is being acknowledged, as the batch named itself."
         }
-      ]
+      ],
+      "note": "It is sent for a batch whose values the client dropped as well as for one it took."
     },
     {
       "from": "1.0.0.139",
@@ -364,7 +369,8 @@
           "type": "u32",
           "note": "Which batch is being acknowledged, as the batch named itself."
         }
-      ]
+      ],
+      "note": "It is sent for a batch whose values the client dropped as well as for one it took."
     },
     {
       "from": "1.0.0.144",
@@ -379,7 +385,8 @@
           "type": "u32",
           "note": "Which batch is being acknowledged, as the batch named itself."
         }
-      ]
+      ],
+      "note": "It is sent for a batch whose values the client dropped as well as for one it took."
     },
     {
       "from": "1.0.0.150",
@@ -394,7 +401,8 @@
           "type": "u32",
           "note": "Which batch is being acknowledged, as the batch named itself."
         }
-      ]
+      ],
+      "note": "It is sent for a batch whose values the client dropped as well as for one it took."
     },
     {
       "from": "3.01.0.1",
@@ -409,7 +417,8 @@
           "type": "u32",
           "note": "Which batch is being acknowledged, as the batch named itself."
         }
-      ]
+      ],
+      "note": "It is sent for a batch whose values the client dropped as well as for one it took."
     },
     {
       "from": "4.1.0.171",
@@ -424,7 +433,8 @@
           "type": "u32",
           "note": "Which batch is being acknowledged, as the batch named itself."
         }
-      ]
+      ],
+      "note": "It is sent for a batch whose values the client dropped as well as for one it took."
     },
     {
       "from": "4.11.0.386",
@@ -439,7 +449,8 @@
           "type": "u32",
           "note": "Which batch is being acknowledged, as the batch named itself."
         }
-      ]
+      ],
+      "note": "It is sent for a batch whose values the client dropped as well as for one it took."
     }
   ]
 }

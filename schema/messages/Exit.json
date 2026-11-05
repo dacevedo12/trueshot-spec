@@ -6,12 +6,22 @@
   "revisions": [
     {
       "from": "0.9.22.14",
-      "until": "1.0.0.63",
+      "until": "1.0.0.58",
       "channel": "requests",
       "command": 115,
       "direction": "clientToServer",
       "reliability": "reliable",
       "note": "A client sends it once, as it leaves without a result: as its player confirms quitting or the window is asked to close, or as its player gives up reconnecting after the connection is lost, or loses it where reconnecting is turned off. It sends none after GameEnded, and none on Shutdown or BotKick.",
+      "fields": []
+    },
+    {
+      "from": "1.0.0.58",
+      "until": "1.0.0.63",
+      "channel": "requests",
+      "command": 115,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "note": "A client sends it once, as it leaves without a result while the match runs: as its player quits from the options menu or closes the window, gives up reconnecting after the connection is lost, or dismisses the notice that it was disconnected for being away. It sends none while the match still loads, none after GameEnded, and none on Shutdown or BotKick.",
       "fields": []
     },
     {

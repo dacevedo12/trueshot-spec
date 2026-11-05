@@ -40,7 +40,7 @@
         {
           "name": "target",
           "type": "u32",
-          "note": "The unit swung at. A client throws the swing at it."
+          "note": "The unit swung at. A client throws the swing at it, and drops the whole message where it does not know this unit."
         },
         {
           "name": "timing",

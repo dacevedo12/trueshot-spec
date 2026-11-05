@@ -46,7 +46,7 @@
     },
     {
       "from": "0.9.22.14",
-      "until": "1.0.0.61",
+      "until": "1.0.0.58",
       "channel": "events",
       "command": 54,
       "direction": "serverToClient",
@@ -76,6 +76,51 @@
           "name": "fromX",
           "type": "f32",
           "note": "Where the swinging unit stands, along one ground axis, in world units. Where the unit stands more than 400 units from this point, measured along the ground alone, a client first moves it there; nearer, the point has no effect."
+        },
+        {
+          "name": "fromY",
+          "type": "f32",
+          "note": "Where it stands, in height, in world units."
+        },
+        {
+          "name": "fromZ",
+          "type": "f32",
+          "note": "Where it stands, along the other, in world units."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.58",
+      "until": "1.0.0.61",
+      "channel": "events",
+      "command": 54,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit swung at. A client throws the swing at it, and drops the whole message where it does not know this unit."
+        },
+        {
+          "name": "timing",
+          "type": "f32",
+          "note": "A shift in time, in seconds, from the moment the message arrives. It moves when the swing lets go and ends, and when the unit may next attack."
+        },
+        {
+          "name": "missile",
+          "type": "u32",
+          "note": "The name the missile this swing throws will answer to."
+        },
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which of the unit's attacks this is."
+        },
+        {
+          "name": "fromX",
+          "type": "f32",
+          "note": "Where the swinging unit stands, along one ground axis, in world units. Where the point is on ground a unit can walk, a client drops any path the unit was following and makes the point where its movement ends, at zero speed; where the unit stands more than 400 units from it, measured along the ground alone, the client also places the unit there at once."
         },
         {
           "name": "fromY",

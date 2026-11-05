@@ -22,7 +22,7 @@
     },
     {
       "from": "0.9.22.14",
-      "until": "1.0.0.82",
+      "until": "1.0.0.58",
       "channel": "events",
       "command": 40,
       "direction": "serverToClient",
@@ -32,6 +32,22 @@
           "name": "slot",
           "type": "i8",
           "note": "The slot cast by itself, from -1 to 44. A client takes a value outside that range as it stands. What -1 does is not recorded."
+        }
+      ],
+      "note": "It names one slot: there is no slot for a critical strike."
+    },
+    {
+      "from": "1.0.0.58",
+      "until": "1.0.0.82",
+      "channel": "events",
+      "command": 40,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "i8",
+          "note": "The slot cast by itself, from -1 to 48. A client takes a value outside that range as it stands. What -1 does is not recorded."
         }
       ],
       "note": "It names one slot: there is no slot for a critical strike."

@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "Respawned",
   "system": "combat",
-  "note": "What a server sends to bring a dead champion back at a place. The header names the champion. A client keeps the champion's level, experience, gold, maxima and spell ranks, sets it on the nearest open ground, and plays the coming back.",
+  "note": "What a server sends to bring a dead champion back at a place. The header names the champion. A client keeps the champion's level, experience, gold, maxima and spell ranks, and plays the coming back.",
   "revisions": [
     {
       "from": "0.8.13.26",
@@ -262,7 +262,7 @@
           "note": "Where it comes back, along the other ground axis, in world units."
         }
       ],
-      "note": "The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
+      "note": "The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that. A client sets the champion on the nearest open ground."
     },
     {
       "from": "1.0.0.117",
@@ -288,7 +288,7 @@
           "note": "Where it comes back, along the other ground axis, in world units."
         }
       ],
-      "note": "The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
+      "note": "The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that. A client sets the champion on the nearest open ground."
     },
     {
       "from": "1.0.0.119",
@@ -314,7 +314,7 @@
           "note": "Where it comes back, along the other ground axis, in world units."
         }
       ],
-      "note": "The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
+      "note": "The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that. A client sets the champion on the nearest open ground."
     },
     {
       "from": "1.0.0.124",
@@ -340,7 +340,7 @@
           "note": "Where it comes back, along the other ground axis, in world units."
         }
       ],
-      "note": "The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
+      "note": "The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that. A client sets the champion on the nearest open ground."
     },
     {
       "from": "1.0.0.128",
@@ -371,7 +371,7 @@
           "note": "Its resource, such as mana, once back."
         }
       ],
-      "note": "The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
+      "note": "The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that. A client sets the champion on the nearest open ground."
     },
     {
       "from": "1.0.0.132",
@@ -402,7 +402,7 @@
           "note": "Its resource, such as mana, once back."
         }
       ],
-      "note": "The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
+      "note": "The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that. A client sets the champion on the nearest open ground."
     },
     {
       "from": "1.0.0.138",
@@ -433,7 +433,7 @@
           "note": "Its resource, such as mana, once back."
         }
       ],
-      "note": "The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
+      "note": "The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that. A client sets the champion on the nearest open ground."
     },
     {
       "from": "1.0.0.144",
@@ -464,7 +464,7 @@
           "note": "Its resource, such as mana, once back."
         }
       ],
-      "note": "The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
+      "note": "The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that. A client sets the champion on the nearest open ground."
     },
     {
       "from": "1.0.0.150",
@@ -495,7 +495,7 @@
           "note": "Its resource, such as mana, once back."
         }
       ],
-      "note": "The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
+      "note": "The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that. A client sets the champion on the nearest open ground."
     },
     {
       "from": "3.01.0.1",
@@ -526,7 +526,7 @@
           "note": "Its resource, such as mana, once back."
         }
       ],
-      "note": "The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
+      "note": "The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that. A client sets the champion on the nearest open ground."
     },
     {
       "from": "3.9.0.491",
@@ -552,7 +552,7 @@
           "note": "Its resource, such as mana, once back."
         }
       ],
-      "note": "The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
+      "note": "The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that. A client sets the champion on the nearest open ground."
     },
     {
       "from": "4.11.0.386",
@@ -578,7 +578,7 @@
           "note": "Its resource, such as mana, once back."
         }
       ],
-      "note": "The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
+      "note": "The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that. A client sets the champion on the nearest open ground."
     }
   ]
 }

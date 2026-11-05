@@ -64,7 +64,7 @@
           "note": "How long the unit stays down, in seconds."
         }
       ],
-      "note": "A client does nothing for a unit already dead. Otherwise it stops the unit's cast and attack and, where killer is nonzero, puts the unit down for stayDown, whether or not it knows killer, and shows what that kind of unit shows for a kill."
+      "note": "A client does nothing for a unit already dead. Otherwise it stops the unit's cast and attack and, where killer is nonzero, puts the unit down for stayDown, whether or not it knows killer, and shows what that kind of unit shows for a kill, for a minion only where killer is on another side."
     },
     {
       "from": "1.0.0.103",

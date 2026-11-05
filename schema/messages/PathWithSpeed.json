@@ -118,7 +118,7 @@
           "note": "The path's points, to the end of the message. A client takes the ground's height for each, and passes over a remainder shorter than a point."
         }
       ],
-      "note": "A client answers every one at once, before applying it and whatever its sync id, as it answers Path. It applies it only where the sync id is not older than the last the unit took, and does not count it as the last itself. A unit can follow another unit."
+      "note": "A client answers every one at once, before applying it and whatever its sync id, as it answers Path. It applies it only where the sync id is not older than the last the unit took, and does not count it as the last itself."
     },
     {
       "from": "1.0.0.63",

@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "UnitStopped",
+  "version": "0.9.22.14",
+  "note": "Laid out as a 0.9.22.14 client takes it.",
+  "bytes": "180000000100004000007a440000c8420000fa440000803f000000000000000000000000",
+  "fields": {
+    "command": 24,
+    "padding": "000000",
+    "netId": 1073741825,
+    "x": 1000,
+    "y": 100,
+    "z": 2000,
+    "facingX": 1,
+    "facingY": 0,
+    "facingZ": 0,
+    "syncId": 0
+  }
+}

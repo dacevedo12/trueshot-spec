@@ -31,10 +31,10 @@
         {
           "name": "speed",
           "type": "f32",
-          "note": "How fast, 1 being normal. A client keeps it between 0 and 10."
+          "note": "How fast, 1 being normal. A client applies it as given, with no limit."
         }
       ],
-      "note": "Sent while paused, it takes effect on resuming."
+      "note": "It takes effect at once, so sent while paused it ends the pause."
     },
     {
       "from": "1.0.0.63",

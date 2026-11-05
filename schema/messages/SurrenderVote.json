@@ -48,12 +48,12 @@
             {
               "name": "inFavour",
               "width": 1,
-              "note": "Set where the answer is yes. A client sends it clear."
+              "note": "Set where the answer is yes, clear where it is no."
             },
             {
               "name": "unused",
               "width": 7,
-              "note": "Always clear."
+              "note": "A client leaves these bits as they happen to be; a server ignores them."
             }
           ]
         }

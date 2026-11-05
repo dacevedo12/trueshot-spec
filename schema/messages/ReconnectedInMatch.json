@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "ReconnectedInMatch",
   "system": "match",
-  "note": "What a client sends once it has connected again to a match it was playing, right after the server answers its registration. It carries nothing of its own. The header carries zero.",
+  "note": "What a client sends right after the server answers its registration. The header carries zero.",
   "revisions": [
     {
       "from": "0.9.22.14",
@@ -34,7 +34,7 @@
           "note": "Zero once the client has taken StartGame, 1 before it."
         }
       ],
-      "note": "A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
+      "note": "A client sends it once it has connected again to a match it was playing. A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
     },
     {
       "from": "1.0.0.74",
@@ -50,7 +50,7 @@
           "note": "Zero once the client has taken StartGame, 1 before it."
         }
       ],
-      "note": "A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
+      "note": "A client sends it once it has connected again to a match it was playing. A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
     },
     {
       "from": "1.0.0.82",
@@ -66,7 +66,7 @@
           "note": "Zero once the client has taken StartGame, 1 before it."
         }
       ],
-      "note": "A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
+      "note": "A client sends it once it has connected again to a match it was playing. A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
     },
     {
       "from": "1.0.0.97",
@@ -82,7 +82,7 @@
           "note": "Zero once the client has taken StartGame, 1 before it."
         }
       ],
-      "note": "A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
+      "note": "A client sends it once it has connected again to a match it was playing. A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
     },
     {
       "from": "1.0.0.103",
@@ -98,7 +98,7 @@
           "note": "Zero once the client has taken StartGame, 1 before it."
         }
       ],
-      "note": "A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
+      "note": "A client sends it once it has connected again to a match it was playing. A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
     },
     {
       "from": "1.0.0.107",
@@ -114,7 +114,7 @@
           "note": "Zero once the client has taken StartGame, 1 before it."
         }
       ],
-      "note": "A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
+      "note": "A client sends it once it has connected again to a match it was playing. A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
     },
     {
       "from": "1.0.0.109",
@@ -130,7 +130,7 @@
           "note": "Zero once the client has taken StartGame, 1 before it."
         }
       ],
-      "note": "A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
+      "note": "A client sends it once it has connected again to a match it was playing. A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
     },
     {
       "from": "1.0.0.110",
@@ -146,7 +146,7 @@
           "note": "Zero once the client has taken StartGame, 1 before it."
         }
       ],
-      "note": "A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
+      "note": "A client sends it once it has connected again to a match it was playing. A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
     },
     {
       "from": "1.0.0.111",
@@ -162,7 +162,7 @@
           "note": "Zero once the client has taken StartGame, 1 before it."
         }
       ],
-      "note": "A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
+      "note": "A client sends it once it has connected again to a match it was playing. A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
     },
     {
       "from": "1.0.0.117",
@@ -178,7 +178,7 @@
           "note": "Zero once the client has taken StartGame, 1 before it."
         }
       ],
-      "note": "A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
+      "note": "A client sends it once it has connected again to a match it was playing. A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
     },
     {
       "from": "1.0.0.119",
@@ -194,7 +194,7 @@
           "note": "Zero once the client has taken StartGame, 1 before it."
         }
       ],
-      "note": "A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
+      "note": "A client sends it once it has connected again to a match it was playing. A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
     },
     {
       "from": "1.0.0.124",
@@ -210,7 +210,7 @@
           "note": "Zero once the client has taken StartGame, 1 before it."
         }
       ],
-      "note": "A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
+      "note": "A client sends it once it has connected again to a match it was playing. A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
     },
     {
       "from": "1.0.0.125",
@@ -226,7 +226,7 @@
           "note": "Zero once the client has taken StartGame, 1 before it."
         }
       ],
-      "note": "A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
+      "note": "A client sends it once it has connected again to a match it was playing. A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
     },
     {
       "from": "1.0.0.126",
@@ -242,7 +242,7 @@
           "note": "Zero once the client has taken StartGame, 1 before it."
         }
       ],
-      "note": "A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
+      "note": "A client sends it once it has connected again to a match it was playing. A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
     },
     {
       "from": "1.0.0.132",
@@ -258,7 +258,7 @@
           "note": "Zero once the client has taken StartGame, 1 before it."
         }
       ],
-      "note": "A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
+      "note": "A client sends it once it has connected again to a match it was playing. A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
     },
     {
       "from": "1.0.0.135",
@@ -274,7 +274,7 @@
           "note": "Zero once the client has taken StartGame, 1 before it."
         }
       ],
-      "note": "A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
+      "note": "A client sends it once it has connected again to a match it was playing. A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
     },
     {
       "from": "1.0.0.136",
@@ -290,7 +290,7 @@
           "note": "Zero once the client has taken StartGame, 1 before it."
         }
       ],
-      "note": "A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
+      "note": "A client sends it once it has connected again to a match it was playing. A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
     },
     {
       "from": "1.0.0.138",
@@ -306,7 +306,7 @@
           "note": "Zero once the client has taken StartGame, 1 before it."
         }
       ],
-      "note": "A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
+      "note": "A client sends it once it has connected again to a match it was playing. A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
     },
     {
       "from": "1.0.0.139",
@@ -322,7 +322,7 @@
           "note": "Zero once the client has taken StartGame, 1 before it."
         }
       ],
-      "note": "A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
+      "note": "A client sends it once it has connected again to a match it was playing. A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
     },
     {
       "from": "1.0.0.143",
@@ -332,7 +332,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
+      "note": "A client sends it once it has connected again to a match it was playing. A client dropped while playing reconnects by itself; one dropped while loading leaves instead. It carries nothing of its own."
     },
     {
       "from": "1.0.0.144",
@@ -342,7 +342,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
+      "note": "A client sends it once it has connected again to a match it was playing. A client dropped while playing reconnects by itself; one dropped while loading leaves instead. It carries nothing of its own."
     },
     {
       "from": "1.0.0.150",
@@ -352,7 +352,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
+      "note": "A client sends it once it has connected again to a match it was playing. A client dropped while playing reconnects by itself; one dropped while loading leaves instead. It carries nothing of its own."
     },
     {
       "from": "3.01.0.1",
@@ -362,7 +362,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
+      "note": "A client sends it once it has connected again to a match it was playing. A client dropped while playing reconnects by itself; one dropped while loading leaves instead. It carries nothing of its own."
     },
     {
       "from": "4.1.0.171",
@@ -372,7 +372,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
+      "note": "A client sends it once it has connected again to a match it was playing. A client dropped while playing reconnects by itself; one dropped while loading leaves instead. It carries nothing of its own."
     },
     {
       "from": "4.11.0.386",
@@ -382,7 +382,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "A client dropped while playing reconnects by itself; one dropped while loading leaves instead."
+      "note": "A client sends it once it has connected again to a match it was playing. A client dropped while playing reconnects by itself; one dropped while loading leaves instead. It carries nothing of its own."
     }
   ]
 }

@@ -183,7 +183,7 @@
         {
           "name": "travelTime",
           "type": "f32",
-          "note": "How long the view takes to get there, in seconds. The view moves at an even speed over the distance along the ground."
+          "note": "How long the view takes to get there, in seconds. The view moves at an even speed over the distance along the ground. A client ignores the message where it is zero or less."
         }
       ],
       "note": "Only the client whose own champion the header names moves its view; others, and every client where the header names no champion, take the message and do nothing."

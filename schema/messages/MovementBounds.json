@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "MovementBounds",
   "system": "movement",
-  "note": "What a server sends to keep its champion's orders within a circle. A client pulls an order to a point outside onto the circle's edge before sending it, and drops an order at an object outside. The header carries zero.",
+  "note": "What a server sends to set a circle that a client keeps its view or its champion's orders within. The header carries zero.",
   "revisions": [
     {
       "from": "0.9.22.14",
@@ -51,7 +51,7 @@
         {
           "name": "y",
           "type": "f32",
-          "note": "The centre's height, in world units."
+          "note": "The centre's height, in world units. A client does not use it."
         },
         {
           "name": "z",
@@ -347,7 +347,8 @@
           "type": "u8",
           "note": "A client takes any bit set here as camera set; a server writes zero."
         }
-      ]
+      ],
+      "note": "A client pulls an order to a point outside onto the circle's edge before sending it, and drops an order at an object outside."
     },
     {
       "from": "1.0.0.128",
@@ -382,7 +383,8 @@
           "type": "u8",
           "note": "Set to keep the camera within the circle too. Clear leaves the camera as it was, bound or not. Any nonzero value sets it."
         }
-      ]
+      ],
+      "note": "A client pulls an order to a point outside onto the circle's edge before sending it, and drops an order at an object outside."
     },
     {
       "from": "1.0.0.147",
@@ -430,7 +432,8 @@
           ],
           "note": "What else the circle holds."
         }
-      ]
+      ],
+      "note": "A client pulls an order to a point outside onto the circle's edge before sending it, and drops an order at an object outside."
     }
   ]
 }

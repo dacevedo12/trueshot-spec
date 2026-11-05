@@ -25,7 +25,7 @@
             {
               "name": "summonerSlots",
               "width": 1,
-              "note": "Set where the slot counts among the summoner slots, so that 0 and 1 name those two."
+              "note": "Set where the slot counts among the summoner slots, so that 0 and 1 name those two. A client fails where it is set for a unit that is not a champion."
             }
           ]
         },

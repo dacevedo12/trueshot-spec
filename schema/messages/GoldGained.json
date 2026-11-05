@@ -28,7 +28,7 @@
           "note": "How much."
         }
       ],
-      "note": "Where amount is above 0.5, unit is the client's own champion and source names a unit it holds, a client floats the gold over the source. Otherwise, where it holds the unit, it shows the amount on the unit as a gain or a loss, and nothing for zero; where that appears is not recorded."
+      "note": "Where amount is above 0.5, unit is the client's own champion and source names a unit it holds, a client floats the gold over the source. Otherwise, where it holds the unit, it floats the amount over the unit as a gain or a loss, and nothing for zero."
     },
     {
       "from": "1.0.0.110",

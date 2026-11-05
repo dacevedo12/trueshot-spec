@@ -57,14 +57,14 @@
             {
               "name": "summonerSlots",
               "width": 1,
-              "note": "Set where the slot counts among the summoner slots, so that 0 and 1 name those two."
+              "note": "Set where the slot counts among the summoner slots, so that 0 and 1 name those two. A client fails where it is set for a unit that is not a champion."
             }
           ]
         },
         {
           "name": "targeting",
           "type": "u8",
-          "note": "How the spell is aimed, 0 to 7. A client keeps a larger value and reports it as an error, but builds no new aiming for it, so the slot keeps the aiming it had; no value asks for the spell's own default."
+          "note": "How the spell is aimed, 0 to 6. For a larger value a client still writes it onto the slot but builds no aiming for it, which has no defined effect; no value asks for the spell's own default."
         }
       ]
     },

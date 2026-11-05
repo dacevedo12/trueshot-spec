@@ -47,7 +47,7 @@
     },
     {
       "from": "0.9.22.14",
-      "until": "1.0.0.110",
+      "until": "1.0.0.58",
       "channel": "events",
       "command": 24,
       "direction": "serverToClient",
@@ -90,6 +90,52 @@
         }
       ],
       "note": "A client applies it only where its sync id is not older than the last the unit took, counting a wrap: this message, PathWithSpeed and Path share one count per unit, starting at -1."
+    },
+    {
+      "from": "1.0.0.58",
+      "until": "1.0.0.110",
+      "channel": "events",
+      "command": 24,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Where the unit stands, in world units; a client keeps this height rather than the ground's."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "Its height, in world units."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Where it stands, in world units."
+        },
+        {
+          "name": "facingX",
+          "type": "f32",
+          "note": "The way it faces."
+        },
+        {
+          "name": "facingY",
+          "type": "f32",
+          "note": "The way it faces."
+        },
+        {
+          "name": "facingZ",
+          "type": "f32",
+          "note": "The way it faces."
+        },
+        {
+          "name": "syncId",
+          "type": "i32",
+          "note": "The unit's movement count. A client drops the message where it is behind the last the unit took by less than 1073741824."
+        }
+      ],
+      "note": "A client applies it only where its sync id is not older than the last the unit took, counting a wrap: this message, Path, PathWithSpeed, WaypointGroup and WaypointGroupAtSpeed share one count per unit, starting at -1."
     },
     {
       "from": "1.0.0.110",

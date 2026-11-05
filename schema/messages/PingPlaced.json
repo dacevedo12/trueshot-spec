@@ -74,7 +74,7 @@
           "note": "The unit that placed it."
         }
       ],
-      "note": "Where target is a unit it holds, of a kind that takes notices, a client shows a notice for it. The header names the champion that placed the ping, as source does."
+      "note": "Where target is a unit it holds, of a kind that takes notices, a client shows a notice for it, but not again for the next ping on the same target; it keeps the last target of each side apart. The header names the champion that placed the ping, as source does."
     },
     {
       "from": "1.0.0.104",

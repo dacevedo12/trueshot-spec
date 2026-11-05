@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "0.8.13.26",
-      "until": "1.0.0.110",
+      "until": "1.0.0.58",
       "channel": "events",
       "command": 30,
       "direction": "serverToClient",
@@ -43,6 +43,48 @@
           "encoding": "utf8",
           "size": "terminated",
           "note": "The text, ended by a zero byte; the two take at most 1024 bytes."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.58",
+      "until": "1.0.0.110",
+      "channel": "events",
+      "command": 30,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unused",
+          "type": "u32",
+          "note": "Unused; a server writes zero."
+        },
+        {
+          "name": "delay",
+          "type": "f32",
+          "note": "Unused; a server writes zero."
+        },
+        {
+          "name": "slot",
+          "type": "i32",
+          "note": "Where the text goes. 0 floats it over the unit while the unit is in the client's own view, where the player's floating-text settings allow. 1 to 50 writes it, in colour, to that line of a debugging display, only where the unit is the one the player has selected. A client does nothing for any other value."
+        },
+        {
+          "name": "error",
+          "type": "u8",
+          "note": "Nonzero has a client show the text on screen as a message for ten seconds, whatever slot holds, and do nothing else with the message."
+        },
+        {
+          "name": "colour",
+          "type": "u8",
+          "note": "The text's colour on the debugging display; it has no effect for slot 0."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "The text, ended by a zero byte; the two take at most 1024 bytes. For slot 0 and for the on-screen message, a client shows a text that names a key into its own text as that key's text, and any other text as it is."
         }
       ]
     },

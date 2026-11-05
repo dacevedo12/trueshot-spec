@@ -38,7 +38,7 @@
           "note": "A key into the client's own text, which it looks up and shows. The text ends at its first zero byte, which falls within the field."
         }
       ],
-      "note": "A client also sizes the panel to the text and shows it. The box sits halfway down the screen."
+      "note": "A client also sizes the panel to the text and shows it. The box sits at the lower right, at 98.5% of the screen's width and 85% of its height, less room for the interface."
     },
     {
       "from": "1.0.0.74",

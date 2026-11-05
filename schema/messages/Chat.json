@@ -34,7 +34,7 @@
         {
           "name": "speaker",
           "type": "u32",
-          "note": "The client id the line is from. A client sends its own. From a server, a client shows the line with the name of the player holding that client id, coloured for whether that player is on its own side, and with no name for a client id nobody holds; 4294967295 shows the whole line with no name and no tag."
+          "note": "The client id the line is from. A client sends its own. From a server, a client shows the line with the name of the player holding that client id, coloured for whether that player is on its own side, and with no name for a client id nobody holds; 4294967295 shows the whole line with no name and no tag. A client does not show a line from a player its own player has ignored or muted."
         },
         {
           "name": "audience",
