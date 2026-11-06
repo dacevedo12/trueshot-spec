@@ -12,16 +12,16 @@ its monsters come, and marks it empty with `CampCleared`. The monsters
 themselves are units (see [Units](units.md)). A server tells clients watching a
 match when a camp is next due with `CampTimer`.
 
-<!-- holds from 0.8.13.26 up to 1.0.0.141 -->
+<!-- holds from 0.8.13.26 up to 3.11.0.306 -->
 
-> **In 0.8.13.26–1.0.0.140**
+> **In 0.8.13.26–3.10**
 >
 > A client places a camp where the first of its monsters is created
 > (`CreateNeutral`).
 
-<!-- holds from 1.0.0.96 up to 1.0.0.141 -->
+<!-- holds from 1.0.0.96 up to 3.11.0.306 -->
 
-> **In 1.0.0.96–1.0.0.140**
+> **In 1.0.0.96–3.10**
 >
 > `CampCleared` sets no time for the camp to fill again: a client keeps the
 > state it gives for the camp.
@@ -31,6 +31,14 @@ match when a camp is next due with `CampTimer`.
 > **In 1.0.0.126**
 >
 > A client shows nothing of the state `CampCleared` gives.
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> `CampOpened` also places a camp the client does not know yet, where the
+> message says. A client announces a camp `CampCleared` empties where the
+> message's flag says to.
 
 <!-- holds from 4.1.0.171 up to 4.21.0.0 -->
 
@@ -53,17 +61,11 @@ On a map won on score, a server binds each capture point to a unit with
 > `TeamScore` carries both sides' scores at once. A client acts on either only
 > where its screen has the capture point panel.
 
-<!-- holds from 1.0.0.126 up to 1.0.0.141 -->
+<!-- holds from 1.0.0.126 up to 3.11.0.306 -->
 
-> **In 1.0.0.126–1.0.0.140**
+> **In 1.0.0.126–3.10**
 >
-> A client acts on `TeamScore` once its game screen is up.
-
-<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
-
-> **In 1.0.0.126**
->
-> A client acts on `TeamScore` whatever the mode.
+> A client acts on `TeamScore` once its game screen is up, whatever the mode.
 
 <!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 

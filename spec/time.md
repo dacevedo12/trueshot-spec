@@ -43,16 +43,16 @@ the round trip it measured with `ClockConvergence`.
 > A client takes the round trip `ClockConvergence` reports into its allowance
 > for lateness.
 
-<!-- holds from 0.8.13.26 up to 1.0.0.141 -->
+<!-- holds from 0.8.13.26 up to 3.11.0.306 -->
 
-> **In 0.8.13.26–1.0.0.140**
+> **In 0.8.13.26–3.10**
 >
 > Each `ClockConvergence` sets a client's allowance to 0.8 times what it was
 > plus 0.1 times the round trip it reports.
 
-<!-- holds from 1.0.0.96 up to 1.0.0.141 -->
+<!-- holds from 1.0.0.96 up to 3.11.0.306 -->
 
-> **In 1.0.0.96–1.0.0.140**
+> **In 1.0.0.96–3.10**
 >
 > The allowance starts at 0, and nothing but `ClockConvergence` changes it: a
 > client that has had none takes `ClockSync` as it stands. A server SHOULD send
@@ -79,14 +79,21 @@ catch up with its own.
 > sets it. After that it runs on the client's own timer, and a later
 > `ClockSync` only corrects it, however long a server leaves between them.
 
+<!-- holds from 0.9.25.24 up to 3.11.0.306 -->
+
+> **In 0.9.25.24–3.10**
+>
+> `GameSpeed` sets the pace of the match clock, and a hold sets the pace to 0
+> until play resumes. A server that runs a match at other than normal speed
+> MUST send `GameSpeed` with that speed, or a client's match clock runs apart
+> from its own.
+
 <!-- holds from 0.9.25.24 up to 1.0.0.141 -->
 
 > **In 0.9.25.24–1.0.0.140**
 >
-> A client runs no clock but the match clock, whose pace `GameSpeed` sets, at
-> whatever speed it gives; a hold sets the pace to 0 until play resumes. A
-> server that runs a match at other than normal speed MUST send `GameSpeed`
-> with that speed, or a client's match clock runs apart from its own.
+> A client runs no clock but the match clock, and takes whatever speed
+> `GameSpeed` gives.
 
 <!-- holds from 0.9.25.24 up to 0.9.25.36 -->
 
@@ -95,11 +102,17 @@ catch up with its own.
 > A `GameSpeed` that arrives during a hold sets the match clock running again
 > at once.
 
-<!-- holds from 1.0.0.126 up to 1.0.0.141 -->
+<!-- holds from 1.0.0.126 up to 3.11.0.306 -->
 
-> **In 1.0.0.126–1.0.0.140**
+> **In 1.0.0.126–3.10**
 >
 > A `GameSpeed` that arrives during a hold takes effect as play resumes.
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> A client holds the speed `GameSpeed` gives to between 0 and 10 times normal.
 
 A client shows the match's time counted from the moment on the match clock at
 which the match began.
@@ -111,9 +124,9 @@ which the match began.
 > A client takes that moment from its own match clock, once, as its game loop
 > runs.
 
-<!-- holds from 1.0.0.126 up to 1.0.0.141 -->
+<!-- holds from 1.0.0.126 up to 3.11.0.306 -->
 
-> **In 1.0.0.126–1.0.0.140**
+> **In 1.0.0.126–3.10**
 >
 > `MatchStarted` gives that moment. Until it arrives, a client takes the match
 > clock's reading as its game loop runs, and a `MatchStarted` arriving later

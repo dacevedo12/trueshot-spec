@@ -46,17 +46,31 @@ these, it carries it whole, at the width above.
 > gives the region an id of its own, its own node in the top byte and a count
 > below it, which no message from a server can name.
 
-<!-- holds from 1.0.0.140 up to 4.21.0.0 -->
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
 
-> **In 1.0.0.140–4.20**
+> **In 1.0.0.140**
+>
+> No region id stands for no region.
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> A region id of 0 names no region: given a `RegionAdded` carrying 0, a client
+> gives the region an id of its own, its own node in the top byte and a count
+> below it, which no message from a server can name.
+
+<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+
+> **In 4.1–4.20**
 >
 > No region id stands for no region.
 
 A server MUST give each player a client id from 0 to 252.
 
-<!-- holds from 0.8.13.26 up to 1.0.0.141 -->
+<!-- holds from 0.8.13.26 up to 3.11.0.306 -->
 
-> **In 0.8.13.26–1.0.0.140**
+> **In 0.8.13.26–3.10**
 >
 > A client takes a client id only from 0 to 252, and leaves on any other.
 
@@ -83,12 +97,19 @@ its own client id.
 > client's `Register` with one `Registered` for every seat. Every later message
 > that names a player by client id is read through that pairing.
 
-<!-- holds from 1.0.0.58 up to 1.0.0.141 -->
+<!-- holds from 1.0.0.58 up to 3.11.0.306 -->
 
-> **In 1.0.0.58–1.0.0.140**
+> **In 1.0.0.58–3.10**
 >
 > A client acts on that `Registered` alone and ignores every other, so it pairs
 > no other player's player id with a client id.
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> A server MUST send that `Registered` before any create message, because a
+> client given a create message before it has its own client id stops.
 
 <!-- holds from 4.1.0.171 up to 4.21.0.0 -->
 
@@ -258,9 +279,9 @@ Among the identifiers with that top byte are these:
 > `Turret_T2_C_05`, `Turret_T2_L_01` to `Turret_T2_L_03`, and `Turret_T2_R_01`
 > to `Turret_T2_R_03`.
 
-<!-- holds from 0.9.25.24 up to 1.0.0.127 -->
+<!-- holds from 0.9.25.24 up to 3.11.0.306 -->
 
-> **In 0.9.25.24–1.0.0.126**
+> **In 0.9.25.24–3.10**
 >
 > Every object a map places carries the identifier its name gives, turrets,
 > navigation points and props among them.
@@ -284,6 +305,12 @@ Among the identifiers with that top byte are these:
 > | 3    | `Barracks_T1_C1`, `Barracks_T2_C1`, `HQ_T1`, `HQ_T2`, `OrderShop01`, `ChaosShop01`, `____P_Chaos_Spawn_Barracks__C01`  |
 > | 4    | `Barracks_T1_L1`, `Barracks_T1_R1`, `Barracks_T2_L1`, `Barracks_T2_R1`, `HQ_T1`, `HQ_T2`, `OrderShop01`, `chaosShop01` |
 
+<!-- holds from 1.0.0.126 up to 3.11.0.306 -->
+
+> **In 1.0.0.126–3.10**
+>
+> A name holding `_Destroyed` or `_FB` gives no identifier.
+
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
 > **In 1.0.0.126**
@@ -299,8 +326,6 @@ Among the identifiers with that top byte are these:
 > | `orderShop01`                                                          | 1, 2, 8    |
 > | `ChaosShop01`                                                          | 3          |
 > | `chaosShop01`                                                          | 1, 2, 8    |
->
-> A name holding `_Destroyed` or `_FB` gives no identifier.
 
 <!-- holds from 1.0.0.140 up to 1.0.0.141 -->
 
@@ -312,6 +337,17 @@ Among the identifiers with that top byte are these:
 > | 3       | `Barracks_T1_C1`, `Barracks_T2_C1`, `HQ_T1`, `HQ_T2`, `OrderShop01`, `ChaosShop01`, `____P_Chaos_Spawn_Barracks__C01`                              |
 > | 4       | `Barracks_T1_L1`, `Barracks_T1_R1`, `Barracks_T2_L1`, `Barracks_T2_R1`, `HQ_T1`, `HQ_T2`, `OrderShop01`, `ChaosShop01`, spawn points named `__P_…` |
 > | 8       | `orderShop01`, `chaosShop01`                                                                                                                       |
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> | Map | Holds                                                                                                                                                                  |
+> | --- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+> | 1   | the six `Barracks` names, the six spawn points named `__P_…`, `HQ_T1`, `HQ_T2`, `orderShop01`, `chaosShop01`                                                           |
+> | 8   | `orderShop01`, `chaosShop01`                                                                                                                                           |
+> | 10  | `Barracks_T1_L1`, `Barracks_T1_R1`, `Barracks_T2_L1`, `Barracks_T2_R1`, the `L01` and `R01` spawn points of both sides, `HQ_T1`, `HQ_T2`, `orderShop01`, `chaosShop01` |
+> | 12  | `Barracks_T1_C1`, `Barracks_T2_C1`, the `C01` spawn points of both sides named `____P_…`, `HQ_T1`, `HQ_T2`, `OrderShop01`, `ChaosShop01`                               |
 
 <!-- holds from 4.1.0.171 up to 4.21.0.0 -->
 
@@ -368,6 +404,15 @@ A server MUST name each object a map holds by the identifier its name gives.
 > `CreateTurret` matches a turret's name without regard to case, and does
 > nothing where the map holds no turret of that name.
 
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> `CreateTurret` first removes any object holding its net id. It matches a
+> turret's name exactly, case included, and the name it carries is the
+> building's name followed by a two-character suffix. A name no turret has does
+> nothing.
+
 ## What a client holds
 
 A client holds an object from the message that creates it until the message,
@@ -423,9 +468,9 @@ hide an object, and it is held as before.
 > A client removes a nexus about 4 seconds after `BuildingDied` names it, and
 > can fail as it does. An inhibitor `BuildingDied` names is held.
 
-<!-- holds from 1.0.0.96 up to 1.0.0.141 -->
+<!-- holds from 1.0.0.96 up to 3.11.0.306 -->
 
-> **In 1.0.0.96–1.0.0.140**
+> **In 1.0.0.96–3.10**
 >
 > A client removes a region once its lifetime reaches 0, so a region given a
 > lifetime of 0 does not last.
@@ -533,13 +578,17 @@ Creating messages are the exception, and so are these:
 > `SpawnPet` takes the net id in its header for the new pet, but does nothing
 > where the owner its body names is not held.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 3.10.0.237 up to 4.21.0.0 -->
 
-> **In 4.1–4.20**
+> **In 3.10–4.20**
 >
 > A `WaypointGroup` or `WaypointGroupAtSpeed` path for a unit not yet held is
 > applied once an object takes that net id, and its `WaypointAck` is sent as
 > usual. A server SHOULD send the creating message first.
+
+<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+
+> **In 4.1–4.20**
 >
 > `EnterSight` and `EnterLocalSight` act on the messages they carry whether or
 > not the client holds the unit they name.
@@ -577,9 +626,9 @@ and `summonerflash` give one number. A particle's name includes its extension,
 so the number comes from `global_ss_flash.troy` and not from
 `global_ss_flash`. The nine bytes `123456789` give 0x0678AEE9.
 
-<!-- holds from 0.8.13.26 up to 1.0.0.141 -->
+<!-- holds from 0.8.13.26 up to 3.11.0.306 -->
 
-> **In 0.8.13.26–1.0.0.140**
+> **In 0.8.13.26–3.10**
 >
 > A byte from 128 to 255 enters the hash as its value less 256, worked in 32
 > bits, rather than as itself.

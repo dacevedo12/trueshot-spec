@@ -63,9 +63,9 @@ elsewhere disagree with what it shows.
 >
 > The client has maps 1, 2, 3, 4, 6 and 8.
 
-<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+<!-- holds from 3.10.0.237 up to 4.18.0.271 -->
 
-> **In 4.1–4.17**
+> **In 3.10–4.17**
 >
 > The client has maps 1, 8, 10 and 12, and no map 11.
 
@@ -122,9 +122,9 @@ MUST take the names from the files.
 > minion spawner's tested before `Barracks`: `Turret` a turret, `Barracks` an
 > inhibitor, `HQ_` a nexus.
 
-<!-- holds from 1.0.0.58 up to 1.0.0.141 -->
+<!-- holds from 1.0.0.58 up to 3.11.0.306 -->
 
-> **In 1.0.0.58–1.0.0.140**
+> **In 1.0.0.58–3.10**
 >
 > A word a name holds anywhere says what the object is, not only its opening,
 > the first match winning: a minion spawner's `Spawn_Barracks` is tested before
@@ -158,21 +158,32 @@ MUST take the names from the files.
 > A client fails on a `CreateTurret` naming no building, and a server MUST NOT
 > send one.
 
+<!-- holds from 3.10.0.237 up to 4.20.0.315 -->
+
+> **In 3.10–4.19**
+>
+> A `CreateTurret` naming no building does nothing.
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> `CreateTurret` compares names exactly, case included.
+
 <!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
 > **In 4.1–4.19**
 >
 > A name's opening says what the object is: `Turret` a turret, `Barracks`
 > without `Spawn` an inhibitor, `HQ_` a nexus. A client creates no object the
-> map's object list below already holds, and a `CreateTurret` naming no
-> building does nothing.
+> map's object list below already holds.
 
 **Objects and spawn points.** A champion begins at its side's spawn point,
 `__Spawn_T1` for Order and `__Spawn_T2` for Chaos.
 
-<!-- holds from 0.8.13.26 up to 1.0.0.141 -->
+<!-- holds from 0.8.13.26 up to 3.11.0.306 -->
 
-> **In 0.8.13.26–1.0.0.140**
+> **In 0.8.13.26–3.10**
 >
 > The spawn points, the navigation points and the marker of the level's size are
 > scene objects, listed in `room.dsc` like the buildings.
@@ -224,9 +235,9 @@ MUST take the names from the files.
 **The ground.** A client walks units on `LEVELS/Map1/AIPath.aimesh_ngrid`, a
 binary grid. Its layout is unspecified.
 
-<!-- holds from 0.8.13.26 up to 0.9.25.36 -->
+<!-- holds from 0.8.13.26 up to 3.11.0.306 -->
 
-> **In 0.8.13.26–0.9.25.35**
+> **In 0.8.13.26–3.10**
 >
 > The grid's name is the map's own, `AIPath.aimesh` with `_ngrid` after it: no
 > setting of the mode chooses it.
@@ -283,6 +294,14 @@ figures, in `DATA/Items/<id>.inibin`; and summoner, item and shared spells in
 >
 > A champion's spells and attacks are in `DATA/Spells/<Spell>.inibin` with all
 > other spells.
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> Most champions' spells and attacks are in `DATA/Spells/<Spell>.inibin` with
+> all other spells, and some champions' in
+> `DATA/Characters/<Champion>/Spells/<Spell>.inibin`.
 
 <!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 

@@ -9,9 +9,9 @@ match reaches it.
 >
 > A client cannot watch a match: no start-up word or message makes it watch.
 
-<!-- holds from 1.0.0.126 up to 1.0.0.141 -->
+<!-- holds from 1.0.0.126 up to 3.11.0.306 -->
 
-> **In 1.0.0.126–1.0.0.140**
+> **In 1.0.0.126–3.10**
 >
 > A watching client takes the match over HTTP from a spectator service, not over
 > a game connection.
@@ -31,21 +31,33 @@ address. Its key can be given as more than 16 characters of base64: the first
 24 bytes it encodes, deciphered as Blowfish ECB under the match number written
 out, give the key as their first 16 bytes.
 
-<!-- holds from 1.0.0.126 up to 1.0.0.141 -->
+<!-- holds from 1.0.0.126 up to 3.11.0.306 -->
 
-> **In 1.0.0.126–1.0.0.140**
+> **In 1.0.0.126–3.10**
 >
 > The word is followed by the spectator service's address, with no port of its
 > own, the key, a match number and a platform name; there is no player number.
 > A key is deciphered under the low 32 bits of the match number, written out as
 > a signed decimal.
 
+<!-- holds from 1.0.0.126 up to 3.11.0.306 -->
+
+> **In 1.0.0.126–3.10**
+>
+> The word `replay` starts a watching client as `spectator` does.
+
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
 > **In 1.0.0.126**
 >
-> The word `replay` starts a watching client as `spectator` does, and a
-> player's key too can be given as base64.
+> A player's key too can be given as base64.
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> A player's key is never base64: one longer than 16 characters is cut to its
+> first 16.
 
 <!-- holds from 4.1.0.171 up to 4.21.0.0 -->
 
@@ -97,30 +109,53 @@ out, give the key as their first 16 bytes.
 The stream's chunks run for `StreamMetadata`'s `chunkTimeInterval` each and its
 key frames for its `keyFrameTimeInterval`, both in milliseconds.
 
-<!-- holds from 1.0.0.126 up to 1.0.0.141 -->
+<!-- holds from 1.0.0.126 up to 3.11.0.306 -->
 
-> **In 1.0.0.126–1.0.0.140**
+> **In 1.0.0.126–3.10**
 >
 > A watching client asks the spectator service for the match under
 > `/observer-mode/rest/consumer/`, each request naming the platform and the
 > match number: `getGameMetaData` for the match's metadata, `getLastChunkInfo`
-> and `getLastKeyFrameInfo` for how far the match has come, and
-> `getGameDataChunk` and `getKeyFrame` for a chunk or a key frame by number. It
-> gives up on the metadata after a time, fetches the chunks of setting up, then
-> catches up to the last chunk on offer and waits there for the next. Key frames arrive compressed. The metadata gives `gameKey.gameId`,
-> `gameEnded` and `chunkTimeInterval`; the last chunk's information gives
-> `chunkId`, `nextChunkId`, `availableSince`, `nextAvailableChunk`,
-> `endStartupChunkId` and `endGameChunkId`.
+> for how far the match has come, and `getGameDataChunk` and `getKeyFrame` for a
+> chunk or a key frame by number. It gives up on the metadata after a time,
+> fetches the chunks of setting up, then catches up to the last chunk on offer
+> and waits there for the next. Key frames arrive compressed. The metadata gives
+> `gameKey.gameId`, `gameEnded` and `chunkTimeInterval`; the last chunk's
+> information gives `chunkId`, `nextChunkId`, `availableSince`,
+> `nextAvailableChunk`, `endStartupChunkId` and `endGameChunkId`.
+
+<!-- holds from 1.0.0.126 up to 1.0.0.141 -->
+
+> **In 1.0.0.126–1.0.0.140**
+>
+> A client asks `getLastKeyFrameInfo` for the last key frame.
+
+<!-- holds from 1.0.0.140 up to 3.11.0.306 -->
+
+> **In 1.0.0.140–3.10**
+>
+> A watching client first asks the service for its version, and ends by asking
+> it to stop. The metadata also gives `keyFrameTimeInterval`, a whole multiple
+> of `chunkTimeInterval`, and `clientAddedLag`; the last chunk's information
+> also gives `keyFrameId`.
 
 <!-- holds from 1.0.0.140 up to 1.0.0.141 -->
 
 > **In 1.0.0.140**
 >
-> A watching client first asks the service for its version, and fetches the
-> first key frame's information after the chunks of setting up; it ends by
-> asking the service to stop. The metadata also gives `keyFrameTimeInterval`, a
-> whole multiple of `chunkTimeInterval`, and `clientAddedLag`; the last chunk's
-> information also gives `keyFrameId`, `duration` and `startGameChunkId`.
+> A client fetches the first key frame's information after the chunks of
+> setting up. The last chunk's information also gives `duration` and
+> `startGameChunkId`.
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> A client takes the key frame to fetch from `keyFrameId`, and chunks arrive
+> compressed too. The metadata request carries a further number where the
+> service's version is 1.56 or later, and `getLastChunkInfo` carries one too.
+> The metadata also gives `clientBackFetchingEnabled` and
+> `clientBackFetchingFreq`.
 
 ## What a chunk holds
 
@@ -149,10 +184,22 @@ time zero at once, and the first record with a time above zero sets its clock.
 It skips a record of command 0 on the events channel.
 
 The chunks of setting up carry what a player's client is sent from its version
-answer on: `VersionSync` first. A client whose own build differs from the one
-`VersionSync` names leaves. A client holds the stream back while it loads after
+answer on: `VersionSync` first. A client holds the stream back while it loads after
 `VersionSync`, and again while it builds the world after `SpawnStart`, and
 goes on by itself afterwards.
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> A client whose own build differs from the one `VersionSync` names asks its
+> player whether to go on, and leaves where the player declines.
+
+<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+
+> **In 4.1–4.20**
+>
+> A client whose own build differs from the one `VersionSync` names leaves.
 
 A key frame is laid out as a chunk is, and holds the whole world as it stands
 at that point. A client joined late goes on after it from the chunk the key

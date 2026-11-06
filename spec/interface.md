@@ -16,9 +16,9 @@ server can also lock or free a client's camera with `CameraLockSet`, which the
 client answers with `CameraLock` except while it holds its camera itself, and
 set a point a player's view keeps to with `CameraBehaviour`.
 
-<!-- holds from 0.9.25.24 up to 1.0.0.141 -->
+<!-- holds from 0.9.25.24 up to 3.11.0.306 -->
 
-> **In 0.9.25.24–1.0.0.140**
+> **In 0.9.25.24–3.10**
 >
 > A client sends no `Camera` while its camera is locked: a server that needs a
 > client's view reports frees its camera with `CameraLockSet`.
@@ -51,6 +51,13 @@ set a point a player's view keeps to with `CameraBehaviour`.
 > A client takes the lock from the player's own settings when `StartGame`
 > arrives, locked where they say nothing, and answers with `CameraLock`;
 > `CameraLockSet` changes it for the match without changing those settings.
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> A client ignores `CameraLockSet` that arrives while it holds its camera
+> itself, and answers nothing.
 
 <!-- holds from 4.20.0.315 up to 4.21.0.0 -->
 
@@ -87,13 +94,19 @@ shop, with `InputLock` or `InputLockToggled`.
 > drives starts and ends, and `InputLockChanged` for the locks it set or
 > cleared.
 
-<!-- holds from 0.9.25.24 up to 1.0.0.97 -->
+<!-- holds from 0.9.25.24 up to 3.11.0.306 -->
 
-> **In 0.9.25.24–1.0.0.96**
+> **In 0.9.25.24–3.10**
 >
 > A client keeps every lock a message sets or clears, and later input obeys
 > them, but it acts on a lock at once only where the message's mask is exactly
 > one of 1, 4, 8, 16, 32 or 128.
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> A watching client ignores `InputLock`.
 
 ## The minimap and text on screen
 

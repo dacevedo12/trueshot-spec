@@ -44,9 +44,23 @@ message carrying a movement says which shape it holds.
 >
 > A client reads nothing of `EnterSight`.
 
-<!-- holds from 0.9.25.24 up to 4.21.0.0 -->
+<!-- holds from 0.9.25.24 up to 1.0.0.141 -->
 
-> **In 0.9.25.24–4.20**
+> **In 0.9.25.24–1.0.0.140**
+>
+> A unit coming into sight while standing carries its place and facing in
+> `EnterSight` instead.
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> A champion or minion coming into sight while standing carries its place and
+> facing in `EnterSight` instead. Other units carry no place there.
+
+<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+
+> **In 4.1–4.20**
 >
 > A unit coming into sight while standing carries its place and facing in
 > `EnterSight` instead.
@@ -82,9 +96,9 @@ to.
 > A sending end MUST NOT send a movement with no points; a receiving end
 > refuses it.
 
-<!-- holds from 0.9.25.24 up to 1.0.0.141 -->
+<!-- holds from 0.9.25.24 up to 3.11.0.306 -->
 
-> **In 0.9.25.24–1.0.0.140**
+> **In 0.9.25.24–3.10**
 >
 > A client reads nothing after a refused movement in its group, and still
 > answers the group.
@@ -96,6 +110,13 @@ to.
 > A client does not read the points of a movement whose unit it does not hold,
 > and so misreads every later movement in the group. A server MUST name in a
 > group only units the client holds.
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> A client reads the points of a movement whose unit it does not hold, and keeps
+> them for when the unit appears (see [Objects and identifiers](objects.md)).
 
 ## The origin
 
@@ -204,9 +225,23 @@ champion moves only along a path a server sends.
 > world floats. A `WaypointGroup` carrying that path back unchanged moves the
 > champion along it.
 
-<!-- holds from 1.0.0.140 up to 4.21.0.0 -->
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
 
-> **In 1.0.0.140–4.20**
+> **In 1.0.0.140**
+>
+> A server MUST send the `WaypointGroup` that answers a `MoveOrder` on the
+> transient channel.
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> A client takes a `WaypointGroup` or a `WaypointGroupAtSpeed` on channels 2, 3
+> and 4 alike.
+
+<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+
+> **In 4.1–4.20**
 >
 > A server MUST send the `WaypointGroup` that answers a `MoveOrder` on the
 > transient channel.
@@ -232,9 +267,24 @@ champion moves only along a path a server sends.
 > A server MAY send `NavigationFlags`. A client replaces the circles it holds
 > with those it carries, and answers with its `syncId`.
 
-<!-- holds from 1.0.0.140 up to 4.21.0.0 -->
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
 
-> **In 1.0.0.140–4.20**
+> **In 1.0.0.140**
+>
+> A server MUST NOT send `NavigationFlags`: a client fails on the first one a
+> match brings.
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> A server MAY send `NavigationFlags`. Once the map's ground grid is loaded, a
+> client replaces the circles it holds with those it carries, and answers with
+> its `syncId`; before then it takes nothing and does not answer.
+
+<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+
+> **In 4.1–4.20**
 >
 > A server MUST NOT send `NavigationFlags`: a client fails on the first one a
 > match brings.

@@ -106,9 +106,9 @@ the shop sends nothing.
 >
 > Opening the shop while the match is paused sends nothing.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 3.10.0.237 up to 4.21.0.0 -->
 
-> **In 4.1–4.20**
+> **In 3.10–4.20**
 >
 > Opening the shop sends nothing, except in the tutorial, where it sends
 > `TutorialShopOpened`.
@@ -116,9 +116,9 @@ the shop sends nothing.
 A client asks to buy only where the item is one the match sells and priced
 within the champion's gold.
 
-<!-- holds from 0.8.13.26 up to 1.0.0.127 -->
+<!-- holds from 0.8.13.26 up to 3.11.0.306 -->
 
-> **In 0.8.13.26–1.0.0.126**
+> **In 0.8.13.26–3.10**
 >
 > A client asks for an item not built from others only where a slot is free or
 > holds the same item below its stack limit.
@@ -139,9 +139,9 @@ within the champion's gold.
 > holds one of its parts, and where the champion's gold covers what remains
 > after the parts it holds.
 
-<!-- holds from 0.9.25.24 up to 1.0.0.141 -->
+<!-- holds from 0.9.25.24 up to 3.11.0.306 -->
 
-> **In 0.9.25.24–1.0.0.140**
+> **In 0.9.25.24–3.10**
 >
 > A client asks only while the shop is not locked, with the champion dead or
 > near a shop of its side.
@@ -158,16 +158,22 @@ within the champion's gold.
 >
 > A client asks only with the shop open.
 
+<!-- holds from 3.10.0.237 up to 4.21.0.0 -->
+
+> **In 3.10–4.20**
+>
+> A client asks only where the item's price, after any substitution, is within
+> the champion's gold, and where a slot is free, unless the item can be used in
+> the shop. For an item built from others, it asks only where the champion holds
+> a free slot or a part of it, everything the item requires, and gold for what
+> remains.
+
 <!-- holds from 4.1.0.171 up to 4.21.0.0 -->
 
 > **In 4.1–4.20**
 >
 > A client asks to buy only where shopping is allowed (`ShopEnabled`), with the
-> champion near its side's shop, dead, or allowed to shop from anywhere; where
-> the item's price, after any substitution, is within the champion's gold; and
-> where a slot is free, unless the item can be used in the shop. For an item
-> built from others, it asks only where the champion holds a free slot or a part
-> of it, everything the item requires, and gold for what remains.
+> champion near its side's shop, dead, or allowed to shop from anywhere.
 
 A client never places an item itself. It shows a purchase only when a server
 answers with `ItemAdded`, a sale or loss with `RemoveItemAnswer`, and a swap
@@ -208,9 +214,9 @@ sends `ShopUndo`, whatever the count.
 `CloseShop` closes the shop where it is open. A message that locks the shop
 alone, `InputLock` or `InputLockToggled`, closes it and turns off its key.
 
-<!-- holds from 0.9.25.24 up to 1.0.0.97 -->
+<!-- holds from 0.9.25.24 up to 3.11.0.306 -->
 
-> **In 0.9.25.24–1.0.0.96**
+> **In 0.9.25.24–3.10**
 >
 > A message that locks other input along with the shop stops the shop opening,
 > but leaves an open shop open and its key on.

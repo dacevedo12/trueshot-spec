@@ -23,23 +23,28 @@ A direction is carried as a vector, not as an angle:
   the ground, x and z.
 - `UnitStopped`, `MissileState`, a particle's facing and a view's direction in
   `Camera` carry x, y and z.
-- `FaceDirection` carries x, y and z, and turns the unit to face along them,
-  over the time it gives where its flags say so, and at once otherwise.
+- `FaceDirection` carries x, y and z, and turns the unit to face along them.
 
-<!-- holds from 0.8.13.26 up to 1.0.0.127 -->
+<!-- holds from 0.8.13.26 up to 3.11.0.306 -->
 
-> **In 0.8.13.26–1.0.0.126**
+> **In 0.8.13.26–3.10**
 >
 > `FaceDirection` turns the unit along x and z alone, and leaves it as it is
 > where both are 0.
 
-<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+<!-- holds from 1.0.0.140 up to 3.11.0.306 -->
 
-> **In 1.0.0.140**
+> **In 1.0.0.140–3.10**
 >
-> `FaceDirection` turns the unit along x and z. Where bit 0 of its flags is
-> set, the unit turns toward that direction at its own pace rather than at
-> once.
+> `FaceDirection` turns the unit at once where bit 0 of its flags is clear, and
+> toward that direction at its own pace where it is set.
+
+<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+
+> **In 4.1–4.20**
+>
+> `FaceDirection` turns the unit over the time it gives where its flags say
+> so, and at once otherwise.
 
 A champion carries no facing of its own when created.
 
@@ -131,17 +136,22 @@ origin (see [Movement](movement.md)) from its own data (see
 > | 6     | 6991, 7223          |
 > | 8     | 6947, 6609          |
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 3.10.0.237 up to 4.21.0.0 -->
 
-> **In 4.1–4.20**
+> **In 3.10–4.20**
 >
-> The maps a client has data for include these. Two different maps share the
-> name Summoner's Rift.
+> The maps a client has data for include these:
 >
 > | `map` | Map                  | Origin of its paths |
 > | ----- | -------------------- | ------------------- |
 > | 1     | Summoner's Rift      | 6991, 7223          |
 > | 8     | The Crystal Scar     | 6947, 6609          |
 > | 10    | The Twisted Treeline | 7708, 7227          |
-> | 11    | Summoner's Rift      | 7358, 7412          |
 > | 12    | The Howling Abyss    | 6560, 6309          |
+
+<!-- holds from 4.18.0.271 up to 4.21.0.0 -->
+
+> **In 4.18–4.20**
+>
+> A client also has data for map 11, a second Summoner's Rift, whose paths
+> have their origin at 7358, 7412.

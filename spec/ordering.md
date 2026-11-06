@@ -117,12 +117,19 @@ batch.
 | `Replication`                           | `TransientAck`, where every unit the batch names is held                                                              |
 | `ClockSync`                             | `ClockReply` (see [Time](time.md))                                                                                    |
 
-<!-- holds from 0.9.25.24 up to 1.0.0.141 -->
+<!-- holds from 0.9.25.24 up to 3.11.0.306 -->
 
-> **In 0.9.25.24–1.0.0.140**
+> **In 0.9.25.24–3.10**
 >
 > A client also answers each `Path` and `PathWithSpeed`, taken or not, with a
-> `WaypointAck` carrying its `syncId` and naming no units.
+> `WaypointAck` carrying its `syncId`.
+
+<!-- holds from 1.0.0.126 up to 3.11.0.306 -->
+
+> **In 1.0.0.126–3.10**
+>
+> That answer lists no units but leaves its count of units unset, so a server
+> MUST NOT rely on the count.
 
 A client sends these answers when it plays a match, not while it plays back a
 stream.

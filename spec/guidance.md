@@ -25,6 +25,13 @@ and hide an objective panel (`ObjectiveShown`, `ObjectiveReplaced`,
 
 ## The tutorial
 
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> A client is in the tutorial where `VersionSync` names the mode TUTORIAL and a
+> setting of its own turns the tutorial on, whatever the map.
+
 <!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
 > **In 4.1–4.19**
@@ -35,10 +42,16 @@ In the tutorial, a server can put lines of the client's own text in its chat
 (`TutorialChatLine`) and open the tutorial's popup (`TutorialPopup`), which the
 client answers with `TutorialPopupClosed`.
 
+<!-- holds from 1.0.0.58 up to 3.11.0.306 -->
+
+> **In 1.0.0.58–3.10**
+>
+> A client takes `TutorialChatLine` in any match.
+
 <!-- holds from 1.0.0.58 up to 1.0.0.97 -->
 
 > **In 1.0.0.58–1.0.0.96**
 >
-> A client takes `TutorialChatLine` and `TutorialPopup` in any match.
+> A client takes `TutorialPopup` in any match.
 
 <!-- messages -->

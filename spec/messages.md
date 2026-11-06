@@ -98,9 +98,9 @@ revision claims that value both ways.
 > Where the game family keeps 255, a server MAY send a container on the events
 > channel. A client sends none.
 
-<!-- holds from 1.0.0.126 up to 1.0.0.141 -->
+<!-- holds from 1.0.0.126 up to 3.11.0.306 -->
 
-> **In 1.0.0.126–1.0.0.140**
+> **In 1.0.0.126–3.10**
 >
 > A client unwraps a container on any channel.
 

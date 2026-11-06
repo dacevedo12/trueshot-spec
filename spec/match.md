@@ -39,9 +39,9 @@ seconds.
 >
 > No unit advances for `StatTick`.
 
-<!-- holds from 1.0.0.58 up to 4.21.0.0 -->
+<!-- holds from 1.0.0.58 up to 1.0.0.141 -->
 
-> **In 1.0.0.58–4.20**
+> **In 1.0.0.58–1.0.0.140**
 >
 > `StatTick` asks every unit's stats to advance by that span.
 
@@ -50,6 +50,18 @@ seconds.
 > **In 1.0.0.126–4.19**
 >
 > Sent during a hold, `GameSpeed` takes effect as the match resumes.
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> No unit advances for `StatTick`.
+
+<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+
+> **In 4.1–4.20**
+>
+> `StatTick` asks every unit's stats to advance by that span.
 
 ## Holding and resuming
 
@@ -107,6 +119,13 @@ A server holds the match with `Paused`.
 > A client shows a tournament's hold, crediting the seat that asked, where the
 > message says it is one.
 
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> A client shows nothing for any other hold. A tournament's hold also shows a
+> box with the time left and locks input, and only such a hold locks it.
+
 A server ends the hold with `Resumed`.
 
 <!-- holds from 0.9.25.24 up to 1.0.0.97 -->
@@ -134,8 +153,25 @@ A server ends the hold with `Resumed`.
 
 > **In 1.0.0.140–4.20**
 >
-> Input stays locked during the countdown, and a client announces in chat who
-> resumed the match.
+> A client announces in chat who resumed the match.
+
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+
+> **In 1.0.0.140**
+>
+> Input stays locked during the countdown.
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> A client announces who resumed the match even where it was not held.
+
+<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+
+> **In 4.1–4.20**
+>
+> Input stays locked during the countdown.
 
 ## The end
 
@@ -163,6 +199,13 @@ player's side and sends `ClientFinished`.
 >
 > A client that receives `GameEnded` while still loading leaves at once.
 
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> A client sends `ClientFinished` every time `GameEnded` arrives in play, and
+> not while playing a replay.
+
 <!-- holds from 4.1.0.171 up to 4.21.0.0 -->
 
 > **In 4.1–4.20**
@@ -177,9 +220,9 @@ player's side and sends `ClientFinished`.
 >
 > `VictoryDance` moves every unit.
 
-<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+<!-- holds from 1.0.0.140 up to 3.11.0.306 -->
 
-> **In 1.0.0.140**
+> **In 1.0.0.140–3.10**
 >
 > A client moves no neutral unit for `VictoryDance`.
 
@@ -196,9 +239,9 @@ or closes the window, as a reconnection fails, or on a server's `Shutdown`,
 which has it leave at once. A client also leaves at once on `BotKick` with the
 action that means leave.
 
-<!-- holds from 0.9.25.24 up to 1.0.0.141 -->
+<!-- holds from 0.9.25.24 up to 3.11.0.306 -->
 
-> **In 0.9.25.24–1.0.0.140**
+> **In 0.9.25.24–3.10**
 >
 > A client also leaves as one abandoning as its player declines to reconnect or
 > cancels a reconnection under way, and as its player dismisses the notice that
@@ -283,9 +326,9 @@ A server tells the others that a player's client dropped with
 > While it resynchronises, a client ignores any message creating a unit it
 > already holds.
 
-<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+<!-- holds from 1.0.0.140 up to 3.11.0.306 -->
 
-> **In 1.0.0.140**
+> **In 1.0.0.140–3.10**
 >
 > A client dropped during play connects again at once by itself, for any reason
 > but the one that means its player was away, and shows its player that it is
@@ -295,6 +338,28 @@ A server tells the others that a player's client dropped with
 >
 > A client sends `ReconnectedInMatch` as the connection is made, without waiting
 > for the registration answer.
+
+<!-- holds from 3.10.0.237 up to 4.21.0.0 -->
+
+> **In 3.10–4.20**
+>
+> A server MUST NOT send `SpawnStart` to a client coming back from a drop: it
+> returns the client to spawning, from which only another `StartGame` brings it
+> back into play.
+
+<!-- holds from 3.10.0.237 up to 4.20.0.315 -->
+
+> **In 3.10–4.19**
+>
+> `Reconnected` announces that another player came back. A client shows it for
+> an ally, or for anyone while it watches the match, and only notes it where it
+> names its own client.
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> A client sends `ReconnectedInMatch` only where the match is in play.
 
 <!-- holds from 4.1.0.171 up to 4.21.0.0 -->
 
@@ -309,17 +374,7 @@ A server tells the others that a player's client dropped with
 > was: it asks for no status and no version, loads nothing, and keeps every
 > seat, name and identifier it held. A server answers with `SoftReconnect`,
 > sending between its two stages a message creating each unit the client is to
-> hold. A server MUST NOT send `SpawnStart` to a client coming back this way: it
-> returns the client to spawning, from which only another `StartGame` brings it
-> back into play.
-
-<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
-
-> **In 4.1–4.19**
->
-> `Reconnected` announces that another player came back. A client shows it for
-> an ally, or for anyone while it watches the match, and only notes it where it
-> names its own client.
+> hold.
 
 ## Staying connected
 
@@ -330,9 +385,9 @@ A server tells the others that a player's client dropped with
 > A client's view report, `Camera`, goes out as its view moves at least 200
 > units, at most every tenth of a second, and never while its view is locked.
 
-<!-- holds from 0.8.13.26 up to 1.0.0.141 -->
+<!-- holds from 0.8.13.26 up to 3.11.0.306 -->
 
-> **In 0.8.13.26–1.0.0.140**
+> **In 0.8.13.26–3.10**
 >
 > Where its last `Camera` goes unacknowledged, a client sends it again without
 > its view moving, once more than twice the round trip has passed.
@@ -358,9 +413,9 @@ A server tells the others that a player's client dropped with
 > Before loading is done, a client waits 60 seconds for an acknowledgement rather
 > than 15.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 3.10.0.237 up to 4.21.0.0 -->
 
-> **In 4.1–4.20**
+> **In 3.10–4.20**
 >
 > Where it has heard nothing for 5 seconds in play, a client shows its player
 > that it is trying to reconnect, and clears the notice as soon as anything

@@ -87,14 +87,21 @@ spell can be raised, and at which champion levels, with `SpellRankLimits`.
 >
 > A command its player types sends `UpgradeSpell` without checking anything.
 
-<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
+<!-- holds from 3.10.0.237 up to 4.20.0.315 -->
 
-> **In 4.1–4.19**
+> **In 3.10–4.19**
 >
 > A client asks only where the champion has a point to spend, is of the level
 > the slot requires, and the spell is below its highest level. A request a
 > server never answers leaves the level as it was and the point spent, until
 > the next `SpellUpgraded` or `LevelUp`.
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> A client also sends `UpgradeSpell` for a point of a separate kind the champion
+> holds, and spends no spell point for it.
 
 ## What a slot holds
 

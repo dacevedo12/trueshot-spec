@@ -58,12 +58,25 @@ whether it is a summoner spell.
 > basic attack, 65 to 67 its other basic attacks, 68 its critical attack and
 > 69 a miss.
 
+<!-- holds from 3.10.0.237 up to 4.21.0.0 -->
+
+> **In 3.10–4.20**
+>
+> A cast's slot also takes 64 to 72 for a basic attack and 73 to 81 for a
+> critical one.
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> Of those, 64 is the champion's basic attack and 73 its critical attack; the
+> rest are its other basic and critical attacks.
+
 <!-- holds from 4.1.0.171 up to 4.21.0.0 -->
 
 > **In 4.1–4.20**
 >
-> A cast's slot also takes values beyond the books: 64 to 72 for a basic
-> attack, 73 to 81 for a critical one, and 255 for a cast from no slot.
+> A cast's slot also takes 255, for a cast from no slot.
 
 A server MUST NOT name a champion book slot beyond the book's last slot.
 
@@ -105,6 +118,15 @@ A server MUST NOT name a champion book slot beyond the book's last slot.
 >
 > A champion's own book ends at slot 51. A client ignores an `Autocast` naming
 > a slot above 51. A server MUST NOT name a champion book slot above 51.
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> A champion's own book ends at slot 59. A client ignores an `Autocast` naming
+> a slot above 59, and applies a `SpellInSlot` or a `SpellCostChanged` naming
+> one while reporting it as an error. A server MUST NOT name a champion book
+> slot above 59.
 
 <!-- holds from 4.1.0.171 up to 4.7.0.296 -->
 
@@ -150,19 +172,19 @@ beyond the inventory's last slot.
 > same, reporting it as an error and writing past the end of the inventory. A
 > server MUST NOT name an inventory slot above 36.
 
-<!-- holds from 1.0.0.96 up to 1.0.0.141 -->
+<!-- holds from 1.0.0.96 up to 3.11.0.306 -->
 
-> **In 1.0.0.96–1.0.0.140**
+> **In 1.0.0.96–3.10**
 >
 > A client asks to swap only slots 0 to 5 (`SwapItems`).
 
-<!-- holds from 1.0.0.126 up to 1.0.0.141 -->
+<!-- holds from 1.0.0.126 up to 3.11.0.306 -->
 
-> **In 1.0.0.126–1.0.0.140**
+> **In 1.0.0.126–3.10**
 >
 > A champion's inventory ends at slot 37. A client ignores a
-> `RemoveItemAnswer`, `InventorySlot`, `ItemAdded` or `ItemUsed` naming a slot
-> above 37. A server MUST NOT name an inventory slot above 37.
+> `RemoveItemAnswer`, `InventorySlot`, `ItemAdded`, `ItemUsed` or `ItemCharges`
+> naming a slot above 37. A server MUST NOT name an inventory slot above 37.
 
 <!-- holds from 4.1.0.171 up to 4.21.0.0 -->
 

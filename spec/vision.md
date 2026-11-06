@@ -45,9 +45,28 @@ A server brings a unit into what a client's side can see with `EnterSight`.
 > `CreateTurret` or `CreateNeutral` that makes the unit, each taking effect as
 > though it had arrived on its own.
 
-<!-- holds from 1.0.0.140 up to 4.21.0.0 -->
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
 
-> **In 1.0.0.140–4.20**
+> **In 1.0.0.140**
+>
+> `EnterSight` states everything a client needs to draw the unit at once: its
+> looks, its shields, where it stands or which path it walks, and, in what
+> follows, its health and resource. A body MAY end early where its layout marks
+> the remaining parts as present only while bytes remain.
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> `EnterSight` states the unit's shields and looks and, for a champion or a
+> minion, where it stands or which path it walks, and nothing of its health or
+> resource. A client reads every part of the body whatever its length, so a
+> server MUST NOT end one early. For an inhibitor or a nexus it reads nothing
+> after the messages carried.
+
+<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+
+> **In 4.1–4.20**
 >
 > `EnterSight` states everything a client needs to draw the unit at once: its
 > looks, its shields, where it stands or which path it walks, and, in what
@@ -81,9 +100,22 @@ its name and health bar over it.
 > `EnterLocalSight` states the unit's maximum health beside its health, and
 > nothing of its resource.
 
-<!-- holds from 1.0.0.140 up to 4.21.0.0 -->
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
 
-> **In 1.0.0.140–4.20**
+> **In 1.0.0.140**
+>
+> `EnterLocalSight` states the unit's resource beside its health.
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> `EnterLocalSight` states the unit's maximum health beside its health, and
+> nothing of its resource. It can carry whole messages as `EnterSight` does.
+
+<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+
+> **In 4.1–4.20**
 >
 > `EnterLocalSight` states the unit's resource beside its health.
 
@@ -107,12 +139,18 @@ and leave a side's view with `ParticleEnterTeamSight` and
 >
 > `LeaveLocalSight` changes nothing a client shows, whichever unit it names.
 
+<!-- holds from 3.10.0.237 up to 4.21.0.0 -->
+
+> **In 3.10–4.20**
+>
+> `LeaveLocalSight` takes a unit out of what one client alone can see, and
+> leaves it held.
+
 <!-- holds from 4.1.0.171 up to 4.21.0.0 -->
 
 > **In 4.1–4.20**
 >
-> `LeaveLocalSight` takes a unit out of what one client alone can see, and
-> leaves it held. One naming a client's own champion changes nothing it shows.
+> `LeaveLocalSight` naming a client's own champion changes nothing it shows.
 
 ## Regions
 
@@ -198,9 +236,9 @@ of them only for its own champion:
 >
 > `GoldGained` shows floating gold only for the client's own champion.
 
-<!-- holds from 0.9.25.24 up to 1.0.0.141 -->
+<!-- holds from 0.9.25.24 up to 3.11.0.306 -->
 
-> **In 0.9.25.24–1.0.0.140**
+> **In 0.9.25.24–3.10**
 >
 > `GoldGained` naming the client's own champion, with an amount above 0 and a
 > source the client holds, shows the gold over the source.
@@ -240,11 +278,23 @@ of them only for its own champion:
 > `LevelUp` shows its effect over any champion the client can see, and does
 > nothing for another unit.
 
+<!-- holds from 3.10.0.237 up to 4.21.0.0 -->
+
+> **In 3.10–4.20**
+>
+> `GoldGained` shows floating gold only for the client's own champion.
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> Where the source of a `GoldGained` cannot show text, the gold shows over the
+> client's own champion.
+
 <!-- holds from 4.1.0.171 up to 4.21.0.0 -->
 
 > **In 4.1–4.20**
 >
-> `GoldGained` shows floating gold only for the client's own champion, and
 > `LevelUp` shows its effect over any unit the client can see.
 
 A server SHOULD send `SpellCooldown`, `SpellCharges` and `GoldGained` about a
