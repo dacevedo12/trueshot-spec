@@ -519,13 +519,27 @@ halves. The first marks every unit and every object kept until a checkpoint,
 inhibitors aside. A create message for a marked net id replaces the marked
 object rather than keeping the id on it. The second removes every object still
 marked. In between, a server sends again each object the client is to keep.
-Of the stages, one marks and any other removes.
+Each stage either marks or removes.
 
-<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
+<!-- holds from 1.0.0.143 up to 4.18.0.271 -->
 
-> **In 4.1–4.17**
+> **In 1.0.0.143–4.17**
 >
 > The stage of `SoftReconnect` that marks is 0.
+
+<!-- holds from 1.0.0.143 up to 3.11.0.306 -->
+
+> **In 1.0.0.143–3.10**
+>
+> A client reads only the two lowest bits of the stage: a stage with both clear
+> marks, and any other removes.
+
+<!-- holds from 1.0.0.150 up to 1.0.0.151 -->
+
+> **In 1.0.0.150**
+>
+> `ParticlesCreated` does not replace a marked object holding its net id: that
+> object stays until the removing stage.
 
 <!-- holds from 4.18.0.271 up to 4.21.0.0 -->
 
