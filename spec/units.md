@@ -18,8 +18,8 @@ Each kind of object has its own message:
 - a minion sent out from a side's barracks, `SpawnFromBarracks`, and a unit
   like one, such as a ward, `SpawnUnit`;
 - a monster of no side, `CreateNeutral`; a pet, `SpawnPet`;
-- a turret the map holds, `CreateTurret`, matched by name against the map's
-  own turrets, and a turret of the server's choosing, `SpawnTurret`;
+- a turret, `CreateTurret` ([The client's data](data.md) says how it names
+  one), and a turret of the server's choosing, `SpawnTurret`;
 - an object that follows a unit, `CreateFollower`, and a change to what it
   follows, `FollowerMaster`;
 - an unseen marker, `SpawnMarker`, which other messages can name and
@@ -27,14 +27,36 @@ Each kind of object has its own message:
 - a prop, a thing that stands on the map and is looked at, `MapProp`, and a
   change to one, `MapPropChanged`.
 
-Several of these arrive on their own or inside the `EnterSight` that brings the
-unit into view (see [Vision](vision.md)): a client takes either.
+<!-- holds from 1.0.0.138 up to 4.21.0.0 -->
+
+> **In 1.0.0.138–4.20**
+>
+> Several of these arrive on their own or inside the `EnterSight` that brings
+> the unit into view (see [Vision](vision.md)): a client takes either.
 
 `CharacterPreload` has a client load a character's art ahead of need.
+
+<!-- holds from 0.8.13.26 up to 1.0.0.61 -->
+
+> **In 0.8.13.26–1.0.0.60**
+>
+> A client acts on a `CreateChampion` or a `CreateNeutral` whenever it arrives,
+> before `CharacterSelected` as after.
+
+<!-- holds from 1.0.0.96 up to 1.0.0.97 -->
+
+> **In 1.0.0.96**
+>
+> A client drops a `CreateChampion` or a `CreateNeutral` that arrives before it
+> has loaded the map's ground grid, which it loads while loading the match.
 
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
 > **In 1.0.0.126**
+>
+> A client acts on a `CreateChampion` or a `CreateNeutral` whenever it arrives.
+> Once it has reconnected, it drops a `SpawnFromBarracks`, `SpawnUnit` or
+> `CreateNeutral` for an object it already holds.
 >
 > A client builds a prop from the character its `MapProp` names, loading that
 > character from its own files when it has not already, and fails soon after the
@@ -64,12 +86,6 @@ champion out of the world. A unit's death is in [Combat](combat.md).
 ## Bots
 
 A server can tell a client what a bot is thinking (`BotDebug`), weighing
-(`BotTargets`) or doing (`BotState`).
-
-<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
-
-> **In 4.1–4.19**
->
-> None of `BotDebug`, `BotTargets` and `BotState` changes what a player sees.
+(`BotTargets`) or doing (`BotState`). None of them changes what a player sees.
 
 <!-- messages -->

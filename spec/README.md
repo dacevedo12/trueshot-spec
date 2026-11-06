@@ -2,9 +2,8 @@
 
 A wire protocol specification for League of Legends game servers: what a server
 sends for a client to connect, load a match and play, and what the client does
-with it. Together the chapters are meant to be enough to build a conforming
-server in any language, without reading another one. Each builds on the ones
-before it, so read them in order.
+with it. The chapters are meant to be enough to build a conforming server. Each
+builds on the ones before it, so read them in order.
 
 A chapter holds for every client build covered, except a passage set apart and
 headed with ranges, which holds for those alone. What a chapter says of a
@@ -21,9 +20,8 @@ says how it tells a client the results.
 Check your work against [conformance/](../conformance/) as you go; its vectors
 are this specification's measure of a conforming server.
 
-If the specification does not answer something you need, do not fill the gap
-with a guess and carry on. That is a defect worth reporting, and
-[CONTRIBUTING.md](../CONTRIBUTING.md) explains how.
+If the specification does not answer something you need, do not guess: report
+it as a defect, as [CONTRIBUTING.md](../CONTRIBUTING.md) explains.
 
 ## Reading order
 

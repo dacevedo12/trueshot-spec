@@ -1,27 +1,31 @@
 # Replication
 
-A server states what has changed about the units a client can see with
-`Replication`. Its layout gives, for each unit, the groups of values it
-carries, and for each group, which of its values follow. What the values are
-follows from the unit.
+With `Replication` a server states what has changed about the units a client
+can see: for each unit, the groups of values it carries and which values of
+each follow. What the values are follows from the unit.
 
-<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
+<!-- holds from 0.9.25.24 up to 1.0.0.141 -->
 
-> **In 1.0.0.126**
+> **In 0.9.25.24–1.0.0.140**
 >
 > The groups follow in the order 0 to 4, and nothing gives a group's length:
 > each value is four bytes, so a group takes four bytes for its set of values and
-> four for each bit that set has set. A client takes a batch on channels 2, 3
-> and 4 alike, however it was sent.
+> four for each bit that set has set.
 >
 > Each value is a 32-bit float or a 32-bit unsigned integer, as its row in the
-> tables below says, and travels as it stands, with no other encoding. A value
-> that says yes or no is an integer, 1 for yes and 0 for no.
+> tables below says, and travels as it stands.
 >
 > A client passes over a set bit its table has no row for, and a group its table
-> has none of, by their four bytes each, without taking anything from them. A
-> server MUST name in a batch only champions, minions, turrets, buildings and
-> props: a client treats a unit of any other kind as an error.
+> has none of, by their four bytes each, without taking anything from them. It
+> passes over the values of a unit whose kind has no table the same way, and
+> still answers the batch.
+
+<!-- holds from 0.9.25.24 up to 1.0.0.127 -->
+
+> **In 0.9.25.24–1.0.0.126**
+>
+> A value that says yes or no is an integer, 1 for yes and 0 for no. A client
+> takes a batch on channels 2, 3 and 4 alike.
 
 <!-- holds from 4.1.0.171 up to 4.21.0.0 -->
 
@@ -54,14 +58,39 @@ A run is a sequence of values with nothing between them, in the order the set
 bits name them, lowest first.
 
 The bit that names a value means different things for different units.
-Champions, turrets, minions and units belonging to no side, props, and
-buildings each answer to a table of their own, so the same bit in the same
-group is one value on one unit and another on the next. A sending end MUST
-write the table the unit it names answers to.
+Champions, turrets, minions and units belonging to no side, and buildings each
+answer to a table of their own, so the same bit in the same group is one value
+on one unit and another on the next. A sending end MUST write the table the
+unit it names answers to.
+
+<!-- holds from 0.9.25.24 up to 1.0.0.97 -->
+
+> **In 0.9.25.24–1.0.0.96**
+>
+> A prop answers to no table, and a client takes nothing a batch carries for
+> one.
+
+<!-- holds from 1.0.0.126 up to 4.21.0.0 -->
+
+> **In 1.0.0.126–4.20**
+>
+> Props answer to a table of their own as well.
 
 Which table a unit answers to follows from the message that put it on the
 field (see [Units](units.md)). A building, which no message creates, answers to
-the building table of the map loaded.
+the building table.
+
+<!-- holds from 0.9.25.24 up to 1.0.0.141 -->
+
+> **In 0.9.25.24–1.0.0.140**
+>
+> The building table is the same on every map.
+
+<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+
+> **In 4.1–4.20**
+>
+> A building answers to the building table of the map loaded.
 
 ## Which batches a client takes
 
@@ -73,11 +102,178 @@ which batches a client takes, and what that requires of a server.
 
 Each row gives the group and bits that name a value and what the value is.
 
-<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
+<!-- holds from 0.9.25.24 up to 1.0.0.141 -->
 
-> **In 1.0.0.126**
+> **In 0.9.25.24–1.0.0.140**
 >
 > Each row also gives the type a value is written in.
+
+<!-- holds from 0.9.25.24 up to 0.9.25.36 -->
+
+> **In 0.9.25.24–0.9.25.35**
+>
+> ## A champion
+>
+> | Group | Bits     | Value                                                                                             | Type  |
+> | ----- | -------- | ------------------------------------------------------------------------------------------------- | ----- |
+> | 0     | 0        | Experience                                                                                        | float |
+> | 0     | 1        | Gold in hand                                                                                      | float |
+> | 0     | 2 to 3   | Which slots can be cast from: the champion's own, then the second set                             | u32   |
+> | 0     | 4 to 7   | What the spell in slots 0 to 3 costs                                                              | float |
+> | 0     | 8 to 11  | What the spell in slots 41 to 44 costs                                                            | float |
+> | 0     | 12 to 13 | What the spell in slots 0 and 1 of the second set costs                                           | float |
+> | 1     | 0 to 1   | Health and resource as they stand                                                                 | float |
+> | 1     | 2 to 3   | Health and resource at their greatest                                                             | float |
+> | 1     | 4        | What the champion is doing, as a set of bits                                                      | u32   |
+> | 1     | 5 to 8   | Whether it is proof against spells, proof against all harm, targetable, and proof against strikes | u32   |
+> | 2     | 0 to 1   | Whether it is proof against strikes, then against spells, as group 1 bits 8 and 5                 | u32   |
+> | 2     | 2        | Damage it deals by striking                                                                       | float |
+> | 2     | 3        | Damage its spells deal before modifiers                                                           | float |
+> | 2     | 4        | How often it turns a blow aside                                                                   | float |
+> | 2     | 5        | Its size                                                                                          | float |
+> | 2     | 6        | How often it strikes critically                                                                   | float |
+> | 2     | 7 to 8   | Armour and spell resistance                                                                       | float |
+> | 2     | 9 to 10  | How fast health and resource return                                                               | float |
+> | 2     | 11       | How fast it moves                                                                                 | float |
+> | 2     | 12       | How far it strikes from                                                                           | float |
+> | 2     | 13 to 14 | Flat and percent modifiers on the damage it strikes with                                          | float |
+> | 2     | 15 to 16 | Flat and percent modifiers on its spells' damage                                                  | float |
+> | 2     | 17 to 18 | Flat and percent reduction of the spell damage it takes                                           | float |
+> | 2     | 19       | A multiplier on how fast it strikes                                                               | float |
+> | 2     | 20       | A flat addition to how far it casts                                                               | float |
+> | 2     | 21       | A modifier on its cooldowns                                                                       | float |
+> | 3     | 0 to 1   | A percent and a flat addition to how far it sees                                                  | float |
+> | 3     | 2        | Level                                                                                             | u32   |
+>
+> ## A turret
+>
+> | Group | Bits     | Value                                                    | Type  |
+> | ----- | -------- | -------------------------------------------------------- | ----- |
+> | 1     | 0        | Damage it deals by striking                              | float |
+> | 1     | 1 to 2   | Armour and spell resistance                              | float |
+> | 1     | 3        | How fast it moves                                        | float |
+> | 1     | 4        | A multiplier on how fast it strikes                      | float |
+> | 1     | 5        | Its size                                                 | float |
+> | 1     | 6 to 7   | Flat and percent modifiers on the damage it strikes with | float |
+> | 1     | 8 to 9   | Flat and percent modifiers on its spells' damage         | float |
+> | 1     | 10 to 11 | How fast health and resource return                      | float |
+> | 1     | 12 to 13 | Health as it stands, then at its greatest                | float |
+> | 3     | 0 to 1   | A percent and a flat addition to how far it sees         | float |
+>
+> ## A minion, and a unit belonging to no side
+>
+> | Group | Bits     | Value                                                                                             | Type  |
+> | ----- | -------- | ------------------------------------------------------------------------------------------------- | ----- |
+> | 1     | 0 to 1   | Health as it stands, then at its greatest                                                         | float |
+> | 1     | 2 to 3   | Whether it is proof against strikes, then against spells                                          | u32   |
+> | 1     | 4        | What the unit is doing, as a set of bits                                                          | u32   |
+> | 1     | 5 to 8   | Whether it is proof against spells, proof against all harm, targetable, and proof against strikes | u32   |
+> | 1     | 9        | Damage it deals by striking                                                                       | float |
+> | 1     | 10 to 11 | Armour and spell resistance                                                                       | float |
+> | 1     | 12       | How fast it moves                                                                                 | float |
+> | 1     | 13       | A multiplier on how fast it strikes                                                               | float |
+> | 1     | 14       | Its size                                                                                          | float |
+> | 1     | 15 to 16 | Flat and percent modifiers on the damage it strikes with                                          | float |
+> | 1     | 17 to 18 | Flat and percent modifiers on its spells' damage                                                  | float |
+> | 1     | 19 to 20 | How fast health and resource return                                                               | float |
+> | 3     | 0 to 1   | A percent and a flat addition to how far it sees                                                  | float |
+>
+> ## A building
+>
+> Inhibitors, nexuses and the buildings minions come from share one table. It
+> has no value for health at its greatest.
+>
+> | Group | Bits   | Value                                                | Type  |
+> | ----- | ------ | ---------------------------------------------------- | ----- |
+> | 1     | 0 to 1 | Whether it is proof against all harm, and targetable | u32   |
+> | 1     | 2      | Health as it stands                                  | float |
+
+<!-- holds from 1.0.0.58 up to 1.0.0.61 -->
+
+> **In 1.0.0.58–1.0.0.60**
+>
+> ## A champion
+>
+> | Group | Bits     | Value                                                                                                  | Type  |
+> | ----- | -------- | ------------------------------------------------------------------------------------------------------ | ----- |
+> | 0     | 0        | Experience                                                                                             | float |
+> | 0     | 1        | Gold in hand                                                                                           | float |
+> | 0     | 2        | Which slots can be cast from                                                                           | u32   |
+> | 0     | 3 to 6   | What the spell in slots 0 to 3 costs                                                                   | float |
+> | 0     | 7 to 14  | What the spell in slots 41 to 48 costs                                                                 | float |
+> | 0     | 15 to 16 | What the spell in slots 0 and 1 of the second set costs                                                | float |
+> | 1     | 0        | What the champion is doing, as a set of bits                                                           | u32   |
+> | 1     | 1 to 3   | Whether it is proof against spells, proof against all harm, and targetable                             | u32   |
+> | 1     | 4        | Whether it is proof against strikes                                                                    | u32   |
+> | 1     | 5        | Damage it deals by striking                                                                            | float |
+> | 1     | 6        | Damage its spells deal before modifiers                                                                | float |
+> | 1     | 7        | How often it turns a blow aside                                                                        | float |
+> | 1     | 8        | How often it strikes critically                                                                        | float |
+> | 1     | 9        | Armour                                                                                                 | float |
+> | 1     | 10       | Spell resistance                                                                                       | float |
+> | 1     | 11 to 12 | How fast health and resource return                                                                    | float |
+> | 1     | 13       | How far it strikes from                                                                                | float |
+> | 1     | 14 to 16 | Flat and percent modifiers on the damage it strikes with, then the flat modifier on its spells' damage | float |
+> | 1     | 17 to 18 | Flat and percent reduction of the spell damage it takes                                                | float |
+> | 1     | 19       | A multiplier on how fast it strikes                                                                    | float |
+> | 1     | 20       | A flat addition to how far it casts                                                                    | float |
+> | 1     | 21       | A modifier on its cooldowns                                                                            | float |
+> | 2     | 0 to 1   | Whether it is proof against strikes, then against spells, as group 1 bits 4 and 1                      | u32   |
+> | 3     | 0 to 1   | Health and resource as they stand                                                                      | float |
+> | 3     | 2 to 3   | Health and resource at their greatest                                                                  | float |
+> | 3     | 4 to 5   | A flat and a percent addition to how far it sees                                                       | float |
+> | 3     | 6        | How fast it moves                                                                                      | float |
+> | 3     | 7        | A value whose meaning is not recorded                                                                  | float |
+> | 3     | 8        | Level                                                                                                  | u32   |
+>
+> ## A turret
+>
+> | Group | Bits     | Value                                                                                                  | Type  |
+> | ----- | -------- | ------------------------------------------------------------------------------------------------------ | ----- |
+> | 1     | 0        | Damage it deals by striking                                                                            | float |
+> | 1     | 1 to 2   | Armour and spell resistance                                                                            | float |
+> | 1     | 3        | A multiplier on how fast it strikes                                                                    | float |
+> | 1     | 4 to 6   | Flat and percent modifiers on the damage it strikes with, then the flat modifier on its spells' damage | float |
+> | 1     | 7        | How fast health returns                                                                                | float |
+> | 1     | 8 to 9   | Health as it stands, then at its greatest                                                              | float |
+> | 1     | 10       | What the turret is doing, as a set of bits                                                             | u32   |
+> | 1     | 11 to 13 | Whether it is proof against spells, proof against all harm, and targetable                             | u32   |
+> | 1     | 14       | Whether it is proof against strikes                                                                    | u32   |
+> | 3     | 0 to 1   | A flat and a percent addition to how far it sees                                                       | float |
+> | 3     | 2        | How fast it moves                                                                                      | float |
+> | 3     | 3        | A value whose meaning is not recorded                                                                  | float |
+>
+> ## A minion, and a unit belonging to no side
+>
+> | Group | Bits     | Value                                                                                                  | Type  |
+> | ----- | -------- | ------------------------------------------------------------------------------------------------------ | ----- |
+> | 1     | 0 to 1   | Health and resource as they stand                                                                      | float |
+> | 1     | 2 to 3   | Health and resource at their greatest                                                                  | float |
+> | 1     | 4        | What the unit is doing, as a set of bits                                                               | u32   |
+> | 1     | 5 to 7   | Whether it is proof against spells, proof against all harm, and targetable                             | u32   |
+> | 1     | 8        | Whether it is proof against strikes                                                                    | u32   |
+> | 1     | 9        | Damage it deals by striking                                                                            | float |
+> | 1     | 10 to 11 | Armour and spell resistance                                                                            | float |
+> | 1     | 12       | A multiplier on how fast it strikes                                                                    | float |
+> | 1     | 13 to 15 | Flat and percent modifiers on the damage it strikes with, then the flat modifier on its spells' damage | float |
+> | 1     | 16 to 17 | How fast health and resource return                                                                    | float |
+> | 3     | 0 to 1   | A flat and a percent addition to how far it sees                                                       | float |
+> | 3     | 2        | How fast it moves                                                                                      | float |
+> | 3     | 3        | A value whose meaning is not recorded                                                                  | float |
+>
+> ## A building
+>
+> Inhibitors, nexuses and the buildings minions come from share one table. It
+> has no value for health at its greatest.
+>
+> | Group | Bits   | Value                                                | Type  |
+> | ----- | ------ | ---------------------------------------------------- | ----- |
+> | 1     | 0      | Health as it stands                                  | float |
+> | 1     | 1 to 2 | Whether it is proof against all harm, and targetable | u32   |
+
+<!-- holds from 1.0.0.96 up to 1.0.0.127 -->
+
+> **In 1.0.0.96–1.0.0.126**
 >
 > ## A champion
 >
@@ -87,7 +283,7 @@ Each row gives the group and bits that name a value and what the value is.
 > | 0     | 1        | Gold in hand                                                                                           | float |
 > | 0     | 2 to 3   | Which slots can be cast from: the champion's own, then the second set                                  | u32   |
 > | 0     | 4 to 7   | What the spell in slots 0 to 3 costs                                                                   | float |
-> | 0     | 8 to 15  | What the spell in slots 42 to 49 costs                                                                 | float |
+> | 0     | 8 to 15  | What the spell in each of eight further slots costs                                                    | float |
 > | 0     | 16 to 17 | What the spell in slots 0 and 1 of the second set costs                                                | float |
 > | 1     | 0        | What the champion is doing, as a set of bits                                                           | u32   |
 > | 1     | 1 to 3   | Whether it is proof against spells, proof against all harm, and targetable                             | u32   |
@@ -117,13 +313,11 @@ Each row gives the group and bits that name a value and what the value is.
 > | 3     | 6        | How fast it moves                                                                                      | float |
 > | 3     | 7        | A value whose meaning is not recorded                                                                  | float |
 > | 3     | 8        | Level                                                                                                  | u32   |
-> | 3     | 9        | Kills taken from no side                                                                               | u32   |
 >
-> Bit n of either set of slots that can be cast from stands for slot n. What the
-> second set and slots 42 to 49 hold is not recorded, and a server writes zero
-> in their costs. Which bit of what a champion is doing means what is not
-> recorded either. A client sets the sides that can aim at a unit to 33554432
-> where any can and 25165824 where none can.
+> What the second set and the eight further slots hold is not recorded, and a
+> server writes zero in their costs. Which bit of what a champion is doing means
+> what is not recorded either. A client sets the sides that can aim at a unit to
+> 33554432 where any can and 25165824 where none can.
 >
 > ## A turret
 >
@@ -173,6 +367,20 @@ Each row gives the group and bits that name a value and what the value is.
 > | 1     | 0      | Health as it stands                                  | float |
 > | 1     | 1 to 2 | Whether it is proof against all harm, and targetable | u32   |
 > | 1     | 3      | Which sides can aim at it, as a set of bits          | u32   |
+
+<!-- holds from 1.0.0.96 up to 1.0.0.97 -->
+
+> **In 1.0.0.96**
+>
+> A champion's eight further slots are slots 41 to 48.
+
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
+
+> **In 1.0.0.126**
+>
+> A champion's eight further slots are slots 42 to 49, and bit n of either set
+> of slots that can be cast from stands for slot n. Its group 3 bit 9 holds the
+> kills it has taken from no side, as a u32.
 >
 > ## A prop
 >
@@ -185,6 +393,107 @@ Each row gives the group and bits that name a value and what the value is.
 > | 3     | 0 to 1 | A flat and a percent addition to how far it sees     | float |
 > | 3     | 2      | How fast it moves                                    | float |
 > | 3     | 3      | A value whose meaning is not recorded                | float |
+
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+
+> **In 1.0.0.140**
+>
+> ## A champion
+>
+> | Group | Bits     | Value                                                                                                  | Type  |
+> | ----- | -------- | ------------------------------------------------------------------------------------------------------ | ----- |
+> | 0     | 0        | Gold in hand                                                                                           | float |
+> | 0     | 1 to 2   | Which slots can be cast from: the champion's own, then the second set                                  | u32   |
+> | 0     | 3 to 6   | What the spell in slots 0 to 3 costs                                                                   | float |
+> | 0     | 7 to 14  | What the spell in slots 42 to 49 costs                                                                 | float |
+> | 0     | 15 to 16 | What the spell in slots 0 and 1 of the second set costs                                                | float |
+> | 1     | 0        | What the champion is doing, as a set of bits                                                           | u32   |
+> | 1     | 1 to 3   | Whether it is proof against spells, proof against all harm, and proof against strikes                  | u32   |
+> | 1     | 4        | Damage it deals by striking                                                                            | float |
+> | 1     | 5        | Damage its spells deal before modifiers                                                                | float |
+> | 1     | 6        | How often it turns a blow aside                                                                        | float |
+> | 1     | 7        | How often it strikes critically                                                                        | float |
+> | 1     | 8        | Armour                                                                                                 | float |
+> | 1     | 9        | Spell resistance                                                                                       | float |
+> | 1     | 10 to 11 | How fast health and resource return                                                                    | float |
+> | 1     | 12       | How far it strikes from                                                                                | float |
+> | 1     | 13 to 15 | Flat and percent modifiers on the damage it strikes with, then the flat modifier on its spells' damage | float |
+> | 1     | 16 to 17 | Flat and percent reduction of the spell damage it takes                                                | float |
+> | 1     | 18       | A multiplier on how fast it strikes                                                                    | float |
+> | 1     | 19       | A flat addition to how far it casts                                                                    | float |
+> | 1     | 20       | A modifier on its cooldowns                                                                            | float |
+> | 1     | 21 to 22 | How much armour it cuts through, flat then as a percent                                                | float |
+> | 1     | 23 to 24 | How much spell resistance it cuts through, flat then as a percent                                      | float |
+> | 1     | 25       | Life steal                                                                                             | float |
+> | 1     | 26       | Spell vamp                                                                                             | float |
+> | 3     | 0 to 1   | Health and resource as they stand                                                                      | float |
+> | 3     | 2 to 3   | Health and resource at their greatest                                                                  | float |
+> | 3     | 4        | Experience                                                                                             | float |
+> | 3     | 5 to 6   | A flat and a percent addition to how far it sees                                                       | float |
+> | 3     | 7        | How fast it moves                                                                                      | float |
+> | 3     | 8        | A value whose meaning is not recorded                                                                  | float |
+> | 3     | 9        | Level                                                                                                  | u32   |
+> | 3     | 10       | Kills taken from no side                                                                               | u32   |
+>
+> Bit n of either set of slots that can be cast from stands for slot n. What the
+> second set and slots 42 to 49 hold is not recorded, and a server writes zero
+> in their costs. Which bit of what a champion is doing means what is not
+> recorded either.
+>
+> ## A turret
+>
+> | Group | Bits     | Value                                                                                                  | Type  |
+> | ----- | -------- | ------------------------------------------------------------------------------------------------------ | ----- |
+> | 1     | 0 to 1   | Health as it stands, then at its greatest                                                              | float |
+> | 1     | 2        | What the turret is doing, as a set of bits                                                             | u32   |
+> | 1     | 3 to 5   | Whether it is proof against spells, proof against all harm, and proof against strikes                  | u32   |
+> | 1     | 6        | Damage it deals by striking                                                                            | float |
+> | 1     | 7 to 8   | Armour and spell resistance                                                                            | float |
+> | 1     | 9        | A multiplier on how fast it strikes                                                                    | float |
+> | 1     | 10 to 12 | Flat and percent modifiers on the damage it strikes with, then the flat modifier on its spells' damage | float |
+> | 1     | 13       | How fast health returns                                                                                | float |
+> | 3     | 0 to 1   | A flat and a percent addition to how far it sees                                                       | float |
+> | 3     | 2        | How fast it moves                                                                                      | float |
+> | 3     | 3        | A value whose meaning is not recorded                                                                  | float |
+>
+> ## A minion, and a unit belonging to no side
+>
+> | Group | Bits     | Value                                                                                                  | Type  |
+> | ----- | -------- | ------------------------------------------------------------------------------------------------------ | ----- |
+> | 1     | 0 to 1   | Health and resource as they stand                                                                      | float |
+> | 1     | 2 to 3   | Health and resource at their greatest                                                                  | float |
+> | 1     | 4        | What the unit is doing, as a set of bits                                                               | u32   |
+> | 1     | 5 to 7   | Whether it is proof against spells, proof against all harm, and proof against strikes                  | u32   |
+> | 1     | 8        | Damage it deals by striking                                                                            | float |
+> | 1     | 9 to 10  | Armour and spell resistance                                                                            | float |
+> | 1     | 11       | A multiplier on how fast it strikes                                                                    | float |
+> | 1     | 12 to 14 | Flat and percent modifiers on the damage it strikes with, then the flat modifier on its spells' damage | float |
+> | 1     | 15 to 16 | How fast health and resource return                                                                    | float |
+> | 1     | 17 to 18 | Flat and percent reduction of the spell damage it takes                                                | float |
+> | 3     | 0 to 1   | A flat and a percent addition to how far it sees                                                       | float |
+> | 3     | 2        | How fast it moves                                                                                      | float |
+> | 3     | 3        | A value whose meaning is not recorded                                                                  | float |
+>
+> ## A building
+>
+> Inhibitors, nexuses and the buildings minions come from share one table. It
+> has no value for health at its greatest.
+>
+> | Group | Bits | Value                                | Type  |
+> | ----- | ---- | ------------------------------------ | ----- |
+> | 1     | 0    | Health as it stands                  | float |
+> | 1     | 1    | Whether it is proof against all harm | u32   |
+>
+> ## A prop
+>
+> | Group | Bits   | Value                                            | Type  |
+> | ----- | ------ | ------------------------------------------------ | ----- |
+> | 1     | 0      | Health as it stands                              | float |
+> | 1     | 1      | Health as it stands, again                       | float |
+> | 1     | 2      | Whether it is proof against all harm             | u32   |
+> | 3     | 0 to 1 | A flat and a percent addition to how far it sees | float |
+> | 3     | 2      | How fast it moves                                | float |
+> | 3     | 3      | A value whose meaning is not recorded            | float |
 
 <!-- holds from 4.1.0.171 up to 4.21.0.0 -->
 
@@ -356,11 +665,40 @@ Each row gives the group and bits that name a value and what the value is.
 
 ## Values stated outside a batch
 
-Besides its batches, a server states some values with messages of their own. It
-grants experience with `ExperienceGained` and gold with `GoldGained`, and can
-send the gold a unit earns to another with `GoldRedirect`. A
-level gained is `LevelUp`, which on its own is enough for a client to show the
-new level on its champion's portrait. A server sets a champion's tallies for the
+Besides its batches, a server states some values with messages of their own.
+
+<!-- holds from 0.8.13.26 up to 0.9.22.14 -->
+
+> **In 0.8.13.26–0.9.22.13**
+>
+> A server grants gold with `GoldGained`. `ExperienceGained` shows the
+> experience gained over the unit and grants none: a champion's experience
+> follows its replicated values alone.
+
+<!-- holds from 0.9.25.24 up to 1.0.0.127 -->
+
+> **In 0.9.25.24–1.0.0.126**
+>
+> A server grants experience with `ExperienceGained` and gold with `GoldGained`.
+
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+
+> **In 1.0.0.140**
+>
+> A server grants experience with `ExperienceGained`, and MUST name a champion
+> in it: a client fails on one naming any other unit. `GoldGained` shows the
+> gold gained over the unit and grants none: a champion's gold in hand follows
+> group 0 bit 0 of its batches alone.
+
+<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+
+> **In 4.1–4.20**
+>
+> A server grants experience with `ExperienceGained` and gold with `GoldGained`.
+
+A server can send the gold a unit earns to another with `GoldRedirect`. A level
+gained is `LevelUp`, which on its own is enough for a client to show the new
+level on its champion's portrait. A server sets a champion's tallies for the
 scoreboard with `ChampionStats`. A server can also add to a unit's shield
 (`ShieldAdded`), change how its health bar or resource bar is shown
 (`HealthBar`, `ResourceDisplay`), change the sort of resource it has

@@ -22,6 +22,13 @@ everyone meant to see it with `PingPlaced`. A client asks to play an emote with
 clients of a voice command a champion gave (`VoiceCommand`) and of an emote a
 champion played for the moment (`ContextEmote`).
 
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+
+> **In 1.0.0.140**
+>
+> A client plays the voice line `VoiceCommand` names, unless its player has
+> muted the champion's player.
+
 <!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
 > **In 4.1–4.19**
@@ -34,7 +41,7 @@ champion played for the moment (`ContextEmote`).
 
 A server can play a sound once (`SoundPlayed`) or a voice event (`VoiceEvent`).
 Where a `VoiceEvent` asks for an answer, a client sends `VoiceEventDone` once it
-has played the event, or at once where it cannot play it. A server can also set
+has played the event. A server can also set
 a champion's skin music (`ThemeMusic`), drive the music (`MusicCue`), mute or
 unmute a kind of sound (`VolumeMuted`) and fade sound effects out
 (`FadeSounds`).
@@ -44,5 +51,17 @@ unmute a kind of sound (`VolumeMuted`) and fade sound effects out
 > **In 0.9.22.14–0.9.25.20**
 >
 > `VoiceEvent` carries only the event's name and asks for no answer.
+
+<!-- holds from 0.9.25.24 up to 1.0.0.97 -->
+
+> **In 0.9.25.24–1.0.0.96**
+>
+> A client never answers a `VoiceEvent` it cannot play.
+
+<!-- holds from 1.0.0.126 up to 4.21.0.0 -->
+
+> **In 1.0.0.126–4.20**
+>
+> A client answers a `VoiceEvent` it cannot play at once.
 
 <!-- messages -->

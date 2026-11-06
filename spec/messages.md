@@ -55,36 +55,54 @@ revision claims that value both ways.
 
 ## A container of several messages
 
-Where the game family keeps 255 for framing, that value introduces a container
-rather than a message: a run of several messages gathered into one payload,
-which a reading end unwraps and reads one by one as though each had arrived on
-its own. A container carries no header, so nothing in `schema/messages`
-describes one, and a reading end MUST NOT read the value that introduces it as
-a command.
+<!-- holds from 0.8.13.26 up to 1.0.0.61 -->
 
-A container is the byte 255, then a count of entries in one byte, then the
-entries one after another. The first entry is a length in one byte, the
-command in one byte, the object identifier in four bytes, and then a body
-whose size is the length less five. Every later entry opens with a byte of
-flags and size:
+> **In 0.8.13.26–1.0.0.60**
+>
+> A client unwraps no container: a payload whose command is 255 does nothing,
+> on any channel. A server MUST NOT send one, because nothing inside it reaches
+> the client.
 
-- bit 0 clear: a command byte follows, and this entry carries it; bit 0 set:
-  this entry carries the command the entry before it carried;
-- bit 1 clear: a four byte object identifier follows; bit 1 set: one signed
-  byte follows, and this entry's object identifier is the one before it plus
-  that byte;
-- bits 2 to 7: the size of the body; where they read 63, the size is the next
-  byte instead.
+<!-- holds from 1.0.0.96 up to 4.21.0.0 -->
 
-The body follows. Each entry, given the command and object identifier it
-carries as its header, is a message read as though it had arrived on its own.
-Where the family's escape is 254, an entry whose command is 254 carries the
-wider identifier in the first two bytes of its body, so that, with the command
-and object identifier before it, it reads as the extended form of the header
-does.
+> **In 1.0.0.96–4.20**
+>
+> Where the game family keeps 255 for framing, that value introduces a container
+> rather than a message: a run of several messages gathered into one payload,
+> which a reading end unwraps and reads one by one as though each had arrived on
+> its own. A container carries no header, so nothing in `schema/messages`
+> describes one, and a reading end MUST NOT read the value that introduces it as
+> a command.
+>
+> A container is the byte 255, then a count of entries in one byte, then the
+> entries one after another. The first entry is a length in one byte, the
+> command in one byte, the object identifier in four bytes, and then a body
+> whose size is the length less five. Every later entry opens with a byte of
+> flags and size:
+>
+> - bit 0 clear: a command byte follows, and this entry carries it; bit 0 set:
+>   this entry carries the command the entry before it carried;
+> - bit 1 clear: a four byte object identifier follows; bit 1 set: one signed
+>   byte follows, and this entry's object identifier is the one before it plus
+>   that byte;
+> - bits 2 to 7: the size of the body; where they read 63, the size is the next
+>   byte instead.
+>
+> The body follows. Each entry, given the command and object identifier it
+> carries as its header, is a message read as though it had arrived on its own.
+> Where the family's escape is 254, an entry whose command is 254 carries the
+> wider identifier in the first two bytes of its body, so that, with the command
+> and object identifier before it, it reads as the extended form of the header
+> does.
+>
+> Where the game family keeps 255, a server MAY send a container on the events
+> channel. A client sends none.
 
-Where the game family keeps 255, a server MAY send a container on the events
-channel. A client sends none.
+<!-- holds from 1.0.0.126 up to 1.0.0.141 -->
+
+> **In 1.0.0.126–1.0.0.140**
+>
+> A client unwraps a container on any channel.
 
 ## Reading a body
 

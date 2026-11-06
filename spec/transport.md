@@ -22,23 +22,20 @@ This document does not restate ENet. Connection setup, acknowledgement,
 sequence numbers, retransmission, throttling, and fragmentation behave as
 [ENet 1.2.5](http://enet.bespin.org) defines them.
 
-<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
+<!-- holds from 0.8.13.26 up to 1.0.0.127 -->
 
-> **In 1.0.0.126**
+> **In 0.8.13.26–1.0.0.126**
 >
 > Stock ENet 1.2.5 serves a client as it stands: the header, the constants and
-> the commands are the release's own. A client abandons a connection whose
-> verify connect states another channel count, or other throttle values, than its
-> connect asked for, and stock ENet states the client's own.
+> the commands are the release's own, and the verify connect stock ENet sends
+> states what the client's connect asked for.
 
-<!-- holds from 3.02.0.30 up to 3.03.0.198 -->
+<!-- holds from 1.0.0.127 up to 3.03.0.198 -->
 
-> **In 3.02**
+> **In 1.0.0.127–3.02**
 >
 > Stock ENet 1.2.5 serves a client once its transmission unit is clamped (see
-> below). The header and the commands are the release's own. A client abandons
-> a connection whose verify connect states another channel count, or other
-> throttle values, than its connect asked for.
+> below). The header and the commands are the release's own.
 
 <!-- holds from 3.03.0.198 up to 4.21.0.0 -->
 
@@ -65,11 +62,21 @@ without.
 A client discards any datagram shorter than the `minimumDatagram` constant of
 its range. A server MUST NOT send a shorter datagram.
 
+## The connect command
+
+A server's verify connect MUST state the channel count, and the throttle
+interval, acceleration and deceleration, the connect command carried: a client
+abandons a connection whose verify connect states anything else.
+
+<!-- holds from 0.9.25.24 up to 3.13.0.399 -->
+
+> **In 0.9.25.24–3.12**
+>
+> A client asks for 7 channels.
+
 <!-- holds from 3.03.0.198 up to 4.21.0.0 -->
 
 > **In 3.03–4.20**
->
-> ## The connect command
 >
 > A client's connect command takes ENet's layout, except that two of its fields
 > carry one byte of meaning each. The peer id is the first of the two bytes ENet
@@ -79,16 +86,6 @@ its range. A server MUST NOT send a shorter datagram.
 > A server MUST take the peer id and the session id from those first bytes. The
 > session id is then the byte every header carries, and a server that reads
 > either field at ENet's width answers a client that never hears it.
->
-> A server's verify connect MUST state the channel count, and the throttle
-> interval, acceleration and deceleration, the connect command carried: a
-> client abandons a connection whose verify connect states anything else.
-
-<!-- holds from 3.03.0.198 up to 3.13.0.399 -->
-
-> **In 3.03–3.12**
->
-> A client asks for 7 channels.
 
 <!-- holds from 3.13.0.399 up to 4.21.0.0 -->
 
@@ -102,6 +99,12 @@ A client asks for a transmission unit of 1400 bytes, and discards any datagram
 whose UDP payload, packet header included, exceeds the
 `maximumTransmissionUnit` constant of its range. A server MUST NOT send a larger
 datagram.
+
+<!-- holds from 0.8.13.26 up to 1.0.0.127 -->
+
+> **In 0.8.13.26–1.0.0.126**
+>
+> That constant is above what a client asks for, so a server needs no clamp.
 
 <!-- holds from 1.0.0.127 up to 4.21.0.0 -->
 
@@ -159,15 +162,30 @@ argument.
 > argument, as they stand. A key both this and later builds take alike is
 > sixteen characters of text.
 
-<!-- holds from 1.0.0.111 up to 4.21.0.0 -->
+<!-- holds from 1.0.0.111 up to 1.0.0.126 -->
 
-> **In 1.0.0.111–4.20**
+> **In 1.0.0.111–1.0.0.125**
+>
+> The argument holds the key in base64.
+
+<!-- holds from 1.0.0.126 up to 1.0.0.141 -->
+
+> **In 1.0.0.126–1.0.0.140**
+>
+> An argument longer than sixteen characters holds the key in base64, and the
+> key is the first sixteen bytes it decodes to. An argument of sixteen
+> characters or fewer is the key as it stands.
+
+<!-- holds from 1.0.0.141 up to 4.21.0.0 -->
+
+> **In 1.0.0.141–4.20**
 >
 > The argument holds the key in base64.
 
 Registration associates the key with a connection. `Register` travels in the
 clear apart from one field enciphered under the key, and a server MUST refuse a
-connection whose deciphered field is not what it expects. `schema/messages`
+connection whose deciphered field is not what it expects, since that field is
+all that shows the client holds the key. `schema/messages`
 records the exchange, as `Register` and `Registered`.
 
 <!-- channels -->

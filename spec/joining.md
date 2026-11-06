@@ -13,43 +13,110 @@ as. The client
 connects to that address and port, registers as that player, and enciphers its
 proof under that key.
 
+<!-- holds from 0.8.13.26 up to 1.0.0.97 -->
+
+> **In 0.8.13.26–1.0.0.96**
+>
+> A client finds each argument between a pair of double quotes, and reads
+> nothing outside them.
+
+<!-- holds from 0.8.13.26 up to 0.9.22.14 -->
+
+> **In 0.8.13.26–0.9.22.13**
+>
+> A client whose command line holds no double quote ends.
+
+<!-- holds from 0.9.25.24 up to 1.0.0.97 -->
+
+> **In 0.9.25.24–1.0.0.96**
+>
+> Any whitespace separates the words of the fourth argument. A client whose
+> command line holds no double quote takes the command line it saved on an
+> earlier run instead, and one holding `.rep` anywhere plays a replay rather
+> than connecting.
+
 ## Registering
 
 A client's first payload is `Register`, on the registration channel. The note
 on `Registered` says what a server answers with: one answer for every seat.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+A client knows the answer meant for it by the player id it registered as, not
+by the client id, and takes the client id that answer carries as its own. Every
+other answer tells it which client id stands for which player.
 
-> **In 4.1–4.20**
+<!-- holds from 0.8.13.26 up to 0.9.22.14 -->
+
+> **In 0.8.13.26–0.9.22.13**
+>
+> A client waits for the answer naming its own player id as long as it takes,
+> and offers its player no choice.
+
+<!-- holds from 0.9.25.24 up to 4.21.0.0 -->
+
+> **In 0.9.25.24–4.20**
 >
 > A client waits 30 seconds for the answer naming its own player id. Then it
 > offers its player to wait another 30 seconds or to give up, and leaves on
 > giving up.
 
+<!-- holds from 1.0.0.58 up to 1.0.0.141 -->
+
+> **In 1.0.0.58–1.0.0.140**
+>
+> Every answer for its own player id, the first included, has a client send
+> `ReconnectedInMatch`, saying whether play has yet begun.
+
 <!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
 > **In 4.1–4.19**
 >
-> A client knows the answer meant for it by the player id it registered as, not by
-> the client id, and takes the client id that answer carries as its own. Every
-> other answer tells it which client id stands for which player, which it uses for
-> names, sides and loading cards: the first answer for a client id stands, and a
-> later one for the same client id changes nothing. A client takes an answer whenever it arrives, while loading or in play,
-> and one saying a client has dropped changes nothing it shows. An answer for its
-> own player id arriving during play has it send `ReconnectedInMatch`.
+> A client uses which client id stands for which player for names, sides and
+> loading cards: the first answer for a client id stands, and a later one for
+> the same client id changes nothing. A client takes an answer whenever it
+> arrives, while loading or in play, and one saying a client has dropped changes
+> nothing it shows. An answer for its own player id arriving during play has it
+> send `ReconnectedInMatch`.
 
 ## Asking whether a server is ready
 
 A client then sends `QueryStatus` over and over. A server MUST answer each one
-with `QueryStatusAnswer`, including those that come after its first ready
-answer. While the answers say the server is not ready, a client stays on a
-black screen and keeps asking. A server that needs time before a match can begin answers
+with `QueryStatusAnswer`, at least until it has answered that it is ready.
+While the answers say the server is not ready, a client stays on a black screen
+and keeps asking. A server that needs time before a match can begin answers
 that it is not ready until it is.
+
+<!-- holds from 0.8.13.26 up to 1.0.0.141 -->
+
+> **In 0.8.13.26–1.0.0.140**
+>
+> A client stops asking once an answer says the server is ready, and a query it
+> sends after that answer needs none.
+
+<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+
+> **In 4.1–4.20**
+>
+> A server MUST also answer each `QueryStatus` that comes after its first ready
+> answer.
 
 ## Stating a build
 
-Once an answer says the server is ready, a client sends `ClientVersion` once. A server answers with
-`VersionSync`, which names the map to load and everyone at the match.
+Once an answer says the server is ready, a client sends `ClientVersion` once. A
+server answers with `VersionSync`, and a client loads only where its
+`agreement` says the builds agree.
+
+<!-- holds from 0.8.13.26 up to 0.9.22.14 -->
+
+> **In 0.8.13.26–0.9.22.13**
+>
+> `VersionSync` names neither the map nor anyone at the match: a client loads
+> the map its own configuration names (see [The client's data](data.md)).
+
+<!-- holds from 0.9.25.24 up to 4.21.0.0 -->
+
+> **In 0.9.25.24–4.20**
+>
+> `VersionSync` names the map to load and everyone at the match.
 
 <!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
@@ -92,34 +159,54 @@ through loading. A server answers each report with `SeatLoadProgress` on the
 transient channel, carrying the report's figures under the seat that reported.
 A client goes on reporting after its progress reaches 100, until play begins.
 
-<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
+A client waits on no other seat. `SpawnStart`, `SpawnEnd` and `StartGame` are
+what move a client on, and `StartGame` alone ends its loading. A server that
+means its players to begin together sends `StartGame` to none of them until
+every client has sent `ClientReady`.
 
-> **In 4.1–4.19**
->
-> A client waits on no other seat. Each `SeatLoadProgress` updates the card of
-> the seat it names, and a client draws its own card only as a server returns its
-> own reports. `SpawnStart`, `SpawnEnd` and `StartGame` are what move a client
-> on, and `StartGame` alone ends the loading screen. A server that means its players to begin
-> together sends `StartGame` to none of them until every client has sent
-> `ClientReady`.
+<!-- holds from 0.9.25.24 up to 1.0.0.127 -->
 
-<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
-
-> **In 1.0.0.126**
+> **In 0.9.25.24–1.0.0.126**
 >
 > A client writes zero where its player id goes in `LoadingProgress`.
+
+<!-- holds from 0.9.25.24 up to 0.9.25.36 -->
+
+> **In 0.9.25.24–0.9.25.35**
+>
+> A server MUST put the seat's player id in `SeatLoadProgress`: the loading
+> screen shows a seat's card from the `VersionSync` seat with that id.
+
+<!-- holds from 1.0.0.58 up to 1.0.0.61 -->
+
+> **In 1.0.0.58–1.0.0.60**
+>
+> The loading screen picks the card a `SeatLoadProgress` updates by the client
+> id it carries, not by its player id.
+
+<!-- holds from 1.0.0.96 up to 4.21.0.0 -->
+
+> **In 1.0.0.96–4.20**
+>
+> A server MUST put the seat's player id in `SeatLoadProgress`: the loading
+> screen shows a seat's card from the `VersionSync` seat with that id.
+
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+
+> **In 1.0.0.140**
+>
+> A client writes its own client id where its player id goes in
+> `LoadingProgress`, in the low four bytes with zeros above.
 
 <!-- holds from 4.1.0.171 up to 4.21.0.0 -->
 
 > **In 4.1–4.20**
 >
-> A client writes all ones where its player id goes in `LoadingProgress`. A
-> server MUST put the seat's player id in `SeatLoadProgress`: the loading screen
-> shows a seat's card from the `VersionSync` seat with that id.
+> A client writes all ones where its player id goes in `LoadingProgress`.
 
-<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
+<!-- holds from 1.0.0.96 up to 4.20.0.315 -->
 
-> **In 4.1–4.19**
+> **In 1.0.0.96–4.19**
 >
 > ## The loading screen
 >
@@ -137,6 +224,22 @@ A client goes on reporting after its progress reaches 100, until play begins.
 > with no `SeatChampion` yet shows a black portrait, and one with no
 > registration or no `SeatLoadProgress` yet says it is not connected. A later
 > `SeatChampion` does not change a card already set up.
+
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+
+> **In 1.0.0.140**
+>
+> A card draws a seat's `icon` only where it is 0 or more. A seat is a bot's
+> where its `flags` is not zero, whatever its bits, and the card of a bot takes
+> its name from the client's own name for that bot, not from the seat's
+> `botName`. No bit of `flags` chooses older portrait art.
+
+<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
+
+> **In 4.1–4.19**
+>
+> Each `SeatLoadProgress` updates the card of the seat it names, and a client
+> draws its own card only as a server returns its own reports.
 >
 > From the `VersionSync` seat a card takes:
 >
@@ -169,6 +272,26 @@ A client goes on reporting after its progress reaches 100, until play begins.
 
 Once a character is settled, a client sends `CharacterSelected`, once.
 
+<!-- holds from 0.8.13.26 up to 1.0.0.61 -->
+
+> **In 0.8.13.26–1.0.0.60**
+>
+> A client drops nothing for arriving before `CharacterSelected`.
+
+<!-- holds from 1.0.0.96 up to 1.0.0.97 -->
+
+> **In 1.0.0.96**
+>
+> Before `CharacterSelected`, a client drops only what [Units](units.md) says it
+> drops, and a `GameEnded` that arrives while it loads has it show an error and
+> end.
+
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
+
+> **In 1.0.0.126**
+>
+> A client drops nothing for arriving before `CharacterSelected`.
+
 <!-- holds from 4.1.0.171 up to 4.21.0.0 -->
 
 > **In 4.1–4.20**
@@ -185,13 +308,18 @@ A server answers with `SpawnStart`, states everything on the field as play
 opens, and closes the run with `SpawnEnd`. A run carries:
 
 - for each seat, `CreateChampion` followed by `Loadout`;
-- for each turret, a `CreateTurret`, either on its own or carried inside the
-  `EnterSight` that brings the turret into view, and a `Replication` batch of
-  its values;
+- for each turret, a `CreateTurret` and a `Replication` batch of its values;
 - for each inhibitor and nexus, an `EnterSight`, and a `Replication` batch on a
   map whose buildings replicate (see [Replication](replication.md));
 - a `RegionAdded` for each region, and a `MapProp` for each prop;
 - at a server's choice, an `EnterLocalSight` for any of those units.
+
+<!-- holds from 1.0.0.138 up to 4.21.0.0 -->
+
+> **In 1.0.0.138–4.20**
+>
+> A turret's `CreateTurret` can come on its own or inside the `EnterSight` that
+> brings the turret into view.
 
 A client takes these in any order within the run.
 
@@ -199,28 +327,65 @@ A run MUST carry at least `SpawnStart`, the `CreateChampion` carrying the
 client's own client id, and `SpawnEnd`. Given only those, a client still enters play,
 showing its champion's portrait, health, resource and spells. It draws the
 champion on the map only once an `EnterSight` places it there, with its name
-and health bar over it. Its shop stays empty until its own champion's `Loadout`
-arrives (see [The shop](shop.md)).
+and health bar over it.
 
-Once `SpawnEnd` arrives, a client answers each `Replication` batch the run
-carried with a `TransientAck` naming that batch's `syncId`. It sends one answer
-for each batch, in the order the batches came, including a batch that repeats
-the `syncId` of the batch before it.
+<!-- holds from 1.0.0.58 up to 1.0.0.61 -->
 
-## Starting play
-
-A client sends `ClientReady` after `SpawnEnd` and after those answers, while it
-is still reporting its loading. A server MUST answer with `StartGame` followed
-by a `ClockSync`, and a client enters play once it has both. A server then
-sends `MatchStarted`, with other messages free to come between them. The first
-`ClockSync` carries 0, and so does `MatchStarted` (see [Time](time.md)).
+> **In 1.0.0.58–1.0.0.60**
+>
+> A client's shop does not wait for `Loadout`.
 
 <!-- holds from 4.1.0.171 up to 4.21.0.0 -->
 
 > **In 4.1–4.20**
 >
+> A client's shop stays empty until its own champion's `Loadout` arrives (see
+> [The shop](shop.md)).
+
+A client answers each `Replication` batch with a `TransientAck` naming that
+batch's `syncId`. It sends one answer for each batch, in the order the batches
+came, including a batch that repeats the `syncId` of the batch before it.
+
+<!-- holds from 0.9.25.24 up to 1.0.0.141 -->
+
+> **In 0.9.25.24–1.0.0.140**
+>
+> A client answers a batch as soon as it arrives, within the run or not, and
+> never answers one naming a unit it does not hold.
+
+<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+
+> **In 4.1–4.20**
+>
+> A client answers the batches the run carried once `SpawnEnd` arrives.
+
+## Starting play
+
+A client sends `ClientReady` after `SpawnEnd` and after its answers to the
+run's batches, while it is still reporting its loading. A server MUST answer
+with `StartGame`, and later sends `MatchStarted`, with other messages free to
+come between them; `MatchStarted` carries 0 (see [Time](time.md)).
+
+<!-- holds from 0.8.13.26 up to 1.0.0.141 -->
+
+> **In 0.8.13.26–1.0.0.140**
+>
+> A client sends `ClientReady` as soon as `SpawnEnd` arrives, and `StartGame`
+> alone moves it into play.
+
+<!-- holds from 0.9.25.24 up to 4.21.0.0 -->
+
+> **In 0.9.25.24–4.20**
+>
 > A client whose connection drops before play begins ends rather than connecting
 > again.
+
+<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+
+> **In 4.1–4.20**
+>
+> A server follows `StartGame` with a `ClockSync`, and a client enters play once
+> it has both. The first `ClockSync` carries 0.
 
 <!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 

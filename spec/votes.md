@@ -10,12 +10,11 @@ the side where the vote stands with `SurrenderStatus`. `SurrenderAllowed` says
 whether a champion's player can call a vote, turning the choice in the client's
 menu on or off.
 
-<!-- holds from 0.9.25.21 up to 4.21.0.0 -->
+<!-- holds from 0.8.13.26 up to 0.9.22.16 -->
 
-> **In 0.9.25.21–4.20**
+> **In 0.8.13.26–0.9.22.15**
 >
-> `SurrenderVoteCalled` opens the vote's panel for that side and shows the
-> caller's vote.
+> There is no surrender vote: a client sends and takes no message about one.
 
 <!-- holds from 0.9.22.16 up to 0.9.25.21 -->
 
@@ -26,17 +25,32 @@ menu on or off.
 > Where a vote fails, `SurrenderFailed` says how long until another can be
 > called.
 
-<!-- holds from 0.8.13.26 up to 0.9.22.16 -->
+<!-- holds from 0.9.25.21 up to 4.21.0.0 -->
 
-> **In 0.8.13.26–0.9.22.15**
+> **In 0.9.25.21–4.20**
 >
-> There is no surrender vote: a client sends and takes no message about one.
+> `SurrenderVoteCalled` shows the caller's vote to that side and, where it says
+> the vote opens, opens the vote's panel for that side.
 
-<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
+<!-- holds from 0.9.25.24 up to 0.9.25.36 -->
 
-> **In 4.1–4.19**
+> **In 0.9.25.24–0.9.25.35**
 >
-> A client ignores `SurrenderVoteCalled` that arrives before its own champion is on the field.
+> A client takes `SurrenderVoteCalled` whenever it arrives, its own champion on
+> the field or not.
+
+<!-- holds from 1.0.0.58 up to 4.20.0.315 -->
+
+> **In 1.0.0.58–4.19**
+>
+> A client ignores `SurrenderVoteCalled` that arrives before its own champion is
+> on the field.
+
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
+
+> **In 1.0.0.126**
+>
+> A client opens no panel for a vote called while the match is paused.
 
 ## Evening out a match
 

@@ -35,4 +35,10 @@ In the tutorial, a server can put lines of the client's own text in its chat
 (`TutorialChatLine`) and open the tutorial's popup (`TutorialPopup`), which the
 client answers with `TutorialPopupClosed`.
 
+<!-- holds from 1.0.0.58 up to 1.0.0.97 -->
+
+> **In 1.0.0.58–1.0.0.96**
+>
+> A client takes `TutorialChatLine` and `TutorialPopup` in any match.
+
 <!-- messages -->

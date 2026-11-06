@@ -17,11 +17,23 @@ that cast it. A server can do each of these for several units at once
 
 ## Particles
 
-`ParticlesCreated` starts a client drawing sets of particles, each named by its
-own id, and `KillParticle` stops one. A server can also pause or resume a
-named group of emitters with `EmitterPause`, and drive a value of a unit's
-lasting particles from something that changes, such as a capture point or the
-unit's resource, with `ParticleSource`.
+`ParticlesCreated` starts a client drawing particles, and `KillParticle` stops
+one. A server can also pause or resume a named group of emitters with
+`EmitterPause`, and drive a value of a unit's lasting particles from something
+that changes, such as a capture point or the unit's resource, with
+`ParticleSource`.
+
+<!-- holds from 0.8.13.26 up to 0.9.22.14 -->
+
+> **In 0.8.13.26–0.9.22.13**
+>
+> `ParticlesCreated` starts one particle, named by the message's own id.
+
+<!-- holds from 0.9.25.24 up to 4.21.0.0 -->
+
+> **In 0.9.25.24–4.20**
+>
+> `ParticlesCreated` starts sets of particles, each named by its own id.
 
 <!-- holds from 3.02.0.30 up to 3.5.0.68 -->
 
@@ -36,7 +48,16 @@ unit's resource, with `ParticleSource`.
 A server lays a new look over a unit's own with `AppearancePushed`; looks
 stack, the newest showing, and `AppearancePopped` and `AppearanceCleared` take
 them away. `AnimationOverrides` has a unit play one set of movements wherever it
-would have played another. A server can also:
+would have played another.
+
+<!-- holds from 0.8.13.26 up to 1.0.0.127 -->
+
+> **In 0.8.13.26–1.0.0.126**
+>
+> `AppearancePopped` takes away every look laid over the unit's own, not only
+> the newest.
+
+A server can also:
 
 - play, stop, pause and advance a unit's animations (`PlayAnimation`,
   `StopAnimation`, `PauseAnimation`, `AnimationAdvanced`);
