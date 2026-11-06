@@ -234,7 +234,7 @@
               "name": "points",
               "type": "array",
               "count": "header.pointCount",
-              "note": "Every point of the path, each stated whole. A client reads none of them for a unit it does not hold, and reads the rest of the group from where they begin.",
+              "note": "Every point of the path, each stated whole. A client reads them even for a unit it does not hold.",
               "items": {
                 "name": "point",
                 "type": "record",

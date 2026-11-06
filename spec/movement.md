@@ -8,9 +8,9 @@ which is where the unit is and the last where it is going.
 A path names one axis of the ground plane and then the other. The height of a
 point is not carried, and a receiving end takes it from the ground beneath.
 
-<!-- holds from 0.8.13.26 up to 1.0.0.61 -->
+<!-- holds from 0.8.13.26 up to 1.0.0.81 -->
 
-> **In 0.8.13.26–1.0.0.60**
+> **In 0.8.13.26–1.0.0.80**
 >
 > A path carries each point as two world floats (see [Space](space.md)),
 > stated against no origin and no other point.
