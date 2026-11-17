@@ -61,7 +61,7 @@ seconds.
 
 > **In 4.1–4.20**
 >
-> `StatTick` asks every unit's stats to advance by that span.
+> No unit advances for `StatTick`.
 
 ## Holding and resuming
 
@@ -220,17 +220,11 @@ player's side and sends `ClientFinished`.
 >
 > `VictoryDance` moves every unit.
 
-<!-- holds from 1.0.0.140 up to 3.11.0.306 -->
+<!-- holds from 1.0.0.140 up to 4.21.0.0 -->
 
-> **In 1.0.0.140–3.10**
+> **In 1.0.0.140–4.20**
 >
 > A client moves no neutral unit for `VictoryDance`.
-
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
-
-> **In 4.1–4.20**
->
-> `VictoryDance` moves every unit.
 
 ## Leaving and coming back
 
@@ -262,15 +256,6 @@ action that means leave.
 A server tells the others that a player's client dropped with
 `PlayerDisconnected`.
 
-<!-- holds from 0.9.25.24 up to 4.20.0.315 -->
-
-> **In 0.9.25.24–4.19**
->
-> A client shows a notice in chat for `PlayerDisconnected`.
-
-`SoftReconnect` rebuilds a client's world without a new connection, as
-[Objects and identifiers](objects.md) describes.
-
 <!-- holds from 0.8.13.26 up to 0.9.22.14 -->
 
 > **In 0.8.13.26–0.9.22.13**
@@ -290,12 +275,21 @@ A server tells the others that a player's client dropped with
 > A client the server drops with the reason that means its player was away
 > shows that, and does not connect again.
 
+<!-- holds from 0.9.25.24 up to 4.20.0.315 -->
+
+> **In 0.9.25.24–4.19**
+>
+> A client shows a notice in chat for `PlayerDisconnected`.
+
 <!-- holds from 0.9.25.24 up to 1.0.0.141 -->
 
 > **In 0.9.25.24–1.0.0.140**
 >
 > A client sends `ReconnectedInMatch` on every connection it makes, the first
 > included, with a byte that is 0 where the match is in play and 1 otherwise.
+>
+> A client whose connection drops before play begins leaves rather than
+> connecting again.
 >
 > `Reconnected` announces that a player came back. A client shows it in chat for
 > any other player, ally or enemy.
@@ -308,7 +302,7 @@ A server tells the others that a player's client dropped with
 > the reason 0 it asks, and on a yes connects again, showing that it is
 > reconnecting until it is back or its player cancels. For any other reason but
 > the one that means its player was away, it shows that the reconnection
-> failed. One dropped while loading leaves.
+> failed.
 >
 > Where `Reconnected` names the client's own, the client resynchronises until
 > `ResyncEnded`.
@@ -323,8 +317,8 @@ A server tells the others that a player's client dropped with
 
 > **In 1.0.0.96–1.0.0.126**
 >
-> While it resynchronises, a client ignores any message creating a unit it
-> already holds.
+> While it resynchronises, a client ignores `SpawnFromBarracks`, `SpawnUnit` and
+> `CreateNeutral` naming a unit it already holds.
 
 <!-- holds from 1.0.0.140 up to 3.11.0.306 -->
 
@@ -339,14 +333,6 @@ A server tells the others that a player's client dropped with
 > A client sends `ReconnectedInMatch` as the connection is made, without waiting
 > for the registration answer.
 
-<!-- holds from 3.10.0.237 up to 4.21.0.0 -->
-
-> **In 3.10–4.20**
->
-> A server MUST NOT send `SpawnStart` to a client coming back from a drop: it
-> returns the client to spawning, from which only another `StartGame` brings it
-> back into play.
-
 <!-- holds from 3.10.0.237 up to 4.20.0.315 -->
 
 > **In 3.10–4.19**
@@ -360,37 +346,43 @@ A server tells the others that a player's client dropped with
 > **In 3.10**
 >
 > A client sends `ReconnectedInMatch` only where the match is in play.
+>
+> A client whose connection drops before play begins leaves rather than
+> connecting again once it knows its own client id, and connects again before
+> then.
 
 <!-- holds from 4.1.0.171 up to 4.21.0.0 -->
 
 > **In 4.1–4.20**
 >
 > A client dropped during play connects again by itself, registers again, and
-> sends `ReconnectedInMatch` right after the registration answer; one dropped
-> while loading leaves instead.
+> sends `ReconnectedInMatch` right after the registration answer.
+>
+> A client whose connection drops before play begins leaves rather than
+> connecting again once it knows its own client id, and connects again before
+> then.
+
+`SoftReconnect` rebuilds a client's world without a new connection, as
+[Objects and identifiers](objects.md) describes.
+
+<!-- holds from 3.10.0.237 up to 4.21.0.0 -->
+
+> **In 3.10–4.20**
+>
+> A server MUST NOT send `SpawnStart` to a client that connects again by itself
+> after a drop: it returns the client to spawning, from which only another
+> `StartGame` brings it back into play.
+
+<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+
+> **In 4.1–4.20**
 >
 > A client dropped during play connects again to the same address and port, and
 > shows its player that it is reconnecting until it is back. It goes on where it
 > was: it asks for no status and no version, loads nothing, and keeps every
-> seat, name and identifier it held. A server answers with `SoftReconnect`,
-> sending between its two stages a message creating each unit the client is to
-> hold.
+> seat, name and identifier it held. A server answers with `SoftReconnect`.
 
 ## Staying connected
-
-<!-- holds from 0.8.13.26 up to 4.20.0.315 -->
-
-> **In 0.8.13.26–4.19**
->
-> A client's view report, `Camera`, goes out as its view moves at least 200
-> units, at most every tenth of a second, and never while its view is locked.
-
-<!-- holds from 0.8.13.26 up to 3.11.0.306 -->
-
-> **In 0.8.13.26–3.10**
->
-> Where its last `Camera` goes unacknowledged, a client sends it again without
-> its view moving, once more than twice the round trip has passed.
 
 <!-- holds from 0.9.25.24 up to 1.0.0.127 -->
 
@@ -427,6 +419,6 @@ A server tells the others that a player's client dropped with
 >
 > In play a client sends nothing on its own to show it is still there: what it
 > sends answers what it is sent (`ClockReply`, `TransientAck`, `WaypointAck`)
-> or follows from its player, and `Camera` goes out only as its view moves.
+> or follows from its player.
 
 <!-- messages -->

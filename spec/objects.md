@@ -22,7 +22,8 @@ these, it carries it whole, at the width above.
 
 > **In 0.8.13.26–0.9.22.13**
 >
-> No region id stands for no region.
+> A region id of 0 names no region: given a `RegionAdded` carrying 0, a client
+> gives the region an id of its own.
 
 <!-- holds from 0.9.25.24 up to 0.9.25.36 -->
 
@@ -36,7 +37,8 @@ these, it carries it whole, at the width above.
 
 > **In 1.0.0.96**
 >
-> No region id stands for no region.
+> A region id of 0 names no region: given a `RegionAdded` carrying 0, a client
+> gives the region an id of its own.
 
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
@@ -50,7 +52,8 @@ these, it carries it whole, at the width above.
 
 > **In 1.0.0.140**
 >
-> No region id stands for no region.
+> A region id of 0 names no region: given a `RegionAdded` carrying 0, a client
+> gives the region an id of its own.
 
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
@@ -66,19 +69,18 @@ these, it carries it whole, at the width above.
 >
 > No region id stands for no region.
 
-A server MUST give each player a client id from 0 to 252.
-
-<!-- holds from 0.8.13.26 up to 3.11.0.306 -->
-
-> **In 0.8.13.26–3.10**
->
-> A client takes a client id only from 0 to 252, and leaves on any other.
-
 ## How they relate
 
 A player is known by a player id. A server answers a client's `Register` with
 `Registered`, and the one carrying the client's own player id gives the client
 its own client id.
+
+<!-- holds from 0.8.13.26 up to 3.11.0.306 -->
+
+> **In 0.8.13.26–3.10**
+>
+> A client takes a client id only from 0 to 252, and leaves on any other, so a
+> server MUST give each player a client id in that range.
 
 <!-- holds from 0.8.13.26 up to 0.9.22.14 -->
 
@@ -116,8 +118,17 @@ its own client id.
 > **In 4.1–4.20**
 >
 > Registration pairs each player id with a client id: a server answers a
-> client's `Register` with one `Registered` for every seat. Every later message
-> that names a player by client id is read through that pairing.
+> client's `Register` with one `Registered` for every seat, and a client
+> records the pair each carries.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> A client takes a client id only from 0 to 252, and leaves on any other, so a
+> server MUST give each player a client id in that range. A server MUST send
+> that `Registered` before any create message, because a client given a create
+> message before it has its own client id stops.
 
 `Roster` lists each side's player ids in order, and a player's seat is their
 place in that list. A client finds a seat's client id through its player id.
@@ -185,17 +196,40 @@ naming a unit, an owner or a target carry one too.
 
 > **In 1.0.0.126**
 >
-> `CreateChampion` and `CreateTurret` remove any object holding the net id
-> before they create theirs. For any other creating message, a client that
+> `CreateChampion` and `CreateTurret` first remove any object holding the net
+> id. For any other creating message, a client that
 > still holds the earlier object creates the new one but keeps the net id on the
 > old one, so messages naming it reach the old object, and removing either
 > leaves the id naming neither. Between its own reconnection and
 > `ResyncEnded`, a client drops a `SpawnFromBarracks`, `SpawnUnit` or
 > `CreateNeutral` naming a net id it holds.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
-> **In 4.1–4.20**
+> **In 3.10**
+>
+> `CreateTurret` first removes any object holding its net id.
+
+<!-- holds from 4.1.0.171 up to 4.17.0.233 -->
+
+> **In 4.1–4.16**
+>
+> A client that still holds the earlier object creates the new one but keeps
+> the net id on the old one, so messages naming it reach the old object, and
+> removing either leaves the id naming neither.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> `SpawnFromBarracks`, `SpawnPet`, `CreateChampion`, `CreateNeutral`,
+> `SpawnUnit`, `CreateTurret`, `SpawnBot`, `MapProp`, `CreateFollower`,
+> `SpawnMarker` and `SpawnTurret` first remove any object holding the net id,
+> and the new object takes it.
+
+<!-- holds from 4.18.0.271 up to 4.21.0.0 -->
+
+> **In 4.18–4.20**
 >
 > A client that still holds the earlier object creates the new one but keeps
 > the net id on the old one, so messages naming it reach the old object, and
@@ -216,9 +250,16 @@ A create message carries a node beside the object's net id.
 > A client applies a `SpawnPet`'s effect and spell level only where the owner's
 > node is its own.
 
-<!-- holds from 1.0.0.140 up to 4.21.0.0 -->
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
 
-> **In 1.0.0.140–4.20**
+> **In 1.0.0.140**
+>
+> A client applies a `SpawnPet`'s effect and spell level only where the owner's
+> node is its own.
+
+<!-- holds from 1.0.0.141 up to 4.21.0.0 -->
+
+> **In 1.0.0.141–4.20**
 >
 > Nothing a player sees depends on it.
 
@@ -228,7 +269,8 @@ Some objects are on the field before any message puts them there, and no
 message ever does: the buildings a side defends, the shops beside them, and
 the spawn points a side's minions come from. A receiving end knows them from
 the map it loaded, and every message naming one names it by an identifier
-worked out from that object's name in the map.
+worked out from that object's name in the map. [The client's data](data.md)
+says where the names are and which give no object.
 
 The identifier is the CRC-32 of the name, with the top byte set:
 
@@ -305,12 +347,6 @@ Among the identifiers with that top byte are these:
 > | 3    | `Barracks_T1_C1`, `Barracks_T2_C1`, `HQ_T1`, `HQ_T2`, `OrderShop01`, `ChaosShop01`, `____P_Chaos_Spawn_Barracks__C01`  |
 > | 4    | `Barracks_T1_L1`, `Barracks_T1_R1`, `Barracks_T2_L1`, `Barracks_T2_R1`, `HQ_T1`, `HQ_T2`, `OrderShop01`, `chaosShop01` |
 
-<!-- holds from 1.0.0.126 up to 3.11.0.306 -->
-
-> **In 1.0.0.126–3.10**
->
-> A name holding `_Destroyed` or `_FB` gives no identifier.
-
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
 > **In 1.0.0.126**
@@ -349,9 +385,9 @@ Among the identifiers with that top byte are these:
 > | 10  | `Barracks_T1_L1`, `Barracks_T1_R1`, `Barracks_T2_L1`, `Barracks_T2_R1`, the `L01` and `R01` spawn points of both sides, `HQ_T1`, `HQ_T2`, `orderShop01`, `chaosShop01` |
 > | 12  | `Barracks_T1_C1`, `Barracks_T2_C1`, the `C01` spawn points of both sides named `____P_…`, `HQ_T1`, `HQ_T2`, `OrderShop01`, `ChaosShop01`                               |
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 4.1.0.171 up to 4.17.0.233 -->
 
-> **In 4.1–4.20**
+> **In 4.1–4.16**
 >
 > | Name                            | `map`         |
 > | ------------------------------- | ------------- |
@@ -369,9 +405,38 @@ Among the identifiers with that top byte are these:
 > | `OrderShop01`                   | 12            |
 > | `orderShop01`                   | 1, 8, 11      |
 
-The `Barracks` names above belong to inhibitors, whatever the name says. The
-minions a side sends out come from spawn points of their own, which are among
-the objects a map holds.
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> | Map | Holds                                                                                                                                                                  |
+> | --- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+> | 1   | the six `Barracks` names, the six spawn points named `__P_…`, `HQ_T1`, `HQ_T2`, `orderShop01`, `chaosShop01`                                                           |
+> | 8   | `orderShop01`, `chaosShop01`                                                                                                                                           |
+> | 10  | `Barracks_T1_L1`, `Barracks_T1_R1`, `Barracks_T2_L1`, `Barracks_T2_R1`, the `L01` and `R01` spawn points of both sides, `HQ_T1`, `HQ_T2`, `orderShop01`, `chaosShop01` |
+> | 12  | `Barracks_T1_C1`, `Barracks_T2_C1`, the `C01` spawn points of both sides named `____P_…`, `HQ_T1`, `HQ_T2`, `OrderShop01`, `ChaosShop01`                               |
+
+<!-- holds from 4.18.0.271 up to 4.21.0.0 -->
+
+> **In 4.18–4.20**
+>
+> | Name                            | `map`         |
+> | ------------------------------- | ------------- |
+> | `Barracks_T1_C1`                | 1, 11, 12     |
+> | `Barracks_T1_L1`                | 1, 10, 11     |
+> | `Barracks_T1_R1`                | 1, 10, 11     |
+> | `Barracks_T2_C1`                | 1, 11, 12     |
+> | `Barracks_T2_L1`                | 1, 10, 11     |
+> | `Barracks_T2_R1`                | 1, 10, 11     |
+> | `__P_Order_Spawn_Barracks__C01` | 1             |
+> | `ChaosShop01`                   | 12            |
+> | `chaosShop01`                   | 1, 8, 10, 11  |
+> | `HQ_T1`                         | 1, 10, 11, 12 |
+> | `HQ_T2`                         | 1, 10, 11, 12 |
+> | `OrderShop01`                   | 12            |
+> | `orderShop01`                   | 1, 8, 11      |
+
+The `Barracks` names above belong to inhibitors, whatever the name says.
 
 A client puts a minion on the field for a `SpawnFromBarracks` naming a spawn
 point, and creates nothing for one naming an inhibitor such as
@@ -404,56 +469,47 @@ A server MUST name each object a map holds by the identifier its name gives.
 > `CreateTurret` matches a turret's name without regard to case, and does
 > nothing where the map holds no turret of that name.
 
+<!-- holds from 1.0.0.140 up to 4.20.0.315 -->
+
+> **In 1.0.0.140–4.19**
+>
+> `CreateTurret` names a turret by its building's name with `_A` after it.
+
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+
+> **In 1.0.0.140**
+>
+> A client fails on a `CreateTurret` naming no turret, and a server MUST NOT
+> send one.
+
+<!-- holds from 3.10.0.237 up to 4.20.0.315 -->
+
+> **In 3.10–4.19**
+>
+> A `CreateTurret` naming no turret does nothing.
+
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
 > **In 3.10**
 >
-> `CreateTurret` first removes any object holding its net id. It matches a
-> turret's name exactly, case included, and the name it carries is the
-> building's name followed by a two-character suffix. A name no turret has does
-> nothing.
+> `CreateTurret` matches a turret's name exactly, case included.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> `CreateTurret` matches a turret's name exactly, case included.
 
 ## What a client holds
 
 A client holds an object from the message that creates it until the message,
 or the end of its life, that removes it. Creating messages are listed in
-[Units](units.md). What a map holds, a client holds from the moment it loads
-the map.
-
-<!-- holds from 0.8.13.26 up to 1.0.0.127 -->
-
-> **In 0.8.13.26–1.0.0.126**
->
-> `EnterSight` and `EnterLocalSight` carry no other message, and act only on a
-> unit the client already holds.
-
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
-
-> **In 4.1–4.20**
->
-> Several creating messages can arrive inside the `EnterSight` that brings a
-> unit into view.
+[Units](units.md), and [Vision](vision.md) says which can arrive inside
+`EnterSight`. What a map holds, a client holds from the moment it loads the map.
 
 Leaving a client's sight removes nothing: `LeaveSight` and `LeaveTeamSight`
-hide an object, and it is held as before.
-
-<!-- holds from 0.8.13.26 up to 1.0.0.97 -->
-
-> **In 0.8.13.26–1.0.0.96**
->
-> `LeaveLocalSight` hides an object too, and it is held as before.
-
-<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
-
-> **In 1.0.0.126**
->
-> `LeaveLocalSight` does nothing.
-
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
-
-> **In 4.1–4.20**
->
-> `LeaveLocalSight` hides an object too, and it is held as before.
+hide an object, and it is held as before. [Vision](vision.md) says what
+`LeaveLocalSight` does.
 
 <!-- holds from 0.8.13.26 up to 0.9.25.36 -->
 
@@ -475,12 +531,6 @@ hide an object, and it is held as before.
 > A client removes a region once its lifetime reaches 0, so a region given a
 > lifetime of 0 does not last.
 
-<!-- holds from 1.0.0.126 up to 4.20.0.315 -->
-
-> **In 1.0.0.126–4.19**
->
-> `RegionRemoved` for a region a client does not hold does nothing.
-
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
 > **In 1.0.0.126**
@@ -493,32 +543,23 @@ hide an object, and it is held as before.
 >
 > How each kind leaves a client's world:
 >
-> | Kind                 | Removed                                                                                                                                                                               | Its death                                                               |
-> | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-> | Champion             | by `ChampionRemoved`, at once                                                                                                                                                         | kills it; it is held, and comes back                                    |
-> | Minion, monster, pet | by the client, once it has been dead for its death time, 4 seconds unless its character says otherwise; a new `SpawnPet` for an owner removes that owner's pet before it              | starts that wait; a death naming no killer does nothing                 |
-> | Turret               | by the client, 1.2 seconds after its death, or after the time its `SpawnTurret` gives; a lane turret is held where `VersionSync`'s features keep destroyed turrets (`turretsPersist`) | kills it                                                                |
-> | Inhibitor, nexus     | never                                                                                                                                                                                 | `BuildingDied` plays its death; it is held, and an inhibitor comes back |
-> | Missile              | by `DestroyMissile`, by its flight ending, or once its caster is removed                                                                                                              |                                                                         |
-> | Particle             | by `KillParticle`, naming it in its body, or once its effect ends                                                                                                                     |                                                                         |
-> | Follower             | once the unit it follows is removed                                                                                                                                                   |                                                                         |
-> | Marker               | only by a soft reconnect                                                                                                                                                              |                                                                         |
-> | Region               | by `RegionRemoved`, once its lifetime runs out (a lifetime of 0 never does), or once the unit it follows is removed                                                                   |                                                                         |
-
-<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
-
-> **In 4.1–4.19**
->
-> A client fails on a `RegionMoved` naming a region it does not hold, one whose
-> lifetime has run out included, and a server MUST NOT send one.
+> | Kind                 | Removed                                                                                                                                                                  | Its death                                                               |
+> | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------- |
+> | Champion             | by `ChampionRemoved`, at once                                                                                                                                            | kills it; it is held, and comes back                                    |
+> | Minion, monster, pet | by the client, once it has been dead for its death time, 4 seconds unless its character says otherwise; a new `SpawnPet` for an owner removes that owner's pet before it | starts that wait; a death naming no killer does nothing                 |
+> | Turret               | by the client, 1.2 seconds after its death, or after the time its `SpawnTurret` gives; a lane turret is held where `VersionSync`'s features keep destroyed turrets       | kills it                                                                |
+> | Inhibitor, nexus     | never                                                                                                                                                                    | `BuildingDied` plays its death; it is held, and an inhibitor comes back |
+> | Missile              | by `DestroyMissile`, by its flight ending, or once its caster is removed                                                                                                 |                                                                         |
+> | Particle             | by `KillParticle`, naming it in its body, or once its effect ends                                                                                                        |                                                                         |
+> | Follower             | once the unit it follows is removed                                                                                                                                      |                                                                         |
+> | Marker               | only by a soft reconnect                                                                                                                                                 |                                                                         |
+> | Region               | by `RegionRemoved`, once its lifetime runs out (a lifetime of 0 never does), or once the unit it follows is removed                                                      |                                                                         |
 
 ### A soft reconnect
 
 `SoftReconnect` rebuilds a client's world without a new connection, in two
 halves. The first marks every unit and every object kept until a checkpoint,
-inhibitors aside. A create message for a marked net id replaces the marked
-object rather than keeping the id on it. The second removes every object still
-marked. In between, a server sends again each object the client is to keep.
+inhibitors aside. The second removes every object still marked. In between, a server sends again each object the client is to keep.
 Each stage either marks or removes.
 
 <!-- holds from 1.0.0.143 up to 4.18.0.271 -->
@@ -534,12 +575,34 @@ Each stage either marks or removes.
 > A client reads only the two lowest bits of the stage: a stage with both clear
 > marks, and any other removes.
 
+<!-- holds from 1.0.0.143 up to 1.0.0.150 -->
+
+> **In 1.0.0.143–1.0.0.149**
+>
+> A create message for a marked net id replaces the marked object rather than
+> keeping the id on it.
+
 <!-- holds from 1.0.0.150 up to 1.0.0.151 -->
 
 > **In 1.0.0.150**
 >
-> `ParticlesCreated` does not replace a marked object holding its net id: that
-> object stays until the removing stage.
+> A create message for a marked net id replaces the marked object rather than
+> keeping the id on it, except `ParticlesCreated`: the object it names stays
+> until the removing stage.
+
+<!-- holds from 1.0.0.151 up to 4.21.0.0 -->
+
+> **In 1.0.0.151–4.20**
+>
+> A create message for a marked net id replaces the marked object rather than
+> keeping the id on it.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> A client reads only the two lowest bits of the stage: a stage with both clear
+> marks, and any other removes.
 
 <!-- holds from 4.18.0.271 up to 4.21.0.0 -->
 
@@ -551,11 +614,11 @@ Each stage either marks or removes.
 
 A message whose header names a net id the client does not hold, or whose body
 names one it needs, does nothing, and the client answers nothing for it.
-Creating messages are the exception, and so are these:
+Creating messages are the exception, and so are the messages below.
 
 - `CreateFollower` does nothing where the unit it follows is not held.
-- A `Replication` batch skips the units a client does not hold, and goes
-  unanswered (see [Ordering](ordering.md)).
+- A `Replication` batch skips the units a client does not hold;
+  [Ordering](ordering.md) says when a batch is answered.
 - `SoundPlayed` naming an owner the client does not hold plays the sound with
   no place.
 
@@ -582,23 +645,28 @@ Creating messages are the exception, and so are these:
 > applied, and a client does not read past its points: it reads the next path
 > from inside the one it skipped, so every later path of that message comes out
 > wrong. The `WaypointAck` is sent as usual and lists that path. A server MUST
-> send the creating message first, and MUST NOT carry a path for a unit a
-> client does not hold in a message with other paths.
+> NOT name, in a group, a unit the client does not yet hold.
 
-<!-- holds from 1.0.0.126 up to 4.21.0.0 -->
+<!-- holds from 1.0.0.126 up to 4.20.0.315 -->
 
-> **In 1.0.0.126–4.20**
+> **In 1.0.0.126–4.19**
+>
+> `RegionRemoved` for a region a client does not hold does nothing.
+
+<!-- holds from 1.0.0.126 up to 4.17.0.233 -->
+
+> **In 1.0.0.126–4.16**
 >
 > `SpawnPet` takes the net id in its header for the new pet, but does nothing
 > where the owner its body names is not held.
 
-<!-- holds from 3.10.0.237 up to 4.21.0.0 -->
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
-> **In 3.10–4.20**
+> **In 3.10**
 >
 > A `WaypointGroup` or `WaypointGroupAtSpeed` path for a unit not yet held is
 > applied once an object takes that net id, and its `WaypointAck` is sent as
-> usual. A server SHOULD send the creating message first.
+> usual.
 
 <!-- holds from 4.1.0.171 up to 4.21.0.0 -->
 
@@ -606,6 +674,28 @@ Creating messages are the exception, and so are these:
 >
 > `EnterSight` and `EnterLocalSight` act on the messages they carry whether or
 > not the client holds the unit they name.
+
+<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
+
+> **In 4.1–4.19**
+>
+> A client fails on a `RegionMoved` naming a region it does not hold, one whose
+> lifetime has run out included, and a server MUST NOT send one.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> `SpawnPet` takes the net id in its header for the new pet. Where the owner its
+> body names is not held it creates nothing, but still removes any object
+> holding that net id.
+
+<!-- holds from 4.18.0.271 up to 4.21.0.0 -->
+
+> **In 4.18–4.20**
+>
+> `SpawnPet` takes the net id in its header for the new pet, but does nothing
+> where the owner its body names is not held.
 
 Nothing else is held back for later: a message that arrives before the
 message creating what it names is lost. [Ordering](ordering.md)
@@ -647,9 +737,22 @@ so the number comes from `global_ss_flash.troy` and not from
 > A byte from 128 to 255 enters the hash as its value less 256, worked in 32
 > bits, rather than as itself.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 4.1.0.171 up to 4.17.0.233 -->
 
-> **In 4.1–4.20**
+> **In 4.1–4.16**
+>
+> Every byte other than `A` to `Z` is taken as it is.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> A byte from 128 to 255 enters the hash as its value less 256, worked in 32
+> bits, rather than as itself.
+
+<!-- holds from 4.18.0.271 up to 4.21.0.0 -->
+
+> **In 4.18–4.20**
 >
 > Every byte other than `A` to `Z` is taken as it is.
 

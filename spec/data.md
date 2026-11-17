@@ -1,10 +1,8 @@
 # The client's data
 
 What a server needs that no message carries, and takes from the files a client
-installs: the buildings and spawn points of a map, the ground units walk on,
-and the figures of champions, items and spells. A server SHOULD take its
-figures from these files: a client draws a match from them, and figures from
-elsewhere disagree with what it shows.
+installs. A server SHOULD take its figures from these files: a client draws a
+match from them, and figures from elsewhere disagree with what it shows.
 
 ## What a server reads
 
@@ -13,71 +11,11 @@ elsewhere disagree with what it shows.
   the identifier of each.
 - **The spawn points**: where each side's champions begin.
 - **The ground**: the grid a map's units walk on, which a server needs to find
-  paths.
+  paths, and from which a compact path takes its origin (see
+  [Movement](movement.md)).
 - **The figures**: each champion's base statistics, each item's price and what
   it is built from, and each spell's cooldowns, costs and ranges, which a server
   states through [replication](replication.md) and `SpellCast`.
-
-<!-- holds from 0.8.13.26 up to 0.9.25.36 -->
-
-> **In 0.8.13.26–0.9.25.35**
->
-> A path carries its points as they lie in the world, and takes no origin from
-> the ground.
-
-<!-- holds from 1.0.0.58 up to 4.21.0.0 -->
-
-> **In 1.0.0.58–4.20**
->
-> [Movement](movement.md) takes the origin of a path from the ground.
-
-<!-- holds from 0.8.13.26 up to 0.9.22.14 -->
-
-> **In 0.8.13.26–0.9.22.13**
->
-> The client has map 1 alone. It loads the map its own game configuration names
-> under the key `Mission` of the section `Hacks`, `Map1` where that is absent,
-> and no message names the map.
-
-<!-- holds from 0.9.25.24 up to 0.9.25.36 -->
-
-> **In 0.9.25.24–0.9.25.35**
->
-> The client has maps 1, 2 and 3.
-
-<!-- holds from 1.0.0.58 up to 1.0.0.97 -->
-
-> **In 1.0.0.58–1.0.0.96**
->
-> The client has maps 1, 2, 3 and 4.
-
-<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
-
-> **In 1.0.0.126**
->
-> The client has maps 1, 2, 3, 4 and 8.
-
-<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
-
-> **In 1.0.0.140**
->
-> The client has maps 1, 2, 3, 4, 6 and 8.
-
-<!-- holds from 3.10.0.237 up to 4.18.0.271 -->
-
-> **In 3.10–4.17**
->
-> The client has maps 1, 8, 10 and 12, and no map 11.
-
-<!-- holds from 4.18.0.271 up to 4.20.0.315 -->
-
-> **In 4.18–4.19**
->
-> The client has maps 1, 8, 10, 11 and 12. Map 11's buildings are not scene
-> objects: its `MapObjects.mob` holds them, named by the same rules, with
-> `Turret_OrderTurretShrine` and `Turret_ChaosTurretShrine` for its shrine
-> turrets, and the client creates them from it as it does scene objects. Map 11
-> has no ground grid.
 
 A client installs its files under one root, with the paths below; an install
 that packs them into archives keeps the same paths inside.
@@ -103,16 +41,7 @@ MUST take the names from the files.
 > **In 0.8.13.26–0.9.22.13**
 >
 > A name's opening says what the object is: `Turret` a turret, `Barracks` an
-> inhibitor, `HQ_` a nexus. `CreateTurret` names no building of the map: it
-> makes a new turret where it says, under the object and character names it
-> carries.
-
-<!-- holds from 0.9.25.24 up to 1.0.0.97 -->
-
-> **In 0.9.25.24–1.0.0.96**
->
-> `CreateTurret` names a building by its name alone, compared without regard to
-> case, and one naming no building does nothing.
+> inhibitor, `HQ_` a nexus.
 
 <!-- holds from 0.9.25.24 up to 0.9.25.36 -->
 
@@ -145,31 +74,6 @@ MUST take the names from the files.
 > Each object's file is `.sco` as text or `.SCB` as binary, and gives its name
 > on its `Name=` line.
 
-<!-- holds from 1.0.0.140 up to 4.20.0.315 -->
-
-> **In 1.0.0.140–4.19**
->
-> `CreateTurret` names a building by its name with `_A` after it.
-
-<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
-
-> **In 1.0.0.140**
->
-> A client fails on a `CreateTurret` naming no building, and a server MUST NOT
-> send one.
-
-<!-- holds from 3.10.0.237 up to 4.20.0.315 -->
-
-> **In 3.10–4.19**
->
-> A `CreateTurret` naming no building does nothing.
-
-<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
-
-> **In 3.10**
->
-> `CreateTurret` compares names exactly, case included.
-
 <!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
 > **In 4.1–4.19**
@@ -177,6 +81,15 @@ MUST take the names from the files.
 > A name's opening says what the object is: `Turret` a turret, `Barracks`
 > without `Spawn` an inhibitor, `HQ_` a nexus. A client creates no object the
 > map's object list below already holds.
+
+<!-- holds from 4.18.0.271 up to 4.20.0.315 -->
+
+> **In 4.18–4.19**
+>
+> Map 11's buildings are not scene objects: its `MapObjects.mob` holds them,
+> named by the same rules, with `Turret_OrderTurretShrine` and
+> `Turret_ChaosTurretShrine` for its shrine turrets, and the client creates them
+> from it as it does scene objects.
 
 **Objects and spawn points.** A champion begins at its side's spawn point,
 `__Spawn_T1` for Order and `__Spawn_T2` for Chaos.
@@ -239,14 +152,19 @@ binary grid. Its layout is unspecified.
 
 > **In 0.8.13.26–3.10**
 >
-> The grid's name is the map's own, `AIPath.aimesh` with `_ngrid` after it: no
-> setting of the mode chooses it.
+> No setting of the mode chooses the grid.
 
 <!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
 > **In 4.1–4.19**
 >
 > The grid's name is the one the mode's navigation setting gives.
+
+<!-- holds from 4.18.0.271 up to 4.20.0.315 -->
+
+> **In 4.18–4.19**
+>
+> Map 11 has no ground grid.
 
 **The figures.** Each is an inibin file: a champion's base statistics in
 `DATA/Characters/<Champion>/<Champion>.inibin`; an item, its price among its

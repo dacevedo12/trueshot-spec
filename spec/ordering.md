@@ -1,8 +1,7 @@
 # Ordering and acknowledgement
 
 What arrives in what order, which numbers say that one statement supersedes
-another, and what a client answers with. A server whose messages arrive out of
-the order these rules expect has them ignored or lost.
+another, and what a client answers with.
 
 ## Across channels
 
@@ -36,16 +35,6 @@ is answered.
 >
 > A server can instead send `Replication` reliably on the events channel.
 
-<!-- holds from 1.0.0.96 up to 1.0.0.141 -->
-
-> **In 1.0.0.96–1.0.0.140**
->
-> A client that meets a unit it does not hold in a `WaypointGroup` or
-> `WaypointGroupAtSpeed` leaves that unit's path unread, reads every later
-> movement in the group from the wrong place, and answers the group all the
-> same. A server MUST NOT name a unit in a group until the transport has
-> acknowledged the message creating it.
-
 ## Numbers that supersede
 
 Several messages carry a `syncId`: a number that lets a client tell a newer
@@ -77,6 +66,13 @@ for. Each family keeps its own numbers, and compares them in its own way.
 > server MUST give each statement about a unit a number equal to or ahead of
 > the last it gave that unit.
 
+<!-- holds from 0.9.25.24 up to 0.9.25.36 -->
+
+> **In 0.9.25.24–0.9.25.35**
+>
+> A client compares a `PathWithSpeed`'s number with its unit's count but does
+> not advance the count to it.
+
 A statement a client does not take changes nothing; what follows it still
 applies.
 
@@ -85,37 +81,14 @@ than the last batch carrying that unit, and MUST NOT give one 0. A server
 SHOULD give every batch a number of its own, so that a `TransientAck` names one
 batch.
 
-<!-- holds from 0.8.13.26 up to 0.9.22.14 -->
-
-> **In 0.8.13.26–0.9.22.13**
->
-> A client sends a view report again until a server answers with its number. A
-> server MUST answer each view report with `CameraAck`, carrying its number.
-
-<!-- holds from 0.9.25.24 up to 0.9.25.36 -->
-
-> **In 0.9.25.24–0.9.25.35**
->
-> Nothing answers a view report: a client sends its latest report again, twice
-> the round trip time plus 1/30 of a second apart, for as long as the match
-> runs.
-
-<!-- holds from 1.0.0.58 up to 4.21.0.0 -->
-
-> **In 1.0.0.58–4.20**
->
-> A client sends a view report again until a server answers with its number,
-> twice the round trip time plus 1/30 of a second apart. A server MUST answer
-> each view report with `CameraAck`, carrying its number.
-
 ## What a client answers
 
-| A server sends                          | A client answers                                                                                                      |
-| --------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `QueryStatusAnswer`                     | nothing; it asks again with `QueryStatus` until told the server is ready                                              |
-| `WaypointGroup`, `WaypointGroupAtSpeed` | `WaypointAck` for each group, taken or not, naming the units in it that carried a token (see [Movement](movement.md)) |
-| `Replication`                           | `TransientAck`, where every unit the batch names is held                                                              |
-| `ClockSync`                             | `ClockReply` (see [Time](time.md))                                                                                    |
+| A server sends                          | A client answers                                                         |
+| --------------------------------------- | ------------------------------------------------------------------------ |
+| `QueryStatusAnswer`                     | nothing; it asks again with `QueryStatus` until told the server is ready |
+| `WaypointGroup`, `WaypointGroupAtSpeed` | `WaypointAck` for each group, taken or not (see [Movement](movement.md)) |
+| `Replication`                           | `TransientAck`, where every unit the batch names is held                 |
+| `ClockSync`                             | `ClockReply` (see [Time](time.md))                                       |
 
 <!-- holds from 0.9.25.24 up to 3.11.0.306 -->
 
@@ -133,3 +106,27 @@ batch.
 
 A client sends these answers when it plays a match, not while it plays back a
 stream.
+
+## What a server answers
+
+<!-- holds from 0.8.13.26 up to 0.9.22.14 -->
+
+> **In 0.8.13.26–0.9.22.13**
+>
+> A client sends a view report again until a server answers it with
+> `CameraAck`, carrying its number.
+
+<!-- holds from 0.9.25.24 up to 0.9.25.36 -->
+
+> **In 0.9.25.24–0.9.25.35**
+>
+> Nothing answers a view report: a client sends its latest report again, twice
+> the round trip time plus 1/30 of a second apart, for as long as the match
+> runs.
+
+<!-- holds from 1.0.0.58 up to 4.21.0.0 -->
+
+> **In 1.0.0.58–4.20**
+>
+> A client sends a view report again, twice the round trip time plus 1/30 of a
+> second apart, until a server answers it with `CameraAck`, carrying its number.

@@ -3,8 +3,6 @@
 What a server shows a player to lead them: tips, quests, objectives and text at
 the side of the screen, highlights, and the tutorial.
 
-A server tells a champion something has come about with `Situation`.
-
 ## Highlights
 
 A server lights up parts of the screen and units with `HudHighlighted`,
@@ -28,7 +26,8 @@ tracker with `QuestUpdated`, and a client reports the pointer passing over a
 quest, and a click on it, with `QuestEvent`. A server can also show, change
 and hide an objective panel (`ObjectiveShown`, `ObjectiveReplaced`,
 `ObjectiveHidden`) and a box of text at the side of the screen
-(`SideTextShown`, `SideTextRefreshed`, `SideTextHidden`).
+(`SideTextShown`, `SideTextRefreshed`, `SideTextHidden`), and tell a champion
+something has come about (`Situation`).
 
 ## The tutorial
 

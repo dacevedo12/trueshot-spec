@@ -21,16 +21,23 @@ A direction is carried as a vector, not as an angle:
 
 - A unit's facing in the movement state `EnterSight` carries is a pair along
   the ground, x and z.
-- `UnitStopped`, `MissileState`, a particle's facing and a view's direction in
-  `Camera` carry x, y and z.
-- `FaceDirection` carries x, y and z, and turns the unit to face along them.
+- Where `UnitStopped`, `MissileState`, a particle or a view report in `Camera`
+  carries a direction, it carries x, y and z.
+- `FaceDirection` carries x, y and z.
 
-<!-- holds from 0.8.13.26 up to 3.11.0.306 -->
+<!-- holds from 0.8.13.26 up to 4.18.0.271 -->
 
-> **In 0.8.13.26–3.10**
+> **In 0.8.13.26–4.17**
 >
 > `FaceDirection` turns the unit along x and z alone, and leaves it as it is
 > where both are 0.
+
+<!-- holds from 0.9.25.24 up to 1.0.0.97 -->
+
+> **In 0.9.25.24–1.0.0.96**
+>
+> `Camera` carries no direction: it carries the point the view looks at, where
+> the view stands plus 2000 units the way it faces.
 
 <!-- holds from 1.0.0.140 up to 3.11.0.306 -->
 
@@ -59,8 +66,8 @@ A champion carries no facing of its own when created.
 
 > **In 0.9.25.24–4.20**
 >
-> A champion faces as its map's table of spawn positions says (see
-> `CreateChampion`).
+> A champion with a spawn index below 6 faces as its map's table of spawn
+> positions says (see [The client's data](data.md)).
 
 <!-- holds from 1.0.0.104 up to 4.21.0.0 -->
 
@@ -76,17 +83,19 @@ active prop, the same three fields are a direction vector.
 
 ## Maps
 
-`VersionSync` names the map to load by number. A client takes a map's
-buildings (see [Objects and identifiers](objects.md)), spawn positions and path
-origin (see [Movement](movement.md)) from its own data (see
-[The client's data](data.md)), and can load only a map it has data for.
+`VersionSync`'s `map` names the map to load by number. A client takes a map's
+buildings (see [Objects and identifiers](objects.md)) and spawn positions from
+its own data (see [The client's data](data.md)), and can load only a map it has
+data for. A compact path takes its origin from the same data (see
+[Movement](movement.md)).
 
 <!-- holds from 0.8.13.26 up to 0.9.22.14 -->
 
 > **In 0.8.13.26–0.9.22.13**
 >
-> A client loads the map its own settings name, map 1 where they name none, and
-> has data for map 1 alone, Summoner's Rift.
+> A client loads the map its own game configuration names under the key
+> `Mission` of the section `Hacks`, `Map1` where that is absent, and has data
+> for map 1 alone, Summoner's Rift.
 
 <!-- holds from 0.9.25.24 up to 0.9.25.36 -->
 
@@ -98,7 +107,11 @@ origin (see [Movement](movement.md)) from its own data (see
 
 > **In 1.0.0.58–1.0.0.96**
 >
-> A client has data for maps 1 to 4:
+> A client has data for maps 1 to 4.
+
+<!-- holds from 1.0.0.96 up to 1.0.0.97 -->
+
+> **In 1.0.0.96**
 >
 > | `map` | Origin of its paths |
 > | ----- | ------------------- |
@@ -148,6 +161,12 @@ origin (see [Movement](movement.md)) from its own data (see
 > | 8     | The Crystal Scar     | 6947, 6609          |
 > | 10    | The Twisted Treeline | 7708, 7227          |
 > | 12    | The Howling Abyss    | 6560, 6309          |
+
+<!-- holds from 3.10.0.237 up to 4.18.0.271 -->
+
+> **In 3.10–4.17**
+>
+> A client has no data for map 11.
 
 <!-- holds from 4.18.0.271 up to 4.21.0.0 -->
 

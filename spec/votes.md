@@ -10,12 +10,6 @@ the side where the vote stands with `SurrenderStatus`. `SurrenderAllowed` says
 whether a champion's player can call a vote, turning the choice in the client's
 menu on or off.
 
-<!-- holds from 0.8.13.26 up to 0.9.22.16 -->
-
-> **In 0.8.13.26–0.9.22.15**
->
-> There is no surrender vote: a client sends and takes no message about one.
-
 <!-- holds from 0.9.22.16 up to 0.9.25.21 -->
 
 > **In 0.9.22.16–0.9.25.20**
@@ -55,30 +49,23 @@ menu on or off.
 ## Evening out a match
 
 A server can hold a vote on giving the side behind gold, experience and
-turrets. `BalanceVote` opens the vote's panel for the voting side and adds one
-voter with each message; a client answers with
-`BalanceVoteAnswer` from the panel or as its player types `/equalize`, once per
-vote. `BalanceResult` says how the vote ended, or why it could not be held.
+turrets. Each `BalanceVote` adds one voter to the vote's panel for the voting
+side, and a client answers with `BalanceVoteAnswer` from the panel or as its
+player types `/equalize`, once per vote. `BalanceResult` says how the vote
+ended, or why it could not be held.
+
+<!-- holds from 3.10.0.237 up to 4.21.0.0 -->
+
+> **In 3.10–4.20**
+>
+> `BalanceVote` opens the panel where it says the vote opens.
 
 <!-- holds from 3.10.0.237 up to 4.20.0.315 -->
 
 > **In 3.10–4.19**
 >
-> Where the version answer's features turn the commands on, a client also sends
-> `BalanceVoteRefused`, a vote against, as its player types `/noequalize`.
-
-<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
-
-> **In 3.10**
->
-> `BalanceVote` opens the panel where it says the vote opens. A client takes
-> `/equalize` only where the version answer's features turn the commands on,
-> and sends no `BalanceVoteRefused` in the tutorial.
-
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
-
-> **In 4.1–4.20**
->
-> `BalanceVote` opens the panel on the first vote.
+> A client takes `/equalize` only where the version answer's features turn the
+> commands on. There, outside the tutorial, it also sends `BalanceVoteRefused`,
+> a vote against, as its player types `/noequalize`.
 
 <!-- messages -->

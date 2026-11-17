@@ -22,8 +22,6 @@ A family whose header carries no command field has one message each way on
 each channel it rides, read from the payload's first byte; its revisions number
 that message 0.
 
-The family, not the channel, selects the header.
-
 A revision names the channel it travels on, and names any others in `alsoOn`.
 Those channels carry the same family, so the command value means the same
 message on each, and the body is byte for byte the one the revision records.
@@ -67,10 +65,9 @@ revision claims that value both ways.
 
 > **In 1.0.0.96–4.20**
 >
-> Where the game family keeps 255 for framing, that value introduces a container
-> rather than a message: a run of several messages gathered into one payload,
-> which a reading end unwraps and reads one by one as though each had arrived on
-> its own. A container carries no header, so nothing in `schema/messages`
+> In the game family, 255 introduces a container rather than a message: a run
+> of several messages gathered into one payload, which a reading end unwraps
+> and reads one by one as though each had arrived on its own. A container carries no header, so nothing in `schema/messages`
 > describes one, and a reading end MUST NOT read the value that introduces it as
 > a command.
 >
@@ -85,8 +82,9 @@ revision claims that value both ways.
 > - bit 1 clear: a four byte object identifier follows; bit 1 set: one signed
 >   byte follows, and this entry's object identifier is the one before it plus
 >   that byte;
-> - bits 2 to 7: the size of the body; where they read 63, the size is the next
->   byte instead.
+> - bits 2 to 7: the size of the body; where they read 63, the size is instead
+>   one byte that follows the command and object identifier, just before the
+>   body.
 >
 > The body follows. Each entry, given the command and object identifier it
 > carries as its header, is a message read as though it had arrived on its own.
@@ -95,12 +93,17 @@ revision claims that value both ways.
 > and object identifier before it, it reads as the extended form of the header
 > does.
 >
-> Where the game family keeps 255, a server MAY send a container on the events
-> channel. A client sends none.
+> A server MAY send a container on the events channel. A client sends none.
 
 <!-- holds from 1.0.0.126 up to 3.11.0.306 -->
 
 > **In 1.0.0.126–3.10**
+>
+> A client unwraps a container on any channel.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
 >
 > A client unwraps a container on any channel.
 
@@ -235,7 +238,7 @@ field states.
 
 ## A field that travels enciphered
 
-A payload is enciphered as a whole once a connection has a cipher state, and a
+[Transport](transport.md#the-cipher) says which payloads are enciphered, and a
 message says nothing about that. Before a cipher state exists, a payload can
 carry one field enciphered under the key both ends hold, and the field says so.
 

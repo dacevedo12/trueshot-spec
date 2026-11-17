@@ -12,8 +12,8 @@ each follow. What the values are follows from the unit.
 > each value is four bytes, so a group takes four bytes for its set of values and
 > four for each bit that set has set.
 >
-> Each value is a 32-bit float or a 32-bit unsigned integer, as its row in the
-> tables below says, and travels as it stands.
+> Each value is a 32-bit float or a 32-bit unsigned integer, and travels as it
+> stands.
 >
 > A client passes over a set bit its table has no row for, and a group its table
 > has none of, by their four bytes each, without taking anything from them. It
@@ -24,33 +24,28 @@ each follow. What the values are follows from the unit.
 
 > **In 0.9.25.24–1.0.0.126**
 >
-> A value that says yes or no is an integer, 1 for yes and 0 for no. A client
-> takes a batch on channels 2, 3 and 4 alike.
+> A value that says yes or no is an integer, 1 for yes and 0 for no.
 
 <!-- holds from 3.10.0.237 up to 4.21.0.0 -->
 
 > **In 3.10–4.20**
 >
 > The groups follow in the order 0, 1, 2, 3, 5 and then 4: group 4 comes last,
-> each behind the length of its run. A sending end MUST write each group's length
-> as the number of bytes its run takes.
+> each behind the length of its run, the number of bytes the run takes.
 >
-> Each value takes one of two shapes, and the table row naming it says which.
-> Nothing on the wire carries a table, a field name, a width or a shape, so an
-> end that does not already hold the table cannot read a run.
+> Each value takes one of two shapes, and nothing on the wire says which.
 >
 > A value that counts is a thirty two bit unsigned integer, and a value with a
 > sign travels as the same thirty two bits. It takes seven bits from each byte,
 > lowest seven first, and the top bit of a byte is set while another byte
-> follows. Five bytes therefore carry anything it holds.
+> follows.
 >
 > A value that measures takes one of three forms: a single byte of 255 meaning
 > zero; a byte of 254 followed by four bytes; or four bytes on their own. The
 > four bytes are the measure itself, a thirty two bit float, lowest byte first.
-> A sending end MUST write the byte of 254 before a measure whose lowest byte is
-> 254 or 255, and MUST NOT write it before any other. A measure written plain
-> therefore never begins with either, so its first byte says which form it
-> takes.
+> A client reads a first byte of 255 as zero and of 254 as the start of the
+> second form, so a sending end MUST write the byte of 254 before a measure
+> whose lowest byte is 254 or 255.
 
 ## What settles a reading
 
@@ -67,8 +62,7 @@ unit it names answers to.
 
 > **In 0.9.25.24–1.0.0.96**
 >
-> A prop answers to no table, and a client takes nothing a batch carries for
-> one.
+> A prop answers to no table.
 
 <!-- holds from 1.0.0.126 up to 4.21.0.0 -->
 
@@ -97,6 +91,12 @@ the building table.
 A client answers a batch with `TransientAck` where it holds every unit the
 batch names, whether or not it took the values. [Ordering](ordering.md) says
 which batches a client takes, and what that requires of a server.
+
+<!-- holds from 0.9.25.24 up to 1.0.0.127 -->
+
+> **In 0.9.25.24–1.0.0.126**
+>
+> A client takes a batch on the clock, events and transient channels alike.
 
 ## Reading the tables
 
@@ -180,8 +180,7 @@ Each row gives the group and bits that name a value and what the value is.
 >
 > ## A building
 >
-> Inhibitors, nexuses and the buildings minions come from share one table. It
-> has no value for health at its greatest.
+> Inhibitors, nexuses and the buildings minions come from share one table.
 >
 > | Group | Bits   | Value                                                | Type  |
 > | ----- | ------ | ---------------------------------------------------- | ----- |
@@ -263,8 +262,7 @@ Each row gives the group and bits that name a value and what the value is.
 >
 > ## A building
 >
-> Inhibitors, nexuses and the buildings minions come from share one table. It
-> has no value for health at its greatest.
+> Inhibitors, nexuses and the buildings minions come from share one table.
 >
 > | Group | Bits   | Value                                                | Type  |
 > | ----- | ------ | ---------------------------------------------------- | ----- |
@@ -359,8 +357,7 @@ Each row gives the group and bits that name a value and what the value is.
 >
 > ## A building
 >
-> Inhibitors, nexuses and the buildings minions come from share one table. It
-> has no value for health at its greatest.
+> Inhibitors, nexuses and the buildings minions come from share one table.
 >
 > | Group | Bits   | Value                                                | Type  |
 > | ----- | ------ | ---------------------------------------------------- | ----- |
@@ -476,8 +473,7 @@ Each row gives the group and bits that name a value and what the value is.
 >
 > ## A building
 >
-> Inhibitors, nexuses and the buildings minions come from share one table. It
-> has no value for health at its greatest.
+> Inhibitors, nexuses and the buildings minions come from share one table.
 >
 > | Group | Bits | Value                                | Type  |
 > | ----- | ---- | ------------------------------------ | ----- |
@@ -563,8 +559,6 @@ Each row gives the group and bits that name a value and what the value is.
 >
 > ## A minion, and a unit belonging to no side
 >
-> Both answer to one table.
->
 > | Group | Bits     | Value                                                                                | Shape    |
 > | ----- | -------- | ------------------------------------------------------------------------------------ | -------- |
 > | 1     | 0 to 1   | Health as it stands, then at its greatest                                            | measured |
@@ -597,8 +591,7 @@ Each row gives the group and bits that name a value and what the value is.
 >
 > ## A prop
 >
-> A server need not replicate a prop's values. Where it does, they follow the
-> table below.
+> A server MAY leave a prop's values unreplicated.
 >
 > | Group | Bits   | Value                                                       | Shape    |
 > | ----- | ------ | ----------------------------------------------------------- | -------- |
@@ -656,7 +649,10 @@ Each row gives the group and bits that name a value and what the value is.
 > | 3     | 14 to 16 | Kills taken from no side, and whether anything is allowed to aim at it                                 | counted  |
 >
 > Bit 2 holds which of slots 0 to 3 can be cast from, one bit for each slot,
-> set as a champion learns the spell in it, and bit 4 holds which summoner spells can be cast from, as a mask in which a server sets its bits 4 and 5, one for each summoner slot. Bits 3 and 5 of the group carry zero. [Sides and slots](values.md) numbers the slots.
+> set as a champion learns the spell in it, and bit 4 holds which summoner
+> spells can be cast from, as a mask in which a server sets its bits 4 and 5,
+> one for each summoner slot. Bits 3 and 5 of the group carry zero.
+> [Sides and slots](values.md) numbers the slots.
 >
 > Bits 8 to 11 carry what the spells in slots 0 to 3 cost. A server sets bits 8
 > to 27 together and writes zero in bits 12 to 27. It leaves bits 6 and 7, and
@@ -700,54 +696,64 @@ Each row gives the group and bits that name a value and what the value is.
 > so a reduction is carried as a negative fraction and the panel shows its size.
 >
 > Bit 22 sets the countdown a client shows on the champion's passive. It is a
-> moment on the match clock (see [Time](time.md)), in seconds, on the same clock as the time a
-> `ClockSync` carries, and not the time left: 120 at the opening of a match starts
-> the countdown from 2:00. Once that moment has passed, the passive shows ready.
-> Bit 23 is how long the whole cooldown lasts, in seconds, and a client shades the
-> passive's icon by the time left over that length; the countdown itself follows
-> bit 22 alone.
+> moment on the match clock (see [Time](time.md)), in seconds, on the same clock
+> as the time a `ClockSync` carries, and not the time left: 120 at the opening
+> of a match starts the countdown from 2:00. Once that moment has passed, the
+> passive shows ready. Bit 23 is how long the whole cooldown lasts, in seconds,
+> and a client shades the passive's icon by the time left over that length; the
+> countdown itself follows bit 22 alone.
 >
 > ## A turret
 >
-> | Group | Bits    | Value                                                                      | Shape    |
-> | ----- | ------- | -------------------------------------------------------------------------- | -------- |
-> | 1     | 0 to 1  | Resource at its greatest, then as it stands                                | measured |
-> | 1     | 2 to 6  | What the turret is doing, and four kinds of harm it is proof against       | counted  |
-> | 1     | 7       | Damage it deals by striking                                                | measured |
-> | 1     | 8       | Armour                                                                     | measured |
-> | 1     | 9 to 14 | Spell resistance, the modifiers on its damage, and how fast health returns | measured |
-> | 3     | 0 to 1  | Health as it stands, then at its greatest                                  | measured |
-> | 3     | 2 to 3  | How far it sees                                                            | measured |
-> | 3     | 4       | How fast it moves                                                          | measured |
-> | 3     | 5       | Its size                                                                   | measured |
-> | 5     | 0 to 1  | Whether anything is allowed to aim at it, and which side is                | counted  |
+> | Group | Bits     | Value                                                                | Shape    |
+> | ----- | -------- | -------------------------------------------------------------------- | -------- |
+> | 1     | 0 to 1   | Resource at its greatest, then as it stands                          | measured |
+> | 1     | 2 to 6   | What the turret is doing, and four kinds of harm it is proof against | counted  |
+> | 1     | 7        | Damage it deals by striking                                          | measured |
+> | 1     | 8        | Armour                                                               | measured |
+> | 1     | 9        | Spell resistance                                                     | measured |
+> | 1     | 10       | A multiplier on how fast it strikes                                  | measured |
+> | 1     | 11 to 12 | Flat and percent modifiers on the damage it strikes with             | measured |
+> | 1     | 13       | The flat modifier on its spells' damage                              | measured |
+> | 1     | 14       | How fast health returns                                              | measured |
+> | 3     | 0 to 1   | Health as it stands, then at its greatest                            | measured |
+> | 3     | 2 to 3   | How far it sees                                                      | measured |
+> | 3     | 4        | How fast it moves                                                    | measured |
+> | 3     | 5        | Its size                                                             | measured |
+> | 5     | 0 to 1   | Whether anything is allowed to aim at it, and which side is          | counted  |
 >
 > Where a server raises a turret's health at its greatest, it raises health as it
 > stands to the same value.
 >
 > ## A minion, and a unit belonging to no side
 >
-> Both answer to one table.
+> | Group | Bits     | Value                                                                                                  | Shape    |
+> | ----- | -------- | ------------------------------------------------------------------------------------------------------ | -------- |
+> | 1     | 0 to 1   | Health as it stands, then at its greatest                                                              | measured |
+> | 1     | 2 to 4   | How long it lives, as it stands and at its greatest, and the count of that                             | measured |
+> | 1     | 5 to 6   | Resource at its greatest, then as it stands                                                            | measured |
+> | 1     | 7 to 11  | What the unit is doing, and four kinds of harm it is proof against                                     | counted  |
+> | 1     | 12       | Damage it deals by striking                                                                            | measured |
+> | 1     | 13 to 14 | Armour and spell resistance                                                                            | measured |
+> | 1     | 15       | A multiplier on how fast it strikes                                                                    | measured |
+> | 1     | 16 to 18 | Flat and percent modifiers on the damage it strikes with, then the flat modifier on its spells' damage | measured |
+> | 1     | 19 to 20 | How fast health and resource return                                                                    | measured |
+> | 1     | 21 to 22 | Flat and percent reduction of the spell damage it takes                                                | measured |
+> | 3     | 0 to 1   | How far it sees                                                                                        | measured |
+> | 3     | 2        | How fast it moves                                                                                      | measured |
+> | 3     | 3        | Its size                                                                                               | measured |
+> | 3     | 4 to 5   | Whether anything is allowed to aim at it, and which side is                                            | counted  |
 >
-> | Group | Bits     | Value                                                                      | Shape    |
-> | ----- | -------- | -------------------------------------------------------------------------- | -------- |
-> | 1     | 0 to 1   | Health as it stands, then at its greatest                                  | measured |
-> | 1     | 2 to 4   | How long it lives, as it stands and at its greatest, and the count of that | measured |
-> | 1     | 5 to 6   | Resource at its greatest, then as it stands                                | measured |
-> | 1     | 7 to 11  | What the unit is doing, and four kinds of harm it is proof against         | counted  |
-> | 1     | 12       | Damage it deals by striking                                                | measured |
-> | 1     | 13 to 31 | Its defences and the modifiers on them                                     | measured |
-> | 3     | 0 to 1   | How far it sees                                                            | measured |
-> | 3     | 2        | How fast it moves                                                          | measured |
-> | 3     | 3        | Its size                                                                   | measured |
-> | 3     | 4 to 5   | Whether anything is allowed to aim at it, and which side is                | counted  |
+> For some units the two resource values travel as group 3 bits 0 and 1
+> instead: the rest of group 1 moves down two bits and the rest of group 3 up
+> two. Which units do is not recorded.
 >
 > ## A building
 >
-> Inhibitors and nexuses, each named by the identifier
-> [Objects and identifiers](objects.md#net-ids-of-what-a-map-holds) gives its
-> name. Where a server replicates a map's buildings, it sends these two groups and
-> nothing else. On map 8 it replicates none.
+> This table holds for inhibitors and nexuses, named as
+> [Objects and identifiers](objects.md#net-ids-of-what-a-map-holds) gives. Where
+> a server replicates a map's buildings, it sends these two groups and nothing
+> else. On map 8 it replicates none.
 >
 > | Group | Bits   | Value                                                       | Shape    |
 > | ----- | ------ | ----------------------------------------------------------- | -------- |
@@ -756,24 +762,31 @@ Each row gives the group and bits that name a value and what the value is.
 > | 5     | 0 to 1 | Whether anything is allowed to aim at it, and which side is | counted  |
 >
 > The health figure does not follow the building's health. A server SHOULD send
-> an inhibitor's as 4000 on maps 1 and 11 and 3000 on map 10, a nexus's as 5500 on those three, and every
-> building's as 0 on map 12. A server SHOULD NOT change it, even as a building
-> is destroyed. A server first names a building in the `EnterSight` that brings it
-> into a side's sight.
+> an inhibitor's as 4000 on map 1 and 3000 on map 10, a nexus's as 5500 on both,
+> and every building's as 0 on map 12. A server SHOULD NOT change it, even as a
+> building is destroyed. A server first names a building in the `EnterSight`
+> that brings it into a side's sight.
 >
 > ## A prop
 >
-> A server need not replicate a prop's values. Where it does, they follow the
-> table below.
+> A server MAY leave a prop's values unreplicated.
 >
 > | Group | Bits   | Value                                                       | Shape    |
 > | ----- | ------ | ----------------------------------------------------------- | -------- |
-> | 1     | 0 to 1 | Health as it stands, then at its greatest                   | measured |
+> | 1     | 0      | Health as it stands                                         | measured |
+> | 1     | 1      | Health as it stands, again                                  | measured |
 > | 1     | 2      | Whether the prop is proof against harm                      | counted  |
 > | 3     | 0 to 1 | How far it sees                                             | measured |
 > | 3     | 2      | How fast it moves                                           | measured |
 > | 3     | 3      | Its size                                                    | measured |
 > | 3     | 4 to 5 | Whether anything is allowed to aim at it, and which side is | counted  |
+
+<!-- holds from 4.18.0.271 up to 4.21.0.0 -->
+
+> **In 4.18–4.20**
+>
+> On map 11, a server SHOULD send an inhibitor's health figure as 4000 and a
+> nexus's as 5500.
 
 ## Values stated outside a batch
 
@@ -785,33 +798,48 @@ Besides its batches, a server states some values with messages of their own.
 >
 > A server grants gold with `GoldGained`. `ExperienceGained` shows the
 > experience gained over the unit and grants none: a champion's experience
-> follows its replicated values alone.
+> follows `ValueGroup1` alone.
 
 <!-- holds from 0.9.25.24 up to 1.0.0.127 -->
 
 > **In 0.9.25.24–1.0.0.126**
 >
-> A server grants experience with `ExperienceGained` and gold with `GoldGained`.
+> A server grants gold with `GoldGained`. `ExperienceGained` shows the
+> experience gained over the unit and grants none: a champion's experience
+> follows its batches alone.
 
 <!-- holds from 1.0.0.140 up to 1.0.0.141 -->
 
 > **In 1.0.0.140**
 >
 > A server grants experience with `ExperienceGained`, and MUST name a champion
-> in it: a client fails on one naming any other unit. `GoldGained` shows the
-> gold gained over the unit and grants none: a champion's gold in hand follows
-> group 0 bit 0 of its batches alone.
+> in it: a client fails on one naming any other unit. `GoldGained` grants no
+> gold: a champion's gold in hand follows group 0 bit 0 of its batches alone.
 
 <!-- holds from 3.10.0.237 up to 4.21.0.0 -->
 
 > **In 3.10–4.20**
 >
-> A server grants experience with `ExperienceGained` and gold with `GoldGained`.
+> A server grants experience with `ExperienceGained`.
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> A server grants gold with `GoldGained`.
+
+<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+
+> **In 4.1–4.20**
+>
+> A `GoldGained` naming the client's own champion, with an amount above 0.5 and
+> a source the client holds, grants nothing: that champion's gold in hand
+> follows its batches. Any other `GoldGained` adds the amount to the gold of the
+> unit it names.
 
 A server can send the gold a unit earns to another with `GoldRedirect`. A level
-gained is `LevelUp`, which on its own is enough for a client to show the new
-level on its champion's portrait. A server sets a champion's tallies for the
-scoreboard with `ChampionStats`. A server can also add to a unit's shield
+gained is `LevelUp` (see [Spells](spells.md#levelling)). A server sets a
+champion's tallies with `ChampionStats`. A server can also add to a unit's shield
 (`ShieldAdded`), change how its health bar or resource bar is shown
 (`HealthBar`, `ResourceDisplay`), change the sort of resource it has
 (`ResourceKindChanged`), set the highest level a champion reaches

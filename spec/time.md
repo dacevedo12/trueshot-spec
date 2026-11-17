@@ -11,7 +11,6 @@ when the message arrives. Every definition says which.
 
 Exceptions:
 
-- `Paused` carries the time left in a hold as a whole number of seconds.
 - A stream's chunk and key frame intervals (`StreamMetadata`) are in
   milliseconds.
 
@@ -94,19 +93,6 @@ catch up with its own.
 >
 > A client runs no clock but the match clock, and takes whatever speed
 > `GameSpeed` gives.
-
-<!-- holds from 0.9.25.24 up to 0.9.25.36 -->
-
-> **In 0.9.25.24–0.9.25.35**
->
-> A `GameSpeed` that arrives during a hold sets the match clock running again
-> at once.
-
-<!-- holds from 1.0.0.126 up to 3.11.0.306 -->
-
-> **In 1.0.0.126–3.10**
->
-> A `GameSpeed` that arrives during a hold takes effect as play resumes.
 
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 

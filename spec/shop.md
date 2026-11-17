@@ -5,9 +5,8 @@ What fills the shop, what a client asks for, and what a server answers.
 ## What fills it
 
 A client's catalogue of items is its own: no message sends or changes it. A
-client sets its shop up for its own champion, and what a match sells is
-settled by the client's own data. A client filters nothing out of the shop by
-the champion's level.
+client sets its shop up for its own champion, and filters nothing out of the
+shop by the champion's level.
 
 <!-- holds from 0.8.13.26 up to 1.0.0.141 -->
 
@@ -41,21 +40,18 @@ the champion's level.
 
 > **In 1.0.0.96**
 >
-> Suggested items are kept per champion, whatever the map or the mode.
+> Suggested items depend on neither the map nor the mode.
 
 <!-- holds from 1.0.0.140 up to 1.0.0.141 -->
 
 > **In 1.0.0.140**
 >
-> Suggested items are kept per champion and chosen by the mode `VersionSync`
-> names, whatever the map.
+> Suggested items also depend on the mode `VersionSync` names, but not on the
+> map.
 
 <!-- holds from 4.1.0.171 up to 4.21.0.0 -->
 
 > **In 4.1–4.20**
->
-> What a server decides is which of the client's items a match lets a player
-> buy, and whether the shop has a player to show them to.
 >
 > A client sets its shop up from its own champion's `CreateChampion` (the one
 > carrying its own client id) and then that champion's `Loadout`. Until the
@@ -67,8 +63,9 @@ the champion's level.
 > What a match sells is settled by the client's own data for the map, the mode
 > and the variants named in `VersionSync`. The map's data lists items that
 > cannot be bought, with further lists for the mode and each variant; a mode
-> with no list of its own removes nothing. Suggested items are kept per champion, and chosen by map and
-> mode. Of what a server sends, only these change what can be bought:
+> with no list of its own removes nothing. Suggested items also depend on the
+> map and the mode. Of what a server sends, only these change what can be
+> bought:
 >
 > - `VersionSync`'s disabled items: none can be bought; a zero place disables
 >   nothing.
@@ -80,12 +77,6 @@ the champion's level.
 A client asks to buy with `BuyItem`, to sell or throw away an item with
 `RemoveItem`, and to swap two slots of its inventory with `SwapItems`. Closing
 the shop sends nothing.
-
-<!-- holds from 0.8.13.26 up to 1.0.0.70 -->
-
-> **In 0.8.13.26–1.0.0.69**
->
-> A client never asks to swap two slots: it has no `SwapItems`.
 
 <!-- holds from 0.8.13.26 up to 0.9.22.14 -->
 
@@ -113,15 +104,15 @@ the shop sends nothing.
 > Opening the shop sends nothing, except in the tutorial, where it sends
 > `TutorialShopOpened`.
 
-A client asks to buy only where the item is one the match sells and priced
-within the champion's gold.
+A client asks to buy only where the item is one the match sells.
 
 <!-- holds from 0.8.13.26 up to 3.11.0.306 -->
 
 > **In 0.8.13.26–3.10**
 >
-> A client asks for an item not built from others only where a slot is free or
-> holds the same item below its stack limit.
+> A client asks for an item not built from others only where its price is
+> within the champion's gold, and where a slot is free or holds the same item
+> below its stack limit.
 
 <!-- holds from 0.8.13.26 up to 1.0.0.61 -->
 
@@ -162,21 +153,22 @@ within the champion's gold.
 
 > **In 3.10–4.20**
 >
-> A client asks only where the item's price, after any substitution, is within
-> the champion's gold, and where a slot is free, unless the item can be used in
-> the shop. For an item built from others, it asks only where the champion holds
-> a free slot or a part of it, everything the item requires, and gold for what
-> remains.
+> An item that can be used in the shop needs no free slot. For an item built
+> from others, a client asks only where the champion holds a free slot or a part
+> of it, everything the item requires, and gold for what remains.
 
 <!-- holds from 4.1.0.171 up to 4.21.0.0 -->
 
 > **In 4.1–4.20**
 >
 > A client asks to buy only where shopping is allowed (`ShopEnabled`), with the
-> champion near its side's shop, dead, or allowed to shop from anywhere.
+> champion near its side's shop, dead, or allowed to shop from anywhere. It asks
+> for an item not built from others only where its price, after any
+> substitution, is within the champion's gold, and where a slot is free unless
+> the item can be used in the shop.
 
-A client never places an item itself. It shows a purchase only when a server
-answers with `ItemAdded`, a sale or loss with `RemoveItemAnswer`, and a swap
+A client never places an item itself: an item enters its inventory only as a
+server answers with `ItemAdded`, leaves it with `RemoveItemAnswer`, and moves
 with `SwapItemsAnswer`. A server can also set a slot (`InventorySlot`), set the
 whole inventory (`InventorySnapshot`), change an item's charges
 (`ItemCharges`), or report an item used (`ItemUsed`).
@@ -209,23 +201,9 @@ Where `VersionSync`'s features set shopUndo, the shop has an undo button, which
 is enabled while `ShopUndoCount` gives the champion undos to spend. Pressing it
 sends `ShopUndo`, whatever the count.
 
-## Closing and locking
+## Closing
 
-`CloseShop` closes the shop where it is open. A message that locks the shop
-alone, `InputLock` or `InputLockToggled`, closes it and turns off its key.
-
-<!-- holds from 0.9.25.24 up to 3.11.0.306 -->
-
-> **In 0.9.25.24–3.10**
->
-> A message that locks other input along with the shop stops the shop opening,
-> but leaves an open shop open and its key on.
-
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
-
-> **In 4.1–4.20**
->
-> Any message that locks the shop closes it and turns off its key, whatever
-> else it locks.
+`CloseShop` closes the shop where it is open. Input locks close it too (see
+[The interface](interface.md#input)).
 
 <!-- messages -->

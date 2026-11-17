@@ -6,29 +6,35 @@ tutorial are in [Tutorial and guidance](guidance.md).
 
 ## The view
 
-A client reports where its view sits and which way it faces with `Camera`,
-which a server answers (see [Ordering](ordering.md)). A client tells a server what it has
-selected with `SelectObject`, and as it locks its view to its champion or
-releases it with `CameraLock`.
+A client reports its view with `Camera`, which a server answers (see
+[Ordering](ordering.md)). A client tells a server what it has selected with
+`SelectObject`, and as it locks its view to its champion or releases it with
+`CameraLock`.
 
 A server carries a client's view from one place to another with `MoveCamera`. A
 server can also lock or free a client's camera with `CameraLockSet`, which the
 client answers with `CameraLock` except while it holds its camera itself, and
 set a point a player's view keeps to with `CameraBehaviour`.
 
+<!-- holds from 0.8.13.26 up to 4.20.0.315 -->
+
+> **In 0.8.13.26–4.19**
+>
+> A client's view report, `Camera`, goes out as its view moves at least 200
+> units, at most every tenth of a second, and never while its view is locked.
+
 <!-- holds from 0.9.25.24 up to 3.11.0.306 -->
 
 > **In 0.9.25.24–3.10**
 >
-> A client sends no `Camera` while its camera is locked: a server that needs a
-> client's view reports frees its camera with `CameraLockSet`.
+> A server that needs a client's view reports while its camera is locked frees
+> it with `CameraLockSet`.
 
 <!-- holds from 0.9.25.24 up to 1.0.0.120 -->
 
 > **In 0.9.25.24–1.0.0.119**
 >
-> `Camera` names one point, the one the view looks at, in place of where the
-> view sits and which way it faces.
+> `Camera` names one point, the one the view looks at.
 
 <!-- holds from 0.9.25.24 up to 1.0.0.61 -->
 
@@ -63,31 +69,17 @@ set a point a player's view keeps to with `CameraBehaviour`.
 
 > **In 4.20**
 >
-> A client reports a view drawn further out than it allows with `ZoomReport`; a
-> server MAY ignore it.
+> A client reports a view drawn further out than it allows with `ZoomReport`.
 
 ## Input
 
 A server locks or unlocks kinds of input, such as movement, spells or the
-shop, with `InputLock` or `InputLockToggled`.
+shop, with `InputLock` or `InputLockToggled`. A message that locks the shop
+alone closes the shop and turns off its key.
 
-<!-- holds from 0.8.13.26 up to 0.9.22.14 -->
+<!-- holds from 0.9.22.14 up to 0.9.25.36 -->
 
-> **In 0.8.13.26–0.9.22.13**
->
-> No message locks a client's input, in either direction.
-
-<!-- holds from 0.9.22.14 up to 0.9.22.16 -->
-
-> **In 0.9.22.14–0.9.22.15**
->
-> A server locks and unlocks input with `InputLockToggled` alone. A client
-> flips locks of its own too, and tells the server which with
-> `InputLocksFlipped`.
-
-<!-- holds from 0.9.22.16 up to 0.9.25.36 -->
-
-> **In 0.9.22.16–0.9.25.35**
+> **In 0.9.22.14–0.9.25.35**
 >
 > A client locks and unlocks its own input too, and tells the server each time:
 > `InputLocksFlipped` for the locks it flipped, as when a camera move a script
@@ -107,6 +99,13 @@ shop, with `InputLock` or `InputLockToggled`.
 > **In 3.10**
 >
 > A watching client ignores `InputLock`.
+
+<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+
+> **In 4.1–4.20**
+>
+> Any message that locks the shop closes it and turns off its key, whatever
+> else it locks.
 
 ## The minimap and text on screen
 

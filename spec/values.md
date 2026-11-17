@@ -10,9 +10,6 @@ neither, such as a monster of no side. Where a field takes 0, it names no
 side; its note says what that means. A few fields carry a side in another
 form, and their notes say which.
 
-`Roster` lists the players of each side, and a player's place in that list is
-their seat (see [Objects and identifiers](objects.md)).
-
 ## Spell slots
 
 A champion has two books of spells. Its own book holds these slots:
@@ -25,10 +22,10 @@ A champion has two books of spells. Its own book holds these slots:
 
 Its summoner book holds the two summoner spells, in slots 0 and 1.
 
-A message that names a spell slot either carries a flag, set for the summoner
-book and clear for the champion's own, or names the champion's own book only.
-A cast's description (`SpellCast`) carries no flag: the spell's own data says
-whether it is a summoner spell.
+A message that names a spell slot carries a flag, set for the summoner book and
+clear for the champion's own, or names the champion's own book only, except a
+cast's description (`SpellCast`): it carries no flag, and the spell's own data
+says whether it is a summoner spell.
 
 <!-- holds from 0.8.13.26 up to 0.9.22.14 -->
 
@@ -85,39 +82,35 @@ A server MUST NOT name a champion book slot beyond the book's last slot.
 > **In 0.8.13.26–0.9.22.13**
 >
 > A champion's own book ends at slot 22. A client reports an `Autocast` naming
-> a slot above 22 as an error, and keeps it all the same. A server MUST NOT
-> name a champion book slot above 22.
+> a slot above 22 as an error, and keeps it all the same.
 
 <!-- holds from 0.9.25.24 up to 0.9.25.36 -->
 
 > **In 0.9.25.24–0.9.25.35**
 >
 > A champion's own book ends at slot 44. A client reports an `Autocast` naming
-> a slot above 44 as an error, and keeps it all the same. A server MUST NOT
-> name a champion book slot above 44.
+> a slot above 44 as an error, and keeps it all the same.
 
 <!-- holds from 1.0.0.58 up to 1.0.0.97 -->
 
 > **In 1.0.0.58–1.0.0.96**
 >
 > A champion's own book ends at slot 48. A client reports an `Autocast` naming
-> a slot above 48 as an error, and keeps it all the same. A server MUST NOT
-> name a champion book slot above 48.
+> a slot above 48 as an error, and keeps it all the same.
 
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
 > **In 1.0.0.126**
 >
 > A champion's own book ends at slot 51. A client applies an `Autocast` or a
-> `SpellInSlot` naming a slot above 51 while reporting it as an error. A server
-> MUST NOT name a champion book slot above 51.
+> `SpellInSlot` naming a slot above 51 while reporting it as an error.
 
 <!-- holds from 1.0.0.140 up to 1.0.0.141 -->
 
 > **In 1.0.0.140**
 >
 > A champion's own book ends at slot 51. A client ignores an `Autocast` naming
-> a slot above 51. A server MUST NOT name a champion book slot above 51.
+> a slot above 51.
 
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
@@ -125,8 +118,7 @@ A server MUST NOT name a champion book slot beyond the book's last slot.
 >
 > A champion's own book ends at slot 59. A client ignores an `Autocast` naming
 > a slot above 59, and applies a `SpellInSlot` or a `SpellCostChanged` naming
-> one while reporting it as an error. A server MUST NOT name a champion book
-> slot above 59.
+> one while reporting it as an error.
 
 <!-- holds from 4.1.0.171 up to 4.7.0.296 -->
 
@@ -134,25 +126,21 @@ A server MUST NOT name a champion book slot beyond the book's last slot.
 >
 > A champion's own book ends at slot 60. A client ignores an `Autocast` or a
 > `SpellToggled` naming a slot above 60, and applies a `SpellInSlot` or a
-> `SpellCostChanged` naming one while reporting it as an error. A server MUST
-> NOT name a champion book slot above 60.
+> `SpellCostChanged` naming one while reporting it as an error.
 
 <!-- holds from 4.7.0.296 up to 4.21.0.0 -->
 
 > **In 4.7–4.20**
 >
 > A champion's own book runs on to slot 62: slot 61 is using an object on the
-> field (see `UseObject`), and slot 62 the champion's passive. A server MUST NOT
-> name a champion book slot above 62.
+> field (see `UseObject`), and slot 62 the champion's passive.
 
 ## Inventory slots
 
-A champion's inventory holds the six items a player sees and uses in slots 0
-to 5, and further slots after them up to its last.
-
-An item is cast from the spell slot four above its inventory slot, and moving
-an item moves its spell with it. A server MUST NOT name an inventory slot
-beyond the inventory's last slot.
+A champion's inventory holds an item a player sees and uses in each of slots 0
+to 5, and further slots after them up to its last. Moving an item moves its
+spell with it. A server MUST NOT name an inventory slot beyond the inventory's
+last slot.
 
 <!-- holds from 0.8.13.26 up to 0.9.22.14 -->
 
@@ -161,7 +149,7 @@ beyond the inventory's last slot.
 > A champion's inventory ends at slot 14, and holds neither a trinket nor an
 > item for recalling. A client takes an answer about an item naming a slot
 > above 14 all the same, reporting it as an error and writing past the end of
-> the inventory. A server MUST NOT name an inventory slot above 14.
+> the inventory.
 
 <!-- holds from 0.9.25.24 up to 1.0.0.97 -->
 
@@ -169,8 +157,7 @@ beyond the inventory's last slot.
 >
 > A champion's inventory ends at slot 36, and a player sees and uses only slots
 > 0 to 5. A client takes a `RemoveItemAnswer` naming a slot above 36 all the
-> same, reporting it as an error and writing past the end of the inventory. A
-> server MUST NOT name an inventory slot above 36.
+> same, reporting it as an error and writing past the end of the inventory.
 
 <!-- holds from 1.0.0.96 up to 3.11.0.306 -->
 
@@ -184,7 +171,7 @@ beyond the inventory's last slot.
 >
 > A champion's inventory ends at slot 37. A client ignores a
 > `RemoveItemAnswer`, `InventorySlot`, `ItemAdded`, `ItemUsed` or `ItemCharges`
-> naming a slot above 37. A server MUST NOT name an inventory slot above 37.
+> naming a slot above 37.
 
 <!-- holds from 4.1.0.171 up to 4.21.0.0 -->
 
@@ -200,14 +187,13 @@ beyond the inventory's last slot.
 >
 > A champion's inventory ends at slot 38. A client ignores a
 > `RemoveItemAnswer`, `InventorySlot`, `ItemAdded`, `ItemUsed` or `ItemCharges`
-> naming a slot above 38. A server MUST NOT name an inventory slot above 38.
+> naming a slot above 38.
 
 <!-- holds from 4.7.0.296 up to 4.21.0.0 -->
 
 > **In 4.7–4.20**
 >
-> A champion's inventory ends at slot 39. A server MUST NOT name an inventory
-> slot above 39.
+> A champion's inventory ends at slot 39.
 
 ## Effect slots
 
@@ -219,8 +205,8 @@ the slot whatever its name.
 > **In 0.8.13.26–1.0.0.96**
 >
 > Each unit has 32 slots for the effects it carries, 0 to 31. A client uses a
-> slot above 31 all the same, past the end of the unit's slots. A server MUST
-> NOT name an effect slot above 31.
+> slot above 31 all the same, past the end of the unit's slots, and fails. A
+> server MUST NOT name an effect slot above 31.
 
 <!-- holds from 1.0.0.126 up to 4.21.0.0 -->
 

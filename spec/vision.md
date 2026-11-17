@@ -26,7 +26,7 @@ A server brings a unit into what a client's side can see with `EnterSight`.
 
 > **In 1.0.0.97–4.20**
 >
-> `EnterSight` also states the unit's items.
+> `EnterSight` states the unit's items.
 
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
@@ -41,9 +41,9 @@ A server brings a unit into what a client's side can see with `EnterSight`.
 
 > **In 1.0.0.138–4.20**
 >
-> `EnterSight` can also carry whole messages of the game family, such as the
-> `CreateTurret` or `CreateNeutral` that makes the unit, each taking effect as
-> though it had arrived on its own.
+> `EnterSight` and `EnterLocalSight` can carry whole messages of the game family,
+> such as the `CreateTurret` or `CreateNeutral` that makes the unit, each taking
+> effect as though it had arrived on its own.
 
 <!-- holds from 1.0.0.140 up to 1.0.0.141 -->
 
@@ -68,10 +68,11 @@ A server brings a unit into what a client's side can see with `EnterSight`.
 
 > **In 4.1–4.20**
 >
-> `EnterSight` states everything a client needs to draw the unit at once: its
-> looks, its shields, where it stands or which path it walks, and, in what
-> follows, its health and resource. A body MAY end early where its layout marks
-> the remaining parts as present only while bytes remain.
+> `EnterSight` states the unit's shields and looks and, for a champion or a
+> minion, where it stands or which path it walks, and nothing of its health or
+> resource. A client reads every part of the body whatever its length, so a
+> server MUST NOT end one early. For an inhibitor or a nexus it reads nothing
+> after the messages carried.
 
 A client does not draw a champion that no `EnterSight` has placed: given only
 its `CreateChampion`, a client shows the champion's portrait and spells and
@@ -91,33 +92,8 @@ its name and health bar over it.
 
 > **In 1.0.0.96–4.20**
 >
-> `EnterLocalSight` states the unit's health.
-
-<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
-
-> **In 1.0.0.126**
->
-> `EnterLocalSight` states the unit's maximum health beside its health, and
-> nothing of its resource.
-
-<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
-
-> **In 1.0.0.140**
->
-> `EnterLocalSight` states the unit's resource beside its health.
-
-<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
-
-> **In 3.10**
->
-> `EnterLocalSight` states the unit's maximum health beside its health, and
-> nothing of its resource. It can carry whole messages as `EnterSight` does.
-
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
-
-> **In 4.1–4.20**
->
-> `EnterLocalSight` states the unit's resource beside its health.
+> `EnterLocalSight` states the unit's maximum health and its health, and nothing
+> of its resource.
 
 ## Losing sight
 
@@ -150,7 +126,8 @@ and leave a side's view with `ParticleEnterTeamSight` and
 
 > **In 4.1–4.20**
 >
-> `LeaveLocalSight` naming a client's own champion changes nothing it shows.
+> A client drops the floating text it would show over a unit `LeaveLocalSight`
+> has taken out (see [Who is told what](#who-is-told-what)).
 
 ## Regions
 
@@ -184,18 +161,10 @@ cover over it.
 
 `FogSet` and `FogToggled` change how a client draws its fog of war.
 
-<!-- holds from 1.0.0.58 up to 4.20.0.315 -->
-
-> **In 1.0.0.58–4.19**
->
-> A client draws its fog of war, or the map with no darkening, as `FogSet` and
-> `FogToggled` say. Neither changes what the client can see.
-
 ## Who is told what
 
 A client acts on a message about whichever unit it names, its own champion or
-another, so what a client knows is whatever a server sends it. A server
-decides, message by message, which clients to tell.
+another, so what a client knows is whatever a server sends it.
 
 <!-- holds from 0.8.13.26 up to 4.20.0.315 -->
 
@@ -223,7 +192,7 @@ decides, message by message, which clients to tell.
 > A server sends the narrower audience as a message of its own, and sends the
 > wider form only where every client is to know.
 
-Messages about a champion's own state, its gold, its inventory, its spells'
+Messages about a champion's own state, its inventory, its spells'
 levels, cooldowns and charges, and whether it can shop, are applied to the
 champion they name on any client that receives them, but a client shows some
 of them only for its own champion:
@@ -295,6 +264,14 @@ of them only for its own champion:
 
 > **In 4.1–4.20**
 >
+> `GoldGained` naming the client's own champion, with an amount above 0.5 and a
+> source the client holds, shows the gold over the source, or over the champion
+> where the source cannot show text.
+
+<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+
+> **In 4.1–4.20**
+>
 > `LevelUp` shows its effect over any unit the client can see.
 
 A server SHOULD send `SpellCooldown`, `SpellCharges` and `GoldGained` about a
@@ -307,6 +284,15 @@ A client also acts on what it is told about a unit it holds but cannot see:
 - floating text over a hidden unit is dropped;
 - an animation plays on a hidden unit, which comes into view part way through
   it.
+
+<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+
+> **In 4.1–4.20**
+>
+> A client drops `FloatingText` and `UnitText` over a unit not in its local
+> sight, even one it can see: one no `EnterLocalSight` has brought in, or one
+> `LeaveLocalSight` has taken out. It drops the healing numbers it would show for
+> its own champion while that champion is out of local sight.
 
 A server SHOULD NOT send a
 client what its side cannot see, beyond what keeps its world consistent.

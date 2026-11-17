@@ -78,8 +78,7 @@ spell can be raised, and at which champion levels, with `SpellRankLimits`.
 
 > **In 0.8.13.26–4.19**
 >
-> A client spends the point as it sends `UpgradeSpell`. `LevelUp` states the
-> champion's level and its points.
+> A client spends the point as it sends `UpgradeSpell`.
 
 <!-- holds from 0.9.25.24 up to 1.0.0.61 -->
 

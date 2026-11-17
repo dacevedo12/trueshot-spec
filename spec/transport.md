@@ -27,8 +27,7 @@ sequence numbers, retransmission, throttling, and fragmentation behave as
 > **In 0.8.13.26–1.0.0.126**
 >
 > Stock ENet 1.2.5 serves a client as it stands: the header, the constants and
-> the commands are the release's own, and the verify connect stock ENet sends
-> states what the client's connect asked for.
+> the commands are the release's own.
 
 <!-- holds from 1.0.0.127 up to 3.03.0.198 -->
 
@@ -41,8 +40,7 @@ sequence numbers, retransmission, throttling, and fragmentation behave as
 
 > **In 3.03–4.20**
 >
-> The rest of this chapter says what a client does **not** accept from stock
-> ENet. A server built on an unmodified ENet 1.2.5 never completes a connection.
+> A server built on an unmodified ENet 1.2.5 never completes a connection.
 
 ## The packet header
 
@@ -53,8 +51,7 @@ establishes no connection under any other layout.
 <!-- protocol -->
 
 A header built from the schema is necessary to reach a client, and not
-sufficient on its own. Where a field's content is free rather than fixed, its
-note in the schema says so.
+sufficient on its own.
 
 `conformance/vectors/transport` holds a header with a sent time and one
 without.
@@ -87,11 +84,28 @@ abandons a connection whose verify connect states anything else.
 > session id is then the byte every header carries, and a server that reads
 > either field at ENet's width answers a client that never hears it.
 
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> A client reads the verify connect's peer id from the first of the two bytes
+> ENet gives it. A server MUST write the peer id in that byte, because one
+> written at ENet's width puts its high byte there.
+
 <!-- holds from 3.13.0.399 up to 4.21.0.0 -->
 
 > **In 3.13–4.20**
 >
 > A client asks for 8 channels.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> A client reads the verify connect's peer id from the first of the two bytes
+> ENet gives it, and carries that byte in every header it sends. A server MUST
+> write the peer id in that byte, because one written at ENet's width puts its
+> high byte there.
 
 ## Maximum transmission unit
 
@@ -159,8 +173,7 @@ argument.
 > **In 0.8.13.26–1.0.0.110**
 >
 > A client decodes nothing: its key is the first sixteen characters of the
-> argument, as they stand. A key both this and later builds take alike is
-> sixteen characters of text.
+> argument, as they stand.
 
 <!-- holds from 1.0.0.111 up to 1.0.0.126 -->
 
@@ -180,12 +193,11 @@ argument.
 
 > **In 4.1–4.20**
 >
-> The argument holds the key in base64.
+> An argument longer than sixteen characters holds the key in base64, and the
+> key is the first sixteen bytes it decodes to. An argument of sixteen
+> characters or fewer is the key as it stands.
 
-Registration associates the key with a connection. `Register` travels in the
-clear apart from one field enciphered under the key, and a server MUST refuse a
-connection whose deciphered field is not what it expects, since that field is
-all that shows the client holds the key. `schema/messages`
-records the exchange, as `Register` and `Registered`.
+Registration associates the key with a connection. `schema/messages` records
+the exchange, as `Register` and `Registered`.
 
 <!-- channels -->

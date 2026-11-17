@@ -25,48 +25,33 @@ match reaches it.
 
 ## What marks a watching client
 
-Nothing on the wire does. A client watches because it was started to watch: it
-is given the word `spectator` where a player's client is given its server's
-address. Its key can be given as more than 16 characters of base64: the first
-24 bytes it encodes, deciphered as Blowfish ECB under the match number written
-out, give the key as their first 16 bytes.
+Nothing on the wire does. A watching client was started to watch, given the
+word `spectator` where a player's client is given its server's address. Its key
+can be given as more than 16 characters of base64: the first 24 bytes it
+encodes, deciphered as Blowfish ECB under the low 32 bits of the match number
+written out as a signed decimal, give the key as their first 16 bytes. A
+player's key is as [Transport](transport.md) says.
 
 <!-- holds from 1.0.0.126 up to 3.11.0.306 -->
 
 > **In 1.0.0.126–3.10**
 >
-> The word is followed by the spectator service's address, with no port of its
-> own, the key, a match number and a platform name; there is no player number.
-> A key is deciphered under the low 32 bits of the match number, written out as
-> a signed decimal.
-
-<!-- holds from 1.0.0.126 up to 3.11.0.306 -->
-
-> **In 1.0.0.126–3.10**
->
-> The word `replay` starts a watching client as `spectator` does.
-
-<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
-
-> **In 1.0.0.126**
->
-> A player's key too can be given as base64.
-
-<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
-
-> **In 3.10**
->
-> A player's key is never base64: one longer than 16 characters is cut to its
-> first 16.
+> The word, or the word `replay` in its place, is followed by the spectator
+> service's address, with no port of its own, the key, a match number and a
+> platform name; there is no player number.
 
 <!-- holds from 4.1.0.171 up to 4.21.0.0 -->
 
 > **In 4.1–4.20**
 >
 > The word is followed by the address, the port, the key, a match number and a
-> player number. The key works as a player's does, with one difference: it can
-> instead be given as base64, deciphered under the match number written out in
-> decimal.
+> player number.
+
+## The order of the stream
+
+<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+
+> **In 4.1–4.20**
 >
 > A watching client registers as a player's client does (see
 > [Joining a match](joining.md)), and is answered the same way, save for the
@@ -79,8 +64,6 @@ out, give the key as their first 16 bytes.
 > client sends while joining, it sends only `JoinSide`, once the stream's own
 > `VersionSync` has played, then `GameOptions`, `CharacterSelected` and
 > `ClientReady`: no `ClientVersion`, no `QueryStatus` and no `LoadingProgress`.
-
-## The order of the stream
 
 1. A client answered on registration sends `StreamRequest`.
 2. A server sends `StreamMetadata`, within 30 seconds: until it arrives the
@@ -184,9 +167,9 @@ time zero at once, and the first record with a time above zero sets its clock.
 It skips a record of command 0 on the events channel.
 
 The chunks of setting up carry what a player's client is sent from its version
-answer on: `VersionSync` first. A client holds the stream back while it loads after
-`VersionSync`, and again while it builds the world after `SpawnStart`, and
-goes on by itself afterwards.
+answer on: `VersionSync` first. A client holds the stream back while it loads
+after `VersionSync`, and again while it builds the world after `SpawnStart`,
+and goes on by itself afterwards.
 
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 

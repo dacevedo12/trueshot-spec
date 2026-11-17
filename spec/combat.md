@@ -24,9 +24,8 @@ unit attacks.
 > stands more than 400 units from it.
 
 A client asks its champion to attack with a `MoveOrder` naming the unit (see
-[Movement](movement.md)). What the player then sees is what a server sends: the
-champion walking into range along a `WaypointGroup`, a swing for each `Attack`,
-and what each `Damage` shows.
+[Movement](movement.md)). A server then plays the attack with `Attack`, and
+reports what each blow does with `Damage`.
 
 <!-- holds from 0.8.13.26 up to 4.20.0.315 -->
 
@@ -39,29 +38,6 @@ and what each `Damage` shows.
 > **In 0.8.13.26–3.10**
 >
 > A client ignores an `Attack` whose target it does not hold.
-
-<!-- holds from 0.8.13.26 up to 0.9.22.14 -->
-
-> **In 0.8.13.26–0.9.22.13**
->
-> Result 0 of `Damage` is a notice a client shows for only one in every thirty
-> it receives, and result 5 a miss, shown for its player's own unit. Results 3,
-> 4 and any above 5 show a figure, and for them a client lowers the hurt unit's
-> health by the amount itself, without waiting for replication.
-
-<!-- holds from 0.9.25.24 up to 4.20.0.315 -->
-
-> **In 0.9.25.24–4.19**
->
-> `Damage` shows a figure for the results that carry one, normal and critical;
-> zero is the result that shows the unit as invulnerable, not a plain hit.
-
-<!-- holds from 0.9.25.24 up to 3.11.0.306 -->
-
-> **In 0.9.25.24–3.10**
->
-> Of the other results of `Damage`, 1 shows nothing, 2 a dodge and 5 a miss; 3
-> is critical, and 4 and any above 5 are normal.
 
 <!-- holds from 1.0.0.126 up to 4.20.0.315 -->
 
@@ -77,19 +53,12 @@ and what each `Damage` shows.
 > A swing starts later by the timing byte of its `Attack` less 128, in
 > hundredths of a second.
 
-<!-- holds from 1.0.0.140 up to 4.21.0.0 -->
-
-> **In 1.0.0.140–4.20**
->
-> The health bar moves as [replication](replication.md) states the health.
-
 <!-- holds from 3.10.0.237 up to 4.20.0.315 -->
 
 > **In 3.10–4.19**
 >
 > Each `Attack` plays one swing, cutting off any swing still under way.
-> `TargetUnit` and `TargetHeldChampion` are not needed for a swing to show. The
-> health bar moves only as replication states the unit's health, and
+> `TargetUnit` and `TargetHeldChampion` are not needed for a swing to show.
 > `StopAttack` breaks a swing off before it lets go.
 
 <!-- holds from 4.1.0.171 up to 4.20.0.315 -->
@@ -136,7 +105,7 @@ and what each `Damage` shows.
 >
 > That a unit is attacking a champion is `TargetHeldChampion`, which marks the
 > unit's health bar with an indicator, and clears the mark when it names no such
-> champion. A server MUST send `TargetUnit` and `TargetHeldChampion` together.
+> champion.
 
 `HoverTarget` and `HoverIndicator` set and show the unit a unit's hover
 indicator points at, and `AttackIndicators` shows or hides a unit's attack
@@ -154,6 +123,35 @@ A server reports damage with `Damage`.
 >
 > A client shows nothing for `Damage` unless it holds the unit hurt; it need not
 > hold the unit dealing it.
+
+<!-- holds from 0.8.13.26 up to 0.9.22.14 -->
+
+> **In 0.8.13.26–0.9.22.13**
+>
+> Result 0 of `Damage` is a notice a client shows for only one in every thirty
+> it receives, and result 5 a miss, shown for its player's own unit. Results 3,
+> 4 and any above 5 show a figure, and for them a client lowers the hurt unit's
+> health by the amount itself, without waiting for replication.
+
+<!-- holds from 0.9.25.24 up to 4.20.0.315 -->
+
+> **In 0.9.25.24–4.19**
+>
+> `Damage` shows a figure for the results that carry one, normal and critical;
+> zero is the result that shows the unit as invulnerable, not a plain hit.
+
+<!-- holds from 0.9.25.24 up to 3.11.0.306 -->
+
+> **In 0.9.25.24–3.10**
+>
+> Of the other results of `Damage`, 1 shows nothing, 2 a dodge and 5 a miss; 3
+> is critical, and 4 and any above 5 are normal.
+
+<!-- holds from 1.0.0.140 up to 4.21.0.0 -->
+
+> **In 1.0.0.140–4.20**
+>
+> The health bar moves as [replication](replication.md) states the health.
 
 <!-- holds from 3.10.0.237 up to 4.20.0.315 -->
 
@@ -185,7 +183,7 @@ into its death.
 
 > **In 0.8.13.26–1.0.0.96**
 >
-> Nothing in `UnitDied` leaves the unit standing: every unit it puts down dies.
+> Every unit `UnitDied` puts down dies.
 
 <!-- holds from 0.9.25.24 up to 0.9.25.36 -->
 
@@ -194,9 +192,9 @@ into its death.
 > A server MUST NOT send `BuildingDied` for the nexus: a client removes the
 > nexus some 4 seconds later while still using it, and fails.
 
-<!-- holds from 1.0.0.58 up to 3.11.0.306 -->
+<!-- holds from 1.0.0.58 up to 4.20.0.315 -->
 
-> **In 1.0.0.58–3.10**
+> **In 1.0.0.58–4.19**
 >
 > A death that credits no killer still stops the unit's cast and attack.
 
@@ -207,16 +205,11 @@ into its death.
 > Either `UnitDied` or `ChampionDied` can leave the unit standing as a husk
 > rather than dead, without its death animation or death screen.
 
-<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
-
-> **In 4.1–4.19**
->
-> A client ignores `ChampionDied` that credits no killer.
-
-How long a champion stays down is `DeathTimer`. Whether a client draws the world
-without colour while its champion is down is `GreyscaleWhenDead`. What led to a
+How long a champion stays down is `DeathTimer`. A server asks a client to draw the
+world without colour while its champion is down with `GreyscaleWhenDead`. What led to a
 death is `DeathHistory`, which a client lays out for its player. An inhibitor's
-state, and how long it lasts, is `InhibitorState`.
+state, and how long it lasts, is `InhibitorState`. A server also reports a death
+for what a client draws on its map with `UnitDiedOnMap`.
 
 <!-- holds from 1.0.0.140 up to 1.0.0.141 -->
 
@@ -231,13 +224,6 @@ state, and how long it lasts, is `InhibitorState`.
 >
 > A client honours `GreyscaleWhenDead` whatever its display settings, and
 > restores colour at once as it clears.
-
-<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
-
-> **In 4.20**
->
-> A server also reports a death for what a client draws on its map with
-> `UnitDiedOnMap`.
 
 ## Coming back
 
@@ -254,7 +240,7 @@ state, and how long it lasts, is `InhibitorState`.
 
 > **In 1.0.0.126–4.20**
 >
-> A server can instead bring a dead champion back at a place of its choosing
+> A server can also bring a dead champion back at a place of its choosing
 > with `Respawned`, which keeps the champion's level, gold and spell ranks and
 > restores its health.
 
@@ -283,9 +269,9 @@ A client sends `UseObject` as its player right-clicks a unit that can be used.
 > A client also sends `UseObject` for a unit its champion is attacking, as that
 > unit changes side.
 
-<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+<!-- holds from 3.10.0.237 up to 4.21.0.0 -->
 
-> **In 3.10**
+> **In 3.10–4.20**
 >
 > As a unit changes side, a client sends `UseObject` naming it for every unit it
 > holds that targets it, whether or not it can be used, and clears that target.

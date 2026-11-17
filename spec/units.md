@@ -27,21 +27,10 @@ Each kind of object has its own message:
 - a prop, a thing that stands on the map and is looked at, `MapProp`, and a
   change to one, `MapPropChanged`.
 
-<!-- holds from 1.0.0.138 up to 4.21.0.0 -->
-
-> **In 1.0.0.138–4.20**
->
-> Several of these arrive on their own or inside the `EnterSight` that brings
-> the unit into view (see [Vision](vision.md)): a client takes either.
-
-`CharacterPreload` has a client load a character's art ahead of need.
-
-<!-- holds from 0.8.13.26 up to 1.0.0.61 -->
-
-> **In 0.8.13.26–1.0.0.60**
->
-> A client acts on a `CreateChampion` or a `CreateNeutral` whenever it arrives,
-> before `CharacterSelected` as after.
+[Vision](vision.md) says which of these can arrive inside an `EnterSight`, and
+[Joining a match](joining.md#the-spawn-run) what a client drops before it sends
+`CharacterSelected`. [Leaving and coming back](match.md#leaving-and-coming-back)
+says which of them a client ignores while it resynchronises.
 
 <!-- holds from 1.0.0.96 up to 1.0.0.97 -->
 
@@ -55,21 +44,11 @@ Each kind of object has its own message:
 > **In 1.0.0.126**
 >
 > A client acts on a `CreateChampion` or a `CreateNeutral` whenever it arrives.
-> Once it has reconnected, it drops a `SpawnFromBarracks`, `SpawnUnit` or
-> `CreateNeutral` for an object it already holds.
 >
 > A client builds a prop from the character its `MapProp` names, loading that
 > character from its own files when it has not already, and fails soon after the
 > prop comes near what it draws where it cannot load it. A server MUST name in
 > `MapProp` only characters the client can load.
-
-<!-- holds from 3.10.0.237 up to 4.20.0.315 -->
-
-> **In 3.10–4.19**
->
-> A client drops a `CreateChampion` or a `CreateNeutral` that arrives before it
-> sends `CharacterSelected`, reconnecting included. A server MUST send them after
-> it receives `CharacterSelected`.
 
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
@@ -77,6 +56,16 @@ Each kind of object has its own message:
 >
 > A client drops a `CreateChampion` or a `CreateNeutral` that arrives before it
 > has loaded the map's ground grid.
+
+<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+
+> **In 4.1–4.20**
+>
+> A client drops a `CreateChampion` or a `CreateNeutral` that arrives before it
+> has loaded the map's ground grid. One that arrives later replaces any object
+> the client holds under its net id.
+
+`CharacterPreload` has a client load a character's art ahead of need.
 
 ## Changing and removing
 

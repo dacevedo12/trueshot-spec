@@ -1,19 +1,26 @@
 # Effects and looks
 
 The lasting effects units carry, the particles a client draws, and how units
-look and move on screen. None of this changes what a unit can do; that is
-[replication](replication.md)'s to say.
+look and move on screen.
 
 ## Lasting effects
 
 A lasting effect sits in one of a unit's effect slots and shows on its icon row.
-A server puts one on with `EffectAdded`, replaces the one in a slot with
-`EffectReplaced`, restates how many are stacked with `EffectCount`, and takes it
-off with `EffectRemoved`. The unit carrying an effect can differ from the unit
-that cast it. A server can do each of these for several units at once
-(`EffectAddedGroup`, `EffectReplacedGroup`, `EffectCountGroup`,
-`EffectRemovedGroup`), and set the number an effect shows on its icon with
-`EffectCounter`.
+A server puts one on with `EffectAdded`, puts the effect `EffectReplaced`
+carries in a slot that already holds one, restates how many are stacked with
+`EffectCount`, and takes it off with `EffectRemoved`. The unit carrying an
+effect can differ from the unit that cast it. A server can do each of these for
+several units at once (`EffectAddedGroup`, `EffectReplacedGroup`,
+`EffectCountGroup`, `EffectRemovedGroup`), and set the number an effect shows on
+its icon with `EffectCounter`.
+
+<!-- holds from 1.0.0.128 up to 1.0.0.144 -->
+
+> **In 1.0.0.128–1.0.0.143**
+>
+> `EffectReplaced` carries no effect: it re-times the effect already in the slot
+> and names its caster again, and does nothing where the slot is empty.
+> `EffectReplacedGroup` does the same for each unit.
 
 ## Particles
 
