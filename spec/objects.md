@@ -72,8 +72,8 @@ these, it carries it whole, at the width above.
 ## How they relate
 
 A player is known by a player id. A server answers a client's `Register` with
-`Registered`, and the one carrying the client's own player id gives the client
-its own client id.
+one `Registered` for every seat, and the one carrying the client's own player id
+gives the client its own client id.
 
 <!-- holds from 0.8.13.26 up to 3.11.0.306 -->
 
@@ -95,9 +95,8 @@ its own client id.
 
 > **In 0.9.25.24–0.9.25.35**
 >
-> Registration pairs each player id with a client id: a server answers a
-> client's `Register` with one `Registered` for every seat. Every later message
-> that names a player by client id is read through that pairing.
+> Registration pairs each player id with a client id. Every later message that
+> names a player by client id is read through that pairing.
 
 <!-- holds from 1.0.0.58 up to 3.11.0.306 -->
 
@@ -117,18 +116,17 @@ its own client id.
 
 > **In 4.1–4.20**
 >
-> Registration pairs each player id with a client id: a server answers a
-> client's `Register` with one `Registered` for every seat, and a client
-> records the pair each carries.
+> Registration pairs each player id with a client id, and a client records the
+> pair each `Registered` carries. A client takes a client id only from 0 to 252,
+> and leaves on any other, so a server MUST give each player a client id in that
+> range.
 
 <!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 
 > **In 4.17**
 >
-> A client takes a client id only from 0 to 252, and leaves on any other, so a
-> server MUST give each player a client id in that range. A server MUST send
-> that `Registered` before any create message, because a client given a create
-> message before it has its own client id stops.
+> A server MUST send that `Registered` before any create message, because a
+> client given a create message before it has its own client id stops.
 
 `Roster` lists each side's player ids in order, and a player's seat is their
 place in that list. A client finds a seat's client id through its player id.
@@ -200,9 +198,9 @@ naming a unit, an owner or a target carry one too.
 > id. For any other creating message, a client that
 > still holds the earlier object creates the new one but keeps the net id on the
 > old one, so messages naming it reach the old object, and removing either
-> leaves the id naming neither. Between its own reconnection and
-> `ResyncEnded`, a client drops a `SpawnFromBarracks`, `SpawnUnit` or
-> `CreateNeutral` naming a net id it holds.
+> leaves the id naming neither.
+> [Leaving and coming back](match.md#leaving-and-coming-back) says what a client
+> drops while it resynchronises.
 
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
@@ -389,21 +387,23 @@ Among the identifiers with that top byte are these:
 
 > **In 4.1–4.16**
 >
-> | Name                            | `map`         |
-> | ------------------------------- | ------------- |
-> | `Barracks_T1_C1`                | 1, 11, 12     |
-> | `Barracks_T1_L1`                | 1, 10, 11     |
-> | `Barracks_T1_R1`                | 1, 10, 11     |
-> | `Barracks_T2_C1`                | 1, 11, 12     |
-> | `Barracks_T2_L1`                | 1, 10, 11     |
-> | `Barracks_T2_R1`                | 1, 10, 11     |
-> | `__P_Order_Spawn_Barracks__C01` | 1             |
-> | `ChaosShop01`                   | 12            |
-> | `chaosShop01`                   | 1, 8, 10, 11  |
-> | `HQ_T1`                         | 1, 10, 11, 12 |
-> | `HQ_T2`                         | 1, 10, 11, 12 |
-> | `OrderShop01`                   | 12            |
-> | `orderShop01`                   | 1, 8, 11      |
+> Of maps 1, 8, 10 and 12, these hold each name:
+>
+> | Name                            | `map`     |
+> | ------------------------------- | --------- |
+> | `Barracks_T1_C1`                | 1, 12     |
+> | `Barracks_T1_L1`                | 1, 10     |
+> | `Barracks_T1_R1`                | 1, 10     |
+> | `Barracks_T2_C1`                | 1, 12     |
+> | `Barracks_T2_L1`                | 1, 10     |
+> | `Barracks_T2_R1`                | 1, 10     |
+> | `__P_Order_Spawn_Barracks__C01` | 1         |
+> | `ChaosShop01`                   | 12        |
+> | `chaosShop01`                   | 1, 8, 10  |
+> | `HQ_T1`                         | 1, 10, 12 |
+> | `HQ_T2`                         | 1, 10, 12 |
+> | `OrderShop01`                   | 12        |
+> | `orderShop01`                   | 1, 8      |
 
 <!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 
@@ -507,9 +507,8 @@ or the end of its life, that removes it. Creating messages are listed in
 [Units](units.md), and [Vision](vision.md) says which can arrive inside
 `EnterSight`. What a map holds, a client holds from the moment it loads the map.
 
-Leaving a client's sight removes nothing: `LeaveSight` and `LeaveTeamSight`
-hide an object, and it is held as before. [Vision](vision.md) says what
-`LeaveLocalSight` does.
+Leaving a client's sight removes nothing; [Vision](vision.md#losing-sight) says
+what each message that takes a unit out of view does.
 
 <!-- holds from 0.8.13.26 up to 0.9.25.36 -->
 
@@ -521,8 +520,8 @@ hide an object, and it is held as before. [Vision](vision.md) says what
 
 > **In 0.9.25.24–0.9.25.35**
 >
-> A client removes a nexus about 4 seconds after `BuildingDied` names it, and
-> can fail as it does. An inhibitor `BuildingDied` names is held.
+> An inhibitor `BuildingDied` names is held. [Combat](combat.md) says what
+> becomes of a nexus.
 
 <!-- holds from 1.0.0.96 up to 3.11.0.306 -->
 
@@ -546,7 +545,7 @@ hide an object, and it is held as before. [Vision](vision.md) says what
 > | Kind                 | Removed                                                                                                                                                                  | Its death                                                               |
 > | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------- |
 > | Champion             | by `ChampionRemoved`, at once                                                                                                                                            | kills it; it is held, and comes back                                    |
-> | Minion, monster, pet | by the client, once it has been dead for its death time, 4 seconds unless its character says otherwise; a new `SpawnPet` for an owner removes that owner's pet before it | starts that wait; a death naming no killer does nothing                 |
+> | Minion, monster, pet | by the client, once it has been dead for its death time, 4 seconds unless its character says otherwise; a new `SpawnPet` for an owner removes that owner's pet before it | starts that wait                                                        |
 > | Turret               | by the client, 1.2 seconds after its death, or after the time its `SpawnTurret` gives; a lane turret is held where `VersionSync`'s features keep destroyed turrets       | kills it                                                                |
 > | Inhibitor, nexus     | never                                                                                                                                                                    | `BuildingDied` plays its death; it is held, and an inhibitor comes back |
 > | Missile              | by `DestroyMissile`, by its flight ending, or once its caster is removed                                                                                                 |                                                                         |
@@ -617,8 +616,8 @@ names one it needs, does nothing, and the client answers nothing for it.
 Creating messages are the exception, and so are the messages below.
 
 - `CreateFollower` does nothing where the unit it follows is not held.
-- A `Replication` batch skips the units a client does not hold;
-  [Ordering](ordering.md) says when a batch is answered.
+- A `Replication` batch: [Ordering](ordering.md#across-channels) says what
+  becomes of one naming a unit the client does not hold.
 - `SoundPlayed` naming an owner the client does not hold plays the sound with
   no place.
 
@@ -633,9 +632,9 @@ Creating messages are the exception, and so are the messages below.
 
 > **In 0.9.25.24–1.0.0.60**
 >
-> A client sends a `WaypointGroup`'s `WaypointAck` before it reads any path,
-> whatever units the paths name. A path for a unit not held is read through and
-> dropped, and is not applied once an object takes that net id.
+> A path for a unit not held is read through and dropped, and is not applied
+> once an object takes that net id. [Movement](movement.md) says when the
+> `WaypointAck` is sent.
 
 <!-- holds from 1.0.0.96 up to 1.0.0.141 -->
 
@@ -672,6 +671,10 @@ Creating messages are the exception, and so are the messages below.
 
 > **In 4.1–4.20**
 >
+> A `WaypointGroup` or `WaypointGroupAtSpeed` path for a unit not yet held is
+> applied once an object takes that net id, and its `WaypointAck` is sent as
+> usual.
+>
 > `EnterSight` and `EnterLocalSight` act on the messages they carry whether or
 > not the client holds the unit they name.
 
@@ -697,9 +700,8 @@ Creating messages are the exception, and so are the messages below.
 > `SpawnPet` takes the net id in its header for the new pet, but does nothing
 > where the owner its body names is not held.
 
-Nothing else is held back for later: a message that arrives before the
-message creating what it names is lost. [Ordering](ordering.md)
-says what that requires of a server.
+[Ordering](ordering.md#across-channels) says what becomes of any other message
+that arrives before the message creating what it names.
 
 ## A message naming its sender
 

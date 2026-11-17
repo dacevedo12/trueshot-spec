@@ -28,9 +28,9 @@ match reaches it.
 Nothing on the wire does. A watching client was started to watch, given the
 word `spectator` where a player's client is given its server's address. Its key
 can be given as more than 16 characters of base64: the first 24 bytes it
-encodes, deciphered as Blowfish ECB under the low 32 bits of the match number
-written out as a signed decimal, give the key as their first 16 bytes. A
-player's key is as [Transport](transport.md) says.
+encodes, deciphered as Blowfish ECB under the match number written out, give
+the key as their first 16 bytes. A player's key is as [Transport](transport.md)
+says.
 
 <!-- holds from 1.0.0.126 up to 3.11.0.306 -->
 
@@ -38,7 +38,9 @@ player's key is as [Transport](transport.md) says.
 >
 > The word, or the word `replay` in its place, is followed by the spectator
 > service's address, with no port of its own, the key, a match number and a
-> platform name; there is no player number.
+> platform name; there is no player number. The match number a key is
+> deciphered under is the low 32 bits of the match number, written out as a
+> signed decimal.
 
 <!-- holds from 4.1.0.171 up to 4.21.0.0 -->
 
@@ -46,6 +48,13 @@ player's key is as [Transport](transport.md) says.
 >
 > The word is followed by the address, the port, the key, a match number and a
 > player number.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> The match number a key is deciphered under is the low 32 bits of the match
+> number, written out as a signed decimal.
 
 ## The order of the stream
 
@@ -90,7 +99,7 @@ player's key is as [Transport](transport.md) says.
    stream.
 
 The stream's chunks run for `StreamMetadata`'s `chunkTimeInterval` each and its
-key frames for its `keyFrameTimeInterval`, both in milliseconds.
+key frames for its `keyFrameTimeInterval` (see [Time](time.md#how-a-time-is-carried)).
 
 <!-- holds from 1.0.0.126 up to 3.11.0.306 -->
 

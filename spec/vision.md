@@ -64,19 +64,30 @@ A server brings a unit into what a client's side can see with `EnterSight`.
 > server MUST NOT end one early. For an inhibitor or a nexus it reads nothing
 > after the messages carried.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 4.1.0.171 up to 4.2.0.2718 -->
 
-> **In 4.1–4.20**
+> **In 4.1**
+>
+> A client reads every part of an `EnterSight` body whatever its length, so a
+> server MUST NOT end one early.
+
+<!-- holds from 4.10.0.369 up to 4.20.0.315 -->
+
+> **In 4.10–4.19**
+>
+> A client reads every part of an `EnterSight` body whatever its length, so a
+> server MUST NOT end one early.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
 >
 > `EnterSight` states the unit's shields and looks and, for a champion or a
 > minion, where it stands or which path it walks, and nothing of its health or
-> resource. A client reads every part of the body whatever its length, so a
-> server MUST NOT end one early. For an inhibitor or a nexus it reads nothing
-> after the messages carried.
+> resource. For an inhibitor or a nexus a client reads nothing after the
+> messages carried.
 
-A client does not draw a champion that no `EnterSight` has placed: given only
-its `CreateChampion`, a client shows the champion's portrait and spells and
-nothing on the field. One `EnterSight` after the `CreateChampion` draws it, with
+A client does not draw a champion that no `EnterSight` has placed. One `EnterSight` after the `CreateChampion` draws it, with
 its name and health bar over it.
 
 `EnterLocalSight` brings a unit into what one client alone can see.
@@ -102,16 +113,9 @@ leave it held (see [Objects and identifiers](objects.md)). Particles come into
 and leave a side's view with `ParticleEnterTeamSight` and
 `ParticleLeaveTeamSight`.
 
-<!-- holds from 0.8.13.26 up to 0.9.22.14 -->
+<!-- holds from 0.8.13.26 up to 0.9.25.36 -->
 
-> **In 0.8.13.26–0.9.22.13**
->
-> `LeaveLocalSight` takes a unit out of what one client alone can see, and
-> leaves it held.
-
-<!-- holds from 0.9.25.24 up to 0.9.25.36 -->
-
-> **In 0.9.25.24–0.9.25.35**
+> **In 0.8.13.26–0.9.25.35**
 >
 > `LeaveLocalSight` takes a unit out of what one client alone can see, and
 > leaves it held.
@@ -128,13 +132,6 @@ and leave a side's view with `ParticleEnterTeamSight` and
 >
 > `LeaveLocalSight` takes a unit out of what one client alone can see, and
 > leaves it held.
-
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
-
-> **In 4.1–4.20**
->
-> A client drops the floating text it would show over a unit `LeaveLocalSight`
-> has taken out (see [Who is told what](#who-is-told-what)).
 
 ## Regions
 
@@ -267,9 +264,9 @@ of them only for its own champion:
 > Where the source of a `GoldGained` cannot show text, the gold shows over the
 > client's own champion.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 
-> **In 4.1–4.20**
+> **In 4.17**
 >
 > `GoldGained` naming the client's own champion, with an amount above 0.5 and a
 > source the client holds, shows the gold over the source, or over the champion
@@ -292,9 +289,9 @@ A client also acts on what it is told about a unit it holds but cannot see:
 - an animation plays on a hidden unit, which comes into view part way through
   it.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 
-> **In 4.1–4.20**
+> **In 4.17**
 >
 > A client drops `FloatingText` and `UnitText` over a unit not in its local
 > sight, even one it can see: one no `EnterLocalSight` has brought in, or one

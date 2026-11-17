@@ -88,7 +88,7 @@ batch.
 | `QueryStatusAnswer`                     | nothing; it asks again with `QueryStatus` until told the server is ready |
 | `WaypointGroup`, `WaypointGroupAtSpeed` | `WaypointAck` for each group, taken or not (see [Movement](movement.md)) |
 | `Replication`                           | `TransientAck`, where every unit the batch names is held                 |
-| `ClockSync`                             | `ClockReply` (see [Time](time.md))                                       |
+| `ClockSync`                             | `ClockReply`, on the clock channel (see [Time](time.md))                 |
 
 <!-- holds from 0.9.25.24 up to 3.11.0.306 -->
 
@@ -108,6 +108,13 @@ stream.
 >
 > A client sends a view report again until a server answers it with
 > `CameraAck`, carrying its number.
+
+<!-- holds from 0.9.22.14 up to 0.9.25.24 -->
+
+> **In 0.9.22.14–0.9.25.23**
+>
+> Where its last view report goes unacknowledged, a client sends it again
+> without its view moving, once more than twice the round trip has passed.
 
 <!-- holds from 0.9.25.24 up to 0.9.25.36 -->
 

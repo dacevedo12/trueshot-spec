@@ -39,13 +39,6 @@ reports what each blow does with `Damage`.
 >
 > A client ignores an `Attack` whose target it does not hold.
 
-<!-- holds from 1.0.0.126 up to 4.20.0.315 -->
-
-> **In 1.0.0.126–4.19**
->
-> A client never walks its champion into range by itself: a server sends the
-> `WaypointGroup` that takes it there.
-
 <!-- holds from 1.0.0.126 up to 3.11.0.306 -->
 
 > **In 1.0.0.126–3.10**
@@ -59,7 +52,6 @@ reports what each blow does with `Damage`.
 >
 > Each `Attack` plays one swing, cutting off any swing still under way.
 > `TargetUnit` and `TargetHeldChampion` are not needed for a swing to show.
-> `StopAttack` breaks a swing off before it lets go.
 
 <!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
@@ -192,9 +184,15 @@ into its death.
 > A server MUST NOT send `BuildingDied` for the nexus: a client removes the
 > nexus some 4 seconds later while still using it, and fails.
 
-<!-- holds from 1.0.0.58 up to 4.20.0.315 -->
+<!-- holds from 1.0.0.58 up to 3.11.0.306 -->
 
-> **In 1.0.0.58–4.19**
+> **In 1.0.0.58–3.10**
+>
+> A death that credits no killer still stops the unit's cast and attack.
+
+<!-- holds from 4.17.0.233 up to 4.20.0.315 -->
+
+> **In 4.17–4.19**
 >
 > A death that credits no killer still stops the unit's cast and attack.
 
@@ -269,9 +267,16 @@ A client sends `UseObject` as its player right-clicks a unit that can be used.
 > A client also sends `UseObject` for a unit its champion is attacking, as that
 > unit changes side.
 
-<!-- holds from 3.10.0.237 up to 4.21.0.0 -->
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
-> **In 3.10–4.20**
+> **In 3.10**
+>
+> As a unit changes side, a client sends `UseObject` naming it for every unit it
+> holds that targets it, whether or not it can be used, and clears that target.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
 >
 > As a unit changes side, a client sends `UseObject` naming it for every unit it
 > holds that targets it, whether or not it can be used, and clears that target.

@@ -194,8 +194,13 @@ argument.
 > **In 4.1–4.20**
 >
 > An argument longer than sixteen characters holds the key in base64, and the
-> key is the first sixteen bytes it decodes to. An argument of sixteen
-> characters or fewer is the key as it stands.
+> key is the first sixteen bytes it decodes to.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> An argument of sixteen characters or fewer is the key as it stands.
 
 Registration associates the key with a connection. `schema/messages` records
 the exchange, as `Register` and `Registered`.

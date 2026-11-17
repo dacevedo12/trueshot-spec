@@ -50,8 +50,6 @@ champion's that [replication](replication.md) carries.
 >
 > A cast the client takes also places the caster at the record's launch point,
 > unless the record says to keep it, so a server sends where the caster stands.
-> The answer's movement sync id is counted with the paths a unit takes (see
-> [Ordering](ordering.md)).
 >
 > A client lets its player cast from a slot only where the spell in it has a
 > level above zero, its castable bit is set, it is off cooldown, its cost is

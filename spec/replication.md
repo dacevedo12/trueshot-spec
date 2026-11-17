@@ -89,14 +89,34 @@ the building table.
 ## Which batches a client takes
 
 A client answers a batch with `TransientAck` where it holds every unit the
-batch names, whether or not it took the values. [Ordering](ordering.md) says
-which batches a client takes, and what that requires of a server.
+batch names, whether or not it took the values. It sends one answer for each
+batch it answers, in the order the batches came, including a batch that repeats
+the `syncId` of the batch before it. [Ordering](ordering.md) says which batches
+a client takes, and what that requires of a server.
+
+<!-- holds from 0.9.25.24 up to 3.11.0.306 -->
+
+> **In 0.9.25.24–3.10**
+>
+> A client answers a batch as soon as it arrives, within the spawn run or not.
 
 <!-- holds from 0.9.25.24 up to 1.0.0.127 -->
 
 > **In 0.9.25.24–1.0.0.126**
 >
 > A client takes a batch on the clock, events and transient channels alike.
+
+<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+
+> **In 4.1–4.20**
+>
+> A client takes a batch on the clock, events and transient channels alike.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> A client answers a batch as soon as it arrives, within the spawn run or not.
 
 ## Reading the tables
 
@@ -612,11 +632,6 @@ Each row gives the group and bits that name a value and what the value is.
 > | ----- | -------- | ------------------------------------------------------------------------------------------------------ | -------- |
 > | 0     | 0        | Gold in hand                                                                                           | measured |
 > | 0     | 1        | Gold earned in all                                                                                     | measured |
-> | 0     | 2 to 3   | Which of the champion's slots can be cast from, as a set of bits over two words                        | counted  |
-> | 0     | 4 to 5   | Which summoner slots can be cast from, as a set of bits over two words                                 | counted  |
-> | 0     | 6        | Points held for evolving a spell                                                                       | counted  |
-> | 0     | 7        | Which spells have evolved, as a set of bits                                                            | counted  |
-> | 0     | 8 to 27  | What the spell in one slot costs                                                                       | measured |
 > | 1     | 0 to 4   | What the champion is doing, and four kinds of harm it is proof against                                 | counted  |
 > | 1     | 5        | Damage it deals by striking                                                                            | measured |
 > | 1     | 6        | Damage its spells deal before modifiers                                                                | measured |
@@ -648,17 +663,7 @@ Each row gives the group and bits that name a value and what the value is.
 > | 3     | 13       | Level                                                                                                  | counted  |
 > | 3     | 14 to 16 | Kills taken from no side, and whether anything is allowed to aim at it                                 | counted  |
 >
-> Bit 2 holds which of slots 0 to 3 can be cast from, one bit for each slot,
-> set as a champion learns the spell in it, and bit 4 holds which summoner
-> spells can be cast from, as a mask in which a server sets its bits 4 and 5,
-> one for each summoner slot. Bits 3 and 5 of the group carry zero.
-> [Sides and slots](values.md) numbers the slots.
->
-> Bits 8 to 11 carry what the spells in slots 0 to 3 cost. A server sets bits 8
-> to 27 together and writes zero in bits 12 to 27. It leaves bits 6 and 7, and
-> group 1 bit 31, clear.
->
-> A server writes 0x800007 in group 1 bit 0.
+> A server writes 0x800007 in group 1 bit 0, and leaves group 1 bit 31 clear.
 >
 > ### What a client shows from this table
 >
@@ -705,48 +710,34 @@ Each row gives the group and bits that name a value and what the value is.
 >
 > ## A turret
 >
-> | Group | Bits     | Value                                                                | Shape    |
-> | ----- | -------- | -------------------------------------------------------------------- | -------- |
-> | 1     | 0 to 1   | Resource at its greatest, then as it stands                          | measured |
-> | 1     | 2 to 6   | What the turret is doing, and four kinds of harm it is proof against | counted  |
-> | 1     | 7        | Damage it deals by striking                                          | measured |
-> | 1     | 8        | Armour                                                               | measured |
-> | 1     | 9        | Spell resistance                                                     | measured |
-> | 1     | 10       | A multiplier on how fast it strikes                                  | measured |
-> | 1     | 11 to 12 | Flat and percent modifiers on the damage it strikes with             | measured |
-> | 1     | 13       | The flat modifier on its spells' damage                              | measured |
-> | 1     | 14       | How fast health returns                                              | measured |
-> | 3     | 0 to 1   | Health as it stands, then at its greatest                            | measured |
-> | 3     | 2 to 3   | How far it sees                                                      | measured |
-> | 3     | 4        | How fast it moves                                                    | measured |
-> | 3     | 5        | Its size                                                             | measured |
-> | 5     | 0 to 1   | Whether anything is allowed to aim at it, and which side is          | counted  |
+> | Group | Bits   | Value                                                                | Shape    |
+> | ----- | ------ | -------------------------------------------------------------------- | -------- |
+> | 1     | 0 to 1 | Resource at its greatest, then as it stands                          | measured |
+> | 1     | 2 to 6 | What the turret is doing, and four kinds of harm it is proof against | counted  |
+> | 1     | 7      | Damage it deals by striking                                          | measured |
+> | 1     | 8      | Armour                                                               | measured |
+> | 3     | 0 to 1 | Health as it stands, then at its greatest                            | measured |
+> | 3     | 2 to 3 | How far it sees                                                      | measured |
+> | 3     | 4      | How fast it moves                                                    | measured |
+> | 3     | 5      | Its size                                                             | measured |
+> | 5     | 0 to 1 | Whether anything is allowed to aim at it, and which side is          | counted  |
 >
 > Where a server raises a turret's health at its greatest, it raises health as it
 > stands to the same value.
 >
 > ## A minion, and a unit belonging to no side
 >
-> | Group | Bits     | Value                                                                                                  | Shape    |
-> | ----- | -------- | ------------------------------------------------------------------------------------------------------ | -------- |
-> | 1     | 0 to 1   | Health as it stands, then at its greatest                                                              | measured |
-> | 1     | 2 to 4   | How long it lives, as it stands and at its greatest, and the count of that                             | measured |
-> | 1     | 5 to 6   | Resource at its greatest, then as it stands                                                            | measured |
-> | 1     | 7 to 11  | What the unit is doing, and four kinds of harm it is proof against                                     | counted  |
-> | 1     | 12       | Damage it deals by striking                                                                            | measured |
-> | 1     | 13 to 14 | Armour and spell resistance                                                                            | measured |
-> | 1     | 15       | A multiplier on how fast it strikes                                                                    | measured |
-> | 1     | 16 to 18 | Flat and percent modifiers on the damage it strikes with, then the flat modifier on its spells' damage | measured |
-> | 1     | 19 to 20 | How fast health and resource return                                                                    | measured |
-> | 1     | 21 to 22 | Flat and percent reduction of the spell damage it takes                                                | measured |
-> | 3     | 0 to 1   | How far it sees                                                                                        | measured |
-> | 3     | 2        | How fast it moves                                                                                      | measured |
-> | 3     | 3        | Its size                                                                                               | measured |
-> | 3     | 4 to 5   | Whether anything is allowed to aim at it, and which side is                                            | counted  |
->
-> For some units the two resource values travel as group 3 bits 0 and 1
-> instead: the rest of group 1 moves down two bits and the rest of group 3 up
-> two. Which units do is not recorded.
+> | Group | Bits    | Value                                                                      | Shape    |
+> | ----- | ------- | -------------------------------------------------------------------------- | -------- |
+> | 1     | 0 to 1  | Health as it stands, then at its greatest                                  | measured |
+> | 1     | 2 to 4  | How long it lives, as it stands and at its greatest, and the count of that | measured |
+> | 1     | 5 to 6  | Resource at its greatest, then as it stands                                | measured |
+> | 1     | 7 to 11 | What the unit is doing, and four kinds of harm it is proof against         | counted  |
+> | 1     | 12      | Damage it deals by striking                                                | measured |
+> | 3     | 0 to 1  | How far it sees                                                            | measured |
+> | 3     | 2       | How fast it moves                                                          | measured |
+> | 3     | 3       | Its size                                                                   | measured |
+> | 3     | 4 to 5  | Whether anything is allowed to aim at it, and which side is                | counted  |
 >
 > ## A building
 >
@@ -773,20 +764,130 @@ Each row gives the group and bits that name a value and what the value is.
 >
 > | Group | Bits   | Value                                                       | Shape    |
 > | ----- | ------ | ----------------------------------------------------------- | -------- |
-> | 1     | 0      | Health as it stands                                         | measured |
-> | 1     | 1      | Health as it stands, again                                  | measured |
 > | 1     | 2      | Whether the prop is proof against harm                      | counted  |
 > | 3     | 0 to 1 | How far it sees                                             | measured |
 > | 3     | 2      | How fast it moves                                           | measured |
 > | 3     | 3      | Its size                                                    | measured |
 > | 3     | 4 to 5 | Whether anything is allowed to aim at it, and which side is | counted  |
 
+<!-- holds from 4.1.0.171 up to 4.17.0.233 -->
+
+> **In 4.1–4.16**
+>
+> A champion's group 0 also carries:
+>
+> | Group | Bits    | Value                                                                           | Shape    |
+> | ----- | ------- | ------------------------------------------------------------------------------- | -------- |
+> | 0     | 2 to 3  | Which of the champion's slots can be cast from, as a set of bits over two words | counted  |
+> | 0     | 4 to 5  | Which summoner slots can be cast from, as a set of bits over two words          | counted  |
+> | 0     | 6       | Points held for evolving a spell                                                | counted  |
+> | 0     | 7       | Which spells have evolved, as a set of bits                                     | counted  |
+> | 0     | 8 to 27 | What the spell in one slot costs                                                | measured |
+>
+> Bit 2 holds which of slots 0 to 3 can be cast from, one bit for each slot,
+> set as a champion learns the spell in it, and bit 4 holds which summoner
+> spells can be cast from, as a mask in which a server sets its bits 4 and 5,
+> one for each summoner slot. Bits 3 and 5 of the group carry zero.
+> [Sides and slots](values.md) numbers the slots.
+>
+> Bits 8 to 11 carry what the spells in slots 0 to 3 cost. A server sets bits 8
+> to 27 together and writes zero in bits 12 to 27. It leaves bits 6 and 7 clear.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> A champion's group 0 also carries:
+>
+> | Group | Bits     | Value                                                           | Shape    |
+> | ----- | -------- | --------------------------------------------------------------- | -------- |
+> | 0     | 2        | The champion's own slots that can be cast from, one word        | counted  |
+> | 0     | 3        | A second can-cast word, for the champion's second set of spells | counted  |
+> | 0     | 4        | Points held for evolving a spell                                | counted  |
+> | 0     | 5        | Which spells have evolved                                       | counted  |
+> | 0     | 6 to 9   | What the spells in slots 0 to 3 cost                            | measured |
+> | 0     | 10 to 25 | What the spells in slots 44 to 59 cost                          | measured |
+>
+> Group 0 carries nothing at bits 26 and 27.
+>
+> A turret's group 1 also carries:
+>
+> | Group | Bits     | Value                                                    | Shape    |
+> | ----- | -------- | -------------------------------------------------------- | -------- |
+> | 1     | 9        | Spell resistance                                         | measured |
+> | 1     | 10       | A multiplier on how fast it strikes                      | measured |
+> | 1     | 11 to 12 | Flat and percent modifiers on the damage it strikes with | measured |
+> | 1     | 13       | The flat modifier on its spells' damage                  | measured |
+> | 1     | 14       | How fast health returns                                  | measured |
+>
+> The group 1 of a minion, or of a unit belonging to no side, also carries:
+>
+> | Group | Bits     | Value                                                                                                  | Shape    |
+> | ----- | -------- | ------------------------------------------------------------------------------------------------------ | -------- |
+> | 1     | 13 to 14 | Armour and spell resistance                                                                            | measured |
+> | 1     | 15       | A multiplier on how fast it strikes                                                                    | measured |
+> | 1     | 16 to 18 | Flat and percent modifiers on the damage it strikes with, then the flat modifier on its spells' damage | measured |
+> | 1     | 19 to 20 | How fast health and resource return                                                                    | measured |
+> | 1     | 21 to 22 | Flat and percent reduction of the spell damage it takes                                                | measured |
+>
+> Its bits 23 to 31 name nothing. For some of these units the two resource
+> values travel as group 3 bits 0 and 1 instead: the rest of group 1 moves down
+> two bits and the rest of group 3 up two. Which units do is not recorded.
+>
+> A prop's group 1 also carries:
+>
+> | Group | Bits | Value                      | Shape    |
+> | ----- | ---- | -------------------------- | -------- |
+> | 1     | 0    | Health as it stands        | measured |
+> | 1     | 1    | Health as it stands, again | measured |
+
 <!-- holds from 4.18.0.271 up to 4.21.0.0 -->
 
 > **In 4.18–4.20**
 >
+> A champion's group 0 also carries:
+>
+> | Group | Bits    | Value                                                                           | Shape    |
+> | ----- | ------- | ------------------------------------------------------------------------------- | -------- |
+> | 0     | 2 to 3  | Which of the champion's slots can be cast from, as a set of bits over two words | counted  |
+> | 0     | 4 to 5  | Which summoner slots can be cast from, as a set of bits over two words          | counted  |
+> | 0     | 6       | Points held for evolving a spell                                                | counted  |
+> | 0     | 7       | Which spells have evolved, as a set of bits                                     | counted  |
+> | 0     | 8 to 27 | What the spell in one slot costs                                                | measured |
+>
+> Bit 2 holds which of slots 0 to 3 can be cast from, one bit for each slot,
+> set as a champion learns the spell in it, and bit 4 holds which summoner
+> spells can be cast from, as a mask in which a server sets its bits 4 and 5,
+> one for each summoner slot. Bits 3 and 5 of the group carry zero.
+> [Sides and slots](values.md) numbers the slots.
+>
+> Bits 8 to 11 carry what the spells in slots 0 to 3 cost. A server sets bits 8
+> to 27 together and writes zero in bits 12 to 27. It leaves bits 6 and 7 clear.
+>
 > On map 11, a server SHOULD send an inhibitor's health figure as 4000 and a
 > nexus's as 5500.
+
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
+>
+> A turret's group 1 also carries:
+>
+> | Group | Bits    | Value                                                                      | Shape    |
+> | ----- | ------- | -------------------------------------------------------------------------- | -------- |
+> | 1     | 9 to 14 | Spell resistance, the modifiers on its damage, and how fast health returns | measured |
+>
+> The group 1 of a minion, or of a unit belonging to no side, also carries:
+>
+> | Group | Bits     | Value                                  | Shape    |
+> | ----- | -------- | -------------------------------------- | -------- |
+> | 1     | 13 to 31 | Its defences and the modifiers on them | measured |
+>
+> A prop's group 1 also carries:
+>
+> | Group | Bits   | Value                                     | Shape    |
+> | ----- | ------ | ----------------------------------------- | -------- |
+> | 1     | 0 to 1 | Health as it stands, then at its greatest | measured |
 
 ## Values stated outside a batch
 
@@ -828,9 +929,9 @@ Besides its batches, a server states some values with messages of their own.
 >
 > A server grants gold with `GoldGained`.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 
-> **In 4.1–4.20**
+> **In 4.17**
 >
 > A `GoldGained` naming the client's own champion, with an amount above 0.5 and
 > a source the client holds, grants nothing: that champion's gold in hand

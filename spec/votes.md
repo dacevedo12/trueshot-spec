@@ -54,18 +54,36 @@ side, and a client answers with `BalanceVoteAnswer` from the panel or as its
 player types `/equalize`, once per vote. `BalanceResult` says how the vote
 ended, or why it could not be held.
 
-<!-- holds from 3.10.0.237 up to 4.21.0.0 -->
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
-> **In 3.10–4.20**
+> **In 3.10**
 >
-> `BalanceVote` opens the panel where it says the vote opens.
+> `BalanceVote` opens the panel where it says the vote opens. A client takes
+> `/equalize` only where the version answer's features turn the commands on.
+> There, outside the tutorial, it also sends `BalanceVoteRefused`, a vote
+> against, as its player types `/noequalize`.
 
-<!-- holds from 3.10.0.237 up to 4.20.0.315 -->
+<!-- holds from 3.11.0.306 up to 4.17.0.233 -->
 
-> **In 3.10–4.19**
+> **In 3.11–4.16**
 >
-> A client takes `/equalize` only where the version answer's features turn the
-> commands on. There, outside the tutorial, it also sends `BalanceVoteRefused`,
-> a vote against, as its player types `/noequalize`.
+> Where the version answer's features turn the commands on, a client also sends
+> `BalanceVoteRefused`, a vote against, as its player types `/noequalize`.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> `BalanceVote` opens the panel where it says the vote opens. A client takes
+> `/equalize` only where the version answer's features turn the commands on.
+> There, outside the tutorial, it also sends `BalanceVoteRefused`, a vote
+> against, as its player types `/noequalize`.
+
+<!-- holds from 4.18.0.271 up to 4.20.0.315 -->
+
+> **In 4.18–4.19**
+>
+> Where the version answer's features turn the commands on, a client also sends
+> `BalanceVoteRefused`, a vote against, as its player types `/noequalize`.
 
 <!-- messages -->

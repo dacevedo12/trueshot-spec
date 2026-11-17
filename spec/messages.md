@@ -82,9 +82,8 @@ revision claims that value both ways.
 > - bit 1 clear: a four byte object identifier follows; bit 1 set: one signed
 >   byte follows, and this entry's object identifier is the one before it plus
 >   that byte;
-> - bits 2 to 7: the size of the body; where they read 63, the size is instead
->   one byte that follows the command and object identifier, just before the
->   body.
+> - bits 2 to 7: the size of the body; where they read 63, the size is the next
+>   byte instead.
 >
 > The body follows. Each entry, given the command and object identifier it
 > carries as its header, is a message read as though it had arrived on its own.
@@ -105,7 +104,9 @@ revision claims that value both ways.
 
 > **In 4.17**
 >
-> A client unwraps a container on any channel.
+> A client unwraps a container on any channel. Where an entry's size bits read
+> 63, its size is one byte that follows the command and object identifier, just
+> before the body.
 
 ## Reading a body
 

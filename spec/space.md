@@ -25,9 +25,9 @@ A direction is carried as a vector, not as an angle:
   carries a direction, it carries x, y and z.
 - `FaceDirection` carries x, y and z.
 
-<!-- holds from 0.8.13.26 up to 4.18.0.271 -->
+<!-- holds from 0.8.13.26 up to 3.11.0.306 -->
 
-> **In 0.8.13.26–4.17**
+> **In 0.8.13.26–3.10**
 >
 > `FaceDirection` turns the unit along x and z alone, and leaves it as it is
 > where both are 0.
@@ -53,7 +53,16 @@ A direction is carried as a vector, not as an angle:
 > `FaceDirection` turns the unit over the time it gives where its flags say
 > so, and at once otherwise.
 
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> `FaceDirection` turns the unit along x and z alone, and leaves it as it is
+> where both are 0.
+
 A champion carries no facing of its own when created.
+[The client's data](data.md#what-a-server-reads) says where it begins and which
+way it faces.
 
 <!-- holds from 0.8.13.26 up to 0.9.22.14 -->
 
@@ -61,13 +70,6 @@ A champion carries no facing of its own when created.
 >
 > A champion is created facing +z, whatever its map's table of spawn positions
 > says, and so is a monster.
-
-<!-- holds from 0.9.25.24 up to 4.21.0.0 -->
-
-> **In 0.9.25.24–4.20**
->
-> A champion with a spawn index below 6 faces as its map's table of spawn
-> positions says (see [The client's data](data.md)).
 
 <!-- holds from 1.0.0.104 up to 4.21.0.0 -->
 
@@ -162,9 +164,15 @@ data for. A compact path takes its origin from the same data (see
 > | 10    | The Twisted Treeline | 7708, 7227          |
 > | 12    | The Howling Abyss    | 6560, 6309          |
 
-<!-- holds from 3.10.0.237 up to 4.18.0.271 -->
+<!-- holds from 3.10.0.237 up to 4.1.0.171 -->
 
-> **In 3.10–4.17**
+> **In 3.10–3.15**
+>
+> A client has no data for map 11.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
 >
 > A client has no data for map 11.
 

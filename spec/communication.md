@@ -78,9 +78,9 @@ unmute a kind of sound (`VolumeMuted`) and fade sound effects out
 > answers with `VoiceEventDone` once it has played it, where it asks for an
 > answer, and at once where it cannot play it, whether it asks or not.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 
-> **In 4.1–4.20**
+> **In 4.17**
 >
 > A client never answers a `VoiceEvent` for a voice tied to a unit. Any other it
 > answers with `VoiceEventDone` once it has played it, where it asks for an

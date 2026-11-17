@@ -57,8 +57,7 @@ shop by the champion's level.
 > carrying its own client id) and then that champion's `Loadout`. Until the
 > `Loadout` arrives, its shop opens empty and too big for the screen: no items,
 > no suggested items, no builds. Given its own champion's `Loadout`, it shows
-> every item and the items it suggests for the champion. A server sends each
-> champion's `Loadout` during the spawn run.
+> every item and the items it suggests for the champion.
 >
 > What a match sells is settled by the client's own data for the map, the mode
 > and the variants named in `VersionSync`. The map's data lists items that
@@ -111,8 +110,8 @@ A client asks to buy only where the item is one the match sells.
 > **In 0.8.13.26–3.10**
 >
 > A client asks for an item not built from others only where its price is
-> within the champion's gold, and where a slot is free or holds the same item
-> below its stack limit.
+> within the champion's gold and, unless the item can be used in the shop,
+> where a slot is free or holds the same item below its stack limit.
 
 <!-- holds from 0.8.13.26 up to 1.0.0.61 -->
 

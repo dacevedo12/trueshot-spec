@@ -31,21 +31,27 @@ proof under that key.
 > **In 0.9.25.24–3.10**
 >
 > Any whitespace separates the words of the fourth argument. A client whose
-> command line holds no double quote takes the command line it saved on an
-> earlier run instead, and one holding `.rep` anywhere plays a replay rather
-> than connecting.
+> command line holds `.rep` anywhere plays a replay rather than connecting.
+
+<!-- holds from 0.9.25.24 up to 3.10.0.237 -->
+
+> **In 0.9.25.24–3.9**
+>
+> A client whose command line holds no double quote takes the command line it
+> saved on an earlier run instead.
 
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
 > **In 3.10**
 >
 > Whitespace separates a client's arguments, and double quotes group words into
-> one. A client given fewer than four arguments ends, unless its one argument
+> one. A client given no arguments takes the command line it saved on an
+> earlier run instead, and one given one to three ends, unless its one argument
 > names a replay.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 
-> **In 4.1–4.20**
+> **In 4.17**
 >
 > Whitespace separates a client's arguments, and double quotes group words into
 > one; any whitespace separates the words of the fourth argument. A client
@@ -55,12 +61,9 @@ proof under that key.
 
 ## Registering
 
-A client's first payload is `Register`, on the registration channel. A server
-answers it with a `Registered` for every seat.
-
-A client knows the answer meant for it by the player id it registered as, not
-by the client id, and takes the client id that answer carries as its own. Every
-other answer tells it which client id stands for which player.
+A client's first payload is `Register`, on the registration channel.
+[Objects and identifiers](objects.md#how-they-relate) says how a server answers
+it and what a client takes from the answers.
 [Leaving and coming back](match.md#leaving-and-coming-back) says when the answer
 has a client send `ReconnectedInMatch`.
 
@@ -111,8 +114,8 @@ server answers with `VersionSync`, and a client loads only where its
 
 > **In 0.8.13.26–0.9.22.13**
 >
-> `VersionSync` names neither the map nor anyone at the match: a client loads
-> the map its own configuration names (see [The client's data](data.md)).
+> `VersionSync` names neither the map nor anyone at the match.
+> [Space](space.md#maps) says which map a client loads.
 
 <!-- holds from 0.9.25.24 up to 4.21.0.0 -->
 
@@ -238,15 +241,15 @@ every client has sent `ClientReady`.
 
 > **In 4.1–4.20**
 >
-> The loading screen picks the card a `SeatLoadProgress` updates by the client
-> id it carries, not by its player id.
-
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
-
-> **In 4.1–4.20**
->
 > A server MUST put the seat's player id in `SeatLoadProgress`: the loading
 > screen shows a seat's card from the `VersionSync` seat with that id.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> The loading screen picks the card a `SeatLoadProgress` updates by the client
+> id it carries, not by its player id.
 
 <!-- holds from 1.0.0.140 up to 1.0.0.141 -->
 
@@ -305,8 +308,7 @@ Once a character is settled, a client sends `CharacterSelected`, once.
 > **In 1.0.0.96**
 >
 > Before `CharacterSelected`, a client drops only what [Units](units.md) says it
-> drops. A `GameEnded` that arrives while it loads has it end, first showing an
-> error where it has no champion of its own yet.
+> drops.
 
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
@@ -324,9 +326,9 @@ Once a character is settled, a client sends `CharacterSelected`, once.
 > and keeps nothing it drops for later. A server MUST NOT send any of the spawn
 > run before `CharacterSelected` arrives.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 
-> **In 4.1–4.20**
+> **In 4.17**
 >
 > Just before `CharacterSelected`, a client sends a `LoadingProgress` at 100
 > with its loaded bit set.
@@ -350,25 +352,30 @@ id, and `SpawnEnd`. Given only those, a client still enters play, showing its
 champion's portrait, health, resource and spells; [Vision](vision.md) says when
 it draws the champion on the field.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 
-> **In 4.1–4.20**
+> **In 4.17**
 >
 > When `SpawnEnd` arrives, a client destroys every turret of the map that no
 > `CreateTurret` named.
 
 A client answers `Replication` batches with `TransientAck` as
-[Replication](replication.md#which-batches-a-client-takes) says, within the run
-or not.
+[Replication](replication.md#which-batches-a-client-takes) says.
 
 ## Starting play
 
-A client sends `ClientReady` as soon as `SpawnEnd` arrives, while it is still
-reporting its loading, and `StartGame` alone moves it into play. A server MUST
-answer with `StartGame`, and later sends `MatchStarted`, with other messages
+A client sends `ClientReady` after `SpawnEnd` and after its answers to the
+run's batches, while it is still reporting its loading. A server MUST answer
+with `StartGame`, and later sends `MatchStarted`, with other messages
 free to come between them; `MatchStarted` carries 0 (see [Time](time.md)).
 [Leaving and coming back](match.md#leaving-and-coming-back) says what a client
 whose connection drops before play begins does.
+
+<!-- holds from 0.8.13.26 up to 3.11.0.306 -->
+
+> **In 0.8.13.26–3.10**
+>
+> A client sends `ClientReady` as soon as `SpawnEnd` arrives.
 
 <!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
@@ -378,5 +385,11 @@ whose connection drops before play begins does.
 > its own progress full, and sends `LoadingProgress` again about every half a
 > second. It waits as long as it takes: nothing in it gives up on a server that
 > is slow to start play.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> A client sends `ClientReady` as soon as `SpawnEnd` arrives.
 
 <!-- messages -->

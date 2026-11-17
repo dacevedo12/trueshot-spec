@@ -31,8 +31,9 @@ Exceptions:
 
 The match runs on a server's clock, which counts seconds from 0 as play begins.
 `ClockSync` states where it stands, and a client sets its own clock to that,
-plus its allowance for how late the statement arrived. A client answers with
-`ClockReply`, from which a server measures the round trip. A server can report
+plus its allowance for how late the statement arrived. A server measures the
+round trip from the client's answers (see
+[Ordering](ordering.md#what-a-client-answers)). A server can report
 the round trip it measured with `ClockConvergence`.
 
 <!-- holds from 0.8.13.26 up to 4.20.0.315 -->
@@ -82,8 +83,9 @@ catch up with its own.
 
 > **In 0.9.25.24–3.10**
 >
-> `GameSpeed` sets the pace of the match clock, and a hold sets the pace to 0
-> until play resumes. A server that runs a match at other than normal speed
+> `GameSpeed` sets the pace of the match clock
+> ([The match](match.md#holding-and-resuming) says what a hold does to it). A
+> server that runs a match at other than normal speed
 > MUST send `GameSpeed` with that speed, or a client's match clock runs apart
 > from its own.
 

@@ -130,7 +130,8 @@ says what a client does with a movement whose unit it does not hold.
 >
 > A token the receiving end already holds changes nothing, and neither does an
 > unfamiliar one arriving while the unit is near enough. In both the path is
-> followed and the remembered token kept.
+> followed and the remembered token kept, so a token is taken up only once it
+> has moved something.
 
 <!-- holds from 1.0.0.126 up to 3.11.0.306 -->
 

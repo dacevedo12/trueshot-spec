@@ -5,8 +5,7 @@ its end, and players leaving and coming back.
 
 ## The clock
 
-A server states how long the match has run with `ClockSync`, and a client
-answers on the clock channel with `ClockReply`. [Time](time.md) says how the
+A server states how long the match has run with `ClockSync`. [Time](time.md) says how the
 match clock is kept, and which clock each time on the wire is measured
 against.
 
@@ -39,12 +38,6 @@ seconds.
 >
 > No unit advances for `StatTick`.
 
-<!-- holds from 1.0.0.58 up to 1.0.0.141 -->
-
-> **In 1.0.0.58–1.0.0.140**
->
-> `StatTick` asks every unit's stats to advance by that span.
-
 <!-- holds from 1.0.0.126 up to 4.20.0.315 -->
 
 > **In 1.0.0.126–4.19**
@@ -57,9 +50,9 @@ seconds.
 >
 > No unit advances for `StatTick`.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 
-> **In 4.1–4.20**
+> **In 4.17**
 >
 > No unit advances for `StatTick`.
 
@@ -88,8 +81,14 @@ A server holds the match with `Paused`.
 
 > **In 0.9.25.24–1.0.0.96**
 >
-> A client reads nothing from `Paused`. It stops the match clock where the clock
-> is running, keeping the speed it had, and shows nothing.
+> A client reads nothing from `Paused`, keeps the speed it had, and shows
+> nothing.
+
+<!-- holds from 0.9.25.24 up to 3.11.0.306 -->
+
+> **In 0.9.25.24–3.10**
+>
+> A hold stops the match clock where it is running, until play resumes.
 
 <!-- holds from 1.0.0.126 up to 4.21.0.0 -->
 
@@ -175,8 +174,8 @@ A server ends the hold with `Resumed`.
 
 ## The end
 
-A server ends the match with `GameEnded`, saying which side won, and takes the
-interface down with `HudDisabled`. A client shows the win or loss for its
+A server ends the match with `GameEnded`, saying which side won, and sends
+`HudDisabled` (see [The interface](interface.md#the-minimap-and-text-on-screen)). A client shows the win or loss for its
 player's side and sends `ClientFinished`.
 
 <!-- holds from 0.8.13.26 up to 1.0.0.141 -->
@@ -199,6 +198,12 @@ player's side and sends `ClientFinished`.
 >
 > A client that receives `GameEnded` while still loading leaves at once.
 
+<!-- holds from 1.0.0.96 up to 1.0.0.97 -->
+
+> **In 1.0.0.96**
+>
+> Before it leaves, it shows an error where it has no champion of its own yet.
+
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
 > **In 3.10**
@@ -220,9 +225,15 @@ player's side and sends `ClientFinished`.
 >
 > `VictoryDance` moves every unit.
 
-<!-- holds from 1.0.0.140 up to 4.21.0.0 -->
+<!-- holds from 1.0.0.140 up to 3.11.0.306 -->
 
-> **In 1.0.0.140–4.20**
+> **In 1.0.0.140–3.10**
+>
+> A client moves no neutral unit for `VictoryDance`.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
 >
 > A client moves no neutral unit for `VictoryDance`.
 
@@ -357,13 +368,17 @@ A server tells the others that a player's client dropped with
 >
 > A client dropped during play connects again by itself, registers again, and
 > sends `ReconnectedInMatch` right after the registration answer.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
 >
 > A client whose connection drops before play begins leaves rather than
 > connecting again once it knows its own client id, and connects again before
 > then.
 
-`SoftReconnect` rebuilds a client's world without a new connection, as
-[Objects and identifiers](objects.md) describes.
+[Objects and identifiers](objects.md#a-soft-reconnect) says what `SoftReconnect`
+does.
 
 <!-- holds from 3.10.0.237 up to 4.21.0.0 -->
 

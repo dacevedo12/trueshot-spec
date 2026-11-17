@@ -6,8 +6,8 @@ look and move on screen.
 ## Lasting effects
 
 A lasting effect sits in one of a unit's effect slots and shows on its icon row.
-A server puts one on with `EffectAdded`, puts the effect `EffectReplaced`
-carries in a slot that already holds one, restates how many are stacked with
+A server puts one on with `EffectAdded`, updates the effect in a slot that
+already holds one with `EffectReplaced`, restates how many are stacked with
 `EffectCount`, and takes it off with `EffectRemoved`. The unit carrying an
 effect can differ from the unit that cast it. A server can do each of these for
 several units at once (`EffectAddedGroup`, `EffectReplacedGroup`,

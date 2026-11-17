@@ -12,14 +12,14 @@ Every object is named by a net id, and
 
 Each kind of object has its own message:
 
-- a champion, `CreateChampion`, which, carrying the client's own client id,
-  also makes that champion the client's own; a bot's champion, the same
-  `CreateChampion` naming no client, or `SpawnBot`;
+- a champion, `CreateChampion` ([Objects and identifiers](objects.md#how-they-relate)
+  says which is the client's own); a bot's champion, the same `CreateChampion`
+  naming no client, or `SpawnBot`;
 - a minion sent out from a side's barracks, `SpawnFromBarracks`, and a unit
   like one, such as a ward, `SpawnUnit`;
 - a monster of no side, `CreateNeutral`; a pet, `SpawnPet`;
-- a turret, `CreateTurret` ([The client's data](data.md) says how it names
-  one), and a turret of the server's choosing, `SpawnTurret`;
+- a turret, `CreateTurret` ([Objects and identifiers](objects.md#net-ids-of-what-a-map-holds)
+  says how it names one), and a turret of the server's choosing, `SpawnTurret`;
 - an object that follows a unit, `CreateFollower`, and a change to what it
   follows, `FollowerMaster`;
 - an unseen marker, `SpawnMarker`, which other messages can name and
@@ -57,13 +57,12 @@ says which of them a client ignores while it resynchronises.
 > A client drops a `CreateChampion` or a `CreateNeutral` that arrives before it
 > has loaded the map's ground grid.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 
-> **In 4.1–4.20**
+> **In 4.17**
 >
 > A client drops a `CreateChampion` or a `CreateNeutral` that arrives before it
-> has loaded the map's ground grid. One that arrives later replaces any object
-> the client holds under its net id.
+> has loaded the map's ground grid.
 
 `CharacterPreload` has a client load a character's art ahead of need.
 

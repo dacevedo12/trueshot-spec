@@ -6,8 +6,9 @@ tutorial are in [Tutorial and guidance](guidance.md).
 
 ## The view
 
-A client reports its view with `Camera`, which a server answers (see
-[Ordering](ordering.md)). A client tells a server what it has selected with
+A client reports its view with `Camera`;
+[Ordering](ordering.md#what-a-server-answers) says when it sends a report
+again. A client tells a server what it has selected with
 `SelectObject`, and as it locks its view to its champion or releases it with
 `CameraLock`.
 
@@ -100,9 +101,23 @@ alone closes the shop and turns off its key.
 >
 > A watching client ignores `InputLock`.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 4.1.0.171 up to 4.17.0.233 -->
 
-> **In 4.1–4.20**
+> **In 4.1–4.16**
+>
+> Any message that locks the shop closes it and turns off its key, whatever
+> else it locks.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> A message that locks other input along with the shop stops the shop opening,
+> but leaves an open shop open and its key on.
+
+<!-- holds from 4.18.0.271 up to 4.21.0.0 -->
+
+> **In 4.18–4.20**
 >
 > Any message that locks the shop closes it and turns off its key, whatever
 > else it locks.
