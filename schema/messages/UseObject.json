@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "UseObject",
   "system": "combat",
-  "note": "What a client sends to use a unit: as its player right-clicks a unit its character data makes usable by them and off its use cooldown. The header names the sender's champion.",
+  "note": "What a client sends to use a unit: as its player right-clicks a unit its character data makes usable by them and off its use cooldown. The header names the unit using it.",
   "revisions": [
     {
       "from": "1.0.0.124",
@@ -53,7 +53,7 @@
     },
     {
       "from": "1.0.0.150",
-      "until": "4.11.0.386",
+      "until": "3.10.0.237",
       "channel": "requests",
       "command": 57,
       "direction": "clientToServer",
@@ -66,6 +66,22 @@
         }
       ],
       "note": "A client also sends it as a unit its champion is attacking changes side (TeamChanged), whether usable or not."
+    },
+    {
+      "from": "3.10.0.237",
+      "until": "4.11.0.386",
+      "channel": "requests",
+      "command": 57,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit to use."
+        }
+      ],
+      "note": "A client also sends it as a unit changes side (TeamChanged): for each unit it holds whose target that unit is, naming it in target and the attacking unit in the header, whether usable or not, and clears that target."
     },
     {
       "from": "4.11.0.386",
@@ -81,7 +97,7 @@
           "note": "The unit to use."
         }
       ],
-      "note": "A client also sends it as a unit its champion is attacking changes side (TeamChanged), whether usable or not."
+      "note": "A client also sends it as a unit changes side (TeamChanged): for each unit it holds whose target that unit is, naming it in target and the attacking unit in the header, whether usable or not, and clears that target."
     }
   ]
 }

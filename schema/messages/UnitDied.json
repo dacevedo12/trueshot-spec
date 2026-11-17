@@ -609,7 +609,7 @@
           "note": "Which kill a client announces for killer: zero a neutral monster's, nonzero a minion's."
         }
       ],
-      "note": "Where killer names a unit it knows, a client announces the kill for that unit, then the one kind picks. Where the unit is not already dead, it cancels the unit's cast and attack, and only where killer is nonzero puts the unit down, by stayDown and standing."
+      "note": "Where the unit is already dead, a client does nothing with the message. Otherwise it cancels the unit's cast and attack; then, only where killer is nonzero, it puts the unit down by stayDown and standing and announces the kill, which kind picks."
     },
     {
       "from": "1.0.0.144",
@@ -862,7 +862,7 @@
           "note": "Which kill a client announces for killer: zero a neutral monster's, nonzero a minion's."
         }
       ],
-      "note": "Where killer names a unit it knows, a client announces the kill for that unit, then the one kind picks. Where the unit is not already dead, it cancels the unit's cast and attack, and only where killer is nonzero puts the unit down, by stayDown and standing."
+      "note": "Where the unit is already dead, a client does nothing with the message. Otherwise it cancels the unit's cast and attack; then, only where killer is nonzero, it puts the unit down by stayDown and standing and announces the kill, which kind picks."
     },
     {
       "from": "4.1.0.171",
@@ -968,7 +968,7 @@
           "note": "Which kill a client announces for killer: zero a neutral monster's, nonzero a minion's."
         }
       ],
-      "note": "Where killer names a unit it knows, a client announces the kill for that unit, then the one kind picks. Where the unit is not already dead, it cancels the unit's cast and attack, and only where killer is nonzero puts the unit down, by stayDown and standing."
+      "note": "Where the unit is already dead, a client does nothing with the message. Otherwise it cancels the unit's cast and attack; then, only where killer is nonzero, it puts the unit down by stayDown and standing and announces the kill, which kind picks."
     },
     {
       "from": "4.18.0.271",

@@ -82,7 +82,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "It is sent once, at the end."
+      "note": "A client sends it each time GameEnded arrives after loading, while playing a replay too."
     },
     {
       "from": "1.0.0.132",
@@ -142,7 +142,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "It is sent once, at the end."
+      "note": "A client sends it each time GameEnded arrives in play, and not while playing a replay."
     },
     {
       "from": "4.1.0.171",

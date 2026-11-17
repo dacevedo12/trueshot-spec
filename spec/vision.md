@@ -109,6 +109,13 @@ and leave a side's view with `ParticleEnterTeamSight` and
 > `LeaveLocalSight` takes a unit out of what one client alone can see, and
 > leaves it held.
 
+<!-- holds from 0.9.25.24 up to 0.9.25.36 -->
+
+> **In 0.9.25.24–0.9.25.35**
+>
+> `LeaveLocalSight` takes a unit out of what one client alone can see, and
+> leaves it held.
+
 <!-- holds from 1.0.0.58 up to 1.0.0.127 -->
 
 > **In 1.0.0.58–1.0.0.126**

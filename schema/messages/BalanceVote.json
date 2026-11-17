@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "BalanceVote",
   "system": "votes",
-  "note": "What a server sends as a side votes on evening out a match: on the first vote it opens the vote's panel for that side, and each message adds one voter. A client sends BalanceVoteAnswer as its player votes. A client with no champion of its own ignores it. The header carries zero.",
+  "note": "What a server sends as a side votes on evening out a match: where it says the vote opens, it opens the vote's panel for that side, and each message adds one voter. A client sends BalanceVoteAnswer as its player votes. A client with no champion of its own ignores it. The header carries zero.",
   "revisions": [
     {
       "from": "3.02.0.30",

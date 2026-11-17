@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "LeaveLocalSight",
   "system": "vision",
-  "note": "What a server sends when a unit passes out of what one client can see. Sent for the receiving client's own champion, it changes nothing the client shows. The header names the unit this is about.",
+  "note": "What a server sends when a unit passes out of what one client can see. The header names the unit this is about.",
   "revisions": [
     {
       "from": "0.8.13.26",
@@ -11,7 +11,8 @@
       "command": 62,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "Sent for the receiving client's own champion, it changes nothing the client shows."
     },
     {
       "from": "0.9.22.14",
@@ -20,7 +21,8 @@
       "command": 58,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "Sent for the receiving client's own champion, it changes nothing the client shows."
     },
     {
       "from": "1.0.0.74",
@@ -29,7 +31,8 @@
       "command": 59,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "Sent for the receiving client's own champion, it changes nothing the client shows."
     },
     {
       "from": "1.0.0.82",
@@ -38,7 +41,8 @@
       "command": 62,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "Sent for the receiving client's own champion, it changes nothing the client shows."
     },
     {
       "from": "1.0.0.97",
@@ -47,7 +51,8 @@
       "command": 63,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "Sent for the receiving client's own champion, it changes nothing the client shows."
     },
     {
       "from": "1.0.0.103",
@@ -56,7 +61,8 @@
       "command": 64,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "Sent for the receiving client's own champion, it changes nothing the client shows."
     },
     {
       "from": "1.0.0.107",
@@ -65,7 +71,8 @@
       "command": 65,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "Sent for the receiving client's own champion, it changes nothing the client shows."
     },
     {
       "from": "1.0.0.110",
@@ -74,7 +81,8 @@
       "command": 55,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "Sent for the receiving client's own champion, it changes nothing the client shows."
     },
     {
       "from": "1.0.0.117",
@@ -83,7 +91,8 @@
       "command": 56,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "Sent for the receiving client's own champion, it changes nothing the client shows."
     },
     {
       "from": "1.0.0.119",
@@ -92,7 +101,8 @@
       "command": 57,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "Sent for the receiving client's own champion, it changes nothing the client shows."
     },
     {
       "from": "1.0.0.124",
@@ -101,7 +111,8 @@
       "command": 58,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "Sent for the receiving client's own champion, it changes nothing the client shows."
     },
     {
       "from": "1.0.0.126",
@@ -130,7 +141,8 @@
       "command": 55,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "Sent for the receiving client's own champion, it changes nothing the client shows."
     },
     {
       "from": "1.0.0.150",
@@ -139,7 +151,8 @@
       "command": 52,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "Sent for the receiving client's own champion, it changes nothing the client shows."
     },
     {
       "from": "4.11.0.386",
@@ -148,7 +161,8 @@
       "command": 53,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "After it names the client's own champion, a client drops FloatingText and UnitText over that champion, and the healing numbers it would show for it."
     }
   ]
 }

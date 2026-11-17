@@ -186,6 +186,16 @@
     },
     {
       "from": "3.01.0.1",
+      "until": "4.1.0.171",
+      "channel": "requests",
+      "command": 92,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client sends it only in the tutorial: where the version answer names the mode TUTORIAL and a setting of the client's own turns the tutorial on, whatever the map; elsewhere it never sends this."
+    },
+    {
+      "from": "4.1.0.171",
       "until": "4.11.0.386",
       "channel": "requests",
       "command": 92,

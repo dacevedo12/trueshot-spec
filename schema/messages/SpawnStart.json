@@ -21,6 +21,36 @@
     },
     {
       "from": "1.0.0.61",
+      "until": "1.0.0.96",
+      "channel": "events",
+      "command": 5,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "count",
+          "type": "u8",
+          "note": "A single count the client keeps. What it carries is not recorded for this range; a server writes zero."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.96",
+      "until": "1.0.0.97",
+      "channel": "events",
+      "command": 5,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "count",
+          "type": "u8",
+          "note": "A count a client adds to the player count of each side alike, choosing which set of spawn offsets it places champions by (CreateChampion's spawnIndex)."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.97",
       "until": "1.0.0.104",
       "channel": "events",
       "command": 5,

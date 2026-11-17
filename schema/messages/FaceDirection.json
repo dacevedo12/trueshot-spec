@@ -572,6 +572,53 @@
     },
     {
       "from": "3.01.0.1",
+      "until": "4.1.0.171",
+      "channel": "events",
+      "command": 79,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "towardX",
+          "type": "f32",
+          "note": "The direction faced, along one ground axis."
+        },
+        {
+          "name": "towardY",
+          "type": "f32",
+          "note": "The direction faced, in height."
+        },
+        {
+          "name": "towardZ",
+          "type": "f32",
+          "note": "The direction faced, along the other ground axis."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "turnOverTime",
+              "width": 1,
+              "note": "Set to turn the unit toward the direction at its own turning pace; clear to face the direction at once."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "turnTime",
+          "type": "f32",
+          "note": "Read and not used."
+        }
+      ]
+    },
+    {
+      "from": "4.1.0.171",
       "until": "4.11.0.386",
       "channel": "events",
       "command": 79,
