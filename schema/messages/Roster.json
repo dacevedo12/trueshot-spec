@@ -134,7 +134,7 @@
     },
     {
       "from": "1.0.0.147",
-      "until": "4.21.0.0",
+      "until": "4.20.0.315",
       "channel": "roster",
       "command": 103,
       "direction": "serverToClient",
@@ -181,6 +181,58 @@
           "name": "otherSideTaken",
           "type": "u32",
           "note": "How many on the other."
+        }
+      ]
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "roster",
+      "command": 103,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "sideRoom",
+          "type": "u32",
+          "note": "How many seats the first side has room for, and so how many of its places a client reads as the side's players, zero places among them. A client refuses a room above 48 and keeps the one it had; one from 25 to 48 has it read past the side's 24 places into what follows."
+        },
+        {
+          "name": "otherSideRoom",
+          "type": "u32",
+          "note": "How many the other has room for, under the same terms."
+        },
+        {
+          "name": "side",
+          "type": "array",
+          "count": 24,
+          "note": "The players on one side, twenty four places. A place cannot be read on its own, because zero is an identifier a match gives out as well as what an unused place holds. It has a player identifier's width.",
+          "items": {
+            "name": "player",
+            "type": "i64",
+            "note": "One player."
+          }
+        },
+        {
+          "name": "otherSide",
+          "type": "array",
+          "count": 24,
+          "note": "The players on the other, under the same reading.",
+          "items": {
+            "name": "player",
+            "type": "i64",
+            "note": "One player."
+          }
+        },
+        {
+          "name": "sideTaken",
+          "type": "u32",
+          "note": "How many of the leading places on the first side carry a player. A client adds the side's SpawnStart count to it to choose where champions begin."
+        },
+        {
+          "name": "otherSideTaken",
+          "type": "u32",
+          "note": "How many on the other, under the same terms."
         }
       ]
     }

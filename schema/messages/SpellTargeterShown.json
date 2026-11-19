@@ -20,9 +20,10 @@
         {
           "name": "time",
           "type": "f32",
-          "note": "How long the targeter shows, in seconds."
+          "note": "How long the targeter shows, in seconds. Zero or less does nothing."
         }
-      ]
+      ],
+      "note": "A client acts on its own champion whatever the header names, and ignores the message while a targeter is already showing."
     }
   ]
 }

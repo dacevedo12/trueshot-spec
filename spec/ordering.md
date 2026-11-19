@@ -103,6 +103,14 @@ batch.
 > A client also answers each `Path` and `PathWithSpeed`, taken or not, with a
 > `WaypointAck` carrying its `syncId` (see [Movement](movement.md)).
 
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
+>
+> A client also answers each `Path` and `PathWithSpeed`, taken or not, with a
+> `WaypointAck` carrying its `syncId` (see [Movement](movement.md)), sent
+> before it decides whether to take the path.
+
 A client sends these answers when it plays a match, not while it plays back a
 stream.
 

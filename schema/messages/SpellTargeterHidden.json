@@ -17,7 +17,8 @@
           "type": "i32",
           "note": "Which slot's spell, from 0 to 63. A client does nothing for any other value."
         }
-      ]
+      ],
+      "note": "A client acts only on its own champion, and only where the targeter showing is for this slot."
     }
   ]
 }

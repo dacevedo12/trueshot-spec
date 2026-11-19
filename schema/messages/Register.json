@@ -138,7 +138,7 @@
         {
           "name": "version",
           "type": "u32",
-          "note": "The build the client runs, as first × 10000000 + second × 100000 + third × 100 + fourth, so 4.17.0.233 arrives as 41700233 and 4.17.0.267 as 41700267. A client always carries it."
+          "note": "The build the client runs, as first \u00d7 10000000 + second \u00d7 100000 + third \u00d7 100 + fourth, so 4.17.0.233 arrives as 41700233 and 4.17.0.267 as 41700267. A client always carries it."
         },
         {
           "name": "proof",
@@ -156,6 +156,49 @@
     },
     {
       "from": "4.18.0.271",
+      "until": "4.20.0.315",
+      "channel": "registration",
+      "command": 0,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "leading",
+          "type": "bytes",
+          "size": 3,
+          "note": "Arbitrary; it carries no meaning."
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "A client writes zero here."
+        },
+        {
+          "name": "playerId",
+          "type": "i64",
+          "note": "Who the sender claims to be. The proof is what settles the claim."
+        },
+        {
+          "name": "version",
+          "type": "u32",
+          "note": "The build the client runs, with each part written out and run together, so 4.18.0.271 arrives as 41800271. A client always carries it, and the answer a server carries back repeats the same number."
+        },
+        {
+          "name": "proof",
+          "type": "i64",
+          "enciphered": true,
+          "note": "The player identifier and nothing else, enciphered under the key both ends already hold. Deciphering it and finding the identifier beside it is what shows the sender holds the key. A client enciphers the player identifier the request carries."
+        },
+        {
+          "name": "trailing",
+          "type": "bytes",
+          "size": 4,
+          "note": "Arbitrary; it carries no meaning."
+        }
+      ]
+    },
+    {
+      "from": "4.20.0.315",
       "until": "4.21.0.0",
       "channel": "registration",
       "command": 0,
@@ -187,7 +230,7 @@
           "name": "proof",
           "type": "i64",
           "enciphered": true,
-          "note": "The player identifier and nothing else, enciphered under the key both ends already hold. Deciphering it and finding the identifier beside it is what shows the sender holds the key. A client enciphers the player identifier the request carries."
+          "note": "The player identifier and nothing else, enciphered under the key both ends already hold. Deciphering it and finding the identifier beside it is what shows the sender holds the key. A client enciphers the player identifier the request carries where it holds a key; without one, these are the identifier as it stands."
         },
         {
           "name": "trailing",

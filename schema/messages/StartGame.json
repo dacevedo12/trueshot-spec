@@ -461,7 +461,7 @@
     },
     {
       "from": "4.18.0.271",
-      "until": "4.21.0.0",
+      "until": "4.20.0.315",
       "channel": "events",
       "command": 92,
       "direction": "serverToClient",
@@ -476,6 +476,33 @@
               "name": "pausing",
               "width": 1,
               "note": "Set where holding the match is allowed."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 92,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "rules",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "pausing",
+              "width": 1,
+              "note": "Set where holding the match is allowed. A client only shows a chat notice that holding is allowed, and none while it plays back a match."
             },
             {
               "name": "unused",

@@ -14,9 +14,9 @@ Exceptions:
 - A stream's chunk and key frame intervals (`StreamMetadata`) are in
   milliseconds.
 
-<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+<!-- holds from 4.17.0.233 up to 4.21.0.0 -->
 
-> **In 4.17**
+> **In 4.17–4.20**
 >
 > The time between two of a stream's records (`StreamRecord`) is in
 > milliseconds.
@@ -143,6 +143,14 @@ which the match began.
 > as its game loop runs. While the match clock is before that moment, a client
 > shows a negative time.
 
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
+>
+> Until `MatchStarted` arrives, a client takes the match clock's reading as its
+> game loop runs, and a `MatchStarted` arriving later replaces it. While the
+> match clock is before that moment, a client shows a negative time.
+
 Moments on the match clock include:
 
 - when a monster arrives (`CreateNeutral`'s `spawnAt`, where it carries one);
@@ -164,6 +172,13 @@ Moments on the match clock include:
 > A client reads when a monster arrives and when a champion's passive comes off
 > cooldown as match time, counted from the moment `MatchStarted` gives, and a
 > server MUST state them so.
+
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
+>
+> A client reads when a monster arrives as match time, counted from the moment
+> `MatchStarted` gives, and a server MUST state it so.
 
 <!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 

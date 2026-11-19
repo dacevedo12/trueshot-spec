@@ -783,7 +783,7 @@
         {
           "name": "count",
           "type": "u32",
-          "note": "How many targets follow."
+          "note": "How many targets follow, as a signed number. Zero clears the missile's list; a client sets no upper limit. A list that waits keeps 32 targets, whatever this says."
         },
         {
           "name": "caster",
@@ -799,10 +799,10 @@
             "type": "u32",
             "note": "A unit, in the order struck."
           },
-          "note": "The units the missile chains to, as many as count says."
+          "note": "The units the missile chains to."
         }
       ],
-      "note": "Where the client already holds the missile, the missile takes the list; otherwise the list waits for the caster's next chain missile."
+      "note": "Where the client already holds the missile, the missile takes the list; otherwise the list waits for the caster's next chain missile, and only where the client holds the caster and it is casting."
     }
   ]
 }

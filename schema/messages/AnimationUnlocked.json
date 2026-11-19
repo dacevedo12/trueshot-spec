@@ -17,7 +17,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": "terminated",
-          "note": "Which animation, by name, ended by a zero byte; an empty name for any."
+          "note": "Which animation, by name, ended by a zero byte. An empty name does nothing."
         }
       ]
     }

@@ -1171,7 +1171,7 @@
     },
     {
       "from": "4.18.0.271",
-      "until": "4.21.0.0",
+      "until": "4.20.0.315",
       "channel": "events",
       "command": 174,
       "direction": "serverToClient",
@@ -1200,6 +1200,52 @@
             "when": "remaining"
           },
           "note": "The unit's health. A server sends this message without it too, ending after the carried messages.",
+          "fields": [
+            {
+              "name": "maxHealth",
+              "type": "f32",
+              "note": "What the unit's health tops out at."
+            },
+            {
+              "name": "health",
+              "type": "f32",
+              "note": "What its health stands at."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 174,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "carried",
+          "type": "u16",
+          "note": "The byte length of the messages carried below, all sixteen bits of it."
+        },
+        {
+          "name": "messages",
+          "type": "array",
+          "size": "carried",
+          "note": "Whole messages of the same family, each behind its own length, that a client acts on as though they had arrived on their own.",
+          "items": {
+            "type": "struct",
+            "struct": "CarriedMessage",
+            "name": "message"
+          }
+        },
+        {
+          "name": "vitals",
+          "type": "record",
+          "present": {
+            "when": "remaining"
+          },
+          "note": "The unit's health. For a unit it holds, a client reads it after the carried messages whatever the message's length, so a message that ends early is read past its end. It skips it for a unit it does not hold.",
           "fields": [
             {
               "name": "maxHealth",

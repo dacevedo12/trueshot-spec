@@ -79,6 +79,13 @@ messages carry their points as world floats. [Vision](vision.md) says when
 > A client takes nothing from the movements after a refused one in the same
 > message.
 
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
+>
+> A client also refuses a movement with 128 points or more. It reads nothing
+> after a refused movement in its group, and still answers the group.
+
 [Objects and identifiers](objects.md#messages-about-objects-a-client-does-not-hold)
 says what a client does with a movement whose unit it does not hold.
 
@@ -147,6 +154,17 @@ says what a client does with a movement whose unit it does not hold.
 > The `WaypointAck` a client sends for a `Path` or `PathWithSpeed` lists no
 > units but leaves its count of units unset, so a server MUST NOT rely on the
 > count.
+
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
+>
+> The `WaypointAck` a client sends for a `Path` or `PathWithSpeed` lists no
+> units and carries a count of 0.
+>
+> A group's `WaypointAck` lists each unit whose movement carried a token, in
+> the order the group gives them, whether or not the client holds the unit,
+> and none whose movement follows a refused one.
 
 ## What a client asks for and what a server answers
 

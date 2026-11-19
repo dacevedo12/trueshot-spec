@@ -80,9 +80,9 @@ the building table.
 >
 > The building table is the same on every map.
 
-<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+<!-- holds from 4.17.0.233 up to 4.21.0.0 -->
 
-> **In 4.17**
+> **In 4.17–4.20**
 >
 > The building table is the same on every map.
 
@@ -112,9 +112,9 @@ a client takes, and what that requires of a server.
 >
 > A client takes a batch on the clock, events and transient channels alike.
 
-<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+<!-- holds from 4.17.0.233 up to 4.21.0.0 -->
 
-> **In 4.17**
+> **In 4.17–4.20**
 >
 > A client answers a batch as soon as it arrives, within the spawn run or not.
 
@@ -875,6 +875,13 @@ Each row gives the group and bits that name a value and what the value is.
 <!-- holds from 4.20.0.315 up to 4.21.0.0 -->
 
 > **In 4.20**
+>
+> A champion's group 2 also carries:
+>
+> | Group | Bits | Value                                  | Shape    |
+> | ----- | ---- | -------------------------------------- | -------- |
+> | 2     | 2    | How fast health returns, at its base   | measured |
+> | 2     | 3    | How fast resource returns, at its base | measured |
 >
 > A turret's group 1 also carries:
 >

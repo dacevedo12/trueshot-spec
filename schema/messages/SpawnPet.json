@@ -2653,7 +2653,7 @@
             {
               "name": "copyInventory",
               "width": 1,
-              "note": "Set where it copies its owner's items."
+              "note": "Set where it copies the items of the unit clone names; where clone is 0 or a unit the client does not hold, it copies nothing."
             },
             {
               "name": "clearOwnerTarget",

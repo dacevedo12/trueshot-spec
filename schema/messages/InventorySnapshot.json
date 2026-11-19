@@ -336,7 +336,7 @@
     },
     {
       "from": "4.18.0.271",
-      "until": "4.21.0.0",
+      "until": "4.20.0.315",
       "channel": "events",
       "command": 268,
       "direction": "serverToClient",
@@ -382,6 +382,70 @@
             "name": "cooldown",
             "type": "f32",
             "note": "How long until the slot's item can be used again, in seconds."
+          },
+          "note": "One per slot."
+        },
+        {
+          "name": "maxCooldowns",
+          "type": "array",
+          "count": 10,
+          "items": {
+            "name": "maxCooldown",
+            "type": "f32",
+            "note": "The length that wait is shown against, in seconds."
+          },
+          "note": "One per slot."
+        }
+      ]
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 268,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "items",
+          "type": "array",
+          "count": 10,
+          "items": {
+            "name": "itemsEntry",
+            "type": "record",
+            "fields": [
+              {
+                "name": "item",
+                "type": "u32",
+                "note": "The item, or zero to leave the slot empty, in which case its place's cooldowns are not used."
+              },
+              {
+                "name": "slot",
+                "type": "u8",
+                "note": "A client does not read it: a place's position gives its slot."
+              },
+              {
+                "name": "inSlot",
+                "type": "u8",
+                "note": "How many are in the slot. Zero leaves the slot empty, though its cooldowns still apply."
+              },
+              {
+                "name": "charges",
+                "type": "u8",
+                "note": "How many charges it holds."
+              }
+            ]
+          },
+          "note": "Ten places, one per slot. A client empties every slot first, and reads only the first nine places, for slots 0 to 8 in order."
+        },
+        {
+          "name": "cooldowns",
+          "type": "array",
+          "count": 10,
+          "items": {
+            "name": "cooldown",
+            "type": "f32",
+            "note": "How long until the slot's item can be used again, in seconds. -1 leaves the slot's wait as it was, and the length it is shown against with it."
           },
           "note": "One per slot."
         },

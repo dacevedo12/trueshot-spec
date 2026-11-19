@@ -38,7 +38,7 @@
     },
     {
       "from": "4.18.0.271",
-      "until": "4.21.0.0",
+      "until": "4.20.0.315",
       "channel": "events",
       "command": 287,
       "direction": "serverToClient",
@@ -51,6 +51,22 @@
         }
       ],
       "note": "The header carries zero."
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 287,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "champion",
+          "type": "u32",
+          "note": "The champion."
+        }
+      ],
+      "note": "The header names a champion the client holds, any one: a client ignores a message whose header carries zero. The champion credited is the one below."
     }
   ]
 }

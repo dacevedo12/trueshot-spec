@@ -49,9 +49,9 @@ says.
 > The word is followed by the address, the port, the key, a match number and a
 > player number.
 
-<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+<!-- holds from 4.17.0.233 up to 4.21.0.0 -->
 
-> **In 4.17**
+> **In 4.17–4.20**
 >
 > The word `replay` serves as `spectator` does, and either counts wherever it
 > stands in the argument. Besides the form above, the word can be followed by a
@@ -160,9 +160,9 @@ key frames for its `keyFrameTimeInterval` (see [Time](time.md#how-a-time-is-carr
 A chunk is the messages a server sent the players of the match, one record
 after another.
 
-<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+<!-- holds from 4.17.0.233 up to 4.21.0.0 -->
 
-> **In 4.17**
+> **In 4.17–4.20**
 >
 > Each record is a [`StreamRecord`](../schema/types/StreamRecord.json),
 > written against the one before it to save space. A reader keeps the last
@@ -175,7 +175,13 @@ after another.
 >   that signed difference.
 >
 > A message is the command, the object and the body, laid out as a game message
-> is (see [Messages](messages.md)). A record never holds a container.
+> is (see [Messages](messages.md)).
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> A record never holds a container.
 
 A client plays records as the stream's clock reaches their time, records of
 time zero at once, and the first record with a time above zero sets its clock.
@@ -193,11 +199,19 @@ and goes on by itself afterwards.
 > A client whose own build differs from the one `VersionSync` names asks its
 > player whether to go on, and leaves where the player declines.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
-> **In 4.1–4.20**
+> **In 4.1–4.19**
 >
 > A client whose own build differs from the one `VersionSync` names leaves.
+
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
+>
+> A client leaves where `VersionSync`'s `buildMatches` is clear, after showing
+> its player the build `VersionSync` names. It does not compare that build with
+> its own.
 
 A key frame is laid out as a chunk is, and holds the whole world as it stands
 at that point. A client joined late goes on after it from the chunk the key

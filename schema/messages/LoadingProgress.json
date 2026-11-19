@@ -949,7 +949,7 @@
     },
     {
       "from": "4.18.0.271",
-      "until": "4.21.0.0",
+      "until": "4.20.0.315",
       "channel": "requests",
       "command": 22,
       "direction": "clientToServer",
@@ -984,6 +984,70 @@
               "name": "count",
               "width": 16,
               "note": "How many reports have been made."
+            },
+            {
+              "name": "ping",
+              "width": 16,
+              "note": "Round trip time the client measures, in milliseconds."
+            }
+          ]
+        },
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "loaded",
+              "width": 1,
+              "note": "A client sets it only in reports whose progress stands at one hundred."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a client may leave any value here, and a server ignores it."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "requests",
+      "command": 22,
+      "direction": "clientToServer",
+      "reliability": "unreliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the client reporting."
+        },
+        {
+          "name": "playerId",
+          "type": "i64",
+          "note": "Who is reporting. A client sends every bit set, which names nobody."
+        },
+        {
+          "name": "percent",
+          "type": "f32",
+          "note": "How far loading has got, from zero to one hundred."
+        },
+        {
+          "name": "eta",
+          "type": "f32",
+          "note": "How long the client expects still to take, in seconds."
+        },
+        {
+          "name": "status",
+          "type": "bits",
+          "size": 4,
+          "bits": [
+            {
+              "name": "count",
+              "width": 16,
+              "note": "How many loading steps the client has finished, which can rise by more than one between reports; only its low 16 bits are sent."
             },
             {
               "name": "ping",

@@ -190,9 +190,9 @@ into its death.
 >
 > A death that credits no killer still stops the unit's cast and attack.
 
-<!-- holds from 4.17.0.233 up to 4.20.0.315 -->
+<!-- holds from 4.17.0.233 up to 4.21.0.0 -->
 
-> **In 4.17–4.19**
+> **In 4.17–4.20**
 >
 > A death that credits no killer still stops the unit's cast and attack.
 

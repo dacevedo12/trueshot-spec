@@ -146,7 +146,7 @@
     },
     {
       "from": "4.18.0.271",
-      "until": "4.21.0.0",
+      "until": "4.20.0.315",
       "channel": "registration",
       "command": 0,
       "direction": "serverToClient",
@@ -187,6 +187,50 @@
         }
       ],
       "note": "Straight after a request a server sends one answer for every seat, and every one of them carries that request's build and proof back."
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "registration",
+      "command": 0,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "leading",
+          "type": "bytes",
+          "size": 3,
+          "note": "Unused; a server writes zero. It occupies the same three bytes a request uses."
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id the named player holds, counted from zero. A watching client takes the champion of the player holding this client id as its own, so a server answers one with a client id no player in the streamed match holds (see spec/spectating.md)."
+        },
+        {
+          "name": "playerId",
+          "type": "i64",
+          "note": "Who occupies that seat."
+        },
+        {
+          "name": "version",
+          "type": "u32",
+          "note": "The build the client said it runs. A client ignores it."
+        },
+        {
+          "name": "proof",
+          "type": "bytes",
+          "size": 8,
+          "note": "The eight bytes a request fills with its proof. A client ignores them."
+        },
+        {
+          "name": "trailing",
+          "type": "bytes",
+          "size": 4,
+          "note": "Unused; a server writes zero."
+        }
+      ],
+      "note": "Straight after a request a server sends one answer for every seat."
     }
   ]
 }

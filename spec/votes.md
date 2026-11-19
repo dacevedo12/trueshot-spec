@@ -87,4 +87,14 @@ ended, or why it could not be held.
 > Where the version answer's features turn the commands on, a client also sends
 > `BalanceVoteRefused`, a vote against, as its player types `/noequalize`.
 
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
+>
+> `BalanceVote` opens the panel where it says the vote opens. A client takes
+> `/equalize`, as the panel's vote for, only where the version answer's
+> features turn the commands on, and outside the tutorial. There, outside the
+> tutorial, it also sends `BalanceVoteRefused`, a vote against, as its player
+> types `/noequalize`.
+
 <!-- messages -->

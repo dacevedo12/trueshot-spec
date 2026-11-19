@@ -35677,7 +35677,7 @@
                   {
                     "name": "byParent",
                     "type": "u8",
-                    "note": "Nonzero to credit it to the parent spell and its caster rather than to the spell and its source unit; where the parent caster is unknown, a client credits the source unit."
+                    "note": "Nonzero to credit it to the parent spell and its caster rather than to the spell and its source unit. Where the parent caster is unknown, a client credits the unit in the entry's source; where that is unknown too, it counts the amount as from an unknown source where the parent's side differs from the dead unit's, and drops it otherwise. Where this and sourceObject are both zero, a client ignores the entry."
                   },
                   {
                     "name": "script",
@@ -35761,7 +35761,7 @@
                       {
                         "name": "category",
                         "width": 4,
-                        "note": "What sort of unit cast the parent: 0 a champion, 1 a minion, 2 a turret, 3 a pet, 4 a clone, 5 unknown. A client sums two entries where this, the source kind and the spell match."
+                        "note": "What sort of unit cast the parent: 0 a champion, 1 a minion, 2 a turret, 3 a pet, 4 a clone, 5 unknown. A client groups the entries it shows by who cast the parent: 1 to 4 each under one label of their own, any other value under the caster's own name; within a group it sums the entries whose parent spell matches."
                       },
                       {
                         "name": "spellLevel",
@@ -35780,7 +35780,7 @@
               {
                 "name": "spent",
                 "type": "u32",
-                "note": "How much gold, as shown.",
+                "note": "How much gold. A client does not show it.",
                 "present": {
                   "when": "event",
                   "equals": 23
@@ -35798,7 +35798,7 @@
               {
                 "name": "critical",
                 "type": "f32",
-                "note": "The critical strike's damage, as shown.",
+                "note": "The critical strike's damage. A client does not show it.",
                 "present": {
                   "when": "event",
                   "equals": 26
@@ -35807,7 +35807,7 @@
               {
                 "name": "spree",
                 "type": "u32",
-                "note": "How many kills in a row, as shown.",
+                "note": "How many kills in a row. A client does not show it.",
                 "present": {
                   "when": "event",
                   "equals": 50
@@ -35825,7 +35825,7 @@
                   {
                     "name": "gold",
                     "type": "f32",
-                    "note": "How much gold, as shown."
+                    "note": "How much gold. A client does not show it."
                   },
                   {
                     "name": "detail",
@@ -35851,7 +35851,7 @@
                   {
                     "name": "byParent",
                     "type": "u8",
-                    "note": "Nonzero to credit it to the parent spell and its caster rather than to the spell and its source unit; where the parent caster is unknown, a client credits the source unit."
+                    "note": "Nonzero to credit it to the parent spell and its caster rather than to the spell and its source unit. Where the parent caster is unknown, a client credits the unit in the entry's source; where that is unknown too, it counts the amount as from an unknown source where the parent's side differs from the dead unit's, and drops it otherwise. Where this and sourceObject are both zero, a client ignores the entry."
                   },
                   {
                     "name": "script",
@@ -35925,7 +35925,7 @@
                       {
                         "name": "category",
                         "width": 4,
-                        "note": "What sort of unit cast the parent: 0 a champion, 1 a minion, 2 a turret, 3 a pet, 4 a clone, 5 unknown. A client sums two entries where this, the source kind and the spell match."
+                        "note": "What sort of unit cast the parent: 0 a champion, 1 a minion, 2 a turret, 3 a pet, 4 a clone, 5 unknown. A client groups the entries it shows by who cast the parent: 1 to 4 each under one label of their own, any other value under the caster's own name; within a group it sums the entries whose parent spell matches."
                       },
                       {
                         "name": "spellLevel",
@@ -35953,7 +35953,7 @@
                   {
                     "name": "byParent",
                     "type": "u8",
-                    "note": "Nonzero to credit it to the parent spell and its caster rather than to the spell and its source unit; where the parent caster is unknown, a client credits the source unit."
+                    "note": "Nonzero to credit it to the parent spell and its caster rather than to the spell and its source unit. Where the parent caster is unknown, a client credits the unit in the entry's source; where that is unknown too, it counts the amount as from an unknown source where the parent's side differs from the dead unit's, and drops it otherwise. Where this and sourceObject are both zero, a client ignores the entry."
                   },
                   {
                     "name": "script",
@@ -36022,7 +36022,7 @@
                       {
                         "name": "category",
                         "width": 4,
-                        "note": "What sort of unit cast the parent: 0 a champion, 1 a minion, 2 a turret, 3 a pet, 4 a clone, 5 unknown. A client sums two entries where this, the source kind and the spell match."
+                        "note": "What sort of unit cast the parent: 0 a champion, 1 a minion, 2 a turret, 3 a pet, 4 a clone, 5 unknown. A client groups the entries it shows by who cast the parent: 1 to 4 each under one label of their own, any other value under the caster's own name; within a group it sums the entries whose parent spell matches."
                       },
                       {
                         "name": "spellLevel",
@@ -36172,17 +36172,17 @@
                   "when": "event",
                   "equals": 95
                 },
-                "note": "The item a player pointed out, shown as the second name followed by the first in brackets.",
+                "note": "The item a player pointed out. A client does not show it.",
                 "fields": [
                   {
                     "name": "item",
                     "type": "u32",
-                    "note": "The item, shown by name and number."
+                    "note": "The item."
                   },
                   {
                     "name": "quantity",
                     "type": "u32",
-                    "note": "How many, shown as two digits."
+                    "note": "How many."
                   },
                   {
                     "name": "first",
@@ -36210,7 +36210,7 @@
                   "when": "event",
                   "equals": 98
                 },
-                "note": "An item the shop shows another in place of.",
+                "note": "An item the shop shows another in place of. A client does not show it.",
                 "fields": [
                   {
                     "name": "enabled",
@@ -36257,7 +36257,7 @@
                   {
                     "name": "refund",
                     "type": "f32",
-                    "note": "The gold given back. A client takes it off the gold the unit is counted as having spent."
+                    "note": "The gold given back. A client does not show it."
                   }
                 ]
               }

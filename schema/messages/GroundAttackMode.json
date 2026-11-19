@@ -202,7 +202,7 @@
     },
     {
       "from": "4.18.0.271",
-      "until": "4.21.0.0",
+      "until": "4.20.0.315",
       "channel": "events",
       "command": 257,
       "direction": "serverToClient",
@@ -217,6 +217,49 @@
           "name": "mode",
           "type": "u8",
           "note": "Which clicks attack the ground.",
+          "values": {
+            "0": {
+              "name": "off"
+            },
+            "1": {
+              "name": "move",
+              "note": "A move click."
+            },
+            "2": {
+              "name": "select",
+              "note": "A select click."
+            },
+            "3": {
+              "name": "moveAndSelect"
+            },
+            "4": {
+              "name": "attackMove"
+            },
+            "5": {
+              "name": "atCursor",
+              "note": "Kept, but no click acts on it."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 257,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "champion",
+          "type": "u32",
+          "note": "The champion."
+        },
+        {
+          "name": "mode",
+          "type": "u8",
+          "note": "Which clicks attack the ground: 0 none, 3 both move and select clicks, 4 the attack-move click.",
           "values": {
             "0": {
               "name": "off"

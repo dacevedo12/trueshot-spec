@@ -82,8 +82,7 @@ revision claims that value both ways.
 > - bit 1 clear: a four byte object identifier follows; bit 1 set: one signed
 >   byte follows, and this entry's object identifier is the one before it plus
 >   that byte;
-> - bits 2 to 7: the size of the body; where they read 63, the size is the next
->   byte instead.
+> - bits 2 to 7: the size of the body.
 >
 > The body follows. Each entry, given the command and object identifier it
 > carries as its header, is a message read as though it had arrived on its own.
@@ -94,6 +93,12 @@ revision claims that value both ways.
 >
 > A server MAY send a container on the events channel. A client sends none.
 
+<!-- holds from 1.0.0.96 up to 4.20.0.315 -->
+
+> **In 1.0.0.96–4.19**
+>
+> Where an entry's size bits read 63, its size is the next byte instead.
+
 <!-- holds from 1.0.0.126 up to 3.11.0.306 -->
 
 > **In 1.0.0.126–3.10**
@@ -103,6 +108,14 @@ revision claims that value both ways.
 <!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 
 > **In 4.17**
+>
+> A client unwraps a container on any channel. Where an entry's size bits read
+> 63, its size is one byte that follows the command and object identifier, just
+> before the body.
+
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
 >
 > A client unwraps a container on any channel. Where an entry's size bits read
 > 63, its size is one byte that follows the command and object identifier, just

@@ -583,7 +583,7 @@
     },
     {
       "from": "4.18.0.271",
-      "until": "4.21.0.0",
+      "until": "4.20.0.315",
       "channel": "events",
       "command": 161,
       "direction": "serverToClient",
@@ -608,6 +608,43 @@
               "name": "unlimited",
               "width": 1,
               "note": "Set where the hold is not counted against a limit."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 161,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the client that called the hold."
+        },
+        {
+          "name": "timeLeft",
+          "type": "i32",
+          "note": "How long the hold can run, in seconds."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "unlimited",
+              "width": 1,
+              "note": "Whether a client announces the hold, as spec/match.md says."
             },
             {
               "name": "unused",

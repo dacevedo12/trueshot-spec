@@ -7,7 +7,7 @@ in order.
 
 A client learns where to connect from its command line. It takes three
 arguments it needs nothing in, which can be empty, and then a fourth holding
-four words separated by single spaces: the server's IPv4 address, its UDP port,
+four words: the server's IPv4 address, its UDP port,
 the key (see [Transport](transport.md)), and the player id the client registers
 as. The client
 connects to that address and port, registers as that player, and enciphers its
@@ -59,6 +59,18 @@ proof under that key.
 > otherwise, it shows an error naming how many it was given. One whose fourth
 > argument holds `.rofl` plays that replay, and one whose command line holds
 > `.rep` anywhere plays a replay rather than connecting.
+
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
+>
+> Whitespace separates a client's arguments, and double quotes group words into
+> one; any whitespace separates the words of the fourth argument. A client
+> given one argument holding `.rofl`, or a command line holding `.rep`
+> anywhere, plays a replay rather than connecting; given fewer than four
+> arguments otherwise, it shows a notice and ends. One whose fourth argument
+> holds `spectator`, `replay` or `.rofl` anywhere does not connect as a player
+> (see [Watching a match](spectating.md)).
 
 ## Registering
 

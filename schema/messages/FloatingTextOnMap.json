@@ -40,7 +40,7 @@
         {
           "name": "length",
           "type": "u32",
-          "note": "The text's length in bytes, counting its zero byte."
+          "note": "The text's length in bytes, counting its zero byte. A client does not read it: the text runs to its zero byte."
         },
         {
           "name": "text",

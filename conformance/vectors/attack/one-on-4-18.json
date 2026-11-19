@@ -1,0 +1,22 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "Attack",
+  "version": "4.18.0.271",
+  "note": "Laid out as a 4.18.0.271 client takes it.",
+  "bytes": "0c0500004000000000000000000000000000000000000000000000",
+  "fields": {
+    "command": 12,
+    "netId": 1073741829,
+    "extendedCommand": null,
+    "strike": {
+      "target": 0,
+      "timing": 0,
+      "missile": 0,
+      "slot": 0,
+      "targetX": 0,
+      "targetY": 0,
+      "targetZ": 0
+    }
+  }
+}

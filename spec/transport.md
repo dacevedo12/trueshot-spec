@@ -107,6 +107,15 @@ abandons a connection whose verify connect states anything else.
 > write the peer id in that byte, because one written at ENet's width puts its
 > high byte there.
 
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
+>
+> A client reads the verify connect's peer id from the first of the two bytes
+> ENet gives it, and carries that byte in every header it sends. A server MUST
+> write the peer id in that byte, because one written at ENet's width puts its
+> high byte there.
+
 ## Maximum transmission unit
 
 A client asks for a transmission unit of 1400 bytes, and discards any datagram
@@ -196,9 +205,9 @@ argument.
 > An argument longer than sixteen characters holds the key in base64, and the
 > key is the first sixteen bytes it decodes to.
 
-<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+<!-- holds from 4.17.0.233 up to 4.21.0.0 -->
 
-> **In 4.17**
+> **In 4.17–4.20**
 >
 > An argument of sixteen characters or fewer is the key as it stands, followed
 > by zero bytes up to sixteen.

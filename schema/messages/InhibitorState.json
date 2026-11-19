@@ -547,7 +547,7 @@
     },
     {
       "from": "4.18.0.271",
-      "until": "4.21.0.0",
+      "until": "4.20.0.315",
       "channel": "events",
       "command": 43,
       "direction": "serverToClient",
@@ -557,6 +557,26 @@
           "name": "state",
           "type": "u8",
           "note": "Which state. A server sends 0 as the inhibitor falls."
+        },
+        {
+          "name": "duration",
+          "type": "u16",
+          "note": "Seconds the state lasts, counted down by the client. After a state of 0, the client announces once that the inhibitor returns soon, when fewer than 15 seconds remain."
+        }
+      ]
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 43,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "state",
+          "type": "u8",
+          "note": "Which state, by its bit 0 alone. A client ignores a message whose state is the one in force, duration included. A server sends 0 as the inhibitor falls."
         },
         {
           "name": "duration",

@@ -2143,12 +2143,12 @@
         {
           "name": "sizeMultiplier",
           "type": "f32",
-          "note": "What its stated radius is scaled by."
+          "note": "What its stated radius is scaled by. Where the region follows a unit of its own side, a client takes this from that unit instead."
         },
         {
           "name": "sizeAdditive",
           "type": "f32",
-          "note": "What is added to its stated radius after scaling, in world units."
+          "note": "What is added to its stated radius after scaling, in world units, taken from a followed unit of the region's own side as above."
         },
         {
           "name": "does",

@@ -358,7 +358,7 @@
     },
     {
       "from": "4.18.0.271",
-      "until": "4.21.0.0",
+      "until": "4.20.0.315",
       "channel": "clock",
       "command": 8,
       "direction": "clientToServer",
@@ -373,6 +373,26 @@
           "name": "clientSaid",
           "type": "f32",
           "note": "What the client's own clock stood at when that statement arrived, in seconds."
+        }
+      ]
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "clock",
+      "command": 8,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "serverSaid",
+          "type": "f32",
+          "note": "What the server last said the clock stood at, in seconds."
+        },
+        {
+          "name": "clientSaid",
+          "type": "f32",
+          "note": "What the client's own clock stood at just after it set it from that statement: the time the statement gave plus the client's allowance for lateness, in seconds."
         }
       ]
     }

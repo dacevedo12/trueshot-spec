@@ -474,7 +474,7 @@
     },
     {
       "from": "4.11.0.386",
-      "until": "4.21.0.0",
+      "until": "4.20.0.315",
       "channel": "events",
       "command": 160,
       "direction": "serverToClient",
@@ -489,6 +489,24 @@
         }
       ],
       "note": "The box sits halfway down the screen."
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 160,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "A key into the client's own text, which it looks up and shows. The text ends at its first zero byte, which falls within the field."
+        }
+      ],
+      "note": "The box sits at the right edge of the screen, 98.5% of the way across, and 85% of the way down less 2.6 times the height of a heads-up display element."
     }
   ]
 }

@@ -1,0 +1,21 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ItemAdded",
+  "version": "4.18.0.271",
+  "note": "Laid out as a 4.18.0.271 client takes it.",
+  "bytes": "6f21000040d307000001010000",
+  "fields": {
+    "command": 111,
+    "netId": 1073741857,
+    "extendedCommand": null,
+    "item": 2003,
+    "slot": 1,
+    "inSlot": 1,
+    "charges": 0,
+    "how": {
+      "tellTheClient": 0,
+      "unused": 0
+    }
+  }
+}

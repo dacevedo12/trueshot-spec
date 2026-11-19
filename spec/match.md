@@ -68,9 +68,9 @@ identifiers](objects.md)).
 >
 > A client names no one in `Pause` or `Resume`.
 
-<!-- holds from 4.18.0.271 up to 4.20.0.315 -->
+<!-- holds from 4.18.0.271 up to 4.21.0.0 -->
 
-> **In 4.18–4.19**
+> **In 4.18–4.20**
 >
 > A client puts 0 in the client id of `Pause` and `Resume`, the same id as the
 > first seat's, so a server takes no seat from that field.
@@ -96,9 +96,9 @@ A server holds the match with `Paused`.
 >
 > `Paused` carries how long the hold can last, in seconds.
 
-<!-- holds from 1.0.0.126 up to 4.20.0.315 -->
+<!-- holds from 1.0.0.126 up to 4.21.0.0 -->
 
-> **In 1.0.0.126–4.19**
+> **In 1.0.0.126–4.20**
 >
 > A client begins a hold only where the time `Paused` carries is above zero and
 > the match is not already held.
@@ -124,6 +124,14 @@ A server holds the match with `Paused`.
 >
 > A client shows nothing for any other hold. A tournament's hold also shows a
 > box with the time left and locks input, and only such a hold locks it.
+
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
+>
+> Where `Paused`'s flag is set and the hold begins, a client announces in chat
+> the player whose client id it carries, unless that id is 4294967295. Where
+> the flag is clear, it holds without announcing.
 
 A server ends the hold with `Resumed`.
 
@@ -451,9 +459,9 @@ does.
 > Once loading is done, a client gives up on a connection where a reliable
 > message it sent goes unacknowledged for 15 seconds.
 
-<!-- holds from 1.0.0.140 up to 4.20.0.315 -->
+<!-- holds from 1.0.0.140 up to 4.21.0.0 -->
 
-> **In 1.0.0.140–4.19**
+> **In 1.0.0.140–4.20**
 >
 > Before loading is done, a client waits 60 seconds for an acknowledgement rather
 > than 15.

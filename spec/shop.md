@@ -182,6 +182,22 @@ A client asks to buy only where the item is one the match sells.
 > In the tutorial, it does not ask while its shop is locked
 > ([The interface](interface.md)).
 
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
+>
+> For an item not built from others, a client asks only where:
+>
+> - `VersionSync` does not disable it;
+> - the champion's gold covers its price, and, under a substitution, the
+>   substitute's price as well;
+> - a slot is free, or holds the same item below its stack limit.
+>
+> Where an item's group sets a delay between purchases, a client asks for no
+> item of that group until the delay has passed since it last asked for one,
+> answered or not. In the tutorial, it does not ask while its shop is locked
+> ([The interface](interface.md)).
+
 A client never places an item itself: an item enters its inventory only as a
 server answers with `ItemAdded`, leaves it with `RemoveItemAnswer`, and moves
 with `SwapItemsAnswer`. A server can also set a slot (`InventorySlot`), set the

@@ -743,7 +743,7 @@
     },
     {
       "from": "4.18.0.271",
-      "until": "4.21.0.0",
+      "until": "4.20.0.315",
       "channel": "events",
       "command": 133,
       "direction": "serverToClient",
@@ -763,6 +763,53 @@
               "name": "summonerSpell",
               "width": 1,
               "note": "Set where the slot is a summoner slot rather than one of the unit's own. It does not move the slot into the summoner range: a client puts the wait on the slot named, set or clear."
+            },
+            {
+              "name": "speakWhenReady",
+              "width": 1,
+              "note": "Set where the unit says something once the wait is over."
+            },
+            {
+              "name": "unused",
+              "width": 6,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "timeLeft",
+          "type": "f32",
+          "note": "How long is left, in seconds. A client counts down from it."
+        },
+        {
+          "name": "outOf",
+          "type": "f32",
+          "note": "The length the client shows that remainder against, in seconds: 20 left out of 40 shows the wait half run."
+        }
+      ]
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 133,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "summonerSpell",
+              "width": 1,
+              "note": "Set to put the wait on that slot of the unit's summoner spells; clear, on that slot of its own. A client fails where this is set for a unit with no summoner spells."
             },
             {
               "name": "speakWhenReady",

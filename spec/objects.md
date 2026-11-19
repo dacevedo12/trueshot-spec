@@ -161,6 +161,13 @@ client's own.
 >
 > A client tells a bot's champion by a byte of its own, not by its client id.
 
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
+>
+> A client tells a bot's champion by `CreateChampion`'s `bot` bit, not by its
+> client id.
+
 ## Net ids
 
 A net id names one object in a client's world: a unit, a missile, a particle,
@@ -233,13 +240,22 @@ naming a unit, an owner or a target carry one too.
 > `CreateFollower` only where its header names a unit the client holds;
 > otherwise each removes and creates nothing.
 
-<!-- holds from 4.18.0.271 up to 4.21.0.0 -->
+<!-- holds from 4.18.0.271 up to 4.20.0.315 -->
 
-> **In 4.18–4.20**
+> **In 4.18–4.19**
 >
 > A client that still holds the earlier object creates the new one but keeps
 > the net id on the old one, so messages naming it reach the old object, and
 > removing either leaves the id naming neither.
+
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
+>
+> `SpawnFromBarracks`, `SpawnPet`, `CreateChampion`, `CreateNeutral`,
+> `SpawnUnit`, `CreateTurret`, `MapProp`, `SpawnMarker`, `SpawnTurret` and
+> `ParticlesCreated` first remove any object holding the net id, and the
+> object they create takes it.
 
 A create message carries a node beside the object's net id.
 
@@ -424,9 +440,9 @@ Among the identifiers with that top byte are these:
 > | 10  | `Barracks_T1_L1`, `Barracks_T1_R1`, `Barracks_T2_L1`, `Barracks_T2_R1`, the `L01` and `R01` spawn points of both sides, `HQ_T1`, `HQ_T2`, `orderShop01`, `chaosShop01` |
 > | 12  | `Barracks_T1_C1`, `Barracks_T2_C1`, the `C01` spawn points of both sides named `____P_…`, `HQ_T1`, `HQ_T2`, `OrderShop01`, `ChaosShop01`                               |
 
-<!-- holds from 4.18.0.271 up to 4.21.0.0 -->
+<!-- holds from 4.18.0.271 up to 4.20.0.315 -->
 
-> **In 4.18–4.20**
+> **In 4.18–4.19**
 >
 > | Name                            | `map`         |
 > | ------------------------------- | ------------- |
@@ -443,6 +459,26 @@ Among the identifiers with that top byte are these:
 > | `HQ_T2`                         | 1, 10, 11, 12 |
 > | `OrderShop01`                   | 12            |
 > | `orderShop01`                   | 1, 8, 11      |
+
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
+>
+> | Name                            | `map`         |
+> | ------------------------------- | ------------- |
+> | `Barracks_T1_C1`                | 1, 11, 12     |
+> | `Barracks_T1_L1`                | 1, 10, 11     |
+> | `Barracks_T1_R1`                | 1, 10, 11     |
+> | `Barracks_T2_C1`                | 1, 11, 12     |
+> | `Barracks_T2_L1`                | 1, 10, 11     |
+> | `Barracks_T2_R1`                | 1, 10, 11     |
+> | `__P_Order_Spawn_Barracks__C01` | 1, 11         |
+> | `ChaosShop01`                   | 12            |
+> | `chaosShop01`                   | 1, 8, 10, 11  |
+> | `HQ_T1`                         | 1, 10, 11, 12 |
+> | `HQ_T2`                         | 1, 10, 11, 12 |
+> | `OrderShop01`                   | 12            |
+> | `orderShop01`                   | 1, 8, 10, 11  |
 
 The `Barracks` names above belong to inhibitors, whatever the name says.
 
@@ -517,6 +553,14 @@ A server MUST name each object a map holds by the identifier its name gives.
 > Of a turret's two ids, the first still names it in every message, and the
 > second in every message but `LevelUp`, `Path`, `PathWithSpeed`,
 > `EnterTeamSight` and `LeaveTeamSight`, which do nothing under it.
+
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
+>
+> `CreateTurret` names a turret by its building's name with `_A` after it,
+> matched exactly, case included. One naming no turret removes any object
+> holding its net id, and nothing takes the id.
 
 ## What a client holds
 
@@ -634,6 +678,13 @@ Each stage either marks or removes.
 >
 > The stage of `SoftReconnect` that marks is 1.
 
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
+>
+> A client compares the whole stage with 1: any other value, 0 among them,
+> removes.
+
 ## Messages about objects a client does not hold
 
 A message whose header names a net id the client does not hold, or whose body
@@ -722,8 +773,21 @@ Creating messages are the exception, and so are the messages below.
 
 > **In 4.18–4.20**
 >
-> `SpawnPet` takes the net id in its header for the new pet, but does nothing
-> where the owner its body names is not held.
+> `SpawnPet` takes the net id in its header for the new pet.
+
+<!-- holds from 4.18.0.271 up to 4.20.0.315 -->
+
+> **In 4.18–4.19**
+>
+> A `SpawnPet` does nothing where the owner its body names is not held.
+
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
+>
+> A `SpawnPet` first removes any object holding its net id, and then creates
+> nothing where the owner its body names is not held. One whose header names
+> the owner itself removes the owner and creates no pet.
 
 [Ordering](ordering.md#across-channels) says what becomes of any other message
 that arrives before the message creating what it names.
@@ -777,11 +841,18 @@ so the number comes from `global_ss_flash.troy` and not from
 > A byte from 128 to 255 enters the hash as its value less 256, worked in 32
 > bits, rather than as itself.
 
-<!-- holds from 4.18.0.271 up to 4.21.0.0 -->
+<!-- holds from 4.18.0.271 up to 4.20.0.315 -->
 
-> **In 4.18–4.20**
+> **In 4.18–4.19**
 >
 > Every byte other than `A` to `Z` is taken as it is.
+
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
+>
+> A byte from 128 to 255 enters the hash as its value less 256, worked in 32
+> bits, rather than as itself.
 
 | Name                      | Number       |
 | ------------------------- | ------------ |

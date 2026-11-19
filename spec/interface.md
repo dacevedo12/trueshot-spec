@@ -86,6 +86,13 @@ set a point a player's view keeps to with `CameraBehaviour`.
 > **In 4.20**
 >
 > A client reports a view drawn further out than it allows with `ZoomReport`.
+>
+> A client's view report, `Camera`, goes out where a point it carries moves
+> more than 200 units, at most every tenth of a second, and never while its
+> view is locked or while it watches a match.
+>
+> A client ignores a `CameraLockSet` that arrives while it holds its camera
+> itself, and does not apply it later.
 
 ## Input
 
@@ -130,12 +137,21 @@ alone closes the shop and turns off its key.
 > A message that locks other input along with the shop stops the shop opening,
 > but leaves an open shop open and its key on.
 
-<!-- holds from 4.18.0.271 up to 4.21.0.0 -->
+<!-- holds from 4.18.0.271 up to 4.20.0.315 -->
 
-> **In 4.18–4.20**
+> **In 4.18–4.19**
 >
 > Any message that locks the shop closes it and turns off its key, whatever
 > else it locks.
+
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
+>
+> A client acts on a lock at once only where the message's mask is exactly one
+> of 1, 4, 8, 16, 32 or 128. A message that locks other input along with the
+> shop stops the shop opening, but leaves an open shop open and its key on. A
+> watching client ignores `InputLock`.
 
 ## The minimap and text on screen
 

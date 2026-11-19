@@ -11233,12 +11233,12 @@
         {
           "name": "tip",
           "type": "i8",
-          "note": "Which note the client shows before play."
+          "note": "Which note the client shows before play; a number past the client's notes counts round from the first."
         },
         {
           "name": "tipColour",
           "type": "i8",
-          "note": "Which colouring it shows it in."
+          "note": "Which colouring it shows it in, from 1 to 3. Any other value makes the note invalid, as for tipDuration."
         },
         {
           "name": "tipDuration",

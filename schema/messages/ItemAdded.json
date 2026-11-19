@@ -909,7 +909,7 @@
     },
     {
       "from": "4.18.0.271",
-      "until": "4.21.0.0",
+      "until": "4.20.0.315",
       "channel": "events",
       "command": 111,
       "direction": "serverToClient",
@@ -954,6 +954,54 @@
         }
       ],
       "note": "It answers no request: a client clears the slot named and puts what follows in its place whether or not anything asked for it. A server sends it to units nobody is buying for."
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 111,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "item",
+          "type": "u32",
+          "note": "Which item, by the number the client knows it as."
+        },
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "The slot it went to. A client ignores a message naming a slot above 38."
+        },
+        {
+          "name": "inSlot",
+          "type": "u8",
+          "note": "How many of it are in that slot now."
+        },
+        {
+          "name": "charges",
+          "type": "u8",
+          "note": "How many uses it carries."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "tellTheClient",
+              "width": 1,
+              "note": "Set to announce the purchase to allies and those watching, for items that announce. A client announces an item on a unit again only once a wait, 5 seconds by default, passes with no further such message for it."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ],
+      "note": "It answers no request: a client puts what follows in the slot named whether or not anything asked for it. Where inSlot is zero, it leaves the slot as it was."
     }
   ]
 }

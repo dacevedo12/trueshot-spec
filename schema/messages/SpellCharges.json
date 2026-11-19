@@ -102,7 +102,7 @@
     },
     {
       "from": "4.18.0.271",
-      "until": "4.21.0.0",
+      "until": "4.20.0.315",
       "channel": "events",
       "command": 263,
       "direction": "serverToClient",
@@ -125,6 +125,54 @@
           "name": "slot",
           "type": "u32",
           "note": "Which slot."
+        },
+        {
+          "name": "charges",
+          "type": "i32",
+          "note": "How many uses are left."
+        },
+        {
+          "name": "mostCharges",
+          "type": "i32",
+          "note": "How many charges the slot can hold: any value below zero, -1 among them, keeps the spell's own figure for its level; 0 has the slot use no charges; anything above zero is that many."
+        },
+        {
+          "name": "rechargeFor",
+          "type": "f32",
+          "note": "How long the next use has been coming back, in seconds."
+        },
+        {
+          "name": "rechargeTime",
+          "type": "f32",
+          "note": "How long a use takes to come back, in seconds."
+        }
+      ]
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 263,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "summonerSpell",
+          "type": "u8",
+          "note": "Whether the slot is a summoner slot rather than one of the unit's own. A client ignores the message where this is set for a unit with no summoner spells.",
+          "values": {
+            "0": {
+              "name": "no"
+            },
+            "1": {
+              "name": "yes"
+            }
+          }
+        },
+        {
+          "name": "slot",
+          "type": "u32",
+          "note": "Which slot. A value outside 0 to 63 acts on slot 0."
         },
         {
           "name": "charges",

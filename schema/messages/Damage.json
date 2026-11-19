@@ -1454,7 +1454,7 @@
     },
     {
       "from": "4.18.0.271",
-      "until": "4.21.0.0",
+      "until": "4.20.0.315",
       "channel": "events",
       "command": 101,
       "direction": "serverToClient",
@@ -1535,6 +1535,90 @@
         }
       ],
       "note": "A client shows the figure and nothing more: the health it shows for the unit is what replication carries, and this message leaves it as it was."
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "events",
+      "command": 101,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "result",
+          "type": "u8",
+          "note": "How the damage landed, and so what a client shows over the unit hurt. A value of 6 or more shows the amount as normal does.",
+          "values": {
+            "0": {
+              "name": "invulnerable",
+              "note": "Shows that the unit could not be hurt."
+            },
+            "1": {
+              "name": "unseen",
+              "note": "Shows nothing."
+            },
+            "2": {
+              "name": "dodged",
+              "note": "Shows that the blow was dodged."
+            },
+            "3": {
+              "name": "critical",
+              "note": "Shows the amount as a critical strike."
+            },
+            "4": {
+              "name": "normal",
+              "note": "Shows the amount."
+            },
+            "5": {
+              "name": "missed",
+              "note": "Shows that the blow missed."
+            }
+          }
+        },
+        {
+          "name": "unused",
+          "type": "u8",
+          "note": "Unused; a server writes zero."
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What sort of damage it is, which sets how a client colours the figure.",
+          "values": {
+            "0": {
+              "name": "physical"
+            },
+            "1": {
+              "name": "magical",
+              "note": "Shown in its own colour, purple where critical."
+            },
+            "2": {
+              "name": "true",
+              "note": "Shown in its own colour, white where critical."
+            },
+            "3": {
+              "name": "mixed",
+              "note": "Shown as physical damage is, critical or not."
+            }
+          }
+        },
+        {
+          "name": "amount",
+          "type": "f32",
+          "note": "How much."
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit hurt."
+        },
+        {
+          "name": "source",
+          "type": "u32",
+          "note": "The unit that hurt it."
+        }
+      ],
+      "note": "A client shows the figure: the health it shows for the unit is what replication carries, and this message leaves it as it was. It acts only where it holds both units. Where the unit hurt is its own champion and the amount is above 0, it also flashes the screen while that champion's health is at or below 0.6 of its greatest."
     }
   ]
 }

@@ -470,7 +470,7 @@
     },
     {
       "from": "4.18.0.271",
-      "until": "4.21.0.0",
+      "until": "4.20.0.315",
       "channel": "requests",
       "command": 168,
       "direction": "clientToServer",
@@ -483,6 +483,22 @@
         }
       ],
       "note": "It is sent for a batch whose values the client dropped as well as for one it took."
+    },
+    {
+      "from": "4.20.0.315",
+      "until": "4.21.0.0",
+      "channel": "requests",
+      "command": 168,
+      "direction": "clientToServer",
+      "reliability": "unsequenced",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u32",
+          "note": "Which batch is being acknowledged, as the batch named itself."
+        }
+      ],
+      "note": "A client sends it only where it holds every unit the batch names, a batch naming none included, and never while it plays back a match. It is sent for a batch whose values the client dropped as well as for one it took."
     }
   ]
 }
