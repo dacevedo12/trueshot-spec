@@ -3494,7 +3494,7 @@
         {
           "name": "targetableToTeam",
           "type": "u32",
-          "note": "Which sides can aim at it, as a set of bits."
+          "note": "A client does not read it."
         },
         {
           "name": "visibilitySize",

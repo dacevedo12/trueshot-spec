@@ -49,7 +49,7 @@
     },
     {
       "from": "1.0.0.132",
-      "until": "4.18.0.271",
+      "until": "4.17.0.233",
       "channel": "requests",
       "command": 10,
       "direction": "clientToServer",
@@ -79,6 +79,39 @@
         }
       ],
       "note": "A client writes only delayed in how; the rest of the byte carries whatever it held there."
+    },
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.271",
+      "channel": "requests",
+      "command": 10,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "A client writes 4294967295, the client id of no client."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "delayed",
+              "width": 1,
+              "note": "A client sends it clear."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "A client writes zero."
+            }
+          ]
+        }
+      ],
+      "note": "A client writes the whole flag byte as zero."
     },
     {
       "from": "4.18.0.271",

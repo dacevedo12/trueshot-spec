@@ -463,6 +463,92 @@
     },
     {
       "from": "4.11.0.386",
+      "until": "4.17.0.233",
+      "channel": "events",
+      "command": 220,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "cue",
+          "type": "u8",
+          "note": "What to do.",
+          "values": {
+            "0": {
+              "name": "prepare"
+            },
+            "1": {
+              "name": "begin"
+            },
+            "2": {
+              "name": "end"
+            },
+            "3": {
+              "name": "changeState"
+            },
+            "4": {
+              "name": "trigger"
+            }
+          }
+        },
+        {
+          "name": "event",
+          "type": "u32",
+          "note": "Which cue or event."
+        },
+        {
+          "name": "parameter",
+          "type": "u32",
+          "note": "Which state, where the state changes."
+        }
+      ],
+      "note": "The header names the champion of the player it is sent to."
+    },
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.271",
+      "channel": "events",
+      "command": 220,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "cue",
+          "type": "u8",
+          "note": "What to do.",
+          "values": {
+            "0": {
+              "name": "prepare"
+            },
+            "1": {
+              "name": "begin"
+            },
+            "2": {
+              "name": "end"
+            },
+            "3": {
+              "name": "changeState"
+            },
+            "4": {
+              "name": "trigger"
+            }
+          }
+        },
+        {
+          "name": "event",
+          "type": "u32",
+          "note": "Which cue or event."
+        },
+        {
+          "name": "parameter",
+          "type": "u32",
+          "note": "Which state, where the state changes."
+        }
+      ],
+      "note": "A client plays the cue for whichever champion the header names, and ignores the message where it names none."
+    },
+    {
+      "from": "4.18.0.271",
       "until": "4.21.0.0",
       "channel": "events",
       "command": 220,

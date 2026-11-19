@@ -75,7 +75,8 @@ ended, or why it could not be held.
 > **In 4.17**
 >
 > `BalanceVote` opens the panel where it says the vote opens. A client takes
-> `/equalize` only where the version answer's features turn the commands on.
+> `/equalize` only where the version answer's features turn the commands on,
+> outside the tutorial, and while the vote's panel is up.
 > There, outside the tutorial, it also sends `BalanceVoteRefused`, a vote
 > against, as its player types `/noequalize`.
 

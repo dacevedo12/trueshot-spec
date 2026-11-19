@@ -1,0 +1,18 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "Register",
+  "version": "1.0.0.142",
+  "note": "Laid out as a 1.0.0.142 client sends it. The key is arbitrary and its identifiers are stand-ins, and the proof is computed under that key.",
+  "key": "000102030405060708090a0b0c0d0e0f",
+  "bytes": "00 281f0a 00000000 0100000000000000 0e979800 893fa0c88cfc47ab 0092d208",
+  "fields": {
+    "command": 0,
+    "leading": "281f0a",
+    "clientId": 0,
+    "playerId": "1",
+    "version": 10000142,
+    "proof": "1",
+    "trailing": "0092d208"
+  }
+}

@@ -919,7 +919,7 @@
     },
     {
       "from": "4.11.0.386",
-      "until": "4.18.0.271",
+      "until": "4.17.0.233",
       "channel": "events",
       "command": 158,
       "direction": "serverToClient",
@@ -969,6 +969,59 @@
         }
       ],
       "note": "Where the unit is already dead, a client does nothing with the message. Otherwise it cancels the unit's cast and attack; then, only where killer is nonzero, it puts the unit down by stayDown and standing and announces the kill, which kind picks."
+    },
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.271",
+      "channel": "events",
+      "command": 158,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "killer",
+          "type": "u32",
+          "note": "The unit credited with the death."
+        },
+        {
+          "name": "damageType",
+          "type": "u32",
+          "note": "Unused; a server writes zero."
+        },
+        {
+          "name": "damageSource",
+          "type": "u32",
+          "note": "Unused; a server writes zero."
+        },
+        {
+          "name": "stayDown",
+          "type": "f32",
+          "note": "How long the unit stays down, in seconds."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "standing",
+              "width": 1,
+              "note": "Set to leave the unit standing as a husk rather than dead: no time of death, and for a champion no death animation and no death screen. A turret kept after death behaves so whatever this says."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "Read only where the header names no unit the client holds: then, where the client holds killer, it counts a kill for killer, a minion's for nonzero and a neutral monster's for zero. Nothing shows for it."
+        }
+      ],
+      "note": "Where the header names a unit the client holds: where that unit is already dead, a client does nothing with the message; otherwise it cancels the unit's cast and attack, then, only where killer is nonzero, puts the unit down by stayDown and standing and announces the kill."
     },
     {
       "from": "4.18.0.271",

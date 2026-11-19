@@ -80,11 +80,11 @@ the building table.
 >
 > The building table is the same on every map.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 
-> **In 4.1–4.20**
+> **In 4.17**
 >
-> A building answers to the building table of the map loaded.
+> The building table is the same on every map.
 
 ## Which batches a client takes
 
@@ -663,7 +663,7 @@ Each row gives the group and bits that name a value and what the value is.
 > | 3     | 13       | Level                                                                                                  | counted  |
 > | 3     | 14 to 16 | Kills taken from no side, and whether anything is allowed to aim at it                                 | counted  |
 >
-> A server writes 0x800007 in group 1 bit 0, and leaves group 1 bit 31 clear.
+> A server writes 0x800007 in group 1 bit 0.
 >
 > ### What a client shows from this table
 >
@@ -830,9 +830,14 @@ Each row gives the group and bits that name a value and what the value is.
 > | 1     | 19 to 20 | How fast health and resource return                                                                    | measured |
 > | 1     | 21 to 22 | Flat and percent reduction of the spell damage it takes                                                | measured |
 >
-> Its bits 23 to 31 name nothing. For some of these units the two resource
-> values travel as group 3 bits 0 and 1 instead: the rest of group 1 moves down
-> two bits and the rest of group 3 up two. Which units do is not recorded.
+> Its bits 23 to 31 name nothing. A unit whose character's data sets
+> `AlwaysUpdatePAR` in its `Minion` section carries its two resource values as
+> group 3 bits 0 and 1 instead: the rest of group 1 moves down two bits and the
+> rest of group 3 up two. The first minion or unit of no side a client creates
+> sets which of the two layouts every one of them takes. A later unit of the
+> other sort carries its resource values after the last row of the other
+> group: as group 3 bits 6 and 7 where the first unit carried them in group 1,
+> and as group 1 bits 21 and 22 the other way round.
 >
 > A prop's group 1 also carries:
 >
@@ -917,9 +922,9 @@ Besides its batches, a server states some values with messages of their own.
 > in it: a client fails on one naming any other unit. `GoldGained` grants no
 > gold: a champion's gold in hand follows group 0 bit 0 of its batches alone.
 
-<!-- holds from 3.10.0.237 up to 4.21.0.0 -->
+<!-- holds from 3.10.0.237 up to 4.1.0.171 -->
 
-> **In 3.10–4.20**
+> **In 3.10–3.15**
 >
 > A server grants experience with `ExperienceGained`.
 
@@ -937,6 +942,11 @@ Besides its batches, a server states some values with messages of their own.
 > a source the client holds, grants nothing: that champion's gold in hand
 > follows its batches. Any other `GoldGained` adds the amount to the gold of the
 > unit it names.
+>
+> `ExperienceGained` grants nothing: it shows the amount as experience over the
+> champion, whose experience follows group 3 bit 4 of its batches alone. A
+> client fails on an `ExperienceGained` naming a unit it holds that is not a
+> champion, and a server MUST NOT send one.
 
 A server can send the gold a unit earns to another with `GoldRedirect`. A level
 gained is `LevelUp` (see [Spells](spells.md#levelling)). A server sets a

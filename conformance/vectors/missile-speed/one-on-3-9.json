@@ -1,0 +1,15 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "MissileSpeed",
+  "version": "3.9.0.491",
+  "note": "Laid out as a 3.9.0.491 client takes it.",
+  "bytes": "fe021800400d010000fa430000403f",
+  "fields": {
+    "command": 254,
+    "netId": 1073747970,
+    "extendedCommand": 269,
+    "speed": 500,
+    "delay": 0.75
+  }
+}

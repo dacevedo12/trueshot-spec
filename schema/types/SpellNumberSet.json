@@ -5,6 +5,98 @@
   "revisions": [
     {
       "from": "4.7.0.296",
+      "until": "4.17.0.233",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit whose spell this is."
+        },
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot."
+        },
+        {
+          "name": "values",
+          "type": "array",
+          "count": 16,
+          "note": "The numbers themselves, one place each.",
+          "items": {
+            "name": "value",
+            "type": "f32",
+            "note": "One number."
+          }
+        },
+        {
+          "name": "hidden",
+          "type": "array",
+          "count": 16,
+          "note": "Which of those places the other side is not shown, one for each.",
+          "items": {
+            "name": "fromEnemy",
+            "type": "u8",
+            "note": "Whether that place is kept from the other side.",
+            "values": {
+              "0": {
+                "name": "shown"
+              },
+              "1": {
+                "name": "hidden"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.271",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit whose spell this is."
+        },
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot: from 120 up, a summoner slot, less 120; from 60 to 119, the unit's own spell slot, less 60; below 60, the unit's effect at that index, used only where it exists."
+        },
+        {
+          "name": "values",
+          "type": "array",
+          "count": 16,
+          "note": "The numbers themselves, one place each.",
+          "items": {
+            "name": "value",
+            "type": "f32",
+            "note": "One number."
+          }
+        },
+        {
+          "name": "hidden",
+          "type": "array",
+          "count": 16,
+          "note": "Which of those places the other side is not shown, one for each. It applies only to the unit's own spell slots, 60 to 119.",
+          "items": {
+            "name": "fromEnemy",
+            "type": "u8",
+            "note": "Whether that place is kept from the other side.",
+            "values": {
+              "0": {
+                "name": "shown"
+              },
+              "1": {
+                "name": "hidden"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "from": "4.18.0.271",
       "until": "4.21.0.0",
       "fields": [
         {

@@ -70,7 +70,7 @@
     },
     {
       "from": "1.0.0.142",
-      "until": "4.18.0.271",
+      "until": "4.17.0.233",
       "channel": "registration",
       "command": 0,
       "direction": "clientToServer",
@@ -96,6 +96,49 @@
           "name": "version",
           "type": "u32",
           "note": "The build the client runs, with each part written out and run together, so 4.17.0.233 arrives as 41700233 and 4.17.0.267 as 41700267. A client always carries it, and the answer a server carries back repeats the same number."
+        },
+        {
+          "name": "proof",
+          "type": "i64",
+          "enciphered": true,
+          "note": "The player id enciphered with the 16-byte key; a plain copy where the client has no key."
+        },
+        {
+          "name": "trailing",
+          "type": "bytes",
+          "size": 4,
+          "note": "Arbitrary; it carries no meaning."
+        }
+      ]
+    },
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.271",
+      "channel": "registration",
+      "command": 0,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "leading",
+          "type": "bytes",
+          "size": 3,
+          "note": "Arbitrary; it carries no meaning."
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "A client writes zero here."
+        },
+        {
+          "name": "playerId",
+          "type": "i64",
+          "note": "Who the sender claims to be. The proof is what settles the claim."
+        },
+        {
+          "name": "version",
+          "type": "u32",
+          "note": "The build the client runs, as first × 10000000 + second × 100000 + third × 100 + fourth, so 4.17.0.233 arrives as 41700233 and 4.17.0.267 as 41700267. A client always carries it."
         },
         {
           "name": "proof",

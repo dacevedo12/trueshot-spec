@@ -200,7 +200,8 @@ argument.
 
 > **In 4.17**
 >
-> An argument of sixteen characters or fewer is the key as it stands.
+> An argument of sixteen characters or fewer is the key as it stands, followed
+> by zero bytes up to sixteen.
 
 Registration associates the key with a connection. `schema/messages` records
 the exchange, as `Register` and `Registered`.

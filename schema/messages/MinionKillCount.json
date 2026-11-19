@@ -2,10 +2,42 @@
   "$schema": "../meta/message.json",
   "message": "MinionKillCount",
   "system": "replication",
-  "note": "What a server sends to add one to a champion's count of minions killed. The header carries zero.",
+  "note": "What a server sends to add one to a champion's count of minions killed.",
   "revisions": [
     {
       "from": "4.3.0.495",
+      "until": "4.17.0.233",
+      "channel": "events",
+      "command": 287,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "champion",
+          "type": "u32",
+          "note": "The champion."
+        }
+      ],
+      "note": "The header carries zero."
+    },
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.271",
+      "channel": "events",
+      "command": 287,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "champion",
+          "type": "u32",
+          "note": "The champion."
+        }
+      ],
+      "note": "A client acts only where the header names a champion it holds, any champion; the champion credited is the one champion names."
+    },
+    {
+      "from": "4.18.0.271",
       "until": "4.21.0.0",
       "channel": "events",
       "command": 287,
@@ -17,7 +49,8 @@
           "type": "u32",
           "note": "The champion."
         }
-      ]
+      ],
+      "note": "The header carries zero."
     }
   ]
 }

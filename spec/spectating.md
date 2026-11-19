@@ -53,6 +53,12 @@ says.
 
 > **In 4.17**
 >
+> The word `replay` serves as `spectator` does, and either counts wherever it
+> stands in the argument. Besides the form above, the word can be followed by a
+> spectator service's address, with no port of its own, the key, a match number
+> and a platform name, with no player number; a client started so takes the
+> match over HTTP from that service.
+>
 > The match number a key is deciphered under is the low 32 bits of the match
 > number, written out as a signed decimal.
 

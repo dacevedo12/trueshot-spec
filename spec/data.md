@@ -67,9 +67,9 @@ MUST take the names from the files.
 > `room.dsc` lists each object as a `.sco`, but its file is a binary `.SCB`,
 > holding its name within it rather than on a `Name=` line.
 
-<!-- holds from 1.0.0.126 up to 4.20.0.315 -->
+<!-- holds from 1.0.0.126 up to 4.1.0.171 -->
 
-> **In 1.0.0.126–4.19**
+> **In 1.0.0.126–3.15**
 >
 > Each object's file is `.sco` as text or `.SCB` as binary, and gives its name
 > on its `Name=` line.
@@ -78,9 +78,21 @@ MUST take the names from the files.
 
 > **In 4.1–4.19**
 >
-> A name's opening says what the object is: `Turret` a turret, `Barracks`
-> without `Spawn` an inhibitor, `HQ_` a nexus. A client creates no object the
-> map's object list below already holds.
+> A client creates no object the map's object list below already holds.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> Each object's file is `.sco` as text, giving its name on its `Name=` line,
+> or `.SCB` as binary, holding its name in its header. Where both exist, a
+> client reads the `.SCB`, and the `.sco` only where there is no `.SCB`.
+>
+> A word anywhere in the path of an object's file, case included, says what the
+> object is, the first of these to match winning: `Spawn_Barracks`,
+> `__Spawn_`, `__LevelSize_`, `Barracks`, `__ANIMS_`, `HQ_`, `Turret`,
+> `Shop`, `Lake`, `__NAV_`, `Info`, `LevelProp_brush` and `LevelProp`.
+> `Barracks` makes an inhibitor, `HQ_` a nexus and `Turret` a turret.
 
 <!-- holds from 4.18.0.271 up to 4.20.0.315 -->
 
@@ -227,3 +239,9 @@ figures, in `DATA/Items/<id>.inibin`; and summoner, item and shared spells in
 >
 > A champion's spells and attacks are in
 > `DATA/Characters/<Champion>/Spells/<Spell>.inibin`.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> Maps 8, 10 and 12 each add an `Items.inibin` of their own as well.

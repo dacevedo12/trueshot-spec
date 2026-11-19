@@ -66,8 +66,7 @@ shop by the champion's level.
 > map and the mode. Of what a server sends, only these change what can be
 > bought:
 >
-> - `VersionSync`'s disabled items: none can be bought; a zero place disables
->   nothing.
+> - `VersionSync`'s disabled items; a zero place disables nothing.
 > - `ItemSubstitution`: the shop shows a substitute for an item, at the
 >   substitute's price, until `SubstitutionCleared`.
 
@@ -136,9 +135,9 @@ A client asks to buy only where the item is one the match sells.
 > A client asks only while the shop is not locked, with the champion dead or
 > near a shop of its side.
 
-<!-- holds from 1.0.0.126 up to 4.21.0.0 -->
+<!-- holds from 1.0.0.126 up to 4.1.0.171 -->
 
-> **In 1.0.0.126–4.20**
+> **In 1.0.0.126–3.15**
 >
 > A client never asks for an item a player holds only one of and holds already.
 
@@ -148,9 +147,9 @@ A client asks to buy only where the item is one the match sells.
 >
 > A client asks only with the shop open.
 
-<!-- holds from 3.10.0.237 up to 4.21.0.0 -->
+<!-- holds from 3.10.0.237 up to 4.1.0.171 -->
 
-> **In 3.10–4.20**
+> **In 3.10–3.15**
 >
 > An item that can be used in the shop needs no free slot. For an item built
 > from others, a client asks only where the champion holds a free slot or a part
@@ -161,10 +160,27 @@ A client asks to buy only where the item is one the match sells.
 > **In 4.1–4.20**
 >
 > A client asks to buy only where shopping is allowed (`ShopEnabled`), with the
-> champion near its side's shop, dead, or allowed to shop from anywhere. It asks
-> for an item not built from others only where its price, after any
-> substitution, is within the champion's gold, and where a slot is free unless
-> the item can be used in the shop.
+> champion near its side's shop, dead, or allowed to shop from anywhere. It
+> never asks for an item not built from others that a player holds only one of
+> and holds already. For an item built from others, it asks only where the
+> champion holds a free slot or a part of it, everything the item requires, and
+> gold for what remains.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> For an item not built from others, a client asks only where:
+>
+> - `VersionSync` does not disable it, judging a substituted item by its
+>   substitute;
+> - the champion's gold covers its price, and, under a substitution, the
+>   substitute's price as well;
+> - a slot is free, or holds the same item below its stack limit; an item that
+>   can be used in the shop needs neither while the champion is alive.
+>
+> In the tutorial, it does not ask while its shop is locked
+> ([The interface](interface.md)).
 
 A client never places an item itself: an item enters its inventory only as a
 server answers with `ItemAdded`, leaves it with `RemoveItemAnswer`, and moves

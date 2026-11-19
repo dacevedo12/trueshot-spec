@@ -46,6 +46,12 @@ match when a camp is next due with `CampTimer`.
 >
 > `CampCleared` also sets when the camp fills again.
 
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> `CampCleared` sets it only where it names a timer.
+
 ## Capture points and score
 
 On a map won on score, a server binds each capture point to a unit with
@@ -84,11 +90,11 @@ On a map won on score, a server binds each capture point to a unit with
 A server can name the unit holding the Ascension with `AscendedUnit`, and send
 `RespawnPoint` about points a champion returns to life at.
 
-<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 
-> **In 4.1–4.19**
+> **In 4.17**
 >
-> A client acts on `RespawnPoint` only where it shows the capture point panel.
+> A client never acts on `RespawnPoint`.
 
 ## Events
 

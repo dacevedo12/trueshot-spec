@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "TeamChanged",
   "system": "units",
-  "note": "What a server sends to move a unit to another side. The header names the unit.",
+  "note": "What a server sends to move a unit to another side.",
   "revisions": [
     {
       "from": "1.0.0.110",
@@ -22,7 +22,8 @@
           "type": "u32",
           "note": "Its new side."
         }
-      ]
+      ],
+      "note": "The header names the unit."
     },
     {
       "from": "1.0.0.111",
@@ -42,7 +43,8 @@
           "type": "u32",
           "note": "Its new side."
         }
-      ]
+      ],
+      "note": "The header names the unit."
     },
     {
       "from": "1.0.0.117",
@@ -62,7 +64,8 @@
           "type": "u32",
           "note": "Its new side."
         }
-      ]
+      ],
+      "note": "The header names the unit."
     },
     {
       "from": "1.0.0.119",
@@ -82,7 +85,8 @@
           "type": "u32",
           "note": "Its new side."
         }
-      ]
+      ],
+      "note": "The header names the unit."
     },
     {
       "from": "1.0.0.123",
@@ -102,7 +106,8 @@
           "type": "u32",
           "note": "Its new side."
         }
-      ]
+      ],
+      "note": "The header names the unit."
     },
     {
       "from": "1.0.0.124",
@@ -122,7 +127,8 @@
           "type": "u32",
           "note": "Its new side."
         }
-      ]
+      ],
+      "note": "The header names the unit."
     },
     {
       "from": "1.0.0.125",
@@ -142,7 +148,8 @@
           "type": "u32",
           "note": "Its new side."
         }
-      ]
+      ],
+      "note": "The header names the unit."
     },
     {
       "from": "1.0.0.126",
@@ -162,7 +169,8 @@
           "type": "u32",
           "note": "Its new side."
         }
-      ]
+      ],
+      "note": "The header names the unit."
     },
     {
       "from": "1.0.0.128",
@@ -182,7 +190,8 @@
           "type": "u32",
           "note": "Its new side."
         }
-      ]
+      ],
+      "note": "The header names the unit."
     },
     {
       "from": "1.0.0.132",
@@ -202,7 +211,8 @@
           "type": "u32",
           "note": "Its new side."
         }
-      ]
+      ],
+      "note": "The header names the unit."
     },
     {
       "from": "1.0.0.135",
@@ -222,7 +232,8 @@
           "type": "u32",
           "note": "Its new side."
         }
-      ]
+      ],
+      "note": "The header names the unit."
     },
     {
       "from": "1.0.0.136",
@@ -242,7 +253,8 @@
           "type": "u32",
           "note": "Its new side."
         }
-      ]
+      ],
+      "note": "The header names the unit."
     },
     {
       "from": "1.0.0.138",
@@ -262,7 +274,8 @@
           "type": "u32",
           "note": "Its new side."
         }
-      ]
+      ],
+      "note": "The header names the unit."
     },
     {
       "from": "1.0.0.139",
@@ -282,7 +295,8 @@
           "type": "u32",
           "note": "Its new side."
         }
-      ]
+      ],
+      "note": "The header names the unit."
     },
     {
       "from": "1.0.0.141",
@@ -302,7 +316,8 @@
           "type": "u32",
           "note": "Its new side."
         }
-      ]
+      ],
+      "note": "The header names the unit."
     },
     {
       "from": "1.0.0.144",
@@ -322,7 +337,8 @@
           "type": "u32",
           "note": "Its new side."
         }
-      ]
+      ],
+      "note": "The header names the unit."
     },
     {
       "from": "1.0.0.150",
@@ -342,7 +358,8 @@
           "type": "u32",
           "note": "Its new side."
         }
-      ]
+      ],
+      "note": "The header names the unit."
     },
     {
       "from": "3.01.0.1",
@@ -362,7 +379,8 @@
           "type": "u32",
           "note": "Its new side."
         }
-      ]
+      ],
+      "note": "The header names the unit."
     },
     {
       "from": "4.1.0.171",
@@ -382,10 +400,53 @@
           "type": "u32",
           "note": "Its new side."
         }
-      ]
+      ],
+      "note": "The header names the unit."
     },
     {
       "from": "4.11.0.386",
+      "until": "4.17.0.233",
+      "channel": "events",
+      "command": 215,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit."
+        },
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "Its new side."
+        }
+      ],
+      "note": "The header names the unit."
+    },
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.271",
+      "channel": "events",
+      "command": 215,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit."
+        },
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "Its new side."
+        }
+      ],
+      "note": "The header has no effect: a client takes the unit from unit, and does nothing where it does not hold that unit or the side is unchanged."
+    },
+    {
+      "from": "4.18.0.271",
       "until": "4.21.0.0",
       "channel": "events",
       "command": 215,
@@ -402,7 +463,8 @@
           "type": "u32",
           "note": "Its new side."
         }
-      ]
+      ],
+      "note": "The header names the unit."
     }
   ]
 }

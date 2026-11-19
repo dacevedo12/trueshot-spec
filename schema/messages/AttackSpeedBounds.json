@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "4.4.0.1858",
-      "until": "4.18.0.271",
+      "until": "4.17.0.233",
       "channel": "events",
       "command": 288,
       "direction": "serverToClient",
@@ -31,6 +31,36 @@
           "name": "floor",
           "type": "f32",
           "note": "The slowest the unit can attack, in attacks a second, where the flag says to use it. A value of 0.00001 or less, -1 among them, sets no bound."
+        }
+      ]
+    },
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.271",
+      "channel": "events",
+      "command": 288,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "useCeiling",
+          "type": "u8",
+          "note": "1 to apply the ceiling below; 0 leaves the unit's ceiling as it was."
+        },
+        {
+          "name": "useFloor",
+          "type": "u8",
+          "note": "1 to apply the floor below; 0 leaves the unit's floor as it was."
+        },
+        {
+          "name": "ceiling",
+          "type": "f32",
+          "note": "The fastest the unit can attack, in attacks a second, where the flag says to use it. A value of 0.00001 or less, -1 among them, sets the game's own standard bound."
+        },
+        {
+          "name": "floor",
+          "type": "f32",
+          "note": "The slowest the unit can attack, in attacks a second, where the flag says to use it. A value of 0.00001 or less, -1 among them, sets the game's own standard bound."
         }
       ]
     },

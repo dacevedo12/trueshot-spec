@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "3.13.0.399",
-      "until": "4.18.0.271",
+      "until": "4.17.0.233",
       "channel": "events",
       "command": 280,
       "direction": "serverToClient",
@@ -23,6 +23,27 @@
           "note": "Nonzero to toggle the spell on, zero off."
         }
       ]
+    },
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.271",
+      "channel": "events",
+      "command": 280,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u32",
+          "note": "Which of the champion's own spells, 0 to 62; a client ignores any other value. Summoner spells are never toggled by it."
+        },
+        {
+          "name": "state",
+          "type": "u8",
+          "note": "Nonzero to toggle the spell on, zero off. It takes effect only where the spell's own data makes it one that toggles."
+        }
+      ],
+      "note": "Only a champion acts on it: where the header names any other unit, nothing happens."
     },
     {
       "from": "4.18.0.271",

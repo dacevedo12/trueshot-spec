@@ -82,8 +82,9 @@ unmute a kind of sound (`VolumeMuted`) and fade sound effects out
 
 > **In 4.17**
 >
-> A client never answers a `VoiceEvent` for a voice tied to a unit. Any other it
-> answers with `VoiceEventDone` once it has played it, where it asks for an
-> answer, and at once where it cannot play it, whether it asks or not.
+> A client answers only a `VoiceEvent` of kind 0: with `VoiceEventDone` once it
+> has played it, where it asks for an answer, and at once where it cannot play
+> it, whether it asks or not. It never answers kind 1, a voice tied to a unit,
+> and does nothing for any other kind.
 
 <!-- messages -->

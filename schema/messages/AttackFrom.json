@@ -612,7 +612,7 @@
         {
           "name": "targetX",
           "type": "f32",
-          "note": "Where the unit swung at stands, along one ground axis, in world units."
+          "note": "Where the unit swung at stands, along one ground axis, in world units. A client throws the swing at this position where it does not hold target; where it holds target, it can aim at the unit's own position instead, under conditions that are undetermined."
         },
         {
           "name": "targetY",

@@ -55,6 +55,15 @@ champion's that [replication](replication.md) carries.
 > level above zero, its castable bit is set, it is off cooldown, its cost is
 > within the champion's mana, and the champion's action state allows casting.
 
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> A record whose sync id the client takes places the caster even where its size
+> is wrong or its spell is not loaded, though nothing is cast. The caster jumps
+> to the launch point only where it stands more than 400 units from it, and
+> otherwise moves there.
+
 A spell held down before it is let go charges where the cast answer leaves its
 flags clear. While it charges, a client sends `SpellCharge` with the cursor's
 position, and once more as the charge ends.

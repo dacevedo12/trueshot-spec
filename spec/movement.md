@@ -72,6 +72,13 @@ messages carry their points as world floats. [Vision](vision.md) says when
 > A client reads nothing after a refused movement in its group, and still
 > answers the group.
 
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> A client takes nothing from the movements after a refused one in the same
+> message.
+
 [Objects and identifiers](objects.md#messages-about-objects-a-client-does-not-hold)
 says what a client does with a movement whose unit it does not hold.
 

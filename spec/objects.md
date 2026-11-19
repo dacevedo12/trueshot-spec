@@ -149,11 +149,17 @@ client's own.
 >
 > A client tells a bot's champion by a byte of its own, not by its client id.
 
-<!-- holds from 1.0.0.126 up to 4.21.0.0 -->
+<!-- holds from 1.0.0.126 up to 4.1.0.171 -->
 
-> **In 1.0.0.126–4.20**
+> **In 1.0.0.126–3.15**
 >
 > A bot's champion carries 4294967295.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> A client tells a bot's champion by a byte of its own, not by its client id.
 
 ## Net ids
 
@@ -220,10 +226,12 @@ naming a unit, an owner or a target carry one too.
 
 > **In 4.17**
 >
-> `SpawnFromBarracks`, `SpawnPet`, `CreateChampion`, `CreateNeutral`,
-> `SpawnUnit`, `CreateTurret`, `SpawnBot`, `MapProp`, `CreateFollower`,
-> `SpawnMarker` and `SpawnTurret` first remove any object holding the net id,
-> and the new object takes it.
+> `SpawnPet`, `CreateChampion`, `CreateNeutral`, `SpawnUnit`, `CreateTurret`,
+> `SpawnBot`, `MapProp`, `SpawnMarker` and `SpawnTurret` first remove any object
+> holding the net id, and the new object takes it. `SpawnFromBarracks` does so
+> only where it names a spawn point and a kind of minion the client knows, and
+> `CreateFollower` only where its header names a unit the client holds;
+> otherwise each removes and creates nothing.
 
 <!-- holds from 4.18.0.271 up to 4.21.0.0 -->
 
@@ -459,8 +467,13 @@ A server MUST name each object a map holds by the identifier its name gives.
 > **In 0.9.25.24–4.20**
 >
 > `CreateTurret` gives a net id to a turret the map already holds, matched by
-> name. Given to a turret that already has one, it gives it a second, and both
-> name it.
+> name. Given to a turret that already has one, it gives it a second.
+
+<!-- holds from 0.9.25.24 up to 4.1.0.171 -->
+
+> **In 0.9.25.24–3.15**
+>
+> Both ids name the turret.
 
 <!-- holds from 0.9.25.24 up to 1.0.0.97 -->
 
@@ -482,9 +495,9 @@ A server MUST name each object a map holds by the identifier its name gives.
 > A client fails on a `CreateTurret` naming no turret, and a server MUST NOT
 > send one.
 
-<!-- holds from 3.10.0.237 up to 4.20.0.315 -->
+<!-- holds from 3.10.0.237 up to 4.1.0.171 -->
 
-> **In 3.10–4.19**
+> **In 3.10–3.15**
 >
 > A `CreateTurret` naming no turret does nothing.
 
@@ -498,7 +511,12 @@ A server MUST name each object a map holds by the identifier its name gives.
 
 > **In 4.17**
 >
-> `CreateTurret` matches a turret's name exactly, case included.
+> `CreateTurret` matches a turret's name exactly, case included. One naming no
+> turret removes any object holding its net id, and nothing takes the id.
+>
+> Of a turret's two ids, the first still names it in every message, and the
+> second in every message but `LevelUp`, `Path`, `PathWithSpeed`,
+> `EnterTeamSight` and `LeaveTeamSight`, which do nothing under it.
 
 ## What a client holds
 
@@ -542,17 +560,24 @@ what each message that takes a unit out of view does.
 >
 > How each kind leaves a client's world:
 >
-> | Kind                 | Removed                                                                                                                                                                  | Its death                                                               |
-> | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------- |
-> | Champion             | by `ChampionRemoved`, at once                                                                                                                                            | kills it; it is held, and comes back                                    |
-> | Minion, monster, pet | by the client, once it has been dead for its death time, 4 seconds unless its character says otherwise; a new `SpawnPet` for an owner removes that owner's pet before it | starts that wait                                                        |
-> | Turret               | by the client, 1.2 seconds after its death, or after the time its `SpawnTurret` gives; a lane turret is held where `VersionSync`'s features keep destroyed turrets       | kills it                                                                |
-> | Inhibitor, nexus     | never                                                                                                                                                                    | `BuildingDied` plays its death; it is held, and an inhibitor comes back |
-> | Missile              | by `DestroyMissile`, by its flight ending, or once its caster is removed                                                                                                 |                                                                         |
-> | Particle             | by `KillParticle`, naming it in its body, or once its effect ends                                                                                                        |                                                                         |
-> | Follower             | once the unit it follows is removed                                                                                                                                      |                                                                         |
-> | Marker               | only by a soft reconnect                                                                                                                                                 |                                                                         |
-> | Region               | by `RegionRemoved`, once its lifetime runs out (a lifetime of 0 never does), or once the unit it follows is removed                                                      |                                                                         |
+> | Kind                 | Removed                                                                                                                                                            | Its death                                                               |
+> | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------- |
+> | Champion             | by `ChampionRemoved`, at once                                                                                                                                      | kills it; it is held, and comes back                                    |
+> | Minion, monster, pet | by the client, once it has been dead for its death time, 4 seconds unless its character says otherwise                                                             | starts that wait                                                        |
+> | Turret               | by the client, 1.2 seconds after its death, or after the time its `SpawnTurret` gives; a lane turret is held where `VersionSync`'s features keep destroyed turrets | kills it                                                                |
+> | Inhibitor, nexus     | never                                                                                                                                                              | `BuildingDied` plays its death; it is held, and an inhibitor comes back |
+> | Missile              | by `DestroyMissile`, by its flight ending, or once its caster is removed                                                                                           |                                                                         |
+> | Particle             | by `KillParticle`, naming it in its body, or once its effect ends                                                                                                  |                                                                         |
+> | Follower             | once the unit it follows is removed                                                                                                                                |                                                                         |
+> | Marker               | only by a soft reconnect                                                                                                                                           |                                                                         |
+> | Region               | by `RegionRemoved`, once its lifetime runs out (a lifetime of 0 never does), or once the unit it follows is removed                                                |                                                                         |
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> A new `SpawnPet` for an owner kills that owner's earlier pet where it still
+> lives.
 
 ### A soft reconnect
 

@@ -102,6 +102,14 @@ catch up with its own.
 >
 > A client holds the speed `GameSpeed` gives to between 0 and 10 times normal.
 
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> `GameSpeed` sets the pace of the match clock. A server that runs a match at
+> other than normal speed MUST send `GameSpeed` with that speed, or a client's
+> match clock runs apart from its own.
+
 A client shows the match's time counted from the moment on the match clock at
 which the match began.
 
@@ -125,8 +133,15 @@ which the match began.
 
 > **In 4.1–4.20**
 >
-> `MatchStarted` gives that moment, and a client shows zero while the match
-> clock is before it.
+> `MatchStarted` gives that moment.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> Until `MatchStarted` arrives, a client takes the match clock's reading once,
+> as its game loop runs. While the match clock is before that moment, a client
+> shows a negative time.
 
 Moments on the match clock include:
 
@@ -136,7 +151,19 @@ Moments on the match clock include:
 - when a champion's passive comes off cooldown, where a client is told it (see
   [Replication](replication.md)).
 
-A server MUST state each of these on the clock it sends in `ClockSync`.
+<!-- holds from 0.8.13.26 up to 4.1.0.171 -->
+
+> **In 0.8.13.26–3.15**
+>
+> A server MUST state each of these on the clock it sends in `ClockSync`.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> A client reads when a monster arrives and when a champion's passive comes off
+> cooldown as match time, counted from the moment `MatchStarted` gives, and a
+> server MUST state them so.
 
 <!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 
@@ -150,6 +177,13 @@ A server MUST state each of these on the clock it sends in `ClockSync`.
 > removing a dead unit (see [Objects and identifiers](objects.md)) run on it. A
 > server that runs a match at other than normal speed MUST send `GameSpeed`
 > with that speed, or those durations run apart from its own.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> The limit of 0 to 10 holds in a match a client plays: while it plays back a
+> stream, it takes whatever speed `GameSpeed` gives.
 
 ## A stream's clock
 

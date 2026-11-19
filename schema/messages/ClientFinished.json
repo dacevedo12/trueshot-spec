@@ -156,6 +156,26 @@
     },
     {
       "from": "4.11.0.386",
+      "until": "4.17.0.233",
+      "channel": "requests",
+      "command": 141,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "It is sent once, as the end of the match is handled, and not while playing a replay. The header names no object: it carries zero."
+    },
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.271",
+      "channel": "requests",
+      "command": 141,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "It is sent each time GameEnded arrives in play, and not while playing a replay. The header carries a value that is not zero, the same one Exit's header carries; what it names is undetermined."
+    },
+    {
+      "from": "4.18.0.271",
       "until": "4.21.0.0",
       "channel": "requests",
       "command": 141,

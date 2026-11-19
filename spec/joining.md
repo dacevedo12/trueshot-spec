@@ -55,9 +55,10 @@ proof under that key.
 >
 > Whitespace separates a client's arguments, and double quotes group words into
 > one; any whitespace separates the words of the fourth argument. A client
-> given fewer than four arguments ends, unless its one argument names a replay,
-> and one whose command line holds `.rep` anywhere plays a replay rather than
-> connecting.
+> given one argument holding `.rofl` plays that replay; given fewer than four
+> otherwise, it shows an error naming how many it was given. One whose fourth
+> argument holds `.rofl` plays that replay, and one whose command line holds
+> `.rep` anywhere plays a replay rather than connecting.
 
 ## Registering
 
@@ -316,15 +317,24 @@ Once a character is settled, a client sends `CharacterSelected`, once.
 >
 > A client drops nothing for arriving before `CharacterSelected`.
 
-<!-- holds from 3.10.0.237 up to 4.21.0.0 -->
+<!-- holds from 3.10.0.237 up to 4.1.0.171 -->
 
-> **In 3.10–4.20**
+> **In 3.10–3.15**
 >
 > Until it sends `CharacterSelected`, a client drops every message but
 > `VersionSync`, `QueryStatusAnswer`, `MatchIdentity`, `SeatLoadProgress` and
 > `GameEnded`, apart from what arrives on the registration and roster channels,
 > and keeps nothing it drops for later. A server MUST NOT send any of the spawn
 > run before `CharacterSelected` arrives.
+
+<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+
+> **In 4.1–4.20**
+>
+> Until it sends `CharacterSelected`, a client drops every game message but
+> `VersionSync`, `QueryStatusAnswer`, `MatchIdentity`, `SeatLoadProgress` and
+> `GameEnded`, and keeps nothing it drops for later. A server MUST NOT send any
+> of the spawn run before `CharacterSelected` arrives.
 
 <!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 

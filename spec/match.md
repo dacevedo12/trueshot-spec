@@ -134,12 +134,19 @@ A server ends the hold with `Resumed`.
 > A client reads nothing from `Resumed`. Where the match is held, it goes on at
 > once at the speed it had, with no countdown and no announcement.
 
-<!-- holds from 1.0.0.126 up to 4.21.0.0 -->
+<!-- holds from 1.0.0.126 up to 4.1.0.171 -->
 
-> **In 1.0.0.126–4.20**
+> **In 1.0.0.126–3.15**
 >
 > `Resumed` ends the hold either at once or after a countdown the client shows,
 > during which the match stays held.
+
+<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+
+> **In 4.1–4.20**
+>
+> `Resumed` ends the hold either at once or after a countdown, during which the
+> match stays held.
 
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
@@ -172,6 +179,15 @@ A server ends the hold with `Resumed`.
 >
 > Input stays locked during the countdown.
 
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> A client shows the countdown only for a tournament's hold. Input stays locked,
+> and a tournament's hold keeps its box, after the countdown too, until a
+> `Resumed` that ends the hold at once. A `Resumed` with a countdown, arriving
+> while the match is not held, leaves the match clock as it is.
+
 ## The end
 
 A server ends the match with `GameEnded`, saying which side won, and sends
@@ -192,9 +208,9 @@ player's side and sends `ClientFinished`.
 > A client that receives `GameEnded` while still loading takes it as in play:
 > it records the result and sends `ClientFinished`.
 
-<!-- holds from 1.0.0.58 up to 4.20.0.315 -->
+<!-- holds from 1.0.0.58 up to 4.1.0.171 -->
 
-> **In 1.0.0.58–4.19**
+> **In 1.0.0.58–3.15**
 >
 > A client that receives `GameEnded` while still loading leaves at once.
 
@@ -215,7 +231,22 @@ player's side and sends `ClientFinished`.
 
 > **In 4.1–4.20**
 >
-> A client sends `ClientFinished` once, and not while playing a replay.
+> A client sends no `ClientFinished` while playing a replay.
+
+<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
+
+> **In 4.1–4.19**
+>
+> A client that receives `GameEnded` while still loading leaves.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> A client sends `ClientFinished` every time `GameEnded` arrives in play. One
+> that receives `GameEnded` while still loading sends neither `ClientFinished`
+> nor `Exit`; where it has no champion of its own yet, it first shows an error,
+> and leaves once its player dismisses it.
 
 `VictoryDance` sets units moving as winners or losers do. It ends nothing.
 
@@ -235,7 +266,7 @@ player's side and sends `ClientFinished`.
 
 > **In 4.17**
 >
-> A client moves no neutral unit for `VictoryDance`.
+> A client moves no neutral unit and no dead unit for `VictoryDance`.
 
 ## Leaving and coming back
 
@@ -257,6 +288,13 @@ action that means leave.
 > **In 1.0.0.140–4.17**
 >
 > The action of `BotKick` that means leave is 4.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> A client also leaves as one abandoning the match as its player dismisses the
+> notice that it was dropped for being away.
 
 <!-- holds from 4.18.0.271 up to 4.21.0.0 -->
 
@@ -428,12 +466,14 @@ does.
 > that it is trying to reconnect, and clears the notice as soon as anything
 > arrives.
 
-<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 
-> **In 4.1–4.19**
+> **In 4.17**
 >
-> In play a client sends nothing on its own to show it is still there: what it
-> sends answers what it is sent (`ClockReply`, `TransientAck`, `WaypointAck`)
-> or follows from its player.
+> In play a client sends nothing to show it is still there but what answers what
+> it is sent (`ClockReply`, `TransientAck`, `WaypointAck`), what follows from
+> its player, and its view reports (`Camera`), which go out again until a
+> server answers them, with no input from its player
+> ([Ordering](ordering.md#what-a-server-answers)).
 
 <!-- messages -->
