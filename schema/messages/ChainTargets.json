@@ -166,7 +166,7 @@
     },
     {
       "from": "1.0.0.82",
-      "until": "1.0.0.97",
+      "until": "1.0.0.96",
       "channel": "events",
       "command": 111,
       "direction": "serverToClient",
@@ -195,6 +195,38 @@
         }
       ],
       "note": "Where the client holds the caster, the caster's current cast takes the list, whether or not the client holds the missile. A missile the client holds under the header's name takes the list as well. A client drops the message while the match is still loading."
+    },
+    {
+      "from": "1.0.0.96",
+      "until": "1.0.0.97",
+      "channel": "events",
+      "command": 111,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "count",
+          "type": "i32",
+          "note": "How many of the slots are used, 0 to 32. 0 clears every target the client holds; a negative value sets none and clears none. Any other count sets that many targets and leaves the rest as they were. A client given more than 32 fails."
+        },
+        {
+          "name": "caster",
+          "type": "u32",
+          "note": "The unit casting the missile. Where a client does not hold it, the client starts no missile, though a missile it already holds under the header's name still takes the targets."
+        },
+        {
+          "name": "targets",
+          "type": "array",
+          "count": 32,
+          "items": {
+            "name": "target",
+            "type": "u32",
+            "note": "A unit, in the order struck. A client keeps a unit it does not know as no unit."
+          },
+          "note": "Always 32 slots; those past count have no effect."
+        }
+      ],
+      "note": "Where the client holds the caster, the caster's current cast takes the list, whether or not the client holds the missile, except while the match is still loading. A missile the client holds under the header's name takes the list as well, loading or not."
     },
     {
       "from": "1.0.0.97",

@@ -6,6 +6,134 @@
   "revisions": [
     {
       "from": "0.9.22.14",
+      "until": "1.0.0.96",
+      "channel": "roster",
+      "command": 103,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "padding",
+          "type": "bytes",
+          "size": 3,
+          "note": "Unused; a client reads nothing here."
+        },
+        {
+          "name": "sideRoom",
+          "type": "u32",
+          "note": "How many seats side 100 has room for."
+        },
+        {
+          "name": "otherSideRoom",
+          "type": "u32",
+          "note": "How many side 200 has room for."
+        },
+        {
+          "name": "gap",
+          "type": "bytes",
+          "size": 4,
+          "note": "Unused; a client reads nothing here."
+        },
+        {
+          "name": "side",
+          "type": "array",
+          "count": 24,
+          "note": "The players on side 100, twenty four places of a player identifier's width; the client copies as many as sideRoom says, so a server keeps sideRoom at 24 or less; a larger one has no defined effect. sideTaken says how many of the leading places carry a player, and the rest hold zero.",
+          "items": {
+            "name": "player",
+            "type": "i64",
+            "note": "One player."
+          }
+        },
+        {
+          "name": "otherSide",
+          "type": "array",
+          "count": 24,
+          "note": "The players on side 200, read the same way under otherSideRoom and otherSideTaken, with otherSideRoom kept at 24 or less.",
+          "items": {
+            "name": "player",
+            "type": "i64",
+            "note": "One player."
+          }
+        },
+        {
+          "name": "sideTaken",
+          "type": "u32",
+          "note": "How many of side 100's places carry a player."
+        },
+        {
+          "name": "otherSideTaken",
+          "type": "u32",
+          "note": "How many on side 200."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.96",
+      "until": "1.0.0.97",
+      "channel": "roster",
+      "command": 103,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "padding",
+          "type": "bytes",
+          "size": 3,
+          "note": "Unused; a client reads nothing here."
+        },
+        {
+          "name": "sideRoom",
+          "type": "u32",
+          "note": "How many seats side 100 has room for."
+        },
+        {
+          "name": "otherSideRoom",
+          "type": "u32",
+          "note": "How many side 200 has room for."
+        },
+        {
+          "name": "gap",
+          "type": "bytes",
+          "size": 4,
+          "note": "Unused; a client reads nothing here."
+        },
+        {
+          "name": "side",
+          "type": "array",
+          "count": 24,
+          "note": "The players on side 100, twenty four places of a player identifier's width. A client copies as many as sideRoom says, reading past the list for 25 to 48; for a sideRoom above 48 it keeps the room it had for that side. A server keeps sideRoom at 24 or less. sideTaken says how many of the leading places carry a player, and the rest hold zero.",
+          "items": {
+            "name": "player",
+            "type": "i64",
+            "note": "One player."
+          }
+        },
+        {
+          "name": "otherSide",
+          "type": "array",
+          "count": 24,
+          "note": "The players on side 200, read the same way under otherSideRoom and otherSideTaken, with otherSideRoom kept at 24 or less.",
+          "items": {
+            "name": "player",
+            "type": "i64",
+            "note": "One player."
+          }
+        },
+        {
+          "name": "sideTaken",
+          "type": "u32",
+          "note": "How many of side 100's places carry a player."
+        },
+        {
+          "name": "otherSideTaken",
+          "type": "u32",
+          "note": "How many on side 200."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.97",
       "until": "1.0.0.128",
       "channel": "roster",
       "command": 103,

@@ -38,7 +38,7 @@
     },
     {
       "from": "1.0.0.82",
-      "until": "1.0.0.97",
+      "until": "1.0.0.96",
       "channel": "events",
       "command": 74,
       "direction": "serverToClient",
@@ -51,6 +51,22 @@
         }
       ],
       "note": "A client marks the unit where target is nonzero and is the client's own champion, drawing an indicator on the unit's health bar unless the unit's data turns it off; any other target clears the mark."
+    },
+    {
+      "from": "1.0.0.96",
+      "until": "1.0.0.97",
+      "channel": "events",
+      "command": 74,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The champion being attacked."
+        }
+      ],
+      "note": "A client marks the unit where target is nonzero and is the client's own champion, drawing an indicator on the unit's health bar unless the unit's data turns it off; any other target clears the mark. Where the client has no champion of its own, a nonzero target has no defined effect."
     },
     {
       "from": "1.0.0.97",

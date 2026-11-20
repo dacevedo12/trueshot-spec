@@ -132,9 +132,24 @@ A server reports damage with `Damage`.
 > `Damage` shows a figure for the results that carry one, normal and critical;
 > zero is the result that shows the unit as invulnerable, not a plain hit.
 
-<!-- holds from 0.9.25.24 up to 1.0.0.140 -->
+<!-- holds from 0.9.25.24 up to 1.0.0.96 -->
 
-> **In 0.9.25.24–1.0.0.139**
+> **In 0.9.25.24–1.0.0.95**
+>
+> Of the other results of `Damage`, 1 shows nothing, 2 a dodge and 5 a miss; 3
+> is critical, and 4 and any above 5 are normal.
+
+<!-- holds from 1.0.0.96 up to 1.0.0.97 -->
+
+> **In 1.0.0.96**
+>
+> A client reads only the low seven bits of a `Damage` result, so 128 and up act
+> as that value less 128. Of the other results, 1 shows nothing, 2 a dodge and 5
+> a miss; 3 is critical, and 4 and 6 to 127 are normal.
+
+<!-- holds from 1.0.0.97 up to 1.0.0.140 -->
+
+> **In 1.0.0.97–1.0.0.139**
 >
 > Of the other results of `Damage`, 1 shows nothing, 2 a dodge and 5 a miss; 3
 > is critical, and 4 and any above 5 are normal.

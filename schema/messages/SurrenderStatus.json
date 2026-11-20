@@ -97,7 +97,7 @@
     },
     {
       "from": "1.0.0.82",
-      "until": "1.0.0.97",
+      "until": "1.0.0.96",
       "channel": "events",
       "command": 165,
       "direction": "serverToClient",
@@ -107,6 +107,36 @@
           "name": "reason",
           "type": "u32",
           "note": "Why the vote stands where it does. A client acts on 0 to 4 and ignores the message for any other value; 1 resets the vote only where side is the client's own. A client with no champion of its own, as while spectating, ignores the whole message."
+        },
+        {
+          "name": "inFavour",
+          "type": "u8",
+          "note": "How many voted for."
+        },
+        {
+          "name": "against",
+          "type": "u8",
+          "note": "How many voted against."
+        },
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "Which side."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.96",
+      "until": "1.0.0.97",
+      "channel": "events",
+      "command": 165,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "reason",
+          "type": "u32",
+          "note": "Why the vote stands where it does. A client acts on 0 to 4 and ignores the message for any other value; 0 resets the vote whatever side says, and 1 only where side is the client's own. A client with no champion of its own, as while spectating, ignores the whole message, and so does one whose interface for the match does not exist yet."
         },
         {
           "name": "inFavour",

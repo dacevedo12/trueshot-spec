@@ -98,12 +98,21 @@ gives the client its own client id.
 > Registration pairs each player id with a client id. Every later message that
 > names a player by client id is read through that pairing.
 
-<!-- holds from 1.0.0.58 up to 1.0.0.126 -->
+<!-- holds from 1.0.0.58 up to 1.0.0.96 -->
 
-> **In 1.0.0.58–1.0.0.125**
+> **In 1.0.0.58–1.0.0.95**
 >
 > A client acts on that `Registered` alone and ignores every other, so it pairs
 > no other player's player id with a client id.
+
+<!-- holds from 1.0.0.96 up to 1.0.0.97 -->
+
+> **In 1.0.0.96**
+>
+> A client records the pair every `Registered` carries, and takes as its own
+> only the one carrying its own player id. A server MUST send that `Registered`
+> before any `CreateTurret`, because a client given one before it has its own
+> client id stops.
 
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
@@ -296,11 +305,18 @@ naming a unit, an owner or a target carry one too.
 
 A create message carries a node beside the object's net id.
 
-<!-- holds from 1.0.0.58 up to 1.0.0.97 -->
+<!-- holds from 1.0.0.58 up to 1.0.0.96 -->
 
-> **In 1.0.0.58–1.0.0.96**
+> **In 1.0.0.58–1.0.0.95**
 >
 > Nothing a player sees depends on it.
+
+<!-- holds from 1.0.0.96 up to 1.0.0.97 -->
+
+> **In 1.0.0.96**
+>
+> A client applies a `SpawnPet`'s effect and spell level only where the owner's
+> node is its own.
 
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
@@ -643,6 +659,13 @@ what each message that takes a unit out of view does.
 >
 > A client removes a region once its lifetime reaches 0, so a region given a
 > lifetime of 0 does not last.
+
+<!-- holds from 1.0.0.96 up to 1.0.0.97 -->
+
+> **In 1.0.0.96**
+>
+> A new `SpawnPet` for an owner kills that owner's earlier pet where it still
+> lives.
 
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 

@@ -138,7 +138,7 @@
     },
     {
       "from": "1.0.0.82",
-      "until": "1.0.0.97",
+      "until": "1.0.0.96",
       "channel": "requests",
       "command": 64,
       "direction": "clientToServer",
@@ -168,6 +168,39 @@
         }
       ],
       "note": "A client sends it on each CameraLockSet with state as that message carried it, all eight bits included, and also as its player sets the lock or the game forces a lock or lifts one. While a forced lock holds, a CameraLockSet or player setting is kept and sent only as that lock lifts."
+    },
+    {
+      "from": "1.0.0.96",
+      "until": "1.0.0.97",
+      "channel": "requests",
+      "command": 64,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "locked",
+              "width": 1,
+              "note": "Set while the view follows a unit."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "As CameraLockSet carried them; zero in a report the client makes on its own."
+            }
+          ]
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
+        }
+      ],
+      "note": "A client sends it on each CameraLockSet with state as that message carried it, all eight bits included; as its player sets the lock; as StartGame arrives, from the player's settings; and with state 1 as its own champion is created while its view is locked. As the game frees the view itself it sends one with state 0; while that lasts, a CameraLockSet or player setting is kept and sent only as it ends."
     },
     {
       "from": "1.0.0.97",

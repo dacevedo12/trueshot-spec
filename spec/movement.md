@@ -15,9 +15,27 @@ height (see [Space](space.md)).
 > A path carries each point as two world floats (see [Space](space.md)),
 > stated against no origin and no other point.
 
-<!-- holds from 1.0.0.96 up to 4.21.0.0 -->
+<!-- holds from 1.0.0.96 up to 1.0.0.97 -->
 
-> **In 1.0.0.96–4.20**
+> **In 1.0.0.96**
+>
+> `Movement` and `MovementAtSpeed` are compact: a path is a run of integer
+> points, while positions elsewhere are world floats covering a far larger range
+> (see [Space](space.md)). The two are related by an origin and a step:
+>
+> ```
+> encoded = truncate_toward_zero((world - origin) / 2)
+> world   = origin + 2 * encoded
+> ```
+>
+> A path resolves a position to two world units, rounded toward the origin.
+>
+> A path that arrives before a client has loaded the map's ground grid is read
+> with a step of 1 in place of 2.
+
+<!-- holds from 1.0.0.97 up to 4.21.0.0 -->
+
+> **In 1.0.0.97–4.20**
 >
 > `Movement` and `MovementAtSpeed` are compact: a path is a run of integer
 > points, while positions elsewhere are world floats covering a far larger range
@@ -120,9 +138,9 @@ says what a client does with a movement whose unit it does not hold.
 > A path carries no flag and no token, so nothing relocates a unit: every path
 > is walked.
 
-<!-- holds from 1.0.0.79 up to 1.0.0.126 -->
+<!-- holds from 1.0.0.79 up to 1.0.0.96 -->
 
-> **In 1.0.0.79–1.0.0.125**
+> **In 1.0.0.79–1.0.0.95**
 >
 > A client answers each group with one `WaypointAck`, listing every unit in it
 > that carried a token, with an empty list where none did. A server MAY ignore
@@ -145,6 +163,15 @@ says what a client does with a movement whose unit it does not hold.
 > unfamiliar one arriving while the unit is near enough. In both the path is
 > followed and the remembered token kept, so a token is taken up only once it
 > has moved something.
+
+<!-- holds from 1.0.0.96 up to 1.0.0.97 -->
+
+> **In 1.0.0.96**
+>
+> A client answers each group with one `WaypointAck`, listing each unit whose
+> movement carried a token, in the order the group gives them, whether or not
+> the client holds the unit, and none whose movement follows a refused one; the
+> list is empty where it names none. A server MAY ignore it.
 
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 

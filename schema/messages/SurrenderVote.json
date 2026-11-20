@@ -90,7 +90,7 @@
     },
     {
       "from": "1.0.0.82",
-      "until": "1.0.0.97",
+      "until": "1.0.0.96",
       "channel": "requests",
       "command": 162,
       "direction": "clientToServer",
@@ -115,6 +115,34 @@
         }
       ],
       "note": "It answers a call to surrender."
+    },
+    {
+      "from": "1.0.0.96",
+      "until": "1.0.0.97",
+      "channel": "requests",
+      "command": 162,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "inFavour",
+              "width": 1,
+              "note": "Set where the answer is yes."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a client leaves them as they happen to be, and a server ignores them."
+            }
+          ]
+        }
+      ],
+      "note": "It answers a call to surrender. A client also sends a yes with no vote open, which calls one."
     },
     {
       "from": "1.0.0.97",

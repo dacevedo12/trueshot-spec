@@ -62,7 +62,7 @@
     },
     {
       "from": "1.0.0.82",
-      "until": "1.0.0.97",
+      "until": "1.0.0.96",
       "channel": "events",
       "command": 181,
       "direction": "serverToClient",
@@ -87,6 +87,34 @@
         }
       ],
       "note": "A fixed record of the champion's tallies, which a client keeps whole and shows none of. It acts only on kills."
+    },
+    {
+      "from": "1.0.0.96",
+      "until": "1.0.0.97",
+      "channel": "events",
+      "command": 181,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "keptA",
+          "type": "bytes",
+          "size": 20,
+          "note": "Kept with the champion. The record's note says which counts in it a client shows."
+        },
+        {
+          "name": "kills",
+          "type": "i32",
+          "note": "How many champions it has killed. Above zero, for any champion, a client marks the match's first kill as made."
+        },
+        {
+          "name": "keptB",
+          "type": "bytes",
+          "size": 176,
+          "note": "Kept with the champion. The record's note says which counts in it a client shows."
+        }
+      ],
+      "note": "A fixed record of the champion's tallies, which a client keeps whole. On every champion's row of the scoreboard it shows kills, the deaths at body offset 12 and the assists at 192, a count of minions (the sum at 16 and 36) and a count of buildings (the sum at 24 and 28), each a signed 32-bit number; for its own champion it shows kills, deaths and assists, and for each side the sum of its champions' kills."
     },
     {
       "from": "1.0.0.97",

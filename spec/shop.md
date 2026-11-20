@@ -40,7 +40,9 @@ shop by the champion's level.
 
 > **In 1.0.0.96**
 >
-> Suggested items depend on neither the map nor the mode.
+> Suggested items depend on neither the map nor the mode. A client uses the
+> map's list of the items the shop holds only where a setting of its own turns
+> it on.
 
 <!-- holds from 1.0.0.140 up to 1.0.0.141 -->
 

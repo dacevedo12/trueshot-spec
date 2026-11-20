@@ -399,9 +399,9 @@ A server tells the others that a player's client dropped with
 > `Reconnected` announces that a player came back. A client shows it in chat for
 > any other player, ally or enemy.
 
-<!-- holds from 0.9.25.24 up to 1.0.0.140 -->
+<!-- holds from 0.9.25.24 up to 1.0.0.96 -->
 
-> **In 0.9.25.24–1.0.0.139**
+> **In 0.9.25.24–1.0.0.95**
 >
 > A client whose connection drops before play begins leaves rather than
 > connecting again.
@@ -431,6 +431,24 @@ A server tells the others that a player's client dropped with
 >
 > While it resynchronises, a client ignores `SpawnFromBarracks`, `SpawnUnit` and
 > `CreateNeutral` naming a unit it already holds.
+
+<!-- holds from 1.0.0.96 up to 1.0.0.97 -->
+
+> **In 1.0.0.96**
+>
+> A client whose connection drops before play begins, once the registration
+> answer has given it its own client id, leaves rather than connecting again.
+>
+> While it resynchronises, a client also ignores a `CreateNeutral` or a
+> `SpawnUnit` for a unit it does not hold whose `asset` is empty, and a
+> `SpawnFromBarracks` for a unit it does not hold whose `kind` is above 4.
+
+<!-- holds from 1.0.0.97 up to 1.0.0.140 -->
+
+> **In 1.0.0.97–1.0.0.139**
+>
+> A client whose connection drops before play begins leaves rather than
+> connecting again.
 
 <!-- holds from 1.0.0.140 up to 3.11.0.306 -->
 

@@ -73,6 +73,13 @@ for. Each family keeps its own numbers, and compares them in its own way.
 > A client compares a `PathWithSpeed`'s number with its unit's count but does
 > not advance the count to it.
 
+<!-- holds from 1.0.0.96 up to 1.0.0.97 -->
+
+> **In 1.0.0.96**
+>
+> A client compares a `PathWithSpeed`'s number with its unit's count but does
+> not advance the count to it.
+
 <!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 
 > **In 4.17**

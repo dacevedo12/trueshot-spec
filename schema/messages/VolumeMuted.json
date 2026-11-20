@@ -174,7 +174,7 @@
     },
     {
       "from": "1.0.0.82",
-      "until": "1.0.0.97",
+      "until": "1.0.0.96",
       "channel": "events",
       "command": 172,
       "direction": "serverToClient",
@@ -184,6 +184,62 @@
           "name": "category",
           "type": "u8",
           "note": "Which kind. A larger value than 6 has no defined effect.",
+          "values": {
+            "0": {
+              "name": "all"
+            },
+            "1": {
+              "name": "music"
+            },
+            "2": {
+              "name": "effects"
+            },
+            "3": {
+              "name": "announcer"
+            },
+            "4": {
+              "name": "unitResponses"
+            },
+            "5": {
+              "name": "environment"
+            },
+            "6": {
+              "name": "mainEffects"
+            }
+          }
+        },
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "muted",
+              "width": 1,
+              "note": "Set to mute, clear to unmute."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ],
+          "note": "Whether it is muted."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.96",
+      "until": "1.0.0.97",
+      "channel": "events",
+      "command": 172,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "category",
+          "type": "u8",
+          "note": "Which kind. 7 names none; a larger value than 7 has no defined effect and can bring the client down.",
           "values": {
             "0": {
               "name": "all"

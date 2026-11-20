@@ -210,9 +210,9 @@ of them only for its own champion:
 >
 > `GoldGained` shows floating gold only for the client's own champion.
 
-<!-- holds from 0.9.25.24 up to 1.0.0.126 -->
+<!-- holds from 0.9.25.24 up to 1.0.0.96 -->
 
-> **In 0.9.25.24–1.0.0.125**
+> **In 0.9.25.24–1.0.0.95**
 >
 > `GoldGained` naming the client's own champion, with an amount above 0 and a
 > source the client holds, shows the gold over the source.
@@ -244,6 +244,15 @@ of them only for its own champion:
 >
 > `ItemAdded` and `InventorySlot` announce a purchase only for the client's own
 > champion; an ally's purchase is called out where the message asks for it.
+
+<!-- holds from 1.0.0.96 up to 1.0.0.97 -->
+
+> **In 1.0.0.96**
+>
+> `GoldGained` naming the client's own champion, with an amount above 0.5 and a
+> source the client holds, shows the gold over the source. Any other `GoldGained`
+> naming a unit the client holds shows over it the gold gained, or lost where
+> the amount is below 0, and nothing for 0.
 
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 

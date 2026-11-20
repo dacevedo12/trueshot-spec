@@ -60,12 +60,20 @@ MUST take the names from the files.
 > `Barracks`, which makes an inhibitor, and `HQ_` makes a nexus and `Turret` a
 > turret.
 
-<!-- holds from 1.0.0.58 up to 1.0.0.97 -->
+<!-- holds from 1.0.0.58 up to 1.0.0.96 -->
 
-> **In 1.0.0.58–1.0.0.96**
+> **In 1.0.0.58–1.0.0.95**
 >
 > `room.dsc` lists each object as a `.sco`, but its file is a binary `.SCB`,
 > holding its name within it rather than on a `Name=` line.
+
+<!-- holds from 1.0.0.96 up to 1.0.0.97 -->
+
+> **In 1.0.0.96**
+>
+> `room.dsc` lists each object as a `.sco`. The marker of the level's size,
+> `__LevelSize_`, is a text `.sco` giving its name on a `Name=` line; every other
+> object's file is a binary `.SCB`, holding its name within it.
 
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 

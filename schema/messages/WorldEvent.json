@@ -2869,7 +2869,7 @@
         {
           "name": "event",
           "type": "u8",
-          "note": "Which event, from 0 to 74, and so which fields follow. A larger value has no defined effect.",
+          "note": "Which event, from 0 to 73, and so which fields follow. A client does not check it: a larger value has no defined effect.",
           "values": {
             "0": {
               "name": "died"

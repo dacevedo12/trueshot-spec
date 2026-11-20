@@ -23,9 +23,23 @@ champion's that [replication](replication.md) carries.
 > A client still casts from a casting record whose length disagrees with its
 > count of targets.
 
-<!-- holds from 1.0.0.58 up to 4.20.0.315 -->
+<!-- holds from 1.0.0.58 up to 1.0.0.96 -->
 
-> **In 1.0.0.58–4.19**
+> **In 1.0.0.58–1.0.0.95**
+>
+> A client casts nothing for a casting record whose length disagrees with its
+> count of targets.
+
+<!-- holds from 1.0.0.96 up to 1.0.0.97 -->
+
+> **In 1.0.0.96**
+>
+> A client fails on a casting record whose length disagrees with its count of
+> targets, and a server MUST NOT send one.
+
+<!-- holds from 1.0.0.97 up to 4.20.0.315 -->
+
+> **In 1.0.0.97–4.19**
 >
 > A client casts nothing for a casting record whose length disagrees with its
 > count of targets.

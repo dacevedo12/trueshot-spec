@@ -98,7 +98,7 @@
     },
     {
       "from": "1.0.0.82",
-      "until": "1.0.0.97",
+      "until": "1.0.0.96",
       "channel": "events",
       "command": 83,
       "direction": "serverToClient",
@@ -108,6 +108,21 @@
           "name": "attacker",
           "type": "u32",
           "note": "The unit that destroyed it. A client reads it only for a nexus; for any other building it reads nothing of the message after the header."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.96",
+      "until": "1.0.0.97",
+      "channel": "events",
+      "command": 83,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "attacker",
+          "type": "u32",
+          "note": "The unit that destroyed it. A client reads it only for a nexus or an inhibitor; for any other building it reads nothing of the message after the header."
         }
       ]
     },

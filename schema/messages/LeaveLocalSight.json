@@ -36,13 +36,23 @@
     },
     {
       "from": "1.0.0.82",
-      "until": "1.0.0.97",
+      "until": "1.0.0.96",
       "channel": "events",
       "command": 62,
       "direction": "serverToClient",
       "reliability": "reliable",
       "fields": [],
       "note": "Sent for the receiving client's own champion, it changes nothing the client shows."
+    },
+    {
+      "from": "1.0.0.96",
+      "until": "1.0.0.97",
+      "channel": "events",
+      "command": 62,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "For any unit, it changes nothing the client shows."
     },
     {
       "from": "1.0.0.97",
