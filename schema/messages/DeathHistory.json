@@ -14663,12 +14663,12 @@
         {
           "name": "sourceType",
           "type": "u32",
-          "note": "What sort of source the killer was. A client keeps only the low 4 bits, signed."
+          "note": "What sort of source the killer was. A client keeps only the low 4 bits, signed, and only where it holds killer."
         },
         {
           "name": "blobLength",
           "type": "u32",
-          "note": "How many bytes the entries below take together. A client reads exactly that many; zero, or a value above 2147483647, carries no entries. A client reads it as signed: from 2147483648 up it reads nothing more."
+          "note": "How many bytes the entries below take together. A client reads exactly that many, and fails where entryCount calls for an entry starting at or past their end; zero, or a value above 2147483647, carries no entries. A client reads it as signed: from 2147483648 up it reads nothing more."
         },
         {
           "name": "entryCount",
@@ -14698,7 +14698,7 @@
               {
                 "name": "event",
                 "type": "u8",
-                "note": "Which event, from 0 to 116, and so which fields follow.",
+                "note": "Which event, from 0 to 116, and so which fields follow. A client does not check the range.",
                 "values": {
                   "0": {
                     "name": "removed"
@@ -15258,7 +15258,7 @@
           }
         }
       ],
-      "note": "A client ignores the whole message where killer is zero. Where it does not hold killer, it still takes span, sourceType and the entries, and leaves only the killer's side unrecorded. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
+      "note": "A client ignores the whole message where killer is zero. Where it does not hold killer, it still takes span and the entries, and records neither the killer's side nor sourceType. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
     },
     {
       "from": "1.0.0.141",

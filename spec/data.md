@@ -67,9 +67,24 @@ MUST take the names from the files.
 > `room.dsc` lists each object as a `.sco`, but its file is a binary `.SCB`,
 > holding its name within it rather than on a `Name=` line.
 
-<!-- holds from 1.0.0.126 up to 4.1.0.171 -->
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
-> **In 1.0.0.126–3.15**
+> **In 1.0.0.126**
+>
+> `room.dsc` lists each object as a `.sco`, but its file is a binary `.SCB`,
+> holding its name within it rather than on a `Name=` line.
+
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+
+> **In 1.0.0.140**
+>
+> `room.dsc` lists each object as a `.sco`. Where a binary `.SCB` of the same
+> name exists, a client reads that instead, which holds its name within it; only
+> a `.sco` gives its name on its `Name=` line.
+
+<!-- holds from 1.0.0.141 up to 4.1.0.171 -->
+
+> **In 1.0.0.141–3.15**
 >
 > Each object's file is `.sco` as text or `.SCB` as binary, and gives its name
 > on its `Name=` line.
@@ -224,19 +239,24 @@ figures, in `DATA/Items/<id>.inibin`; and summoner, item and shared spells in
 > mode are in `DATA/Globals/`, such as `CLASSIC_Stats.inibin` and
 > `HealthGain.inibin`.
 
+<!-- holds from 1.0.0.126 up to 1.0.0.141 -->
+
+> **In 1.0.0.126–1.0.0.140**
+>
+> A champion's spells and attacks are in `DATA/Spells/<Spell>.inibin` with all
+> other spells.
+
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
 > **In 1.0.0.126**
 >
-> A champion's spells and attacks are in
-> `DATA/Characters/<Champion>/Spells/<Spell>.inibin`.
+> Maps 2, 3, 4 and 8 each add an `Items.inibin` of their own as well.
 
 <!-- holds from 1.0.0.140 up to 1.0.0.141 -->
 
 > **In 1.0.0.140**
 >
-> A champion's spells and attacks are in `DATA/Spells/<Spell>.inibin` with all
-> other spells.
+> Maps 2, 3, 4, 6 and 8 each add an `Items.inibin` of their own as well.
 
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 

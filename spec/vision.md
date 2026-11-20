@@ -49,10 +49,10 @@ A server brings a unit into what a client's side can see with `EnterSight`.
 
 > **In 1.0.0.140**
 >
-> `EnterSight` states everything a client needs to draw the unit at once: its
-> looks, its shields, where it stands or which path it walks, and, in what
-> follows, its health and resource. A body MAY end early where its layout marks
-> the remaining parts as present only while bytes remain.
+> `EnterSight` states the unit's shields and looks and, for a champion or a
+> minion, where it stands or which path it walks, and nothing of its health or
+> resource. A client reads every part of the body whatever its length, so a
+> server MUST NOT end one early.
 
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
@@ -210,9 +210,9 @@ of them only for its own champion:
 >
 > `GoldGained` shows floating gold only for the client's own champion.
 
-<!-- holds from 0.9.25.24 up to 3.10.0.237 -->
+<!-- holds from 0.9.25.24 up to 1.0.0.126 -->
 
-> **In 0.9.25.24–3.9**
+> **In 0.9.25.24–1.0.0.125**
 >
 > `GoldGained` naming the client's own champion, with an amount above 0 and a
 > source the client holds, shows the gold over the source.
@@ -251,6 +251,20 @@ of them only for its own champion:
 >
 > `LevelUp` shows its effect over any champion the client can see, and does
 > nothing for another unit.
+>
+> `GoldGained` naming the client's own champion, with an amount above 0.5 and a
+> source the client holds, shows the gold over the source. Any other `GoldGained`
+> naming a unit the client holds shows over it the gold gained, or lost where
+> the amount is below 0, and nothing for 0.
+
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+
+> **In 1.0.0.140**
+>
+> `GoldGained` naming the client's own champion, with an amount above 0.5 and a
+> source the client holds other than its own player, shows the gold over the
+> source. Any other `GoldGained` naming a champion the client holds shows over
+> it the gold gained, or lost where the amount is below 0, and nothing for 0.
 
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 

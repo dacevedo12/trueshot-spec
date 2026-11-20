@@ -98,12 +98,35 @@ gives the client its own client id.
 > Registration pairs each player id with a client id. Every later message that
 > names a player by client id is read through that pairing.
 
-<!-- holds from 1.0.0.58 up to 3.10.0.237 -->
+<!-- holds from 1.0.0.58 up to 1.0.0.126 -->
 
-> **In 1.0.0.58–3.9**
+> **In 1.0.0.58–1.0.0.125**
 >
 > A client acts on that `Registered` alone and ignores every other, so it pairs
 > no other player's player id with a client id.
+
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
+
+> **In 1.0.0.126**
+>
+> A client records the pair every `Registered` carries, and takes as its own
+> only the one carrying its own player id. A `Registered` whose leading byte is
+> 1 says that player has left: a client in play shows so in chat and drops the
+> pair.
+
+<!-- holds from 1.0.0.127 up to 3.10.0.237 -->
+
+> **In 1.0.0.127–3.9**
+>
+> A client acts on that `Registered` alone and ignores every other, so it pairs
+> no other player's player id with a client id.
+
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+
+> **In 1.0.0.140**
+>
+> A server MUST send that `Registered` before any create message, because a
+> client given a create message before it has its own client id stops.
 
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
@@ -149,11 +172,17 @@ client's own.
 >
 > A client tells a bot's champion by a byte of its own, not by its client id.
 
-<!-- holds from 1.0.0.126 up to 3.10.0.237 -->
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
-> **In 1.0.0.126–3.9**
+> **In 1.0.0.126**
 >
-> A bot's champion carries 4294967295.
+> A client tells a bot's champion by a byte of its own, not by its client id.
+
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+
+> **In 1.0.0.140**
+>
+> A client tells a bot's champion by a byte of its own, not by its client id.
 
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
@@ -213,8 +242,8 @@ naming a unit, an owner or a target carry one too.
 
 > **In 1.0.0.126**
 >
-> `CreateChampion` and `CreateTurret` first remove any object holding the net
-> id. For any other creating message, a client that
+> `CreateChampion`, and a `CreateTurret` naming a turret the map holds, first
+> remove any object holding the net id. For any other creating message, a client that
 > still holds the earlier object creates the new one but keeps the net id on the
 > old one, so messages naming it reach the old object, and removing either
 > leaves the id naming neither.
@@ -392,13 +421,14 @@ Among the identifiers with that top byte are these:
 > | ---------------------------------------------------------------------- | ---------- |
 > | `Barracks_T1_C1`, `Barracks_T2_C1`                                     | 1, 2, 3    |
 > | `Barracks_T1_L1`, `Barracks_T1_R1`, `Barracks_T2_L1`, `Barracks_T2_R1` | 1, 2, 4    |
-> | the six spawn points named `__P_…`                                     | 1, 2       |
+> | the two spawn points named `__P_…C01`                                  | 1, 2       |
+> | the four spawn points named `__P_…L01` and `__P_…R01`                  | 1, 2, 4    |
 > | `____P_Chaos_Spawn_Barracks__C01`                                      | 3          |
 > | `HQ_T1`, `HQ_T2`                                                       | 1, 2, 3, 4 |
 > | `OrderShop01`                                                          | 3, 4       |
 > | `orderShop01`                                                          | 1, 2, 8    |
 > | `ChaosShop01`                                                          | 3          |
-> | `chaosShop01`                                                          | 1, 2, 8    |
+> | `chaosShop01`                                                          | 1, 2, 4, 8 |
 
 <!-- holds from 1.0.0.140 up to 1.0.0.141 -->
 
@@ -408,7 +438,7 @@ Among the identifiers with that top byte are these:
 > | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
 > | 1, 2, 6 | the six `Barracks` names, `HQ_T1`, `HQ_T2`, `orderShop01`, `chaosShop01`, spawn points named `__P_…`                                               |
 > | 3       | `Barracks_T1_C1`, `Barracks_T2_C1`, `HQ_T1`, `HQ_T2`, `OrderShop01`, `ChaosShop01`, `____P_Chaos_Spawn_Barracks__C01`                              |
-> | 4       | `Barracks_T1_L1`, `Barracks_T1_R1`, `Barracks_T2_L1`, `Barracks_T2_R1`, `HQ_T1`, `HQ_T2`, `OrderShop01`, `ChaosShop01`, spawn points named `__P_…` |
+> | 4       | `Barracks_T1_L1`, `Barracks_T1_R1`, `Barracks_T2_L1`, `Barracks_T2_R1`, `HQ_T1`, `HQ_T2`, `OrderShop01`, `chaosShop01`, spawn points named `__P_…` |
 > | 8       | `orderShop01`, `chaosShop01`                                                                                                                       |
 
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
@@ -529,6 +559,13 @@ A server MUST name each object a map holds by the identifier its name gives.
 <!-- holds from 0.9.25.24 up to 1.0.0.97 -->
 
 > **In 0.9.25.24–1.0.0.96**
+>
+> `CreateTurret` matches a turret's name without regard to case, and does
+> nothing where the map holds no turret of that name.
+
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
+
+> **In 1.0.0.126**
 >
 > `CreateTurret` matches a turret's name without regard to case, and does
 > nothing where the map holds no turret of that name.
@@ -743,9 +780,16 @@ Creating messages are the exception, and so are the messages below.
 >
 > `RegionRemoved` for a region a client does not hold does nothing.
 
-<!-- holds from 1.0.0.126 up to 3.10.0.237 -->
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
-> **In 1.0.0.126–3.9**
+> **In 1.0.0.126**
+>
+> `SpawnPet` names the pet's owner in its header and carries the new pet's net
+> id in its body, and does nothing where that owner is not held.
+
+<!-- holds from 1.0.0.127 up to 3.10.0.237 -->
+
+> **In 1.0.0.127–3.9**
 >
 > `SpawnPet` takes the net id in its header for the new pet, but does nothing
 > where the owner its body names is not held.

@@ -120,9 +120,9 @@ says what a client does with a movement whose unit it does not hold.
 > A path carries no flag and no token, so nothing relocates a unit: every path
 > is walked.
 
-<!-- holds from 1.0.0.79 up to 3.10.0.237 -->
+<!-- holds from 1.0.0.79 up to 1.0.0.126 -->
 
-> **In 1.0.0.79–3.9**
+> **In 1.0.0.79–1.0.0.125**
 >
 > A client answers each group with one `WaypointAck`, listing every unit in it
 > that carried a token, with an empty list where none did. A server MAY ignore
@@ -145,6 +145,24 @@ says what a client does with a movement whose unit it does not hold.
 > unfamiliar one arriving while the unit is near enough. In both the path is
 > followed and the remembered token kept, so a token is taken up only once it
 > has moved something.
+
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
+
+> **In 1.0.0.126**
+>
+> A client answers each group with one `WaypointAck`, listing each unit whose
+> movement carried a token, in the order the group gives them, whether or not
+> the client holds the unit, and none whose movement follows a refused one; the
+> list is empty where it names none. A server MAY ignore it.
+
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+
+> **In 1.0.0.140**
+>
+> A client answers each group with one `WaypointAck`, listing each unit whose
+> movement carried a token, in the order the group gives them, whether or not
+> the client holds the unit, and none whose movement follows a refused one; the
+> list is empty where it names none. A server MAY ignore it.
 
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
@@ -252,8 +270,9 @@ server sends.
 
 > **In 1.0.0.126**
 >
-> A server MAY send `NavigationFlags`. A client replaces the circles it holds
-> with those it carries, and answers with its `syncId`.
+> A server MAY send `NavigationFlags`. Once its navigation grid exists, a client
+> replaces the circles it holds with those it carries, and answers with its
+> `syncId`; before then it takes nothing and does not answer.
 
 <!-- holds from 1.0.0.140 up to 1.0.0.141 -->
 

@@ -33,12 +33,21 @@ proof under that key.
 > Any whitespace separates the words of the fourth argument. A client whose
 > command line holds `.rep` anywhere plays a replay rather than connecting.
 
-<!-- holds from 0.9.25.24 up to 3.10.0.237 -->
+<!-- holds from 0.9.25.24 up to 1.0.0.140 -->
 
-> **In 0.9.25.24–3.9**
+> **In 0.9.25.24–1.0.0.139**
 >
 > A client whose command line holds no double quote takes the command line it
 > saved on an earlier run instead.
+
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+
+> **In 1.0.0.140**
+>
+> Whitespace separates a client's arguments, and double quotes group words into
+> one. A client given no arguments takes the command line it saved on an
+> earlier run instead, and one given one to three ends, unless its one argument
+> holds `.rofl`.
 
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
@@ -116,6 +125,18 @@ A client then sends `QueryStatus` over and over until a `QueryStatusAnswer`
 says the server is ready. It pairs no answer with a query: one ready answer is
 enough, and a query it sends after that answer needs none. Until a ready answer
 arrives, a client stays on a black screen and goes no further.
+
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
+
+> **In 1.0.0.126**
+>
+> A client waits 500 milliseconds before each `QueryStatus` it sends.
+
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+
+> **In 1.0.0.140**
+>
+> A client waits 10 milliseconds before each `QueryStatus` it sends.
 
 ## Stating a build
 
@@ -327,7 +348,8 @@ Once a character is settled, a client sends `CharacterSelected`, once.
 
 > **In 1.0.0.126**
 >
-> A client drops nothing for arriving before `CharacterSelected`.
+> Before `CharacterSelected`, a client drops only what [Units](units.md) says it
+> drops.
 
 <!-- holds from 3.10.0.237 up to 4.1.0.171 -->
 

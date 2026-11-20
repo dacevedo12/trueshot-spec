@@ -17,9 +17,9 @@ server can also lock or free a client's camera with `CameraLockSet`, which the
 client answers with `CameraLock` except while it holds its camera itself, and
 set a point a player's view keeps to with `CameraBehaviour`.
 
-<!-- holds from 0.8.13.26 up to 4.1.0.171 -->
+<!-- holds from 0.8.13.26 up to 1.0.0.140 -->
 
-> **In 0.8.13.26–3.15**
+> **In 0.8.13.26–1.0.0.139**
 >
 > A client's view report, `Camera`, goes out as its view moves at least 200
 > units, at most every tenth of a second, and never while its view is locked.
@@ -58,6 +58,21 @@ set a point a player's view keeps to with `CameraBehaviour`.
 > A client takes the lock from the player's own settings when `StartGame`
 > arrives, locked where they say nothing, and answers with `CameraLock`;
 > `CameraLockSet` changes it for the match without changing those settings.
+
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+
+> **In 1.0.0.140**
+>
+> A client's view report, `Camera`, goes out where a point it carries moves
+> more than 200 units, at most every tenth of a second, and never while its
+> view is locked; a report sent again until answered can come sooner.
+
+<!-- holds from 1.0.0.141 up to 4.1.0.171 -->
+
+> **In 1.0.0.141–3.15**
+>
+> A client's view report, `Camera`, goes out as its view moves at least 200
+> units, at most every tenth of a second, and never while its view is locked.
 
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 

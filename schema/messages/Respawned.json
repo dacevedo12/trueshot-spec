@@ -406,6 +406,68 @@
     },
     {
       "from": "1.0.0.138",
+      "until": "1.0.0.140",
+      "channel": "events",
+      "command": 80,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Where it comes back, along one ground axis, in world units."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "Where it comes back, in height, in world units. A client places it there as given."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Where it comes back, along the other ground axis, in world units."
+        },
+        {
+          "name": "resource",
+          "type": "f32",
+          "note": "Its resource, such as mana, once back."
+        }
+      ],
+      "note": "The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that. A client sets the champion on the nearest open ground."
+    },
+    {
+      "from": "1.0.0.140",
+      "until": "1.0.0.141",
+      "channel": "events",
+      "command": 80,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Where it comes back, along one ground axis, in world units."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "Where it comes back, in height, in world units."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Where it comes back, along the other ground axis, in world units."
+        },
+        {
+          "name": "resource",
+          "type": "f32",
+          "note": "Its resource, such as mana, once back."
+        }
+      ],
+      "note": "The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that. A client keeps the point, held within the map's bounds, where it lies on open ground, and otherwise sets the champion on the nearest open ground."
+    },
+    {
+      "from": "1.0.0.141",
       "until": "1.0.0.144",
       "channel": "events",
       "command": 80,

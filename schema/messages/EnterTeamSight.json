@@ -66,6 +66,21 @@
     },
     {
       "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 238,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "side",
+          "type": "u8",
+          "note": "Which side the unit came into the view of, as an index from 0 to 3. A server sends only 0 to 3: a client takes the index modulo 32, so 32 to 35 act as 0 to 3 and 4 to 31 set bits no side uses."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.127",
       "until": "1.0.0.128",
       "channel": "events",
       "command": 238,
@@ -156,7 +171,7 @@
     },
     {
       "from": "1.0.0.139",
-      "until": "1.0.0.141",
+      "until": "1.0.0.140",
       "channel": "events",
       "command": 235,
       "direction": "serverToClient",
@@ -166,6 +181,21 @@
           "name": "side",
           "type": "u8",
           "note": "Which side the unit came into or out of the view of."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.140",
+      "until": "1.0.0.141",
+      "channel": "events",
+      "command": 235,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "side",
+          "type": "u8",
+          "note": "The bit for the side the unit came into the view of, as an index from 0 to 3, not a side number."
         }
       ]
     },

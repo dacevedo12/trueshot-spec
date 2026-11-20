@@ -1048,6 +1048,266 @@
     },
     {
       "from": "1.0.0.124",
+      "until": "1.0.0.126",
+      "channel": "events",
+      "command": 102,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The name the unit answers to, so later messages can name it."
+        },
+        {
+          "name": "node",
+          "type": "u8",
+          "note": "Which network node the object belongs to, in a field of its own."
+        },
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where the unit stands, along one ground axis, in world units."
+        },
+        {
+          "name": "atY",
+          "type": "f32",
+          "note": "Where the unit stands, in height, in world units."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where the unit stands, along the other ground axis, in world units."
+        },
+        {
+          "name": "campAtX",
+          "type": "f32",
+          "note": "Where the camp it belongs to sits, along one ground axis, in world units."
+        },
+        {
+          "name": "campAtY",
+          "type": "f32",
+          "note": "Where the camp it belongs to sits, in height, in world units."
+        },
+        {
+          "name": "campAtZ",
+          "type": "f32",
+          "note": "Where the camp it belongs to sits, along the other ground axis, in world units."
+        },
+        {
+          "name": "facingX",
+          "type": "f32",
+          "note": "A point the unit faces toward, along one ground axis, in world units."
+        },
+        {
+          "name": "facingY",
+          "type": "f32",
+          "note": "That point, in height."
+        },
+        {
+          "name": "facingZ",
+          "type": "f32",
+          "note": "That point, along the other ground axis."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "What this unit is called, so a client can tell one from another. Written out in full and padded with zero bytes to the width above."
+        },
+        {
+          "name": "asset",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The name the client loads its art and sound under, written and padded as above."
+        },
+        {
+          "name": "uniqueName",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "A further name the unit answers to, written and padded as above."
+        },
+        {
+          "name": "campIcon",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "A name the client gives the camp it sets up for the unit where it holds no camp of that number yet; it has no effect where the camp already exists. What the client shows by it is not recorded."
+        },
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "The side it belongs to, or zero where it belongs to none."
+        },
+        {
+          "name": "damageBonus",
+          "type": "i32",
+          "note": "What is added to the damage it deals."
+        },
+        {
+          "name": "healthBonus",
+          "type": "i32",
+          "note": "What is added to the health it holds."
+        },
+        {
+          "name": "roaming",
+          "type": "u32",
+          "note": "How the monster wanders. It has no effect.",
+          "values": {
+            "0": {
+              "name": "inactive"
+            },
+            "1": {
+              "name": "hostile"
+            },
+            "2": {
+              "name": "fleeing"
+            }
+          }
+        },
+        {
+          "name": "camp",
+          "type": "u32",
+          "note": "Which camp the unit belongs to. A client adds the unit to that camp where a CampMarker has placed it first, and to no camp otherwise."
+        }
+      ],
+      "note": "The body ends after camp. The monster faces from where it stands toward the facing point, or along +Z where the two are the same, and a client drops the message while its map's navigation data is unloaded."
+    },
+    {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 102,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The name the unit answers to, so later messages can name it."
+        },
+        {
+          "name": "node",
+          "type": "u8",
+          "note": "Which network node the object belongs to, in a field of its own."
+        },
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where the unit stands, along one ground axis, in world units."
+        },
+        {
+          "name": "atY",
+          "type": "f32",
+          "note": "Where the unit stands, in height, in world units."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where the unit stands, along the other ground axis, in world units."
+        },
+        {
+          "name": "campAtX",
+          "type": "f32",
+          "note": "Where the camp it belongs to sits, along one ground axis, in world units."
+        },
+        {
+          "name": "campAtY",
+          "type": "f32",
+          "note": "Where the camp it belongs to sits, in height, in world units."
+        },
+        {
+          "name": "campAtZ",
+          "type": "f32",
+          "note": "Where the camp it belongs to sits, along the other ground axis, in world units."
+        },
+        {
+          "name": "facingX",
+          "type": "f32",
+          "note": "A point the unit faces toward, along one ground axis, in world units."
+        },
+        {
+          "name": "facingY",
+          "type": "f32",
+          "note": "That point, in height."
+        },
+        {
+          "name": "facingZ",
+          "type": "f32",
+          "note": "That point, along the other ground axis."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "What this unit is called, so a client can tell one from another. Written out in full and padded with zero bytes to the width above."
+        },
+        {
+          "name": "asset",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The name the client loads its art and sound under, written and padded as above."
+        },
+        {
+          "name": "uniqueName",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "A further name the unit answers to, written and padded as above."
+        },
+        {
+          "name": "campIcon",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "A name the client gives the camp it sets up for the unit where it holds no camp of that number yet; it has no effect where the camp already exists. What the client shows by it is not recorded."
+        },
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "The side it belongs to, or zero where it belongs to none."
+        },
+        {
+          "name": "damageBonus",
+          "type": "i32",
+          "note": "What is added to the damage it deals."
+        },
+        {
+          "name": "healthBonus",
+          "type": "i32",
+          "note": "What is added to the health it holds."
+        },
+        {
+          "name": "roaming",
+          "type": "u32",
+          "note": "How the monster wanders. It has no effect.",
+          "values": {
+            "0": {
+              "name": "inactive"
+            },
+            "1": {
+              "name": "hostile"
+            },
+            "2": {
+              "name": "fleeing"
+            }
+          }
+        },
+        {
+          "name": "camp",
+          "type": "u32",
+          "note": "Which camp the unit belongs to. Where the client has no camp of that number yet, it creates one at the unit's own position (atX, atY, atZ), named from campIcon; it then adds the unit to the camp."
+        }
+      ],
+      "note": "The body ends after camp. The monster faces from where it stands toward the facing point, or along +Z where the two are the same, and a client drops the message while its map's navigation data is unloaded."
+    },
+    {
+      "from": "1.0.0.127",
       "until": "1.0.0.128",
       "channel": "events",
       "command": 102,
@@ -1438,6 +1698,286 @@
     },
     {
       "from": "1.0.0.138",
+      "until": "1.0.0.140",
+      "channel": "events",
+      "command": 105,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The name the unit answers to, so later messages can name it."
+        },
+        {
+          "name": "node",
+          "type": "u8",
+          "note": "Which network node the object belongs to, in a field of its own."
+        },
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where the unit stands, along one ground axis, in world units."
+        },
+        {
+          "name": "atY",
+          "type": "f32",
+          "note": "Where the unit stands, in height, in world units."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where the unit stands, along the other ground axis, in world units."
+        },
+        {
+          "name": "campAtX",
+          "type": "f32",
+          "note": "Where the camp it belongs to sits, along one ground axis, in world units."
+        },
+        {
+          "name": "campAtY",
+          "type": "f32",
+          "note": "Where the camp it belongs to sits, in height, in world units."
+        },
+        {
+          "name": "campAtZ",
+          "type": "f32",
+          "note": "Where the camp it belongs to sits, along the other ground axis, in world units."
+        },
+        {
+          "name": "facingX",
+          "type": "f32",
+          "note": "A point the unit faces toward, along one ground axis, in world units."
+        },
+        {
+          "name": "facingY",
+          "type": "f32",
+          "note": "That point, in height."
+        },
+        {
+          "name": "facingZ",
+          "type": "f32",
+          "note": "That point, along the other ground axis."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "What this unit is called, so a client can tell one from another. Written out in full and padded with zero bytes to the width above."
+        },
+        {
+          "name": "asset",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The name the client loads its art and sound under, written and padded as above."
+        },
+        {
+          "name": "uniqueName",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "A further name the unit answers to, written and padded as above."
+        },
+        {
+          "name": "campIcon",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The name of the icon the minimap shows at the camp, written in full and padded with zero bytes to the width above; empty shows none. A client uses it only where it creates the camp."
+        },
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "The side it belongs to, or zero where it belongs to none."
+        },
+        {
+          "name": "damageBonus",
+          "type": "i32",
+          "note": "What is added to the damage it deals."
+        },
+        {
+          "name": "healthBonus",
+          "type": "i32",
+          "note": "What is added to the health it holds."
+        },
+        {
+          "name": "roaming",
+          "type": "u32",
+          "note": "How the monster wanders. It has no effect.",
+          "values": {
+            "0": {
+              "name": "inactive"
+            },
+            "1": {
+              "name": "hostile"
+            },
+            "2": {
+              "name": "fleeing"
+            }
+          }
+        },
+        {
+          "name": "camp",
+          "type": "u32",
+          "note": "Which camp the unit belongs to. Where the client does not know the camp, it creates it at the unit's own position (atX, atY, atZ), with campIcon, effectSide and revealEvent, and adds the unit to it. Where it knows the camp, a nonzero effectSide changes the camp's side."
+        },
+        {
+          "name": "effectSide",
+          "type": "u32",
+          "note": "The side that gains what killing it grants."
+        },
+        {
+          "name": "revealEvent",
+          "type": "i32",
+          "note": "What makes the unit known to a side that cannot see it."
+        }
+      ],
+      "note": "The monster faces from where it stands toward the facing point, or along +Z where the two are the same. A client drops the message while its map's navigation data is unloaded. A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it."
+    },
+    {
+      "from": "1.0.0.140",
+      "until": "1.0.0.141",
+      "channel": "events",
+      "command": 105,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The name the unit answers to, so later messages can name it."
+        },
+        {
+          "name": "node",
+          "type": "u8",
+          "note": "Which network node the object belongs to, in a field of its own."
+        },
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where the unit stands, along one ground axis, in world units."
+        },
+        {
+          "name": "atY",
+          "type": "f32",
+          "note": "Where the unit stands, in height, in world units."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where the unit stands, along the other ground axis, in world units."
+        },
+        {
+          "name": "campAtX",
+          "type": "f32",
+          "note": "Where the camp it belongs to sits, along one ground axis, in world units."
+        },
+        {
+          "name": "campAtY",
+          "type": "f32",
+          "note": "Where the camp it belongs to sits, in height, in world units."
+        },
+        {
+          "name": "campAtZ",
+          "type": "f32",
+          "note": "Where the camp it belongs to sits, along the other ground axis, in world units."
+        },
+        {
+          "name": "facingX",
+          "type": "f32",
+          "note": "A point the unit faces toward, along one ground axis, in world units."
+        },
+        {
+          "name": "facingY",
+          "type": "f32",
+          "note": "That point, in height."
+        },
+        {
+          "name": "facingZ",
+          "type": "f32",
+          "note": "That point, along the other ground axis."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "What this unit is called, so a client can tell one from another. Written out in full and padded with zero bytes to the width above."
+        },
+        {
+          "name": "asset",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The name the client loads its art and sound under, written and padded as above."
+        },
+        {
+          "name": "uniqueName",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "A further name the unit answers to, written and padded as above."
+        },
+        {
+          "name": "campIcon",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The name of the icon the minimap shows at the camp, written in full and padded with zero bytes to the width above; empty shows none. A client uses it only where it creates the camp."
+        },
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "The side it belongs to, or zero where it belongs to none."
+        },
+        {
+          "name": "damageBonus",
+          "type": "i32",
+          "note": "What is added to the damage it deals."
+        },
+        {
+          "name": "healthBonus",
+          "type": "i32",
+          "note": "What is added to the health it holds."
+        },
+        {
+          "name": "roaming",
+          "type": "u32",
+          "note": "How the monster wanders. It has no effect.",
+          "values": {
+            "0": {
+              "name": "inactive"
+            },
+            "1": {
+              "name": "hostile"
+            },
+            "2": {
+              "name": "fleeing"
+            }
+          }
+        },
+        {
+          "name": "camp",
+          "type": "u32",
+          "note": "Which camp the unit belongs to. Where the client does not know the camp, it creates it at the unit's own position (atX, atY, atZ), with campIcon, effectSide and revealEvent, and adds the unit to it. Where it knows the camp, a nonzero effectSide changes the camp's side; where effectSide is 0, a revealEvent other than 58 replaces the camp's."
+        },
+        {
+          "name": "effectSide",
+          "type": "u32",
+          "note": "The side that gains what killing it grants."
+        },
+        {
+          "name": "revealEvent",
+          "type": "i32",
+          "note": "What makes the unit known to a side that cannot see it."
+        }
+      ],
+      "note": "The monster faces from where it stands toward the facing point, or along +Z where the two are the same. A client drops the message while its map's navigation data is unloaded. A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it."
+    },
+    {
+      "from": "1.0.0.141",
       "until": "1.0.0.144",
       "channel": "events",
       "command": 105,

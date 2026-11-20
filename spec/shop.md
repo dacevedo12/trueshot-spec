@@ -47,7 +47,8 @@ shop by the champion's level.
 > **In 1.0.0.140**
 >
 > Suggested items also depend on the mode `VersionSync` names, but not on the
-> map.
+> map. A client uses the map's list of the items the shop holds only where a
+> setting of its own turns it on.
 
 <!-- holds from 4.1.0.171 up to 4.21.0.0 -->
 
@@ -82,9 +83,9 @@ the shop sends nothing.
 >
 > Opening the shop sends nothing either.
 
-<!-- holds from 0.9.25.24 up to 1.0.0.141 -->
+<!-- holds from 0.9.25.24 up to 1.0.0.140 -->
 
-> **In 0.9.25.24–1.0.0.140**
+> **In 0.9.25.24–1.0.0.139**
 >
 > Opening the shop sends `TutorialShopOpened`, in any match, except while the
 > shop is locked.
@@ -94,6 +95,14 @@ the shop sends nothing.
 > **In 1.0.0.126–1.0.0.140**
 >
 > Opening the shop while the match is paused sends nothing.
+
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+
+> **In 1.0.0.140**
+>
+> Opening the shop sends `TutorialShopOpened`, in any match. A client opens the
+> shop and asks to buy whether or not the shop is locked, except where a setting
+> of its own, off by default, has it heed the lock.
 
 <!-- holds from 3.10.0.237 up to 4.21.0.0 -->
 
@@ -128,9 +137,9 @@ A client asks to buy only where the item is one the match sells.
 > holds one of its parts, and where the champion's gold covers what remains
 > after the parts it holds.
 
-<!-- holds from 0.9.25.24 up to 3.11.0.306 -->
+<!-- holds from 0.9.25.24 up to 1.0.0.140 -->
 
-> **In 0.9.25.24–3.10**
+> **In 0.9.25.24–1.0.0.139**
 >
 > A client asks only while the shop is not locked, with the champion dead or
 > near a shop of its side.
@@ -146,6 +155,19 @@ A client asks to buy only where the item is one the match sells.
 > **In 1.0.0.126**
 >
 > A client asks only with the shop open.
+
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+
+> **In 1.0.0.140**
+>
+> A client asks only with the champion dead or near a shop of its side.
+
+<!-- holds from 1.0.0.141 up to 3.11.0.306 -->
+
+> **In 1.0.0.141–3.10**
+>
+> A client asks only while the shop is not locked, with the champion dead or
+> near a shop of its side.
 
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 

@@ -661,6 +661,98 @@
     },
     {
       "from": "1.0.0.124",
+      "until": "1.0.0.126",
+      "channel": "events",
+      "command": 137,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "category",
+          "type": "u32",
+          "note": "Which input, as a set of bits.",
+          "values": {
+            "1": {
+              "name": "cameraLocking"
+            },
+            "2": {
+              "name": "movement"
+            },
+            "4": {
+              "name": "abilities"
+            },
+            "8": {
+              "name": "summonerSpells"
+            },
+            "16": {
+              "name": "shop"
+            },
+            "32": {
+              "name": "chat"
+            },
+            "64": {
+              "name": "minimapMovement"
+            },
+            "128": {
+              "name": "cameraMovement"
+            }
+          }
+        },
+        {
+          "name": "locked",
+          "type": "u8",
+          "note": "Set to lock, clear to unlock."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 137,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "category",
+          "type": "u32",
+          "note": "Which input, as a set of bits.",
+          "values": {
+            "1": {
+              "name": "cameraLocking"
+            },
+            "2": {
+              "name": "movement"
+            },
+            "4": {
+              "name": "abilities"
+            },
+            "8": {
+              "name": "summonerSpells"
+            },
+            "16": {
+              "name": "shop"
+            },
+            "32": {
+              "name": "chat"
+            },
+            "64": {
+              "name": "minimapMovement"
+            },
+            "128": {
+              "name": "cameraMovement"
+            }
+          }
+        },
+        {
+          "name": "locked",
+          "type": "u8",
+          "note": "Any value but zero locks; zero unlocks."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.127",
       "until": "1.0.0.128",
       "channel": "events",
       "command": 137,

@@ -487,6 +487,36 @@
     },
     {
       "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 173,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "reason",
+          "type": "u32",
+          "note": "Why the vote stands where it does. A client acts on 0 to 4 and ignores the message for any other value; 1 resets the vote only where side is the client's own. A client with no player of its own takes it only while playing a replay, and then shows only 0 and 4; every client ignores it until its interface for the match exists."
+        },
+        {
+          "name": "inFavour",
+          "type": "u8",
+          "note": "How many voted for."
+        },
+        {
+          "name": "against",
+          "type": "u8",
+          "note": "How many voted against."
+        },
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "Which side."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.127",
       "until": "1.0.0.128",
       "channel": "events",
       "command": 173,

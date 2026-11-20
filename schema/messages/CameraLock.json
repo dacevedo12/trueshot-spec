@@ -402,6 +402,72 @@
     },
     {
       "from": "1.0.0.124",
+      "until": "1.0.0.126",
+      "channel": "requests",
+      "command": 134,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "locked",
+              "width": 1,
+              "note": "Set while the view follows a unit."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "As CameraLockSet carried them; zero in a report the client makes on its own."
+            }
+          ]
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
+        }
+      ],
+      "note": "A client sends it on each CameraLockSet with state as that message carried it, all eight bits included, and also as its player sets the lock or the game forces a lock or lifts one. While a forced lock holds, a CameraLockSet or player setting is kept and sent only as that lock lifts."
+    },
+    {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "requests",
+      "command": 134,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "locked",
+              "width": 1,
+              "note": "Set while the view follows a unit."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "As CameraLockSet carried them; zero in a report the client makes on its own."
+            }
+          ]
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
+        }
+      ],
+      "note": "A client sends it on each CameraLockSet with state as that message carried it, all eight bits included, and also as its player sets the lock or the game forces a lock or lifts one. While a forced lock holds, a CameraLockSet or player setting is kept and sent only as that lock lifts. It also sends one, with state 1, as CreateChampion arrives for its own seat while its view is locked; during a forced lock, that is kept and sent as the lock lifts."
+    },
+    {
+      "from": "1.0.0.127",
       "until": "1.0.0.128",
       "channel": "requests",
       "command": 134,
@@ -534,6 +600,72 @@
     },
     {
       "from": "1.0.0.139",
+      "until": "1.0.0.140",
+      "channel": "requests",
+      "command": 136,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "locked",
+              "width": 1,
+              "note": "Set while the view follows a unit."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "A client sends back the whole byte it holds: after CameraLockSet, the byte it received, unchanged."
+            }
+          ]
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
+        }
+      ],
+      "note": "A client sends it every time its lock is set, even to the same value: by the player, by CameraLockSet, or as the game forces a lock or lifts one."
+    },
+    {
+      "from": "1.0.0.140",
+      "until": "1.0.0.141",
+      "channel": "requests",
+      "command": 136,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "locked",
+              "width": 1,
+              "note": "Set while the view follows a unit."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "A client sends back the whole byte it holds: after CameraLockSet, the byte it received, unchanged."
+            }
+          ]
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
+        }
+      ],
+      "note": "A client sends it every time its lock is set, even to the same value: by the player, by CameraLockSet, as the game forces a lock or lifts one, or, with its view locked, as it creates its own champion."
+    },
+    {
+      "from": "1.0.0.141",
       "until": "1.0.0.144",
       "channel": "requests",
       "command": 136,

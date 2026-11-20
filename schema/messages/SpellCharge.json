@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "SpellCharge",
   "system": "spells",
-  "note": "What a client sends while its player charges a spell, and as the charge ends. A spell charges where its cast answer (SpellCastAnswer) leaves the end-of-charge flag clear. A client sends updates at the spell's own interval, at least 0.1 seconds, where the spell has one; it ends the charge as the key is pressed again, or released where casting on release, or as the window loses focus. The header names the sender's champion.",
+  "note": "What a client sends while its player charges a spell, and as the charge ends. A spell charges where its cast answer (SpellCastAnswer) leaves the end-of-charge flag clear. The header names the sender's champion.",
   "revisions": [
     {
       "from": "1.0.0.135",
@@ -45,7 +45,8 @@
           "type": "f32",
           "note": "Where the cursor points on the ground, in world units."
         }
-      ]
+      ],
+      "note": "A client sends updates at the spell's own interval, at least 0.1 seconds, where the spell has one; it ends the charge as the key is pressed again, or released where casting on release, or as the window loses focus."
     },
     {
       "from": "1.0.0.136",
@@ -88,7 +89,8 @@
           "type": "f32",
           "note": "Where the cursor points on the ground, in world units."
         }
-      ]
+      ],
+      "note": "A client sends updates at the spell's own interval, at least 0.1 seconds, where the spell has one; it ends the charge as the key is pressed again, or released where casting on release, or as the window loses focus."
     },
     {
       "from": "1.0.0.138",
@@ -136,10 +138,60 @@
           "type": "f32",
           "note": "Where the cursor points on the ground, in world units."
         }
-      ]
+      ],
+      "note": "A client sends updates at the spell's own interval, at least 0.1 seconds, where the spell has one; it ends the charge as the key is pressed again, or released where casting on release, or as the window loses focus."
     },
     {
       "from": "1.0.0.139",
+      "until": "1.0.0.140",
+      "channel": "requests",
+      "command": 242,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "summonerSpell",
+              "width": 1,
+              "note": "Set where the slot is a summoner spell's."
+            },
+            {
+              "name": "slot",
+              "width": 7,
+              "note": "The spell's slot."
+            }
+          ],
+          "note": "Which spell, and whether the charge ends."
+        },
+        {
+          "name": "end",
+          "type": "u8",
+          "note": "Set as the charge ends, clear for an update. A whole byte."
+        },
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Where the cursor points on the ground, in world units."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "Its height, in world units."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Where the cursor points on the ground, in world units."
+        }
+      ],
+      "note": "A client sends updates at the spell's own interval, at least 0.1 seconds, where the spell has one; it ends the charge as the key is pressed again, or released where casting on release, or as the window loses focus."
+    },
+    {
+      "from": "1.0.0.140",
       "until": "1.0.0.141",
       "channel": "requests",
       "command": 242,
@@ -184,7 +236,8 @@
           "type": "f32",
           "note": "Where the cursor points on the ground, in world units."
         }
-      ]
+      ],
+      "note": "A client sends an update each time 0.25 seconds have passed since the one before; it ends the charge as the key is pressed again, or released where casting on release, or as the window loses focus."
     },
     {
       "from": "1.0.0.141",
@@ -232,7 +285,8 @@
           "type": "f32",
           "note": "Where the cursor points on the ground, in world units."
         }
-      ]
+      ],
+      "note": "A client sends updates at the spell's own interval, at least 0.1 seconds, where the spell has one; it ends the charge as the key is pressed again, or released where casting on release, or as the window loses focus."
     },
     {
       "from": "1.0.0.143",
@@ -280,7 +334,8 @@
           "type": "f32",
           "note": "Where the cursor points on the ground, in world units."
         }
-      ]
+      ],
+      "note": "A client sends updates at the spell's own interval, at least 0.1 seconds, where the spell has one; it ends the charge as the key is pressed again, or released where casting on release, or as the window loses focus."
     },
     {
       "from": "1.0.0.144",
@@ -328,7 +383,8 @@
           "type": "f32",
           "note": "Where the cursor points on the ground, in world units."
         }
-      ]
+      ],
+      "note": "A client sends updates at the spell's own interval, at least 0.1 seconds, where the spell has one; it ends the charge as the key is pressed again, or released where casting on release, or as the window loses focus."
     },
     {
       "from": "1.0.0.147",
@@ -376,7 +432,8 @@
           "type": "f32",
           "note": "Where the cursor points on the ground, in world units."
         }
-      ]
+      ],
+      "note": "A client sends updates at the spell's own interval, at least 0.1 seconds, where the spell has one; it ends the charge as the key is pressed again, or released where casting on release, or as the window loses focus."
     },
     {
       "from": "1.0.0.150",
@@ -424,7 +481,8 @@
           "type": "f32",
           "note": "Where the cursor points on the ground, in world units."
         }
-      ]
+      ],
+      "note": "A client sends updates at the spell's own interval, at least 0.1 seconds, where the spell has one; it ends the charge as the key is pressed again, or released where casting on release, or as the window loses focus."
     },
     {
       "from": "3.01.0.1",
@@ -472,7 +530,8 @@
           "type": "f32",
           "note": "Where the cursor points on the ground, in world units."
         }
-      ]
+      ],
+      "note": "A client sends updates at the spell's own interval, at least 0.1 seconds, where the spell has one; it ends the charge as the key is pressed again, or released where casting on release, or as the window loses focus."
     },
     {
       "from": "4.1.0.171",
@@ -520,7 +579,8 @@
           "type": "f32",
           "note": "Where the cursor points on the ground, in world units."
         }
-      ]
+      ],
+      "note": "A client sends updates at the spell's own interval, at least 0.1 seconds, where the spell has one; it ends the charge as the key is pressed again, or released where casting on release, or as the window loses focus."
     },
     {
       "from": "4.11.0.386",
@@ -568,7 +628,8 @@
           "type": "f32",
           "note": "Where the cursor points on the ground, in world units."
         }
-      ]
+      ],
+      "note": "A client sends updates at the spell's own interval, at least 0.1 seconds, where the spell has one; it ends the charge as the key is pressed again, or released where casting on release, or as the window loses focus."
     },
     {
       "from": "4.18.0.271",
@@ -621,7 +682,8 @@
           "type": "f32",
           "note": "Where the cursor points on the ground, in world units."
         }
-      ]
+      ],
+      "note": "A client sends updates at the spell's own interval, at least 0.1 seconds, where the spell has one; it ends the charge as the key is pressed again, or released where casting on release, or as the window loses focus."
     }
   ]
 }

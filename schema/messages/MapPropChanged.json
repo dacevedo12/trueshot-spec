@@ -413,6 +413,77 @@
     },
     {
       "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 218,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The name of the animation, for animate; a client reads it for no other change. The name ends at its first zero byte, and the bytes after it carry no meaning."
+        },
+        {
+          "name": "first",
+          "type": "f32",
+          "note": "For animate, when the animation starts, in seconds of match time."
+        },
+        {
+          "name": "second",
+          "type": "f32",
+          "note": "For animate, how long the animation runs, in seconds."
+        },
+        {
+          "name": "prop",
+          "type": "u32",
+          "note": "The object changed."
+        },
+        {
+          "name": "value",
+          "type": "u32",
+          "note": "A value the change uses: for animate, the animation's flags. A client does not read it for linkEffect."
+        },
+        {
+          "name": "change",
+          "type": "u8",
+          "note": "What changes. A client does nothing for any other value, nor where prop names no prop it holds.",
+          "values": {
+            "0": {
+              "name": "animate",
+              "note": "Play the animation name, with value as its flags, starting at first (match time in seconds) for second seconds; one with the same name and flags as the last animate the client took for that prop starts nothing, playing or not. option, effect and point have no effect."
+            },
+            "1": {
+              "name": "linkEffect",
+              "note": "Drive the prop's particle value effect from capture point point; a client refuses the change where option is not zero. name, first, second and value have no effect."
+            },
+            "2": {
+              "name": "look",
+              "note": "A client does nothing."
+            }
+          }
+        },
+        {
+          "name": "option",
+          "type": "u8",
+          "note": "For linkEffect, zero; a client reads it for no other change."
+        },
+        {
+          "name": "effect",
+          "type": "u8",
+          "note": "For linkEffect, which of the prop's effect values to drive."
+        },
+        {
+          "name": "point",
+          "type": "u8",
+          "note": "For linkEffect, which capture point drives it."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.127",
       "until": "1.0.0.128",
       "channel": "events",
       "command": 218,

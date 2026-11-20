@@ -2,10 +2,62 @@
   "$schema": "../meta/message.json",
   "message": "SpellInSlot",
   "system": "spells",
-  "note": "What a server sends to put a spell in one of a unit's slots. A server names in the header the unit this is about.",
+  "note": "What a server sends to put a spell in one of a unit's slots.",
   "revisions": [
     {
       "from": "1.0.0.124",
+      "until": "1.0.0.126",
+      "channel": "events",
+      "command": 115,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit whose slot this is. A client ignores the message where it does not know the unit."
+        },
+        {
+          "name": "spell",
+          "type": "u32",
+          "note": "Which spell, by the number its name gives, as spec/objects.md works it out."
+        },
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot."
+        }
+      ],
+      "note": "A server names in the header the unit this is about."
+    },
+    {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 115,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit whose slot this is. A client ignores the message where it does not know the unit."
+        },
+        {
+          "name": "spell",
+          "type": "u32",
+          "note": "Which spell, by the number its name gives, as spec/objects.md works it out."
+        },
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot."
+        }
+      ],
+      "note": "A client reads nothing of the header: it acts on unit."
+    },
+    {
+      "from": "1.0.0.127",
       "until": "1.0.0.128",
       "channel": "events",
       "command": 115,
@@ -27,7 +79,8 @@
           "type": "u8",
           "note": "Which slot."
         }
-      ]
+      ],
+      "note": "A server names in the header the unit this is about."
     },
     {
       "from": "1.0.0.128",
@@ -52,7 +105,8 @@
           "type": "u8",
           "note": "Which slot."
         }
-      ]
+      ],
+      "note": "A server names in the header the unit this is about."
     },
     {
       "from": "1.0.0.132",
@@ -77,7 +131,8 @@
           "type": "u8",
           "note": "Which slot."
         }
-      ]
+      ],
+      "note": "A server names in the header the unit this is about."
     },
     {
       "from": "1.0.0.138",
@@ -128,7 +183,8 @@
           "type": "u8",
           "note": "Which slot."
         }
-      ]
+      ],
+      "note": "A server names in the header the unit this is about."
     },
     {
       "from": "1.0.0.150",
@@ -153,7 +209,8 @@
           "type": "u8",
           "note": "Which slot."
         }
-      ]
+      ],
+      "note": "A server names in the header the unit this is about."
     },
     {
       "from": "3.01.0.1",
@@ -178,7 +235,8 @@
           "type": "u8",
           "note": "Which slot."
         }
-      ]
+      ],
+      "note": "A server names in the header the unit this is about."
     },
     {
       "from": "4.11.0.386",
@@ -203,7 +261,8 @@
           "type": "u8",
           "note": "Which slot."
         }
-      ]
+      ],
+      "note": "A server names in the header the unit this is about."
     }
   ]
 }

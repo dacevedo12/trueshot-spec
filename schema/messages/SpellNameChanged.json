@@ -346,6 +346,74 @@
     },
     {
       "from": "1.0.0.124",
+      "until": "1.0.0.126",
+      "command": 53,
+      "channel": "events",
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "which",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "slot",
+              "width": 7,
+              "note": "Which slot. A champion's own spells count from 0."
+            },
+            {
+              "name": "summonerSlots",
+              "width": 1,
+              "note": "Set where the slot counts among the summoner slots, so that 0 and 1 name those two. Only a champion has them: for any other unit the bit set has no defined effect."
+            }
+          ]
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "The name the client loads the spell under, ended by a zero byte. A client shows the named spell's icon in the slot, and treats a name it has no spell for as an error."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "command": 53,
+      "channel": "events",
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "which",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "slot",
+              "width": 7,
+              "note": "Which slot. A champion's own spells count from 0."
+            },
+            {
+              "name": "summonerSlots",
+              "width": 1,
+              "note": "Set where the slot counts among the summoner slots, so that 0 and 1 name those two. Only a champion has them: for any other unit the bit set has no defined effect."
+            }
+          ]
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "The name the client loads the spell under, ended by a zero byte. A client shows the named spell's icon in the slot; at a name it has no spell for, it stops handling the message."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.127",
       "until": "1.0.0.128",
       "command": 53,
       "channel": "events",

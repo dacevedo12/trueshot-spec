@@ -81,6 +81,48 @@
     },
     {
       "from": "1.0.0.138",
+      "until": "1.0.0.140",
+      "channel": "requests",
+      "command": 88,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "maskedStatus",
+          "type": "u32",
+          "note": "A status, masked. Taken by exclusive or with mask and with the client's own champion id, it gives 262917615 where the client's check of itself found a fault, and any other value otherwise. While watching a match, a client leaves this and mask unset, so they carry no meaning."
+        },
+        {
+          "name": "mask",
+          "type": "u32",
+          "note": "A random value the client picks to mask the one above."
+        }
+      ],
+      "note": "It comes unprompted, before any start of play reaches the client."
+    },
+    {
+      "from": "1.0.0.140",
+      "until": "1.0.0.141",
+      "channel": "requests",
+      "command": 88,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "maskedStatus",
+          "type": "u32",
+          "note": "A status, masked. Taken by exclusive or with mask and with the client's own champion id, it gives 262917615 where the client found certain programs running beside it, and otherwise a random value other than that. While watching a match, a client leaves this and mask unset, so they carry no meaning."
+        },
+        {
+          "name": "mask",
+          "type": "u32",
+          "note": "A random value the client picks to mask the one above."
+        }
+      ],
+      "note": "A client sends it as SpawnEnd arrives, and again for each SpawnEnd after."
+    },
+    {
+      "from": "1.0.0.141",
       "until": "1.0.0.144",
       "channel": "requests",
       "command": 88,

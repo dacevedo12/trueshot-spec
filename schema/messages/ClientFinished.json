@@ -76,6 +76,16 @@
     },
     {
       "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "requests",
+      "command": 145,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client sends it each time GameEnded arrives once StartGame has put it in play, while playing a replay too; for one arriving before, it leaves without sending it."
+    },
+    {
+      "from": "1.0.0.127",
       "until": "1.0.0.132",
       "channel": "requests",
       "command": 145,
@@ -106,6 +116,26 @@
     },
     {
       "from": "1.0.0.139",
+      "until": "1.0.0.140",
+      "channel": "requests",
+      "command": 147,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client sends it each time GameEnded arrives after the match has started. The header carries the client's own champion's net id."
+    },
+    {
+      "from": "1.0.0.140",
+      "until": "1.0.0.141",
+      "channel": "requests",
+      "command": 147,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client sends it each time GameEnded arrives after the match has started. The header carries zero."
+    },
+    {
+      "from": "1.0.0.141",
       "until": "1.0.0.144",
       "channel": "requests",
       "command": 147,

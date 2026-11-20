@@ -120,6 +120,62 @@
     },
     {
       "from": "1.0.0.138",
+      "until": "1.0.0.140",
+      "channel": "events",
+      "command": 98,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "rules",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "pausing",
+              "width": 1,
+              "note": "Set to have a client that is not watching the match show a notice in its chat that pausing is allowed. A client keeps nothing of it, and it limits no pausing."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ],
+      "note": "A client skips the start only once the match has ended or it is leaving: after GameEnded, Shutdown or an exit. Before, during and after spawning, it starts again."
+    },
+    {
+      "from": "1.0.0.140",
+      "until": "1.0.0.141",
+      "channel": "events",
+      "command": 98,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "rules",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "pausing",
+              "width": 1,
+              "note": "Set to have a client that is not watching the match show a notice in its chat that pausing is allowed. A client keeps nothing of it, and it limits no pausing."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ],
+      "note": "A client skips the start where it arrives before loading has set up the match's world, and once the match has ended or it is leaving: after GameEnded, Shutdown or an exit. Before, during and after spawning, it starts again."
+    },
+    {
+      "from": "1.0.0.141",
       "until": "1.0.0.144",
       "channel": "events",
       "command": 98,

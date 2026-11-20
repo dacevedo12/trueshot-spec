@@ -51,9 +51,9 @@ unmute a kind of sound (`VolumeMuted`) and fade sound effects out
 >
 > `VoiceEvent` carries only the event's name and asks for no answer.
 
-<!-- holds from 0.9.25.24 up to 1.0.0.141 -->
+<!-- holds from 0.9.25.24 up to 1.0.0.140 -->
 
-> **In 0.9.25.24–1.0.0.140**
+> **In 0.9.25.24–1.0.0.139**
 >
 > Where a `VoiceEvent` asks for an answer, a client sends `VoiceEventDone` once
 > it has played the event.
@@ -64,11 +64,19 @@ unmute a kind of sound (`VolumeMuted`) and fade sound effects out
 >
 > A client never answers a `VoiceEvent` it cannot play.
 
-<!-- holds from 1.0.0.126 up to 1.0.0.141 -->
+<!-- holds from 1.0.0.126 up to 1.0.0.140 -->
 
-> **In 1.0.0.126–1.0.0.140**
+> **In 1.0.0.126–1.0.0.139**
 >
 > A client answers a `VoiceEvent` it cannot play at once.
+
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+
+> **In 1.0.0.140**
+>
+> A client never answers a `VoiceEvent` for a voice tied to a unit, and drops
+> one of a kind it does not know. Any other it answers where it asks for an
+> answer, and at once where it cannot play it, whether it asks or not.
 
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 

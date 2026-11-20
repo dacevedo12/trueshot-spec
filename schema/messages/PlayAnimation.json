@@ -1241,7 +1241,7 @@
     },
     {
       "from": "1.0.0.139",
-      "until": "1.0.0.141",
+      "until": "1.0.0.140",
       "channel": "events",
       "command": 186,
       "direction": "serverToClient",
@@ -1319,6 +1319,87 @@
         }
       ],
       "note": "A unit playing a locked animation ignores the message. A client stops any emote playing first, and plays at normal speed."
+    },
+    {
+      "from": "1.0.0.140",
+      "until": "1.0.0.141",
+      "channel": "events",
+      "command": 186,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 4,
+          "bits": [
+            {
+              "name": "loop",
+              "width": 1,
+              "note": "Set to loop it."
+            },
+            {
+              "name": "holdLastFrame",
+              "width": 1,
+              "note": "Set to hold its last frame once it ends."
+            },
+            {
+              "name": "queue",
+              "width": 1,
+              "note": "Set to play it once the animation playing ends, rather than now."
+            },
+            {
+              "name": "queueLast",
+              "width": 1,
+              "note": "Set to play it after every animation already waiting."
+            },
+            {
+              "name": "replaceable",
+              "width": 1,
+              "note": "Set to let the next animation queued after it start at once."
+            },
+            {
+              "name": "locked",
+              "width": 1,
+              "note": "Set where the unit ignores this message while the animation plays."
+            },
+            {
+              "name": "noRestart",
+              "width": 1,
+              "note": "Where the same animation already plays on the unit, a client keeps it and starts nothing new."
+            },
+            {
+              "name": "noFadeIn",
+              "width": 1,
+              "note": "The switch is instant, with no blend; only where the animation starts at once rather than queued."
+            },
+            {
+              "name": "jumpToEnd",
+              "width": 1,
+              "note": "The animation is held at its end: without loop or holdLastFrame it ends at once, and with holdLastFrame it shows its last frame."
+            },
+            {
+              "name": "unused",
+              "width": 23,
+              "note": "Unused; a server writes zero."
+            }
+          ],
+          "note": "How the animation plays."
+        },
+        {
+          "name": "scaleTime",
+          "type": "f32",
+          "note": "Where above zero, how many seconds the animation is stretched or squeezed to last."
+        },
+        {
+          "name": "animation",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "The animation's name; a client reads it to its first zero byte, at any length. Nothing plays for a name the unit does not have."
+        }
+      ],
+      "note": "A unit playing a locked animation ignores the message. A client plays it at normal speed."
     },
     {
       "from": "1.0.0.141",

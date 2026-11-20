@@ -93,9 +93,9 @@ revision claims that value both ways.
 >
 > A server MAY send a container on the events channel. A client sends none.
 
-<!-- holds from 1.0.0.96 up to 4.20.0.315 -->
+<!-- holds from 1.0.0.96 up to 1.0.0.126 -->
 
-> **In 1.0.0.96–4.19**
+> **In 1.0.0.96–1.0.0.125**
 >
 > Where an entry's size bits read 63, its size is the next byte instead.
 
@@ -104,6 +104,26 @@ revision claims that value both ways.
 > **In 1.0.0.126–3.10**
 >
 > A client unwraps a container on any channel.
+
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
+
+> **In 1.0.0.126**
+>
+> Where an entry's size bits read 63, its size is one byte that follows the
+> command and object identifier, just before the body.
+
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+
+> **In 1.0.0.140**
+>
+> Where an entry's size bits read 63, its size is one byte that follows the
+> command and object identifier, just before the body.
+
+<!-- holds from 1.0.0.141 up to 4.20.0.315 -->
+
+> **In 1.0.0.141–4.19**
+>
+> Where an entry's size bits read 63, its size is the next byte instead.
 
 <!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 

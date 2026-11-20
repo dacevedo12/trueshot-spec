@@ -287,6 +287,68 @@
     },
     {
       "from": "1.0.0.128",
+      "until": "1.0.0.140",
+      "channel": "clock",
+      "command": 8,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "value",
+          "type": "u32",
+          "note": "The client id the sender holds, as it sends in clientId in Camera and CameraLock."
+        },
+        {
+          "name": "serverSaid",
+          "type": "f32",
+          "note": "What the server last said the clock stood at, in seconds."
+        },
+        {
+          "name": "clientSaid",
+          "type": "f32",
+          "note": "What the client's own clock reads, in seconds, just after it set itself from that statement: elapsed plus its smoothed estimate of the delay."
+        },
+        {
+          "name": "check",
+          "type": "bytes",
+          "size": 32,
+          "note": "Thirty-two bytes every client of this build sends alike; a server ignores them."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.140",
+      "until": "1.0.0.141",
+      "channel": "clock",
+      "command": 8,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "value",
+          "type": "u32",
+          "note": "The client id the sender holds, as it sends in clientId in Camera and CameraLock."
+        },
+        {
+          "name": "serverSaid",
+          "type": "f32",
+          "note": "What the server last said the clock stood at, in seconds."
+        },
+        {
+          "name": "clientSaid",
+          "type": "f32",
+          "note": "What the client's own clock reads, in seconds, just after it set itself from that statement: elapsed plus its smoothed estimate of the delay."
+        },
+        {
+          "name": "check",
+          "type": "bytes",
+          "size": 32,
+          "note": "Thirty-two bytes every unmodified client of this build sends alike."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.141",
       "until": "3.12.0.251",
       "channel": "clock",
       "command": 8,

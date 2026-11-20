@@ -44,6 +44,12 @@ seconds.
 >
 > Sent during a hold, `GameSpeed` takes effect as the match resumes.
 
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+
+> **In 1.0.0.140**
+>
+> No unit advances for `StatTick`.
+
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
 > **In 3.10**
@@ -107,9 +113,10 @@ A server holds the match with `Paused`.
 
 > **In 1.0.0.126**
 >
-> Where the message's flag asks it, a client announces in chat the player that
-> held the match, unless the message names no one. Every hold shows a box with
-> the time left.
+> Where the message's flag is set, a client announces in chat the player that
+> held the match, unless the message names no one, and, where it has a player of
+> its own, shows a box with the time left. A hold with the flag clear shows
+> nothing.
 
 <!-- holds from 1.0.0.140 up to 4.20.0.315 -->
 
@@ -117,6 +124,14 @@ A server holds the match with `Paused`.
 >
 > A client shows a tournament's hold, crediting the seat that asked, where the
 > message says it is one.
+
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+
+> **In 1.0.0.140**
+>
+> A client shows nothing for any other hold. A tournament's hold also shows a
+> box with the time left and locks input, and only such a hold locks it. A
+> client announces no hold whose message names no one.
 
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
@@ -143,9 +158,26 @@ A server ends the hold with `Resumed`.
 > A client reads nothing from `Resumed`. Where the match is held, it goes on at
 > once at the speed it had, with no countdown and no announcement.
 
-<!-- holds from 1.0.0.126 up to 4.1.0.171 -->
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
-> **In 1.0.0.126–3.15**
+> **In 1.0.0.126**
+>
+> `Resumed` ends the hold either at once or after a countdown, during which the
+> match stays held. A client shows the countdown only where the hold it ends had
+> its flag set, and ignores a `Resumed` with a countdown that arrives while one
+> runs.
+
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+
+> **In 1.0.0.140**
+>
+> `Resumed` ends the hold either at once or after a countdown, during which the
+> match stays held. A client shows the countdown only for a tournament's hold. A
+> `Resumed` arriving while the match is not held leaves the match as it is.
+
+<!-- holds from 1.0.0.141 up to 4.1.0.171 -->
+
+> **In 1.0.0.141–3.15**
 >
 > `Resumed` ends the hold either at once or after a countdown the client shows,
 > during which the match stays held.
@@ -174,7 +206,9 @@ A server ends the hold with `Resumed`.
 
 > **In 1.0.0.140**
 >
-> Input stays locked during the countdown.
+> Input stays locked during the countdown. A client announces who resumed the
+> match even where it was not held, and announces nothing where `Resumed` names
+> no one.
 
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
@@ -264,7 +298,7 @@ player's side and sends `ClientFinished`.
 
 > **In 1.0.0.126**
 >
-> `VictoryDance` moves every unit.
+> A client moves no neutral unit for `VictoryDance`.
 
 <!-- holds from 1.0.0.140 up to 3.11.0.306 -->
 
@@ -340,6 +374,14 @@ A server tells the others that a player's client dropped with
 >
 > A client shows a notice in chat for `PlayerDisconnected`.
 
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+
+> **In 1.0.0.140**
+>
+> A client shows that notice only where it holds the champion
+> `PlayerDisconnected` names, other than its own, and only on the side the
+> message's flags choose.
+
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
 > **In 3.10**
@@ -354,11 +396,15 @@ A server tells the others that a player's client dropped with
 > A client sends `ReconnectedInMatch` on every connection it makes, the first
 > included, with a byte that is 0 where the match is in play and 1 otherwise.
 >
-> A client whose connection drops before play begins leaves rather than
-> connecting again.
->
 > `Reconnected` announces that a player came back. A client shows it in chat for
 > any other player, ally or enemy.
+
+<!-- holds from 0.9.25.24 up to 1.0.0.140 -->
+
+> **In 0.9.25.24–1.0.0.139**
+>
+> A client whose connection drops before play begins leaves rather than
+> connecting again.
 
 <!-- holds from 0.9.25.24 up to 1.0.0.127 -->
 

@@ -252,6 +252,34 @@
     },
     {
       "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 165,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "turret",
+          "type": "u32",
+          "note": "The name the turret answers to, so later messages can name it."
+        },
+        {
+          "name": "node",
+          "type": "u8",
+          "note": "Which network node the object belongs to, in a field of its own."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "What this turret is called, so a client can tell one from another. Written out in full and padded with zero bytes to the width above."
+        }
+      ],
+      "note": "A client matches name against the map's turrets without regard to case. With no match it does nothing, and removes no object; a matched turret missing or dead is rebuilt before it takes the id."
+    },
+    {
+      "from": "1.0.0.127",
       "until": "1.0.0.129",
       "channel": "events",
       "command": 165,

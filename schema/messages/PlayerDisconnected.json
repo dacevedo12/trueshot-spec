@@ -230,6 +230,22 @@
     },
     {
       "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 160,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The player's client id. A client names the player in the notice through it, whether or not a champion it knows carries that client id."
+        }
+      ],
+      "note": "A client shows a chat notice naming the player that client id belongs to, whenever its interface exists: coloured for whether that player is on its own side where it has a champion of its own and is not watching the match, and otherwise in that player's side's colour."
+    },
+    {
+      "from": "1.0.0.127",
       "until": "1.0.0.128",
       "channel": "events",
       "command": 160,

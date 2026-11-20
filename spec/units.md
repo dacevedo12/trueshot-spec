@@ -43,7 +43,8 @@ says which of them a client ignores while it resynchronises.
 
 > **In 1.0.0.126**
 >
-> A client acts on a `CreateChampion` or a `CreateNeutral` whenever it arrives.
+> A client drops a `CreateChampion` or a `CreateNeutral` that arrives before it
+> has loaded the map's ground grid, which it loads while loading the match.
 >
 > A client builds a prop from the character its `MapProp` names, loading that
 > character from its own files when it has not already, and fails soon after the

@@ -132,9 +132,9 @@ A server reports damage with `Damage`.
 > `Damage` shows a figure for the results that carry one, normal and critical;
 > zero is the result that shows the unit as invulnerable, not a plain hit.
 
-<!-- holds from 0.9.25.24 up to 3.11.0.306 -->
+<!-- holds from 0.9.25.24 up to 1.0.0.140 -->
 
-> **In 0.9.25.24–3.10**
+> **In 0.9.25.24–1.0.0.139**
 >
 > Of the other results of `Damage`, 1 shows nothing, 2 a dodge and 5 a miss; 3
 > is critical, and 4 and any above 5 are normal.
@@ -144,6 +144,21 @@ A server reports damage with `Damage`.
 > **In 1.0.0.140–4.20**
 >
 > The health bar moves as [replication](replication.md) states the health.
+
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+
+> **In 1.0.0.140**
+>
+> A client reads only the low seven bits of a `Damage` result, so 128 and up act
+> as that value less 128. Of the other results, 1 shows nothing, 2 a dodge and 5
+> a miss; 3 is critical, and 4 and 6 to 127 are normal.
+
+<!-- holds from 1.0.0.141 up to 3.11.0.306 -->
+
+> **In 1.0.0.141–3.10**
+>
+> Of the other results of `Damage`, 1 shows nothing, 2 a dodge and 5 a miss; 3
+> is critical, and 4 and any above 5 are normal.
 
 <!-- holds from 3.10.0.237 up to 4.20.0.315 -->
 
@@ -266,6 +281,13 @@ A client sends `UseObject` as its player right-clicks a unit that can be used.
 >
 > A client also sends `UseObject` for a unit its champion is attacking, as that
 > unit changes side.
+
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+
+> **In 1.0.0.140**
+>
+> As a unit changes side, a client sends `UseObject` naming it for every unit it
+> holds that targets it, with that unit in the header.
 
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 

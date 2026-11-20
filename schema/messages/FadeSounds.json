@@ -231,6 +231,37 @@
     },
     {
       "from": "1.0.0.138",
+      "until": "1.0.0.140",
+      "channel": "events",
+      "command": 101,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "time",
+          "type": "f32",
+          "note": "How long the sounds take to fade; the unit is not recorded."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.140",
+      "until": "1.0.0.141",
+      "channel": "events",
+      "command": 101,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "time",
+          "type": "f32",
+          "note": "How long the sounds take to fade; the unit is not recorded."
+        }
+      ],
+      "note": "A client watching a match ignores it."
+    },
+    {
+      "from": "1.0.0.141",
       "until": "1.0.0.144",
       "channel": "events",
       "command": 101,

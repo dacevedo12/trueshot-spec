@@ -226,6 +226,46 @@
     },
     {
       "from": "1.0.0.124",
+      "until": "1.0.0.126",
+      "channel": "events",
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "command": 133,
+      "fields": [
+        {
+          "name": "announcement",
+          "type": "u32",
+          "note": "Which of the client's 28 announcements, 0 to 27. The text of each is the client's own and is not recorded here. 4294967295 shows a fixed text of the client's own that is none of them; any other value has no defined effect."
+        },
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "A unit whose name the announcement carries, or zero for an announcement that names none. A client shows nothing where it does not know the unit."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "command": 133,
+      "fields": [
+        {
+          "name": "announcement",
+          "type": "u32",
+          "note": "Which of the client's 28 announcements, 0 to 27. The text of each is the client's own and is not recorded here. 5, 6, 20, 21 and 25 show the same placeholder text of the client's own, as 28 does. 4294967295 shows a fixed text of the client's own that is none of them; any other value has no defined effect."
+        },
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "A unit whose name the announcement carries, or zero for an announcement that names none. A client shows nothing where it does not know the unit."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.127",
       "until": "1.0.0.132",
       "channel": "events",
       "direction": "serverToClient",

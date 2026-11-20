@@ -58,6 +58,58 @@
     },
     {
       "from": "1.0.0.124",
+      "until": "1.0.0.126",
+      "channel": "events",
+      "command": 37,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit granted it."
+        },
+        {
+          "name": "source",
+          "type": "u32",
+          "note": "What it came from, or zero where nothing did."
+        },
+        {
+          "name": "amount",
+          "type": "f32",
+          "note": "How much."
+        }
+      ],
+      "note": "Where amount is above 0.5, unit is the client's own champion and source names a unit it holds, a client floats the gold over the source. Otherwise, where it holds the unit, it shows the amount on the unit as a gain or a loss, and nothing for zero; where that appears is not recorded."
+    },
+    {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 37,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit granted it."
+        },
+        {
+          "name": "source",
+          "type": "u32",
+          "note": "What it came from, or zero where nothing did."
+        },
+        {
+          "name": "amount",
+          "type": "f32",
+          "note": "How much."
+        }
+      ],
+      "note": "Where amount is above 0.5, unit is the client's own champion and source names a unit it holds, a client floats the gold over the source. Otherwise, where it holds the unit, it floats the amount over the unit as a gain or a loss, and nothing for zero. The gold the unit holds does not change."
+    },
+    {
+      "from": "1.0.0.127",
       "until": "1.0.0.128",
       "channel": "events",
       "command": 37,
@@ -84,6 +136,58 @@
     },
     {
       "from": "1.0.0.128",
+      "until": "1.0.0.140",
+      "channel": "events",
+      "command": 37,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit granted it."
+        },
+        {
+          "name": "source",
+          "type": "u32",
+          "note": "What it came from, or zero where nothing did."
+        },
+        {
+          "name": "amount",
+          "type": "f32",
+          "note": "How much."
+        }
+      ],
+      "note": "A client only floats the amount as text: the gold the unit holds does not change. Where unit is the client's own champion, amount is above 0.5 and source names a unit the client holds other than its own player, the text floats over source; otherwise it floats over unit, as a gain where amount is above zero and a loss where it is below."
+    },
+    {
+      "from": "1.0.0.140",
+      "until": "1.0.0.141",
+      "channel": "events",
+      "command": 37,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit granted it. A server names a champion: any other unit the client holds has no defined effect."
+        },
+        {
+          "name": "source",
+          "type": "u32",
+          "note": "What it came from, or zero where nothing did."
+        },
+        {
+          "name": "amount",
+          "type": "f32",
+          "note": "How much."
+        }
+      ],
+      "note": "A client only floats the amount as text: the gold the unit holds does not change. Where unit is the client's own champion, amount is above 0.5 and source names a unit the client holds other than its own player, the text floats over source; otherwise, where it holds unit, it floats over unit, as a gain where amount is above zero, a loss where it is below, and nothing for zero."
+    },
+    {
+      "from": "1.0.0.141",
       "until": "1.0.0.144",
       "channel": "events",
       "command": 37,

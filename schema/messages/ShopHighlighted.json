@@ -406,6 +406,31 @@
     },
     {
       "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "command": 182,
+      "channel": "events",
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "element",
+          "type": "u8",
+          "note": "A shop element blinks once, where the shop window is open. Element 0 is the buy button, 1 the sell button, 2 the shop item number names, 3 the item second names within the category number names, and 4 the recommended item number names. A client ignores any value above 4."
+        },
+        {
+          "name": "number",
+          "type": "u8",
+          "note": "Which of the element's entries, for elements 2, 3 and 4; a client reads nothing here for 0 and 1."
+        },
+        {
+          "name": "second",
+          "type": "u8",
+          "note": "For the shop's element 3, which item within the category; a client reads nothing here otherwise."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.127",
       "until": "1.0.0.132",
       "command": 182,
       "channel": "events",
@@ -531,7 +556,7 @@
     },
     {
       "from": "1.0.0.139",
-      "until": "1.0.0.141",
+      "until": "1.0.0.140",
       "command": 184,
       "channel": "events",
       "direction": "serverToClient",
@@ -541,6 +566,31 @@
           "name": "element",
           "type": "u8",
           "note": "A shop element blinks once, where the shop window is open. Element 0 is the buy button, 1 the sell button, 2 the shop item number names, 3 the item second names within the category number names, and 4 the recommended item number names. A client ignores any value above 4."
+        },
+        {
+          "name": "number",
+          "type": "u8",
+          "note": "Which of the element's entries."
+        },
+        {
+          "name": "second",
+          "type": "u8",
+          "note": "For the shop's element 3, which item within the category; a client reads nothing here otherwise."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.140",
+      "until": "1.0.0.141",
+      "command": 184,
+      "channel": "events",
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "element",
+          "type": "u8",
+          "note": "A shop element blinks once; a client does not check that the shop window is open. Element 0 is the buy button, 1 the sell button, 2 the shop item number names, 3 the item second names within the category number names, and 4 the recommended item number names. A client ignores any value above 4."
         },
         {
           "name": "number",

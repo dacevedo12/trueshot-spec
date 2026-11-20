@@ -58,6 +58,58 @@
     },
     {
       "from": "1.0.0.110",
+      "until": "1.0.0.126",
+      "channel": "clock",
+      "command": 24,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot."
+        },
+        {
+          "name": "level",
+          "type": "u8",
+          "note": "The level the spell now stands at. A client takes any level above 6 as 6."
+        },
+        {
+          "name": "pointsLeft",
+          "type": "u8",
+          "note": "How many spell points are left unspent."
+        }
+      ],
+      "note": "On any channel a client sets the slot's level to level, and the unspent spell points to pointsLeft; it raises the spell no further."
+    },
+    {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "clock",
+      "command": 24,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot."
+        },
+        {
+          "name": "level",
+          "type": "u8",
+          "note": "The level the spell now stands at. A client takes any level above 6 as 6."
+        },
+        {
+          "name": "pointsLeft",
+          "type": "u8",
+          "note": "How many spell points are left unspent."
+        }
+      ],
+      "note": "On any channel a client sets the slot's level to level, and the unspent spell points to pointsLeft, for a champion only; it ignores the message for any other unit, and raises the spell no further."
+    },
+    {
+      "from": "1.0.0.127",
       "until": "1.0.0.128",
       "channel": "clock",
       "command": 24,

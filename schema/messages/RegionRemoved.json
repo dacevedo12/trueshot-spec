@@ -187,6 +187,36 @@
     },
     {
       "from": "1.0.0.124",
+      "until": "1.0.0.126",
+      "channel": "events",
+      "command": 56,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "region",
+          "type": "u32",
+          "note": "The region to take away, by the name RegionAdded gave it."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 56,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "region",
+          "type": "u32",
+          "note": "The region to take away, by its id: a client removes every region holding it, placed by RegionAdded or RegionAttached."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.127",
       "until": "1.0.0.144",
       "channel": "events",
       "command": 56,
