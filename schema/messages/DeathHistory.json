@@ -2060,7 +2060,7 @@
         {
           "name": "entryCount",
           "type": "u32",
-          "note": "How many entries follow. Read as signed: from 2147483648 up it parses no entries."
+          "note": "How many entries follow. Read as signed: from 2147483648 up it parses no entries. A client parses that many from the bytes blobLength gives without checking they fit: an entry starting at or past their end makes it fail, and one running past it has no defined effect. Bytes left after the last entry are ignored."
         },
         {
           "name": "entries",
@@ -2085,7 +2085,7 @@
               {
                 "name": "event",
                 "type": "u8",
-                "note": "Which event, from 0 to 73, and so which fields follow.",
+                "note": "Which event, from 0 to 73, and so which fields follow. A larger value has no defined effect.",
                 "values": {
                   "0": {
                     "name": "died"

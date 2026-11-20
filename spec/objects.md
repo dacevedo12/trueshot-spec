@@ -98,21 +98,20 @@ gives the client its own client id.
 > Registration pairs each player id with a client id. Every later message that
 > names a player by client id is read through that pairing.
 
-<!-- holds from 1.0.0.58 up to 1.0.0.96 -->
+<!-- holds from 1.0.0.58 up to 1.0.0.97 -->
 
-> **In 1.0.0.58–1.0.0.95**
+> **In 1.0.0.58–1.0.0.96**
 >
-> A client acts on that `Registered` alone and ignores every other, so it pairs
-> no other player's player id with a client id.
+> A client records the pair every `Registered` carries, and takes as its own
+> only the one carrying its own player id.
 
 <!-- holds from 1.0.0.96 up to 1.0.0.97 -->
 
 > **In 1.0.0.96**
 >
-> A client records the pair every `Registered` carries, and takes as its own
-> only the one carrying its own player id. A server MUST send that `Registered`
-> before any `CreateTurret`, because a client given one before it has its own
-> client id stops.
+> A server MUST send the `Registered` carrying the client's own player id before
+> any `CreateTurret`, because a client given one before it has its own client
+> id stops.
 
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
@@ -231,13 +230,23 @@ naming a unit, an owner or a target carry one too.
 >
 > A client given a create message for a net id it already holds stops.
 
-<!-- holds from 0.9.25.24 up to 1.0.0.61 -->
+<!-- holds from 0.9.25.24 up to 1.0.0.58 -->
 
-> **In 0.9.25.24–1.0.0.60**
+> **In 0.9.25.24–1.0.0.57**
 >
 > A client that still holds the earlier object gives the net id to the new one,
 > so messages naming it reach the new object, and removing either leaves the id
 > naming neither.
+
+<!-- holds from 1.0.0.58 up to 1.0.0.61 -->
+
+> **In 1.0.0.58–1.0.0.60**
+>
+> Outside a resynchronisation, a client that still holds the earlier object
+> gives the net id to the new one, so messages naming it reach the new object,
+> and removing either leaves the id naming neither.
+> [Leaving and coming back](match.md#leaving-and-coming-back) says what a client
+> drops while it resynchronises.
 
 <!-- holds from 1.0.0.96 up to 1.0.0.97 -->
 
@@ -305,11 +314,12 @@ naming a unit, an owner or a target carry one too.
 
 A create message carries a node beside the object's net id.
 
-<!-- holds from 1.0.0.58 up to 1.0.0.96 -->
+<!-- holds from 1.0.0.58 up to 1.0.0.61 -->
 
-> **In 1.0.0.58–1.0.0.95**
+> **In 1.0.0.58–1.0.0.60**
 >
-> Nothing a player sees depends on it.
+> A client applies a `SpawnPet`'s effect and spell level only where the owner's
+> node is its own.
 
 <!-- holds from 1.0.0.96 up to 1.0.0.97 -->
 
@@ -419,9 +429,19 @@ Among the identifiers with that top byte are these:
 > | 1, 2 | the six `Barracks` names, `HQ_T1`, `HQ_T2`, `orderShop01`, `chaosShop01`, the six spawn points named `__P_…`, and turrets named `Turret_T1_…` and `Turret_T2_…`, `Turret_OrderTurretShrine` and `Turret_ChaosTurretShrine` among them |
 > | 3    | `Barracks_T1_C1`, `Barracks_T2_C1`, `HQ_T1`, `HQ_T2`, `OrderShop01`, `ChaosShop01`, `____P_Chaos_Spawn_Barracks__C01`, and turrets, `Turret_T1_C_08` among them                                                                       |
 
-<!-- holds from 1.0.0.58 up to 1.0.0.97 -->
+<!-- holds from 1.0.0.58 up to 1.0.0.61 -->
 
-> **In 1.0.0.58–1.0.0.96**
+> **In 1.0.0.58–1.0.0.60**
+>
+> | Map  | Holds                                                                                                                                                                         |
+> | ---- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+> | 1, 2 | the six `Barracks` names, `HQ_T1`, `HQ_T2`, `orderShop01`, `chaosShop01`, the six spawn points named `__P_…`                                                                  |
+> | 3    | `Barracks_T1_C1`, `Barracks_T2_C1`, `HQ_T1`, `HQ_T2`, `OrderShop01`, `ChaosShop01`, `____P_Chaos_Spawn_Barracks__C01`                                                         |
+> | 4    | `Barracks_T1_L1`, `Barracks_T1_R1`, `Barracks_T2_L1`, `Barracks_T2_R1`, `HQ_T1`, `HQ_T2`, `OrderShop01`, `chaosShop01`, the four spawn points named `__P_…L01` and `__P_…R01` |
+
+<!-- holds from 1.0.0.61 up to 1.0.0.97 -->
+
+> **In 1.0.0.61–1.0.0.96**
 >
 > | Map  | Holds                                                                                                                  |
 > | ---- | ---------------------------------------------------------------------------------------------------------------------- |

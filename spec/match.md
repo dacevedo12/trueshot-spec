@@ -38,6 +38,13 @@ seconds.
 >
 > No unit advances for `StatTick`.
 
+<!-- holds from 1.0.0.58 up to 1.0.0.61 -->
+
+> **In 1.0.0.58–1.0.0.60**
+>
+> A server MUST NOT send `GameSpeed` before the client's own champion exists,
+> because a client given one before then fails.
+
 <!-- holds from 1.0.0.126 up to 4.20.0.315 -->
 
 > **In 1.0.0.126–4.19**
@@ -258,9 +265,9 @@ player's side and sends `ClientFinished`.
 >
 > A client that receives `GameEnded` while still loading leaves at once.
 
-<!-- holds from 1.0.0.96 up to 1.0.0.97 -->
+<!-- holds from 1.0.0.58 up to 1.0.0.97 -->
 
-> **In 1.0.0.96**
+> **In 1.0.0.58–1.0.0.96**
 >
 > Before it leaves, it shows an error where it has no champion of its own yet.
 
@@ -399,9 +406,9 @@ A server tells the others that a player's client dropped with
 > `Reconnected` announces that a player came back. A client shows it in chat for
 > any other player, ally or enemy.
 
-<!-- holds from 0.9.25.24 up to 1.0.0.96 -->
+<!-- holds from 0.9.25.24 up to 1.0.0.58 -->
 
-> **In 0.9.25.24–1.0.0.95**
+> **In 0.9.25.24–1.0.0.57**
 >
 > A client whose connection drops before play begins leaves rather than
 > connecting again.
@@ -419,11 +426,23 @@ A server tells the others that a player's client dropped with
 > Where `Reconnected` names the client's own, the client resynchronises until
 > `ResyncEnded`.
 
+<!-- holds from 1.0.0.58 up to 1.0.0.97 -->
+
+> **In 1.0.0.58–1.0.0.96**
+>
+> A client whose connection drops before play begins, once the registration
+> answer has given it its own client id, leaves rather than connecting again.
+
 <!-- holds from 1.0.0.58 up to 1.0.0.61 -->
 
 > **In 1.0.0.58–1.0.0.60**
 >
 > A client sends `ReconnectedInMatch` right after the registration answer.
+>
+> While it resynchronises, a client ignores `SpawnFromBarracks`, `SpawnUnit` and
+> `CreateNeutral` naming a unit it already holds, a `CreateNeutral` or a
+> `SpawnUnit` for a unit it does not hold whose `asset` is empty, and a
+> `SpawnFromBarracks` for a unit it does not hold whose `kind` is above 4.
 
 <!-- holds from 1.0.0.96 up to 1.0.0.127 -->
 
@@ -435,9 +454,6 @@ A server tells the others that a player's client dropped with
 <!-- holds from 1.0.0.96 up to 1.0.0.97 -->
 
 > **In 1.0.0.96**
->
-> A client whose connection drops before play begins, once the registration
-> answer has given it its own client id, leaves rather than connecting again.
 >
 > While it resynchronises, a client also ignores a `CreateNeutral` or a
 > `SpawnUnit` for a unit it does not hold whose `asset` is empty, and a

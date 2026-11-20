@@ -100,7 +100,7 @@
         {
           "name": "target",
           "type": "u32",
-          "note": "The unit swung at. A client throws the swing at it, and drops the whole message where it does not know this unit."
+          "note": "The unit swung at. A client throws the swing at it; where it does not know this unit, it drops the swing and still places the swinging unit as fromX says."
         },
         {
           "name": "timing",
@@ -120,7 +120,7 @@
         {
           "name": "fromX",
           "type": "f32",
-          "note": "Where the swinging unit stands, along one ground axis, in world units. Where the point is on ground a unit can walk, a client drops any path the unit was following and makes the point where its movement ends, at zero speed; where the unit stands more than 400 units from it, measured along the ground alone, the client also places the unit there at once."
+          "note": "Where the swinging unit stands, along one ground axis, in world units. Where the point is on ground a unit can walk, a client makes it the point where the unit's movement ends, at zero speed. Wherever the point is, where the unit stands more than 400 units from it, measured along the ground alone, the client places the unit there at once."
         },
         {
           "name": "fromY",

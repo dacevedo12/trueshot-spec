@@ -6,6 +6,38 @@
   "revisions": [
     {
       "from": "0.9.22.14",
+      "until": "1.0.0.58",
+      "channel": "requests",
+      "command": 120,
+      "direction": "clientToServer",
+      "reliability": "unsequenced",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u32",
+          "note": "The number of the group it answers, as the group named itself."
+        }
+      ],
+      "note": "What a client sends for every WaypointGroup it receives, and for every WaypointGroupAtSpeed, Path and PathWithSpeed, as it takes it and before it moves any unit. The header names no object: it carries zero."
+    },
+    {
+      "from": "1.0.0.58",
+      "until": "1.0.0.61",
+      "channel": "requests",
+      "command": 120,
+      "direction": "clientToServer",
+      "reliability": "unsequenced",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u32",
+          "note": "The number of the group it answers, as the group named itself."
+        }
+      ],
+      "note": "What a client sends for every WaypointGroup it receives, and for every WaypointGroupAtSpeed, Path and PathWithSpeed, as it takes it and before it moves any unit; an answer to a Path or PathWithSpeed travels on the transient channel. The header names no object: it carries zero."
+    },
+    {
+      "from": "1.0.0.61",
       "until": "1.0.0.63",
       "channel": "requests",
       "command": 120,

@@ -1,0 +1,28 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "PlayAnimation",
+  "version": "1.0.0.58",
+  "note": "Laid out as a 1.0.0.58 client takes it.",
+  "bytes": "090000000100004000000000000000005370656c6c3100",
+  "fields": {
+    "command": 9,
+    "padding": "000000",
+    "netId": 1073741825,
+    "flags": {
+      "unusedLow": 0,
+      "loop": 0,
+      "holdLastFrame": 0,
+      "fadeOthers": 0,
+      "freezeOthers": 0,
+      "dropOthers": 0,
+      "locked": 0,
+      "fadeAtEnd": 0,
+      "syncPhase": 0,
+      "noFadeIn": 0,
+      "unused": 0
+    },
+    "scaleTime": 0,
+    "animation": "Spell1"
+  }
+}

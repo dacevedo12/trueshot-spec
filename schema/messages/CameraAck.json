@@ -22,6 +22,38 @@
     },
     {
       "from": "0.9.22.14",
+      "until": "1.0.0.58",
+      "channel": "events",
+      "command": 110,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u8",
+          "note": "The name the report carried. A client sends the report again until this comes back. It takes a value only where it is newer than the last it took, counting with wrap within 128 steps, and ignores any other."
+        }
+      ],
+      "note": "A server names in the header the champion of the player it is sent to."
+    },
+    {
+      "from": "1.0.0.58",
+      "until": "1.0.0.61",
+      "channel": "events",
+      "command": 110,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u8",
+          "note": "The name the report carried. A client sends the report again until this comes back. It takes a value only where it is newer than the last it took, counting with wrap within 128 steps, and ignores any other."
+        }
+      ],
+      "note": "A client ignores the header."
+    },
+    {
+      "from": "1.0.0.61",
       "until": "1.0.0.63",
       "channel": "events",
       "command": 110,

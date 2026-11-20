@@ -32,6 +32,58 @@
     },
     {
       "from": "0.9.22.14",
+      "until": "1.0.0.58",
+      "channel": "events",
+      "command": 72,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "A client reads nothing here."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "A client reads nothing here."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "A client reads nothing here."
+        }
+      ],
+      "note": "A client keeps the champion's level, experience, gold, maxima and spell ranks, and plays the coming back. A client returns the champion where it already stands. The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
+    },
+    {
+      "from": "1.0.0.58",
+      "until": "1.0.0.61",
+      "channel": "events",
+      "command": 72,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "A client reads nothing here."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "A client reads nothing here."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "A client reads nothing here."
+        }
+      ],
+      "note": "A client keeps the champion's level, experience, gold and maxima, keeps its spell ranks but lowers any above 5 in slots 0 to 3 to 5, restarts its idle animation and shows an effect where it stands. A client returns the champion where it already stands. The champion comes back with full health and resource, and for its own champion a client moves the camera onto it where the player asked for that."
+    },
+    {
+      "from": "1.0.0.61",
       "until": "1.0.0.63",
       "channel": "events",
       "command": 72,

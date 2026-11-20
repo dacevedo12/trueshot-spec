@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "GreyscaleWhenDead",
+  "version": "0.9.25.36",
+  "note": "Laid out as a 0.9.25.36 client takes it.",
+  "bytes": "aa0000000100004001",
+  "fields": {
+    "command": 170,
+    "padding": "000000",
+    "netId": 1073741825,
+    "state": {
+      "enabled": 1,
+      "unused": 0
+    }
+  }
+}

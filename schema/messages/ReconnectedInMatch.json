@@ -6,6 +6,38 @@
   "revisions": [
     {
       "from": "0.9.22.14",
+      "until": "1.0.0.58",
+      "channel": "requests",
+      "command": 117,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "loading",
+          "type": "u8",
+          "note": "Zero while the client is playing, in the state StartGame puts it in; 1 at any other time, including after GameEnded."
+        }
+      ],
+      "note": "A client sends it right after the server answers its registration. A client dropped while playing asks its player whether to reconnect; where the drop gives inactivity or another reason, it only says it cannot reconnect. One dropped at any other time closes."
+    },
+    {
+      "from": "1.0.0.58",
+      "until": "1.0.0.61",
+      "channel": "requests",
+      "command": 117,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "loading",
+          "type": "u8",
+          "note": "Zero while the client is playing, in the state StartGame puts it in; 1 at any other time, including after GameEnded."
+        }
+      ],
+      "note": "A client sends it right after the server answers its registration. A client dropped while playing, with its interface up, asks its player whether to reconnect for the reason 0; for the reason that means its player was away it says so, and for any other it says it cannot reconnect, each with one button to acknowledge. One dropped at any other time closes once it has its own client id."
+    },
+    {
+      "from": "1.0.0.61",
       "until": "1.0.0.63",
       "channel": "requests",
       "command": 117,

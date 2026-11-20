@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "CameraBehaviour",
   "system": "interface",
-  "note": "What a server sends to set a point a champion's player's view keeps to. The header names the champion.",
+  "note": "What a server sends to set a point for a champion's player's view. The header names the champion.",
   "revisions": [
     {
       "from": "0.8.13.26",
@@ -28,10 +28,62 @@
           "note": "Along the other ground axis, in world units."
         }
       ],
-      "note": "Only the client whose own champion the header names applies it."
+      "note": "The view keeps to the point. Only the client whose own champion the header names applies it."
     },
     {
       "from": "0.9.22.14",
+      "until": "1.0.0.58",
+      "channel": "events",
+      "command": 94,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Along one ground axis, in world units."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "In height, in world units."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Along the other ground axis, in world units."
+        }
+      ],
+      "note": "The view keeps to the point. Only the client whose own champion the header names applies it."
+    },
+    {
+      "from": "1.0.0.58",
+      "until": "1.0.0.61",
+      "channel": "events",
+      "command": 94,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Along one ground axis, in world units."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "In height, in world units."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Along the other ground axis, in world units."
+        }
+      ],
+      "note": "A client moves the view to the point once, shortly after the message arrives, and leaves it free to move away after. Only the client whose own champion the header names applies it."
+    },
+    {
+      "from": "1.0.0.61",
       "until": "1.0.0.63",
       "channel": "events",
       "command": 94,
@@ -54,7 +106,7 @@
           "note": "Along the other ground axis, in world units."
         }
       ],
-      "note": "Only the client whose own champion the header names applies it."
+      "note": "The view keeps to the point. Only the client whose own champion the header names applies it."
     },
     {
       "from": "1.0.0.63",
@@ -80,7 +132,7 @@
           "note": "Along the other ground axis, in world units."
         }
       ],
-      "note": "Only the client whose own champion the header names applies it."
+      "note": "The view keeps to the point. Only the client whose own champion the header names applies it."
     },
     {
       "from": "1.0.0.74",
@@ -106,7 +158,7 @@
           "note": "Along the other ground axis, in world units."
         }
       ],
-      "note": "Only the client whose own champion the header names applies it."
+      "note": "The view keeps to the point. Only the client whose own champion the header names applies it."
     },
     {
       "from": "1.0.0.82",
@@ -132,7 +184,7 @@
           "note": "Along the other ground axis, in world units."
         }
       ],
-      "note": "Only the client whose own champion the header names applies it."
+      "note": "The view keeps to the point. Only the client whose own champion the header names applies it."
     },
     {
       "from": "1.0.0.97",
@@ -158,7 +210,7 @@
           "note": "Along the other ground axis, in world units."
         }
       ],
-      "note": "Only the client whose own champion the header names applies it."
+      "note": "The view keeps to the point. Only the client whose own champion the header names applies it."
     },
     {
       "from": "1.0.0.103",
@@ -184,7 +236,7 @@
           "note": "Along the other ground axis, in world units."
         }
       ],
-      "note": "Only the client whose own champion the header names applies it."
+      "note": "The view keeps to the point. Only the client whose own champion the header names applies it."
     },
     {
       "from": "1.0.0.107",
@@ -210,7 +262,7 @@
           "note": "Along the other ground axis, in world units."
         }
       ],
-      "note": "Only the client whose own champion the header names applies it."
+      "note": "The view keeps to the point. Only the client whose own champion the header names applies it."
     },
     {
       "from": "1.0.0.109",
@@ -236,7 +288,7 @@
           "note": "Along the other ground axis, in world units."
         }
       ],
-      "note": "Only the client whose own champion the header names applies it."
+      "note": "The view keeps to the point. Only the client whose own champion the header names applies it."
     },
     {
       "from": "1.0.0.110",
@@ -262,7 +314,7 @@
           "note": "Along the other ground axis, in world units."
         }
       ],
-      "note": "Only the client whose own champion the header names applies it."
+      "note": "The view keeps to the point. Only the client whose own champion the header names applies it."
     },
     {
       "from": "1.0.0.111",
@@ -288,7 +340,7 @@
           "note": "Along the other ground axis, in world units."
         }
       ],
-      "note": "Only the client whose own champion the header names applies it."
+      "note": "The view keeps to the point. Only the client whose own champion the header names applies it."
     },
     {
       "from": "1.0.0.117",
@@ -314,7 +366,7 @@
           "note": "Along the other ground axis, in world units."
         }
       ],
-      "note": "Only the client whose own champion the header names applies it."
+      "note": "The view keeps to the point. Only the client whose own champion the header names applies it."
     },
     {
       "from": "1.0.0.119",
@@ -340,7 +392,7 @@
           "note": "Along the other ground axis, in world units."
         }
       ],
-      "note": "Only the client whose own champion the header names applies it."
+      "note": "The view keeps to the point. Only the client whose own champion the header names applies it."
     },
     {
       "from": "1.0.0.124",
@@ -366,7 +418,7 @@
           "note": "Along the other ground axis, in world units."
         }
       ],
-      "note": "Only the client whose own champion the header names applies it."
+      "note": "The view keeps to the point. Only the client whose own champion the header names applies it."
     },
     {
       "from": "1.0.0.128",
@@ -391,7 +443,8 @@
           "type": "f32",
           "note": "Along the other ground axis, in world units."
         }
-      ]
+      ],
+      "note": "The view keeps to the point."
     },
     {
       "from": "1.0.0.132",
@@ -416,7 +469,8 @@
           "type": "f32",
           "note": "Along the other ground axis, in world units."
         }
-      ]
+      ],
+      "note": "The view keeps to the point."
     },
     {
       "from": "1.0.0.138",
@@ -441,7 +495,8 @@
           "type": "f32",
           "note": "Along the other ground axis, in world units."
         }
-      ]
+      ],
+      "note": "The view keeps to the point."
     },
     {
       "from": "1.0.0.144",
@@ -466,7 +521,8 @@
           "type": "f32",
           "note": "Along the other ground axis, in world units."
         }
-      ]
+      ],
+      "note": "The view keeps to the point."
     },
     {
       "from": "1.0.0.150",
@@ -491,7 +547,8 @@
           "type": "f32",
           "note": "Along the other ground axis, in world units."
         }
-      ]
+      ],
+      "note": "The view keeps to the point."
     },
     {
       "from": "3.01.0.1",
@@ -516,7 +573,8 @@
           "type": "f32",
           "note": "Along the other ground axis, in world units."
         }
-      ]
+      ],
+      "note": "The view keeps to the point."
     },
     {
       "from": "4.11.0.386",
@@ -541,7 +599,8 @@
           "type": "f32",
           "note": "Along the other ground axis, in world units."
         }
-      ]
+      ],
+      "note": "The view keeps to the point."
     }
   ]
 }

@@ -38,6 +38,70 @@
     },
     {
       "from": "0.9.25.36",
+      "until": "1.0.0.58",
+      "channel": "events",
+      "command": 132,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "which",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "slot",
+              "width": 7,
+              "note": "Which slot. A champion's own spells count from 0."
+            },
+            {
+              "name": "summonerSlots",
+              "width": 1,
+              "note": "Set where the slot counts among the summoner slots, so that 0 and 1 name those two. A client fails where it is set for a unit that is not a champion."
+            }
+          ]
+        },
+        {
+          "name": "targeting",
+          "type": "u8",
+          "note": "How the spell is aimed, 0 to 6. For a larger value a client still writes it onto the slot but builds no aiming for it, which has no defined effect; no value asks for the spell's own default."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.58",
+      "until": "1.0.0.61",
+      "channel": "events",
+      "command": 132,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "which",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "slot",
+              "width": 7,
+              "note": "Which slot. A champion's own spells count from 0."
+            },
+            {
+              "name": "summonerSlots",
+              "width": 1,
+              "note": "Set where the slot counts among the summoner slots, so that 0 and 1 name those two. A client fails where it is set for a unit that is not a champion."
+            }
+          ]
+        },
+        {
+          "name": "targeting",
+          "type": "u8",
+          "note": "How the spell is aimed, 0 to 6. A larger value has no defined effect and can bring the client down; no value asks for the spell's own default."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.61",
       "until": "1.0.0.63",
       "channel": "events",
       "command": 132,

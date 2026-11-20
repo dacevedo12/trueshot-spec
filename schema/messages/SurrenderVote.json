@@ -34,6 +34,62 @@
     },
     {
       "from": "0.9.25.36",
+      "until": "1.0.0.58",
+      "channel": "requests",
+      "command": 157,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "inFavour",
+              "width": 1,
+              "note": "Set where the answer is yes, clear where it is no."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "A client leaves these bits as they happen to be; a server ignores them."
+            }
+          ]
+        }
+      ],
+      "note": "It answers a call to surrender."
+    },
+    {
+      "from": "1.0.0.58",
+      "until": "1.0.0.61",
+      "channel": "requests",
+      "command": 157,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "inFavour",
+              "width": 1,
+              "note": "Set where the answer is yes, clear where it is no."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "A client leaves these bits as they happen to be; a server ignores them."
+            }
+          ]
+        }
+      ],
+      "note": "A client sends it from the vote's panel, and as its player types the commands to surrender or not: a yes where the player has not yet voted, a no every time. It sends one whether or not a vote is open."
+    },
+    {
+      "from": "1.0.0.61",
       "until": "1.0.0.74",
       "channel": "requests",
       "command": 157,

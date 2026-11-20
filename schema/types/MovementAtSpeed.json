@@ -131,7 +131,7 @@
             {
               "name": "pointCount",
               "width": 16,
-              "note": "How many points the path holds. A client takes none, or more than 2048, as no path and reads nothing more of the message."
+              "note": "How many points the path holds, read as signed. A client takes zero or less, or more than 2048, as no path and reads nothing more of the message."
             }
           ]
         },
@@ -154,7 +154,7 @@
               "name": "points",
               "type": "array",
               "count": "header.pointCount",
-              "note": "Every point of the path, each stated in world units. A client reads them even for a unit it does not hold, and takes each point's height from the ground.",
+              "note": "Every point of the path, each stated in world units. A client reads them even for a unit it does not hold, and drops the path for such a unit; for a unit it holds it takes each point's height from the ground.",
               "items": {
                 "name": "point",
                 "type": "record",

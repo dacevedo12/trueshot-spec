@@ -2,16 +2,37 @@
   "$schema": "../meta/message.json",
   "message": "ResyncEnded",
   "system": "joining",
-  "note": "What a server sends to end the resynchronising a client began on its own Reconnected, after which it takes spawns again as they come.",
+  "note": "What a server sends to end the resynchronising a client began on its own Reconnected.",
   "revisions": [
     {
       "from": "0.9.22.14",
+      "until": "1.0.0.58",
+      "channel": "events",
+      "command": 119,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "After it, a client takes spawns again as they come."
+    },
+    {
+      "from": "1.0.0.58",
+      "until": "1.0.0.61",
+      "channel": "events",
+      "command": 119,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "After it, a client again takes the spawns it drops while resynchronising (see spec/match.md), those naming a unit it already holds included."
+    },
+    {
+      "from": "1.0.0.61",
       "until": "1.0.0.63",
       "channel": "events",
       "command": 119,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "After it, a client takes spawns again as they come."
     },
     {
       "from": "1.0.0.63",
@@ -20,7 +41,8 @@
       "command": 122,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "After it, a client takes spawns again as they come."
     },
     {
       "from": "1.0.0.74",
@@ -29,7 +51,8 @@
       "command": 123,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "After it, a client takes spawns again as they come."
     },
     {
       "from": "1.0.0.82",
@@ -38,7 +61,8 @@
       "command": 127,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "After it, a client takes spawns again as they come."
     },
     {
       "from": "1.0.0.97",
@@ -47,7 +71,8 @@
       "command": 128,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "After it, a client takes spawns again as they come."
     },
     {
       "from": "1.0.0.103",
@@ -56,7 +81,8 @@
       "command": 130,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "After it, a client takes spawns again as they come."
     },
     {
       "from": "1.0.0.107",
@@ -65,7 +91,8 @@
       "command": 131,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "After it, a client takes spawns again as they come."
     },
     {
       "from": "1.0.0.109",
@@ -74,7 +101,8 @@
       "command": 132,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "After it, a client takes spawns again as they come."
     },
     {
       "from": "1.0.0.110",
@@ -83,7 +111,8 @@
       "command": 69,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "After it, a client takes spawns again as they come."
     },
     {
       "from": "1.0.0.117",
@@ -92,7 +121,8 @@
       "command": 70,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "After it, a client takes spawns again as they come."
     },
     {
       "from": "1.0.0.119",
@@ -101,7 +131,8 @@
       "command": 71,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "After it, a client takes spawns again as they come."
     },
     {
       "from": "1.0.0.124",
@@ -110,7 +141,8 @@
       "command": 73,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "After it, a client takes spawns again as they come."
     },
     {
       "from": "1.0.0.132",
@@ -119,7 +151,8 @@
       "command": 74,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "After it, a client takes spawns again as they come."
     },
     {
       "from": "1.0.0.138",
@@ -128,7 +161,8 @@
       "command": 75,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "After it, a client takes spawns again as they come."
     }
   ]
 }
