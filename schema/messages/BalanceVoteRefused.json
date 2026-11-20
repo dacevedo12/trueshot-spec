@@ -2,10 +2,74 @@
   "$schema": "../meta/message.json",
   "message": "BalanceVoteRefused",
   "system": "votes",
-  "note": "What a client sends as its player types /noequalize, where the version answer's features have bit 0 set, outside the tutorial: a vote against, laid out as BalanceVote with only its first fields filled. The header carries zero.",
+  "note": "What a client sends as its player types /noequalize: a vote against, laid out as BalanceVote with only its first fields filled. The header carries zero.",
   "revisions": [
     {
       "from": "3.5.0.68",
+      "until": "3.10.0.237",
+      "channel": "requests",
+      "command": 250,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "flags",
+          "type": "u8",
+          "note": "Zero: a vote against."
+        },
+        {
+          "name": "voter",
+          "type": "u32",
+          "note": "Zero."
+        },
+        {
+          "name": "unset",
+          "type": "array",
+          "count": 23,
+          "items": {
+            "name": "byte",
+            "type": "u8",
+            "note": "One unused byte."
+          },
+          "note": "The rest of BalanceVote's layout. Unused; its bytes carry no meaning."
+        }
+      ],
+      "note": "A client sends it only where the version answer's features have bit 0 set, outside the tutorial."
+    },
+    {
+      "from": "3.10.0.237",
+      "until": "3.11.0.306",
+      "channel": "requests",
+      "command": 250,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "flags",
+          "type": "u8",
+          "note": "Zero: a vote against."
+        },
+        {
+          "name": "voter",
+          "type": "u32",
+          "note": "Zero."
+        },
+        {
+          "name": "unset",
+          "type": "array",
+          "count": 23,
+          "items": {
+            "name": "byte",
+            "type": "u8",
+            "note": "One unused byte."
+          },
+          "note": "The rest of BalanceVote's layout. Unused; its bytes carry no meaning."
+        }
+      ],
+      "note": "A client sends it only where the version answer's features have bit 1 set, outside the tutorial."
+    },
+    {
+      "from": "3.11.0.306",
       "until": "4.1.0.171",
       "channel": "requests",
       "command": 250,
@@ -33,7 +97,8 @@
           },
           "note": "The rest of BalanceVote's layout. Unused; its bytes carry no meaning."
         }
-      ]
+      ],
+      "note": "A client sends it only where the version answer's features have bit 0 set, outside the tutorial."
     },
     {
       "from": "4.1.0.171",
@@ -64,7 +129,8 @@
           },
           "note": "The rest of BalanceVote's layout. Unused; its bytes carry no meaning."
         }
-      ]
+      ],
+      "note": "A client sends it only where the version answer's features have bit 0 set, outside the tutorial."
     },
     {
       "from": "4.11.0.386",
@@ -95,7 +161,8 @@
           },
           "note": "The rest of BalanceVote's layout. Unused; its bytes carry no meaning."
         }
-      ]
+      ],
+      "note": "A client sends it only where the version answer's features have bit 0 set, outside the tutorial."
     },
     {
       "from": "4.18.0.271",
@@ -126,7 +193,8 @@
           },
           "note": "The rest of BalanceVote's layout. Unused; its bytes carry no meaning."
         }
-      ]
+      ],
+      "note": "A client sends it only where the version answer's features have bit 0 set, outside the tutorial."
     },
     {
       "from": "4.20.0.315",
@@ -157,7 +225,8 @@
           },
           "note": "The rest of BalanceVote's layout. Unused; its bytes carry no meaning."
         }
-      ]
+      ],
+      "note": "A client sends it only where the version answer's features have bit 0 set, outside the tutorial."
     }
   ]
 }

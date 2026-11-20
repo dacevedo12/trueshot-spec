@@ -274,6 +274,48 @@
     },
     {
       "from": "3.01.0.1",
+      "until": "3.10.0.237",
+      "channel": "events",
+      "command": 228,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "owner",
+          "type": "u32",
+          "note": "The champion credited."
+        },
+        {
+          "name": "amount",
+          "type": "f32",
+          "note": "How much gold. 0.95 is what a champion earns for each step it stands still."
+        }
+      ],
+      "note": "A server sends it to clients watching a match. It credits the champion with the gold."
+    },
+    {
+      "from": "3.10.0.237",
+      "until": "3.11.0.306",
+      "channel": "events",
+      "command": 228,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "owner",
+          "type": "u32",
+          "note": "The champion credited."
+        },
+        {
+          "name": "amount",
+          "type": "f32",
+          "note": "How much gold."
+        }
+      ],
+      "note": "It adds the amount to the champion's tally of gold earned; the gold it can spend does not change."
+    },
+    {
+      "from": "3.11.0.306",
       "until": "4.1.0.171",
       "channel": "events",
       "command": 228,

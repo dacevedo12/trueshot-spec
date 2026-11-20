@@ -344,6 +344,62 @@
     },
     {
       "from": "3.6.0.388",
+      "until": "3.10.0.237",
+      "channel": "events",
+      "command": 91,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "rules",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "pausing",
+              "width": 1,
+              "note": "Set where holding the match is allowed."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ],
+      "note": "A client past spawning ignores it."
+    },
+    {
+      "from": "3.10.0.237",
+      "until": "3.11.0.306",
+      "channel": "events",
+      "command": 91,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "rules",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "pausing",
+              "width": 1,
+              "note": "Set to have a client announce, outside a replay, that holding the match is allowed. It enforces nothing."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "The lowest of these, where set, has a client post a line in chat; the rest are unused, and a server writes zero."
+            }
+          ]
+        }
+      ],
+      "note": "A client ignores it once it has taken one, or once the match has ended; before spawning starts it takes it as it does after."
+    },
+    {
+      "from": "3.11.0.306",
       "until": "4.1.0.171",
       "channel": "events",
       "command": 91,

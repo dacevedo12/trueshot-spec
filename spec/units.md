@@ -75,8 +75,8 @@ champion out of the world. A unit's death is in [Combat](combat.md).
 
 > **In 3.10**
 >
-> A client leaves the match when `ChampionRemoved` names its own champion. A
-> server MUST NOT send `ChampionRemoved` for a client's own champion.
+> `ChampionRemoved` naming a client's own champion removes it as any other, and
+> the client is left with no champion of its own; it stays in the match.
 
 ## Bots
 

@@ -96,12 +96,25 @@ batch.
 | `Replication`                           | `TransientAck`, where every unit the batch names is held                 |
 | `ClockSync`                             | `ClockReply`, on the clock channel (see [Time](time.md))                 |
 
-<!-- holds from 0.9.25.24 up to 3.11.0.306 -->
+A client sends the answers above when it plays a match, not while it plays back
+a stream.
 
-> **In 0.9.25.24–3.10**
+<!-- holds from 0.9.25.24 up to 3.10.0.237 -->
+
+> **In 0.9.25.24–3.9**
 >
 > A client also answers each `Path` and `PathWithSpeed`, taken or not, with a
-> `WaypointAck` carrying its `syncId` (see [Movement](movement.md)).
+> `WaypointAck` carrying its `syncId` (see [Movement](movement.md)), when it
+> plays a match, not while it plays back a stream.
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> A client also answers each `Path` and `PathWithSpeed`, taken or not, with a
+> `WaypointAck` carrying its `syncId` (see [Movement](movement.md)), sent
+> before it decides whether to take the path, and sent while it plays back a
+> stream too.
 
 <!-- holds from 4.20.0.315 up to 4.21.0.0 -->
 
@@ -110,9 +123,6 @@ batch.
 > A client also answers each `Path` and `PathWithSpeed`, taken or not, with a
 > `WaypointAck` carrying its `syncId` (see [Movement](movement.md)), sent
 > before it decides whether to take the path.
-
-A client sends these answers when it plays a match, not while it plays back a
-stream.
 
 ## What a server answers
 

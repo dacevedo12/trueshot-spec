@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "AttackIndicators",
+  "version": "3.10.0.237",
+  "note": "Laid out as a 3.10.0.237 client takes it.",
+  "bytes": "fe0100004002011d0000400001",
+  "fields": {
+    "command": 254,
+    "netId": 1073741825,
+    "extendedCommand": 258,
+    "unit": 1073741853,
+    "show": 0,
+    "minimap": 1
+  }
+}

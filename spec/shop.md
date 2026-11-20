@@ -104,9 +104,9 @@ the shop sends nothing.
 
 A client asks to buy only where the item is one the match sells.
 
-<!-- holds from 0.8.13.26 up to 3.11.0.306 -->
+<!-- holds from 0.8.13.26 up to 3.10.0.237 -->
 
-> **In 0.8.13.26–3.10**
+> **In 0.8.13.26–3.9**
 >
 > A client asks for an item not built from others only where its price is
 > within the champion's gold and, unless the item can be used in the shop,
@@ -147,13 +147,16 @@ A client asks to buy only where the item is one the match sells.
 >
 > A client asks only with the shop open.
 
-<!-- holds from 3.10.0.237 up to 4.1.0.171 -->
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
-> **In 3.10–3.15**
+> **In 3.10**
 >
-> An item that can be used in the shop needs no free slot. For an item built
-> from others, a client asks only where the champion holds a free slot or a part
-> of it, everything the item requires, and gold for what remains.
+> A client asks for an item not built from others only where its price is
+> within the champion's gold and a slot is free or holds the same item below its
+> stack limit; an item that can be used in the shop needs neither while the
+> champion is alive. For an item built from others, a client asks only where the
+> champion holds a free slot or a part of it, everything the item requires, and
+> gold for what remains.
 
 <!-- holds from 4.1.0.171 up to 4.21.0.0 -->
 

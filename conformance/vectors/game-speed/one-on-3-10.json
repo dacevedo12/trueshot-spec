@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "GameSpeed",
+  "version": "3.10.0.237",
+  "note": "Laid out as a 3.10.0.237 client takes it.",
+  "bytes": "120000000000000040",
+  "fields": {
+    "command": 18,
+    "netId": 0,
+    "extendedCommand": null,
+    "speed": 2
+  }
+}

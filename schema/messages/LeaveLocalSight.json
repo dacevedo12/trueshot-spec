@@ -146,6 +146,26 @@
     },
     {
       "from": "1.0.0.150",
+      "until": "3.10.0.237",
+      "channel": "events",
+      "command": 52,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "Sent for the receiving client's own champion, it changes nothing the client shows."
+    },
+    {
+      "from": "3.10.0.237",
+      "until": "3.11.0.306",
+      "channel": "events",
+      "command": 52,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client takes the unit out of its local sight, its own champion included (spec/vision.md says what that changes). A client playing back a replay ignores it."
+    },
+    {
+      "from": "3.11.0.306",
       "until": "4.11.0.386",
       "channel": "events",
       "command": 52,

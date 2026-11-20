@@ -123,7 +123,8 @@ A server holds the match with `Paused`.
 > **In 3.10**
 >
 > A client shows nothing for any other hold. A tournament's hold also shows a
-> box with the time left and locks input, and only such a hold locks it.
+> box with the time left and locks input, and only such a hold locks it. A
+> client announces no hold whose message names no one.
 
 <!-- holds from 4.20.0.315 up to 4.21.0.0 -->
 
@@ -179,7 +180,8 @@ A server ends the hold with `Resumed`.
 
 > **In 3.10**
 >
-> A client announces who resumed the match even where it was not held.
+> A client announces who resumed the match even where it was not held, and
+> announces nothing where `Resumed` names no one.
 
 <!-- holds from 4.1.0.171 up to 4.21.0.0 -->
 
@@ -338,6 +340,13 @@ A server tells the others that a player's client dropped with
 >
 > A client shows a notice in chat for `PlayerDisconnected`.
 
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> A client shows that notice only where it holds the champion
+> `PlayerDisconnected` names.
+
 <!-- holds from 0.9.25.24 up to 1.0.0.141 -->
 
 > **In 0.9.25.24–1.0.0.140**
@@ -386,6 +395,10 @@ A server tells the others that a player's client dropped with
 > reconnecting while it does. Where its settings turn this off, it asks its
 > player for the reason 0 whether to connect again, and for any other shows that
 > the reconnection failed.
+
+<!-- holds from 1.0.0.140 up to 3.10.0.237 -->
+
+> **In 1.0.0.140–3.9**
 >
 > A client sends `ReconnectedInMatch` as the connection is made, without waiting
 > for the registration answer.
@@ -402,7 +415,9 @@ A server tells the others that a player's client dropped with
 
 > **In 3.10**
 >
-> A client sends `ReconnectedInMatch` only where the match is in play.
+> A client sends `ReconnectedInMatch` when the registration answer naming its
+> own player id arrives, and only where it has taken `StartGame`, so never on
+> its first connection.
 >
 > A client whose connection drops before play begins leaves rather than
 > connecting again once it knows its own client id, and connects again before

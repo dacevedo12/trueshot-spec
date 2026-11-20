@@ -137,9 +137,22 @@ MUST take the names from the files.
 > In the section's name, n is how many players the side has plus the count
 > `SpawnStart` carries, added on both sides alike.
 
-<!-- holds from 1.0.0.140 up to 4.20.0.315 -->
+<!-- holds from 1.0.0.140 up to 3.10.0.237 -->
 
-> **In 1.0.0.140–4.19**
+> **In 1.0.0.140–3.9**
+>
+> In the section's name, n is how many players and bots the side has. A
+> champion begun on the spawn point itself faces along +X.
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> A champion begun on the spawn point itself faces along +X.
+
+<!-- holds from 3.11.0.306 up to 4.20.0.315 -->
+
+> **In 3.11–4.19**
 >
 > In the section's name, n is how many players and bots the side has. A
 > champion begun on the spawn point itself faces along +X.

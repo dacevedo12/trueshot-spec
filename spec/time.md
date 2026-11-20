@@ -100,7 +100,8 @@ catch up with its own.
 
 > **In 3.10**
 >
-> A client holds the speed `GameSpeed` gives to between 0 and 10 times normal.
+> A client holds the speed `GameSpeed` gives to between 0 and 10 times normal,
+> except while it plays back a stream.
 
 <!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 

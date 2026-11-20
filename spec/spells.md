@@ -143,4 +143,10 @@ it is going, with `MissileReport`, which a server MAY ignore.
 >
 > Only a missile that flies straight acts on `MissileHits`.
 
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> Only a scripted missile acts on `MissileCourse`.
+
 <!-- messages -->

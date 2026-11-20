@@ -356,6 +356,26 @@
     },
     {
       "from": "3.01.0.1",
+      "until": "3.10.0.237",
+      "channel": "requests",
+      "command": 156,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client sends it once it has connected again to a match it was playing. A client dropped while playing reconnects by itself; one dropped while loading leaves instead. It carries nothing of its own."
+    },
+    {
+      "from": "3.10.0.237",
+      "until": "3.11.0.306",
+      "channel": "requests",
+      "command": 156,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client sends it when the registration answer naming its own player id arrives on a connection made after it took StartGame, so never on its first connection (see spec/match.md). It carries nothing of its own."
+    },
+    {
+      "from": "3.11.0.306",
       "until": "4.1.0.171",
       "channel": "requests",
       "command": 156,

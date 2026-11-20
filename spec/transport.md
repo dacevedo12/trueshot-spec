@@ -89,8 +89,9 @@ abandons a connection whose verify connect states anything else.
 > **In 3.10**
 >
 > A client reads the verify connect's peer id from the first of the two bytes
-> ENet gives it. A server MUST write the peer id in that byte, because one
-> written at ENet's width puts its high byte there.
+> ENet gives it, and carries that byte in every header it sends. A server MUST
+> write the peer id in that byte, because one written at ENet's width puts its
+> high byte there.
 
 <!-- holds from 3.13.0.399 up to 4.21.0.0 -->
 

@@ -61,8 +61,9 @@ A server brings a unit into what a client's side can see with `EnterSight`.
 > `EnterSight` states the unit's shields and looks and, for a champion or a
 > minion, where it stands or which path it walks, and nothing of its health or
 > resource. A client reads every part of the body whatever its length, so a
-> server MUST NOT end one early. For an inhibitor or a nexus it reads nothing
-> after the messages carried.
+> server MUST NOT end one early. For a prop of the map or a building (a nexus,
+> an inhibitor, a shop or a spawn point) it reads nothing after the messages
+> carried.
 
 <!-- holds from 4.1.0.171 up to 4.2.0.2718 -->
 
@@ -209,9 +210,9 @@ of them only for its own champion:
 >
 > `GoldGained` shows floating gold only for the client's own champion.
 
-<!-- holds from 0.9.25.24 up to 3.11.0.306 -->
+<!-- holds from 0.9.25.24 up to 3.10.0.237 -->
 
-> **In 0.9.25.24–3.10**
+> **In 0.9.25.24–3.9**
 >
 > `GoldGained` naming the client's own champion, with an amount above 0 and a
 > source the client holds, shows the gold over the source.
@@ -251,18 +252,21 @@ of them only for its own champion:
 > `LevelUp` shows its effect over any champion the client can see, and does
 > nothing for another unit.
 
-<!-- holds from 3.10.0.237 up to 4.21.0.0 -->
-
-> **In 3.10–4.20**
->
-> `GoldGained` shows floating gold only for the client's own champion.
-
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
 > **In 3.10**
 >
-> Where the source of a `GoldGained` cannot show text, the gold shows over the
-> client's own champion.
+> `GoldGained` naming the client's own champion, with an amount above 0.5 and a
+> source the client holds, shows the gold over the source, or over the champion
+> where the source cannot show text. Any other `GoldGained` naming a unit the
+> client holds shows over that unit the gold gained, or lost where the amount
+> is below 0, and nothing for 0.
+
+<!-- holds from 3.11.0.306 up to 4.21.0.0 -->
+
+> **In 3.11–4.20**
+>
+> `GoldGained` shows floating gold only for the client's own champion.
 
 <!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 
@@ -288,6 +292,15 @@ A client also acts on what it is told about a unit it holds but cannot see:
 - floating text over a hidden unit is dropped;
 - an animation plays on a hidden unit, which comes into view part way through
   it.
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> While `LeaveLocalSight` has its own champion out of its local sight, until an
+> `EnterLocalSight` brings it back, a client drops `UnitText` naming that
+> champion and shows no healing numbers over it. A client playing back a stream
+> ignores `LeaveLocalSight`.
 
 <!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 

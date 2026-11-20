@@ -110,6 +110,58 @@
     },
     {
       "from": "1.0.0.144",
+      "until": "3.10.0.237",
+      "channel": "clock",
+      "command": 21,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot."
+        },
+        {
+          "name": "level",
+          "type": "u8",
+          "note": "The level the spell now stands at."
+        },
+        {
+          "name": "pointsLeft",
+          "type": "u8",
+          "note": "How many spell points are left unspent."
+        }
+      ],
+      "note": "Arriving on the events channel instead, it raises the spell as well, and a client shows the new level either way."
+    },
+    {
+      "from": "3.10.0.237",
+      "until": "3.11.0.306",
+      "channel": "clock",
+      "command": 21,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot."
+        },
+        {
+          "name": "level",
+          "type": "u8",
+          "note": "The level the spell now stands at. A client takes a value above 6 as 6."
+        },
+        {
+          "name": "pointsLeft",
+          "type": "u8",
+          "note": "How many spell points are left unspent."
+        }
+      ],
+      "note": "A client takes it alike on any game channel: it sets the spell's level and the points left, and shows the new level."
+    },
+    {
+      "from": "3.11.0.306",
       "until": "4.17.0.233",
       "channel": "clock",
       "command": 21,

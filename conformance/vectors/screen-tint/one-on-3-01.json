@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ScreenTint",
+  "version": "3.01.0.1",
+  "note": "Laid out as a 3.01.0.1 client takes it.",
+  "bytes": "db00000000010000803e000000000000000000000000",
+  "fields": {
+    "command": 219,
+    "netId": 0,
+    "fadeIn": 1,
+    "time": 0.25,
+    "side": 0,
+    "colour": 0,
+    "weight": 0
+  }
+}

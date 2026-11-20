@@ -98,9 +98,9 @@ gives the client its own client id.
 > Registration pairs each player id with a client id. Every later message that
 > names a player by client id is read through that pairing.
 
-<!-- holds from 1.0.0.58 up to 3.11.0.306 -->
+<!-- holds from 1.0.0.58 up to 3.10.0.237 -->
 
-> **In 1.0.0.58–3.10**
+> **In 1.0.0.58–3.9**
 >
 > A client acts on that `Registered` alone and ignores every other, so it pairs
 > no other player's player id with a client id.
@@ -149,11 +149,17 @@ client's own.
 >
 > A client tells a bot's champion by a byte of its own, not by its client id.
 
-<!-- holds from 1.0.0.126 up to 4.1.0.171 -->
+<!-- holds from 1.0.0.126 up to 3.10.0.237 -->
 
-> **In 1.0.0.126–3.15**
+> **In 1.0.0.126–3.9**
 >
 > A bot's champion carries 4294967295.
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> A client tells a bot's champion by a byte of its own, not by its client id.
 
 <!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 
@@ -219,7 +225,9 @@ naming a unit, an owner or a target carry one too.
 
 > **In 3.10**
 >
-> `CreateTurret` first removes any object holding its net id.
+> `SpawnFromBarracks`, `SpawnPet`, `CreateChampion`, `CreateNeutral`,
+> `SpawnUnit`, `CreateTurret`, `SpawnBot`, `MapProp` and `SpawnMarker` first
+> remove any object holding the net id, and the object they create takes it.
 
 <!-- holds from 4.1.0.171 up to 4.17.0.233 -->
 
@@ -279,9 +287,16 @@ A create message carries a node beside the object's net id.
 > A client applies a `SpawnPet`'s effect and spell level only where the owner's
 > node is its own.
 
-<!-- holds from 1.0.0.141 up to 4.21.0.0 -->
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
-> **In 1.0.0.141–4.20**
+> **In 3.10**
+>
+> A client applies a `SpawnPet`'s effect and spell level only where the owner's
+> node is its own.
+
+<!-- holds from 3.11.0.306 up to 4.21.0.0 -->
+
+> **In 3.11–4.20**
 >
 > Nothing a player sees depends on it.
 
@@ -728,12 +743,20 @@ Creating messages are the exception, and so are the messages below.
 >
 > `RegionRemoved` for a region a client does not hold does nothing.
 
-<!-- holds from 1.0.0.126 up to 4.17.0.233 -->
+<!-- holds from 1.0.0.126 up to 3.10.0.237 -->
 
-> **In 1.0.0.126–4.16**
+> **In 1.0.0.126–3.9**
 >
 > `SpawnPet` takes the net id in its header for the new pet, but does nothing
 > where the owner its body names is not held.
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> `SpawnPet` takes the net id in its header for the new pet. Where the owner its
+> body names is not held it creates nothing, but still removes any object
+> holding that net id.
 
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
