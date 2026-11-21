@@ -16,6 +16,26 @@
     },
     {
       "from": "0.9.22.14",
+      "until": "0.9.25.24",
+      "channel": "events",
+      "command": 58,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "Sent for the receiving client's own champion, it changes nothing the client shows."
+    },
+    {
+      "from": "0.9.25.24",
+      "until": "0.9.25.36",
+      "channel": "events",
+      "command": 58,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "For any unit, a client hides, removes and moves nothing for it, and for its own champion it changes nothing the client shows. Whether a highlight on another unit changes is not recorded."
+    },
+    {
+      "from": "0.9.25.36",
       "until": "1.0.0.74",
       "channel": "events",
       "command": 58,

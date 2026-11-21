@@ -924,9 +924,16 @@ Besides its batches, a server states some values with messages of their own.
 > `ExperienceGained` shows the experience gained over the unit and grants none:
 > a champion's experience follows its batches alone.
 
-<!-- holds from 0.9.25.24 up to 1.0.0.96 -->
+<!-- holds from 0.9.25.24 up to 0.9.25.36 -->
 
-> **In 0.9.25.24–1.0.0.95**
+> **In 0.9.25.24–0.9.25.35**
+>
+> `GoldGained` grants no gold: a champion's gold in hand follows group 0 bit 1 of
+> its batches alone.
+
+<!-- holds from 0.9.25.36 up to 1.0.0.96 -->
+
+> **In 0.9.25.36–1.0.0.95**
 >
 > A server grants gold with `GoldGained`.
 

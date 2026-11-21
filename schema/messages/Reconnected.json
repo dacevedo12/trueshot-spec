@@ -6,6 +6,36 @@
   "revisions": [
     {
       "from": "0.9.22.14",
+      "until": "0.9.25.24",
+      "channel": "events",
+      "command": 118,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "client",
+          "type": "u32",
+          "note": "The client, by the seat it occupies."
+        }
+      ]
+    },
+    {
+      "from": "0.9.25.24",
+      "until": "0.9.25.36",
+      "channel": "events",
+      "command": 118,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "client",
+          "type": "u32",
+          "note": "The client id of the player who came back."
+        }
+      ]
+    },
+    {
+      "from": "0.9.25.36",
       "until": "1.0.0.63",
       "channel": "events",
       "command": 118,

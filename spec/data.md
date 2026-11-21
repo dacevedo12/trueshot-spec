@@ -29,9 +29,9 @@ for a nexus, side 1 for Order and 2 for Chaos and lanes `L`, `C` and `R`, with a
 shrine turret for each side; the numbers differ between the sides, and a server
 MUST take the names from the files.
 
-<!-- holds from 0.8.13.26 up to 0.9.25.36 -->
+<!-- holds from 0.8.13.26 up to 0.9.25.24 -->
 
-> **In 0.8.13.26–0.9.25.35**
+> **In 0.8.13.26–0.9.25.23**
 >
 > Each object's file is `.sco` as text or `.SCB` as binary, and gives its name
 > on its `Name=` line.
@@ -43,26 +43,18 @@ MUST take the names from the files.
 > A name's opening says what the object is: `Turret` a turret, `Barracks` an
 > inhibitor, `HQ_` a nexus.
 
-<!-- holds from 0.9.25.24 up to 0.9.25.36 -->
+<!-- holds from 0.9.25.24 up to 3.11.0.306 -->
 
-> **In 0.9.25.24–0.9.25.35**
->
-> A name's opening says what the object is, the first match winning and a
-> minion spawner's tested before `Barracks`: `Turret` a turret, `Barracks` an
-> inhibitor, `HQ_` a nexus.
-
-<!-- holds from 1.0.0.58 up to 3.11.0.306 -->
-
-> **In 1.0.0.58–3.10**
+> **In 0.9.25.24–3.10**
 >
 > A word a name holds anywhere says what the object is, not only its opening,
 > the first match winning: a minion spawner's `Spawn_Barracks` is tested before
 > `Barracks`, which makes an inhibitor, and `HQ_` makes a nexus and `Turret` a
 > turret.
 
-<!-- holds from 1.0.0.58 up to 1.0.0.97 -->
+<!-- holds from 0.9.25.24 up to 1.0.0.97 -->
 
-> **In 1.0.0.58–1.0.0.96**
+> **In 0.9.25.24–1.0.0.96**
 >
 > `room.dsc` lists each object as a `.sco`. The marker of the level's size,
 > `__LevelSize_`, is a text `.sco` giving its name on a `Name=` line; every other

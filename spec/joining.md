@@ -218,8 +218,10 @@ every client has sent `ClientReady`.
 
 > **In 0.9.25.24–0.9.25.35**
 >
-> A server MUST put the seat's player id in `SeatLoadProgress`: the loading
-> screen shows a seat's card from the `VersionSync` seat with that id.
+> The loading screen picks the card a `SeatLoadProgress` updates by the client
+> id it carries. Its player id picks the `VersionSync` seat the card takes its
+> `level` and summoner spells from; where no seat has that player id, the card
+> still shows its progress, without them.
 
 <!-- holds from 1.0.0.58 up to 1.0.0.61 -->
 

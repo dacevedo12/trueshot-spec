@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "0.9.22.16",
-      "until": "0.9.25.36",
+      "until": "0.9.25.24",
       "channel": "events",
       "command": 162,
       "direction": "serverToClient",
@@ -16,6 +16,36 @@
           "name": "reason",
           "type": "u32",
           "note": "Why the vote stands where it does. A client acts on 0 to 4 and ignores the message for any other value; 0 resets the vote whatever side is, and 1 resets it only where side is the client's own. A client announces 0, 2, 3 and 4 whether or not it has a player of its own, and fails on 1 without one."
+        },
+        {
+          "name": "inFavour",
+          "type": "u8",
+          "note": "How many voted for."
+        },
+        {
+          "name": "against",
+          "type": "u8",
+          "note": "How many voted against."
+        },
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "Which side."
+        }
+      ]
+    },
+    {
+      "from": "0.9.25.24",
+      "until": "0.9.25.36",
+      "channel": "events",
+      "command": 162,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "reason",
+          "type": "u32",
+          "note": "Why the vote stands where it does. A client acts on 0 to 4 and ignores the message for any other value; 0 resets the vote whatever side is, and 1 resets it only where side is the client's own. A client announces 0, 2, 3 and 4 whether or not it has a player of its own, and fails on 1 without one. A client whose game screen is not up fails on 0, and on 1 where side is its own."
         },
         {
           "name": "inFavour",

@@ -16,12 +16,19 @@ ready with `SpellCooldown`, and, for a spell with uses, how many are left with
 Which slots a client lets its player cast from at all is a value of the
 champion's that [replication](replication.md) carries.
 
-<!-- holds from 0.8.13.26 up to 0.9.25.36 -->
+<!-- holds from 0.8.13.26 up to 0.9.25.24 -->
 
-> **In 0.8.13.26–0.9.25.35**
+> **In 0.8.13.26–0.9.25.23**
 >
 > A client still casts from a casting record whose length disagrees with its
 > count of targets.
+
+<!-- holds from 0.9.25.24 up to 0.9.25.36 -->
+
+> **In 0.9.25.24–0.9.25.35**
+>
+> A client fails on a casting record whose length disagrees with its count of
+> targets, and a server MUST NOT send one.
 
 <!-- holds from 1.0.0.58 up to 1.0.0.61 -->
 

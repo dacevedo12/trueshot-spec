@@ -25,18 +25,23 @@ seconds.
 > A client shows the speed `GameSpeed` sets over its champion. A client changes
 > nothing it shows for `StatTick`.
 
-<!-- holds from 0.9.25.24 up to 1.0.0.97 -->
-
-> **In 0.9.25.24–1.0.0.96**
->
-> The speed `GameSpeed` sets takes effect at once: sent during a hold, it ends
-> the hold, and a `Resumed` after it changes nothing.
-
 <!-- holds from 0.9.25.24 up to 0.9.25.36 -->
 
 > **In 0.9.25.24–0.9.25.35**
 >
+> A `GameSpeed` other than 0 takes effect at once: sent during a hold, it ends
+> the hold, and a `Resumed` after it changes nothing. One of 0 sent during a hold
+> leaves the match held. A `Resumed` that arrives while the speed is 0, held or
+> not, sets the match going at the speed it had when the last hold began.
+>
 > No unit advances for `StatTick`.
+
+<!-- holds from 0.9.25.36 up to 1.0.0.97 -->
+
+> **In 0.9.25.36–1.0.0.96**
+>
+> The speed `GameSpeed` sets takes effect at once: sent during a hold, it ends
+> the hold, and a `Resumed` after it changes nothing.
 
 <!-- holds from 1.0.0.58 up to 1.0.0.61 -->
 
@@ -406,13 +411,6 @@ A server tells the others that a player's client dropped with
 > `Reconnected` announces that a player came back. A client shows it in chat for
 > any other player, ally or enemy.
 
-<!-- holds from 0.9.25.24 up to 1.0.0.58 -->
-
-> **In 0.9.25.24–1.0.0.57**
->
-> A client whose connection drops before play begins leaves rather than
-> connecting again.
-
 <!-- holds from 0.9.25.24 up to 1.0.0.127 -->
 
 > **In 0.9.25.24–1.0.0.126**
@@ -426,9 +424,9 @@ A server tells the others that a player's client dropped with
 > Where `Reconnected` names the client's own, the client resynchronises until
 > `ResyncEnded`.
 
-<!-- holds from 1.0.0.58 up to 1.0.0.97 -->
+<!-- holds from 0.9.25.24 up to 1.0.0.97 -->
 
-> **In 1.0.0.58–1.0.0.96**
+> **In 0.9.25.24–1.0.0.96**
 >
 > A client whose connection drops before play begins, once the registration
 > answer has given it its own client id, leaves rather than connecting again.

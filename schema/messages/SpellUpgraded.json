@@ -6,6 +6,58 @@
   "revisions": [
     {
       "from": "0.8.13.26",
+      "until": "0.9.25.24",
+      "channel": "clock",
+      "command": 19,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot."
+        },
+        {
+          "name": "level",
+          "type": "u8",
+          "note": "The level the spell now stands at. A client takes any level above 5 as 5."
+        },
+        {
+          "name": "pointsLeft",
+          "type": "u8",
+          "note": "How many spell points are left unspent."
+        }
+      ],
+      "note": "A client handles it the same on every channel: it sets the slot's level and the points left. It does this only for a champion, and nothing for any other unit."
+    },
+    {
+      "from": "0.9.25.24",
+      "until": "0.9.25.36",
+      "channel": "clock",
+      "command": 19,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot."
+        },
+        {
+          "name": "level",
+          "type": "u8",
+          "note": "The level the spell now stands at. A client takes any level above 5 as 5."
+        },
+        {
+          "name": "pointsLeft",
+          "type": "u8",
+          "note": "How many spell points are left unspent."
+        }
+      ],
+      "note": "A client handles it on the clock, events and transient channels alike, and drops it on any other: it sets the slot's level and the points left. It does this only for a champion, and nothing for any other unit."
+    },
+    {
+      "from": "0.9.25.36",
       "until": "1.0.0.106",
       "channel": "clock",
       "command": 19,

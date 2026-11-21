@@ -6,6 +6,38 @@
   "revisions": [
     {
       "from": "0.9.22.14",
+      "until": "0.9.25.24",
+      "channel": "requests",
+      "command": 117,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "loading",
+          "type": "u8",
+          "note": "Zero while the client is playing, in the state StartGame puts it in; 1 at any other time, including after GameEnded."
+        }
+      ],
+      "note": "A client sends it right after the server answers its registration. A client dropped while playing asks its player whether to reconnect; where the drop gives inactivity or another reason, it only says it cannot reconnect. One dropped at any other time closes."
+    },
+    {
+      "from": "0.9.25.24",
+      "until": "0.9.25.36",
+      "channel": "requests",
+      "command": 117,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "loading",
+          "type": "u8",
+          "note": "Zero while the client is playing, in the state StartGame puts it in; 1 at any other time, including after GameEnded."
+        }
+      ],
+      "note": "A client sends it as each connection is made, the first included, just after Register and without waiting for the registration answer. A client dropped while playing, with its game screen up, asks its player whether to reconnect for the reason 0; for the reason that means its player was away it says it was dropped for being away, and for any other it says the reconnection failed, each with one button, which leaves the match. One dropped at any other time closes once it has its own client id."
+    },
+    {
+      "from": "0.9.25.36",
       "until": "1.0.0.58",
       "channel": "requests",
       "command": 117,

@@ -40,6 +40,74 @@
     },
     {
       "from": "0.9.22.14",
+      "until": "0.9.25.24",
+      "channel": "events",
+      "command": 88,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 4,
+          "bits": [
+            {
+              "name": "unusedLow",
+              "width": 6,
+              "note": "A client ignores these; a server sends zero."
+            },
+            {
+              "name": "unlock",
+              "width": 1,
+              "note": "Set to release the unit's animation lock in every case. Clear releases it only where the unit's own data allows; where the lock stays held, the animation does not stop."
+            },
+            {
+              "name": "unusedHigh",
+              "width": 25,
+              "note": "A client ignores these; a server sends zero."
+            }
+          ],
+          "note": "How it stops."
+        }
+      ],
+      "note": "No name is carried. A client does nothing for a dead unit; otherwise it stops the animation the unit is playing, blending out over a fixed time, unless the unit's animation lock stays held."
+    },
+    {
+      "from": "0.9.25.24",
+      "until": "0.9.25.36",
+      "channel": "events",
+      "command": 88,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 4,
+          "bits": [
+            {
+              "name": "unusedLow",
+              "width": 6,
+              "note": "A client ignores these; a server sends zero."
+            },
+            {
+              "name": "unlock",
+              "width": 1,
+              "note": "Set to release the unit's animation lock in every case. Clear releases it only where the unit's own data allows; where the lock stays held, the animation does not stop."
+            },
+            {
+              "name": "unusedHigh",
+              "width": 25,
+              "note": "A client ignores these; a server sends zero."
+            }
+          ],
+          "note": "How it stops."
+        }
+      ],
+      "note": "No name is carried. A client does nothing for a dead unit; otherwise it stops the animation the unit is playing, blending it out over a time that follows the attack timing of the client's own champion, not this unit's, unless the unit's animation lock stays held. A client with no champion of its own fails on it, except for a dead unit or where the lock stays held."
+    },
+    {
+      "from": "0.9.25.36",
       "until": "1.0.0.58",
       "channel": "events",
       "command": 88,

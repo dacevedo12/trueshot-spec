@@ -6,6 +6,100 @@
   "revisions": [
     {
       "from": "0.8.13.26",
+      "until": "0.9.25.24",
+      "channel": "requests",
+      "command": 20,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What the order is.",
+          "values": {
+            "2": {
+              "name": "moveToPosition"
+            },
+            "3": {
+              "name": "attack"
+            },
+            "10": {
+              "name": "stop"
+            }
+          }
+        },
+        {
+          "name": "targetX",
+          "type": "f32",
+          "note": "Where the order points, along one ground axis, in world units."
+        },
+        {
+          "name": "targetY",
+          "type": "f32",
+          "note": "The height of the place ordered."
+        },
+        {
+          "name": "targetZ",
+          "type": "f32",
+          "note": "Where the order points, along the other ground axis."
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The network object the order is aimed at, or zero where it is aimed at open ground."
+        }
+      ],
+      "note": "What a client sends as its player gives an order. It carries no path. The header names the unit ordered: the player's champion, or a unit it controls alongside, which gets its own copy of the order."
+    },
+    {
+      "from": "0.9.25.24",
+      "until": "0.9.25.36",
+      "channel": "requests",
+      "command": 20,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What the order is.",
+          "values": {
+            "2": {
+              "name": "moveToPosition"
+            },
+            "3": {
+              "name": "attack"
+            },
+            "10": {
+              "name": "stop"
+            }
+          }
+        },
+        {
+          "name": "targetX",
+          "type": "f32",
+          "note": "Where the order points, along one ground axis, in world units."
+        },
+        {
+          "name": "targetY",
+          "type": "f32",
+          "note": "The height of the place ordered."
+        },
+        {
+          "name": "targetZ",
+          "type": "f32",
+          "note": "Where the order points, along the other ground axis."
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The network object the order is aimed at, or zero where it is aimed at open ground."
+        }
+      ],
+      "note": "What a client sends as its player gives an order. It carries no path. The header names the unit ordered: the player's champion, or a unit it controls alongside, which gets its own copy of the order while it is alive. Where the player orders that unit alone, a move goes to it alone as kind 6 and an attack as kind 5, with nothing sent for the champion, and an attack on what that unit already targets is not sent."
+    },
+    {
+      "from": "0.9.25.36",
       "until": "1.0.0.63",
       "channel": "requests",
       "command": 20,

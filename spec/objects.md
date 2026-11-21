@@ -31,7 +31,7 @@ these, it carries it whole, at the width above.
 >
 > A region id of 0 names no region: given a `RegionAdded` carrying 0, a client
 > gives the region an id of its own, its own node in the top byte and a count
-> below it, which no message from a server can name.
+> below it.
 
 <!-- holds from 1.0.0.96 up to 1.0.0.97 -->
 
@@ -96,7 +96,10 @@ gives the client its own client id.
 > **In 0.9.25.24–0.9.25.35**
 >
 > Registration pairs each player id with a client id. Every later message that
-> names a player by client id is read through that pairing.
+> names a player by client id is read through that pairing. A server MUST send
+> the `Registered` carrying the client's own player id before any
+> `CreateTurret`, because a client given one before it has its own client id
+> stops.
 
 <!-- holds from 1.0.0.58 up to 1.0.0.97 -->
 
