@@ -14,11 +14,11 @@ form, and their notes say which.
 
 A champion has two books of spells. Its own book holds these slots:
 
-| Slot        | Holds                                                            |
-| ----------- | ---------------------------------------------------------------- |
-| 0 to 3      | the champion's spells; 3 is its ultimate                         |
-| after those | the spells of the items in the inventory, one for each such slot |
-| after those | spells a server places for the match's own purposes              |
+| Slot        | Holds                                                       |
+| ----------- | ----------------------------------------------------------- |
+| 0 to 3      | the champion's spells; 3 is its ultimate                    |
+| after those | the spells of the items in the inventory, one for each slot |
+| after those | spells a server places for the match's own purposes         |
 
 <!-- holds from 0.8.13.26 up to 4.20.0.315 -->
 
