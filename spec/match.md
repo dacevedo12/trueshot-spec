@@ -68,6 +68,13 @@ seconds.
 > A server MUST NOT send `GameSpeed` before the client's own champion exists,
 > because a client given one before then fails.
 
+<!-- holds from 1.0.0.86 up to 1.0.0.87 -->
+
+> **In 1.0.0.86**
+>
+> A server MUST NOT send `GameSpeed` before the client's own champion exists,
+> because a client given one before then fails.
+
 <!-- holds from 1.0.0.126 up to 4.20.0.315 -->
 
 > **In 1.0.0.126–4.19**

@@ -128,6 +128,36 @@
     },
     {
       "from": "1.0.0.82",
+      "until": "1.0.0.86",
+      "channel": "events",
+      "command": 83,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "attacker",
+          "type": "u32",
+          "note": "The unit that destroyed it. A client reads it only for a nexus; for any other building it reads nothing of the message after the header."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.86",
+      "until": "1.0.0.87",
+      "channel": "events",
+      "command": 83,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "attacker",
+          "type": "u32",
+          "note": "The unit that destroyed it. A client reads nothing of the message after the header, for any building, the nexus included."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.87",
       "until": "1.0.0.96",
       "channel": "events",
       "command": 83,

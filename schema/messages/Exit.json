@@ -96,6 +96,26 @@
     },
     {
       "from": "1.0.0.82",
+      "until": "1.0.0.86",
+      "channel": "requests",
+      "command": 123,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window, or as a reconnection fails.",
+      "fields": []
+    },
+    {
+      "from": "1.0.0.86",
+      "until": "1.0.0.87",
+      "channel": "requests",
+      "command": 123,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "note": "A client sends it as it leaves as one abandoning the match while the match runs: as its player confirms quitting or closes the window, declines to reconnect, or dismisses the notice that a reconnection failed or that it was dropped for being away. Closing the window before the match runs ends the client without it.",
+      "fields": []
+    },
+    {
+      "from": "1.0.0.87",
       "until": "1.0.0.96",
       "channel": "requests",
       "command": 123,

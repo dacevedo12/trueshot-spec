@@ -558,6 +558,178 @@
     },
     {
       "from": "1.0.0.75",
+      "until": "1.0.0.86",
+      "channel": "events",
+      "command": 9,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 4,
+          "bits": [
+            {
+              "name": "unusedLow",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
+            {
+              "name": "loop",
+              "width": 1,
+              "note": "Set to loop the animation: it starts over once it ends."
+            },
+            {
+              "name": "holdLastFrame",
+              "width": 1,
+              "note": "Set to hold the last frame once the animation ends; it stops advancing there. Wins over loop."
+            },
+            {
+              "name": "fadeOthers",
+              "width": 1,
+              "note": "Set to freeze the animations already playing and fade them to nothing over the blend time. They are not removed."
+            },
+            {
+              "name": "freezeOthers",
+              "width": 1,
+              "note": "Set to freeze the animations already playing, fade them out over the blend time, then remove them."
+            },
+            {
+              "name": "dropOthers",
+              "width": 1,
+              "note": "Set to remove the animations already playing at once, with no fade."
+            },
+            {
+              "name": "locked",
+              "width": 1,
+              "note": "Set to lock the unit's animation: once the animation plays, a client refuses every later animation played on the unit, unless the unit's own character data opts out. A client applies the lock only where one of its own settings is on, as it is by default."
+            },
+            {
+              "name": "fadeAtEnd",
+              "width": 1,
+              "note": "Only where loop is clear: set to start fading the animation out once its time left is at or below the blend time."
+            },
+            {
+              "name": "syncPhase",
+              "width": 1,
+              "note": "Only together with loop: where an animation already playing on the unit is the same one, the new one starts at that animation's current fraction of its length, where that fraction lies strictly between 0 and 1."
+            },
+            {
+              "name": "noFadeIn",
+              "width": 1,
+              "note": "Set to show the animation at full weight at once, with no blend in. Animations that fadeOthers or freezeOthers fade out then vanish at once."
+            },
+            {
+              "name": "unused",
+              "width": 22,
+              "note": "Unused; a server writes zero."
+            }
+          ],
+          "note": "How the animation plays, as a set of bits."
+        },
+        {
+          "name": "scaleTime",
+          "type": "f32",
+          "note": "Where above zero, how many seconds the animation is stretched or squeezed to span; otherwise it plays at normal speed."
+        },
+        {
+          "name": "animation",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "The animation's name, ended by a zero byte. Nothing plays for a name the unit does not have."
+        }
+      ],
+      "note": "Every play blends in over a blend time of 0.2 seconds unless noFadeIn is set. Without loop or holdLastFrame, an animation that ends is removed, except that where it was the unit's only animation and the unit has an idle, a client fades back to the idle, looping. No start point is carried: the animation starts from its beginning. A unit whose animation has been locked ignores the message."
+    },
+    {
+      "from": "1.0.0.86",
+      "until": "1.0.0.87",
+      "channel": "events",
+      "command": 9,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 4,
+          "bits": [
+            {
+              "name": "unusedLow",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
+            {
+              "name": "loop",
+              "width": 1,
+              "note": "Set to loop the animation: it starts over once it ends."
+            },
+            {
+              "name": "holdLastFrame",
+              "width": 1,
+              "note": "Set to hold the last frame once the animation ends; it stops advancing there. Wins over loop."
+            },
+            {
+              "name": "fadeOthers",
+              "width": 1,
+              "note": "Set to freeze the animations already playing and fade them to nothing over the blend time. They are not removed."
+            },
+            {
+              "name": "freezeOthers",
+              "width": 1,
+              "note": "Set to freeze the animations already playing, fade them out over the blend time, then remove them."
+            },
+            {
+              "name": "dropOthers",
+              "width": 1,
+              "note": "Set to remove the animations already playing at once, with no fade."
+            },
+            {
+              "name": "locked",
+              "width": 1,
+              "note": "Set to lock the unit's animation: once the animation plays, a client refuses every later animation played on the unit; whether the unit's own character data can opt out is not recorded. A client applies the lock only where one of its own settings is on, as it is by default."
+            },
+            {
+              "name": "fadeAtEnd",
+              "width": 1,
+              "note": "Only where loop is clear: set to start fading the animation out once its time left is at or below the blend time."
+            },
+            {
+              "name": "syncPhase",
+              "width": 1,
+              "note": "Only together with fadeOthers: where the same animation already plays on the unit, the new one starts at that animation's fraction of its length."
+            },
+            {
+              "name": "noFadeIn",
+              "width": 1,
+              "note": "Set to show the animation at full weight at once, with no blend in. Animations that fadeOthers or freezeOthers fade out then vanish at once."
+            },
+            {
+              "name": "unused",
+              "width": 22,
+              "note": "Unused; a server writes zero."
+            }
+          ],
+          "note": "How the animation plays, as a set of bits."
+        },
+        {
+          "name": "scaleTime",
+          "type": "f32",
+          "note": "Where above zero, how many seconds the animation is stretched or squeezed to span; otherwise it plays at normal speed."
+        },
+        {
+          "name": "animation",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "The animation's name, ended by a zero byte. Nothing plays for a name the unit does not have."
+        }
+      ],
+      "note": "Every play blends in over a blend time of 0.2 seconds unless noFadeIn is set. Without loop or holdLastFrame, an animation that ends is removed, except that where it was the unit's only animation and the unit has an idle, a client fades back to the idle, looping. No start point is carried: the animation starts from its beginning. A unit whose animation has been locked ignores the message."
+    },
+    {
+      "from": "1.0.0.87",
       "until": "1.0.0.96",
       "channel": "events",
       "command": 9,

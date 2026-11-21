@@ -46,6 +46,26 @@
     },
     {
       "from": "1.0.0.82",
+      "until": "1.0.0.86",
+      "channel": "requests",
+      "command": 153,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client sends it whenever its player opens the shop, in every mode and on every map."
+    },
+    {
+      "from": "1.0.0.86",
+      "until": "1.0.0.87",
+      "channel": "requests",
+      "command": 153,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client sends it as its player opens the shop, in any match. Where a setting of its own has it heed the shop lock, opening a locked shop does nothing and sends nothing."
+    },
+    {
+      "from": "1.0.0.87",
       "until": "1.0.0.97",
       "channel": "requests",
       "command": 153,

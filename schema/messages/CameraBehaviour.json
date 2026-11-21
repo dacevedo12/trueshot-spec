@@ -188,6 +188,58 @@
     },
     {
       "from": "1.0.0.82",
+      "until": "1.0.0.86",
+      "channel": "events",
+      "command": 105,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Along one ground axis, in world units."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "In height, in world units."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Along the other ground axis, in world units."
+        }
+      ],
+      "note": "The view keeps to the point. Only the client whose own champion the header names applies it."
+    },
+    {
+      "from": "1.0.0.86",
+      "until": "1.0.0.87",
+      "channel": "events",
+      "command": 105,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Along one ground axis, in world units."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "In height, in world units."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Along the other ground axis, in world units."
+        }
+      ],
+      "note": "What the view then does with the point is not recorded. Only the client whose own champion the header names applies it."
+    },
+    {
+      "from": "1.0.0.87",
       "until": "1.0.0.97",
       "channel": "events",
       "command": 105,

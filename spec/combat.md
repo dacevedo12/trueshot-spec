@@ -258,9 +258,24 @@ for what a client draws on its map with `UnitDiedOnMap`.
 
 `Revived` puts a champion back on the field.
 
-<!-- holds from 0.8.13.26 up to 1.0.0.97 -->
+<!-- holds from 0.8.13.26 up to 1.0.0.86 -->
 
-> **In 0.8.13.26–1.0.0.96**
+> **In 0.8.13.26–1.0.0.85**
+>
+> A client reads nothing from `Revived` or `Respawned`: each brings the champion
+> back where it stands.
+
+<!-- holds from 1.0.0.86 up to 1.0.0.87 -->
+
+> **In 1.0.0.86**
+>
+> A client reads nothing from `Revived` or `Respawned`: each brings the champion
+> back at its side's spawn point, or the nearest place to it that can be walked
+> on. `Revived` brings back a champion that is not dead too, first stopping it.
+
+<!-- holds from 1.0.0.87 up to 1.0.0.97 -->
+
+> **In 1.0.0.87–1.0.0.96**
 >
 > A client reads nothing from `Revived` or `Respawned`: each brings the champion
 > back where it stands.

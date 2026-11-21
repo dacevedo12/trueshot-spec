@@ -56,6 +56,26 @@
     },
     {
       "from": "1.0.0.75",
+      "until": "1.0.0.86",
+      "channel": "requests",
+      "command": 17,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client sends it each time GameEnded arrives."
+    },
+    {
+      "from": "1.0.0.86",
+      "until": "1.0.0.87",
+      "channel": "requests",
+      "command": 17,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client sends it each time GameEnded arrives after StartGame. For a GameEnded before StartGame it leaves without sending it."
+    },
+    {
+      "from": "1.0.0.87",
       "until": "1.0.0.96",
       "channel": "requests",
       "command": 17,

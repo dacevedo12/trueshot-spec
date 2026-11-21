@@ -114,6 +114,78 @@
     },
     {
       "from": "1.0.0.75",
+      "until": "1.0.0.86",
+      "channel": "events",
+      "command": 26,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where the ping sits, along one ground axis, in world units."
+        },
+        {
+          "name": "atY",
+          "type": "f32",
+          "note": "Its height, in world units. A client does not use it to place the ping."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where it sits, along the other, in world units."
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit pinged, or zero where a place was pinged instead."
+        },
+        {
+          "name": "source",
+          "type": "u32",
+          "note": "The unit that placed it."
+        }
+      ],
+      "note": "Where target is a unit it holds, of a kind that takes notices, a client shows a notice for it, but not again for the next ping on the same target; it keeps the last target of each side apart. The header names the champion that placed the ping, as source does."
+    },
+    {
+      "from": "1.0.0.86",
+      "until": "1.0.0.87",
+      "channel": "events",
+      "command": 26,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where the ping sits, along one ground axis, in world units."
+        },
+        {
+          "name": "atY",
+          "type": "f32",
+          "note": "Its height, in world units. A client does not use it to place the ping."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where it sits, along the other, in world units."
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit pinged, or zero where a place was pinged instead."
+        },
+        {
+          "name": "source",
+          "type": "u32",
+          "note": "The unit that placed it."
+        }
+      ],
+      "note": "Where target is a unit it holds, of a kind that takes notices, a client shows a notice for it, but not again for the next ping on the same target; it keeps the last target of each side apart. A client ignores the header; source names who placed the ping."
+    },
+    {
+      "from": "1.0.0.87",
       "until": "1.0.0.96",
       "channel": "events",
       "command": 26,

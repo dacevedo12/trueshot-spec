@@ -182,9 +182,18 @@ alone closes the shop and turns off its key.
 > input obeys every lock but the shop's, which
 > [The shop](shop.md#buying-and-selling) covers.
 
-<!-- holds from 1.0.0.75 up to 3.11.0.306 -->
+<!-- holds from 1.0.0.86 up to 1.0.0.87 -->
 
-> **In 1.0.0.75–3.10**
+> **In 1.0.0.86**
+>
+> A client keeps every lock a message sets or clears, but acts on a lock at once
+> only where the message's mask is exactly one of 1, 4, 8, 16, 32 or 128. Later
+> input obeys every lock but the shop's, which
+> [The shop](shop.md#buying-and-selling) covers.
+
+<!-- holds from 1.0.0.87 up to 3.11.0.306 -->
+
+> **In 1.0.0.87–3.10**
 >
 > A client keeps every lock a message sets or clears, and later input obeys
 > them, but it acts on a lock at once only where the message's mask is exactly

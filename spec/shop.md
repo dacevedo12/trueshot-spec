@@ -29,9 +29,9 @@ shop by the champion's level.
 > and can list the only items the shop holds. No mode or variant has a list of
 > its own, and nothing a server sends changes what can be bought.
 
-<!-- holds from 1.0.0.25 up to 1.0.0.61 -->
+<!-- holds from 1.0.0.25 up to 1.0.0.97 -->
 
-> **In 1.0.0.25–1.0.0.60**
+> **In 1.0.0.25–1.0.0.96**
 >
 > A client uses the map's list of the items the shop holds only where a setting
 > of its own turns it on.
@@ -40,9 +40,7 @@ shop by the champion's level.
 
 > **In 1.0.0.96**
 >
-> Suggested items depend on neither the map nor the mode. A client uses the
-> map's list of the items the shop holds only where a setting of its own turns
-> it on.
+> Suggested items depend on neither the map nor the mode.
 
 <!-- holds from 1.0.0.140 up to 1.0.0.141 -->
 
@@ -115,9 +113,17 @@ the shop sends nothing.
 > shop and asks to buy whether or not the shop is locked, except where a setting
 > of its own, off by default, has it heed the lock.
 
-<!-- holds from 1.0.0.75 up to 1.0.0.140 -->
+<!-- holds from 1.0.0.86 up to 1.0.0.87 -->
 
-> **In 1.0.0.75–1.0.0.139**
+> **In 1.0.0.86**
+>
+> Opening the shop sends `TutorialShopOpened`, in any match. A client opens the
+> shop and asks to buy whether or not the shop is locked, except where a setting
+> of its own, off by default, has it heed the lock.
+
+<!-- holds from 1.0.0.87 up to 1.0.0.140 -->
+
+> **In 1.0.0.87–1.0.0.139**
 >
 > Opening the shop sends `TutorialShopOpened`, in any match, except while the
 > shop is locked.
@@ -207,17 +213,27 @@ sells.
 >
 > A client asks only with the champion dead or near a shop of its side.
 
-<!-- holds from 1.0.0.75 up to 3.10.0.237 -->
+<!-- holds from 1.0.0.86 up to 1.0.0.87 -->
 
-> **In 1.0.0.75–3.9**
+> **In 1.0.0.86**
+>
+> A client asks for an item not built from others only where its price is
+> within the champion's gold and a slot is free or holds the same item below its
+> stack limit, an item that can be used in the shop as any other.
+>
+> A client asks only with the champion dead or near a shop of its side.
+
+<!-- holds from 1.0.0.87 up to 3.10.0.237 -->
+
+> **In 1.0.0.87–3.9**
 >
 > A client asks for an item not built from others only where its price is
 > within the champion's gold and, unless the item can be used in the shop,
 > where a slot is free or holds the same item below its stack limit.
 
-<!-- holds from 1.0.0.75 up to 1.0.0.140 -->
+<!-- holds from 1.0.0.87 up to 1.0.0.140 -->
 
-> **In 1.0.0.75–1.0.0.139**
+> **In 1.0.0.87–1.0.0.139**
 >
 > A client asks only while the shop is not locked, with the champion dead or
 > near a shop of its side.

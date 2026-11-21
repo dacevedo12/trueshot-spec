@@ -110,6 +110,58 @@
     },
     {
       "from": "1.0.0.82",
+      "until": "1.0.0.86",
+      "channel": "events",
+      "command": 81,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "A client reads nothing here."
+        },
+        {
+          "name": "atY",
+          "type": "f32",
+          "note": "A client reads nothing here."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "A client reads nothing here."
+        }
+      ],
+      "note": "A client returns the champion where it already stands."
+    },
+    {
+      "from": "1.0.0.86",
+      "until": "1.0.0.87",
+      "channel": "events",
+      "command": 81,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "A client reads nothing here."
+        },
+        {
+          "name": "atY",
+          "type": "f32",
+          "note": "A client reads nothing here."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "A client reads nothing here."
+        }
+      ],
+      "note": "A client returns the champion to its side's spawn point, or the nearest place to it that can be walked on, first stopping a champion that is not dead."
+    },
+    {
+      "from": "1.0.0.87",
       "until": "1.0.0.97",
       "channel": "events",
       "command": 81,

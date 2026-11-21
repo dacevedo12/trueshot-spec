@@ -134,6 +134,38 @@
     },
     {
       "from": "1.0.0.82",
+      "until": "1.0.0.86",
+      "channel": "requests",
+      "command": 125,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "loading",
+          "type": "u8",
+          "note": "Zero while the match StartGame began is running, 1 otherwise: before StartGame, and once the match has ended."
+        }
+      ],
+      "note": "A client sends it right after the server answers its registration. A client sends it once it has connected again to a match it was playing. A client dropped while playing connects again only where its player agrees; one dropped while loading leaves."
+    },
+    {
+      "from": "1.0.0.86",
+      "until": "1.0.0.87",
+      "channel": "requests",
+      "command": 125,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "loading",
+          "type": "u8",
+          "note": "Zero while the match StartGame began is running, 1 otherwise: before StartGame, and once the match has ended."
+        }
+      ],
+      "note": "A client sends it right after the server answers its registration. It sends it on every connection, the first included. A client dropped while playing connects again only where its player agrees; one dropped while loading leaves."
+    },
+    {
+      "from": "1.0.0.87",
       "until": "1.0.0.96",
       "channel": "requests",
       "command": 125,

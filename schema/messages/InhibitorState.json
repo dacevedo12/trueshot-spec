@@ -276,6 +276,66 @@
     },
     {
       "from": "1.0.0.82",
+      "until": "1.0.0.86",
+      "channel": "events",
+      "command": 69,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "state",
+          "type": "u32",
+          "note": "What state the inhibitor takes. For any other value a client shows nothing but keeps it as the inhibitor's state, so a later 0 or 1 is applied even where it repeats the state before.",
+          "values": {
+            "0": {
+              "name": "down",
+              "note": "The inhibitor goes down."
+            },
+            "1": {
+              "name": "restored",
+              "note": "The inhibitor stands again."
+            }
+          }
+        },
+        {
+          "name": "duration",
+          "type": "u32",
+          "note": "How long the state lasts, in seconds."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.86",
+      "until": "1.0.0.87",
+      "channel": "events",
+      "command": 69,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "state",
+          "type": "u32",
+          "note": "What state the inhibitor takes. For any other value a client shows nothing but keeps it as the inhibitor's state, so a later 0 or 1 is applied even where it repeats the state before.",
+          "values": {
+            "0": {
+              "name": "down",
+              "note": "The inhibitor goes down."
+            },
+            "1": {
+              "name": "restored",
+              "note": "The inhibitor stands again."
+            }
+          }
+        },
+        {
+          "name": "duration",
+          "type": "u32",
+          "note": "How long the state lasts, in whole seconds. After a change to state 0, a client counts it down and makes one announcement once 15 seconds or fewer are left; a change to state 1 sets it to zero. A client never changes the state itself as it runs out."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.87",
       "until": "1.0.0.97",
       "channel": "events",
       "command": 69,
