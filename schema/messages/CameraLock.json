@@ -105,7 +105,7 @@
     },
     {
       "from": "0.9.25.36",
-      "until": "1.0.0.58",
+      "until": "1.0.0.25",
       "channel": "requests",
       "command": 60,
       "direction": "clientToServer",
@@ -135,6 +135,39 @@
         }
       ],
       "note": "A client sends it on each CameraLockSet with state as that message carried it, all eight bits included, and also as its player sets the lock or the game forces a lock or lifts one. While a forced lock holds, a CameraLockSet or player setting is dropped. As a forced lock begins, a client keeps the state then in force and sends it as the lock lifts; a second forced lock during the first sends its own state and keeps nothing new."
+    },
+    {
+      "from": "1.0.0.25",
+      "until": "1.0.0.58",
+      "channel": "requests",
+      "command": 60,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "locked",
+              "width": 1,
+              "note": "Set while the view follows a unit."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "As CameraLockSet carried them; zero in a report the client makes on its own."
+            }
+          ]
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
+        }
+      ],
+      "note": "A client sends it on each CameraLockSet with state as that message carried it, all eight bits included, and also as its player sets the lock, as StartGame arrives, with the lock its player saved or 1 where none is saved, as its own champion is made while the view is locked, with state 1, and as the game forces the view free or that forcing lifts. As the forcing begins, a client keeps the state then in force and sends it as the forcing lifts; while it holds, a CameraLockSet, a player setting or the report at StartGame is dropped."
     },
     {
       "from": "1.0.0.58",

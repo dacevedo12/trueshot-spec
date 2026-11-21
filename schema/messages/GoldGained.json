@@ -84,7 +84,7 @@
     },
     {
       "from": "0.9.25.36",
-      "until": "1.0.0.58",
+      "until": "1.0.0.25",
       "channel": "events",
       "command": 27,
       "direction": "serverToClient",
@@ -107,6 +107,32 @@
         }
       ],
       "note": "Where amount is above 0.5, unit is the client's own champion and source names a unit it holds, a client floats the gold over the source. Otherwise, where it holds the unit, it floats the amount over the unit as a gain or a loss, and nothing for zero."
+    },
+    {
+      "from": "1.0.0.25",
+      "until": "1.0.0.58",
+      "channel": "events",
+      "command": 27,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit the gold is shown for. A client changes no gold it holds or shows for it."
+        },
+        {
+          "name": "source",
+          "type": "u32",
+          "note": "What it came from, or zero where nothing did."
+        },
+        {
+          "name": "amount",
+          "type": "f32",
+          "note": "How much."
+        }
+      ],
+      "note": "Where amount is above 0.5, unit is the client's own champion and source names a unit it holds, a client floats the gold over the source. Otherwise, where it holds the unit and that unit is a champion, a minion or a turret, it floats the amount over the unit as a gain or a loss, and nothing for zero; for any other unit it holds the message has no defined effect."
     },
     {
       "from": "1.0.0.58",

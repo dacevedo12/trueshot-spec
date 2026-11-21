@@ -21,6 +21,36 @@
     },
     {
       "from": "0.9.25.36",
+      "until": "1.0.0.25",
+      "command": 163,
+      "channel": "events",
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "element",
+          "type": "u8",
+          "note": "Which part of the minimap blinks; a server sends 0, its camera button. A client acts only once it knows its own champion, and does not check the value: any other has no defined effect."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.25",
+      "until": "1.0.0.58",
+      "command": 163,
+      "channel": "events",
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "element",
+          "type": "u8",
+          "note": "Which part of the minimap blinks; a server sends 0, its camera button. A client acts wherever its interface and minimap exist, and does not check the value: any other has no defined effect."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.58",
       "until": "1.0.0.74",
       "command": 163,
       "channel": "events",

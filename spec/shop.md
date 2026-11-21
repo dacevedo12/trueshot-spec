@@ -21,17 +21,17 @@ shop by the champion's level.
 >
 > An item's own data says whether it can be bought.
 
-<!-- holds from 1.0.0.58 up to 1.0.0.141 -->
+<!-- holds from 1.0.0.25 up to 1.0.0.141 -->
 
-> **In 1.0.0.58–1.0.0.140**
+> **In 1.0.0.25–1.0.0.140**
 >
 > The data of the map `VersionSync` names lists the items that cannot be bought,
 > and can list the only items the shop holds. No mode or variant has a list of
 > its own, and nothing a server sends changes what can be bought.
 
-<!-- holds from 1.0.0.58 up to 1.0.0.61 -->
+<!-- holds from 1.0.0.25 up to 1.0.0.61 -->
 
-> **In 1.0.0.58–1.0.0.60**
+> **In 1.0.0.25–1.0.0.60**
 >
 > A client uses the map's list of the items the shop holds only where a setting
 > of its own turns it on.
@@ -85,9 +85,24 @@ the shop sends nothing.
 >
 > Opening the shop sends nothing either.
 
-<!-- holds from 0.9.25.24 up to 1.0.0.140 -->
+<!-- holds from 0.9.25.24 up to 1.0.0.25 -->
 
-> **In 0.9.25.24–1.0.0.139**
+> **In 0.9.25.24–1.0.0.24**
+>
+> Opening the shop sends `TutorialShopOpened`, in any match, except while the
+> shop is locked.
+
+<!-- holds from 1.0.0.25 up to 1.0.0.58 -->
+
+> **In 1.0.0.25–1.0.0.57**
+>
+> Opening the shop sends `TutorialShopOpened`, in any match. A client opens the
+> shop and asks to buy whether or not the shop is locked, except where a setting
+> of its own has it heed the lock.
+
+<!-- holds from 1.0.0.58 up to 1.0.0.140 -->
+
+> **In 1.0.0.58–1.0.0.139**
 >
 > Opening the shop sends `TutorialShopOpened`, in any match, except while the
 > shop is locked.
@@ -147,9 +162,22 @@ sells.
 > A client asks for an item built from others only where it is one the match
 > sells too.
 
-<!-- holds from 0.9.25.24 up to 1.0.0.140 -->
+<!-- holds from 0.9.25.24 up to 1.0.0.25 -->
 
-> **In 0.9.25.24–1.0.0.139**
+> **In 0.9.25.24–1.0.0.24**
+>
+> A client asks only while the shop is not locked, with the champion dead or
+> near a shop of its side.
+
+<!-- holds from 1.0.0.25 up to 1.0.0.58 -->
+
+> **In 1.0.0.25–1.0.0.57**
+>
+> A client asks only with the champion dead or near a shop of its side.
+
+<!-- holds from 1.0.0.58 up to 1.0.0.140 -->
+
+> **In 1.0.0.58–1.0.0.139**
 >
 > A client asks only while the shop is not locked, with the champion dead or
 > near a shop of its side.
@@ -248,9 +276,9 @@ whole inventory (`InventorySnapshot`), change an item's charges
 > falls only as replication states the champion's gold, and a purchase a server
 > never answers places nothing and spends nothing.
 
-<!-- holds from 1.0.0.58 up to 4.20.0.315 -->
+<!-- holds from 1.0.0.25 up to 4.20.0.315 -->
 
-> **In 1.0.0.58–4.19**
+> **In 1.0.0.25–4.19**
 >
 > A purchase a server never answers still plays the sound of buying.
 

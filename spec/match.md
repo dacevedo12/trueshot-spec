@@ -38,9 +38,18 @@ seconds.
 >
 > No unit advances for `StatTick`.
 
-<!-- holds from 0.9.25.36 up to 1.0.0.97 -->
+<!-- holds from 1.0.0.25 up to 1.0.0.58 -->
 
-> **In 0.9.25.36–1.0.0.96**
+> **In 1.0.0.25–1.0.0.57**
+>
+> A `GameSpeed` other than 0 takes effect at once: sent during a hold, it ends
+> the hold, and a `Resumed` after it changes nothing. One of 0 sent during a hold
+> leaves the match held. A `Resumed` that arrives while the speed is 0, held or
+> not, sets the match going at the speed it had when the last hold began.
+
+<!-- holds from 1.0.0.58 up to 1.0.0.97 -->
+
+> **In 1.0.0.58–1.0.0.96**
 >
 > The speed `GameSpeed` sets takes effect at once: sent during a hold, it ends
 > the hold, and a `Resumed` after it changes nothing.
@@ -442,6 +451,16 @@ A server tells the others that a player's client dropped with
 >
 > A client whose connection drops before play begins, once the registration
 > answer has given it its own client id, leaves rather than connecting again.
+
+<!-- holds from 1.0.0.25 up to 1.0.0.58 -->
+
+> **In 1.0.0.25–1.0.0.57**
+>
+> While it resynchronises, a client ignores `SpawnFromBarracks`, `SpawnUnit` and
+> `CreateNeutral` naming a unit it already holds, a `CreateNeutral` or a
+> `SpawnUnit` for a unit it does not hold whose `asset` is empty, a
+> `SpawnFromBarracks` for a unit it does not hold whose `kind` is above 4, and a
+> `UnitDied` naming a unit it does not hold.
 
 <!-- holds from 1.0.0.58 up to 1.0.0.61 -->
 

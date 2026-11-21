@@ -34,7 +34,7 @@
     },
     {
       "from": "0.9.25.36",
-      "until": "1.0.0.58",
+      "until": "1.0.0.25",
       "channel": "requests",
       "command": 157,
       "direction": "clientToServer",
@@ -59,6 +59,34 @@
         }
       ],
       "note": "It answers a call to surrender."
+    },
+    {
+      "from": "1.0.0.25",
+      "until": "1.0.0.58",
+      "channel": "requests",
+      "command": 157,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "inFavour",
+              "width": 1,
+              "note": "Set where the answer is yes, clear where it is no."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "A client leaves these bits as they happen to be; a server ignores them."
+            }
+          ]
+        }
+      ],
+      "note": "A client sends it from the vote's panel, set for yes and clear for no, and set as its player gives the command to surrender, typed or on its key, whether or not a vote is open: with none open, that calls one. It sends at most one until its vote resets, and none where its own champion has voted already."
     },
     {
       "from": "1.0.0.58",

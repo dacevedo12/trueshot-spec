@@ -66,6 +66,68 @@
     },
     {
       "from": "0.9.25.36",
+      "until": "1.0.0.25",
+      "channel": "events",
+      "command": 160,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "reason",
+          "type": "u32",
+          "note": "Why the vote stands where it does. A client acts on 0 to 4 and ignores the message for any other value; 0 resets the vote whatever side holds, and 1 resets it only where side is the client's own."
+        },
+        {
+          "name": "inFavour",
+          "type": "u8",
+          "note": "How many voted for."
+        },
+        {
+          "name": "against",
+          "type": "u8",
+          "note": "How many voted against."
+        },
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "Which side."
+        }
+      ],
+      "note": "A client ignores the message unless its interface and its own champion both exist."
+    },
+    {
+      "from": "1.0.0.25",
+      "until": "1.0.0.58",
+      "channel": "events",
+      "command": 160,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "reason",
+          "type": "u32",
+          "note": "Why the vote stands where it does. A client acts on 0 to 4 and ignores the message for any other value; 0 resets the vote whatever side holds, and 1 resets it only where side is the client's own."
+        },
+        {
+          "name": "inFavour",
+          "type": "u8",
+          "note": "How many voted for."
+        },
+        {
+          "name": "against",
+          "type": "u8",
+          "note": "How many voted against."
+        },
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "Which side."
+        }
+      ],
+      "note": "A client ignores the message unless its interface exists. For reason 1 it fails where it has no champion of its own."
+    },
+    {
+      "from": "1.0.0.58",
       "until": "1.0.0.74",
       "channel": "events",
       "command": 160,

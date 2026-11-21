@@ -66,16 +66,9 @@ for. Each family keeps its own numbers, and compares them in its own way.
 > server MUST give each statement about a unit a number equal to or ahead of
 > the last it gave that unit.
 
-<!-- holds from 0.9.25.24 up to 0.9.25.36 -->
+<!-- holds from 0.9.25.24 up to 1.0.0.97 -->
 
-> **In 0.9.25.24–0.9.25.35**
->
-> A client compares a `PathWithSpeed`'s number with its unit's count but does
-> not advance the count to it.
-
-<!-- holds from 1.0.0.58 up to 1.0.0.97 -->
-
-> **In 1.0.0.58–1.0.0.96**
+> **In 0.9.25.24–1.0.0.96**
 >
 > A client compares a `PathWithSpeed`'s number with its unit's count but does
 > not advance the count to it.
@@ -156,9 +149,9 @@ a stream.
 > the round trip time plus 1/30 of a second apart, for as long as the match
 > runs.
 
-<!-- holds from 1.0.0.58 up to 4.21.0.0 -->
+<!-- holds from 1.0.0.25 up to 4.21.0.0 -->
 
-> **In 1.0.0.58–4.20**
+> **In 1.0.0.25–4.20**
 >
 > A client sends a view report again, twice the round trip time plus 1/30 of a
 > second apart, until a server answers it with `CameraAck`, carrying its number.

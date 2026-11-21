@@ -53,9 +53,9 @@ set a point for a player's view with `CameraBehaviour`.
 > A client's view report, `Camera`, goes out as its view moves more than 200
 > units, at most every tenth of a second, and never while its view is locked.
 
-<!-- holds from 1.0.0.58 up to 1.0.0.97 -->
+<!-- holds from 1.0.0.25 up to 1.0.0.97 -->
 
-> **In 1.0.0.58–1.0.0.96**
+> **In 1.0.0.25–1.0.0.96**
 >
 > A client's view report, `Camera`, goes out as its view moves more than 200
 > units, at most every tenth of a second, and never while its view is locked; a
@@ -148,9 +148,26 @@ alone closes the shop and turns off its key.
 > drives starts and ends, and `InputLockChanged` for the locks it set or
 > cleared.
 
-<!-- holds from 0.9.25.24 up to 3.11.0.306 -->
+<!-- holds from 0.9.25.24 up to 1.0.0.25 -->
 
-> **In 0.9.25.24–3.10**
+> **In 0.9.25.24–1.0.0.24**
+>
+> A client keeps every lock a message sets or clears, and later input obeys
+> them, but it acts on a lock at once only where the message's mask is exactly
+> one of 1, 4, 8, 16, 32 or 128.
+
+<!-- holds from 1.0.0.25 up to 1.0.0.58 -->
+
+> **In 1.0.0.25–1.0.0.57**
+>
+> A client keeps every lock a message sets or clears, but acts on a lock at once
+> only where the message's mask is exactly one of 1, 4, 8, 16, 32 or 128. Later
+> input obeys every lock but the shop's, which
+> [The shop](shop.md#buying-and-selling) covers.
+
+<!-- holds from 1.0.0.58 up to 3.11.0.306 -->
+
+> **In 1.0.0.58–3.10**
 >
 > A client keeps every lock a message sets or clears, and later input obeys
 > them, but it acts on a lock at once only where the message's mask is exactly

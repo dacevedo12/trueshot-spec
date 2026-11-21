@@ -105,9 +105,9 @@ data for. A compact path takes its origin from the same data (see
 >
 > A client has data for maps 1, 2 and 3.
 
-<!-- holds from 1.0.0.58 up to 1.0.0.97 -->
+<!-- holds from 1.0.0.25 up to 1.0.0.97 -->
 
-> **In 1.0.0.58–1.0.0.96**
+> **In 1.0.0.25–1.0.0.96**
 >
 > A client has data for maps 1 to 4.
 

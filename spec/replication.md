@@ -207,9 +207,9 @@ Each row gives the group and bits that name a value and what the value is.
 > | 1     | 0 to 1 | Whether it is proof against all harm, and targetable | u32   |
 > | 1     | 2      | Health as it stands                                  | float |
 
-<!-- holds from 1.0.0.58 up to 1.0.0.61 -->
+<!-- holds from 1.0.0.25 up to 1.0.0.61 -->
 
-> **In 1.0.0.58–1.0.0.60**
+> **In 1.0.0.25–1.0.0.60**
 >
 > ## A champion
 >
@@ -931,9 +931,16 @@ Besides its batches, a server states some values with messages of their own.
 > `GoldGained` grants no gold: a champion's gold in hand follows group 0 bit 1 of
 > its batches alone.
 
-<!-- holds from 0.9.25.36 up to 1.0.0.96 -->
+<!-- holds from 1.0.0.25 up to 1.0.0.58 -->
 
-> **In 0.9.25.36–1.0.0.95**
+> **In 1.0.0.25–1.0.0.57**
+>
+> `GoldGained` grants no gold: a champion's gold in hand follows group 0 bit 1 of
+> its batches alone.
+
+<!-- holds from 1.0.0.58 up to 1.0.0.96 -->
+
+> **In 1.0.0.58–1.0.0.95**
 >
 > A server grants gold with `GoldGained`.
 

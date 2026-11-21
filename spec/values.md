@@ -105,9 +105,9 @@ A server MUST NOT name a champion book slot beyond the book's last slot.
 > A champion's own book ends at slot 44. A client reports an `Autocast` naming
 > a slot above 44 as an error, and keeps it all the same.
 
-<!-- holds from 1.0.0.58 up to 1.0.0.97 -->
+<!-- holds from 1.0.0.25 up to 1.0.0.97 -->
 
-> **In 1.0.0.58–1.0.0.96**
+> **In 1.0.0.25–1.0.0.96**
 >
 > A champion's own book ends at slot 48. A client reports an `Autocast` naming
 > a slot above 48 as an error, and keeps it all the same.

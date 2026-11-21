@@ -365,7 +365,7 @@
     },
     {
       "from": "0.9.25.36",
-      "until": "1.0.0.58",
+      "until": "1.0.0.25",
       "channel": "events",
       "command": 63,
       "direction": "serverToClient",
@@ -486,6 +486,130 @@
         }
       ],
       "note": "A client reads neither a speed nor a part of the missile's life spent. Neither the ground-height rule for endY nor a trail moved on by an age is confirmed. A client places the casting's second unit, where it holds that unit, where the thrower stood rather than with the casting unit. The header names the unit casting, as the casting inside does."
+    },
+    {
+      "from": "1.0.0.25",
+      "until": "1.0.0.58",
+      "channel": "events",
+      "command": 63,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where the missile is, along one ground axis, in world units."
+        },
+        {
+          "name": "atY",
+          "type": "f32",
+          "note": "Where the missile is, in height, in world units."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where the missile is, along the other ground axis, in world units."
+        },
+        {
+          "name": "casterAtX",
+          "type": "f32",
+          "note": "Where the unit that threw it stood when it left, along one ground axis, in world units."
+        },
+        {
+          "name": "casterAtY",
+          "type": "f32",
+          "note": "Where the unit that threw it stood when it left, in height, in world units."
+        },
+        {
+          "name": "casterAtZ",
+          "type": "f32",
+          "note": "Where the unit that threw it stood when it left, along the other ground axis, in world units."
+        },
+        {
+          "name": "facingX",
+          "type": "f32",
+          "note": "Which way the missile points, along one ground axis."
+        },
+        {
+          "name": "facingY",
+          "type": "f32",
+          "note": "Which way the missile points, in height."
+        },
+        {
+          "name": "facingZ",
+          "type": "f32",
+          "note": "Which way the missile points, along the other ground axis."
+        },
+        {
+          "name": "velocityX",
+          "type": "f32",
+          "note": "How fast the missile travels, along one ground axis, in world units a second."
+        },
+        {
+          "name": "velocityY",
+          "type": "f32",
+          "note": "How fast the missile travels, in height, in world units a second."
+        },
+        {
+          "name": "velocityZ",
+          "type": "f32",
+          "note": "How fast the missile travels, along the other ground axis, in world units a second."
+        },
+        {
+          "name": "endX",
+          "type": "f32",
+          "note": "Where the missile is bound for, along one ground axis, in world units."
+        },
+        {
+          "name": "endY",
+          "type": "f32",
+          "note": "Where the missile is bound for, in height, in world units."
+        },
+        {
+          "name": "endZ",
+          "type": "f32",
+          "note": "Where the missile is bound for, along the other ground axis, in world units."
+        },
+        {
+          "name": "unitAtX",
+          "type": "f32",
+          "note": "Where to place the casting unit, along one ground axis, in world units, unless the casting itself places it."
+        },
+        {
+          "name": "unitAtY",
+          "type": "f32",
+          "note": "Its height, in world units."
+        },
+        {
+          "name": "unitAtZ",
+          "type": "f32",
+          "note": "Where to place the casting unit, along the other ground axis, in world units."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "bounced",
+              "width": 1,
+              "note": "Set where the missile has bounced. A client tests the whole byte, so any set bit counts. For a missile it already holds that flies in a straight line, a client then sets the line's end to casterAt, raised by the missile's height above the ground, and points the missile from where it now is toward that end."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "cast",
+          "type": "struct",
+          "struct": "SpellCast",
+          "note": "The casting that threw it."
+        }
+      ],
+      "note": "A client reads neither a speed nor a part of the missile's life spent. Neither the ground-height rule for endY nor a trail moved on by an age is confirmed. Where the client holds the missile and the second unit the casting names, a client aims the casting at that unit's position; it moves no unit. Only a missile that flies straight takes casterAt, end, facing and how; any other takes only its position and velocity. The header names the unit casting, as the casting inside does."
     },
     {
       "from": "1.0.0.58",

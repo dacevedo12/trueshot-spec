@@ -38,6 +38,36 @@
     },
     {
       "from": "0.9.25.36",
+      "until": "1.0.0.25",
+      "channel": "events",
+      "command": 73,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "attacker",
+          "type": "u32",
+          "note": "The unit that destroyed it. A client reads nothing here."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.25",
+      "until": "1.0.0.58",
+      "channel": "events",
+      "command": 73,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "attacker",
+          "type": "u32",
+          "note": "The unit that destroyed it. A client reads it only for a nexus or an inhibitor, and what it does with it then is not recorded."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.58",
       "until": "1.0.0.61",
       "channel": "events",
       "command": 73,

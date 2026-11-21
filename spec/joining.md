@@ -223,9 +223,9 @@ every client has sent `ClientReady`.
 > `level` and summoner spells from; where no seat has that player id, the card
 > still shows its progress, without them.
 
-<!-- holds from 1.0.0.58 up to 1.0.0.61 -->
+<!-- holds from 1.0.0.25 up to 1.0.0.61 -->
 
-> **In 1.0.0.58–1.0.0.60**
+> **In 1.0.0.25–1.0.0.60**
 >
 > The loading screen picks the card a `SeatLoadProgress` updates by the client
 > id it carries, not by its player id.

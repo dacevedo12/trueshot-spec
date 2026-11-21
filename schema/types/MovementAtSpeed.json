@@ -63,7 +63,7 @@
     },
     {
       "from": "0.9.22.14",
-      "until": "1.0.0.58",
+      "until": "1.0.0.25",
       "fields": [
         {
           "name": "header",
@@ -74,6 +74,64 @@
               "name": "pointCount",
               "width": 16,
               "note": "How many points the path holds; a server writes at least one. A client refuses a movement claiming none and reads no movement after it in the group. It reads a count from 32768 up as negative and reads no points for it."
+            }
+          ]
+        },
+        {
+          "name": "path",
+          "type": "record",
+          "fields": [
+            {
+              "name": "unit",
+              "type": "u32",
+              "note": "The unit the path belongs to."
+            },
+            {
+              "name": "terms",
+              "type": "struct",
+              "struct": "SpeedParams",
+              "note": "How the unit is made to travel."
+            },
+            {
+              "name": "points",
+              "type": "array",
+              "count": "header.pointCount",
+              "note": "Every point of the path, each stated in world units. A client reads them even for a unit it does not hold, and takes each point's height from the ground.",
+              "items": {
+                "name": "point",
+                "type": "record",
+                "fields": [
+                  {
+                    "name": "x",
+                    "type": "f32",
+                    "note": "Along one ground axis, in world units."
+                  },
+                  {
+                    "name": "z",
+                    "type": "f32",
+                    "note": "Along the other, in world units."
+                  }
+                ]
+              }
+            }
+          ],
+          "note": "Everything the movement carries after its point count."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.25",
+      "until": "1.0.0.58",
+      "fields": [
+        {
+          "name": "header",
+          "type": "bits",
+          "size": 2,
+          "bits": [
+            {
+              "name": "pointCount",
+              "width": 16,
+              "note": "How many points the path holds; a server writes at least one. A client refuses a movement claiming none and reads no movement after it in the group. A count from 32768 up reads as negative, and what a client does then is not recorded."
             }
           ]
         },

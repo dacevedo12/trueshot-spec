@@ -96,7 +96,7 @@
     },
     {
       "from": "0.9.25.36",
-      "until": "1.0.0.58",
+      "until": "1.0.0.25",
       "channel": "events",
       "command": 65,
       "direction": "serverToClient",
@@ -121,6 +121,36 @@
           "name": "duration",
           "type": "i32",
           "note": "How long the state lasts, in whole seconds."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.25",
+      "until": "1.0.0.58",
+      "channel": "events",
+      "command": 65,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "state",
+          "type": "u32",
+          "note": "What state the inhibitor takes. For any other value a client shows nothing but keeps it as the inhibitor's state, so a later 0 or 1 is applied even where it repeats the state before.",
+          "values": {
+            "0": {
+              "name": "down",
+              "note": "The inhibitor is down for duration."
+            },
+            "1": {
+              "name": "restored",
+              "note": "The inhibitor stands again."
+            }
+          }
+        },
+        {
+          "name": "duration",
+          "type": "i32",
+          "note": "How long the state lasts, in whole seconds. A client keeps it whatever state the message holds."
         }
       ]
     },

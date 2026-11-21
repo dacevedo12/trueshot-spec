@@ -121,9 +121,9 @@ and leave a side's view with `ParticleEnterTeamSight` and
 > `LeaveLocalSight` takes a unit out of what one client alone can see, and
 > leaves it held.
 
-<!-- holds from 1.0.0.58 up to 1.0.0.127 -->
+<!-- holds from 1.0.0.25 up to 1.0.0.127 -->
 
-> **In 1.0.0.58–1.0.0.126**
+> **In 1.0.0.25–1.0.0.126**
 >
 > `LeaveLocalSight` changes nothing a client shows, whichever unit it names.
 
@@ -213,9 +213,9 @@ of them only for its own champion:
 > naming a unit the client holds shows over it the gold gained, or lost where
 > the amount is below 0, and nothing for 0.
 
-<!-- holds from 0.9.25.24 up to 1.0.0.58 -->
+<!-- holds from 0.9.25.24 up to 1.0.0.25 -->
 
-> **In 0.9.25.24–1.0.0.57**
+> **In 0.9.25.24–1.0.0.24**
 >
 > `ItemAdded` announces no purchase, a client's own or another's.
 
@@ -226,9 +226,9 @@ of them only for its own champion:
 > `LevelUp` shows its effect over any champion the client can see, and does
 > nothing for another unit.
 
-<!-- holds from 1.0.0.58 up to 1.0.0.61 -->
+<!-- holds from 1.0.0.25 up to 1.0.0.61 -->
 
-> **In 1.0.0.58–1.0.0.60**
+> **In 1.0.0.25–1.0.0.60**
 >
 > `LevelUp` shows its effect over any champion the client can see, and does
 > nothing for another unit.

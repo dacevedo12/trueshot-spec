@@ -107,9 +107,9 @@ gives the client its own client id.
 > `CreateTurret`, because a client given one before it has its own client id
 > stops.
 
-<!-- holds from 1.0.0.58 up to 1.0.0.97 -->
+<!-- holds from 1.0.0.25 up to 1.0.0.97 -->
 
-> **In 1.0.0.58–1.0.0.96**
+> **In 1.0.0.25–1.0.0.96**
 >
 > A client records the pair every `Registered` carries, and takes as its own
 > only the one carrying its own player id.
@@ -239,17 +239,17 @@ naming a unit, an owner or a target carry one too.
 >
 > A client given a create message for a net id it already holds stops.
 
-<!-- holds from 0.9.25.24 up to 1.0.0.58 -->
+<!-- holds from 0.9.25.24 up to 1.0.0.25 -->
 
-> **In 0.9.25.24–1.0.0.57**
+> **In 0.9.25.24–1.0.0.24**
 >
 > A client that still holds the earlier object gives the net id to the new one,
 > so messages naming it reach the new object, and removing either leaves the id
 > naming neither.
 
-<!-- holds from 1.0.0.58 up to 1.0.0.61 -->
+<!-- holds from 1.0.0.25 up to 1.0.0.61 -->
 
-> **In 1.0.0.58–1.0.0.60**
+> **In 1.0.0.25–1.0.0.60**
 >
 > Outside a resynchronisation, a client that still holds the earlier object
 > gives the net id to the new one, so messages naming it reach the new object,
@@ -438,9 +438,9 @@ Among the identifiers with that top byte are these:
 > | 1, 2 | the six `Barracks` names, `HQ_T1`, `HQ_T2`, `orderShop01`, `chaosShop01`, the six spawn points named `__P_…`, and turrets named `Turret_T1_…` and `Turret_T2_…`, `Turret_OrderTurretShrine` and `Turret_ChaosTurretShrine` among them |
 > | 3    | `Barracks_T1_C1`, `Barracks_T2_C1`, `HQ_T1`, `HQ_T2`, `OrderShop01`, `ChaosShop01`, `____P_Chaos_Spawn_Barracks__C01`, and turrets, `Turret_T1_C_08` among them                                                                       |
 
-<!-- holds from 1.0.0.58 up to 1.0.0.61 -->
+<!-- holds from 1.0.0.25 up to 1.0.0.61 -->
 
-> **In 1.0.0.58–1.0.0.60**
+> **In 1.0.0.25–1.0.0.60**
 >
 > | Map  | Holds                                                                                                                                                                         |
 > | ---- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
