@@ -769,7 +769,7 @@
               {
                 "name": "slot",
                 "type": "u8",
-                "note": "Which slot."
+                "note": "Which slot: from 60 to 119 the champion's own spell slot, less 60; from 120 up a summoner slot, less 120. What 0 to 59 name is not recorded."
               },
               {
                 "name": "values",
@@ -783,7 +783,7 @@
                 }
               }
             ],
-            "note": "The numbers for one spell, five places of them."
+            "note": "The numbers for one spell, three of them. A client skips an entry whose unit it does not hold."
           }
         }
       ]

@@ -76,9 +76,17 @@ set a point for a player's view with `CameraBehaviour`.
 > arrives, locked where they say nothing, and answers with `CameraLock`;
 > `CameraLockSet` changes it for the match without changing those settings.
 
-<!-- holds from 1.0.0.97 up to 1.0.0.140 -->
+<!-- holds from 1.0.0.110 up to 1.0.0.111 -->
 
-> **In 1.0.0.97–1.0.0.139**
+> **In 1.0.0.110**
+>
+> A client's view report, `Camera`, goes out as its view moves more than 200
+> units, at most every tenth of a second, and never while its view is locked; a
+> report sent again until answered can come sooner.
+
+<!-- holds from 1.0.0.111 up to 1.0.0.140 -->
+
+> **In 1.0.0.111–1.0.0.139**
 >
 > A client's view report, `Camera`, goes out as its view moves at least 200
 > units, at most every tenth of a second, and never while its view is locked.

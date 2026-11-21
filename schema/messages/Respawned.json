@@ -318,6 +318,32 @@
     },
     {
       "from": "1.0.0.110",
+      "until": "1.0.0.111",
+      "channel": "events",
+      "command": 73,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Where it comes back, along one ground axis, in world units. A client sets the champion on the nearest open ground to this point and z."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "Where it comes back, in height, in world units."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Where it comes back, along the other ground axis, in world units."
+        }
+      ],
+      "note": "A client keeps the champion's level, experience, gold, maxima and spell ranks, and plays the coming back. Whether the champion comes back with full health, and whether a client moves the camera onto its own champion, is not recorded. A client sets the champion on the nearest open ground."
+    },
+    {
+      "from": "1.0.0.111",
       "until": "1.0.0.117",
       "channel": "events",
       "command": 73,

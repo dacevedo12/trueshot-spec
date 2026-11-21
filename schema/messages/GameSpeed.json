@@ -198,6 +198,22 @@
     },
     {
       "from": "1.0.0.110",
+      "until": "1.0.0.111",
+      "channel": "events",
+      "command": 19,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "speed",
+          "type": "f32",
+          "note": "How fast, 1 being normal."
+        }
+      ],
+      "note": "It takes effect at once: a speed other than zero sent during a hold ends the hold, and a Resumed after it changes nothing."
+    },
+    {
+      "from": "1.0.0.111",
       "until": "1.0.0.126",
       "channel": "events",
       "command": 19,

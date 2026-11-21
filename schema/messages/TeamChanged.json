@@ -15,7 +15,7 @@
         {
           "name": "unit",
           "type": "u32",
-          "note": "The unit. A client ignores the message where it does not hold it."
+          "note": "The unit. A client ignores the message where it does not hold it, or holds it as an object that is not a unit."
         },
         {
           "name": "side",
@@ -23,7 +23,7 @@
           "note": "Its new side."
         }
       ],
-      "note": "The header names the unit."
+      "note": "A client ignores the header."
     },
     {
       "from": "1.0.0.111",

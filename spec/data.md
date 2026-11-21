@@ -29,9 +29,9 @@ for a nexus, side 1 for Order and 2 for Chaos and lanes `L`, `C` and `R`, with a
 shrine turret for each side; the numbers differ between the sides, and a server
 MUST take the names from the files.
 
-<!-- holds from 0.8.13.26 up to 3.11.0.306 -->
+<!-- holds from 0.8.13.26 up to 1.0.0.110 -->
 
-> **In 0.8.13.26–3.10**
+> **In 0.8.13.26–1.0.0.109**
 >
 > A word a name holds anywhere says what the object is, not only its opening,
 > the first match winning: a minion spawner's `Spawn_Barracks` is tested before
@@ -62,6 +62,25 @@ MUST take the names from the files.
 > `room.dsc` lists each object as a `.sco`. The marker of the level's size,
 > `__LevelSize_`, is a text `.sco` giving its name on a `Name=` line; every other
 > object's file is a binary `.SCB`, holding its name within it.
+
+<!-- holds from 1.0.0.110 up to 1.0.0.111 -->
+
+> **In 1.0.0.110**
+>
+> A word an object's path as `room.dsc` lists it holds anywhere, matched with
+> its case, says what the object is, not the name its file gives, the first
+> match winning: a minion spawner's `Spawn_Barracks` is tested before
+> `Barracks`, which makes an inhibitor, and `HQ_` makes a nexus and `Turret` a
+> turret. A path holding `AIPath`, `_Destroyed` or `_FB` makes no object.
+
+<!-- holds from 1.0.0.111 up to 3.11.0.306 -->
+
+> **In 1.0.0.111–3.10**
+>
+> A word a name holds anywhere says what the object is, not only its opening,
+> the first match winning: a minion spawner's `Spawn_Barracks` is tested before
+> `Barracks`, which makes an inhibitor, and `HQ_` makes a nexus and `Turret` a
+> turret.
 
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 

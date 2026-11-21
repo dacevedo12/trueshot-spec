@@ -22,6 +22,22 @@
     },
     {
       "from": "1.0.0.110",
+      "until": "1.0.0.111",
+      "channel": "events",
+      "command": 58,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "particle",
+          "type": "u32",
+          "note": "The particle to stop. A client does nothing where it is zero or names no particle it holds."
+        }
+      ],
+      "note": "A client ignores the header."
+    },
+    {
+      "from": "1.0.0.111",
       "until": "1.0.0.117",
       "channel": "events",
       "command": 58,

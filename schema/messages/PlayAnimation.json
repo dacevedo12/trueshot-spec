@@ -1032,7 +1032,7 @@
             {
               "name": "locked",
               "width": 1,
-              "note": "Set to lock the unit's animation: once the animation plays, a client refuses every later animation played on the unit, unless the unit's own character data opts out. A client applies the lock only where one of its own settings is on, as it is by default."
+              "note": "Set to lock the unit's animation: once the animation plays, a client refuses every later animation played on the unit. A client applies the lock only where one of its own settings is on, as it is by default."
             },
             {
               "name": "fadeAtEnd",

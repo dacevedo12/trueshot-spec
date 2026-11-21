@@ -431,7 +431,7 @@
     },
     {
       "from": "1.0.0.109",
-      "until": "1.0.0.111",
+      "until": "1.0.0.110",
       "command": 173,
       "channel": "events",
       "direction": "serverToClient",
@@ -451,6 +451,31 @@
           "name": "second",
           "type": "u8",
           "note": "For the shop's element 3, which item within the category; a client reads nothing here otherwise."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.110",
+      "until": "1.0.0.111",
+      "command": 173,
+      "channel": "events",
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "element",
+          "type": "u8",
+          "note": "A shop element blinks once, where the shop exists. Element 0 is the buy button, 1 the sell button, 2 the shop item number names, 3 the item second names within the category number names, and 4 the recommended item number names. A larger value than 4 has no defined effect."
+        },
+        {
+          "name": "number",
+          "type": "u8",
+          "note": "Which of the element's entries, for elements 2, 3 and 4; it has no effect for 0 and 1."
+        },
+        {
+          "name": "second",
+          "type": "u8",
+          "note": "For the shop's element 3, which item within the category; it has no effect for elements 0 to 2 or 4."
         }
       ]
     },

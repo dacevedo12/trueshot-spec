@@ -55,7 +55,7 @@
           "note": "For linkEffect, which capture point drives it."
         }
       ],
-      "note": "A client ignores the message for a prop it does not know. Whatever the change, it then reads the same bytes again as grouped effects: where the ninth byte of name is not zero, it adds that many effects from the bytes after it, so a name of nine or more characters adds effects besides."
+      "note": "A client applies no change to a prop it does not know, nor for a change other than 0 or 1. Whatever the change, and whether or not it knows the prop, it then reads the same bytes again as grouped effects: where the ninth byte of name is not zero, it adds that many effects from the bytes after it, so a name of nine or more characters adds effects besides."
     },
     {
       "from": "1.0.0.111",

@@ -146,6 +146,26 @@
     },
     {
       "from": "1.0.0.110",
+      "until": "1.0.0.111",
+      "channel": "events",
+      "command": 11,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot, 0 to 37. A client drops the message from 38 up."
+        },
+        {
+          "name": "left",
+          "type": "u8",
+          "note": "How many are left in the slot; zero empties it, item and charges cleared."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.111",
       "until": "1.0.0.126",
       "channel": "events",
       "command": 11,

@@ -391,6 +391,13 @@ Each row gives the group and bits that name a value and what the value is.
 >
 > A champion's eight further slots are slots 41 to 48.
 
+<!-- holds from 1.0.0.110 up to 1.0.0.111 -->
+
+> **In 1.0.0.110**
+>
+> A champion's eight further slots are slots 42 to 49. Its group 3 bit 9 holds
+> the kills it has taken from no side, as a u32.
+
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
 > **In 1.0.0.126**

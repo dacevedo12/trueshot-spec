@@ -442,7 +442,7 @@
           "note": "Each of those, in the group's order."
         }
       ],
-      "note": "What a client sends for every WaypointGroup it takes, and for every WaypointGroupAtSpeed. The header names no object: it carries zero. It lists the units the group asked it to relocate."
+      "note": "What a client sends for every WaypointGroup it takes, and for every WaypointGroupAtSpeed. The header names no object: it carries zero. It lists each unit whose movement carried a token, in the group's order, whether or not the client holds the unit, and none whose movement follows a refused one."
     },
     {
       "from": "1.0.0.111",

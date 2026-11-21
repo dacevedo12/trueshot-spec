@@ -102,7 +102,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "It is sent once, at the end."
+      "note": "A client sends it each time GameEnded arrives once the match is in play. For a GameEnded while the match still loads, it leaves without sending it."
     },
     {
       "from": "1.0.0.111",

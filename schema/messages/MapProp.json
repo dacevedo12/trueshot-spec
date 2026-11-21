@@ -55,7 +55,7 @@
         {
           "name": "side",
           "type": "bits",
-          "note": "The side the prop belongs to. A server sends 300, the neutral side.",
+          "note": "The side the prop belongs to, which a client takes as it stands.",
           "size": 4,
           "bits": [
             {

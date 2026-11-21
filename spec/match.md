@@ -502,9 +502,16 @@ A server tells the others that a player's client dropped with
 > `SpawnUnit` for a unit it does not hold whose `asset` is empty, and a
 > `SpawnFromBarracks` for a unit it does not hold whose `kind` is above 4.
 
-<!-- holds from 1.0.0.97 up to 1.0.0.140 -->
+<!-- holds from 1.0.0.110 up to 1.0.0.111 -->
 
-> **In 1.0.0.97–1.0.0.139**
+> **In 1.0.0.110**
+>
+> A client whose connection drops before play begins, once the registration
+> answer has given it its own client id, leaves rather than connecting again.
+
+<!-- holds from 1.0.0.111 up to 1.0.0.140 -->
+
+> **In 1.0.0.111–1.0.0.139**
 >
 > A client whose connection drops before play begins leaves rather than
 > connecting again.

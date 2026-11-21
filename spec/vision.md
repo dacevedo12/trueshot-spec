@@ -253,9 +253,9 @@ of them only for its own champion:
 > any other unit, it has no defined effect. `ItemAdded` announces no purchase, a
 > client's own or another's.
 
-<!-- holds from 1.0.0.96 up to 4.21.0.0 -->
+<!-- holds from 1.0.0.96 up to 1.0.0.110 -->
 
-> **In 1.0.0.96–4.20**
+> **In 1.0.0.96–1.0.0.109**
 >
 > `ItemAdded` and `InventorySlot` announce a purchase only for the client's own
 > champion; an ally's purchase is called out where the message asks for it.
@@ -268,6 +268,21 @@ of them only for its own champion:
 > source the client holds, shows the gold over the source. Any other `GoldGained`
 > naming a unit the client holds shows over it the gold gained, or lost where
 > the amount is below 0, and nothing for 0.
+
+<!-- holds from 1.0.0.110 up to 1.0.0.111 -->
+
+> **In 1.0.0.110**
+>
+> `ItemAdded` announces a purchase only for the client's own champion; an ally's
+> purchase is called out where the message asks for it. `InventorySlot`
+> announces no purchase.
+
+<!-- holds from 1.0.0.111 up to 4.21.0.0 -->
+
+> **In 1.0.0.111–4.20**
+>
+> `ItemAdded` and `InventorySlot` announce a purchase only for the client's own
+> champion; an ally's purchase is called out where the message asks for it.
 
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 

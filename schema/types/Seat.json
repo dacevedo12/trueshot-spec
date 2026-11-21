@@ -31,6 +31,59 @@
     },
     {
       "from": "1.0.0.110",
+      "until": "1.0.0.111",
+      "fields": [
+        {
+          "name": "player",
+          "type": "i64",
+          "note": "Which player holds the place, or a negative number where it stands empty. It has a player identifier's width."
+        },
+        {
+          "name": "level",
+          "type": "u16",
+          "note": "The level the seat holder has reached across matches."
+        },
+        {
+          "name": "summoner",
+          "type": "u32",
+          "note": "The spell in one of the seat's summoner slots, as the name hash of the spell; drawn as its icon on the loading screen. It has no effect on a bot's seat."
+        },
+        {
+          "name": "otherSummoner",
+          "type": "u32",
+          "note": "The spell in the other."
+        },
+        {
+          "name": "flags",
+          "type": "u8",
+          "note": "How the seat is treated: any value other than zero marks the seat as a bot's, which the loading screen then shows from the bot fields below as already loaded. No bit chooses older art."
+        },
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "The side the seat is on, or zero where it stands empty."
+        },
+        {
+          "name": "botName",
+          "type": "bytes",
+          "size": 28,
+          "note": "Copied with the seat; a client shows nothing of it. A 28-byte text the client takes as it stands in its own memory: bytes 4 to 19 hold the text, the u32 at 20 its length and the u32 at 24 a capacity that must be 15 or less, so the text holds at most 15 bytes; bytes 0 to 3 are not read."
+        },
+        {
+          "name": "botAsset",
+          "type": "bytes",
+          "size": 28,
+          "note": "The name the client loads art for it under where nobody holds it, written and padded as above. A 28-byte text the client takes as it stands in its own memory: bytes 4 to 19 hold the text, the u32 at 20 its length and the u32 at 24 a capacity that must be 15 or less, so the text holds at most 15 bytes; bytes 0 to 3 are not read."
+        },
+        {
+          "name": "botDifficulty",
+          "type": "i32",
+          "note": "How well it plays where nobody holds it: 0 beginner, 1 intermediate, 2 advanced, 3 top, 4 tutorial, 5 intro."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.111",
       "until": "1.0.0.124",
       "fields": [
         {

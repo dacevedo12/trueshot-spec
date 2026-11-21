@@ -114,7 +114,7 @@
         {
           "name": "event",
           "type": "u8",
-          "note": "What the player did. Pointing and leaving are sent only for a quest activated with its first flag set; a click at most once in three seconds.",
+          "note": "What the player did; a click is 2. Pointing and leaving are sent only for a quest activated with its first flag set; a second click on a quest is held back three seconds.",
           "values": {
             "0": {
               "name": "enter",

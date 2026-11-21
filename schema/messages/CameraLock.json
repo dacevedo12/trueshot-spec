@@ -530,7 +530,7 @@
           "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
         }
       ],
-      "note": "A client sends it on each CameraLockSet with state as that message carried it, all eight bits included, and also as its player sets the lock or the game forces a lock or lifts one. While a forced lock holds, a CameraLockSet or player setting is kept and sent only as that lock lifts."
+      "note": "A client sends it on each CameraLockSet with state as that message carried it, all eight bits included. It also sends it with state 0 as it frees the view itself, once its player has held an input for more than a third of a second, and with the kept state as that input is let go while its champion lives; and with state 1 as its own champion is made while its view is locked. Whether it sends it as its player sets the lock is not recorded. While it holds the view free, a CameraLockSet is kept and sent only as it lets go."
     },
     {
       "from": "1.0.0.111",

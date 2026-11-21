@@ -223,9 +223,9 @@ sells.
 >
 > A client asks only with the champion dead or near a shop of its side.
 
-<!-- holds from 1.0.0.87 up to 3.10.0.237 -->
+<!-- holds from 1.0.0.87 up to 1.0.0.110 -->
 
-> **In 1.0.0.87–3.9**
+> **In 1.0.0.87–1.0.0.109**
 >
 > A client asks for an item not built from others only where its price is
 > within the champion's gold and, unless the item can be used in the shop,
@@ -237,6 +237,23 @@ sells.
 >
 > A client asks only while the shop is not locked, with the champion dead or
 > near a shop of its side.
+
+<!-- holds from 1.0.0.110 up to 1.0.0.111 -->
+
+> **In 1.0.0.110**
+>
+> A client asks for an item not built from others only where its price is
+> within the champion's gold and, unless the item can be used in the shop and the
+> champion is alive, where a slot is free or holds the same item below its stack
+> limit.
+
+<!-- holds from 1.0.0.111 up to 3.10.0.237 -->
+
+> **In 1.0.0.111–3.9**
+>
+> A client asks for an item not built from others only where its price is
+> within the champion's gold and, unless the item can be used in the shop,
+> where a slot is free or holds the same item below its stack limit.
 
 <!-- holds from 1.0.0.126 up to 4.1.0.171 -->
 

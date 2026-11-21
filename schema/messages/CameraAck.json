@@ -246,6 +246,22 @@
     },
     {
       "from": "1.0.0.110",
+      "until": "1.0.0.111",
+      "channel": "events",
+      "command": 45,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u8",
+          "note": "The name the report carried. A client takes a value only where it is 1 to 127 ahead of the last it took, and never takes 0 after 255; until it takes one, it sends the report again."
+        }
+      ],
+      "note": "A client ignores the header."
+    },
+    {
+      "from": "1.0.0.111",
       "until": "1.0.0.124",
       "channel": "events",
       "command": 45,

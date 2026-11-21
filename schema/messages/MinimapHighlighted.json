@@ -201,6 +201,21 @@
     },
     {
       "from": "1.0.0.110",
+      "until": "1.0.0.111",
+      "command": 20,
+      "channel": "events",
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "element",
+          "type": "u8",
+          "note": "Which part of the minimap blinks. A client acts on it only once its interface exists and it knows its own champion; which values make anything blink is not recorded."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.111",
       "until": "1.0.0.128",
       "command": 20,
       "channel": "events",

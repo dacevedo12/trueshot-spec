@@ -9,6 +9,12 @@ match reaches it.
 >
 > A client cannot watch a match: no start-up word or message makes it watch.
 
+<!-- holds from 1.0.0.110 up to 1.0.0.111 -->
+
+> **In 1.0.0.110**
+>
+> A client cannot watch a match: no start-up word or message makes it watch.
+
 <!-- holds from 1.0.0.126 up to 3.10.0.237 -->
 
 > **In 1.0.0.126–3.9**

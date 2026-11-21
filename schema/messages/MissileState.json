@@ -2473,12 +2473,12 @@
             {
               "name": "bounced",
               "width": 1,
-              "note": "Set where the missile has bounced. It applies only where age is above zero: a client then moves the missile to its position and places it again from the caster's position, the end and the facing."
+              "note": "For a missile that flies in a straight line: set, a client sends the missile from where it is toward where its thrower stood (casterAt), at the thrower's height; clear, toward end along facing. A client returns it as MissileReport's flag."
             },
             {
               "name": "unused",
               "width": 7,
-              "note": "Unused; a server writes zero."
+              "note": "A client takes any bit set here as bounced; a server writes zero."
             }
           ]
         },
@@ -2489,7 +2489,7 @@
           "note": "The casting that threw it."
         }
       ],
-      "note": "A client reads a speed but no part of the missile's life spent. Neither the ground-height rule for endY nor a trail moved on by an age is confirmed. The header names the unit casting, as the casting inside does."
+      "note": "A client reads a speed but no part of the missile's life spent. Neither the ground-height rule for endY nor a trail moved on by an age is confirmed. The header names the unit casting, as the casting inside does. For a missile that does not fly straight, casterAt, end, facing and how have no effect."
     },
     {
       "from": "1.0.0.111",

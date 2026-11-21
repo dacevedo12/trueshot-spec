@@ -217,6 +217,83 @@
     },
     {
       "from": "1.0.0.110",
+      "until": "1.0.0.111",
+      "channel": "events",
+      "command": 99,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "result",
+              "width": 7,
+              "note": "How the damage landed, and so what a client shows over the unit hurt: 0 the word for an invulnerable unit, 1 nothing, 2 the word for a dodge, 3 the amount as a critical strike, 5 the word for a miss, and 4 or any value above 5 the amount.",
+              "values": {
+                "0": {
+                  "name": "invulnerable",
+                  "note": "The word for an invulnerable unit, no number."
+                },
+                "1": {
+                  "name": "silent",
+                  "note": "Nothing shown."
+                },
+                "2": {
+                  "name": "dodge",
+                  "note": "The word for a dodge."
+                },
+                "3": {
+                  "name": "critical",
+                  "note": "The number, as a critical."
+                },
+                "4": {
+                  "name": "normal",
+                  "note": "The number."
+                },
+                "5": {
+                  "name": "miss",
+                  "note": "The word for a miss."
+                },
+                "6": {
+                  "name": "normal6",
+                  "note": "As 4."
+                },
+                "7": {
+                  "name": "normal7",
+                  "note": "As 4."
+                }
+              }
+            },
+            {
+              "name": "unused",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit hurt."
+        },
+        {
+          "name": "source",
+          "type": "u32",
+          "note": "The unit dealing it. A client shows nothing, notices included, unless it holds target and target can be attacked; it does not need to hold source, and a champion source has the amount added to its damage dealt for every result but 0, 1, 2 and 5."
+        },
+        {
+          "name": "amount",
+          "type": "f32",
+          "note": "How much."
+        }
+      ],
+      "note": "A client shows the figure; the health it shows for the unit is what replication carries, and this message leaves it as it was."
+    },
+    {
+      "from": "1.0.0.111",
       "until": "1.0.0.117",
       "channel": "events",
       "command": 99,

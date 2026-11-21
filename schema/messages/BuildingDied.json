@@ -257,9 +257,10 @@
         {
           "name": "attacker",
           "type": "u32",
-          "note": "The unit that destroyed it."
+          "note": "The unit that destroyed it. A client reads nothing of the message after the header."
         }
-      ]
+      ],
+      "note": "A client acts only on the first for a building, and ignores any later one."
     },
     {
       "from": "1.0.0.111",

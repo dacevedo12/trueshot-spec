@@ -136,6 +136,16 @@
     },
     {
       "from": "1.0.0.110",
+      "until": "1.0.0.111",
+      "channel": "requests",
+      "command": 91,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client sends it as its player opens the shop, in any match. While the shop is locked, the shop does not open and nothing is sent."
+    },
+    {
+      "from": "1.0.0.111",
       "until": "1.0.0.117",
       "channel": "requests",
       "command": 91,

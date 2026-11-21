@@ -149,9 +149,26 @@ a stream.
 > the round trip time plus 1/30 of a second apart, for as long as the match
 > runs.
 
-<!-- holds from 1.0.0.25 up to 4.21.0.0 -->
+<!-- holds from 1.0.0.25 up to 1.0.0.110 -->
 
-> **In 1.0.0.25–4.20**
+> **In 1.0.0.25–1.0.0.109**
+>
+> A client sends a view report again, twice the round trip time plus 1/30 of a
+> second apart, until a server answers it with `CameraAck`, carrying its number.
+
+<!-- holds from 1.0.0.110 up to 1.0.0.111 -->
+
+> **In 1.0.0.110**
+>
+> A client sends a view report again, twice the round trip time plus 1/30 of a
+> second apart, until a server answers it with `CameraAck`, carrying its number.
+> After a `CameraAck` carrying 255 it never takes one carrying 0, and sends its
+> report numbered 0 again until its view moves on and a later report is
+> answered.
+
+<!-- holds from 1.0.0.111 up to 4.21.0.0 -->
+
+> **In 1.0.0.111–4.20**
 >
 > A client sends a view report again, twice the round trip time plus 1/30 of a
 > second apart, until a server answers it with `CameraAck`, carrying its number.

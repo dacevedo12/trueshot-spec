@@ -456,6 +456,36 @@
     },
     {
       "from": "1.0.0.110",
+      "until": "1.0.0.111",
+      "channel": "events",
+      "command": 44,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "state",
+          "type": "u32",
+          "note": "What state the inhibitor takes. A client keeps any other value as the state, with its duration, and shows nothing for it; a state the inhibitor already has changes nothing.",
+          "values": {
+            "0": {
+              "name": "down",
+              "note": "The inhibitor is down for duration."
+            },
+            "1": {
+              "name": "restored",
+              "note": "The inhibitor stands again."
+            }
+          }
+        },
+        {
+          "name": "duration",
+          "type": "u32",
+          "note": "How long the state lasts, in whole seconds."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.111",
       "until": "1.0.0.122",
       "channel": "events",
       "command": 44,

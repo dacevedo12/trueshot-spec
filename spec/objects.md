@@ -107,9 +107,9 @@ gives the client its own client id.
 > `CreateTurret`, because a client given one before it has its own client id
 > stops.
 
-<!-- holds from 1.0.0.25 up to 1.0.0.97 -->
+<!-- holds from 1.0.0.25 up to 1.0.0.127 -->
 
-> **In 1.0.0.25–1.0.0.96**
+> **In 1.0.0.25–1.0.0.126**
 >
 > A client records the pair every `Registered` carries, and takes as its own
 > only the one carrying its own player id.
@@ -138,9 +138,9 @@ gives the client its own client id.
 > `agreement` is 1, before any create message, because a client given a create
 > message before that `VersionSync` stops.
 
-<!-- holds from 1.0.0.87 up to 3.11.0.306 -->
+<!-- holds from 1.0.0.87 up to 1.0.0.110 -->
 
-> **In 1.0.0.87–3.10**
+> **In 1.0.0.87–1.0.0.109**
 >
 > A client takes a client id only from 0 to 252, and leaves on any other, so a
 > server MUST give each player a client id in that range.
@@ -153,14 +153,32 @@ gives the client its own client id.
 > any `CreateTurret`, because a client given one before it has its own client
 > id stops.
 
+<!-- holds from 1.0.0.110 up to 1.0.0.111 -->
+
+> **In 1.0.0.110**
+>
+> A client takes a client id only from 0 to 252, and leaves on any other but
+> 4294967295, for which it waits on as if given none; a server MUST give each
+> player a client id in that range.
+>
+> A server MUST send that `Registered`, and then a `VersionSync` whose
+> `agreement` is 1, before any `CreateChampion`, `CreateTurret`,
+> `CreateNeutral`, `SpawnUnit`, `MapProp` or `SpawnPet`, because a client given
+> one of them before that `VersionSync` stops.
+
+<!-- holds from 1.0.0.111 up to 3.11.0.306 -->
+
+> **In 1.0.0.111–3.10**
+>
+> A client takes a client id only from 0 to 252, and leaves on any other, so a
+> server MUST give each player a client id in that range.
+
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
 > **In 1.0.0.126**
 >
-> A client records the pair every `Registered` carries, and takes as its own
-> only the one carrying its own player id. A `Registered` whose leading byte is
-> 1 says that player has left: a client in play shows so in chat and drops the
-> pair.
+> A `Registered` whose leading byte is 1 says that player has left: a client in
+> play shows so in chat and drops the pair.
 
 <!-- holds from 1.0.0.127 up to 3.10.0.237 -->
 

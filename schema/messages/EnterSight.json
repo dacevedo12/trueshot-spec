@@ -2113,7 +2113,7 @@
         {
           "name": "view",
           "type": "record",
-          "note": "Everything else a client needs to draw the unit. A server sends it for a champion, a minion or another unit with a mind, which a client reads past the end of the message without it, and ends the message after the items for any other unit.",
+          "note": "Where the unit stands or which path it walks. A server sends it for a champion, a minion or another unit with a mind, which a client reads past the end of the message without it, and ends the message after the items for any other unit.",
           "fields": [
             {
               "name": "movementState",
@@ -2122,7 +2122,7 @@
                 "when": "remaining",
                 "unseen": "absent"
               },
-              "note": "Where the unit stands, followed by the direction it faces.",
+              "note": "Where the unit stands or which path it walks; a direction it faces follows only where movementKind is 3.",
               "fields": [
                 {
                   "name": "movementKind",
@@ -2213,7 +2213,7 @@
           }
         }
       ],
-      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit. It states everything a client needs to draw the unit at once."
+      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it; whether it draws turrets regardless is not recorded. The header names the unit. It carries no looks, shields, health or resource: those come from the messages that create the unit and from replication."
     },
     {
       "from": "1.0.0.111",

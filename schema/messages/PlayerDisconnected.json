@@ -191,10 +191,10 @@
         {
           "name": "champion",
           "type": "u32",
-          "note": "The player's champion, matched against the owner of each champion the client knows."
+          "note": "The player's client id, which names the player in the notice."
         }
       ],
-      "note": "A client shows a chat notice naming the player in their side's colour, and nothing where player names no champion it knows, names its own champion, or the match is not under way."
+      "note": "Wherever its interface exists, a client shows a chat notice naming the player, whoever player names, its own player included, and while the match loads too: in an ally's or an enemy's colour as against its own champion, or a colour of its own where it has none."
     },
     {
       "from": "1.0.0.111",
