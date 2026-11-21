@@ -254,6 +254,68 @@
     },
     {
       "from": "1.0.0.74",
+      "until": "1.0.0.75",
+      "channel": "events",
+      "command": 165,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "part",
+          "type": "u8",
+          "note": "Which part of the screen. A client ignores any other value.",
+          "values": {
+            "1": {
+              "name": "hud",
+              "note": "The main controls, with element as in HudHighlighted."
+            },
+            "2": {
+              "name": "shop",
+              "note": "A shop element blinks or stops, where the shop exists. Element 0 is the buy button, 1 the sell button, 2 the shop item number names, 3 the item second names within the category number names, and 4 the recommended item number names. A larger element has no defined effect."
+            },
+            "3": {
+              "name": "minimap",
+              "note": "The minimap; element 0 is its camera button, and any other element has no defined effect."
+            }
+          }
+        },
+        {
+          "name": "element",
+          "type": "u8",
+          "note": "What to light up, as in HudHighlighted. A value beyond those named has no defined effect."
+        },
+        {
+          "name": "number",
+          "type": "u8",
+          "note": "Which slot, as in HudHighlighted."
+        },
+        {
+          "name": "second",
+          "type": "u8",
+          "note": "A third value where part is 2; a server writes zero otherwise."
+        },
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "on",
+              "width": 1,
+              "note": "Set to light it up, clear to put it out."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "A client ignores these bits; a server writes zero."
+            }
+          ],
+          "note": "Whether it is lit."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.75",
       "until": "1.0.0.82",
       "channel": "events",
       "command": 165,

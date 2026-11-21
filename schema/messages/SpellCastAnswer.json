@@ -91,6 +91,40 @@
     },
     {
       "from": "1.0.0.72",
+      "until": "1.0.0.74",
+      "channel": "events",
+      "command": 36,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "cast",
+          "type": "struct",
+          "struct": "SpellCast",
+          "note": "The casting."
+        }
+      ],
+      "note": "There is no byte for ending a charge: the casting follows the sync id. A client fails where the casting's size is wrong, for it then casts with no spell."
+    },
+    {
+      "from": "1.0.0.74",
+      "until": "1.0.0.75",
+      "channel": "events",
+      "command": 36,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "cast",
+          "type": "struct",
+          "struct": "SpellCast",
+          "note": "The casting."
+        }
+      ],
+      "note": "There is no byte for ending a charge and no sync id: the casting is the whole body. Where the casting's size is wrong, a client keeps the cast with no spell; what it does then is not recorded."
+    },
+    {
+      "from": "1.0.0.75",
       "until": "1.0.0.79",
       "channel": "events",
       "command": 36,

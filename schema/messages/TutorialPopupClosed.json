@@ -24,6 +24,15 @@
     },
     {
       "from": "1.0.0.74",
+      "until": "1.0.0.75",
+      "channel": "requests",
+      "command": 145,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": []
+    },
+    {
+      "from": "1.0.0.75",
       "until": "1.0.0.82",
       "channel": "requests",
       "command": 145,

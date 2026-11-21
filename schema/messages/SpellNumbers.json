@@ -251,6 +251,55 @@
     },
     {
       "from": "1.0.0.74",
+      "until": "1.0.0.75",
+      "channel": "events",
+      "command": 167,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "entryCount",
+          "type": "u16",
+          "note": "How many sets of numbers follow. A client ignores the whole message where they do not all fit in it."
+        },
+        {
+          "name": "entries",
+          "type": "array",
+          "count": "entryCount",
+          "note": "The sets themselves.",
+          "items": {
+            "name": "entry",
+            "type": "record",
+            "fields": [
+              {
+                "name": "unit",
+                "type": "u32",
+                "note": "The unit whose spell this is. A client skips an entry for a unit it does not know."
+              },
+              {
+                "name": "slot",
+                "type": "u8",
+                "note": "Which slot. From 120 up, a summoner slot, counted from 120, and skipped for a unit with none; from 60 to 119, the unit's own spell slot, counted from 60. Below 60 a client keeps the numbers for the unit, and what they show is not recorded."
+              },
+              {
+                "name": "values",
+                "type": "array",
+                "count": 3,
+                "note": "The numbers themselves, one place each.",
+                "items": {
+                  "name": "value",
+                  "type": "f32",
+                  "note": "One number."
+                }
+              }
+            ],
+            "note": "The numbers for one spell, three of them."
+          }
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.75",
       "until": "1.0.0.82",
       "channel": "events",
       "command": 167,

@@ -330,6 +330,57 @@
     },
     {
       "from": "1.0.0.74",
+      "until": "1.0.0.75",
+      "channel": "events",
+      "command": 156,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "element",
+          "type": "u8",
+          "note": "What to light up, 0 to 8; a larger value has no defined effect. 4, 5 and 6 light parts 0, 1 and 2 of a second panel; the others are on the main controls.",
+          "values": {
+            "0": {
+              "name": "spell",
+              "note": "A spell's button; number names its slot, 0 to 3."
+            },
+            "1": {
+              "name": "spellUpgrade"
+            },
+            "2": {
+              "name": "summonerSpell",
+              "note": "A summoner spell's button; number names its slot, 0 or 1."
+            },
+            "3": {
+              "name": "recall"
+            },
+            "4": {
+              "name": "shop"
+            },
+            "5": {
+              "name": "gold"
+            },
+            "6": {
+              "name": "experience"
+            },
+            "7": {
+              "name": "health"
+            },
+            "8": {
+              "name": "mana"
+            }
+          }
+        },
+        {
+          "name": "number",
+          "type": "u8",
+          "note": "Which slot, for a spell or a summoner spell; it has no effect for 4, 5 or 6."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.75",
       "until": "1.0.0.82",
       "channel": "events",
       "command": 156,

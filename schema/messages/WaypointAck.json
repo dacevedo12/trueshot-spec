@@ -70,6 +70,22 @@
     },
     {
       "from": "1.0.0.74",
+      "until": "1.0.0.75",
+      "channel": "requests",
+      "command": 124,
+      "direction": "clientToServer",
+      "reliability": "unsequenced",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u32",
+          "note": "The number of the group or path it answers, as that named itself."
+        }
+      ],
+      "note": "What a client sends for every WaypointGroup it receives, and for every WaypointGroupAtSpeed, Path and PathWithSpeed, as it takes it and before it moves any unit; an answer to a Path or PathWithSpeed travels on the transient channel. The header names no object: it carries zero."
+    },
+    {
+      "from": "1.0.0.75",
       "until": "1.0.0.79",
       "channel": "requests",
       "command": 124,

@@ -192,6 +192,34 @@
     },
     {
       "from": "1.0.0.74",
+      "until": "1.0.0.75",
+      "channel": "events",
+      "command": 97,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "entry",
+          "type": "u32",
+          "note": "Names this look, so that AppearancePopped can name it."
+        },
+        {
+          "name": "overrideSpells",
+          "type": "u8",
+          "note": "Set where the unit's spells change with it. A client keeps the whole byte; which values count as set is not recorded."
+        },
+        {
+          "name": "asset",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "The name the client loads it under, ended by a zero byte. The name and its zero byte take at most 64 bytes."
+        }
+      ],
+      "note": "No skin is carried; the look wears the unit's own skin. Whether a client first stops a basic attack the unit is making is not recorded. Looks stack, the newest shows, and AppearancePopped takes every one away."
+    },
+    {
+      "from": "1.0.0.75",
       "until": "1.0.0.82",
       "channel": "events",
       "command": 97,

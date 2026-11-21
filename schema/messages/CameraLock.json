@@ -204,6 +204,39 @@
     },
     {
       "from": "1.0.0.74",
+      "until": "1.0.0.75",
+      "channel": "requests",
+      "command": 61,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "locked",
+              "width": 1,
+              "note": "Set while the view follows a unit."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "As CameraLockSet carried them, and as they stood before a forced free view in the report sent as it lifts; zero in any other report the client makes on its own."
+            }
+          ]
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
+        }
+      ],
+      "note": "A client sends it on each CameraLockSet with state as that message carried it, all eight bits included; as its player sets the lock; as StartGame arrives, from the player's settings, locked where they say nothing; with state 1 as its own champion is made while its view is locked; and as the game forces the view free, with state 0. While that forcing holds, a CameraLockSet is dropped; as it lifts, a client sends the state in force just before it began. Whether a player setting made during it is kept is not recorded."
+    },
+    {
+      "from": "1.0.0.75",
       "until": "1.0.0.82",
       "channel": "requests",
       "command": 61,

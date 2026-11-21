@@ -26,6 +26,16 @@
     },
     {
       "from": "1.0.0.74",
+      "until": "1.0.0.75",
+      "channel": "requests",
+      "command": 149,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client sends it as its player opens the shop, in any match. Where a setting of its own has it heed the shop lock, opening a locked shop does nothing and sends nothing."
+    },
+    {
+      "from": "1.0.0.75",
       "until": "1.0.0.82",
       "channel": "requests",
       "command": 149,

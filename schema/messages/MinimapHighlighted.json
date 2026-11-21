@@ -66,6 +66,21 @@
     },
     {
       "from": "1.0.0.74",
+      "until": "1.0.0.75",
+      "command": 164,
+      "channel": "events",
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "element",
+          "type": "u8",
+          "note": "Which part of the minimap blinks; a server sends 0, its camera button. A client acts only once it has its interface, its minimap and its own champion, and does not check the value: any other has no defined effect."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.75",
       "until": "1.0.0.82",
       "command": 164,
       "channel": "events",

@@ -185,6 +185,45 @@
     },
     {
       "from": "1.0.0.74",
+      "until": "1.0.0.75",
+      "channel": "events",
+      "command": 69,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "agreement",
+          "type": "u8",
+          "note": "Must be 1. For 0 a client shows both versions and leaves; for any other value it closes its connection, showing nothing."
+        },
+        {
+          "name": "map",
+          "type": "i32",
+          "note": "Which map to load. A client takes it only where a setting of its own names no map or leaves it to the server; where that setting names one, it loads that map instead."
+        },
+        {
+          "name": "seats",
+          "type": "array",
+          "count": 12,
+          "note": "Every place at the match, held or empty.",
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
+        },
+        {
+          "name": "build",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 256,
+          "note": "Which build the server serves, shown and not checked. Written out in full and padded with zero bytes to the width above; a client reads it up to the first zero byte."
+        }
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
+    },
+    {
+      "from": "1.0.0.75",
       "until": "1.0.0.82",
       "channel": "events",
       "command": 69,

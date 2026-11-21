@@ -54,6 +54,22 @@
     },
     {
       "from": "1.0.0.74",
+      "until": "1.0.0.75",
+      "channel": "events",
+      "command": 139,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "speed",
+          "type": "f32",
+          "note": "How fast, 1 being normal; 0 stops the clock. A client takes the value as sent, with no limit."
+        }
+      ],
+      "note": "Sent while paused, it takes effect at once: a nonzero speed starts the clock again."
+    },
+    {
+      "from": "1.0.0.75",
       "until": "1.0.0.82",
       "channel": "events",
       "command": 139,

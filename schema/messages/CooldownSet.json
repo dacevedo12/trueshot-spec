@@ -145,6 +145,71 @@
     },
     {
       "from": "1.0.0.61",
+      "until": "1.0.0.74",
+      "channel": "requests",
+      "command": 33,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "which",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "slot",
+              "width": 7,
+              "note": "Which slot. For a slot outside the unit's range a client sends 0."
+            },
+            {
+              "name": "summonerSpell",
+              "width": 1,
+              "note": "Set where the slot is one from 4 to 40; slot still carries that slot's own number."
+            }
+          ]
+        },
+        {
+          "name": "cooldown",
+          "type": "f32",
+          "note": "The cooldown set, in seconds."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.74",
+      "until": "1.0.0.75",
+      "channel": "requests",
+      "command": 33,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "which",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "slot",
+              "width": 7,
+              "note": "Which slot: a script's own spell slot as it stands, a summoner spell's plus 4 and an extra slot's plus 41. Where that passes the last slot of its kind (3, 40 or 48), a client sends 0."
+            },
+            {
+              "name": "summonerSpell",
+              "width": 1,
+              "note": "Set where the slot belongs to the second spell book, whatever its number."
+            }
+          ]
+        },
+        {
+          "name": "cooldown",
+          "type": "f32",
+          "note": "The cooldown set, in seconds."
+        }
+      ],
+      "note": "A client sends it only for a unit of its own network node."
+    },
+    {
+      "from": "1.0.0.75",
       "until": "1.0.0.96",
       "channel": "requests",
       "command": 33,

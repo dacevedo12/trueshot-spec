@@ -102,6 +102,22 @@
     },
     {
       "from": "1.0.0.74",
+      "until": "1.0.0.75",
+      "channel": "requests",
+      "command": 121,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "loading",
+          "type": "u8",
+          "note": "Zero while the match StartGame began is running, 1 otherwise: before StartGame, and once the match has ended."
+        }
+      ],
+      "note": "A client sends it right after the server answers its registration, on every connection, the first included. A client dropped while playing connects again only where its player agrees; one dropped while loading leaves, once it has its own client id."
+    },
+    {
+      "from": "1.0.0.75",
       "until": "1.0.0.82",
       "channel": "requests",
       "command": 121,

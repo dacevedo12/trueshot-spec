@@ -46,6 +46,26 @@
     },
     {
       "from": "1.0.0.74",
+      "until": "1.0.0.75",
+      "channel": "events",
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "command": 67,
+      "fields": [
+        {
+          "name": "announcement",
+          "type": "u32",
+          "note": "Which of the client's announcements, -1 to 27. The text of each is the client's own and is not recorded here. -1 shows a text that is none of the 28, and 5, 6, 20, 21 and 25 show only a placeholder; any other value has no defined effect."
+        },
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "A unit whose name the announcement carries, or zero for an announcement that names none. A client shows nothing where it does not know the unit."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.75",
       "until": "1.0.0.82",
       "channel": "events",
       "direction": "serverToClient",

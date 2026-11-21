@@ -52,6 +52,21 @@
     },
     {
       "from": "1.0.0.74",
+      "until": "1.0.0.75",
+      "channel": "events",
+      "command": 91,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "region",
+          "type": "u32",
+          "note": "The region to take away, by the id RegionAdded or RegionAttached gave it. A client removes every region holding that id."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.75",
       "until": "1.0.0.82",
       "channel": "events",
       "command": 91,

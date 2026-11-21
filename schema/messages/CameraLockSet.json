@@ -54,6 +54,22 @@
     },
     {
       "from": "1.0.0.74",
+      "until": "1.0.0.75",
+      "channel": "events",
+      "command": 131,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "locked",
+          "type": "u8",
+          "note": "Nonzero to lock the camera, zero to free it; a client tests the whole byte, so any set bit locks it."
+        }
+      ],
+      "note": "A client answers at once with CameraLock, returning the state byte as it arrived. While the game forces the view free, a client ignores the message and sends nothing for it, then or later."
+    },
+    {
+      "from": "1.0.0.75",
       "until": "1.0.0.82",
       "channel": "events",
       "command": 131,

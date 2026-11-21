@@ -90,9 +90,9 @@ gives the client its own client id.
 > `agreement` is 1, before any create message, because a client given a create
 > message before that `VersionSync` stops.
 
-<!-- holds from 0.9.22.14 up to 3.11.0.306 -->
+<!-- holds from 0.9.22.14 up to 1.0.0.74 -->
 
-> **In 0.9.22.14–3.10**
+> **In 0.9.22.14–1.0.0.73**
 >
 > A client takes a client id only from 0 to 252, and leaves on any other, so a
 > server MUST give each player a client id in that range.
@@ -113,6 +113,25 @@ gives the client its own client id.
 >
 > A client records the pair every `Registered` carries, and takes as its own
 > only the one carrying its own player id.
+
+<!-- holds from 1.0.0.74 up to 1.0.0.75 -->
+
+> **In 1.0.0.74**
+>
+> A client takes a client id only from 0 to 252, and leaves on any other but
+> 4294967295, for which it waits on as if given none; a server MUST give each
+> player a client id in that range.
+>
+> A server MUST send that `Registered`, and then a `VersionSync` whose
+> `agreement` is 1, before any create message, because a client given a create
+> message before that `VersionSync` stops.
+
+<!-- holds from 1.0.0.75 up to 3.11.0.306 -->
+
+> **In 1.0.0.75–3.10**
+>
+> A client takes a client id only from 0 to 252, and leaves on any other, so a
+> server MUST give each player a client id in that range.
 
 <!-- holds from 1.0.0.96 up to 1.0.0.97 -->
 
@@ -422,9 +441,9 @@ Among the identifiers with that top byte are these:
 > `Turret_T2_C_05`, `Turret_T2_L_01` to `Turret_T2_L_03`, and `Turret_T2_R_01`
 > to `Turret_T2_R_03`.
 
-<!-- holds from 0.9.25.24 up to 3.11.0.306 -->
+<!-- holds from 0.9.25.24 up to 1.0.0.74 -->
 
-> **In 0.9.25.24–3.10**
+> **In 0.9.25.24–1.0.0.73**
 >
 > Every object a map places carries the identifier its name gives, turrets,
 > navigation points and props among them.
@@ -448,9 +467,29 @@ Among the identifiers with that top byte are these:
 > | 3    | `Barracks_T1_C1`, `Barracks_T2_C1`, `HQ_T1`, `HQ_T2`, `OrderShop01`, `ChaosShop01`, `____P_Chaos_Spawn_Barracks__C01`                                                         |
 > | 4    | `Barracks_T1_L1`, `Barracks_T1_R1`, `Barracks_T2_L1`, `Barracks_T2_R1`, `HQ_T1`, `HQ_T2`, `OrderShop01`, `chaosShop01`, the four spawn points named `__P_…L01` and `__P_…R01` |
 
-<!-- holds from 1.0.0.61 up to 1.0.0.97 -->
+<!-- holds from 1.0.0.74 up to 1.0.0.75 -->
 
-> **In 1.0.0.61–1.0.0.96**
+> **In 1.0.0.74**
+>
+> Every object a map places carries the identifier its name gives, turrets and
+> navigation points among them.
+>
+> | Map  | Holds                                                                                                                                                                         |
+> | ---- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+> | 1, 2 | the six `Barracks` names, `HQ_T1`, `HQ_T2`, `orderShop01`, `chaosShop01`, the six spawn points named `__P_…`                                                                  |
+> | 3    | `Barracks_T1_C1`, `Barracks_T2_C1`, `HQ_T1`, `HQ_T2`, `OrderShop01`, `ChaosShop01`, `____P_Chaos_Spawn_Barracks__C01`                                                         |
+> | 4    | `Barracks_T1_L1`, `Barracks_T1_R1`, `Barracks_T2_L1`, `Barracks_T2_R1`, `HQ_T1`, `HQ_T2`, `OrderShop01`, `chaosShop01`, the four spawn points named `__P_…L01` and `__P_…R01` |
+
+<!-- holds from 1.0.0.75 up to 3.11.0.306 -->
+
+> **In 1.0.0.75–3.10**
+>
+> Every object a map places carries the identifier its name gives, turrets,
+> navigation points and props among them.
+
+<!-- holds from 1.0.0.75 up to 1.0.0.97 -->
+
+> **In 1.0.0.75–1.0.0.96**
 >
 > | Map  | Holds                                                                                                                  |
 > | ---- | ---------------------------------------------------------------------------------------------------------------------- |
@@ -815,6 +854,14 @@ Creating messages are the exception, and so are the messages below.
 > A path for a unit not held is read through and dropped, and is not applied
 > once an object takes that net id. [Movement](movement.md) says when the
 > `WaypointAck` is sent.
+
+<!-- holds from 1.0.0.74 up to 1.0.0.75 -->
+
+> **In 1.0.0.74**
+>
+> A path for a unit not held is read through and dropped, and is not applied
+> once an object takes that net id. A client still answers its group with a
+> `WaypointAck`, sent before it reads any movement.
 
 <!-- holds from 1.0.0.96 up to 1.0.0.141 -->
 

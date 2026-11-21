@@ -76,6 +76,16 @@
     },
     {
       "from": "1.0.0.74",
+      "until": "1.0.0.75",
+      "channel": "requests",
+      "command": 119,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting, closes the window or declines to reconnect, or as a reconnection fails, and as it leaves on a GameEnded that arrives while it loads with no champion of its own. Leaving a finished match sends none.",
+      "fields": []
+    },
+    {
+      "from": "1.0.0.75",
       "until": "1.0.0.82",
       "channel": "requests",
       "command": 119,

@@ -230,6 +230,38 @@
     },
     {
       "from": "1.0.0.74",
+      "until": "1.0.0.75",
+      "channel": "events",
+      "command": 107,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "count",
+          "type": "i32",
+          "note": "How many of the slots are used, read as signed. 0 clears every target the client holds, and a count below zero changes nothing. From 1 up, a client overwrites only that many slots, in order, and leaves the targets of an earlier list in the rest. A count above 32 has no defined effect."
+        },
+        {
+          "name": "caster",
+          "type": "u32",
+          "note": "The unit casting the missile. Where a client does not hold it, the client starts no missile, though a missile it already holds under the header's name still takes the targets."
+        },
+        {
+          "name": "targets",
+          "type": "array",
+          "count": 32,
+          "items": {
+            "name": "target",
+            "type": "u32",
+            "note": "A unit, in the order struck."
+          },
+          "note": "Always 32 slots; a client reads none past count."
+        }
+      ],
+      "note": "A client drops the message until the match has started. Then a missile it holds under the header's name takes the list, and the list also waits for the caster's next chain missile, whether or not the client holds the missile."
+    },
+    {
+      "from": "1.0.0.75",
       "until": "1.0.0.82",
       "channel": "events",
       "command": 107,

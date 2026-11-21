@@ -86,6 +86,22 @@
     },
     {
       "from": "1.0.0.74",
+      "until": "1.0.0.75",
+      "channel": "events",
+      "command": 98,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "entry",
+          "type": "u32",
+          "note": "The look, by the name AppearancePushed gave it."
+        }
+      ],
+      "note": "A client also takes away every look laid over the unit on this command, so the unit is left with no look laid over it, whatever entry names."
+    },
+    {
+      "from": "1.0.0.75",
       "until": "1.0.0.82",
       "channel": "events",
       "command": 98,

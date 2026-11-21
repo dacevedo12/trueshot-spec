@@ -22,6 +22,22 @@
     },
     {
       "from": "1.0.0.74",
+      "until": "1.0.0.75",
+      "channel": "events",
+      "command": 71,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The champion being attacked."
+        }
+      ],
+      "note": "A client marks the unit where target is nonzero and is its own champion, whatever the unit's side; any other target clears the mark. What the mark draws is not recorded."
+    },
+    {
+      "from": "1.0.0.75",
       "until": "1.0.0.82",
       "channel": "events",
       "command": 71,

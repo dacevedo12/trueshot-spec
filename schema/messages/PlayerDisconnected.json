@@ -70,6 +70,22 @@
     },
     {
       "from": "1.0.0.74",
+      "until": "1.0.0.75",
+      "channel": "events",
+      "command": 120,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "champion",
+          "type": "u32",
+          "note": "The player's champion, matched against the owner of each champion the client knows."
+        }
+      ],
+      "note": "Where it has its interface, a client shows a chat notice naming the player in the ally or the enemy colour, as against its own champion's side, or a plain colour where it has none; it shows it too where champion matches no champion it knows, or its own."
+    },
+    {
+      "from": "1.0.0.75",
       "until": "1.0.0.82",
       "channel": "events",
       "command": 120,

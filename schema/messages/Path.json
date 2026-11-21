@@ -120,6 +120,44 @@
     },
     {
       "from": "1.0.0.74",
+      "until": "1.0.0.75",
+      "channel": "events",
+      "command": 84,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "i32",
+          "note": "The unit's movement count."
+        },
+        {
+          "name": "points",
+          "type": "array",
+          "count": "remaining",
+          "items": {
+            "name": "pointsEntry",
+            "type": "record",
+            "fields": [
+              {
+                "name": "x",
+                "type": "f32",
+                "note": "A point on the path, in world units."
+              },
+              {
+                "name": "z",
+                "type": "f32",
+                "note": "A point on the path, in world units."
+              }
+            ]
+          },
+          "note": "The path's points, to the end of the message. A client takes the ground's height for each, and passes over a remainder shorter than a point."
+        }
+      ],
+      "note": "A client answers every one at once, before applying it and whatever its sync id, with WaypointAck on the transient channel. It applies it only where the sync id is not older than the last the unit took (as UnitStopped)."
+    },
+    {
+      "from": "1.0.0.75",
       "until": "1.0.0.82",
       "channel": "events",
       "command": 84,
