@@ -32,7 +32,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "A client sends it as its player opens the shop, in any match. Where a setting of its own has it heed the shop lock, opening a locked shop does nothing and sends nothing."
+      "note": "A client sends it as its player opens the shop, in any match."
     },
     {
       "from": "1.0.0.75",

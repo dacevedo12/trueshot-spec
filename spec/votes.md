@@ -38,8 +38,7 @@ menu on or off.
 > **In 1.0.0.25–1.0.0.57**
 >
 > A client ignores `SurrenderVoteCalled` that arrives before its interface is
-> up, and fails on one, or on a `SurrenderStatus` for reason 1, that arrives
-> before its own champion exists. A server MUST NOT send either before then.
+> up.
 
 <!-- holds from 1.0.0.58 up to 4.20.0.315 -->
 

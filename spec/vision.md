@@ -226,9 +226,22 @@ of them only for its own champion:
 > `LevelUp` shows its effect over any champion the client can see, and does
 > nothing for another unit.
 
-<!-- holds from 1.0.0.25 up to 1.0.0.61 -->
+<!-- holds from 1.0.0.25 up to 1.0.0.58 -->
 
-> **In 1.0.0.25–1.0.0.60**
+> **In 1.0.0.25–1.0.0.57**
+>
+> `LevelUp` shows its effect over any champion the client can see, and does
+> nothing for another unit.
+>
+> `GoldGained` naming the client's own champion, with an amount above 0.5 and a
+> source the client holds, shows the gold over the source. Any other `GoldGained`
+> naming a champion the client holds shows over it the gold gained, or lost
+> where the amount is below 0, and nothing for 0. `ItemAdded` announces no
+> purchase, a client's own or another's.
+
+<!-- holds from 1.0.0.58 up to 1.0.0.61 -->
+
+> **In 1.0.0.58–1.0.0.60**
 >
 > `LevelUp` shows its effect over any champion the client can see, and does
 > nothing for another unit.
