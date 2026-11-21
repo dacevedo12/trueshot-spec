@@ -113,7 +113,8 @@ the shop sends nothing.
 > Opening the shop sends nothing, except in the tutorial, where it sends
 > `TutorialShopOpened`.
 
-A client asks to buy only where the item is one the match sells.
+A client asks for an item not built from others only where it is one the match
+sells.
 
 <!-- holds from 0.8.13.26 up to 3.10.0.237 -->
 
@@ -137,7 +138,14 @@ A client asks to buy only where the item is one the match sells.
 >
 > For an item built from others, a client asks only where a slot is free or
 > holds one of its parts, and where the champion's gold covers what remains
-> after the parts it holds.
+> after the parts it holds, whether or not the item can be bought.
+
+<!-- holds from 0.9.22.14 up to 4.21.0.0 -->
+
+> **In 0.9.22.14–4.20**
+>
+> A client asks for an item built from others only where it is one the match
+> sells too.
 
 <!-- holds from 0.9.25.24 up to 1.0.0.140 -->
 

@@ -23,7 +23,9 @@ these, it carries it whole, at the width above.
 > **In 0.8.13.26–0.9.22.13**
 >
 > A region id of 0 names no region: given a `RegionAdded` carrying 0, a client
-> gives the region an id of its own.
+> gives the region an id of its own. A server MUST NOT give a region the id of
+> one the client still holds: the earlier region then goes on showing the map
+> with no id left to take it away by, and what follows has no defined effect.
 
 <!-- holds from 0.9.25.24 up to 0.9.25.36 -->
 
@@ -75,21 +77,25 @@ A player is known by a player id. A server answers a client's `Register` with
 one `Registered` for every seat, and the one carrying the client's own player id
 gives the client its own client id.
 
-<!-- holds from 0.8.13.26 up to 3.11.0.306 -->
-
-> **In 0.8.13.26–3.10**
->
-> A client takes a client id only from 0 to 252, and leaves on any other, so a
-> server MUST give each player a client id in that range.
-
 <!-- holds from 0.8.13.26 up to 0.9.22.14 -->
 
 > **In 0.8.13.26–0.9.22.13**
 >
-> A client acts on that `Registered` alone and ignores every other, so it pairs
-> no other player's player id with a client id. A server MUST send it before any
-> create message, because a client given a create message before it has its
-> own client id stops.
+> A client records the pair every `Registered` carries, and takes as its own
+> only the one carrying its own player id. It takes a client id only from 0 to
+> 252, and leaves on any other but 4294967295, for which it waits on as if given
+> none; a server MUST give each player a client id in that range.
+>
+> A server MUST send that `Registered`, and then a `VersionSync` whose
+> `agreement` is 1, before any create message, because a client given a create
+> message before that `VersionSync` stops.
+
+<!-- holds from 0.9.22.14 up to 3.11.0.306 -->
+
+> **In 0.9.22.14–3.10**
+>
+> A client takes a client id only from 0 to 252, and leaves on any other, so a
+> server MUST give each player a client id in that range.
 
 <!-- holds from 0.9.25.24 up to 0.9.25.36 -->
 

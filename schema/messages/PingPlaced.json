@@ -38,7 +38,7 @@
           "note": "A client reads nothing here."
         }
       ],
-      "note": "A client marks atX and atZ on each of its two map views, and only while it shows a map. The header can carry zero."
+      "note": "A client marks atX and atZ on each of its two map views where the point falls within that view, and only while its interface for the match exists. The header can carry zero."
     },
     {
       "from": "0.9.22.14",

@@ -34,7 +34,7 @@
           "note": "The casting that threw it."
         }
       ],
-      "note": "The casting names the caster; the header need not. Where the header names a missile the client already holds, that missile moves to atX to atZ as well. A client sets the missile at atX to atZ, finite or not."
+      "note": "The casting names the caster; the header need not. Where the header names a missile the client already holds, a client only moves that missile to atX to atZ, reading nothing of cast and making no missile. Otherwise it makes a missile from cast and sets it at atX to atZ, finite or not."
     },
     {
       "from": "0.9.22.14",

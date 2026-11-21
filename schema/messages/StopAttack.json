@@ -23,7 +23,7 @@
           "note": "Nonzero: set to make the attack land first where it has not already."
         }
       ],
-      "note": "Whatever the flags, a client then clears the unit's attack."
+      "note": "Whatever the flags, a client stops whatever the unit is casting or attacking, the flags changing only how; where nothing is under way, nothing happens."
     },
     {
       "from": "0.9.22.14",

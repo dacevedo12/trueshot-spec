@@ -23,34 +23,37 @@ that packs them into archives keeps the same paths inside.
 **Buildings.** `LEVELS/Map1/Scene/room.dsc` lists a map's scene objects, one
 line each: a file name and a quality number. Each object's own file sits beside
 it and gives its name. A client creates no object from a name holding
-`_Destroyed` or `_FB`. On map 1 the names run `Turret_T<side>_<lane>_<number>`
+`_Destroyed`. On map 1 the names run `Turret_T<side>_<lane>_<number>`
 for a lane turret, `Barracks_T<side>_<lane>1` for an inhibitor and `HQ_T<side>`
 for a nexus, side 1 for Order and 2 for Chaos and lanes `L`, `C` and `R`, with a
 shrine turret for each side; the numbers differ between the sides, and a server
 MUST take the names from the files.
 
-<!-- holds from 0.8.13.26 up to 0.9.25.24 -->
+<!-- holds from 0.8.13.26 up to 3.11.0.306 -->
 
-> **In 0.8.13.26–0.9.25.23**
->
-> Each object's file is `.sco` as text or `.SCB` as binary, and gives its name
-> on its `Name=` line.
-
-<!-- holds from 0.8.13.26 up to 0.9.22.14 -->
-
-> **In 0.8.13.26–0.9.22.13**
->
-> A name's opening says what the object is: `Turret` a turret, `Barracks` an
-> inhibitor, `HQ_` a nexus.
-
-<!-- holds from 0.9.25.24 up to 3.11.0.306 -->
-
-> **In 0.9.25.24–3.10**
+> **In 0.8.13.26–3.10**
 >
 > A word a name holds anywhere says what the object is, not only its opening,
 > the first match winning: a minion spawner's `Spawn_Barracks` is tested before
 > `Barracks`, which makes an inhibitor, and `HQ_` makes a nexus and `Turret` a
 > turret.
+
+<!-- holds from 0.8.13.26 up to 0.9.22.14 -->
+
+> **In 0.8.13.26–0.9.22.13**
+>
+> `room.dsc` lists each object as a `.sco`. Where a binary `.SCB` of the same
+> name exists, a client reads that instead, which holds its name within it; only
+> a `.sco` gives its name on its `Name=` line.
+>
+> A name holding `_FB` still makes an object, though not one of the kind its
+> other words name.
+
+<!-- holds from 0.9.22.14 up to 4.21.0.0 -->
+
+> **In 0.9.22.14–4.20**
+>
+> A client creates no object from a name holding `_FB` either.
 
 <!-- holds from 0.9.25.24 up to 1.0.0.97 -->
 

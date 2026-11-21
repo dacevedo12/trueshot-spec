@@ -6,6 +6,27 @@
   "revisions": [
     {
       "from": "0.8.13.26",
+      "until": "0.9.22.14",
+      "channel": "events",
+      "command": 47,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "level",
+          "type": "u8",
+          "note": "The level now reached."
+        },
+        {
+          "name": "pointsToSpend",
+          "type": "u8",
+          "note": "How many spell points are left unspent."
+        }
+      ],
+      "note": "A client applies it to any unit that carries experience, whether or not it can see the unit, and does nothing for any other."
+    },
+    {
+      "from": "0.9.22.14",
       "until": "1.0.0.74",
       "channel": "events",
       "command": 47,

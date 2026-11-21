@@ -6,6 +6,16 @@
   "revisions": [
     {
       "from": "0.8.13.26",
+      "until": "0.9.22.14",
+      "channel": "requests",
+      "command": 17,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client sends it each time GameEnded arrives once its own champion exists; before then it sends none."
+    },
+    {
+      "from": "0.9.22.14",
       "until": "1.0.0.58",
       "channel": "requests",
       "command": 17,

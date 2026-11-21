@@ -15,10 +15,10 @@
         {
           "name": "syncId",
           "type": "u8",
-          "note": "The name the report carried. A client sends the report again until this comes back."
+          "note": "The name the report carried. A client takes a value only 1 to 127 ahead of the last it took, counting a value below the last as 255 more, so after 255 it ignores 0. It sends its latest report again until the value it takes is that report's."
         }
       ],
-      "note": "A server names in the header the champion of the player it is sent to."
+      "note": "A client ignores the header."
     },
     {
       "from": "0.9.22.14",

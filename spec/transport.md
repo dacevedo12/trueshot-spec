@@ -185,6 +185,14 @@ argument.
 > A client decodes nothing: its key is the first sixteen characters of the
 > argument, as they stand.
 
+<!-- holds from 0.8.13.26 up to 0.9.22.14 -->
+
+> **In 0.8.13.26–0.9.22.13**
+>
+> Where the argument is shorter than sixteen characters, the rest of the key is
+> undefined, and no server can know it: the key MUST be sixteen characters or
+> more.
+
 <!-- holds from 1.0.0.111 up to 1.0.0.126 -->
 
 > **In 1.0.0.111–1.0.0.125**

@@ -25,7 +25,7 @@
         {
           "name": "missile",
           "type": "u32",
-          "note": "The name the missile this swing throws will answer to. Zero for a swing that throws none."
+          "note": "The name the missile this swing throws will answer to. A client takes zero as it takes any other value."
         },
         {
           "name": "fromX",

@@ -11,7 +11,7 @@
       "command": 86,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client shows the champion's icon and sets its two summoner slots from summoners.",
+      "note": "A client shows nothing of it, and sets the champion's two summoner slots from summoners. It keeps runes, choices and level, and uses none of them.",
       "fields": [
         {
           "name": "runes",
@@ -39,7 +39,7 @@
           "name": "choices",
           "type": "array",
           "count": 80,
-          "note": "The choices made alongside them, 400 bytes that a client keeps as one block.",
+          "note": "The choices made alongside them, 400 bytes that a client keeps as one block and reads nothing of.",
           "items": {
             "name": "choice",
             "type": "struct",

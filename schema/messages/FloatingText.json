@@ -6,6 +6,48 @@
   "revisions": [
     {
       "from": "0.8.13.26",
+      "until": "0.9.22.14",
+      "channel": "events",
+      "command": 30,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unused",
+          "type": "u32",
+          "note": "Unused; a server writes zero."
+        },
+        {
+          "name": "delay",
+          "type": "f32",
+          "note": "Unused; a server writes zero."
+        },
+        {
+          "name": "slot",
+          "type": "i32",
+          "note": "Where the text goes. 0 floats it over the unit while the unit is in the client's own view, where the player's floating-text settings allow. 1 to 50 writes it, in colour, to that line of a debugging display, only where the unit is the one the player has selected. A client does nothing for any other value."
+        },
+        {
+          "name": "error",
+          "type": "u8",
+          "note": "Nonzero has a client show the text on screen as a message for ten seconds where fewer than 32 such messages show, whatever slot holds, and float an error notice of its own over the unit, under the same view and settings as slot 0; it does nothing else with the message."
+        },
+        {
+          "name": "colour",
+          "type": "u8",
+          "note": "The text's colour on the debugging display; it has no effect for slot 0."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "The text, ended by a zero byte. A client sets no limit of its own on its length; it keeps at most the first 4095 characters for slot 0 and the first 1023 for a line of the debugging display."
+        }
+      ]
+    },
+    {
+      "from": "0.9.22.14",
       "until": "0.9.25.24",
       "channel": "events",
       "command": 30,

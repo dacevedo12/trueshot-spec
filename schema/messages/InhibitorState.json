@@ -15,11 +15,11 @@
         {
           "name": "state",
           "type": "u32",
-          "note": "What state the inhibitor takes. Any other value becomes the inhibitor's state and changes nothing shown; a later 0 or 1 still applies. A state equal to the one held changes nothing but the duration.",
+          "note": "What state the inhibitor takes. Any other value becomes the inhibitor's state and changes nothing shown, and a 0 less than 1.2 seconds before it then never shows; a later 0 or 1 still applies.",
           "values": {
             "0": {
               "name": "down",
-              "note": "The inhibitor is down for duration."
+              "note": "The inhibitor goes down 1.2 seconds after the message, whatever duration says."
             },
             "1": {
               "name": "restored",
@@ -30,7 +30,7 @@
         {
           "name": "duration",
           "type": "u32",
-          "note": "How long the state lasts, in seconds. A client stores it whatever state the message holds."
+          "note": "How long the state lasts, in whole seconds. A client stores it whatever state the message holds and counts it down; its end changes nothing shown, and only a 1 brings the inhibitor back."
         }
       ]
     },

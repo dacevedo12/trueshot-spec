@@ -204,11 +204,14 @@ of them only for its own champion:
 
 - `ShopEnabled` changes the shop only for the client's own champion.
 
-<!-- holds from 0.8.13.26 up to 0.9.22.14 -->
+<!-- holds from 0.8.13.26 up to 0.9.25.36 -->
 
-> **In 0.8.13.26–0.9.22.13**
+> **In 0.8.13.26–0.9.25.35**
 >
-> `GoldGained` shows floating gold only for the client's own champion.
+> `GoldGained` naming the client's own champion, with an amount above 0.5 and a
+> source the client holds, shows the gold over the source. Any other `GoldGained`
+> naming a unit the client holds shows over it the gold gained, or lost where
+> the amount is below 0, and nothing for 0.
 
 <!-- holds from 0.9.25.24 up to 1.0.0.58 -->
 
@@ -222,11 +225,6 @@ of them only for its own champion:
 >
 > `LevelUp` shows its effect over any champion the client can see, and does
 > nothing for another unit.
->
-> `GoldGained` naming the client's own champion, with an amount above 0.5 and a
-> source the client holds, shows the gold over the source. Any other `GoldGained`
-> naming a unit the client holds shows over it the gold gained, or lost where
-> the amount is below 0, and nothing for 0.
 
 <!-- holds from 1.0.0.58 up to 1.0.0.61 -->
 

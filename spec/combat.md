@@ -121,9 +121,10 @@ A server reports damage with `Damage`.
 > **In 0.8.13.26–0.9.22.13**
 >
 > Result 0 of `Damage` is a notice a client shows for only one in every thirty
-> it receives, and result 5 a miss, shown for its player's own unit. Results 3,
-> 4 and any above 5 show a figure, and for them a client lowers the hurt unit's
-> health by the amount itself, without waiting for replication.
+> naming a unit it holds, counted across all units, and result 5 a miss, shown
+> over the unit hurt. Results 3, 4 and any above 5 show a figure, and for them a
+> client lowers the hurt unit's health by the amount itself, without waiting for
+> replication.
 
 <!-- holds from 0.9.25.24 up to 4.20.0.315 -->
 

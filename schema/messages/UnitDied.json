@@ -33,7 +33,7 @@
           "note": "How long the unit stays down, in seconds."
         }
       ],
-      "note": "A client does nothing more for a unit already dead, or where killer is zero. Otherwise, whether or not it knows killer, it puts the unit down for stayDown: dead, with no health, its movement, cast and attack stopped. For a minion whose killer, or the killer's owner, is the player's own champion, it then shows a kill notice."
+      "note": "A client does nothing more for a unit already dead, or where killer is zero. Otherwise, whether or not it knows killer, it puts the unit down for stayDown: dead, with no health, its movement, cast and attack stopped. For a minion whose killer, or the killer's owner, is the player's own champion, it then shows an effect where the minion stands, in one form for a killer on the minion's side and another otherwise, where a further condition, not recorded, holds. For a turret it shows an effect where the turret stands under that condition, whoever the killer, in a form set by the killer's side or its absence. Over a champion it floats an amount of gold worked out from the champion's level."
     },
     {
       "from": "0.9.22.14",

@@ -137,8 +137,9 @@ a stream.
 
 > **In 0.8.13.26–0.9.22.13**
 >
-> A client sends a view report again until a server answers it with
-> `CameraAck`, carrying its number.
+> A client sends its latest view report again and again, without waiting for a
+> round trip or for its view to move, until a server answers it with
+> `CameraAck` carrying its number.
 
 <!-- holds from 0.9.22.14 up to 0.9.25.24 -->
 

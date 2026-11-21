@@ -25,7 +25,7 @@
         {
           "name": "clientId",
           "type": "u32",
-          "note": "The client id of the player the champion belongs to. A client takes the champion carrying its own client id as its own, and any other as belonging to no client of its own."
+          "note": "The client id of the player the champion belongs to, kept on the champion as given. A client takes the champion carrying its own client id as its own."
         },
         {
           "name": "side",

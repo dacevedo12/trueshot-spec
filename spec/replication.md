@@ -913,9 +913,9 @@ Besides its batches, a server states some values with messages of their own.
 
 > **In 0.8.13.26–0.9.22.13**
 >
-> A server grants gold with `GoldGained`. `ExperienceGained` shows the
-> experience gained over the unit and grants none: a champion's experience
-> follows `ValueGroup1` alone.
+> `GoldGained` grants no gold, and `ExperienceGained` shows the experience
+> gained over the unit and grants none: a champion's gold in hand and its
+> experience follow bits 0 and 1 of `ValueGroup1` alone.
 
 <!-- holds from 0.9.25.24 up to 1.0.0.127 -->
 

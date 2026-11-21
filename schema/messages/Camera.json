@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "Camera",
   "system": "interface",
-  "note": "What a client sends to say where its view sits and which way it faces. Each report is sent once where a server answers it, and again and again where a server does not. The header names no object: it carries zero.",
+  "note": "What a client sends to say where its view sits and which way it faces. The header names no object: it carries zero.",
   "revisions": [
     {
       "from": "0.8.13.26",
@@ -50,9 +50,10 @@
         {
           "name": "syncId",
           "type": "u8",
-          "note": "Names this report, counting up as the view moves. A client sends the report again until a server returns the name."
+          "note": "Names this report, counting up as the view moves and wrapping after 255. A client sends the report again until a server returns the name."
         }
-      ]
+      ],
+      "note": "A client sends a new report as either set of three coordinates it carries moves more than 200 units, at most one every tenth of a second, and none while its view is locked. It sends its latest report again and again, without waiting, until CameraAck returns its syncId, so a server that answers still gets copies of it."
     },
     {
       "from": "0.9.22.14",
@@ -102,7 +103,8 @@
           "type": "u8",
           "note": "Names this report, counting up as the view moves. A client sends the report again until a server returns the name."
         }
-      ]
+      ],
+      "note": "A client sends each report once where a server answers it, and again and again where a server does not."
     },
     {
       "from": "0.9.25.24",
@@ -138,7 +140,7 @@
           "note": "Names this report, counting up as the view moves and wrapping after 255. A client sends the report again until a server returns the name."
         }
       ],
-      "note": "A client sends a new report each time its view moves more than 200 units, at most one every tenth of a second, and sends an unanswered one again after twice its ping, in seconds, plus 1/30 of a second. While its view is locked it sends none."
+      "note": "A client sends each report once where a server answers it, and again and again where a server does not. A client sends a new report each time its view moves more than 200 units, at most one every tenth of a second, and sends an unanswered one again after twice its ping, in seconds, plus 1/30 of a second. While its view is locked it sends none."
     },
     {
       "from": "1.0.0.74",
@@ -173,7 +175,8 @@
           "type": "u8",
           "note": "Names this report, counting up as the view moves. A client sends the report again until a server returns the name."
         }
-      ]
+      ],
+      "note": "A client sends each report once where a server answers it, and again and again where a server does not."
     },
     {
       "from": "1.0.0.82",
@@ -208,7 +211,8 @@
           "type": "u8",
           "note": "Names this report, counting up as the view moves. A client sends the report again until a server returns the name."
         }
-      ]
+      ],
+      "note": "A client sends each report once where a server answers it, and again and again where a server does not."
     },
     {
       "from": "1.0.0.97",
@@ -243,7 +247,8 @@
           "type": "u8",
           "note": "Names this report, counting up as the view moves. A client sends the report again until a server returns the name."
         }
-      ]
+      ],
+      "note": "A client sends each report once where a server answers it, and again and again where a server does not."
     },
     {
       "from": "1.0.0.103",
@@ -278,7 +283,8 @@
           "type": "u8",
           "note": "Names this report, counting up as the view moves. A client sends the report again until a server returns the name."
         }
-      ]
+      ],
+      "note": "A client sends each report once where a server answers it, and again and again where a server does not."
     },
     {
       "from": "1.0.0.107",
@@ -313,7 +319,8 @@
           "type": "u8",
           "note": "Names this report, counting up as the view moves. A client sends the report again until a server returns the name."
         }
-      ]
+      ],
+      "note": "A client sends each report once where a server answers it, and again and again where a server does not."
     },
     {
       "from": "1.0.0.110",
@@ -348,7 +355,8 @@
           "type": "u8",
           "note": "Names this report, counting up as the view moves. A client sends the report again until a server returns the name."
         }
-      ]
+      ],
+      "note": "A client sends each report once where a server answers it, and again and again where a server does not."
     },
     {
       "from": "1.0.0.120",
@@ -395,7 +403,8 @@
           "type": "u8",
           "note": "Names this report, counting up as the view moves. A client sends the report again until a server returns the name."
         }
-      ]
+      ],
+      "note": "A client sends each report once where a server answers it, and again and again where a server does not."
     },
     {
       "from": "1.0.0.124",
@@ -442,7 +451,8 @@
           "type": "u8",
           "note": "Names this report, counting up as the view moves. A client sends the report again until a server returns the name."
         }
-      ]
+      ],
+      "note": "A client sends each report once where a server answers it, and again and again where a server does not."
     },
     {
       "from": "1.0.0.126",
@@ -490,7 +500,7 @@
           "note": "Names this report, counting up as the view moves. A client sends the report again until a server returns the name."
         }
       ],
-      "note": "A client sends no report while the camera is locked. It sends a new report, with the next syncId, only where at least 0.1 seconds have passed since the last and the view has moved more than 200 units or turned; it sends a report that goes unanswered again after a delay that follows the round trip."
+      "note": "A client sends each report once where a server answers it, and again and again where a server does not. A client sends no report while the camera is locked. It sends a new report, with the next syncId, only where at least 0.1 seconds have passed since the last and the view has moved more than 200 units or turned; it sends a report that goes unanswered again after a delay that follows the round trip."
     },
     {
       "from": "1.0.0.128",
@@ -534,7 +544,8 @@
           "type": "u8",
           "note": "Names this report, counting up as the view moves. A client sends the report again until a server returns the name."
         }
-      ]
+      ],
+      "note": "A client sends each report once where a server answers it, and again and again where a server does not."
     },
     {
       "from": "1.0.0.144",
@@ -578,7 +589,8 @@
           "type": "u8",
           "note": "Names this report, counting up as the view moves. A client sends the report again until a server returns the name."
         }
-      ]
+      ],
+      "note": "A client sends each report once where a server answers it, and again and again where a server does not."
     },
     {
       "from": "4.11.0.386",
@@ -622,7 +634,8 @@
           "type": "u8",
           "note": "Names this report, counting up as the view moves. A client sends the report again until a server returns the name."
         }
-      ]
+      ],
+      "note": "A client sends each report once where a server answers it, and again and again where a server does not."
     }
   ]
 }

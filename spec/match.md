@@ -16,7 +16,9 @@ seconds.
 
 > **In 0.8.13.26–0.9.22.13**
 >
-> `StatTick` asks every unit's stats to advance by that span.
+> For `StatTick`, the units a client advances gain their health and mana
+> regeneration over that span, up to their maxima; a dead unit does not
+> advance.
 
 <!-- holds from 0.9.25.24 up to 4.20.0.315 -->
 
@@ -257,9 +259,19 @@ player's side and sends `ClientFinished`.
 > A client sends `ClientFinished` every time `GameEnded` arrives in play, while
 > playing a replay too.
 
-<!-- holds from 0.8.13.26 up to 0.9.25.36 -->
+<!-- holds from 0.8.13.26 up to 0.9.22.14 -->
 
-> **In 0.8.13.26–0.9.25.35**
+> **In 0.8.13.26–0.9.22.13**
+>
+> A client that receives `GameEnded` while still loading takes it as in play
+> once its own champion exists: it records the result and sends
+> `ClientFinished`. Before then it fails on it, recording nothing and sending
+> nothing, so a server MUST NOT send `GameEnded` before the client's own
+> champion is created.
+
+<!-- holds from 0.9.22.14 up to 0.9.25.36 -->
+
+> **In 0.9.22.14–0.9.25.35**
 >
 > A client that receives `GameEnded` while still loading takes it as in play:
 > it records the result and sends `ClientFinished`.

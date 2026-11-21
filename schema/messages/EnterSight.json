@@ -15,7 +15,7 @@
         {
           "name": "view",
           "type": "record",
-          "note": "Everything else a client needs to draw the unit. A server sends it for a champion, a minion or another unit with a mind, and ends the message after the items for any other unit.",
+          "note": "What a server can state of the unit. A client reads none of it, and takes any body, or none, alike.",
           "fields": [
             {
               "name": "movementState",

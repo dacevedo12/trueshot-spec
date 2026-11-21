@@ -81,7 +81,7 @@
           "note": "Kept with the region; it changes nothing a client shows. A server writes zero."
         }
       ],
-      "note": "On this range a region stands where the message places it; RegionAttached places one that follows a unit. Every RegionAdded adds a region; where marker repeats an id the client holds, both regions are kept under that id."
+      "note": "On this range a region stands where the message places it; RegionAttached places one that follows a unit. Every RegionAdded adds a region; where marker repeats an id a region the client holds already has, both regions are kept and count down, but only the earlier shows the map; once the later goes, the id names neither, and the earlier's map stays shown, with no defined effect once it goes too."
     },
     {
       "from": "0.9.22.14",

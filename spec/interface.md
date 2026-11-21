@@ -17,12 +17,14 @@ server can also lock or free a client's camera with `CameraLockSet`, which the
 client answers with `CameraLock` except while it holds its camera itself, and
 set a point for a player's view with `CameraBehaviour`.
 
-<!-- holds from 0.8.13.26 up to 0.9.25.24 -->
+<!-- holds from 0.8.13.26 up to 0.9.22.14 -->
 
-> **In 0.8.13.26–0.9.25.23**
+> **In 0.8.13.26–0.9.22.13**
 >
-> A client's view report, `Camera`, goes out as its view moves at least 200
-> units, at most every tenth of a second, and never while its view is locked.
+> A client's view report, `Camera`, goes out as either set of three coordinates
+> it carries moves more than 200 units, at most every tenth of a second, and
+> never while its view is locked; a report sent again until answered comes
+> sooner.
 
 <!-- holds from 0.9.25.24 up to 3.11.0.306 -->
 

@@ -30,7 +30,7 @@
         {
           "name": "unit",
           "type": "u32",
-          "note": "A player's champion: the region follows it. A client fails where no player's champion answers to it."
+          "note": "The unit the region follows: one that fights, such as a champion, a minion or a turret. A client fails where it holds no such unit under this id."
         },
         {
           "name": "lifetime",
@@ -51,7 +51,7 @@
             {
               "name": "flag",
               "width": 1,
-              "note": "Set where the region shows the map. Where kind is 2, a client sets this bit and does.second itself, whatever was sent."
+              "note": "Read by no client: the region shows the map whatever this holds. Where kind is 2, a client sets this bit and does.second itself."
             },
             {
               "name": "second",
@@ -71,7 +71,7 @@
           "note": "Kept with the region; it changes nothing a client shows. A server writes zero."
         }
       ],
-      "note": "Every RegionAttached adds a region; nothing is compared, and a repeated marker gives two regions under one id."
+      "note": "Every RegionAttached adds a region; nothing is compared, and a repeated marker gives two regions under one id, read as RegionAdded says."
     },
     {
       "from": "0.9.22.14",

@@ -6,6 +6,16 @@
   "revisions": [
     {
       "from": "0.8.13.26",
+      "until": "0.9.22.14",
+      "channel": "requests",
+      "command": 15,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client sends it once as it loads, before any champion exists, whatever its player does."
+    },
+    {
+      "from": "0.9.22.14",
       "until": "1.0.0.110",
       "channel": "requests",
       "command": 15,

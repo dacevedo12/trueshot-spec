@@ -32,7 +32,7 @@
               "name": "points",
               "type": "array",
               "count": "header.pointCount",
-              "note": "Every point of the path, each stated in world units. A client reads them even for a unit it does not hold, and takes each point's height from the ground.",
+              "note": "Every point of the path, each stated in world units.",
               "items": {
                 "name": "point",
                 "type": "record",

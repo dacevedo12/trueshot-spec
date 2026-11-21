@@ -25,10 +25,10 @@
         {
           "name": "inSlot",
           "type": "u8",
-          "note": "How many of the item the slot holds now; a client applies zero as well. The slot's charges come from the item's own data."
+          "note": "How many of the item the slot holds now; a client applies zero as well."
         }
       ],
-      "note": "There is no charges field: a client takes an item's charges from the item's own data. A server sends it to units nobody is buying for."
+      "note": "There is no charges field: a client takes the charges of an item with an active effect from the item's own data, and leaves any other slot's charges as they were. A client puts no item in a slot itself, bought or not: ItemAdded alone places one."
     },
     {
       "from": "0.9.22.14",

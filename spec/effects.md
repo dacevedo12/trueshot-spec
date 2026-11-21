@@ -34,7 +34,8 @@ that changes, such as a capture point or the unit's resource, with
 
 > **In 0.8.13.26–0.9.22.13**
 >
-> `ParticlesCreated` starts one particle, named by the message's own id.
+> `ParticlesCreated` starts one particle, named by the id its body carries rather
+> than by its header.
 
 <!-- holds from 0.9.25.24 up to 4.21.0.0 -->
 
