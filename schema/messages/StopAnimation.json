@@ -737,6 +737,96 @@
     },
     {
       "from": "1.0.0.144",
+      "until": "1.0.0.150",
+      "channel": "events",
+      "command": 40,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "fade",
+              "width": 1,
+              "note": "Set where the animation fades out."
+            },
+            {
+              "name": "ignoreLock",
+              "width": 1,
+              "note": "Set where a lock on the animation is ignored."
+            },
+            {
+              "name": "stopAll",
+              "width": 1,
+              "note": "Set where every animation stops when the name below is empty."
+            },
+            {
+              "name": "unused",
+              "width": 5,
+              "note": "Unused; a server writes zero."
+            }
+          ],
+          "note": "How it stops."
+        },
+        {
+          "name": "animation",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "The animation's name, ended by a zero byte, or empty."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.150",
+      "until": "1.0.0.151",
+      "channel": "events",
+      "command": 40,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "fade",
+              "width": 1,
+              "note": "Set where the animation fades out."
+            },
+            {
+              "name": "ignoreLock",
+              "width": 1,
+              "note": "Set where a lock on the animation is ignored; it has no effect where animation is empty."
+            },
+            {
+              "name": "stopAll",
+              "width": 1,
+              "note": "Set where every animation stops when the name below is empty."
+            },
+            {
+              "name": "unused",
+              "width": 5,
+              "note": "Unused; a server writes zero."
+            }
+          ],
+          "note": "How it stops."
+        },
+        {
+          "name": "animation",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "The animation's name, ended by a zero byte, or empty."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.151",
       "until": "4.11.0.386",
       "channel": "events",
       "command": 40,

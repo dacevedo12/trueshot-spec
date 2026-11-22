@@ -116,9 +116,17 @@ MUST take the names from the files.
 > name exists, a client reads that instead, which holds its name within it; only
 > a `.sco` gives its name on its `Name=` line.
 
-<!-- holds from 1.0.0.141 up to 4.1.0.171 -->
+<!-- holds from 1.0.0.150 up to 1.0.0.151 -->
 
-> **In 1.0.0.141–3.15**
+> **In 1.0.0.150**
+>
+> `room.dsc` lists each object as a `.sco`. Where a binary `.SCB` of the same
+> name exists, a client reads that instead, which holds its name within it;
+> only a `.sco` gives its name on its `Name=` line.
+
+<!-- holds from 1.0.0.151 up to 4.1.0.171 -->
+
+> **In 1.0.0.151–3.15**
 >
 > Each object's file is `.sco` as text or `.SCB` as binary, and gives its name
 > on its `Name=` line.

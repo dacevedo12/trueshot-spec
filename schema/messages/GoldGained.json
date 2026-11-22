@@ -526,6 +526,58 @@
     },
     {
       "from": "1.0.0.144",
+      "until": "1.0.0.150",
+      "channel": "events",
+      "command": 34,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit granted it."
+        },
+        {
+          "name": "source",
+          "type": "u32",
+          "note": "What it came from, or zero where nothing did."
+        },
+        {
+          "name": "amount",
+          "type": "f32",
+          "note": "How much."
+        }
+      ],
+      "note": "It grants the unit gold."
+    },
+    {
+      "from": "1.0.0.150",
+      "until": "1.0.0.151",
+      "channel": "events",
+      "command": 34,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit granted it."
+        },
+        {
+          "name": "source",
+          "type": "u32",
+          "note": "What it came from, or zero where nothing did."
+        },
+        {
+          "name": "amount",
+          "type": "f32",
+          "note": "How much."
+        }
+      ],
+      "note": "Where unit is the client's own champion, amount is above 0.5 and the client holds source, a client shows the gold over the source and grants none."
+    },
+    {
+      "from": "1.0.0.151",
       "until": "4.1.0.171",
       "channel": "events",
       "command": 34,

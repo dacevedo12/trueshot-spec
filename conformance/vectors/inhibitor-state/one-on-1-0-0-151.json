@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "InhibitorState",
+  "version": "1.0.0.151",
+  "note": "Laid out as a 1.0.0.151 client takes it.",
+  "bytes": "2a010000400000",
+  "fields": {
+    "command": 42,
+    "netId": 1073741825,
+    "state": {
+      "duration": 0,
+      "alive": 0
+    }
+  }
+}

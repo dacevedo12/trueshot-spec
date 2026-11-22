@@ -302,6 +302,68 @@
     },
     {
       "from": "1.0.0.144",
+      "until": "1.0.0.150",
+      "channel": "events",
+      "command": 47,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which of the unit's effect slots."
+        },
+        {
+          "name": "runningFor",
+          "type": "f32",
+          "note": "How long the effect has already run, in seconds."
+        },
+        {
+          "name": "lasts",
+          "type": "f32",
+          "note": "How long it runs in total, in seconds."
+        },
+        {
+          "name": "caster",
+          "type": "u32",
+          "note": "The unit that put it there."
+        }
+      ],
+      "note": "It puts a lasting effect in the slot, keeping the slot rather than taking the old one off first."
+    },
+    {
+      "from": "1.0.0.150",
+      "until": "1.0.0.151",
+      "channel": "events",
+      "command": 47,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which of the unit's effect slots."
+        },
+        {
+          "name": "runningFor",
+          "type": "f32",
+          "note": "How long the effect has already run, in seconds. It moves neither the effect's start nor its end."
+        },
+        {
+          "name": "lasts",
+          "type": "f32",
+          "note": "How long the effect has left to run, in seconds from when the message arrives."
+        },
+        {
+          "name": "caster",
+          "type": "u32",
+          "note": "The unit that put it there."
+        }
+      ],
+      "note": "It names no effect: it re-times the effect already in the slot, keeping its stack count, and does nothing where the slot is empty."
+    },
+    {
+      "from": "1.0.0.151",
       "until": "3.10.0.237",
       "channel": "events",
       "command": 47,

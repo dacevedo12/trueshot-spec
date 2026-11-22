@@ -763,6 +763,33 @@
     },
     {
       "from": "1.0.0.150",
+      "until": "1.0.0.151",
+      "channel": "events",
+      "command": 166,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "enabled",
+              "width": 1,
+              "note": "Set where the world is drawn without colour while the client's own champion is down; clear, it is drawn in colour. A client reads it for its own champion alone, and takes it as set until it arrives."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.151",
       "until": "3.01.0.1",
       "channel": "events",
       "command": 166,

@@ -703,6 +703,47 @@
     },
     {
       "from": "1.0.0.150",
+      "until": "1.0.0.151",
+      "channel": "events",
+      "command": 216,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "fadeIn",
+          "type": "u8",
+          "note": "Nonzero brings a tint in, and the colour and weight below follow; 0 takes it away, and they do not."
+        },
+        {
+          "name": "time",
+          "type": "f32",
+          "note": "How long the change takes, in seconds."
+        },
+        {
+          "name": "side",
+          "type": "i32",
+          "note": "Which side sees it; 0 for every screen. A client with no champion of its own shows only the tints of 0 and 100."
+        },
+        {
+          "name": "colour",
+          "type": "u32",
+          "note": "The tint, as blue, green, red and opacity bytes.",
+          "present": {
+            "when": "fadeIn"
+          }
+        },
+        {
+          "name": "weight",
+          "type": "f32",
+          "note": "How strongly it applies at most.",
+          "present": {
+            "when": "fadeIn"
+          }
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.151",
       "until": "3.01.0.1",
       "channel": "events",
       "command": 216,

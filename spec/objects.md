@@ -192,13 +192,6 @@ gives the client its own client id.
 > A server MUST send that `Registered` before any create message, because a
 > client given a create message before it has its own client id stops.
 
-<!-- holds from 1.0.0.133 up to 3.11.0.306 -->
-
-> **In 1.0.0.133–3.10**
->
-> A client takes a client id only from 0 to 252, and leaves on any other, so a
-> server MUST give each player a client id in that range.
-
 <!-- holds from 1.0.0.133 up to 3.10.0.237 -->
 
 > **In 1.0.0.133–3.9**
@@ -206,12 +199,34 @@ gives the client its own client id.
 > A client acts on that `Registered` alone and ignores every other, so it pairs
 > no other player's player id with a client id.
 
+<!-- holds from 1.0.0.133 up to 1.0.0.150 -->
+
+> **In 1.0.0.133–1.0.0.149**
+>
+> A client takes a client id only from 0 to 252, and leaves on any other, so a
+> server MUST give each player a client id in that range.
+
 <!-- holds from 1.0.0.140 up to 1.0.0.141 -->
 
 > **In 1.0.0.140**
 >
 > A server MUST send that `Registered` before any create message, because a
 > client given a create message before it has its own client id stops.
+
+<!-- holds from 1.0.0.150 up to 1.0.0.151 -->
+
+> **In 1.0.0.150**
+>
+> A client takes a client id only from 0 to 252, and leaves on any other but
+> 4294967295, for which it waits on as if given none; a server MUST give each
+> player a client id in that range.
+
+<!-- holds from 1.0.0.151 up to 3.11.0.306 -->
+
+> **In 1.0.0.151–3.10**
+>
+> A client takes a client id only from 0 to 252, and leaves on any other, so a
+> server MUST give each player a client id in that range.
 
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
@@ -962,12 +977,24 @@ Creating messages are the exception, and so are the messages below.
 > `SpawnPet` names the pet's owner in its header and carries the new pet's net
 > id in its body, and does nothing where that owner is not held.
 
-<!-- holds from 1.0.0.133 up to 3.10.0.237 -->
+<!-- holds from 1.0.0.133 up to 1.0.0.150 -->
 
-> **In 1.0.0.133–3.9**
+> **In 1.0.0.133–1.0.0.149**
 >
 > `SpawnPet` takes the net id in its header for the new pet, but does nothing
 > where the owner its body names is not held.
+
+<!-- holds from 1.0.0.150 up to 1.0.0.151 -->
+
+> **In 1.0.0.150**
+>
+> `SpawnPet` takes the net id in its header for the new pet. Where the owner
+> its body names is not held it creates nothing, but still removes an object
+> holding that net id where `SoftReconnect` has marked it.
+>
+> A `WaypointGroup` or `WaypointGroupAtSpeed` path for a unit not yet held is
+> read through and kept rather than dropped, and its `WaypointAck` is sent as
+> usual.
 
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 

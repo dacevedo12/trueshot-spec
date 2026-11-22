@@ -474,6 +474,24 @@
     },
     {
       "from": "1.0.0.150",
+      "until": "1.0.0.151",
+      "channel": "events",
+      "command": 157,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "A key into the client's own text, which it looks up and shows. The text ends at its first zero byte, which falls within the field."
+        }
+      ],
+      "note": "A client also sizes the panel to the text and shows it. The box sits 85% of the way down the screen and 98.5% of the way across it, less a margin."
+    },
+    {
+      "from": "1.0.0.151",
       "until": "3.01.0.1",
       "channel": "events",
       "command": 157,

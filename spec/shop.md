@@ -300,9 +300,16 @@ sells.
 >
 > A client asks only with the champion dead or near a shop of its side.
 
-<!-- holds from 1.0.0.141 up to 3.11.0.306 -->
+<!-- holds from 1.0.0.150 up to 1.0.0.151 -->
 
-> **In 1.0.0.141–3.10**
+> **In 1.0.0.150**
+>
+> A client asks only while its own champion exists, with the champion dead or
+> near a shop of its side.
+
+<!-- holds from 1.0.0.151 up to 3.11.0.306 -->
+
+> **In 1.0.0.151–3.10**
 >
 > A client asks only while the shop is not locked, with the champion dead or
 > near a shop of its side.

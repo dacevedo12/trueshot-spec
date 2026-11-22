@@ -196,6 +196,16 @@
     },
     {
       "from": "1.0.0.150",
+      "until": "1.0.0.151",
+      "channel": "events",
+      "command": 52,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client ignores it while playing a replay."
+    },
+    {
+      "from": "1.0.0.151",
       "until": "3.10.0.237",
       "channel": "events",
       "command": 52,

@@ -703,6 +703,61 @@
     },
     {
       "from": "1.0.0.147",
+      "until": "1.0.0.150",
+      "channel": "events",
+      "command": 42,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 2,
+          "bits": [
+            {
+              "name": "duration",
+              "width": 15,
+              "note": "How long the state lasts, in seconds; zero where alive is set."
+            },
+            {
+              "name": "alive",
+              "width": 1,
+              "note": "Set while the inhibitor stands, with duration zero; clear while a state lasts the duration given."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.150",
+      "until": "1.0.0.151",
+      "channel": "events",
+      "command": 42,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 2,
+          "bits": [
+            {
+              "name": "duration",
+              "width": 15,
+              "note": "How long the state lasts, in seconds; zero where alive is set."
+            },
+            {
+              "name": "alive",
+              "width": 1,
+              "note": "Set while the inhibitor stands, with duration zero; clear while a state lasts the duration given."
+            }
+          ]
+        }
+      ],
+      "note": "A client ignores it unless alive differs from whether the inhibitor stands."
+    },
+    {
+      "from": "1.0.0.151",
       "until": "3.10.0.237",
       "channel": "events",
       "command": 42,

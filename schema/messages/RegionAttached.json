@@ -1625,6 +1625,65 @@
     },
     {
       "from": "1.0.0.150",
+      "until": "1.0.0.151",
+      "channel": "events",
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "command": 35,
+      "fields": [
+        {
+          "name": "kind",
+          "type": "u32",
+          "note": "What sort of region it is. Where it is 2, the region belongs to the client clientId names; what other values mean is not recorded."
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client the region belongs to where kind is 2. A client takes 4294967294 as 4294967295, no client, whatever kind is."
+        },
+        {
+          "name": "sightRadius",
+          "type": "f32",
+          "note": "How far the region shows the map around it, in world units. Zero takes the unit's own sight radius, or a default where it has none."
+        },
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit the region follows. A client ignores the message where it does not hold the unit."
+        },
+        {
+          "name": "lifetime",
+          "type": "f32",
+          "note": "How long it lasts, in seconds. A client counts it down and removes the region once it reaches zero or less, so one that starts at zero or less goes at its first count."
+        },
+        {
+          "name": "marker",
+          "type": "u32",
+          "note": "The region's id, which RegionRemoved names; zero has the client pick one of its own."
+        },
+        {
+          "name": "does",
+          "type": "bits",
+          "size": 4,
+          "note": "What the region does.",
+          "bits": [
+            {
+              "name": "flag",
+              "width": 1,
+              "note": "What this changes on a client is not recorded."
+            },
+            {
+              "name": "unused",
+              "width": 31,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ],
+      "note": "A region matching one the client holds in view, sightRadius, the first three bits of does, marker, sightFrom and unit only gives that one the new lifetime."
+    },
+    {
+      "from": "1.0.0.151",
       "until": "3.01.0.1",
       "channel": "events",
       "direction": "serverToClient",

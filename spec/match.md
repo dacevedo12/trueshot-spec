@@ -81,9 +81,9 @@ seconds.
 >
 > Sent during a hold, `GameSpeed` takes effect as the match resumes.
 
-<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+<!-- holds from 1.0.0.140 up to 1.0.0.151 -->
 
-> **In 1.0.0.140**
+> **In 1.0.0.140–1.0.0.150**
 >
 > No unit advances for `StatTick`.
 
@@ -162,9 +162,9 @@ A server holds the match with `Paused`.
 > A client shows a tournament's hold, crediting the seat that asked, where the
 > message says it is one.
 
-<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+<!-- holds from 1.0.0.140 up to 1.0.0.151 -->
 
-> **In 1.0.0.140**
+> **In 1.0.0.140–1.0.0.150**
 >
 > A client shows nothing for any other hold. A tournament's hold also shows a
 > box with the time left and locks input, and only such a hold locks it. A
@@ -212,9 +212,18 @@ A server ends the hold with `Resumed`.
 > match stays held. A client shows the countdown only for a tournament's hold. A
 > `Resumed` arriving while the match is not held leaves the match as it is.
 
-<!-- holds from 1.0.0.141 up to 4.1.0.171 -->
+<!-- holds from 1.0.0.150 up to 1.0.0.151 -->
 
-> **In 1.0.0.141–3.15**
+> **In 1.0.0.150**
+>
+> `Resumed` ends the hold either at once or after a countdown, during which the
+> match stays held. A client shows the countdown only for a tournament's hold,
+> and ignores a `Resumed` with a countdown that arrives while one runs. A
+> `Resumed` arriving while the match is not held leaves the match as it is.
+
+<!-- holds from 1.0.0.151 up to 4.1.0.171 -->
+
+> **In 1.0.0.151–3.15**
 >
 > `Resumed` ends the hold either at once or after a countdown the client shows,
 > during which the match stays held.
@@ -239,13 +248,18 @@ A server ends the hold with `Resumed`.
 >
 > A client announces in chat who resumed the match.
 
+<!-- holds from 1.0.0.140 up to 1.0.0.151 -->
+
+> **In 1.0.0.140–1.0.0.150**
+>
+> A client announces who resumed the match even where it was not held, and
+> announces nothing where `Resumed` names no one.
+
 <!-- holds from 1.0.0.140 up to 1.0.0.141 -->
 
 > **In 1.0.0.140**
 >
-> Input stays locked during the countdown. A client announces who resumed the
-> match even where it was not held, and announces nothing where `Resumed` names
-> no one.
+> Input stays locked during the countdown.
 
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
@@ -299,9 +313,9 @@ player's side and sends `ClientFinished`.
 > A client that receives `GameEnded` while still loading takes it as in play:
 > it records the result and sends `ClientFinished`.
 
-<!-- holds from 1.0.0.58 up to 4.1.0.171 -->
+<!-- holds from 1.0.0.58 up to 1.0.0.150 -->
 
-> **In 1.0.0.58–3.15**
+> **In 1.0.0.58–1.0.0.149**
 >
 > A client that receives `GameEnded` while still loading leaves at once.
 
@@ -316,6 +330,21 @@ player's side and sends `ClientFinished`.
 > **In 1.0.0.132**
 >
 > Before it leaves, it shows an error where it has no champion of its own yet.
+
+<!-- holds from 1.0.0.150 up to 1.0.0.151 -->
+
+> **In 1.0.0.150**
+>
+> A client that receives `GameEnded` while still loading sends neither
+> `ClientFinished` nor `Exit`. Where it has a champion of its own it leaves at
+> once; otherwise it first shows an error, and leaves once its player dismisses
+> it.
+
+<!-- holds from 1.0.0.151 up to 4.1.0.171 -->
+
+> **In 1.0.0.151–3.15**
+>
+> A client that receives `GameEnded` while still loading leaves at once.
 
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
@@ -435,6 +464,14 @@ A server tells the others that a player's client dropped with
 > `PlayerDisconnected` names, other than its own, and only on the side the
 > message's flags choose.
 
+<!-- holds from 1.0.0.150 up to 1.0.0.151 -->
+
+> **In 1.0.0.150**
+>
+> A client shows that notice only in play, only where it holds the champion
+> `PlayerDisconnected` names, other than its own, and only on the side the
+> message's flags choose.
+
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
 > **In 3.10**
@@ -532,12 +569,20 @@ A server tells the others that a player's client dropped with
 > player for the reason 0 whether to connect again, and for any other shows that
 > the reconnection failed.
 
-<!-- holds from 1.0.0.140 up to 3.10.0.237 -->
+<!-- holds from 1.0.0.140 up to 1.0.0.150 -->
 
-> **In 1.0.0.140–3.9**
+> **In 1.0.0.140–1.0.0.149**
 >
 > A client sends `ReconnectedInMatch` as the connection is made, without waiting
 > for the registration answer.
+
+<!-- holds from 1.0.0.150 up to 1.0.0.151 -->
+
+> **In 1.0.0.150**
+>
+> A client sends `ReconnectedInMatch` as the connection is made, without
+> waiting for the registration answer, and only where the match is in play, so
+> never on its first connection.
 
 <!-- holds from 3.10.0.237 up to 4.20.0.315 -->
 

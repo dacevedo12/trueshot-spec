@@ -2280,7 +2280,7 @@
         {
           "name": "tipDuration",
           "type": "i8",
-          "note": "Which display time to hold the note up for, applying only where tips are enabled and shown somewhere. tip, tipColour and tipDuration each select one of the notes, colourings and display times a client defines, tip counted modulo the number of notes. Where a value selects none, or the time is not above zero, a client shows no note."
+          "note": "Which display time to hold the note up for, applying only where tips are enabled and shown somewhere. tip, tipColour and tipDuration each select one of the notes, colourings and display times a client defines, tip reduced modulo the number of notes where it is greater than that number. Where a value selects none, or the time is not above zero, a client shows no note."
         },
         {
           "name": "tipFlags",

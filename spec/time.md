@@ -139,9 +139,27 @@ which the match began.
 > later replaces it. While the match clock is before that moment, a client shows
 > a negative time.
 
-<!-- holds from 1.0.0.133 up to 3.11.0.306 -->
+<!-- holds from 1.0.0.133 up to 1.0.0.150 -->
 
-> **In 1.0.0.133–3.10**
+> **In 1.0.0.133–1.0.0.149**
+>
+> `MatchStarted` gives that moment. Until it arrives, a client takes the match
+> clock's reading as its game loop runs, and a `MatchStarted` arriving later
+> replaces it. While the match clock is before that moment, a client shows a
+> negative time.
+
+<!-- holds from 1.0.0.150 up to 1.0.0.151 -->
+
+> **In 1.0.0.150**
+>
+> `MatchStarted` gives that moment. Until it arrives, a client takes the match
+> clock's reading once, as its game loop begins, and a `MatchStarted` arriving
+> later replaces it. While the match clock is before that moment, a client
+> shows a negative time.
+
+<!-- holds from 1.0.0.151 up to 3.11.0.306 -->
+
+> **In 1.0.0.151–3.10**
 >
 > `MatchStarted` gives that moment. Until it arrives, a client takes the match
 > clock's reading as its game loop runs, and a `MatchStarted` arriving later

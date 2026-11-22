@@ -748,6 +748,34 @@
     },
     {
       "from": "1.0.0.150",
+      "until": "1.0.0.151",
+      "channel": "events",
+      "command": 154,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "turret",
+          "type": "u32",
+          "note": "The name the turret answers to, so later messages can name it."
+        },
+        {
+          "name": "node",
+          "type": "u8",
+          "note": "Which network node the object belongs to, in a field of its own."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "What this turret is called, so a client can tell one from another. Written out in full and padded with zero bytes to the width above."
+        }
+      ],
+      "note": "A client matches name, byte for byte, against each of the map's turrets' names with _A after it; a matched turret missing or dead is rebuilt before it takes the id. Whether or not a turret matches, a client first removes an object holding the id only where SoftReconnect has marked it, and no other. It arrives on its own and also inside EnterSight."
+    },
+    {
+      "from": "1.0.0.151",
       "until": "3.01.0.1",
       "channel": "events",
       "command": 154,

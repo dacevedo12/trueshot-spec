@@ -15,12 +15,18 @@ match reaches it.
 >
 > A client cannot watch a match: no start-up word or message makes it watch.
 
-<!-- holds from 1.0.0.126 up to 3.10.0.237 -->
+<!-- holds from 1.0.0.126 up to 1.0.0.150 -->
 
-> **In 1.0.0.126–3.9**
+> **In 1.0.0.126–1.0.0.149**
 >
 > A watching client takes the match over HTTP from a spectator service, not over
 > a game connection.
+
+<!-- holds from 1.0.0.150 up to 1.0.0.151 -->
+
+> **In 1.0.0.150**
+>
+> A watching client can take the match over HTTP from a spectator service.
 
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
@@ -44,15 +50,25 @@ encodes, deciphered as Blowfish ECB under the match number written out, give
 the key as their first 16 bytes. A player's key is as [Transport](transport.md)
 says.
 
-<!-- holds from 1.0.0.126 up to 3.10.0.237 -->
+<!-- holds from 1.0.0.126 up to 1.0.0.150 -->
 
-> **In 1.0.0.126–3.9**
+> **In 1.0.0.126–1.0.0.149**
 >
 > The word, or the word `replay` in its place, is followed by the spectator
 > service's address, with no port of its own, the key, a match number and a
 > platform name; there is no player number. The match number a key is
 > deciphered under is the low 32 bits of the match number, written out as a
 > signed decimal.
+
+<!-- holds from 1.0.0.150 up to 1.0.0.151 -->
+
+> **In 1.0.0.150**
+>
+> The word, or the word `replay` in its place, is followed either by the
+> spectator service's address, with no port of its own, the key, a match number
+> and a platform name, or by an address, a port, the key, a match number and a
+> further number. The match number a key is deciphered under is the low 32 bits
+> of the match number, written out as a signed decimal.
 
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
