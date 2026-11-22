@@ -166,6 +166,16 @@
     },
     {
       "from": "1.0.0.132",
+      "until": "1.0.0.133",
+      "channel": "requests",
+      "command": 146,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client sends it each time GameEnded arrives once the match is in play. For a GameEnded while the match still loads, it leaves without sending it."
+    },
+    {
+      "from": "1.0.0.133",
       "until": "1.0.0.138",
       "channel": "requests",
       "command": 146,

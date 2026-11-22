@@ -106,6 +106,26 @@
     },
     {
       "from": "1.0.0.132",
+      "until": "1.0.0.133",
+      "channel": "events",
+      "command": 243,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "owner",
+          "type": "u32",
+          "note": "The champion credited."
+        },
+        {
+          "name": "amount",
+          "type": "f32",
+          "note": "How much gold."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.133",
       "until": "1.0.0.135",
       "channel": "events",
       "command": 243,

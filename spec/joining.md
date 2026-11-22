@@ -264,9 +264,9 @@ every client has sent `ClientReady`.
 > below 120. A card with no registration or no `SeatLoadProgress` yet says it is
 > not connected. A later `SeatChampion` does not change a card already set up.
 
-<!-- holds from 1.0.0.111 up to 4.20.0.315 -->
+<!-- holds from 1.0.0.111 up to 1.0.0.132 -->
 
-> **In 1.0.0.111–4.19**
+> **In 1.0.0.111–1.0.0.131**
 >
 > A player's card takes its place on the screen from that seat's place in the
 > `Roster`, and its name from that player's `SeatName`. The registration answers
@@ -280,9 +280,50 @@ every client has sent `ClientReady`.
 > registration or no `SeatLoadProgress` yet says it is not connected. A later
 > `SeatChampion` does not change a card already set up.
 
-<!-- holds from 1.0.0.111 up to 1.0.0.141 -->
+<!-- holds from 1.0.0.111 up to 1.0.0.132 -->
 
-> **In 1.0.0.111–1.0.0.140**
+> **In 1.0.0.111–1.0.0.131**
+>
+> A server MUST put the seat's player id in `SeatLoadProgress`: the loading
+> screen shows a seat's card from the `VersionSync` seat with that id.
+
+<!-- holds from 1.0.0.132 up to 1.0.0.133 -->
+
+> **In 1.0.0.132**
+>
+> A player's card takes its place on the screen from that seat's place in the
+> `Roster`, and its name from that player's `SeatName`. A client finds the
+> card's client through the player that `SeatName` names and that player's
+> `Registered`, so two seats of one name show one client's figures, and the
+> latest `SeatLoadProgress` for that client gives the card its progress. The
+> first `SeatLoadProgress` once that player's `SeatChampion` has arrived sets
+> the card up: its portrait and the champion's name, from that `SeatChampion`'s
+> champion and skin, then the `level` and the summoner spells of the
+> `VersionSync` seat whose player id the `SeatLoadProgress` names. Where no seat
+> has that player id, the card is set up without them. A card shows the ping
+> where its seat's `level` is below 120. A card with no registration or no
+> `SeatLoadProgress` yet says it is not connected. A later `SeatChampion` does
+> not change a card already set up.
+
+<!-- holds from 1.0.0.133 up to 4.20.0.315 -->
+
+> **In 1.0.0.133–4.19**
+>
+> A player's card takes its place on the screen from that seat's place in the
+> `Roster`, and its name from that player's `SeatName`. The registration answers
+> (`Registered`) pair each player with a client id, and the latest
+> `SeatLoadProgress` for that client gives the card its progress and, on the
+> client's own card only, its ping. The first `SeatLoadProgress` after the
+> player's `SeatChampion` sets the card up: its portrait and the champion's
+> name, from that `SeatChampion`'s champion and skin, then everything else from
+> the `VersionSync` seat whose player id the `SeatLoadProgress` names. A card
+> with no `SeatChampion` yet shows a black portrait, and one with no
+> registration or no `SeatLoadProgress` yet says it is not connected. A later
+> `SeatChampion` does not change a card already set up.
+
+<!-- holds from 1.0.0.133 up to 1.0.0.141 -->
+
+> **In 1.0.0.133–1.0.0.140**
 >
 > A server MUST put the seat's player id in `SeatLoadProgress`: the loading
 > screen shows a seat's card from the `VersionSync` seat with that id.

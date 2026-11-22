@@ -294,6 +294,22 @@
     },
     {
       "from": "1.0.0.132",
+      "until": "1.0.0.133",
+      "channel": "requests",
+      "command": 177,
+      "direction": "clientToServer",
+      "reliability": "unsequenced",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u32",
+          "note": "Which batch is being acknowledged, as the batch named itself."
+        }
+      ],
+      "note": "Where the client holds every unit the batch names, it is sent whether the client took the values or dropped them."
+    },
+    {
+      "from": "1.0.0.133",
       "until": "1.0.0.135",
       "channel": "requests",
       "command": 177,

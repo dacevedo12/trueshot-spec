@@ -208,9 +208,20 @@ argument.
 > characters or fewer is the key as it stands, followed by zero bytes up to
 > sixteen.
 
-<!-- holds from 1.0.0.127 up to 3.11.0.306 -->
+<!-- holds from 1.0.0.132 up to 1.0.0.133 -->
 
-> **In 1.0.0.127–3.10**
+> **In 1.0.0.132**
+>
+> An argument longer than sixteen characters holds the key in base64, and the
+> key is the first sixteen bytes it decodes to. Such an argument MUST run to 63
+> characters at most and decode to at least 15 bytes: from a longer one a client
+> takes a wrong key, and on a shorter decoding it fails as it starts. An
+> argument of sixteen characters or fewer is the key as it stands, followed by
+> zero bytes up to sixteen.
+
+<!-- holds from 1.0.0.133 up to 3.11.0.306 -->
+
+> **In 1.0.0.133–3.10**
 >
 > An argument longer than sixteen characters holds the key in base64, and the
 > key is the first sixteen bytes it decodes to. An argument of sixteen

@@ -111,6 +111,21 @@
     },
     {
       "from": "1.0.0.132",
+      "until": "1.0.0.133",
+      "channel": "events",
+      "command": 239,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "side",
+          "type": "u8",
+          "note": "Which side's view, as a number from 0 to 3 rather than a side such as 100; a larger value has no defined effect."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.133",
       "until": "1.0.0.135",
       "channel": "events",
       "command": 239,

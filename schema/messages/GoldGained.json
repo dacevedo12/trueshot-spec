@@ -396,6 +396,58 @@
     },
     {
       "from": "1.0.0.128",
+      "until": "1.0.0.132",
+      "channel": "events",
+      "command": 37,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit granted it."
+        },
+        {
+          "name": "source",
+          "type": "u32",
+          "note": "What it came from, or zero where nothing did."
+        },
+        {
+          "name": "amount",
+          "type": "f32",
+          "note": "How much."
+        }
+      ],
+      "note": "A client only floats the amount as text: the gold the unit holds does not change. Where unit is the client's own champion, amount is above 0.5 and source names a unit the client holds other than its own player, the text floats over source; otherwise it floats over unit, as a gain where amount is above zero and a loss where it is below."
+    },
+    {
+      "from": "1.0.0.132",
+      "until": "1.0.0.133",
+      "channel": "events",
+      "command": 37,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit granted it."
+        },
+        {
+          "name": "source",
+          "type": "u32",
+          "note": "What it came from, or zero where nothing did."
+        },
+        {
+          "name": "amount",
+          "type": "f32",
+          "note": "How much."
+        }
+      ],
+      "note": "A client only floats the amount as text: the gold the unit holds does not change. Where unit is the client's own champion, amount is above 0.5 and source names a unit the client holds, the text floats over source; otherwise it floats over unit, as a gain where amount is above zero and a loss where it is below."
+    },
+    {
+      "from": "1.0.0.133",
       "until": "1.0.0.140",
       "channel": "events",
       "command": 37,

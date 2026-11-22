@@ -156,6 +156,26 @@
     },
     {
       "from": "1.0.0.128",
+      "until": "1.0.0.132",
+      "channel": "events",
+      "command": 58,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "It changes nothing a client shows for any unit, and a client ignores it while watching a match."
+    },
+    {
+      "from": "1.0.0.132",
+      "until": "1.0.0.133",
+      "channel": "events",
+      "command": 58,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client shows no FloatingText in slot 0 over the unit until EnterLocalSight names it again, and ignores the message while watching a match."
+    },
+    {
+      "from": "1.0.0.133",
       "until": "1.0.0.144",
       "channel": "events",
       "command": 58,

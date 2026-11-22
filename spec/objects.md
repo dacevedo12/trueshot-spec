@@ -166,9 +166,9 @@ gives the client its own client id.
 > `CreateNeutral`, `SpawnUnit`, `MapProp` or `SpawnPet`, because a client given
 > one of them before that `VersionSync` stops.
 
-<!-- holds from 1.0.0.111 up to 3.11.0.306 -->
+<!-- holds from 1.0.0.111 up to 1.0.0.132 -->
 
-> **In 1.0.0.111–3.10**
+> **In 1.0.0.111–1.0.0.131**
 >
 > A client takes a client id only from 0 to 252, and leaves on any other, so a
 > server MUST give each player a client id in that range.
@@ -180,9 +180,28 @@ gives the client its own client id.
 > A `Registered` whose leading byte is 1 says that player has left: a client in
 > play shows so in chat and drops the pair.
 
-<!-- holds from 1.0.0.127 up to 3.10.0.237 -->
+<!-- holds from 1.0.0.132 up to 1.0.0.133 -->
 
-> **In 1.0.0.127–3.9**
+> **In 1.0.0.132**
+>
+> A client records the pair every `Registered` carries, and takes as its own
+> only the one carrying its own player id. It takes a client id only from 0 to
+> 252, and leaves on any other but 4294967295, for which it waits on as if given
+> none; a server MUST give each player a client id in that range.
+>
+> A server MUST send that `Registered` before any create message, because a
+> client given a create message before it has its own client id stops.
+
+<!-- holds from 1.0.0.133 up to 3.11.0.306 -->
+
+> **In 1.0.0.133–3.10**
+>
+> A client takes a client id only from 0 to 252, and leaves on any other, so a
+> server MUST give each player a client id in that range.
+
+<!-- holds from 1.0.0.133 up to 3.10.0.237 -->
+
+> **In 1.0.0.133–3.9**
 >
 > A client acts on that `Registered` alone and ignores every other, so it pairs
 > no other player's player id with a client id.
@@ -936,9 +955,16 @@ Creating messages are the exception, and so are the messages below.
 > `SpawnPet` names the pet's owner in its header and carries the new pet's net
 > id in its body, and does nothing where that owner is not held.
 
-<!-- holds from 1.0.0.127 up to 3.10.0.237 -->
+<!-- holds from 1.0.0.132 up to 1.0.0.133 -->
 
-> **In 1.0.0.127–3.9**
+> **In 1.0.0.132**
+>
+> `SpawnPet` names the pet's owner in its header and carries the new pet's net
+> id in its body, and does nothing where that owner is not held.
+
+<!-- holds from 1.0.0.133 up to 3.10.0.237 -->
+
+> **In 1.0.0.133–3.9**
 >
 > `SpawnPet` takes the net id in its header for the new pet, but does nothing
 > where the owner its body names is not held.

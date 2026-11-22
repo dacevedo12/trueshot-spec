@@ -390,6 +390,22 @@
     },
     {
       "from": "1.0.0.132",
+      "until": "1.0.0.133",
+      "channel": "requests",
+      "command": 165,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "loading",
+          "type": "u8",
+          "note": "Zero once the client has taken StartGame, 1 before it."
+        }
+      ],
+      "note": "A client sends it as each connection comes up, right after its registration request and without waiting for the answer. A client dropped while playing connects again only where its player agrees; one dropped while loading leaves instead."
+    },
+    {
+      "from": "1.0.0.133",
       "until": "1.0.0.135",
       "channel": "requests",
       "command": 165,

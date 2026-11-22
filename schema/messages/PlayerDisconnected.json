@@ -326,6 +326,22 @@
     },
     {
       "from": "1.0.0.132",
+      "until": "1.0.0.133",
+      "channel": "events",
+      "command": 161,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "champion",
+          "type": "u32",
+          "note": "The player's client id, which names the player in the notice."
+        }
+      ],
+      "note": "Wherever its interface exists, a client shows a chat notice naming the player, whoever champion names, its own player included: in an ally's or an enemy's colour as against its own side, or, with no champion of its own, by whether that player is on side 100."
+    },
+    {
+      "from": "1.0.0.133",
       "until": "1.0.0.134",
       "channel": "events",
       "command": 161,

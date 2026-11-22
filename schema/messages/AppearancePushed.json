@@ -612,6 +612,34 @@
     },
     {
       "from": "1.0.0.132",
+      "until": "1.0.0.133",
+      "channel": "events",
+      "command": 160,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "entry",
+          "type": "u32",
+          "note": "Names this look, so that AppearancePopped can name it."
+        },
+        {
+          "name": "overrideSpells",
+          "type": "u8",
+          "note": "Set where the unit's spells change with it. Any nonzero value sets it."
+        },
+        {
+          "name": "asset",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "The name the client loads it under, ended by a zero byte."
+        }
+      ],
+      "note": "A client stops a basic attack the unit is making first. Looks stack: the newest shows, and AppearancePopped takes away the one its entry names. A building ignores it."
+    },
+    {
+      "from": "1.0.0.133",
       "until": "1.0.0.135",
       "channel": "events",
       "command": 160,

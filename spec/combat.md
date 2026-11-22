@@ -156,12 +156,20 @@ A server reports damage with `Damage`.
 > as that value less 128. Of the other results, 1 shows nothing, 2 a dodge and 5
 > a miss; 3 is critical, and 4 and 6 to 127 are normal.
 
-<!-- holds from 1.0.0.111 up to 1.0.0.140 -->
+<!-- holds from 1.0.0.111 up to 1.0.0.132 -->
 
-> **In 1.0.0.111–1.0.0.139**
+> **In 1.0.0.111–1.0.0.131**
 >
 > Of the other results of `Damage`, 1 shows nothing, 2 a dodge and 5 a miss; 3
 > is critical, and 4 and any above 5 are normal.
+
+<!-- holds from 1.0.0.132 up to 1.0.0.133 -->
+
+> **In 1.0.0.132**
+>
+> A client reads only the low seven bits of a `Damage` result, so 128 and up act
+> as that value less 128. Of the other results, 1 shows nothing, 2 a dodge and 5
+> a miss; 3 is critical, and 4 and 6 to 127 are normal.
 
 <!-- holds from 1.0.0.140 up to 4.21.0.0 -->
 

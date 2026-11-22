@@ -188,6 +188,32 @@
     },
     {
       "from": "1.0.0.132",
+      "until": "1.0.0.133",
+      "channel": "requests",
+      "command": 238,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "kind",
+          "type": "u16",
+          "note": "Under command 237, always 999. Under 238, 2 where the client did not pass the data through its own transform and 999 where it did."
+        },
+        {
+          "name": "length",
+          "type": "u16",
+          "note": "How many bytes of the data below carry anything, at most 1024."
+        },
+        {
+          "name": "data",
+          "type": "bytes",
+          "size": 1024,
+          "note": "The data, in its first length bytes; a client leaves the rest unwritten."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.133",
       "until": "1.0.0.135",
       "channel": "requests",
       "command": 238,

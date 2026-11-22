@@ -746,6 +746,48 @@
     },
     {
       "from": "1.0.0.132",
+      "until": "1.0.0.133",
+      "channel": "requests",
+      "command": 123,
+      "direction": "clientToServer",
+      "reliability": "unsequenced",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u32",
+          "note": "Which group is being acknowledged, as the group named itself."
+        },
+        {
+          "name": "relocationCount",
+          "type": "u8",
+          "note": "How many relocations follow. Answering WaypointGroup a client counts them; answering a path for one unit it sends only syncId and this byte, unwritten, on the transient channel, and no relocations, so a server reads nothing in it there."
+        },
+        {
+          "name": "relocations",
+          "type": "array",
+          "count": "relocationCount",
+          "items": {
+            "name": "relocation",
+            "type": "record",
+            "fields": [
+              {
+                "name": "unit",
+                "type": "u32",
+                "note": "The unit the token belonged to."
+              },
+              {
+                "name": "token",
+                "type": "u8",
+                "note": "The token that arrived with it."
+              }
+            ]
+          }
+        }
+      ],
+      "note": "It lists each unit whose movement carried a token, in the group's order, whether or not the client holds the unit, and none whose movement follows a refused one. A client sends one for every group, listing none where no movement carried a token."
+    },
+    {
+      "from": "1.0.0.133",
       "until": "1.0.0.138",
       "channel": "requests",
       "command": 123,

@@ -146,9 +146,33 @@ key frames for its `keyFrameTimeInterval` (see [Time](time.md#how-a-time-is-carr
 > information gives `chunkId`, `nextChunkId`, `availableSince` and
 > `endStartupChunkId`.
 
-<!-- holds from 1.0.0.127 up to 3.11.0.306 -->
+<!-- holds from 1.0.0.126 up to 1.0.0.140 -->
 
-> **In 1.0.0.127–3.10**
+> **In 1.0.0.126–1.0.0.139**
+>
+> A client asks `getLastKeyFrameInfo` for the last key frame.
+
+<!-- holds from 1.0.0.132 up to 1.0.0.133 -->
+
+> **In 1.0.0.132**
+>
+> A watching client asks the spectator service for the match under
+> `/observer-mode/rest/consumer/`, each request naming the platform and the
+> match number: `getGameMetaData` for the match's metadata, `getLastChunkInfo`
+> for how far the match has come, and `getGameDataChunk` and `getKeyFrame` for a
+> chunk or a key frame by number. It gives up on the metadata after a time,
+> fetches the chunks of setting up, then catches up to the last chunk on offer
+> and waits there for the next. Chunks and key frames arrive compressed. The
+> metadata gives `gameKey.gameId`, `gameEnded`, `chunkTimeInterval` and
+> `keyFrameTimeInterval`, a whole multiple of `chunkTimeInterval`; the last
+> chunk's information gives `chunkId`, `duration`, `availableSince`,
+> `nextAvailableChunk`, `startGameChunkId` and `endGameChunkId`, and the last
+> key frame's information gives `chunkId`, `nextChunkId`, `availableSince` and
+> `endStartupChunkId`.
+
+<!-- holds from 1.0.0.133 up to 3.11.0.306 -->
+
+> **In 1.0.0.133–3.10**
 >
 > A watching client asks the spectator service for the match under
 > `/observer-mode/rest/consumer/`, each request naming the platform and the
@@ -160,12 +184,6 @@ key frames for its `keyFrameTimeInterval` (see [Time](time.md#how-a-time-is-carr
 > `gameKey.gameId`, `gameEnded` and `chunkTimeInterval`; the last chunk's
 > information gives `chunkId`, `nextChunkId`, `availableSince`,
 > `nextAvailableChunk`, `endStartupChunkId` and `endGameChunkId`.
-
-<!-- holds from 1.0.0.126 up to 1.0.0.140 -->
-
-> **In 1.0.0.126–1.0.0.139**
->
-> A client asks `getLastKeyFrameInfo` for the last key frame.
 
 <!-- holds from 1.0.0.140 up to 1.0.0.141 -->
 

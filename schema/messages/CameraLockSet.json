@@ -294,6 +294,22 @@
     },
     {
       "from": "1.0.0.132",
+      "until": "1.0.0.133",
+      "channel": "events",
+      "command": 125,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "locked",
+          "type": "u8",
+          "note": "Set to lock the camera, clear to free it. Any nonzero value sets it."
+        }
+      ],
+      "note": "A client keeps one that arrives while something of its own holds the camera, the latest replacing any before, and applies it and answers once that hold ends."
+    },
+    {
+      "from": "1.0.0.133",
       "until": "1.0.0.138",
       "channel": "events",
       "command": 125,

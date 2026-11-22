@@ -311,6 +311,12 @@ player's side and sends `ClientFinished`.
 >
 > Before it leaves, it shows an error where it has no champion of its own yet.
 
+<!-- holds from 1.0.0.132 up to 1.0.0.133 -->
+
+> **In 1.0.0.132**
+>
+> Before it leaves, it shows an error where it has no champion of its own yet.
+
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
 > **In 3.10**
