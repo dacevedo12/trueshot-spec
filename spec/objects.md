@@ -192,9 +192,9 @@ gives the client its own client id.
 > A server MUST send that `Registered` before any create message, because a
 > client given a create message before it has its own client id stops.
 
-<!-- holds from 1.0.0.133 up to 3.10.0.237 -->
+<!-- holds from 1.0.0.133 up to 3.6.0.388 -->
 
-> **In 1.0.0.133–3.9**
+> **In 1.0.0.133–3.5**
 >
 > A client acts on that `Registered` alone and ignores every other, so it pairs
 > no other player's player id with a client id.

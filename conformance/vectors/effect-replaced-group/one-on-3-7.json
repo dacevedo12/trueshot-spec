@@ -1,0 +1,28 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "EffectReplacedGroup",
+  "version": "3.7.0.328",
+  "note": "Laid out as a 3.7.0.328 client takes it.",
+  "bytes": "1e00000000000000000000a04002010000400200004001030000400200004002",
+  "fields": {
+    "command": 30,
+    "netId": 0,
+    "extendedCommand": null,
+    "runningFor": 0,
+    "lasts": 5,
+    "count": 2,
+    "entries": [
+      {
+        "unit": 1073741825,
+        "caster": 1073741826,
+        "slot": 1
+      },
+      {
+        "unit": 1073741827,
+        "caster": 1073741826,
+        "slot": 2
+      }
+    ]
+  }
+}

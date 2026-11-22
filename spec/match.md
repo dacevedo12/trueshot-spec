@@ -87,9 +87,9 @@ seconds.
 >
 > No unit advances for `StatTick`.
 
-<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+<!-- holds from 3.6.0.388 up to 3.11.0.306 -->
 
-> **In 3.10**
+> **In 3.6–3.10**
 >
 > No unit advances for `StatTick`.
 
@@ -170,9 +170,9 @@ A server holds the match with `Paused`.
 > box with the time left and locks input, and only such a hold locks it. A
 > client announces no hold whose message names no one.
 
-<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+<!-- holds from 3.6.0.388 up to 3.11.0.306 -->
 
-> **In 3.10**
+> **In 3.6–3.10**
 >
 > A client shows nothing for any other hold. A tournament's hold also shows a
 > box with the time left and locks input, and only such a hold locks it. A
@@ -221,9 +221,18 @@ A server ends the hold with `Resumed`.
 > and ignores a `Resumed` with a countdown that arrives while one runs. A
 > `Resumed` arriving while the match is not held leaves the match as it is.
 
-<!-- holds from 1.0.0.151 up to 4.1.0.171 -->
+<!-- holds from 3.6.0.388 up to 3.7.0.328 -->
 
-> **In 1.0.0.151–3.15**
+> **In 3.6**
+>
+> `Resumed` ends the hold either at once or after a countdown, during which the
+> match stays held. A client shows the countdown only for a tournament's hold,
+> and ignores a `Resumed` with a countdown that arrives while one runs. A
+> `Resumed` arriving while the match is not held leaves the match as it is.
+
+<!-- holds from 3.7.0.328 up to 4.1.0.171 -->
+
+> **In 3.7–3.15**
 >
 > `Resumed` ends the hold either at once or after a countdown the client shows,
 > during which the match stays held.
@@ -261,9 +270,9 @@ A server ends the hold with `Resumed`.
 >
 > Input stays locked during the countdown.
 
-<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+<!-- holds from 3.6.0.388 up to 3.11.0.306 -->
 
-> **In 3.10**
+> **In 3.6–3.10**
 >
 > A client announces who resumed the match even where it was not held, and
 > announces nothing where `Resumed` names no one.
@@ -340,9 +349,18 @@ player's side and sends `ClientFinished`.
 > once; otherwise it first shows an error, and leaves once its player dismisses
 > it.
 
-<!-- holds from 1.0.0.151 up to 4.1.0.171 -->
+<!-- holds from 3.6.0.388 up to 3.7.0.328 -->
 
-> **In 1.0.0.151–3.15**
+> **In 3.6**
+>
+> A client that receives `GameEnded` while still loading sends neither
+> `ClientFinished` nor `Exit`. Where it has a champion of its own it leaves at
+> once; otherwise it first shows an error, and leaves once its player dismisses
+> it.
+
+<!-- holds from 3.7.0.328 up to 4.1.0.171 -->
+
+> **In 3.7–3.15**
 >
 > A client that receives `GameEnded` while still loading leaves at once.
 

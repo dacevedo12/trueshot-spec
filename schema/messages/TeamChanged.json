@@ -426,6 +426,48 @@
     },
     {
       "from": "3.01.0.1",
+      "until": "3.6.0.388",
+      "channel": "events",
+      "command": 215,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit."
+        },
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "Its new side."
+        }
+      ],
+      "note": "The header names the unit."
+    },
+    {
+      "from": "3.6.0.388",
+      "until": "3.7.0.328",
+      "channel": "events",
+      "command": 215,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit."
+        },
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "Its new side."
+        }
+      ],
+      "note": "A client ignores the header."
+    },
+    {
+      "from": "3.7.0.328",
       "until": "4.1.0.171",
       "channel": "events",
       "command": 215,

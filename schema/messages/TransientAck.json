@@ -438,6 +438,38 @@
     },
     {
       "from": "3.01.0.1",
+      "until": "3.6.0.388",
+      "channel": "requests",
+      "command": 168,
+      "direction": "clientToServer",
+      "reliability": "unsequenced",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u32",
+          "note": "Which batch is being acknowledged, as the batch named itself."
+        }
+      ],
+      "note": "It is sent for a batch whose values the client dropped as well as for one it took."
+    },
+    {
+      "from": "3.6.0.388",
+      "until": "3.7.0.328",
+      "channel": "requests",
+      "command": 168,
+      "direction": "clientToServer",
+      "reliability": "unsequenced",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u32",
+          "note": "Which batch is being acknowledged, as the batch named itself."
+        }
+      ],
+      "note": "It is sent only where the client holds every unit the batch names, and never while playing a replay."
+    },
+    {
+      "from": "3.7.0.328",
       "until": "3.10.0.237",
       "channel": "requests",
       "command": 168,

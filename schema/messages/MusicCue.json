@@ -447,6 +447,46 @@
     },
     {
       "from": "3.6.0.388",
+      "until": "3.7.0.328",
+      "channel": "events",
+      "command": 220,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "cue",
+          "type": "u8",
+          "note": "What to do. A client takes any other value and does nothing.",
+          "values": {
+            "0": {
+              "name": "prepare"
+            },
+            "1": {
+              "name": "begin"
+            },
+            "2": {
+              "name": "end"
+            },
+            "3": {
+              "name": "changeState"
+            }
+          }
+        },
+        {
+          "name": "event",
+          "type": "u32",
+          "note": "Which cue or event."
+        },
+        {
+          "name": "parameter",
+          "type": "u32",
+          "note": "Which state, where the state changes."
+        }
+      ],
+      "note": "The header names a champion; a client acts on it whichever champion that is, and does nothing where the header names none."
+    },
+    {
+      "from": "3.7.0.328",
       "until": "3.10.0.237",
       "channel": "events",
       "command": 220,

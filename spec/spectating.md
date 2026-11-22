@@ -28,9 +28,9 @@ match reaches it.
 >
 > A watching client can take the match over HTTP from a spectator service.
 
-<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+<!-- holds from 3.6.0.388 up to 3.11.0.306 -->
 
-> **In 3.10**
+> **In 3.6–3.10**
 >
 > A watching client can take the match over HTTP from a spectator service.
 
@@ -70,9 +70,9 @@ says.
 > further number. The match number a key is deciphered under is the low 32 bits
 > of the match number, written out as a signed decimal.
 
-<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+<!-- holds from 3.6.0.388 up to 3.11.0.306 -->
 
-> **In 3.10**
+> **In 3.6–3.10**
 >
 > The word, or the word `replay` in its place, is followed either by the
 > spectator service's address, with no port of its own, the key, a match number

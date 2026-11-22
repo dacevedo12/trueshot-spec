@@ -1159,6 +1159,112 @@
     },
     {
       "from": "3.01.0.1",
+      "until": "3.6.0.388",
+      "channel": "events",
+      "command": 158,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "killer",
+          "type": "u32",
+          "note": "The unit credited with the death."
+        },
+        {
+          "name": "damageType",
+          "type": "u32",
+          "note": "Unused; a server writes zero."
+        },
+        {
+          "name": "damageSource",
+          "type": "u32",
+          "note": "Unused; a server writes zero."
+        },
+        {
+          "name": "stayDown",
+          "type": "f32",
+          "note": "How long the unit stays down, in seconds."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "standing",
+              "width": 1,
+              "note": "Set to leave the unit standing as a husk rather than dead: no time of death, and for a champion no death animation and no death screen. A turret kept after death behaves so whatever this says."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "Which kill a client announces for killer: zero a neutral monster's, nonzero a minion's."
+        }
+      ],
+      "note": "Where the unit is already dead, a client does nothing with the message. Otherwise it cancels the unit's cast and attack; then, only where killer is nonzero, it puts the unit down by stayDown and standing and announces the kill, which kind picks."
+    },
+    {
+      "from": "3.6.0.388",
+      "until": "3.7.0.328",
+      "channel": "events",
+      "command": 158,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "killer",
+          "type": "u32",
+          "note": "The unit credited with the death."
+        },
+        {
+          "name": "damageType",
+          "type": "u32",
+          "note": "Unused; a server writes zero."
+        },
+        {
+          "name": "damageSource",
+          "type": "u32",
+          "note": "A client reads it only where a minion dies, telling 7 from any other value to choose how it announces the kill."
+        },
+        {
+          "name": "stayDown",
+          "type": "f32",
+          "note": "How long the unit stays down, in seconds."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "standing",
+              "width": 1,
+              "note": "Set to leave the unit standing as a husk rather than dead: no time of death, and for a champion no death animation and no death screen. A turret kept after death behaves so whatever this says."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "A client reads nothing here."
+        }
+      ],
+      "note": "Where the unit is already dead, a client does nothing with the message. Otherwise it cancels the unit's cast and attack; then, only where killer is nonzero, it puts the unit down by stayDown and standing and announces the kill."
+    },
+    {
+      "from": "3.7.0.328",
       "until": "4.1.0.171",
       "channel": "events",
       "command": 158,

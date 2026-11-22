@@ -166,9 +166,26 @@ a stream.
 > report numbered 0 again until its view moves on and a later report is
 > answered.
 
-<!-- holds from 1.0.0.111 up to 4.21.0.0 -->
+<!-- holds from 1.0.0.111 up to 3.6.0.388 -->
 
-> **In 1.0.0.111–4.20**
+> **In 1.0.0.111–3.5**
+>
+> A client sends a view report again, twice the round trip time plus 1/30 of a
+> second apart, until a server answers it with `CameraAck`, carrying its number.
+
+<!-- holds from 3.6.0.388 up to 3.7.0.328 -->
+
+> **In 3.6**
+>
+> A client sends a view report again, twice the round trip time plus 1/30 of a
+> second apart, until a server answers it with `CameraAck`, carrying its number.
+> After a `CameraAck` carrying 255 it never takes one carrying 0, and sends its
+> report numbered 0 again until its view moves on and a later report is
+> answered.
+
+<!-- holds from 3.7.0.328 up to 4.21.0.0 -->
+
+> **In 3.7–4.20**
 >
 > A client sends a view report again, twice the round trip time plus 1/30 of a
 > second apart, until a server answers it with `CameraAck`, carrying its number.

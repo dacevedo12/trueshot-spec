@@ -206,6 +206,46 @@
     },
     {
       "from": "1.0.0.151",
+      "until": "3.6.0.388",
+      "channel": "requests",
+      "command": 32,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "from",
+          "type": "u8",
+          "note": "The slot the item leaves, which a 4.17 client sends only from 0 to 9."
+        },
+        {
+          "name": "to",
+          "type": "u8",
+          "note": "The slot it goes to, never the one from names; a 4.17 client sends only 0 to 9."
+        }
+      ]
+    },
+    {
+      "from": "3.6.0.388",
+      "until": "3.7.0.328",
+      "channel": "requests",
+      "command": 32,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "from",
+          "type": "u8",
+          "note": "The slot the item leaves, from 0 to 5."
+        },
+        {
+          "name": "to",
+          "type": "u8",
+          "note": "The slot it goes to, from 0 to 5, never the one from names."
+        }
+      ]
+    },
+    {
+      "from": "3.7.0.328",
       "until": "3.10.0.237",
       "channel": "requests",
       "command": 32,

@@ -6,6 +6,70 @@
   "revisions": [
     {
       "from": "3.5.0.68",
+      "until": "3.6.0.388",
+      "channel": "requests",
+      "command": 250,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "flags",
+          "type": "u8",
+          "note": "Zero: a vote against."
+        },
+        {
+          "name": "voter",
+          "type": "u32",
+          "note": "Zero."
+        },
+        {
+          "name": "unset",
+          "type": "array",
+          "count": 23,
+          "items": {
+            "name": "byte",
+            "type": "u8",
+            "note": "One unused byte."
+          },
+          "note": "The rest of BalanceVote's layout. Unused; its bytes carry no meaning."
+        }
+      ],
+      "note": "A client sends it only where the version answer's features have bit 0 set, outside the tutorial."
+    },
+    {
+      "from": "3.6.0.388",
+      "until": "3.7.0.328",
+      "channel": "requests",
+      "command": 250,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "flags",
+          "type": "u8",
+          "note": "Zero: a vote against."
+        },
+        {
+          "name": "voter",
+          "type": "u32",
+          "note": "Zero."
+        },
+        {
+          "name": "unset",
+          "type": "array",
+          "count": 23,
+          "items": {
+            "name": "byte",
+            "type": "u8",
+            "note": "One unused byte."
+          },
+          "note": "The rest of BalanceVote's layout. Unused; its bytes carry no meaning."
+        }
+      ],
+      "note": "A client sends it only where the version answer's features have bit 1 set, outside the tutorial."
+    },
+    {
+      "from": "3.7.0.328",
       "until": "3.10.0.237",
       "channel": "requests",
       "command": 250,

@@ -276,6 +276,36 @@
     },
     {
       "from": "3.01.0.1",
+      "until": "3.6.0.388",
+      "channel": "events",
+      "command": 224,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "side",
+          "type": "u8",
+          "note": "Which side the unit came into or out of the view of."
+        }
+      ]
+    },
+    {
+      "from": "3.6.0.388",
+      "until": "3.7.0.328",
+      "channel": "events",
+      "command": 224,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "side",
+          "type": "u8",
+          "note": "Which side's view the unit came into, as a number from 0 to 3 rather than a side such as 100."
+        }
+      ]
+    },
+    {
+      "from": "3.7.0.328",
       "until": "3.10.0.237",
       "channel": "events",
       "command": 224,
