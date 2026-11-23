@@ -120,6 +120,13 @@ revision claims that value both ways.
 > Where an entry's size bits read 63, its size is one byte that follows the
 > command and object identifier, just before the body.
 
+<!-- holds from 3.03.0.198 up to 3.04.0.78 -->
+
+> **In 3.03**
+>
+> Where an entry's size bits read 63, its size is one byte that follows the
+> command and object identifier, just before the body.
+
 <!-- holds from 3.6.0.388 up to 3.7.0.328 -->
 
 > **In 3.6**

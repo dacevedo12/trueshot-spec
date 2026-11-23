@@ -117,9 +117,27 @@ height (see [Space](space.md)).
 > A path that arrives before a client has loaded the map's ground grid is read
 > with a step of 1 in place of 2.
 
-<!-- holds from 1.0.0.151 up to 4.21.0.0 -->
+<!-- holds from 3.03.0.198 up to 3.04.0.78 -->
 
-> **In 1.0.0.151–4.20**
+> **In 3.03**
+>
+> `Movement` and `MovementAtSpeed` are compact: a path is a run of integer
+> points, while positions elsewhere are world floats covering a far larger range
+> (see [Space](space.md)). The two are related by an origin and a step:
+>
+> ```
+> encoded = truncate_toward_zero((world - origin) / 2)
+> world   = origin + 2 * encoded
+> ```
+>
+> A path resolves a position to two world units, rounded toward the origin.
+>
+> A path that arrives before a client has loaded the map's ground grid is read
+> with a step of 1 in place of 2 and an origin of 0.
+
+<!-- holds from 3.04.0.78 up to 4.21.0.0 -->
+
+> **In 3.04–4.20**
 >
 > `Movement` and `MovementAtSpeed` are compact: a path is a run of integer
 > points, while positions elsewhere are world floats covering a far larger range

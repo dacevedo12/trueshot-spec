@@ -99,9 +99,9 @@ MUST take the names from the files.
 > `Barracks`, which makes an inhibitor, and `HQ_` makes a nexus and `Turret` a
 > turret. A path holding `_Destroyed` or `_FB` makes no object.
 
-<!-- holds from 1.0.0.133 up to 3.6.0.388 -->
+<!-- holds from 1.0.0.133 up to 3.03.0.198 -->
 
-> **In 1.0.0.133–3.5**
+> **In 1.0.0.133–3.02**
 >
 > A word a name holds anywhere says what the object is, not only its opening,
 > the first match winning: a minion spawner's `Spawn_Barracks` is tested before
@@ -123,6 +123,20 @@ MUST take the names from the files.
 > `room.dsc` lists each object as a `.sco`. Where a binary `.SCB` of the same
 > name exists, a client reads that instead, which holds its name within it;
 > only a `.sco` gives its name on its `Name=` line.
+
+<!-- holds from 3.03.0.198 up to 3.04.0.78 -->
+
+> **In 3.03**
+>
+> A word an object's path as `room.dsc` lists it holds anywhere, matched with
+> its case, says what the object is, not the name its file gives, the first
+> match winning: a minion spawner's `Spawn_Barracks` is tested before
+> `Barracks`, which makes an inhibitor, and `HQ_` makes a nexus and `Turret` a
+> turret. A path holding `AIPath` makes no object.
+>
+> `room.dsc` lists each object as a `.sco`. Where a binary `.SCB` of the same
+> name exists, a client reads that instead, which holds its name within it; only
+> a `.sco` gives its name on its `Name=` line.
 
 <!-- holds from 3.6.0.388 up to 3.7.0.328 -->
 

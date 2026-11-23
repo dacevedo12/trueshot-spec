@@ -263,9 +263,9 @@ sells.
 > within the champion's gold and, unless the item can be used in the shop,
 > where a slot is free or holds the same item below its stack limit.
 
-<!-- holds from 1.0.0.126 up to 3.13.0.399 -->
+<!-- holds from 1.0.0.126 up to 3.03.0.198 -->
 
-> **In 1.0.0.126–3.12**
+> **In 1.0.0.126–3.02**
 >
 > A client never asks for an item a player holds only one of and holds already.
 
@@ -286,9 +286,9 @@ sells.
 >
 > A client asks only with the champion dead or near a shop of its side.
 
-<!-- holds from 1.0.0.133 up to 3.6.0.388 -->
+<!-- holds from 1.0.0.133 up to 3.03.0.198 -->
 
-> **In 1.0.0.133–3.5**
+> **In 1.0.0.133–3.02**
 >
 > A client asks for an item not built from others only where its price is
 > within the champion's gold and, unless the item can be used in the shop,
@@ -306,6 +306,25 @@ sells.
 >
 > A client asks only while its own champion exists, with the champion dead or
 > near a shop of its side.
+
+<!-- holds from 3.03.0.198 up to 3.04.0.78 -->
+
+> **In 3.03**
+>
+> A client asks for an item not built from others only where its price is within
+> the champion's gold and, unless the item can be used in the shop and the
+> champion is alive, where a slot is free or holds the same item below its stack
+> limit.
+>
+> A client never asks for an item not built from others that a player holds only
+> one of and holds already, but asks for one built from others even where the
+> player holds it already.
+
+<!-- holds from 3.04.0.78 up to 3.13.0.399 -->
+
+> **In 3.04–3.12**
+>
+> A client never asks for an item a player holds only one of and holds already.
 
 <!-- holds from 3.6.0.388 up to 3.7.0.328 -->
 

@@ -116,9 +116,9 @@ set a point for a player's view with `CameraBehaviour`.
 > view is locked or while it watches a match; a report sent again until
 > answered can come sooner.
 
-<!-- holds from 3.6.0.388 up to 3.7.0.328 -->
+<!-- holds from 3.03.0.198 up to 3.7.0.328 -->
 
-> **In 3.6**
+> **In 3.03–3.6**
 >
 > A client's view report, `Camera`, goes out where a point it carries moves more
 > than 200 units, at most every tenth of a second, and never while its view is

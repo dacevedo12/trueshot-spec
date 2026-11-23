@@ -6,6 +6,60 @@
   "revisions": [
     {
       "from": "3.01.0.1",
+      "until": "3.03.0.198",
+      "channel": "events",
+      "command": 221,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What the data is for."
+        },
+        {
+          "name": "length",
+          "type": "u16",
+          "note": "How many bytes of data follow; at most 1024."
+        },
+        {
+          "name": "data",
+          "type": "bytes",
+          "size": "length",
+          "note": "Data for a module of the client's own, which the message only carries."
+        }
+      ],
+      "note": "A client takes it even before it is ready to play. With kind 4, or any kind other than 1 and 2, a client acts on what the data carries as on a message that had arrived. What kinds 1 and 2 do is not shown."
+    },
+    {
+      "from": "3.03.0.198",
+      "until": "3.04.0.78",
+      "channel": "events",
+      "command": 221,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What the data is for."
+        },
+        {
+          "name": "length",
+          "type": "u16",
+          "note": "How many bytes of data follow; at most 1024."
+        },
+        {
+          "name": "data",
+          "type": "bytes",
+          "size": "length",
+          "note": "Data for a module of the client's own, which the message only carries."
+        }
+      ],
+      "note": "A client takes it even before it is ready to play. Kind 4 has a client act on what the data carries as on a message that had arrived, where its module is present; kind 1 has it keep the data's first byte, module or not; it drops any kind but 1, 2 and 4. What kind 2 does is not shown."
+    },
+    {
+      "from": "3.04.0.78",
       "until": "3.6.0.388",
       "channel": "events",
       "command": 221,

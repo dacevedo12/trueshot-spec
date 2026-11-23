@@ -57,9 +57,14 @@ menu on or off.
 
 A server can hold a vote on giving the side behind gold, experience and
 turrets. Each `BalanceVote` adds one voter to the vote's panel for the voting
-side, and a client answers with `BalanceVoteAnswer` from the panel or as its
-player types `/equalize`, once per vote. `BalanceResult` says how the vote
-ended, or why it could not be held.
+side, and a client answers with `BalanceVoteAnswer` from the panel, once per
+vote. `BalanceResult` says how the vote ended, or why it could not be held.
+
+<!-- holds from 3.04.0.78 up to 4.21.0.0 -->
+
+> **In 3.04–4.20**
+>
+> A client also answers as its player types `/equalize`.
 
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 

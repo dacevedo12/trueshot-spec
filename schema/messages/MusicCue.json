@@ -415,6 +415,70 @@
     },
     {
       "from": "3.01.0.1",
+      "until": "3.03.0.198",
+      "channel": "events",
+      "command": 220,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "cue",
+          "type": "u8",
+          "note": "What to do. A client takes any other value and does nothing.",
+          "values": {
+            "0": {
+              "name": "prepare"
+            },
+            "1": {
+              "name": "begin"
+            },
+            "2": {
+              "name": "end"
+            }
+          }
+        },
+        {
+          "name": "event",
+          "type": "u32",
+          "note": "Which cue or event."
+        }
+      ],
+      "note": "The header names the champion of the player it is sent to."
+    },
+    {
+      "from": "3.03.0.198",
+      "until": "3.04.0.78",
+      "channel": "events",
+      "command": 220,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "cue",
+          "type": "u8",
+          "note": "What to do. A client takes any other value and does nothing.",
+          "values": {
+            "0": {
+              "name": "prepare"
+            },
+            "1": {
+              "name": "begin"
+            },
+            "2": {
+              "name": "end"
+            }
+          }
+        },
+        {
+          "name": "event",
+          "type": "u32",
+          "note": "Which cue or event."
+        }
+      ],
+      "note": "The header names a champion; a client acts on it whichever champion that is, and does nothing where the header names none."
+    },
+    {
+      "from": "3.04.0.78",
       "until": "3.6.0.388",
       "channel": "events",
       "command": 220,

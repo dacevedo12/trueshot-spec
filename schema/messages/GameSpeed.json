@@ -262,6 +262,38 @@
     },
     {
       "from": "1.0.0.144",
+      "until": "3.03.0.198",
+      "channel": "events",
+      "command": 18,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "speed",
+          "type": "f32",
+          "note": "How fast, 1 being normal. A client keeps it between 0 and 10."
+        }
+      ],
+      "note": "Sent while paused, it takes effect on resuming."
+    },
+    {
+      "from": "3.03.0.198",
+      "until": "3.04.0.78",
+      "channel": "events",
+      "command": 18,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "speed",
+          "type": "f32",
+          "note": "How fast, 1 being normal. A client keeps it between 0 and 10 in a match it plays."
+        }
+      ],
+      "note": "Sent while paused, it takes effect on resuming."
+    },
+    {
+      "from": "3.04.0.78",
       "until": "3.6.0.388",
       "channel": "events",
       "command": 18,

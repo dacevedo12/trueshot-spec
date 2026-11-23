@@ -306,6 +306,26 @@
     },
     {
       "from": "3.01.0.1",
+      "until": "3.03.0.198",
+      "channel": "requests",
+      "command": 143,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window, as a reconnection fails, or on Shutdown or BotKick. The header names no object: it carries zero.",
+      "fields": []
+    },
+    {
+      "from": "3.03.0.198",
+      "until": "3.04.0.78",
+      "channel": "requests",
+      "command": 143,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window, as a reconnection fails, or on Shutdown, or on a BotKick whose action is 4. The header names no object: it carries zero.",
+      "fields": []
+    },
+    {
+      "from": "3.04.0.78",
       "until": "3.6.0.388",
       "channel": "requests",
       "command": 143,

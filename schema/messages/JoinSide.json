@@ -60,6 +60,48 @@
     },
     {
       "from": "1.0.0.147",
+      "until": "3.03.0.198",
+      "channel": "roster",
+      "command": 100,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the client asking."
+        },
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "The side it asks for."
+        }
+      ],
+      "note": "It asks for a seat on one of the two sides."
+    },
+    {
+      "from": "3.03.0.198",
+      "until": "3.04.0.78",
+      "channel": "roster",
+      "command": 100,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the client asking."
+        },
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "A client writes 100."
+        }
+      ],
+      "note": "It asks for no side of its choosing."
+    },
+    {
+      "from": "3.04.0.78",
       "until": "3.13.0.399",
       "channel": "roster",
       "command": 100,

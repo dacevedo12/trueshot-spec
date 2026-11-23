@@ -287,6 +287,25 @@
     },
     {
       "from": "3.01.0.1",
+      "until": "3.03.0.198",
+      "channel": "requests",
+      "command": 204,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client also sends it as its player closes a tip in the tutorial."
+    },
+    {
+      "from": "3.03.0.198",
+      "until": "3.04.0.78",
+      "channel": "requests",
+      "command": 204,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": []
+    },
+    {
+      "from": "3.04.0.78",
       "until": "4.1.0.171",
       "channel": "requests",
       "command": 204,

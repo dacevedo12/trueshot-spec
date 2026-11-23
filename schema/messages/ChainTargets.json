@@ -966,6 +966,70 @@
     },
     {
       "from": "3.01.0.1",
+      "until": "3.03.0.198",
+      "channel": "events",
+      "command": 107,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "count",
+          "type": "i32",
+          "note": "How many of the slots are used, 0 to 32."
+        },
+        {
+          "name": "caster",
+          "type": "u32",
+          "note": "The unit casting the missile."
+        },
+        {
+          "name": "targets",
+          "type": "array",
+          "count": 32,
+          "items": {
+            "name": "target",
+            "type": "u32",
+            "note": "A unit, in the order struck."
+          },
+          "note": "Always 32 slots; those past count have no effect."
+        }
+      ],
+      "note": "Where the client already holds the missile, the missile takes the list; otherwise the list waits for the caster's next chain missile."
+    },
+    {
+      "from": "3.03.0.198",
+      "until": "3.04.0.78",
+      "channel": "events",
+      "command": 107,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "count",
+          "type": "i32",
+          "note": "How many of the slots are used, at most 32. Zero clears all 32 slots, a negative count changes nothing, and a positive count sets only that many, from the first."
+        },
+        {
+          "name": "caster",
+          "type": "u32",
+          "note": "The unit casting the missile."
+        },
+        {
+          "name": "targets",
+          "type": "array",
+          "count": 32,
+          "items": {
+            "name": "target",
+            "type": "u32",
+            "note": "A unit, in the order struck."
+          },
+          "note": "Always 32 slots; those past count keep what they held."
+        }
+      ],
+      "note": "Where the client already holds the missile, the missile takes the list; otherwise the list waits for the caster's next chain missile."
+    },
+    {
+      "from": "3.04.0.78",
       "until": "3.6.0.388",
       "channel": "events",
       "command": 107,

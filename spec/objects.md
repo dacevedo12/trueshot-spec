@@ -192,9 +192,9 @@ gives the client its own client id.
 > A server MUST send that `Registered` before any create message, because a
 > client given a create message before it has its own client id stops.
 
-<!-- holds from 1.0.0.133 up to 3.6.0.388 -->
+<!-- holds from 1.0.0.133 up to 3.03.0.198 -->
 
-> **In 1.0.0.133–3.5**
+> **In 1.0.0.133–3.02**
 >
 > A client acts on that `Registered` alone and ignores every other, so it pairs
 > no other player's player id with a client id.
@@ -221,9 +221,17 @@ gives the client its own client id.
 > 4294967295, for which it waits on as if given none; a server MUST give each
 > player a client id in that range.
 
-<!-- holds from 1.0.0.151 up to 3.11.0.306 -->
+<!-- holds from 3.03.0.198 up to 3.04.0.78 -->
 
-> **In 1.0.0.151–3.10**
+> **In 3.03**
+>
+> A client takes a client id only from 0 to 252, and leaves on any other but
+> 4294967295, for which it waits on as if given none; a server MUST give each
+> player a client id in that range.
+
+<!-- holds from 3.04.0.78 up to 3.11.0.306 -->
+
+> **In 3.04–3.10**
 >
 > A client takes a client id only from 0 to 252, and leaves on any other, so a
 > server MUST give each player a client id in that range.

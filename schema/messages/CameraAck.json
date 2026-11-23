@@ -438,6 +438,38 @@
     },
     {
       "from": "1.0.0.151",
+      "until": "3.03.0.198",
+      "channel": "events",
+      "command": 43,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u8",
+          "note": "The name the report carried. A client sends the report again until this comes back."
+        }
+      ],
+      "note": "A server names in the header the champion of the player it is sent to."
+    },
+    {
+      "from": "3.03.0.198",
+      "until": "3.04.0.78",
+      "channel": "events",
+      "command": 43,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u8",
+          "note": "The name the report carried. A client sends the report again until this comes back."
+        }
+      ],
+      "note": "A client ignores the header. It takes syncId only where it is 1 to 127 ahead of the last it took, a smaller number counting as 255 more, so after 255 it never takes 0."
+    },
+    {
+      "from": "3.04.0.78",
       "until": "3.6.0.388",
       "channel": "events",
       "command": 43,

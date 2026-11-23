@@ -172,6 +172,36 @@
     },
     {
       "from": "1.0.0.151",
+      "until": "3.03.0.198",
+      "channel": "events",
+      "command": 65,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "emote",
+          "type": "u8",
+          "note": "Which emote, by the number the client knows it as. A client plays an animation on the champion for 0, 1 and 2, a different one each, and none for 3."
+        }
+      ]
+    },
+    {
+      "from": "3.03.0.198",
+      "until": "3.04.0.78",
+      "channel": "events",
+      "command": 65,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "emote",
+          "type": "u8",
+          "note": "Which emote, by the number the client knows it as. A client takes 0 to 3 alike and does nothing for 4 and up."
+        }
+      ]
+    },
+    {
+      "from": "3.04.0.78",
       "until": "3.6.0.388",
       "channel": "events",
       "command": 65,

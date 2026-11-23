@@ -2,10 +2,68 @@
   "$schema": "../meta/message.json",
   "message": "BalanceVoteAnswer",
   "system": "votes",
-  "note": "What a client sends as its player answers a vote on evening out a match (BalanceVote), once per vote, from the vote's panel or by typing /equalize. The header carries zero.",
+  "note": "What a client sends as its player answers a vote on evening out a match (BalanceVote). The header carries zero.",
   "revisions": [
     {
       "from": "3.01.0.1",
+      "until": "3.03.0.198",
+      "channel": "requests",
+      "command": 251,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "vote",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "inFavour",
+              "width": 1,
+              "note": "Set for yes, clear for no."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a client writes zero."
+            }
+          ],
+          "note": "The answer."
+        }
+      ],
+      "note": "A client sends it once per vote, from the vote's panel or by typing /equalize."
+    },
+    {
+      "from": "3.03.0.198",
+      "until": "3.04.0.78",
+      "channel": "requests",
+      "command": 251,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "vote",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "inFavour",
+              "width": 1,
+              "note": "Set for yes, clear for no."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a client writes zero."
+            }
+          ],
+          "note": "The answer."
+        }
+      ],
+      "note": "A client sends it only from the vote's panel, at most once per vote, and none where the voters already reported include its own champion."
+    },
+    {
+      "from": "3.04.0.78",
       "until": "4.1.0.171",
       "channel": "requests",
       "command": 251,
@@ -30,7 +88,8 @@
           ],
           "note": "The answer."
         }
-      ]
+      ],
+      "note": "A client sends it once per vote, from the vote's panel or by typing /equalize."
     },
     {
       "from": "4.1.0.171",
@@ -58,7 +117,8 @@
           ],
           "note": "The answer."
         }
-      ]
+      ],
+      "note": "A client sends it once per vote, from the vote's panel or by typing /equalize."
     },
     {
       "from": "4.11.0.386",
@@ -86,7 +146,8 @@
           ],
           "note": "The answer."
         }
-      ]
+      ],
+      "note": "A client sends it once per vote, from the vote's panel or by typing /equalize."
     },
     {
       "from": "4.18.0.271",
@@ -114,7 +175,8 @@
           ],
           "note": "The answer."
         }
-      ]
+      ],
+      "note": "A client sends it once per vote, from the vote's panel or by typing /equalize."
     }
   ]
 }
