@@ -1069,7 +1069,7 @@
           ]
         }
       ],
-      "note": "A client ignores it where killer is zero or the champion is already dead."
+      "note": "A client ignores it where the champion is already dead. Otherwise it stops the champion's cast and attack, and puts it down only where killer is nonzero."
     },
     {
       "from": "1.0.0.150",
@@ -1375,7 +1375,7 @@
           "note": "It has no effect in this message."
         }
       ],
-      "note": "A client ignores it where killer is zero or the champion is already dead."
+      "note": "A client ignores it where the champion is already dead. Otherwise it stops the champion's cast and attack, and puts it down only where killer is nonzero."
     },
     {
       "from": "3.01.0.1",

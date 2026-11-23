@@ -142,7 +142,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "It is sent once, at the end."
+      "note": "A client sends it each time GameEnded arrives once the match is in play; for one arriving before, it leaves without sending it."
     },
     {
       "from": "1.0.0.126",
@@ -226,6 +226,16 @@
     },
     {
       "from": "1.0.0.144",
+      "until": "1.0.0.148",
+      "channel": "requests",
+      "command": 141,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client sends it each time GameEnded arrives after the match has started."
+    },
+    {
+      "from": "1.0.0.148",
       "until": "1.0.0.150",
       "channel": "requests",
       "command": 141,
@@ -266,6 +276,26 @@
     },
     {
       "from": "4.1.0.171",
+      "until": "4.4.0.1858",
+      "channel": "requests",
+      "command": 140,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "It is sent once, at the end."
+    },
+    {
+      "from": "4.4.0.1858",
+      "until": "4.5.0.260",
+      "channel": "requests",
+      "command": 140,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client sends it each time GameEnded arrives in play, and not while playing a replay."
+    },
+    {
+      "from": "4.5.0.260",
       "until": "4.11.0.386",
       "channel": "requests",
       "command": 140,

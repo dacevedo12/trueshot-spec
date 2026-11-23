@@ -247,9 +247,26 @@ alone closes the shop and turns off its key.
 > A client keeps every lock a message sets or clears, but acts on a lock at once
 > only where the message's mask is exactly one of 1, 4, 8, 16, 32 or 128.
 
-<!-- holds from 1.0.0.133 up to 1.0.0.150 -->
+<!-- holds from 1.0.0.133 up to 1.0.0.147 -->
 
-> **In 1.0.0.133–1.0.0.149**
+> **In 1.0.0.133–1.0.0.146**
+>
+> A client keeps every lock a message sets or clears, and later input obeys
+> them, but it acts on a lock at once only where the message's mask is exactly
+> one of 1, 4, 8, 16, 32 or 128.
+
+<!-- holds from 1.0.0.147 up to 1.0.0.148 -->
+
+> **In 1.0.0.147**
+>
+> A client acts on a lock at once only where the message's mask is exactly one
+> of 1, 4, 8, 16, 32 or 128, and changes the chat lock only then. It keeps every
+> other lock a message sets or clears, and later input obeys them, but for the
+> shop lock only in the tutorial.
+
+<!-- holds from 1.0.0.148 up to 1.0.0.150 -->
+
+> **In 1.0.0.148–1.0.0.149**
 >
 > A client keeps every lock a message sets or clears, and later input obeys
 > them, but it acts on a lock at once only where the message's mask is exactly

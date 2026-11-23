@@ -186,13 +186,23 @@
     },
     {
       "from": "1.0.0.144",
-      "until": "1.0.0.150",
+      "until": "1.0.0.147",
       "channel": "events",
       "command": 55,
       "direction": "serverToClient",
       "reliability": "reliable",
       "fields": [],
       "note": "Sent for the receiving client's own champion, it changes nothing the client shows."
+    },
+    {
+      "from": "1.0.0.147",
+      "until": "1.0.0.150",
+      "channel": "events",
+      "command": 55,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client ignores it while playing a replay."
     },
     {
       "from": "1.0.0.150",

@@ -478,7 +478,7 @@
     },
     {
       "from": "1.0.0.144",
-      "until": "1.0.0.150",
+      "until": "1.0.0.147",
       "channel": "events",
       "command": 80,
       "direction": "serverToClient",
@@ -520,6 +520,53 @@
           "name": "turnTime",
           "type": "f32",
           "note": "How long the turn takes, in seconds."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.147",
+      "until": "1.0.0.150",
+      "channel": "events",
+      "command": 80,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "towardX",
+          "type": "f32",
+          "note": "The direction faced, along one ground axis."
+        },
+        {
+          "name": "towardY",
+          "type": "f32",
+          "note": "The direction faced, in height."
+        },
+        {
+          "name": "towardZ",
+          "type": "f32",
+          "note": "The direction faced, along the other ground axis."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "turnOverTime",
+              "width": 1,
+              "note": "Set to have the unit turn toward the direction at its usual turn rate; clear to face it at once."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "turnTime",
+          "type": "f32",
+          "note": "It has no effect."
         }
       ]
     },

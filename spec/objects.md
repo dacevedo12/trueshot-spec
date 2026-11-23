@@ -368,9 +368,27 @@ naming a unit, an owner or a target carry one too.
 > `SpawnUnit`, `CreateTurret`, `SpawnBot`, `MapProp` and `SpawnMarker` first
 > remove any object holding the net id, and the object they create takes it.
 
-<!-- holds from 4.1.0.171 up to 4.17.0.233 -->
+<!-- holds from 4.1.0.171 up to 4.4.0.1858 -->
 
-> **In 4.1–4.16**
+> **In 4.1–4.3**
+>
+> A client that still holds the earlier object creates the new one but keeps
+> the net id on the old one, so messages naming it reach the old object, and
+> removing either leaves the id naming neither.
+
+<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
+
+> **In 4.4**
+>
+> `SpawnPet` first removes any object holding the net id, even where it makes no
+> pet for want of its owner, and the new pet takes the id. For any other
+> creating message, a client that still holds the earlier object creates the
+> new one but keeps the net id on the old one, so messages naming it reach the
+> old object, and removing either leaves the id naming neither.
+
+<!-- holds from 4.5.0.260 up to 4.17.0.233 -->
+
+> **In 4.5–4.16**
 >
 > A client that still holds the earlier object creates the new one but keeps
 > the net id on the old one, so messages naming it reach the old object, and

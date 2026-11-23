@@ -1580,7 +1580,7 @@
         {
           "name": "lifetime",
           "type": "f32",
-          "note": "How long it lasts, in seconds. A client counts it down and removes the region once it reaches zero or less. Whether one that starts at zero or less is kept is not recorded."
+          "note": "How long it lasts, in seconds. A client counts it down and removes the region once it reaches zero or less, so one that starts at zero or less goes at the client's next update."
         },
         {
           "name": "marker",

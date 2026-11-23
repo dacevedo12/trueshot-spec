@@ -6,6 +6,71 @@
   "revisions": [
     {
       "from": "3.01.0.1",
+      "until": "3.03.0.198",
+      "channel": "events",
+      "command": 248,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "group",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 256,
+          "note": "The group's name, padded with zero bytes."
+        },
+        {
+          "name": "operation",
+          "type": "u32",
+          "note": "Nonzero to pause the emission, zero to resume it."
+        },
+        {
+          "name": "groupOperation",
+          "type": "u8",
+          "note": "What to do with the group. A client acts on 0 only, pausing or resuming the group's emission, and does nothing for any other value.",
+          "values": {
+            "0": {
+              "name": "emission"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "from": "3.03.0.198",
+      "until": "3.04.0.78",
+      "channel": "events",
+      "command": 248,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "group",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 256,
+          "note": "The group's name, padded with zero bytes."
+        },
+        {
+          "name": "operation",
+          "type": "u32",
+          "note": "Nonzero to pause the emission, zero to resume it."
+        },
+        {
+          "name": "groupOperation",
+          "type": "u8",
+          "note": "What to do with the group. A client pauses or resumes the group's emission for 0 only, and leaves the group alone for any other value.",
+          "values": {
+            "0": {
+              "name": "emission"
+            }
+          }
+        }
+      ],
+      "note": "Whatever groupOperation says, a client also takes it as a ChatAllowance, the first four bytes of group standing as linesLeft."
+    },
+    {
+      "from": "3.04.0.78",
       "until": "4.1.0.171",
       "channel": "events",
       "command": 248,

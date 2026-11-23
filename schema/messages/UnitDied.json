@@ -1155,7 +1155,7 @@
           "note": "Which kill a client announces for killer: zero a neutral monster's, nonzero a minion's."
         }
       ],
-      "note": "Where killer names a unit it knows, a client announces the kill for that unit, then the one kind picks. Where the unit is not already dead, it cancels the unit's cast and attack, and only where killer is nonzero puts the unit down, by stayDown and standing."
+      "note": "Where the unit is already dead, a client does nothing with the message and announces nothing. Otherwise it cancels the unit's cast and attack, and only where killer is nonzero puts the unit down, by stayDown and standing."
     },
     {
       "from": "3.01.0.1",

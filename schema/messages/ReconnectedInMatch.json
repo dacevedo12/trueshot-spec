@@ -528,13 +528,23 @@
     },
     {
       "from": "1.0.0.144",
-      "until": "1.0.0.150",
+      "until": "1.0.0.147",
       "channel": "requests",
       "command": 156,
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
       "note": "A client sends it right after the server answers its registration. A client sends it once it has connected again to a match it was playing. A client dropped while playing reconnects by itself; one dropped while loading leaves instead. It carries nothing of its own."
+    },
+    {
+      "from": "1.0.0.147",
+      "until": "1.0.0.150",
+      "channel": "requests",
+      "command": 156,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client sends it as a connection comes up, without waiting for the registration answer, and only while the match is in play, so none on its first connection. A client dropped while playing reconnects by itself; one dropped while loading leaves instead. It carries nothing of its own."
     },
     {
       "from": "1.0.0.150",

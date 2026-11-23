@@ -216,36 +216,6 @@
     },
     {
       "from": "1.0.0.124",
-      "until": "1.0.0.128",
-      "channel": "events",
-      "command": 86,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "slot",
-          "type": "u8",
-          "note": "Which slot, 0 to 37. A client ignores the message from 38 up."
-        },
-        {
-          "name": "item",
-          "type": "u32",
-          "note": "The item. It has no effect where count is zero."
-        },
-        {
-          "name": "count",
-          "type": "u8",
-          "note": "How many. Zero leaves the slot empty."
-        },
-        {
-          "name": "charges",
-          "type": "u8",
-          "note": "Its charges."
-        }
-      ]
-    },
-    {
-      "from": "1.0.0.128",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 86,
@@ -255,7 +225,7 @@
         {
           "name": "slot",
           "type": "u8",
-          "note": "Which slot, 0 to 39. A client ignores the message from 40 up."
+          "note": "Which slot, 0 to 37. A client ignores the message from 38 up."
         },
         {
           "name": "item",
@@ -410,7 +380,7 @@
         {
           "name": "slot",
           "type": "u8",
-          "note": "Which slot, 0 to 39. A client ignores the message from 40 up."
+          "note": "Which slot, 0 to 37. A client ignores the message from 38 up."
         },
         {
           "name": "count",
@@ -516,6 +486,66 @@
     },
     {
       "from": "4.1.0.171",
+      "until": "4.4.0.1858",
+      "channel": "events",
+      "command": 82,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "item",
+          "type": "u32",
+          "note": "The item. It has no effect where count is zero."
+        },
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot, 0 to 39. A client ignores the message from 40 up."
+        },
+        {
+          "name": "count",
+          "type": "u8",
+          "note": "How many. Zero leaves the slot empty."
+        },
+        {
+          "name": "charges",
+          "type": "u8",
+          "note": "Its charges."
+        }
+      ]
+    },
+    {
+      "from": "4.4.0.1858",
+      "until": "4.5.0.260",
+      "channel": "events",
+      "command": 82,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "item",
+          "type": "u32",
+          "note": "The item. It has no effect where count is zero."
+        },
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot, 0 to 38. A client ignores the message from 39 up."
+        },
+        {
+          "name": "count",
+          "type": "u8",
+          "note": "How many. Zero leaves the slot empty."
+        },
+        {
+          "name": "charges",
+          "type": "u8",
+          "note": "Its charges."
+        }
+      ]
+    },
+    {
+      "from": "4.5.0.260",
       "until": "4.11.0.386",
       "channel": "events",
       "command": 82,

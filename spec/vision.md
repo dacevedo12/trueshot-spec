@@ -346,6 +346,16 @@ A client also acts on what it is told about a unit it holds but cannot see:
 - an animation plays on a hidden unit, which comes into view part way through
   it.
 
+<!-- holds from 1.0.0.147 up to 1.0.0.148 -->
+
+> **In 1.0.0.147**
+>
+> A client drops `UnitText`, and `FloatingText` other than errors, over a unit
+> `LeaveLocalSight` has taken out of its local sight, its own champion included,
+> until an `EnterLocalSight` brings it back, and shows no healing numbers over
+> its own champion while that champion is out. A client playing a replay
+> ignores `LeaveLocalSight`.
+
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
 > **In 3.10**

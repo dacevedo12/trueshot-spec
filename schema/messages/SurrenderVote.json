@@ -6,6 +6,34 @@
   "revisions": [
     {
       "from": "0.9.22.16",
+      "until": "0.9.25.21",
+      "channel": "requests",
+      "command": 159,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "inFavour",
+              "width": 1,
+              "note": "Set where the answer is yes."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "A client writes no value of its own here; a server ignores them."
+            }
+          ]
+        }
+      ],
+      "note": "A client sends it as its player votes by chat command, whether or not a vote is open."
+    },
+    {
+      "from": "0.9.25.21",
       "until": "0.9.25.36",
       "channel": "requests",
       "command": 159,
