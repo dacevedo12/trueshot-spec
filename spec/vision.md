@@ -199,9 +199,7 @@ another, so what a client knows is whatever a server sends it.
 Messages about a champion's own state, its inventory, its spells'
 levels, cooldowns and charges, and whether it can shop, are applied to the
 champion they name on any client that receives them, but a client shows some
-of them only for its own champion:
-
-- `ShopEnabled` changes the shop only for the client's own champion.
+of them only for its own champion.
 
 <!-- holds from 0.8.13.26 up to 0.9.25.36 -->
 
@@ -313,9 +311,23 @@ of them only for its own champion:
 > client holds shows over that unit the gold gained, or lost where the amount
 > is below 0, and nothing for 0.
 
-<!-- holds from 3.11.0.306 up to 4.21.0.0 -->
+<!-- holds from 3.11.0.306 up to 3.13.0.399 -->
 
-> **In 3.11–4.20**
+> **In 3.11–3.12**
+>
+> `GoldGained` shows floating gold only for the client's own champion.
+
+<!-- holds from 3.13.0.399 up to 3.14.0.700 -->
+
+> **In 3.13**
+>
+> `GoldGained` naming a unit the client holds other than its own champion shows
+> over that unit the gold gained, or lost where the amount is below 0, and
+> nothing for 0.
+
+<!-- holds from 3.14.0.700 up to 4.21.0.0 -->
+
+> **In 3.14–4.20**
 >
 > `GoldGained` shows floating gold only for the client's own champion.
 
@@ -359,6 +371,15 @@ A client also acts on what it is told about a unit it holds but cannot see:
 > **In 3.10**
 >
 > A client playing back a stream ignores `LeaveLocalSight`.
+
+<!-- holds from 3.13.0.399 up to 3.14.0.700 -->
+
+> **In 3.13**
+>
+> A client shows no new `UnitText`, `FloatingText` in slot 0 or healing numbers
+> over a unit `LeaveLocalSight` has taken out of its local sight, its own
+> champion included, until an `EnterLocalSight` brings it back. Text already
+> shown stays.
 
 <!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 

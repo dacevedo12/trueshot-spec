@@ -357,6 +357,97 @@
     },
     {
       "from": "3.04.0.78",
+      "until": "3.6.0.388",
+      "channel": "events",
+      "command": 59,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unused",
+          "type": "u8",
+          "note": "Unused; a server writes zero."
+        },
+        {
+          "name": "fromX",
+          "type": "f32",
+          "note": "Where the missile starts, in world units, along one ground axis."
+        },
+        {
+          "name": "fromY",
+          "type": "f32",
+          "note": "Where the missile starts, in world units, in height."
+        },
+        {
+          "name": "fromZ",
+          "type": "f32",
+          "note": "Where the missile starts, in world units, along the other ground axis."
+        },
+        {
+          "name": "velocityX",
+          "type": "f32",
+          "note": "How fast it travels, in world units a second, along one ground axis."
+        },
+        {
+          "name": "velocityY",
+          "type": "f32",
+          "note": "How fast it travels, in world units a second, in height."
+        },
+        {
+          "name": "velocityZ",
+          "type": "f32",
+          "note": "How fast it travels, in world units a second, along the other ground axis."
+        }
+      ]
+    },
+    {
+      "from": "3.6.0.388",
+      "until": "3.7.0.328",
+      "channel": "events",
+      "command": 59,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unused",
+          "type": "u8",
+          "note": "Unused; a server writes zero."
+        },
+        {
+          "name": "fromX",
+          "type": "f32",
+          "note": "Where the missile starts, in world units, along one ground axis."
+        },
+        {
+          "name": "fromY",
+          "type": "f32",
+          "note": "Where the missile starts, in world units, in height."
+        },
+        {
+          "name": "fromZ",
+          "type": "f32",
+          "note": "Where the missile starts, in world units, along the other ground axis."
+        },
+        {
+          "name": "velocityX",
+          "type": "f32",
+          "note": "How fast it travels, in world units a second, along one ground axis."
+        },
+        {
+          "name": "velocityY",
+          "type": "f32",
+          "note": "How fast it travels, in world units a second, in height."
+        },
+        {
+          "name": "velocityZ",
+          "type": "f32",
+          "note": "How fast it travels, in world units a second, along the other ground axis."
+        }
+      ],
+      "note": "Only a scripted missile acts on it; any other missile ignores it."
+    },
+    {
+      "from": "3.7.0.328",
       "until": "3.10.0.237",
       "channel": "events",
       "command": 59,
@@ -500,9 +591,9 @@
       "reliability": "reliable",
       "fields": [
         {
-          "name": "unused",
+          "name": "driver",
           "type": "u8",
-          "note": "Unused; a server writes zero."
+          "note": "How the missile moves on: only 1 exists, and course follows it alone. With any other value a client takes the start and velocity, drops the missile's earlier movement and holds the missile still where it starts, without removing it."
         },
         {
           "name": "fromX",
@@ -533,6 +624,42 @@
           "name": "velocityZ",
           "type": "f32",
           "note": "How fast it travels, in world units a second, along the other ground axis."
+        },
+        {
+          "name": "course",
+          "type": "record",
+          "present": {
+            "when": "driver",
+            "equals": 1
+          },
+          "note": "How a missile driven by 1 moves on.",
+          "fields": [
+            {
+              "name": "kind",
+              "type": "u32",
+              "note": "Must be 1; a client reads nothing after it otherwise."
+            },
+            {
+              "name": "unit",
+              "type": "u32",
+              "note": "A unit; what a client does with it is not recorded for this range."
+            },
+            {
+              "name": "values",
+              "type": "array",
+              "count": 8,
+              "note": "What they carry is not recorded for this range.",
+              "items": {
+                "name": "value",
+                "type": "f32"
+              }
+            },
+            {
+              "name": "last",
+              "type": "u32",
+              "note": "What it carries is not recorded for this range."
+            }
+          ]
         }
       ],
       "note": "Only a scripted missile acts on it; any other missile ignores it."

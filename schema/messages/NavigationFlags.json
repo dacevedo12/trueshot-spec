@@ -806,7 +806,7 @@
       "command": 64,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client takes it without failing, and answers with its syncId.",
+      "note": "A client takes it without failing. With its map's navigation data loaded, it clears the circles it marked before, marks each of these, and answers with its syncId.",
       "fields": [
         {
           "name": "count",
@@ -1018,7 +1018,7 @@
       "command": 64,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client does not fail on it. Where it takes it, it clears the circles it marked before, marks these, and answers with its syncId.",
+      "note": "A client does not fail on it. Until its map's ground grid has loaded it drops it, marking nothing and answering nothing; after that, it clears the circles it marked before, marks these, and answers with its syncId.",
       "fields": [
         {
           "name": "count",

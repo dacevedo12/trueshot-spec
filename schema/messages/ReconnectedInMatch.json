@@ -608,6 +608,26 @@
     },
     {
       "from": "3.11.0.306",
+      "until": "3.13.0.399",
+      "channel": "requests",
+      "command": 156,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client sends it right after the server answers its registration. A client sends it once it has connected again to a match it was playing. A client dropped while playing reconnects by itself; one dropped while loading leaves instead. It carries nothing of its own."
+    },
+    {
+      "from": "3.13.0.399",
+      "until": "3.14.0.700",
+      "channel": "requests",
+      "command": 156,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client sends it once it has connected again to a match it was playing. A client dropped while playing reconnects by itself; one dropped while loading leaves instead. It carries nothing of its own."
+    },
+    {
+      "from": "3.14.0.700",
       "until": "4.1.0.171",
       "channel": "requests",
       "command": 156,

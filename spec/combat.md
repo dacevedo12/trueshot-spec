@@ -39,9 +39,23 @@ reports what each blow does with `Damage`.
 >
 > A client ignores an `Attack` whose target it does not hold.
 
-<!-- holds from 1.0.0.126 up to 3.11.0.306 -->
+<!-- holds from 1.0.0.126 up to 3.6.0.388 -->
 
-> **In 1.0.0.126–3.10**
+> **In 1.0.0.126–3.5**
+>
+> A swing starts later by the timing byte of its `Attack` less 128, in
+> hundredths of a second.
+
+<!-- holds from 3.6.0.388 up to 3.7.0.328 -->
+
+> **In 3.6**
+>
+> A swing starts as its `Attack` arrives. The timing byte less 128, in
+> hundredths of a second, moves only when the unit can next attack.
+
+<!-- holds from 3.7.0.328 up to 3.11.0.306 -->
+
+> **In 3.7–3.10**
 >
 > A swing starts later by the timing byte of its `Attack` less 128, in
 > hundredths of a second.

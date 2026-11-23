@@ -302,7 +302,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "A client has two shop screens. One sends it only in the tutorial: where the version answer names the mode TUTORIAL and a setting of the client's own turns the tutorial on, whatever the map. The other sends it each time the shop opens, in any match, but opens neither while the match is paused nor in the tutorial while the shop is locked."
+      "note": "A client has two shop screens. One sends it only in the tutorial: where the version answer names the mode TUTORIAL and a setting of the client's own turns the tutorial on, whatever the map. The other sends it each time the shop opens, in any match, but opens neither while the match is paused nor in the tutorial while the shop is locked. Opening the shop opens the first."
     },
     {
       "from": "3.7.0.328",

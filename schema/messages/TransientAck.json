@@ -498,7 +498,7 @@
           "note": "Which batch is being acknowledged, as the batch named itself."
         }
       ],
-      "note": "It is sent only where the client holds every unit the batch names."
+      "note": "It is sent only where the client holds every unit the batch names, and never while the client plays a match back, from a replay, a spectator stream or over its game connection."
     },
     {
       "from": "3.7.0.328",

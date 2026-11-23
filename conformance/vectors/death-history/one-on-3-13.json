@@ -467,7 +467,6 @@
         "earned": null,
         "heal": null,
         "effect": {
-          "sourceKind": 0,
           "script": 0,
           "parentScript": 0,
           "parentCaster": 0,
@@ -477,7 +476,8 @@
             "category": 0,
             "spellLevel": 0,
             "unused": 0
-          }
+          },
+          "sourceKind": 0
         },
         "extra": null,
         "assist": null,
@@ -500,7 +500,6 @@
         "earned": null,
         "heal": null,
         "effect": {
-          "sourceKind": 0,
           "script": 0,
           "parentScript": 0,
           "parentCaster": 0,
@@ -510,7 +509,8 @@
             "category": 0,
             "spellLevel": 0,
             "unused": 0
-          }
+          },
+          "sourceKind": 0
         },
         "extra": "0000000000000000",
         "assist": null,

@@ -50,6 +50,12 @@ shop by the champion's level.
 > map. A client uses the map's list of the items the shop holds only where a
 > setting of its own turns it on.
 
+<!-- holds from 3.13.0.399 up to 3.14.0.700 -->
+
+> **In 3.13**
+>
+> `Loadout` does nothing to the shop.
+
 <!-- holds from 4.1.0.171 up to 4.21.0.0 -->
 
 > **In 4.1–4.20**
@@ -336,7 +342,8 @@ sells.
 > limit.
 >
 > A client asks only with the champion dead or near a shop of its side or a
-> neutral shop. Outside the tutorial it asks whatever the shop lock says.
+> neutral shop. Outside the tutorial it asks whatever the shop lock says. It
+> asks whatever `ShopEnabled` says.
 
 <!-- holds from 3.7.0.328 up to 3.11.0.306 -->
 

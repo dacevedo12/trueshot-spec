@@ -400,9 +400,10 @@ player's side and sends `ClientFinished`.
 
 > **In 3.13**
 >
-> A client that receives `GameEnded` while still loading sends no
-> `ClientFinished`. Where it has a champion of its own it leaves at once;
-> otherwise it first shows an error.
+> A client that receives `GameEnded` while still loading sends neither
+> `ClientFinished` nor `Exit`. Where it has a champion of its own it leaves at
+> once; otherwise it first shows an error, and leaves once its player dismisses
+> it.
 
 <!-- holds from 4.1.0.171 up to 4.21.0.0 -->
 
@@ -692,6 +693,13 @@ A server tells the others that a player's client dropped with
 > waiting for the registration answer, and only where the match is in play, so
 > never on its first connection.
 
+<!-- holds from 3.6.0.388 up to 3.7.0.328 -->
+
+> **In 3.6**
+>
+> A client sends `ReconnectedInMatch` as the `Registered` naming its own player
+> id arrives, not as the connection is made.
+
 <!-- holds from 3.10.0.237 up to 4.20.0.315 -->
 
 > **In 3.10–4.19**
@@ -714,6 +722,14 @@ A server tells the others that a player's client dropped with
 >
 > A client sends `ReconnectedInMatch` only on a connection made after it has
 > taken `StartGame`, so never on its first connection.
+
+<!-- holds from 3.13.0.399 up to 3.14.0.700 -->
+
+> **In 3.13**
+>
+> A client sends `ReconnectedInMatch` as the connection is made, before any
+> `Registered`, and only while the match is in play and it is not playing a
+> replay.
 
 <!-- holds from 4.4.0.1858 up to 4.18.0.271 -->
 

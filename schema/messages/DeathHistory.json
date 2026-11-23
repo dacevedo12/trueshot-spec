@@ -33515,31 +33515,6 @@
                 "note": "The effect, and where it came from.",
                 "fields": [
                   {
-                    "name": "sourceKind",
-                    "type": "u8",
-                    "note": "What sort of source it was.",
-                    "values": {
-                      "0": {
-                        "name": "spell"
-                      },
-                      "1": {
-                        "name": "named"
-                      },
-                      "2": {
-                        "name": "script"
-                      },
-                      "3": {
-                        "name": "passive"
-                      },
-                      "4": {
-                        "name": "basicAttack"
-                      },
-                      "5": {
-                        "name": "cheat"
-                      }
-                    }
-                  },
-                  {
                     "name": "script",
                     "type": "u32",
                     "note": "The spell or effect, by the number its name gives, shown by name."
@@ -33586,6 +33561,31 @@
                         "note": "Unused; a server writes zero."
                       }
                     ]
+                  },
+                  {
+                    "name": "sourceKind",
+                    "type": "u8",
+                    "note": "What sort of source it was.",
+                    "values": {
+                      "0": {
+                        "name": "spell"
+                      },
+                      "1": {
+                        "name": "named"
+                      },
+                      "2": {
+                        "name": "script"
+                      },
+                      "3": {
+                        "name": "passive"
+                      },
+                      "4": {
+                        "name": "basicAttack"
+                      },
+                      "5": {
+                        "name": "cheat"
+                      }
+                    }
                   }
                 ]
               },

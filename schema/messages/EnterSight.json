@@ -5581,7 +5581,7 @@
           "present": {
             "when": "remaining"
           },
-          "note": "Everything else a client needs to draw the unit. A client reads it whatever the message's length, for a champion or a minion, and not for a prop of the map.",
+          "note": "Everything else a client needs to draw the unit. A client reads it whatever the message's length, for a champion or a minion. For a prop of the map, an inhibitor, a nexus, a shop, a spawn point or a map turret it reads nothing after the carried messages.",
           "fields": [
             {
               "name": "hasShields",

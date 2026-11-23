@@ -1,0 +1,26 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "MissileCourse",
+  "version": "3.13.0.399",
+  "note": "Laid out as a 3.13.0.399 client takes it.",
+  "bytes": "3ba60000400100007a44000000000080bb440000000000000000000096440100000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+  "fields": {
+    "command": 59,
+    "netId": 1073741990,
+    "extendedCommand": null,
+    "driver": 1,
+    "fromX": 1000,
+    "fromY": 0,
+    "fromZ": 1500,
+    "velocityX": 0,
+    "velocityY": 0,
+    "velocityZ": 1200,
+    "course": {
+      "kind": 1,
+      "unit": 0,
+      "values": [0, 0, 0, 0, 0, 0, 0, 0],
+      "last": 0
+    }
+  }
+}

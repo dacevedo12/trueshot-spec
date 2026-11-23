@@ -1,0 +1,26 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ClientReady",
+  "version": "3.10.0.237",
+  "note": "Laid out as a 3.10.0.237 client sends it.",
+  "bytes": "5100000000000000000000000000000000",
+  "fields": {
+    "command": 81,
+    "netId": 0,
+    "extendedCommand": null,
+    "maskedStatus": 0,
+    "mask": 0,
+    "tipChosen": 0,
+    "tipColour": 0,
+    "tipDuration": 0,
+    "settings": {
+      "tips": 0,
+      "reporting": 0,
+      "loadingTips": 0,
+      "playingTips": 0,
+      "debug": 0,
+      "unused": 0
+    }
+  }
+}

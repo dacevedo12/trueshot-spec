@@ -40,6 +40,13 @@ match when a camp is next due with `CampTimer`.
 > message says. A client announces a camp `CampCleared` empties where the
 > message's flag says to.
 
+<!-- holds from 3.13.0.399 up to 3.14.0.700 -->
+
+> **In 3.13**
+>
+> A client places a camp where the first of its monsters is created
+> (`CreateNeutral`).
+
 <!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
 
 > **In 4.4**

@@ -996,9 +996,10 @@ Besides its batches, a server states some values with messages of their own.
 
 > **In 3.10**
 >
-> A server grants gold with `GoldGained`. A server MUST name a champion in
-> `ExperienceGained`: a client fails on one naming a unit it holds that is not
-> a champion, and ignores one naming a unit it does not hold.
+> `GoldGained` grants no gold: a champion's gold in hand follows its batches.
+> A server MUST name a champion in `ExperienceGained`: a client fails on one
+> naming a unit it holds that is not a champion, and ignores one naming a unit
+> it does not hold.
 
 <!-- holds from 3.13.0.399 up to 3.14.0.700 -->
 
