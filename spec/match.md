@@ -87,9 +87,9 @@ seconds.
 >
 > No unit advances for `StatTick`.
 
-<!-- holds from 3.6.0.388 up to 3.11.0.306 -->
+<!-- holds from 3.6.0.388 up to 3.14.0.700 -->
 
-> **In 3.6–3.10**
+> **In 3.6–3.13**
 >
 > No unit advances for `StatTick`.
 
@@ -230,12 +230,21 @@ A server ends the hold with `Resumed`.
 > and ignores a `Resumed` with a countdown that arrives while one runs. A
 > `Resumed` arriving while the match is not held leaves the match as it is.
 
-<!-- holds from 3.7.0.328 up to 4.1.0.171 -->
+<!-- holds from 3.7.0.328 up to 3.13.0.399 -->
 
-> **In 3.7–3.15**
+> **In 3.7–3.12**
 >
 > `Resumed` ends the hold either at once or after a countdown the client shows,
 > during which the match stays held.
+
+<!-- holds from 3.13.0.399 up to 3.14.0.700 -->
+
+> **In 3.13**
+>
+> `Resumed` ends the hold either at once or after a countdown, during which the
+> match stays held. A client shows the countdown only for a tournament's hold,
+> and ignores a `Resumed` with a countdown that arrives while one runs. A
+> `Resumed` arriving while the match is not held leaves the match as it is.
 
 <!-- holds from 4.1.0.171 up to 4.21.0.0 -->
 
@@ -358,9 +367,9 @@ player's side and sends `ClientFinished`.
 > once; otherwise it first shows an error, and leaves once its player dismisses
 > it.
 
-<!-- holds from 3.7.0.328 up to 4.1.0.171 -->
+<!-- holds from 3.7.0.328 up to 3.13.0.399 -->
 
-> **In 3.7–3.15**
+> **In 3.7–3.12**
 >
 > A client that receives `GameEnded` while still loading leaves at once.
 
@@ -370,6 +379,14 @@ player's side and sends `ClientFinished`.
 >
 > A client sends `ClientFinished` every time `GameEnded` arrives in play, and
 > not while playing a replay.
+
+<!-- holds from 3.13.0.399 up to 3.14.0.700 -->
+
+> **In 3.13**
+>
+> A client that receives `GameEnded` while still loading sends no
+> `ClientFinished`. Where it has a champion of its own it leaves at once;
+> otherwise it first shows an error.
 
 <!-- holds from 4.1.0.171 up to 4.21.0.0 -->
 
@@ -456,9 +473,15 @@ A server tells the others that a player's client dropped with
 > A client whose connection drops, while loading or in play, shows its player
 > that it was disconnected, and neither connects again nor leaves.
 
-<!-- holds from 0.9.25.24 up to 4.21.0.0 -->
+<!-- holds from 0.9.25.24 up to 4.20.0.315 -->
 
-> **In 0.9.25.24–4.20**
+> **In 0.9.25.24–4.19**
+>
+> A client shows a notice in chat for `PlayerDisconnected`.
+
+<!-- holds from 0.9.25.24 up to 3.13.0.399 -->
+
+> **In 0.9.25.24–3.12**
 >
 > A client started again for a match in progress knows nothing of it, and joins
 > as at the start: a server takes it through [Joining a match](joining.md)
@@ -467,12 +490,6 @@ A server tells the others that a player's client dropped with
 >
 > A client the server drops with the reason that means its player was away
 > shows that, and does not connect again.
-
-<!-- holds from 0.9.25.24 up to 4.20.0.315 -->
-
-> **In 0.9.25.24–4.19**
->
-> A client shows a notice in chat for `PlayerDisconnected`.
 
 <!-- holds from 1.0.0.140 up to 1.0.0.141 -->
 
@@ -496,6 +513,38 @@ A server tells the others that a player's client dropped with
 >
 > A client shows that notice only where it holds the champion
 > `PlayerDisconnected` names.
+
+<!-- holds from 3.13.0.399 up to 3.14.0.700 -->
+
+> **In 3.13**
+>
+> A client shows that notice only in play, only where it holds the champion
+> `PlayerDisconnected` names, other than its own, and only on the side the
+> message's flags choose.
+
+<!-- holds from 3.13.0.399 up to 3.14.0.700 -->
+
+> **In 3.13**
+>
+> A client started again for a match in progress knows nothing of it, and joins
+> as at the start: a server takes it through [Joining a match](joining.md) from
+> registering to `StartGame`, with a spawn run that states the field as it
+> stands, and a `ClockSync`.
+>
+> A client dropped during play with the reason that means its player was away
+> shows that, and does not connect again.
+
+<!-- holds from 3.14.0.700 up to 4.21.0.0 -->
+
+> **In 3.14–4.20**
+>
+> A client started again for a match in progress knows nothing of it, and joins
+> as at the start: a server takes it through [Joining a match](joining.md)
+> from registering to `StartGame`, with a spawn run that states the field as it
+> stands, and a `ClockSync`.
+>
+> A client the server drops with the reason that means its player was away
+> shows that, and does not connect again.
 
 <!-- holds from 0.9.25.24 up to 1.0.0.141 -->
 
@@ -610,6 +659,14 @@ A server tells the others that a player's client dropped with
 > an ally, or for anyone while it watches the match, and only notes it where it
 > names its own client.
 
+<!-- holds from 3.10.0.237 up to 3.14.0.700 -->
+
+> **In 3.10–3.13**
+>
+> A client whose connection drops before play begins leaves rather than
+> connecting again once it knows its own client id, and connects again before
+> then.
+
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
 > **In 3.10**
@@ -617,10 +674,6 @@ A server tells the others that a player's client dropped with
 > A client sends `ReconnectedInMatch` when the registration answer naming its
 > own player id arrives, and only where it has taken `StartGame`, so never on
 > its first connection.
->
-> A client whose connection drops before play begins leaves rather than
-> connecting again once it knows its own client id, and connects again before
-> then.
 
 <!-- holds from 4.1.0.171 up to 4.21.0.0 -->
 

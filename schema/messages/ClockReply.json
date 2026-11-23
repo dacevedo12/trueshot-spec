@@ -380,6 +380,46 @@
     },
     {
       "from": "3.12.0.251",
+      "until": "3.13.0.399",
+      "channel": "clock",
+      "command": 8,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "serverSaid",
+          "type": "f32",
+          "note": "What the server last said the clock stood at, in seconds."
+        },
+        {
+          "name": "clientSaid",
+          "type": "f32",
+          "note": "What the client's own clock stood at when that statement arrived, in seconds."
+        }
+      ]
+    },
+    {
+      "from": "3.13.0.399",
+      "until": "3.14.0.700",
+      "channel": "clock",
+      "command": 8,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "serverSaid",
+          "type": "f32",
+          "note": "What the server last said the clock stood at, in seconds."
+        },
+        {
+          "name": "clientSaid",
+          "type": "f32",
+          "note": "What the client's own clock reads, in seconds, just after it set itself from that statement: elapsed plus its smoothed estimate of the delay."
+        }
+      ]
+    },
+    {
+      "from": "3.14.0.700",
       "until": "4.17.0.233",
       "channel": "clock",
       "command": 8,

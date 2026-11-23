@@ -351,9 +351,9 @@ every client has sent `ClientReady`.
 > portrait, and one with no registration or no `SeatLoadProgress` yet says it is
 > not connected. A later `SeatChampion` does not change a card already set up.
 
-<!-- holds from 3.7.0.328 up to 4.20.0.315 -->
+<!-- holds from 3.7.0.328 up to 3.13.0.399 -->
 
-> **In 3.7–4.19**
+> **In 3.7–3.12**
 >
 > A player's card takes its place on the screen from that seat's place in the
 > `Roster`, and its name from that player's `SeatName`. The registration answers
@@ -373,12 +373,42 @@ every client has sent `ClientReady`.
 >
 > A client writes all ones where its player id goes in `LoadingProgress`.
 
-<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+<!-- holds from 3.10.0.237 up to 3.14.0.700 -->
 
-> **In 3.10**
+> **In 3.10–3.13**
 >
 > The loading screen picks the card a `SeatLoadProgress` updates by the client
 > id it carries, not by its player id.
+
+<!-- holds from 3.13.0.399 up to 3.14.0.700 -->
+
+> **In 3.13**
+>
+> A player's card takes its place on the screen from that seat's place in the
+> `Roster`, and its name from that player's `SeatName`. The registration answers
+> (`Registered`) pair each player with a client id, and the latest
+> `SeatLoadProgress` for that client gives the card its progress and its ping.
+> The first `SeatLoadProgress` after the player's `SeatChampion` sets the card
+> up: its portrait and the champion's name, from that `SeatChampion`'s champion
+> and skin. A card with no `SeatChampion` yet shows a black portrait, and one
+> with no registration or no `SeatLoadProgress` yet says it is not connected. A
+> later `SeatChampion` does not change a card already set up.
+
+<!-- holds from 3.14.0.700 up to 4.20.0.315 -->
+
+> **In 3.14–4.19**
+>
+> A player's card takes its place on the screen from that seat's place in the
+> `Roster`, and its name from that player's `SeatName`. The registration answers
+> (`Registered`) pair each player with a client id, and the latest
+> `SeatLoadProgress` for that client gives the card its progress and, on the
+> client's own card only, its ping. The first `SeatLoadProgress` after the
+> player's `SeatChampion` sets the card up: its portrait and the champion's
+> name, from that `SeatChampion`'s champion and skin, then everything else from
+> the `VersionSync` seat whose player id the `SeatLoadProgress` names. A card
+> with no `SeatChampion` yet shows a black portrait, and one with no
+> registration or no `SeatLoadProgress` yet says it is not connected. A later
+> `SeatChampion` does not change a card already set up.
 
 <!-- holds from 4.1.0.171 up to 4.21.0.0 -->
 
@@ -460,15 +490,25 @@ Once a character is settled, a client sends `CharacterSelected`, once.
 > Before `CharacterSelected`, a client drops only what [Units](units.md) says it
 > drops.
 
-<!-- holds from 3.10.0.237 up to 4.1.0.171 -->
+<!-- holds from 3.10.0.237 up to 3.13.0.399 -->
 
-> **In 3.10–3.15**
+> **In 3.10–3.12**
 >
 > Until it sends `CharacterSelected`, a client drops every message but
 > `VersionSync`, `QueryStatusAnswer`, `MatchIdentity`, `SeatLoadProgress` and
 > `GameEnded`, apart from what arrives on the registration and roster channels,
 > and keeps nothing it drops for later. A server MUST NOT send any of the spawn
 > run before `CharacterSelected` arrives.
+
+<!-- holds from 3.13.0.399 up to 3.14.0.700 -->
+
+> **In 3.13**
+>
+> Until it sends `CharacterSelected`, a client drops every message but
+> `VersionSync`, `QueryStatusAnswer`, `MatchIdentity`, `SeatLoadProgress`,
+> `GameEnded` and `ModuleData`, apart from what arrives on the registration and
+> roster channels, and keeps nothing it drops for later. A server MUST NOT send
+> any of the spawn run before `CharacterSelected` arrives.
 
 <!-- holds from 4.1.0.171 up to 4.21.0.0 -->
 
@@ -524,9 +564,9 @@ free to come between them; `MatchStarted` carries 0 (see [Time](time.md)).
 [Leaving and coming back](match.md#leaving-and-coming-back) says what a client
 whose connection drops before play begins does.
 
-<!-- holds from 0.8.13.26 up to 3.11.0.306 -->
+<!-- holds from 0.8.13.26 up to 3.14.0.700 -->
 
-> **In 0.8.13.26–3.10**
+> **In 0.8.13.26–3.13**
 >
 > A client sends `ClientReady` as soon as `SpawnEnd` arrives.
 

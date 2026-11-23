@@ -336,6 +336,36 @@
     },
     {
       "from": "3.11.0.306",
+      "until": "3.13.0.399",
+      "channel": "events",
+      "command": 224,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "side",
+          "type": "u8",
+          "note": "Which side the unit came into or out of the view of."
+        }
+      ]
+    },
+    {
+      "from": "3.13.0.399",
+      "until": "3.14.0.700",
+      "channel": "events",
+      "command": 224,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "side",
+          "type": "u8",
+          "note": "The bit for the side the unit came into the view of, as an index from 0 to 3, not a side number."
+        }
+      ]
+    },
+    {
+      "from": "3.14.0.700",
       "until": "4.1.0.171",
       "channel": "events",
       "command": 224,

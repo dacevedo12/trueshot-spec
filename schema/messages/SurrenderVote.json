@@ -1070,6 +1070,62 @@
     },
     {
       "from": "3.11.0.306",
+      "until": "3.13.0.399",
+      "channel": "requests",
+      "command": 164,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "inFavour",
+              "width": 1,
+              "note": "Set where the answer is yes. A client sends it clear."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Always clear."
+            }
+          ]
+        }
+      ],
+      "note": "It answers a call to surrender."
+    },
+    {
+      "from": "3.13.0.399",
+      "until": "3.14.0.700",
+      "channel": "requests",
+      "command": 164,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "inFavour",
+              "width": 1,
+              "note": "Set where the answer is yes, clear where it is no."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Always clear."
+            }
+          ]
+        }
+      ],
+      "note": "It answers a call to surrender, and a client also sends it, set, as its player calls a vote from a chat command or the menu. A client sends none while the game speed is 0."
+    },
+    {
+      "from": "3.14.0.700",
       "until": "4.1.0.171",
       "channel": "requests",
       "command": 164,

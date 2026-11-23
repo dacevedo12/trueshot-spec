@@ -114,6 +114,60 @@
     },
     {
       "from": "3.11.0.306",
+      "until": "3.13.0.399",
+      "channel": "events",
+      "command": 221,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What the data is for."
+        },
+        {
+          "name": "length",
+          "type": "u16",
+          "note": "How many bytes of data follow; at most 1024."
+        },
+        {
+          "name": "data",
+          "type": "bytes",
+          "size": "length",
+          "note": "Data for a module of the client's own, which the message only carries."
+        }
+      ],
+      "note": "A client takes it even before it is ready to play. With kind 4, or any kind other than 1 and 2, a client acts on what the data carries as on a message that had arrived. What kinds 1 and 2 do is not shown."
+    },
+    {
+      "from": "3.13.0.399",
+      "until": "3.14.0.700",
+      "channel": "events",
+      "command": 221,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What the data is for."
+        },
+        {
+          "name": "length",
+          "type": "u16",
+          "note": "How many bytes of data follow."
+        },
+        {
+          "name": "data",
+          "type": "bytes",
+          "size": "length",
+          "note": "Data for a module of the client's own, which the message only carries."
+        }
+      ],
+      "note": "A client takes it even before it is ready to play. Kind 1 starts the module, a client reading one byte of the data for it. Kind 2 hands the data to the module, and kind 4 hands it over and then acts on the data, or what the module gives back for it, as on a message that had arrived. Until a module has started a client acts only on kind 1, and it drops every kind but 1, 2 and 4."
+    },
+    {
+      "from": "3.14.0.700",
       "until": "4.1.0.171",
       "channel": "events",
       "command": 221,

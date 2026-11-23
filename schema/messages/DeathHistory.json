@@ -32322,7 +32322,7 @@
         {
           "name": "blobLength",
           "type": "u32",
-          "note": "How many bytes the entries below take together. A client reads exactly that many; zero, or a value above 2147483647, carries no entries."
+          "note": "How many bytes the entries below take together. A client takes exactly that many, and reads entryCount entries from them without checking that they fit; zero, or a value above 2147483647, carries no entries."
         },
         {
           "name": "entryCount",
@@ -33051,7 +33051,7 @@
           }
         }
       ],
-      "note": "A client lays it out. A client ignores the whole message unless it holds killer. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
+      "note": "A client lays it out. A client ignores the whole message where killer is zero. Where it does not hold killer, it still takes span, sourceType and every entry, crediting no killer. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
     },
     {
       "from": "3.14.0.700",

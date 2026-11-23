@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "DrawPathMode",
+  "version": "3.14.0.700",
+  "note": "Laid out as a 3.14.0.700 client takes it.",
+  "bytes": "fe010000400501010000400100000000",
+  "fields": {
+    "command": 254,
+    "netId": 1073741825,
+    "extendedCommand": 261,
+    "unit": 1073741825,
+    "mode": 1,
+    "interval": 0
+  }
+}

@@ -266,6 +266,58 @@
     },
     {
       "from": "3.01.0.1",
+      "until": "3.13.0.399",
+      "channel": "events",
+      "command": 111,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit whose slot this is."
+        },
+        {
+          "name": "spell",
+          "type": "u32",
+          "note": "Which spell, by the number its name gives, as spec/objects.md works it out."
+        },
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot."
+        }
+      ],
+      "note": "A server names in the header the unit this is about."
+    },
+    {
+      "from": "3.13.0.399",
+      "until": "3.14.0.700",
+      "channel": "events",
+      "command": 111,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit whose slot this is."
+        },
+        {
+          "name": "spell",
+          "type": "u32",
+          "note": "Which spell, by the number its name gives, as spec/objects.md works it out."
+        },
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot."
+        }
+      ],
+      "note": "A client ignores the header; it takes the unit from unit."
+    },
+    {
+      "from": "3.14.0.700",
       "until": "4.11.0.386",
       "channel": "events",
       "command": 111,

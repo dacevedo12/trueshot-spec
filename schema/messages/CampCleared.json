@@ -1010,6 +1010,92 @@
     },
     {
       "from": "3.12.0.251",
+      "until": "3.13.0.399",
+      "channel": "events",
+      "command": 195,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "killer",
+          "type": "u32",
+          "note": "The champion credited with emptying the camp, or zero for none. Where the camp has no buff side and no line of its own, a client has that champion speak a line for it, whatever speak says."
+        },
+        {
+          "name": "camp",
+          "type": "u32",
+          "note": "Which camp. A client ignores a camp it does not know, but for the timer."
+        },
+        {
+          "name": "does",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "speak",
+              "width": 1,
+              "note": "Set to have the client play the line for a camp revealed or a buff taken, to the client's own side."
+            },
+            {
+              "name": "firstSide",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
+            {
+              "name": "unused",
+              "width": 6,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ],
+      "note": "A client marks the camp empty, even one that had just filled."
+    },
+    {
+      "from": "3.13.0.399",
+      "until": "3.14.0.700",
+      "channel": "events",
+      "command": 195,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "killer",
+          "type": "u32",
+          "note": "The champion credited with emptying the camp, or zero for none. Where the camp has no buff side and no line of its own, a client has that champion speak a line for it, whatever speak says."
+        },
+        {
+          "name": "camp",
+          "type": "u32",
+          "note": "Which camp. A client ignores the whole message for a camp it does not know, and starts no timer for any camp."
+        },
+        {
+          "name": "does",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "speak",
+              "width": 1,
+              "note": "Set to have the client play the line for a camp revealed or a buff taken, to the client's own side."
+            },
+            {
+              "name": "firstSide",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
+            {
+              "name": "unused",
+              "width": 6,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ],
+      "note": "A client marks the camp empty, even one that had just filled."
+    },
+    {
+      "from": "3.14.0.700",
       "until": "4.1.0.171",
       "channel": "events",
       "command": 195,

@@ -231,9 +231,9 @@ into its death.
 > A server MUST NOT send `BuildingDied` for the nexus: a client removes the
 > nexus some 4 seconds later while still using it, and fails.
 
-<!-- holds from 1.0.0.58 up to 3.11.0.306 -->
+<!-- holds from 1.0.0.58 up to 3.14.0.700 -->
 
-> **In 1.0.0.58–3.10**
+> **In 1.0.0.58–3.13**
 >
 > A death that credits no killer still stops the unit's cast and attack.
 

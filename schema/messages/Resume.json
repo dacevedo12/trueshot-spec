@@ -247,6 +247,72 @@
     },
     {
       "from": "3.11.0.306",
+      "until": "3.13.0.399",
+      "channel": "requests",
+      "command": 10,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "A client writes 4294967295, the client id of no client."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "delayed",
+              "width": 1,
+              "note": "A client sends it clear."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "A client leaves these bits unwritten; they carry no meaning, and a server ignores them."
+            }
+          ]
+        }
+      ],
+      "note": "A client writes only delayed in how; the rest of the byte carries whatever it held there."
+    },
+    {
+      "from": "3.13.0.399",
+      "until": "3.14.0.700",
+      "channel": "requests",
+      "command": 10,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "A client writes 4294967295, the client id of no client."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "delayed",
+              "width": 1,
+              "note": "A client sends it clear."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "A client writes them as zero; they carry no meaning, and a server ignores them."
+            }
+          ]
+        }
+      ],
+      "note": "A client writes the whole of how as zero."
+    },
+    {
+      "from": "3.14.0.700",
       "until": "4.17.0.233",
       "channel": "requests",
       "command": 10,

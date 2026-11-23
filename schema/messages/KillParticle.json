@@ -165,6 +165,38 @@
     },
     {
       "from": "3.7.0.328",
+      "until": "3.13.0.399",
+      "channel": "events",
+      "command": 55,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "particle",
+          "type": "u32",
+          "note": "The particle to stop."
+        }
+      ],
+      "note": "The header names the particle."
+    },
+    {
+      "from": "3.13.0.399",
+      "until": "3.14.0.700",
+      "channel": "events",
+      "command": 55,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "particle",
+          "type": "u32",
+          "note": "The particle to stop."
+        }
+      ],
+      "note": "A client ignores the header."
+    },
+    {
+      "from": "3.14.0.700",
       "until": "4.11.0.386",
       "channel": "events",
       "command": 55,

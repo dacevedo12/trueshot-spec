@@ -263,9 +263,9 @@ sells.
 > within the champion's gold and, unless the item can be used in the shop,
 > where a slot is free or holds the same item below its stack limit.
 
-<!-- holds from 1.0.0.126 up to 4.1.0.171 -->
+<!-- holds from 1.0.0.126 up to 3.13.0.399 -->
 
-> **In 1.0.0.126–3.15**
+> **In 1.0.0.126–3.12**
 >
 > A client never asks for an item a player holds only one of and holds already.
 
@@ -336,6 +336,13 @@ sells.
 > champion is alive. For an item built from others, a client asks only where the
 > champion holds a free slot or a part of it, everything the item requires, and
 > gold for what remains.
+
+<!-- holds from 3.13.0.399 up to 3.14.0.700 -->
+
+> **In 3.13**
+>
+> A client asks for an item built from others that a player holds only one of
+> even where the player holds it already.
 
 <!-- holds from 4.1.0.171 up to 4.21.0.0 -->
 

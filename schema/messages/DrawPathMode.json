@@ -68,6 +68,58 @@
     },
     {
       "from": "3.12.0.251",
+      "until": "3.13.0.399",
+      "channel": "events",
+      "command": 261,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "It has no effect."
+        },
+        {
+          "name": "mode",
+          "type": "u8",
+          "note": "Zero to turn drawing off, any other value to turn it on."
+        },
+        {
+          "name": "interval",
+          "type": "f32",
+          "note": "Seconds between repeats of a held right click."
+        }
+      ],
+      "note": "A client sets how often a held right click repeats a move to the interval, at least 0.1 seconds, whether on or off."
+    },
+    {
+      "from": "3.13.0.399",
+      "until": "3.14.0.700",
+      "channel": "events",
+      "command": 261,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "It has no effect."
+        },
+        {
+          "name": "mode",
+          "type": "u8",
+          "note": "Zero to turn drawing off, any other value to turn it on."
+        },
+        {
+          "name": "interval",
+          "type": "f32",
+          "note": "Seconds between repeats of a held right click."
+        }
+      ],
+      "note": "Where the header names the client's own champion, a client sets how often a held right click repeats a move to the interval, at least 0.1 seconds, whether on or off; for any other unit it keeps only the mode."
+    },
+    {
+      "from": "3.14.0.700",
       "until": "4.17.0.233",
       "channel": "events",
       "command": 261,

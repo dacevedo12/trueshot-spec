@@ -138,9 +138,9 @@ MUST take the names from the files.
 > name exists, a client reads that instead, which holds its name within it; only
 > a `.sco` gives its name on its `Name=` line.
 
-<!-- holds from 3.7.0.328 up to 4.1.0.171 -->
+<!-- holds from 3.7.0.328 up to 3.13.0.399 -->
 
-> **In 3.7–3.15**
+> **In 3.7–3.12**
 >
 > Each object's file is `.sco` as text or `.SCB` as binary, and gives its name
 > on its `Name=` line.
@@ -153,6 +153,14 @@ MUST take the names from the files.
 > the first match winning: a minion spawner's `Spawn_Barracks` is tested before
 > `Barracks`, which makes an inhibitor, and `HQ_` makes a nexus and `Turret` a
 > turret.
+
+<!-- holds from 3.13.0.399 up to 3.14.0.700 -->
+
+> **In 3.13**
+>
+> Each object's file is `.sco` as text, giving its name on its `Name=` line, or
+> `.SCB` as binary, holding its name in its header. Where both exist, a client
+> reads the `.SCB`, and the `.sco` only where there is no `.SCB`.
 
 <!-- holds from 4.1.0.171 up to 4.20.0.315 -->
 

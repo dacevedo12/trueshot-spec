@@ -178,4 +178,10 @@ it is going, with `MissileReport`, which a server MAY ignore.
 >
 > Only a scripted missile acts on `MissileCourse`.
 
+<!-- holds from 3.13.0.399 up to 3.14.0.700 -->
+
+> **In 3.13**
+>
+> Only a scripted missile acts on `MissileCourse`.
+
 <!-- messages -->

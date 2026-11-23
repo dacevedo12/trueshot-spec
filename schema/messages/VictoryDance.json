@@ -206,6 +206,38 @@
     },
     {
       "from": "3.01.0.1",
+      "until": "3.13.0.399",
+      "channel": "events",
+      "command": 197,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "orderWon",
+          "type": "u8",
+          "note": "Nonzero where side 100 won, zero where side 200 won."
+        }
+      ],
+      "note": "It sets every unit on a side moving as winners or losers do: a winning champion dances, a losing one stands idle, and other units play a win or loss animation where they have one."
+    },
+    {
+      "from": "3.13.0.399",
+      "until": "3.14.0.700",
+      "channel": "events",
+      "command": 197,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "orderWon",
+          "type": "u8",
+          "note": "Nonzero where side 100 won, zero where side 200 won."
+        }
+      ],
+      "note": "It sets every living unit on a side moving as winners or losers do: a winning champion dances, a losing one stands idle, and other units play a win or loss animation where they have one. A client leaves alone a unit of side 300."
+    },
+    {
+      "from": "3.14.0.700",
       "until": "4.1.0.171",
       "channel": "events",
       "command": 197,

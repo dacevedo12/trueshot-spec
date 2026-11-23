@@ -84,9 +84,9 @@ abandons a connection whose verify connect states anything else.
 > session id is then the byte every header carries, and a server that reads
 > either field at ENet's width answers a client that never hears it.
 
-<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+<!-- holds from 3.10.0.237 up to 3.14.0.700 -->
 
-> **In 3.10**
+> **In 3.10–3.13**
 >
 > A client reads the verify connect's peer id from the first of the two bytes
 > ENet gives it, and carries that byte in every header it sends. A server MUST

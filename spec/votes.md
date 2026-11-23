@@ -70,12 +70,15 @@ ended, or why it could not be held.
 > There, outside the tutorial, it also sends `BalanceVoteRefused`, a vote
 > against, as its player types `/noequalize`.
 
-<!-- holds from 3.11.0.306 up to 4.17.0.233 -->
+<!-- holds from 3.13.0.399 up to 3.14.0.700 -->
 
-> **In 3.11–4.16**
+> **In 3.13**
 >
-> Where the version answer's features turn the commands on, a client also sends
-> `BalanceVoteRefused`, a vote against, as its player types `/noequalize`.
+> `BalanceVote` opens the panel where it says the vote opens. A client takes
+> `/equalize`, as the panel's vote for, only where the version answer's features
+> turn the commands on, and outside the tutorial. There, outside the tutorial,
+> it also sends `BalanceVoteRefused`, a vote against, as its player types
+> `/noequalize`.
 
 <!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 

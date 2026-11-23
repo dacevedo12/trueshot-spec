@@ -6,6 +6,27 @@
   "revisions": [
     {
       "from": "3.13.0.399",
+      "until": "3.14.0.700",
+      "channel": "events",
+      "command": 280,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u32",
+          "note": "Which of the champion's spells, 0 to 59; a client ignores any other value."
+        },
+        {
+          "name": "state",
+          "type": "u8",
+          "note": "Nonzero to toggle the spell on, zero off. It takes effect only where the spell's own data makes it one that toggles."
+        }
+      ],
+      "note": "Only a champion acts on it."
+    },
+    {
+      "from": "3.14.0.700",
       "until": "4.17.0.233",
       "channel": "events",
       "command": 280,

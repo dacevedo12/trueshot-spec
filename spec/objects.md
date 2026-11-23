@@ -228,9 +228,9 @@ gives the client its own client id.
 > A client takes a client id only from 0 to 252, and leaves on any other, so a
 > server MUST give each player a client id in that range.
 
-<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+<!-- holds from 3.10.0.237 up to 3.14.0.700 -->
 
-> **In 3.10**
+> **In 3.10–3.13**
 >
 > A server MUST send that `Registered` before any create message, because a
 > client given a create message before it has its own client id stops.
@@ -741,9 +741,9 @@ A server MUST name each object a map holds by the identifier its name gives.
 > A client fails on a `CreateTurret` naming no turret, and a server MUST NOT
 > send one.
 
-<!-- holds from 3.10.0.237 up to 4.1.0.171 -->
+<!-- holds from 3.10.0.237 up to 3.13.0.399 -->
 
-> **In 3.10–3.15**
+> **In 3.10–3.12**
 >
 > A `CreateTurret` naming no turret does nothing.
 
@@ -752,6 +752,13 @@ A server MUST name each object a map holds by the identifier its name gives.
 > **In 3.10**
 >
 > `CreateTurret` matches a turret's name exactly, case included.
+
+<!-- holds from 3.13.0.399 up to 3.14.0.700 -->
+
+> **In 3.13**
+>
+> `CreateTurret` matches a turret's name exactly, case included. One naming no
+> turret removes any object holding its net id, and nothing takes the id.
 
 <!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 
@@ -853,9 +860,9 @@ Each stage either marks or removes.
 >
 > The stage of `SoftReconnect` that marks is 0.
 
-<!-- holds from 1.0.0.143 up to 3.11.0.306 -->
+<!-- holds from 1.0.0.143 up to 3.14.0.700 -->
 
-> **In 1.0.0.143–3.10**
+> **In 1.0.0.143–3.13**
 >
 > A client reads only the two lowest bits of the stage: a stage with both clear
 > marks, and any other removes.
@@ -1090,9 +1097,9 @@ and `summonerflash` give one number. A particle's name includes its extension,
 so the number comes from `global_ss_flash.troy` and not from
 `global_ss_flash`. The nine bytes `123456789` give 0x0678AEE9.
 
-<!-- holds from 0.8.13.26 up to 3.11.0.306 -->
+<!-- holds from 0.8.13.26 up to 3.14.0.700 -->
 
-> **In 0.8.13.26–3.10**
+> **In 0.8.13.26–3.13**
 >
 > A byte from 128 to 255 enters the hash as its value less 256, worked in 32
 > bits, rather than as itself.

@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "JoinSide",
   "system": "joining",
-  "note": "What a client sends to ask for a seat on one of the two sides while the match is being put together.",
+  "note": "What a client sends while the match is being put together.",
   "revisions": [
     {
       "from": "0.9.22.14",
@@ -28,7 +28,8 @@
           "type": "u32",
           "note": "The side it asks for; a client asks for 100."
         }
-      ]
+      ],
+      "note": "It asks for a seat on one of the two sides."
     },
     {
       "from": "1.0.0.128",
@@ -54,10 +55,53 @@
           "type": "u32",
           "note": "The side it asks for."
         }
-      ]
+      ],
+      "note": "It asks for a seat on one of the two sides."
     },
     {
       "from": "1.0.0.147",
+      "until": "3.13.0.399",
+      "channel": "roster",
+      "command": 100,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the client asking."
+        },
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "The side it asks for."
+        }
+      ],
+      "note": "It asks for a seat on one of the two sides."
+    },
+    {
+      "from": "3.13.0.399",
+      "until": "3.14.0.700",
+      "channel": "roster",
+      "command": 100,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the client asking."
+        },
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "A client writes 100."
+        }
+      ],
+      "note": "A client sends it once, as it starts loading on a VersionSync whose agreement.buildMatches is set. It asks for no side of its choosing."
+    },
+    {
+      "from": "3.14.0.700",
       "until": "4.21.0.0",
       "channel": "roster",
       "command": 100,
@@ -74,7 +118,8 @@
           "type": "u32",
           "note": "The side it asks for."
         }
-      ]
+      ],
+      "note": "It asks for a seat on one of the two sides."
     }
   ]
 }
