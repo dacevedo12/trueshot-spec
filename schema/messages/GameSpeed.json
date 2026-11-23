@@ -38,6 +38,22 @@
     },
     {
       "from": "1.0.0.63",
+      "until": "1.0.0.70",
+      "channel": "events",
+      "command": 138,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "speed",
+          "type": "f32",
+          "note": "How fast, 1 being normal. A client takes the value as sent, with no limit."
+        }
+      ],
+      "note": "It takes effect at once, so sent while paused it ends the pause."
+    },
+    {
+      "from": "1.0.0.70",
       "until": "1.0.0.74",
       "channel": "events",
       "command": 138,
@@ -271,7 +287,7 @@
         {
           "name": "speed",
           "type": "f32",
-          "note": "How fast, 1 being normal. A client keeps it between 0 and 10, except while it plays back a replay."
+          "note": "How fast, 1 being normal. A client keeps it between 0 and 10 in a match it plays."
         }
       ],
       "note": "Sent while paused, it takes effect on resuming."

@@ -252,7 +252,7 @@
       "direction": "serverToClient",
       "reliability": "reliable",
       "fields": [],
-      "note": "Sent for any unit, the client's own champion among them, it changes nothing the client shows. A client playing back a replay ignores it."
+      "note": "A client playing back a replay ignores it."
     },
     {
       "from": "3.14.0.700",

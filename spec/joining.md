@@ -346,10 +346,9 @@ every client has sent `ClientReady`.
 > which a card shows where its seat's `level` is below 120. The first
 > `SeatLoadProgress` after the player's `SeatChampion` sets the card up: its
 > portrait and the champion's name, from that `SeatChampion`'s champion and
-> skin, then everything else from the `VersionSync` seat whose player id the
-> `SeatLoadProgress` names. A card with no `SeatChampion` yet shows a black
-> portrait, and one with no registration or no `SeatLoadProgress` yet says it is
-> not connected. A later `SeatChampion` does not change a card already set up.
+> skin. A card with no `SeatChampion` yet shows a black portrait, and one with
+> no registration or no `SeatLoadProgress` yet says it is not connected. A later
+> `SeatChampion` does not change a card already set up.
 
 <!-- holds from 3.7.0.328 up to 3.13.0.399 -->
 

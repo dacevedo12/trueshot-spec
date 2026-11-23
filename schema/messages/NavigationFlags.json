@@ -912,7 +912,7 @@
       "command": 64,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client takes it without failing: it clears the circles it marked before, marks these, and answers with its syncId.",
+      "note": "A client does not fail on it. Where it takes it, it clears the circles it marked before, marks these, and answers with its syncId.",
       "fields": [
         {
           "name": "count",

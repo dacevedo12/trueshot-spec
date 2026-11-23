@@ -284,8 +284,9 @@ alone closes the shop and turns off its key.
 > **In 3.6**
 >
 > A client keeps every lock a message sets or clears, and later input obeys
-> them, but for the shop lock only in the tutorial. It acts on a lock at once
-> only where the message's mask is exactly one of 1, 4, 8, 16, 32 or 128.
+> them but the shop lock: outside the tutorial, opening the shop and buying
+> ignore it. It acts on a lock at once only where the message's mask is exactly
+> one of 1, 4, 8, 16, 32 or 128.
 
 <!-- holds from 3.7.0.328 up to 3.11.0.306 -->
 

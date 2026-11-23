@@ -13,7 +13,8 @@ match reaches it.
 
 > **In 1.0.0.110**
 >
-> A client cannot watch a match: no start-up word or message makes it watch.
+> A client cannot watch a live match: no start-up word or message makes it
+> watch one.
 
 <!-- holds from 1.0.0.126 up to 1.0.0.150 -->
 

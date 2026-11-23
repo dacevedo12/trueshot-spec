@@ -192,7 +192,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "A client sends it as its player opens the shop, in any match, but none while the match is held."
+      "note": "A client sends it as its player opens the shop, in any match, but none during a hold Paused began."
     },
     {
       "from": "1.0.0.133",
@@ -216,13 +216,33 @@
     },
     {
       "from": "1.0.0.144",
-      "until": "1.0.0.150",
+      "until": "1.0.0.147",
+      "channel": "requests",
+      "command": 93,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client sends it each time its shop opens, in any mode and on any map, but none while the game is paused."
+    },
+    {
+      "from": "1.0.0.147",
+      "until": "1.0.0.148",
       "channel": "requests",
       "command": 93,
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
       "note": "A client sends it each time its shop opens, in any mode and on any map; the shop does not open while the game is paused."
+    },
+    {
+      "from": "1.0.0.148",
+      "until": "1.0.0.150",
+      "channel": "requests",
+      "command": 93,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client sends it each time its shop opens, in any mode and on any map, but none while the game is paused."
     },
     {
       "from": "1.0.0.150",

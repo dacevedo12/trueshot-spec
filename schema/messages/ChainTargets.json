@@ -834,7 +834,7 @@
           "note": "Always 32 slots. Where count is above zero, a slot past it keeps the target it held before. A target the client does not hold leaves its slot empty."
         }
       ],
-      "note": "A client takes the list only while the match is in play and it holds caster: a missile it already holds under the header's name takes it, and so does the caster's next chain missile."
+      "note": "A client takes the list only while the match is in play and it holds caster, and keeps it for the caster's next chain missile."
     },
     {
       "from": "1.0.0.133",

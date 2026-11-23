@@ -402,7 +402,7 @@
           "note": "Zero once the client has taken StartGame, 1 before it."
         }
       ],
-      "note": "A client sends it as each connection comes up, right after its registration request and without waiting for the answer. A client dropped while playing connects again only where its player agrees; one dropped while loading leaves instead."
+      "note": "A client sends it as a connection comes up, right after its registration request and without waiting for the answer. A client dropped while playing connects again only where its player agrees; one dropped while loading leaves instead."
     },
     {
       "from": "1.0.0.133",
@@ -584,7 +584,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "A client sends it only on a connection made while the match is in play, so none on its first connection. A client dropped while playing reconnects by itself unless its settings turn this off; one dropped while loading leaves instead. It carries nothing of its own."
+      "note": "A client sends it only on a connection made while the match is in play, so none on its first connection. A client dropped while playing reconnects by itself only where a setting of its own allows it; one dropped while loading leaves instead. It carries nothing of its own."
     },
     {
       "from": "3.7.0.328",
