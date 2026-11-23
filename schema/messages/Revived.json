@@ -368,6 +368,67 @@
     },
     {
       "from": "1.0.0.128",
+      "until": "1.0.0.132",
+      "channel": "events",
+      "command": 49,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where it returns, along one ground axis, in world units."
+        },
+        {
+          "name": "atY",
+          "type": "f32",
+          "note": "Where it returns, in height, in world units. A client places it there as given."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where it returns, along the other ground axis, in world units."
+        },
+        {
+          "name": "resource",
+          "type": "f32",
+          "note": "What its spendable resource stands at on return."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.132",
+      "until": "1.0.0.133",
+      "channel": "events",
+      "command": 49,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where it returns, along one ground axis, in world units."
+        },
+        {
+          "name": "atY",
+          "type": "f32",
+          "note": "Where it returns, in height, in world units."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where it returns, along the other ground axis, in world units."
+        },
+        {
+          "name": "resource",
+          "type": "f32",
+          "note": "What its spendable resource stands at on return."
+        }
+      ],
+      "note": "A client keeps the point within the map's edges, and places the champion there where it lies on open ground, otherwise on the nearest open ground."
+    },
+    {
+      "from": "1.0.0.133",
       "until": "1.0.0.140",
       "channel": "events",
       "command": 49,
@@ -459,6 +520,67 @@
     },
     {
       "from": "1.0.0.144",
+      "until": "1.0.0.150",
+      "channel": "events",
+      "command": 46,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where it returns, along one ground axis, in world units."
+        },
+        {
+          "name": "atY",
+          "type": "f32",
+          "note": "Where it returns, in height, in world units. A client places it there as given."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where it returns, along the other ground axis, in world units."
+        },
+        {
+          "name": "resource",
+          "type": "f32",
+          "note": "What its spendable resource stands at on return."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.150",
+      "until": "1.0.0.151",
+      "channel": "events",
+      "command": 46,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where it returns, along one ground axis, in world units."
+        },
+        {
+          "name": "atY",
+          "type": "f32",
+          "note": "Where it returns, in height, in world units."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where it returns, along the other ground axis, in world units."
+        },
+        {
+          "name": "resource",
+          "type": "f32",
+          "note": "What its spendable resource stands at on return."
+        }
+      ],
+      "note": "A client keeps the point within the map's edges, and places the champion there where it lies on open ground, otherwise on the nearest open ground."
+    },
+    {
+      "from": "1.0.0.151",
       "until": "3.9.0.491",
       "channel": "events",
       "command": 46,

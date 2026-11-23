@@ -106,7 +106,7 @@
             {
               "name": "pausing",
               "width": 1,
-              "note": "Set to have a client post a notice in chat, except while watching a match."
+              "note": "Set to have a client post a notice in chat, except while watching a match; it allows or blocks no hold."
             },
             {
               "name": "unused",
@@ -338,14 +338,19 @@
               "note": "Set to have a client post a notice in chat, except while playing a replay; it allows or blocks no hold."
             },
             {
+              "name": "fixedStep",
+              "width": 1,
+              "note": "Set to have a client post a notice in chat and from then on run its match clock in fixed steps of 0.0333433 seconds a frame, even past spawning and while playing back; a second StartGame with it set steps the clock on again."
+            },
+            {
               "name": "unused",
-              "width": 7,
-              "note": "Unused; a server writes zero."
+              "width": 6,
+              "note": "A client reads none of them; a server writes zero."
             }
           ]
         }
       ],
-      "note": "A client past spawning ignores it."
+      "note": "A client past spawning ignores it but for rules.fixedStep."
     },
     {
       "from": "1.0.0.151",

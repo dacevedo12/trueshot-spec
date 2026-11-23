@@ -251,7 +251,7 @@
       "command": 149,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window, as a reconnection fails, or on Shutdown.",
+      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting, or on Shutdown.",
       "fields": []
     },
     {

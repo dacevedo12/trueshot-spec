@@ -316,9 +316,36 @@ A server ends the match with `GameEnded`, saying which side won, and sends
 `HudDisabled` (see [The interface](interface.md#the-minimap-and-text-on-screen)). A client shows the win or loss for its
 player's side and sends `ClientFinished`.
 
-<!-- holds from 0.8.13.26 up to 1.0.0.141 -->
+<!-- holds from 0.8.13.26 up to 1.0.0.124 -->
 
-> **In 0.8.13.26–1.0.0.140**
+> **In 0.8.13.26–1.0.0.123**
+>
+> A client sends `ClientFinished` every time `GameEnded` arrives in play, while
+> playing a replay too.
+
+<!-- holds from 1.0.0.124 up to 1.0.0.125 -->
+
+> **In 1.0.0.124**
+>
+> A client sends `ClientFinished` every time `GameEnded` arrives in play, and
+> none while playing a replay.
+
+<!-- holds from 1.0.0.125 up to 1.0.0.132 -->
+
+> **In 1.0.0.125–1.0.0.131**
+>
+> A client sends `ClientFinished` every time `GameEnded` arrives in play, while
+> playing a replay too.
+
+<!-- holds from 1.0.0.132 up to 1.0.0.133 -->
+
+> **In 1.0.0.132**
+>
+> A client sends `ClientFinished` every time `GameEnded` arrives in play.
+
+<!-- holds from 1.0.0.133 up to 1.0.0.141 -->
+
+> **In 1.0.0.133–1.0.0.140**
 >
 > A client sends `ClientFinished` every time `GameEnded` arrives in play, while
 > playing a replay too.
@@ -362,10 +389,11 @@ player's side and sends `ClientFinished`.
 
 > **In 1.0.0.150**
 >
-> A client that receives `GameEnded` while still loading sends neither
-> `ClientFinished` nor `Exit`. Where it has a champion of its own it leaves at
-> once; otherwise it first shows an error, and leaves once its player dismisses
-> it.
+> A client sends `ClientFinished` every time `GameEnded` arrives in play, and
+> none while watching a match or playing a replay. A client that receives
+> `GameEnded` while still loading sends neither `ClientFinished` nor `Exit`.
+> Where it has a champion of its own it leaves at once; otherwise it first shows
+> an error, and leaves once its player dismisses it.
 
 <!-- holds from 3.03.0.198 up to 3.7.0.328 -->
 
@@ -457,10 +485,16 @@ player's side and sends `ClientFinished`.
 
 ## Leaving and coming back
 
-A client leaving as one abandoning the match sends `Exit`: as its player quits
-or closes the window, as a reconnection fails, or on a server's `Shutdown`,
-which has it leave at once. A client also leaves at once on `BotKick` with the
-action that means leave.
+A client leaving as one abandoning the match sends `Exit`: as its player quits,
+or on a server's `Shutdown`, which has it leave at once. A client also leaves at
+once on `BotKick` with the action that means leave.
+
+<!-- holds from 0.8.13.26 up to 1.0.0.132 -->
+
+> **In 0.8.13.26–1.0.0.131**
+>
+> A client also leaves as one abandoning the match as its player closes the
+> window, and as a reconnection fails.
 
 <!-- holds from 0.9.25.24 up to 3.11.0.306 -->
 
@@ -469,6 +503,13 @@ action that means leave.
 > A client also leaves as one abandoning as its player declines to reconnect or
 > cancels a reconnection under way, and as its player dismisses the notice that
 > it was dropped for being away.
+
+<!-- holds from 1.0.0.133 up to 4.21.0.0 -->
+
+> **In 1.0.0.133–4.20**
+>
+> A client also leaves as one abandoning the match as its player closes the
+> window, and as a reconnection fails.
 
 <!-- holds from 1.0.0.140 up to 4.18.0.271 -->
 

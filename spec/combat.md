@@ -220,9 +220,25 @@ A unit's death is `UnitDied`, a champion's `ChampionDied`, a building's
 `BuildingDied`, and an inhibitor's `InhibitorDied`. `ForceDeath` puts a unit
 into its death.
 
-<!-- holds from 0.8.13.26 up to 4.20.0.315 -->
+<!-- holds from 0.8.13.26 up to 1.0.0.150 -->
 
-> **In 0.8.13.26–4.19**
+> **In 0.8.13.26–1.0.0.149**
+>
+> A client ignores `UnitDied` or `ChampionDied` naming a unit already dead, and
+> puts a unit down only where a killer is named.
+
+<!-- holds from 1.0.0.150 up to 1.0.0.151 -->
+
+> **In 1.0.0.150**
+>
+> A client ignores `ChampionDied` naming a champion already dead. For a
+> `UnitDied` naming a unit already dead, it still announces the kill where it
+> holds the killer, and does nothing more. It puts a unit down only where a
+> killer is named.
+
+<!-- holds from 1.0.0.151 up to 4.20.0.315 -->
+
+> **In 1.0.0.151–4.19**
 >
 > A client ignores `UnitDied` or `ChampionDied` naming a unit already dead, and
 > puts a unit down only where a killer is named.

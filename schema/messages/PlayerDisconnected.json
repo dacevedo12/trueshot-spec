@@ -338,7 +338,7 @@
           "note": "The player's client id, which names the player in the notice."
         }
       ],
-      "note": "A client shows a chat notice naming the player, whoever champion names, its own player included: in an ally's or an enemy's colour as against its own side, or, with no champion of its own, by whether that player is on side 100."
+      "note": "Wherever its interface exists, a client shows a chat notice naming the player, whoever champion names, its own player included: in an ally's or an enemy's colour as against its own side, or, with no champion of its own, by whether that player is on side 100. Before its interface exists it shows nothing."
     },
     {
       "from": "1.0.0.133",

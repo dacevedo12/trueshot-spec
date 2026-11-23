@@ -536,6 +536,165 @@
     },
     {
       "from": "1.0.0.132",
+      "until": "1.0.0.133",
+      "channel": "events",
+      "command": 72,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "note": "Once the map is loaded, a client clears every circle it holds, marks each of these whose radius is below 1000, and answers with a message to the server under command 32 whose body is this sync id alone. Before then it neither marks nor answers.",
+      "fields": [
+        {
+          "name": "count",
+          "type": "u16",
+          "note": "The count of circles that follow."
+        },
+        {
+          "name": "syncId",
+          "type": "i32",
+          "note": "A number naming this marking."
+        },
+        {
+          "name": "circles",
+          "type": "array",
+          "count": "count",
+          "items": {
+            "name": "circlesEntry",
+            "type": "record",
+            "fields": [
+              {
+                "name": "x",
+                "type": "f32",
+                "note": "The circle's centre, along one ground axis, in world units."
+              },
+              {
+                "name": "z",
+                "type": "f32",
+                "note": "The circle's centre, along the other ground axis, in world units."
+              },
+              {
+                "name": "radius",
+                "type": "f32",
+                "note": "Its radius, in world units. A circle of radius 1000 or more marks nothing."
+              },
+              {
+                "name": "flags",
+                "type": "u32",
+                "note": "The flags to add to each cell. Only the low 16 bits take effect."
+              }
+            ]
+          },
+          "note": "The circles."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.133",
+      "until": "1.0.0.140",
+      "channel": "events",
+      "command": 72,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "note": "A client fails on the first of these in a match: it stops, marking no circle and sending no answer.",
+      "fields": [
+        {
+          "name": "count",
+          "type": "u16",
+          "note": "The count of circles that follow."
+        },
+        {
+          "name": "syncId",
+          "type": "i32",
+          "note": "A number naming this marking."
+        },
+        {
+          "name": "circles",
+          "type": "array",
+          "count": "count",
+          "items": {
+            "name": "circlesEntry",
+            "type": "record",
+            "fields": [
+              {
+                "name": "x",
+                "type": "f32",
+                "note": "The circle's centre, along one ground axis, in world units."
+              },
+              {
+                "name": "z",
+                "type": "f32",
+                "note": "The circle's centre, along the other ground axis, in world units."
+              },
+              {
+                "name": "radius",
+                "type": "f32",
+                "note": "Its radius, in world units. A circle of radius 1000 or more marks nothing."
+              },
+              {
+                "name": "flags",
+                "type": "u32",
+                "note": "The flags to add to each cell. Only the low 16 bits take effect."
+              }
+            ]
+          },
+          "note": "The circles."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.140",
+      "until": "1.0.0.141",
+      "channel": "events",
+      "command": 72,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "note": "Once the map's ground grid is loaded, a client clears every circle it holds, marks each of these whose radius is below 1000, and answers with a message to the server under command 32 whose body is this sync id alone. Before then it neither marks nor answers.",
+      "fields": [
+        {
+          "name": "count",
+          "type": "u16",
+          "note": "The count of circles that follow."
+        },
+        {
+          "name": "syncId",
+          "type": "i32",
+          "note": "A number naming this marking."
+        },
+        {
+          "name": "circles",
+          "type": "array",
+          "count": "count",
+          "items": {
+            "name": "circlesEntry",
+            "type": "record",
+            "fields": [
+              {
+                "name": "x",
+                "type": "f32",
+                "note": "The circle's centre, along one ground axis, in world units."
+              },
+              {
+                "name": "z",
+                "type": "f32",
+                "note": "The circle's centre, along the other ground axis, in world units."
+              },
+              {
+                "name": "radius",
+                "type": "f32",
+                "note": "Its radius, in world units. A circle of radius 1000 or more marks nothing."
+              },
+              {
+                "name": "flags",
+                "type": "u32",
+                "note": "The flags to add to each cell. Only the low 16 bits take effect."
+              }
+            ]
+          },
+          "note": "The circles."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.141",
       "until": "1.0.0.144",
       "channel": "events",
       "command": 72,
@@ -642,6 +801,59 @@
     },
     {
       "from": "1.0.0.150",
+      "until": "1.0.0.151",
+      "channel": "events",
+      "command": 64,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "note": "Once the map is loaded, a client clears every circle it holds, marks these, and answers with a message to the server under command 29 whose body is this sync id alone. Before then it neither marks nor answers.",
+      "fields": [
+        {
+          "name": "count",
+          "type": "u16",
+          "note": "The count of circles that follow."
+        },
+        {
+          "name": "syncId",
+          "type": "i32",
+          "note": "A number naming this marking."
+        },
+        {
+          "name": "circles",
+          "type": "array",
+          "count": "count",
+          "items": {
+            "name": "circlesEntry",
+            "type": "record",
+            "fields": [
+              {
+                "name": "x",
+                "type": "f32",
+                "note": "The circle's centre, along one ground axis, in world units."
+              },
+              {
+                "name": "z",
+                "type": "f32",
+                "note": "The circle's centre, along the other ground axis, in world units."
+              },
+              {
+                "name": "radius",
+                "type": "f32",
+                "note": "Its radius, in world units. A circle of radius 1000 or more marks nothing."
+              },
+              {
+                "name": "flags",
+                "type": "u32",
+                "note": "The flags to add to each cell. Only the low 16 bits take effect."
+              }
+            ]
+          },
+          "note": "The circles."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.151",
       "until": "3.03.0.198",
       "channel": "events",
       "command": 64,

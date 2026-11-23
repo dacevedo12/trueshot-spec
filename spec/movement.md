@@ -474,8 +474,10 @@ server sends.
 
 > **In 1.0.0.140**
 >
-> A server MUST NOT send `NavigationFlags`: a client fails on the first one a
-> match brings.
+> A server MAY send `NavigationFlags`. Once the map's ground grid is loaded, a
+> client replaces the circles it holds with those it carries, skipping any whose
+> radius is 1000 or more, and answers with its `syncId`; before then it takes
+> nothing and does not answer.
 
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 

@@ -192,7 +192,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "A client sends it as its player opens the shop, in any match, but none during a hold Paused began."
+      "note": "A client sends it as its player opens the shop, in any match, but none while a tournament's hold, begun by a Paused with how.tournament set, has the match stopped. GameSpeed 0 alone, or any other hold, stops nothing."
     },
     {
       "from": "1.0.0.133",

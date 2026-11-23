@@ -246,7 +246,7 @@
           ]
         }
       ],
-      "note": "Arriving while the match still loads, it has the client show a message and leave at once, the match recorded as abandoned, sending nothing. Otherwise the client ends the match on its screen and sends ClientFinished, each time one arrives."
+      "note": "Arriving while the match still loads, it has the client show a message and leave at once, the match recorded as abandoned, sending nothing. Otherwise the client ends the match on its screen and sends ClientFinished, each time one arrives, but none while playing a replay."
     },
     {
       "from": "1.0.0.125",
@@ -610,7 +610,7 @@
           ]
         }
       ],
-      "note": "Arriving while the match still loads, it has the client leave sending nothing: where the client has its own champion it counts as a win or loss for the player's side, and otherwise the client shows an error and counts neither. Otherwise the client ends the match on its screen and sends ClientFinished, except while playing a replay."
+      "note": "Arriving while the match still loads, it has the client leave sending nothing: where the client has its own champion it counts as a win or loss for the player's side, and otherwise the client shows an error and counts neither. Otherwise the client ends the match on its screen and sends ClientFinished, each time one arrives, but none while watching a match or playing a replay."
     },
     {
       "from": "1.0.0.151",

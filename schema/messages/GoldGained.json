@@ -561,7 +561,7 @@
         {
           "name": "unit",
           "type": "u32",
-          "note": "The unit granted it."
+          "note": "The unit it is shown for."
         },
         {
           "name": "source",
@@ -574,7 +574,7 @@
           "note": "How much."
         }
       ],
-      "note": "Where unit is the client's own champion, amount is above 0.5 and the client holds source, a client shows the gold over the source and grants none."
+      "note": "A client grants no gold. Where unit is the client's own champion, amount is above 0.5 and the client holds source, it shows the gold over the source alone. Over any other unit it holds, it floats a gain above zero and shows a loss below zero, and shows nothing for zero; for a unit it does not hold it does nothing."
     },
     {
       "from": "1.0.0.151",

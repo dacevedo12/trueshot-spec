@@ -3402,7 +3402,7 @@
             {
               "name": "hasShields",
               "type": "u8",
-              "note": "Whether the three figures below follow. A zero leaves them out.",
+              "note": "Whether the three figures below follow. A zero leaves them out, and a client takes all three as zero.",
               "values": {
                 "0": {
                   "name": "no"
@@ -3415,7 +3415,7 @@
             {
               "name": "magicShield",
               "type": "f32",
-              "note": "How much of the unit's shielding turns aside one sort of damage.",
+              "note": "How much of the unit's shielding turns aside magic damage.",
               "present": {
                 "when": "hasShields"
               }
@@ -3423,7 +3423,7 @@
             {
               "name": "physicalShield",
               "type": "f32",
-              "note": "How much turns aside the other.",
+              "note": "How much turns aside physical damage.",
               "present": {
                 "when": "hasShields"
               }

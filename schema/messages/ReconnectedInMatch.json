@@ -399,10 +399,10 @@
         {
           "name": "loading",
           "type": "u8",
-          "note": "Zero once the client has taken StartGame, 1 before it."
+          "note": "Zero while the match is in play, from StartGame until GameEnded, and 1 otherwise, so 1 on a client's first connection."
         }
       ],
-      "note": "A client sends it as a connection comes up, right after its registration request and without waiting for the answer. A client dropped while playing connects again only where its player agrees; one dropped while loading leaves instead."
+      "note": "A client sends it on every connection, the first included, as the connection comes up, right after its registration request and without waiting for the answer. A client dropped while playing connects again only where its player agrees; one dropped while loading leaves instead."
     },
     {
       "from": "1.0.0.133",

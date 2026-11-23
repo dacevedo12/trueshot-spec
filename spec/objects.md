@@ -181,6 +181,12 @@ gives the client its own client id.
 > A client records the pair every `Registered` carries. A `Registered` whose
 > leading byte is 1 says that player has left: a client in play shows so in chat
 > and drops the pair.
+>
+> A server MUST send a `VersionSync` whose `agreement` is 1 before any
+> `SpawnUnit`, `SpawnBot` or `MapProp`, because a client given one of them
+> before that `VersionSync` stops, unless it is playing a replay. A
+> `CreateChampion` or `CreateNeutral` arriving before it is dropped, and a
+> `CreateTurret` creates nothing.
 
 <!-- holds from 1.0.0.132 up to 1.0.0.133 -->
 
@@ -764,8 +770,9 @@ A server MUST name each object a map holds by the identifier its name gives.
 
 > **In 1.0.0.140**
 >
-> A client fails on a `CreateTurret` naming no turret, and a server MUST NOT
-> send one.
+> Given a `CreateTurret` naming none of the map's turrets, a client rebuilds the
+> turret of the last of the map's turret buildings under the net id. On a map
+> with no turrets it fails, and a server MUST NOT send one there.
 
 <!-- holds from 3.10.0.237 up to 3.13.0.399 -->
 
@@ -905,8 +912,8 @@ Each stage either marks or removes.
 > **In 1.0.0.150**
 >
 > A create message for a marked net id replaces the marked object rather than
-> keeping the id on it, except `ParticlesCreated`: the object it names stays
-> until the removing stage.
+> keeping the id on it, `ParticlesCreated` included: a marked object holding a
+> new particle's net id is removed before the particle is created.
 
 <!-- holds from 1.0.0.151 up to 4.21.0.0 -->
 

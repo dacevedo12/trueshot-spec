@@ -146,6 +146,16 @@
     },
     {
       "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 58,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client shows no FloatingText in slot 0, no UnitText and no healing numbers over the unit until EnterLocalSight names it again, nor over a unit no EnterLocalSight has named, and ignores the message while playing a replay."
+    },
+    {
+      "from": "1.0.0.127",
       "until": "1.0.0.128",
       "channel": "events",
       "command": 58,
@@ -212,7 +222,7 @@
       "direction": "serverToClient",
       "reliability": "reliable",
       "fields": [],
-      "note": "A client ignores it while playing a replay."
+      "note": "A client shows no FloatingText in slot 0 over the unit, its own champion or another, until EnterLocalSight names it again, nor over a unit no EnterLocalSight has named, and ignores the message while playing a replay."
     },
     {
       "from": "1.0.0.151",

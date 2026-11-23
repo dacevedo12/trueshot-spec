@@ -117,6 +117,22 @@
     },
     {
       "from": "1.0.0.150",
+      "until": "1.0.0.151",
+      "channel": "requests",
+      "command": 57,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit to use."
+        }
+      ],
+      "note": "A client also sends it as a unit with a mind (a champion, a minion, a turret, a map prop or a follower) changes side (TeamChanged): one for each unit it holds whose target that unit is, stopping what that unit is doing first, with the header naming it and target the unit that changed side, whether usable or not. A building changing side brings none."
+    },
+    {
+      "from": "1.0.0.151",
       "until": "3.6.0.388",
       "channel": "requests",
       "command": 57,

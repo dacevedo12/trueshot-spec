@@ -120,11 +120,21 @@ and leave a side's view with `ParticleEnterTeamSight` and
 > `LeaveLocalSight` takes a unit out of what one client alone can see, and
 > leaves it held.
 
-<!-- holds from 1.0.0.25 up to 1.0.0.127 -->
+<!-- holds from 1.0.0.25 up to 1.0.0.126 -->
 
-> **In 1.0.0.25–1.0.0.126**
+> **In 1.0.0.25–1.0.0.125**
 >
 > `LeaveLocalSight` changes nothing a client shows, whichever unit it names.
+
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
+
+> **In 1.0.0.126**
+>
+> A client shows no `FloatingText` in slot 0, no `UnitText` and no healing
+> numbers over a unit not in its local sight, its own champion included: one no
+> `EnterLocalSight` has brought in, or one `LeaveLocalSight` has taken out,
+> until an `EnterLocalSight` brings it back. A client playing a replay ignores
+> `LeaveLocalSight`.
 
 <!-- holds from 3.10.0.237 up to 4.21.0.0 -->
 

@@ -431,7 +431,7 @@
         {
           "name": "syncId",
           "type": "u8",
-          "note": "The name the report carried. A client takes a value ahead of the last it took, counting with wrap from 255 to 0, and that answers the reports before it too; until the latest report is answered, it sends it again."
+          "note": "The name the report carried. A client takes a value above the last it took by less than 128, a value below the last it took counting as 255 more than it is, and that answers the reports before it too; until the latest report is answered, it sends it again."
         }
       ],
       "note": "A client ignores the header."
