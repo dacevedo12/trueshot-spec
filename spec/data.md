@@ -42,7 +42,7 @@ MUST take the names from the files.
 
 > **In 0.8.13.26–0.9.22.13**
 >
-> `room.dsc` lists each object as a `.sco`. Where a binary `.SCB` of the same
+> Where `room.dsc` lists an object as a `.sco` and a binary `.SCB` of the same
 > name exists, a client reads that instead, which holds its name within it; only
 > a `.sco` gives its name on its `Name=` line.
 >
@@ -86,8 +86,8 @@ MUST take the names from the files.
 
 > **In 1.0.0.126**
 >
-> `room.dsc` lists each object as a `.sco`, but its file is a binary `.SCB`,
-> holding its name within it rather than on a `Name=` line.
+> A client asks for the binary `.SCB` form of each `.sco` that `room.dsc` lists,
+> and an `.SCB` holds its name within it rather than on a `Name=` line.
 
 <!-- holds from 1.0.0.132 up to 1.0.0.133 -->
 
@@ -112,7 +112,7 @@ MUST take the names from the files.
 
 > **In 1.0.0.140**
 >
-> `room.dsc` lists each object as a `.sco`. Where a binary `.SCB` of the same
+> Where `room.dsc` lists an object as a `.sco` and a binary `.SCB` of the same
 > name exists, a client reads that instead, which holds its name within it; only
 > a `.sco` gives its name on its `Name=` line.
 

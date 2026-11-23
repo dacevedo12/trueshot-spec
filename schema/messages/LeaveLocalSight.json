@@ -32,7 +32,7 @@
       "direction": "serverToClient",
       "reliability": "reliable",
       "fields": [],
-      "note": "For any unit, a client hides, removes and moves nothing for it, and for its own champion it changes nothing the client shows. Whether a highlight on another unit changes is not recorded."
+      "note": "For any unit, a client hides, removes and moves nothing for it."
     },
     {
       "from": "0.9.25.36",
@@ -232,7 +232,7 @@
       "direction": "serverToClient",
       "reliability": "reliable",
       "fields": [],
-      "note": "A client takes the unit out of its local sight, its own champion included (spec/vision.md says what that changes). A client playing back a replay ignores it."
+      "note": "A client takes the unit out of its local sight, its own champion included. A client playing back a replay ignores it."
     },
     {
       "from": "3.11.0.306",

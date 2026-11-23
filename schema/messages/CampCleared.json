@@ -314,7 +314,7 @@
         {
           "name": "unit",
           "type": "u32",
-          "note": "The client id of the player credited with emptying the camp. A client uses it only to choose a side: side 100 where that player is on side 100, side 200 otherwise."
+          "note": "Who emptied the camp. A client uses it only to choose a side, 100 or 200."
         },
         {
           "name": "camp",

@@ -81,10 +81,11 @@ gives the client its own client id.
 
 > **In 0.8.13.26–0.9.22.13**
 >
-> A client records the pair every `Registered` carries, and takes as its own
-> only the one carrying its own player id. It takes a client id only from 0 to
-> 252, and leaves on any other but 4294967295, for which it waits on as if given
-> none; a server MUST give each player a client id in that range.
+> A client records the pair a `Registered` carries for a client id it holds no
+> pair for yet, and takes as its own only the one carrying its own player id. It
+> takes a client id only from 0 to 252, and leaves on any other but 4294967295,
+> for which it waits on as if given none; a server MUST give each player a client
+> id in that range.
 >
 > A server MUST send that `Registered`, and then a `VersionSync` whose
 > `agreement` is 1, before any create message, because a client given a create
@@ -107,9 +108,9 @@ gives the client its own client id.
 > `CreateTurret`, because a client given one before it has its own client id
 > stops.
 
-<!-- holds from 1.0.0.25 up to 1.0.0.127 -->
+<!-- holds from 1.0.0.25 up to 1.0.0.126 -->
 
-> **In 1.0.0.25–1.0.0.126**
+> **In 1.0.0.25–1.0.0.125**
 >
 > A client records the pair every `Registered` carries, and takes as its own
 > only the one carrying its own player id.
@@ -177,8 +178,9 @@ gives the client its own client id.
 
 > **In 1.0.0.126**
 >
-> A `Registered` whose leading byte is 1 says that player has left: a client in
-> play shows so in chat and drops the pair.
+> A client records the pair every `Registered` carries. A `Registered` whose
+> leading byte is 1 says that player has left: a client in play shows so in chat
+> and drops the pair.
 
 <!-- holds from 1.0.0.132 up to 1.0.0.133 -->
 
@@ -210,8 +212,7 @@ gives the client its own client id.
 
 > **In 1.0.0.140**
 >
-> A server MUST send that `Registered` before any create message, because a
-> client given a create message before it has its own client id stops.
+> A client given a create message before it has its own client id stops.
 
 <!-- holds from 1.0.0.150 up to 1.0.0.151 -->
 
@@ -342,9 +343,8 @@ naming a unit, an owner or a target carry one too.
 
 > **In 1.0.0.25–1.0.0.60**
 >
-> Outside a resynchronisation, a client that still holds the earlier object
-> gives the net id to the new one, so messages naming it reach the new object,
-> and removing either leaves the id naming neither.
+> Outside a resynchronisation, a create for a net id a client already holds
+> still makes the new object, and messages naming that id reach it.
 > [Leaving and coming back](match.md#leaving-and-coming-back) says what a client
 > drops while it resynchronises.
 
@@ -456,13 +456,6 @@ A create message carries a node beside the object's net id.
 <!-- holds from 1.0.0.140 up to 1.0.0.141 -->
 
 > **In 1.0.0.140**
->
-> A client applies a `SpawnPet`'s effect and spell level only where the owner's
-> node is its own.
-
-<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
-
-> **In 3.10**
 >
 > A client applies a `SpawnPet`'s effect and spell level only where the owner's
 > node is its own.
@@ -802,8 +795,8 @@ A server MUST name each object a map holds by the identifier its name gives.
 > **In 4.20**
 >
 > `CreateTurret` names a turret by its building's name with `_A` after it,
-> matched exactly, case included. One naming no turret removes any object
-> holding its net id, and nothing takes the id.
+> matched exactly, case included. One naming no turret creates nothing, and
+> nothing takes the id.
 
 ## What a client holds
 

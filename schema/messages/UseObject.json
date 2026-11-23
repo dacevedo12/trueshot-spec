@@ -81,7 +81,7 @@
           "note": "The unit to use, or the unit that changed side."
         }
       ],
-      "note": "As a unit changes side (TeamChanged), a client also sends it naming that unit, for every unit it holds that targets it, with that unit in the header."
+      "note": "As a champion, a minion or another unit with a mind changes side (TeamChanged), a client also sends it naming that unit, for every unit with a mind it holds that targets it, with that unit in the header; a building or a prop changing side sends none."
     },
     {
       "from": "1.0.0.141",

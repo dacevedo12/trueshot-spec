@@ -306,10 +306,9 @@ A server ends the hold with `Resumed`.
 
 > **In 4.17**
 >
-> A client shows the countdown only for a tournament's hold. Input stays locked,
-> and a tournament's hold keeps its box, after the countdown too, until a
-> `Resumed` that ends the hold at once. A `Resumed` with a countdown, arriving
-> while the match is not held, leaves the match clock as it is.
+> A client shows the countdown only for a tournament's hold. A `Resumed` with a
+> countdown, arriving while the match is not held, leaves the match clock as it
+> is.
 
 ## The end
 
@@ -713,9 +712,8 @@ A server tells the others that a player's client dropped with
 
 > **In 3.10**
 >
-> A client sends `ReconnectedInMatch` when the registration answer naming its
-> own player id arrives, and only where it has taken `StartGame`, so never on
-> its first connection.
+> A client sends `ReconnectedInMatch` only on a connection made after it has
+> taken `StartGame`, so never on its first connection.
 
 <!-- holds from 4.4.0.1858 up to 4.18.0.271 -->
 

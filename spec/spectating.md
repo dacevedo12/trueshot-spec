@@ -93,13 +93,20 @@ says.
 > **In 4.17–4.20**
 >
 > The word `replay` serves as `spectator` does, and either counts wherever it
-> stands in the argument. Besides the form above, the word can be followed by a
-> spectator service's address, with no port of its own, the key, a match number
-> and a platform name, with no player number; a client started so takes the
-> match over HTTP from that service.
+> stands in the argument. Besides the form above, the word can be followed by an
+> address with no port of its own, the key, a match number and one further
+> word, with no player number.
 >
 > The match number a key is deciphered under is the low 32 bits of the match
 > number, written out as a signed decimal.
+
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
+>
+> In that form the address is a spectator service's and the further word a
+> platform name; a client started so takes the match over HTTP from that
+> service.
 
 ## The order of the stream
 

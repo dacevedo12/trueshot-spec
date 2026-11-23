@@ -451,9 +451,10 @@ server sends.
 
 > **In 1.0.0.126**
 >
-> A server MAY send `NavigationFlags`. Once its navigation grid exists, a client
-> replaces the circles it holds with those it carries, and answers with its
-> `syncId`; before then it takes nothing and does not answer.
+> A server MAY send `NavigationFlags`. Once a part of its world it sets up for
+> the match exists, a client replaces the circles it holds with those it
+> carries, and answers with its `syncId`; before then it takes nothing and does
+> not answer.
 
 <!-- holds from 1.0.0.140 up to 1.0.0.141 -->
 

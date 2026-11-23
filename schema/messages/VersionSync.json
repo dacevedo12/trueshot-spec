@@ -121,7 +121,7 @@
         {
           "name": "map",
           "type": "i32",
-          "note": "Which map to load. A client takes it from the first VersionSync only; a later one changes nothing."
+          "note": "Which map to load. A client takes it only while it holds no map yet, so a later VersionSync changes nothing, and keeps a map a setting of its own has already chosen."
         },
         {
           "name": "seats",
@@ -11927,7 +11927,7 @@
         {
           "name": "tipColour",
           "type": "i8",
-          "note": "Which colouring it shows it in, from 1 to 3. Any other value makes the note invalid, as for tipDuration."
+          "note": "Which colouring it shows it in, one of the colourings the client's own data defines. Any other value makes the note invalid, as for tipDuration."
         },
         {
           "name": "tipDuration",

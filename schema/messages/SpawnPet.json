@@ -3541,7 +3541,7 @@
       "command": 54,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client deletes any object holding the header's id; spawns nothing where it does not know the owner; kills the owner's earlier pet if it lives; makes the pet, replacing its script with script; gives it the owner's seat, its gold going to the owner; and registers it under the header's id and node. duration has no effect; spec/objects.md says when spellLevel and effect apply. The header names the pet. A server sends it to clients watching a match.",
+      "note": "A client deletes any object holding the header's id; spawns nothing where it does not know the owner; kills the owner's earlier pet if it lives; makes the pet, replacing its script with script; gives it the owner's seat, its gold going to the owner; and registers it under the header's id and node. duration has no effect. The header names the pet. A server sends it to clients watching a match.",
       "fields": [
         {
           "name": "owner",

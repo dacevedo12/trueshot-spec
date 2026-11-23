@@ -146,9 +146,9 @@ the shop sends nothing.
 
 > **In 1.0.0.140**
 >
-> Opening the shop sends `TutorialShopOpened`, in any match. A client opens the
-> shop and asks to buy whether or not the shop is locked, except where a setting
-> of its own, off by default, has it heed the lock.
+> Opening the shop sends `TutorialShopOpened`, in any match. A client asks to buy
+> whether or not the shop is locked, except where a setting of its own, off by
+> default, has it heed the lock.
 
 <!-- holds from 3.10.0.237 up to 4.21.0.0 -->
 

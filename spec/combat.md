@@ -124,7 +124,8 @@ A server reports damage with `Damage`.
 > naming a unit it holds, counted across all units, and result 5 a miss, shown
 > over the unit hurt. Results 3, 4 and any above 5 show a figure, and for them a
 > client lowers the hurt unit's health by the amount itself, without waiting for
-> replication.
+> replication. Whether a notice or a figure shows also depends on the player's
+> floating-text settings.
 
 <!-- holds from 0.9.25.24 up to 4.20.0.315 -->
 
@@ -332,8 +333,10 @@ A client sends `UseObject` as its player right-clicks a unit that can be used.
 
 > **In 1.0.0.140**
 >
-> As a unit changes side, a client sends `UseObject` naming it for every unit it
-> holds that targets it, with that unit in the header.
+> As a champion, a minion or another unit with a mind changes side, a client
+> sends `UseObject` naming it for every unit with a mind it holds that targets
+> it, with that unit in the header. A building or a prop changing side sends
+> none.
 
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 

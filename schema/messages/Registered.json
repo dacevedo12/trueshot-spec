@@ -47,12 +47,12 @@
         {
           "name": "clientId",
           "type": "u32",
-          "note": "The client id playerId holds. Where playerId is the client's own, the client takes this client id as its own and goes on."
+          "note": "The client id playerId holds."
         },
         {
           "name": "playerId",
           "type": "i64",
-          "note": "Who occupies that seat. A client keeps the pair of clientId and playerId from every answer, and takes the answer as its own only where this is its own player id; it reads nothing after it."
+          "note": "Who occupies that seat. A client keeps the pair of clientId and playerId from every answer; it reads nothing after it."
         }
       ]
     },

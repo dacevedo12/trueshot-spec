@@ -419,7 +419,7 @@
           ]
         }
       ],
-      "note": "The header has no effect. Resuming after the countdown, it keeps input locked and the pause panel open, even once the countdown ends; only a Resumed ending the hold at once unlocks input and closes the panel."
+      "note": "The header has no effect. Resuming after the countdown, it keeps input locked and the pause panel open while the countdown runs; resuming at once, it unlocks input and closes the panel."
     },
     {
       "from": "4.18.0.271",
