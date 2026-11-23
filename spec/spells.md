@@ -16,12 +16,26 @@ ready with `SpellCooldown`, and, for a spell with uses, how many are left with
 Which slots a client lets its player cast from at all is a value of the
 champion's that [replication](replication.md) carries.
 
-<!-- holds from 0.8.13.26 up to 0.9.25.24 -->
+<!-- holds from 0.8.13.26 up to 0.9.22.14 -->
 
-> **In 0.8.13.26–0.9.25.23**
+> **In 0.8.13.26–0.9.22.13**
+>
+> A client casts nothing for a casting record whose length disagrees with its
+> count of targets.
+
+<!-- holds from 0.9.22.14 up to 0.9.25.24 -->
+
+> **In 0.9.22.14–0.9.25.23**
 >
 > A client still casts from a casting record whose length disagrees with its
 > count of targets.
+
+<!-- holds from 1.0.0.25 up to 1.0.0.58 -->
+
+> **In 1.0.0.25–1.0.0.57**
+>
+> A client fails on a casting record whose length disagrees with its count of
+> targets, and casts nothing.
 
 <!-- holds from 1.0.0.58 up to 1.0.0.61 -->
 
@@ -137,6 +151,14 @@ around its player's cursor with `CursorRings`.
 
 A marker has no slots. A server MUST NOT send `SpellInSlot` naming a marker: a
 client fails on it, whatever the slot.
+
+<!-- holds from 1.0.0.96 up to 1.0.0.97 -->
+
+> **In 1.0.0.96**
+>
+> A server MUST NOT set `summonerSlots` in `SpellNameChanged` or
+> `SpellTargetingChanged` for a unit with no summoner slots: a client fails on
+> it.
 
 <!-- holds from 1.0.0.110 up to 1.0.0.111 -->
 

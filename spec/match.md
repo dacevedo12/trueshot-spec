@@ -75,6 +75,13 @@ seconds.
 > A server MUST NOT send `GameSpeed` before the client's own champion exists,
 > because a client given one before then fails.
 
+<!-- holds from 1.0.0.96 up to 1.0.0.97 -->
+
+> **In 1.0.0.96**
+>
+> A server MUST NOT send `GameSpeed` before the client's own champion exists,
+> because a client given one before then fails.
+
 <!-- holds from 1.0.0.126 up to 4.20.0.315 -->
 
 > **In 1.0.0.126–4.19**
@@ -316,9 +323,22 @@ A server ends the match with `GameEnded`, saying which side won, and sends
 `HudDisabled` (see [The interface](interface.md#the-minimap-and-text-on-screen)). A client shows the win or loss for its
 player's side and sends `ClientFinished`.
 
-<!-- holds from 0.8.13.26 up to 1.0.0.124 -->
+<!-- holds from 0.8.13.26 up to 1.0.0.110 -->
 
-> **In 0.8.13.26–1.0.0.123**
+> **In 0.8.13.26–1.0.0.109**
+>
+> A client sends `ClientFinished` every time `GameEnded` arrives in play, while
+> playing a replay too.
+
+<!-- holds from 1.0.0.110 up to 1.0.0.111 -->
+
+> **In 1.0.0.110**
+>
+> A client sends `ClientFinished` every time `GameEnded` arrives in play.
+
+<!-- holds from 1.0.0.111 up to 1.0.0.124 -->
+
+> **In 1.0.0.111–1.0.0.123**
 >
 > A client sends `ClientFinished` every time `GameEnded` arrives in play, while
 > playing a replay too.
@@ -489,9 +509,23 @@ A client leaving as one abandoning the match sends `Exit`: as its player quits,
 or on a server's `Shutdown`, which has it leave at once. A client also leaves at
 once on `BotKick` with the action that means leave.
 
-<!-- holds from 0.8.13.26 up to 1.0.0.132 -->
+<!-- holds from 0.8.13.26 up to 1.0.0.110 -->
 
-> **In 0.8.13.26–1.0.0.131**
+> **In 0.8.13.26–1.0.0.109**
+>
+> A client also leaves as one abandoning the match as its player closes the
+> window, and as a reconnection fails.
+
+<!-- holds from 1.0.0.110 up to 1.0.0.111 -->
+
+> **In 1.0.0.110**
+>
+> A client also leaves as one abandoning the match as its player closes the
+> window.
+
+<!-- holds from 1.0.0.111 up to 1.0.0.132 -->
+
+> **In 1.0.0.111–1.0.0.131**
 >
 > A client also leaves as one abandoning the match as its player closes the
 > window, and as a reconnection fails.
@@ -679,6 +713,20 @@ A server tells the others that a player's client dropped with
 > `CreateNeutral` naming a unit it already holds, a `CreateNeutral` or a
 > `SpawnUnit` for a unit it does not hold whose `asset` is empty, and a
 > `SpawnFromBarracks` for a unit it does not hold whose `kind` is above 4.
+
+<!-- holds from 1.0.0.74 up to 1.0.0.75 -->
+
+> **In 1.0.0.74**
+>
+> A client sends `ReconnectedInMatch` as the connection is made, right after its
+> registration request, without waiting for the registration answer.
+
+<!-- holds from 1.0.0.86 up to 1.0.0.87 -->
+
+> **In 1.0.0.86**
+>
+> A client sends `ReconnectedInMatch` as the `Registered` naming its own player
+> id arrives, not as the connection is made.
 
 <!-- holds from 1.0.0.96 up to 1.0.0.127 -->
 

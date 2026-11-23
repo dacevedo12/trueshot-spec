@@ -12,7 +12,7 @@
       "direction": "serverToClient",
       "reliability": "reliable",
       "fields": [],
-      "note": "Sent for the receiving client's own champion, it changes nothing the client shows."
+      "note": "A client draws no health bar over the unit, its own champion or another, until EnterLocalSight names it again, nor over a unit no EnterLocalSight has named."
     },
     {
       "from": "0.9.22.14",
@@ -46,6 +46,16 @@
     },
     {
       "from": "1.0.0.74",
+      "until": "1.0.0.75",
+      "channel": "events",
+      "command": 59,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client shows no FloatingText in slot 0 over the unit, its own champion or another, until EnterLocalSight names it again, nor over a unit no EnterLocalSight has named."
+    },
+    {
+      "from": "1.0.0.75",
       "until": "1.0.0.82",
       "channel": "events",
       "command": 59,
@@ -106,6 +116,15 @@
     },
     {
       "from": "1.0.0.110",
+      "until": "1.0.0.111",
+      "channel": "events",
+      "command": 55,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": []
+    },
+    {
+      "from": "1.0.0.111",
       "until": "1.0.0.117",
       "channel": "events",
       "command": 55,

@@ -115,6 +115,14 @@ gives the client its own client id.
 > A client records the pair every `Registered` carries, and takes as its own
 > only the one carrying its own player id.
 
+<!-- holds from 1.0.0.58 up to 1.0.0.61 -->
+
+> **In 1.0.0.58–1.0.0.60**
+>
+> A server MUST send a `VersionSync` whose `agreement` is 1 before any
+> `CreateChampion`, `CreateNeutral` or `CreateTurret`, because a client given
+> one of them before that `VersionSync` stops.
+
 <!-- holds from 1.0.0.74 up to 1.0.0.75 -->
 
 > **In 1.0.0.74**
@@ -145,14 +153,6 @@ gives the client its own client id.
 >
 > A client takes a client id only from 0 to 252, and leaves on any other, so a
 > server MUST give each player a client id in that range.
-
-<!-- holds from 1.0.0.96 up to 1.0.0.97 -->
-
-> **In 1.0.0.96**
->
-> A server MUST send the `Registered` carrying the client's own player id before
-> any `CreateTurret`, because a client given one before it has its own client
-> id stops.
 
 <!-- holds from 1.0.0.110 up to 1.0.0.111 -->
 
@@ -337,9 +337,16 @@ naming a unit, an owner or a target carry one too.
 >
 > A client given a create message for a net id it already holds stops.
 
-<!-- holds from 0.9.25.24 up to 1.0.0.25 -->
+<!-- holds from 0.9.25.24 up to 0.9.25.36 -->
 
-> **In 0.9.25.24–1.0.0.24**
+> **In 0.9.25.24–0.9.25.35**
+>
+> A client that still holds the earlier object gives the net id to the new one,
+> so messages naming it reach the new object.
+
+<!-- holds from 0.9.25.36 up to 1.0.0.25 -->
+
+> **In 0.9.25.36–1.0.0.24**
 >
 > A client that still holds the earlier object gives the net id to the new one,
 > so messages naming it reach the new object, and removing either leaves the id
@@ -354,13 +361,22 @@ naming a unit, an owner or a target carry one too.
 > [Leaving and coming back](match.md#leaving-and-coming-back) says what a client
 > drops while it resynchronises.
 
+<!-- holds from 1.0.0.86 up to 1.0.0.87 -->
+
+> **In 1.0.0.86**
+>
+> A `SpawnUnit` or `SpawnPet` for a net id a client already holds removes no
+> object first: the new object takes the id, so later messages naming it reach
+> the new object alone, and removing either leaves the id naming neither.
+
 <!-- holds from 1.0.0.96 up to 1.0.0.97 -->
 
 > **In 1.0.0.96**
 >
-> A client that still holds the earlier object creates the new one but keeps
-> the net id on the old one, so messages naming it reach the old object, and
-> removing either leaves the id naming neither.
+> A `SpawnUnit` or `SpawnPet` for a net id a client already holds removes no
+> object first: the new object takes the id, so messages naming it reach the new
+> object, and both answer to those naming it in their header. Removing either
+> leaves the id naming neither.
 
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
@@ -822,9 +838,17 @@ or the end of its life, that removes it. Creating messages are listed in
 Leaving a client's sight removes nothing; [Vision](vision.md#losing-sight) says
 what each message that takes a unit out of view does.
 
-<!-- holds from 0.8.13.26 up to 0.9.25.36 -->
+<!-- holds from 0.8.13.26 up to 0.9.22.14 -->
 
-> **In 0.8.13.26–0.9.25.35**
+> **In 0.8.13.26–0.9.22.13**
+>
+> Where a client holds an owner's earlier pet alive, a new `SpawnPet` for that
+> owner has the earlier pet die as a unit does with no killer, and the client
+> still holds it. It does nothing to an earlier pet dead or not held.
+
+<!-- holds from 0.9.22.14 up to 0.9.25.36 -->
+
+> **In 0.9.22.14–0.9.25.35**
 >
 > A new `SpawnPet` for an owner removes that owner's pet before it.
 

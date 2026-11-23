@@ -774,7 +774,7 @@
           ]
         }
       ],
-      "note": "A client deletes no object holding the new unit's id: both stay, and which one later messages reach is not recorded. It does nothing more where it cannot make the unit. What clone, where nonzero, has the new unit copy is not recorded. A client ignores the header."
+      "note": "A client deletes no object holding the new unit's id: both stay, and the new unit takes the id, so later messages naming it reach the new unit alone, and removing either leaves the id naming neither. It does nothing more where it cannot make the unit. What clone, where nonzero, has the new unit copy is not recorded. A client ignores the header."
     },
     {
       "from": "1.0.0.87",

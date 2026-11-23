@@ -158,7 +158,7 @@
           "note": "A client reads nothing here."
         }
       ],
-      "note": "A client returns the champion where it already stands, first stopping a champion that is not dead."
+      "note": "A client returns the champion to the first spawn point of its side, on the open ground nearest it, first stopping a champion that is not dead."
     },
     {
       "from": "1.0.0.87",

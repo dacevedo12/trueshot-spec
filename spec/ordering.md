@@ -166,9 +166,9 @@ a stream.
 
 > **In 0.9.25.24–0.9.25.35**
 >
-> Nothing answers a view report: a client sends its latest report again, twice
-> the round trip time plus 1/30 of a second apart, for as long as the match
-> runs.
+> A client sends a view report again, twice the round trip time plus 1/30 of a
+> second apart, until a server answers it with `CameraAck`, carrying its number.
+> After a `CameraAck` carrying 255 it never takes one carrying 0.
 
 <!-- holds from 1.0.0.25 up to 1.0.0.110 -->
 

@@ -114,7 +114,7 @@
           "note": "Zero while the match StartGame began is running, 1 otherwise: before StartGame, and once the match has ended."
         }
       ],
-      "note": "A client sends it right after the server answers its registration, on every connection, the first included. A client dropped while playing connects again only where its player agrees; one dropped while loading leaves, once it has its own client id."
+      "note": "A client sends it as a connection comes up, right after its registration request and without waiting for the answer, on every connection, the first included. A client dropped while playing connects again only where its player agrees; one dropped while loading leaves, once it has its own client id."
     },
     {
       "from": "1.0.0.75",
@@ -162,7 +162,7 @@
           "note": "Zero while the match StartGame began is running, 1 otherwise: before StartGame, and once the match has ended."
         }
       ],
-      "note": "A client sends it right after the server answers its registration. It sends it on every connection, the first included. A client dropped while playing connects again only where its player agrees; one dropped while loading leaves."
+      "note": "A client sends it as the Registered naming its own player id arrives, on every connection, the first included. A client dropped while playing connects again only where its player agrees; one dropped while loading leaves."
     },
     {
       "from": "1.0.0.87",

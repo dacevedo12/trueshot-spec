@@ -117,7 +117,7 @@
       "command": 67,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client clears every circle it holds before marking these, and answers each with a message to the server under command 32 whose body is this sync id alone.",
+      "note": "Once the map's ground grid is loaded, a client clears every circle it holds, marks these, and answers with a message to the server under command 31 whose body is this sync id alone. Before then it neither marks nor answers.",
       "fields": [
         {
           "name": "count",

@@ -11,7 +11,7 @@
       "command": 68,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "For every unit not dead, a client adds its health regeneration times seconds to its health, and its mana regeneration times seconds to its mana, each held between zero and its maximum.",
+      "note": "For every champion, minion and turret not dead, pets and neutral units made as minions among them, a client adds its health regeneration times seconds to its health, and its mana regeneration times seconds to its mana, each held between zero and its maximum. It changes no building's health or mana.",
       "fields": [
         {
           "name": "seconds",

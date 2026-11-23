@@ -228,13 +228,41 @@ alone closes the shop and turns off its key.
 > **In 1.0.0.86**
 >
 > A client keeps every lock a message sets or clears, but acts on a lock at once
-> only where the message's mask is exactly one of 1, 4, 8, 16, 32 or 128. Later
-> input obeys every lock but the shop's, which
-> [The shop](shop.md#buying-and-selling) covers.
+> only where the message's mask is exactly one of 1, 4, 8, 16, 32 or 128.
 
-<!-- holds from 1.0.0.87 up to 1.0.0.132 -->
+<!-- holds from 1.0.0.87 up to 1.0.0.96 -->
 
-> **In 1.0.0.87–1.0.0.131**
+> **In 1.0.0.87–1.0.0.95**
+>
+> A client keeps every lock a message sets or clears, and later input obeys
+> them, but it acts on a lock at once only where the message's mask is exactly
+> one of 1, 4, 8, 16, 32 or 128.
+
+<!-- holds from 1.0.0.96 up to 1.0.0.97 -->
+
+> **In 1.0.0.96**
+>
+> A client keeps every lock a message sets or clears, but acts on a lock at once
+> only where the message's mask is exactly one of 1, 4, 8, 16, 32 or 128.
+
+<!-- holds from 1.0.0.97 up to 1.0.0.110 -->
+
+> **In 1.0.0.97–1.0.0.109**
+>
+> A client keeps every lock a message sets or clears, and later input obeys
+> them, but it acts on a lock at once only where the message's mask is exactly
+> one of 1, 4, 8, 16, 32 or 128.
+
+<!-- holds from 1.0.0.110 up to 1.0.0.111 -->
+
+> **In 1.0.0.110**
+>
+> A client keeps every lock a message sets or clears, but acts on a lock at once
+> only where the message's mask is exactly one of 1, 4, 8, 16, 32 or 128.
+
+<!-- holds from 1.0.0.111 up to 1.0.0.132 -->
+
+> **In 1.0.0.111–1.0.0.131**
 >
 > A client keeps every lock a message sets or clears, and later input obeys
 > them, but it acts on a lock at once only where the message's mask is exactly

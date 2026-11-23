@@ -162,6 +162,58 @@
     },
     {
       "from": "1.0.0.82",
+      "until": "1.0.0.86",
+      "channel": "events",
+      "command": 82,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "A client reads nothing here."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "A client reads nothing here."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "A client reads nothing here."
+        }
+      ],
+      "note": "A client keeps the champion's level, experience, gold, maxima and spell ranks, and plays the coming back. A client returns the champion where it already stands. The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
+    },
+    {
+      "from": "1.0.0.86",
+      "until": "1.0.0.87",
+      "channel": "events",
+      "command": 82,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "A client reads nothing here."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "A client reads nothing here."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "A client reads nothing here."
+        }
+      ],
+      "note": "A client keeps the champion's level, experience, gold, maxima and spell ranks, and plays the coming back. A client returns the champion to the first spawn point of its side, on the open ground nearest it. The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
+    },
+    {
+      "from": "1.0.0.87",
       "until": "1.0.0.96",
       "channel": "events",
       "command": 82,

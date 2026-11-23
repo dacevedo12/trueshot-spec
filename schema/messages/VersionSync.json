@@ -389,7 +389,7 @@
         {
           "name": "agreement",
           "type": "u8",
-          "note": "Must be 1: any other value has the client report a build mismatch and leave. For 0 it also shows both versions."
+          "note": "Must be 1: any other value has the client report a build mismatch and end. For 0 it first shows both versions; for any other it shows nothing."
         },
         {
           "name": "map",
@@ -598,7 +598,7 @@
         {
           "name": "agreement",
           "type": "u8",
-          "note": "Must be 1: any other value has the client leave. For 0 it shows both versions first; whether it shows them for any other value is not recorded."
+          "note": "Must be 1: any other value has the client end. For 0 it first shows both versions; for any other it shows nothing."
         },
         {
           "name": "map",

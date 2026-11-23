@@ -461,6 +461,14 @@ server sends.
 
 `NavigationFlags` marks the ground within circles.
 
+<!-- holds from 1.0.0.110 up to 1.0.0.111 -->
+
+> **In 1.0.0.110**
+>
+> A server MAY send `NavigationFlags`. Once the map's ground grid is loaded, a
+> client replaces the circles it holds with those it carries, and answers with
+> its `syncId`; before then it takes nothing and does not answer.
+
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
 > **In 1.0.0.126**

@@ -181,7 +181,7 @@
       "command": 140,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window, or as a reconnection fails.",
+      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting, closes the window, declines to reconnect or cancels a reconnection under way, or dismisses the notice that it was dropped or away.",
       "fields": []
     },
     {

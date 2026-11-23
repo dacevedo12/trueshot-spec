@@ -317,7 +317,8 @@ for what a client draws on its map with `UnitDiedOnMap`.
 > **In 1.0.0.86**
 >
 > A client reads nothing from `Revived` or `Respawned`: each brings the champion
-> back. `Revived` brings back a champion that is not dead too, first stopping it.
+> back at the first spawn point of its side, on the open ground nearest it.
+> `Revived` brings back a champion that is not dead too, first stopping it.
 
 <!-- holds from 1.0.0.87 up to 1.0.0.97 -->
 

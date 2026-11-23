@@ -6,6 +6,23 @@
   "revisions": [
     {
       "from": "0.8.13.26",
+      "until": "0.9.22.14",
+      "channel": "events",
+      "command": 36,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "cast",
+          "type": "struct",
+          "struct": "SpellCast",
+          "note": "The casting."
+        }
+      ],
+      "note": "There is no byte for ending a charge and no sync id: the casting follows the header at once."
+    },
+    {
+      "from": "0.9.22.14",
       "until": "0.9.25.24",
       "channel": "events",
       "command": 36,
@@ -40,6 +57,23 @@
     },
     {
       "from": "0.9.25.36",
+      "until": "1.0.0.25",
+      "channel": "events",
+      "command": 36,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "cast",
+          "type": "struct",
+          "struct": "SpellCast",
+          "note": "The casting."
+        }
+      ],
+      "note": "There is no byte for ending a charge and no sync id: the casting follows the header at once."
+    },
+    {
+      "from": "1.0.0.25",
       "until": "1.0.0.58",
       "channel": "events",
       "command": 36,

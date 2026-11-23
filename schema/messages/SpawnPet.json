@@ -11,7 +11,7 @@
       "command": 32,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "The header names the owner, and every client that holds that unit handles the message. A client removes the owner's earlier pet, then makes the pet under pet and node with the owner's side, as the owner's pet. A client fails where an object already holds pet.",
+      "note": "The header names the owner, and every client that holds that unit handles the message. Where it holds the owner's earlier pet alive, a client has that pet die as a unit does with no killer, and still holds it; it does nothing to an earlier pet dead or not held. It then makes the pet under pet and node with the owner's side, as the owner's pet. A client fails where an object already holds pet.",
       "fields": [
         {
           "name": "pet",
@@ -546,7 +546,7 @@
       "command": 32,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "The header names the owner, and a client handles the message only where it holds that unit. It kills the owner's earlier pet if that lives, then makes the pet under pet and node with the owner's side and sight, as the owner's pet. It deletes no object first; where one already holds pet, both answer to it.",
+      "note": "The header names the owner, and a client handles the message only where it holds that unit. It kills the owner's earlier pet if that lives, then makes the pet under pet and node with the owner's side and sight, as the owner's pet. It deletes no object first; where one already holds pet, the new pet takes the id, so later messages naming it reach the new pet alone, and removing either leaves the id naming neither.",
       "fields": [
         {
           "name": "pet",

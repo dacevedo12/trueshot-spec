@@ -22,6 +22,38 @@
     },
     {
       "from": "0.9.22.14",
+      "until": "0.9.25.24",
+      "channel": "events",
+      "command": 110,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u8",
+          "note": "The name the report carried. A client sends the report again until this comes back. It takes a value only where it is newer than the last it took, counting with wrap within 128 steps, and ignores any other."
+        }
+      ],
+      "note": "A server names in the header the champion of the player it is sent to."
+    },
+    {
+      "from": "0.9.25.24",
+      "until": "0.9.25.36",
+      "channel": "events",
+      "command": 110,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u8",
+          "note": "The name the report carried. A client takes a value only 1 to 127 ahead of the last it took, counting one below the last as 255 more, so after 255 it ignores 0. It sends its latest report again until the value it takes is that report's."
+        }
+      ],
+      "note": "A client ignores the header."
+    },
+    {
+      "from": "0.9.25.36",
       "until": "1.0.0.25",
       "channel": "events",
       "command": 110,
@@ -38,22 +70,6 @@
     },
     {
       "from": "1.0.0.25",
-      "until": "1.0.0.58",
-      "channel": "events",
-      "command": 110,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "syncId",
-          "type": "u8",
-          "note": "The name the report carried. A client takes a value only 1 to 127 ahead of the last it took, counting one below the last as 255 more, so after 255 it ignores 0. It sends its latest report again until the value it takes is that report's."
-        }
-      ],
-      "note": "A client ignores the header."
-    },
-    {
-      "from": "1.0.0.58",
       "until": "1.0.0.61",
       "channel": "events",
       "command": 110,
@@ -63,7 +79,7 @@
         {
           "name": "syncId",
           "type": "u8",
-          "note": "The name the report carried. A client sends the report again until this comes back. It takes a value only where it is newer than the last it took, counting with wrap within 128 steps, and ignores any other."
+          "note": "The name the report carried. A client takes a value only 1 to 127 ahead of the last it took, counting one below the last as 255 more, so after 255 it ignores 0. It sends its latest report again until the value it takes is that report's."
         }
       ],
       "note": "A client ignores the header."

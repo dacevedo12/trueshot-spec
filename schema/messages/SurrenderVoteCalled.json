@@ -244,7 +244,7 @@
           "note": "How long the vote stays open, in seconds."
         }
       ],
-      "note": "A client ignores it unless its interface exists."
+      "note": "A client ignores it unless its interface exists. Once it does, a client fails on it where its own champion does not exist yet."
     },
     {
       "from": "1.0.0.58",

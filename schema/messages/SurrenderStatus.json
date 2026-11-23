@@ -124,7 +124,7 @@
           "note": "Which side."
         }
       ],
-      "note": "A client ignores the message unless its interface exists."
+      "note": "A client ignores the message unless its interface exists. Once it does, a client fails on reason 1 where its own champion does not exist yet."
     },
     {
       "from": "1.0.0.58",

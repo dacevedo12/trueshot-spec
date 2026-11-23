@@ -15,7 +15,7 @@
             {
               "name": "pointCount",
               "width": 16,
-              "note": "How many points the path holds. A client takes none as an empty path for the unit."
+              "note": "How many points the path holds."
             }
           ]
         },
@@ -131,7 +131,7 @@
             {
               "name": "pointCount",
               "width": 16,
-              "note": "How many points the path holds; a server writes at least one. A client refuses a movement claiming none and reads no movement after it in the group. A count from 32768 up reads as negative, and what a client does then is not recorded."
+              "note": "How many points the path holds; a server writes at least one. A client refuses a movement claiming none and reads no movement after it in the group. A count from 32768 up reads as negative: a client fails on it, having sent the group's WaypointAck and applied the movements before it."
             }
           ]
         },

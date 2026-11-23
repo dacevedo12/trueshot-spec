@@ -30,15 +30,18 @@ menu on or off.
 
 > **In 0.9.25.24–0.9.25.35**
 >
-> A client takes `SurrenderVoteCalled` whenever it arrives, its own champion on
-> the field or not.
+> A client given `SurrenderVoteCalled`, or `SurrenderStatus` with reason 1,
+> before its own champion exists fails on it. `SurrenderStatus` with reason 0,
+> 2, 3 or 4 does not depend on that champion.
 
 <!-- holds from 1.0.0.25 up to 1.0.0.58 -->
 
 > **In 1.0.0.25–1.0.0.57**
 >
 > A client ignores `SurrenderVoteCalled` that arrives before its interface is
-> up.
+> up. Once it is up, a client given `SurrenderVoteCalled`, or `SurrenderStatus`
+> with reason 1, before its own champion exists fails, so a server MUST NOT send
+> either before then.
 
 <!-- holds from 1.0.0.58 up to 4.20.0.315 -->
 
