@@ -664,7 +664,6 @@ Each row gives the group and bits that name a value and what the value is.
 > | 1     | 28       | Life steal                                                                                             | measured |
 > | 1     | 29       | Spell vamp                                                                                             | measured |
 > | 1     | 30       | Crowd-control reduction                                                                                | measured |
-> | 2     | 0 to 1   | How much more armour and spell resistance it cuts through, as the share left standing                  | measured |
 > | 3     | 0 to 1   | Health and resource as they stand                                                                      | measured |
 > | 3     | 2 to 3   | Health and resource at their greatest                                                                  | measured |
 > | 3     | 4        | Experience                                                                                             | measured |
@@ -703,10 +702,7 @@ Each row gives the group and bits that name a value and what the value is.
 > batch has carried them.
 >
 > Each percent penetration field carries the share of armour or spell resistance
-> left standing, 1 where nothing is cut through. The panel shows what two of them
-> cut through together, as 200 percent less both shares in percent: bit 25 of
-> group 1 with bit 0 of group 2 for armour, and bit 27 of group 1 with bit 1 of
-> group 2 for spell resistance.
+> left standing, 1 where nothing is cut through.
 >
 > A spell's cooldown lasts its base length times one plus the modifier at bit 21,
 > so a reduction is carried as a negative fraction and the panel shows its size.
@@ -781,28 +777,36 @@ Each row gives the group and bits that name a value and what the value is.
 > | 3     | 3      | Its size                                                    | measured |
 > | 3     | 4 to 5 | Whether anything is allowed to aim at it, and which side is | counted  |
 
-<!-- holds from 4.1.0.171 up to 4.17.0.233 -->
+<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
 
-> **In 4.1–4.16**
+> **In 4.4**
 >
 > A champion's group 0 also carries:
 >
-> | Group | Bits    | Value                                                                           | Shape    |
-> | ----- | ------- | ------------------------------------------------------------------------------- | -------- |
-> | 0     | 2 to 3  | Which of the champion's slots can be cast from, as a set of bits over two words | counted  |
-> | 0     | 4 to 5  | Which summoner slots can be cast from, as a set of bits over two words          | counted  |
-> | 0     | 6       | Points held for evolving a spell                                                | counted  |
-> | 0     | 7       | Which spells have evolved, as a set of bits                                     | counted  |
-> | 0     | 8 to 27 | What the spell in one slot costs                                                | measured |
+> | Group | Bits     | Value                                                    | Shape    |
+> | ----- | -------- | -------------------------------------------------------- | -------- |
+> | 0     | 2        | The champion's own slots that can be cast from, one word | counted  |
+> | 0     | 3        | A second can-cast word                                   | counted  |
+> | 0     | 4        | Points held for evolving a spell                         | counted  |
+> | 0     | 5        | Which spells have evolved                                | counted  |
+> | 0     | 6 to 9   | What the spells in slots 0 to 3 cost                     | measured |
+> | 0     | 10 to 25 | What the spells in slots 43 to 58 cost                   | measured |
 >
-> Bit 2 holds which of slots 0 to 3 can be cast from, one bit for each slot,
-> set as a champion learns the spell in it, and bit 4 holds which summoner
-> spells can be cast from, as a mask in which a server sets its bits 4 and 5,
-> one for each summoner slot. Bits 3 and 5 of the group carry zero.
-> [Sides and slots](values.md) numbers the slots.
+> Group 0 carries nothing at bits 26 and 27, and group 2 nothing at all.
+
+<!-- holds from 4.5.0.260 up to 4.21.0.0 -->
+
+> **In 4.5–4.20**
 >
-> Bits 8 to 11 carry what the spells in slots 0 to 3 cost. A server sets bits 8
-> to 27 together and writes zero in bits 12 to 27. It leaves bits 6 and 7 clear.
+> A champion's group 2 carries:
+>
+> | Group | Bits   | Value                                                                                 | Shape    |
+> | ----- | ------ | ------------------------------------------------------------------------------------- | -------- |
+> | 2     | 0 to 1 | How much more armour and spell resistance it cuts through, as the share left standing | measured |
+>
+> The panel shows what two percent penetration fields cut through together, as
+> 200 percent less both shares in percent: bit 25 of group 1 with bit 0 of group 2
+> for armour, and bit 27 of group 1 with bit 1 of group 2 for spell resistance.
 
 <!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 

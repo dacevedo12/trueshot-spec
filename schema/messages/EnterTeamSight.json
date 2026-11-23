@@ -411,6 +411,36 @@
     },
     {
       "from": "4.1.0.171",
+      "until": "4.4.0.1858",
+      "channel": "events",
+      "command": 223,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "side",
+          "type": "u8",
+          "note": "Which side the unit came into or out of the view of."
+        }
+      ]
+    },
+    {
+      "from": "4.4.0.1858",
+      "until": "4.5.0.260",
+      "channel": "events",
+      "command": 223,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "side",
+          "type": "u8",
+          "note": "The bit for the side the unit came into the view of, as an index below 4, not a side number; which index names which side is undetermined."
+        }
+      ]
+    },
+    {
+      "from": "4.5.0.260",
       "until": "4.11.0.386",
       "channel": "events",
       "command": 223,

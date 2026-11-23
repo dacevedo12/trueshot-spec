@@ -134,13 +134,13 @@ A server MUST NOT name a champion book slot beyond the book's last slot.
 > a slot above 59, and applies a `SpellInSlot` or a `SpellCostChanged` naming
 > one while reporting it as an error.
 
-<!-- holds from 4.1.0.171 up to 4.7.0.296 -->
+<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
 
-> **In 4.1–4.6**
+> **In 4.4**
 >
 > A champion's own book ends at slot 60. A client ignores an `Autocast` or a
-> `SpellToggled` naming a slot above 60, and applies a `SpellInSlot` or a
-> `SpellCostChanged` naming one while reporting it as an error.
+> `SpellToggled` naming a slot above 60, and applies a `SpellInSlot` naming one
+> to slot 0, reporting it as an error.
 
 <!-- holds from 4.7.0.296 up to 4.21.0.0 -->
 

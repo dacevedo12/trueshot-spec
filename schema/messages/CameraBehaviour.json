@@ -708,6 +708,58 @@
     },
     {
       "from": "3.14.0.700",
+      "until": "4.4.0.1858",
+      "channel": "events",
+      "command": 114,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Along one ground axis, in world units."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "In height, in world units."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Along the other ground axis, in world units."
+        }
+      ],
+      "note": "The view keeps to the point."
+    },
+    {
+      "from": "4.4.0.1858",
+      "until": "4.5.0.260",
+      "channel": "events",
+      "command": 114,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Along one ground axis, in world units."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "In height, in world units."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Along the other ground axis, in world units."
+        }
+      ],
+      "note": "A client acts on it only where the header names its own champion: the view moves to the point once, after a short delay, and nothing holds it there."
+    },
+    {
+      "from": "4.5.0.260",
       "until": "4.11.0.386",
       "channel": "events",
       "command": 114,

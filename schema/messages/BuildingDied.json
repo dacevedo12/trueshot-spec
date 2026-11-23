@@ -555,6 +555,46 @@
     },
     {
       "from": "4.1.0.171",
+      "until": "4.4.0.1858",
+      "channel": "events",
+      "command": 136,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "attacker",
+          "type": "u32",
+          "note": "The unit that destroyed it."
+        },
+        {
+          "name": "lastChampion",
+          "type": "u32",
+          "note": "The last champion to have harmed it."
+        }
+      ]
+    },
+    {
+      "from": "4.4.0.1858",
+      "until": "4.5.0.260",
+      "channel": "events",
+      "command": 136,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "attacker",
+          "type": "u32",
+          "note": "The unit that destroyed it. A client reads it only where the building is a nexus or an inhibitor."
+        },
+        {
+          "name": "lastChampion",
+          "type": "u32",
+          "note": "The last champion to have harmed it. A client reads nothing here."
+        }
+      ]
+    },
+    {
+      "from": "4.5.0.260",
       "until": "4.11.0.386",
       "channel": "events",
       "command": 136,

@@ -1238,6 +1238,62 @@
     },
     {
       "from": "4.1.0.171",
+      "until": "4.4.0.1858",
+      "channel": "requests",
+      "command": 163,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "inFavour",
+              "width": 1,
+              "note": "Set where the answer is yes. A client sends it clear."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Always clear."
+            }
+          ]
+        }
+      ],
+      "note": "It answers a call to surrender."
+    },
+    {
+      "from": "4.4.0.1858",
+      "until": "4.5.0.260",
+      "channel": "requests",
+      "command": 163,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "inFavour",
+              "width": 1,
+              "note": "Set where the answer is yes, clear where it is no."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Always clear."
+            }
+          ]
+        }
+      ],
+      "note": "It answers a call to surrender, and calls one where none is open: a client sends it, set, as its player picks surrender from the menu or types the command for it, and from the vote's panel at most once per vote, set for yes and clear for no. The command against surrendering sends it clear. Neither command sends anything in the tutorial."
+    },
+    {
+      "from": "4.5.0.260",
       "until": "4.11.0.386",
       "channel": "requests",
       "command": 163,

@@ -302,12 +302,12 @@ alone closes the shop and turns off its key.
 >
 > A watching client ignores `InputLock`.
 
-<!-- holds from 4.1.0.171 up to 4.17.0.233 -->
+<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
 
-> **In 4.1–4.16**
+> **In 4.4**
 >
-> Any message that locks the shop closes it and turns off its key, whatever
-> else it locks.
+> A message that locks other input along with the shop stops the shop opening,
+> but leaves an open shop open and its key on.
 
 <!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 

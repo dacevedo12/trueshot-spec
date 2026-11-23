@@ -93,9 +93,9 @@ seconds.
 >
 > No unit advances for `StatTick`.
 
-<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+<!-- holds from 4.4.0.1858 up to 4.18.0.271 -->
 
-> **In 4.17**
+> **In 4.4–4.17**
 >
 > No unit advances for `StatTick`.
 
@@ -407,6 +407,15 @@ player's side and sends `ClientFinished`.
 >
 > A client that receives `GameEnded` while still loading leaves.
 
+<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
+
+> **In 4.4**
+>
+> A client sends `ClientFinished` every time `GameEnded` arrives in play. One
+> that receives `GameEnded` while still loading sends neither `ClientFinished`
+> nor `Exit`; where it has no champion of its own yet, it first shows an error,
+> and leaves once its player dismisses it.
+
 <!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 
 > **In 4.17**
@@ -561,6 +570,14 @@ A server tells the others that a player's client dropped with
 > A client the server drops with the reason that means its player was away
 > shows that, and does not connect again.
 
+<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
+
+> **In 4.4**
+>
+> A client shows that notice only in play, only where it holds the champion
+> `PlayerDisconnected` names, other than its own, and only on the side the
+> message's flags choose.
+
 <!-- holds from 0.9.25.24 up to 1.0.0.141 -->
 
 > **In 0.9.25.24–1.0.0.140**
@@ -690,20 +707,30 @@ A server tells the others that a player's client dropped with
 > own player id arrives, and only where it has taken `StartGame`, so never on
 > its first connection.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 4.4.0.1858 up to 4.18.0.271 -->
 
-> **In 4.1–4.20**
->
-> A client dropped during play connects again by itself, registers again, and
-> sends `ReconnectedInMatch` right after the registration answer.
-
-<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
-
-> **In 4.17**
+> **In 4.4–4.17**
 >
 > A client whose connection drops before play begins leaves rather than
 > connecting again once it knows its own client id, and connects again before
 > then.
+
+<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
+
+> **In 4.4**
+>
+> A client dropped during play connects again at once by itself, for any reason
+> but the one that means its player was away. Where its settings turn this off,
+> it asks its player for the reason 0 whether to connect again, and for any
+> reason but that and the one that means its player was away shows that the
+> reconnection failed.
+
+<!-- holds from 4.5.0.260 up to 4.21.0.0 -->
+
+> **In 4.5–4.20**
+>
+> A client dropped during play connects again by itself, registers again, and
+> sends `ReconnectedInMatch` right after the registration answer.
 
 [Objects and identifiers](objects.md#a-soft-reconnect) says what `SoftReconnect`
 does.

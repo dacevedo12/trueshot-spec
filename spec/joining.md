@@ -416,9 +416,9 @@ every client has sent `ClientReady`.
 > A server MUST put the seat's player id in `SeatLoadProgress`: the loading
 > screen shows a seat's card from the `VersionSync` seat with that id.
 
-<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+<!-- holds from 4.4.0.1858 up to 4.18.0.271 -->
 
-> **In 4.17**
+> **In 4.4–4.17**
 >
 > The loading screen picks the card a `SeatLoadProgress` updates by the client
 > id it carries, not by its player id.
@@ -509,9 +509,18 @@ Once a character is settled, a client sends `CharacterSelected`, once.
 > roster channels, and keeps nothing it drops for later. A server MUST NOT send
 > any of the spawn run before `CharacterSelected` arrives.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
 
-> **In 4.1–4.20**
+> **In 4.4**
+>
+> Until it sends `CharacterSelected`, a client drops every game message but
+> `VersionSync`, `QueryStatusAnswer`, `MatchIdentity`, `SeatLoadProgress`,
+> `GameEnded` and `ModuleData`, and keeps nothing it drops for later. A server
+> MUST NOT send any of the spawn run before `CharacterSelected` arrives.
+
+<!-- holds from 4.5.0.260 up to 4.21.0.0 -->
+
+> **In 4.5–4.20**
 >
 > Until it sends `CharacterSelected`, a client drops every game message but
 > `VersionSync`, `QueryStatusAnswer`, `MatchIdentity`, `SeatLoadProgress` and

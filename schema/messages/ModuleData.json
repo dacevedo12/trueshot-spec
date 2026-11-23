@@ -249,7 +249,7 @@
     },
     {
       "from": "4.1.0.171",
-      "until": "4.5.0.260",
+      "until": "4.4.0.1858",
       "channel": "events",
       "command": 220,
       "direction": "serverToClient",
@@ -273,6 +273,33 @@
         }
       ],
       "note": "A client takes it even before it is ready to play. With kind 4, or any kind other than 1 and 2, a client acts on what the data carries as on a message that had arrived. What kinds 1 and 2 do is not shown."
+    },
+    {
+      "from": "4.4.0.1858",
+      "until": "4.5.0.260",
+      "channel": "events",
+      "command": 220,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What the data is for."
+        },
+        {
+          "name": "length",
+          "type": "u16",
+          "note": "How many bytes of data follow."
+        },
+        {
+          "name": "data",
+          "type": "bytes",
+          "size": "length",
+          "note": "Data for a module of the client's own, which the message only carries."
+        }
+      ],
+      "note": "A client takes it even before it is ready to play. With kind 4, and only once a module is loaded, a client acts on what the data carries as on a message that had arrived. Until a module is loaded only kind 1 does anything, and a client ignores every kind but 1, 2 and 4. What kinds 1 and 2 do is not shown."
     }
   ]
 }

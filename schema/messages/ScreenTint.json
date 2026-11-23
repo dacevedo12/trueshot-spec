@@ -1072,6 +1072,88 @@
     },
     {
       "from": "4.1.0.171",
+      "until": "4.4.0.1858",
+      "channel": "events",
+      "command": 218,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "fadeIn",
+          "type": "u8",
+          "note": "Nonzero brings a tint in, and the colour and weight below follow; 0 takes it away, and they do not."
+        },
+        {
+          "name": "time",
+          "type": "f32",
+          "note": "How long the change takes, in seconds."
+        },
+        {
+          "name": "side",
+          "type": "i32",
+          "note": "Which side sees it."
+        },
+        {
+          "name": "colour",
+          "type": "u32",
+          "note": "The tint, as blue, green, red and opacity bytes.",
+          "present": {
+            "when": "fadeIn"
+          }
+        },
+        {
+          "name": "weight",
+          "type": "f32",
+          "note": "How strongly it applies at most.",
+          "present": {
+            "when": "fadeIn"
+          }
+        }
+      ]
+    },
+    {
+      "from": "4.4.0.1858",
+      "until": "4.5.0.260",
+      "channel": "events",
+      "command": 218,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "fadeIn",
+          "type": "u8",
+          "note": "Nonzero brings a tint in, and the colour and weight below follow; 0 takes it away, and they do not."
+        },
+        {
+          "name": "time",
+          "type": "f32",
+          "note": "How long the change takes, in seconds."
+        },
+        {
+          "name": "side",
+          "type": "i32",
+          "note": "Which side sees it: 0 every client. Otherwise a client applies it only where side is its own side, and a client with no champion of its own only where side is 100."
+        },
+        {
+          "name": "colour",
+          "type": "u32",
+          "note": "The tint, as blue, green, red and opacity bytes.",
+          "present": {
+            "when": "fadeIn"
+          }
+        },
+        {
+          "name": "weight",
+          "type": "f32",
+          "note": "How strongly it applies at most.",
+          "present": {
+            "when": "fadeIn"
+          }
+        }
+      ]
+    },
+    {
+      "from": "4.5.0.260",
       "until": "4.11.0.386",
       "channel": "events",
       "command": 218,

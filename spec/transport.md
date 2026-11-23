@@ -99,9 +99,9 @@ abandons a connection whose verify connect states anything else.
 >
 > A client asks for 8 channels.
 
-<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+<!-- holds from 4.4.0.1858 up to 4.18.0.271 -->
 
-> **In 4.17**
+> **In 4.4–4.17**
 >
 > A client reads the verify connect's peer id from the first of the two bytes
 > ENet gives it, and carries that byte in every header it sends. A server MUST

@@ -292,6 +292,58 @@
     },
     {
       "from": "3.11.0.306",
+      "until": "4.4.0.1858",
+      "channel": "clock",
+      "command": 21,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot."
+        },
+        {
+          "name": "level",
+          "type": "u8",
+          "note": "The level the spell now stands at."
+        },
+        {
+          "name": "pointsLeft",
+          "type": "u8",
+          "note": "How many spell points are left unspent."
+        }
+      ],
+      "note": "Arriving on the events channel instead, it raises the spell as well, and a client shows the new level either way."
+    },
+    {
+      "from": "4.4.0.1858",
+      "until": "4.5.0.260",
+      "channel": "clock",
+      "command": 21,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot. A client applies one outside 0 to 60 to slot 0."
+        },
+        {
+          "name": "level",
+          "type": "u8",
+          "note": "The level the spell now stands at."
+        },
+        {
+          "name": "pointsLeft",
+          "type": "u8",
+          "note": "How many spell points are left unspent."
+        }
+      ],
+      "note": "On whichever of the clock, events and transient channels it arrives, a client acts on it only where the header names a champion: it sets the slot's level and the points left unspent, and shows them."
+    },
+    {
+      "from": "4.5.0.260",
       "until": "4.17.0.233",
       "channel": "clock",
       "command": 21,

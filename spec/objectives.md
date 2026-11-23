@@ -40,9 +40,15 @@ match when a camp is next due with `CampTimer`.
 > message says. A client announces a camp `CampCleared` empties where the
 > message's flag says to.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
 
-> **In 4.1–4.20**
+> **In 4.4**
+>
+> `CampCleared` sets no time for the camp to fill again.
+
+<!-- holds from 4.5.0.260 up to 4.21.0.0 -->
+
+> **In 4.5–4.20**
 >
 > `CampCleared` also sets when the camp fills again.
 

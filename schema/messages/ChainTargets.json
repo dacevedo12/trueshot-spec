@@ -1158,6 +1158,70 @@
     },
     {
       "from": "3.14.0.700",
+      "until": "4.4.0.1858",
+      "channel": "events",
+      "command": 107,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "count",
+          "type": "i32",
+          "note": "How many of the slots are used, 0 to 32."
+        },
+        {
+          "name": "caster",
+          "type": "u32",
+          "note": "The unit casting the missile."
+        },
+        {
+          "name": "targets",
+          "type": "array",
+          "count": 32,
+          "items": {
+            "name": "target",
+            "type": "u32",
+            "note": "A unit, in the order struck."
+          },
+          "note": "Always 32 slots; those past count have no effect."
+        }
+      ],
+      "note": "Where the client already holds the missile, the missile takes the list; otherwise the list waits for the caster's next chain missile."
+    },
+    {
+      "from": "4.4.0.1858",
+      "until": "4.5.0.260",
+      "channel": "events",
+      "command": 107,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "count",
+          "type": "i32",
+          "note": "How many of the slots are used, 0 to 32. Zero clears all 32 slots and a negative count changes nothing; a client does not cap it."
+        },
+        {
+          "name": "caster",
+          "type": "u32",
+          "note": "The unit casting the missile."
+        },
+        {
+          "name": "targets",
+          "type": "array",
+          "count": 32,
+          "items": {
+            "name": "target",
+            "type": "u32",
+            "note": "A unit, in the order struck."
+          },
+          "note": "Always 32 slots; those past count keep what they held."
+        }
+      ],
+      "note": "Where the client already holds the missile, the missile takes the list; otherwise the list waits for the caster's next chain missile."
+    },
+    {
+      "from": "4.5.0.260",
       "until": "4.11.0.386",
       "channel": "events",
       "command": 107,

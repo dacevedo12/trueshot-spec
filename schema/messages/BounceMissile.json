@@ -6,6 +6,67 @@
   "revisions": [
     {
       "from": "3.14.0.700",
+      "until": "4.4.0.1858",
+      "channel": "events",
+      "command": 281,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit it now flies at."
+        },
+        {
+          "name": "fromX",
+          "type": "f32",
+          "note": "Where it bounces from, along one ground axis, in world units."
+        },
+        {
+          "name": "fromY",
+          "type": "f32",
+          "note": "Where it bounces from, in height, in world units."
+        },
+        {
+          "name": "fromZ",
+          "type": "f32",
+          "note": "Where it bounces from, along the other ground axis, in world units."
+        }
+      ]
+    },
+    {
+      "from": "4.4.0.1858",
+      "until": "4.5.0.260",
+      "channel": "events",
+      "command": 281,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "A client does not read it."
+        },
+        {
+          "name": "fromX",
+          "type": "f32",
+          "note": "Where it bounces from, along one ground axis, in world units."
+        },
+        {
+          "name": "fromY",
+          "type": "f32",
+          "note": "Where it bounces from, in height, in world units."
+        },
+        {
+          "name": "fromZ",
+          "type": "f32",
+          "note": "Where it bounces from, along the other ground axis, in world units."
+        }
+      ],
+      "note": "Only a line missile acts on it."
+    },
+    {
+      "from": "4.5.0.260",
       "until": "4.17.0.233",
       "channel": "events",
       "command": 281,

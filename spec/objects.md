@@ -1130,15 +1130,9 @@ so the number comes from `global_ss_flash.troy` and not from
 > A byte from 128 to 255 enters the hash as its value less 256, worked in 32
 > bits, rather than as itself.
 
-<!-- holds from 4.1.0.171 up to 4.17.0.233 -->
+<!-- holds from 4.4.0.1858 up to 4.18.0.271 -->
 
-> **In 4.1–4.16**
->
-> Every byte other than `A` to `Z` is taken as it is.
-
-<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
-
-> **In 4.17**
+> **In 4.4–4.17**
 >
 > A byte from 128 to 255 enters the hash as its value less 256, worked in 32
 > bits, rather than as itself.

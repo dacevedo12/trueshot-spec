@@ -751,6 +751,86 @@
     },
     {
       "from": "4.1.0.171",
+      "until": "4.4.0.1858",
+      "channel": "events",
+      "command": 219,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "cue",
+          "type": "u8",
+          "note": "What to do. A client takes any other value and does nothing.",
+          "values": {
+            "0": {
+              "name": "prepare"
+            },
+            "1": {
+              "name": "begin"
+            },
+            "2": {
+              "name": "end"
+            },
+            "3": {
+              "name": "changeState"
+            }
+          }
+        },
+        {
+          "name": "event",
+          "type": "u32",
+          "note": "Which cue or event."
+        },
+        {
+          "name": "parameter",
+          "type": "u32",
+          "note": "Which state, where the state changes."
+        }
+      ],
+      "note": "The header names the champion of the player it is sent to."
+    },
+    {
+      "from": "4.4.0.1858",
+      "until": "4.5.0.260",
+      "channel": "events",
+      "command": 219,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "cue",
+          "type": "u8",
+          "note": "What to do. A client takes any other value and does nothing.",
+          "values": {
+            "0": {
+              "name": "prepare"
+            },
+            "1": {
+              "name": "begin"
+            },
+            "2": {
+              "name": "end"
+            },
+            "3": {
+              "name": "changeState"
+            }
+          }
+        },
+        {
+          "name": "event",
+          "type": "u32",
+          "note": "Which cue or event."
+        },
+        {
+          "name": "parameter",
+          "type": "u32",
+          "note": "Which state, where the state changes."
+        }
+      ],
+      "note": "The header names a champion the client holds; a client acts on it whichever champion that is, and does nothing where the header names none it holds."
+    },
+    {
+      "from": "4.5.0.260",
       "until": "4.11.0.386",
       "channel": "events",
       "command": 219,

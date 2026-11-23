@@ -262,6 +262,36 @@
     },
     {
       "from": "3.11.0.306",
+      "until": "4.4.0.1858",
+      "channel": "events",
+      "command": 65,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "emote",
+          "type": "u8",
+          "note": "Which emote, by the number the client knows it as. A client plays an animation on the champion for 0, 1 and 2, a different one each, and none for 3."
+        }
+      ]
+    },
+    {
+      "from": "4.4.0.1858",
+      "until": "4.5.0.260",
+      "channel": "events",
+      "command": 65,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "emote",
+          "type": "u8",
+          "note": "Which emote, by the number the client knows it as. A client plays an animation and a voice line on the champion for each of 0 to 3, and nothing for 4 and up or for a dead champion."
+        }
+      ]
+    },
+    {
+      "from": "4.5.0.260",
       "until": "4.11.0.386",
       "channel": "events",
       "command": 65,

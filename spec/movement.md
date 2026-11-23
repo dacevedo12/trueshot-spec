@@ -135,9 +135,42 @@ height (see [Space](space.md)).
 > A path that arrives before a client has loaded the map's ground grid is read
 > with a step of 1 in place of 2 and an origin of 0.
 
-<!-- holds from 3.04.0.78 up to 4.21.0.0 -->
+<!-- holds from 3.04.0.78 up to 4.4.0.1858 -->
 
-> **In 3.04–4.20**
+> **In 3.04–4.3**
+>
+> `Movement` and `MovementAtSpeed` are compact: a path is a run of integer
+> points, while positions elsewhere are world floats covering a far larger range
+> (see [Space](space.md)). The two are related by an origin and a step:
+>
+> ```
+> encoded = truncate_toward_zero((world - origin) / 2)
+> world   = origin + 2 * encoded
+> ```
+>
+> A path resolves a position to two world units, rounded toward the origin.
+
+<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
+
+> **In 4.4**
+>
+> `Movement` and `MovementAtSpeed` are compact: a path is a run of integer
+> points, while positions elsewhere are world floats covering a far larger range
+> (see [Space](space.md)). The two are related by an origin and a step:
+>
+> ```
+> encoded = truncate_toward_zero((world - origin) / 2)
+> world   = origin + 2 * encoded
+> ```
+>
+> A path resolves a position to two world units, rounded toward the origin.
+>
+> A path that arrives before a client has loaded the map's ground grid is read
+> with a step of 1 in place of 2 and an origin of 0.
+
+<!-- holds from 4.5.0.260 up to 4.21.0.0 -->
+
+> **In 4.5–4.20**
 >
 > `Movement` and `MovementAtSpeed` are compact: a path is a run of integer
 > points, while positions elsewhere are world floats covering a far larger range
@@ -312,9 +345,18 @@ says what a client does with a movement whose unit it does not hold.
 > the client holds the unit, and none whose movement follows a refused one; the
 > list is empty where it names none. A server MAY ignore it.
 
-<!-- holds from 3.14.0.700 up to 4.21.0.0 -->
+<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
 
-> **In 3.14–4.20**
+> **In 4.4**
+>
+> A client answers each group with one `WaypointAck`, listing each unit whose
+> movement carried a token, in the order the group gives them, whether or not
+> the client holds the unit, and none whose movement follows a refused one; the
+> list is empty where it names none. A server MAY ignore it.
+
+<!-- holds from 4.5.0.260 up to 4.21.0.0 -->
+
+> **In 4.5–4.20**
 >
 > A client answers each group with one `WaypointAck`, listing every unit in it
 > that carried a token, with an empty list where none did. A server MAY ignore

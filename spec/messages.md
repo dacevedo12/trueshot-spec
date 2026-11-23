@@ -148,9 +148,17 @@ revision claims that value both ways.
 > 63, its size is one byte that follows the command and object identifier, just
 > before the body.
 
-<!-- holds from 3.14.0.700 up to 4.20.0.315 -->
+<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
 
-> **In 3.14–4.19**
+> **In 4.4**
+>
+> A client unwraps a container on any channel. Where an entry's size bits read
+> 63, its size is one byte that follows the command and object identifier, just
+> before the body.
+
+<!-- holds from 4.5.0.260 up to 4.20.0.315 -->
+
+> **In 4.5–4.19**
 >
 > Where an entry's size bits read 63, its size is the next byte instead.
 

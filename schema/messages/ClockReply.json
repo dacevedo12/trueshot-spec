@@ -420,6 +420,46 @@
     },
     {
       "from": "3.14.0.700",
+      "until": "4.4.0.1858",
+      "channel": "clock",
+      "command": 8,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "serverSaid",
+          "type": "f32",
+          "note": "What the server last said the clock stood at, in seconds."
+        },
+        {
+          "name": "clientSaid",
+          "type": "f32",
+          "note": "What the client's own clock stood at when that statement arrived, in seconds."
+        }
+      ]
+    },
+    {
+      "from": "4.4.0.1858",
+      "until": "4.5.0.260",
+      "channel": "clock",
+      "command": 8,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "serverSaid",
+          "type": "f32",
+          "note": "What the server last said the clock stood at, in seconds."
+        },
+        {
+          "name": "clientSaid",
+          "type": "f32",
+          "note": "What the client's own clock stood at once that statement set it, in seconds: serverSaid plus the client's allowance for lateness."
+        }
+      ]
+    },
+    {
+      "from": "4.5.0.260",
       "until": "4.17.0.233",
       "channel": "clock",
       "command": 8,

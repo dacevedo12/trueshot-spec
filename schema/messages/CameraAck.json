@@ -566,6 +566,38 @@
     },
     {
       "from": "3.14.0.700",
+      "until": "4.4.0.1858",
+      "channel": "events",
+      "command": 43,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u8",
+          "note": "The name the report carried. A client sends the report again until this comes back."
+        }
+      ],
+      "note": "A server names in the header the champion of the player it is sent to."
+    },
+    {
+      "from": "4.4.0.1858",
+      "until": "4.5.0.260",
+      "channel": "events",
+      "command": 43,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u8",
+          "note": "The name the report carried. A client sends the report again until this comes back."
+        }
+      ],
+      "note": "A client ignores the header."
+    },
+    {
+      "from": "4.5.0.260",
       "until": "4.11.0.386",
       "channel": "events",
       "command": 43,

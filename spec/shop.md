@@ -363,9 +363,22 @@ sells.
 > A client asks for an item built from others that a player holds only one of
 > even where the player holds it already.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
 
-> **In 4.1–4.20**
+> **In 4.4**
+>
+> A client asks to buy only where shopping is allowed (`ShopEnabled`), with the
+> champion dead or near a shop of its side or a neutral shop. It never asks for
+> an item not built from others that a player holds only one of and holds
+> already. For an item built from others, it asks only where the champion holds
+> a free slot or a part of it, everything the item requires, and gold for what
+> remains. Outside the tutorial it asks whatever the shop lock says; in the
+> tutorial it does not ask while its shop is locked ([The
+> interface](interface.md)).
+
+<!-- holds from 4.5.0.260 up to 4.21.0.0 -->
+
+> **In 4.5–4.20**
 >
 > A client asks to buy only where shopping is allowed (`ShopEnabled`), with the
 > champion near its side's shop, dead, or allowed to shop from anywhere. It

@@ -6,6 +6,38 @@
   "revisions": [
     {
       "from": "4.3.0.495",
+      "until": "4.4.0.1858",
+      "channel": "events",
+      "command": 287,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "champion",
+          "type": "u32",
+          "note": "The champion."
+        }
+      ],
+      "note": "The header carries zero."
+    },
+    {
+      "from": "4.4.0.1858",
+      "until": "4.5.0.260",
+      "channel": "events",
+      "command": 287,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "champion",
+          "type": "u32",
+          "note": "The champion."
+        }
+      ],
+      "note": "A client acts only where the header names a champion it holds, any champion; the champion credited is the one champion names, and one it does not know counts nothing."
+    },
+    {
+      "from": "4.5.0.260",
       "until": "4.17.0.233",
       "channel": "events",
       "command": 287,

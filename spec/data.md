@@ -281,9 +281,15 @@ binary grid. Its layout is unspecified.
 >
 > No setting of the mode chooses the grid.
 
-<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
+<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
 
-> **In 4.1–4.19**
+> **In 4.4**
+>
+> No setting of the mode chooses the grid.
+
+<!-- holds from 4.5.0.260 up to 4.20.0.315 -->
+
+> **In 4.5–4.19**
 >
 > The grid's name is the one the mode's navigation setting gives.
 
