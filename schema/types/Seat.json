@@ -422,7 +422,7 @@
         {
           "name": "level",
           "type": "u16",
-          "note": "The level the seat holder has reached across matches. A 4.17 client does not draw it on the loading screen."
+          "note": "The level the seat holder has reached across matches."
         },
         {
           "name": "summoner",
@@ -437,7 +437,7 @@
         {
           "name": "flags",
           "type": "u8",
-          "note": "How the seat is treated. Two bits take effect on a 4.17 client: bit 0, set where a bot holds the seat, which the loading screen then shows from the bot fields below as already loaded; and bit 1, set to show the seat's champion on the loading screen in its skin's vintage art. The others have no effect."
+          "note": "How the seat is treated. Bit 0 is set where a bot holds the seat, which the loading screen then shows from the bot fields below as already loaded. Bit 1 asks for the champion in its skin's older art; where the skin has none, the card shows the skin's own art, then the champion's base art, then a portrait for an unknown champion. Skin 0 always shows the base art."
         },
         {
           "name": "side",
@@ -449,7 +449,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": 64,
-          "note": "What the seat is called where nobody holds it, written and padded as above. A 4.17 client shows its own name for a bot of the champion instead."
+          "note": "What the seat is called where nobody holds it, written and padded as above. A client shows its own name for a bot of the champion instead."
         },
         {
           "name": "botAsset",
@@ -463,7 +463,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": 16,
-          "note": "What the seat's standing across matches is called, written and padded as above. A 4.17 client frames the seat's loading-screen card with its own image of that name, where it has one; UNRANKED and BRONZE draw nothing."
+          "note": "What the seat's standing across matches is called, written and padded as above. UNRANKED and BRONZE, in any letter case, give the card no frame."
         },
         {
           "name": "botSkin",
@@ -473,12 +473,12 @@
         {
           "name": "botDifficulty",
           "type": "i32",
-          "note": "How well it plays where nobody holds it: 0 beginner, 1 intermediate, 2 advanced, 3 top, 4 tutorial, 5 intro. A 4.17 client draws it nowhere and picks the bot's summoner spells by it."
+          "note": "How well it plays where nobody holds it: 0 beginner, 1 intermediate, 2 advanced, 3 top, 4 tutorial, 5 intro. A client picks a bot's two summoner spells by it and the match's mode."
         },
         {
           "name": "icon",
           "type": "i32",
-          "note": "Which profile icon the client shows on the seat's loading-screen card; a negative number, or one with no art, shows icon 0's."
+          "note": "Which profile icon the client shows on the seat's loading-screen card; one with no art shows icon 0's. A bot's card shows a fixed icon of the client's own instead."
         },
         {
           "name": "allyBadge",

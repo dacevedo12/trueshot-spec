@@ -678,8 +678,7 @@ Each row gives the group and bits that name a value and what the value is.
 >
 > - its health and resource bars, as they stand (group 3 bits 0 and 1) out of
 >   their greatest (bits 2 and 3);
-> - its level (group 3 bit 13), on the portrait and over the health bar,
->   together with the spell points that level brings;
+> - its level (group 3 bit 13), on the portrait and over the health bar;
 > - its gold (group 0 bit 0);
 > - in the panel under its portrait, ability power (group 1 bit 6), armour (bit
 >   9), spell resistance (bit 10), movement speed (group 3 bit 10), and attack
@@ -900,15 +899,24 @@ Each row gives the group and bits that name a value and what the value is.
 >
 > The group 1 of a minion, or of a unit belonging to no side, also carries:
 >
-> | Group | Bits     | Value                                  | Shape    |
-> | ----- | -------- | -------------------------------------- | -------- |
-> | 1     | 13 to 31 | Its defences and the modifiers on them | measured |
+> | Group | Bits     | Value                                                                                                  | Shape    |
+> | ----- | -------- | ------------------------------------------------------------------------------------------------------ | -------- |
+> | 1     | 13 to 14 | Armour and spell resistance                                                                            | measured |
+> | 1     | 15       | A multiplier on how fast it strikes                                                                    | measured |
+> | 1     | 16 to 18 | Flat and percent modifiers on the damage it strikes with, then the flat modifier on its spells' damage | measured |
+> | 1     | 19 to 20 | How fast health and resource return                                                                    | measured |
+> | 1     | 21 to 22 | Flat and percent reduction of the spell damage it takes                                                | measured |
+>
+> Its bits 23 to 31 name nothing.
 >
 > A prop's group 1 also carries:
 >
-> | Group | Bits   | Value                                     | Shape    |
-> | ----- | ------ | ----------------------------------------- | -------- |
-> | 1     | 0 to 1 | Health as it stands, then at its greatest | measured |
+> | Group | Bits | Value                      | Shape    |
+> | ----- | ---- | -------------------------- | -------- |
+> | 1     | 0    | Health as it stands        | measured |
+> | 1     | 1    | Health as it stands, again | measured |
+>
+> Where both are set, the prop's health takes bit 1's value.
 
 ## Values stated outside a batch
 
@@ -1005,15 +1013,21 @@ Besides its batches, a server states some values with messages of their own.
 
 > **In 4.17**
 >
-> A `GoldGained` naming the client's own champion, with an amount above 0.5 and
-> a source the client holds, grants nothing: that champion's gold in hand
-> follows its batches. Any other `GoldGained` adds the amount to the gold of the
-> unit it names.
+> `GoldGained` grants no gold: a champion's gold in hand follows its batches.
 >
 > `ExperienceGained` grants nothing: it shows the amount as experience over the
 > champion, whose experience follows group 3 bit 4 of its batches alone. A
 > client fails on an `ExperienceGained` naming a unit it holds that is not a
 > champion, and a server MUST NOT send one.
+
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
+>
+> `ExperienceGained` grants nothing: it shows the amount as experience over the
+> unit it names, any unit with a mind the client holds, and a client ignores
+> one naming a unit it does not hold. A client fails on an `ExperienceGained`
+> naming an object it holds that has no mind, and a server MUST NOT send one.
 
 A server can send the gold a unit earns to another with `GoldRedirect`. A level
 gained is `LevelUp` (see [Spells](spells.md#levelling)). A server sets a

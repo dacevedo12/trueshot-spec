@@ -370,6 +370,20 @@ says what a client does with a movement whose unit it does not hold.
 > units but leaves its count of units unset, so a server MUST NOT rely on the
 > count.
 
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> The `WaypointAck` a client sends for a `Path` or `PathWithSpeed` lists no
+> units and leaves its count of units unwritten, and travels on the transient
+> channel.
+>
+> A client answers every `WaypointGroup` and `WaypointGroupAtSpeed` with a
+> `WaypointAck` carrying the group's `syncId`, once it has read the group. It
+> lists each unit whose movement carried a token, in the order the group gives
+> them, whether or not the client holds the unit, and none from a movement with
+> no points on.
+
 <!-- holds from 4.20.0.315 up to 4.21.0.0 -->
 
 > **In 4.20**

@@ -86,8 +86,8 @@ proof under that key.
 A client's first payload is `Register`, on the registration channel.
 [Objects and identifiers](objects.md#how-they-relate) says how a server answers
 it and what a client takes from the answers.
-[Leaving and coming back](match.md#leaving-and-coming-back) says when the answer
-has a client send `ReconnectedInMatch`.
+[Leaving and coming back](match.md#leaving-and-coming-back) says when a client
+sends `ReconnectedInMatch`.
 
 <!-- holds from 0.8.13.26 up to 0.9.22.14 -->
 
@@ -111,9 +111,25 @@ has a client send `ReconnectedInMatch`.
 > The first answer for a client id stands, and a later one for the same client
 > id changes nothing.
 
-<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
+<!-- holds from 4.1.0.171 up to 4.17.0.233 -->
 
-> **In 4.1–4.19**
+> **In 4.1–4.16**
+>
+> A client uses which client id stands for which player for names, sides and
+> loading cards. It takes an answer whenever it arrives, while loading or in
+> play, and one saying a client has dropped changes nothing it shows.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> A client uses which client id stands for which player for names, sides and
+> loading cards. It takes an answer whenever it arrives, while loading or in
+> play.
+
+<!-- holds from 4.18.0.271 up to 4.20.0.315 -->
+
+> **In 4.18–4.19**
 >
 > A client uses which client id stands for which player for names, sides and
 > loading cards. It takes an answer whenever it arrives, while loading or in
@@ -432,9 +448,9 @@ every client has sent `ClientReady`.
 > its name from the client's own name for that bot, not from the seat's
 > `botName`. No bit of `flags` chooses older portrait art.
 
-<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
+<!-- holds from 4.1.0.171 up to 4.17.0.233 -->
 
-> **In 4.1–4.19**
+> **In 4.1–4.16**
 >
 > A client draws its own card only as a server returns its own reports.
 >
@@ -445,8 +461,6 @@ every client has sent `ClientReady`.
 > - the profile icon, the art of icon 0 for a negative number or one with no art;
 > - the standing, drawn as a frame over the card where the client's own images
 >   have one of that name (UNRANKED and BRONZE draw nothing);
-> - one badge: the ally badge for the card's own side, otherwise the enemy
->   badge, each drawn where it is one of the badges the client's own data names;
 > - from the flags, bit 1, which shows the skin's older portrait art where it
 >   has one.
 >
@@ -464,6 +478,58 @@ every client has sent `ClientReady`.
 > emblem. A tip set in `VersionSync` to show on the loading screen takes their
 > place for its duration, and then they appear. The match's variants can give
 > the screen a background picture of their naming; with none, it has none.
+>
+> A card shows one badge: the ally badge for the card's own side, otherwise
+> the enemy badge, each drawn where it is one of the badges the client's own
+> data names.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> From the `VersionSync` seat a card takes the two summoner spells, each drawn
+> as its icon, the profile icon, and the standing, drawn as a frame over the
+> card.
+>
+> A card shows a seat's ally badge where it is not zero and the client is on
+> the card's side or on neither side, and the seat's enemy badge otherwise, an
+> ally badge of zero included. A badge is drawn only where it is one of the
+> badges the client knows.
+
+<!-- holds from 4.18.0.271 up to 4.20.0.315 -->
+
+> **In 4.18–4.19**
+>
+> A client draws its own card only as a server returns its own reports.
+>
+> From the `VersionSync` seat a card takes:
+>
+> - the two summoner spells, as the name hashes of the spells, each drawn as its
+>   icon, or as a plain square for zero or a hash that names no spell;
+> - the profile icon, the art of icon 0 for a negative number or one with no art;
+> - the standing, drawn as a frame over the card where the client's own images
+>   have one of that name (UNRANKED and BRONZE draw nothing);
+> - from the flags, bit 1, which shows the skin's older portrait art where it
+>   has one.
+>
+> A seat's level is not drawn. A seat with flags bit 0 set is a bot's, and the
+> client draws its card from the seat alone, needing no other message: the
+> client's own name for a bot of that champion (not the seat's bot name), the
+> champion's portrait in the bot's skin with the skin's name, summoner spells
+> the client's own data picks for the champion, mode and difficulty, and 100%.
+> A seat on neither side 100 nor 200 has no card.
+>
+> Between the two rows, where both have a card, a client shows the two sides'
+> team names, each as its tag in square brackets, a space and its name, and
+> nothing for a side whose name is empty: names `Team 1` and `Team 2` under tags
+> `T1` and `T2` show as `[T1] Team 1` and `[T2] Team 2` either side of the versus
+> emblem. A tip set in `VersionSync` to show on the loading screen takes their
+> place for its duration, and then they appear. The match's variants can give
+> the screen a background picture of their naming; with none, it has none.
+>
+> A card shows one badge: the ally badge for the card's own side, otherwise
+> the enemy badge, each drawn where it is one of the badges the client's own
+> data names.
 
 ## The spawn run
 
@@ -578,9 +644,9 @@ whose connection drops before play begins does.
 >
 > A client sends `ClientReady` as soon as `SpawnEnd` arrives.
 
-<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
+<!-- holds from 4.1.0.171 up to 4.17.0.233 -->
 
-> **In 4.1–4.19**
+> **In 4.1–4.16**
 >
 > Between `ClientReady` and `StartGame` a client keeps its loading screen up with
 > its own progress full, and sends `LoadingProgress` again about every half a
@@ -592,5 +658,18 @@ whose connection drops before play begins does.
 > **In 4.17**
 >
 > A client sends `ClientReady` as soon as `SpawnEnd` arrives.
+>
+> Between `ClientReady` and `StartGame` a client acts on every message as it
+> does in play, taking what has arrived, in order, every half a second. A
+> `StartGame` arriving once play has begun changes nothing.
+
+<!-- holds from 4.18.0.271 up to 4.20.0.315 -->
+
+> **In 4.18–4.19**
+>
+> Between `ClientReady` and `StartGame` a client keeps its loading screen up with
+> its own progress full, and sends `LoadingProgress` again about every half a
+> second. It waits as long as it takes: nothing in it gives up on a server that
+> is slow to start play.
 
 <!-- messages -->

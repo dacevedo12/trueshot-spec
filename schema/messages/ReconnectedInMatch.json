@@ -664,7 +664,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "A client sends it right after the server answers its registration. A client sends it on the connections it makes in play, and not while playing a recording. A client dropped while playing connects again by itself, unless dropped for being away; one dropped while loading leaves once it knows its own client id, and connects again before then; one dropped once the match has ended does nothing. It carries nothing of its own."
+      "note": "A client sends it as soon as its connection is made, straight after its Register, without waiting for the answer. A client sends it on the connections it makes in play, and not while playing a recording. A client dropped while playing connects again by itself, unless dropped for being away; one dropped while loading leaves once it knows its own client id, and connects again before then; one dropped once the match has ended does nothing. It carries nothing of its own."
     },
     {
       "from": "4.18.0.271",

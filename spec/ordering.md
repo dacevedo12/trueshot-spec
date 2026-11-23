@@ -129,6 +129,14 @@ a stream.
 > before it decides whether to take the path, and sent while it plays back a
 > stream too.
 
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> A client also answers each `Path` and `PathWithSpeed` for a unit it holds,
+> taken or not, with a `WaypointAck` carrying its `syncId` (see
+> [Movement](movement.md)), sent before it decides whether to take the path.
+
 <!-- holds from 4.20.0.315 up to 4.21.0.0 -->
 
 > **In 4.20**

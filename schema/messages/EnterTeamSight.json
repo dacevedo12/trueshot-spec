@@ -480,9 +480,10 @@
         {
           "name": "side",
           "type": "u8",
-          "note": "Which side the unit came into or out of the view of, as an index below 4 rather than a side number; which index names which side is undetermined."
+          "note": "Which side the unit came into or out of the view of, as an index below 4 rather than a side number; which index names which side is undetermined. A client ignores 4 and above."
         }
-      ]
+      ],
+      "note": "A client playing a match shows nothing different for it: only a client playing back a match, watching from a side, uses it."
     },
     {
       "from": "4.18.0.271",

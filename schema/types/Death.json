@@ -75,7 +75,7 @@
         {
           "name": "kind",
           "type": "u32",
-          "note": "What sort of death this is."
+          "note": "What sort of death this is. In UnitDied a client tells 1 apart from every other value, without changing which unit it credits with the kill; what that changes on screen is undetermined."
         },
         {
           "name": "killer",

@@ -733,9 +733,24 @@ A server tells the others that a player's client dropped with
 > to connect again, and for any reason but that and the one that means its
 > player was away shows that the reconnection failed.
 
-<!-- holds from 4.5.0.260 up to 4.21.0.0 -->
+<!-- holds from 4.5.0.260 up to 4.17.0.233 -->
 
-> **In 4.5–4.20**
+> **In 4.5–4.16**
+>
+> A client dropped during play connects again by itself, registers again, and
+> sends `ReconnectedInMatch` right after the registration answer.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> A client dropped during play connects again by itself, registers again, and
+> sends `ReconnectedInMatch` as soon as the connection is made, straight after
+> its `Register`, without waiting for the registration answer.
+
+<!-- holds from 4.18.0.271 up to 4.21.0.0 -->
+
+> **In 4.18–4.20**
 >
 > A client dropped during play connects again by itself, registers again, and
 > sends `ReconnectedInMatch` right after the registration answer.

@@ -17,12 +17,32 @@
           "type": "array",
           "count": 10,
           "items": {
-            "name": "item",
-            "type": "struct",
-            "struct": "HeldItem",
-            "note": "One slot."
+            "name": "itemsEntry",
+            "type": "record",
+            "fields": [
+              {
+                "name": "item",
+                "type": "u32",
+                "note": "The item, or zero to leave the slot empty, in which case its place's cooldowns are not used."
+              },
+              {
+                "name": "slot",
+                "type": "u8",
+                "note": "A client does not read it: a place's position gives its slot."
+              },
+              {
+                "name": "inSlot",
+                "type": "u8",
+                "note": "How many are in the slot."
+              },
+              {
+                "name": "charges",
+                "type": "u8",
+                "note": "How many charges it holds."
+              }
+            ]
           },
-          "note": "Ten slots, in order."
+          "note": "Ten places, one per slot. A client empties every slot first, and reads only the first nine places, for slots 0 to 8 in order."
         },
         {
           "name": "cooldowns",
@@ -31,9 +51,9 @@
           "items": {
             "name": "cooldown",
             "type": "f32",
-            "note": "How long is left, in seconds."
+            "note": "How long is left, in seconds. -1 leaves the slot's wait as it was, and the whole cooldown with it."
           },
-          "note": "Each slot's cooldown left, in the same order."
+          "note": "Each slot's cooldown left, in the same order; a client reads only the first nine."
         },
         {
           "name": "maxCooldowns",
@@ -44,7 +64,7 @@
             "type": "f32",
             "note": "The whole cooldown, in seconds."
           },
-          "note": "Each slot's whole cooldown, in the same order."
+          "note": "Each slot's whole cooldown, in the same order; a client reads only the first nine."
         }
       ]
     }

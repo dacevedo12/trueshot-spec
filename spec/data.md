@@ -359,9 +359,9 @@ figures, in `DATA/Items/<id>.inibin`; and summoner, item and shared spells in
 > all other spells, and some champions' in
 > `DATA/Characters/<Champion>/Spells/<Spell>.inibin`.
 
-<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
+<!-- holds from 4.1.0.171 up to 4.17.0.233 -->
 
-> **In 4.1–4.19**
+> **In 4.1–4.16**
 >
 > A champion's spells and attacks are in
 > `DATA/Characters/<Champion>/Spells/<Spell>.inibin`.
@@ -371,3 +371,14 @@ figures, in `DATA/Items/<id>.inibin`; and summoner, item and shared spells in
 > **In 4.17**
 >
 > Maps 8, 10 and 12 each add an `Items.inibin` of their own as well.
+>
+> A client looks for a champion's spells and attacks both in
+> `DATA/Characters/<Champion>/Spells/<Spell>.inibin` and in
+> `DATA/Spells/<Spell>.inibin`.
+
+<!-- holds from 4.18.0.271 up to 4.20.0.315 -->
+
+> **In 4.18–4.19**
+>
+> A champion's spells and attacks are in
+> `DATA/Characters/<Champion>/Spells/<Spell>.inibin`.

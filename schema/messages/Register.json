@@ -138,7 +138,7 @@
         {
           "name": "version",
           "type": "u32",
-          "note": "The build the client runs, as first \u00d7 10000000 + second \u00d7 100000 + third \u00d7 100 + fourth, so 4.17.0.233 arrives as 41700233 and 4.17.0.267 as 41700267. A client always carries it."
+          "note": "The build the client runs, as first × 10000000 + second × 100000 + third × 100 + fourth, so 4.17.0.233 arrives as 41700233 and 4.17.0.267 as 41700267. A client always carries it."
         },
         {
           "name": "proof",
@@ -224,7 +224,7 @@
         {
           "name": "version",
           "type": "u32",
-          "note": "The build the client runs, with each part written out and run together, so 4.20.0.315 arrives as 42000315. A client always carries it, and the answer a server carries back repeats the same number."
+          "note": "The build the client runs, as first × 10000000 + second × 100000 + third × 100 + fourth, so 4.20.0.315 arrives as 42000315. A client always carries it, and the answer a server carries back repeats the same number."
         },
         {
           "name": "proof",
