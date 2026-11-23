@@ -466,7 +466,7 @@
           "note": "The name the report carried. A client sends the report again until this comes back."
         }
       ],
-      "note": "A client ignores the header. It takes syncId only where it is 1 to 127 ahead of the last it took, a smaller number counting as 255 more, so after 255 it never takes 0."
+      "note": "A client ignores the header. It takes syncId only where it is 1 to 127 ahead of the last it took."
     },
     {
       "from": "3.04.0.78",

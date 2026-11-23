@@ -64,7 +64,8 @@ vote. `BalanceResult` says how the vote ended, or why it could not be held.
 
 > **In 3.04–4.20**
 >
-> A client also answers as its player types `/equalize`.
+> A client also answers as its player types `/equalize`; either way it answers
+> once per vote.
 
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 

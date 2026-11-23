@@ -221,9 +221,19 @@ A server ends the hold with `Resumed`.
 > and ignores a `Resumed` with a countdown that arrives while one runs. A
 > `Resumed` arriving while the match is not held leaves the match as it is.
 
-<!-- holds from 3.03.0.198 up to 3.7.0.328 -->
+<!-- holds from 3.03.0.198 up to 3.04.0.78 -->
 
-> **In 3.03–3.6**
+> **In 3.03**
+>
+> `Resumed` ends the hold either at once or after a countdown, during which the
+> match stays held. A client shows the countdown only for a tournament's hold,
+> and ignores a `Resumed` with a countdown that arrives while one runs. A
+> `Resumed` with a countdown that arrives while the match is not held leaves the
+> match as it is.
+
+<!-- holds from 3.6.0.388 up to 3.7.0.328 -->
+
+> **In 3.6**
 >
 > `Resumed` ends the hold either at once or after a countdown, during which the
 > match stays held. A client shows the countdown only for a tournament's hold,
@@ -719,11 +729,11 @@ A server tells the others that a player's client dropped with
 
 > **In 4.4**
 >
-> A client dropped during play connects again at once by itself, for any reason
-> but the one that means its player was away. Where its settings turn this off,
-> it asks its player for the reason 0 whether to connect again, and for any
-> reason but that and the one that means its player was away shows that the
-> reconnection failed.
+> Where a setting of its own allows it, a client dropped during play connects
+> again at once by itself, for any reason but the one that means its player was
+> away. Where that setting is off, it asks its player for the reason 0 whether
+> to connect again, and for any reason but that and the one that means its
+> player was away shows that the reconnection failed.
 
 <!-- holds from 4.5.0.260 up to 4.21.0.0 -->
 
