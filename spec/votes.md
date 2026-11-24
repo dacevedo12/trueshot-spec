@@ -16,8 +16,8 @@ menu on or off.
 >
 > A client has no panel for the vote. `SurrenderVoteCalled` only announces a
 > vote, as just cast or as cast already, and a client's player votes by typing.
-> Where a vote fails, `SurrenderFailed` says how long until another can be
-> called.
+> Where a vote does not pass, `SurrenderFailed` says how long until another can
+> be called.
 
 <!-- holds from 0.9.25.21 up to 4.21.0.0 -->
 

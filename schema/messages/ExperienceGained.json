@@ -27,7 +27,28 @@
     },
     {
       "from": "0.9.22.14",
-      "until": "1.0.0.110",
+      "until": "1.0.0.58",
+      "channel": "events",
+      "command": 28,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit granted it, a champion. A client does nothing for a unit it does not know."
+        },
+        {
+          "name": "amount",
+          "type": "f32",
+          "note": "How much. A client shows a value below zero or from 100000 up as well."
+        }
+      ],
+      "note": "It changes no unit's experience: a client only floats the amount as text over the unit, where the player's floating-text settings allow."
+    },
+    {
+      "from": "1.0.0.58",
+      "until": "1.0.0.75",
       "channel": "events",
       "command": 28,
       "direction": "serverToClient",
@@ -37,6 +58,27 @@
           "name": "unit",
           "type": "u32",
           "note": "The unit granted it, a champion. A client fails for any other unit it holds, and does nothing for a unit it does not know."
+        },
+        {
+          "name": "amount",
+          "type": "f32",
+          "note": "How much. A client shows a value below zero or from 100000 up as well."
+        }
+      ],
+      "note": "It changes no unit's experience: a client only floats the amount as text over the unit, where the player's floating-text settings allow."
+    },
+    {
+      "from": "1.0.0.75",
+      "until": "1.0.0.110",
+      "channel": "events",
+      "command": 28,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit granted it, a champion. A client does nothing for a unit it does not know."
         },
         {
           "name": "amount",
@@ -120,7 +162,7 @@
         {
           "name": "unit",
           "type": "u32",
-          "note": "The unit granted it. A server names a champion: a client fails for any other unit."
+          "note": "The unit granted it."
         },
         {
           "name": "amount",
@@ -141,7 +183,7 @@
         {
           "name": "unit",
           "type": "u32",
-          "note": "The unit granted it. A server names a champion: a client fails for any other unit."
+          "note": "The unit granted it."
         },
         {
           "name": "amount",
@@ -162,7 +204,7 @@
         {
           "name": "unit",
           "type": "u32",
-          "note": "The unit granted it. A server names a champion: a client fails for any other unit."
+          "note": "The unit granted it."
         },
         {
           "name": "amount",

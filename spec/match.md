@@ -54,9 +54,9 @@ seconds.
 > The speed `GameSpeed` sets takes effect at once: sent during a hold, it ends
 > the hold, and a `Resumed` after it changes nothing.
 
-<!-- holds from 1.0.0.58 up to 1.0.0.97 -->
+<!-- holds from 1.0.0.74 up to 1.0.0.97 -->
 
-> **In 1.0.0.58–1.0.0.96**
+> **In 1.0.0.74–1.0.0.96**
 >
 > A server MUST NOT send `GameSpeed` before the client's own champion exists,
 > because a client given one before then fails.
@@ -343,9 +343,7 @@ player's side and sends `ClientFinished`.
 >
 > A client that receives `GameEnded` while still loading takes it as in play
 > once its own champion exists: it records the result and sends
-> `ClientFinished`. Before then it fails on it, recording nothing and sending
-> nothing, so a server MUST NOT send `GameEnded` before the client's own
-> champion is created.
+> `ClientFinished`.
 
 <!-- holds from 0.9.22.14 up to 0.9.25.36 -->
 
@@ -481,7 +479,7 @@ A client also leaves at once on `BotKick` with the action that means leave.
 > **In 0.8.13.26–1.0.0.109**
 >
 > A client also leaves as one abandoning the match as its player closes the
-> window, and as a reconnection fails.
+> window, and as an attempt to connect again does not succeed.
 
 <!-- holds from 1.0.0.110 up to 1.0.0.111 -->
 
@@ -495,7 +493,7 @@ A client also leaves at once on `BotKick` with the action that means leave.
 > **In 1.0.0.111–1.0.0.131**
 >
 > A client also leaves as one abandoning the match as its player closes the
-> window, and as a reconnection fails.
+> window, and as an attempt to connect again does not succeed.
 
 <!-- holds from 1.0.0.130 up to 4.21.0.0 -->
 
@@ -517,7 +515,7 @@ A client also leaves at once on `BotKick` with the action that means leave.
 > **In 1.0.0.133–4.20**
 >
 > A client also leaves as one abandoning the match as its player closes the
-> window, and as a reconnection fails.
+> window, and as an attempt to connect again does not succeed.
 
 <!-- holds from 1.0.0.140 up to 4.18.0.271 -->
 
@@ -654,8 +652,8 @@ A server tells the others that a player's client dropped with
 > A client dropped during play connects again only where its player agrees: for
 > the reason 0 it asks, and on a yes connects again, showing that it is
 > reconnecting until it is back or its player cancels. For any other reason but
-> the one that means its player was away, it shows that the reconnection
-> failed.
+> the one that means its player was away, it shows that it could not connect
+> again.
 >
 > Where `Reconnected` names the client's own, the client resynchronises until
 > `ResyncEnded`.
@@ -739,7 +737,7 @@ A server tells the others that a player's client dropped with
 > again at once by itself, for any reason but the one that means its player was
 > away, and shows its player that it is reconnecting while it does. Where that
 > setting is off, it asks its player for the reason 0 whether to connect again,
-> and for any other shows that the reconnection failed.
+> and for any other shows that it could not connect again.
 
 <!-- holds from 1.0.0.140 up to 1.0.0.150 -->
 
@@ -818,7 +816,7 @@ A server tells the others that a player's client dropped with
 > again at once by itself, for any reason but the one that means its player was
 > away. Where that setting is off, it asks its player for the reason 0 whether
 > to connect again, and for any reason but that and the one that means its
-> player was away shows that the reconnection failed. A client registers again
+> player was away shows that it could not connect again. A client registers again
 > on every connection it makes, a new one after a drop included.
 >
 > A client sends `ReconnectedInMatch` as the connection is made, before any

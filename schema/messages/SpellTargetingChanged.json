@@ -57,7 +57,7 @@
             {
               "name": "summonerSlots",
               "width": 1,
-              "note": "Set where the slot counts among the summoner slots, so that 0 and 1 name those two. A client fails where it is set for a unit that is not a champion."
+              "note": "Set where the slot counts among the summoner slots, so that 0 and 1 name those two."
             }
           ]
         },
@@ -153,7 +153,7 @@
             {
               "name": "summonerSlots",
               "width": 1,
-              "note": "Set where the slot counts among the summoner slots, so that 0 and 1 name those two. A client fails where it is set for a unit that is not a champion."
+              "note": "Set where the slot counts among the summoner slots, so that 0 and 1 name those two."
             }
           ]
         },
@@ -262,6 +262,38 @@
     },
     {
       "from": "1.0.0.82",
+      "until": "1.0.0.86",
+      "channel": "events",
+      "command": 140,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "which",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "slot",
+              "width": 7,
+              "note": "Which slot. A champion's own spells count from 0."
+            },
+            {
+              "name": "summonerSlots",
+              "width": 1,
+              "note": "Set where the slot counts among the summoner slots, so that 0 and 1 name those two."
+            }
+          ]
+        },
+        {
+          "name": "targeting",
+          "type": "u8",
+          "note": "How the spell is aimed, 0 to 7. A client knows no other value, so a server never sends a larger one; no value asks for the spell's own default."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.86",
       "until": "1.0.0.97",
       "channel": "events",
       "command": 140,
@@ -486,38 +518,6 @@
     },
     {
       "from": "1.0.0.110",
-      "until": "1.0.0.111",
-      "channel": "events",
-      "command": 26,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "which",
-          "type": "bits",
-          "size": 1,
-          "bits": [
-            {
-              "name": "slot",
-              "width": 7,
-              "note": "Which slot. A champion's own spells count from 0."
-            },
-            {
-              "name": "summonerSlots",
-              "width": 1,
-              "note": "Set where the slot counts among the summoner slots, so that 0 and 1 name those two. A client fails where it is set for a unit with no summoner slots."
-            }
-          ]
-        },
-        {
-          "name": "targeting",
-          "type": "u8",
-          "note": "How the spell is aimed, 0 to 7. A client keeps a larger value and reports it as an error, but builds no new aiming for it, so the slot keeps the aiming it had; no value asks for the spell's own default."
-        }
-      ]
-    },
-    {
-      "from": "1.0.0.111",
       "until": "1.0.0.114",
       "channel": "events",
       "command": 26,
@@ -582,7 +582,7 @@
     },
     {
       "from": "1.0.0.119",
-      "until": "1.0.0.128",
+      "until": "1.0.0.126",
       "channel": "events",
       "command": 26,
       "direction": "serverToClient",
@@ -602,6 +602,38 @@
               "name": "summonerSlots",
               "width": 1,
               "note": "Set where the slot counts among the summoner slots, so that 0 and 1 name those two. Only a champion has them: for any other unit the bit set has no defined effect."
+            }
+          ]
+        },
+        {
+          "name": "targeting",
+          "type": "u8",
+          "note": "How the spell is aimed, 0 to 10. A client keeps a larger value and reports it as an error, but builds no new aiming for it, so the slot keeps the aiming it had; no value asks for the spell's own default."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.126",
+      "until": "1.0.0.128",
+      "channel": "events",
+      "command": 26,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "which",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "slot",
+              "width": 7,
+              "note": "Which slot. A champion's own spells count from 0."
+            },
+            {
+              "name": "summonerSlots",
+              "width": 1,
+              "note": "Set where the slot counts among the summoner slots, so that 0 and 1 name those two. A client fails where it is set for a unit with no summoner slots."
             }
           ]
         },

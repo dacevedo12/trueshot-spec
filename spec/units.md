@@ -47,9 +47,7 @@ says which of them a client ignores while it resynchronises.
 > has loaded the map's ground grid, which it loads while loading the match.
 >
 > A client builds a prop from the character its `MapProp` names, loading that
-> character from its own files when it has not already, and fails soon after the
-> prop comes near what it draws where it cannot load it. A server MUST name in
-> `MapProp` only characters the client can load.
+> character from its own files when it has not already.
 
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 

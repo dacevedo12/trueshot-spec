@@ -8,10 +8,11 @@ builds on the ones before it, so read them in order.
 A chapter holds for every client build covered, except a passage set apart and
 headed with ranges, which holds for those alone. What a chapter says of a
 message holds wherever that message has a layout: a build with no layout for a
-message has no such message, and nothing said of it applies there. Field
-layouts are not restated in prose: they live in [schema/](../schema/), machine
-readable, and each system's chapter ends with its messages and every layout each
-has. Where a field's meaning is undetermined, its note says so.
+message has no such message, and nothing said of it applies there. Where it
+says a client fails, the client stops running. Field layouts are not restated in
+prose: they live in [schema/](../schema/), machine readable, and each system's
+chapter ends with its messages and every layout each has. Where a field's
+meaning is undetermined, its note says so.
 
 The rules of the game are out of scope: how much a spell deals, what an item
 costs, how fast a champion levels. A server decides those; the specification

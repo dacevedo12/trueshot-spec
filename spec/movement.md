@@ -530,20 +530,22 @@ server sends.
 
 > **In 4.5–4.16**
 >
-> A client fails on the first `NavigationFlags` a match brings.
+> A server MUST NOT send `NavigationFlags`: a client fails on the first one a
+> match brings.
 
 <!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 
 > **In 4.17**
 >
-> A client whose map's ground data is loaded fails on the first
-> `NavigationFlags` a match brings. Before that data is loaded, it takes nothing
-> and does not answer.
+> A server MUST NOT send `NavigationFlags`: a client whose map's ground data is
+> loaded fails on the first one a match brings. Before that data is loaded, it
+> takes nothing and does not answer.
 
 <!-- holds from 4.18.0.271 up to 4.21.0.0 -->
 
 > **In 4.18–4.20**
 >
-> A client fails on the first `NavigationFlags` a match brings.
+> A server MUST NOT send `NavigationFlags`: a client fails on the first one a
+> match brings.
 
 <!-- messages -->

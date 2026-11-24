@@ -70,7 +70,39 @@
     },
     {
       "from": "1.0.0.128",
-      "until": "1.0.0.144",
+      "until": "1.0.0.132",
+      "command": 54,
+      "channel": "events",
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "which",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "slot",
+              "width": 7,
+              "note": "Which slot. A champion's own spells count from 0."
+            },
+            {
+              "name": "summonerSlots",
+              "width": 1,
+              "note": "Set where slot names a summoner spell's slot, clear for the unit's own spells. Only a champion has summoner slots."
+            }
+          ]
+        },
+        {
+          "name": "icon",
+          "type": "u8",
+          "note": "Which icon the spell shows."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.132",
+      "until": "1.0.0.133",
       "command": 54,
       "channel": "events",
       "direction": "serverToClient",
@@ -90,6 +122,38 @@
               "name": "summonerSlots",
               "width": 1,
               "note": "Set where slot names a summoner spell's slot, clear for the unit's own spells. Only a champion has summoner slots: a server sets it only for a champion, and for any other unit a client fails."
+            }
+          ]
+        },
+        {
+          "name": "icon",
+          "type": "u8",
+          "note": "Which icon the spell shows."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.133",
+      "until": "1.0.0.144",
+      "command": 54,
+      "channel": "events",
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "which",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "slot",
+              "width": 7,
+              "note": "Which slot. A champion's own spells count from 0."
+            },
+            {
+              "name": "summonerSlots",
+              "width": 1,
+              "note": "Set where slot names a summoner spell's slot, clear for the unit's own spells. Only a champion has summoner slots."
             }
           ]
         },

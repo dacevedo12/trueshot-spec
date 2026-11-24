@@ -42,14 +42,14 @@ champion's that [replication](replication.md) carries.
 > **In 1.0.0.25–1.0.0.57**
 >
 > A client fails on a casting record whose length disagrees with its count of
-> targets, and casts nothing.
+> targets, and casts nothing. A server MUST NOT send one.
 
 <!-- holds from 1.0.0.58 up to 1.0.0.61 -->
 
 > **In 1.0.0.58–1.0.0.60**
 >
 > A client fails on a casting record whose length disagrees with its count of
-> targets.
+> targets, and a server MUST NOT send one.
 
 <!-- holds from 1.0.0.96 up to 1.0.0.97 -->
 
@@ -158,29 +158,22 @@ around its player's cursor with `CursorRings`.
 
 A marker has no slots.
 
-<!-- holds from 1.0.0.124 up to 1.0.0.140 -->
-
-> **In 1.0.0.124–1.0.0.139**
->
-> A server MUST NOT send `SpellInSlot` naming a marker: a client fails on it,
-> whatever the slot.
-
 <!-- holds from 1.0.0.150 up to 1.0.0.151 -->
 
 > **In 1.0.0.150**
 >
 > A client ignores a `SpellInSlot` naming a marker.
 
-<!-- holds from 3.03.0.198 up to 4.21.0.0 -->
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
-> **In 3.03–4.20**
+> **In 3.10**
 >
 > A server MUST NOT send `SpellInSlot` naming a marker: a client fails on it,
 > whatever the slot.
 
-<!-- holds from 1.0.0.96 up to 1.0.0.111 -->
+<!-- holds from 1.0.0.96 up to 1.0.0.97 -->
 
-> **In 1.0.0.96–1.0.0.110**
+> **In 1.0.0.96**
 >
 > A server MUST NOT set `summonerSlots` in `SpellNameChanged` or
 > `SpellTargetingChanged` for a unit with no summoner slots: a client fails on

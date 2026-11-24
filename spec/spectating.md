@@ -109,12 +109,9 @@ says.
 >
 > A watching client registers as a player's client does (see
 > [Joining a match](joining.md)), and is answered the same way, save for the
-> client id. A server MUST answer a watching client with a client id that no
-> player in the streamed match holds: a watching client given a player's client
-> id takes that player's champion as its own, and fails as soon as it has caught
-> up with the stream. From then on it takes only `StreamMetadata`,
-> `StreamChunkRange` and `StreamChunk`, on any channel, and drops every other
-> message a server sends it directly, `VersionSync` included. Of what a player's
+> client id. From then on it takes only `StreamMetadata`, `StreamChunkRange` and
+> `StreamChunk`, on any channel, and drops every other message a server sends it
+> directly, `VersionSync` included. Of what a player's
 > client sends while joining, it sends only `JoinSide`, once the stream's own
 > `VersionSync` has played, then `GameOptions`, `CharacterSelected` and
 > `ClientReady`: no `ClientVersion`, no `QueryStatus` and no `LoadingProgress`.
@@ -125,12 +122,9 @@ says.
 >
 > A watching client registers as a player's client does (see
 > [Joining a match](joining.md)), and is answered the same way, save for the
-> client id. A server MUST answer a watching client with a client id that no
-> player in the streamed match holds: a watching client given a player's client
-> id takes that player's champion as its own, and fails as soon as it has caught
-> up with the stream. From then on it takes only `StreamMetadata`,
-> `StreamChunkRange` and `StreamChunk`, on any channel, and drops every other
-> message a server sends it directly, `VersionSync` included. Of what a player's
+> client id. From then on it takes only `StreamMetadata`, `StreamChunkRange` and
+> `StreamChunk`, on any channel, and drops every other message a server sends it
+> directly, `VersionSync` included. Of what a player's
 > client sends while joining, it sends only `JoinSide`, once the stream's own
 > `VersionSync` has played, then `GameOptions` and `ClientReady`: no
 > `ClientVersion`, no `QueryStatus` and no `LoadingProgress`.
@@ -141,12 +135,9 @@ says.
 >
 > A watching client registers as a player's client does (see
 > [Joining a match](joining.md)), and is answered the same way, save for the
-> client id. A server MUST answer a watching client with a client id that no
-> player in the streamed match holds: a watching client given a player's client
-> id takes that player's champion as its own, and fails as soon as it has caught
-> up with the stream. From then on it takes only `StreamMetadata`,
-> `StreamChunkRange` and `StreamChunk`, on any channel, and drops every other
-> message a server sends it directly, `VersionSync` included. Of what a player's
+> client id. From then on it takes only `StreamMetadata`, `StreamChunkRange` and
+> `StreamChunk`, on any channel, and drops every other message a server sends it
+> directly, `VersionSync` included. Of what a player's
 > client sends while joining, it sends only `JoinSide`, once the stream's own
 > `VersionSync` has played, then `GameOptions`, `CharacterSelected` and
 > `ClientReady`: no `ClientVersion`, no `QueryStatus` and no `LoadingProgress`.
@@ -167,13 +158,18 @@ says.
 
    Either way it skips none after that. A client takes a key frame only where
    it is the first one sent and arrives before the chunk after the last chunk
-   of setting up; otherwise it keeps it but plays on from that chunk. A server
-   SHOULD join a client late once a match is more than a few minutes in: a
-   client sent every chunk from 1 fails partway through a long catch-up.
+   of setting up; otherwise it keeps it but plays on from that chunk.
 
 5. As the match ends, a server sends `StreamChunkRange` again naming its last
    chunk, then that chunk. Once it has arrived the client takes no more of the
    stream.
+
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
+>
+> A server SHOULD join a client late once a match is more than a few minutes in:
+> a client sent every chunk from 1 fails partway through a long catch-up.
 
 The stream's chunks run for `StreamMetadata`'s `chunkTimeInterval` each and its
 key frames for its `keyFrameTimeInterval` (see [Time](time.md#how-a-time-is-carried)).
@@ -183,7 +179,7 @@ key frames for its `keyFrameTimeInterval` (see [Time](time.md#how-a-time-is-carr
 > **In 3.13**
 >
 > A client fails on a `StreamChunk` fragment other than 0 that arrives with no
-> chunk begun.
+> chunk begun, and a server MUST NOT send one.
 
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 

@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "0.9.22.14",
-      "until": "1.0.0.74",
+      "until": "1.0.0.61",
       "channel": "events",
       "command": 70,
       "direction": "serverToClient",
@@ -19,6 +19,22 @@
         }
       ],
       "note": "A client marks the unit where target is its own champion, drawing an indicator on the unit's health bar unless the unit's data turns it off; any other target clears the mark. A client fails on a nonzero target where it has no player of its own."
+    },
+    {
+      "from": "1.0.0.61",
+      "until": "1.0.0.74",
+      "channel": "events",
+      "command": 70,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The champion being attacked."
+        }
+      ],
+      "note": "A client marks the unit where target is its own champion, drawing an indicator on the unit's health bar unless the unit's data turns it off; any other target clears the mark."
     },
     {
       "from": "1.0.0.74",

@@ -282,13 +282,6 @@ into its death.
 >
 > Every unit `UnitDied` puts down dies.
 
-<!-- holds from 0.9.25.24 up to 0.9.25.36 -->
-
-> **In 0.9.25.24–0.9.25.35**
->
-> A server MUST NOT send `BuildingDied` for the nexus: a client removes the
-> nexus some 4 seconds later while still using it, and fails.
-
 <!-- holds from 1.0.0.58 up to 3.14.0.700 -->
 
 > **In 1.0.0.58–3.13**

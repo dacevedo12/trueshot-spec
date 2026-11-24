@@ -18,7 +18,7 @@ const s = setup();
 // What the specification says not to send, or what ends or remakes the match
 // a sweep runs in, and so cannot be swept.
 const LEFT_OUT = new Map<string, string>([
-  ["NavigationFlags", "spec/movement.md: a client fails on it"],
+  ["NavigationFlags", "spec/movement.md: a server MUST NOT send it"],
   ["GameEnded", "it ends the match"],
   ["BotKick", "it can make the client leave"],
   ["Shutdown", "it ends the match"],

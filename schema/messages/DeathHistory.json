@@ -15,7 +15,7 @@
         {
           "name": "killer",
           "type": "u32",
-          "note": "The unit credited with the death. A client ignores the whole message where this is zero, and fails where it does not hold this unit."
+          "note": "The unit credited with the death. A client ignores the whole message where this is zero."
         },
         {
           "name": "sourceType",
@@ -511,7 +511,7 @@
         {
           "name": "killer",
           "type": "u32",
-          "note": "The unit credited with the death. A client ignores the whole message where this is zero, and fails where it does not hold this unit."
+          "note": "The unit credited with the death. A client ignores the whole message where this is zero."
         },
         {
           "name": "sourceType",
@@ -1019,7 +1019,7 @@
         {
           "name": "killer",
           "type": "u32",
-          "note": "The unit credited with the death. A client ignores the whole message where this is zero, and fails where it does not hold this unit."
+          "note": "The unit credited with the death. A client ignores the whole message where this is zero."
         },
         {
           "name": "sourceType",
@@ -2045,7 +2045,7 @@
         {
           "name": "killer",
           "type": "u32",
-          "note": "The unit credited with the death. A client ignores the whole message where this is zero, and fails where it does not hold this unit."
+          "note": "The unit credited with the death. A client ignores the whole message where this is zero."
         },
         {
           "name": "sourceType",
@@ -3578,7 +3578,7 @@
         {
           "name": "killer",
           "type": "u32",
-          "note": "The unit credited with the death. A client ignores the whole message where this is zero, and fails where it does not hold this unit."
+          "note": "The unit credited with the death. A client ignores the whole message where this is zero."
         },
         {
           "name": "sourceType",
@@ -4101,7 +4101,7 @@
         {
           "name": "killer",
           "type": "u32",
-          "note": "The unit credited with the death. A client ignores the whole message where this is zero, and fails where it does not hold this unit."
+          "note": "The unit credited with the death. A client ignores the whole message where this is zero."
         },
         {
           "name": "span",
@@ -4629,7 +4629,7 @@
         {
           "name": "killer",
           "type": "u32",
-          "note": "The unit credited with the death. A client ignores the whole message where this is zero, and fails where it does not hold this unit."
+          "note": "The unit credited with the death. A client ignores the whole message where this is zero."
         },
         {
           "name": "span",
@@ -5685,7 +5685,7 @@
         {
           "name": "killer",
           "type": "u32",
-          "note": "The unit credited with the death. A client ignores the whole message where this is zero, and fails where it does not hold this unit."
+          "note": "The unit credited with the death. A client ignores the whole message where this is zero."
         },
         {
           "name": "span",
@@ -6213,7 +6213,7 @@
         {
           "name": "killer",
           "type": "u32",
-          "note": "The unit credited with the death. A client ignores the whole message where this is zero, and fails where it does not hold this unit."
+          "note": "The unit credited with the death. A client ignores the whole message where this is zero."
         },
         {
           "name": "span",
@@ -7269,7 +7269,7 @@
         {
           "name": "killer",
           "type": "u32",
-          "note": "The unit credited with the death. A client ignores the whole message where this is zero, and fails where it does not hold this unit."
+          "note": "The unit credited with the death. A client ignores the whole message where this is zero."
         },
         {
           "name": "span",
@@ -8332,7 +8332,7 @@
         {
           "name": "killer",
           "type": "u32",
-          "note": "The unit credited with the death. A client ignores the whole message where this is zero, and fails where it does not hold this unit."
+          "note": "The unit credited with the death. A client ignores the whole message where this is zero."
         },
         {
           "name": "span",
@@ -8867,7 +8867,7 @@
         {
           "name": "killer",
           "type": "u32",
-          "note": "The unit credited with the death. A client ignores the whole message where this is zero, and fails where it does not hold this unit."
+          "note": "The unit credited with the death. A client ignores the whole message where this is zero."
         },
         {
           "name": "span",
@@ -9402,7 +9402,7 @@
         {
           "name": "killer",
           "type": "u32",
-          "note": "The unit credited with the death. A client ignores the whole message where this is zero, and fails where it does not hold this unit."
+          "note": "The unit credited with the death. A client ignores the whole message where this is zero."
         },
         {
           "name": "span",
@@ -9937,7 +9937,7 @@
         {
           "name": "killer",
           "type": "u32",
-          "note": "The unit credited with the death. A client ignores the whole message where this is zero, and fails where it does not hold this unit."
+          "note": "The unit credited with the death. A client ignores the whole message where this is zero."
         },
         {
           "name": "span",
@@ -10475,7 +10475,7 @@
         {
           "name": "killer",
           "type": "u32",
-          "note": "The unit credited with the death. A client ignores the whole message where this is zero, and fails where it does not hold this unit."
+          "note": "The unit credited with the death. A client ignores the whole message where this is zero."
         },
         {
           "name": "span",
@@ -11013,7 +11013,7 @@
         {
           "name": "killer",
           "type": "u32",
-          "note": "The unit credited with the death. A client ignores the whole message where this is zero, and fails where it does not hold this unit."
+          "note": "The unit credited with the death. A client ignores the whole message where this is zero."
         },
         {
           "name": "span",
@@ -18397,7 +18397,7 @@
         {
           "name": "blobLength",
           "type": "u32",
-          "note": "How many bytes the entries below take together. A client reads exactly that many, and fails where entryCount calls for an entry starting at or past their end; zero, or a value above 2147483647, carries no entries. A client reads it as signed: from 2147483648 up it reads nothing more."
+          "note": "How many bytes the entries below take together. A client reads exactly that many; zero, or a value above 2147483647, carries no entries. A client reads it as signed: from 2147483648 up it reads nothing more."
         },
         {
           "name": "entryCount",
