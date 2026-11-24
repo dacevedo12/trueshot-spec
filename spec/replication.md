@@ -1042,7 +1042,9 @@ Besides its batches, a server states some values with messages of their own.
 > `GoldGained` grants no gold: a champion's gold in hand follows its batches.
 >
 > `ExperienceGained` grants nothing: it shows the amount as experience over the
-> champion, whose experience follows group 3 bit 4 of its batches alone.
+> champion, whose experience follows group 3 bit 4 of its batches alone. A
+> client fails on an `ExperienceGained` naming a unit it holds that is not a
+> champion, and a server MUST NOT send one.
 
 <!-- holds from 4.20.0.315 up to 4.21.0.0 -->
 

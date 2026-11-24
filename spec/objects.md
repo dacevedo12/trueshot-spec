@@ -1102,6 +1102,13 @@ Creating messages are the exception, and so are the messages below.
 > `EnterSight` and `EnterLocalSight` act on the messages they carry whether or
 > not the client holds the unit they name.
 
+<!-- holds from 4.11.0.386 up to 4.18.0.271 -->
+
+> **In 4.11–4.17**
+>
+> A client fails on a `RegionMoved` naming a region it does not hold, one whose
+> lifetime has run out included, and a server MUST NOT send one.
+
 <!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 
 > **In 4.17**

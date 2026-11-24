@@ -6,6 +6,22 @@
   "revisions": [
     {
       "from": "0.8.13.26",
+      "until": "0.9.22.14",
+      "channel": "events",
+      "command": 14,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "result",
+          "type": "u8",
+          "note": "Nonzero where side 100 won, zero where side 200 did; a client counts a win where its own side is the one that won."
+        }
+      ],
+      "note": "A client counts a win where its own side is 100 and result is nonzero, or its side is 200 and result is zero, and a loss otherwise. It ends the match on its screen and sends ClientFinished. A client fails where its own player does not yet exist."
+    },
+    {
+      "from": "0.9.22.14",
       "until": "0.9.25.24",
       "channel": "events",
       "command": 14,

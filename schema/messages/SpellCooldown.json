@@ -31,7 +31,7 @@
             {
               "name": "summonerSpell",
               "width": 1,
-              "note": "Set where the slot counts among the summoner slots, so that 0 and 1 name those two."
+              "note": "Set where the slot counts among the summoner slots, so that 0 and 1 name those two. A client fails where the unit is not a champion."
             }
           ]
         },
@@ -45,39 +45,6 @@
     },
     {
       "from": "0.9.22.14",
-      "until": "0.9.25.24",
-      "channel": "events",
-      "command": 33,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "which",
-          "type": "bits",
-          "size": 1,
-          "bits": [
-            {
-              "name": "slot",
-              "width": 7,
-              "note": "Which slot."
-            },
-            {
-              "name": "summonerSpell",
-              "width": 1,
-              "note": "Set where the slot counts among the summoner slots, so that 0 and 1 name those two."
-            }
-          ]
-        },
-        {
-          "name": "timeLeft",
-          "type": "f32",
-          "note": "How long is left, in seconds."
-        }
-      ],
-      "note": "It carries no whole cooldown to show the time left against."
-    },
-    {
-      "from": "0.9.25.24",
       "until": "1.0.0.97",
       "channel": "events",
       "command": 33,
@@ -912,7 +879,7 @@
             {
               "name": "summonerSpell",
               "width": 1,
-              "note": "Set to put the wait on that slot of the unit's summoner spells; clear, on that slot of its own."
+              "note": "Set to put the wait on that slot of the unit's summoner spells; clear, on that slot of its own. A client fails where this is set for a unit with no summoner spells."
             },
             {
               "name": "speakWhenReady",

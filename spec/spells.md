@@ -164,9 +164,9 @@ A marker has no slots.
 > A server MUST NOT send `SpellInSlot` naming a marker: a client fails on it,
 > whatever the slot.
 
-<!-- holds from 1.0.0.96 up to 1.0.0.97 -->
+<!-- holds from 1.0.0.96 up to 1.0.0.111 -->
 
-> **In 1.0.0.96**
+> **In 1.0.0.96–1.0.0.110**
 >
 > A server MUST NOT set `summonerSlots` in `SpellNameChanged` or
 > `SpellTargetingChanged` for a unit with no summoner slots: a client fails on

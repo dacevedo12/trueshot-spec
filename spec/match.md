@@ -54,9 +54,9 @@ seconds.
 > The speed `GameSpeed` sets takes effect at once: sent during a hold, it ends
 > the hold, and a `Resumed` after it changes nothing.
 
-<!-- holds from 1.0.0.74 up to 1.0.0.97 -->
+<!-- holds from 1.0.0.58 up to 1.0.0.97 -->
 
-> **In 1.0.0.74–1.0.0.96**
+> **In 1.0.0.58–1.0.0.96**
 >
 > A server MUST NOT send `GameSpeed` before the client's own champion exists,
 > because a client given one before then fails.
@@ -343,7 +343,9 @@ player's side and sends `ClientFinished`.
 >
 > A client that receives `GameEnded` while still loading takes it as in play
 > once its own champion exists: it records the result and sends
-> `ClientFinished`.
+> `ClientFinished`. Before then it fails on it, recording nothing and sending
+> nothing, so a server MUST NOT send `GameEnded` before the client's own
+> champion is created.
 
 <!-- holds from 0.9.22.14 up to 0.9.25.36 -->
 
