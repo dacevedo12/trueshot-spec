@@ -30,6 +30,13 @@ match reaches it.
 >
 > A watching client can take the match over HTTP from a spectator service.
 
+<!-- holds from 1.0.0.150 up to 3.7.0.328 -->
+
+> **In 1.0.0.150–3.6**
+>
+> A watching client started with an address and a port takes the match instead
+> from a server that streams it over that connection.
+
 <!-- holds from 4.1.0.171 up to 4.21.0.0 -->
 
 > **In 4.1–4.20**

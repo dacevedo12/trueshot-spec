@@ -258,6 +258,13 @@ gives the client its own client id.
 > A server MUST send that `Registered` before any create message, because a
 > client given a create message before it has its own client id stops.
 
+<!-- holds from 3.13.0.399 up to 3.14.0.700 -->
+
+> **In 3.13**
+>
+> A client shows a chat line from a seat it has had no `Registered` for, but
+> without the sender's name.
+
 <!-- holds from 4.1.0.171 up to 4.21.0.0 -->
 
 > **In 4.1–4.20**
@@ -993,6 +1000,13 @@ Creating messages are the exception, and so are the messages below.
 - `SoundPlayed` naming an owner the client does not hold plays the sound with
   no place.
 
+<!-- holds from 0.8.13.26 up to 0.9.22.14 -->
+
+> **In 0.8.13.26–0.9.22.13**
+>
+> A client fails on a `RegionAttached` whose unit names no unit it holds, and a
+> server MUST NOT send one.
+
 <!-- holds from 0.8.13.26 up to 1.0.0.97 -->
 
 > **In 0.8.13.26–1.0.0.96**
@@ -1015,6 +1029,9 @@ Creating messages are the exception, and so are the messages below.
 > A path for a unit not held is read through and dropped, and is not applied
 > once an object takes that net id. A client still answers its group with a
 > `WaypointAck`, sent before it reads any movement.
+>
+> A message whose header names a net id the client does not hold still acts
+> where it is one of these: `QueryStatusAnswer`, `SpawnStart`, `CreateChampion`, `CreateNeutral`, `CreateTurret`, `SpawnEnd`, `StartGame`, `GameEnded`, `ParticlesCreated`, `KillParticle`, `PingPlaced`, `GoldGained`, `ExperienceGained`, `MissileState`, `StatTick`, `Announcement`, `VersionSync`, `ClockSync`, `ClockConvergence`, `RegionRemoved`, `RegionAttached`, `RegionAdded`, `SpawnUnit`, `ChainTargets`, `CameraAck`, `MatchIdentity`, `SeatLoadProgress`, `PlayerDisconnected`, `Reconnected`, `ResyncEnded`, `WaypointGroup`, `WaypointGroupAtSpeed`, `InputLockToggled`, `FogToggled`, `MovementBounds`, `CameraLockSet`, `Replication`, `VoiceEvent`, `Paused`, `Resumed`, `GameSpeed`, `UnitHighlighted`, `UnitHighlightRemoved`, `TutorialPopup`, `AfkWarning`, `CloseShop`, `InputLock`, `ObjectiveShown`, `ObjectiveHidden`, `ObjectiveReplaced`, `SideTextShown`, `SideTextHidden`, `SideTextRefreshed`, `HudHighlighted`, `ShopHighlighted`, `SurrenderVoteCalled`, `SurrenderStatus`, `MinimapHighlighted`, `HudHighlightToggled`, `TutorialChatLine`, `SpellNumbers`, `VolumeMuted`, `WorldEvent`, `NexusSkin`, `HudDisabled`, `NexusIdle`, `FadeMinions` and `FadeSounds`. A client drops any other.
 
 <!-- holds from 1.0.0.86 up to 1.0.0.87 -->
 

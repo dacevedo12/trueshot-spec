@@ -396,7 +396,7 @@
         {
           "name": "netId",
           "type": "u32",
-          "note": "The entity a receiving end attributes the text to where the seat does not name one. Where the seat names a speaker, that is what a receiving end uses instead."
+          "note": "The player's champion a client attributes the text to, wherever it is not 4294967295; there a client attributes the text to the sender's seat instead."
         },
         {
           "name": "localized",

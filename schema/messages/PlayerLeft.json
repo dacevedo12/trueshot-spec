@@ -45,6 +45,27 @@
           "note": "The client id of the player who left. A client marks the client holding it as gone in its list of players, whether that client id is its own or another's; it reads nothing after it."
         }
       ]
+    },
+    {
+      "from": "3.03.0.198",
+      "until": "3.7.0.328",
+      "channel": "registration",
+      "command": 1,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unused",
+          "type": "bytes",
+          "size": 3,
+          "note": "A client reads none of it; a server writes zero."
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the player who left. A client marks the client holding it as gone in its list of players; it reads nothing after it."
+        }
+      ]
     }
   ]
 }

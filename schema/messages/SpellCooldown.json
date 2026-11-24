@@ -672,9 +672,9 @@
               "note": "Set where the slot counts among the summoner slots, so that 0 and 1 name those two."
             },
             {
-              "name": "unused",
+              "name": "keptFlag",
               "width": 1,
-              "note": "A client keeps this bit with the spell; what it changes is not recorded."
+              "note": "A client keeps this bit with the spell until the next SpellCooldown for it, and a SpellCharges for the spell clears it; it changes neither how long is left nor the spell's whole cooldown."
             }
           ]
         },

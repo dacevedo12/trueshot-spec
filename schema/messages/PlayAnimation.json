@@ -48,9 +48,19 @@
               "note": "Set to remove the animations already playing at once, with no fade."
             },
             {
-              "name": "unused",
-              "width": 26,
-              "note": "Unused; a server writes zero."
+              "name": "reserved",
+              "width": 11,
+              "note": "A server writes zero."
+            },
+            {
+              "name": "frozen",
+              "width": 1,
+              "note": "A server writes zero; set, it freezes the animation where it starts."
+            },
+            {
+              "name": "reservedHigh",
+              "width": 14,
+              "note": "A server writes zero."
             }
           ],
           "note": "How the animation plays, as a set of bits."

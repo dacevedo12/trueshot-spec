@@ -582,6 +582,26 @@ every client has sent `ClientReady`.
 >
 > A client drops nothing for arriving before `CharacterSelected`.
 
+<!-- holds from 1.0.0.74 up to 1.0.0.75 -->
+
+> **In 1.0.0.74**
+>
+> A client still creates the units of a spawn run whose `SpawnStart` arrives
+> before `CharacterSelected`. A `StartGame` arriving after `VersionSync` but
+> before `CharacterSelected` starts the match's music and announcements and
+> locks the camera, but does not end loading; one arriving after
+> `CharacterSelected` ends loading and starts the match, doing all of that
+> again. A server MUST send `StartGame` after `CharacterSelected` arrives.
+
+<!-- holds from 1.0.0.86 up to 1.0.0.87 -->
+
+> **In 1.0.0.86**
+>
+> A client keeps a `StartGame` that arrives once it has sent
+> `CharacterSelected`, and its loading then ends. It loses one that arrives
+> before it begins building the match's world, and one that a `SpawnStart`
+> follows. A server MUST send `StartGame` after `CharacterSelected` arrives.
+
 <!-- holds from 1.0.0.96 up to 1.0.0.97 -->
 
 > **In 1.0.0.96**

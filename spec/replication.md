@@ -122,6 +122,65 @@ a client takes, and what that requires of a server.
 
 Each row gives the group and bits that name a value and what the value is.
 
+<!-- holds from 0.8.13.26 up to 0.9.22.14 -->
+
+> **In 0.8.13.26–0.9.22.13**
+>
+> `ValueGroup0` to `ValueGroup3` carry groups 0 to 3.
+>
+> ## A champion
+>
+> | Group | Bits     | Value                                                                                             |
+> | ----- | -------- | ------------------------------------------------------------------------------------------------- |
+> | 0     | 0 to 3   | Health and resource as they stand, then at their greatest                                         |
+> | 0     | 4 to 26  | What the spell in slots 0 to 22 costs                                                             |
+> | 0     | 27       | What the champion is doing, as a set of bits                                                      |
+> | 0     | 28 to 31 | Whether it is proof against spells, proof against all harm, targetable, and proof against strikes |
+> | 1     | 0        | Gold in hand                                                                                      |
+> | 1     | 1        | Experience                                                                                        |
+> | 1     | 2        | Which slots can be cast from                                                                      |
+> | 1     | 3 to 4   | Whether it is proof against strikes, then against spells                                          |
+> | 1     | 5 to 6   | What the spell in slots 0 and 1 of the second set costs                                           |
+> | 1     | 7        | Damage it deals by striking                                                                       |
+> | 1     | 8        | Damage its spells deal before modifiers                                                           |
+> | 1     | 9        | How often it turns a blow aside                                                                   |
+> | 1     | 10       | Its size                                                                                          |
+> | 1     | 11       | How often it strikes critically                                                                   |
+> | 1     | 12 to 13 | Armour and spell resistance                                                                       |
+> | 1     | 14 to 15 | How fast health and resource return                                                               |
+> | 1     | 16       | How fast it moves                                                                                 |
+> | 1     | 17       | How far it strikes from                                                                           |
+> | 1     | 18 to 19 | Flat and percent modifiers on the damage it strikes with                                          |
+> | 1     | 20 to 21 | Flat and percent modifiers on its spells' damage                                                  |
+> | 1     | 22 to 23 | Flat and percent reduction of the spell damage it takes                                           |
+> | 1     | 24       | A multiplier on how fast it strikes                                                               |
+> | 1     | 25       | A flat addition to how far it casts                                                               |
+> | 1     | 26       | A modifier on its cooldowns                                                                       |
+> | 2     | 0 to 1   | A percent and a flat addition to how far it sees                                                  |
+> | 3     | 0        | Level                                                                                             |
+>
+> ## A turret
+>
+> | Group | Bits     | Value                                                    |
+> | ----- | -------- | -------------------------------------------------------- |
+> | 0     | 0        | Damage it deals by striking                              |
+> | 0     | 1 to 2   | Armour and spell resistance                              |
+> | 0     | 3        | How fast it moves                                        |
+> | 0     | 4        | A multiplier on how fast it strikes                      |
+> | 0     | 5        | Its size                                                 |
+> | 0     | 6 to 7   | Flat and percent modifiers on the damage it strikes with |
+> | 0     | 8 to 9   | Flat and percent modifiers on its spells' damage         |
+> | 0     | 10 to 11 | How fast health and resource return                      |
+> | 2     | 0 to 1   | How far it sees                                          |
+> | 3     | 0        | Health                                                   |
+>
+> ## A minion
+>
+> | Group | Bits   | Value                                                    |
+> | ----- | ------ | -------------------------------------------------------- |
+> | 0     | 0 to 1 | Health as it stands, then at its greatest                |
+> | 0     | 2 to 3 | Whether it is proof against strikes, then against spells |
+
 <!-- holds from 0.9.25.24 up to 1.0.0.141 -->
 
 > **In 0.9.25.24–1.0.0.140**

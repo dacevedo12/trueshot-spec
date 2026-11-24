@@ -2766,7 +2766,7 @@
         {
           "name": "marker",
           "type": "u32",
-          "note": "The region's id, which RegionRemoved names; 4294967295 has the client pick one of its own. A region sent again matching one the client holds in marker, kind, sightRadius and does, where the one held follows no unit, only gives that one the new lifetime."
+          "note": "The region's id, which RegionRemoved names; zero has the client pick one of its own, and any other value, 4294967295 among them, is the id as it stands. A region sent again matching one the client holds in marker, kind, sightRadius and does, where the one held follows no unit, only gives that one the new lifetime."
         },
         {
           "name": "does",

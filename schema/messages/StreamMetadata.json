@@ -2,8 +2,74 @@
   "$schema": "../meta/message.json",
   "message": "StreamMetadata",
   "system": "spectating",
-  "note": "What a server streaming a match to a watching client sends first, within 30 seconds of the client's request: how long its chunks and key frames run. A client waits on it, and stops taking the stream's messages once the last chunk has arrived. The header carries zero.",
+  "note": "What a server streaming a match to a watching client sends to say how long its chunks and key frames run. The header carries zero.",
   "revisions": [
+    {
+      "from": "1.0.0.150",
+      "until": "1.0.0.151",
+      "channel": "events",
+      "command": 232,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unused",
+          "type": "u32",
+          "note": "Unused; a server writes zero."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "remaining",
+          "note": "A document in the form a spectator service gives a match's metadata in, to the end of the message; it needs no zero byte to end it. A client takes chunkTimeInterval and keyFrameTimeInterval from it."
+        }
+      ]
+    },
+    {
+      "from": "3.03.0.198",
+      "until": "3.04.0.78",
+      "channel": "events",
+      "command": 235,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unused",
+          "type": "u32",
+          "note": "Unused; a server writes zero."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "remaining",
+          "note": "A document giving chunkTimeInterval and keyFrameTimeInterval as integers, in milliseconds, to the end of the message; it needs no zero byte to end it. A client takes nothing else from it."
+        }
+      ]
+    },
+    {
+      "from": "3.6.0.388",
+      "until": "3.7.0.328",
+      "channel": "events",
+      "command": 235,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unused",
+          "type": "u32",
+          "note": "Unused; a server writes zero."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "remaining",
+          "note": "A document giving chunkTimeInterval and keyFrameTimeInterval as integers, to the end of the message; it needs no zero byte to end it."
+        }
+      ]
+    },
     {
       "from": "3.12.0.251",
       "until": "4.1.0.171",
@@ -24,7 +90,8 @@
           "size": "remaining",
           "note": "A JSON object with integer members chunkTimeInterval and keyFrameTimeInterval, in milliseconds, to the end of the message. A server sends both."
         }
-      ]
+      ],
+      "note": "A server sends it first, within 30 seconds of the client's request. A client waits on it, and stops taking the stream's messages once the last chunk has arrived."
     },
     {
       "from": "4.1.0.171",
@@ -46,7 +113,8 @@
           "size": "remaining",
           "note": "A JSON object with integer members chunkTimeInterval and keyFrameTimeInterval, in milliseconds, to the end of the message. A server sends both."
         }
-      ]
+      ],
+      "note": "A server sends it first, within 30 seconds of the client's request. A client waits on it, and stops taking the stream's messages once the last chunk has arrived."
     },
     {
       "from": "4.11.0.386",
@@ -68,7 +136,8 @@
           "size": "remaining",
           "note": "A JSON object with integer members chunkTimeInterval and keyFrameTimeInterval, in milliseconds, to the end of the message. A server sends both."
         }
-      ]
+      ],
+      "note": "A server sends it first, within 30 seconds of the client's request. A client waits on it, and stops taking the stream's messages once the last chunk has arrived."
     }
   ]
 }

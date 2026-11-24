@@ -53,13 +53,44 @@ revision claims that value both ways.
 
 ## A container of several messages
 
-<!-- holds from 0.8.13.26 up to 1.0.0.61 -->
+<!-- holds from 0.8.13.26 up to 1.0.0.75 -->
 
-> **In 0.8.13.26–1.0.0.60**
+> **In 0.8.13.26–1.0.0.74**
 >
 > A client unwraps no container: a payload whose command is 255 does nothing,
 > on any channel. A server MUST NOT send one, because nothing inside it reaches
 > the client.
+
+<!-- holds from 1.0.0.86 up to 1.0.0.87 -->
+
+> **In 1.0.0.86**
+>
+> In the game family, 255 introduces a container rather than a message: a run
+> of several messages gathered into one payload, which a reading end unwraps
+> and reads one by one as though each had arrived on its own. A container
+> carries no header, so nothing in `schema/messages` describes one, and a
+> client never reads the value that introduces it as a command.
+>
+> A container is the byte 255, then a count of entries in one byte, then the
+> entries one after another. The first entry is a length in one byte, the
+> command in one byte, the object identifier in four bytes, and then a body
+> whose size is the length less five. Every later entry opens with a byte of
+> flags and size:
+>
+> - bit 0 clear: a command byte follows, and this entry carries it; bit 0 set:
+>   this entry carries the command the entry before it carried;
+> - bit 1 clear: a four byte object identifier follows; bit 1 set: one signed
+>   byte follows, and this entry's object identifier is the one before it plus
+>   that byte;
+> - bits 2 to 7: the size of the body.
+>
+> The body follows. Each entry, given the command and object identifier it
+> carries as its header, is a message read as though it had arrived on its own.
+> Where an entry's size bits read 63, its size is one byte that follows the
+> command and object identifier, just before the body.
+>
+> A server MAY send a container on the events channel, and a client unwraps one
+> on any channel.
 
 <!-- holds from 1.0.0.96 up to 4.21.0.0 -->
 
