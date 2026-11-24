@@ -482,16 +482,9 @@ A create message carries a node beside the object's net id.
 > A client applies a `SpawnPet`'s effect and spell level only where the owner's
 > node is its own.
 
-<!-- holds from 3.03.0.198 up to 3.04.0.78 -->
+<!-- holds from 3.03.0.198 up to 3.7.0.328 -->
 
-> **In 3.03**
->
-> A client applies a `SpawnPet`'s effect and spell level only where the owner's
-> node is its own, and never while playing back.
-
-<!-- holds from 3.6.0.388 up to 3.7.0.328 -->
-
-> **In 3.6**
+> **In 3.03–3.6**
 >
 > A client applies a `SpawnPet`'s effect and spell level only where the owner's
 > node is its own, and never while playing back.
@@ -1161,16 +1154,9 @@ and `summonerflash` give one number. A particle's name includes its extension,
 so the number comes from `global_ss_flash.troy` and not from
 `global_ss_flash`. The nine bytes `123456789` give 0x0678AEE9.
 
-<!-- holds from 0.8.13.26 up to 3.14.0.700 -->
+<!-- holds from 0.8.13.26 up to 4.18.0.271 -->
 
-> **In 0.8.13.26–3.13**
->
-> A byte from 128 to 255 enters the hash as its value less 256, worked in 32
-> bits, rather than as itself.
-
-<!-- holds from 4.4.0.1858 up to 4.18.0.271 -->
-
-> **In 4.4–4.17**
+> **In 0.8.13.26–4.17**
 >
 > A byte from 128 to 255 enters the hash as its value less 256, worked in 32
 > bits, rather than as itself.

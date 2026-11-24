@@ -216,16 +216,9 @@ alone closes the shop and turns off its key.
 > them, but it acts on a lock at once only where the message's mask is exactly
 > one of 1, 4, 8, 16, 32 or 128.
 
-<!-- holds from 1.0.0.74 up to 1.0.0.75 -->
+<!-- holds from 1.0.0.74 up to 1.0.0.87 -->
 
-> **In 1.0.0.74**
->
-> A client keeps every lock a message sets or clears, but acts on a lock at once
-> only where the message's mask is exactly one of 1, 4, 8, 16, 32 or 128.
-
-<!-- holds from 1.0.0.86 up to 1.0.0.87 -->
-
-> **In 1.0.0.86**
+> **In 1.0.0.74–1.0.0.86**
 >
 > A client keeps every lock a message sets or clears, but acts on a lock at once
 > only where the message's mask is exactly one of 1, 4, 8, 16, 32 or 128.

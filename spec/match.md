@@ -54,30 +54,9 @@ seconds.
 > The speed `GameSpeed` sets takes effect at once: sent during a hold, it ends
 > the hold, and a `Resumed` after it changes nothing.
 
-<!-- holds from 1.0.0.58 up to 1.0.0.61 -->
+<!-- holds from 1.0.0.58 up to 1.0.0.97 -->
 
-> **In 1.0.0.58–1.0.0.60**
->
-> A server MUST NOT send `GameSpeed` before the client's own champion exists,
-> because a client given one before then fails.
-
-<!-- holds from 1.0.0.74 up to 1.0.0.75 -->
-
-> **In 1.0.0.74**
->
-> A server MUST NOT send `GameSpeed` before the client's own champion exists,
-> because a client given one before then fails.
-
-<!-- holds from 1.0.0.86 up to 1.0.0.87 -->
-
-> **In 1.0.0.86**
->
-> A server MUST NOT send `GameSpeed` before the client's own champion exists,
-> because a client given one before then fails.
-
-<!-- holds from 1.0.0.96 up to 1.0.0.97 -->
-
-> **In 1.0.0.96**
+> **In 1.0.0.58–1.0.0.96**
 >
 > A server MUST NOT send `GameSpeed` before the client's own champion exists,
 > because a client given one before then fails.
@@ -88,21 +67,9 @@ seconds.
 >
 > Sent during a hold, `GameSpeed` takes effect as the match resumes.
 
-<!-- holds from 1.0.0.140 up to 1.0.0.151 -->
+<!-- holds from 1.0.0.140 up to 4.18.0.271 -->
 
-> **In 1.0.0.140–1.0.0.150**
->
-> No unit advances for `StatTick`.
-
-<!-- holds from 3.03.0.198 up to 3.14.0.700 -->
-
-> **In 3.03–3.13**
->
-> No unit advances for `StatTick`.
-
-<!-- holds from 4.4.0.1858 up to 4.18.0.271 -->
-
-> **In 4.4–4.17**
+> **In 1.0.0.140–4.17**
 >
 > No unit advances for `StatTick`.
 

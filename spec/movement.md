@@ -318,27 +318,9 @@ says what a client does with a movement whose unit it does not hold.
 > the client holds the unit, and none whose movement follows a refused one; the
 > list is empty where it names none. A server MAY ignore it.
 
-<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+<!-- holds from 3.10.0.237 up to 4.5.0.260 -->
 
-> **In 3.10**
->
-> A client answers each group with one `WaypointAck`, listing each unit whose
-> movement carried a token, in the order the group gives them, whether or not
-> the client holds the unit, and none whose movement follows a refused one; the
-> list is empty where it names none. A server MAY ignore it.
-
-<!-- holds from 3.13.0.399 up to 3.14.0.700 -->
-
-> **In 3.13**
->
-> A client answers each group with one `WaypointAck`, listing each unit whose
-> movement carried a token, in the order the group gives them, whether or not
-> the client holds the unit, and none whose movement follows a refused one; the
-> list is empty where it names none. A server MAY ignore it.
-
-<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
-
-> **In 4.4**
+> **In 3.10–4.4**
 >
 > A client answers each group with one `WaypointAck`, listing each unit whose
 > movement carried a token, in the order the group gives them, whether or not

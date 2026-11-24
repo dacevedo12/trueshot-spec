@@ -84,9 +84,9 @@ abandons a connection whose verify connect states anything else.
 > session id is then the byte every header carries, and a server that reads
 > either field at ENet's width answers a client that never hears it.
 
-<!-- holds from 3.10.0.237 up to 3.14.0.700 -->
+<!-- holds from 3.10.0.237 up to 4.21.0.0 -->
 
-> **In 3.10–3.13**
+> **In 3.10–4.20**
 >
 > A client reads the verify connect's peer id from the first of the two bytes
 > ENet gives it, and carries that byte in every header it sends. A server MUST
@@ -98,24 +98,6 @@ abandons a connection whose verify connect states anything else.
 > **In 3.13–4.20**
 >
 > A client asks for 8 channels.
-
-<!-- holds from 4.4.0.1858 up to 4.18.0.271 -->
-
-> **In 4.4–4.17**
->
-> A client reads the verify connect's peer id from the first of the two bytes
-> ENet gives it, and carries that byte in every header it sends. A server MUST
-> write the peer id in that byte, because one written at ENet's width puts its
-> high byte there.
-
-<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
-
-> **In 4.20**
->
-> A client reads the verify connect's peer id from the first of the two bytes
-> ENet gives it, and carries that byte in every header it sends. A server MUST
-> write the peer id in that byte, because one written at ENet's width puts its
-> high byte there.
 
 ## Maximum transmission unit
 
