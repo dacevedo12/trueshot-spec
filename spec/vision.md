@@ -296,9 +296,16 @@ of them only for its own champion.
 > any other unit, it has no defined effect. `ItemAdded` announces no purchase, a
 > client's own or another's.
 
-<!-- holds from 1.0.0.96 up to 1.0.0.110 -->
+<!-- holds from 1.0.0.96 up to 1.0.0.97 -->
 
-> **In 1.0.0.96–1.0.0.109**
+> **In 1.0.0.96**
+>
+> `ItemAdded` announces a purchase only for the client's own champion; an ally's
+> purchase is called out where the message asks for it.
+
+<!-- holds from 1.0.0.97 up to 1.0.0.110 -->
+
+> **In 1.0.0.97–1.0.0.109**
 >
 > `ItemAdded` and `InventorySlot` announce a purchase only for the client's own
 > champion; an ally's purchase is called out where the message asks for it.

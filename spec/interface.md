@@ -182,9 +182,9 @@ A server locks or unlocks kinds of input, such as movement, spells or the
 shop, with `InputLock` or `InputLockToggled`. A message that locks the shop
 alone closes the shop and turns off its key.
 
-<!-- holds from 0.9.22.14 up to 0.9.25.36 -->
+<!-- holds from 0.9.22.16 up to 0.9.25.36 -->
 
-> **In 0.9.22.14–0.9.25.35**
+> **In 0.9.22.16–0.9.25.35**
 >
 > A client locks and unlocks its own input too, and tells the server each time:
 > `InputLocksFlipped` for the locks it flipped, as when a camera move a script
