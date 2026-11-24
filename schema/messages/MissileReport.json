@@ -629,7 +629,7 @@
           "note": "A description of the cast the missile belongs to, at most 512 bytes."
         }
       ],
-      "note": "What a client sends to report where a missile that flies straight is and where it is going. A client also sends it 209 bytes long, header included, from a missile of its own. That form writes only atX to atZ, velocityX to velocityZ and the cast, and leaves every other byte unwritten. Its bytes after the cast's end belong to no field."
+      "note": "What a client sends to report where a missile that flies straight is and where it is going. A client also sends it 209 bytes long, header included, from a missile of its own. That form writes only atX to atZ, velocityX to velocityZ and the cast, and leaves every other byte unwritten. Its bytes after the cast's end belong to no field. A cast of more than 9 hits is cut off at byte 209."
     },
     {
       "from": "1.0.0.61",

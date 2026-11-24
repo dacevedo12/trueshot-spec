@@ -180,6 +180,8 @@ Each row gives the group and bits that name a value and what the value is.
 > | ----- | ------ | -------------------------------------------------------- |
 > | 0     | 0 to 1 | Health as it stands, then at its greatest                |
 > | 0     | 2 to 3 | Whether it is proof against strikes, then against spells |
+>
+> The rest of a minion's values is not recorded.
 
 <!-- holds from 0.9.25.24 up to 1.0.0.141 -->
 

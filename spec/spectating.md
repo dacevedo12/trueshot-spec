@@ -149,7 +149,18 @@ says.
 > `VersionSync` has played, then `GameOptions`, `CharacterSelected` and
 > `ClientReady`: no `ClientVersion`, no `QueryStatus` and no `LoadingProgress`.
 
-1. A client answered on registration sends `StreamRequest`.
+<!-- holds from 4.17.0.233 up to 4.21.0.0 -->
+
+> **In 4.17–4.20**
+>
+> A watching client given a client id that a player in the streamed match holds
+> takes that player's champion as its own.
+
+<!-- holds from 3.13.0.399 up to 3.14.0.700 -->
+
+> **In 3.13**
+>
+> 1. A client answered on registration sends `StreamRequest`.
 
 <!-- holds from 3.12.0.251 up to 4.21.0.0 -->
 
@@ -306,15 +317,6 @@ after another.
 <!-- holds from 1.0.0.140 up to 1.0.0.141 -->
 
 > **In 1.0.0.140**
->
-> A reader keeps the last record's time, command and
-> object, and recovers a record's own:
->
-> - its time, from a time difference, as the last record's time plus that many
->   milliseconds;
-> - its command, where the record leaves it out, as the last record's;
-> - its object, from an object difference, as the last record's object plus
->   that signed difference.
 >
 > A message is the command, the object and the body (see
 > [Messages](messages.md)).

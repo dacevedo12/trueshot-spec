@@ -1031,7 +1031,23 @@ Creating messages are the exception, and so are the messages below.
 > `WaypointAck`, sent before it reads any movement.
 >
 > A message whose header names a net id the client does not hold still acts
-> where it is one of these: `QueryStatusAnswer`, `SpawnStart`, `CreateChampion`, `CreateNeutral`, `CreateTurret`, `SpawnEnd`, `StartGame`, `GameEnded`, `ParticlesCreated`, `KillParticle`, `PingPlaced`, `GoldGained`, `ExperienceGained`, `MissileState`, `StatTick`, `Announcement`, `VersionSync`, `ClockSync`, `ClockConvergence`, `RegionRemoved`, `RegionAttached`, `RegionAdded`, `SpawnUnit`, `ChainTargets`, `CameraAck`, `MatchIdentity`, `SeatLoadProgress`, `PlayerDisconnected`, `Reconnected`, `ResyncEnded`, `WaypointGroup`, `WaypointGroupAtSpeed`, `InputLockToggled`, `FogToggled`, `MovementBounds`, `CameraLockSet`, `Replication`, `VoiceEvent`, `Paused`, `Resumed`, `GameSpeed`, `UnitHighlighted`, `UnitHighlightRemoved`, `TutorialPopup`, `AfkWarning`, `CloseShop`, `InputLock`, `ObjectiveShown`, `ObjectiveHidden`, `ObjectiveReplaced`, `SideTextShown`, `SideTextHidden`, `SideTextRefreshed`, `HudHighlighted`, `ShopHighlighted`, `SurrenderVoteCalled`, `SurrenderStatus`, `MinimapHighlighted`, `HudHighlightToggled`, `TutorialChatLine`, `SpellNumbers`, `VolumeMuted`, `WorldEvent`, `NexusSkin`, `HudDisabled`, `NexusIdle`, `FadeMinions` and `FadeSounds`. A client drops any other.
+> where it is one of these: `QueryStatusAnswer`, `SpawnStart`, `CreateChampion`,
+> `CreateNeutral`, `CreateTurret`, `SpawnEnd`, `StartGame`, `GameEnded`,
+> `ParticlesCreated`, `KillParticle`, `PingPlaced`, `GoldGained`,
+> `ExperienceGained`, `MissileState`, `StatTick`, `Announcement`, `VersionSync`,
+> `ClockSync`, `ClockConvergence`, `RegionRemoved`, `RegionAttached`,
+> `RegionAdded`, `SpawnUnit`, `ChainTargets`, `CameraAck`, `MatchIdentity`,
+> `SeatLoadProgress`, `PlayerDisconnected`, `Reconnected`, `ResyncEnded`,
+> `WaypointGroup`, `WaypointGroupAtSpeed`, `InputLockToggled`, `FogToggled`,
+> `MovementBounds`, `CameraLockSet`, `Replication`, `VoiceEvent`, `Paused`,
+> `Resumed`, `GameSpeed`, `UnitHighlighted`, `UnitHighlightRemoved`,
+> `TutorialPopup`, `AfkWarning`, `CloseShop`, `InputLock`, `ObjectiveShown`,
+> `ObjectiveHidden`, `ObjectiveReplaced`, `SideTextShown`, `SideTextHidden`,
+> `SideTextRefreshed`, `HudHighlighted`, `ShopHighlighted`,
+> `SurrenderVoteCalled`, `SurrenderStatus`, `MinimapHighlighted`,
+> `HudHighlightToggled`, `TutorialChatLine`, `SpellNumbers`, `VolumeMuted`,
+> `WorldEvent`, `NexusSkin`, `HudDisabled`, `NexusIdle`, `FadeMinions` and
+> `FadeSounds`. A client drops any other.
 
 <!-- holds from 1.0.0.86 up to 1.0.0.87 -->
 
