@@ -276,6 +276,26 @@
     },
     {
       "from": "3.01.0.1",
+      "until": "3.03.0.198",
+      "channel": "requests",
+      "command": 141,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client sends it each time GameEnded arrives in play, and not while playing a replay."
+    },
+    {
+      "from": "3.03.0.198",
+      "until": "3.04.0.78",
+      "channel": "requests",
+      "command": 141,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client sends it each time GameEnded arrives in play, and not while it plays a match back, from a replay, a spectator stream or over its game connection."
+    },
+    {
+      "from": "3.04.0.78",
       "until": "4.1.0.171",
       "channel": "requests",
       "command": 141,

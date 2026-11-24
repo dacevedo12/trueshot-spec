@@ -283,9 +283,15 @@ and goes on by itself afterwards.
 > A client whose own build differs from the one `VersionSync` names asks its
 > player whether to go on, and leaves where the player declines.
 
-<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
+<!-- holds from 4.1.0.171 up to 4.4.0.1858 -->
 
-> **In 4.1–4.19**
+> **In 4.1–4.3**
+>
+> A client whose own build differs from the one `VersionSync` names leaves.
+
+<!-- holds from 4.5.0.260 up to 4.20.0.315 -->
+
+> **In 4.5–4.19**
 >
 > A client whose own build differs from the one `VersionSync` names leaves.
 

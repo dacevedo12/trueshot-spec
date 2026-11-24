@@ -1582,7 +1582,7 @@
           }
         }
       ],
-      "note": "Every lock set flips as the message arrives. A client acts on the change at once only where locks is exactly 1, 4, 8, 16, 32 or 128; for any other value, 2 and 64 alone included, every lock but chat takes effect where the client next checks it, and what becomes of the chat lock is not recorded."
+      "note": "Every lock set flips as the message arrives. A client acts on the change at once only where locks is exactly 1, 4, 8, 16, 32 or 128; for any other value, 2 and 64 alone included, every lock but chat takes effect where the client next checks it, and the chat lock stays as it was."
     },
     {
       "from": "4.5.0.260",

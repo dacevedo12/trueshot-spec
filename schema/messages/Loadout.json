@@ -1476,6 +1476,114 @@
     },
     {
       "from": "1.0.0.149",
+      "until": "3.03.0.198",
+      "channel": "events",
+      "command": 41,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "note": "A client's shop is set up by the Loadout of its own champion: until that arrives the shop opens empty, with no items, no suggested items and no builds, and is drawn at a size that does not fit the screen. A server sends one for every champion at spawning, between SpawnStart and SpawnEnd. It also says what the champion's wards look like.",
+      "fields": [
+        {
+          "name": "runes",
+          "type": "array",
+          "count": 30,
+          "note": "The runes set before the match, thirty places in runs of nine, nine, nine and three. A place holds zero where nothing was set.",
+          "items": {
+            "name": "rune",
+            "type": "u32",
+            "note": "One rune, by the number the client knows it as."
+          }
+        },
+        {
+          "name": "summoners",
+          "type": "array",
+          "count": 2,
+          "note": "The spells in the champion's summoner slots, by the numbers their names give.",
+          "items": {
+            "name": "summoner",
+            "type": "u32",
+            "note": "One spell."
+          }
+        },
+        {
+          "name": "choices",
+          "type": "array",
+          "count": 80,
+          "note": "The choices made alongside them, one place each, and how far each was taken. A place stands empty where nothing was chosen.",
+          "items": {
+            "name": "choice",
+            "type": "struct",
+            "struct": "Choice"
+          }
+        },
+        {
+          "name": "level",
+          "type": "u8",
+          "note": "The player's account level."
+        },
+        {
+          "name": "wardSkin",
+          "type": "u8",
+          "note": "What the champion's wards look like."
+        }
+      ]
+    },
+    {
+      "from": "3.03.0.198",
+      "until": "3.04.0.78",
+      "channel": "events",
+      "command": 41,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "note": "A client sets the champion's two summoner spell slots from summoners, and changes nothing in the shop. A server sends one for every champion at spawning, between SpawnStart and SpawnEnd. It also says what the champion's wards look like.",
+      "fields": [
+        {
+          "name": "runes",
+          "type": "array",
+          "count": 30,
+          "note": "The runes set before the match, thirty places in runs of nine, nine, nine and three. A place holds zero where nothing was set.",
+          "items": {
+            "name": "rune",
+            "type": "u32",
+            "note": "One rune, by the number the client knows it as."
+          }
+        },
+        {
+          "name": "summoners",
+          "type": "array",
+          "count": 2,
+          "note": "The spells in the champion's summoner slots, by the numbers their names give.",
+          "items": {
+            "name": "summoner",
+            "type": "u32",
+            "note": "One spell."
+          }
+        },
+        {
+          "name": "choices",
+          "type": "array",
+          "count": 80,
+          "note": "The choices made alongside them, one place each, and how far each was taken. A place stands empty where nothing was chosen.",
+          "items": {
+            "name": "choice",
+            "type": "struct",
+            "struct": "Choice"
+          }
+        },
+        {
+          "name": "level",
+          "type": "u8",
+          "note": "The player's account level."
+        },
+        {
+          "name": "wardSkin",
+          "type": "u8",
+          "note": "What the champion's wards look like."
+        }
+      ]
+    },
+    {
+      "from": "3.04.0.78",
       "until": "3.13.0.399",
       "channel": "events",
       "command": 41,

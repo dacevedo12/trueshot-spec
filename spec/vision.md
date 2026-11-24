@@ -363,9 +363,15 @@ of them only for its own champion.
 > over that unit the gold gained, or lost where the amount is below 0, and
 > nothing for 0.
 
-<!-- holds from 3.14.0.700 up to 4.21.0.0 -->
+<!-- holds from 3.14.0.700 up to 4.4.0.1858 -->
 
-> **In 3.14–4.20**
+> **In 3.14–4.3**
+>
+> `GoldGained` shows floating gold only for the client's own champion.
+
+<!-- holds from 4.5.0.260 up to 4.21.0.0 -->
+
+> **In 4.5–4.20**
 >
 > `GoldGained` shows floating gold only for the client's own champion.
 

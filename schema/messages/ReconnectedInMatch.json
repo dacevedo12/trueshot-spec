@@ -568,6 +568,26 @@
     },
     {
       "from": "3.01.0.1",
+      "until": "3.03.0.198",
+      "channel": "requests",
+      "command": 156,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client sends it right after the server answers its registration. A client sends it once it has connected again to a match it was playing. A client dropped while playing reconnects by itself; one dropped while loading leaves instead. It carries nothing of its own."
+    },
+    {
+      "from": "3.03.0.198",
+      "until": "3.04.0.78",
+      "channel": "requests",
+      "command": 156,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client sends it as the Registered naming its own player id arrives, and only while the match is in play. A client sends it once it has connected again to a match it was playing. A client dropped while playing reconnects by itself; one dropped while loading leaves instead. It carries nothing of its own."
+    },
+    {
+      "from": "3.04.0.78",
       "until": "3.6.0.388",
       "channel": "requests",
       "command": 156,
@@ -654,7 +674,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "A client sends it right after the server answers its registration. A client sends it once it has connected again to a match it was playing. It carries nothing of its own."
+      "note": "A client sends it as the connection is made, before any Registered, on every connection made while the match is in play, and none while it watches a match. A client sends it once it has connected again to a match it was playing. It carries nothing of its own."
     },
     {
       "from": "4.5.0.260",

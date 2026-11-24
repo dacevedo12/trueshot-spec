@@ -14,6 +14,13 @@ can limit how many more lines a player can send with `ChatAllowance`.
 >
 > A client shows how many lines `ChatAllowance` leaves its player.
 
+<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
+
+> **In 4.4**
+>
+> A client given `ChatAllowance` before its game screen is up fails, so a server
+> MUST NOT send one then.
+
 ## Pings and emotes
 
 A client marks a point on the map with `MapPing`, and a server shows the ping to

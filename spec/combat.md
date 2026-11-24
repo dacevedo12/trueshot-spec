@@ -236,9 +236,23 @@ into its death.
 > holds the killer, and does nothing more. It puts a unit down only where a
 > killer is named.
 
-<!-- holds from 1.0.0.151 up to 4.20.0.315 -->
+<!-- holds from 1.0.0.151 up to 4.4.0.1858 -->
 
-> **In 1.0.0.151–4.19**
+> **In 1.0.0.151–4.3**
+>
+> A client ignores `UnitDied` or `ChampionDied` naming a unit already dead, and
+> puts a unit down only where a killer is named.
+
+<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
+
+> **In 4.4**
+>
+> A client ignores `ChampionDied` naming a champion already dead, and puts a
+> unit down only where a killer is named.
+
+<!-- holds from 4.5.0.260 up to 4.20.0.315 -->
+
+> **In 4.5–4.19**
 >
 > A client ignores `UnitDied` or `ChampionDied` naming a unit already dead, and
 > puts a unit down only where a killer is named.
@@ -353,9 +367,16 @@ A client sends `UseObject` as its player right-clicks a unit that can be used.
 >
 > A client sends `UseObject` at no other time.
 
-<!-- holds from 1.0.0.140 up to 4.21.0.0 -->
+<!-- holds from 1.0.0.140 up to 3.03.0.198 -->
 
-> **In 1.0.0.140–4.20**
+> **In 1.0.0.140–3.02**
+>
+> A client also sends `UseObject` for a unit its champion is attacking, as that
+> unit changes side.
+
+<!-- holds from 3.04.0.78 up to 4.21.0.0 -->
+
+> **In 3.04–4.20**
 >
 > A client also sends `UseObject` for a unit its champion is attacking, as that
 > unit changes side.

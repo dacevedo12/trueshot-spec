@@ -429,7 +429,8 @@ player's side and sends `ClientFinished`.
 > **In 3.03**
 >
 > A client sends `ClientFinished` every time `GameEnded` arrives in play, and
-> not while playing a replay.
+> not while it plays a match back, from a replay, a spectator stream or over
+> its game connection.
 
 <!-- holds from 3.7.0.328 up to 3.13.0.399 -->
 
@@ -782,6 +783,14 @@ A server tells the others that a player's client dropped with
 > waiting for the registration answer, and only where the match is in play, so
 > never on its first connection.
 
+<!-- holds from 3.03.0.198 up to 3.04.0.78 -->
+
+> **In 3.03**
+>
+> A client sends `ReconnectedInMatch` as the `Registered` naming its own player
+> id arrives, not as the connection is made, and only while the match is in
+> play.
+
 <!-- holds from 3.6.0.388 up to 3.7.0.328 -->
 
 > **In 3.6**
@@ -837,6 +846,9 @@ A server tells the others that a player's client dropped with
 > away. Where that setting is off, it asks its player for the reason 0 whether
 > to connect again, and for any reason but that and the one that means its
 > player was away shows that the reconnection failed.
+>
+> A client sends `ReconnectedInMatch` as the connection is made, before any
+> `Registered`, and only while the match is in play and it is not watching it.
 
 <!-- holds from 4.5.0.260 up to 4.17.0.233 -->
 

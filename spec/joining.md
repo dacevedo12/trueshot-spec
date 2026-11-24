@@ -180,9 +180,39 @@ server answers with `VersionSync`, and a client loads only where its
 > With `agreement.buildMatches` clear, the client shows its player its own
 > version text beside the one the message carries, and ends.
 
-<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
+<!-- holds from 4.1.0.171 up to 4.4.0.1858 -->
 
-> **In 4.1–4.19**
+> **In 4.1–4.3**
+>
+> A client never compares the two otherwise: the message's
+> build text appears only in that notice. `agreement.matched` changes some of
+> what chat and the options offer, and nothing about loading. A server leaves
+> `reportsToFile` and `reportingReady` clear, since they have a client write
+> metrics to a file of its own and report to the addresses the message carries.
+>
+> No bit of `features` is needed for a match to load, and a match with every bit
+> clear has none of the features. A client's own defaults for most of the bits
+> are in its file `DATA/CFG/defaults/GameFeatures.cfg`, one key each, though not
+> in the order of the bits. A server MAY start from those defaults, and leaves the
+> bits that report metrics clear.
+
+<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
+
+> **In 4.4**
+>
+> A client never compares the two otherwise: the message's
+> build text appears only in that notice. `agreement.matched` changes some of
+> what chat and the options offer, and nothing about loading. A server leaves
+> `reportsToFile` and `reportingReady` clear, since they have a client write
+> metrics to a file of its own and report to the addresses the message carries.
+>
+> No bit of `features` is needed for a match to load, and a match with every bit
+> clear has none of the features. A server leaves the bits that report metrics
+> clear.
+
+<!-- holds from 4.5.0.260 up to 4.20.0.315 -->
+
+> **In 4.5–4.19**
 >
 > A client never compares the two otherwise: the message's
 > build text appears only in that notice. `agreement.matched` changes some of
@@ -581,6 +611,8 @@ Once a character is settled, a client sends `CharacterSelected`, once.
 
 > **In 4.4**
 >
+> A client sends `CharacterSelected` as it finishes loading.
+>
 > Until it sends `CharacterSelected`, a client drops every game message but
 > `VersionSync`, `QueryStatusAnswer`, `MatchIdentity`, `SeatLoadProgress`,
 > `GameEnded` and `ModuleData`, and keeps nothing it drops for later. A server
@@ -646,9 +678,25 @@ whose connection drops before play begins does.
 >
 > A client sends `ClientReady` as soon as `SpawnEnd` arrives.
 
-<!-- holds from 4.1.0.171 up to 4.17.0.233 -->
+<!-- holds from 4.1.0.171 up to 4.4.0.1858 -->
 
-> **In 4.1–4.16**
+> **In 4.1–4.3**
+>
+> Between `ClientReady` and `StartGame` a client keeps its loading screen up with
+> its own progress full, and sends `LoadingProgress` again about every half a
+> second. It waits as long as it takes: nothing in it gives up on a server that
+> is slow to start play.
+
+<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
+
+> **In 4.4**
+>
+> Between `ClientReady` and `StartGame` a client keeps its loading screen up with
+> its own progress full.
+
+<!-- holds from 4.5.0.260 up to 4.17.0.233 -->
+
+> **In 4.5–4.16**
 >
 > Between `ClientReady` and `StartGame` a client keeps its loading screen up with
 > its own progress full, and sends `LoadingProgress` again about every half a

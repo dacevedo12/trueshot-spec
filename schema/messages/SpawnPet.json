@@ -3053,7 +3053,7 @@
       "command": 54,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client deletes any object holding the header's id; spawns nothing where it does not know the owner; kills the owner's earlier pet if it lives; makes the pet, replacing its script with script; gives it the owner's seat, its gold going to the owner; and registers it under the header's id and node. duration has no effect. The header names the pet.",
+      "note": "A client deletes any object holding the header's id; spawns nothing where it does not know the owner; kills the owner's earlier pet if it lives; makes the pet, replacing its script with script; gives it the owner's seat, its gold going to the owner; and registers it under the header's id and node. duration has no effect. A client starts effect on the pet, with spellLevel, only where the owner, as it was created, belongs to the client's own node, and never while it plays a match back, from a replay, a spectator stream or over its game connection. The header names the pet.",
       "fields": [
         {
           "name": "owner",

@@ -779,6 +779,68 @@
     },
     {
       "from": "3.01.0.1",
+      "until": "3.03.0.198",
+      "channel": "events",
+      "command": 73,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Where it comes back, along one ground axis, in world units."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "Where it comes back, in height, in world units. A client places it there as given."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Where it comes back, along the other ground axis, in world units."
+        },
+        {
+          "name": "resource",
+          "type": "f32",
+          "note": "Its resource, such as mana, once back."
+        }
+      ],
+      "note": "A client keeps the champion's level, experience, gold, maxima and spell ranks, and plays the coming back. The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that. A client sets the champion on the nearest open ground."
+    },
+    {
+      "from": "3.03.0.198",
+      "until": "3.04.0.78",
+      "channel": "events",
+      "command": 73,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Where it comes back, along one ground axis, in world units."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "Where it comes back, in height, in world units."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Where it comes back, along the other ground axis, in world units."
+        },
+        {
+          "name": "resource",
+          "type": "f32",
+          "note": "Its resource, such as mana, once back."
+        }
+      ],
+      "note": "A client keeps the champion's level, experience, gold, maxima and spell ranks, and plays the coming back. The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that. A client keeps the point within the map's edges, and places the champion there where it lies on open ground, otherwise on the nearest open ground."
+    },
+    {
+      "from": "3.04.0.78",
       "until": "3.9.0.491",
       "channel": "events",
       "command": 73,
@@ -810,6 +872,58 @@
     },
     {
       "from": "3.9.0.491",
+      "until": "4.4.0.1858",
+      "channel": "events",
+      "command": 73,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Where it comes back, in world units."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Where it comes back, in world units."
+        },
+        {
+          "name": "resource",
+          "type": "f32",
+          "note": "Its resource, such as mana, once back."
+        }
+      ],
+      "note": "A client keeps the champion's level, experience, gold, maxima and spell ranks, and plays the coming back. The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that. A client sets the champion on the nearest open ground."
+    },
+    {
+      "from": "4.4.0.1858",
+      "until": "4.5.0.260",
+      "channel": "events",
+      "command": 73,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Where it comes back, in world units."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Where it comes back, in world units."
+        },
+        {
+          "name": "resource",
+          "type": "f32",
+          "note": "Its resource, such as mana, once back."
+        }
+      ],
+      "note": "A client keeps the champion's level, experience, gold, maxima and spell ranks, and plays the coming back. The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that. A client keeps the point within the map's edges, and places the champion there where it lies on open ground, otherwise on the nearest open ground."
+    },
+    {
+      "from": "4.5.0.260",
       "until": "4.11.0.386",
       "channel": "events",
       "command": 73,

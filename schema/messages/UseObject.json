@@ -133,6 +133,37 @@
     },
     {
       "from": "1.0.0.151",
+      "until": "3.03.0.198",
+      "channel": "requests",
+      "command": 57,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit to use."
+        }
+      ],
+      "note": "A client also sends it as a unit its champion is attacking changes side (TeamChanged), whether usable or not."
+    },
+    {
+      "from": "3.03.0.198",
+      "until": "3.04.0.78",
+      "channel": "requests",
+      "command": 57,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit to use."
+        }
+      ]
+    },
+    {
+      "from": "3.04.0.78",
       "until": "3.6.0.388",
       "channel": "requests",
       "command": 57,

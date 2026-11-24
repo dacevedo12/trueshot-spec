@@ -230,6 +230,13 @@ Moments on the match clock include:
 > server that runs a match at other than normal speed MUST send `GameSpeed`
 > with that speed, or those durations run apart from its own.
 
+<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
+
+> **In 4.4**
+>
+> The limit of 0 to 10 holds in a match a client plays: while it watches a
+> match, from a stream or a replay, it takes whatever speed `GameSpeed` gives.
+
 <!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 
 > **In 4.17**

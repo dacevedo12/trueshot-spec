@@ -50,6 +50,12 @@ shop by the champion's level.
 > map. A client uses the map's list of the items the shop holds only where a
 > setting of its own turns it on.
 
+<!-- holds from 3.03.0.198 up to 3.04.0.78 -->
+
+> **In 3.03**
+>
+> `Loadout` does nothing to the shop.
+
 <!-- holds from 3.13.0.399 up to 3.14.0.700 -->
 
 > **In 3.13**

@@ -482,6 +482,13 @@ A create message carries a node beside the object's net id.
 > A client applies a `SpawnPet`'s effect and spell level only where the owner's
 > node is its own.
 
+<!-- holds from 3.03.0.198 up to 3.04.0.78 -->
+
+> **In 3.03**
+>
+> A client applies a `SpawnPet`'s effect and spell level only where the owner's
+> node is its own, and never while playing back.
+
 <!-- holds from 3.6.0.388 up to 3.7.0.328 -->
 
 > **In 3.6**

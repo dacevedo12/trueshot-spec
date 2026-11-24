@@ -482,7 +482,7 @@
           "note": "The name the report carried. A client sends the report again until this comes back."
         }
       ],
-      "note": "A client ignores the header. It takes syncId only where it is 1 to 127 ahead of the last it took."
+      "note": "A client ignores the header. It takes syncId only where it is 1 to 127 ahead of the last it took, a smaller number counting as 255 more, so after 255 it never takes 0."
     },
     {
       "from": "3.04.0.78",
@@ -607,7 +607,7 @@
         {
           "name": "syncId",
           "type": "u8",
-          "note": "The name the report carried. A client sends the report again until this comes back."
+          "note": "The name the report carried. A client sends the report again until this comes back. After it has taken 255, a client ignores 0 and takes 1 to 127."
         }
       ],
       "note": "A client ignores the header."

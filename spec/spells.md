@@ -211,4 +211,10 @@ it is going, with `MissileReport`, which a server MAY ignore.
 >
 > Only a scripted missile acts on `MissileCourse`.
 
+<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
+
+> **In 4.4**
+>
+> Only a scripted missile acts on `MissileCourse`.
+
 <!-- messages -->

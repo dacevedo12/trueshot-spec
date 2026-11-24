@@ -239,9 +239,25 @@ MUST take the names from the files.
 > In the section's name, n is how many players the side has plus the count
 > `SpawnStart` carries, added on both sides alike.
 
-<!-- holds from 1.0.0.140 up to 3.10.0.237 -->
+<!-- holds from 1.0.0.140 up to 3.03.0.198 -->
 
-> **In 1.0.0.140–3.9**
+> **In 1.0.0.140–3.02**
+>
+> In the section's name, n is how many players and bots the side has. A
+> champion begun on the spawn point itself faces along +X.
+
+<!-- holds from 3.03.0.198 up to 3.04.0.78 -->
+
+> **In 3.03**
+>
+> In the section's name, n is the count of the side's seats taken in `Roster`
+> plus the count `SpawnStart` carries for that side, the same n picking both the
+> position and the facing. A champion begun on the spawn point itself faces
+> along +X.
+
+<!-- holds from 3.04.0.78 up to 3.10.0.237 -->
+
+> **In 3.04–3.9**
 >
 > In the section's name, n is how many players and bots the side has. A
 > champion begun on the spawn point itself faces along +X.
@@ -259,9 +275,22 @@ MUST take the names from the files.
 > In the section's name, n is how many players and bots the side has. A
 > champion begun on the spawn point itself faces along +X.
 
-<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
+<!-- holds from 4.1.0.171 up to 4.4.0.1858 -->
 
-> **In 4.1–4.19**
+> **In 4.1–4.3**
+>
+> `LEVELS/Map1/Scene/MapObjects.mob` holds the objects that are not buildings:
+> each side's spawn point, the minion spawners, navigation points, the marker of
+> the level's size and the props. It opens with 16 bytes: a fixed tag, a 32-bit
+> version (2), a 32-bit count and 4 reserved bytes. A record of 128 bytes follows
+> for each object: its name, 62 bytes padded with zeros; a byte for its kind; a
+> byte that lets it be placed regardless of collision; 32-bit floats for its
+> position, rotation and scale (three each) and its bounding box (six); and a
+> 32-bit skin.
+
+<!-- holds from 4.5.0.260 up to 4.20.0.315 -->
+
+> **In 4.5–4.19**
 >
 > `LEVELS/Map1/Scene/MapObjects.mob` holds the objects that are not buildings:
 > each side's spawn point, the minion spawners, navigation points, the marker of
@@ -359,9 +388,16 @@ figures, in `DATA/Items/<id>.inibin`; and summoner, item and shared spells in
 > all other spells, and some champions' in
 > `DATA/Characters/<Champion>/Spells/<Spell>.inibin`.
 
-<!-- holds from 4.1.0.171 up to 4.17.0.233 -->
+<!-- holds from 4.1.0.171 up to 4.4.0.1858 -->
 
-> **In 4.1–4.16**
+> **In 4.1–4.3**
+>
+> A champion's spells and attacks are in
+> `DATA/Characters/<Champion>/Spells/<Spell>.inibin`.
+
+<!-- holds from 4.5.0.260 up to 4.17.0.233 -->
+
+> **In 4.5–4.16**
 >
 > A champion's spells and attacks are in
 > `DATA/Characters/<Champion>/Spells/<Spell>.inibin`.

@@ -986,6 +986,12 @@ Besides its batches, a server states some values with messages of their own.
 > in it: a client fails on one naming any other unit. `GoldGained` grants no
 > gold: a champion's gold in hand follows group 0 bit 0 of its batches alone.
 
+<!-- holds from 3.03.0.198 up to 3.04.0.78 -->
+
+> **In 3.03**
+>
+> `GoldGained` grants no gold: a champion's gold in hand follows its batches.
+
 <!-- holds from 3.10.0.237 up to 3.13.0.399 -->
 
 > **In 3.10–3.12**
@@ -1009,6 +1015,12 @@ Besides its batches, a server states some values with messages of their own.
 > champion, whose experience follows group 3 bit 4 of its batches alone. A
 > client fails on an `ExperienceGained` naming a unit it holds that is not a
 > champion, and a server MUST NOT send one.
+
+<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
+
+> **In 4.4**
+>
+> `GoldGained` grants no gold: a champion's gold in hand follows its batches.
 
 <!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 

@@ -47,6 +47,47 @@
     },
     {
       "from": "3.14.0.700",
+      "until": "4.4.0.1858",
+      "channel": "events",
+      "command": 278,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "timer",
+          "type": "i32",
+          "note": "Which camp's timer, by a number a name gives."
+        },
+        {
+          "name": "expires",
+          "type": "f32",
+          "note": "When it is due, in match seconds."
+        }
+      ]
+    },
+    {
+      "from": "4.4.0.1858",
+      "until": "4.5.0.260",
+      "channel": "events",
+      "command": 278,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "note": "A client takes it whether it watches the match or plays it, and shows nothing of it on the match screen.",
+      "fields": [
+        {
+          "name": "timer",
+          "type": "i32",
+          "note": "Which camp's timer, by a number a name gives."
+        },
+        {
+          "name": "expires",
+          "type": "f32",
+          "note": "When it is due, in match seconds."
+        }
+      ]
+    },
+    {
+      "from": "4.5.0.260",
       "until": "4.17.0.233",
       "channel": "events",
       "command": 278,

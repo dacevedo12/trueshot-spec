@@ -112,9 +112,25 @@ batch.
 A client sends the answers above when it plays a match, not while it plays back
 a stream.
 
-<!-- holds from 0.9.25.24 up to 3.10.0.237 -->
+<!-- holds from 0.9.25.24 up to 3.03.0.198 -->
 
-> **In 0.9.25.24–3.9**
+> **In 0.9.25.24–3.02**
+>
+> A client also answers each `Path` and `PathWithSpeed`, taken or not, with a
+> `WaypointAck` carrying its `syncId` (see [Movement](movement.md)), when it
+> plays a match, not while it plays back a stream.
+
+<!-- holds from 3.03.0.198 up to 3.04.0.78 -->
+
+> **In 3.03**
+>
+> A client also answers each `Path` and `PathWithSpeed`, taken or not, with a
+> `WaypointAck` carrying its `syncId` (see [Movement](movement.md)), when it
+> plays a match.
+
+<!-- holds from 3.04.0.78 up to 3.10.0.237 -->
+
+> **In 3.04–3.9**
 >
 > A client also answers each `Path` and `PathWithSpeed`, taken or not, with a
 > `WaypointAck` carrying its `syncId` (see [Movement](movement.md)), when it
@@ -187,12 +203,22 @@ a stream.
 > report numbered 0 again until its view moves on and a later report is
 > answered.
 
-<!-- holds from 1.0.0.111 up to 3.04.0.78 -->
+<!-- holds from 1.0.0.111 up to 3.03.0.198 -->
 
-> **In 1.0.0.111–3.03**
+> **In 1.0.0.111–3.02**
 >
 > A client sends a view report again, twice the round trip time plus 1/30 of a
 > second apart, until a server answers it with `CameraAck`, carrying its number.
+
+<!-- holds from 3.03.0.198 up to 3.04.0.78 -->
+
+> **In 3.03**
+>
+> A client sends a view report again, twice the round trip time plus 1/30 of a
+> second apart, until a server answers it with `CameraAck`, carrying its number.
+> After a `CameraAck` carrying 255 it never takes one carrying 0, and sends its
+> report numbered 0 again until its view moves on and a later report is
+> answered.
 
 <!-- holds from 3.6.0.388 up to 3.7.0.328 -->
 
@@ -221,9 +247,26 @@ a stream.
 > report numbered 0 again until its view moves on and a later report is
 > answered.
 
-<!-- holds from 3.14.0.700 up to 4.21.0.0 -->
+<!-- holds from 3.14.0.700 up to 4.4.0.1858 -->
 
-> **In 3.14–4.20**
+> **In 3.14–4.3**
+>
+> A client sends a view report again, twice the round trip time plus 1/30 of a
+> second apart, until a server answers it with `CameraAck`, carrying its number.
+
+<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
+
+> **In 4.4**
+>
+> A client sends a view report again, twice the round trip time plus 1/30 of a
+> second apart, until a server answers it with `CameraAck`, carrying its number.
+> After a `CameraAck` carrying 255 it never takes one carrying 0, and sends its
+> report numbered 0 again until its view moves on and a later report is
+> answered.
+
+<!-- holds from 4.5.0.260 up to 4.21.0.0 -->
+
+> **In 4.5–4.20**
 >
 > A client sends a view report again, twice the round trip time plus 1/30 of a
 > second apart, until a server answers it with `CameraAck`, carrying its number.

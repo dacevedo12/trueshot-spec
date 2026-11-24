@@ -912,7 +912,7 @@
       "command": 64,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client does not fail on it. Where it takes it, it clears the circles it marked before, marks these, and answers with its syncId.",
+      "note": "A client does not fail on it. Until its map's ground grid has loaded it drops it, marking nothing and answering nothing; after that, it clears the circles it marked before, marks these, and answers with its syncId.",
       "fields": [
         {
           "name": "count",
@@ -1278,6 +1278,112 @@
     },
     {
       "from": "3.14.0.700",
+      "until": "4.4.0.1858",
+      "channel": "events",
+      "command": 64,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "note": "A client fails on the first of these in a match: it stops, marking no circle and sending no answer.",
+      "fields": [
+        {
+          "name": "count",
+          "type": "u16",
+          "note": "The count of circles that follow."
+        },
+        {
+          "name": "syncId",
+          "type": "i32",
+          "note": "A number naming this marking."
+        },
+        {
+          "name": "circles",
+          "type": "array",
+          "count": "count",
+          "items": {
+            "name": "circlesEntry",
+            "type": "record",
+            "fields": [
+              {
+                "name": "x",
+                "type": "f32",
+                "note": "The circle's centre, along one ground axis, in world units."
+              },
+              {
+                "name": "z",
+                "type": "f32",
+                "note": "The circle's centre, along the other ground axis, in world units."
+              },
+              {
+                "name": "radius",
+                "type": "f32",
+                "note": "Its radius, in world units. A circle of radius 1000 or more marks nothing."
+              },
+              {
+                "name": "flags",
+                "type": "u32",
+                "note": "The flags to add to each cell. Only the low 16 bits take effect."
+              }
+            ]
+          },
+          "note": "The circles."
+        }
+      ]
+    },
+    {
+      "from": "4.4.0.1858",
+      "until": "4.5.0.260",
+      "channel": "events",
+      "command": 64,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "note": "Until its map's ground grid has loaded a client drops it, marking nothing and answering nothing. After that, a client fails on the first of these in a match: it stops, marking no circle and sending no answer.",
+      "fields": [
+        {
+          "name": "count",
+          "type": "u16",
+          "note": "The count of circles that follow."
+        },
+        {
+          "name": "syncId",
+          "type": "i32",
+          "note": "A number naming this marking."
+        },
+        {
+          "name": "circles",
+          "type": "array",
+          "count": "count",
+          "items": {
+            "name": "circlesEntry",
+            "type": "record",
+            "fields": [
+              {
+                "name": "x",
+                "type": "f32",
+                "note": "The circle's centre, along one ground axis, in world units."
+              },
+              {
+                "name": "z",
+                "type": "f32",
+                "note": "The circle's centre, along the other ground axis, in world units."
+              },
+              {
+                "name": "radius",
+                "type": "f32",
+                "note": "Its radius, in world units. A circle of radius 1000 or more marks nothing."
+              },
+              {
+                "name": "flags",
+                "type": "u32",
+                "note": "The flags to add to each cell. Only the low 16 bits take effect."
+              }
+            ]
+          },
+          "note": "The circles."
+        }
+      ]
+    },
+    {
+      "from": "4.5.0.260",
       "until": "4.11.0.386",
       "channel": "events",
       "command": 64,

@@ -164,7 +164,7 @@
         {
           "name": "slot",
           "type": "i32",
-          "note": "Which spell slot."
+          "note": "Which spell slot. A client applies it to slot 0 where it is above 60, or -1."
         },
         {
           "name": "amount",

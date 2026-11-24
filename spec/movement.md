@@ -495,9 +495,24 @@ server sends.
 > client replaces the circles it holds with those it carries, and answers with
 > its `syncId`; before then it takes nothing and does not answer.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 4.1.0.171 up to 4.4.0.1858 -->
 
-> **In 4.1–4.20**
+> **In 4.1–4.3**
+>
+> A server MUST NOT send `NavigationFlags`: a client fails on the first one a
+> match brings.
+
+<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
+
+> **In 4.4**
+>
+> A server MUST NOT send `NavigationFlags`: once the map's ground grid is
+> loaded, a client fails on the first one it takes. Before then it drops each,
+> marking nothing and answering nothing.
+
+<!-- holds from 4.5.0.260 up to 4.21.0.0 -->
+
+> **In 4.5–4.20**
 >
 > A server MUST NOT send `NavigationFlags`: a client fails on the first one a
 > match brings.
