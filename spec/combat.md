@@ -33,9 +33,15 @@ reports what each blow does with `Damage`.
 >
 > How long a swing takes comes from the champion's data and its attack speed.
 
-<!-- holds from 0.8.13.26 up to 3.11.0.306 -->
+<!-- holds from 0.8.13.26 up to 1.0.0.96 -->
 
-> **In 0.8.13.26–3.10**
+> **In 0.8.13.26–1.0.0.95**
+>
+> A client ignores an `Attack` whose target it does not hold.
+
+<!-- holds from 1.0.0.97 up to 3.11.0.306 -->
+
+> **In 1.0.0.97–3.10**
 >
 > A client ignores an `Attack` whose target it does not hold.
 

@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "CharacterSelected",
   "system": "joining",
-  "note": "What a client sends once a character is settled on. It carries nothing of its own. The header names no object: it carries zero.",
+  "note": "It carries nothing of its own. The header names no object: it carries zero.",
   "revisions": [
     {
       "from": "0.8.13.26",
@@ -12,7 +12,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "A client sends it once as it loads, before any champion exists, whatever its player does."
+      "note": "What a client sends once a character is settled on. A client sends it once as it loads, before any champion exists, whatever its player does."
     },
     {
       "from": "0.9.22.14",
@@ -21,7 +21,8 @@
       "command": 15,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "What a client sends once a character is settled on."
     },
     {
       "from": "1.0.0.110",
@@ -30,7 +31,8 @@
       "command": 189,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "What a client sends once a character is settled on."
     },
     {
       "from": "1.0.0.111",
@@ -39,7 +41,8 @@
       "command": 190,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "What a client sends once a character is settled on."
     },
     {
       "from": "1.0.0.117",
@@ -48,7 +51,8 @@
       "command": 191,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "What a client sends once a character is settled on."
     },
     {
       "from": "1.0.0.119",
@@ -57,7 +61,8 @@
       "command": 192,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "What a client sends once a character is settled on."
     },
     {
       "from": "1.0.0.124",
@@ -66,7 +71,8 @@
       "command": 196,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "What a client sends once a character is settled on."
     },
     {
       "from": "1.0.0.125",
@@ -75,7 +81,8 @@
       "command": 197,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "What a client sends once a character is settled on."
     },
     {
       "from": "1.0.0.126",
@@ -84,7 +91,8 @@
       "command": 198,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "What a client sends once a character is settled on."
     },
     {
       "from": "1.0.0.132",
@@ -93,7 +101,8 @@
       "command": 199,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "What a client sends once a character is settled on."
     },
     {
       "from": "1.0.0.135",
@@ -102,7 +111,8 @@
       "command": 201,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "What a client sends once a character is settled on."
     },
     {
       "from": "1.0.0.136",
@@ -111,7 +121,8 @@
       "command": 199,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "What a client sends once a character is settled on."
     },
     {
       "from": "1.0.0.138",
@@ -120,7 +131,8 @@
       "command": 201,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "What a client sends once a character is settled on."
     },
     {
       "from": "1.0.0.139",
@@ -129,7 +141,8 @@
       "command": 200,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "What a client sends once a character is settled on."
     },
     {
       "from": "1.0.0.141",
@@ -138,7 +151,8 @@
       "command": 202,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "What a client sends once a character is settled on."
     },
     {
       "from": "1.0.0.144",
@@ -147,7 +161,8 @@
       "command": 190,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "What a client sends once a character is settled on."
     },
     {
       "from": "1.0.0.150",
@@ -156,7 +171,8 @@
       "command": 187,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "What a client sends once a character is settled on."
     },
     {
       "from": "3.01.0.1",
@@ -165,7 +181,8 @@
       "command": 190,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "What a client sends once a character is settled on."
     },
     {
       "from": "4.1.0.171",
@@ -174,7 +191,8 @@
       "command": 189,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "What a client sends once a character is settled on."
     },
     {
       "from": "4.4.0.1858",
@@ -193,7 +211,8 @@
       "command": 189,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "What a client sends once a character is settled on."
     },
     {
       "from": "4.11.0.386",
@@ -202,7 +221,8 @@
       "command": 190,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": []
+      "fields": [],
+      "note": "What a client sends once a character is settled on."
     }
   ]
 }

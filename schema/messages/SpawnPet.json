@@ -2077,7 +2077,7 @@
       "command": 60,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "The header names the owner, and a client handles the message only where it holds that unit. It kills the owner's earlier pet if that lives, then makes the pet under pet and node, replacing its script with script, gives it the owner's seat, and takes it as the owner's pet. It deletes no object first; where one already holds pet, both answer to it. duration has no effect.",
+      "note": "The header names the owner, and a client handles the message only where it holds that unit. It kills the owner's earlier pet if that lives, then makes the pet under pet and node, replacing its script with script, gives it the owner's seat, and takes it as the owner's pet. It deletes no object first. duration has no effect.",
       "fields": [
         {
           "name": "pet",

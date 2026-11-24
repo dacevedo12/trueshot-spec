@@ -425,7 +425,7 @@
           ]
         }
       ],
-      "note": "The tip fields carry VersionSync's tip bytes. Where settings.tips and either loadingTips or playingTips are set, a client reduces a tipChosen above the number of tips modulo that number, and negates a tipColour or tipDuration outside its valid range (0 as -128), clearing tips; otherwise it returns all four as they came. Playing a replay, a client sends all four as zero, and maskedStatus and mask carry no meaning."
+      "note": "The tip fields carry VersionSync's tip bytes. Where settings.tips and either loadingTips or playingTips are set, a client reduces a tipChosen above the number of tips modulo that number, and negates a tipColour or tipDuration outside its valid range (0 as -128), clearing tips; otherwise it returns all four as they came."
     },
     {
       "from": "3.04.0.78",

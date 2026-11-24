@@ -565,7 +565,17 @@ every client has sent `ClientReady`.
 
 ## The spawn run
 
-Once a character is settled, a client sends `CharacterSelected`, once.
+<!-- holds from 0.8.13.26 up to 4.4.0.1858 -->
+
+> **In 0.8.13.26–4.3**
+>
+> Once a character is settled, a client sends `CharacterSelected`, once.
+
+<!-- holds from 4.5.0.260 up to 4.21.0.0 -->
+
+> **In 4.5–4.20**
+>
+> Once a character is settled, a client sends `CharacterSelected`, once.
 
 <!-- holds from 0.8.13.26 up to 1.0.0.61 -->
 

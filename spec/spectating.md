@@ -111,9 +111,41 @@ says.
 
 ## The order of the stream
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 4.1.0.171 up to 4.4.0.1858 -->
 
-> **In 4.1–4.20**
+> **In 4.1–4.3**
+>
+> A watching client registers as a player's client does (see
+> [Joining a match](joining.md)), and is answered the same way, save for the
+> client id. A server MUST answer a watching client with a client id that no
+> player in the streamed match holds: a watching client given a player's client
+> id takes that player's champion as its own, and fails as soon as it has caught
+> up with the stream. From then on it takes only `StreamMetadata`,
+> `StreamChunkRange` and `StreamChunk`, on any channel, and drops every other
+> message a server sends it directly, `VersionSync` included. Of what a player's
+> client sends while joining, it sends only `JoinSide`, once the stream's own
+> `VersionSync` has played, then `GameOptions`, `CharacterSelected` and
+> `ClientReady`: no `ClientVersion`, no `QueryStatus` and no `LoadingProgress`.
+
+<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
+
+> **In 4.4**
+>
+> A watching client registers as a player's client does (see
+> [Joining a match](joining.md)), and is answered the same way, save for the
+> client id. A server MUST answer a watching client with a client id that no
+> player in the streamed match holds: a watching client given a player's client
+> id takes that player's champion as its own, and fails as soon as it has caught
+> up with the stream. From then on it takes only `StreamMetadata`,
+> `StreamChunkRange` and `StreamChunk`, on any channel, and drops every other
+> message a server sends it directly, `VersionSync` included. Of what a player's
+> client sends while joining, it sends only `JoinSide`, once the stream's own
+> `VersionSync` has played, then `GameOptions` and `ClientReady`: no
+> `ClientVersion`, no `QueryStatus` and no `LoadingProgress`.
+
+<!-- holds from 4.5.0.260 up to 4.21.0.0 -->
+
+> **In 4.5–4.20**
 >
 > A watching client registers as a player's client does (see
 > [Joining a match](joining.md)), and is answered the same way, save for the

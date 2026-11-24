@@ -1523,10 +1523,9 @@
         {
           "name": "kind",
           "type": "u8",
-          "note": "Which kill a client announces for killer: zero a neutral monster's, nonzero a minion's."
+          "note": "Which kill killer is credited with: zero a neutral monster's, nonzero a minion's."
         }
-      ],
-      "note": "Where the unit is not already dead, it cancels the unit's cast and attack, and only where killer is nonzero puts the unit down, by stayDown and standing."
+      ]
     },
     {
       "from": "4.5.0.260",

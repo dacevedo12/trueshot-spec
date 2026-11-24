@@ -75,9 +75,16 @@ stack, the newest showing, and `AppearancePopped` and `AppearanceCleared` take
 them away. `AnimationOverrides` has a unit play one set of movements wherever it
 would have played another.
 
-<!-- holds from 0.8.13.26 up to 1.0.0.127 -->
+<!-- holds from 0.8.13.26 up to 1.0.0.58 -->
 
-> **In 0.8.13.26–1.0.0.126**
+> **In 0.8.13.26–1.0.0.57**
+>
+> `AppearancePopped` takes away every look laid over the unit's own, not only
+> the newest.
+
+<!-- holds from 1.0.0.61 up to 1.0.0.127 -->
+
+> **In 1.0.0.61–1.0.0.126**
 >
 > `AppearancePopped` takes away every look laid over the unit's own, not only
 > the newest.

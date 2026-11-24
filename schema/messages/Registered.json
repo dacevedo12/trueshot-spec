@@ -6,6 +6,32 @@
   "revisions": [
     {
       "from": "0.8.13.26",
+      "until": "0.9.22.14",
+      "channel": "registration",
+      "command": 0,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "leading",
+          "type": "bytes",
+          "size": 3,
+          "note": "Unused; a server writes zero."
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id playerId holds. Where playerId is the client's own, the client takes this client id as its own and goes on."
+        },
+        {
+          "name": "playerId",
+          "type": "i64",
+          "note": "Who occupies that seat. A client keeps the pair of clientId and playerId, and takes the answer as its own only where this is its own player id; it reads nothing after it."
+        }
+      ]
+    },
+    {
+      "from": "0.9.22.14",
       "until": "1.0.0.126",
       "channel": "registration",
       "command": 0,

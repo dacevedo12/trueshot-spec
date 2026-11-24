@@ -510,9 +510,24 @@ server sends.
 > loaded, a client fails on the first one it takes. Before then it drops each,
 > marking nothing and answering nothing.
 
-<!-- holds from 4.5.0.260 up to 4.21.0.0 -->
+<!-- holds from 4.5.0.260 up to 4.17.0.233 -->
 
-> **In 4.5–4.20**
+> **In 4.5–4.16**
+>
+> A server MUST NOT send `NavigationFlags`: a client fails on the first one a
+> match brings.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> A server MUST NOT send `NavigationFlags`: a client whose map's ground data is
+> loaded fails on one that arrives while it holds no circles. Before that data
+> is loaded, it takes nothing and does not answer.
+
+<!-- holds from 4.18.0.271 up to 4.21.0.0 -->
+
+> **In 4.18–4.20**
 >
 > A server MUST NOT send `NavigationFlags`: a client fails on the first one a
 > match brings.
