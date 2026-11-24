@@ -15,22 +15,12 @@
     },
     {
       "from": "1.0.0.110",
-      "until": "1.0.0.111",
-      "channel": "events",
-      "command": 90,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": []
-    },
-    {
-      "from": "1.0.0.111",
       "until": "1.0.0.117",
       "channel": "events",
       "command": 90,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": [],
-      "note": "A client past spawning ignores it."
+      "fields": []
     },
     {
       "from": "1.0.0.117",
@@ -39,8 +29,7 @@
       "command": 91,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": [],
-      "note": "A client past spawning ignores it."
+      "fields": []
     },
     {
       "from": "1.0.0.119",
@@ -49,8 +38,7 @@
       "command": 92,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": [],
-      "note": "A client past spawning ignores it."
+      "fields": []
     },
     {
       "from": "1.0.0.124",
@@ -59,8 +47,7 @@
       "command": 95,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": [],
-      "note": "A client past spawning ignores it."
+      "fields": []
     },
     {
       "from": "1.0.0.126",
@@ -92,34 +79,6 @@
     },
     {
       "from": "1.0.0.132",
-      "until": "1.0.0.133",
-      "channel": "events",
-      "command": 96,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "rules",
-          "type": "bits",
-          "size": 1,
-          "bits": [
-            {
-              "name": "pausing",
-              "width": 1,
-              "note": "Set to have a client post a notice in chat, except while watching a match; it allows or blocks no hold."
-            },
-            {
-              "name": "unused",
-              "width": 7,
-              "note": "Unused; a server writes zero."
-            }
-          ]
-        }
-      ],
-      "note": "A client past spawning ignores it."
-    },
-    {
-      "from": "1.0.0.133",
       "until": "1.0.0.138",
       "channel": "events",
       "command": 96,
@@ -134,7 +93,7 @@
             {
               "name": "pausing",
               "width": 1,
-              "note": "Set where holding the match is allowed."
+              "note": "Set to have a client post a notice in chat, except while watching a match; it allows or blocks no hold."
             },
             {
               "name": "unused",
@@ -171,8 +130,7 @@
             }
           ]
         }
-      ],
-      "note": "A client skips the start only once the match has ended or it is leaving: after GameEnded, Shutdown or an exit. Before, during and after spawning, it starts again."
+      ]
     },
     {
       "from": "1.0.0.140",
@@ -227,8 +185,7 @@
             }
           ]
         }
-      ],
-      "note": "A client skips the start only once the match has ended or it is leaving: after GameEnded, Shutdown or an exit. Before, during and after spawning, it starts again."
+      ]
     },
     {
       "from": "1.0.0.144",
@@ -246,7 +203,7 @@
             {
               "name": "pausing",
               "width": 1,
-              "note": "Set where holding the match is allowed."
+              "note": "Set to have a client that is not watching the match show a notice in its chat."
             },
             {
               "name": "unused",
@@ -274,7 +231,7 @@
             {
               "name": "pausing",
               "width": 1,
-              "note": "Set where holding the match is allowed."
+              "note": "Set to have a client that is not watching the match show a notice in its chat."
             },
             {
               "name": "notice",
@@ -307,7 +264,7 @@
             {
               "name": "pausing",
               "width": 1,
-              "note": "Set where holding the match is allowed."
+              "note": "Set to have a client that is not watching the match show a notice in its chat."
             },
             {
               "name": "unused",
@@ -368,7 +325,7 @@
             {
               "name": "pausing",
               "width": 1,
-              "note": "Set where holding the match is allowed."
+              "note": "Set to have a client post a notice in chat, except while playing a replay; it allows or blocks no hold."
             },
             {
               "name": "unused",
@@ -396,7 +353,7 @@
             {
               "name": "pausing",
               "width": 1,
-              "note": "Set where holding the match is allowed."
+              "note": "Set to have a client post a notice in chat, except while playing a replay; it allows or blocks no hold."
             },
             {
               "name": "unused",
@@ -452,7 +409,7 @@
             {
               "name": "pausing",
               "width": 1,
-              "note": "Set where holding the match is allowed."
+              "note": "Set to have a client post a notice in chat, except while playing a replay; it allows or blocks no hold."
             },
             {
               "name": "unused",
@@ -480,7 +437,7 @@
             {
               "name": "pausing",
               "width": 1,
-              "note": "Set where holding the match is allowed."
+              "note": "Set to have a client post a notice in chat, except while playing a replay; it allows or blocks no hold."
             },
             {
               "name": "unused",
@@ -564,7 +521,7 @@
             {
               "name": "pausing",
               "width": 1,
-              "note": "Set where holding the match is allowed."
+              "note": "Set to have a client post a notice in chat, except while playing a replay; it allows or blocks no hold."
             },
             {
               "name": "unused",
@@ -620,7 +577,7 @@
             {
               "name": "pausing",
               "width": 1,
-              "note": "Set where holding the match is allowed."
+              "note": "Set to have a client post a notice in chat, except while playing a replay; it allows or blocks no hold."
             },
             {
               "name": "unused",
@@ -681,7 +638,7 @@
             {
               "name": "pausing",
               "width": 1,
-              "note": "Set where holding the match is allowed."
+              "note": "Set to have a client post a notice in chat, except while playing a replay; it allows or blocks no hold."
             },
             {
               "name": "unused",
@@ -709,7 +666,7 @@
             {
               "name": "pausing",
               "width": 1,
-              "note": "Set where holding the match is allowed."
+              "note": "Set to have a client post a notice in chat, except while playing a replay; it allows or blocks no hold."
             },
             {
               "name": "notice",

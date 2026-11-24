@@ -338,7 +338,7 @@
         {
           "name": "lasts",
           "type": "f32",
-          "note": "How long it runs in total, in seconds."
+          "note": "How long the effect has left to run, in seconds from when the message arrives."
         },
         {
           "name": "count",
@@ -373,7 +373,7 @@
           "note": "The units, one place each."
         }
       ],
-      "note": "It replaces one effect with another on each unit."
+      "note": "It names no effect: it re-times the effect already in each unit's slot as EffectReplaced does, and leaves an empty slot as it is."
     },
     {
       "from": "1.0.0.150",
@@ -430,59 +430,6 @@
     },
     {
       "from": "1.0.0.151",
-      "until": "3.03.0.198",
-      "channel": "events",
-      "command": 30,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "runningFor",
-          "type": "f32",
-          "note": "How long the effect has already run, in seconds."
-        },
-        {
-          "name": "lasts",
-          "type": "f32",
-          "note": "How long it runs in total, in seconds."
-        },
-        {
-          "name": "count",
-          "type": "u8",
-          "note": "How many units follow."
-        },
-        {
-          "name": "entries",
-          "type": "array",
-          "count": "count",
-          "items": {
-            "name": "entriesEntry",
-            "type": "record",
-            "fields": [
-              {
-                "name": "unit",
-                "type": "u32",
-                "note": "The unit carrying the effect."
-              },
-              {
-                "name": "caster",
-                "type": "u32",
-                "note": "The unit that put it there."
-              },
-              {
-                "name": "slot",
-                "type": "u8",
-                "note": "Which of the unit's effect slots."
-              }
-            ]
-          },
-          "note": "The units, one place each."
-        }
-      ],
-      "note": "It replaces one effect with another on each unit."
-    },
-    {
-      "from": "3.03.0.198",
       "until": "3.04.0.78",
       "channel": "events",
       "command": 30,
@@ -585,7 +532,7 @@
           "note": "The units, one place each."
         }
       ],
-      "note": "It replaces one effect with another on each unit."
+      "note": "For each unit it does as EffectReplaced does: it re-times the effect already in the slot and replaces nothing."
     },
     {
       "from": "3.6.0.388",
@@ -691,7 +638,7 @@
           "note": "The units, one place each."
         }
       ],
-      "note": "It replaces one effect with another on each unit."
+      "note": "For each unit it does as EffectReplaced does: it re-times the effect already in the slot and replaces nothing."
     },
     {
       "from": "3.10.0.237",
@@ -748,59 +695,6 @@
     },
     {
       "from": "3.11.0.306",
-      "until": "3.13.0.399",
-      "channel": "events",
-      "command": 30,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "runningFor",
-          "type": "f32",
-          "note": "How long the effect has already run, in seconds."
-        },
-        {
-          "name": "lasts",
-          "type": "f32",
-          "note": "How long it has left to run, in seconds."
-        },
-        {
-          "name": "count",
-          "type": "u8",
-          "note": "How many units follow."
-        },
-        {
-          "name": "entries",
-          "type": "array",
-          "count": "count",
-          "items": {
-            "name": "entriesEntry",
-            "type": "record",
-            "fields": [
-              {
-                "name": "unit",
-                "type": "u32",
-                "note": "The unit carrying the effect."
-              },
-              {
-                "name": "caster",
-                "type": "u32",
-                "note": "The unit that put it there."
-              },
-              {
-                "name": "slot",
-                "type": "u8",
-                "note": "Which of the unit's effect slots."
-              }
-            ]
-          },
-          "note": "The units, one place each."
-        }
-      ],
-      "note": "It replaces one effect with another on each unit."
-    },
-    {
-      "from": "3.13.0.399",
       "until": "3.14.0.700",
       "channel": "events",
       "command": 30,
@@ -974,7 +868,7 @@
         {
           "name": "lasts",
           "type": "f32",
-          "note": "How long it runs in total, in seconds."
+          "note": "How long it runs from now on, in seconds: the effect ends this long after the message arrives."
         },
         {
           "name": "count",
@@ -1009,7 +903,7 @@
           "note": "The units, one place each."
         }
       ],
-      "note": "It replaces one effect with another on each unit."
+      "note": "For each unit listed, it does what EffectReplaced does."
     },
     {
       "from": "4.20.0.315",

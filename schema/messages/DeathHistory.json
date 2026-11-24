@@ -2050,7 +2050,7 @@
         {
           "name": "sourceType",
           "type": "u32",
-          "note": "What sort of source the killer was. A client keeps only the low 4 bits, signed, and acts on them only where it holds killer."
+          "note": "What sort of source the killer was. A client keeps only the low 4 bits."
         },
         {
           "name": "blobLength",
@@ -2545,7 +2545,7 @@
           }
         }
       ],
-      "note": "A client lays it out. A client ignores the whole message where killer is zero; a killer it does not hold brings it down. Each entry's size after source follows from event alone."
+      "note": "A client ignores the whole message where killer is zero. Each entry's size after source follows from event alone."
     },
     {
       "from": "1.0.0.25",
@@ -3583,7 +3583,7 @@
         {
           "name": "sourceType",
           "type": "u32",
-          "note": "What sort of source the killer was. A client keeps only the low 4 bits, signed, and acts on them only where it holds killer."
+          "note": "What sort of source the killer was. A client keeps only the low 4 bits, signed."
         },
         {
           "name": "blobLength",
@@ -4088,7 +4088,7 @@
           }
         }
       ],
-      "note": "A client lays it out. A client ignores the whole message where killer is zero; a killer it does not hold brings it down. Each entry's size after source follows from event alone."
+      "note": "A client lays it out. A client ignores the whole message where killer is zero. Each entry's size after source follows from event alone."
     },
     {
       "from": "1.0.0.63",
@@ -4111,7 +4111,7 @@
         {
           "name": "sourceType",
           "type": "u32",
-          "note": "What sort of source the killer was. A client keeps only the low 4 bits, signed, and acts on them only where it holds killer."
+          "note": "What sort of source the killer was. A client keeps only the low 4 bits, signed."
         },
         {
           "name": "blobLength",
@@ -4616,7 +4616,7 @@
           }
         }
       ],
-      "note": "A client lays it out. A client ignores the whole message where killer is zero; a killer it does not hold brings it down. Each entry's size after source follows from event alone."
+      "note": "A client lays it out. A client ignores the whole message where killer is zero. Each entry's size after source follows from event alone."
     },
     {
       "from": "1.0.0.72",
@@ -4639,7 +4639,7 @@
         {
           "name": "sourceType",
           "type": "u32",
-          "note": "What sort of source the killer was. A client keeps only the low 4 bits, signed, and acts on them only where it holds killer."
+          "note": "What sort of source the killer was. A client keeps only the low 4 bits, signed."
         },
         {
           "name": "blobLength",
@@ -5144,7 +5144,7 @@
           }
         }
       ],
-      "note": "A client lays it out. A client ignores the whole message where killer is zero; a killer it does not hold brings it down. Each entry's size after source follows from event alone."
+      "note": "A client lays it out. A client ignores the whole message where killer is zero. Each entry's size after source follows from event alone."
     },
     {
       "from": "1.0.0.74",
@@ -5695,7 +5695,7 @@
         {
           "name": "sourceType",
           "type": "u32",
-          "note": "What sort of source the killer was. A client keeps only the low 4 bits, signed, and acts on them only where it holds killer."
+          "note": "What sort of source the killer was. A client keeps only the low 4 bits, signed: from 1 to 4 it names the killer by a fixed label of its own, held or not."
         },
         {
           "name": "blobLength",
@@ -6200,7 +6200,7 @@
           }
         }
       ],
-      "note": "A client lays it out. A client ignores the whole message where killer is zero; a killer it does not hold brings it down. Each entry's size after source follows from event alone."
+      "note": "A client lays it out. A client ignores the whole message where killer is zero. Each entry's size after source follows from event alone."
     },
     {
       "from": "1.0.0.82",
@@ -6223,7 +6223,7 @@
         {
           "name": "sourceType",
           "type": "u32",
-          "note": "What sort of source the killer was. A client keeps only the low 4 bits, signed, and acts on them only where it holds killer."
+          "note": "What sort of source the killer was. A client keeps only the low 4 bits, signed: from 1 to 4 it names the killer by a fixed label of its own, held or not."
         },
         {
           "name": "blobLength",
@@ -6728,7 +6728,7 @@
           }
         }
       ],
-      "note": "A client lays it out. A client ignores the whole message where killer is zero; a killer it does not hold brings it down. Each entry's size after source follows from event alone."
+      "note": "A client lays it out. A client ignores the whole message where killer is zero. Each entry's size after source follows from event alone."
     },
     {
       "from": "1.0.0.86",
@@ -7279,7 +7279,7 @@
         {
           "name": "sourceType",
           "type": "u32",
-          "note": "What sort of source the killer was. A client keeps only the low 4 bits, signed, and acts on them only where it holds killer."
+          "note": "What sort of source the killer was. A client keeps only the low 4 bits, signed. 1 to 4 each show a fixed label of the client's own, whether or not it holds killer."
         },
         {
           "name": "blobLength",
@@ -7784,7 +7784,7 @@
           }
         }
       ],
-      "note": "A client lays it out. A client ignores the whole message where killer is zero; a killer it does not hold brings it down. Each entry's size after source follows from event alone."
+      "note": "A client lays it out. A client ignores the whole message where killer is zero. Each entry's size after source follows from event alone."
     },
     {
       "from": "1.0.0.96",
@@ -8341,7 +8341,7 @@
         {
           "name": "sourceType",
           "type": "u32",
-          "note": "What sort of source the killer was. A client keeps only the low 4 bits, signed, and acts on them only where it holds killer."
+          "note": "What sort of source the killer was. A client keeps only the low 4 bits, signed."
         },
         {
           "name": "blobLength",
@@ -8852,7 +8852,7 @@
           }
         }
       ],
-      "note": "A client lays it out. A client ignores the whole message where killer is zero; a killer it does not hold brings it down. Each entry's size after source follows from event alone."
+      "note": "A client lays it out. A client ignores the whole message where killer is zero. Each entry's size after source follows from event alone."
     },
     {
       "from": "1.0.0.99",
@@ -8875,7 +8875,7 @@
         {
           "name": "sourceType",
           "type": "u32",
-          "note": "What sort of source the killer was. A client keeps only the low 4 bits, signed, and acts on them only where it holds killer."
+          "note": "What sort of source the killer was. A client keeps only the low 4 bits, signed."
         },
         {
           "name": "blobLength",
@@ -9386,7 +9386,7 @@
           }
         }
       ],
-      "note": "A client lays it out. A client ignores the whole message where killer is zero; a killer it does not hold brings it down. Each entry's size after source follows from event alone."
+      "note": "A client lays it out. A client ignores the whole message where killer is zero. Each entry's size after source follows from event alone."
     },
     {
       "from": "1.0.0.103",
@@ -9409,7 +9409,7 @@
         {
           "name": "sourceType",
           "type": "u32",
-          "note": "What sort of source the killer was. A client keeps only the low 4 bits, signed, and acts on them only where it holds killer."
+          "note": "What sort of source the killer was. A client keeps only the low 4 bits, signed."
         },
         {
           "name": "blobLength",
@@ -9920,7 +9920,7 @@
           }
         }
       ],
-      "note": "A client lays it out. A client ignores the whole message where killer is zero; a killer it does not hold brings it down. Each entry's size after source follows from event alone."
+      "note": "A client lays it out. A client ignores the whole message where killer is zero. Each entry's size after source follows from event alone."
     },
     {
       "from": "1.0.0.104",
@@ -9943,7 +9943,7 @@
         {
           "name": "sourceType",
           "type": "u32",
-          "note": "What sort of source the killer was. A client keeps only the low 4 bits, signed, and acts on them only where it holds killer."
+          "note": "What sort of source the killer was. A client keeps only the low 4 bits, signed."
         },
         {
           "name": "blobLength",
@@ -9978,7 +9978,7 @@
               {
                 "name": "event",
                 "type": "u8",
-                "note": "Which event, from 0 to 82, and so which fields follow.",
+                "note": "Which event, and so which fields follow.",
                 "values": {
                   "0": {
                     "name": "died"
@@ -10457,7 +10457,7 @@
           }
         }
       ],
-      "note": "A client lays it out. A client ignores the whole message where killer is zero; a killer it does not hold brings it down. Each entry's size after source follows from event alone."
+      "note": "A client lays it out. A client ignores the whole message where killer is zero. Each entry's size after source follows from event alone."
     },
     {
       "from": "1.0.0.107",
@@ -10480,7 +10480,7 @@
         {
           "name": "sourceType",
           "type": "u32",
-          "note": "What sort of source the killer was. A client keeps only the low 4 bits, signed, and acts on them only where it holds killer."
+          "note": "What sort of source the killer was. A client keeps only the low 4 bits, signed."
         },
         {
           "name": "blobLength",
@@ -10515,7 +10515,7 @@
               {
                 "name": "event",
                 "type": "u8",
-                "note": "Which event, from 0 to 82, and so which fields follow.",
+                "note": "Which event, and so which fields follow.",
                 "values": {
                   "0": {
                     "name": "died"
@@ -10994,7 +10994,7 @@
           }
         }
       ],
-      "note": "A client lays it out. A client ignores the whole message where killer is zero; a killer it does not hold brings it down. Each entry's size after source follows from event alone."
+      "note": "A client lays it out. A client ignores the whole message where killer is zero. Each entry's size after source follows from event alone."
     },
     {
       "from": "1.0.0.109",
@@ -11017,7 +11017,7 @@
         {
           "name": "sourceType",
           "type": "u32",
-          "note": "What sort of source the killer was. A client keeps only the low 4 bits, signed, and acts on them only where it holds killer."
+          "note": "What sort of source the killer was. A client keeps only the low 4 bits, signed."
         },
         {
           "name": "blobLength",
@@ -11052,7 +11052,7 @@
               {
                 "name": "event",
                 "type": "u8",
-                "note": "Which event, from 0 to 82, and so which fields follow.",
+                "note": "Which event, and so which fields follow.",
                 "values": {
                   "0": {
                     "name": "died"
@@ -11531,7 +11531,7 @@
           }
         }
       ],
-      "note": "A client lays it out. A client ignores the whole message where killer is zero; a killer it does not hold brings it down. Each entry's size after source follows from event alone."
+      "note": "A client lays it out. A client ignores the whole message where killer is zero. Each entry's size after source follows from event alone."
     },
     {
       "from": "1.0.0.110",
@@ -12675,7 +12675,7 @@
               {
                 "name": "event",
                 "type": "u8",
-                "note": "Which event, from 0 to 96, and so which fields follow.",
+                "note": "Which event, and so which fields follow.",
                 "values": {
                   "0": {
                     "name": "died"
@@ -14258,7 +14258,7 @@
           }
         }
       ],
-      "note": "A client lays it out. A client ignores the whole message unless it holds killer. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
+      "note": "A client lays it out. A client ignores the whole message where killer is zero; a killer it does not hold still lets the entries apply. Each entry's size after source follows from event alone."
     },
     {
       "from": "1.0.0.129",
@@ -14316,7 +14316,7 @@
               {
                 "name": "event",
                 "type": "u8",
-                "note": "Which event, from 0 to 101, and so which fields follow.",
+                "note": "Which event, and so which fields follow.",
                 "values": {
                   "0": {
                     "name": "died"
@@ -14808,7 +14808,7 @@
           }
         }
       ],
-      "note": "A client lays it out. A client ignores the whole message unless it holds killer. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
+      "note": "A client lays it out. A client ignores the whole message where killer is zero; a killer it does not hold still lets the entries apply. Each entry's size after source follows from event alone."
     },
     {
       "from": "1.0.0.130",
@@ -15389,7 +15389,7 @@
           }
         }
       ],
-      "note": "A client lays it out. A client ignores the whole message unless it holds killer. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
+      "note": "A client lays it out. A client ignores the whole message where killer is zero; a killer it does not hold still lets the entries apply. Each entry's size after source follows from event alone."
     },
     {
       "from": "1.0.0.132",
@@ -16028,7 +16028,7 @@
               {
                 "name": "event",
                 "type": "u8",
-                "note": "Which event, from 0 to 110, and so which fields follow.",
+                "note": "Which event, and so which fields follow.",
                 "values": {
                   "0": {
                     "name": "died"
@@ -16564,7 +16564,7 @@
           }
         }
       ],
-      "note": "A client lays it out. A client ignores the whole message unless it holds killer. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
+      "note": "A client lays it out. A client ignores the message where killer is zero, and takes it for a killer it does not hold. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
     },
     {
       "from": "1.0.0.134",
@@ -17135,7 +17135,7 @@
           }
         }
       ],
-      "note": "A client lays it out. A client ignores the whole message unless it holds killer. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
+      "note": "A client lays it out. A client ignores the message where killer is zero, and takes it for a killer it does not hold. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
     },
     {
       "from": "1.0.0.135",
@@ -17193,7 +17193,7 @@
               {
                 "name": "event",
                 "type": "u8",
-                "note": "Which event, from 0 to 110, and so which fields follow.",
+                "note": "Which event, and so which fields follow.",
                 "values": {
                   "0": {
                     "name": "died"
@@ -17742,7 +17742,7 @@
           }
         }
       ],
-      "note": "A client lays it out. A client ignores the whole message unless it holds killer. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
+      "note": "A client lays it out. A client ignores the message where killer is zero, and takes it for a killer it does not hold. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
     },
     {
       "from": "1.0.0.138",
@@ -17800,7 +17800,7 @@
               {
                 "name": "event",
                 "type": "u8",
-                "note": "Which event, from 0 to 115, and so which fields follow.",
+                "note": "Which event, and so which fields follow.",
                 "values": {
                   "0": {
                     "name": "removed"
@@ -18360,7 +18360,7 @@
           }
         }
       ],
-      "note": "A client lays it out. A client ignores the whole message unless it holds killer. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
+      "note": "A client lays it out. A client ignores the message where killer is zero, and takes it for a killer it does not hold. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
     },
     {
       "from": "1.0.0.140",
@@ -19006,7 +19006,7 @@
         {
           "name": "blobLength",
           "type": "u32",
-          "note": "How many bytes the entries below take together. A client reads exactly that many; zero, or a value above 2147483647, carries no entries. A client reads it as signed: from 2147483648 up it reads nothing more."
+          "note": "How many bytes the entries below take together. A client reads exactly that many; zero, or a value above 2147483647, carries no entries."
         },
         {
           "name": "entryCount",
@@ -19596,7 +19596,7 @@
           }
         }
       ],
-      "note": "A client lays it out. A client ignores the whole message unless it holds killer. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
+      "note": "A client lays it out. A client ignores the message where killer is zero; for a killer it does not hold, it lays the entries out but takes no sourceType. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
     },
     {
       "from": "1.0.0.142",
@@ -19624,7 +19624,7 @@
         {
           "name": "blobLength",
           "type": "u32",
-          "note": "How many bytes the entries below take together. A client reads exactly that many; zero, or a value above 2147483647, carries no entries. A client reads it as signed: from 2147483648 up it reads nothing more."
+          "note": "How many bytes the entries below take together. A client reads exactly that many; zero, or a value above 2147483647, carries no entries."
         },
         {
           "name": "entryCount",
@@ -20247,7 +20247,7 @@
           }
         }
       ],
-      "note": "A client lays it out. A client ignores the whole message unless it holds killer. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
+      "note": "A client lays it out. A client ignores the message where killer is zero; for a killer it does not hold, it lays the entries out but takes no sourceType. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
     },
     {
       "from": "1.0.0.143",
@@ -20898,7 +20898,7 @@
           }
         }
       ],
-      "note": "A client lays it out. A client ignores the whole message unless it holds killer. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
+      "note": "A client lays it out. A client ignores the message where killer is zero; for a killer it does not hold, it lays the entries out but takes no sourceType. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
     },
     {
       "from": "1.0.0.144",
@@ -21546,7 +21546,7 @@
           }
         }
       ],
-      "note": "A client lays it out. A client ignores the whole message unless it holds killer. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
+      "note": "A client lays it out. A client ignores the message where killer is zero; for a killer it does not hold, it lays the entries out but takes no sourceType. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
     },
     {
       "from": "1.0.0.147",
@@ -22230,7 +22230,7 @@
           }
         }
       ],
-      "note": "A client lays it out. A client ignores the whole message unless it holds killer. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
+      "note": "A client lays it out. A client ignores the message where killer is zero; for a killer it does not hold, it lays the entries out but takes no sourceType. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
     },
     {
       "from": "1.0.0.148",
@@ -22920,7 +22920,7 @@
           }
         }
       ],
-      "note": "A client lays it out. A client ignores the whole message unless it holds killer. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
+      "note": "A client lays it out. A client ignores the message where killer is zero; for a killer it does not hold, it lays the entries out but takes no sourceType. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
     },
     {
       "from": "1.0.0.149",
@@ -23616,7 +23616,7 @@
           }
         }
       ],
-      "note": "A client lays it out. A client ignores the whole message unless it holds killer. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
+      "note": "A client lays it out. A client ignores the message where killer is zero; for a killer it does not hold, it lays the entries out but takes no sourceType. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
     },
     {
       "from": "1.0.0.150",
@@ -25008,7 +25008,7 @@
           }
         }
       ],
-      "note": "A client lays it out. A client ignores the whole message unless it holds killer. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
+      "note": "A client lays it out. A client ignores the message where killer is zero; for a killer it does not hold, it lays the entries out but takes no sourceType. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
     },
     {
       "from": "1.0.0.152",
@@ -25704,7 +25704,7 @@
           }
         }
       ],
-      "note": "A client lays it out. A client ignores the whole message unless it holds killer. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
+      "note": "A client lays it out. A client ignores the message where killer is zero; for a killer it does not hold, it lays the entries out but takes no sourceType. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
     },
     {
       "from": "3.02.0.30",
@@ -26400,7 +26400,7 @@
           }
         }
       ],
-      "note": "A client lays it out. A client ignores the whole message unless it holds killer. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
+      "note": "A client lays it out. A client ignores the message where killer is zero; for a killer it does not hold, it lays the entries out but takes no sourceType. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
     },
     {
       "from": "3.03.0.198",
@@ -27801,7 +27801,7 @@
           }
         }
       ],
-      "note": "A client lays it out. A client ignores the whole message unless it holds killer. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
+      "note": "A client lays it out. A client ignores the message where killer is zero; for a killer it does not hold, it lays the entries out but takes no sourceType. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
     },
     {
       "from": "3.6.0.388",
@@ -29269,7 +29269,7 @@
           }
         }
       ],
-      "note": "A client lays it out. A client ignores the whole message unless it holds killer. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
+      "note": "A client lays it out. A client ignores the message where killer is zero; for a killer it does not hold, it lays the entries out. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
     },
     {
       "from": "3.8.0.226",
@@ -30003,7 +30003,7 @@
           }
         }
       ],
-      "note": "A client lays it out. A client ignores the whole message unless it holds killer. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
+      "note": "A client lays it out. A client ignores the message where killer is zero; for a killer it does not hold, it lays the entries out. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
     },
     {
       "from": "3.9.0.491",
@@ -30749,7 +30749,7 @@
           }
         }
       ],
-      "note": "A client lays it out. A client ignores the whole message unless it holds killer. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
+      "note": "A client lays it out. A client ignores the message where killer is zero; for a killer it does not hold, it lays the entries out. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
     },
     {
       "from": "3.10.0.237",
@@ -31498,7 +31498,7 @@
       "command": 33,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client lays it out. A client ignores the whole message unless it holds killer. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out.",
+      "note": "A client lays it out. A client ignores the whole message where killer is zero. Where it does not hold killer, it still lays out every entry, crediting no killer. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out.",
       "fields": [
         {
           "name": "killer",
@@ -32244,7 +32244,7 @@
       "command": 33,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client lays it out. A client ignores the whole message unless it holds killer. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out.",
+      "note": "A client lays it out. A client ignores the whole message where killer is zero. Where it does not hold killer, it still lays out every entry, crediting no killer. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out.",
       "fields": [
         {
           "name": "killer",
@@ -34529,7 +34529,7 @@
           }
         }
       ],
-      "note": "A client lays it out. A client ignores the whole message unless it holds killer. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
+      "note": "A client lays it out. A client ignores the whole message where killer is zero. Where it does not hold killer, it still lays out the entries. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
     },
     {
       "from": "3.15.0.244",
@@ -35320,7 +35320,7 @@
           }
         }
       ],
-      "note": "A client lays it out. A client ignores the whole message unless it holds killer. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
+      "note": "A client lays it out. A client ignores the whole message where killer is zero. Where it does not hold killer, it still lays out the entries. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
     },
     {
       "from": "4.1.0.171",
@@ -36122,7 +36122,7 @@
           }
         }
       ],
-      "note": "A client lays it out. A client ignores the whole message unless it holds killer. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
+      "note": "A client lays it out. A client ignores the whole message where killer is zero. Where it does not hold killer, it still lays out the entries. Each entry's size after event and source follows from event alone. An entry whose target the client does not hold is left out."
     },
     {
       "from": "4.4.0.1858",

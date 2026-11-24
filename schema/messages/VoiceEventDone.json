@@ -26,23 +26,13 @@
     },
     {
       "from": "1.0.0.74",
-      "until": "1.0.0.75",
-      "channel": "requests",
-      "command": 163,
-      "direction": "clientToServer",
-      "reliability": "reliable",
-      "fields": [],
-      "note": "A client names no event: the message is its header alone. A client sends it only once the event has finished playing; where it cannot find the event, or the name is empty, it sends nothing."
-    },
-    {
-      "from": "1.0.0.75",
       "until": "1.0.0.82",
       "channel": "requests",
       "command": 163,
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "A client names no event: the message is its header alone. It answers only a voice event of kind 0, and a client sends it at once where it could not play the event."
+      "note": "A client names no event: the message is its header alone. A client sends it only once the event has finished playing; where it cannot find the event, or the name is empty, it sends nothing."
     },
     {
       "from": "1.0.0.82",
@@ -61,8 +51,7 @@
       "command": 168,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": [],
-      "note": "A client names no event: the message is its header alone. It answers only a voice event of kind 0, and a client sends it at once where it could not play the event."
+      "fields": []
     },
     {
       "from": "1.0.0.98",
@@ -71,8 +60,7 @@
       "command": 169,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": [],
-      "note": "A client names no event: the message is its header alone. It answers only a voice event of kind 0, and a client sends it at once where it could not play the event."
+      "fields": []
     },
     {
       "from": "1.0.0.103",
@@ -81,8 +69,7 @@
       "command": 171,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": [],
-      "note": "A client names no event: the message is its header alone. It answers only a voice event of kind 0, and a client sends it at once where it could not play the event."
+      "fields": []
     },
     {
       "from": "1.0.0.104",
@@ -97,8 +84,7 @@
           "type": "u32",
           "note": "The number the VoiceEvent carried."
         }
-      ],
-      "note": "It answers only a voice event of kind 0, and a client sends it at once where it could not play the event."
+      ]
     },
     {
       "from": "1.0.0.107",
@@ -113,8 +99,7 @@
           "type": "u32",
           "note": "The number the VoiceEvent carried."
         }
-      ],
-      "note": "It answers only a voice event of kind 0, and a client sends it at once where it could not play the event."
+      ]
     },
     {
       "from": "1.0.0.109",
@@ -129,8 +114,7 @@
           "type": "u32",
           "note": "The number the VoiceEvent carried."
         }
-      ],
-      "note": "It answers only a voice event of kind 0, and a client sends it at once where it could not play the event."
+      ]
     },
     {
       "from": "1.0.0.110",

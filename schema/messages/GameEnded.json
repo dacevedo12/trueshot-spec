@@ -146,7 +146,7 @@
           "note": "Nonzero where side 100 won, zero where side 200 did; a client counts a win where its own side is the one that won."
         }
       ],
-      "note": "Arriving while the match still loads, it counts as a win or loss for the player's side and the client leaves at once. Otherwise the client ends the match on its screen and sends ClientFinished, except while playing a replay."
+      "note": "Arriving while the match still loads, it counts as a win or loss for the player's side where the client has its own champion, and the client leaves at once. Otherwise the client ends the match on its screen and sends ClientFinished."
     },
     {
       "from": "1.0.0.117",
@@ -162,7 +162,7 @@
           "note": "Nonzero where side 100 won, zero where side 200 did; a client counts a win where its own side is the one that won."
         }
       ],
-      "note": "Arriving while the match still loads, it counts as a win or loss for the player's side and the client leaves at once. Otherwise the client ends the match on its screen and sends ClientFinished, except while playing a replay."
+      "note": "Arriving while the match still loads, it counts as a win or loss for the player's side where the client has its own champion, and the client leaves at once. Otherwise the client ends the match on its screen and sends ClientFinished."
     },
     {
       "from": "1.0.0.119",
@@ -178,7 +178,7 @@
           "note": "Nonzero where side 100 won, zero where side 200 did; a client counts a win where its own side is the one that won."
         }
       ],
-      "note": "Arriving while the match still loads, it counts as a win or loss for the player's side and the client leaves at once. Otherwise the client ends the match on its screen and sends ClientFinished, except while playing a replay."
+      "note": "Arriving while the match still loads, it counts as a win or loss for the player's side where the client has its own champion, and the client leaves at once. Otherwise the client ends the match on its screen and sends ClientFinished."
     },
     {
       "from": "1.0.0.122",
@@ -206,7 +206,7 @@
           ]
         }
       ],
-      "note": "Arriving while the match still loads, it counts as a win or loss for the player's side and the client leaves at once. Otherwise the client ends the match on its screen and sends ClientFinished, except while playing a replay."
+      "note": "Arriving while the match still loads, it counts as a win or loss for the player's side where the client has its own champion, and the client leaves at once. Otherwise the client ends the match on its screen and sends ClientFinished."
     },
     {
       "from": "1.0.0.123",
@@ -234,7 +234,7 @@
           ]
         }
       ],
-      "note": "Arriving while the match still loads, it counts as a win or loss for the player's side and the client leaves at once. Otherwise the client ends the match on its screen and sends ClientFinished, except while playing a replay."
+      "note": "Arriving while the match still loads, it counts as a win or loss for the player's side where the client has its own champion, and the client leaves at once. Otherwise the client ends the match on its screen and sends ClientFinished."
     },
     {
       "from": "1.0.0.124",
@@ -290,7 +290,7 @@
           ]
         }
       ],
-      "note": "Arriving while the match still loads, it counts as a win or loss for the player's side and the client leaves at once. Otherwise the client ends the match on its screen and sends ClientFinished, except while playing a replay."
+      "note": "Arriving while the match still loads, it counts as a win or loss for the player's side where the client has its own champion, and the client leaves at once. Otherwise the client ends the match on its screen and sends ClientFinished."
     },
     {
       "from": "1.0.0.126",
@@ -346,7 +346,7 @@
           ]
         }
       ],
-      "note": "Arriving while the match still loads, it counts as a win or loss for the player's side, and the client hides its window and leaves at once; a client with no champion of its own first shows a message and counts neither. Otherwise the client ends the match on its screen and sends ClientFinished, while playing a replay too."
+      "note": "Arriving while the match still loads, it counts as a win or loss for the player's side where the client has its own champion, and the client leaves at once. Otherwise the client ends the match on its screen and sends ClientFinished."
     },
     {
       "from": "1.0.0.128",
@@ -374,7 +374,7 @@
           ]
         }
       ],
-      "note": "Arriving while the match still loads, it counts as a win or loss for the player's side and the client leaves at once. Otherwise the client ends the match on its screen and sends ClientFinished, except while playing a replay."
+      "note": "Arriving while the match still loads, it counts as a win or loss for the player's side where the client has its own champion, and the client leaves at once. Otherwise the client ends the match on its screen and sends ClientFinished."
     },
     {
       "from": "1.0.0.132",
@@ -430,7 +430,7 @@
           ]
         }
       ],
-      "note": "Arriving while the match still loads, it counts as a win or loss for the player's side and the client leaves at once. Otherwise the client ends the match on its screen and sends ClientFinished, except while playing a replay."
+      "note": "Arriving while the match still loads, it counts as a win or loss for the player's side where the client has its own champion, and the client leaves at once. Otherwise the client ends the match on its screen and sends ClientFinished."
     },
     {
       "from": "1.0.0.135",
@@ -458,7 +458,7 @@
           ]
         }
       ],
-      "note": "Arriving while the match still loads, it counts as a win or loss for the player's side and the client leaves at once. Otherwise the client ends the match on its screen and sends ClientFinished, except while playing a replay."
+      "note": "Arriving while the match still loads, it counts as a win or loss for the player's side where the client has its own champion, and the client leaves at once. Otherwise the client ends the match on its screen and sends ClientFinished."
     },
     {
       "from": "1.0.0.136",
@@ -486,7 +486,7 @@
           ]
         }
       ],
-      "note": "Arriving while the match still loads, it counts as a win or loss for the player's side and the client leaves at once. Otherwise the client ends the match on its screen and sends ClientFinished, except while playing a replay."
+      "note": "Arriving while the match still loads, it counts as a win or loss for the player's side where the client has its own champion, and the client leaves at once. Otherwise the client ends the match on its screen and sends ClientFinished."
     },
     {
       "from": "1.0.0.138",
@@ -514,7 +514,7 @@
           ]
         }
       ],
-      "note": "Arriving while the match still loads, it counts as a win or loss for the player's side and the client leaves at once. Otherwise the client ends the match on its screen and sends ClientFinished, except while playing a replay."
+      "note": "Arriving while the match still loads, it counts as a win or loss for the player's side where the client has its own champion, and the client leaves at once. Otherwise the client ends the match on its screen and sends ClientFinished."
     },
     {
       "from": "1.0.0.139",
@@ -570,7 +570,7 @@
           ]
         }
       ],
-      "note": "Arriving while the match still loads, it counts as a win or loss for the player's side and the client leaves at once. Otherwise the client ends the match on its screen and sends ClientFinished, except while playing a replay."
+      "note": "Arriving while the match still loads, it counts as a win or loss for the player's side and the client leaves at once; where the client has no champion of its own yet, it shows a notice and leaves with no win or loss. Otherwise the client ends the match on its screen and sends ClientFinished."
     },
     {
       "from": "1.0.0.144",
@@ -598,7 +598,7 @@
           ]
         }
       ],
-      "note": "Arriving while the match still loads, it counts as a win or loss for the player's side and the client leaves at once. Otherwise the client ends the match on its screen and sends ClientFinished, except while playing a replay."
+      "note": "Arriving while the match still loads, it counts as a win or loss for the player's side and the client leaves at once; where the client has no champion of its own yet, it shows a notice and leaves with no win or loss. Otherwise the client ends the match on its screen and sends ClientFinished."
     },
     {
       "from": "1.0.0.150",
@@ -654,7 +654,7 @@
           ]
         }
       ],
-      "note": "Arriving while the match still loads, it counts as a win or loss for the player's side and the client leaves at once. Otherwise the client ends the match on its screen and sends ClientFinished, except while playing a replay."
+      "note": "Arriving while the match still loads, it has the client leave, sending neither ClientFinished nor Exit: where the client has its own champion it counts as a win or loss for the player's side, and otherwise the client shows an error and counts neither. Otherwise the client ends the match on its screen and sends ClientFinished."
     },
     {
       "from": "3.01.0.1",
@@ -682,7 +682,7 @@
           ]
         }
       ],
-      "note": "Arriving while the match still loads, it counts as a win or loss for the player's side and the client leaves at once. Otherwise the client ends the match on its screen and sends ClientFinished, except while playing a replay."
+      "note": "Arriving while the match still loads, it has the client leave, sending neither ClientFinished nor Exit: where the client has its own champion it counts as a win or loss for the player's side, and otherwise the client shows an error and counts neither. Otherwise the client ends the match on its screen and sends ClientFinished."
     },
     {
       "from": "3.03.0.198",
@@ -738,7 +738,7 @@
           ]
         }
       ],
-      "note": "Arriving while the match still loads, it counts as a win or loss for the player's side and the client leaves at once. Otherwise the client ends the match on its screen and sends ClientFinished, except while playing a replay."
+      "note": "Arriving while the match still loads, it has the client leave, sending neither ClientFinished nor Exit: where the client has its own champion it counts as a win or loss for the player's side, and otherwise the client shows an error and counts neither. Otherwise the client ends the match on its screen and sends ClientFinished."
     },
     {
       "from": "3.6.0.388",
@@ -949,7 +949,7 @@
           ]
         }
       ],
-      "note": "Arriving while the match still loads, it counts as a win or loss for the player's side and the client leaves at once. Otherwise the client ends the match on its screen and sends ClientFinished, except while playing a replay."
+      "note": "Arriving while the match still loads, it has the client leave: where the client has its own champion it counts as a win or loss for the player's side, and otherwise the client shows an error. Otherwise the client ends the match on its screen and sends ClientFinished, except while playing a replay."
     },
     {
       "from": "4.1.0.171",
@@ -977,7 +977,7 @@
           ]
         }
       ],
-      "note": "Arriving while the match still loads, it counts as a win or loss for the player's side and the client leaves at once. Otherwise the client ends the match on its screen and sends ClientFinished, except while playing a replay."
+      "note": "Arriving while the match still loads, it has the client leave: where the client has its own champion it counts as a win or loss for the player's side, and otherwise the client shows an error. Otherwise the client ends the match on its screen and sends ClientFinished, except while playing a replay."
     },
     {
       "from": "4.4.0.1858",
@@ -1043,7 +1043,7 @@
           ]
         }
       ],
-      "note": "Arriving while the match still loads, it counts as a win or loss for the player's side and the client leaves at once. Otherwise the client ends the match on its screen and sends ClientFinished, except while playing a replay."
+      "note": "Arriving while the match still loads, it has the client leave without sending ClientFinished. Otherwise the client ends the match on its screen and sends ClientFinished, except while playing a replay."
     },
     {
       "from": "4.11.0.386",
@@ -1076,7 +1076,7 @@
           ]
         }
       ],
-      "note": "Arriving while the match still loads, it counts as a win or loss for the player's side and the client leaves at once. Otherwise the client ends the match on its screen and sends ClientFinished, except while playing a replay."
+      "note": "Arriving while the match still loads, it has the client leave without sending ClientFinished. Otherwise the client ends the match on its screen and sends ClientFinished, except while playing a replay."
     },
     {
       "from": "4.17.0.233",

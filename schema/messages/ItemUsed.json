@@ -65,7 +65,7 @@
         {
           "name": "slot",
           "type": "u8",
-          "note": "Which slot, 0 to 36. A client ignores the message from 37 up, and where the slot is empty."
+          "note": "Which slot. A client ignores the message where the slot is empty."
         },
         {
           "name": "left",

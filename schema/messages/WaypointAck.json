@@ -66,7 +66,7 @@
           "note": "The number of the group it answers, as the group named itself."
         }
       ],
-      "note": "What a client sends for every WaypointGroup it takes, and for every WaypointGroupAtSpeed, as it takes it and before it moves any unit. The header names no object: it carries zero."
+      "note": "What a client sends for every WaypointGroup it receives, and for every WaypointGroupAtSpeed, Path and PathWithSpeed, as it takes it and before it moves any unit; an answer to a Path or PathWithSpeed travels on the transient channel. The header names no object: it carries zero."
     },
     {
       "from": "1.0.0.74",
@@ -98,7 +98,7 @@
           "note": "The number of the group it answers, as the group named itself."
         }
       ],
-      "note": "What a client sends for every WaypointGroup it takes, and for every WaypointGroupAtSpeed, as it takes it and before it moves any unit. The header names no object: it carries zero."
+      "note": "What a client sends for every WaypointGroup it takes, and for every WaypointGroupAtSpeed. The header names no object: it carries zero."
     },
     {
       "from": "1.0.0.79",
@@ -141,7 +141,7 @@
           "note": "Each of those, in the group's order."
         }
       ],
-      "note": "What a client sends for every WaypointGroup it takes, and for every WaypointGroupAtSpeed. The header names no object: it carries zero. It lists the units the group asked it to relocate."
+      "note": "What a client sends for every WaypointGroup it takes, and for every WaypointGroupAtSpeed. The header names no object: it carries zero."
     },
     {
       "from": "1.0.0.82",
@@ -270,7 +270,7 @@
           "note": "Each of those, in the group's order."
         }
       ],
-      "note": "What a client sends for every WaypointGroup it takes, and for every WaypointGroupAtSpeed. The header names no object: it carries zero. It lists the units the group asked it to relocate."
+      "note": "What a client sends for every WaypointGroup it takes, and for every WaypointGroupAtSpeed. The header names no object: it carries zero. It lists each unit whose movement carried a token, in the group's order, whether or not the client holds the unit, and none whose movement follows a refused one."
     },
     {
       "from": "1.0.0.103",
@@ -313,7 +313,7 @@
           "note": "Each of those, in the group's order."
         }
       ],
-      "note": "What a client sends for every WaypointGroup it takes, and for every WaypointGroupAtSpeed. The header names no object: it carries zero. It lists the units the group asked it to relocate."
+      "note": "What a client sends for every WaypointGroup it takes, and for every WaypointGroupAtSpeed. The header names no object: it carries zero. It lists each unit whose movement carried a token, in the group's order, whether or not the client holds the unit, and none whose movement follows a refused one."
     },
     {
       "from": "1.0.0.107",
@@ -356,7 +356,7 @@
           "note": "Each of those, in the group's order."
         }
       ],
-      "note": "What a client sends for every WaypointGroup it takes, and for every WaypointGroupAtSpeed. The header names no object: it carries zero. It lists the units the group asked it to relocate."
+      "note": "What a client sends for every WaypointGroup it takes, and for every WaypointGroupAtSpeed. The header names no object: it carries zero. It lists each unit whose movement carried a token, in the group's order, whether or not the client holds the unit, and none whose movement follows a refused one."
     },
     {
       "from": "1.0.0.109",
@@ -399,7 +399,7 @@
           "note": "Each of those, in the group's order."
         }
       ],
-      "note": "What a client sends for every WaypointGroup it takes, and for every WaypointGroupAtSpeed. The header names no object: it carries zero. It lists the units the group asked it to relocate."
+      "note": "What a client sends for every WaypointGroup it takes, and for every WaypointGroupAtSpeed. The header names no object: it carries zero. It lists each unit whose movement carried a token, in the group's order, whether or not the client holds the unit, and none whose movement follows a refused one."
     },
     {
       "from": "1.0.0.110",
@@ -485,7 +485,7 @@
           "note": "Each of those, in the group's order."
         }
       ],
-      "note": "What a client sends for every WaypointGroup it takes, and for every WaypointGroupAtSpeed. The header names no object: it carries zero. It lists the units the group asked it to relocate."
+      "note": "It lists each unit whose movement carried a token, in the group's order, whether or not the client holds the unit, and none whose movement follows a refused one."
     },
     {
       "from": "1.0.0.117",
@@ -528,7 +528,7 @@
           "note": "Each of those, in the group's order."
         }
       ],
-      "note": "What a client sends for every WaypointGroup it takes, and for every WaypointGroupAtSpeed. The header names no object: it carries zero. It lists the units the group asked it to relocate."
+      "note": "It lists each unit whose movement carried a token, in the group's order, whether or not the client holds the unit, and none whose movement follows a refused one."
     },
     {
       "from": "1.0.0.119",
@@ -571,7 +571,7 @@
           "note": "Each of those, in the group's order."
         }
       ],
-      "note": "What a client sends for every WaypointGroup it takes, and for every WaypointGroupAtSpeed. The header names no object: it carries zero. It lists the units the group asked it to relocate."
+      "note": "It lists each unit whose movement carried a token, in the group's order, whether or not the client holds the unit, and none whose movement follows a refused one."
     },
     {
       "from": "1.0.0.124",
@@ -614,7 +614,7 @@
           "note": "Each of those, in the group's order."
         }
       ],
-      "note": "What a client sends for every WaypointGroup it takes, and for every WaypointGroupAtSpeed. The header names no object: it carries zero. It lists the units the group asked it to relocate."
+      "note": "It lists each unit whose movement carried a token, in the group's order, whether or not the client holds the unit, and none whose movement follows a refused one."
     },
     {
       "from": "1.0.0.126",
@@ -700,7 +700,7 @@
           "note": "Each of those, in the group's order."
         }
       ],
-      "note": "What a client sends for every WaypointGroup it takes, and for every WaypointGroupAtSpeed. The header names no object: it carries zero. It lists the units the group asked it to relocate."
+      "note": "It lists each unit whose movement carried a token, in the group's order, whether or not the client holds the unit, and none whose movement follows a refused one."
     },
     {
       "from": "1.0.0.128",
@@ -742,7 +742,7 @@
           }
         }
       ],
-      "note": "It lists the units the group asked it to relocate."
+      "note": "It lists each unit whose movement carried a token, in the group's order, whether or not the client holds the unit, and none whose movement follows a refused one."
     },
     {
       "from": "1.0.0.132",
@@ -826,7 +826,7 @@
           }
         }
       ],
-      "note": "It lists the units the group asked it to relocate."
+      "note": "It lists each unit whose movement carried a token, in the group's order, whether or not the client holds the unit, and none whose movement follows a refused one."
     },
     {
       "from": "1.0.0.138",
@@ -868,7 +868,7 @@
           }
         }
       ],
-      "note": "It lists the units whose movements in the group carried a token, with that token."
+      "note": "It lists each unit whose movement carried a token, in the group's order, whether or not the client holds the unit, and none whose movement follows a refused one."
     },
     {
       "from": "1.0.0.140",
@@ -1036,7 +1036,7 @@
           }
         }
       ],
-      "note": "It lists the units the group asked it to relocate."
+      "note": "It lists, in the order the group gives them, each unit whose movement carried a token, with that token, whether or not the client holds the unit."
     },
     {
       "from": "1.0.0.150",
@@ -1120,7 +1120,7 @@
           }
         }
       ],
-      "note": "It lists the units the group asked it to relocate."
+      "note": "It lists the units whose movements in the group carried a token, with that token. A client sends none for a group while it plays a match back."
     },
     {
       "from": "3.01.0.1",
@@ -1456,7 +1456,7 @@
           }
         }
       ],
-      "note": "It lists the units the group asked it to relocate."
+      "note": "It lists the units whose movements in the group carried a token."
     },
     {
       "from": "4.17.0.233",
@@ -1540,7 +1540,7 @@
           }
         }
       ],
-      "note": "It lists the units the group asked it to relocate."
+      "note": "It answers a group once the client has read it, listing every movement in it that carried a token, in order, whether or not the client holds the unit; a client sends none while it plays back a match."
     },
     {
       "from": "4.20.0.315",

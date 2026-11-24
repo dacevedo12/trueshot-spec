@@ -98,7 +98,7 @@
           "note": "Always 32 slots; those past count have no effect. A slot naming a unit the client does not know is left empty."
         }
       ],
-      "note": "Where the client already holds the missile, the missile takes the list; otherwise the list waits for the caster's next chain missile."
+      "note": "A missile the client holds under the header's name takes the list."
     },
     {
       "from": "1.0.0.25",
@@ -191,10 +191,9 @@
             "type": "u32",
             "note": "A unit, in the order struck."
           },
-          "note": "Always 32 slots; those past count have no effect. A slot naming a unit the client does not know is left empty."
+          "note": "Always 32 slots; a client reads none past count."
         }
-      ],
-      "note": "Where the client already holds the missile, the missile takes the list; otherwise the list waits for the caster's next chain missile."
+      ]
     },
     {
       "from": "1.0.0.63",
@@ -225,8 +224,7 @@
           },
           "note": "Always 32 slots; those past count have no effect."
         }
-      ],
-      "note": "Where the client already holds the missile, the missile takes the list; otherwise the list waits for the caster's next chain missile."
+      ]
     },
     {
       "from": "1.0.0.74",
@@ -290,7 +288,7 @@
           "note": "Always 32 slots; those past count have no effect."
         }
       ],
-      "note": "Where the client already holds the missile, the missile takes the list; otherwise the list waits for the caster's next chain missile."
+      "note": "A client drops the message while the match is still loading."
     },
     {
       "from": "1.0.0.82",
@@ -322,7 +320,7 @@
           "note": "Always 32 slots; those past count have no effect."
         }
       ],
-      "note": "Where the client holds the caster, the caster's current cast takes the list, whether or not the client holds the missile. A missile the client holds under the header's name takes the list as well. A client drops the message while the match is still loading."
+      "note": "A client drops the message while the match is still loading."
     },
     {
       "from": "1.0.0.86",
@@ -386,7 +384,7 @@
           "note": "Always 32 slots; those past count have no effect."
         }
       ],
-      "note": "Where the client holds the caster, the caster's current cast takes the list, whether or not the client holds the missile. A missile the client holds under the header's name takes the list as well. A client drops the message while the match is still loading."
+      "note": "Where the client holds the caster, the caster's current cast takes the list, whether or not the client holds the missile, except while the match is still loading."
     },
     {
       "from": "1.0.0.96",
@@ -449,8 +447,7 @@
           },
           "note": "Always 32 slots; those past count have no effect."
         }
-      ],
-      "note": "Where the client already holds the missile, the missile takes the list; otherwise the list waits for the caster's next chain missile."
+      ]
     },
     {
       "from": "1.0.0.103",
@@ -481,8 +478,7 @@
           },
           "note": "Always 32 slots; those past count have no effect."
         }
-      ],
-      "note": "Where the client already holds the missile, the missile takes the list; otherwise the list waits for the caster's next chain missile."
+      ]
     },
     {
       "from": "1.0.0.107",
@@ -513,8 +509,7 @@
           },
           "note": "Always 32 slots; those past count have no effect."
         }
-      ],
-      "note": "Where the client already holds the missile, the missile takes the list; otherwise the list waits for the caster's next chain missile."
+      ]
     },
     {
       "from": "1.0.0.109",
@@ -545,8 +540,7 @@
           },
           "note": "Always 32 slots; those past count have no effect."
         }
-      ],
-      "note": "Where the client already holds the missile, the missile takes the list; otherwise the list waits for the caster's next chain missile."
+      ]
     },
     {
       "from": "1.0.0.110",
@@ -609,8 +603,7 @@
           },
           "note": "Always 32 slots; those past count have no effect."
         }
-      ],
-      "note": "Where the client already holds the missile, the missile takes the list; otherwise the list waits for the caster's next chain missile."
+      ]
     },
     {
       "from": "1.0.0.117",
@@ -641,8 +634,7 @@
           },
           "note": "Always 32 slots; those past count have no effect."
         }
-      ],
-      "note": "Where the client already holds the missile, the missile takes the list; otherwise the list waits for the caster's next chain missile."
+      ]
     },
     {
       "from": "1.0.0.119",
@@ -673,8 +665,7 @@
           },
           "note": "Always 32 slots; those past count have no effect."
         }
-      ],
-      "note": "Where the client already holds the missile, the missile takes the list; otherwise the list waits for the caster's next chain missile."
+      ]
     },
     {
       "from": "1.0.0.124",
@@ -705,8 +696,7 @@
           },
           "note": "Always 32 slots; those past count have no effect."
         }
-      ],
-      "note": "Where the client already holds the missile, the missile takes the list; otherwise the list waits for the caster's next chain missile."
+      ]
     },
     {
       "from": "1.0.0.126",
@@ -770,7 +760,7 @@
           "note": "Always 32 slots; those past count have no effect."
         }
       ],
-      "note": "Where the client already holds the missile, the missile takes the list; otherwise the list waits for the caster's next chain missile."
+      "note": "Where the client already holds the missile, the missile takes the list."
     },
     {
       "from": "1.0.0.128",
@@ -802,7 +792,7 @@
           "note": "Always 32 slots; those past count have no effect."
         }
       ],
-      "note": "Where the client already holds the missile, the missile takes the list; otherwise the list waits for the caster's next chain missile."
+      "note": "Where the client already holds the missile, the missile takes the list."
     },
     {
       "from": "1.0.0.132",
@@ -866,7 +856,7 @@
           "note": "Always 32 slots; those past count have no effect."
         }
       ],
-      "note": "Where the client already holds the missile, the missile takes the list; otherwise the list waits for the caster's next chain missile."
+      "note": "While the match is in play, a client that holds caster, where caster is casting, keeps the list for the caster's next chain missile."
     },
     {
       "from": "1.0.0.138",

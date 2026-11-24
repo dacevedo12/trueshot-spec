@@ -319,7 +319,7 @@
           "note": "The unit's movement count. A client drops the message where it is behind the last the unit took by less than 1073741824."
         }
       ],
-      "note": "A client applies it only where its sync id is not older than the last the unit took, counting a wrap: this message, Path, PathWithSpeed, WaypointGroup and WaypointGroupAtSpeed share one count per unit, starting at -1."
+      "note": "A client applies it only where its sync id is not older than the last the unit took."
     },
     {
       "from": "1.0.0.110",

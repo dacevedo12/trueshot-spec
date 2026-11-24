@@ -38,22 +38,6 @@
     },
     {
       "from": "1.0.0.25",
-      "until": "1.0.0.61",
-      "channel": "events",
-      "command": 91,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "entry",
-          "type": "u32",
-          "note": "The look, by the name AppearancePushed gave it."
-        }
-      ],
-      "note": "A client also takes away every look laid over the unit on this command, so the unit is left with no look laid over it, whatever entry names."
-    },
-    {
-      "from": "1.0.0.61",
       "until": "1.0.0.63",
       "channel": "events",
       "command": 91,
@@ -66,7 +50,7 @@
           "note": "The look, by the name AppearancePushed gave it."
         }
       ],
-      "note": "A client may also take away every look laid over the unit on this command; where it does, the unit is left with no look laid over it, whatever entry names."
+      "note": "A client also takes away every look laid over the unit on this command, so the unit is left with no look laid over it, whatever entry names."
     },
     {
       "from": "1.0.0.63",
@@ -82,7 +66,7 @@
           "note": "The look, by the name AppearancePushed gave it."
         }
       ],
-      "note": "A client also takes away every look laid over the unit on this command, and does so before it looks for the one entry names, so the unit is left with no look laid over it."
+      "note": "A client also takes away every look laid over the unit on this command, so the unit is left with no look laid over it, whatever entry names."
     },
     {
       "from": "1.0.0.74",
@@ -114,7 +98,7 @@
           "note": "The look, by the name AppearancePushed gave it."
         }
       ],
-      "note": "A client also takes away every look laid over the unit on this command, and does so before it looks for the one entry names, so the unit is left with no look laid over it."
+      "note": "A client also takes away every look laid over the unit on this command, so the unit is left with no look laid over it."
     },
     {
       "from": "1.0.0.82",
@@ -146,7 +130,7 @@
           "note": "The look, by the name AppearancePushed gave it."
         }
       ],
-      "note": "A client also takes away every look laid over the unit on this command, and does so before it looks for the one entry names, so the unit is left with no look laid over it."
+      "note": "A client also takes away every look laid over the unit on this command, so the unit is left with no look laid over it."
     },
     {
       "from": "1.0.0.103",
@@ -162,7 +146,7 @@
           "note": "The look, by the name AppearancePushed gave it."
         }
       ],
-      "note": "A client also takes away every look laid over the unit on this command, and does so before it looks for the one entry names, so the unit is left with no look laid over it."
+      "note": "A client also takes away every look laid over the unit on this command, so the unit is left with no look laid over it."
     },
     {
       "from": "1.0.0.107",
@@ -178,7 +162,7 @@
           "note": "The look, by the name AppearancePushed gave it."
         }
       ],
-      "note": "A client also takes away every look laid over the unit on this command, and does so before it looks for the one entry names, so the unit is left with no look laid over it."
+      "note": "A client also takes away every look laid over the unit on this command, so the unit is left with no look laid over it."
     },
     {
       "from": "1.0.0.109",
@@ -194,7 +178,7 @@
           "note": "The look, by the name AppearancePushed gave it."
         }
       ],
-      "note": "A client also takes away every look laid over the unit on this command, and does so before it looks for the one entry names, so the unit is left with no look laid over it."
+      "note": "A client also takes away every look laid over the unit on this command, so the unit is left with no look laid over it."
     },
     {
       "from": "1.0.0.110",

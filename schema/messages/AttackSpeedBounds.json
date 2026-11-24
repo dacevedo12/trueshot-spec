@@ -97,12 +97,12 @@
         {
           "name": "ceiling",
           "type": "f32",
-          "note": "The fastest the unit can attack, in attacks a second, where the flag says to use it. A value of 0.00001 or less, -1 among them, sets no bound."
+          "note": "The fastest the unit can attack, in attacks a second, where the flag says to use it. A value of 0.00001 or less, -1 among them, sets the game's own standard bound."
         },
         {
           "name": "floor",
           "type": "f32",
-          "note": "The slowest the unit can attack, in attacks a second, where the flag says to use it. A value of 0.00001 or less, -1 among them, sets no bound."
+          "note": "The slowest the unit can attack, in attacks a second, where the flag says to use it. A value of 0.00001 or less, -1 among them, sets the game's own standard bound."
         }
       ]
     },

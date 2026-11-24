@@ -110,7 +110,7 @@
           "note": "A key into the client's own text, which it looks up and shows. The text ends at its first zero byte, which falls within the field."
         }
       ],
-      "note": "A client also sizes the panel to the text and shows it. The box sits halfway down the screen."
+      "note": "A client also shows the panel."
     },
     {
       "from": "1.0.0.96",
@@ -146,7 +146,7 @@
           "note": "A key into the client's own text, which it looks up and shows. The text ends at its first zero byte, which falls within the field."
         }
       ],
-      "note": "A client also sizes the panel to the text and shows it. The box sits halfway down the screen."
+      "note": "A client also shows the panel. The box sits against a point 98.5% of the way across the screen and 85% of the way down, raised by a margin the interface sets."
     },
     {
       "from": "1.0.0.98",
@@ -164,7 +164,7 @@
           "note": "A key into the client's own text, which it looks up and shows. The text ends at its first zero byte, which falls within the field."
         }
       ],
-      "note": "A client also sizes the panel to the text and shows it. The box sits halfway down the screen."
+      "note": "A client also shows the panel. The box sits against a point 98.5% of the way across the screen and 85% of the way down, raised by a margin the interface sets."
     },
     {
       "from": "1.0.0.103",
@@ -182,7 +182,7 @@
           "note": "A key into the client's own text, which it looks up and shows. The text ends at its first zero byte, which falls within the field."
         }
       ],
-      "note": "A client also sizes the panel to the text and shows it. The box sits halfway down the screen."
+      "note": "A client also shows the panel. The box sits against a point 98.5% of the way across the screen and 85% of the way down, raised by a margin the interface sets."
     },
     {
       "from": "1.0.0.104",
@@ -200,7 +200,7 @@
           "note": "A key into the client's own text, which it looks up and shows. The text ends at its first zero byte, which falls within the field."
         }
       ],
-      "note": "A client also sizes the panel to the text and shows it. The box sits halfway down the screen."
+      "note": "A client also shows the panel. The box sits against a point 98.5% of the way across the screen and 85% of the way down, raised by a margin the interface sets."
     },
     {
       "from": "1.0.0.107",
@@ -218,7 +218,7 @@
           "note": "A key into the client's own text, which it looks up and shows. The text ends at its first zero byte, which falls within the field."
         }
       ],
-      "note": "A client also sizes the panel to the text and shows it. The box sits halfway down the screen."
+      "note": "A client also shows the panel. The box sits against a point 98.5% of the way across the screen and 85% of the way down, raised by a margin the interface sets."
     },
     {
       "from": "1.0.0.109",
@@ -236,7 +236,7 @@
           "note": "A key into the client's own text, which it looks up and shows. The text ends at its first zero byte, which falls within the field."
         }
       ],
-      "note": "A client also sizes the panel to the text and shows it. The box sits halfway down the screen."
+      "note": "A client also shows the panel. The box sits against a point 98.5% of the way across the screen and 85% of the way down, raised by a margin the interface sets."
     },
     {
       "from": "1.0.0.110",
@@ -470,28 +470,10 @@
           "note": "A key into the client's own text, which it looks up and shows. The text ends at its first zero byte, which falls within the field."
         }
       ],
-      "note": "A client also sizes the panel to the text and shows it. The box sits halfway down the screen."
+      "note": "A client also sizes the panel to the text and shows it. The box sits against the right edge, in the lower part of the screen."
     },
     {
       "from": "1.0.0.150",
-      "until": "1.0.0.151",
-      "channel": "events",
-      "command": 157,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "text",
-          "type": "string",
-          "encoding": "utf8",
-          "size": 128,
-          "note": "A key into the client's own text, which it looks up and shows. The text ends at its first zero byte, which falls within the field."
-        }
-      ],
-      "note": "A client also sizes the panel to the text and shows it. The box sits 85% of the way down the screen and 98.5% of the way across it, less a margin."
-    },
-    {
-      "from": "1.0.0.151",
       "until": "3.01.0.1",
       "channel": "events",
       "command": 157,
@@ -506,7 +488,7 @@
           "note": "A key into the client's own text, which it looks up and shows. The text ends at its first zero byte, which falls within the field."
         }
       ],
-      "note": "A client also sizes the panel to the text and shows it. The box sits halfway down the screen."
+      "note": "A client also sizes the panel to the text and shows it. The box sits 85% of the way down the screen and 98.5% of the way across it, less a margin."
     },
     {
       "from": "3.01.0.1",
@@ -524,7 +506,7 @@
           "note": "A key into the client's own text, which it looks up and shows. The text ends at its first zero byte, which falls within the field."
         }
       ],
-      "note": "A client also sizes the panel to the text and shows it. The box sits halfway down the screen."
+      "note": "A client also sizes the panel to the text and shows it. The box sits 85% of the way down the screen and 98.5% of the way across it, less a margin."
     },
     {
       "from": "3.03.0.198",
@@ -546,24 +528,6 @@
     },
     {
       "from": "3.7.0.328",
-      "until": "3.10.0.237",
-      "channel": "events",
-      "command": 160,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "text",
-          "type": "string",
-          "encoding": "utf8",
-          "size": 128,
-          "note": "A key into the client's own text, which it looks up and shows. The text ends at its first zero byte, which falls within the field."
-        }
-      ],
-      "note": "A client also sizes the panel to the text and shows it. The box sits halfway down the screen."
-    },
-    {
-      "from": "3.10.0.237",
       "until": "3.11.0.306",
       "channel": "events",
       "command": 160,

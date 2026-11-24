@@ -351,7 +351,7 @@
         {
           "name": "lasts",
           "type": "f32",
-          "note": "How long it runs in total, in seconds."
+          "note": "How long the effect has left to run, in seconds from when the message arrives."
         },
         {
           "name": "caster",
@@ -359,7 +359,7 @@
           "note": "The unit that put it there."
         }
       ],
-      "note": "It puts a lasting effect in the slot, keeping the slot rather than taking the old one off first."
+      "note": "It carries no effect number: a client re-times the effect already in the slot. Where the slot is empty, nothing happens."
     },
     {
       "from": "1.0.0.150",
@@ -413,7 +413,7 @@
         {
           "name": "lasts",
           "type": "f32",
-          "note": "How long it runs in total, in seconds."
+          "note": "How long it has left to run, in seconds."
         },
         {
           "name": "caster",
@@ -421,7 +421,7 @@
           "note": "The unit that put it there."
         }
       ],
-      "note": "It puts a lasting effect in the slot, keeping the slot rather than taking the old one off first."
+      "note": "It names no effect: a client re-times the effect already in the slot. Where the slot is empty it does nothing."
     },
     {
       "from": "3.03.0.198",
@@ -456,38 +456,7 @@
     },
     {
       "from": "3.04.0.78",
-      "until": "3.6.0.388",
-      "channel": "events",
-      "command": 47,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "slot",
-          "type": "u8",
-          "note": "Which of the unit's effect slots."
-        },
-        {
-          "name": "runningFor",
-          "type": "f32",
-          "note": "How long the effect has already run, in seconds."
-        },
-        {
-          "name": "lasts",
-          "type": "f32",
-          "note": "How long it runs in total, in seconds."
-        },
-        {
-          "name": "caster",
-          "type": "u32",
-          "note": "The unit that put it there."
-        }
-      ],
-      "note": "It puts a lasting effect in the slot, keeping the slot rather than taking the old one off first."
-    },
-    {
-      "from": "3.6.0.388",
-      "until": "3.7.0.328",
+      "until": "3.10.0.237",
       "channel": "events",
       "command": 47,
       "direction": "serverToClient",
@@ -517,69 +486,7 @@
       "note": "It names no effect: it re-times the effect already in the slot and sets its caster, and does nothing where the slot is empty."
     },
     {
-      "from": "3.7.0.328",
-      "until": "3.10.0.237",
-      "channel": "events",
-      "command": 47,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "slot",
-          "type": "u8",
-          "note": "Which of the unit's effect slots."
-        },
-        {
-          "name": "runningFor",
-          "type": "f32",
-          "note": "How long the effect has already run, in seconds."
-        },
-        {
-          "name": "lasts",
-          "type": "f32",
-          "note": "How long it runs in total, in seconds."
-        },
-        {
-          "name": "caster",
-          "type": "u32",
-          "note": "The unit that put it there."
-        }
-      ],
-      "note": "It puts a lasting effect in the slot, keeping the slot rather than taking the old one off first."
-    },
-    {
       "from": "3.10.0.237",
-      "until": "3.11.0.306",
-      "channel": "events",
-      "command": 47,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "slot",
-          "type": "u8",
-          "note": "Which of the unit's effect slots."
-        },
-        {
-          "name": "runningFor",
-          "type": "f32",
-          "note": "How long the effect has already run, in seconds."
-        },
-        {
-          "name": "lasts",
-          "type": "f32",
-          "note": "How long it has left to run, in seconds."
-        },
-        {
-          "name": "caster",
-          "type": "u32",
-          "note": "The unit that put it there."
-        }
-      ],
-      "note": "It names no effect: a client re-times the effect already in the slot, to run for lasts from its arrival, and takes caster as its caster. Where the slot is empty it does nothing."
-    },
-    {
-      "from": "3.11.0.306",
       "until": "3.13.0.399",
       "channel": "events",
       "command": 47,
@@ -607,7 +514,7 @@
           "note": "The unit that put it there."
         }
       ],
-      "note": "It puts a lasting effect in the slot, keeping the slot rather than taking the old one off first."
+      "note": "It names no effect: a client re-times the effect already in the slot, to run for lasts from its arrival, and takes caster as its caster. Where the slot is empty it does nothing."
     },
     {
       "from": "3.13.0.399",
@@ -669,7 +576,7 @@
           "note": "The unit that put it there."
         }
       ],
-      "note": "It puts a lasting effect in the slot, keeping the slot rather than taking the old one off first."
+      "note": "It names no effect: a client re-times the effect already in the slot. Where the slot is empty it does nothing."
     },
     {
       "from": "4.4.0.1858",
@@ -731,7 +638,7 @@
           "note": "The unit that put it there."
         }
       ],
-      "note": "It puts a lasting effect in the slot, keeping the slot rather than taking the old one off first."
+      "note": "It names no effect and puts nothing new in the slot: it times again what the slot holds, and does nothing where the slot is empty."
     },
     {
       "from": "4.11.0.386",
@@ -762,7 +669,7 @@
           "note": "The unit that put it there."
         }
       ],
-      "note": "It puts a lasting effect in the slot, keeping the slot rather than taking the old one off first."
+      "note": "It names no effect and puts nothing new in the slot: it times again what the slot holds, and does nothing where the slot is empty."
     },
     {
       "from": "4.17.0.233",
@@ -816,7 +723,7 @@
         {
           "name": "lasts",
           "type": "f32",
-          "note": "How long it runs in total, in seconds."
+          "note": "How long it runs from now on, in seconds: the effect ends this long after the message arrives."
         },
         {
           "name": "caster",
@@ -824,7 +731,7 @@
           "note": "The unit that put it there."
         }
       ],
-      "note": "It puts a lasting effect in the slot, keeping the slot rather than taking the old one off first."
+      "note": "It names no effect and puts nothing new in the slot: it times again what the slot holds, and does nothing where the slot is empty."
     },
     {
       "from": "4.20.0.315",

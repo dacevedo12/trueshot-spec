@@ -30,7 +30,7 @@
         {
           "name": "element",
           "type": "u8",
-          "note": "Which part of the minimap blinks; a server sends 0, its camera button. A client acts only once it knows its own champion, and does not check the value: any other has no defined effect."
+          "note": "Which part of the minimap blinks. 0 is its camera button, and a server sends only 0; any other value has no defined effect."
         }
       ]
     },
@@ -90,7 +90,7 @@
         {
           "name": "element",
           "type": "u8",
-          "note": "Which part of the minimap blinks. A client acts on 0 alone, its camera button, and only once it knows its own champion; it ignores any other value."
+          "note": "Which part of the minimap blinks; a server sends 0, its camera button. A client acts only once it knows its own champion, and does not check the value: any other has no defined effect."
         }
       ]
     },
@@ -120,7 +120,7 @@
         {
           "name": "element",
           "type": "u8",
-          "note": "Which part of the minimap blinks. A client acts on 0 alone, its camera button, and only once it knows its own champion; it ignores any other value."
+          "note": "Which part of the minimap blinks. A client acts only once it knows its own champion."
         }
       ]
     },
@@ -135,7 +135,7 @@
         {
           "name": "element",
           "type": "u8",
-          "note": "Which part of the minimap blinks. A client acts on 0 alone, its camera button, and only once it knows its own champion; it ignores any other value."
+          "note": "Which part of the minimap blinks. A client acts only once it knows its own champion."
         }
       ]
     },
@@ -150,7 +150,7 @@
         {
           "name": "element",
           "type": "u8",
-          "note": "Which part of the minimap blinks. A client acts on 0 alone, its camera button, and only once it knows its own champion; it ignores any other value."
+          "note": "Which part of the minimap blinks. A client acts only once it knows its own champion."
         }
       ]
     },
@@ -165,7 +165,7 @@
         {
           "name": "element",
           "type": "u8",
-          "note": "Which part of the minimap blinks. A client acts on 0 alone, its camera button, and only once it knows its own champion; it ignores any other value."
+          "note": "Which part of the minimap blinks. A client acts only once it knows its own champion."
         }
       ]
     },
@@ -180,7 +180,7 @@
         {
           "name": "element",
           "type": "u8",
-          "note": "Which part of the minimap blinks. A client acts on 0 alone, its camera button, and only once it knows its own champion; it ignores any other value."
+          "note": "Which part of the minimap blinks. A client acts only once it knows its own champion."
         }
       ]
     },
@@ -195,7 +195,7 @@
         {
           "name": "element",
           "type": "u8",
-          "note": "Which part of the minimap blinks. A client acts on 0 alone, its camera button, and only once it knows its own champion; it ignores any other value."
+          "note": "Which part of the minimap blinks. A client acts only once it knows its own champion."
         }
       ]
     },

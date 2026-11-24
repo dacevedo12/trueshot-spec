@@ -197,7 +197,7 @@
         {
           "name": "kind",
           "type": "u8",
-          "note": "What sort of unit it is, from 0 to 3; a client spawns nothing for any other value."
+          "note": "What sort of unit it is, from 0 to 3; any other value has no defined effect."
         },
         {
           "name": "damageBonus",
@@ -237,7 +237,7 @@
         {
           "name": "kind",
           "type": "u8",
-          "note": "What sort of unit it is, from 0 to 3; a client spawns nothing for any other value."
+          "note": "What sort of unit it is, from 0 to 3; any other value has no defined effect."
         },
         {
           "name": "damageBonus",
@@ -277,7 +277,7 @@
         {
           "name": "kind",
           "type": "u8",
-          "note": "What sort of unit it is, from 0 to 3; a client spawns nothing for any other value."
+          "note": "What sort of unit it is, from 0 to 3; any other value has no defined effect."
         },
         {
           "name": "damageBonus",

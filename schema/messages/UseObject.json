@@ -6,21 +6,6 @@
   "revisions": [
     {
       "from": "1.0.0.124",
-      "until": "1.0.0.128",
-      "channel": "requests",
-      "command": 63,
-      "direction": "clientToServer",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "target",
-          "type": "u32",
-          "note": "The unit to use."
-        }
-      ]
-    },
-    {
-      "from": "1.0.0.128",
       "until": "1.0.0.132",
       "channel": "requests",
       "command": 63,
@@ -32,8 +17,7 @@
           "type": "u32",
           "note": "The unit to use."
         }
-      ],
-      "note": "A client also sends it as a unit its champion is attacking changes side (TeamChanged), whether usable or not."
+      ]
     },
     {
       "from": "1.0.0.132",
@@ -65,7 +49,7 @@
           "note": "The unit to use."
         }
       ],
-      "note": "A client also sends it as a unit its champion is attacking changes side (TeamChanged), whether usable or not."
+      "note": "A client also sends it as a champion, a minion or a turret changes side (TeamChanged): once for each unit it holds whose target that unit is, naming that unit in the header."
     },
     {
       "from": "1.0.0.140",
@@ -97,7 +81,7 @@
           "note": "The unit to use."
         }
       ],
-      "note": "A client also sends it as a unit its champion is attacking changes side (TeamChanged), whether usable or not."
+      "note": "As a champion, a minion or another unit with a mind changes side (TeamChanged), a client also sends it naming that unit, for every unit with a mind it holds that targets it, with that unit in the header; a building changing side sends none."
     },
     {
       "from": "1.0.0.144",
@@ -113,7 +97,7 @@
           "note": "The unit to use."
         }
       ],
-      "note": "A client also sends it as a unit its champion is attacking changes side (TeamChanged), whether usable or not."
+      "note": "As a champion, a minion or another unit with a mind changes side (TeamChanged), a client also sends it naming that unit, for every unit with a mind it holds that targets it, with that unit in the header; a building changing side sends none."
     },
     {
       "from": "1.0.0.150",
@@ -133,23 +117,7 @@
     },
     {
       "from": "1.0.0.151",
-      "until": "3.03.0.198",
-      "channel": "requests",
-      "command": 57,
-      "direction": "clientToServer",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "target",
-          "type": "u32",
-          "note": "The unit to use."
-        }
-      ],
-      "note": "A client also sends it as a unit its champion is attacking changes side (TeamChanged), whether usable or not."
-    },
-    {
-      "from": "3.03.0.198",
-      "until": "3.04.0.78",
+      "until": "3.6.0.388",
       "channel": "requests",
       "command": 57,
       "direction": "clientToServer",
@@ -163,39 +131,7 @@
       ]
     },
     {
-      "from": "3.04.0.78",
-      "until": "3.6.0.388",
-      "channel": "requests",
-      "command": 57,
-      "direction": "clientToServer",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "target",
-          "type": "u32",
-          "note": "The unit to use."
-        }
-      ],
-      "note": "A client also sends it as a unit its champion is attacking changes side (TeamChanged), whether usable or not."
-    },
-    {
       "from": "3.6.0.388",
-      "until": "3.7.0.328",
-      "channel": "requests",
-      "command": 57,
-      "direction": "clientToServer",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "target",
-          "type": "u32",
-          "note": "The unit to use."
-        }
-      ],
-      "note": "A client also sends it as a champion, a minion or a turret changes side (TeamChanged), whether usable or not: once for each unit it holds whose target that unit is, naming that unit in the header."
-    },
-    {
-      "from": "3.7.0.328",
       "until": "3.10.0.237",
       "channel": "requests",
       "command": 57,
@@ -208,7 +144,7 @@
           "note": "The unit to use."
         }
       ],
-      "note": "A client also sends it as a unit its champion is attacking changes side (TeamChanged), whether usable or not."
+      "note": "A client also sends it as a champion, a minion or a turret changes side (TeamChanged), whether usable or not: once for each unit it holds whose target that unit is, naming that unit in the header."
     },
     {
       "from": "3.10.0.237",

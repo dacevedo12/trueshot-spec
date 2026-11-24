@@ -26,23 +26,13 @@
     },
     {
       "from": "1.0.0.74",
-      "until": "1.0.0.75",
-      "channel": "requests",
-      "command": 149,
-      "direction": "clientToServer",
-      "reliability": "reliable",
-      "fields": [],
-      "note": "A client sends it as its player opens the shop, in any match."
-    },
-    {
-      "from": "1.0.0.75",
       "until": "1.0.0.82",
       "channel": "requests",
       "command": 149,
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "A client sends it only in the tutorial: where the version answer names the mode TUTORIAL and the map's own data marks it as a tutorial map, as map 12's does; elsewhere it never sends this."
+      "note": "A client sends it as its player opens the shop, in any match."
     },
     {
       "from": "1.0.0.82",
@@ -82,7 +72,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "A client sends it only in the tutorial: where the version answer names the mode TUTORIAL and the map's own data marks it as a tutorial map, as map 12's does; elsewhere it never sends this."
+      "note": "A client sends it whenever its player opens the shop, in every mode and on every map."
     },
     {
       "from": "1.0.0.98",
@@ -92,7 +82,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "A client sends it only in the tutorial: where the version answer names the mode TUTORIAL and the map's own data marks it as a tutorial map, as map 12's does; elsewhere it never sends this."
+      "note": "A client sends it whenever its player opens the shop, in every mode and on every map."
     },
     {
       "from": "1.0.0.103",
@@ -102,7 +92,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "A client sends it only in the tutorial: where the version answer names the mode TUTORIAL and the map's own data marks it as a tutorial map, as map 12's does; elsewhere it never sends this."
+      "note": "A client sends it whenever its player opens the shop, in every mode and on every map."
     },
     {
       "from": "1.0.0.104",
@@ -112,7 +102,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "A client sends it only in the tutorial: where the version answer names the mode TUTORIAL and the map's own data marks it as a tutorial map, as map 12's does; elsewhere it never sends this."
+      "note": "A client sends it whenever its player opens the shop, in every mode and on every map."
     },
     {
       "from": "1.0.0.107",
@@ -122,7 +112,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "A client sends it only in the tutorial: where the version answer names the mode TUTORIAL and the map's own data marks it as a tutorial map, as map 12's does; elsewhere it never sends this."
+      "note": "A client sends it whenever its player opens the shop, in every mode and on every map."
     },
     {
       "from": "1.0.0.109",
@@ -132,27 +122,17 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "A client sends it only in the tutorial: where the version answer names the mode TUTORIAL and the map's own data marks it as a tutorial map, as map 12's does; elsewhere it never sends this."
+      "note": "A client sends it whenever its player opens the shop, in every mode and on every map."
     },
     {
       "from": "1.0.0.110",
-      "until": "1.0.0.111",
-      "channel": "requests",
-      "command": 91,
-      "direction": "clientToServer",
-      "reliability": "reliable",
-      "fields": [],
-      "note": "A client sends it as its player opens the shop, in any match. While the shop is locked, the shop does not open and nothing is sent."
-    },
-    {
-      "from": "1.0.0.111",
       "until": "1.0.0.117",
       "channel": "requests",
       "command": 91,
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "A client sends it only in the tutorial: where the version answer names the mode TUTORIAL and the map's own data marks it as a tutorial map, as map 12's does; elsewhere it never sends this."
+      "note": "A client sends it as its player opens the shop, in any match. While the shop is locked, the shop does not open and nothing is sent."
     },
     {
       "from": "1.0.0.117",
@@ -162,7 +142,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "A client sends it only in the tutorial: where the version answer names the mode TUTORIAL and the map's own data marks it as a tutorial map, as map 12's does; elsewhere it never sends this."
+      "note": "A client sends it as its player opens the shop, in any match. While the shop is locked, the shop does not open and nothing is sent."
     },
     {
       "from": "1.0.0.119",
@@ -172,7 +152,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "A client sends it only in the tutorial: where the version answer names the mode TUTORIAL and the map's own data marks it as a tutorial map, as map 12's does; elsewhere it never sends this."
+      "note": "A client sends it as its player opens the shop, in any match. While the shop is locked, the shop does not open and nothing is sent."
     },
     {
       "from": "1.0.0.124",
@@ -202,7 +182,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "A client sends it only in the tutorial: where the version answer names the mode TUTORIAL and the map's own data marks it as a tutorial map, as map 12's does; elsewhere it never sends this."
+      "note": "A client sends it as its player opens the shop, in any match."
     },
     {
       "from": "1.0.0.138",
@@ -212,7 +192,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "A client sends it every time its player opens the shop, in any mode and on any map, except while a lock of its own on the shop holds or the game is paused."
+      "note": "A client sends it as its player opens the shop, in any match."
     },
     {
       "from": "1.0.0.140",
@@ -232,7 +212,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "A client sends it every time its player opens the shop, in any mode and on any map, except while a lock of its own on the shop holds or the game is paused."
+      "note": "A client sends it as its player opens the shop, in any match."
     },
     {
       "from": "1.0.0.144",
@@ -242,7 +222,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "A client sends it each time its shop opens, in any mode and on any map, but none while the game is paused."
+      "note": "A client sends it as its player opens the shop, in any match."
     },
     {
       "from": "1.0.0.147",
@@ -262,7 +242,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "A client sends it each time its shop opens, in any mode and on any map, but none while the game is paused."
+      "note": "A client sends it as its player opens the shop, in any match."
     },
     {
       "from": "1.0.0.150",
@@ -281,8 +261,7 @@
       "command": 90,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": [],
-      "note": "A client sends it only in the tutorial: where the version answer names the mode TUTORIAL and the map's own data marks it as a tutorial map, as map 12's does; elsewhere it never sends this."
+      "fields": []
     },
     {
       "from": "3.01.0.1",

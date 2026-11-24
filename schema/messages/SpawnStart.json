@@ -29,8 +29,7 @@
       "fields": [
         {
           "name": "count",
-          "type": "u8",
-          "note": "A single count the client keeps. What it carries is not recorded for this range; a server writes zero."
+          "type": "u8"
         }
       ]
     },

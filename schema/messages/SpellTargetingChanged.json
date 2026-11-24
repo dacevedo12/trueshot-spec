@@ -64,7 +64,7 @@
         {
           "name": "targeting",
           "type": "u8",
-          "note": "How the spell is aimed, 0 to 6. For a larger value a client still writes it onto the slot but builds no aiming for it, which has no defined effect; no value asks for the spell's own default."
+          "note": "How the spell is aimed, 0 to 6; no value asks for the spell's own default."
         }
       ]
     },
@@ -160,7 +160,7 @@
         {
           "name": "targeting",
           "type": "u8",
-          "note": "How the spell is aimed, 0 to 6. For a larger value a client still writes it onto the slot but builds no aiming for it, which has no defined effect; no value asks for the spell's own default."
+          "note": "How the spell is aimed, 0 to 6. A larger value has no defined effect; no value asks for the spell's own default."
         }
       ]
     },
@@ -192,7 +192,7 @@
         {
           "name": "targeting",
           "type": "u8",
-          "note": "How the spell is aimed, 0 to 7. A client keeps a larger value and reports it as an error, but builds no new aiming for it, so the slot keeps the aiming it had; no value asks for the spell's own default."
+          "note": "How the spell is aimed, 0 to 6. A larger value has no defined effect; no value asks for the spell's own default."
         }
       ]
     },
@@ -256,7 +256,7 @@
         {
           "name": "targeting",
           "type": "u8",
-          "note": "How the spell is aimed, 0 to 7. A client keeps a larger value and reports it as an error, but builds no new aiming for it, so the slot keeps the aiming it had; no value asks for the spell's own default."
+          "note": "How the spell is aimed; no value asks for the spell's own default."
         }
       ]
     },
@@ -608,44 +608,12 @@
         {
           "name": "targeting",
           "type": "u8",
-          "note": "How the spell is aimed, 0 to 8. A client keeps a larger value and reports it as an error, but builds no new aiming for it, so the slot keeps the aiming it had; no value asks for the spell's own default."
+          "note": "How the spell is aimed; no value asks for the spell's own default."
         }
       ]
     },
     {
       "from": "1.0.0.119",
-      "until": "1.0.0.126",
-      "channel": "events",
-      "command": 26,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "which",
-          "type": "bits",
-          "size": 1,
-          "bits": [
-            {
-              "name": "slot",
-              "width": 7,
-              "note": "Which slot. A champion's own spells count from 0."
-            },
-            {
-              "name": "summonerSlots",
-              "width": 1,
-              "note": "Set where the slot counts among the summoner slots, so that 0 and 1 name those two. Only a champion has them: for any other unit the bit set has no defined effect."
-            }
-          ]
-        },
-        {
-          "name": "targeting",
-          "type": "u8",
-          "note": "How the spell is aimed, 0 to 10. A client keeps a larger value and reports it as an error, but builds no new aiming for it, so the slot keeps the aiming it had; no value asks for the spell's own default."
-        }
-      ]
-    },
-    {
-      "from": "1.0.0.126",
       "until": "1.0.0.128",
       "channel": "events",
       "command": 26,

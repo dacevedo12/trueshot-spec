@@ -220,7 +220,7 @@
           "note": "What this turret is called, so a client can tell one from another. Written out in full and padded with zero bytes to the width above."
         }
       ],
-      "note": "A client matches name exactly against the map's turrets. With no match it only removes any object holding the id; a matched turret missing or dead is rebuilt before it takes the id."
+      "note": "A client matches name against the map's turrets without regard to case. With no match it does nothing, and removes no object."
     },
     {
       "from": "1.0.0.117",
@@ -248,7 +248,7 @@
           "note": "What this turret is called, so a client can tell one from another. Written out in full and padded with zero bytes to the width above."
         }
       ],
-      "note": "A client matches name exactly against the map's turrets. With no match it only removes any object holding the id; a matched turret missing or dead is rebuilt before it takes the id."
+      "note": "A client matches name against the map's turrets without regard to case. With no match it does nothing, and removes no object."
     },
     {
       "from": "1.0.0.119",
@@ -276,7 +276,7 @@
           "note": "What this turret is called, so a client can tell one from another. Written out in full and padded with zero bytes to the width above."
         }
       ],
-      "note": "A client matches name exactly against the map's turrets. With no match it only removes any object holding the id; a matched turret missing or dead is rebuilt before it takes the id."
+      "note": "A client matches name against the map's turrets without regard to case. With no match it does nothing, and removes no object."
     },
     {
       "from": "1.0.0.124",
@@ -304,7 +304,7 @@
           "note": "What this turret is called, so a client can tell one from another. Written out in full and padded with zero bytes to the width above."
         }
       ],
-      "note": "A client matches name exactly against the map's turrets. With no match it only removes any object holding the id; a matched turret missing or dead is rebuilt before it takes the id."
+      "note": "A client matches name against the map's turrets without regard to case. With no match it does nothing, and removes no object."
     },
     {
       "from": "1.0.0.125",
@@ -332,7 +332,7 @@
           "note": "What this turret is called, so a client can tell one from another. Written out in full and padded with zero bytes to the width above."
         }
       ],
-      "note": "A client matches name exactly against the map's turrets. With no match it only removes any object holding the id; a matched turret missing or dead is rebuilt before it takes the id."
+      "note": "A client matches name against the map's turrets without regard to case. With no match it does nothing, and removes no object."
     },
     {
       "from": "1.0.0.126",
@@ -388,7 +388,7 @@
           "note": "What this turret is called, so a client can tell one from another. Written out in full and padded with zero bytes to the width above."
         }
       ],
-      "note": "A client matches name exactly against the map's turrets. With no match it only removes any object holding the id; a matched turret missing or dead is rebuilt before it takes the id."
+      "note": "A client matches name against the map's turrets. A matched turret missing or dead is rebuilt before it takes the id."
     },
     {
       "from": "1.0.0.129",
@@ -438,60 +438,10 @@
           "note": "Read, then overwritten; a client keeps nothing of it."
         }
       ],
-      "note": "A client matches name exactly against the map's turrets. With no match it only removes any object holding the id; a matched turret missing or dead is rebuilt before it takes the id."
+      "note": "A client matches name against the map's turrets. A matched turret missing or dead is rebuilt before it takes the id."
     },
     {
       "from": "1.0.0.132",
-      "until": "1.0.0.133",
-      "channel": "events",
-      "command": 166,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "turret",
-          "type": "u32",
-          "note": "The name the turret answers to, so later messages can name it."
-        },
-        {
-          "name": "node",
-          "type": "u8",
-          "note": "Which network node the object belongs to, in a field of its own."
-        },
-        {
-          "name": "name",
-          "type": "string",
-          "encoding": "utf8",
-          "size": 64,
-          "note": "What this turret is called, so a client can tell one from another. Written out in full and padded with zero bytes to the width above."
-        },
-        {
-          "name": "state",
-          "type": "bits",
-          "size": 1,
-          "bits": [
-            {
-              "name": "targetable",
-              "width": 1,
-              "note": "Set where the turret can be aimed at."
-            },
-            {
-              "name": "unused",
-              "width": 7,
-              "note": "Unused; a server writes zero."
-            }
-          ]
-        },
-        {
-          "name": "targetableToTeam",
-          "type": "u32",
-          "note": "Read, then overwritten; a client keeps nothing of it."
-        }
-      ],
-      "note": "A client matches name exactly against the map's turrets; a matched turret missing or dead is rebuilt before it takes the id. With no match, the last of the map's turret buildings has its turret rebuilt under the id, and on a map with no turrets a client fails."
-    },
-    {
-      "from": "1.0.0.133",
       "until": "1.0.0.135",
       "channel": "events",
       "command": 166,
@@ -538,7 +488,7 @@
           "note": "Read, then overwritten; a client keeps nothing of it."
         }
       ],
-      "note": "A client matches name exactly against the map's turrets. With no match it only removes any object holding the id; a matched turret missing or dead is rebuilt before it takes the id."
+      "note": "A client matches name exactly against the map's turrets; a matched turret missing or dead is rebuilt before it takes the id. With no match, the last of the map's turret buildings has its turret rebuilt under the id, and on a map with no turrets a client fails."
     },
     {
       "from": "1.0.0.135",
@@ -588,7 +538,7 @@
           "note": "Read, then overwritten; a client keeps nothing of it."
         }
       ],
-      "note": "A client matches name exactly against the map's turrets. With no match it only removes any object holding the id; a matched turret missing or dead is rebuilt before it takes the id."
+      "note": "A client matches name exactly against the map's turrets; a matched turret missing or dead is rebuilt before it takes the id. With no match, the last of the map's turret buildings has its turret rebuilt under the id, and on a map with no turrets a client fails."
     },
     {
       "from": "1.0.0.136",
@@ -638,7 +588,7 @@
           "note": "Read, then overwritten; a client keeps nothing of it."
         }
       ],
-      "note": "A client matches name exactly against the map's turrets. With no match it only removes any object holding the id; a matched turret missing or dead is rebuilt before it takes the id."
+      "note": "A client matches name exactly against the map's turrets; a matched turret missing or dead is rebuilt before it takes the id. With no match, the last of the map's turret buildings has its turret rebuilt under the id, and on a map with no turrets a client fails."
     },
     {
       "from": "1.0.0.138",
@@ -688,7 +638,7 @@
           "note": "Read, then overwritten; a client keeps nothing of it."
         }
       ],
-      "note": "A client matches name exactly against the map's turrets. With no match it only removes any object holding the id; a matched turret missing or dead is rebuilt before it takes the id. A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it."
+      "note": "A client matches name exactly against the map's turrets; a matched turret missing or dead is rebuilt before it takes the id. With no match, the last of the map's turret buildings has its turret rebuilt under the id, and on a map with no turrets a client fails."
     },
     {
       "from": "1.0.0.139",
@@ -866,7 +816,7 @@
           "note": "What this turret is called, so a client can tell one from another. Written out in full and padded with zero bytes to the width above."
         }
       ],
-      "note": "A client matches name exactly against the map's turrets. With no match it only removes any object holding the id; a matched turret missing or dead is rebuilt before it takes the id. A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it."
+      "note": "A matched turret missing or dead is rebuilt before it takes the id."
     },
     {
       "from": "1.0.0.144",
@@ -894,7 +844,7 @@
           "note": "What this turret is called, so a client can tell one from another. Written out in full and padded with zero bytes to the width above."
         }
       ],
-      "note": "A client matches name exactly against the map's turrets. With no match it only removes any object holding the id; a matched turret missing or dead is rebuilt before it takes the id. A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it."
+      "note": "A matched turret missing or dead is rebuilt before it takes the id."
     },
     {
       "from": "1.0.0.150",
@@ -950,7 +900,7 @@
           "note": "What this turret is called, so a client can tell one from another. Written out in full and padded with zero bytes to the width above."
         }
       ],
-      "note": "A client matches name exactly against the map's turrets. With no match it only removes any object holding the id; a matched turret missing or dead is rebuilt before it takes the id. A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it."
+      "note": "A matched turret missing or dead is rebuilt before it takes the id. It arrives on its own and also inside EnterSight."
     },
     {
       "from": "3.01.0.1",
@@ -978,7 +928,7 @@
           "note": "What this turret is called, so a client can tell one from another. Written out in full and padded with zero bytes to the width above."
         }
       ],
-      "note": "A client matches name exactly against the map's turrets. With no match it only removes any object holding the id; a matched turret missing or dead is rebuilt before it takes the id. A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it."
+      "note": "A matched turret missing or dead is rebuilt before it takes the id. It arrives on its own and also inside EnterSight."
     },
     {
       "from": "3.03.0.198",
@@ -1038,34 +988,6 @@
     },
     {
       "from": "3.13.0.399",
-      "until": "3.14.0.700",
-      "channel": "events",
-      "command": 157,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "turret",
-          "type": "u32",
-          "note": "The name the turret answers to, so later messages can name it."
-        },
-        {
-          "name": "node",
-          "type": "u8",
-          "note": "Which network node the object belongs to, in a field of its own."
-        },
-        {
-          "name": "name",
-          "type": "string",
-          "encoding": "utf8",
-          "size": 64,
-          "note": "What this turret is called, so a client can tell one from another. Written out in full and padded with zero bytes to the width above."
-        }
-      ],
-      "note": "A client matches name exactly against the map's turrets. With no match it only removes any object holding the id; a matched turret missing or dead is rebuilt before it takes the id. It arrives on its own and also inside EnterSight."
-    },
-    {
-      "from": "3.14.0.700",
       "until": "4.1.0.171",
       "channel": "events",
       "command": 157,
@@ -1090,7 +1012,7 @@
           "note": "What this turret is called, so a client can tell one from another. Written out in full and padded with zero bytes to the width above."
         }
       ],
-      "note": "A client matches name exactly against the map's turrets. With no match it only removes any object holding the id; a matched turret missing or dead is rebuilt before it takes the id. A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it."
+      "note": "A client matches name exactly against the map's turrets. With no match it only removes any object holding the id; a matched turret missing or dead is rebuilt before it takes the id. It arrives on its own and also inside EnterSight."
     },
     {
       "from": "4.1.0.171",
@@ -1140,7 +1062,7 @@
           "note": "Who can target the turret. A server writes the value replication carries for the turret: 8388608 not its own side, 16777216 not the other side, 25165824 nobody, 33554432 everyone, anything else both sides. A client takes the turret's targetability from replication alone."
         }
       ],
-      "note": "A client matches name exactly against the map's turrets. With no match it only removes any object holding the id; a matched turret missing or dead is rebuilt before it takes the id. A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it."
+      "note": "A client matches name exactly against the map's turrets. With no match it only removes any object holding the id; a matched turret missing or dead is rebuilt before it takes the id. It arrives on its own and also inside EnterSight."
     },
     {
       "from": "4.4.0.1858",
@@ -1237,10 +1159,10 @@
         {
           "name": "targetableBy",
           "type": "u32",
-          "note": "Who can target the turret. A server writes the value replication carries for the turret: 8388608 not its own side, 16777216 not the other side, 25165824 nobody, 33554432 everyone, anything else both sides. A client takes the turret's targetability from replication alone."
+          "note": "A client does not read it."
         }
       ],
-      "note": "A client matches name exactly against the map's turrets. With no match it only removes any object holding the id; a matched turret missing or dead is rebuilt before it takes the id. A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it."
+      "note": "A client matches name exactly against the map's turrets. With no match it only removes any object holding the id; a matched turret missing or dead is rebuilt before it takes the id."
     },
     {
       "from": "4.11.0.386",
@@ -1287,10 +1209,10 @@
         {
           "name": "targetableBy",
           "type": "u32",
-          "note": "Who can target the turret. A server writes the value replication carries for the turret: 8388608 not its own side, 16777216 not the other side, 25165824 nobody, 33554432 everyone, anything else both sides. A client takes the turret's targetability from replication alone."
+          "note": "A client does not read it."
         }
       ],
-      "note": "A client matches name exactly against the map's turrets. With no match it only removes any object holding the id; a matched turret missing or dead is rebuilt before it takes the id. A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it."
+      "note": "A client matches name exactly against the map's turrets. With no match it only removes any object holding the id; a matched turret missing or dead is rebuilt before it takes the id."
     },
     {
       "from": "4.17.0.233",
@@ -1391,7 +1313,7 @@
           "note": "Unused; a server writes zero."
         }
       ],
-      "note": "A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it."
+      "note": "It arrives on its own and also inside EnterSight."
     },
     {
       "from": "4.20.0.315",

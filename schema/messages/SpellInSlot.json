@@ -80,7 +80,7 @@
           "note": "Which slot."
         }
       ],
-      "note": "A server names in the header the unit this is about."
+      "note": "A client ignores the header."
     },
     {
       "from": "1.0.0.128",
@@ -106,36 +106,10 @@
           "note": "Which slot."
         }
       ],
-      "note": "A server names in the header the unit this is about."
-    },
-    {
-      "from": "1.0.0.132",
-      "until": "1.0.0.133",
-      "channel": "events",
-      "command": 116,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "unit",
-          "type": "u32",
-          "note": "The unit whose slot this is."
-        },
-        {
-          "name": "spell",
-          "type": "u32",
-          "note": "Which spell, by the number its name gives, as spec/objects.md works it out."
-        },
-        {
-          "name": "slot",
-          "type": "u8",
-          "note": "Which slot."
-        }
-      ],
       "note": "A client ignores the header."
     },
     {
-      "from": "1.0.0.133",
+      "from": "1.0.0.132",
       "until": "1.0.0.138",
       "channel": "events",
       "command": 116,
@@ -158,7 +132,7 @@
           "note": "Which slot."
         }
       ],
-      "note": "A server names in the header the unit this is about."
+      "note": "A client ignores the header."
     },
     {
       "from": "1.0.0.138",
@@ -210,7 +184,7 @@
           "note": "Which slot."
         }
       ],
-      "note": "A server names in the header the unit this is about."
+      "note": "A client ignores the header, and does nothing where it does not hold unit."
     },
     {
       "from": "1.0.0.150",
@@ -262,7 +236,7 @@
           "note": "Which slot."
         }
       ],
-      "note": "A server names in the header the unit this is about."
+      "note": "A client ignores the header."
     },
     {
       "from": "3.01.0.1",
@@ -288,7 +262,7 @@
           "note": "Which slot."
         }
       ],
-      "note": "A server names in the header the unit this is about."
+      "note": "A client ignores the header."
     },
     {
       "from": "3.03.0.198",

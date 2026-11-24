@@ -433,7 +433,7 @@
             {
               "name": "summonerSlots",
               "width": 1,
-              "note": "Set where the slot counts among the summoner slots, so that 0 and 1 name those two. Only a champion has them: for any other unit the bit set has no defined effect."
+              "note": "Set where the slot counts among the summoner slots, so that 0 and 1 name those two. A client fails where it is set for a unit with no summoner slots."
             }
           ]
         },
@@ -510,7 +510,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": "terminated",
-          "note": "The name the client loads the spell under, ended by a zero byte. A client shows the named spell's icon in the slot, and treats a name it has no spell for as an error."
+          "note": "The name the client loads the spell under, ended by a zero byte. A client shows the named spell's icon in the slot."
         }
       ]
     },

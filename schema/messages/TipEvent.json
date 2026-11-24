@@ -277,37 +277,6 @@
     },
     {
       "from": "1.0.0.132",
-      "until": "1.0.0.133",
-      "channel": "requests",
-      "command": 113,
-      "direction": "clientToServer",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "what",
-          "type": "u8",
-          "note": "What happened to the tip.",
-          "values": {
-            "0": {
-              "name": "clicked",
-              "note": "The player clicked the tip: once per tip, and only while no tip's dialogue is open."
-            },
-            "1": {
-              "name": "closed",
-              "note": "The player closed the tip's dialogue."
-            }
-          }
-        },
-        {
-          "name": "tip",
-          "type": "u32",
-          "note": "Which tip, as TipShown named it."
-        }
-      ],
-      "note": "For what 1 the header names the sender's champion; for 0, the unit the TipShown was addressed to."
-    },
-    {
-      "from": "1.0.0.133",
       "until": "1.0.0.138",
       "channel": "requests",
       "command": 113,
@@ -335,7 +304,7 @@
           "note": "Which tip, as TipShown named it."
         }
       ],
-      "note": "The header names the sender's champion."
+      "note": "For what 1 the header names the sender's champion; for 0, the unit the TipShown was addressed to."
     },
     {
       "from": "1.0.0.138",
@@ -494,37 +463,6 @@
     },
     {
       "from": "3.14.0.700",
-      "until": "4.4.0.1858",
-      "channel": "requests",
-      "command": 108,
-      "direction": "clientToServer",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "what",
-          "type": "u8",
-          "note": "What happened to the tip.",
-          "values": {
-            "0": {
-              "name": "clicked",
-              "note": "The player clicked the tip: once per tip, and only while no tip's dialogue is open."
-            },
-            "1": {
-              "name": "closed",
-              "note": "The player closed the tip's dialogue."
-            }
-          }
-        },
-        {
-          "name": "tip",
-          "type": "u32",
-          "note": "Which tip, as TipShown named it."
-        }
-      ],
-      "note": "The header names the sender's champion."
-    },
-    {
-      "from": "4.4.0.1858",
       "until": "4.5.0.260",
       "channel": "requests",
       "command": 108,

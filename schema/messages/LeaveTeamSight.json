@@ -81,21 +81,6 @@
     },
     {
       "from": "1.0.0.127",
-      "until": "1.0.0.128",
-      "channel": "events",
-      "command": 239,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "side",
-          "type": "u8",
-          "note": "Which side the unit passed out of the view of, as an index from 0 to 3. A server sends only 0 to 3; a larger index has no defined effect."
-        }
-      ]
-    },
-    {
-      "from": "1.0.0.128",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 239,
@@ -105,7 +90,7 @@
         {
           "name": "side",
           "type": "u8",
-          "note": "Which side the unit came into or out of the view of."
+          "note": "Which side the unit passed out of the view of, as an index from 0 to 3."
         }
       ]
     },
@@ -135,7 +120,7 @@
         {
           "name": "side",
           "type": "u8",
-          "note": "Which side the unit came into or out of the view of."
+          "note": "Which side's view, as a number from 0 to 3 rather than a side such as 100."
         }
       ]
     },
@@ -150,7 +135,7 @@
         {
           "name": "side",
           "type": "u8",
-          "note": "Which side the unit came into or out of the view of."
+          "note": "Which side's view, as a number from 0 to 3 rather than a side such as 100."
         }
       ]
     },
@@ -165,7 +150,7 @@
         {
           "name": "side",
           "type": "u8",
-          "note": "Which side the unit came into or out of the view of."
+          "note": "Which side's view, as a number from 0 to 3 rather than a side such as 100."
         }
       ]
     },
@@ -180,7 +165,7 @@
         {
           "name": "side",
           "type": "u8",
-          "note": "Which side the unit came into or out of the view of."
+          "note": "Which side's view, as a number from 0 to 3 rather than a side such as 100."
         }
       ]
     },
@@ -195,7 +180,7 @@
         {
           "name": "side",
           "type": "u8",
-          "note": "Which side the unit came into or out of the view of."
+          "note": "Which side's view, as a number from 0 to 3 rather than a side such as 100."
         }
       ]
     },
@@ -225,7 +210,7 @@
         {
           "name": "side",
           "type": "u8",
-          "note": "Which side the unit came into or out of the view of."
+          "note": "Which side's view the unit left, as a number from 0 to 3 rather than a side such as 100."
         }
       ]
     },
@@ -240,7 +225,7 @@
         {
           "name": "side",
           "type": "u8",
-          "note": "Which side the unit came into or out of the view of."
+          "note": "Which side's view the unit left, as a number from 0 to 3 rather than a side such as 100."
         }
       ]
     },
@@ -261,21 +246,6 @@
     },
     {
       "from": "3.01.0.1",
-      "until": "3.7.0.328",
-      "channel": "events",
-      "command": 225,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "side",
-          "type": "u8",
-          "note": "Which side's view the unit left, as a number from 0 to 3 rather than a side such as 100."
-        }
-      ]
-    },
-    {
-      "from": "3.7.0.328",
       "until": "3.10.0.237",
       "channel": "events",
       "command": 225,
@@ -285,7 +255,7 @@
         {
           "name": "side",
           "type": "u8",
-          "note": "Which side the unit came into or out of the view of."
+          "note": "Which side's view the unit left, as a number from 0 to 3 rather than a side such as 100."
         }
       ]
     },
@@ -315,7 +285,7 @@
         {
           "name": "side",
           "type": "u8",
-          "note": "Which side the unit came into or out of the view of."
+          "note": "The bit for the side the unit passed out of the view of, as an index, not a side number. A client clears that bit alone."
         }
       ]
     },
@@ -345,7 +315,7 @@
         {
           "name": "side",
           "type": "u8",
-          "note": "Which side the unit came into or out of the view of."
+          "note": "The bit for the side the unit passed out of the view of, as an index, not a side number."
         }
       ]
     },
@@ -360,7 +330,7 @@
         {
           "name": "side",
           "type": "u8",
-          "note": "Which side the unit came into or out of the view of."
+          "note": "The bit for the side the unit passed out of the view of, as an index, not a side number."
         }
       ]
     },
@@ -390,7 +360,7 @@
         {
           "name": "side",
           "type": "u8",
-          "note": "Which side the unit came into or out of the view of."
+          "note": "Which side the unit passed out of the view of, as an index below 4 rather than a side number."
         }
       ]
     },
@@ -405,7 +375,7 @@
         {
           "name": "side",
           "type": "u8",
-          "note": "Which side the unit came into or out of the view of."
+          "note": "Which side the unit passed out of the view of, as an index below 4 rather than a side number."
         }
       ]
     },

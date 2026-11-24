@@ -262,7 +262,7 @@
           "note": "This fragment's bytes of the chunk, to the end of the message."
         }
       ],
-      "note": "A chunk's facts come from its fragment 0. The fragments of a chunk come in order from 0, and the chunk is complete at index fragments − 1. A new fragment 0 drops an unfinished chunk, and a fragment with no chunk begun has no effect."
+      "note": "A fragment whose index is 0 begins a chunk, and the chunk is complete at the fragment whose index is fragments − 1."
     },
     {
       "from": "3.13.0.399",
@@ -406,7 +406,7 @@
           "note": "This fragment's bytes of the chunk, to the end of the message."
         }
       ],
-      "note": "A chunk's facts come from its fragment 0. The fragments of a chunk come in order from 0, and the chunk is complete at index fragments − 1. A new fragment 0 drops an unfinished chunk, and a fragment with no chunk begun has no effect."
+      "note": "A new fragment 0 drops an unfinished chunk. A client takes each fragment's data without checking it against size."
     },
     {
       "from": "4.1.0.171",
@@ -478,7 +478,7 @@
           "note": "This fragment's bytes of the chunk, to the end of the message."
         }
       ],
-      "note": "A chunk's facts come from its fragment 0. The fragments of a chunk come in order from 0, and the chunk is complete at index fragments − 1. A new fragment 0 drops an unfinished chunk, and a fragment with no chunk begun has no effect."
+      "note": "A new fragment 0 drops an unfinished chunk. A client takes each fragment's data without checking it against size."
     },
     {
       "from": "4.4.0.1858",

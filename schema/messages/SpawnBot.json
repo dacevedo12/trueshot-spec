@@ -684,84 +684,6 @@
     },
     {
       "from": "1.0.0.132",
-      "until": "1.0.0.133",
-      "channel": "events",
-      "command": 217,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "unit",
-          "type": "u32",
-          "note": "The id the bot's champion takes."
-        },
-        {
-          "name": "node",
-          "type": "u8",
-          "note": "The network node it belongs to."
-        },
-        {
-          "name": "x",
-          "type": "f32",
-          "note": "Where it appears, in world units."
-        },
-        {
-          "name": "y",
-          "type": "f32",
-          "note": "Its height, in world units."
-        },
-        {
-          "name": "z",
-          "type": "f32",
-          "note": "Where it appears, in world units."
-        },
-        {
-          "name": "rank",
-          "type": "u8",
-          "note": "The bot's rank."
-        },
-        {
-          "name": "sides",
-          "type": "bits",
-          "size": 4,
-          "bits": [
-            {
-              "name": "side",
-              "width": 9,
-              "note": "Its side: 100, 200 or 300."
-            },
-            {
-              "name": "unused",
-              "width": 23,
-              "note": "Unused; a server writes zero."
-            }
-          ],
-          "note": "Its side."
-        },
-        {
-          "name": "skin",
-          "type": "i32",
-          "note": "Which skin."
-        },
-        {
-          "name": "name",
-          "type": "string",
-          "encoding": "utf8",
-          "size": 64,
-          "note": "The name shown for it. The text ends at its first zero byte, which falls within the field."
-        },
-        {
-          "name": "character",
-          "type": "string",
-          "encoding": "utf8",
-          "size": 64,
-          "note": "The champion's character name, which is also its unique name."
-        }
-      ],
-      "note": "An object already holding the id is not deleted."
-    },
-    {
-      "from": "1.0.0.133",
       "until": "1.0.0.135",
       "channel": "events",
       "command": 217,
@@ -836,7 +758,7 @@
           "note": "The champion's character name, which is also its unique name."
         }
       ],
-      "note": "A client first deletes any object it holds under the same id."
+      "note": "An object already holding the id is not deleted."
     },
     {
       "from": "1.0.0.135",
@@ -914,7 +836,7 @@
           "note": "The champion's character name, which is also its unique name."
         }
       ],
-      "note": "A client first deletes any object it holds under the same id."
+      "note": "An object already holding the id is not deleted."
     },
     {
       "from": "1.0.0.136",
@@ -992,7 +914,7 @@
           "note": "The champion's character name, which is also its unique name."
         }
       ],
-      "note": "A client first deletes any object it holds under the same id."
+      "note": "An object already holding the id is not deleted."
     },
     {
       "from": "1.0.0.138",
@@ -1070,7 +992,7 @@
           "note": "The champion's character name, which is also its unique name."
         }
       ],
-      "note": "A client first deletes any object it holds under the same id."
+      "note": "An object already holding the id is not deleted."
     },
     {
       "from": "1.0.0.139",
@@ -1225,8 +1147,7 @@
           "size": 64,
           "note": "The champion's character name, which is also its unique name."
         }
-      ],
-      "note": "A client first deletes any object it holds under the same id."
+      ]
     },
     {
       "from": "1.0.0.144",
@@ -1303,8 +1224,7 @@
           "size": 64,
           "note": "The champion's character name, which is also its unique name."
         }
-      ],
-      "note": "A client first deletes any object it holds under the same id."
+      ]
     },
     {
       "from": "1.0.0.147",
@@ -1381,8 +1301,7 @@
           "size": 64,
           "note": "The champion's character name, which is also its unique name."
         }
-      ],
-      "note": "A client first deletes any object it holds under the same id."
+      ]
     },
     {
       "from": "1.0.0.150",

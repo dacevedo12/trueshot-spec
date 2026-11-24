@@ -22,22 +22,6 @@
     },
     {
       "from": "0.9.22.14",
-      "until": "0.9.25.24",
-      "channel": "events",
-      "command": 110,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "syncId",
-          "type": "u8",
-          "note": "The name the report carried. A client sends the report again until this comes back. It takes a value only where it is newer than the last it took, counting with wrap within 128 steps, and ignores any other."
-        }
-      ],
-      "note": "A client ignores the header."
-    },
-    {
-      "from": "0.9.25.24",
       "until": "1.0.0.61",
       "channel": "events",
       "command": 110,
@@ -66,7 +50,7 @@
           "note": "The name the report carried. A client sends the report again until this comes back. It takes a value only where it is newer than the last it took, counting with wrap within 128 steps, and ignores any other."
         }
       ],
-      "note": "A server names in the header the champion of the player it is sent to."
+      "note": "A client ignores the header."
     },
     {
       "from": "1.0.0.63",
@@ -82,7 +66,7 @@
           "note": "The name the report carried. A client sends the report again until this comes back."
         }
       ],
-      "note": "A server names in the header the champion of the player it is sent to."
+      "note": "A client ignores the header."
     },
     {
       "from": "1.0.0.74",
@@ -114,7 +98,7 @@
           "note": "The name the report carried. A client sends the report again until this comes back."
         }
       ],
-      "note": "A server names in the header the champion of the player it is sent to."
+      "note": "A client ignores the header."
     },
     {
       "from": "1.0.0.82",
@@ -130,7 +114,7 @@
           "note": "The name the report carried. A client sends the report again until this comes back."
         }
       ],
-      "note": "A server names in the header the champion of the player it is sent to."
+      "note": "A client ignores the header."
     },
     {
       "from": "1.0.0.86",
@@ -258,7 +242,7 @@
           "note": "The name the report carried. A client sends the report again until this comes back."
         }
       ],
-      "note": "A server names in the header the champion of the player it is sent to."
+      "note": "A client ignores the header."
     },
     {
       "from": "1.0.0.124",
@@ -271,10 +255,10 @@
         {
           "name": "syncId",
           "type": "u8",
-          "note": "The name the report carried. A client takes it only where it is at most 127 past the last name it took, counting round past 255, and sends the report again until it does."
+          "note": "The name the report carried."
         }
       ],
-      "note": "A server names in the header the champion of the player it is sent to."
+      "note": "A client ignores the header."
     },
     {
       "from": "1.0.0.126",
@@ -303,10 +287,10 @@
         {
           "name": "syncId",
           "type": "u8",
-          "note": "The name the report carried. A client takes it only where it is at most 127 past the last name it took, counting round past 255, and sends the report again until it does."
+          "note": "The name the report carried."
         }
       ],
-      "note": "A server names in the header the champion of the player it is sent to."
+      "note": "A client ignores the header."
     },
     {
       "from": "1.0.0.128",
@@ -322,7 +306,7 @@
           "note": "The name the report carried. A client sends the report again until this comes back."
         }
       ],
-      "note": "A server names in the header the champion of the player it is sent to."
+      "note": "A client ignores the header."
     },
     {
       "from": "1.0.0.132",
@@ -342,22 +326,6 @@
     },
     {
       "from": "1.0.0.133",
-      "until": "1.0.0.141",
-      "channel": "events",
-      "command": 46,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "syncId",
-          "type": "u8",
-          "note": "The name the report carried. A client sends the report again until this comes back."
-        }
-      ],
-      "note": "A client ignores the header."
-    },
-    {
-      "from": "1.0.0.141",
       "until": "1.0.0.144",
       "channel": "events",
       "command": 46,
@@ -370,7 +338,7 @@
           "note": "The name the report carried. A client sends the report again until this comes back."
         }
       ],
-      "note": "A server names in the header the champion of the player it is sent to."
+      "note": "A client ignores the header."
     },
     {
       "from": "1.0.0.144",
@@ -386,7 +354,7 @@
           "note": "The name the report carried. A client sends the report again until this comes back."
         }
       ],
-      "note": "A server names in the header the champion of the player it is sent to."
+      "note": "A client ignores the header."
     },
     {
       "from": "1.0.0.150",
@@ -418,7 +386,7 @@
           "note": "The name the report carried. A client sends the report again until this comes back."
         }
       ],
-      "note": "A server names in the header the champion of the player it is sent to."
+      "note": "A client ignores the header."
     },
     {
       "from": "3.03.0.198",
@@ -438,38 +406,6 @@
     },
     {
       "from": "3.04.0.78",
-      "until": "3.6.0.388",
-      "channel": "events",
-      "command": 43,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "syncId",
-          "type": "u8",
-          "note": "The name the report carried. A client sends the report again until this comes back."
-        }
-      ],
-      "note": "A server names in the header the champion of the player it is sent to."
-    },
-    {
-      "from": "3.6.0.388",
-      "until": "3.7.0.328",
-      "channel": "events",
-      "command": 43,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "syncId",
-          "type": "u8",
-          "note": "The name the report carried. A client sends the report again until this comes back."
-        }
-      ],
-      "note": "A client ignores the header."
-    },
-    {
-      "from": "3.7.0.328",
       "until": "3.10.0.237",
       "channel": "events",
       "command": 43,
@@ -482,7 +418,7 @@
           "note": "The name the report carried. A client sends the report again until this comes back."
         }
       ],
-      "note": "A server names in the header the champion of the player it is sent to."
+      "note": "A client ignores the header."
     },
     {
       "from": "3.10.0.237",
@@ -514,7 +450,7 @@
           "note": "The name the report carried. A client sends the report again until this comes back."
         }
       ],
-      "note": "A server names in the header the champion of the player it is sent to."
+      "note": "A client ignores the header. It takes syncId only where it is 1 to 127 ahead of the last it took."
     },
     {
       "from": "3.13.0.399",
@@ -546,7 +482,7 @@
           "note": "The name the report carried. A client sends the report again until this comes back."
         }
       ],
-      "note": "A server names in the header the champion of the player it is sent to."
+      "note": "A client ignores the header."
     },
     {
       "from": "4.4.0.1858",

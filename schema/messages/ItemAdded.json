@@ -54,7 +54,7 @@
           "note": "How many of the item the slot holds now; a client applies zero as well. The slot's charges come from the item's own data."
         }
       ],
-      "note": "There is no charges field: a client takes an item's charges from the item's own data. A client applies it only to a champion's item slots."
+      "note": "There is no charges field: a client takes the charges of an item with an active effect from the item's own data."
     },
     {
       "from": "0.9.25.24",
@@ -207,39 +207,13 @@
         {
           "name": "inSlot",
           "type": "u8",
-          "note": "How many of the item the slot holds now; a client applies zero as well. The slot's charges come from the item's own data."
+          "note": "How many of the item the slot holds now; a client applies zero as well."
         }
       ],
-      "note": "There is no charges field: a client takes an item's charges from the item's own data. A client applies it only to a champion's item slots."
+      "note": "There is no charges field: a client takes the charges from the item's own data where the item carries a spell of its own to use, and otherwise leaves the slot's charges as they were."
     },
     {
       "from": "1.0.0.82",
-      "until": "1.0.0.86",
-      "channel": "events",
-      "command": 45,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "slot",
-          "type": "u8",
-          "note": "The slot it went to, 0 to 36. A larger value than 36 has no defined effect."
-        },
-        {
-          "name": "item",
-          "type": "u32",
-          "note": "Which item, by the number the client knows it as. For an item it does not know, a client empties the slot and still takes inSlot."
-        },
-        {
-          "name": "inSlot",
-          "type": "u8",
-          "note": "How many of the item the slot holds now; a client applies zero as well. The slot's charges come from the item's own data."
-        }
-      ],
-      "note": "There is no charges field: a client takes an item's charges from the item's own data. A server sends it to units nobody is buying for."
-    },
-    {
-      "from": "1.0.0.86",
       "until": "1.0.0.87",
       "channel": "events",
       "command": 45,
@@ -288,7 +262,7 @@
           "note": "How many of the item the slot holds now; a client applies zero as well. The slot's charges come from the item's own data."
         }
       ],
-      "note": "There is no charges field: a client takes an item's charges from the item's own data. A server sends it to units nobody is buying for."
+      "note": "There is no charges field: a client takes the charges from the item's own data where the item carries a spell of its own to use."
     },
     {
       "from": "1.0.0.96",
@@ -327,7 +301,7 @@
         {
           "name": "slot",
           "type": "u8",
-          "note": "The slot it went to, 0 to 36. A client rejects the message from 37 up."
+          "note": "The slot it went to."
         },
         {
           "name": "item",
@@ -588,7 +562,7 @@
           "note": "What this carries is not recorded. Where it is not zero, a client refreshes the slot and, where the slot holds an item, sends RemoveItem for it with sell clear; a server sends zero."
         }
       ],
-      "note": "It answers no request: where inSlot is above zero, a client puts item and inSlot in the slot whether or not anything asked for it. There is no charges field: a client takes an item's charges from the item's own data. A server sends it to units nobody is buying for."
+      "note": "There is no charges field: a client takes an item's charges from the item's own data."
     },
     {
       "from": "1.0.0.126",
@@ -649,8 +623,7 @@
           "type": "u8",
           "note": "What this carries is not recorded. Where it is not zero, a client refreshes the slot and, where the slot holds an item, sends RemoveItem for it with sell clear; a server sends zero."
         }
-      ],
-      "note": "It answers no request: where inSlot is above zero, a client puts item and inSlot in the slot whether or not anything asked for it. There is no charges field: a client takes an item's charges from the item's own data. A server sends it to units nobody is buying for."
+      ]
     },
     {
       "from": "1.0.0.128",
@@ -680,8 +653,7 @@
           "type": "u8",
           "note": "Nonzero readies the item's own spell, in the slot four past the item's, and has the client answer with RemoveItem for it."
         }
-      ],
-      "note": "A server sends it to units nobody is buying for."
+      ]
     },
     {
       "from": "1.0.0.132",
@@ -1160,8 +1132,7 @@
             }
           ]
         }
-      ],
-      "note": "A server sends it to units nobody is buying for."
+      ]
     },
     {
       "from": "3.6.0.388",
@@ -1267,7 +1238,7 @@
           ]
         }
       ],
-      "note": "It answers no request: a client clears the slot named and puts what follows in its place whether or not anything asked for it. A server sends it to units nobody is buying for."
+      "note": "It answers no request: a client puts what follows in the slot named whether or not anything asked for it, and where inSlot is 0 leaves the slot as it was."
     },
     {
       "from": "3.10.0.237",
@@ -1373,7 +1344,7 @@
           ]
         }
       ],
-      "note": "It answers no request: a client clears the slot named and puts what follows in its place whether or not anything asked for it. A server sends it to units nobody is buying for."
+      "note": "It answers no request: a client puts what follows in the slot named whether or not anything asked for it, and where inSlot is 0 leaves the slot as it was. A server sends it to units nobody is buying for."
     },
     {
       "from": "4.1.0.171",
@@ -1391,7 +1362,7 @@
         {
           "name": "slot",
           "type": "u8",
-          "note": "The slot it went to. A client rejects the message from 40 up."
+          "note": "The slot it went to."
         },
         {
           "name": "inSlot",
@@ -1426,7 +1397,7 @@
           ]
         }
       ],
-      "note": "It answers no request: a client clears the slot named and puts what follows in its place whether or not anything asked for it. A server sends it to units nobody is buying for."
+      "note": "It answers no request: a client puts what follows in the slot named whether or not anything asked for it, and where inSlot is 0 leaves the slot as it was. A server sends it to units nobody is buying for."
     },
     {
       "from": "4.4.0.1858",
@@ -1532,7 +1503,7 @@
           ]
         }
       ],
-      "note": "It answers no request: a client clears the slot named and puts what follows in its place whether or not anything asked for it. A server sends it to units nobody is buying for."
+      "note": "It answers no request: a client puts what follows in the slot named whether or not anything asked for it, and where inSlot is 0 leaves the slot as it was."
     },
     {
       "from": "4.11.0.386",
@@ -1585,7 +1556,7 @@
           ]
         }
       ],
-      "note": "It answers no request: a client clears the slot named and puts what follows in its place whether or not anything asked for it. A server sends it to units nobody is buying for."
+      "note": "It answers no request: a client puts what follows in the slot named whether or not anything asked for it, and where inSlot is 0 leaves the slot as it was."
     },
     {
       "from": "4.17.0.233",
@@ -1686,7 +1657,7 @@
           ]
         }
       ],
-      "note": "It answers no request: a client clears the slot named and puts what follows in its place whether or not anything asked for it. A server sends it to units nobody is buying for."
+      "note": "It answers no request: a client puts what follows in the slot named whether or not anything asked for it. Where inSlot is zero, it leaves the slot as it was."
     },
     {
       "from": "4.20.0.315",

@@ -64,7 +64,7 @@
           "note": "How long the unit stays down, in seconds."
         }
       ],
-      "note": "A client does nothing for a unit already dead. Otherwise it stops the unit's cast and attack and, where killer is nonzero, puts the unit down for stayDown, whether or not it knows killer, and shows what that kind of unit shows for a kill, for a minion only where killer is on another side."
+      "note": "A client does nothing for a unit already dead."
     },
     {
       "from": "0.9.25.24",
@@ -126,7 +126,7 @@
           "note": "How long the unit stays down, in seconds."
         }
       ],
-      "note": "A client does nothing for a unit already dead. Otherwise it stops the unit's cast and attack and, where killer is nonzero, puts the unit down for stayDown, whether or not it knows killer, and shows what that kind of unit shows for a kill, for a minion only where killer is on another side."
+      "note": "A client does nothing for a unit already dead."
     },
     {
       "from": "1.0.0.25",
@@ -219,7 +219,7 @@
           "note": "How long the unit stays down, in seconds."
         }
       ],
-      "note": "A client does nothing for a unit already dead. Otherwise it stops the unit's cast and attack and, where killer is nonzero, puts the unit down for stayDown, whether or not it knows killer, and shows what that kind of unit shows for a kill, for a minion only where killer is on another side."
+      "note": "A client does nothing for a unit already dead. Otherwise it stops the unit's cast and attack and, where killer is nonzero, puts the unit down for stayDown, whether or not it knows killer, and shows what that kind of unit shows for a kill."
     },
     {
       "from": "1.0.0.74",
@@ -281,7 +281,7 @@
           "note": "How long the unit stays down, in seconds."
         }
       ],
-      "note": "A client does nothing for a unit already dead. Otherwise it stops the unit's cast and attack and, where killer is nonzero, puts the unit down for stayDown, whether or not it knows killer, and shows what that kind of unit shows for a kill, for a minion only where killer is on another side."
+      "note": "A client does nothing for a unit already dead. Otherwise it stops the unit's cast and attack and, where killer is nonzero, puts the unit down for stayDown, whether or not it knows killer, and shows what that kind of unit shows for a kill."
     },
     {
       "from": "1.0.0.86",
@@ -343,7 +343,7 @@
           "note": "How long the unit stays down, in seconds."
         }
       ],
-      "note": "A client does nothing for a unit already dead. Otherwise it stops the unit's cast and attack and, where killer is nonzero, puts the unit down for stayDown, whether or not it knows killer, and shows what that kind of unit shows for a kill, for a minion only where killer is on another side."
+      "note": "A client does nothing for a unit already dead. Otherwise it stops the unit's cast and attack and, where killer is nonzero, puts the unit down for stayDown, whether or not it knows killer, and shows what that kind of unit shows for a kill."
     },
     {
       "from": "1.0.0.96",
@@ -405,7 +405,7 @@
           "note": "How long the unit stays down, in seconds."
         }
       ],
-      "note": "A client does nothing for a unit already dead. Otherwise it stops the unit's cast and attack and, where killer is nonzero, puts the unit down for stayDown, whether or not it knows killer, and shows what that kind of unit shows for a kill, for a minion only where killer, or the unit that owns killer, is the client's own champion and on another side."
+      "note": "A client does nothing for a unit already dead. Otherwise it stops the unit's cast and attack and, where killer is nonzero, puts the unit down for stayDown, whether or not it holds killer."
     },
     {
       "from": "1.0.0.103",
@@ -428,7 +428,7 @@
         {
           "name": "damageSource",
           "type": "u8",
-          "note": "Read only for a minion a champion killed, whose kill a client shows another way where it is 7; a server writes zero."
+          "note": "Unused; a server writes zero."
         },
         {
           "name": "stayDown",
@@ -441,7 +441,7 @@
           "note": "Any nonzero value leaves the unit standing rather than dead. A champion then plays no death animation; minions and turrets play theirs whatever this says."
         }
       ],
-      "note": "Where killer names a unit it knows, a client announces the kill for that unit, then the one kind picks. Where the unit is not already dead, it cancels the unit's cast and attack, and only where killer is nonzero puts the unit down, by stayDown and standing."
+      "note": "A client does nothing for a unit already dead. Otherwise it stops the unit's cast and attack and, where killer is nonzero, puts the unit down for stayDown, whether or not it holds killer."
     },
     {
       "from": "1.0.0.110",
@@ -500,7 +500,7 @@
         {
           "name": "damageSource",
           "type": "u8",
-          "note": "Read only for a minion a champion killed, whose kill a client shows another way where it is 7; a server writes zero."
+          "note": "It has no effect; a server writes zero."
         },
         {
           "name": "stayDown",
@@ -513,7 +513,7 @@
           "note": "Any nonzero value leaves the unit standing rather than dead. A champion then plays no death animation; minions and turrets play theirs whatever this says."
         }
       ],
-      "note": "Where killer names a unit it knows, a client announces the kill for that unit, then the one kind picks. Where the unit is not already dead, it cancels the unit's cast and attack, and only where killer is nonzero puts the unit down, by stayDown and standing."
+      "note": "A client does nothing for a unit already dead. Otherwise it stops the unit's cast and attack and, where killer is nonzero, puts the unit down for stayDown, whether or not it holds killer."
     },
     {
       "from": "1.0.0.117",
@@ -536,7 +536,7 @@
         {
           "name": "damageSource",
           "type": "u8",
-          "note": "Read only for a minion a champion killed, whose kill a client shows another way where it is 7; a server writes zero."
+          "note": "It has no effect; a server writes zero."
         },
         {
           "name": "stayDown",
@@ -549,7 +549,7 @@
           "note": "Any nonzero value leaves the unit standing rather than dead. A champion then plays no death animation; minions and turrets play theirs whatever this says."
         }
       ],
-      "note": "Where killer names a unit it knows, a client announces the kill for that unit, then the one kind picks. Where the unit is not already dead, it cancels the unit's cast and attack, and only where killer is nonzero puts the unit down, by stayDown and standing."
+      "note": "A client does nothing for a unit already dead. Otherwise it stops the unit's cast and attack and, where killer is nonzero, puts the unit down for stayDown, whether or not it holds killer."
     },
     {
       "from": "1.0.0.119",
@@ -572,7 +572,7 @@
         {
           "name": "damageSource",
           "type": "u8",
-          "note": "Read only for a minion a champion killed, whose kill a client shows another way where it is 7; a server writes zero."
+          "note": "It has no effect; a server writes zero."
         },
         {
           "name": "stayDown",
@@ -585,7 +585,7 @@
           "note": "Any nonzero value leaves the unit standing rather than dead. A champion then plays no death animation; minions and turrets play theirs whatever this says."
         }
       ],
-      "note": "Where killer names a unit it knows, a client announces the kill for that unit, then the one kind picks. Where the unit is not already dead, it cancels the unit's cast and attack, and only where killer is nonzero puts the unit down, by stayDown and standing."
+      "note": "A client does nothing for a unit already dead. Otherwise it stops the unit's cast and attack and, where killer is nonzero, puts the unit down for stayDown, whether or not it holds killer."
     },
     {
       "from": "1.0.0.124",
@@ -608,7 +608,7 @@
         {
           "name": "damageSource",
           "type": "u8",
-          "note": "Read only for a minion a champion killed, whose kill a client shows another way where it is 7; a server writes zero."
+          "note": "It has no effect; a server writes zero."
         },
         {
           "name": "stayDown",
@@ -621,7 +621,7 @@
           "note": "Any nonzero value leaves the unit standing rather than dead. A champion then plays no death animation; minions and turrets play theirs whatever this says."
         }
       ],
-      "note": "Where killer names a unit it knows, a client announces the kill for that unit, then the one kind picks. Where the unit is not already dead, it cancels the unit's cast and attack, and only where killer is nonzero puts the unit down, by stayDown and standing."
+      "note": "A client does nothing for a unit already dead. Otherwise it stops the unit's cast and attack and, where killer is nonzero, puts the unit down for stayDown, whether or not it holds killer."
     },
     {
       "from": "1.0.0.125",
@@ -644,7 +644,7 @@
         {
           "name": "damageSource",
           "type": "u8",
-          "note": "Read only for a minion a champion killed, whose kill a client shows another way where it is 7; a server writes zero."
+          "note": "It has no effect; a server writes zero."
         },
         {
           "name": "stayDown",
@@ -657,7 +657,7 @@
           "note": "Any nonzero value leaves the unit standing rather than dead. A champion then plays no death animation; minions and turrets play theirs whatever this says."
         }
       ],
-      "note": "Where killer names a unit it knows, a client announces the kill for that unit, then the one kind picks. Where the unit is not already dead, it cancels the unit's cast and attack, and only where killer is nonzero puts the unit down, by stayDown and standing."
+      "note": "A client does nothing for a unit already dead. Otherwise it stops the unit's cast and attack and, where killer is nonzero, puts the unit down for stayDown, whether or not it holds killer."
     },
     {
       "from": "1.0.0.126",
@@ -716,7 +716,7 @@
         {
           "name": "damageSource",
           "type": "u8",
-          "note": "Read only for a minion a champion killed, whose kill a client shows another way where it is 7; a server writes zero."
+          "note": "Unused; a server writes zero."
         },
         {
           "name": "stayDown",
@@ -729,7 +729,7 @@
           "note": "Set to leave the unit standing as a husk rather than dead: no time of death, and for a champion no death animation and no death screen. A turret kept after death behaves so whatever this says. Any nonzero value sets it."
         }
       ],
-      "note": "Where killer names a unit it knows, a client announces the kill for that unit, then the one kind picks. Where the unit is not already dead, it cancels the unit's cast and attack, and only where killer is nonzero puts the unit down, by stayDown and standing."
+      "note": "A client does nothing for a unit already dead. Otherwise it stops the unit's cast and attack and, where killer is nonzero, announces the kill, naming killer where it holds it, and puts the unit down by stayDown and standing."
     },
     {
       "from": "1.0.0.132",
@@ -801,7 +801,7 @@
           "note": "Set to leave the unit standing as a husk rather than dead: no time of death, and for a champion no death animation and no death screen. A turret kept after death behaves so whatever this says. Any nonzero value sets it."
         }
       ],
-      "note": "Where killer names a unit it knows, a client announces the kill for that unit, then the one kind picks. Where the unit is not already dead, it cancels the unit's cast and attack, and only where killer is nonzero puts the unit down, by stayDown and standing."
+      "note": "Where the unit is already dead, a client does nothing with the message. Otherwise it cancels the unit's cast and attack; then, only where killer is nonzero, it puts the unit down by stayDown and standing and announces the kill."
     },
     {
       "from": "1.0.0.135",
@@ -837,7 +837,7 @@
           "note": "Set to leave the unit standing as a husk rather than dead: no time of death, and for a champion no death animation and no death screen. A turret kept after death behaves so whatever this says. Any nonzero value sets it."
         }
       ],
-      "note": "Where killer names a unit it knows, a client announces the kill for that unit, then the one kind picks. Where the unit is not already dead, it cancels the unit's cast and attack, and only where killer is nonzero puts the unit down, by stayDown and standing."
+      "note": "Where the unit is already dead, a client does nothing with the message. Otherwise it cancels the unit's cast and attack; then, only where killer is nonzero, it puts the unit down by stayDown and standing and announces the kill."
     },
     {
       "from": "1.0.0.136",
@@ -873,7 +873,7 @@
           "note": "Set to leave the unit standing as a husk rather than dead: no time of death, and for a champion no death animation and no death screen. A turret kept after death behaves so whatever this says. Any nonzero value sets it."
         }
       ],
-      "note": "Where killer names a unit it knows, a client announces the kill for that unit, then the one kind picks. Where the unit is not already dead, it cancels the unit's cast and attack, and only where killer is nonzero puts the unit down, by stayDown and standing."
+      "note": "Where the unit is already dead, a client does nothing with the message. Otherwise it cancels the unit's cast and attack; then, only where killer is nonzero, it puts the unit down by stayDown and standing and announces the kill."
     },
     {
       "from": "1.0.0.138",
@@ -914,7 +914,7 @@
           "note": "Which kill a client announces for killer: zero a neutral monster's, nonzero a minion's."
         }
       ],
-      "note": "Where killer names a unit it knows, a client announces the kill for that unit, then the one kind picks. Where the unit is not already dead, it cancels the unit's cast and attack, and only where killer is nonzero puts the unit down, by stayDown and standing."
+      "note": "Where the unit is already dead, a client does nothing with the message. Otherwise it cancels the unit's cast and attack; then, only where killer is nonzero, it puts the unit down by stayDown and standing and announces the kill."
     },
     {
       "from": "1.0.0.139",
@@ -1208,7 +1208,7 @@
           "note": "Which kill a client announces for killer: zero a neutral monster's, nonzero a minion's."
         }
       ],
-      "note": "Where the unit is already dead, a client does nothing with the message. Otherwise it cancels the unit's cast and attack; then, only where killer is nonzero, it puts the unit down by stayDown and standing and announces the kill, which kind picks."
+      "note": "A client cancels the unit's cast and attack, and only where killer is nonzero puts the unit down, by stayDown and standing."
     },
     {
       "from": "3.03.0.198",
@@ -1284,7 +1284,7 @@
         {
           "name": "damageSource",
           "type": "u32",
-          "note": "Unused; a server writes zero."
+          "note": "A client reads it only where a minion dies."
         },
         {
           "name": "stayDown",
@@ -1310,11 +1310,10 @@
         },
         {
           "name": "kind",
-          "type": "u8",
-          "note": "Which kill a client announces for killer: zero a neutral monster's, nonzero a minion's."
+          "type": "u8"
         }
       ],
-      "note": "Where the unit is already dead, a client does nothing with the message. Otherwise it cancels the unit's cast and attack; then, only where killer is nonzero, it puts the unit down by stayDown and standing and announces the kill, which kind picks."
+      "note": "Where the unit is already dead, a client does nothing with the message. Otherwise it cancels the unit's cast and attack; then, only where killer is nonzero, it puts the unit down by stayDown and standing."
     },
     {
       "from": "3.6.0.388",
@@ -1472,12 +1471,11 @@
           "type": "u8",
           "note": "Which kill a client announces for killer: zero a neutral monster's, nonzero a minion's."
         }
-      ],
-      "note": "Where killer names a unit it knows, a client announces the kill for that unit, then the one kind picks. Where the unit is not already dead, it cancels the unit's cast and attack, and only where killer is nonzero puts the unit down, by stayDown and standing."
+      ]
     },
     {
       "from": "4.4.0.1858",
-      "until": "4.5.0.260",
+      "until": "4.11.0.386",
       "channel": "events",
       "command": 157,
       "direction": "serverToClient",
@@ -1528,59 +1526,6 @@
       ]
     },
     {
-      "from": "4.5.0.260",
-      "until": "4.11.0.386",
-      "channel": "events",
-      "command": 157,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "killer",
-          "type": "u32",
-          "note": "The unit credited with the death."
-        },
-        {
-          "name": "damageType",
-          "type": "u32",
-          "note": "Unused; a server writes zero."
-        },
-        {
-          "name": "damageSource",
-          "type": "u32",
-          "note": "Unused; a server writes zero."
-        },
-        {
-          "name": "stayDown",
-          "type": "f32",
-          "note": "How long the unit stays down, in seconds."
-        },
-        {
-          "name": "how",
-          "type": "bits",
-          "size": 1,
-          "bits": [
-            {
-              "name": "standing",
-              "width": 1,
-              "note": "Set to leave the unit standing as a husk rather than dead: no time of death, and for a champion no death animation and no death screen. A turret kept after death behaves so whatever this says."
-            },
-            {
-              "name": "unused",
-              "width": 7,
-              "note": "Unused; a server writes zero."
-            }
-          ]
-        },
-        {
-          "name": "kind",
-          "type": "u8",
-          "note": "Which kill a client announces for killer: zero a neutral monster's, nonzero a minion's."
-        }
-      ],
-      "note": "Where killer names a unit it knows, a client announces the kill for that unit, then the one kind picks. Where the unit is not already dead, it cancels the unit's cast and attack, and only where killer is nonzero puts the unit down, by stayDown and standing."
-    },
-    {
       "from": "4.11.0.386",
       "until": "4.17.0.233",
       "channel": "events",
@@ -1628,10 +1573,9 @@
         {
           "name": "kind",
           "type": "u8",
-          "note": "Which kill a client announces for killer: zero a neutral monster's, nonzero a minion's."
+          "note": "Which kill killer is credited with: zero a neutral monster's, nonzero a minion's."
         }
-      ],
-      "note": "Where the unit is already dead, a client does nothing with the message. Otherwise it cancels the unit's cast and attack; then, only where killer is nonzero, it puts the unit down by stayDown and standing and announces the kill, which kind picks."
+      ]
     },
     {
       "from": "4.17.0.233",

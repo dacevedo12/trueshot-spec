@@ -170,7 +170,7 @@
       "command": 67,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client clears every circle it holds before marking these, and answers each with a message to the server under command 32 whose body is this sync id alone.",
+      "note": "Once the map's ground grid is loaded, a client clears every circle it holds, marks these, and answers with a message to the server. Before then it neither marks nor answers.",
       "fields": [
         {
           "name": "count",
@@ -223,7 +223,7 @@
       "command": 68,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client clears every circle it holds before marking these, and answers each with a message to the server under command 32 whose body is this sync id alone.",
+      "note": "Once the map's ground grid is loaded, a client clears every circle it holds, marks these, and answers with a message to the server. Before then it neither marks nor answers.",
       "fields": [
         {
           "name": "count",
@@ -276,7 +276,7 @@
       "command": 69,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client clears every circle it holds before marking these, and answers each with a message to the server under command 32 whose body is this sync id alone.",
+      "note": "Once the map's ground grid is loaded, a client clears every circle it holds, marks these, and answers with a message to the server. Before then it neither marks nor answers.",
       "fields": [
         {
           "name": "count",
@@ -329,7 +329,7 @@
       "command": 71,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client clears every circle it holds before marking these, and answers each with a message to the server under command 32 whose body is this sync id alone.",
+      "note": "Once the map's ground grid is loaded, a client clears every circle it holds, marks these, and answers with a message to the server. Before then it neither marks nor answers.",
       "fields": [
         {
           "name": "count",
@@ -435,7 +435,7 @@
       "command": 71,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client clears every circle it holds before marking these, and answers each with a message to the server under command 32 whose body is this sync id alone.",
+      "note": "Once the map is loaded, a client clears every circle it holds, and answers with a message to the server under command 32 whose body is this sync id alone.",
       "fields": [
         {
           "name": "count",
@@ -1380,7 +1380,7 @@
       "command": 64,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client whose map's ground data is loaded fails on the first of these in a match: it stops, marking no circle and sending no answer.",
+      "note": "A client whose map's ground data is loaded fails on the first of these in a match; before that data is loaded, it takes nothing and does not answer.",
       "fields": [
         {
           "name": "count",
@@ -1428,59 +1428,6 @@
     },
     {
       "from": "4.11.0.386",
-      "until": "4.17.0.233",
-      "channel": "events",
-      "command": 65,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "note": "A client whose map's ground data is loaded fails on the first of these in a match: it stops, marking no circle and sending no answer.",
-      "fields": [
-        {
-          "name": "count",
-          "type": "u16",
-          "note": "The count of circles that follow."
-        },
-        {
-          "name": "syncId",
-          "type": "i32",
-          "note": "A number naming this marking."
-        },
-        {
-          "name": "circles",
-          "type": "array",
-          "count": "count",
-          "items": {
-            "name": "circlesEntry",
-            "type": "record",
-            "fields": [
-              {
-                "name": "x",
-                "type": "f32",
-                "note": "The circle's centre, along one ground axis, in world units."
-              },
-              {
-                "name": "z",
-                "type": "f32",
-                "note": "The circle's centre, along the other ground axis, in world units."
-              },
-              {
-                "name": "radius",
-                "type": "f32",
-                "note": "Its radius, in world units. A circle of radius 1000 or more marks nothing."
-              },
-              {
-                "name": "flags",
-                "type": "u32",
-                "note": "The flags to add to each cell. Only the low 16 bits take effect."
-              }
-            ]
-          },
-          "note": "The circles."
-        }
-      ]
-    },
-    {
-      "from": "4.17.0.233",
       "until": "4.18.0.271",
       "channel": "events",
       "command": 65,

@@ -235,7 +235,7 @@
         {
           "name": "announcement",
           "type": "u32",
-          "note": "Which of the client's 28 announcements, 0 to 27. The text of each is the client's own and is not recorded here. 4294967295 shows a fixed text of the client's own that is none of them; any other value has no defined effect."
+          "note": "Which of the client's 28 announcements, 0 to 27. The text of each is the client's own and is not recorded here. 5, 6, 20, 21 and 25 show a placeholder of the client's own rather than an announcement, as 28 does. 4294967295 shows a word of the client's own that is none of them; any other value has no defined effect."
         },
         {
           "name": "unit",
@@ -275,7 +275,7 @@
         {
           "name": "announcement",
           "type": "u32",
-          "note": "Which of the client's 28 announcements, 0 to 27. The text of each is the client's own and is not recorded here. 4294967295 shows a fixed text of the client's own that is none of them; any other value has no defined effect."
+          "note": "Which of the client's 28 announcements, 0 to 27. The text of each is the client's own and is not recorded here. 5, 6, 20, 21 and 25 show a placeholder of the client's own rather than an announcement, as 28 does."
         },
         {
           "name": "unit",

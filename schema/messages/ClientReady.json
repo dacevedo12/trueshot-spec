@@ -104,7 +104,7 @@
           "note": "A random value the client picks to mask the one above."
         }
       ],
-      "note": "What a client sends once it has loaded and is ready to play. It comes unprompted, before any start of play reaches the client."
+      "note": "A client sends it as SpawnEnd arrives."
     },
     {
       "from": "1.0.0.140",
@@ -137,8 +137,7 @@
       "fields": [
         {
           "name": "maskedStatus",
-          "type": "u32",
-          "note": "A status, masked. Taken by exclusive or with mask and with the client's own champion id, it gives 262917615 where the client's check of itself found a fault, and any other value otherwise. While watching a match, a client leaves this and mask unset, so they carry no meaning."
+          "type": "u32"
         },
         {
           "name": "mask",
@@ -146,7 +145,7 @@
           "note": "A random value the client picks to mask the one above."
         }
       ],
-      "note": "What a client sends once it has loaded and is ready to play. It comes unprompted, before any start of play reaches the client."
+      "note": "What a client sends once it has loaded and is ready to play."
     },
     {
       "from": "1.0.0.144",
@@ -651,7 +650,7 @@
           ]
         }
       ],
-      "note": "What a client sends once it has loaded and is ready to play. The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero."
+      "note": "What a client sends once it has loaded and is ready to play. The tip fields carry VersionSync's tip bytes. Playing a replay, a client sends all four as zero."
     },
     {
       "from": "3.13.0.399",
@@ -1001,7 +1000,7 @@
           "note": "The third. A client sends zero."
         }
       ],
-      "note": "What a client sends once it has loaded and is ready to play. The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero. The three module fields are always zero."
+      "note": "What a client sends once it has loaded and is ready to play. The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero."
     },
     {
       "from": "4.17.0.233",
@@ -1150,12 +1149,12 @@
         {
           "name": "moduleTwo",
           "type": "u32",
-          "note": "The second of the three. A client sends zero."
+          "note": "The second of the three."
         },
         {
           "name": "moduleThree",
           "type": "u32",
-          "note": "The third. A client sends zero."
+          "note": "The third."
         }
       ]
     },

@@ -1105,17 +1105,17 @@
         {
           "name": "unknownAX",
           "type": "f32",
-          "note": "What this holds is not recorded."
+          "note": "Where the missile's thrower stood, along one ground axis: casterAt of the last MissileState."
         },
         {
           "name": "unknownAY",
           "type": "f32",
-          "note": "What this holds is not recorded."
+          "note": "Where the missile's thrower stood, in height: casterAt of the last MissileState."
         },
         {
           "name": "unknownAZ",
           "type": "f32",
-          "note": "What this holds is not recorded."
+          "note": "Where the missile's thrower stood, along the other ground axis: casterAt of the last MissileState."
         },
         {
           "name": "travelX",
@@ -1179,8 +1179,7 @@
         },
         {
           "name": "flag",
-          "type": "u8",
-          "note": "Zero or one; what it means is not recorded."
+          "type": "u8"
         },
         {
           "name": "cast",
@@ -1217,17 +1216,17 @@
         {
           "name": "unknownAX",
           "type": "f32",
-          "note": "What this holds is not recorded."
+          "note": "Where the missile's thrower stood, along one ground axis: casterAt of the last MissileState."
         },
         {
           "name": "unknownAY",
           "type": "f32",
-          "note": "What this holds is not recorded."
+          "note": "Where the missile's thrower stood, in height: casterAt of the last MissileState."
         },
         {
           "name": "unknownAZ",
           "type": "f32",
-          "note": "What this holds is not recorded."
+          "note": "Where the missile's thrower stood, along the other ground axis: casterAt of the last MissileState."
         },
         {
           "name": "travelX",
@@ -1291,8 +1290,7 @@
         },
         {
           "name": "flag",
-          "type": "u8",
-          "note": "Zero or one; what it means is not recorded."
+          "type": "u8"
         },
         {
           "name": "cast",
@@ -1329,17 +1327,17 @@
         {
           "name": "unknownAX",
           "type": "f32",
-          "note": "What this holds is not recorded."
+          "note": "Where the missile's thrower stood, along one ground axis: casterAt of the last MissileState."
         },
         {
           "name": "unknownAY",
           "type": "f32",
-          "note": "What this holds is not recorded."
+          "note": "Where the missile's thrower stood, in height: casterAt of the last MissileState."
         },
         {
           "name": "unknownAZ",
           "type": "f32",
-          "note": "What this holds is not recorded."
+          "note": "Where the missile's thrower stood, along the other ground axis: casterAt of the last MissileState."
         },
         {
           "name": "travelX",
@@ -1403,8 +1401,7 @@
         },
         {
           "name": "flag",
-          "type": "u8",
-          "note": "Zero or one; what it means is not recorded."
+          "type": "u8"
         },
         {
           "name": "cast",
@@ -3118,17 +3115,17 @@
         {
           "name": "unknownBX",
           "type": "f32",
-          "note": "What this holds is not recorded."
+          "note": "A client writes nothing here."
         },
         {
           "name": "unknownBY",
           "type": "f32",
-          "note": "What this holds is not recorded."
+          "note": "A client writes nothing here."
         },
         {
           "name": "unknownBZ",
           "type": "f32",
-          "note": "What this holds is not recorded."
+          "note": "A client writes nothing here."
         },
         {
           "name": "endX",

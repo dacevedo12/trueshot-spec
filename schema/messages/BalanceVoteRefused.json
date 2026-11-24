@@ -175,7 +175,7 @@
         {
           "name": "flags",
           "type": "u8",
-          "note": "A vote against: the lowest bit is clear. The other bits carry no meaning, and a server ignores them."
+          "note": "A vote against: the lowest bit is clear."
         },
         {
           "name": "voter",

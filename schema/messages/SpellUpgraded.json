@@ -106,36 +106,10 @@
           "note": "How many spell points are left unspent."
         }
       ],
-      "note": "Arriving on the events channel instead, it raises the spell as well, and a client shows the new level either way."
+      "note": "A client handles it the same on every channel: it sets the slot's level and the points left. It does this only for a champion, and nothing for any other unit."
     },
     {
       "from": "1.0.0.110",
-      "until": "1.0.0.111",
-      "channel": "clock",
-      "command": 24,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "slot",
-          "type": "u8",
-          "note": "Which slot."
-        },
-        {
-          "name": "level",
-          "type": "u8",
-          "note": "The level the spell now stands at. A client takes any level above 6 as 6."
-        },
-        {
-          "name": "pointsLeft",
-          "type": "u8",
-          "note": "How many spell points are left unspent."
-        }
-      ],
-      "note": "Only for a champion: on any channel a client sets the slot's level to level, and the unspent spell points to pointsLeft; it raises the spell no further. For any other unit it ignores the message."
-    },
-    {
-      "from": "1.0.0.111",
       "until": "1.0.0.126",
       "channel": "clock",
       "command": 24,
@@ -158,7 +132,7 @@
           "note": "How many spell points are left unspent."
         }
       ],
-      "note": "On any channel a client sets the slot's level to level, and the unspent spell points to pointsLeft; it raises the spell no further."
+      "note": "Only for a champion: on any channel a client sets the slot's level to level, and the unspent spell points to pointsLeft; it raises the spell no further. For any other unit it ignores the message."
     },
     {
       "from": "1.0.0.126",
@@ -209,8 +183,7 @@
           "type": "u8",
           "note": "How many spell points are left unspent."
         }
-      ],
-      "note": "On any channel a client sets the slot's level to level, and the unspent spell points to pointsLeft; it raises the spell no further."
+      ]
     },
     {
       "from": "1.0.0.128",
@@ -292,32 +265,6 @@
     },
     {
       "from": "3.11.0.306",
-      "until": "3.13.0.399",
-      "channel": "clock",
-      "command": 21,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "slot",
-          "type": "u8",
-          "note": "Which slot."
-        },
-        {
-          "name": "level",
-          "type": "u8",
-          "note": "The level the spell now stands at."
-        },
-        {
-          "name": "pointsLeft",
-          "type": "u8",
-          "note": "How many spell points are left unspent."
-        }
-      ],
-      "note": "Arriving on the events channel instead, it raises the spell as well, and a client shows the new level either way."
-    },
-    {
-      "from": "3.13.0.399",
       "until": "3.14.0.700",
       "channel": "clock",
       "command": 21,
@@ -366,7 +313,7 @@
           "note": "How many spell points are left unspent."
         }
       ],
-      "note": "Arriving on the events channel instead, it raises the spell as well, and a client shows the new level either way."
+      "note": "On whichever of the clock, events and transient channels it arrives, a client acts on it where the header names a champion: it sets the slot's level and the points left unspent."
     },
     {
       "from": "4.4.0.1858",
@@ -418,7 +365,7 @@
           "note": "How many spell points are left unspent."
         }
       ],
-      "note": "Arriving on the events channel instead, it raises the spell as well, and a client shows the new level either way."
+      "note": "On whichever of the clock, events and transient channels it arrives, a client acts on it where the header names a champion: it sets the slot's level and the points left unspent, and shows them."
     },
     {
       "from": "4.17.0.233",

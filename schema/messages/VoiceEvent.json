@@ -170,8 +170,7 @@
         },
         {
           "name": "callback",
-          "type": "u8",
-          "note": "Bit 0 set asks the client to send VoiceEventDone once the event has finished playing. A client sends it at once, whatever this holds, where its audio is not set up."
+          "type": "u8"
         }
       ]
     },
@@ -192,8 +191,7 @@
         },
         {
           "name": "callback",
-          "type": "u8",
-          "note": "Bit 0 set asks the client to send VoiceEventDone once the event has finished playing. A client sends it at once, whatever this holds, where its audio is not set up."
+          "type": "u8"
         }
       ]
     },
@@ -217,7 +215,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": 64,
-          "note": "The event's name; for kind 1, the conversation's."
+          "note": "The event's name."
         },
         {
           "name": "callback",
@@ -251,7 +249,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": 64,
-          "note": "The event's name; for kind 1, the conversation's."
+          "note": "The event's name."
         },
         {
           "name": "callback",
@@ -285,7 +283,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": 64,
-          "note": "The event's name; for kind 1, the conversation's."
+          "note": "The event's name."
         },
         {
           "name": "callback",

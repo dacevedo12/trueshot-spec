@@ -49,8 +49,7 @@
           "type": "u32",
           "note": "The particle to stop."
         }
-      ],
-      "note": "The header names the particle."
+      ]
     },
     {
       "from": "1.0.0.117",
@@ -65,8 +64,7 @@
           "type": "u32",
           "note": "The particle to stop."
         }
-      ],
-      "note": "The header names the particle."
+      ]
     },
     {
       "from": "1.0.0.119",
@@ -81,8 +79,7 @@
           "type": "u32",
           "note": "The particle to stop."
         }
-      ],
-      "note": "The header names the particle."
+      ]
     },
     {
       "from": "1.0.0.124",
@@ -112,8 +109,7 @@
           "type": "u32",
           "note": "The particle to stop."
         }
-      ],
-      "note": "The header names the particle."
+      ]
     },
     {
       "from": "1.0.0.150",
@@ -149,7 +145,7 @@
     },
     {
       "from": "3.13.0.399",
-      "until": "3.14.0.700",
+      "until": "4.4.0.1858",
       "channel": "events",
       "command": 55,
       "direction": "serverToClient",
@@ -164,39 +160,7 @@
       "note": "A client ignores the header."
     },
     {
-      "from": "3.14.0.700",
-      "until": "4.4.0.1858",
-      "channel": "events",
-      "command": 55,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "particle",
-          "type": "u32",
-          "note": "The particle to stop."
-        }
-      ],
-      "note": "The header names the particle."
-    },
-    {
       "from": "4.4.0.1858",
-      "until": "4.5.0.260",
-      "channel": "events",
-      "command": 55,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "particle",
-          "type": "u32",
-          "note": "The particle to stop."
-        }
-      ],
-      "note": "A client ignores the header: it takes the particle from particle."
-    },
-    {
-      "from": "4.5.0.260",
       "until": "4.11.0.386",
       "channel": "events",
       "command": 55,
@@ -209,7 +173,7 @@
           "note": "The particle to stop."
         }
       ],
-      "note": "The header names the particle."
+      "note": "A client ignores the header: it takes the particle from particle."
     },
     {
       "from": "4.11.0.386",
@@ -225,26 +189,10 @@
           "note": "The particle to stop."
         }
       ],
-      "note": "The header names the particle."
+      "note": "A client ignores the header: it takes the particle from particle."
     },
     {
       "from": "4.17.0.233",
-      "until": "4.18.0.271",
-      "channel": "events",
-      "command": 56,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "particle",
-          "type": "u32",
-          "note": "The particle to stop."
-        }
-      ],
-      "note": "The header has no effect: a client takes the particle from particle."
-    },
-    {
-      "from": "4.18.0.271",
       "until": "4.20.0.315",
       "channel": "events",
       "command": 56,
@@ -257,7 +205,7 @@
           "note": "The particle to stop."
         }
       ],
-      "note": "The header names the particle."
+      "note": "The header has no effect: a client takes the particle from particle."
     },
     {
       "from": "4.20.0.315",

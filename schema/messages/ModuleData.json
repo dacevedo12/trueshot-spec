@@ -83,7 +83,7 @@
           "note": "Data for a module of the client's own, which the message only carries."
         }
       ],
-      "note": "A client takes it even before it is ready to play. With kind 4, or any kind other than 1 and 2, a client acts on what the data carries as on a message that had arrived. What kinds 1 and 2 do is not shown."
+      "note": "Kind 4 has a client act on what the data carries as on a message that had arrived, and it drops any kind but 1, 2 and 4."
     },
     {
       "from": "3.6.0.388",
@@ -136,8 +136,7 @@
           "size": "length",
           "note": "Data for a module of the client's own, which the message only carries."
         }
-      ],
-      "note": "A client takes it even before it is ready to play. With kind 4, or any kind other than 1 and 2, a client acts on what the data carries as on a message that had arrived. What kinds 1 and 2 do is not shown."
+      ]
     },
     {
       "from": "3.10.0.237",
@@ -191,7 +190,7 @@
           "note": "Data for a module of the client's own, which the message only carries."
         }
       ],
-      "note": "A client takes it even before it is ready to play. With kind 4, or any kind other than 1 and 2, a client acts on what the data carries as on a message that had arrived. What kinds 1 and 2 do is not shown."
+      "note": "A client takes it even before it is ready to play. Kind 1 starts the module. Kind 2 hands the data to the module."
     },
     {
       "from": "3.13.0.399",
@@ -236,7 +235,7 @@
         {
           "name": "length",
           "type": "u16",
-          "note": "How many bytes of data follow; at most 1024."
+          "note": "How many bytes of data follow."
         },
         {
           "name": "data",
@@ -245,7 +244,7 @@
           "note": "Data for a module of the client's own, which the message only carries."
         }
       ],
-      "note": "A client takes it even before it is ready to play. With kind 4, or any kind other than 1 and 2, a client acts on what the data carries as on a message that had arrived. What kinds 1 and 2 do is not shown."
+      "note": "A client takes it even before it is ready to play. Until a module is loaded only kind 1 does anything, and a client ignores every kind but 1, 2 and 4."
     },
     {
       "from": "4.1.0.171",
@@ -263,7 +262,7 @@
         {
           "name": "length",
           "type": "u16",
-          "note": "How many bytes of data follow; at most 1024."
+          "note": "How many bytes of data follow."
         },
         {
           "name": "data",
@@ -272,7 +271,7 @@
           "note": "Data for a module of the client's own, which the message only carries."
         }
       ],
-      "note": "A client takes it even before it is ready to play. With kind 4, or any kind other than 1 and 2, a client acts on what the data carries as on a message that had arrived. What kinds 1 and 2 do is not shown."
+      "note": "A client takes it even before it is ready to play. Until a module is loaded only kind 1 does anything, and a client ignores every kind but 1, 2 and 4."
     },
     {
       "from": "4.4.0.1858",

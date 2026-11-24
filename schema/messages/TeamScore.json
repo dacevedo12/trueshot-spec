@@ -32,7 +32,6 @@
       "command": 210,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client ignores it unless it shows the capture point panel. Each score shows as a whole number, divided by 100 and rounded toward zero.",
       "fields": [
         {
           "name": "sideScore",
@@ -53,7 +52,6 @@
       "command": 211,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client ignores it unless it shows the capture point panel. Each score shows as a whole number, divided by 100 and rounded toward zero.",
       "fields": [
         {
           "name": "sideScore",
@@ -74,7 +72,6 @@
       "command": 212,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client ignores it unless it shows the capture point panel. Each score shows as a whole number, divided by 100 and rounded toward zero.",
       "fields": [
         {
           "name": "sideScore",
@@ -95,7 +92,6 @@
       "command": 213,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client ignores it unless it shows the capture point panel. Each score shows as a whole number, divided by 100 and rounded toward zero.",
       "fields": [
         {
           "name": "sideScore",
@@ -116,7 +112,6 @@
       "command": 219,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client takes this only once the match has started. It draws nothing from this message alone: the score shows on the panel that a client shows only where the version answer named the mode ODIN and a point is known (CapturePointChanged). The panel counts five points, and a score of 500 at most. A score that arrives before the panel shows is shown when it does. Reaching a score ends nothing in a client: a match ends through the messages that end any match.",
       "fields": [
         {
           "name": "side",
@@ -137,7 +132,6 @@
       "command": 220,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client takes this only once the match has started. It draws nothing from this message alone: the score shows on the panel that a client shows only where the version answer named the mode ODIN and a point is known (CapturePointChanged). The panel counts five points, and a score of 500 at most. A score that arrives before the panel shows is shown when it does. Reaching a score ends nothing in a client: a match ends through the messages that end any match.",
       "fields": [
         {
           "name": "side",
@@ -174,33 +168,12 @@
     },
     {
       "from": "1.0.0.132",
-      "until": "1.0.0.133",
-      "channel": "events",
-      "command": 222,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "note": "A client takes this once its game screen is up, which it builds while the match loads, after VersionSync; one that arrives before is dropped. It draws nothing from this message alone: the score shows on the panel that a client shows only where the version answer named the mode ODIN and a point is known (CapturePointChanged). The panel counts five points, and a score of 500 at most. A score that arrives before the panel shows is shown when it does. Reaching a score ends nothing in a client: a match ends through the messages that end any match.",
-      "fields": [
-        {
-          "name": "side",
-          "type": "i32",
-          "note": "Which side, 100 or 200. A client ignores any other."
-        },
-        {
-          "name": "score",
-          "type": "i32",
-          "note": "The score it now stands at: the whole of it, not a change."
-        }
-      ]
-    },
-    {
-      "from": "1.0.0.133",
       "until": "1.0.0.135",
       "channel": "events",
       "command": 222,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client takes this only once the match has started. It draws nothing from this message alone: the score shows on the panel that a client shows only where the version answer named the mode ODIN and a point is known (CapturePointChanged). The panel counts five points, and a score of 500 at most. A score that arrives before the panel shows is shown when it does. Reaching a score ends nothing in a client: a match ends through the messages that end any match.",
+      "note": "A client takes this once its game screen is up, which it builds while the match loads, after VersionSync; one that arrives before is dropped. It draws nothing from this message alone: the score shows on the panel that a client shows only where the version answer named the mode ODIN and a point is known (CapturePointChanged). The panel counts five points, and a score of 500 at most. A score that arrives before the panel shows is shown when it does. Reaching a score ends nothing in a client: a match ends through the messages that end any match.",
       "fields": [
         {
           "name": "side",
@@ -221,7 +194,7 @@
       "command": 224,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client takes this only once the match has started. It draws nothing from this message alone: the score shows on the panel that a client shows only where the version answer named the mode ODIN and a point is known (CapturePointChanged). The panel counts five points, and a score of 500 at most. A score that arrives before the panel shows is shown when it does. Reaching a score ends nothing in a client: a match ends through the messages that end any match.",
+      "note": "A client takes this once its game screen is up, which it builds while the match loads, after VersionSync; one that arrives before is dropped. It draws nothing from this message alone: the score shows on the panel that a client shows only where the version answer named the mode ODIN and a point is known (CapturePointChanged). The panel counts five points, and a score of 500 at most. A score that arrives before the panel shows is shown when it does. Reaching a score ends nothing in a client: a match ends through the messages that end any match.",
       "fields": [
         {
           "name": "side",
@@ -242,7 +215,7 @@
       "command": 222,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client takes this only once the match has started. It draws nothing from this message alone: the score shows on the panel that a client shows only where the version answer named the mode ODIN and a point is known (CapturePointChanged). The panel counts five points, and a score of 500 at most. A score that arrives before the panel shows is shown when it does. Reaching a score ends nothing in a client: a match ends through the messages that end any match.",
+      "note": "A client takes this once its game screen is up, which it builds while the match loads, after VersionSync; one that arrives before is dropped. It draws nothing from this message alone: the score shows on the panel that a client shows only where the version answer named the mode ODIN and a point is known (CapturePointChanged). The panel counts five points, and a score of 500 at most. A score that arrives before the panel shows is shown when it does. Reaching a score ends nothing in a client: a match ends through the messages that end any match.",
       "fields": [
         {
           "name": "side",
@@ -263,7 +236,7 @@
       "command": 224,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client takes this only once the match has started. It draws nothing from this message alone: the score shows on the panel that a client shows only where the version answer named the mode ODIN and a point is known (CapturePointChanged). The panel counts five points, and a score of 500 at most. A score that arrives before the panel shows is shown when it does. Reaching a score ends nothing in a client: a match ends through the messages that end any match.",
+      "note": "A client takes this once its game screen is up, which it builds while the match loads, after VersionSync; one that arrives before is dropped. It draws nothing from this message alone: the score shows on the panel that a client shows only where the version answer named the mode ODIN and a point is known (CapturePointChanged). The panel counts five points, and a score of 500 at most. A score that arrives before the panel shows is shown when it does. Reaching a score ends nothing in a client: a match ends through the messages that end any match.",
       "fields": [
         {
           "name": "side",
@@ -305,7 +278,7 @@
       "command": 225,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client takes this only once the match has started. It draws nothing from this message alone: the score shows on the panel that a client shows only where the version answer named the mode ODIN and a point is known (CapturePointChanged). The panel counts five points, and a score of 500 at most. A score that arrives before the panel shows is shown when it does. Reaching a score ends nothing in a client: a match ends through the messages that end any match.",
+      "note": "A client takes this once its interface for the match exists, which it builds while loading, after accepting VersionSync; it drops a score arriving before then. It draws nothing from this message alone: the score shows on the panel that a client shows only where the version answer named the mode ODIN and a point is known (CapturePointChanged). The panel counts five points, and a score of 500 at most. A score that arrives before the panel shows is shown when it does. Reaching a score ends nothing in a client: a match ends through the messages that end any match.",
       "fields": [
         {
           "name": "side",
@@ -368,7 +341,7 @@
       "command": 209,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client takes this only once the match has started. It draws nothing from this message alone: the score shows on the panel that a client shows only where the version answer named the mode ODIN and a point is known (CapturePointChanged). The panel counts five points, and a score of 500 at most. A score that arrives before the panel shows is shown when it does. Reaching a score ends nothing in a client: a match ends through the messages that end any match.",
+      "note": "A client takes this once its interface for the match exists, which it builds while loading, after accepting VersionSync; it drops a score arriving before then. It draws nothing from this message alone: the score shows on the panel that a client shows only where the version answer named the mode ODIN and a point is known (CapturePointChanged). The panel counts five points, and a score of 500 at most. A score that arrives before the panel shows is shown when it does. Reaching a score ends nothing in a client: a match ends through the messages that end any match.",
       "fields": [
         {
           "name": "side",

@@ -293,7 +293,7 @@
           ]
         }
       ],
-      "note": "A client ignores it where killer is zero or the champion is already dead."
+      "note": "A client ignores it where the champion is already dead. Where killer is zero, it stops the champion's cast and attack and puts nothing down."
     },
     {
       "from": "1.0.0.117",
@@ -390,7 +390,7 @@
           ]
         }
       ],
-      "note": "A client ignores it where killer is zero or the champion is already dead."
+      "note": "A client ignores it where the champion is already dead. Where killer is zero, it stops the champion's cast and attack and puts nothing down."
     },
     {
       "from": "1.0.0.119",
@@ -487,7 +487,7 @@
           ]
         }
       ],
-      "note": "A client ignores it where killer is zero or the champion is already dead."
+      "note": "A client ignores it where the champion is already dead. Where killer is zero, it stops the champion's cast and attack and puts nothing down."
     },
     {
       "from": "1.0.0.124",
@@ -618,7 +618,7 @@
         {
           "name": "damageSource",
           "type": "u8",
-          "note": "Read only for a minion a champion killed, whose kill a client shows another way where it is 7; a server writes zero.",
+          "note": "Unused; a server writes zero.",
           "values": {
             "0": {
               "name": "raw"
@@ -681,7 +681,7 @@
           ]
         }
       ],
-      "note": "A client ignores it where killer is zero or the champion is already dead."
+      "note": "A client ignores it where the champion is already dead. Where killer is zero, it stops the champion's cast and attack and puts nothing down."
     },
     {
       "from": "1.0.0.132",
@@ -812,7 +812,7 @@
         {
           "name": "damageSource",
           "type": "u8",
-          "note": "Read only for a minion a champion killed, whose kill a client shows another way where it is 7; a server writes zero.",
+          "note": "It has no effect.",
           "values": {
             "0": {
               "name": "raw"
@@ -875,7 +875,7 @@
           ]
         }
       ],
-      "note": "A client ignores it where killer is zero or the champion is already dead."
+      "note": "A client ignores it where the champion is already dead. Where killer is zero, it stops the champion's cast and attack and puts nothing down."
     },
     {
       "from": "1.0.0.138",
@@ -1273,7 +1273,7 @@
           "note": "Unused; a client reads it for nothing in this message."
         }
       ],
-      "note": "A client ignores it where killer is zero or the champion is already dead."
+      "note": "A client ignores it where the champion is already dead. Otherwise it stops the champion's cast and attack, and puts it down only where killer is nonzero."
     },
     {
       "from": "1.0.0.154",

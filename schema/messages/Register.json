@@ -64,7 +64,7 @@
           "name": "proof",
           "type": "i64",
           "enciphered": true,
-          "note": "The player id enciphered with the 16-byte key; a plain copy where the client has no key."
+          "note": "The player id enciphered with the 16-byte key."
         }
       ]
     },
@@ -330,8 +330,7 @@
         },
         {
           "name": "version",
-          "type": "u32",
-          "note": "The build the client runs, with each part written out and run together, so 4.17.0.233 arrives as 41700233 and 4.17.0.267 as 41700267. A client always carries it, and the answer a server carries back repeats the same number."
+          "type": "u32"
         },
         {
           "name": "proof",
@@ -417,7 +416,7 @@
         {
           "name": "version",
           "type": "u32",
-          "note": "The build the client runs, with each part written out and run together, so 4.18.0.271 arrives as 41800271. A client always carries it, and the answer a server carries back repeats the same number."
+          "note": "The build the client runs, as first × 10000000 + second × 100000 + third × 100 + fourth. A client always carries it."
         },
         {
           "name": "proof",

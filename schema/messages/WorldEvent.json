@@ -3354,7 +3354,7 @@
         {
           "name": "event",
           "type": "u8",
-          "note": "Which event, from 0 to 74, and so which fields follow.",
+          "note": "Which event, and so which fields follow.",
           "values": {
             "0": {
               "name": "died"
@@ -3839,7 +3839,7 @@
         {
           "name": "event",
           "type": "u8",
-          "note": "Which event, from 0 to 74, and so which fields follow.",
+          "note": "Which event, and so which fields follow.",
           "values": {
             "0": {
               "name": "died"
@@ -5294,7 +5294,7 @@
         {
           "name": "event",
           "type": "u8",
-          "note": "Which event, from 0 to 82, and so which fields follow.",
+          "note": "Which event, and so which fields follow.",
           "values": {
             "0": {
               "name": "died"
@@ -5782,7 +5782,7 @@
         {
           "name": "event",
           "type": "u8",
-          "note": "Which event, from 0 to 82, and so which fields follow.",
+          "note": "Which event, and so which fields follow.",
           "values": {
             "0": {
               "name": "died"
@@ -6270,7 +6270,7 @@
         {
           "name": "event",
           "type": "u8",
-          "note": "Which event, from 0 to 82, and so which fields follow.",
+          "note": "Which event, and so which fields follow.",
           "values": {
             "0": {
               "name": "died"
@@ -8240,7 +8240,7 @@
         {
           "name": "event",
           "type": "u8",
-          "note": "Which event, from 0 to 96, and so which fields follow.",
+          "note": "Which event, and so which fields follow.",
           "values": {
             "0": {
               "name": "died"
@@ -9236,7 +9236,7 @@
         {
           "name": "event",
           "type": "u8",
-          "note": "Which event, from 0 to 101, and so which fields follow.",
+          "note": "Which event, and so which fields follow.",
           "values": {
             "0": {
               "name": "died"
@@ -10801,7 +10801,7 @@
         {
           "name": "event",
           "type": "u8",
-          "note": "Which event, from 0 to 110, and so which fields follow.",
+          "note": "Which event, and so which fields follow.",
           "values": {
             "0": {
               "name": "died"
@@ -11868,7 +11868,7 @@
         {
           "name": "event",
           "type": "u8",
-          "note": "Which event, from 0 to 110, and so which fields follow.",
+          "note": "Which event, and so which fields follow.",
           "values": {
             "0": {
               "name": "died"
@@ -12426,7 +12426,7 @@
         {
           "name": "event",
           "type": "u8",
-          "note": "Which event, from 0 to 115, and so which fields follow.",
+          "note": "Which event, and so which fields follow.",
           "values": {
             "0": {
               "name": "removed"
@@ -14284,7 +14284,7 @@
         {
           "name": "source",
           "type": "u32",
-          "note": "The unit the thing is credited to, or zero where none is. For a monster's death, 117 to 120, a client reads the side of the unit named here before it looks whether it holds it."
+          "note": "The unit the thing is credited to, or zero where none is."
         },
         {
           "name": "subject",
@@ -14883,7 +14883,7 @@
         {
           "name": "source",
           "type": "u32",
-          "note": "The unit the thing is credited to, or zero where none is. For a monster's death, 116 to 119, a client reads the side of the unit named here before it looks whether it holds it."
+          "note": "The unit the thing is credited to, or zero where none is."
         },
         {
           "name": "subject",
@@ -15482,7 +15482,7 @@
         {
           "name": "source",
           "type": "u32",
-          "note": "The unit the thing is credited to, or zero where none is. For a monster's death, 116 to 119, a client reads the side of the unit named here before it looks whether it holds it."
+          "note": "The unit the thing is credited to, or zero where none is."
         },
         {
           "name": "subject",
@@ -16123,7 +16123,7 @@
         {
           "name": "source",
           "type": "u32",
-          "note": "The unit the thing is credited to, or zero where none is. For a monster's death, 116 to 121, a client reads the side of the unit named here before it looks whether it holds it."
+          "note": "The unit the thing is credited to, or zero where none is."
         },
         {
           "name": "subject",
@@ -16770,7 +16770,7 @@
         {
           "name": "source",
           "type": "u32",
-          "note": "The unit the thing is credited to, or zero where none is. For a monster's death, 116 to 121, a client reads the side of the unit named here before it looks whether it holds it."
+          "note": "The unit the thing is credited to, or zero where none is."
         },
         {
           "name": "subject",
@@ -27486,7 +27486,7 @@
         {
           "name": "event",
           "type": "u8",
-          "note": "What sort of thing happened, and so which shape follows. Each name says what the sort is sent alongside, and each note what a client shows for it; the text of a notice that carries a map is the one that map gives it.",
+          "note": "What sort of thing happened, and so which shape follows.",
           "values": {
             "0": {
               "name": "removed"
@@ -27531,8 +27531,7 @@
               "name": "inhibitorKilled"
             },
             "30": {
-              "name": "inhibitorDied",
-              "note": "Sent as an inhibitor falls, with that inhibitor as source and the unit credited with it as subject. A client calls out the kill, naming the killer, the inhibitor and the assisters, where it holds the inhibitor as a building and knows the killer. Where it names the client's own champion and everything after it is zero, a client on map 1 shows a notice with no text of its own."
+              "name": "inhibitorDied"
             },
             "31": {
               "name": "inhibitorRespawningSoon"
@@ -27636,12 +27635,10 @@
               "note": "Sent once, as the first minions come out. A client announces that minions have spawned."
             },
             "112": {
-              "name": "welcome",
-              "note": "Sent once, early in a match. A client announces the welcome for the map carried."
+              "name": "welcome"
             },
             "113": {
-              "name": "startNoticeTwo",
-              "note": "Sent once, after welcome. A client announces the second notice for the map carried; on map 1 that minions spawn in thirty seconds."
+              "name": "startNoticeTwo"
             },
             "114": {
               "name": "startNoticeThree",
@@ -29104,7 +29101,7 @@
             },
             "30": {
               "name": "inhibitorDied",
-              "note": "Sent as an inhibitor falls, with that inhibitor as source and the unit credited with it as subject. A client calls out the kill, naming the killer, the inhibitor and the assisters, where it holds the inhibitor as a building and knows the killer. Where it names the client's own champion and everything after it is zero, a client on map 1 shows a notice with no text of its own."
+              "note": "Sent as an inhibitor falls, with that inhibitor as source and the unit credited with it as subject. A client calls out the kill, naming the killer and the inhibitor, where it holds the inhibitor as a building and knows the killer."
             },
             "31": {
               "name": "inhibitorRespawningSoon"
@@ -29209,11 +29206,11 @@
             },
             "112": {
               "name": "welcome",
-              "note": "Sent once, early in a match. A client announces the welcome for the map carried."
+              "note": "Sent once, early in a match. A client shows a notice."
             },
             "113": {
               "name": "startNoticeTwo",
-              "note": "Sent once, after welcome. A client announces the second notice for the map carried; on map 1 that minions spawn in thirty seconds."
+              "note": "Sent once, after welcome. A client shows a notice."
             },
             "114": {
               "name": "startNoticeThree",
@@ -30016,11 +30013,11 @@
             },
             "113": {
               "name": "welcome",
-              "note": "Sent once, early in a match. A client announces the welcome for the map carried."
+              "note": "Sent once, early in a match. A client shows a notice."
             },
             "114": {
               "name": "startNoticeTwo",
-              "note": "Sent once, after welcome. A client announces the second notice for the map carried; on map 1 that minions spawn in thirty seconds."
+              "note": "Sent once, after welcome. A client shows a notice."
             },
             "115": {
               "name": "startNoticeThree",
@@ -30823,11 +30820,11 @@
             },
             "113": {
               "name": "welcome",
-              "note": "Sent once, early in a match. A client announces the welcome for the map carried."
+              "note": "Sent once, early in a match. A client shows a notice."
             },
             "114": {
               "name": "startNoticeTwo",
-              "note": "Sent once, after welcome. A client announces the second notice for the map carried; on map 1 that minions spawn in thirty seconds."
+              "note": "Sent once, after welcome. A client shows a notice."
             },
             "115": {
               "name": "startNoticeThree",
@@ -31630,11 +31627,11 @@
             },
             "113": {
               "name": "welcome",
-              "note": "Sent once, early in a match. A client announces the welcome for the map carried."
+              "note": "Sent once, early in a match. A client shows a notice."
             },
             "114": {
               "name": "startNoticeTwo",
-              "note": "Sent once, after welcome. A client announces the second notice for the map carried; on map 1 that minions spawn in thirty seconds."
+              "note": "Sent once, after welcome. A client shows a notice."
             },
             "115": {
               "name": "startNoticeThree",
@@ -32440,7 +32437,7 @@
             },
             "114": {
               "name": "welcome",
-              "note": "Sent once, early in a match. A client announces the welcome for the map carried."
+              "note": "Sent once, early in a match. A client shows a notice."
             },
             "115": {
               "name": "startNoticeTwo",
@@ -33276,11 +33273,11 @@
             },
             "118": {
               "name": "welcome",
-              "note": "Sent once, early in a match. A client announces the welcome for the map carried."
+              "note": "Sent once, early in a match. A client shows a notice."
             },
             "119": {
               "name": "startNoticeTwo",
-              "note": "Sent once, after welcome. A client announces the second notice for the map carried; on map 1 that minions spawn in thirty seconds."
+              "note": "Sent once, after welcome. A client shows a notice."
             },
             "120": {
               "name": "startNoticeThree",

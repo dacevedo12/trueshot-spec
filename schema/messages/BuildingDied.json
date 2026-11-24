@@ -63,7 +63,7 @@
         {
           "name": "attacker",
           "type": "u32",
-          "note": "The unit that destroyed it. A client reads nothing here."
+          "note": "The unit that destroyed it."
         }
       ]
     },
@@ -153,7 +153,7 @@
         {
           "name": "attacker",
           "type": "u32",
-          "note": "The unit that destroyed it. A client reads it only for a nexus; for any other building it reads nothing of the message after the header."
+          "note": "The unit that destroyed it."
         }
       ]
     },
@@ -183,7 +183,7 @@
         {
           "name": "attacker",
           "type": "u32",
-          "note": "The unit that destroyed it. A client reads it only for a nexus; for any other building it reads nothing of the message after the header."
+          "note": "The unit that destroyed it."
         }
       ]
     },
@@ -465,7 +465,7 @@
         {
           "name": "lastChampion",
           "type": "u32",
-          "note": "For an inhibitor, the unit credited with destroying it; zero credits the attacker. A client reads it for nothing else."
+          "note": "A client reads nothing here."
         }
       ]
     },

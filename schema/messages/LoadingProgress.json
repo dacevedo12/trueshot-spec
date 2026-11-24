@@ -191,8 +191,7 @@
           "bits": [
             {
               "name": "count",
-              "width": 16,
-              "note": "It rises with each report, not always by one, until it wraps."
+              "width": 16
             },
             {
               "name": "ping",
@@ -267,8 +266,7 @@
           "bits": [
             {
               "name": "count",
-              "width": 16,
-              "note": "It rises with each report, not always by one."
+              "width": 16
             },
             {
               "name": "ping",
@@ -1139,7 +1137,7 @@
         {
           "name": "playerId",
           "type": "i64",
-          "note": "Who is reporting. A client sends zero."
+          "note": "Who is reporting."
         },
         {
           "name": "percent",
@@ -1411,7 +1409,7 @@
             {
               "name": "loaded",
               "width": 1,
-              "note": "Set in every report whose progress stands at one hundred, and in no other."
+              "note": "Set where the client has finished loading."
             }
           ]
         }
@@ -1662,7 +1660,7 @@
             {
               "name": "count",
               "width": 16,
-              "note": "How many reports have been made."
+              "note": "It rises with each report, not always by one."
             },
             {
               "name": "ping",

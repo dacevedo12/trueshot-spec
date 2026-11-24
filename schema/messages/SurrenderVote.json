@@ -86,7 +86,7 @@
           ]
         }
       ],
-      "note": "It answers a call to surrender."
+      "note": "A client sends it as its player votes, by button or chat command, whether or not a vote is open."
     },
     {
       "from": "1.0.0.25",
@@ -170,11 +170,11 @@
           ]
         }
       ],
-      "note": "It answers a call to surrender."
+      "note": "A client sends it from the vote's panel. It sends one whether or not a vote is open."
     },
     {
       "from": "1.0.0.74",
-      "until": "1.0.0.75",
+      "until": "1.0.0.82",
       "channel": "requests",
       "command": 158,
       "direction": "clientToServer",
@@ -199,34 +199,6 @@
         }
       ],
       "note": "A client sends it from the vote's panel, set for yes and clear for no, and set as its player gives the command to surrender, whether or not a vote is open: with none open, that calls one."
-    },
-    {
-      "from": "1.0.0.75",
-      "until": "1.0.0.82",
-      "channel": "requests",
-      "command": 158,
-      "direction": "clientToServer",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "how",
-          "type": "bits",
-          "size": 1,
-          "bits": [
-            {
-              "name": "inFavour",
-              "width": 1,
-              "note": "Set where the answer is yes."
-            },
-            {
-              "name": "unused",
-              "width": 7,
-              "note": "Always clear."
-            }
-          ]
-        }
-      ],
-      "note": "It answers a call to surrender."
     },
     {
       "from": "1.0.0.82",
@@ -254,7 +226,7 @@
           ]
         }
       ],
-      "note": "It answers a call to surrender."
+      "note": "A client sends it from the vote's panel, set for yes and clear for no, and set as its player gives the command to surrender, whether or not a vote is open: with none open, that calls one."
     },
     {
       "from": "1.0.0.86",
@@ -356,12 +328,12 @@
             {
               "name": "inFavour",
               "width": 1,
-              "note": "Set where the answer is yes. A client sends it clear."
+              "note": "Set where the answer is yes."
             },
             {
               "name": "unused",
               "width": 7,
-              "note": "Always clear."
+              "note": "Unused; a client leaves them as they happen to be, and a server ignores them."
             }
           ]
         }
@@ -384,12 +356,12 @@
             {
               "name": "inFavour",
               "width": 1,
-              "note": "Set where the answer is yes. A client sends it clear."
+              "note": "Set where the answer is yes."
             },
             {
               "name": "unused",
               "width": 7,
-              "note": "Always clear."
+              "note": "Unused; a client leaves them as they happen to be, and a server ignores them."
             }
           ]
         }
@@ -412,12 +384,12 @@
             {
               "name": "inFavour",
               "width": 1,
-              "note": "Set where the answer is yes. A client sends it clear."
+              "note": "Set where the answer is yes."
             },
             {
               "name": "unused",
               "width": 7,
-              "note": "Always clear."
+              "note": "Unused; a client leaves them as they happen to be, and a server ignores them."
             }
           ]
         }
@@ -440,12 +412,12 @@
             {
               "name": "inFavour",
               "width": 1,
-              "note": "Set where the answer is yes. A client sends it clear."
+              "note": "Set where the answer is yes."
             },
             {
               "name": "unused",
               "width": 7,
-              "note": "Always clear."
+              "note": "Unused; a client leaves them as they happen to be, and a server ignores them."
             }
           ]
         }
@@ -468,12 +440,12 @@
             {
               "name": "inFavour",
               "width": 1,
-              "note": "Set where the answer is yes. A client sends it clear."
+              "note": "Set where the answer is yes."
             },
             {
               "name": "unused",
               "width": 7,
-              "note": "Always clear."
+              "note": "Unused; a client leaves them as they happen to be, and a server ignores them."
             }
           ]
         }
@@ -496,12 +468,12 @@
             {
               "name": "inFavour",
               "width": 1,
-              "note": "Set where the answer is yes. A client sends it clear."
+              "note": "Set where the answer is yes."
             },
             {
               "name": "unused",
               "width": 7,
-              "note": "Always clear."
+              "note": "Unused; a client leaves them as they happen to be, and a server ignores them."
             }
           ]
         }
@@ -552,12 +524,12 @@
             {
               "name": "inFavour",
               "width": 1,
-              "note": "Set where the answer is yes. A client sends it clear."
+              "note": "Set where the answer is yes, clear where it is no."
             },
             {
               "name": "unused",
               "width": 7,
-              "note": "Always clear."
+              "note": "A client leaves these bits unwritten; they carry no meaning."
             }
           ]
         }
@@ -580,12 +552,12 @@
             {
               "name": "inFavour",
               "width": 1,
-              "note": "Set where the answer is yes. A client sends it clear."
+              "note": "Set where the answer is yes, clear where it is no."
             },
             {
               "name": "unused",
               "width": 7,
-              "note": "Always clear."
+              "note": "A client leaves these bits unwritten; they carry no meaning."
             }
           ]
         }
@@ -608,12 +580,12 @@
             {
               "name": "inFavour",
               "width": 1,
-              "note": "Set where the answer is yes. A client sends it clear."
+              "note": "Set where the answer is yes, clear where it is no."
             },
             {
               "name": "unused",
               "width": 7,
-              "note": "Always clear."
+              "note": "A client leaves these bits unwritten; they carry no meaning."
             }
           ]
         }
@@ -636,12 +608,12 @@
             {
               "name": "inFavour",
               "width": 1,
-              "note": "Set where the answer is yes. A client sends it clear."
+              "note": "Set where the answer is yes, clear where it is no."
             },
             {
               "name": "unused",
               "width": 7,
-              "note": "Always clear."
+              "note": "A client leaves these bits unwritten; they carry no meaning."
             }
           ]
         }
@@ -664,12 +636,12 @@
             {
               "name": "inFavour",
               "width": 1,
-              "note": "Set where the answer is yes. A client sends it clear."
+              "note": "Set where the answer is yes, clear where it is no."
             },
             {
               "name": "unused",
               "width": 7,
-              "note": "Always clear."
+              "note": "A client leaves these bits unwritten; they carry no meaning."
             }
           ]
         }
@@ -748,12 +720,12 @@
             {
               "name": "inFavour",
               "width": 1,
-              "note": "Set where the answer is yes. A client sends it clear."
+              "note": "Set where the answer is yes, clear where it is no."
             },
             {
               "name": "unused",
               "width": 7,
-              "note": "Always clear."
+              "note": "A client leaves these bits unwritten; they carry no meaning."
             }
           ]
         }
@@ -776,12 +748,12 @@
             {
               "name": "inFavour",
               "width": 1,
-              "note": "Set where the answer is yes. A client sends it clear."
+              "note": "Set where the answer is yes, clear where it is no."
             },
             {
               "name": "unused",
               "width": 7,
-              "note": "Always clear."
+              "note": "A client leaves these bits unwritten; they carry no meaning."
             }
           ]
         }
@@ -804,12 +776,12 @@
             {
               "name": "inFavour",
               "width": 1,
-              "note": "Set where the answer is yes. A client sends it clear."
+              "note": "Set where the answer is yes, clear where it is no."
             },
             {
               "name": "unused",
               "width": 7,
-              "note": "Always clear."
+              "note": "A client leaves these bits unwritten; they carry no meaning."
             }
           ]
         }
@@ -832,12 +804,12 @@
             {
               "name": "inFavour",
               "width": 1,
-              "note": "Set where the answer is yes. A client sends it clear."
+              "note": "Set where the answer is yes, clear where it is no."
             },
             {
               "name": "unused",
               "width": 7,
-              "note": "Always clear."
+              "note": "A client leaves these bits unwritten; they carry no meaning."
             }
           ]
         }
@@ -888,7 +860,7 @@
             {
               "name": "inFavour",
               "width": 1,
-              "note": "Set where the answer is yes. A client sends it clear."
+              "note": "Set where the answer is yes, clear where it is no."
             },
             {
               "name": "unused",
@@ -944,7 +916,7 @@
             {
               "name": "inFavour",
               "width": 1,
-              "note": "Set where the answer is yes. A client sends it clear."
+              "note": "Set where the answer is yes, clear where it is no."
             },
             {
               "name": "unused",
@@ -972,7 +944,7 @@
             {
               "name": "inFavour",
               "width": 1,
-              "note": "Set where the answer is yes. A client sends it clear."
+              "note": "Set where the answer is yes, clear where it is no."
             },
             {
               "name": "unused",
@@ -1196,7 +1168,7 @@
             {
               "name": "inFavour",
               "width": 1,
-              "note": "Set where the answer is yes. A client sends it clear."
+              "note": "Set where the answer is yes, clear where it is no."
             },
             {
               "name": "unused",
@@ -1224,7 +1196,7 @@
             {
               "name": "inFavour",
               "width": 1,
-              "note": "Set where the answer is yes. A client sends it clear."
+              "note": "Set where the answer is yes, clear where it is no."
             },
             {
               "name": "unused",
@@ -1280,7 +1252,7 @@
             {
               "name": "inFavour",
               "width": 1,
-              "note": "Set where the answer is yes. A client sends it clear."
+              "note": "Set where the answer is yes, clear where it is no."
             },
             {
               "name": "unused",
@@ -1308,7 +1280,7 @@
             {
               "name": "inFavour",
               "width": 1,
-              "note": "Set where the answer is yes. A client sends it clear."
+              "note": "Set where the answer is yes, clear where it is no."
             },
             {
               "name": "unused",

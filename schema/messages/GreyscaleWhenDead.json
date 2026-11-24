@@ -74,7 +74,7 @@
             {
               "name": "enabled",
               "width": 1,
-              "note": "Set where the world is drawn without colour. Clear, it does not stop a client drawing the world without colour while its champion is down."
+              "note": "Set where the world is drawn without colour while the client's own champion is down. It is set as the champion is created. Sent for any other champion, it changes nothing shown."
             },
             {
               "name": "unused",
@@ -87,7 +87,7 @@
     },
     {
       "from": "1.0.0.74",
-      "until": "1.0.0.75",
+      "until": "1.0.0.82",
       "channel": "events",
       "command": 171,
       "direction": "serverToClient",
@@ -113,61 +113,7 @@
       ]
     },
     {
-      "from": "1.0.0.75",
-      "until": "1.0.0.82",
-      "channel": "events",
-      "command": 171,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "state",
-          "type": "bits",
-          "size": 1,
-          "bits": [
-            {
-              "name": "enabled",
-              "width": 1,
-              "note": "Set where the world is drawn without colour. Clear, it does not stop a client drawing the world without colour while its champion is down."
-            },
-            {
-              "name": "unused",
-              "width": 7,
-              "note": "Unused; a server writes zero."
-            }
-          ]
-        }
-      ]
-    },
-    {
       "from": "1.0.0.82",
-      "until": "1.0.0.86",
-      "channel": "events",
-      "command": 175,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "state",
-          "type": "bits",
-          "size": 1,
-          "bits": [
-            {
-              "name": "enabled",
-              "width": 1,
-              "note": "Set where the world is drawn without colour. Clear, it does not stop a client drawing the world without colour while its champion is down."
-            },
-            {
-              "name": "unused",
-              "width": 7,
-              "note": "Unused; a server writes zero."
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "from": "1.0.0.86",
       "until": "1.0.0.87",
       "channel": "events",
       "command": 175,
@@ -209,7 +155,7 @@
             {
               "name": "enabled",
               "width": 1,
-              "note": "Set where the world is drawn without colour. Clear, it does not stop a client drawing the world without colour while its champion is down."
+              "note": "Set where the world is drawn without colour while the client's own champion is down. It is set as the champion is created. Sent for any other champion, it changes nothing shown."
             },
             {
               "name": "unused",
@@ -263,7 +209,7 @@
             {
               "name": "enabled",
               "width": 1,
-              "note": "Set where the world is drawn without colour. Clear, it does not stop a client drawing the world without colour while its champion is down."
+              "note": "Set where a client draws the world as it does for a dead champion while its own champion is down; clear, it does not. It is set as the champion is created."
             },
             {
               "name": "unused",
@@ -290,7 +236,7 @@
             {
               "name": "enabled",
               "width": 1,
-              "note": "Set where the world is drawn without colour. Clear, it does not stop a client drawing the world without colour while its champion is down."
+              "note": "Set where a client draws the world as it does for a dead champion while its own champion is down; clear, it does not. It is set as the champion is created."
             },
             {
               "name": "unused",
@@ -317,7 +263,7 @@
             {
               "name": "enabled",
               "width": 1,
-              "note": "Set where the world is drawn without colour. Clear, it does not stop a client drawing the world without colour while its champion is down."
+              "note": "Set where a client draws the world as it does for a dead champion while its own champion is down; clear, it does not. It is set as the champion is created."
             },
             {
               "name": "unused",
@@ -344,7 +290,7 @@
             {
               "name": "enabled",
               "width": 1,
-              "note": "Set where the world is drawn without colour. Clear, it does not stop a client drawing the world without colour while its champion is down."
+              "note": "Set where a client draws the world as it does for a dead champion while its own champion is down; clear, it does not. It is set as the champion is created."
             },
             {
               "name": "unused",
@@ -371,7 +317,7 @@
             {
               "name": "enabled",
               "width": 1,
-              "note": "Set where the world is drawn without colour. Clear, it does not stop a client drawing the world without colour while its champion is down."
+              "note": "Set where a client draws the world as it does for a dead champion while its own champion is down; clear, it does not. It is set as the champion is created."
             },
             {
               "name": "unused",
@@ -398,7 +344,7 @@
             {
               "name": "enabled",
               "width": 1,
-              "note": "Set where the world is drawn without colour. Clear, it does not stop a client drawing the world without colour while its champion is down."
+              "note": "Set where a client draws the world as it does for a dead champion while its own champion is down; clear, it does not. It is set as the champion is created."
             },
             {
               "name": "unused",
@@ -452,7 +398,7 @@
             {
               "name": "enabled",
               "width": 1,
-              "note": "Set where the world is drawn without colour. Clear, it does not stop a client drawing the world without colour while its champion is down."
+              "note": "Set where a client draws the world as it does for a dead champion while its own champion is down; clear, it does not."
             },
             {
               "name": "unused",
@@ -479,7 +425,7 @@
             {
               "name": "enabled",
               "width": 1,
-              "note": "Set where the world is drawn without colour. Clear, it does not stop a client drawing the world without colour while its champion is down."
+              "note": "Set where a client draws the world as it does for a dead champion while its own champion is down; clear, it does not."
             },
             {
               "name": "unused",
@@ -506,7 +452,7 @@
             {
               "name": "enabled",
               "width": 1,
-              "note": "Set where the world is drawn without colour. Clear, it does not stop a client drawing the world without colour while its champion is down."
+              "note": "Set where a client draws the world as it does for a dead champion while its own champion is down; clear, it does not."
             },
             {
               "name": "unused",
@@ -533,7 +479,7 @@
             {
               "name": "enabled",
               "width": 1,
-              "note": "Set where the world is drawn without colour. Clear, it does not stop a client drawing the world without colour while its champion is down."
+              "note": "Set where a client draws the world as it does for a dead champion while its own champion is down; clear, it does not."
             },
             {
               "name": "unused",
@@ -560,7 +506,7 @@
             {
               "name": "enabled",
               "width": 1,
-              "note": "Set where the world is drawn without colour. Clear, it does not stop a client drawing the world without colour while its champion is down."
+              "note": "Set where a client draws the world as it does for a dead champion while its own champion is down; clear, it does not."
             },
             {
               "name": "unused",
@@ -600,33 +546,6 @@
     },
     {
       "from": "1.0.0.132",
-      "until": "1.0.0.133",
-      "channel": "events",
-      "command": 179,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "state",
-          "type": "bits",
-          "size": 1,
-          "bits": [
-            {
-              "name": "enabled",
-              "width": 1,
-              "note": "Set where the world is drawn without colour."
-            },
-            {
-              "name": "unused",
-              "width": 7,
-              "note": "Unused; a server writes zero."
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "from": "1.0.0.133",
       "until": "1.0.0.135",
       "channel": "events",
       "command": 179,
@@ -641,7 +560,7 @@
             {
               "name": "enabled",
               "width": 1,
-              "note": "Set where the world is drawn without colour. Clear, it does not stop a client drawing the world without colour while its champion is down."
+              "note": "Set where the world is drawn without colour."
             },
             {
               "name": "unused",
@@ -668,7 +587,7 @@
             {
               "name": "enabled",
               "width": 1,
-              "note": "Set where the world is drawn without colour. Clear, it does not stop a client drawing the world without colour while its champion is down."
+              "note": "Set where the world is drawn without colour."
             },
             {
               "name": "unused",
@@ -695,7 +614,7 @@
             {
               "name": "enabled",
               "width": 1,
-              "note": "Set where the world is drawn without colour. Clear, it does not stop a client drawing the world without colour while its champion is down."
+              "note": "Set where the world is drawn without colour."
             },
             {
               "name": "unused",
@@ -722,7 +641,7 @@
             {
               "name": "enabled",
               "width": 1,
-              "note": "Set where the world is drawn without colour. Clear, it does not stop a client drawing the world without colour while its champion is down."
+              "note": "Set where the world is drawn without colour."
             },
             {
               "name": "unused",
@@ -790,7 +709,7 @@
     },
     {
       "from": "1.0.0.147",
-      "until": "1.0.0.150",
+      "until": "1.0.0.148",
       "channel": "events",
       "command": 169,
       "direction": "serverToClient",
@@ -805,6 +724,33 @@
               "name": "enabled",
               "width": 1,
               "note": "Set where the world is drawn without colour while the client's own champion is down; clear, it is drawn in colour from the next frame. It starts set as the champion is created."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.148",
+      "until": "1.0.0.150",
+      "channel": "events",
+      "command": 169,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "enabled",
+              "width": 1,
+              "note": "Set where the world is drawn without colour while the champion is down; clear, it is drawn in colour."
             },
             {
               "name": "unused",
@@ -858,7 +804,7 @@
             {
               "name": "enabled",
               "width": 1,
-              "note": "Set where the world is drawn without colour. Clear, it does not stop a client drawing the world without colour while its champion is down."
+              "note": "Set where the world is drawn without colour while the champion is down; clear, it is drawn in colour."
             },
             {
               "name": "unused",

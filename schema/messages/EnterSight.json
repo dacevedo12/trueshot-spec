@@ -128,7 +128,6 @@
         {
           "name": "view",
           "type": "record",
-          "note": "Everything else a client needs to draw the unit. A server sends it for a champion, a minion or another unit with a mind, which a client reads past the end of the message without it. For any other unit a server ends the message before it, and a client reads none of the body.",
           "fields": [
             {
               "name": "movementState",
@@ -227,8 +226,7 @@
             "when": "remaining"
           }
         }
-      ],
-      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit."
+      ]
     },
     {
       "from": "0.9.25.24",
@@ -354,7 +352,7 @@
         {
           "name": "view",
           "type": "record",
-          "note": "Everything else a client needs to draw the unit. A server sends it for a champion, a minion or another unit with a mind, which a client reads past the end of the message without it. For any other unit a server ends the message before it, and a client reads none of the body.",
+          "note": "Everything else a client needs to draw the unit.",
           "fields": [
             {
               "name": "movementState",
@@ -693,7 +691,7 @@
         {
           "name": "view",
           "type": "record",
-          "note": "Everything else a client needs to draw the unit. A server sends it for a champion, a minion or another unit with a mind, which a client reads past the end of the message without it, and ends the message after the items for any other unit.",
+          "note": "Everything else a client needs to draw the unit.",
           "fields": [
             {
               "name": "movementState",
@@ -793,7 +791,7 @@
           }
         }
       ],
-      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit. It states everything a client needs to draw the unit at once."
+      "note": "What a server sends to bring a unit into what a client can see. The header names the unit."
     },
     {
       "from": "1.0.0.74",
@@ -919,7 +917,7 @@
         {
           "name": "view",
           "type": "record",
-          "note": "Everything else a client needs to draw the unit. A server sends it for a champion, a minion or another unit with a mind, which a client reads past the end of the message without it, and ends the message after the items for any other unit.",
+          "note": "Everything else a client needs to draw the unit. A server sends it for a champion, a minion or another unit with a mind other than a turret, which a client reads past the end of the message without it. For a turret or any other unit a client reads nothing of it.",
           "fields": [
             {
               "name": "movementState",
@@ -1019,7 +1017,7 @@
           }
         }
       ],
-      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit. It states everything a client needs to draw the unit at once."
+      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it; whether it draws turrets regardless is not recorded. The header names the unit. It carries no other messages."
     },
     {
       "from": "1.0.0.81",
@@ -1032,7 +1030,7 @@
         {
           "name": "view",
           "type": "record",
-          "note": "Everything else a client needs to draw the unit. A server sends it for a champion, a minion or another unit with a mind, which a client reads past the end of the message without it, and ends the message after the items for any other unit.",
+          "note": "Everything else a client needs to draw the unit. A server sends it for a champion, a minion or another unit with a mind other than a turret, which a client reads past the end of the message without it. For a turret or any other unit a client reads nothing of it.",
           "fields": [
             {
               "name": "movementState",
@@ -1132,7 +1130,7 @@
           }
         }
       ],
-      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit. It states everything a client needs to draw the unit at once."
+      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it; whether it draws turrets regardless is not recorded. The header names the unit. It carries no other messages."
     },
     {
       "from": "1.0.0.82",
@@ -1145,7 +1143,7 @@
         {
           "name": "view",
           "type": "record",
-          "note": "Everything else a client needs to draw the unit. A server sends it for a champion, a minion or another unit with a mind, which a client reads past the end of the message without it, and ends the message after the items for any other unit.",
+          "note": "Everything else a client needs to draw the unit. A server sends it for a champion, a minion or another unit with a mind other than a turret, which a client reads past the end of the message without it. For a turret or any other unit a client reads nothing of it.",
           "fields": [
             {
               "name": "movementState",
@@ -1245,123 +1243,10 @@
           }
         }
       ],
-      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit. It states everything a client needs to draw the unit at once."
+      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it; whether it draws turrets regardless is not recorded. The header names the unit. It carries no other messages."
     },
     {
       "from": "1.0.0.83",
-      "until": "1.0.0.86",
-      "channel": "events",
-      "command": 59,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "view",
-          "type": "record",
-          "note": "Everything else a client needs to draw the unit. A server sends it for a champion, a minion or another unit with a mind, which a client reads past the end of the message without it. For any other unit a client reads nothing of it.",
-          "fields": [
-            {
-              "name": "movementState",
-              "type": "record",
-              "present": {
-                "when": "remaining",
-                "unseen": "absent"
-              },
-              "note": "Where the unit stands, followed by the direction it faces.",
-              "fields": [
-                {
-                  "name": "movementKind",
-                  "type": "u8",
-                  "note": "What follows the sync id: 0 nothing, 1 a path walked at a set speed, 2 a path, 3 a point the unit stands at. A client reads nothing more for any other value.",
-                  "values": {
-                    "0": {
-                      "name": "nothing"
-                    },
-                    "1": {
-                      "name": "movingAtASpeed"
-                    },
-                    "2": {
-                      "name": "moving"
-                    },
-                    "3": {
-                      "name": "standing"
-                    }
-                  }
-                },
-                {
-                  "name": "syncId",
-                  "type": "u32",
-                  "note": "The number of this statement about the unit; a client takes a path or a point only where it is not behind the last one the unit took."
-                },
-                {
-                  "name": "movement",
-                  "type": "struct",
-                  "struct": "Movement",
-                  "note": "Every point after the first.",
-                  "present": {
-                    "when": "movementKind",
-                    "equals": 2
-                  }
-                },
-                {
-                  "name": "movementAtSpeed",
-                  "type": "struct",
-                  "struct": "MovementAtSpeed",
-                  "note": "Where the unit is going, and how a server makes it travel. WaypointGroupAtSpeed carries the same shape.",
-                  "present": {
-                    "when": "movementKind",
-                    "equals": 1,
-                    "unseen": "present"
-                  }
-                },
-                {
-                  "name": "atX",
-                  "type": "f32",
-                  "note": "Along one ground axis, in world units; the height is the ground's.",
-                  "present": {
-                    "when": "movementKind",
-                    "equals": 3
-                  }
-                },
-                {
-                  "name": "atZ",
-                  "type": "f32",
-                  "note": "Along the other ground axis.",
-                  "present": {
-                    "when": "movementKind",
-                    "equals": 3
-                  }
-                },
-                {
-                  "name": "facingX",
-                  "type": "f32",
-                  "note": "Which way it faces, along one ground axis.",
-                  "present": {
-                    "when": "movementKind",
-                    "equals": 3
-                  }
-                },
-                {
-                  "name": "facingZ",
-                  "type": "f32",
-                  "note": "Which way it faces, along the other.",
-                  "present": {
-                    "when": "movementKind",
-                    "equals": 3
-                  }
-                }
-              ]
-            }
-          ],
-          "present": {
-            "when": "remaining"
-          }
-        }
-      ],
-      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit. It carries no other messages."
-    },
-    {
-      "from": "1.0.0.86",
       "until": "1.0.0.87",
       "channel": "events",
       "command": 59,
@@ -1475,119 +1360,6 @@
     },
     {
       "from": "1.0.0.87",
-      "until": "1.0.0.96",
-      "channel": "events",
-      "command": 59,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "view",
-          "type": "record",
-          "note": "Everything else a client needs to draw the unit. A server sends it for a champion, a minion or another unit with a mind, which a client reads past the end of the message without it. For any other unit a client reads nothing of it.",
-          "fields": [
-            {
-              "name": "movementState",
-              "type": "record",
-              "present": {
-                "when": "remaining",
-                "unseen": "absent"
-              },
-              "note": "Where the unit stands, followed by the direction it faces.",
-              "fields": [
-                {
-                  "name": "movementKind",
-                  "type": "u8",
-                  "note": "What follows the sync id: 0 nothing, 1 a path walked at a set speed, 2 a path, 3 a point the unit stands at. A client reads nothing more for any other value.",
-                  "values": {
-                    "0": {
-                      "name": "nothing"
-                    },
-                    "1": {
-                      "name": "movingAtASpeed"
-                    },
-                    "2": {
-                      "name": "moving"
-                    },
-                    "3": {
-                      "name": "standing"
-                    }
-                  }
-                },
-                {
-                  "name": "syncId",
-                  "type": "u32",
-                  "note": "The number of this statement about the unit; a client takes a path or a point only where it is not behind the last one the unit took."
-                },
-                {
-                  "name": "movement",
-                  "type": "struct",
-                  "struct": "Movement",
-                  "note": "Every point after the first.",
-                  "present": {
-                    "when": "movementKind",
-                    "equals": 2
-                  }
-                },
-                {
-                  "name": "movementAtSpeed",
-                  "type": "struct",
-                  "struct": "MovementAtSpeed",
-                  "note": "Where the unit is going, and how a server makes it travel. WaypointGroupAtSpeed carries the same shape.",
-                  "present": {
-                    "when": "movementKind",
-                    "equals": 1,
-                    "unseen": "present"
-                  }
-                },
-                {
-                  "name": "atX",
-                  "type": "f32",
-                  "note": "Along one ground axis, in world units; the height is the ground's.",
-                  "present": {
-                    "when": "movementKind",
-                    "equals": 3
-                  }
-                },
-                {
-                  "name": "atZ",
-                  "type": "f32",
-                  "note": "Along the other ground axis.",
-                  "present": {
-                    "when": "movementKind",
-                    "equals": 3
-                  }
-                },
-                {
-                  "name": "facingX",
-                  "type": "f32",
-                  "note": "Which way it faces, along one ground axis.",
-                  "present": {
-                    "when": "movementKind",
-                    "equals": 3
-                  }
-                },
-                {
-                  "name": "facingZ",
-                  "type": "f32",
-                  "note": "Which way it faces, along the other.",
-                  "present": {
-                    "when": "movementKind",
-                    "equals": 3
-                  }
-                }
-              ]
-            }
-          ],
-          "present": {
-            "when": "remaining"
-          }
-        }
-      ],
-      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit. It carries no other messages."
-    },
-    {
-      "from": "1.0.0.96",
       "until": "1.0.0.97",
       "channel": "events",
       "command": 59,
@@ -1726,7 +1498,6 @@
         {
           "name": "view",
           "type": "record",
-          "note": "Everything else a client needs to draw the unit. A server sends it for a champion, a minion or another unit with a mind, which a client reads past the end of the message without it, and ends the message after the items for any other unit.",
           "fields": [
             {
               "name": "movementState",
@@ -1826,7 +1597,7 @@
           }
         }
       ],
-      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit. It states everything a client needs to draw the unit at once."
+      "note": "What a server sends to bring a unit into what a client can see. The header names the unit."
     },
     {
       "from": "1.0.0.103",
@@ -1855,7 +1626,6 @@
         {
           "name": "view",
           "type": "record",
-          "note": "Everything else a client needs to draw the unit. A server sends it for a champion, a minion or another unit with a mind, which a client reads past the end of the message without it, and ends the message after the items for any other unit.",
           "fields": [
             {
               "name": "movementState",
@@ -1955,7 +1725,7 @@
           }
         }
       ],
-      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit. It states everything a client needs to draw the unit at once."
+      "note": "What a server sends to bring a unit into what a client can see. The header names the unit."
     },
     {
       "from": "1.0.0.107",
@@ -1984,7 +1754,6 @@
         {
           "name": "view",
           "type": "record",
-          "note": "Everything else a client needs to draw the unit. A server sends it for a champion, a minion or another unit with a mind, which a client reads past the end of the message without it, and ends the message after the items for any other unit.",
           "fields": [
             {
               "name": "movementState",
@@ -2084,7 +1853,7 @@
           }
         }
       ],
-      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit. It states everything a client needs to draw the unit at once."
+      "note": "What a server sends to bring a unit into what a client can see. The header names the unit."
     },
     {
       "from": "1.0.0.110",
@@ -2242,7 +2011,7 @@
         {
           "name": "view",
           "type": "record",
-          "note": "Everything else a client needs to draw the unit. A server sends it for a champion, a minion or another unit with a mind, which a client reads past the end of the message without it, and ends the message after the items for any other unit.",
+          "note": "A server sends it for a champion, a minion or another unit with a mind, which a client reads past the end of the message without it.",
           "fields": [
             {
               "name": "hasShields",
@@ -2287,7 +2056,7 @@
               "present": {
                 "when": "remaining"
               },
-              "note": "Where the unit stands, followed by the direction it faces.",
+              "note": "Where the unit stands; only a movementKind of 3 is followed by the direction it faces.",
               "fields": [
                 {
                   "name": "movementKind",
@@ -2378,7 +2147,7 @@
           }
         }
       ],
-      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit. It states everything a client needs to draw the unit at once."
+      "note": "What a server sends to bring a unit into what a client can see. The header names the unit."
     },
     {
       "from": "1.0.0.117",
@@ -2407,7 +2176,7 @@
         {
           "name": "view",
           "type": "record",
-          "note": "Everything else a client needs to draw the unit. A server sends it for a champion, a minion or another unit with a mind, which a client reads past the end of the message without it, and ends the message after the items for any other unit.",
+          "note": "A server sends it for a champion, a minion or another unit with a mind, which a client reads past the end of the message without it.",
           "fields": [
             {
               "name": "hasShields",
@@ -2452,7 +2221,7 @@
               "present": {
                 "when": "remaining"
               },
-              "note": "Where the unit stands, followed by the direction it faces.",
+              "note": "Where the unit stands; only a movementKind of 3 is followed by the direction it faces.",
               "fields": [
                 {
                   "name": "movementKind",
@@ -2543,7 +2312,7 @@
           }
         }
       ],
-      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit. It states everything a client needs to draw the unit at once."
+      "note": "What a server sends to bring a unit into what a client can see. The header names the unit."
     },
     {
       "from": "1.0.0.119",
@@ -2572,7 +2341,7 @@
         {
           "name": "view",
           "type": "record",
-          "note": "Everything else a client needs to draw the unit. A server sends it for a champion, a minion or another unit with a mind, which a client reads past the end of the message without it, and ends the message after the items for any other unit.",
+          "note": "A server sends it for a champion, a minion or another unit with a mind, which a client reads past the end of the message without it.",
           "fields": [
             {
               "name": "hasShields",
@@ -2617,7 +2386,7 @@
               "present": {
                 "when": "remaining"
               },
-              "note": "Where the unit stands, followed by the direction it faces.",
+              "note": "Where the unit stands; only a movementKind of 3 is followed by the direction it faces.",
               "fields": [
                 {
                   "name": "movementKind",
@@ -2708,7 +2477,7 @@
           }
         }
       ],
-      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit. It states everything a client needs to draw the unit at once."
+      "note": "What a server sends to bring a unit into what a client can see. The header names the unit."
     },
     {
       "from": "1.0.0.124",
@@ -2737,7 +2506,7 @@
         {
           "name": "view",
           "type": "record",
-          "note": "Everything else a client needs to draw the unit. A server sends it for a champion, a minion or another unit with a mind, which a client reads past the end of the message without it, and ends the message after the items for any other unit.",
+          "note": "A server sends it for a champion, a minion or another unit with a mind, which a client reads past the end of the message without it.",
           "fields": [
             {
               "name": "hasShields",
@@ -2782,7 +2551,7 @@
               "present": {
                 "when": "remaining"
               },
-              "note": "Where the unit stands, followed by the direction it faces.",
+              "note": "Where the unit stands; only a movementKind of 3 is followed by the direction it faces.",
               "fields": [
                 {
                   "name": "movementKind",
@@ -2873,7 +2642,7 @@
           }
         }
       ],
-      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit. It states everything a client needs to draw the unit at once."
+      "note": "What a server sends to bring a unit into what a client can see. The header names the unit."
     },
     {
       "from": "1.0.0.125",
@@ -2902,7 +2671,7 @@
         {
           "name": "view",
           "type": "record",
-          "note": "Everything else a client needs to draw the unit. A server sends it for a champion, a minion or another unit with a mind, which a client reads past the end of the message without it, and ends the message after the items for any other unit.",
+          "note": "A server sends it for a champion, a minion or another unit with a mind, which a client reads past the end of the message without it.",
           "fields": [
             {
               "name": "hasShields",
@@ -2947,7 +2716,7 @@
               "present": {
                 "when": "remaining"
               },
-              "note": "Where the unit stands, followed by the direction it faces.",
+              "note": "Where the unit stands; only a movementKind of 3 is followed by the direction it faces.",
               "fields": [
                 {
                   "name": "movementKind",
@@ -3038,7 +2807,7 @@
           }
         }
       ],
-      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit. It states everything a client needs to draw the unit at once."
+      "note": "What a server sends to bring a unit into what a client can see. The header names the unit."
     },
     {
       "from": "1.0.0.126",
@@ -3216,7 +2985,7 @@
         {
           "name": "itemCount",
           "type": "u8",
-          "note": "How many items the unit holds. A client reads this and the rest for a champion, a minion or another unit with a mind; for a turret, a map prop, a building or a missile it reads nothing after the carried messages."
+          "note": "How many items follow. A client reads this and the rest for a champion, a minion or another unit with a mind; for a turret, a map prop or a building it reads nothing."
         },
         {
           "name": "items",
@@ -3232,7 +3001,7 @@
         {
           "name": "view",
           "type": "record",
-          "note": "Everything else a client needs to draw the unit. A server sends it for a champion, a minion or another unit with a mind, which a client reads past the end of the message without it, and ends the message after the items for any other unit.",
+          "note": "Everything else a client needs to draw the unit. A server sends it for a champion, a minion or another unit with a mind, which a client reads past the end of the message without it.",
           "fields": [
             {
               "name": "hasShields",
@@ -3277,7 +3046,7 @@
               "present": {
                 "when": "remaining"
               },
-              "note": "Where the unit is and what it is doing on the ground. A client reads it for a champion or a minion, and a server sends it for those; for another unit with a mind the message ends before it.",
+              "note": "Where the unit stands.",
               "fields": [
                 {
                   "name": "movementKind",
@@ -3367,8 +3136,7 @@
             "when": "remaining"
           }
         }
-      ],
-      "note": "It states everything a client needs to draw the unit at once."
+      ]
     },
     {
       "from": "1.0.0.132",
@@ -3607,7 +3375,7 @@
               "present": {
                 "when": "remaining"
               },
-              "note": "Where the unit is and what it is doing on the ground. A client reads it for a champion or a minion, and a server sends it for those; for another unit with a mind the message ends before it.",
+              "note": "Where the unit is and what it is doing on the ground. A client reads it for a champion, a minion or another unit with a mind, and a server sends it for those.",
               "fields": [
                 {
                   "name": "movementKind",
@@ -3697,8 +3465,7 @@
             "when": "remaining"
           }
         }
-      ],
-      "note": "It states everything a client needs to draw the unit at once."
+      ]
     },
     {
       "from": "1.0.0.135",
@@ -3772,7 +3539,7 @@
               "present": {
                 "when": "remaining"
               },
-              "note": "Where the unit is and what it is doing on the ground. A client reads it for a champion or a minion, and a server sends it for those; for another unit with a mind the message ends before it.",
+              "note": "Where the unit is and what it is doing on the ground. A client reads it for a champion, a minion or another unit with a mind, and a server sends it for those.",
               "fields": [
                 {
                   "name": "movementKind",
@@ -3862,8 +3629,7 @@
             "when": "remaining"
           }
         }
-      ],
-      "note": "It states everything a client needs to draw the unit at once."
+      ]
     },
     {
       "from": "1.0.0.136",
@@ -3937,7 +3703,7 @@
               "present": {
                 "when": "remaining"
               },
-              "note": "Where the unit is and what it is doing on the ground. A client reads it for a champion or a minion, and a server sends it for those; for another unit with a mind the message ends before it.",
+              "note": "Where the unit is and what it is doing on the ground. A client reads it for a champion, a minion or another unit with a mind, and a server sends it for those.",
               "fields": [
                 {
                   "name": "movementKind",
@@ -4027,8 +3793,7 @@
             "when": "remaining"
           }
         }
-      ],
-      "note": "It states everything a client needs to draw the unit at once."
+      ]
     },
     {
       "from": "1.0.0.138",
@@ -4156,7 +3921,7 @@
               "present": {
                 "when": "remaining"
               },
-              "note": "Where the unit is and what it is doing on the ground. A client reads it for a champion or a minion, and a server sends it for those; for another unit with a mind the message ends before it.",
+              "note": "Where the unit is and what it is doing on the ground. A client reads it for a champion, a minion or another unit with a mind, and a server sends it for those.",
               "fields": [
                 {
                   "name": "movementKind",
@@ -4246,8 +4011,7 @@
             "when": "remaining"
           }
         }
-      ],
-      "note": "It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say."
+      ]
     },
     {
       "from": "1.0.0.139",
@@ -6208,7 +5972,7 @@
           "present": {
             "when": "remaining"
           },
-          "note": "Everything else a client needs to draw the unit. A client reads it whatever the message's length, for every unit but an inhibitor or a nexus.",
+          "note": "Everything else a client needs to draw the unit. A client reads it whatever the message's length, for a champion or a minion.",
           "fields": [
             {
               "name": "hasShields",
@@ -7649,7 +7413,7 @@
           "present": {
             "when": "remaining"
           },
-          "note": "Everything else a client needs to draw the unit. A client reads it whatever the message's length, for every unit but an inhibitor or a nexus.",
+          "note": "Everything else a client needs to draw the unit.",
           "fields": [
             {
               "name": "hasShields",
@@ -8163,7 +7927,7 @@
           "present": {
             "when": "remaining"
           },
-          "note": "Everything else a client needs to draw the unit. A server sends this message without it too, ending after the items.",
+          "note": "Everything else a client needs to draw the unit.",
           "fields": [
             {
               "name": "hasShields",
@@ -8278,7 +8042,7 @@
               "present": {
                 "when": "remaining"
               },
-              "note": "Where the unit is and what it is doing on the ground. A server also sends this message ending before it.",
+              "note": "Where the unit is and what it is doing on the ground. A client reads it, whatever the message's length, for a champion or a minion.",
               "fields": [
                 {
                   "name": "movementKind",

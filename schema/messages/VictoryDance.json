@@ -154,7 +154,7 @@
           "note": "Nonzero where side 100 won, zero where side 200 won."
         }
       ],
-      "note": "It sets every unit on a side moving as winners or losers do: a winning champion dances, a losing one stands idle, and other units play a win or loss animation where they have one."
+      "note": "A winning champion dances, a losing one stands idle, and other units play a win or loss animation where they have one."
     },
     {
       "from": "1.0.0.144",
@@ -170,7 +170,7 @@
           "note": "Nonzero where side 100 won, zero where side 200 won."
         }
       ],
-      "note": "It sets every unit on a side moving as winners or losers do: a winning champion dances, a losing one stands idle, and other units play a win or loss animation where they have one."
+      "note": "A winning champion dances, a losing one stands idle, and other units play a win or loss animation where they have one."
     },
     {
       "from": "1.0.0.150",
@@ -250,42 +250,10 @@
           "note": "Nonzero where side 100 won, zero where side 200 won."
         }
       ],
-      "note": "It sets every unit on a side moving as winners or losers do: a winning champion dances, a losing one stands idle, and other units play a win or loss animation where they have one."
-    },
-    {
-      "from": "4.1.0.171",
-      "until": "4.4.0.1858",
-      "channel": "events",
-      "command": 196,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "orderWon",
-          "type": "u8",
-          "note": "Nonzero where side 100 won, zero where side 200 won."
-        }
-      ],
-      "note": "It sets every unit on a side moving as winners or losers do: a winning champion dances, a losing one stands idle, and other units play a win or loss animation where they have one."
-    },
-    {
-      "from": "4.4.0.1858",
-      "until": "4.5.0.260",
-      "channel": "events",
-      "command": 196,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "orderWon",
-          "type": "u8",
-          "note": "Nonzero where side 100 won, zero where side 200 won."
-        }
-      ],
       "note": "It sets units on a side moving as winners or losers do: a winning champion dances, a losing one stands idle, and other units play a win or loss animation where they have one. A client leaves alone a unit of side 300."
     },
     {
-      "from": "4.5.0.260",
+      "from": "4.1.0.171",
       "until": "4.11.0.386",
       "channel": "events",
       "command": 196,
@@ -298,7 +266,7 @@
           "note": "Nonzero where side 100 won, zero where side 200 won."
         }
       ],
-      "note": "It sets every unit on a side moving as winners or losers do: a winning champion dances, a losing one stands idle, and other units play a win or loss animation where they have one."
+      "note": "It sets units on a side moving as winners or losers do: a winning champion dances, a losing one stands idle, and other units play a win or loss animation where they have one. A client leaves alone a unit of side 300."
     },
     {
       "from": "4.11.0.386",
@@ -314,7 +282,7 @@
           "note": "Nonzero where side 100 won, zero where side 200 won."
         }
       ],
-      "note": "It sets every unit on a side moving as winners or losers do: a winning champion dances, a losing one stands idle, and other units play a win or loss animation where they have one."
+      "note": "It sets units on a side moving as winners or losers do: a winning champion dances, a losing one stands idle, and other units play a win or loss animation where they have one. A client leaves alone a unit of side 300."
     },
     {
       "from": "4.17.0.233",

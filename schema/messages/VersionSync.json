@@ -160,7 +160,7 @@
         {
           "name": "map",
           "type": "i32",
-          "note": "Which map to load. spec/space.md keys the path origins by the same maps."
+          "note": "Which map to load."
         },
         {
           "name": "seats",
@@ -233,84 +233,6 @@
         {
           "name": "agreement",
           "type": "u8",
-          "note": "A server writes 1: any other value has the client report a build mismatch and leave. For 0 it also shows both versions."
-        },
-        {
-          "name": "map",
-          "type": "i32",
-          "note": "Which map to load. spec/space.md keys the path origins by the same maps."
-        },
-        {
-          "name": "seats",
-          "type": "array",
-          "count": 12,
-          "note": "Every place at the match, held or empty.",
-          "items": {
-            "name": "seat",
-            "type": "struct",
-            "struct": "Seat"
-          }
-        },
-        {
-          "name": "build",
-          "type": "string",
-          "encoding": "utf8",
-          "size": 256,
-          "note": "Which build the server serves, shown and not checked. Written out in full and padded with zero bytes to the width above; a client reads it up to the first zero byte."
-        }
-      ],
-      "note": "It also says which map to load, who is at the match, and everything else settled before play."
-    },
-    {
-      "from": "1.0.0.82",
-      "until": "1.0.0.86",
-      "channel": "events",
-      "command": 72,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "agreement",
-          "type": "u8",
-          "note": "A server writes 1: any other value has the client report a build mismatch and leave. For 0 it also shows both versions."
-        },
-        {
-          "name": "map",
-          "type": "i32",
-          "note": "Which map to load. spec/space.md keys the path origins by the same maps."
-        },
-        {
-          "name": "seats",
-          "type": "array",
-          "count": 12,
-          "note": "Every place at the match, held or empty.",
-          "items": {
-            "name": "seat",
-            "type": "struct",
-            "struct": "Seat"
-          }
-        },
-        {
-          "name": "build",
-          "type": "string",
-          "encoding": "utf8",
-          "size": 256,
-          "note": "Which build the server serves, shown and not checked. Written out in full and padded with zero bytes to the width above; a client reads it up to the first zero byte."
-        }
-      ],
-      "note": "It also says which map to load, who is at the match, and everything else settled before play."
-    },
-    {
-      "from": "1.0.0.86",
-      "until": "1.0.0.87",
-      "channel": "events",
-      "command": 72,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "agreement",
-          "type": "u8",
           "note": "A server writes 1. For 0 a client shows both versions and leaves; for any other value it leaves without showing them."
         },
         {
@@ -340,7 +262,7 @@
       "note": "It also says which map to load, who is at the match, and everything else settled before play."
     },
     {
-      "from": "1.0.0.87",
+      "from": "1.0.0.82",
       "until": "1.0.0.96",
       "channel": "events",
       "command": 72,
@@ -350,7 +272,7 @@
         {
           "name": "agreement",
           "type": "u8",
-          "note": "A server writes 1: any other value has the client report a build mismatch and leave. For 0 it also shows both versions."
+          "note": "A server writes 1. For 0 a client shows both versions and leaves; for any other value it leaves without showing them."
         },
         {
           "name": "map",
@@ -428,7 +350,7 @@
         {
           "name": "agreement",
           "type": "u8",
-          "note": "A server writes 1: any other value has the client report a build mismatch and leave. For 0 it also shows both versions."
+          "note": "A server writes 1: any other value has the client leave. For 0 it first shows both versions; for any other it shows nothing."
         },
         {
           "name": "map",
@@ -467,7 +389,7 @@
         {
           "name": "agreement",
           "type": "u8",
-          "note": "A server writes 1: any other value has the client report a build mismatch and leave. For 0 it also shows both versions."
+          "note": "A server writes 1: any other value has the client leave. For 0 it first shows both versions; for any other it shows nothing."
         },
         {
           "name": "map",
@@ -506,7 +428,7 @@
         {
           "name": "agreement",
           "type": "u8",
-          "note": "A server writes 1: any other value has the client report a build mismatch and leave. For 0 it also shows both versions."
+          "note": "A server writes 1: any other value has the client leave. For 0 it first shows both versions; for any other it shows nothing."
         },
         {
           "name": "map",
@@ -552,7 +474,7 @@
         {
           "name": "agreement",
           "type": "u8",
-          "note": "A server writes 1: any other value has the client report a build mismatch and leave. For 0 it also shows both versions."
+          "note": "A server writes 1: any other value has the client leave. For 0 it first shows both versions; for any other it shows nothing."
         },
         {
           "name": "map",
@@ -644,7 +566,7 @@
         {
           "name": "agreement",
           "type": "u8",
-          "note": "A server writes 1: any other value has the client report a build mismatch and leave. For 0 it also shows both versions."
+          "note": "A server writes 1: any other value has the client leave. For 0 it first shows both versions; for any other it shows nothing."
         },
         {
           "name": "map",
@@ -690,7 +612,7 @@
         {
           "name": "agreement",
           "type": "u8",
-          "note": "A server writes 1: any other value has the client report a build mismatch and leave. For 0 it also shows both versions."
+          "note": "A server writes 1: any other value has the client leave. For 0 it first shows both versions; for any other it shows nothing."
         },
         {
           "name": "map",
@@ -736,7 +658,7 @@
         {
           "name": "agreement",
           "type": "u8",
-          "note": "A server writes 1: any other value has the client report a build mismatch and leave. For 0 it also shows both versions."
+          "note": "A server writes 1: any other value has the client leave. For 0 it first shows both versions; for any other it shows nothing."
         },
         {
           "name": "map",
@@ -782,7 +704,7 @@
         {
           "name": "agreement",
           "type": "u8",
-          "note": "A server writes 1: any other value has the client report a build mismatch and leave. For 0 it also shows both versions."
+          "note": "A server writes 1: any other value has the client leave. For 0 it first shows both versions; for any other it shows nothing."
         },
         {
           "name": "map",
@@ -819,52 +741,6 @@
     },
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
-      "channel": "events",
-      "command": 87,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "agreement",
-          "type": "u8",
-          "note": "A server writes 1. For 0 a client shows both versions and leaves; for any other value it leaves without a notice."
-        },
-        {
-          "name": "map",
-          "type": "i32",
-          "note": "Which map to load. spec/space.md keys the path origins by the same maps."
-        },
-        {
-          "name": "seats",
-          "type": "array",
-          "count": 12,
-          "note": "Every place at the match, held or empty.",
-          "items": {
-            "name": "seat",
-            "type": "struct",
-            "struct": "Seat"
-          }
-        },
-        {
-          "name": "build",
-          "type": "string",
-          "encoding": "utf8",
-          "size": 256,
-          "note": "Which build the server serves, shown and not checked. Written out in full and padded with zero bytes to the width above; a client reads it up to the first zero byte."
-        },
-        {
-          "name": "mode",
-          "type": "string",
-          "encoding": "utf8",
-          "size": 128,
-          "note": "Which way the match is played, written and padded as above."
-        }
-      ],
-      "note": "It also says which map to load, who is at the match, and everything else settled before play."
-    },
-    {
-      "from": "1.0.0.127",
       "until": "1.0.0.128",
       "channel": "events",
       "command": 87,
@@ -874,7 +750,7 @@
         {
           "name": "agreement",
           "type": "u8",
-          "note": "A server writes 1: any other value has the client report a build mismatch and leave. For 0 it also shows both versions."
+          "note": "A server writes 1. For 0 a client shows both versions and leaves; for any other value it leaves without a notice."
         },
         {
           "name": "map",
@@ -920,7 +796,7 @@
         {
           "name": "agreement",
           "type": "u8",
-          "note": "Nonzero where the build the client runs matches, which a client needs to load; zero has it show both versions and end."
+          "note": "A server writes 1. For 0 a client shows both versions and leaves; for any other value it leaves without a notice."
         },
         {
           "name": "map",
@@ -966,7 +842,7 @@
         {
           "name": "agreement",
           "type": "u8",
-          "note": "Nonzero where the build the client runs matches, which a client needs to load; zero has it show both versions and end."
+          "note": "A server writes 1. For 0 a client shows both versions and leaves; for any other value it leaves without a notice."
         },
         {
           "name": "map",
@@ -1076,7 +952,7 @@
         {
           "name": "agreement",
           "type": "u8",
-          "note": "Nonzero where the build the client runs matches, which a client needs to load; zero has it show both versions and end."
+          "note": "A server writes 1. For 0 a client shows both versions and leaves; for any other value it leaves without a notice."
         },
         {
           "name": "map",
@@ -1296,7 +1172,7 @@
         {
           "name": "agreement",
           "type": "u8",
-          "note": "Nonzero where the build the client runs matches, which a client needs to load; zero has it show both versions and end."
+          "note": "1 has a client load. 0 has it show both versions and end; any value from 2 to 255 also has it end, without showing them."
         },
         {
           "name": "map",
@@ -1406,7 +1282,7 @@
         {
           "name": "agreement",
           "type": "u8",
-          "note": "Nonzero where the build the client runs matches, which a client needs to load; zero has it show both versions and end."
+          "note": "1 has a client load. 0 has it show both versions and end; any value from 2 to 255 also has it end, without showing them."
         },
         {
           "name": "map",
@@ -2448,7 +2324,7 @@
         {
           "name": "tipDuration",
           "type": "i8",
-          "note": "Which display time to hold the note up for, applying only where tips are enabled and shown somewhere. tip, tipColour and tipDuration each select one of the notes, colourings and display times a client defines, tip counted modulo the number of notes. Where a value selects none, or the time is not above zero, a client shows no note."
+          "note": "Which display time to hold the note up for, applying only where tips are enabled and shown somewhere. tip, tipColour and tipDuration each select one of the notes, colourings and display times a client defines, tip reduced modulo the number of notes where it is greater than that number. Where a value selects none, or the time is not above zero, a client shows no note."
         },
         {
           "name": "tipFlags",
@@ -2616,7 +2492,7 @@
         {
           "name": "tipDuration",
           "type": "i8",
-          "note": "Which display time to hold the note up for, applying only where tips are enabled and shown somewhere. tip, tipColour and tipDuration each select one of the notes, colourings and display times a client defines, tip counted modulo the number of notes. Where a value selects none, or the time is not above zero, a client shows no note."
+          "note": "Which display time to hold the note up for, applying only where tips are enabled and shown somewhere. tip, tipColour and tipDuration each select one of the notes, colourings and display times a client defines, tip reduced modulo the number of notes where it is greater than that number. Where a value selects none, or the time is not above zero, a client shows no note."
         },
         {
           "name": "tipFlags",

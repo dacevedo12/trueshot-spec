@@ -73,7 +73,7 @@
         {
           "name": "lasts",
           "type": "f32",
-          "note": "How long the effect has left to run, in seconds: a client takes it as the timeLeft of an EffectCount."
+          "note": "The whole run of the effect, in seconds, counted from its start: a client takes it as the timeLeft of an EffectCount."
         },
         {
           "name": "runningFor",
@@ -131,7 +131,7 @@
         {
           "name": "lasts",
           "type": "f32",
-          "note": "How long the effect has left to run, in seconds: a client takes it as the timeLeft of an EffectCount."
+          "note": "The whole run of the effect, in seconds, counted from its start: a client takes it as the timeLeft of an EffectCount."
         },
         {
           "name": "runningFor",
@@ -189,7 +189,7 @@
         {
           "name": "lasts",
           "type": "f32",
-          "note": "How long the effect has left to run, in seconds: a client takes it as the timeLeft of an EffectCount."
+          "note": "The whole run of the effect, in seconds, counted from its start: a client takes it as the timeLeft of an EffectCount."
         },
         {
           "name": "runningFor",
@@ -247,7 +247,7 @@
         {
           "name": "lasts",
           "type": "f32",
-          "note": "How long the effect has left to run, in seconds: a client takes it as the timeLeft of an EffectCount."
+          "note": "The whole run of the effect, in seconds, counted from its start: a client takes it as the timeLeft of an EffectCount."
         },
         {
           "name": "runningFor",
@@ -711,7 +711,7 @@
         {
           "name": "lasts",
           "type": "f32",
-          "note": "How long the effect runs in total, in seconds."
+          "note": "How long the effect has left to run, in seconds: a client takes it as the timeLeft of an EffectCount."
         },
         {
           "name": "runningFor",
@@ -759,63 +759,6 @@
     },
     {
       "from": "1.0.0.132",
-      "until": "1.0.0.133",
-      "channel": "events",
-      "command": 200,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "lasts",
-          "type": "f32",
-          "note": "How long the effect has left to run, in seconds from when the message arrives, as EffectCount's timeLeft."
-        },
-        {
-          "name": "runningFor",
-          "type": "f32",
-          "note": "How long it has already run, in seconds."
-        },
-        {
-          "name": "count",
-          "type": "u8",
-          "note": "How many units follow."
-        },
-        {
-          "name": "entries",
-          "type": "array",
-          "count": "count",
-          "items": {
-            "name": "entriesEntry",
-            "type": "record",
-            "fields": [
-              {
-                "name": "unit",
-                "type": "u32",
-                "note": "The unit carrying the effect."
-              },
-              {
-                "name": "caster",
-                "type": "u32",
-                "note": "The unit that put it there."
-              },
-              {
-                "name": "slot",
-                "type": "u8",
-                "note": "Which of the unit's effect slots it sits in."
-              },
-              {
-                "name": "stacks",
-                "type": "u8",
-                "note": "How many are stacked there now."
-              }
-            ]
-          },
-          "note": "The units, one place each."
-        }
-      ]
-    },
-    {
-      "from": "1.0.0.133",
       "until": "1.0.0.135",
       "channel": "events",
       "command": 200,
@@ -825,7 +768,7 @@
         {
           "name": "lasts",
           "type": "f32",
-          "note": "How long the effect runs in total, in seconds."
+          "note": "How long the effect has left to run, in seconds from when the message arrives, as EffectCount's timeLeft."
         },
         {
           "name": "runningFor",
@@ -882,7 +825,7 @@
         {
           "name": "lasts",
           "type": "f32",
-          "note": "How long the effect runs in total, in seconds."
+          "note": "How long the effect has left to run, in seconds from when the message arrives, as EffectCount's timeLeft."
         },
         {
           "name": "runningFor",
@@ -939,7 +882,7 @@
         {
           "name": "lasts",
           "type": "f32",
-          "note": "How long the effect runs in total, in seconds."
+          "note": "How long the effect has left to run, in seconds from when the message arrives, as EffectCount's timeLeft."
         },
         {
           "name": "runningFor",
@@ -996,7 +939,7 @@
         {
           "name": "lasts",
           "type": "f32",
-          "note": "How long the effect runs in total, in seconds."
+          "note": "How long the effect has left to run, in seconds from when the message arrives, as EffectCount's timeLeft."
         },
         {
           "name": "runningFor",
@@ -1110,7 +1053,7 @@
         {
           "name": "lasts",
           "type": "f32",
-          "note": "How long the effect runs in total, in seconds."
+          "note": "How long the effect has left to run, in seconds from when the message arrives, as EffectCount's timeLeft."
         },
         {
           "name": "runningFor",
@@ -1167,7 +1110,7 @@
         {
           "name": "lasts",
           "type": "f32",
-          "note": "How long the effect runs in total, in seconds."
+          "note": "How long the effect has left to run, in seconds from when the message arrives, as EffectCount's timeLeft."
         },
         {
           "name": "runningFor",
@@ -1281,120 +1224,6 @@
         {
           "name": "lasts",
           "type": "f32",
-          "note": "How long the effect runs in total, in seconds."
-        },
-        {
-          "name": "runningFor",
-          "type": "f32",
-          "note": "How long it has already run, in seconds."
-        },
-        {
-          "name": "count",
-          "type": "u8",
-          "note": "How many units follow."
-        },
-        {
-          "name": "entries",
-          "type": "array",
-          "count": "count",
-          "items": {
-            "name": "entriesEntry",
-            "type": "record",
-            "fields": [
-              {
-                "name": "unit",
-                "type": "u32",
-                "note": "The unit carrying the effect."
-              },
-              {
-                "name": "caster",
-                "type": "u32",
-                "note": "The unit that put it there."
-              },
-              {
-                "name": "slot",
-                "type": "u8",
-                "note": "Which of the unit's effect slots it sits in."
-              },
-              {
-                "name": "stacks",
-                "type": "u8",
-                "note": "How many are stacked there now."
-              }
-            ]
-          },
-          "note": "The units, one place each."
-        }
-      ]
-    },
-    {
-      "from": "3.01.0.1",
-      "until": "3.03.0.198",
-      "channel": "events",
-      "command": 191,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "lasts",
-          "type": "f32",
-          "note": "How long the effect runs in total, in seconds."
-        },
-        {
-          "name": "runningFor",
-          "type": "f32",
-          "note": "How long it has already run, in seconds."
-        },
-        {
-          "name": "count",
-          "type": "u8",
-          "note": "How many units follow."
-        },
-        {
-          "name": "entries",
-          "type": "array",
-          "count": "count",
-          "items": {
-            "name": "entriesEntry",
-            "type": "record",
-            "fields": [
-              {
-                "name": "unit",
-                "type": "u32",
-                "note": "The unit carrying the effect."
-              },
-              {
-                "name": "caster",
-                "type": "u32",
-                "note": "The unit that put it there."
-              },
-              {
-                "name": "slot",
-                "type": "u8",
-                "note": "Which of the unit's effect slots it sits in."
-              },
-              {
-                "name": "stacks",
-                "type": "u8",
-                "note": "How many are stacked there now."
-              }
-            ]
-          },
-          "note": "The units, one place each."
-        }
-      ]
-    },
-    {
-      "from": "3.03.0.198",
-      "until": "3.04.0.78",
-      "channel": "events",
-      "command": 191,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "lasts",
-          "type": "f32",
           "note": "How long the effect has left to run, in seconds, as EffectCount's timeLeft."
         },
         {
@@ -1442,7 +1271,7 @@
       ]
     },
     {
-      "from": "3.04.0.78",
+      "from": "3.01.0.1",
       "until": "3.6.0.388",
       "channel": "events",
       "command": 191,
@@ -1452,7 +1281,7 @@
         {
           "name": "lasts",
           "type": "f32",
-          "note": "How long the effect runs in total, in seconds."
+          "note": "How long the effect has left to run, in seconds, as EffectCount's timeLeft."
         },
         {
           "name": "runningFor",
@@ -1557,63 +1386,6 @@
     },
     {
       "from": "3.7.0.328",
-      "until": "3.10.0.237",
-      "channel": "events",
-      "command": 191,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "lasts",
-          "type": "f32",
-          "note": "How long the effect runs in total, in seconds."
-        },
-        {
-          "name": "runningFor",
-          "type": "f32",
-          "note": "How long it has already run, in seconds."
-        },
-        {
-          "name": "count",
-          "type": "u8",
-          "note": "How many units follow."
-        },
-        {
-          "name": "entries",
-          "type": "array",
-          "count": "count",
-          "items": {
-            "name": "entriesEntry",
-            "type": "record",
-            "fields": [
-              {
-                "name": "unit",
-                "type": "u32",
-                "note": "The unit carrying the effect."
-              },
-              {
-                "name": "caster",
-                "type": "u32",
-                "note": "The unit that put it there."
-              },
-              {
-                "name": "slot",
-                "type": "u8",
-                "note": "Which of the unit's effect slots it sits in."
-              },
-              {
-                "name": "stacks",
-                "type": "u8",
-                "note": "How many are stacked there now."
-              }
-            ]
-          },
-          "note": "The units, one place each."
-        }
-      ]
-    },
-    {
-      "from": "3.10.0.237",
       "until": "4.1.0.171",
       "channel": "events",
       "command": 191,
@@ -1737,7 +1509,7 @@
         {
           "name": "lasts",
           "type": "f32",
-          "note": "How long the effect runs in total, in seconds."
+          "note": "How long the effect has left to run, in seconds."
         },
         {
           "name": "runningFor",
@@ -1794,7 +1566,7 @@
         {
           "name": "lasts",
           "type": "f32",
-          "note": "How long the effect runs in total, in seconds."
+          "note": "How long the effect has left to run, in seconds."
         },
         {
           "name": "runningFor",

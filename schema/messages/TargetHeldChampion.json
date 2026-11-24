@@ -66,7 +66,7 @@
           "note": "The champion being attacked."
         }
       ],
-      "note": "A client marks the unit where target is nonzero, names a champion the client holds and the unit is on the other side, drawing an indicator on the unit's health bar unless the unit's data turns it off; any other target clears the mark."
+      "note": "A client marks the unit where target is nonzero and is its own champion; any other target clears the mark."
     },
     {
       "from": "1.0.0.82",
@@ -114,7 +114,7 @@
           "note": "The champion being attacked."
         }
       ],
-      "note": "A client marks the unit where target is nonzero, names a champion the client holds and the unit is on the other side, drawing an indicator on the unit's health bar unless the unit's data turns it off; any other target clears the mark."
+      "note": "A client marks the unit only where target is its own champion; any other target, zero included, clears the mark."
     },
     {
       "from": "1.0.0.103",
@@ -130,7 +130,7 @@
           "note": "The champion being attacked."
         }
       ],
-      "note": "A client marks the unit where target is nonzero, names a champion the client holds and the unit is on the other side, drawing an indicator on the unit's health bar unless the unit's data turns it off; any other target clears the mark."
+      "note": "A client marks the unit only where target is its own champion; any other target, zero included, clears the mark."
     },
     {
       "from": "1.0.0.107",
@@ -146,7 +146,7 @@
           "note": "The champion being attacked."
         }
       ],
-      "note": "A client marks the unit where target is nonzero, names a champion the client holds and the unit is on the other side, drawing an indicator on the unit's health bar unless the unit's data turns it off; any other target clears the mark."
+      "note": "A client marks the unit only where target is its own champion; any other target, zero included, clears the mark."
     },
     {
       "from": "1.0.0.110",
@@ -178,7 +178,7 @@
           "note": "The champion being attacked."
         }
       ],
-      "note": "A client marks the unit where target is nonzero, names a champion the client holds and the unit is on the other side, drawing an indicator on the unit's health bar unless the unit's data turns it off; any other target clears the mark."
+      "note": "A client marks the unit only where target is its own champion; any other target clears the mark."
     },
     {
       "from": "1.0.0.117",
@@ -194,7 +194,7 @@
           "note": "The champion being attacked."
         }
       ],
-      "note": "A client marks the unit where target is nonzero, names a champion the client holds and the unit is on the other side, drawing an indicator on the unit's health bar unless the unit's data turns it off; any other target clears the mark."
+      "note": "A client marks the unit only where target is its own champion; any other target clears the mark."
     },
     {
       "from": "1.0.0.119",
@@ -210,7 +210,7 @@
           "note": "The champion being attacked."
         }
       ],
-      "note": "A client marks the unit where target is nonzero, names a champion the client holds and the unit is on the other side, drawing an indicator on the unit's health bar unless the unit's data turns it off; any other target clears the mark."
+      "note": "A client marks the unit only where target is its own champion; any other target clears the mark."
     },
     {
       "from": "1.0.0.124",
@@ -226,7 +226,7 @@
           "note": "The champion being attacked."
         }
       ],
-      "note": "A client marks the unit where target is nonzero, names a champion the client holds and the unit is on the other side, drawing an indicator on the unit's health bar unless the unit's data turns it off; any other target clears the mark."
+      "note": "A client marks the unit only where target is its own champion; any other target clears the mark."
     },
     {
       "from": "1.0.0.125",
@@ -242,7 +242,7 @@
           "note": "The champion being attacked."
         }
       ],
-      "note": "A client marks the unit where target is nonzero, names a champion the client holds and the unit is on the other side, drawing an indicator on the unit's health bar unless the unit's data turns it off; any other target clears the mark."
+      "note": "A client marks the unit only where target is its own champion; any other target clears the mark."
     },
     {
       "from": "1.0.0.126",
@@ -290,7 +290,7 @@
           "note": "The champion being attacked."
         }
       ],
-      "note": "A client marks the unit where target is nonzero, names a champion the client holds and the unit is on the other side, drawing an indicator on the unit's health bar unless the unit's data turns it off; any other target clears the mark."
+      "note": "A client marks the unit only where target is its own champion, with no test of sides; any other target, zero included, clears the mark."
     },
     {
       "from": "1.0.0.135",
@@ -306,7 +306,7 @@
           "note": "The champion being attacked."
         }
       ],
-      "note": "A client marks the unit where target is nonzero, names a champion the client holds and the unit is on the other side, drawing an indicator on the unit's health bar unless the unit's data turns it off; any other target clears the mark."
+      "note": "A client marks the unit only where target is its own champion, with no test of sides; any other target, zero included, clears the mark."
     },
     {
       "from": "1.0.0.136",
@@ -322,7 +322,7 @@
           "note": "The champion being attacked."
         }
       ],
-      "note": "A client marks the unit where target is nonzero, names a champion the client holds and the unit is on the other side, drawing an indicator on the unit's health bar unless the unit's data turns it off; any other target clears the mark."
+      "note": "A client marks the unit only where target is its own champion, with no test of sides; any other target, zero included, clears the mark."
     },
     {
       "from": "1.0.0.138",
@@ -338,7 +338,7 @@
           "note": "The champion being attacked."
         }
       ],
-      "note": "A client marks the unit where target is nonzero, names a champion the client holds and the unit is on the other side, drawing an indicator on the unit's health bar unless the unit's data turns it off; any other target clears the mark."
+      "note": "A client marks the unit only where target is its own champion, with no test of sides; any other target, zero included, clears the mark."
     },
     {
       "from": "1.0.0.139",
@@ -370,7 +370,7 @@
           "note": "The champion being attacked."
         }
       ],
-      "note": "A client marks the unit where target is nonzero, names a champion the client holds and the unit is on the other side, drawing an indicator on the unit's health bar unless the unit's data turns it off; any other target clears the mark."
+      "note": "A client marks the unit only where target is its own champion, drawing an indicator on the unit's health bar unless the unit's data turns it off. Any other target, another champion included, clears the mark."
     },
     {
       "from": "1.0.0.144",
@@ -402,26 +402,10 @@
           "note": "The champion being attacked."
         }
       ],
-      "note": "A client marks the unit where target is nonzero, names a champion the client holds and the unit is on the other side, drawing an indicator on the unit's health bar unless the unit's data turns it off; any other target clears the mark."
+      "note": "A client marks the unit only where target is its own champion, drawing an indicator on the unit's health bar unless the unit's data turns it off. Any other target, another champion included, clears the mark."
     },
     {
       "from": "1.0.0.150",
-      "until": "1.0.0.151",
-      "channel": "events",
-      "command": 189,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "target",
-          "type": "u32",
-          "note": "The champion being attacked."
-        }
-      ],
-      "note": "A client marks the unit only where target is its own champion and the unit is on the other side, drawing an indicator on the unit's health bar unless the unit's data turns it off; any other target clears the mark."
-    },
-    {
-      "from": "1.0.0.151",
       "until": "3.01.0.1",
       "channel": "events",
       "command": 189,
@@ -434,7 +418,7 @@
           "note": "The champion being attacked."
         }
       ],
-      "note": "A client marks the unit where target is nonzero, names a champion the client holds and the unit is on the other side, drawing an indicator on the unit's health bar unless the unit's data turns it off; any other target clears the mark."
+      "note": "A client marks the unit only where target is its own champion and the unit is on the other side, drawing an indicator on the unit's health bar unless the unit's data turns it off; any other target clears the mark."
     },
     {
       "from": "3.01.0.1",
@@ -454,38 +438,6 @@
     },
     {
       "from": "4.1.0.171",
-      "until": "4.4.0.1858",
-      "channel": "events",
-      "command": 191,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "target",
-          "type": "u32",
-          "note": "The champion being attacked."
-        }
-      ],
-      "note": "A client marks the unit where target is nonzero, names a champion the client holds and the unit is on the other side, drawing an indicator on the unit's health bar unless the unit's data turns it off; any other target clears the mark."
-    },
-    {
-      "from": "4.4.0.1858",
-      "until": "4.5.0.260",
-      "channel": "events",
-      "command": 191,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "target",
-          "type": "u32",
-          "note": "The champion being attacked."
-        }
-      ],
-      "note": "A client marks the unit only where target is its own champion and the unit is on the other side, drawing an indicator on the unit's health bar unless the unit's data turns it off; any other target clears the mark."
-    },
-    {
-      "from": "4.5.0.260",
       "until": "4.11.0.386",
       "channel": "events",
       "command": 191,
@@ -498,7 +450,7 @@
           "note": "The champion being attacked."
         }
       ],
-      "note": "A client marks the unit where target is nonzero, names a champion the client holds and the unit is on the other side, drawing an indicator on the unit's health bar unless the unit's data turns it off; any other target clears the mark."
+      "note": "A client marks the unit only where target is its own champion and the unit is on the other side, drawing an indicator on the unit's health bar unless the unit's data turns it off; any other target clears the mark."
     },
     {
       "from": "4.11.0.386",

@@ -75,7 +75,7 @@
         {
           "name": "fromX",
           "type": "f32",
-          "note": "Where the swinging unit stands, along one ground axis, in world units. Where the unit stands more than 400 units from this point, measured along the ground alone, a client first moves it there; nearer, the point has no effect."
+          "note": "Where the swinging unit stands, along one ground axis, in world units. Where the unit stands more than 400 units from this point, measured along the ground alone, a client first moves it there."
         },
         {
           "name": "fromY",
@@ -261,7 +261,7 @@
         {
           "name": "fromX",
           "type": "f32",
-          "note": "Where the swinging unit stands, along one ground axis, in world units. Where the unit stands more than 400 units from this point, a client first moves it there; nearer, the point has no effect."
+          "note": "Where the swinging unit stands, along one ground axis, in world units. Wherever the point is, where the unit stands more than 400 units from it, measured along the ground alone, the client places the unit there at once."
         },
         {
           "name": "fromY",

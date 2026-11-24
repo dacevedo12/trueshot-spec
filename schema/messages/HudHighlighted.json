@@ -123,7 +123,7 @@
         {
           "name": "element",
           "type": "u8",
-          "note": "What to light up on the main controls, 0 to 8; a larger value has no defined effect. 4, 5 and 6 each name a part of a second panel; which part each value names is not recorded.",
+          "note": "What to light up on the main controls, 0 to 8; a larger value has no defined effect. What is drawn for each is not recorded.",
           "values": {
             "0": {
               "name": "spell",
@@ -131,7 +131,7 @@
             },
             "1": {
               "name": "spellUpgrade",
-              "note": "Nothing is shown."
+              "note": "number names a slot."
             },
             "2": {
               "name": "summonerSpell",
@@ -164,7 +164,7 @@
         {
           "name": "number",
           "type": "u8",
-          "note": "Which slot, for a spell or a summoner spell; it has no effect for 4, 5 or 6."
+          "note": "Which slot, for elements 0, 1 and 2; it has no effect for any other element."
         }
       ]
     },
@@ -283,15 +283,14 @@
         {
           "name": "element",
           "type": "u8",
-          "note": "What to light up on the main controls, 0 to 8; a larger value has no defined effect. 4, 5 and 6 each name a part of a second panel; which part each value names is not recorded.",
+          "note": "What to light up, 0 to 8; a larger value has no defined effect.",
           "values": {
             "0": {
               "name": "spell",
               "note": "A spell's button; number names its slot, 0 to 3."
             },
             "1": {
-              "name": "spellUpgrade",
-              "note": "Nothing is shown."
+              "name": "spellUpgrade"
             },
             "2": {
               "name": "summonerSpell",
@@ -408,15 +407,13 @@
               "name": "recall"
             },
             "4": {
-              "name": "shop",
-              "note": "Nothing is shown."
+              "name": "shop"
             },
             "5": {
               "name": "gold"
             },
             "6": {
-              "name": "experience",
-              "note": "Sized to the progress through the level."
+              "name": "experience"
             },
             "7": {
               "name": "health",
@@ -895,7 +892,7 @@
         {
           "name": "element",
           "type": "u8",
-          "note": "What to light up on the main controls, 0 to 8; a client ignores a larger value. 4, 5 and 6 each name a part of a second panel; which part each value names is not recorded.",
+          "note": "What to light up on the main controls, 0 to 8. 4, 5 and 6 each name a part of a second panel.",
           "values": {
             "0": {
               "name": "spell",
@@ -951,7 +948,7 @@
         {
           "name": "element",
           "type": "u8",
-          "note": "What to light up on the main controls, 0 to 8; a client ignores a larger value. 4, 5 and 6 each name a part of a second panel; which part each value names is not recorded.",
+          "note": "What to light up on the main controls, 0 to 8. 4, 5 and 6 each name a part of a second panel.",
           "values": {
             "0": {
               "name": "spell",
@@ -1007,7 +1004,7 @@
         {
           "name": "element",
           "type": "u8",
-          "note": "What to light up on the main controls, 0 to 8; a client ignores a larger value. 4, 5 and 6 each name a part of a second panel; which part each value names is not recorded.",
+          "note": "What to light up on the main controls, 0 to 8. 4, 5 and 6 each name a part of a second panel.",
           "values": {
             "0": {
               "name": "spell",
@@ -1063,7 +1060,7 @@
         {
           "name": "element",
           "type": "u8",
-          "note": "What to light up on the main controls, 0 to 8; a client ignores a larger value. 4, 5 and 6 each name a part of a second panel; which part each value names is not recorded.",
+          "note": "What to light up on the main controls, 0 to 8. 4, 5 and 6 each name a part of a second panel.",
           "values": {
             "0": {
               "name": "spell",
@@ -1104,7 +1101,7 @@
         {
           "name": "number",
           "type": "u8",
-          "note": "Which slot, for a spell or a summoner spell; it has no effect for 3 to 8."
+          "note": "Which slot, for a spell or a summoner spell; it has no effect for 4, 5 or 6."
         }
       ]
     },
@@ -1166,62 +1163,6 @@
     },
     {
       "from": "1.0.0.127",
-      "until": "1.0.0.128",
-      "channel": "events",
-      "command": 67,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "element",
-          "type": "u8",
-          "note": "What to light up on the main controls, 0 to 8; a client ignores a larger value. 4, 5 and 6 each name a part of a second panel; which part each value names is not recorded.",
-          "values": {
-            "0": {
-              "name": "spell",
-              "note": "A spell's button; number names its slot, 0 to 3."
-            },
-            "1": {
-              "name": "spellUpgrade",
-              "note": "Nothing is shown."
-            },
-            "2": {
-              "name": "summonerSpell",
-              "note": "A summoner spell's button; number names its slot, 0 or 1."
-            },
-            "3": {
-              "name": "recall"
-            },
-            "4": {
-              "name": "shop",
-              "note": "Nothing is shown."
-            },
-            "5": {
-              "name": "gold"
-            },
-            "6": {
-              "name": "experience",
-              "note": "Sized to the progress through the level."
-            },
-            "7": {
-              "name": "health",
-              "note": "Sized to the health left."
-            },
-            "8": {
-              "name": "mana",
-              "note": "Nothing is shown."
-            }
-          }
-        },
-        {
-          "name": "number",
-          "type": "u8",
-          "note": "Which slot, for a spell or a summoner spell; it has no effect for 3 to 8."
-        }
-      ]
-    },
-    {
-      "from": "1.0.0.128",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 67,
@@ -1231,7 +1172,7 @@
         {
           "name": "element",
           "type": "u8",
-          "note": "What to light up on the main controls. A client ignores any value above 8.",
+          "note": "What to light up, 0 to 8; a client ignores a larger value. 4, 5 and 6 each name a part of a second panel: 4 the shop button, 5 the gold shown and 6 the experience bar.",
           "values": {
             "0": {
               "name": "spell",
@@ -1272,7 +1213,7 @@
         {
           "name": "number",
           "type": "u8",
-          "note": "Which slot, for a spell or a summoner spell; it has no effect otherwise. A client accepts any value, and a slot beyond those named has no defined effect."
+          "note": "Which slot, for a spell or a summoner spell; a client reads it only for elements 0 to 2."
         }
       ]
     },

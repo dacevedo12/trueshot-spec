@@ -31,7 +31,7 @@
       "command": 115,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "note": "A client sends it once, as it leaves without a result: as its player confirms quitting or the window is asked to close, or as its player gives up reconnecting after the connection is lost, or loses it where reconnecting is turned off. It sends none after GameEnded, and none on BotKick.",
+      "note": "A client sends it once, as it leaves play without a result: as its player confirms quitting or closes the window in play, as its player declines or cancels reconnecting, or as its player dismisses the notice that the reconnection failed or that it was dropped for being away.",
       "fields": []
     },
     {
@@ -61,7 +61,7 @@
       "command": 115,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "note": "A client sends it once, as it leaves without a result while the match runs: as its player quits from the options menu or closes the window, gives up reconnecting after the connection is lost, or dismisses the notice that it was disconnected for being away. It sends none while the match still loads, none after GameEnded, and none on BotKick.",
+      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting, closes the window or declines to reconnect.",
       "fields": []
     },
     {
@@ -71,7 +71,7 @@
       "command": 118,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window, as a reconnection fails, or on BotKick.",
+      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting, closes the window or declines to reconnect.",
       "fields": []
     },
     {
@@ -91,7 +91,7 @@
       "command": 119,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window, as a reconnection fails, or on BotKick.",
+      "note": "A client sends it as it leaves as one abandoning the match while the match runs: as its player confirms quitting or closes the window, declines to reconnect.",
       "fields": []
     },
     {
@@ -101,7 +101,7 @@
       "command": 123,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window, or as a reconnection fails.",
+      "note": "A client sends it as it leaves as one abandoning the match while the match runs: as its player confirms quitting or closes the window, declines to reconnect.",
       "fields": []
     },
     {
@@ -121,7 +121,7 @@
       "command": 123,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window, or as a reconnection fails.",
+      "note": "A client sends it as it leaves as one abandoning the match while the match runs: as its player confirms quitting or closes the window, declines to reconnect, or dismisses the notice that a reconnection failed or that it was dropped for being away.",
       "fields": []
     },
     {
@@ -141,7 +141,7 @@
       "command": 124,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window, as a reconnection fails, or on BotKick.",
+      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting, closes the window, declines to reconnect, or dismisses the notice that it was dropped or away.",
       "fields": []
     },
     {
@@ -151,7 +151,7 @@
       "command": 126,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window, as a reconnection fails, or on BotKick.",
+      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting, closes the window, declines to reconnect, or dismisses the notice that it was dropped or away.",
       "fields": []
     },
     {
@@ -161,7 +161,7 @@
       "command": 127,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window, as a reconnection fails, or on BotKick.",
+      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting, closes the window, declines to reconnect, or dismisses the notice that it was dropped or away.",
       "fields": []
     },
     {
@@ -171,7 +171,7 @@
       "command": 128,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window, as a reconnection fails, or on BotKick.",
+      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting, closes the window, declines to reconnect, or dismisses the notice that it was dropped or away.",
       "fields": []
     },
     {
@@ -191,7 +191,7 @@
       "command": 141,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window, as a reconnection fails, or on BotKick.",
+      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window.",
       "fields": []
     },
     {
@@ -201,7 +201,7 @@
       "command": 142,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window, as a reconnection fails, or on BotKick.",
+      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window.",
       "fields": []
     },
     {
@@ -211,7 +211,7 @@
       "command": 143,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window, as a reconnection fails, or on BotKick.",
+      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window.",
       "fields": []
     },
     {
@@ -221,7 +221,7 @@
       "command": 147,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window, as a reconnection fails, or on BotKick.",
+      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window.",
       "fields": []
     },
     {
@@ -236,42 +236,22 @@
     },
     {
       "from": "1.0.0.127",
-      "until": "1.0.0.130",
-      "channel": "requests",
-      "command": 148,
-      "direction": "clientToServer",
-      "reliability": "reliable",
-      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window, as a reconnection fails, or on BotKick.",
-      "fields": []
-    },
-    {
-      "from": "1.0.0.130",
       "until": "1.0.0.132",
       "channel": "requests",
       "command": 148,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window, as a reconnection fails, or on Shutdown or BotKick.",
+      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting.",
       "fields": []
     },
     {
       "from": "1.0.0.132",
-      "until": "1.0.0.133",
-      "channel": "requests",
-      "command": 149,
-      "direction": "clientToServer",
-      "reliability": "reliable",
-      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting, or on Shutdown.",
-      "fields": []
-    },
-    {
-      "from": "1.0.0.133",
       "until": "1.0.0.138",
       "channel": "requests",
       "command": 149,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window, as a reconnection fails, or on Shutdown or BotKick.",
+      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting, or on Shutdown.",
       "fields": []
     },
     {
@@ -281,7 +261,7 @@
       "command": 151,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting or closes the window, as a reconnection fails, or on Shutdown or BotKick.",
+      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting, or on Shutdown.",
       "fields": []
     },
     {
@@ -381,7 +361,7 @@
       "command": 143,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "note": "A client sends it only as it quits by abandoning the match; a match that reaches its end sends none. The header names no object: it carries zero.",
+      "note": "A client sends it as it leaves as one abandoning the match.",
       "fields": []
     },
     {

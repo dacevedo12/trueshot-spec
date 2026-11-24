@@ -21,8 +21,7 @@
       "command": 58,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": [],
-      "note": "Sent for the receiving client's own champion, it changes nothing the client shows."
+      "fields": []
     },
     {
       "from": "0.9.25.24",
@@ -91,8 +90,7 @@
       "command": 63,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": [],
-      "note": "Sent for the receiving client's own champion, it changes nothing the client shows."
+      "fields": []
     },
     {
       "from": "1.0.0.103",
@@ -101,8 +99,7 @@
       "command": 64,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": [],
-      "note": "Sent for the receiving client's own champion, it changes nothing the client shows."
+      "fields": []
     },
     {
       "from": "1.0.0.107",
@@ -111,27 +108,16 @@
       "command": 65,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": [],
-      "note": "Sent for the receiving client's own champion, it changes nothing the client shows."
-    },
-    {
-      "from": "1.0.0.110",
-      "until": "1.0.0.111",
-      "channel": "events",
-      "command": 55,
-      "direction": "serverToClient",
-      "reliability": "reliable",
       "fields": []
     },
     {
-      "from": "1.0.0.111",
+      "from": "1.0.0.110",
       "until": "1.0.0.117",
       "channel": "events",
       "command": 55,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": [],
-      "note": "Sent for the receiving client's own champion, it changes nothing the client shows."
+      "fields": []
     },
     {
       "from": "1.0.0.117",
@@ -140,8 +126,7 @@
       "command": 56,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": [],
-      "note": "Sent for the receiving client's own champion, it changes nothing the client shows."
+      "fields": []
     },
     {
       "from": "1.0.0.119",
@@ -150,8 +135,7 @@
       "command": 57,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": [],
-      "note": "Sent for the receiving client's own champion, it changes nothing the client shows."
+      "fields": []
     },
     {
       "from": "1.0.0.124",
@@ -160,8 +144,7 @@
       "command": 58,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": [],
-      "note": "Sent for the receiving client's own champion, it changes nothing the client shows."
+      "fields": []
     },
     {
       "from": "1.0.0.126",
@@ -175,23 +158,13 @@
     },
     {
       "from": "1.0.0.127",
-      "until": "1.0.0.128",
-      "channel": "events",
-      "command": 58,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [],
-      "note": "It changes nothing a client shows for any unit, and a client ignores it while playing a replay."
-    },
-    {
-      "from": "1.0.0.128",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 58,
       "direction": "serverToClient",
       "reliability": "reliable",
       "fields": [],
-      "note": "It changes nothing a client shows for any unit, and a client ignores it while watching a match."
+      "note": "A client shows no FloatingText in slot 0 over the unit until EnterLocalSight names it again."
     },
     {
       "from": "1.0.0.132",
@@ -220,18 +193,26 @@
       "command": 55,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": [],
-      "note": "Sent for the receiving client's own champion, it changes nothing the client shows."
+      "fields": []
     },
     {
       "from": "1.0.0.147",
-      "until": "1.0.0.150",
+      "until": "1.0.0.148",
       "channel": "events",
       "command": 55,
       "direction": "serverToClient",
       "reliability": "reliable",
       "fields": [],
       "note": "A client ignores it while playing a replay."
+    },
+    {
+      "from": "1.0.0.148",
+      "until": "1.0.0.150",
+      "channel": "events",
+      "command": 55,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": []
     },
     {
       "from": "1.0.0.150",
@@ -265,16 +246,6 @@
     },
     {
       "from": "3.11.0.306",
-      "until": "3.13.0.399",
-      "channel": "events",
-      "command": 52,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [],
-      "note": "Sent for the receiving client's own champion, it changes nothing the client shows."
-    },
-    {
-      "from": "3.13.0.399",
       "until": "3.14.0.700",
       "channel": "events",
       "command": 52,
@@ -300,8 +271,7 @@
       "command": 53,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": [],
-      "note": "After it names the client's own champion, a client drops FloatingText and UnitText over that champion, and the healing numbers it would show for it."
+      "fields": []
     },
     {
       "from": "4.17.0.233",

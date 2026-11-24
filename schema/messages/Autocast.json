@@ -79,7 +79,7 @@
         {
           "name": "slot",
           "type": "i8",
-          "note": "The slot cast by itself, from -1 to 51. A client takes a value outside that range as it stands. What -1 does is not recorded."
+          "note": "The slot cast by itself. What -1 does is not recorded."
         }
       ],
       "note": "It names one slot: there is no slot for a critical strike."
@@ -95,7 +95,7 @@
         {
           "name": "slot",
           "type": "i8",
-          "note": "The slot cast by itself, from -1 to 51. A client takes a value outside that range as it stands. What -1 does is not recorded."
+          "note": "The slot cast by itself. What -1 does is not recorded."
         }
       ],
       "note": "It names one slot: there is no slot for a critical strike."
@@ -111,7 +111,7 @@
         {
           "name": "slot",
           "type": "i8",
-          "note": "The slot cast by itself, from -1 to 51. A client takes a value outside that range as it stands. What -1 does is not recorded."
+          "note": "The slot cast by itself. What -1 does is not recorded."
         }
       ],
       "note": "It names one slot: there is no slot for a critical strike."
@@ -201,26 +201,6 @@
     },
     {
       "from": "1.0.0.144",
-      "until": "1.0.0.150",
-      "channel": "events",
-      "command": 31,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "slot",
-          "type": "i8",
-          "note": "The slot cast by itself, from 0 to 62; any other value leaves it unset."
-        },
-        {
-          "name": "criticalSlot",
-          "type": "i8",
-          "note": "The slot cast by itself on a critical strike, under the same terms."
-        }
-      ]
-    },
-    {
-      "from": "1.0.0.150",
       "until": "1.0.0.151",
       "channel": "events",
       "command": 31,
@@ -250,7 +230,7 @@
         {
           "name": "slot",
           "type": "i8",
-          "note": "The slot cast by itself, from 0 to 62; any other value leaves it unset."
+          "note": "The slot cast by itself."
         },
         {
           "name": "criticalSlot",
@@ -290,7 +270,7 @@
         {
           "name": "slot",
           "type": "i8",
-          "note": "The slot cast by itself, from 0 to 62; any other value leaves it unset."
+          "note": "The slot cast by itself, from 0 to 59. A client ignores the whole message where either slot is outside 0 to 59."
         },
         {
           "name": "criticalSlot",
@@ -330,7 +310,7 @@
         {
           "name": "slot",
           "type": "i8",
-          "note": "The slot cast by itself, from 0 to 62; any other value leaves it unset."
+          "note": "The slot cast by itself, from 0 to 59. A client ignores the whole message where either slot is outside 0 to 59."
         },
         {
           "name": "criticalSlot",
@@ -370,7 +350,7 @@
         {
           "name": "slot",
           "type": "i8",
-          "note": "The slot cast by itself, from 0 to 62; any other value leaves it unset."
+          "note": "The slot cast by itself."
         },
         {
           "name": "criticalSlot",
@@ -410,7 +390,7 @@
         {
           "name": "slot",
           "type": "i8",
-          "note": "The slot cast by itself, from 0 to 62; any other value leaves it unset."
+          "note": "The slot cast by itself."
         },
         {
           "name": "criticalSlot",
@@ -450,7 +430,7 @@
         {
           "name": "slot",
           "type": "i8",
-          "note": "The slot cast by itself, from 0 to 62; any other value leaves it unset."
+          "note": "The slot cast by itself."
         },
         {
           "name": "criticalSlot",
