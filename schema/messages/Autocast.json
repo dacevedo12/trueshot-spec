@@ -261,46 +261,6 @@
     },
     {
       "from": "3.03.0.198",
-      "until": "3.04.0.78",
-      "channel": "events",
-      "command": 31,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "slot",
-          "type": "i8",
-          "note": "The slot cast by itself, from 0 to 59. A client ignores the whole message where either slot is outside 0 to 59."
-        },
-        {
-          "name": "criticalSlot",
-          "type": "i8",
-          "note": "The slot cast by itself on a critical strike, from 0 to 59, under the same terms."
-        }
-      ]
-    },
-    {
-      "from": "3.04.0.78",
-      "until": "3.6.0.388",
-      "channel": "events",
-      "command": 31,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "slot",
-          "type": "i8",
-          "note": "The slot cast by itself, from 0 to 62; any other value leaves it unset."
-        },
-        {
-          "name": "criticalSlot",
-          "type": "i8",
-          "note": "The slot cast by itself on a critical strike, under the same terms."
-        }
-      ]
-    },
-    {
-      "from": "3.6.0.388",
       "until": "3.7.0.328",
       "channel": "events",
       "command": 31,

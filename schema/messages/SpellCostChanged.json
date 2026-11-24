@@ -117,7 +117,7 @@
         {
           "name": "costType",
           "type": "u8",
-          "note": "How the amount applies.",
+          "note": "How the amount applies. A client acts on 0 and 1 and ignores any other value.",
           "values": {
             "0": {
               "name": "flat"

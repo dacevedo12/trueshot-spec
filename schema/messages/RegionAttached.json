@@ -331,7 +331,7 @@
         {
           "name": "marker",
           "type": "u32",
-          "note": "The region's id, which RegionRemoved names; zero has the client pick one of its own. A region that matches one the client holds in kind, sightRadius, the first three bits of does, extra, otherExtra and unit only renews that one's lifetime; the id is not compared."
+          "note": "The region's id, which RegionRemoved names; zero has the client pick one of its own."
         },
         {
           "name": "does",
@@ -364,7 +364,7 @@
         {
           "name": "otherExtra",
           "type": "u32",
-          "note": "A region sent again with the same value is taken as the one already shown; what else it names is not recorded. A server sends zero."
+          "note": "Kept with the region; what it names is not recorded. A server sends zero."
         }
       ],
       "note": "A region matching one the client holds in view, sightRadius, the first three bits of does, marker, sightFrom and unit only gives that one the new lifetime."
@@ -1284,7 +1284,7 @@
         {
           "name": "lifetime",
           "type": "f32",
-          "note": "How long it lasts, in seconds. A client counts it down and removes the region once it reaches zero or less. Whether one that starts at zero or less is kept is not recorded."
+          "note": "How long it lasts, in seconds. A client counts it down and removes the region once it reaches zero or less, so one that starts at zero or less goes at its first count."
         },
         {
           "name": "marker",
@@ -2088,7 +2088,7 @@
         {
           "name": "marker",
           "type": "u32",
-          "note": "The region's id, which RegionRemoved names; 4294967295 has the client pick one of its own. A region sent again with the same id, kind and radius changes the one held rather than adding another."
+          "note": "The region's id, which RegionRemoved names; 0 has the client pick one of its own, and 4294967295 is an id like any other."
         },
         {
           "name": "does",

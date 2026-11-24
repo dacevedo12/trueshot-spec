@@ -216,7 +216,7 @@
             {
               "name": "inFavour",
               "width": 1,
-              "note": "Set where the answer is yes. A client sends it clear."
+              "note": "Set where the answer is yes."
             },
             {
               "name": "unused",
@@ -678,34 +678,6 @@
     },
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
-      "channel": "requests",
-      "command": 172,
-      "direction": "clientToServer",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "how",
-          "type": "bits",
-          "size": 1,
-          "bits": [
-            {
-              "name": "inFavour",
-              "width": 1,
-              "note": "Set where the answer is yes, clear where it is no."
-            },
-            {
-              "name": "unused",
-              "width": 7,
-              "note": "A client leaves these bits unwritten; they carry no meaning."
-            }
-          ]
-        }
-      ],
-      "note": "It answers a call to surrender, from the panel's buttons, and a client also sends it as its player types a command for yes or no, a vote open or not."
-    },
-    {
-      "from": "1.0.0.127",
       "until": "1.0.0.132",
       "channel": "requests",
       "command": 172,
@@ -730,7 +702,7 @@
           ]
         }
       ],
-      "note": "It answers a call to surrender."
+      "note": "It answers a call to surrender, from the panel's buttons, and a client also sends it as its player types a command for yes or no, a vote open or not."
     },
     {
       "from": "1.0.0.132",
@@ -1056,7 +1028,7 @@
             {
               "name": "inFavour",
               "width": 1,
-              "note": "Set where the answer is yes. A client sends it clear."
+              "note": "Set where the answer is yes, clear where it is no."
             },
             {
               "name": "unused",
@@ -1112,7 +1084,7 @@
             {
               "name": "inFavour",
               "width": 1,
-              "note": "Set where the answer is yes. A client sends it clear."
+              "note": "Set where the answer is yes, clear where it is no."
             },
             {
               "name": "unused",
@@ -1168,7 +1140,7 @@
             {
               "name": "inFavour",
               "width": 1,
-              "note": "Set where the answer is yes. A client sends it clear."
+              "note": "Set where the answer is yes, clear where it is no."
             },
             {
               "name": "unused",

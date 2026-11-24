@@ -98,52 +98,6 @@
     },
     {
       "from": "1.0.0.74",
-      "until": "1.0.0.75",
-      "channel": "events",
-      "command": 148,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "category",
-          "type": "u32",
-          "note": "Which input, as a set of bits.",
-          "values": {
-            "1": {
-              "name": "cameraLocking"
-            },
-            "2": {
-              "name": "movement"
-            },
-            "4": {
-              "name": "abilities"
-            },
-            "8": {
-              "name": "summonerSpells"
-            },
-            "16": {
-              "name": "shop"
-            },
-            "32": {
-              "name": "chat"
-            },
-            "64": {
-              "name": "minimapMovement"
-            },
-            "128": {
-              "name": "cameraMovement"
-            }
-          }
-        },
-        {
-          "name": "locked",
-          "type": "u8",
-          "note": "Set to lock, clear to unlock."
-        }
-      ]
-    },
-    {
-      "from": "1.0.0.75",
       "until": "1.0.0.82",
       "channel": "events",
       "command": 148,
@@ -186,8 +140,7 @@
           "type": "u8",
           "note": "Set to lock, clear to unlock."
         }
-      ],
-      "note": "A client ignores it while playing a replay."
+      ]
     },
     {
       "from": "1.0.0.82",
@@ -279,8 +232,7 @@
           "type": "u8",
           "note": "Set to lock, clear to unlock."
         }
-      ],
-      "note": "A client ignores it while playing a replay."
+      ]
     },
     {
       "from": "1.0.0.98",
@@ -326,8 +278,7 @@
           "type": "u8",
           "note": "Set to lock, clear to unlock."
         }
-      ],
-      "note": "A client ignores it while playing a replay."
+      ]
     },
     {
       "from": "1.0.0.103",
@@ -373,8 +324,7 @@
           "type": "u8",
           "note": "Set to lock, clear to unlock."
         }
-      ],
-      "note": "A client ignores it while playing a replay."
+      ]
     },
     {
       "from": "1.0.0.104",
@@ -420,8 +370,7 @@
           "type": "u8",
           "note": "Set to lock, clear to unlock."
         }
-      ],
-      "note": "A client ignores it while playing a replay."
+      ]
     },
     {
       "from": "1.0.0.107",
@@ -467,8 +416,7 @@
           "type": "u8",
           "note": "Set to lock, clear to unlock."
         }
-      ],
-      "note": "A client ignores it while playing a replay."
+      ]
     },
     {
       "from": "1.0.0.109",
@@ -514,8 +462,7 @@
           "type": "u8",
           "note": "Set to lock, clear to unlock."
         }
-      ],
-      "note": "A client ignores it while playing a replay."
+      ]
     },
     {
       "from": "1.0.0.110",
@@ -607,8 +554,7 @@
           "type": "u8",
           "note": "Set to lock, clear to unlock."
         }
-      ],
-      "note": "A client ignores it while playing a replay."
+      ]
     },
     {
       "from": "1.0.0.117",
@@ -654,8 +600,7 @@
           "type": "u8",
           "note": "Set to lock, clear to unlock."
         }
-      ],
-      "note": "A client ignores it while playing a replay."
+      ]
     },
     {
       "from": "1.0.0.119",
@@ -701,8 +646,7 @@
           "type": "u8",
           "note": "Set to lock, clear to unlock."
         }
-      ],
-      "note": "A client ignores it while playing a replay."
+      ]
     },
     {
       "from": "1.0.0.124",

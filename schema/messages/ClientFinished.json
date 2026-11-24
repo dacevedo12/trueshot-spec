@@ -306,16 +306,6 @@
     },
     {
       "from": "4.1.0.171",
-      "until": "4.4.0.1858",
-      "channel": "requests",
-      "command": 140,
-      "direction": "clientToServer",
-      "reliability": "reliable",
-      "fields": [],
-      "note": "It is sent once, at the end."
-    },
-    {
-      "from": "4.4.0.1858",
       "until": "4.5.0.260",
       "channel": "requests",
       "command": 140,

@@ -415,7 +415,7 @@
         {
           "name": "from",
           "type": "u8",
-          "note": "The slot the item leaves."
+          "note": "The slot the item leaves, which a client sends only from 0 to 6."
         },
         {
           "name": "to",

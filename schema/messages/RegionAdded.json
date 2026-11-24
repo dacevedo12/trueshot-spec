@@ -2396,7 +2396,7 @@
         {
           "name": "sightRadius",
           "type": "f32",
-          "note": "How far the region shows the map around it, in world units. Zero takes a default radius."
+          "note": "How far the region shows the map around it, in world units."
         },
         {
           "name": "atX",
@@ -2421,7 +2421,7 @@
         {
           "name": "marker",
           "type": "u32",
-          "note": "The region's id, which RegionRemoved names; 4294967295 has the client pick one of its own. A region sent again with the same id, kind and radius changes the one held rather than adding another."
+          "note": "The region's id, which RegionRemoved names; 0 has the client pick one of its own, and 4294967295 is an id like any other."
         },
         {
           "name": "does",

@@ -273,9 +273,9 @@ says what a client does with a movement whose unit it does not hold.
 > A path carries no flag and no token, so nothing relocates a unit: every path
 > is walked.
 
-<!-- holds from 1.0.0.86 up to 1.0.0.87 -->
+<!-- holds from 1.0.0.86 up to 1.0.0.97 -->
 
-> **In 1.0.0.86**
+> **In 1.0.0.86–1.0.0.96**
 >
 > A client answers each group with one `WaypointAck`, listing each unit whose
 > movement carried a token, in the order the group gives them, whether or not
@@ -299,15 +299,6 @@ says what a client does with a movement whose unit it does not hold.
 > unfamiliar one arriving while the unit is near enough. In both the path is
 > followed and the remembered token kept, so a token is taken up only once it
 > has moved something.
-
-<!-- holds from 1.0.0.96 up to 1.0.0.97 -->
-
-> **In 1.0.0.96**
->
-> A client answers each group with one `WaypointAck`, listing each unit whose
-> movement carried a token, in the order the group gives them, whether or not
-> the client holds the unit, and none whose movement follows a refused one; the
-> list is empty where it names none. A server MAY ignore it.
 
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 

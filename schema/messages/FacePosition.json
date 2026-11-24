@@ -331,7 +331,7 @@
     },
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.127",
+      "until": "1.0.0.132",
       "channel": "requests",
       "command": 83,
       "direction": "clientToServer",
@@ -354,31 +354,6 @@
         }
       ],
       "note": "A client also sends it once for each monster it creates from CreateNeutral, its header naming that monster, the direction running from the monster toward the point it faces."
-    },
-    {
-      "from": "1.0.0.127",
-      "until": "1.0.0.132",
-      "channel": "requests",
-      "command": 83,
-      "direction": "clientToServer",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "directionX",
-          "type": "f32",
-          "note": "Which way the unit now faces, as a direction of length one, along one ground axis."
-        },
-        {
-          "name": "directionY",
-          "type": "f32",
-          "note": "Which way the unit now faces, as a direction of length one, in height."
-        },
-        {
-          "name": "directionZ",
-          "type": "f32",
-          "note": "Which way the unit now faces, as a direction of length one, along the other ground axis."
-        }
-      ]
     },
     {
       "from": "1.0.0.132",

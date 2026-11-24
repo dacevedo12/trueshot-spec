@@ -50,50 +50,6 @@
     },
     {
       "from": "3.03.0.198",
-      "until": "3.04.0.78",
-      "channel": "events",
-      "command": 247,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "source",
-          "type": "u32",
-          "note": "The unit the line is credited to, or zero where none is. A client reads nothing here."
-        },
-        {
-          "name": "text",
-          "type": "string",
-          "encoding": "utf8",
-          "size": 512,
-          "note": "The line itself. Written out in full and padded with zero bytes to the width above."
-        }
-      ]
-    },
-    {
-      "from": "3.04.0.78",
-      "until": "3.6.0.388",
-      "channel": "events",
-      "command": 247,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "source",
-          "type": "u32",
-          "note": "The unit the line is credited to, or zero where none is."
-        },
-        {
-          "name": "text",
-          "type": "string",
-          "encoding": "utf8",
-          "size": 512,
-          "note": "The line itself. Written out in full and padded with zero bytes to the width above."
-        }
-      ]
-    },
-    {
-      "from": "3.6.0.388",
       "until": "3.7.0.328",
       "channel": "events",
       "command": 247,
@@ -182,7 +138,7 @@
     },
     {
       "from": "3.13.0.399",
-      "until": "3.14.0.700",
+      "until": "4.1.0.171",
       "channel": "events",
       "command": 247,
       "direction": "serverToClient",
@@ -203,51 +159,7 @@
       ]
     },
     {
-      "from": "3.14.0.700",
-      "until": "4.1.0.171",
-      "channel": "events",
-      "command": 247,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "source",
-          "type": "u32",
-          "note": "The unit the line is credited to, or zero where none is."
-        },
-        {
-          "name": "text",
-          "type": "string",
-          "encoding": "utf8",
-          "size": 512,
-          "note": "The line itself. Written out in full and padded with zero bytes to the width above."
-        }
-      ]
-    },
-    {
       "from": "4.1.0.171",
-      "until": "4.4.0.1858",
-      "channel": "events",
-      "command": 246,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "source",
-          "type": "u32",
-          "note": "The unit the line is credited to, or zero where none is."
-        },
-        {
-          "name": "text",
-          "type": "string",
-          "encoding": "utf8",
-          "size": 512,
-          "note": "The line itself. Written out in full and padded with zero bytes to the width above."
-        }
-      ]
-    },
-    {
-      "from": "4.4.0.1858",
       "until": "4.5.0.260",
       "channel": "events",
       "command": 246,

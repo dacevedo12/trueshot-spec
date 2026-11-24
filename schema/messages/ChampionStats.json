@@ -34,7 +34,7 @@
     },
     {
       "from": "1.0.0.74",
-      "until": "1.0.0.75",
+      "until": "1.0.0.82",
       "channel": "events",
       "command": 177,
       "direction": "serverToClient",
@@ -61,63 +61,7 @@
       "note": "A fixed record of the champion's tallies, which a client keeps whole. On every champion's row of the scoreboard it shows kills, the deaths at body offset 12 and the assists at 192, a count of minions (the sum at 16 and 36) and a count of buildings (the sum at 24 and 28), each a signed 32-bit number; for its own champion it shows kills, deaths and assists."
     },
     {
-      "from": "1.0.0.75",
-      "until": "1.0.0.82",
-      "channel": "events",
-      "command": 177,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "keptA",
-          "type": "bytes",
-          "size": 20,
-          "note": "Kept with the champion; a client shows nothing of it."
-        },
-        {
-          "name": "kills",
-          "type": "i32",
-          "note": "How many champions it has killed. Above zero, a client counts the champion's first kill as made."
-        },
-        {
-          "name": "keptB",
-          "type": "bytes",
-          "size": 176,
-          "note": "Kept with the champion; a client shows nothing of it."
-        }
-      ],
-      "note": "A fixed record of the champion's tallies, which a client keeps whole and shows none of. It acts only on kills."
-    },
-    {
       "from": "1.0.0.82",
-      "until": "1.0.0.86",
-      "channel": "events",
-      "command": 181,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "keptA",
-          "type": "bytes",
-          "size": 20,
-          "note": "Kept with the champion; a client shows nothing of it."
-        },
-        {
-          "name": "kills",
-          "type": "i32",
-          "note": "How many champions it has killed. Above zero, a client counts the champion's first kill as made."
-        },
-        {
-          "name": "keptB",
-          "type": "bytes",
-          "size": 176,
-          "note": "Kept with the champion; a client shows nothing of it."
-        }
-      ],
-      "note": "A fixed record of the champion's tallies, which a client keeps whole and shows none of. It acts only on kills."
-    },
-    {
-      "from": "1.0.0.86",
       "until": "1.0.0.87",
       "channel": "events",
       "command": 181,
@@ -156,18 +100,18 @@
           "name": "keptA",
           "type": "bytes",
           "size": 20,
-          "note": "Kept with the champion; a client shows nothing of it."
+          "note": "Kept with the champion. The record's note says which counts in it a client shows."
         },
         {
           "name": "kills",
           "type": "i32",
-          "note": "How many champions it has killed. Above zero, a client counts the champion's first kill as made."
+          "note": "How many champions it has killed. Above zero, for any champion, a client marks the match's first kill as made."
         },
         {
           "name": "keptB",
           "type": "bytes",
           "size": 176,
-          "note": "Kept with the champion; a client shows nothing of it."
+          "note": "Kept with the champion. The record's note says which counts in it a client shows."
         }
       ],
       "note": "A fixed record of the champion's tallies, which a client keeps whole and shows none of. It acts only on kills."

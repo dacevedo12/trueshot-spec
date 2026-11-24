@@ -107,68 +107,6 @@
     },
     {
       "from": "3.10.0.237",
-      "until": "3.11.0.306",
-      "channel": "events",
-      "command": 226,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "particle",
-          "type": "u32",
-          "note": "The particle."
-        },
-        {
-          "name": "team",
-          "type": "u8",
-          "note": "Which side, by an index."
-        }
-      ],
-      "note": "A client reads nothing of it and does nothing."
-    },
-    {
-      "from": "3.11.0.306",
-      "until": "3.13.0.399",
-      "channel": "events",
-      "command": 226,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "particle",
-          "type": "u32",
-          "note": "The particle."
-        },
-        {
-          "name": "team",
-          "type": "u8",
-          "note": "Which side, by an index."
-        }
-      ]
-    },
-    {
-      "from": "3.13.0.399",
-      "until": "3.14.0.700",
-      "channel": "events",
-      "command": 226,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "particle",
-          "type": "u32",
-          "note": "The particle."
-        },
-        {
-          "name": "team",
-          "type": "u8",
-          "note": "Which side, by an index."
-        }
-      ],
-      "note": "A client reads nothing of it and does nothing."
-    },
-    {
-      "from": "3.14.0.700",
       "until": "4.1.0.171",
       "channel": "events",
       "command": 226,
@@ -185,30 +123,11 @@
           "type": "u8",
           "note": "Which side, by an index."
         }
-      ]
+      ],
+      "note": "A client reads nothing of it and does nothing."
     },
     {
       "from": "4.1.0.171",
-      "until": "4.4.0.1858",
-      "channel": "events",
-      "command": 225,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "particle",
-          "type": "u32",
-          "note": "The particle."
-        },
-        {
-          "name": "team",
-          "type": "u8",
-          "note": "Which side, by an index."
-        }
-      ]
-    },
-    {
-      "from": "4.4.0.1858",
       "until": "4.5.0.260",
       "channel": "events",
       "command": 225,

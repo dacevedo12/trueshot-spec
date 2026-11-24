@@ -124,7 +124,7 @@
           "name": "hidden",
           "type": "array",
           "count": 16,
-          "note": "Which of those places the other side is not shown, one for each.",
+          "note": "Which of those places the other side is not shown, one for each. It applies only to the unit's own spell slots, 60 to 119.",
           "items": {
             "name": "fromEnemy",
             "type": "u8",

@@ -21,21 +21,6 @@
     },
     {
       "from": "1.0.0.110",
-      "until": "1.0.0.111",
-      "channel": "events",
-      "command": 68,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "emote",
-          "type": "u32",
-          "note": "Which emote, by its place in the client's list; a value at or past the end of the list plays nothing."
-        }
-      ]
-    },
-    {
-      "from": "1.0.0.111",
       "until": "1.0.0.117",
       "channel": "events",
       "command": 68,
@@ -45,7 +30,7 @@
         {
           "name": "emote",
           "type": "u32",
-          "note": "Which emote, by its place in the client's list; one past the list plays nothing."
+          "note": "Which emote, by its place in the client's list; a value at or past the end of the list plays nothing."
         }
       ]
     },
@@ -60,7 +45,7 @@
         {
           "name": "emote",
           "type": "u32",
-          "note": "Which emote, by its place in the client's list; one past the list plays nothing."
+          "note": "Which emote, by its place in the client's list; a value at or past the end of the list plays nothing."
         }
       ]
     },
@@ -75,7 +60,7 @@
         {
           "name": "emote",
           "type": "u32",
-          "note": "Which emote, by its place in the client's list; one past the list plays nothing."
+          "note": "Which emote, by its place in the client's list; a value at or past the end of the list plays nothing."
         }
       ]
     },
