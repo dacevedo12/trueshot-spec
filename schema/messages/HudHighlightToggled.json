@@ -85,7 +85,7 @@
             },
             "2": {
               "name": "shop",
-              "note": "A shop element blinks or stops. Element 0 is the buy button, 1 the sell button, 2 the shop item number names, 3 the item second names within the category number names, and 4 the recommended item number names; a larger element has no defined effect."
+              "note": "A shop element blinks or stops, where the shop exists. Element 0 is the buy button, 1 the sell button, 2 the shop item number names, 3 the item second names within the category number names, and 4 the recommended item number names. A larger element has no defined effect."
             },
             "3": {
               "name": "minimap",
@@ -1081,7 +1081,7 @@
             },
             "3": {
               "name": "minimap",
-              "note": "The minimap; a client acts on element 0 only, its camera button."
+              "note": "The minimap; element 0 is its camera button."
             }
           }
         },
@@ -1204,7 +1204,7 @@
             },
             "3": {
               "name": "minimap",
-              "note": "The minimap; a client acts on element 0 only, its camera button."
+              "note": "The minimap."
             }
           }
         },
@@ -1328,7 +1328,7 @@
             },
             "3": {
               "name": "minimap",
-              "note": "The minimap; a client acts on element 0 only, its camera button."
+              "note": "The minimap."
             }
           }
         },

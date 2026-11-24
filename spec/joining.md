@@ -477,7 +477,7 @@ every client has sent `ClientReady`.
 > A player's card takes its place on the screen from that seat's place in the
 > `Roster`, and its name from that player's `SeatName`. The registration
 > answers (`Registered`) pair each player with a client id, and the latest
-> `SeatLoadProgress` for that client gives the card its progress and its ping.
+> `SeatLoadProgress` for that client gives the card its progress.
 > The first `SeatLoadProgress` after the player's `SeatChampion` sets the card
 > up: its portrait and the champion's name, from that `SeatChampion`'s champion
 > and skin, then everything else from the `VersionSync` seat whose player id
@@ -520,7 +520,7 @@ every client has sent `ClientReady`.
 > A player's card takes its place on the screen from that seat's place in the
 > `Roster`, and its name from that player's `SeatName`. The registration
 > answers (`Registered`) pair each player with a client id, and the latest
-> `SeatLoadProgress` for that client gives the card its progress and its ping.
+> `SeatLoadProgress` for that client gives the card its progress.
 > The first `SeatLoadProgress` after the player's `SeatChampion` sets the card
 > up: its portrait and the champion's name, from that `SeatChampion`'s champion
 > and skin, then everything else from the `VersionSync` seat whose player id
@@ -713,15 +713,21 @@ every client has sent `ClientReady`.
 > Before `CharacterSelected`, a client drops only what [Units](units.md) says it
 > drops.
 
-<!-- holds from 3.10.0.237 up to 3.13.0.399 -->
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
-> **In 3.10–3.12**
+> **In 3.10**
 >
 > Until it sends `CharacterSelected`, a client drops every message but
 > `VersionSync`, `QueryStatusAnswer`, `MatchIdentity`, `SeatLoadProgress` and
 > `GameEnded`, apart from what arrives on the registration and roster channels,
 > and keeps nothing it drops for later. A server MUST NOT send any of the spawn
 > run before `CharacterSelected` arrives.
+
+<!-- holds from 3.11.0.306 up to 3.13.0.399 -->
+
+> **In 3.11–3.12**
+>
+> A server MUST NOT send any of the spawn run before `CharacterSelected` arrives.
 
 <!-- holds from 3.13.0.399 up to 3.14.0.700 -->
 

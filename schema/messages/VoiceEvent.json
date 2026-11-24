@@ -17,7 +17,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": 64,
-          "note": "The event's name, ended by a zero byte. A client reads nothing after it."
+          "note": "The event's name."
         }
       ]
     },

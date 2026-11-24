@@ -249,8 +249,7 @@
         {
           "name": "unset",
           "type": "bytes",
-          "size": 1,
-          "note": "A client writes nothing in particular here."
+          "size": 1
         }
       ]
     },
@@ -291,7 +290,7 @@
             {
               "name": "kind",
               "width": 4,
-              "note": "Which mark it is. A client sends any of the seven below, and 1 where the mark shows a direction of attack.",
+              "note": "Which mark it is.",
               "values": {
                 "0": {
                   "name": "here"
@@ -318,8 +317,7 @@
             },
             {
               "name": "unset",
-              "width": 4,
-              "note": "A client writes nothing in particular here."
+              "width": 4
             }
           ]
         }

@@ -62,32 +62,32 @@
         {
           "name": "keptX",
           "type": "f32",
-          "note": "A value along one ground axis that a line missile keeps and reports back in MissileReport. Any other missile reads nothing here."
+          "note": "Where the unit that threw it stood when it left, along one ground axis, in world units. A client reads it only for a missile that flies in a line, whose line starts here."
         },
         {
           "name": "keptY",
           "type": "f32",
-          "note": "The same, in height."
+          "note": "Where the unit that threw it stood when it left, in height, in world units. A client reads it only for a missile that flies in a line."
         },
         {
           "name": "keptZ",
           "type": "f32",
-          "note": "The same, along the other ground axis."
+          "note": "Where the unit that threw it stood when it left, along the other ground axis, in world units. A client reads it only for a missile that flies in a line."
         },
         {
           "name": "directionX",
           "type": "f32",
-          "note": "The way a line missile travels, along one ground axis: the client scales it by the missile's speed and adds it to the position. Any other missile reads nothing here."
+          "note": "Which way the missile points, along one ground axis. A client reads it only for a missile that flies in a line."
         },
         {
           "name": "directionY",
           "type": "f32",
-          "note": "The same, in height."
+          "note": "Which way the missile points, in height. A client reads it only for a missile that flies in a line."
         },
         {
           "name": "directionZ",
           "type": "f32",
-          "note": "The same, along the other ground axis."
+          "note": "Which way the missile points, along the other ground axis. A client reads it only for a missile that flies in a line."
         },
         {
           "name": "how",
@@ -96,8 +96,7 @@
           "bits": [
             {
               "name": "flag",
-              "width": 1,
-              "note": "Changes how a line missile is set up; any other missile reads nothing here."
+              "width": 1
             },
             {
               "name": "unused",

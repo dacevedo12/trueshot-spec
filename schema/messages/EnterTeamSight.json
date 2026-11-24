@@ -15,7 +15,7 @@
         {
           "name": "side",
           "type": "u8",
-          "note": "Which side the unit came into the view of, as an index from 0 to 3. A server sends only 0 to 3; a larger index has no defined effect."
+          "note": "Which side the unit came into the view of, as an index from 0 to 3. A server sends only 0 to 3: a client takes the index modulo 32, so 32 to 35 act as 0 to 3 and 4 to 31 set bits no side uses."
         }
       ]
     },
@@ -30,7 +30,7 @@
         {
           "name": "side",
           "type": "u8",
-          "note": "Which side the unit came into the view of, as an index from 0 to 3. A server sends only 0 to 3; a larger index has no defined effect."
+          "note": "Which side the unit came into the view of, as an index from 0 to 3. A server sends only 0 to 3: a client takes the index modulo 32, so 32 to 35 act as 0 to 3 and 4 to 31 set bits no side uses."
         }
       ]
     },
@@ -45,7 +45,7 @@
         {
           "name": "side",
           "type": "u8",
-          "note": "Which side the unit came into the view of, as an index from 0 to 3. A server sends only 0 to 3; a larger index has no defined effect."
+          "note": "Which side the unit came into the view of, as an index from 0 to 3. A server sends only 0 to 3: a client takes the index modulo 32, so 32 to 35 act as 0 to 3 and 4 to 31 set bits no side uses."
         }
       ]
     },
@@ -60,7 +60,7 @@
         {
           "name": "side",
           "type": "u8",
-          "note": "Which side the unit came into the view of, as an index from 0 to 3. A server sends only 0 to 3; a larger index has no defined effect."
+          "note": "Which side the unit came into the view of, as an index from 0 to 3. A server sends only 0 to 3: a client takes the index modulo 32, so 32 to 35 act as 0 to 3 and 4 to 31 set bits no side uses."
         }
       ]
     },

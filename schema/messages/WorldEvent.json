@@ -27594,8 +27594,7 @@
               "name": "playerQuit"
             },
             "70": {
-              "name": "playerLeft",
-              "note": "Sent as a player's client leaves the match, naming that player's champion as subject. A client announces that a player has quit; where the seat's name is unknown, a client names an unknown player."
+              "name": "playerLeft"
             },
             "71": {
               "name": "playerReconnected"
@@ -27622,8 +27621,7 @@
               "name": "itemSubstituted"
             },
             "111": {
-              "name": "minionsSpawned",
-              "note": "Sent once, as the first minions come out. A client announces that minions have spawned."
+              "name": "minionsSpawned"
             },
             "112": {
               "name": "welcome"
@@ -27632,8 +27630,7 @@
               "name": "startNoticeTwo"
             },
             "114": {
-              "name": "startNoticeThree",
-              "note": "A client on map 1 shows a notice with no text of its own."
+              "name": "startNoticeThree"
             },
             "118": {
               "name": "scoreboardOpened"
@@ -27643,23 +27640,19 @@
               "note": "A client shows no notice for it."
             },
             "143": {
-              "name": "dragonKilled",
-              "note": "Sent as the dragon falls, with the champion credited as source. The kill details below follow."
+              "name": "dragonKilled"
             },
             "144": {
-              "name": "dragonKilledWatched",
-              "note": "The same, as sent to clients watching the match. The kill details below follow."
+              "name": "dragonKilledWatched"
             },
             "145": {
               "name": "dragonStolen"
             },
             "146": {
-              "name": "baronKilled",
-              "note": "Sent as Baron Nashor falls, with the champion credited as source. The kill details below follow."
+              "name": "baronKilled"
             },
             "147": {
-              "name": "baronKilledWatched",
-              "note": "The same, as sent to clients watching the match. The kill details below follow."
+              "name": "baronKilledWatched"
             },
             "148": {
               "name": "baronStolen"
@@ -28242,7 +28235,7 @@
             "when": "event",
             "equals": 30
           },
-          "note": "Gold awarded for the inhibitor. It has no effect on a client."
+          "note": "Gold awarded for the inhibitor."
         },
         {
           "name": "inhibitorAssistCount",
@@ -28251,7 +28244,7 @@
             "when": "event",
             "equals": 30
           },
-          "note": "How many of the places below name an assister. A client names them where it is 0 to 11, and no assister from 12 up."
+          "note": "How many of the places below name an assister."
         },
         {
           "name": "inhibitorAssists",
@@ -28261,7 +28254,7 @@
             "when": "event",
             "equals": 30
           },
-          "note": "Twelve places; those past inhibitorAssistCount have no effect.",
+          "note": "Twelve places.",
           "items": {
             "name": "assister",
             "type": "u32",
@@ -29046,7 +29039,7 @@
         {
           "name": "event",
           "type": "u8",
-          "note": "What sort of thing happened, and so which shape follows. Each name says what the sort is sent alongside, and each note what a client shows for it; the text of a notice that carries a map is the one that map gives it.",
+          "note": "What sort of thing happened, and so which shape follows. Each name says what the sort is sent alongside, and each note what a client shows for it.",
           "values": {
             "0": {
               "name": "removed"
@@ -29844,7 +29837,7 @@
         {
           "name": "event",
           "type": "u8",
-          "note": "What sort of thing happened, and so which shape follows. Each name says what the sort is sent alongside, and each note what a client shows for it; the text of a notice that carries a map is the one that map gives it.",
+          "note": "What sort of thing happened, and so which shape follows. Each name says what the sort is sent alongside, and each note what a client shows for it.",
           "values": {
             "0": {
               "name": "removed"
@@ -29890,7 +29883,7 @@
             },
             "31": {
               "name": "inhibitorDied",
-              "note": "Sent as an inhibitor falls, with that inhibitor as source and the unit credited with it as subject. A client calls out the kill, naming the killer, the inhibitor and the assisters, where it holds the inhibitor as a building and knows the killer. Where it names the client's own champion and everything after it is zero, a client on map 1 shows a notice with no text of its own."
+              "note": "Sent as an inhibitor falls, with that inhibitor as source and the unit credited with it as subject. A client calls out the kill, naming the killer and the inhibitor, where it holds the inhibitor as a building and knows the killer."
             },
             "32": {
               "name": "inhibitorRespawningSoon"
@@ -30642,7 +30635,7 @@
         {
           "name": "event",
           "type": "u8",
-          "note": "What sort of thing happened, and so which shape follows. Each name says what the sort is sent alongside, and each note what a client shows for it; the text of a notice that carries a map is the one that map gives it.",
+          "note": "What sort of thing happened, and so which shape follows. Each name says what the sort is sent alongside, and each note what a client shows for it.",
           "values": {
             "0": {
               "name": "removed"
@@ -30688,7 +30681,7 @@
             },
             "31": {
               "name": "inhibitorDied",
-              "note": "Sent as an inhibitor falls, with that inhibitor as source and the unit credited with it as subject. A client calls out the kill, naming the killer, the inhibitor and the assisters, where it holds the inhibitor as a building and knows the killer. Where it names the client's own champion and everything after it is zero, a client on map 1 shows a notice with no text of its own."
+              "note": "Sent as an inhibitor falls, with that inhibitor as source and the unit credited with it as subject. A client calls out the kill, naming the killer and the inhibitor, where it holds the inhibitor as a building and knows the killer."
             },
             "32": {
               "name": "inhibitorRespawningSoon"
@@ -31440,7 +31433,7 @@
         {
           "name": "event",
           "type": "u8",
-          "note": "What sort of thing happened, and so which shape follows. Each name says what the sort is sent alongside, and each note what a client shows for it; the text of a notice that carries a map is the one that map gives it.",
+          "note": "What sort of thing happened, and so which shape follows. Each name says what the sort is sent alongside, and each note what a client shows for it.",
           "values": {
             "0": {
               "name": "removed"
@@ -31486,7 +31479,7 @@
             },
             "31": {
               "name": "inhibitorDied",
-              "note": "Sent as an inhibitor falls, with that inhibitor as source and the unit credited with it as subject. A client calls out the kill, naming the killer, the inhibitor and the assisters, where it holds the inhibitor as a building and knows the killer. Where it names the client's own champion and everything after it is zero, a client on map 1 shows a notice with no text of its own."
+              "note": "Sent as an inhibitor falls, with that inhibitor as source and the unit credited with it as subject. A client calls out the kill, naming the killer and the inhibitor, where it holds the inhibitor as a building and knows the killer."
             },
             "32": {
               "name": "inhibitorRespawningSoon"
@@ -32238,7 +32231,7 @@
         {
           "name": "event",
           "type": "u8",
-          "note": "What sort of thing happened, and so which shape follows. Each name says what the sort is sent alongside, and each note what a client shows for it; the text of a notice that carries a map is the one that map gives it.",
+          "note": "What sort of thing happened, and so which shape follows. Each name says what the sort is sent alongside, and each note what a client shows for it.",
           "values": {
             "0": {
               "name": "removed"
@@ -32284,7 +32277,7 @@
             },
             "31": {
               "name": "inhibitorDied",
-              "note": "Sent as an inhibitor falls, with that inhibitor as source and the unit credited with it as subject. A client calls out the kill, naming the killer, the inhibitor and the assisters, where it holds the inhibitor as a building and knows the killer. Where it names the client's own champion and everything after it is zero, a client on map 1 shows a notice with no text of its own."
+              "note": "Sent as an inhibitor falls, with that inhibitor as source and the unit credited with it as subject. A client calls out the kill, naming the killer and the inhibitor, where it holds the inhibitor as a building and knows the killer."
             },
             "32": {
               "name": "inhibitorRespawningSoon"
@@ -32396,7 +32389,7 @@
             },
             "115": {
               "name": "startNoticeTwo",
-              "note": "Sent once, after welcome. A client announces the second notice for the map carried; on map 1 that minions spawn in thirty seconds."
+              "note": "Sent once, after welcome. A client shows a notice."
             },
             "116": {
               "name": "startNoticeThree",
@@ -33001,7 +32994,7 @@
             {
               "name": "part",
               "type": "u32",
-              "note": "What it carries is not recorded for this range; a client does not show it."
+              "note": "What it carries is not recorded for this range."
             },
             {
               "name": "refund",
@@ -33065,7 +33058,7 @@
         {
           "name": "event",
           "type": "u8",
-          "note": "What sort of thing happened, and so which shape follows. Each name says what the sort is sent alongside, and each note what a client shows for it; the text of a notice that carries a map is the one that map gives it.",
+          "note": "What sort of thing happened, and so which shape follows. Each name says what the sort is sent alongside, and each note what a client shows for it.",
           "values": {
             "0": {
               "name": "removed"
@@ -33111,7 +33104,7 @@
             },
             "31": {
               "name": "inhibitorDied",
-              "note": "Sent as an inhibitor falls, with that inhibitor as source and the unit credited with it as subject. A client calls out the kill, naming the killer, the inhibitor and the assisters, where it holds the inhibitor as a building and knows the killer. Where it names the client's own champion and everything after it is zero, a client on map 1 shows a notice with no text of its own."
+              "note": "Sent as an inhibitor falls, with that inhibitor as source and the unit credited with it as subject. A client calls out the kill, naming the killer and the inhibitor, where it holds the inhibitor as a building and knows the killer."
             },
             "32": {
               "name": "inhibitorRespawningSoon"
@@ -33828,7 +33821,7 @@
             {
               "name": "part",
               "type": "u32",
-              "note": "What it carries is not recorded for this range; a client does not show it."
+              "note": "What it carries is not recorded for this range."
             },
             {
               "name": "refund",

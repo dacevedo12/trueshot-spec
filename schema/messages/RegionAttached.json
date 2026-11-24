@@ -2489,7 +2489,7 @@
         {
           "name": "unit",
           "type": "u32",
-          "note": "The unit the region follows. A client takes the region even where it does not hold the unit."
+          "note": "The unit the region follows. A client ignores the whole message where it does not hold the unit, or where what it holds under that id is not a unit."
         },
         {
           "name": "atX",
@@ -2514,7 +2514,7 @@
         {
           "name": "marker",
           "type": "u32",
-          "note": "The region's id, which RegionRemoved names; 4294967295 has the client pick one of its own. A region sent again with the same id, kind and radius changes the one held rather than adding another."
+          "note": "The region's id, which RegionRemoved names; 4294967295 has the client pick one of its own."
         },
         {
           "name": "does",
@@ -2535,7 +2535,7 @@
           ]
         }
       ],
-      "note": "A region matching one the client holds in view, sightRadius, the first three bits of does, marker, sightFrom and unit only gives that one the new lifetime."
+      "note": "A region matching one the client holds only gives that one the new lifetime."
     }
   ]
 }

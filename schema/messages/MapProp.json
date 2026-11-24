@@ -2558,7 +2558,7 @@
         {
           "name": "kind",
           "type": "u8",
-          "note": "What sort of prop it is; a client makes nothing for any other value. A client first deletes any object holding the prop's id, whatever the kind.",
+          "note": "What sort of prop it is; a client makes nothing for any other value.",
           "values": {
             "0": {
               "name": "active",
@@ -2681,7 +2681,7 @@
         {
           "name": "kind",
           "type": "u8",
-          "note": "What sort of prop it is; a client makes nothing for any other value. A client first deletes any object holding the prop's id, whatever the kind.",
+          "note": "What sort of prop it is; a client makes nothing for any other value.",
           "values": {
             "0": {
               "name": "active",

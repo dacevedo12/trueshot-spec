@@ -32,7 +32,7 @@
         {
           "name": "killer",
           "type": "u32",
-          "note": "The unit credited with it, or zero where nothing is."
+          "note": "The unit credited with it. A client ignores the message where the unit is down already. Where this is zero, it breaks off the unit's cast and attack and applies no death, zombie or stay; where it names a unit the client does not hold, the death is applied and credited to no one."
         },
         {
           "name": "damageType",

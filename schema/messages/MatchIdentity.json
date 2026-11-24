@@ -592,8 +592,7 @@
           "name": "label",
           "type": "string",
           "encoding": "utf8",
-          "size": 32,
-          "note": "A text a client writes to its log and keeps, ended by a zero byte within the field."
+          "size": 32
         },
         {
           "name": "platform",

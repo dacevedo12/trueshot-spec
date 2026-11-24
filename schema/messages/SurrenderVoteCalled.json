@@ -20,12 +20,12 @@
             {
               "name": "unused",
               "width": 1,
-              "note": "Unused; a client reads nothing here."
+              "note": "Unused; a server writes zero."
             },
             {
               "name": "cast",
               "width": 1,
-              "note": "Set where caller has just voted, clear where caller had voted already. A client announces either with caller, inFavour, against and side."
+              "note": "Set where the vote opens."
             },
             {
               "name": "unusedHigh",
@@ -54,8 +54,7 @@
           "type": "u32",
           "note": "Which side is voting."
         }
-      ],
-      "note": "A client has no panel for the vote: it only announces it."
+      ]
     },
     {
       "from": "0.9.25.21",

@@ -15,7 +15,7 @@
         {
           "name": "clientId",
           "type": "u32",
-          "note": "The player's client id, matched against the client id CreateChampion gave each champion the client knows."
+          "note": "The player's client id. A client takes the name and side the notice shows from that client id's player, not from a champion it holds."
         }
       ],
       "note": "A client shows a chat notice naming the player that client id belongs to, whenever its interface exists: in a neutral colour where it has no champion of its own, and otherwise coloured for whether that player is on its own side."

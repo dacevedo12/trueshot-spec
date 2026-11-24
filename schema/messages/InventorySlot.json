@@ -6,36 +6,6 @@
   "revisions": [
     {
       "from": "1.0.0.97",
-      "until": "1.0.0.99",
-      "channel": "events",
-      "command": 44,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "slot",
-          "type": "u8",
-          "note": "Which slot, 0 to 36. A client ignores the message from 37 up."
-        },
-        {
-          "name": "item",
-          "type": "u32",
-          "note": "The item. It has no effect where count is zero."
-        },
-        {
-          "name": "count",
-          "type": "u8",
-          "note": "How many. Zero leaves the slot empty."
-        },
-        {
-          "name": "charges",
-          "type": "u8",
-          "note": "Its charges."
-        }
-      ]
-    },
-    {
-      "from": "1.0.0.99",
       "until": "1.0.0.103",
       "channel": "events",
       "command": 44,

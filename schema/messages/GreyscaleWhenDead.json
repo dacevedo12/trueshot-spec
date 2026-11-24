@@ -6,33 +6,6 @@
   "revisions": [
     {
       "from": "0.9.25.36",
-      "until": "1.0.0.25",
-      "channel": "events",
-      "command": 170,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "state",
-          "type": "bits",
-          "size": 1,
-          "bits": [
-            {
-              "name": "enabled",
-              "width": 1,
-              "note": "Set where the world is drawn without colour. Clear, it does not stop a client drawing the world without colour while its champion is down."
-            },
-            {
-              "name": "unused",
-              "width": 7,
-              "note": "Unused; a server writes zero."
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "from": "1.0.0.25",
       "until": "1.0.0.61",
       "channel": "events",
       "command": 170,

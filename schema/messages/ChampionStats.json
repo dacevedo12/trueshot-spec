@@ -21,7 +21,7 @@
         {
           "name": "kills",
           "type": "i32",
-          "note": "How many champions it has killed. Above zero, a client counts the champion's first kill as made."
+          "note": "How many champions it has killed. Above zero, for any champion, a client marks the match's first kill as made."
         },
         {
           "name": "keptB",
@@ -30,7 +30,7 @@
           "note": "Kept with the champion; a client shows nothing of it."
         }
       ],
-      "note": "A fixed record of the champion's tallies, which a client keeps whole and shows none of. It acts only on kills."
+      "note": "A fixed record of the champion's tallies, which a client keeps whole."
     },
     {
       "from": "1.0.0.74",

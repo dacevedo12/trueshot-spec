@@ -20,7 +20,7 @@
         {
           "name": "sourceType",
           "type": "u32",
-          "note": "What sort of source the killer was. A client keeps only the low 4 bits, signed, and acts on them only where it holds killer."
+          "note": "What sort of source the killer was. A client keeps only the low 4 bits, signed, whether or not it holds killer: 1 names the killer with a fixed label for a minion, 2 with one for a turret, and any other value by the killer's own name."
         },
         {
           "name": "blobLength",
@@ -498,7 +498,7 @@
           }
         }
       ],
-      "note": "A client lays it out. A client ignores the whole message where killer is zero; a killer it does not hold brings it down. Each entry's size after source follows from event alone."
+      "note": "A client lays it out. A client ignores the whole message where killer is zero. For a killer it does not hold, it goes on and names no killer. Each entry's size after source follows from event alone."
     },
     {
       "from": "0.9.22.16",
@@ -516,7 +516,7 @@
         {
           "name": "sourceType",
           "type": "u32",
-          "note": "What sort of source the killer was. A client keeps only the low 4 bits, signed, and acts on them only where it holds killer."
+          "note": "What sort of source the killer was. A client keeps only the low 4 bits, signed, whether or not it holds killer: 1 names the killer with a fixed label for a minion, 2 with one for a turret, and any other value by the killer's own name."
         },
         {
           "name": "blobLength",
@@ -551,7 +551,7 @@
               {
                 "name": "event",
                 "type": "u8",
-                "note": "Which event, from 0 to 70, and so which fields follow.",
+                "note": "Which event, from 0 to 73, and so which fields follow.",
                 "values": {
                   "0": {
                     "name": "died"
@@ -1006,7 +1006,7 @@
           }
         }
       ],
-      "note": "A client lays it out. A client ignores the whole message where killer is zero; a killer it does not hold brings it down. Each entry's size after source follows from event alone."
+      "note": "A client lays it out. A client ignores the whole message where killer is zero. For a killer it does not hold, it goes on and names no killer. Each entry's size after source follows from event alone."
     },
     {
       "from": "0.9.25.21",
@@ -1024,7 +1024,7 @@
         {
           "name": "sourceType",
           "type": "u32",
-          "note": "What sort of source the killer was. A client keeps only the low 4 bits, signed, and acts on them only where it holds killer."
+          "note": "What sort of source the killer was. A client keeps only the low 4 bits, signed, whether or not it holds killer: 1 names the killer with a fixed label for a minion, 2 with one for a turret, and any other value by the killer's own name."
         },
         {
           "name": "blobLength",
@@ -1059,7 +1059,7 @@
               {
                 "name": "event",
                 "type": "u8",
-                "note": "Which event, from 0 to 70, and so which fields follow.",
+                "note": "Which event, from 0 to 73, and so which fields follow.",
                 "values": {
                   "0": {
                     "name": "died"
@@ -1519,7 +1519,7 @@
           }
         }
       ],
-      "note": "A client lays it out. A client ignores the whole message where killer is zero; a killer it does not hold brings it down. Each entry's size after source follows from event alone."
+      "note": "A client lays it out. A client ignores the whole message where killer is zero. For a killer it does not hold, it goes on and names no killer. Each entry's size after source follows from event alone."
     },
     {
       "from": "0.9.25.24",
@@ -39416,7 +39416,7 @@
                   {
                     "name": "part",
                     "type": "u32",
-                    "note": "What it carries is not recorded for this range; a client does not show it."
+                    "note": "What it carries is not recorded for this range."
                   },
                   {
                     "name": "refund",
@@ -40238,7 +40238,7 @@
                   {
                     "name": "part",
                     "type": "u32",
-                    "note": "What it carries is not recorded for this range; a client does not show it."
+                    "note": "What it carries is not recorded for this range."
                   },
                   {
                     "name": "refund",

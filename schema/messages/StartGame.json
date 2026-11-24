@@ -235,7 +235,7 @@
             {
               "name": "notice",
               "width": 1,
-              "note": "Set to post a notice in chat as play begins."
+              "note": "Set to have a client post a notice in chat and from then on run its match clock in fixed steps of 0.0333433 seconds a frame, even past spawning and while playing back; a second StartGame with it set steps the clock on again."
             },
             {
               "name": "unused",
@@ -464,7 +464,7 @@
               "note": "Unused; a server writes zero."
             }
           ],
-          "note": "Which optional features the match turns on. A client takes them from the first StartGame only."
+          "note": "Which optional features the match turns on."
         }
       ],
       "note": "A client past spawning ignores it."
@@ -666,7 +666,7 @@
             {
               "name": "notice",
               "width": 1,
-              "note": "Set to have a client show its own notice in chat and note the time the match stands at."
+              "note": "Set to have a client post a line in chat saying a fixed-step mode is on and switch into that mode, even while playing a replay."
             },
             {
               "name": "unused",

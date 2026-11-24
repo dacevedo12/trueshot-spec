@@ -11,8 +11,7 @@
       "command": 10,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": [],
-      "note": "A client sends it only where its own settings allow holding the match, and only while the match is held."
+      "fields": []
     },
     {
       "from": "1.0.0.126",

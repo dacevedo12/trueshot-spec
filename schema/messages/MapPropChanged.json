@@ -298,7 +298,7 @@
         {
           "name": "change",
           "type": "u8",
-          "note": "What changes. A client does nothing for any other value, nor where prop names no prop it holds.",
+          "note": "What changes. A client ignores any other value.",
           "values": {
             "0": {
               "name": "animate",
@@ -306,7 +306,7 @@
             },
             "1": {
               "name": "linkEffect",
-              "note": "Drive the prop's particle value effect from capture point point; a client refuses the change where option is not zero. name, first, second and value have no effect."
+              "note": "Drive the prop's effect value effect from capture point point; a client ignores it unless option is zero."
             },
             "2": {
               "name": "look",
@@ -368,7 +368,7 @@
         {
           "name": "change",
           "type": "u8",
-          "note": "What changes. A client does nothing for any other value, nor where prop names no prop it holds.",
+          "note": "What changes. A client ignores any other value.",
           "values": {
             "0": {
               "name": "animate",
@@ -376,7 +376,7 @@
             },
             "1": {
               "name": "linkEffect",
-              "note": "Drive the prop's particle value effect from capture point point; a client refuses the change where option is not zero. name, first, second and value have no effect."
+              "note": "Drive the prop's effect value effect from capture point point; a client ignores it unless option is zero."
             },
             "2": {
               "name": "look",
@@ -1302,8 +1302,7 @@
               "note": "Drive the prop's particle value effect from capture point point; a client refuses the change where option is not zero. name, first, second and value have no effect."
             },
             "2": {
-              "name": "look",
-              "note": "Change the prop's look to name, numbered value. The rest have no effect."
+              "name": "look"
             }
           }
         },
@@ -1373,8 +1372,7 @@
               "note": "Drive the prop's particle value effect from capture point point; a client refuses the change where option is not zero. name, first, second and value have no effect."
             },
             "2": {
-              "name": "look",
-              "note": "Change the prop's look to name, numbered value. The rest have no effect."
+              "name": "look"
             }
           }
         },

@@ -27,7 +27,7 @@
         {
           "name": "groupOperation",
           "type": "u8",
-          "note": "What to do with the group. A client acts on 0 only, pausing or resuming the group's emission, and does nothing for any other value.",
+          "note": "What to do with the group. A client pauses or resumes the group's emission for 0 only, and leaves the group alone for any other value.",
           "values": {
             "0": {
               "name": "emission"

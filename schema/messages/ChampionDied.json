@@ -94,12 +94,12 @@
             {
               "name": "unused",
               "width": 7,
-              "note": "Unused; a server writes zero."
+              "note": "A client takes any bit set here as zombie; a server writes zero."
             }
           ]
         }
       ],
-      "note": "A client ignores it where killer is zero or the champion is already dead."
+      "note": "A client ignores it where the champion is already dead. Where killer is zero, it stops the champion's cast and attack and puts nothing down."
     },
     {
       "from": "1.0.0.110",
