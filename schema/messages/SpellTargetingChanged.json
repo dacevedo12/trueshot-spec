@@ -582,7 +582,7 @@
     },
     {
       "from": "1.0.0.119",
-      "until": "1.0.0.126",
+      "until": "1.0.0.128",
       "channel": "events",
       "command": 26,
       "direction": "serverToClient",
@@ -613,8 +613,8 @@
       ]
     },
     {
-      "from": "1.0.0.126",
-      "until": "1.0.0.128",
+      "from": "1.0.0.128",
+      "until": "1.0.0.132",
       "channel": "events",
       "command": 26,
       "direction": "serverToClient",
@@ -633,19 +633,19 @@
             {
               "name": "summonerSlots",
               "width": 1,
-              "note": "Set where the slot counts among the summoner slots, so that 0 and 1 name those two. A client fails where it is set for a unit with no summoner slots."
+              "note": "Set where slot names a summoner spell's slot, clear for the unit's own spells. Only a champion has summoner slots."
             }
           ]
         },
         {
           "name": "targeting",
           "type": "u8",
-          "note": "How the spell is aimed, 0 to 10. A client keeps a larger value and reports it as an error, but builds no new aiming for it, so the slot keeps the aiming it had; no value asks for the spell's own default."
+          "note": "How the spell is aimed."
         }
       ]
     },
     {
-      "from": "1.0.0.128",
+      "from": "1.0.0.132",
       "until": "1.0.0.144",
       "channel": "events",
       "command": 26,

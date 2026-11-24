@@ -18,7 +18,10 @@ const s = setup();
 // What the specification says not to send, or what ends or remakes the match
 // a sweep runs in, and so cannot be swept.
 const LEFT_OUT = new Map<string, string>([
-  ["NavigationFlags", "spec/movement.md: a server MUST NOT send it"],
+  [
+    "NavigationFlags",
+    "spec/movement.md: a 4.4 to 4.20 server MUST NOT send it",
+  ],
   ["GameEnded", "it ends the match"],
   ["BotKick", "it can make the client leave"],
   ["Shutdown", "it ends the match"],
@@ -137,18 +140,18 @@ function sweepFor(
   const out = [...best.values()]
     .sort((a, b) => a.name.localeCompare(b.name))
     .map(({ name, channel, fields }) => ({ name, channel, fields }));
-  // spec/spells.md: a server MUST NOT put a spell in a marker's slot, which
-  // two vectors can do between them by naming the same net id.
+  // spec/spells.md: a 3.10 server MUST NOT send SpellInSlot naming a marker,
+  // which two vectors can do between them by naming the same net id.
   const markers = new Set(
     out.filter((m) => m.name === "SpawnMarker").map((m) => m.fields["unit"]),
   );
-  // spec/objects.md: a 4.17 server MUST NOT move a region a client does not
-  // hold, so a region is moved only where the sweep added it.
+  // A region is moved only where the sweep added it, so a client is never
+  // asked to move a region it does not hold.
   const regions = new Set(
     out.filter((m) => m.name === "RegionAdded").map((m) => m.fields["marker"]),
   );
-  // spec/units.md: a 3.10 server MUST NOT remove a client's own champion, the
-  // only champion a sweep's match holds.
+  // spec/units.md: ChampionRemoved naming a 3.10 client's own champion, the
+  // only champion a sweep's match holds, leaves it with none of its own.
   const ownChampion = before(build, "3.11.0.306");
   // spec/effects.md: a 3.02 to 3.04 server MUST NOT send EmitterPause, which
   // those clients also read as ChatAllowance.

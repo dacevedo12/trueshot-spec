@@ -62,7 +62,7 @@
           "note": "The unit the new one is linked to, or zero."
         }
       ],
-      "note": "A client fails where an object already holds the new unit's id. clone, where nonzero and held, is only linked to the new unit; nothing of it is copied."
+      "note": "A client fails where an object already holds the new unit's id. A client fails where it cannot load the unit's art. clone, where nonzero and held, is only linked to the new unit; nothing of it is copied."
     },
     {
       "from": "0.9.22.14",

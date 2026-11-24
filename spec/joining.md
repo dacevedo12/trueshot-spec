@@ -196,9 +196,9 @@ server answers with `VersionSync`, and a client loads only where its
 
 ## Taking a seat
 
-<!-- holds from 0.8.13.26 up to 4.4.0.1858 -->
+<!-- holds from 0.9.22.14 up to 4.4.0.1858 -->
 
-> **In 0.8.13.26–4.3**
+> **In 0.9.22.14–4.3**
 >
 > Straight after `VersionSync`, a client sends `JoinSide` on the roster channel.
 
