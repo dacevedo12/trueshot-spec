@@ -150,26 +150,38 @@ says.
 > `ClientReady`: no `ClientVersion`, no `QueryStatus` and no `LoadingProgress`.
 
 1. A client answered on registration sends `StreamRequest`.
-2. A server sends `StreamMetadata`, within 30 seconds: until it arrives the
-   client waits.
-3. A server sends `StreamChunkRange`, with the match's end left at zero while
-   it runs.
-4. A server sends the chunks, each cut into `StreamChunk` fragments sent in
-   order and not mixed with another chunk's. It either sends every chunk from
-   chunk 1 upward, or joins the client late:
-   - the chunks of setting up, from 1 to the last of them (the chunk of kind
-     3), and no chunk after it;
-   - then the key frame nearest the present, the first key frame sent on the
-     connection;
-   - then the chunks from the one that key frame leads to.
 
-   Either way it skips none after that. A client takes a key frame only where
-   it is the first one sent and arrives before the chunk after the last chunk
-   of setting up; otherwise it keeps it but plays on from that chunk.
+<!-- holds from 3.12.0.251 up to 4.21.0.0 -->
 
-5. As the match ends, a server sends `StreamChunkRange` again naming its last
-   chunk, then that chunk. Once it has arrived the client takes no more of the
-   stream.
+> **In 3.12–4.20**
+>
+> 2. A server sends `StreamMetadata`, within 30 seconds: until it arrives the
+>    client waits.
+> 3. A server sends `StreamChunkRange`, with the match's end left at zero while
+>    it runs.
+> 4. A server sends the chunks, each cut into `StreamChunk` fragments sent in
+>    order and not mixed with another chunk's. It either sends every chunk from
+>    chunk 1 upward, or joins the client late:
+>    - the chunks of setting up, from 1 to the last of them (the chunk of kind
+>      3), and no chunk after it;
+>    - then the key frame nearest the present, the first key frame sent on the
+>      connection;
+>    - then the chunks from the one that key frame leads to.
+>
+>    Either way it skips none after that. A client takes a key frame only where
+>    it is the first one sent and arrives before the chunk after the last chunk
+>    of setting up; otherwise it keeps it but plays on from that chunk.
+>
+> 5. As the match ends, a server sends `StreamChunkRange` again naming its last
+>    chunk, then that chunk. Once it has arrived the client takes no more of the
+>    stream.
+
+<!-- holds from 3.6.0.388 up to 3.7.0.328 -->
+
+> **In 3.6**
+>
+> A server sends `StreamChunkRange`, with the match's end left at zero while it
+> runs.
 
 <!-- holds from 4.20.0.315 up to 4.21.0.0 -->
 
@@ -178,8 +190,21 @@ says.
 > A server SHOULD join a client late once a match is more than a few minutes in:
 > a client sent every chunk from 1 fails partway through a long catch-up.
 
-The stream's chunks run for `StreamMetadata`'s `chunkTimeInterval` each and its
-key frames for its `keyFrameTimeInterval` (see [Time](time.md#how-a-time-is-carried)).
+<!-- holds from 3.03.0.198 up to 3.04.0.78 -->
+
+> **In 3.03**
+>
+> The stream's chunks run for `StreamMetadata`'s `chunkTimeInterval` each and
+> its key frames for its `keyFrameTimeInterval` (see
+> [Time](time.md#how-a-time-is-carried)).
+
+<!-- holds from 3.12.0.251 up to 4.21.0.0 -->
+
+> **In 3.12–4.20**
+>
+> The stream's chunks run for `StreamMetadata`'s `chunkTimeInterval` each and
+> its key frames for its `keyFrameTimeInterval` (see
+> [Time](time.md#how-a-time-is-carried)).
 
 <!-- holds from 3.13.0.399 up to 3.14.0.700 -->
 
@@ -282,9 +307,7 @@ after another.
 
 > **In 1.0.0.140**
 >
-> Where a client's setting for packed records is on, each record is a
-> [`StreamRecord`](../schema/types/StreamRecord.json), written against the one
-> before it to save space. A reader keeps the last record's time, command and
+> A reader keeps the last record's time, command and
 > object, and recovers a record's own:
 >
 > - its time, from a time difference, as the last record's time plus that many
@@ -293,8 +316,8 @@ after another.
 > - its object, from an object difference, as the last record's object plus
 >   that signed difference.
 >
-> A message is the command, the object and the body, laid out as a game message
-> is (see [Messages](messages.md)).
+> A message is the command, the object and the body (see
+> [Messages](messages.md)).
 
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
@@ -302,7 +325,7 @@ after another.
 >
 > Where a client's setting for packed records is on, each record is a
 > [`StreamRecord`](../schema/types/StreamRecord.json), written against the one
-> before it to save space. A reader keeps the last record's time, command and
+> before it. A reader keeps the last record's time, command and
 > object, and recovers a record's own:
 >
 > - its time, from a time difference, as the last record's time plus that many
@@ -311,8 +334,8 @@ after another.
 > - its object, from an object difference, as the last record's object plus
 >   that signed difference.
 >
-> A message is the command, the object and the body, laid out as a game message
-> is (see [Messages](messages.md)).
+> A message is the command, the object and the body (see
+> [Messages](messages.md)).
 
 <!-- holds from 4.17.0.233 up to 4.21.0.0 -->
 
@@ -374,8 +397,20 @@ and goes on by itself afterwards.
 > its own.
 
 A key frame is laid out as a chunk is, and holds the whole world as it stands
-at that point. A client joined late goes on after it from the chunk the key
-frame names, or, where it names none, from the chunk its number implies (see
-`StreamChunk`).
+at that point.
+
+<!-- holds from 3.03.0.198 up to 3.04.0.78 -->
+
+> **In 3.03**
+>
+> A client joined late goes on after it from the chunk the key frame names, or,
+> where it names none, from the chunk its number implies (see `StreamChunk`).
+
+<!-- holds from 3.12.0.251 up to 4.21.0.0 -->
+
+> **In 3.12–4.20**
+>
+> A client joined late goes on after it from the chunk the key frame names, or,
+> where it names none, from the chunk its number implies (see `StreamChunk`).
 
 <!-- messages -->

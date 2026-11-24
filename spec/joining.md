@@ -591,7 +591,7 @@ every client has sent `ClientReady`.
 > before `CharacterSelected` starts the match's music and announcements and
 > locks the camera, but does not end loading; one arriving after
 > `CharacterSelected` ends loading and starts the match, doing all of that
-> again. A server MUST send `StartGame` after `CharacterSelected` arrives.
+> again.
 
 <!-- holds from 1.0.0.86 up to 1.0.0.87 -->
 
@@ -600,7 +600,8 @@ every client has sent `ClientReady`.
 > A client keeps a `StartGame` that arrives once it has sent
 > `CharacterSelected`, and its loading then ends. It loses one that arrives
 > before it begins building the match's world, and one that a `SpawnStart`
-> follows. A server MUST send `StartGame` after `CharacterSelected` arrives.
+> follows. A server MUST send `StartGame` after `CharacterSelected` arrives,
+> because a client stays loading until it keeps one.
 
 <!-- holds from 1.0.0.96 up to 1.0.0.97 -->
 

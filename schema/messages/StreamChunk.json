@@ -53,12 +53,12 @@
         {
           "name": "duration",
           "type": "i32",
-          "note": "How long the chunk runs, as a whole number."
+          "note": "How long the chunk runs, as a whole number; the unit is not recorded."
         },
         {
           "name": "nextChunk",
           "type": "u32",
-          "note": "For a key frame, the ordinary chunk to go on from."
+          "note": "For a key frame, the next chunk's id."
         },
         {
           "name": "data",
@@ -176,7 +176,7 @@
         {
           "name": "duration",
           "type": "i32",
-          "note": "How long the chunk runs."
+          "note": "How long the chunk runs; the unit is not recorded."
         },
         {
           "name": "nextChunk",

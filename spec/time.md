@@ -11,8 +11,19 @@ when the message arrives. Every definition says which.
 
 Exceptions:
 
-- A stream's chunk and key frame intervals (`StreamMetadata`) are in
-  milliseconds.
+<!-- holds from 3.03.0.198 up to 3.04.0.78 -->
+
+> **In 3.03**
+>
+> A stream's chunk and key frame intervals (`StreamMetadata`) are in
+> milliseconds.
+
+<!-- holds from 3.12.0.251 up to 4.21.0.0 -->
+
+> **In 3.12–4.20**
+>
+> A stream's chunk and key frame intervals (`StreamMetadata`) are in
+> milliseconds.
 
 <!-- holds from 4.17.0.233 up to 4.21.0.0 -->
 
