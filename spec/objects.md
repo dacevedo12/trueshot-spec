@@ -119,9 +119,9 @@ gives the client its own client id.
 
 > **In 1.0.0.58–1.0.0.60**
 >
-> A server MUST send a `VersionSync` whose `agreement` is 1 before any
-> `CreateChampion`, `CreateNeutral` or `CreateTurret`, because a client given
-> one of them before that `VersionSync` stops.
+> A server MUST send a `VersionSync` whose `agreement` is not 0 before any
+> `CreateChampion` or `CreateNeutral`, because a client given one of them
+> before that `VersionSync` stops.
 
 <!-- holds from 1.0.0.74 up to 1.0.0.75 -->
 

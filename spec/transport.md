@@ -186,10 +186,10 @@ argument.
 > **In 1.0.0.126**
 >
 > An argument longer than sixteen characters holds the key in base64, and the
-> key is the first sixteen bytes it decodes to. Such an argument MUST decode to
-> at least 15 bytes: on a shorter decoding a client fails as it starts. An
-> argument of sixteen characters or fewer is the key as it stands, followed by
-> zero bytes up to sixteen.
+> key is the first sixteen bytes it decodes to. In a player's launch, such an
+> argument MUST decode to at least 15 bytes: on a shorter decoding a client
+> fails as it starts. An argument of sixteen characters or fewer is the key as
+> it stands, followed by zero bytes up to sixteen.
 
 <!-- holds from 1.0.0.132 up to 1.0.0.133 -->
 

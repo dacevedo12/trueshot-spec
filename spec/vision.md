@@ -88,7 +88,13 @@ A server brings a unit into what a client's side can see with `EnterSight`.
 > messages carried.
 
 A client does not draw a champion that no `EnterSight` has placed. One `EnterSight` after the `CreateChampion` draws it, with
-its name and health bar over it.
+its name over it.
+
+<!-- holds from 0.9.22.14 up to 4.21.0.0 -->
+
+> **In 0.9.22.14–4.20**
+>
+> The `EnterSight` that draws a champion also puts its health bar over it.
 
 `EnterLocalSight` brings a unit into what one client alone can see.
 `EnterTeamSight` brings an object into the view of a whole side.
@@ -270,9 +276,9 @@ of them only for its own champion.
 >
 > `GoldGained` naming the client's own champion, with an amount above 0.5 and a
 > source the client holds, shows the gold over the source. Any other `GoldGained`
-> naming a champion the client holds shows over it the gold gained, or lost
-> where the amount is below 0, and nothing for 0. `ItemAdded` announces no
-> purchase, a client's own or another's.
+> naming a champion, a minion or a turret the client holds shows over it the
+> gold gained, or lost where the amount is below 0, and nothing for 0.
+> `ItemAdded` announces no purchase, a client's own or another's.
 
 <!-- holds from 1.0.0.58 up to 1.0.0.61 -->
 

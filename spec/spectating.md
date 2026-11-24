@@ -14,7 +14,7 @@ match reaches it.
 > **In 1.0.0.110**
 >
 > A client cannot watch a live match: no start-up word or message makes it
-> watch one. Started with the path of a recording ending in `.rep` as its whole
+> watch one. Started with the path of a recording, holding `.rep`, as its whole
 > command line, it connects to nothing and plays the recorded match back.
 
 <!-- holds from 1.0.0.126 up to 1.0.0.150 -->

@@ -41,7 +41,7 @@ menu on or off.
 > A client ignores `SurrenderVoteCalled` that arrives before its interface is
 > up. Once it is up, a client given `SurrenderVoteCalled`, or `SurrenderStatus`
 > with reason 1, before its own champion exists fails, so a server MUST NOT send
-> either before then.
+> either once the client's interface is up and before its own champion exists.
 
 <!-- holds from 1.0.0.58 up to 4.20.0.315 -->
 

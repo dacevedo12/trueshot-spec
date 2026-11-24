@@ -272,7 +272,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "A client sends it as its player opens the shop, in any match, but none while the match is held."
+      "note": "A client sends it as its player opens the shop, in any match, but none while the match runs at speed 0."
     },
     {
       "from": "1.0.0.151",
