@@ -131,7 +131,7 @@ the shop sends nothing.
 >
 > Opening the shop sends `TutorialShopOpened`, in any match. A client opens the
 > shop and asks to buy whether or not the shop is locked, except where a setting
-> of its own, off by default, has it heed the lock.
+> of its own has it heed the lock.
 
 <!-- holds from 1.0.0.87 up to 1.0.0.132 -->
 
@@ -146,21 +146,13 @@ the shop sends nothing.
 >
 > Opening the shop while the match is paused sends nothing.
 
-<!-- holds from 1.0.0.132 up to 1.0.0.133 -->
+<!-- holds from 1.0.0.132 up to 1.0.0.141 -->
 
-> **In 1.0.0.132**
+> **In 1.0.0.132–1.0.0.140**
 >
 > Opening the shop sends `TutorialShopOpened`, in any match. A client asks to
-> buy whether or not the shop is locked, except where a setting of its own, off
-> by default, has it heed the lock.
-
-<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
-
-> **In 1.0.0.140**
->
-> Opening the shop sends `TutorialShopOpened`, in any match. A client asks to buy
-> whether or not the shop is locked, except where a setting of its own, off by
-> default, has it heed the lock.
+> buy whether or not the shop is locked, except where a setting of its own has
+> it heed the lock.
 
 <!-- holds from 3.10.0.237 up to 4.21.0.0 -->
 
