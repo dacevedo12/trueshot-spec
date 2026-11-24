@@ -533,9 +533,22 @@ every client has sent `ClientReady`.
 
 ## The spawn run
 
-<!-- holds from 0.8.13.26 up to 4.4.0.1858 -->
+<!-- holds from 0.8.13.26 up to 1.0.0.132 -->
 
-> **In 0.8.13.26–4.3**
+> **In 0.8.13.26–1.0.0.131**
+>
+> Once a character is settled, a client sends `CharacterSelected`, once.
+
+<!-- holds from 1.0.0.132 up to 1.0.0.133 -->
+
+> **In 1.0.0.132**
+>
+> A client sends `CharacterSelected` as it finishes loading, just before it
+> shows that it waits for the other players.
+
+<!-- holds from 1.0.0.133 up to 4.4.0.1858 -->
+
+> **In 1.0.0.133–4.3**
 >
 > Once a character is settled, a client sends `CharacterSelected`, once.
 
@@ -589,7 +602,7 @@ every client has sent `ClientReady`.
 
 > **In 4.4**
 >
-> A client sends `CharacterSelected` as it finishes loading.
+> A client sends `CharacterSelected` once, as it finishes loading.
 >
 > Until it sends `CharacterSelected`, a client drops every game message but
 > `VersionSync`, `QueryStatusAnswer`, `MatchIdentity`, `SeatLoadProgress`,

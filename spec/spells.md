@@ -156,8 +156,27 @@ fills in the numbers a client shows beside a unit's spells, and
 `SpellCostChanged` changes what a spell costs. A server can also draw rings
 around its player's cursor with `CursorRings`.
 
-A marker has no slots. A server MUST NOT send `SpellInSlot` naming a marker: a
-client fails on it, whatever the slot.
+A marker has no slots.
+
+<!-- holds from 1.0.0.124 up to 1.0.0.150 -->
+
+> **In 1.0.0.124–1.0.0.149**
+>
+> A server MUST NOT send `SpellInSlot` naming a marker: a client fails on it,
+> whatever the slot.
+
+<!-- holds from 1.0.0.150 up to 1.0.0.151 -->
+
+> **In 1.0.0.150**
+>
+> A client ignores a `SpellInSlot` naming a marker.
+
+<!-- holds from 1.0.0.151 up to 4.21.0.0 -->
+
+> **In 1.0.0.151–4.20**
+>
+> A server MUST NOT send `SpellInSlot` naming a marker: a client fails on it,
+> whatever the slot.
 
 <!-- holds from 1.0.0.96 up to 1.0.0.111 -->
 
@@ -177,14 +196,39 @@ struck with `MissileHits`, and is rid of it with `DestroyMissile`. A missile tha
 bounces from unit to unit does so with `BounceMissile`, and a server can
 name in advance the units a chain missile will strike with `ChainTargets`.
 `MissileCourse` sets where a missile starts and how fast it flies, and restarts
-its flight. A client reports where a missile that flies straight is, and where
-it is going, with `MissileReport`, which a server MAY ignore.
+its flight.
+
+<!-- holds from 0.9.22.14 up to 0.9.25.24 -->
+
+> **In 0.9.22.14–0.9.25.23**
+>
+> A client reports where a missile that flies straight is, and where it is
+> going, with `MissileReport`, which a server MAY ignore.
+
+<!-- holds from 0.9.25.24 up to 0.9.25.36 -->
+
+> **In 0.9.25.24–0.9.25.35**
+>
+> A client sends no `MissileReport`.
+
+<!-- holds from 0.9.25.36 up to 4.10.0.369 -->
+
+> **In 0.9.25.36–4.9**
+>
+> A client reports where a missile that flies straight is, and where it is
+> going, with `MissileReport`, which a server MAY ignore.
 
 <!-- holds from 0.9.25.24 up to 1.0.0.97 -->
 
 > **In 0.9.25.24–1.0.0.96**
 >
 > Only a missile that flies straight acts on `MissileHits`.
+
+<!-- holds from 1.0.0.150 up to 1.0.0.151 -->
+
+> **In 1.0.0.150**
+>
+> Only a scripted missile acts on `MissileCourse`.
 
 <!-- holds from 3.03.0.198 up to 3.11.0.306 -->
 

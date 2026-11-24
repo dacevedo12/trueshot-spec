@@ -79,6 +79,13 @@ catch up with its own.
 > sets it. After that it runs on the client's own timer, and a later
 > `ClockSync` only corrects it, however long a server leaves between them.
 
+<!-- holds from 1.0.0.150 up to 1.0.0.151 -->
+
+> **In 1.0.0.150**
+>
+> Once a `StartGame` sets `rules.fixedStep`, a client's match clock instead
+> runs in steps of 0.0333433 seconds a frame.
+
 <!-- holds from 0.9.25.24 up to 3.11.0.306 -->
 
 > **In 0.9.25.24–3.10**

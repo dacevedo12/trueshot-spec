@@ -970,6 +970,14 @@ Besides its batches, a server states some values with messages of their own.
 > `GoldGained` grants no gold: a champion's gold in hand follows group 0 bit 1 of
 > its batches alone.
 
+<!-- holds from 1.0.0.86 up to 1.0.0.87 -->
+
+> **In 1.0.0.86**
+>
+> A `GoldGained` naming the client's own champion, with an amount above 0.5 and
+> a source the client holds, grants no gold: that champion's gold in hand
+> follows group 0 bit 1 of its batches.
+
 <!-- holds from 1.0.0.96 up to 1.0.0.97 -->
 
 > **In 1.0.0.96**
@@ -996,7 +1004,7 @@ Besides its batches, a server states some values with messages of their own.
 
 > **In 3.03**
 >
-> `GoldGained` grants no gold: a champion's gold in hand follows its batches.
+> `GoldGained` grants no gold.
 
 <!-- holds from 3.10.0.237 up to 3.13.0.399 -->
 
@@ -1026,7 +1034,7 @@ Besides its batches, a server states some values with messages of their own.
 
 > **In 4.4**
 >
-> `GoldGained` grants no gold: a champion's gold in hand follows its batches.
+> `GoldGained` grants no gold.
 
 <!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 

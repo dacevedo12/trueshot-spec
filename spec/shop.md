@@ -152,9 +152,9 @@ the shop sends nothing.
 >
 > Opening the shop while the match is paused sends nothing.
 
-<!-- holds from 1.0.0.132 up to 1.0.0.141 -->
+<!-- holds from 1.0.0.132 up to 1.0.0.133 -->
 
-> **In 1.0.0.132–1.0.0.140**
+> **In 1.0.0.132**
 >
 > Opening the shop sends `TutorialShopOpened`, in any match. A client asks to
 > buy whether or not the shop is locked, except where a setting of its own has
@@ -167,6 +167,14 @@ the shop sends nothing.
 > Opening the shop while a tournament's hold (a `Paused` with `how.tournament`)
 > has the match stopped sends nothing; any other hold, or `GameSpeed` 0 alone,
 > does not stop it.
+
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+
+> **In 1.0.0.140**
+>
+> Opening the shop sends `TutorialShopOpened`, in any match. A client asks to
+> buy whether or not the shop is locked, except where a setting of its own has
+> it heed the lock.
 
 <!-- holds from 3.10.0.237 up to 4.21.0.0 -->
 

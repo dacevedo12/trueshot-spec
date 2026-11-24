@@ -780,7 +780,7 @@
         {
           "name": "size",
           "type": "u16",
-          "note": "How many bytes the casting takes, this field included. Where it differs from the bytes the casting takes, a client gives the cast no spell."
+          "note": "How many bytes the casting takes, this field included. Where it differs from the bytes the casting takes, a client fails."
         },
         {
           "name": "spell",
@@ -2452,7 +2452,7 @@
           "name": "hits",
           "type": "array",
           "count": "hitCount",
-          "note": "The units the casting hits, each a unit then a one-byte result; a 4.17 client takes at most 32.",
+          "note": "The units the casting hits, each a unit then a one-byte result.",
           "items": {
             "type": "struct",
             "struct": "SpellHit",

@@ -73,8 +73,8 @@ set a point for a player's view with `CameraBehaviour`.
 > **In 1.0.0.96–1.0.0.126**
 >
 > A client takes the lock from the player's own settings when `StartGame`
-> arrives, locked where they say nothing, and answers with `CameraLock`;
-> `CameraLockSet` changes it for the match without changing those settings.
+> arrives, and answers with `CameraLock`; `CameraLockSet` changes it for the
+> match without changing those settings.
 
 <!-- holds from 1.0.0.110 up to 1.0.0.111 -->
 
@@ -216,39 +216,9 @@ alone closes the shop and turns off its key.
 > them, but it acts on a lock at once only where the message's mask is exactly
 > one of 1, 4, 8, 16, 32 or 128.
 
-<!-- holds from 1.0.0.74 up to 1.0.0.87 -->
+<!-- holds from 1.0.0.74 up to 1.0.0.111 -->
 
-> **In 1.0.0.74–1.0.0.86**
->
-> A client keeps every lock a message sets or clears, but acts on a lock at once
-> only where the message's mask is exactly one of 1, 4, 8, 16, 32 or 128.
-
-<!-- holds from 1.0.0.87 up to 1.0.0.96 -->
-
-> **In 1.0.0.87–1.0.0.95**
->
-> A client keeps every lock a message sets or clears, and later input obeys
-> them, but it acts on a lock at once only where the message's mask is exactly
-> one of 1, 4, 8, 16, 32 or 128.
-
-<!-- holds from 1.0.0.96 up to 1.0.0.97 -->
-
-> **In 1.0.0.96**
->
-> A client keeps every lock a message sets or clears, but acts on a lock at once
-> only where the message's mask is exactly one of 1, 4, 8, 16, 32 or 128.
-
-<!-- holds from 1.0.0.97 up to 1.0.0.110 -->
-
-> **In 1.0.0.97–1.0.0.109**
->
-> A client keeps every lock a message sets or clears, and later input obeys
-> them, but it acts on a lock at once only where the message's mask is exactly
-> one of 1, 4, 8, 16, 32 or 128.
-
-<!-- holds from 1.0.0.110 up to 1.0.0.111 -->
-
-> **In 1.0.0.110**
+> **In 1.0.0.74–1.0.0.110**
 >
 > A client keeps every lock a message sets or clears, but acts on a lock at once
 > only where the message's mask is exactly one of 1, 4, 8, 16, 32 or 128.

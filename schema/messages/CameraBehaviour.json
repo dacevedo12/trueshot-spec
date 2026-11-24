@@ -80,7 +80,7 @@
           "note": "Along the other ground axis, in world units."
         }
       ],
-      "note": "A client moves the view to the point once, shortly after the message arrives, and leaves it free to move away after. Only the client whose own champion the header names applies it."
+      "note": "A client moves the view to the point once, some time after the message arrives, and leaves it free to move away after; with the player's camera lock on, the point has no visible effect. Only the client whose own champion the header names applies it."
     },
     {
       "from": "1.0.0.61",

@@ -15,6 +15,24 @@ height (see [Space](space.md)).
 > A path carries each point as two world floats (see [Space](space.md)),
 > stated against no origin and no other point.
 
+<!-- holds from 1.0.0.86 up to 1.0.0.87 -->
+
+> **In 1.0.0.86**
+>
+> `Movement` and `MovementAtSpeed` are compact: a path is a run of integer
+> points, while positions elsewhere are world floats covering a far larger range
+> (see [Space](space.md)). The two are related by an origin and a step:
+>
+> ```
+> encoded = truncate_toward_zero((world - origin) / 3)
+> world   = origin + 3 * encoded
+> ```
+>
+> A path resolves a position to three world units, rounded toward the origin.
+>
+> A path that arrives before a client has loaded the map's ground grid is read
+> with a step of 1 in place of 3, and an origin of 0.
+
 <!-- holds from 1.0.0.96 up to 1.0.0.97 -->
 
 > **In 1.0.0.96**
@@ -186,11 +204,41 @@ height (see [Space](space.md)).
 ## Other shapes
 
 `MovementAtSpeed` carries the same points as `Movement` with the terms of the
-travel stated before them, and `WaypointGroupAtSpeed` is what carries it. Other
-messages carry their points as world floats. [Vision](vision.md) says when
-`EnterSight` states a unit's path, or its place and facing while it stands.
+travel stated before them, and `WaypointGroupAtSpeed` is what carries it.
+
+<!-- holds from 0.8.13.26 up to 1.0.0.86 -->
+
+> **In 0.8.13.26–1.0.0.85**
+>
+> Other messages carry their points as world floats.
+
+<!-- holds from 1.0.0.86 up to 1.0.0.87 -->
+
+> **In 1.0.0.86**
+>
+> `MoveOrder` carries its destination in world floats and then a path in the
+> compact form `Movement` takes. Other messages carry their points as world
+> floats.
+
+<!-- holds from 1.0.0.87 up to 4.21.0.0 -->
+
+> **In 1.0.0.87–4.20**
+>
+> Other messages carry their points as world floats.
+
+[Vision](vision.md) says when `EnterSight` states a unit's path, or its place
+and facing while it stands.
 
 ## Resolving a path
+
+<!-- holds from 1.0.0.86 up to 1.0.0.87 -->
+
+> **In 1.0.0.86**
+>
+> A path is read into points by taking the first as it stands and then, for
+> each point after it, taking each coordinate either as it stands or by adding
+> the step to the coordinate of the point before. The point before means as
+> that point resolved, not what the wire carried for it.
 
 <!-- holds from 1.0.0.96 up to 4.21.0.0 -->
 
@@ -248,6 +296,15 @@ says what a client does with a movement whose unit it does not hold.
 > **In 0.8.13.26–1.0.0.60**
 >
 > A server needs no origin.
+
+<!-- holds from 1.0.0.86 up to 1.0.0.87 -->
+
+> **In 1.0.0.86**
+>
+> The origin is the midpoint of the bounds a map's navigation data covers,
+> truncated to a whole number on each axis. **Nothing on the wire carries it.**
+> Both ends hold it before a match begins, and an end holding a different one
+> misplaces every position it reads.
 
 <!-- holds from 1.0.0.96 up to 4.21.0.0 -->
 
@@ -493,9 +550,9 @@ server sends.
 
 > **In 4.17**
 >
-> A server MUST NOT send `NavigationFlags`: a client whose map's ground data is
-> loaded fails on the first one a match brings. Before that data is loaded, it
-> takes nothing and does not answer.
+> A client whose map's ground data is loaded fails on the first
+> `NavigationFlags` a match brings. Before that data is loaded, it takes nothing
+> and does not answer.
 
 <!-- holds from 4.18.0.271 up to 4.21.0.0 -->
 

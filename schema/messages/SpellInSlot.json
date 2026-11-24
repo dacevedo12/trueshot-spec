@@ -236,7 +236,7 @@
           "note": "Which slot."
         }
       ],
-      "note": "A client ignores the header, and does nothing where it does not hold unit."
+      "note": "A client ignores the header, and does nothing where it does not hold unit or where unit is a marker."
     },
     {
       "from": "1.0.0.151",
@@ -344,7 +344,7 @@
     },
     {
       "from": "3.13.0.399",
-      "until": "4.5.0.260",
+      "until": "4.4.0.1858",
       "channel": "events",
       "command": 111,
       "direction": "serverToClient",
@@ -364,6 +364,50 @@
           "name": "slot",
           "type": "u8",
           "note": "Which slot."
+        }
+      ],
+      "note": "A client ignores the header; it takes the unit from unit."
+    },
+    {
+      "from": "4.4.0.1858",
+      "until": "4.5.0.260",
+      "channel": "events",
+      "command": 111,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit whose slot this is."
+        },
+        {
+          "name": "spell",
+          "type": "u32",
+          "note": "Which spell, by the number its name gives, as spec/objects.md works it out."
+        },
+        {
+          "name": "slot",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "slot",
+              "width": 6,
+              "note": "Which slot."
+            },
+            {
+              "name": "summoner",
+              "width": 1,
+              "note": "The summoner flag."
+            },
+            {
+              "name": "unused",
+              "width": 1,
+              "note": "What it does is not recorded for this range; a server writes zero."
+            }
+          ],
+          "note": "Which slot, and the summoner flag. A client takes the slot from the low six bits."
         }
       ],
       "note": "A client ignores the header; it takes the unit from unit."

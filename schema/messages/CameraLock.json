@@ -233,7 +233,7 @@
           "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
         }
       ],
-      "note": "A client sends it on each CameraLockSet with state as that message carried it, all eight bits included; as its player sets the lock; as StartGame arrives, from the player's settings, locked where they say nothing; with state 1 as its own champion is made while its view is locked; and as the game forces the view free, with state 0. While that forcing holds, a CameraLockSet is dropped; as it lifts, a client sends the state in force just before it began. Whether a player setting made during it is kept is not recorded."
+      "note": "A client sends it on each CameraLockSet with state as that message carried it, all eight bits included; as its player sets the lock; as StartGame arrives, from the player's settings; with state 1 as its own champion is made while its view is locked; and as the game forces the view free, with state 0. While that forcing holds, a CameraLockSet is dropped; as it lifts, a client sends the state in force just before it began. Whether a player setting made during it is kept is not recorded."
     },
     {
       "from": "1.0.0.75",

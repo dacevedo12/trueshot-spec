@@ -89,9 +89,9 @@ says.
 
 > **In 4.17**
 >
-> In that form the address is a spectator service's and the further word a
-> platform name; a client started so takes the match over HTTP from that
-> service.
+> In that form the address is a spectator service's and the further word goes
+> in the path of every request to that service, just before the match number; a
+> client started so takes the match over HTTP from that service.
 
 <!-- holds from 4.20.0.315 up to 4.21.0.0 -->
 
@@ -177,6 +177,13 @@ says.
 
 The stream's chunks run for `StreamMetadata`'s `chunkTimeInterval` each and its
 key frames for its `keyFrameTimeInterval` (see [Time](time.md#how-a-time-is-carried)).
+
+<!-- holds from 3.13.0.399 up to 3.14.0.700 -->
+
+> **In 3.13**
+>
+> A client fails on a `StreamChunk` fragment other than 0 that arrives with no
+> chunk begun.
 
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 

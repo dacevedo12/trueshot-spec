@@ -79,9 +79,20 @@ way it faces.
 > faces from where it stands toward that point, or along +z where the two are
 > the same.
 
-A prop of scenery carries angles instead: `MapProp` gives its turn as pitch,
-yaw and roll, in degrees, where yaw 0 faces +z and yaw 90 faces +x. For an
-active prop, the same three fields are a direction vector.
+<!-- holds from 1.0.0.110 up to 1.0.0.111 -->
+
+> **In 1.0.0.110**
+>
+> `MapProp` carries a prop of scenery's position only, with no angles and no
+> direction.
+
+<!-- holds from 1.0.0.124 up to 4.21.0.0 -->
+
+> **In 1.0.0.124–4.20**
+>
+> A prop of scenery carries angles instead: `MapProp` gives its turn as pitch,
+> yaw and roll, in degrees, where yaw 0 faces +z and yaw 90 faces +x. For an
+> active prop, the same three fields are a direction vector.
 
 ## Maps
 

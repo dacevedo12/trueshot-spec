@@ -83,7 +83,7 @@
           "note": "How many are stacked there now."
         },
         {
-          "name": "timeLeft",
+          "name": "lasts",
           "type": "f32",
           "note": "How long the effect runs in total, in seconds, counted from when it started, as EffectAdded's lasts: a client keeps the start it had and ends the effect this long after it."
         },

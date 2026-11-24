@@ -201,9 +201,23 @@ gives the client its own client id.
 > A server MUST send that `Registered` before any create message, because a
 > client given a create message before it has its own client id stops.
 
-<!-- holds from 1.0.0.133 up to 3.03.0.198 -->
+<!-- holds from 1.0.0.133 up to 1.0.0.140 -->
 
-> **In 1.0.0.133–3.02**
+> **In 1.0.0.133–1.0.0.139**
+>
+> A client acts on that `Registered` alone and ignores every other, so it pairs
+> no other player's player id with a client id.
+
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+
+> **In 1.0.0.140**
+>
+> A client records the pair every `Registered` carries, and takes as its own
+> only the one carrying its own player id.
+
+<!-- holds from 1.0.0.141 up to 3.03.0.198 -->
+
+> **In 1.0.0.141–3.02**
 >
 > A client acts on that `Registered` alone and ignores every other, so it pairs
 > no other player's player id with a client id.
@@ -1089,9 +1103,9 @@ Creating messages are the exception, and so are the messages below.
 > `EnterSight` and `EnterLocalSight` act on the messages they carry whether or
 > not the client holds the unit they name.
 
-<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
+<!-- holds from 4.11.0.386 up to 4.20.0.315 -->
 
-> **In 4.1–4.19**
+> **In 4.11–4.19**
 >
 > A client fails on a `RegionMoved` naming a region it does not hold, one whose
 > lifetime has run out included, and a server MUST NOT send one.
@@ -1151,10 +1165,25 @@ for each byte b of the name, with A to Z made a to z:
     number = number & ~high
 ```
 
-Every step is worked in 32 bits. Only `A` to `Z` change, so `SummonerFlash`
-and `summonerflash` give one number. A particle's name includes its extension,
-so the number comes from `global_ss_flash.troy` and not from
-`global_ss_flash`. The nine bytes `123456789` give 0x0678AEE9.
+Every step is worked in 32 bits.
+
+<!-- holds from 0.8.13.26 up to 4.4.0.1858 -->
+
+> **In 0.8.13.26–4.3**
+>
+> Only `A` to `Z` change, so `SummonerFlash` and `summonerflash` give one
+> number.
+
+<!-- holds from 4.5.0.260 up to 4.21.0.0 -->
+
+> **In 4.5–4.20**
+>
+> Only `A` to `Z` change, so `SummonerFlash` and `summonerflash` give one
+> number.
+
+A particle's name includes its extension, so the number comes from
+`global_ss_flash.troy` and not from `global_ss_flash`. The nine bytes
+`123456789` give 0x0678AEE9.
 
 <!-- holds from 0.8.13.26 up to 4.4.0.1858 -->
 

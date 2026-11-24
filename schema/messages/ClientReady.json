@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "ClientReady",
   "system": "joining",
-  "note": "What a client sends once it has loaded and is ready to play. The header names no object: it carries zero.",
+  "note": "The header names no object: it carries zero.",
   "revisions": [
     {
       "from": "0.8.13.26",
@@ -12,7 +12,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "The message is the header alone. A client sends it at once on SpawnEnd."
+      "note": "What a client sends once it has loaded and is ready to play. The message is the header alone. A client sends it at once on SpawnEnd."
     },
     {
       "from": "1.0.0.110",
@@ -21,6 +21,7 @@
       "command": 81,
       "direction": "clientToServer",
       "reliability": "reliable",
+      "note": "What a client sends once it has loaded and is ready to play.",
       "fields": []
     },
     {
@@ -30,6 +31,7 @@
       "command": 82,
       "direction": "clientToServer",
       "reliability": "reliable",
+      "note": "What a client sends once it has loaded and is ready to play.",
       "fields": []
     },
     {
@@ -39,6 +41,7 @@
       "command": 83,
       "direction": "clientToServer",
       "reliability": "reliable",
+      "note": "What a client sends once it has loaded and is ready to play.",
       "fields": []
     },
     {
@@ -48,6 +51,7 @@
       "command": 85,
       "direction": "clientToServer",
       "reliability": "reliable",
+      "note": "What a client sends once it has loaded and is ready to play.",
       "fields": []
     },
     {
@@ -57,6 +61,7 @@
       "command": 86,
       "direction": "clientToServer",
       "reliability": "reliable",
+      "note": "A client sends it as SpawnEnd arrives.",
       "fields": []
     },
     {
@@ -66,6 +71,7 @@
       "command": 86,
       "direction": "clientToServer",
       "reliability": "reliable",
+      "note": "What a client sends once it has loaded and is ready to play.",
       "fields": [
         {
           "name": "maskedStatus",
@@ -98,7 +104,7 @@
           "note": "A random value the client picks to mask the one above."
         }
       ],
-      "note": "It comes unprompted, before any start of play reaches the client."
+      "note": "What a client sends once it has loaded and is ready to play. It comes unprompted, before any start of play reaches the client."
     },
     {
       "from": "1.0.0.140",
@@ -119,7 +125,7 @@
           "note": "A random value the client picks to mask the one above."
         }
       ],
-      "note": "A client sends it as SpawnEnd arrives, and again for each SpawnEnd after."
+      "note": "What a client sends once it has loaded and is ready to play. A client sends it as SpawnEnd arrives, and again for each SpawnEnd after."
     },
     {
       "from": "1.0.0.141",
@@ -140,7 +146,7 @@
           "note": "A random value the client picks to mask the one above."
         }
       ],
-      "note": "It comes unprompted, before any start of play reaches the client."
+      "note": "What a client sends once it has loaded and is ready to play. It comes unprompted, before any start of play reaches the client."
     },
     {
       "from": "1.0.0.144",
@@ -149,6 +155,7 @@
       "command": 82,
       "direction": "clientToServer",
       "reliability": "reliable",
+      "note": "What a client sends once it has loaded and is ready to play.",
       "fields": [
         {
           "name": "maskedStatus",
@@ -206,7 +213,7 @@
           "note": "As VersionSync gave it."
         }
       ],
-      "note": "The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero."
+      "note": "What a client sends once it has loaded and is ready to play. The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero."
     },
     {
       "from": "1.0.0.150",
@@ -279,7 +286,7 @@
           ]
         }
       ],
-      "note": "The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero."
+      "note": "What a client sends once it has loaded and is ready to play. The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero."
     },
     {
       "from": "3.01.0.1",
@@ -352,7 +359,7 @@
           ]
         }
       ],
-      "note": "The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero."
+      "note": "What a client sends once it has loaded and is ready to play. The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero."
     },
     {
       "from": "3.03.0.198",
@@ -425,7 +432,7 @@
           ]
         }
       ],
-      "note": "The tip fields carry VersionSync's tip bytes. Where settings.tips and either loadingTips or playingTips are set, a client reduces a tipChosen above the number of tips modulo that number, and negates a tipColour or tipDuration outside its valid range (0 as -128), clearing tips; otherwise it returns all four as they came."
+      "note": "What a client sends once it has loaded and is ready to play. The tip fields carry VersionSync's tip bytes. Where settings.tips and either loadingTips or playingTips are set, a client reduces a tipChosen above the number of tips modulo that number, and negates a tipColour or tipDuration outside its valid range (0 as -128), clearing tips; otherwise it returns all four as they came."
     },
     {
       "from": "3.04.0.78",
@@ -498,7 +505,7 @@
           ]
         }
       ],
-      "note": "The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero."
+      "note": "What a client sends once it has loaded and is ready to play. The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero."
     },
     {
       "from": "3.10.0.237",
@@ -571,7 +578,7 @@
           ]
         }
       ],
-      "note": "The tip fields carry VersionSync's tip bytes. Where settings.tips and either loadingTips or playingTips are set, a client reduces a tipChosen above the number of tips modulo that number and, where it has tips at all, negates a tipColour or tipDuration outside its valid range (0 as -128), clearing tips. Playing a replay, a client sends all four as zero."
+      "note": "What a client sends once it has loaded and is ready to play. The tip fields carry VersionSync's tip bytes. Where settings.tips and either loadingTips or playingTips are set, a client reduces a tipChosen above the number of tips modulo that number and, where it has tips at all, negates a tipColour or tipDuration outside its valid range (0 as -128), clearing tips. Playing a replay, a client sends all four as zero."
     },
     {
       "from": "3.11.0.306",
@@ -644,7 +651,7 @@
           ]
         }
       ],
-      "note": "The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero."
+      "note": "What a client sends once it has loaded and is ready to play. The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero."
     },
     {
       "from": "3.13.0.399",
@@ -717,7 +724,7 @@
           ]
         }
       ],
-      "note": "The tip fields carry VersionSync's tip bytes. Where settings.tips and either loadingTips or playingTips are set, a client reduces a tipChosen above the number of tips modulo that number, clearing tips where there are none, and negates a tipColour or tipDuration outside its valid range (0 as -128), clearing tips. Playing a replay, a client sends all four as zero, and maskedStatus and mask carry no meaning."
+      "note": "What a client sends once it has loaded and is ready to play. The tip fields carry VersionSync's tip bytes. Where settings.tips and either loadingTips or playingTips are set, a client reduces a tipChosen above the number of tips modulo that number, clearing tips where there are none, and negates a tipColour or tipDuration outside its valid range (0 as -128), clearing tips. Playing a replay, a client sends all four as zero, and maskedStatus and mask carry no meaning."
     },
     {
       "from": "3.14.0.700",
@@ -790,7 +797,7 @@
           ]
         }
       ],
-      "note": "The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero."
+      "note": "What a client sends once it has loaded and is ready to play. The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero."
     },
     {
       "from": "4.5.0.260",
@@ -853,7 +860,7 @@
           ]
         }
       ],
-      "note": "The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero."
+      "note": "What a client sends once it has loaded and is ready to play. The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero."
     },
     {
       "from": "4.11.0.386",
@@ -916,7 +923,7 @@
           ]
         }
       ],
-      "note": "The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero."
+      "note": "What a client sends once it has loaded and is ready to play. The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero."
     },
     {
       "from": "4.13.0.265",
@@ -994,7 +1001,7 @@
           "note": "The third. A client sends zero."
         }
       ],
-      "note": "The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero. The three module fields are always zero."
+      "note": "What a client sends once it has loaded and is ready to play. The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero. The three module fields are always zero."
     },
     {
       "from": "4.17.0.233",
@@ -1072,7 +1079,7 @@
           "note": "The third."
         }
       ],
-      "note": "The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero."
+      "note": "What a client sends once it has loaded and is ready to play. The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero."
     },
     {
       "from": "4.18.0.271",
@@ -1081,6 +1088,7 @@
       "command": 82,
       "direction": "clientToServer",
       "reliability": "reliable",
+      "note": "What a client sends once it has loaded and is ready to play.",
       "fields": [
         {
           "name": "moduleOne",
@@ -1158,6 +1166,7 @@
       "command": 82,
       "direction": "clientToServer",
       "reliability": "reliable",
+      "note": "What a client sends once it has loaded and is ready to play.",
       "fields": [
         {
           "name": "moduleOne",

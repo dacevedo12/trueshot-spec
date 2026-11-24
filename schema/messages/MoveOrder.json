@@ -23,6 +23,18 @@
             "3": {
               "name": "attack"
             },
+            "5": {
+              "name": "controlledAttack",
+              "note": "An attack the player orders for the unit the champion controls alongside, sent for that unit alone."
+            },
+            "6": {
+              "name": "controlledMove",
+              "note": "A move the player orders for the unit the champion controls alongside, sent for that unit alone."
+            },
+            "7": {
+              "name": "otherMove",
+              "note": "A move given by the one other way of ordering that sends one."
+            },
             "10": {
               "name": "stop"
             }

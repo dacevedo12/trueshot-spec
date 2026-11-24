@@ -584,7 +584,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "A client sends it as the Registered naming its own player id arrives, and only while the match is in play. A client sends it once it has connected again to a match it was playing. A client dropped while playing reconnects by itself; one dropped while loading leaves instead. It carries nothing of its own."
+      "note": "A client sends it as the Registered naming its own player id arrives, and only while the match is in play. A client sends it once it has connected again to a match it was playing. A client dropped while loading leaves. It carries nothing of its own."
     },
     {
       "from": "3.04.0.78",

@@ -468,7 +468,7 @@
         {
           "name": "target",
           "type": "u32",
-          "note": "The unit swung at. A client throws the swing at it; where it does not hold it, it ignores the message, and the timing changes nothing."
+          "note": "The unit swung at. A client throws the swing at it; where it does not hold it, it still moves the unit as fromX and fromZ say, takes nothing else of the message, and the timing changes nothing."
         },
         {
           "name": "timing",

@@ -96,6 +96,16 @@
     },
     {
       "from": "1.0.0.132",
+      "until": "1.0.0.133",
+      "channel": "requests",
+      "command": 199,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client sends it as it finishes loading, just before it shows that it waits for the other players."
+    },
+    {
+      "from": "1.0.0.133",
       "until": "1.0.0.135",
       "channel": "requests",
       "command": 199,

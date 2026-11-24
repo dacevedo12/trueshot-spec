@@ -352,18 +352,8 @@
               "note": "Only where loop is clear: set to start fading the animation out once its time left is at or below the blend time."
             },
             {
-              "name": "syncPhase",
-              "width": 1,
-              "note": "It has no effect; a server writes zero."
-            },
-            {
-              "name": "noFadeIn",
-              "width": 1,
-              "note": "It has no effect; a server writes zero."
-            },
-            {
               "name": "unused",
-              "width": 22,
+              "width": 24,
               "note": "Unused; a server writes zero."
             }
           ],

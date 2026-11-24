@@ -22,9 +22,27 @@ that packs them into archives keeps the same paths inside.
 
 **Buildings.** `LEVELS/Map1/Scene/room.dsc` lists a map's scene objects, one
 line each: a file name and a quality number. Each object's own file sits beside
-it and gives its name. A client creates no object from a name holding
-`_Destroyed`. On map 1 the names run `Turret_T<side>_<lane>_<number>`
-for a lane turret, `Barracks_T<side>_<lane>1` for an inhibitor and `HQ_T<side>`
+it and gives its name.
+
+<!-- holds from 0.8.13.26 up to 1.0.0.110 -->
+
+> **In 0.8.13.26–1.0.0.109**
+>
+> A client creates no object from a name holding `_Destroyed`.
+
+<!-- holds from 1.0.0.111 up to 1.0.0.132 -->
+
+> **In 1.0.0.111–1.0.0.131**
+>
+> A client creates no object from a name holding `_Destroyed`.
+
+<!-- holds from 1.0.0.133 up to 4.21.0.0 -->
+
+> **In 1.0.0.133–4.20**
+>
+> A client creates no object from a name holding `_Destroyed`.
+
+On map 1 the names run `Turret_T<side>_<lane>_<number>` for a lane turret, `Barracks_T<side>_<lane>1` for an inhibitor and `HQ_T<side>`
 for a nexus, side 1 for Order and 2 for Chaos and lanes `L`, `C` and `R`, with a
 shrine turret for each side; the numbers differ between the sides, and a server
 MUST take the names from the files.
