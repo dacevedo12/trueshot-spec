@@ -415,7 +415,7 @@
         {
           "name": "speed",
           "type": "f32",
-          "note": "How fast, 1 being normal. In a match it plays, a client keeps it between 0 and 10; while it watches a match, from a stream or a replay, it takes it as given."
+          "note": "How fast, 1 being normal. A client limits it only in a match it plays; while it watches a match, from a stream or a replay, it takes it as given."
         }
       ],
       "note": "Sent while paused, it takes effect on resuming."

@@ -1551,7 +1551,7 @@
         {
           "name": "locks",
           "type": "u32",
-          "note": "Each lock set flips.",
+          "note": "Each lock set flips; the chat lock only where locks is exactly 32.",
           "values": {
             "1": {
               "name": "cameraLock",
@@ -1582,7 +1582,7 @@
           }
         }
       ],
-      "note": "Every lock set flips as the message arrives. A client acts on the change at once only where locks is exactly 1, 4, 8, 16, 32 or 128; for any other value, 2 and 64 alone included, every lock but chat takes effect where the client next checks it, and the chat lock stays as it was."
+      "note": "A client acts on the change at once only where locks is exactly 1, 4, 8, 16, 32 or 128; for any other value, 2 and 64 alone included, every lock but chat takes effect where the client next checks it, and the chat lock stays as it was."
     },
     {
       "from": "4.5.0.260",

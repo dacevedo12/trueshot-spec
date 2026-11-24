@@ -241,8 +241,8 @@ Moments on the match clock include:
 
 > **In 4.4**
 >
-> The limit of 0 to 10 holds in a match a client plays: while it watches a
-> match, from a stream or a replay, it takes whatever speed `GameSpeed` gives.
+> The limit holds only in a match a client plays: while it watches a match,
+> from a stream or a replay, it takes whatever speed `GameSpeed` gives.
 
 <!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 

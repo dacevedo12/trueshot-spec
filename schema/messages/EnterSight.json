@@ -5581,7 +5581,7 @@
           "present": {
             "when": "remaining"
           },
-          "note": "Everything else a client needs to draw the unit. A server sends this message without it too, ending after the items. For a turret a client reads nothing after the carried messages.",
+          "note": "Everything else a client needs to draw the unit. A server sends this message without it too, ending after the items.",
           "fields": [
             {
               "name": "hasShields",
@@ -5730,7 +5730,7 @@
           ]
         }
       ],
-      "note": "It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say."
+      "note": "It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say. For a turret a client reads nothing after the carried messages."
     },
     {
       "from": "3.04.0.78",

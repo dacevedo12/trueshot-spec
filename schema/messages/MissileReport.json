@@ -2,7 +2,7 @@
   "$schema": "../meta/message.json",
   "message": "MissileReport",
   "system": "spells",
-  "note": "What a client sends to report where a missile that flies straight is and where it is going. A server need do nothing with it. The header names the missile.",
+  "note": "A server need do nothing with it. The header names the missile.",
   "revisions": [
     {
       "from": "0.9.22.14",
@@ -69,7 +69,7 @@
           "note": "A description of the cast the missile belongs to, with whatever stood in memory after it up to the field's end."
         }
       ],
-      "note": "A client sends it always 173 bytes long, header included. A line missile writes every field; any other missile writes only atX to atZ and the cast, and leaves the rest unwritten."
+      "note": "What a client sends to report where a missile that flies straight is and where it is going. A client sends it always 173 bytes long, header included. A line missile writes every field; any other missile writes only atX to atZ and the cast, and leaves the rest unwritten."
     },
     {
       "from": "0.9.22.16",
@@ -181,7 +181,7 @@
           "note": "A description of the cast the missile belongs to, at most 512 bytes."
         }
       ],
-      "note": "A client also sends it 209 bytes long, header included, from a missile of its own. That form writes only atX to atZ, velocityX to velocityZ and the cast, and leaves every other byte unwritten."
+      "note": "What a client sends to report where a missile that flies straight is and where it is going. A client also sends it 209 bytes long, header included, from a missile of its own. That form writes only atX to atZ, velocityX to velocityZ and the cast, and leaves every other byte unwritten."
     },
     {
       "from": "0.9.25.24",
@@ -405,7 +405,7 @@
           "note": "A description of the cast the missile belongs to, at most 512 bytes."
         }
       ],
-      "note": "A client also sends it 209 bytes long, header included, from a missile of its own. That form writes only atX to atZ, velocityX to velocityZ and the cast, and leaves every other byte unwritten."
+      "note": "What a client sends to report where a missile that flies straight is and where it is going. A client also sends it 209 bytes long, header included, from a missile of its own. That form writes only atX to atZ, velocityX to velocityZ and the cast, and leaves every other byte unwritten."
     },
     {
       "from": "1.0.0.63",
@@ -516,7 +516,8 @@
           "size": "remaining",
           "note": "A description of the cast the missile belongs to, at most 512 bytes."
         }
-      ]
+      ],
+      "note": "What a client sends to report where a missile that flies straight is and where it is going."
     },
     {
       "from": "1.0.0.74",
@@ -627,7 +628,8 @@
           "size": "remaining",
           "note": "A description of the cast the missile belongs to, at most 512 bytes."
         }
-      ]
+      ],
+      "note": "What a client sends to report where a missile that flies straight is and where it is going."
     },
     {
       "from": "1.0.0.75",
@@ -738,7 +740,8 @@
           "size": "remaining",
           "note": "A description of the cast the missile belongs to, at most 512 bytes."
         }
-      ]
+      ],
+      "note": "What a client sends to report where a missile that flies straight is and where it is going."
     },
     {
       "from": "1.0.0.82",
@@ -849,7 +852,8 @@
           "size": "remaining",
           "note": "A description of the cast the missile belongs to, at most 512 bytes."
         }
-      ]
+      ],
+      "note": "What a client sends to report where a missile that flies straight is and where it is going."
     },
     {
       "from": "1.0.0.86",
@@ -960,7 +964,8 @@
           "size": "remaining",
           "note": "A description of the cast the missile belongs to, at most 512 bytes."
         }
-      ]
+      ],
+      "note": "What a client sends to report where a missile that flies straight is and where it is going."
     },
     {
       "from": "1.0.0.87",
@@ -1071,7 +1076,8 @@
           "size": "remaining",
           "note": "A description of the cast the missile belongs to, at most 512 bytes."
         }
-      ]
+      ],
+      "note": "What a client sends to report where a missile that flies straight is and where it is going."
     },
     {
       "from": "1.0.0.97",
@@ -1182,7 +1188,8 @@
           "size": "remaining",
           "note": "A description of the cast the missile belongs to, at most 512 bytes."
         }
-      ]
+      ],
+      "note": "What a client sends to report where a missile that flies straight is and where it is going."
     },
     {
       "from": "1.0.0.103",
@@ -1293,7 +1300,8 @@
           "size": "remaining",
           "note": "A description of the cast the missile belongs to, at most 512 bytes."
         }
-      ]
+      ],
+      "note": "What a client sends to report where a missile that flies straight is and where it is going."
     },
     {
       "from": "1.0.0.104",
@@ -1409,7 +1417,8 @@
           "size": "remaining",
           "note": "A description of the cast the missile belongs to, at most 512 bytes."
         }
-      ]
+      ],
+      "note": "What a client sends to report where a missile that flies straight is and where it is going."
     },
     {
       "from": "1.0.0.107",
@@ -1525,7 +1534,8 @@
           "size": "remaining",
           "note": "A description of the cast the missile belongs to, at most 512 bytes."
         }
-      ]
+      ],
+      "note": "What a client sends to report where a missile that flies straight is and where it is going."
     },
     {
       "from": "1.0.0.110",
@@ -1641,7 +1651,8 @@
           "size": "remaining",
           "note": "A description of the cast the missile belongs to, at most 512 bytes."
         }
-      ]
+      ],
+      "note": "What a client sends to report where a missile that flies straight is and where it is going."
     },
     {
       "from": "1.0.0.111",
@@ -1778,7 +1789,8 @@
           "size": "remaining",
           "note": "A description of the cast the missile belongs to, at most 512 bytes."
         }
-      ]
+      ],
+      "note": "What a client sends to report where a missile that flies straight is and where it is going."
     },
     {
       "from": "1.0.0.117",
@@ -1915,7 +1927,8 @@
           "size": "remaining",
           "note": "A description of the cast the missile belongs to, at most 512 bytes."
         }
-      ]
+      ],
+      "note": "What a client sends to report where a missile that flies straight is and where it is going."
     },
     {
       "from": "1.0.0.119",
@@ -2052,7 +2065,8 @@
           "size": "remaining",
           "note": "A description of the cast the missile belongs to, at most 512 bytes."
         }
-      ]
+      ],
+      "note": "What a client sends to report where a missile that flies straight is and where it is going."
     },
     {
       "from": "1.0.0.124",
@@ -2189,7 +2203,8 @@
           "size": "remaining",
           "note": "A description of the cast the missile belongs to, at most 512 bytes."
         }
-      ]
+      ],
+      "note": "What a client sends to report where a missile that flies straight is and where it is going."
     },
     {
       "from": "1.0.0.126",
@@ -2326,7 +2341,8 @@
           "size": "remaining",
           "note": "A description of the cast the missile belongs to, at most 512 bytes."
         }
-      ]
+      ],
+      "note": "What a client sends to report where a missile that flies straight is and where it is going."
     },
     {
       "from": "1.0.0.138",
@@ -2468,7 +2484,8 @@
           "size": "remaining",
           "note": "A description of the cast the missile belongs to, at most 512 bytes."
         }
-      ]
+      ],
+      "note": "What a client sends to report where a missile that flies straight is and where it is going."
     },
     {
       "from": "1.0.0.144",
@@ -2610,7 +2627,8 @@
           "size": "remaining",
           "note": "A description of the cast the missile belongs to, at most 512 bytes."
         }
-      ]
+      ],
+      "note": "What a client sends to report where a missile that flies straight is and where it is going."
     },
     {
       "from": "1.0.0.150",
@@ -2752,7 +2770,8 @@
           "size": "remaining",
           "note": "A description of the cast the missile belongs to, at most 512 bytes."
         }
-      ]
+      ],
+      "note": "What a client sends to report where a missile that flies straight is and where it is going."
     },
     {
       "from": "3.7.0.328",
@@ -2894,7 +2913,8 @@
           "size": "remaining",
           "note": "A description of the cast the missile belongs to, at most 512 bytes."
         }
-      ]
+      ],
+      "note": "What a client sends to report where a missile that flies straight is and where it is going."
     },
     {
       "from": "3.9.0.491",
@@ -3046,7 +3066,8 @@
           "size": "remaining",
           "note": "A description of the cast the missile belongs to, at most 512 bytes."
         }
-      ]
+      ],
+      "note": "What a client sends to report where a missile that flies straight is and where it is going."
     }
   ]
 }

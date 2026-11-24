@@ -196,7 +196,25 @@ server answers with `VersionSync`, and a client loads only where its
 
 ## Taking a seat
 
-Straight after `VersionSync`, a client sends `JoinSide` on the roster channel.
+<!-- holds from 0.8.13.26 up to 4.4.0.1858 -->
+
+> **In 0.8.13.26–4.3**
+>
+> Straight after `VersionSync`, a client sends `JoinSide` on the roster channel.
+
+<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
+
+> **In 4.4**
+>
+> Straight after a `VersionSync` whose `agreement` is 1, a client sends
+> `JoinSide` on the roster channel.
+
+<!-- holds from 4.5.0.260 up to 4.21.0.0 -->
+
+> **In 4.5–4.20**
+>
+> Straight after `VersionSync`, a client sends `JoinSide` on the roster channel.
+
 A server answers with one `Roster`, then a `SeatName` and a `SeatChampion` for
 each seat a player holds.
 

@@ -92,9 +92,9 @@ reports what each blow does with `Damage`.
 > client sets the mark only where the message names that champion, and clears
 > it for any other. A client takes it apart from `TargetUnit`.
 
-<!-- holds from 1.0.0.126 up to 1.0.0.150 -->
+<!-- holds from 1.0.0.126 up to 1.0.0.141 -->
 
-> **In 1.0.0.126–1.0.0.149**
+> **In 1.0.0.126–1.0.0.140**
 >
 > Any unit takes `TargetUnit`, whatever it is attacking.
 
@@ -105,9 +105,9 @@ reports what each blow does with `Damage`.
 > A champion, a minion, a turret, a follower or a level prop takes
 > `TargetUnit`, whatever it is attacking.
 
-<!-- holds from 1.0.0.151 up to 4.21.0.0 -->
+<!-- holds from 3.03.0.198 up to 4.21.0.0 -->
 
-> **In 1.0.0.151–4.20**
+> **In 3.03–4.20**
 >
 > Any unit takes `TargetUnit`, whatever it is attacking.
 

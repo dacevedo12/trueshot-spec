@@ -158,9 +158,9 @@ around its player's cursor with `CursorRings`.
 
 A marker has no slots.
 
-<!-- holds from 1.0.0.124 up to 1.0.0.150 -->
+<!-- holds from 1.0.0.124 up to 1.0.0.140 -->
 
-> **In 1.0.0.124–1.0.0.149**
+> **In 1.0.0.124–1.0.0.139**
 >
 > A server MUST NOT send `SpellInSlot` naming a marker: a client fails on it,
 > whatever the slot.
@@ -171,9 +171,9 @@ A marker has no slots.
 >
 > A client ignores a `SpellInSlot` naming a marker.
 
-<!-- holds from 1.0.0.151 up to 4.21.0.0 -->
+<!-- holds from 3.03.0.198 up to 4.21.0.0 -->
 
-> **In 1.0.0.151–4.20**
+> **In 3.03–4.20**
 >
 > A server MUST NOT send `SpellInSlot` naming a marker: a client fails on it,
 > whatever the slot.

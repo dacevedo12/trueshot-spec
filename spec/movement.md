@@ -206,25 +206,19 @@ height (see [Space](space.md)).
 `MovementAtSpeed` carries the same points as `Movement` with the terms of the
 travel stated before them, and `WaypointGroupAtSpeed` is what carries it.
 
-<!-- holds from 0.8.13.26 up to 1.0.0.86 -->
+<!-- holds from 0.8.13.26 up to 1.0.0.83 -->
 
-> **In 0.8.13.26–1.0.0.85**
+> **In 0.8.13.26–1.0.0.82**
 >
 > Other messages carry their points as world floats.
 
-<!-- holds from 1.0.0.86 up to 1.0.0.87 -->
+<!-- holds from 1.0.0.83 up to 4.21.0.0 -->
 
-> **In 1.0.0.86**
+> **In 1.0.0.83–4.20**
 >
 > `MoveOrder` carries its destination in world floats and then a path in the
 > compact form `Movement` takes. Other messages carry their points as world
 > floats.
-
-<!-- holds from 1.0.0.87 up to 4.21.0.0 -->
-
-> **In 1.0.0.87–4.20**
->
-> Other messages carry their points as world floats.
 
 [Vision](vision.md) says when `EnterSight` states a unit's path, or its place
 and facing while it stands.
@@ -524,13 +518,6 @@ server sends.
 > client replaces the circles it holds with those it carries, and answers with
 > its `syncId`; before then it takes nothing and does not answer.
 
-<!-- holds from 4.1.0.171 up to 4.4.0.1858 -->
-
-> **In 4.1–4.3**
->
-> A server MUST NOT send `NavigationFlags`: a client fails on the first one a
-> match brings.
-
 <!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
 
 > **In 4.4**
@@ -543,8 +530,7 @@ server sends.
 
 > **In 4.5–4.16**
 >
-> A server MUST NOT send `NavigationFlags`: a client fails on the first one a
-> match brings.
+> A client fails on the first `NavigationFlags` a match brings.
 
 <!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 
@@ -558,7 +544,6 @@ server sends.
 
 > **In 4.18–4.20**
 >
-> A server MUST NOT send `NavigationFlags`: a client fails on the first one a
-> match brings.
+> A client fails on the first `NavigationFlags` a match brings.
 
 <!-- messages -->

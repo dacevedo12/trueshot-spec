@@ -92,10 +92,6 @@ revision claims that value both ways.
 > does.
 >
 > A server MAY send a container on the events channel. A client sends none.
-
-<!-- holds from 1.0.0.96 up to 4.21.0.0 -->
-
-> **In 1.0.0.96–4.20**
 >
 > Where an entry's size bits read 63, its size is one byte that follows the
 > command and object identifier, just before the body.

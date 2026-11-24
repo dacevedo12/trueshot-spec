@@ -735,11 +735,11 @@ A server tells the others that a player's client dropped with
 
 > **In 1.0.0.140–3.10**
 >
-> A client dropped during play connects again at once by itself, for any reason
-> but the one that means its player was away, and shows its player that it is
-> reconnecting while it does. Where its settings turn this off, it asks its
-> player for the reason 0 whether to connect again, and for any other shows that
-> the reconnection failed.
+> Where a setting of its own has it, a client dropped during play connects
+> again at once by itself, for any reason but the one that means its player was
+> away, and shows its player that it is reconnecting while it does. Where that
+> setting is off, it asks its player for the reason 0 whether to connect again,
+> and for any other shows that the reconnection failed.
 
 <!-- holds from 1.0.0.140 up to 1.0.0.150 -->
 

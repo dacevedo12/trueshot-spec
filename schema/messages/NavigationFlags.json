@@ -1275,7 +1275,6 @@
       "command": 64,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client fails on the first of these in a match: it stops, marking no circle and sending no answer.",
       "fields": [
         {
           "name": "count",

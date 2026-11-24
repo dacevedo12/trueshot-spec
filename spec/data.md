@@ -42,10 +42,11 @@ it and gives its name.
 >
 > A client creates no object from a name holding `_Destroyed`.
 
-On map 1 the names run `Turret_T<side>_<lane>_<number>` for a lane turret, `Barracks_T<side>_<lane>1` for an inhibitor and `HQ_T<side>`
-for a nexus, side 1 for Order and 2 for Chaos and lanes `L`, `C` and `R`, with a
-shrine turret for each side; the numbers differ between the sides, and a server
-MUST take the names from the files.
+On map 1 the names run `Turret_T<side>_<lane>_<number>` for a lane turret,
+`Barracks_T<side>_<lane>1` for an inhibitor and `HQ_T<side>` for a nexus, side 1
+for Order and 2 for Chaos and lanes `L`, `C` and `R`, with a shrine turret for
+each side; the numbers differ between the sides, and a server MUST take the
+names from the files.
 
 <!-- holds from 0.8.13.26 up to 1.0.0.110 -->
 
@@ -67,9 +68,21 @@ MUST take the names from the files.
 > A name holding `_FB` still makes an object, though not one of the kind its
 > other words name.
 
-<!-- holds from 0.9.22.14 up to 4.21.0.0 -->
+<!-- holds from 0.9.22.14 up to 1.0.0.110 -->
 
-> **In 0.9.22.14–4.20**
+> **In 0.9.22.14–1.0.0.109**
+>
+> A client creates no object from a name holding `_FB` either.
+
+<!-- holds from 1.0.0.111 up to 1.0.0.132 -->
+
+> **In 1.0.0.111–1.0.0.131**
+>
+> A client creates no object from a name holding `_FB` either.
+
+<!-- holds from 1.0.0.133 up to 4.21.0.0 -->
+
+> **In 1.0.0.133–4.20**
 >
 > A client creates no object from a name holding `_FB` either.
 
@@ -268,10 +281,9 @@ MUST take the names from the files.
 
 > **In 3.03**
 >
-> In the section's name, n is the count of the side's seats taken in `Roster`
-> plus the count `SpawnStart` carries for that side, the same n picking both the
-> position and the facing. A champion begun on the spawn point itself faces
-> along +X.
+> In the section's name, n is the count of the side's seats taken plus the count
+> `SpawnStart` carries for that side, the same n picking both the position and
+> the facing. A champion begun on the spawn point itself faces along +X.
 
 <!-- holds from 3.04.0.78 up to 3.10.0.237 -->
 
