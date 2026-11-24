@@ -90,7 +90,8 @@ says.
 > word, with no player number.
 >
 > The match number a key is deciphered under is the low 32 bits of the match
-> number, written out as a signed decimal.
+> number, written out as a signed decimal. A key that encodes only 16 bytes
+> serves too: those 16 bytes, deciphered so, are the key.
 
 <!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 
@@ -136,9 +137,9 @@ says.
 > `VersionSync` has played, then `GameOptions` and `ClientReady`: no
 > `ClientVersion`, no `QueryStatus` and no `LoadingProgress`.
 
-<!-- holds from 4.5.0.260 up to 4.21.0.0 -->
+<!-- holds from 4.5.0.260 up to 4.17.0.233 -->
 
-> **In 4.5–4.20**
+> **In 4.5–4.16**
 >
 > A watching client registers as a player's client does (see
 > [Joining a match](joining.md)), and is answered the same way, save for the
@@ -153,12 +154,22 @@ says.
 
 > **In 4.17–4.20**
 >
+> A watching client registers as a player's client does (see
+> [Joining a match](joining.md)), and is answered the same way, save for the
+> client id. A server MUST answer a watching client with a client id that no
+> player in the streamed match holds: a watching client given a player's client
+> id takes that player's champion as its own, and fails as soon as it has caught
+> up with the stream. From then on it takes only `StreamMetadata`,
+> `StreamChunkRange` and `StreamChunk`, on any channel, and drops every other
+> message a server sends it directly, `VersionSync` included. Of what a player's
+> client sends while joining, it sends only `JoinSide`, once the stream's own
+> `VersionSync` has played, then `CharacterSelected` and `ClientReady`, with or
+> without a `GameOptions` before them: no `ClientVersion`, no `QueryStatus` and
+> no `LoadingProgress`.
+>
 > A server answers a watching client with a `Registered` naming the player
 > number the client was started with as its player id: the client takes no
 > other answer as its own.
->
-> A watching client given a client id that a player in the streamed match holds
-> takes that player's champion as its own.
 
 <!-- holds from 3.03.0.198 up to 3.04.0.78 -->
 
@@ -371,6 +382,10 @@ after another.
 >
 > A message is the command, the object and the body, laid out as a game message
 > is (see [Messages](messages.md)).
+>
+> Over the connection a chunk's bytes are its records as they stand: not
+> compressed, and enciphered only as every payload on the connection is (see
+> [Transport](transport.md#the-cipher)).
 
 <!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 
