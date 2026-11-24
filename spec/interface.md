@@ -255,17 +255,9 @@ alone closes the shop and turns off its key.
 > other lock a message sets or clears, and later input obeys them, but for the
 > shop lock only in the tutorial.
 
-<!-- holds from 1.0.0.148 up to 1.0.0.150 -->
+<!-- holds from 1.0.0.148 up to 1.0.0.151 -->
 
-> **In 1.0.0.148–1.0.0.149**
->
-> A client keeps every lock a message sets or clears, and later input obeys
-> them, but it acts on a lock at once only where the message's mask is exactly
-> one of 1, 4, 8, 16, 32 or 128.
-
-<!-- holds from 1.0.0.150 up to 1.0.0.151 -->
-
-> **In 1.0.0.150**
+> **In 1.0.0.148–1.0.0.150**
 >
 > A client keeps every lock a message sets or clears, but acts on a lock at
 > once only where the message's mask is exactly one of 1, 4, 8, 16, 32 or 128.
@@ -293,19 +285,12 @@ alone closes the shop and turns off its key.
 >
 > A watching client ignores `InputLock`.
 
-<!-- holds from 4.4.0.1858 up to 4.18.0.271 -->
+<!-- holds from 4.4.0.1858 up to 4.20.0.315 -->
 
-> **In 4.4–4.17**
+> **In 4.4–4.19**
 >
 > A message that locks other input along with the shop stops the shop opening,
 > but leaves an open shop open and its key on.
-
-<!-- holds from 4.18.0.271 up to 4.20.0.315 -->
-
-> **In 4.18–4.19**
->
-> Any message that locks the shop closes it and turns off its key, whatever
-> else it locks.
 
 <!-- holds from 4.20.0.315 up to 4.21.0.0 -->
 

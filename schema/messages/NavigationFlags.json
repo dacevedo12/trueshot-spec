@@ -1380,7 +1380,7 @@
       "command": 64,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client fails on the first of these in a match: it stops, marking no circle and sending no answer.",
+      "note": "A client whose map's ground data is loaded fails on the first of these in a match: it stops, marking no circle and sending no answer.",
       "fields": [
         {
           "name": "count",
@@ -1433,7 +1433,7 @@
       "command": 65,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client fails on the first of these in a match: it stops, marking no circle and sending no answer.",
+      "note": "A client whose map's ground data is loaded fails on the first of these in a match: it stops, marking no circle and sending no answer.",
       "fields": [
         {
           "name": "count",
@@ -1539,7 +1539,7 @@
       "command": 65,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client fails on the first of these in a match: it stops, marking no circle and sending no answer.",
+      "note": "A client whose map's ground data is loaded fails on the first of these in a match: it stops, marking no circle and sending no answer.",
       "fields": [
         {
           "name": "count",

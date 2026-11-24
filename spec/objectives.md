@@ -70,16 +70,6 @@ match when a camp is next due with `CampTimer`.
 On a map won on score, a server binds each capture point to a unit with
 `CapturePointChanged`, and `TeamScore` sets each side's score.
 
-<!-- holds from 1.0.0.122 up to 1.0.0.124 -->
-
-> **In 1.0.0.122–1.0.0.123**
->
-> No unit stands behind a point: a server sets each point outright with
-> `CapturePointValue`, which says who holds it, how far it is taken and how fast
-> that changes, and a client moves the point on by itself between messages.
-> `TeamScore` carries both sides' scores at once. A client acts on either only
-> where its screen has the capture point panel.
-
 <!-- holds from 1.0.0.126 up to 3.11.0.306 -->
 
 > **In 1.0.0.126–3.10**

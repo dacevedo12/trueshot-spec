@@ -239,7 +239,7 @@
         {
           "name": "category",
           "type": "u8",
-          "note": "Which kind. 7 names none; a larger value than 7 has no defined effect and can bring the client down.",
+          "note": "Which kind. 7 names none; a larger value than 7 has no defined effect.",
           "values": {
             "0": {
               "name": "all"

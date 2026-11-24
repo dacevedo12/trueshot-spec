@@ -157,13 +157,6 @@ A marker has no slots.
 >
 > A client ignores a `SpellInSlot` naming a marker.
 
-<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
-
-> **In 3.10**
->
-> A server MUST NOT send `SpellInSlot` naming a marker: a client fails on it,
-> whatever the slot.
-
 <!-- holds from 4.17.0.233 up to 4.21.0.0 -->
 
 > **In 4.17–4.20**

@@ -489,13 +489,12 @@
       "fields": [
         {
           "name": "clientId",
-          "type": "u32",
-          "note": "The client id of the client that asked."
+          "type": "u32"
         },
         {
           "name": "timeLeft",
           "type": "i32",
-          "note": "How much holding time is left to the side that asked, in seconds."
+          "note": "A client writes 0."
         },
         {
           "name": "how",

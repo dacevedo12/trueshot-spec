@@ -194,7 +194,7 @@
         {
           "name": "agreement",
           "type": "u8",
-          "note": "Must be 1. For 0 a client shows both versions and leaves; for any other value it closes its connection, showing nothing."
+          "note": "A server writes 1. For 0 a client shows both versions and leaves; for any other value it closes its connection, showing nothing."
         },
         {
           "name": "map",
@@ -233,7 +233,7 @@
         {
           "name": "agreement",
           "type": "u8",
-          "note": "Must be 1: any other value has the client report a build mismatch and leave. For 0 it also shows both versions."
+          "note": "A server writes 1: any other value has the client report a build mismatch and leave. For 0 it also shows both versions."
         },
         {
           "name": "map",
@@ -272,7 +272,7 @@
         {
           "name": "agreement",
           "type": "u8",
-          "note": "Must be 1: any other value has the client report a build mismatch and leave. For 0 it also shows both versions."
+          "note": "A server writes 1: any other value has the client report a build mismatch and leave. For 0 it also shows both versions."
         },
         {
           "name": "map",
@@ -311,7 +311,7 @@
         {
           "name": "agreement",
           "type": "u8",
-          "note": "Must be 1. For 0 a client shows both versions and leaves; for any other value it leaves without showing them."
+          "note": "A server writes 1. For 0 a client shows both versions and leaves; for any other value it leaves without showing them."
         },
         {
           "name": "map",
@@ -350,7 +350,7 @@
         {
           "name": "agreement",
           "type": "u8",
-          "note": "Must be 1: any other value has the client report a build mismatch and leave. For 0 it also shows both versions."
+          "note": "A server writes 1: any other value has the client report a build mismatch and leave. For 0 it also shows both versions."
         },
         {
           "name": "map",
@@ -389,7 +389,7 @@
         {
           "name": "agreement",
           "type": "u8",
-          "note": "Must be 1: any other value has the client report a build mismatch and end. For 0 it first shows both versions; for any other it shows nothing."
+          "note": "A server writes 1: any other value has the client report a build mismatch and end. For 0 it first shows both versions; for any other it shows nothing."
         },
         {
           "name": "map",
@@ -428,7 +428,7 @@
         {
           "name": "agreement",
           "type": "u8",
-          "note": "Must be 1: any other value has the client report a build mismatch and leave. For 0 it also shows both versions."
+          "note": "A server writes 1: any other value has the client report a build mismatch and leave. For 0 it also shows both versions."
         },
         {
           "name": "map",
@@ -467,7 +467,7 @@
         {
           "name": "agreement",
           "type": "u8",
-          "note": "Must be 1: any other value has the client report a build mismatch and leave. For 0 it also shows both versions."
+          "note": "A server writes 1: any other value has the client report a build mismatch and leave. For 0 it also shows both versions."
         },
         {
           "name": "map",
@@ -506,7 +506,7 @@
         {
           "name": "agreement",
           "type": "u8",
-          "note": "Must be 1: any other value has the client report a build mismatch and leave. For 0 it also shows both versions."
+          "note": "A server writes 1: any other value has the client report a build mismatch and leave. For 0 it also shows both versions."
         },
         {
           "name": "map",
@@ -552,7 +552,7 @@
         {
           "name": "agreement",
           "type": "u8",
-          "note": "Must be 1: any other value has the client report a build mismatch and leave. For 0 it also shows both versions."
+          "note": "A server writes 1: any other value has the client report a build mismatch and leave. For 0 it also shows both versions."
         },
         {
           "name": "map",
@@ -598,7 +598,7 @@
         {
           "name": "agreement",
           "type": "u8",
-          "note": "Must be 1: any other value has the client leave. For 0 it first shows both versions; for any other it shows nothing."
+          "note": "A server writes 1: any other value has the client leave. For 0 it first shows both versions; for any other it shows nothing."
         },
         {
           "name": "map",
@@ -644,7 +644,7 @@
         {
           "name": "agreement",
           "type": "u8",
-          "note": "Must be 1: any other value has the client report a build mismatch and leave. For 0 it also shows both versions."
+          "note": "A server writes 1: any other value has the client report a build mismatch and leave. For 0 it also shows both versions."
         },
         {
           "name": "map",
@@ -690,7 +690,7 @@
         {
           "name": "agreement",
           "type": "u8",
-          "note": "Must be 1: any other value has the client report a build mismatch and leave. For 0 it also shows both versions."
+          "note": "A server writes 1: any other value has the client report a build mismatch and leave. For 0 it also shows both versions."
         },
         {
           "name": "map",
@@ -736,7 +736,7 @@
         {
           "name": "agreement",
           "type": "u8",
-          "note": "Must be 1: any other value has the client report a build mismatch and leave. For 0 it also shows both versions."
+          "note": "A server writes 1: any other value has the client report a build mismatch and leave. For 0 it also shows both versions."
         },
         {
           "name": "map",
@@ -782,7 +782,7 @@
         {
           "name": "agreement",
           "type": "u8",
-          "note": "Must be 1: any other value has the client report a build mismatch and leave. For 0 it also shows both versions."
+          "note": "A server writes 1: any other value has the client report a build mismatch and leave. For 0 it also shows both versions."
         },
         {
           "name": "map",
@@ -828,7 +828,7 @@
         {
           "name": "agreement",
           "type": "u8",
-          "note": "Must be 1. For 0 a client shows both versions and leaves; for any other value it leaves without a notice."
+          "note": "A server writes 1. For 0 a client shows both versions and leaves; for any other value it leaves without a notice."
         },
         {
           "name": "map",
@@ -874,7 +874,7 @@
         {
           "name": "agreement",
           "type": "u8",
-          "note": "Must be 1: any other value has the client report a build mismatch and leave. For 0 it also shows both versions."
+          "note": "A server writes 1: any other value has the client report a build mismatch and leave. For 0 it also shows both versions."
         },
         {
           "name": "map",

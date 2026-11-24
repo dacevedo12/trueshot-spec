@@ -43,14 +43,6 @@ that changes, such as a capture point or the unit's resource, with
 >
 > `ParticlesCreated` starts sets of particles, each named by its own id.
 
-<!-- holds from 3.02.0.30 up to 3.03.0.198 -->
-
-> **In 3.02**
->
-> A client takes `EmitterPause` as a `ChatAllowance`, the first four bytes of
-> the group's name standing as the lines left. A server MUST NOT send
-> `EmitterPause`.
-
 <!-- holds from 3.03.0.198 up to 3.04.0.78 -->
 
 > **In 3.03**
@@ -59,14 +51,6 @@ that changes, such as a capture point or the unit's resource, with
 > and then, whatever `groupOperation` says, as a `ChatAllowance` too, the first
 > four bytes of the group's name standing as the lines left. A server MUST NOT
 > send `EmitterPause`.
-
-<!-- holds from 3.04.0.78 up to 3.5.0.68 -->
-
-> **In 3.04**
->
-> A client takes `EmitterPause` as a `ChatAllowance`, the first four bytes of
-> the group's name standing as the lines left. A server MUST NOT send
-> `EmitterPause`.
 
 ## Looks and animation
 

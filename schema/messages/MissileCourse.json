@@ -20,7 +20,7 @@
         {
           "name": "kind",
           "type": "u32",
-          "note": "Must be 1, or the block is ignored."
+          "note": "A server writes 1; for any other value the block is ignored."
         },
         {
           "name": "target",
@@ -120,7 +120,7 @@
         {
           "name": "kind",
           "type": "u32",
-          "note": "Must be 1, or the block below is ignored."
+          "note": "A server writes 1; for any other value the block below is ignored."
         },
         {
           "name": "target",
@@ -592,7 +592,7 @@
             {
               "name": "kind",
               "type": "u32",
-              "note": "Must be 1; a client reads nothing after it otherwise."
+              "note": "A server writes 1; a client reads nothing after it otherwise."
             },
             {
               "name": "unit",

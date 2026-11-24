@@ -227,15 +227,6 @@ names from the files.
 > `Shop`, `Lake`, `__NAV_`, `Info`, `LevelProp_brush` and `LevelProp`.
 > `Barracks` makes an inhibitor, `HQ_` a nexus and `Turret` a turret.
 
-<!-- holds from 4.18.0.271 up to 4.20.0.315 -->
-
-> **In 4.18–4.19**
->
-> Map 11's buildings are not scene objects: its `MapObjects.mob` holds them,
-> named by the same rules, with `Turret_OrderTurretShrine` and
-> `Turret_ChaosTurretShrine` for its shrine turrets, and the client creates them
-> from it as it does scene objects.
-
 **Objects and spawn points.** A champion begins at its side's spawn point,
 `__Spawn_T1` for Order and `__Spawn_T2` for Chaos.
 
@@ -305,19 +296,6 @@ names from the files.
 > In the section's name, n is how many players and bots the side has. A
 > champion begun on the spawn point itself faces along +X.
 
-<!-- holds from 4.1.0.171 up to 4.4.0.1858 -->
-
-> **In 4.1–4.3**
->
-> `LEVELS/Map1/Scene/MapObjects.mob` holds the objects that are not buildings:
-> each side's spawn point, the minion spawners, navigation points, the marker of
-> the level's size and the props. It opens with 16 bytes: a fixed tag, a 32-bit
-> version (2), a 32-bit count and 4 reserved bytes. A record of 128 bytes follows
-> for each object: its name, 62 bytes padded with zeros; a byte for its kind; a
-> byte that lets it be placed regardless of collision; 32-bit floats for its
-> position, rotation and scale (three each) and its bounding box (six); and a
-> 32-bit skin.
-
 <!-- holds from 4.5.0.260 up to 4.20.0.315 -->
 
 > **In 4.5–4.19**
@@ -351,12 +329,6 @@ binary grid. Its layout is unspecified.
 > **In 4.5–4.19**
 >
 > The grid's name is the one the mode's navigation setting gives.
-
-<!-- holds from 4.18.0.271 up to 4.20.0.315 -->
-
-> **In 4.18–4.19**
->
-> Map 11 has no ground grid.
 
 **The figures.** Each is an inibin file: a champion's base statistics in
 `DATA/Characters/<Champion>/<Champion>.inibin`; an item, its price among its
@@ -418,20 +390,6 @@ figures, in `DATA/Items/<id>.inibin`; and summoner, item and shared spells in
 > all other spells, and some champions' in
 > `DATA/Characters/<Champion>/Spells/<Spell>.inibin`.
 
-<!-- holds from 4.1.0.171 up to 4.4.0.1858 -->
-
-> **In 4.1–4.3**
->
-> A champion's spells and attacks are in
-> `DATA/Characters/<Champion>/Spells/<Spell>.inibin`.
-
-<!-- holds from 4.5.0.260 up to 4.17.0.233 -->
-
-> **In 4.5–4.16**
->
-> A champion's spells and attacks are in
-> `DATA/Characters/<Champion>/Spells/<Spell>.inibin`.
-
 <!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 
 > **In 4.17**
@@ -441,10 +399,3 @@ figures, in `DATA/Items/<id>.inibin`; and summoner, item and shared spells in
 > A client looks for a champion's spells and attacks both in
 > `DATA/Characters/<Champion>/Spells/<Spell>.inibin` and in
 > `DATA/Spells/<Spell>.inibin`.
-
-<!-- holds from 4.18.0.271 up to 4.20.0.315 -->
-
-> **In 4.18–4.19**
->
-> A champion's spells and attacks are in
-> `DATA/Characters/<Champion>/Spells/<Spell>.inibin`.

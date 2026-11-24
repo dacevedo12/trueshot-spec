@@ -200,16 +200,9 @@ gives the client its own client id.
 > A server MUST send that `Registered` before any create message, because a
 > client given a create message before it has its own client id stops.
 
-<!-- holds from 1.0.0.133 up to 1.0.0.140 -->
+<!-- holds from 1.0.0.133 up to 1.0.0.141 -->
 
-> **In 1.0.0.133–1.0.0.139**
->
-> A client acts on that `Registered` alone and ignores every other, so it pairs
-> no other player's player id with a client id.
-
-<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
-
-> **In 1.0.0.140**
+> **In 1.0.0.133–1.0.0.140**
 >
 > A client records the pair every `Registered` carries, and takes as its own
 > only the one carrying its own player id.
@@ -413,14 +406,6 @@ naming a unit, an owner or a target carry one too.
 > `SpawnUnit`, `CreateTurret`, `SpawnBot`, `MapProp` and `SpawnMarker` first
 > remove any object holding the net id, and the object they create takes it.
 
-<!-- holds from 4.1.0.171 up to 4.4.0.1858 -->
-
-> **In 4.1–4.3**
->
-> A client that still holds the earlier object creates the new one but keeps
-> the net id on the old one, so messages naming it reach the old object, and
-> removing either leaves the id naming neither.
-
 <!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
 
 > **In 4.4**
@@ -435,9 +420,8 @@ naming a unit, an owner or a target carry one too.
 
 > **In 4.5–4.16**
 >
-> A client that still holds the earlier object creates the new one but keeps
-> the net id on the old one, so messages naming it reach the old object, and
-> removing either leaves the id naming neither.
+> `SpawnPet` first removes any object holding the net id, and the new pet takes
+> the id.
 
 <!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 
@@ -454,9 +438,9 @@ naming a unit, an owner or a target carry one too.
 
 > **In 4.18–4.19**
 >
-> A client that still holds the earlier object creates the new one but keeps
-> the net id on the old one, so messages naming it reach the old object, and
-> removing either leaves the id naming neither.
+> `SpawnPet`, `CreateChampion`, `CreateNeutral`, `SpawnUnit`, `CreateTurret`,
+> `MapProp`, `SpawnMarker` and `SpawnTurret` first remove any object holding
+> the net id, and the new object takes it.
 
 <!-- holds from 4.20.0.315 up to 4.21.0.0 -->
 
@@ -712,26 +696,6 @@ Among the identifiers with that top byte are these:
 > | 8   | `orderShop01`, `chaosShop01`                                                                                                                                           |
 > | 10  | `Barracks_T1_L1`, `Barracks_T1_R1`, `Barracks_T2_L1`, `Barracks_T2_R1`, the `L01` and `R01` spawn points of both sides, `HQ_T1`, `HQ_T2`, `orderShop01`, `chaosShop01` |
 > | 12  | `Barracks_T1_C1`, `Barracks_T2_C1`, the `C01` spawn points of both sides named `____P_…`, `HQ_T1`, `HQ_T2`, `OrderShop01`, `ChaosShop01`                               |
-
-<!-- holds from 4.18.0.271 up to 4.20.0.315 -->
-
-> **In 4.18–4.19**
->
-> | Name                            | `map`         |
-> | ------------------------------- | ------------- |
-> | `Barracks_T1_C1`                | 1, 11, 12     |
-> | `Barracks_T1_L1`                | 1, 10, 11     |
-> | `Barracks_T1_R1`                | 1, 10, 11     |
-> | `Barracks_T2_C1`                | 1, 11, 12     |
-> | `Barracks_T2_L1`                | 1, 10, 11     |
-> | `Barracks_T2_R1`                | 1, 10, 11     |
-> | `__P_Order_Spawn_Barracks__C01` | 1             |
-> | `ChaosShop01`                   | 12            |
-> | `chaosShop01`                   | 1, 8, 10, 11  |
-> | `HQ_T1`                         | 1, 10, 11, 12 |
-> | `HQ_T2`                         | 1, 10, 11, 12 |
-> | `OrderShop01`                   | 12            |
-> | `orderShop01`                   | 1, 8, 11      |
 
 <!-- holds from 4.20.0.315 up to 4.21.0.0 -->
 
@@ -1160,7 +1124,8 @@ Creating messages are the exception, and so are the messages below.
 
 > **In 4.18–4.19**
 >
-> A `SpawnPet` does nothing where the owner its body names is not held.
+> Where the owner its body names is not held it creates nothing, but still
+> removes any object holding that net id.
 
 <!-- holds from 4.20.0.315 up to 4.21.0.0 -->
 
@@ -1224,22 +1189,9 @@ A particle's name includes its extension, so the number comes from
 > A byte from 128 to 255 enters the hash as its value less 256, worked in 32
 > bits, rather than as itself.
 
-<!-- holds from 4.5.0.260 up to 4.18.0.271 -->
+<!-- holds from 4.5.0.260 up to 4.21.0.0 -->
 
-> **In 4.5–4.17**
->
-> A byte from 128 to 255 enters the hash as its value less 256, worked in 32
-> bits, rather than as itself.
-
-<!-- holds from 4.18.0.271 up to 4.20.0.315 -->
-
-> **In 4.18–4.19**
->
-> Every byte other than `A` to `Z` is taken as it is.
-
-<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
-
-> **In 4.20**
+> **In 4.5–4.20**
 >
 > A byte from 128 to 255 enters the hash as its value less 256, worked in 32
 > bits, rather than as itself.

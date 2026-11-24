@@ -65,13 +65,6 @@ A server brings a unit into what a client's side can see with `EnterSight`.
 > an inhibitor, a shop or a spawn point) it reads nothing after the messages
 > carried.
 
-<!-- holds from 4.1.0.171 up to 4.2.0.2718 -->
-
-> **In 4.1**
->
-> A client reads every part of an `EnterSight` body whatever its length, so a
-> server MUST NOT end one early.
-
 <!-- holds from 4.10.0.369 up to 4.20.0.315 -->
 
 > **In 4.10–4.19**
@@ -365,15 +358,9 @@ of them only for its own champion.
 > client holds shows over that unit the gold gained, or lost where the amount
 > is below 0, and nothing for 0.
 
-<!-- holds from 3.11.0.306 up to 3.13.0.399 -->
+<!-- holds from 3.11.0.306 up to 3.14.0.700 -->
 
-> **In 3.11–3.12**
->
-> `GoldGained` shows floating gold only for the client's own champion.
-
-<!-- holds from 3.13.0.399 up to 3.14.0.700 -->
-
-> **In 3.13**
+> **In 3.11–3.13**
 >
 > `GoldGained` naming a unit the client holds other than its own champion shows
 > over that unit the gold gained, or lost where the amount is below 0, and

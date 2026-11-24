@@ -548,7 +548,7 @@
           "note": "How much."
         }
       ],
-      "note": "It grants the unit gold."
+      "note": "A client grants no gold."
     },
     {
       "from": "1.0.0.150",
@@ -600,7 +600,7 @@
           "note": "How much."
         }
       ],
-      "note": "It grants the unit gold."
+      "note": "It grants no gold."
     },
     {
       "from": "3.03.0.198",
@@ -652,7 +652,7 @@
           "note": "How much."
         }
       ],
-      "note": "It grants the unit gold."
+      "note": "It grants no gold."
     },
     {
       "from": "3.6.0.388",
@@ -682,58 +682,6 @@
     },
     {
       "from": "3.7.0.328",
-      "until": "3.10.0.237",
-      "channel": "events",
-      "command": 34,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "unit",
-          "type": "u32",
-          "note": "The unit it is shown for."
-        },
-        {
-          "name": "source",
-          "type": "u32",
-          "note": "What it came from, or zero where nothing did."
-        },
-        {
-          "name": "amount",
-          "type": "f32",
-          "note": "How much."
-        }
-      ],
-      "note": "It grants the unit gold."
-    },
-    {
-      "from": "3.10.0.237",
-      "until": "3.11.0.306",
-      "channel": "events",
-      "command": 34,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "unit",
-          "type": "u32",
-          "note": "The unit it is shown for."
-        },
-        {
-          "name": "source",
-          "type": "u32",
-          "note": "What it came from, or zero where nothing did."
-        },
-        {
-          "name": "amount",
-          "type": "f32",
-          "note": "How much."
-        }
-      ],
-      "note": "It grants no gold."
-    },
-    {
-      "from": "3.11.0.306",
       "until": "3.13.0.399",
       "channel": "events",
       "command": 34,
@@ -756,7 +704,7 @@
           "note": "How much."
         }
       ],
-      "note": "It grants the unit gold."
+      "note": "It grants no gold."
     },
     {
       "from": "3.13.0.399",
@@ -786,32 +734,6 @@
     },
     {
       "from": "3.14.0.700",
-      "until": "4.1.0.171",
-      "channel": "events",
-      "command": 34,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "unit",
-          "type": "u32",
-          "note": "The unit granted it."
-        },
-        {
-          "name": "source",
-          "type": "u32",
-          "note": "What it came from, or zero where nothing did."
-        },
-        {
-          "name": "amount",
-          "type": "f32",
-          "note": "How much."
-        }
-      ],
-      "note": "It grants the unit gold."
-    },
-    {
-      "from": "4.1.0.171",
       "until": "4.4.0.1858",
       "channel": "events",
       "command": 34,
@@ -834,7 +756,7 @@
           "note": "How much."
         }
       ],
-      "note": "Where unit is the client's own champion, amount is above 0.5 and source names a unit the client holds, it grants nothing; otherwise it adds amount to the unit's gold."
+      "note": "It grants no gold."
     },
     {
       "from": "4.4.0.1858",
@@ -886,7 +808,7 @@
           "note": "How much."
         }
       ],
-      "note": "Where unit is the client's own champion, amount is above 0.5 and source names a unit the client holds, it grants nothing; otherwise it adds amount to the unit's gold."
+      "note": "It grants no gold."
     },
     {
       "from": "4.17.0.233",
@@ -916,32 +838,6 @@
     },
     {
       "from": "4.18.0.271",
-      "until": "4.20.0.315",
-      "channel": "events",
-      "command": 34,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "unit",
-          "type": "u32",
-          "note": "The unit granted it."
-        },
-        {
-          "name": "source",
-          "type": "u32",
-          "note": "What it came from, or zero where nothing did."
-        },
-        {
-          "name": "amount",
-          "type": "f32",
-          "note": "How much."
-        }
-      ],
-      "note": "Where unit is the client's own champion, amount is above 0.5 and source names a unit the client holds, it grants nothing; otherwise it adds amount to the unit's gold."
-    },
-    {
-      "from": "4.20.0.315",
       "until": "4.21.0.0",
       "channel": "events",
       "command": 34,

@@ -111,19 +111,6 @@ says.
 
 ## The order of the stream
 
-<!-- holds from 4.1.0.171 up to 4.4.0.1858 -->
-
-> **In 4.1–4.3**
->
-> A watching client registers as a player's client does (see
-> [Joining a match](joining.md)), and is answered the same way, save for the
-> client id. From then on it takes only `StreamMetadata`, `StreamChunkRange` and
-> `StreamChunk`, on any channel, and drops every other message a server sends it
-> directly, `VersionSync` included. Of what a player's
-> client sends while joining, it sends only `JoinSide`, once the stream's own
-> `VersionSync` has played, then `GameOptions`, `CharacterSelected` and
-> `ClientReady`: no `ClientVersion`, no `QueryStatus` and no `LoadingProgress`.
-
 <!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
 
 > **In 4.4**
@@ -145,10 +132,7 @@ says.
 > [Joining a match](joining.md)), and is answered the same way, save for the
 > client id. From then on it takes only `StreamMetadata`, `StreamChunkRange` and
 > `StreamChunk`, on any channel, and drops every other message a server sends it
-> directly, `VersionSync` included. Of what a player's
-> client sends while joining, it sends only `JoinSide`, once the stream's own
-> `VersionSync` has played, then `GameOptions`, `CharacterSelected` and
-> `ClientReady`: no `ClientVersion`, no `QueryStatus` and no `LoadingProgress`.
+> directly, `VersionSync` included.
 
 <!-- holds from 4.17.0.233 up to 4.21.0.0 -->
 
@@ -188,11 +172,6 @@ says.
 > **In 4.17–4.20**
 >
 > 1. A client answered on registration sends `StreamRequest`.
-
-<!-- holds from 3.12.0.251 up to 4.21.0.0 -->
-
-> **In 3.12–4.20**
->
 > 2. A server sends `StreamMetadata`, within 30 seconds: until it arrives the
 >    client waits.
 > 3. A server sends `StreamChunkRange`, with the match's end left at zero while
@@ -205,10 +184,14 @@ says.
 >    - then the key frame nearest the present, the first key frame sent on the
 >      connection;
 >    - then the chunks from the one that key frame leads to.
+
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
 >
->    Either way it skips none after that. A client takes a key frame only where
->    it is the first one sent and arrives before the chunk after the last chunk
->    of setting up; otherwise it keeps it but plays on from that chunk.
+> Either way it skips none after that. A client takes a key frame only where it
+> is the first one sent and arrives before the chunk after the last chunk of
+> setting up; otherwise it keeps it but plays on from that chunk.
 >
 > 5. As the match ends, a server sends `StreamChunkRange` again naming its last
 >    chunk, then that chunk. Once it has arrived the client takes no more of the
@@ -408,12 +391,6 @@ and goes on by itself afterwards.
 >
 > A client whose own build differs from the one `VersionSync` names asks its
 > player whether to go on, and leaves where the player declines.
-
-<!-- holds from 4.1.0.171 up to 4.4.0.1858 -->
-
-> **In 4.1–4.3**
->
-> A client whose own build differs from the one `VersionSync` names leaves.
 
 <!-- holds from 4.5.0.260 up to 4.20.0.315 -->
 

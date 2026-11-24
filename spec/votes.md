@@ -104,7 +104,9 @@ vote. `BalanceResult` says how the vote ended, or why it could not be held.
 
 > **In 4.18–4.19**
 >
-> Where the version answer's features turn the commands on, a client also sends
+> `BalanceVote` opens the panel where it says the vote opens. A client takes
+> `/equalize` only where the version answer's features turn the commands on,
+> and outside the tutorial. There, outside the tutorial, it also sends
 > `BalanceVoteRefused`, a vote against, as its player types `/noequalize`.
 
 <!-- holds from 4.20.0.315 up to 4.21.0.0 -->

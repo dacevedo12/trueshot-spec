@@ -140,7 +140,7 @@ function sweepFor(
   const out = [...best.values()]
     .sort((a, b) => a.name.localeCompare(b.name))
     .map(({ name, channel, fields }) => ({ name, channel, fields }));
-  // spec/spells.md: a 3.10 or 4.17 to 4.20 server MUST NOT send SpellInSlot
+  // spec/spells.md: a 4.17 to 4.20 server MUST NOT send SpellInSlot
   // naming a marker, which two vectors can do between them by naming the same
   // net id.
   const markers = new Set(
@@ -154,10 +154,10 @@ function sweepFor(
   // spec/units.md: ChampionRemoved naming a 3.10 client's own champion, the
   // only champion a sweep's match holds, leaves it with none of its own.
   const ownChampion = before(build, "3.11.0.306");
-  // spec/effects.md: a 3.02 to 3.04 server MUST NOT send EmitterPause, which
-  // those clients also read as ChatAllowance.
+  // spec/effects.md: a 3.03 server MUST NOT send EmitterPause, which that
+  // client also reads as ChatAllowance.
   const emitterPause =
-    !before(build, "3.02.0.30") && before(build, "3.5.0.68");
+    !before(build, "3.03.0.198") && before(build, "3.04.0.78");
   return out.filter(
     (m) =>
       (m.name !== "ChampionRemoved" || !ownChampion) &&

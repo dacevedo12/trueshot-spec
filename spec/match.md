@@ -85,9 +85,9 @@ identifiers](objects.md)).
 >
 > A client names no one in `Pause` or `Resume`.
 
-<!-- holds from 4.18.0.271 up to 4.21.0.0 -->
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
 
-> **In 4.18–4.20**
+> **In 4.20**
 >
 > A client puts 0 in the client id of `Pause` and `Resume`, the same id as the
 > first seat's, so a server takes no seat from that field.
@@ -297,18 +297,11 @@ player's side and sends `ClientFinished`.
 > A client sends `ClientFinished` every time `GameEnded` arrives in play, while
 > playing a replay too.
 
-<!-- holds from 1.0.0.110 up to 1.0.0.111 -->
+<!-- holds from 1.0.0.110 up to 1.0.0.124 -->
 
-> **In 1.0.0.110**
+> **In 1.0.0.110–1.0.0.123**
 >
 > A client sends `ClientFinished` every time `GameEnded` arrives in play.
-
-<!-- holds from 1.0.0.111 up to 1.0.0.124 -->
-
-> **In 1.0.0.111–1.0.0.123**
->
-> A client sends `ClientFinished` every time `GameEnded` arrives in play, while
-> playing a replay too.
 
 <!-- holds from 1.0.0.124 up to 1.0.0.125 -->
 
@@ -829,8 +822,8 @@ A server tells the others that a player's client dropped with
 
 > **In 4.5–4.16**
 >
-> A client dropped during play connects again by itself, registers again, and
-> sends `ReconnectedInMatch` right after the registration answer.
+> A client sends `ReconnectedInMatch` as the connection is made, before any
+> `Registered`.
 
 <!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 
@@ -840,9 +833,9 @@ A server tells the others that a player's client dropped with
 > sends `ReconnectedInMatch` as soon as the connection is made, straight after
 > its `Register`, without waiting for the registration answer.
 
-<!-- holds from 4.18.0.271 up to 4.21.0.0 -->
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
 
-> **In 4.18–4.20**
+> **In 4.20**
 >
 > A client dropped during play connects again by itself, registers again, and
 > sends `ReconnectedInMatch` right after the registration answer.

@@ -67,13 +67,13 @@
           "name": "botName",
           "type": "bytes",
           "size": 28,
-          "note": "Copied with the seat; a client shows nothing of it. A 28-byte text the client takes as it stands in its own memory: bytes 4 to 19 hold the text, the u32 at 20 its length and the u32 at 24 a capacity that must be 15 or less, so the text holds at most 15 bytes; bytes 0 to 3 are not read."
+          "note": "Copied with the seat; a client shows nothing of it. A 28-byte text the client takes as it stands in its own memory: bytes 4 to 19 hold the text, the u32 at 20 its length and the u32 at 24 a capacity, which a server writes as 15 or less, so the text holds at most 15 bytes; bytes 0 to 3 are not read."
         },
         {
           "name": "botAsset",
           "type": "bytes",
           "size": 28,
-          "note": "The name the client loads art for it under where nobody holds it, written and padded as above. A 28-byte text the client takes as it stands in its own memory: bytes 4 to 19 hold the text, the u32 at 20 its length and the u32 at 24 a capacity that must be 15 or less, so the text holds at most 15 bytes; bytes 0 to 3 are not read."
+          "note": "The name the client loads art for it under where nobody holds it, written and padded as above. A 28-byte text the client takes as it stands in its own memory: bytes 4 to 19 hold the text, the u32 at 20 its length and the u32 at 24 a capacity, which a server writes as 15 or less, so the text holds at most 15 bytes; bytes 0 to 3 are not read."
         },
         {
           "name": "botDifficulty",
@@ -120,13 +120,13 @@
           "name": "botName",
           "type": "bytes",
           "size": 28,
-          "note": "What the seat is called where nobody holds it, written and padded as above. A 28-byte text the client takes as it stands in its own memory: bytes 4 to 19 hold the text, the u32 at 20 its length and the u32 at 24 a capacity that must be 15 or less, so the text holds at most 15 bytes; bytes 0 to 3 are not read."
+          "note": "What the seat is called where nobody holds it, written and padded as above. A 28-byte text the client takes as it stands in its own memory: bytes 4 to 19 hold the text, the u32 at 20 its length and the u32 at 24 a capacity, which a server writes as 15 or less, so the text holds at most 15 bytes; bytes 0 to 3 are not read."
         },
         {
           "name": "botAsset",
           "type": "bytes",
           "size": 28,
-          "note": "The name the client loads art for it under where nobody holds it, written and padded as above. A 28-byte text the client takes as it stands in its own memory: bytes 4 to 19 hold the text, the u32 at 20 its length and the u32 at 24 a capacity that must be 15 or less, so the text holds at most 15 bytes; bytes 0 to 3 are not read."
+          "note": "The name the client loads art for it under where nobody holds it, written and padded as above. A 28-byte text the client takes as it stands in its own memory: bytes 4 to 19 hold the text, the u32 at 20 its length and the u32 at 24 a capacity, which a server writes as 15 or less, so the text holds at most 15 bytes; bytes 0 to 3 are not read."
         },
         {
           "name": "botDifficulty",
@@ -173,13 +173,13 @@
           "name": "botName",
           "type": "bytes",
           "size": 28,
-          "note": "What the seat is called where nobody holds it, written and padded as above. A 28-byte text the client takes as it stands in its own memory: bytes 4 to 19 hold the text, the u32 at 20 its length and the u32 at 24 a capacity that must be 15 or less, so the text holds at most 15 bytes; bytes 0 to 3 are not read."
+          "note": "What the seat is called where nobody holds it, written and padded as above. A 28-byte text the client takes as it stands in its own memory: bytes 4 to 19 hold the text, the u32 at 20 its length and the u32 at 24 a capacity, which a server writes as 15 or less, so the text holds at most 15 bytes; bytes 0 to 3 are not read."
         },
         {
           "name": "botAsset",
           "type": "bytes",
           "size": 28,
-          "note": "The name the client loads art for it under where nobody holds it, written and padded as above. A 28-byte text the client takes as it stands in its own memory: bytes 4 to 19 hold the text, the u32 at 20 its length and the u32 at 24 a capacity that must be 15 or less, so the text holds at most 15 bytes; bytes 0 to 3 are not read."
+          "note": "The name the client loads art for it under where nobody holds it, written and padded as above. A 28-byte text the client takes as it stands in its own memory: bytes 4 to 19 hold the text, the u32 at 20 its length and the u32 at 24 a capacity, which a server writes as 15 or less, so the text holds at most 15 bytes; bytes 0 to 3 are not read."
         },
         {
           "name": "botDifficulty",
