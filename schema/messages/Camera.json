@@ -103,8 +103,7 @@
           "type": "u8",
           "note": "Names this report, counting up as the view moves. A client sends the report again until a server returns the name."
         }
-      ],
-      "note": "A client sends each report once where a server answers it, and again and again where a server does not."
+      ]
     },
     {
       "from": "0.9.25.24",

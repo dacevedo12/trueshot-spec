@@ -33,9 +33,9 @@ proof under that key.
 > Any whitespace separates the words of the fourth argument. A client whose
 > command line holds `.rep` anywhere plays a replay rather than connecting.
 
-<!-- holds from 0.9.25.24 up to 1.0.0.140 -->
+<!-- holds from 0.9.25.24 up to 1.0.0.133 -->
 
-> **In 0.9.25.24–1.0.0.139**
+> **In 0.9.25.24–1.0.0.132**
 >
 > A client whose command line holds no double quote takes the command line it
 > saved on an earlier run instead.
@@ -104,24 +104,24 @@ sends `ReconnectedInMatch`.
 > offers its player to wait another 30 seconds or to give up, and leaves on
 > giving up.
 
-<!-- holds from 3.10.0.237 up to 4.20.0.315 -->
+<!-- holds from 3.10.0.237 up to 4.18.0.271 -->
 
-> **In 3.10–4.19**
+> **In 3.10–4.17**
 >
 > The first answer for a client id stands, and a later one for the same client
 > id changes nothing.
 
-<!-- holds from 4.1.0.171 up to 4.17.0.233 -->
+<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
 
-> **In 4.1–4.16**
+> **In 4.4**
 >
 > A client uses which client id stands for which player for names, sides and
 > loading cards. It takes an answer whenever it arrives, while loading or in
 > play, and one saying a client has dropped changes nothing it shows.
 
-<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+<!-- holds from 4.5.0.260 up to 4.18.0.271 -->
 
-> **In 4.17**
+> **In 4.5–4.17**
 >
 > A client uses which client id stands for which player for names, sides and
 > loading cards. It takes an answer whenever it arrives, while loading or in
@@ -165,16 +165,16 @@ server answers with `VersionSync`, and a client loads only where its
 >
 > `VersionSync` names the map to load and everyone at the match.
 
-<!-- holds from 3.10.0.237 up to 4.20.0.315 -->
+<!-- holds from 3.10.0.237 up to 4.18.0.271 -->
 
-> **In 3.10–4.19**
+> **In 3.10–4.17**
 >
 > With `agreement.buildMatches` clear, the client shows its player its own
 > version text beside the one the message carries, and ends.
 
-<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
+<!-- holds from 4.4.0.1858 up to 4.18.0.271 -->
 
-> **In 4.1–4.19**
+> **In 4.4–4.17**
 >
 > A client never compares the two otherwise: the message's
 > build text appears only in that notice. `agreement.matched` changes some of
@@ -182,17 +182,19 @@ server answers with `VersionSync`, and a client loads only where its
 > `reportsToFile` and `reportingReady` clear, since they have a client write
 > metrics to a file of its own and report to the addresses the message carries.
 >
-> No bit of `features` is needed for a match to load, and a match with every bit
+> No bit of `features` is needed for a match to load, and a match with every
+> bit
 > clear has none of the features. A server leaves the bits that report metrics
 > clear.
 
 ## Taking a seat
 
-<!-- holds from 0.9.22.14 up to 4.4.0.1858 -->
+<!-- holds from 0.9.22.14 up to 3.14.0.700 -->
 
-> **In 0.9.22.14–4.3**
+> **In 0.9.22.14–3.13**
 >
-> Straight after `VersionSync`, a client sends `JoinSide` on the roster channel.
+> Straight after `VersionSync`, a client sends `JoinSide` on the roster
+> channel.
 
 <!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
 
@@ -205,19 +207,21 @@ server answers with `VersionSync`, and a client loads only where its
 
 > **In 4.5–4.20**
 >
-> Straight after `VersionSync`, a client sends `JoinSide` on the roster channel.
+> Straight after `VersionSync`, a client sends `JoinSide` on the roster
+> channel.
 
 A server answers with one `Roster`, then a `SeatName` and a `SeatChampion` for
 each seat a player holds.
 
-<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
+<!-- holds from 4.4.0.1858 up to 4.18.0.271 -->
 
-> **In 4.1–4.19**
+> **In 4.4–4.17**
 >
 > Every seat a player holds needs its place in `Roster`, its `SeatName` and its
 > `SeatChampion`; a client shows a seat it lacks them for as an empty card. A
 > later `SeatName` replaces the one before it. A client whose own seat `Roster`
-> leaves out knows no side for its player, and announcements meant for allies do
+> leaves out knows no side for its player, and announcements meant for allies
+> do
 > not show.
 
 ## Loading
@@ -288,12 +292,26 @@ every client has sent `ClientReady`.
 > below 120. A card with no registration or no `SeatLoadProgress` yet says it is
 > not connected. A later `SeatChampion` does not change a card already set up.
 
-<!-- holds from 1.0.0.111 up to 1.0.0.132 -->
+<!-- holds from 1.0.0.111 up to 1.0.0.126 -->
 
-> **In 1.0.0.111–1.0.0.131**
+> **In 1.0.0.111–1.0.0.125**
 >
 > A player's card takes its place on the screen from that seat's place in the
-> `Roster`, and its name from that player's `SeatName`. The registration answers
+> `Roster`, and its name from that player's `SeatName`. The registration
+> answers (`Registered`) pair each player with a client id, and the latest
+> `SeatLoadProgress` for that client gives the card its progress. The first
+> `SeatLoadProgress` after the player's `SeatChampion` sets the card up: its
+> portrait and the champion's name, from that `SeatChampion`'s champion and
+> skin. A card with no registration or no `SeatLoadProgress` yet says it is not
+> connected. A later `SeatChampion` does not change a card already set up.
+
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
+
+> **In 1.0.0.126**
+>
+> A player's card takes its place on the screen from that seat's place in the
+> `Roster`, and its name from that player's `SeatName`. The registration
+> answers
 > (`Registered`) pair each player with a client id, and the latest
 > `SeatLoadProgress` for that client gives the card its progress and, on the
 > client's own card only, its ping. The first `SeatLoadProgress` after the
@@ -304,9 +322,22 @@ every client has sent `ClientReady`.
 > registration or no `SeatLoadProgress` yet says it is not connected. A later
 > `SeatChampion` does not change a card already set up.
 
-<!-- holds from 1.0.0.111 up to 1.0.0.132 -->
+<!-- holds from 1.0.0.127 up to 1.0.0.132 -->
 
-> **In 1.0.0.111–1.0.0.131**
+> **In 1.0.0.127–1.0.0.131**
+>
+> A player's card takes its place on the screen from that seat's place in the
+> `Roster`, and its name from that player's `SeatName`. The registration
+> answers (`Registered`) pair each player with a client id, and the latest
+> `SeatLoadProgress` for that client gives the card its progress. The first
+> `SeatLoadProgress` after the player's `SeatChampion` sets the card up: its
+> portrait and the champion's name, from that `SeatChampion`'s champion and
+> skin. A card with no registration or no `SeatLoadProgress` yet says it is not
+> connected. A later `SeatChampion` does not change a card already set up.
+
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
+
+> **In 1.0.0.126**
 >
 > A server MUST put the seat's player id in `SeatLoadProgress`: the loading
 > screen shows a seat's card from the `VersionSync` seat with that id.
@@ -329,12 +360,26 @@ every client has sent `ClientReady`.
 > `SeatLoadProgress` yet says it is not connected. A later `SeatChampion` does
 > not change a card already set up.
 
-<!-- holds from 1.0.0.133 up to 3.6.0.388 -->
+<!-- holds from 1.0.0.133 up to 1.0.0.140 -->
 
-> **In 1.0.0.133–3.5**
+> **In 1.0.0.133–1.0.0.139**
 >
 > A player's card takes its place on the screen from that seat's place in the
-> `Roster`, and its name from that player's `SeatName`. The registration answers
+> `Roster`, and its name from that player's `SeatName`. The registration
+> answers (`Registered`) pair each player with a client id, and the latest
+> `SeatLoadProgress` for that client gives the card its progress. The first
+> `SeatLoadProgress` after the player's `SeatChampion` sets the card up: its
+> portrait and the champion's name, from that `SeatChampion`'s champion and
+> skin. A card with no registration or no `SeatLoadProgress` yet says it is not
+> connected. A later `SeatChampion` does not change a card already set up.
+
+<!-- holds from 1.0.0.140 up to 3.04.0.78 -->
+
+> **In 1.0.0.140–3.03**
+>
+> A player's card takes its place on the screen from that seat's place in the
+> `Roster`, and its name from that player's `SeatName`. The registration
+> answers
 > (`Registered`) pair each player with a client id, and the latest
 > `SeatLoadProgress` for that client gives the card its progress and, on the
 > client's own card only, its ping. The first `SeatLoadProgress` after the
@@ -345,9 +390,25 @@ every client has sent `ClientReady`.
 > registration or no `SeatLoadProgress` yet says it is not connected. A later
 > `SeatChampion` does not change a card already set up.
 
-<!-- holds from 1.0.0.133 up to 1.0.0.141 -->
+<!-- holds from 3.04.0.78 up to 3.6.0.388 -->
 
-> **In 1.0.0.133–1.0.0.140**
+> **In 3.04–3.5**
+>
+> A player's card takes its place on the screen from that seat's place in the
+> `Roster`, and its name from that player's `SeatName`. The registration
+> answers (`Registered`) pair each player with a client id, and the latest
+> `SeatLoadProgress` for that client gives the card its progress. The first
+> `SeatLoadProgress` after the player's `SeatChampion` sets the card up: its
+> portrait and the champion's name, from that `SeatChampion`'s champion and
+> skin, then everything else from the `VersionSync` seat whose player id the
+> `SeatLoadProgress` names. A card with no `SeatChampion` yet shows a black
+> portrait, and one with no registration or no `SeatLoadProgress` yet says it
+> is not connected. A later `SeatChampion` does not change a card already set
+> up.
+
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+
+> **In 1.0.0.140**
 >
 > A server MUST put the seat's player id in `SeatLoadProgress`: the loading
 > screen shows a seat's card from the `VersionSync` seat with that id.
@@ -376,12 +437,29 @@ every client has sent `ClientReady`.
 > registration or no `SeatLoadProgress` yet says it is not connected. A later
 > `SeatChampion` does not change a card already set up.
 
-<!-- holds from 3.7.0.328 up to 3.13.0.399 -->
+<!-- holds from 3.7.0.328 up to 3.10.0.237 -->
 
-> **In 3.7–3.12**
+> **In 3.7–3.9**
 >
 > A player's card takes its place on the screen from that seat's place in the
-> `Roster`, and its name from that player's `SeatName`. The registration answers
+> `Roster`, and its name from that player's `SeatName`. The registration
+> answers (`Registered`) pair each player with a client id, and the latest
+> `SeatLoadProgress` for that client gives the card its progress. The first
+> `SeatLoadProgress` after the player's `SeatChampion` sets the card up: its
+> portrait and the champion's name, from that `SeatChampion`'s champion and
+> skin, then everything else from the `VersionSync` seat whose player id the
+> `SeatLoadProgress` names. A card with no `SeatChampion` yet shows a black
+> portrait, and one with no registration or no `SeatLoadProgress` yet says it
+> is not connected. A later `SeatChampion` does not change a card already set
+> up.
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> A player's card takes its place on the screen from that seat's place in the
+> `Roster`, and its name from that player's `SeatName`. The registration
+> answers
 > (`Registered`) pair each player with a client id, and the latest
 > `SeatLoadProgress` for that client gives the card its progress and, on the
 > client's own card only, its ping. The first `SeatLoadProgress` after the
@@ -391,6 +469,22 @@ every client has sent `ClientReady`.
 > with no `SeatChampion` yet shows a black portrait, and one with no
 > registration or no `SeatLoadProgress` yet says it is not connected. A later
 > `SeatChampion` does not change a card already set up.
+
+<!-- holds from 3.11.0.306 up to 3.13.0.399 -->
+
+> **In 3.11–3.12**
+>
+> A player's card takes its place on the screen from that seat's place in the
+> `Roster`, and its name from that player's `SeatName`. The registration
+> answers (`Registered`) pair each player with a client id, and the latest
+> `SeatLoadProgress` for that client gives the card its progress and its ping.
+> The first `SeatLoadProgress` after the player's `SeatChampion` sets the card
+> up: its portrait and the champion's name, from that `SeatChampion`'s champion
+> and skin, then everything else from the `VersionSync` seat whose player id
+> the `SeatLoadProgress` names. A card with no `SeatChampion` yet shows a black
+> portrait, and one with no registration or no `SeatLoadProgress` yet says it
+> is not connected. A later `SeatChampion` does not change a card already set
+> up.
 
 <!-- holds from 3.10.0.237 up to 4.21.0.0 -->
 
@@ -419,12 +513,29 @@ every client has sent `ClientReady`.
 > with no registration or no `SeatLoadProgress` yet says it is not connected. A
 > later `SeatChampion` does not change a card already set up.
 
-<!-- holds from 3.14.0.700 up to 4.20.0.315 -->
+<!-- holds from 3.14.0.700 up to 4.4.0.1858 -->
 
-> **In 3.14–4.19**
+> **In 3.14–4.3**
 >
 > A player's card takes its place on the screen from that seat's place in the
-> `Roster`, and its name from that player's `SeatName`. The registration answers
+> `Roster`, and its name from that player's `SeatName`. The registration
+> answers (`Registered`) pair each player with a client id, and the latest
+> `SeatLoadProgress` for that client gives the card its progress and its ping.
+> The first `SeatLoadProgress` after the player's `SeatChampion` sets the card
+> up: its portrait and the champion's name, from that `SeatChampion`'s champion
+> and skin, then everything else from the `VersionSync` seat whose player id
+> the `SeatLoadProgress` names. A card with no `SeatChampion` yet shows a black
+> portrait, and one with no registration or no `SeatLoadProgress` yet says it
+> is not connected. A later `SeatChampion` does not change a card already set
+> up.
+
+<!-- holds from 4.4.0.1858 up to 4.18.0.271 -->
+
+> **In 4.4–4.17**
+>
+> A player's card takes its place on the screen from that seat's place in the
+> `Roster`, and its name from that player's `SeatName`. The registration
+> answers
 > (`Registered`) pair each player with a client id, and the latest
 > `SeatLoadProgress` for that client gives the card its progress and, on the
 > client's own card only, its ping. The first `SeatLoadProgress` after the
@@ -435,9 +546,18 @@ every client has sent `ClientReady`.
 > registration or no `SeatLoadProgress` yet says it is not connected. A later
 > `SeatChampion` does not change a card already set up.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 4.18.0.271 up to 4.20.0.315 -->
 
-> **In 4.1–4.20**
+> **In 4.18–4.19**
+>
+> The first `SeatLoadProgress` after the player's `SeatChampion` sets the card
+> up: its portrait and the champion's name, from that `SeatChampion`'s champion
+> and skin, then everything else from the `VersionSync` seat whose player id
+> the `SeatLoadProgress` names.
+
+<!-- holds from 4.4.0.1858 up to 4.21.0.0 -->
+
+> **In 4.4–4.20**
 >
 > A server MUST put the seat's player id in `SeatLoadProgress`: the loading
 > screen shows a seat's card from the `VersionSync` seat with that id.
@@ -458,17 +578,19 @@ every client has sent `ClientReady`.
 > its name from the client's own name for that bot, not from the seat's
 > `botName`. No bit of `flags` chooses older portrait art.
 
-<!-- holds from 4.1.0.171 up to 4.17.0.233 -->
+<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
 
-> **In 4.1–4.16**
+> **In 4.4**
 >
 > A client draws its own card only as a server returns its own reports.
 >
 > From the `VersionSync` seat a card takes:
 >
-> - the two summoner spells, as the name hashes of the spells, each drawn as its
+> - the two summoner spells, as the name hashes of the spells, each drawn as
+>   its
 >   icon, or as a plain square for zero or a hash that names no spell;
-> - the profile icon, the art of icon 0 for a negative number or one with no art;
+> - the profile icon, the art of icon 0 for a negative number or one with no
+>   art;
 > - the standing, drawn as a frame over the card where the client's own images
 >   have one of that name (UNRANKED and BRONZE draw nothing);
 > - from the flags, bit 1, which shows the skin's older portrait art where it
@@ -483,8 +605,10 @@ every client has sent `ClientReady`.
 >
 > Between the two rows, where both have a card, a client shows the two sides'
 > team names, each as its tag in square brackets, a space and its name, and
-> nothing for a side whose name is empty: names `Team 1` and `Team 2` under tags
-> `T1` and `T2` show as `[T1] Team 1` and `[T2] Team 2` either side of the versus
+> nothing for a side whose name is empty: names `Team 1` and `Team 2` under
+> tags
+> `T1` and `T2` show as `[T1] Team 1` and `[T2] Team 2` either side of the
+> versus
 > emblem. A tip set in `VersionSync` to show on the loading screen takes their
 > place for its duration, and then they appear. The match's variants can give
 > the screen a background picture of their naming; with none, it has none.
@@ -492,6 +616,21 @@ every client has sent `ClientReady`.
 > A card shows one badge: the ally badge for the card's own side, otherwise
 > the enemy badge, each drawn where it is one of the badges the client's own
 > data names.
+
+<!-- holds from 4.5.0.260 up to 4.17.0.233 -->
+
+> **In 4.5–4.16**
+>
+> From the `VersionSync` seat a card takes:
+>
+> - the two summoner spells, as the name hashes of the spells, each drawn as
+>   its icon, or as a plain square for zero or a hash that names no spell;
+> - the profile icon, the art of icon 0 for a negative number or one with no
+>   art;
+> - the standing, drawn as a frame over the card where the client's own images
+>   have one of that name (UNRANKED and BRONZE draw nothing);
+> - from the flags, bit 1, which shows the skin's older portrait art where it
+>   has one.
 
 <!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 
@@ -508,9 +647,9 @@ every client has sent `ClientReady`.
 
 ## The spawn run
 
-<!-- holds from 0.8.13.26 up to 1.0.0.132 -->
+<!-- holds from 0.8.13.26 up to 1.0.0.127 -->
 
-> **In 0.8.13.26–1.0.0.131**
+> **In 0.8.13.26–1.0.0.126**
 >
 > Once a character is settled, a client sends `CharacterSelected`, once.
 
@@ -521,15 +660,15 @@ every client has sent `ClientReady`.
 > A client sends `CharacterSelected` as it finishes loading, just before it
 > shows that it waits for the other players.
 
-<!-- holds from 1.0.0.133 up to 4.4.0.1858 -->
+<!-- holds from 1.0.0.140 up to 3.14.0.700 -->
 
-> **In 1.0.0.133–4.3**
+> **In 1.0.0.140–3.13**
 >
 > Once a character is settled, a client sends `CharacterSelected`, once.
 
-<!-- holds from 4.5.0.260 up to 4.21.0.0 -->
+<!-- holds from 4.17.0.233 up to 4.21.0.0 -->
 
-> **In 4.5–4.20**
+> **In 4.17–4.20**
 >
 > Once a character is settled, a client sends `CharacterSelected`, once.
 

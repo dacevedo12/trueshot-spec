@@ -71,12 +71,12 @@
       "command": 86,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "note": "What a client sends once it has loaded and is ready to play.",
+      "note": "A client sends it as SpawnEnd arrives.",
       "fields": [
         {
           "name": "maskedStatus",
           "type": "u32",
-          "note": "It varies from client to client; a server ignores it."
+          "note": "A status, masked. Taken by exclusive or with mask and with the client's own champion id, it gives 262917615 where the client found certain programs running beside it, and otherwise a random value other than that. While watching a match, a client leaves this and mask unset, so they carry no meaning."
         },
         {
           "name": "mask",
@@ -96,7 +96,7 @@
         {
           "name": "maskedStatus",
           "type": "u32",
-          "note": "A status, masked. Taken by exclusive or with mask and with the client's own champion id, it gives 262917615 where the client's check of itself found a fault, and any other value otherwise. While watching a match, a client leaves this and mask unset, so they carry no meaning."
+          "note": "A status, masked. Taken by exclusive or with mask and with the client's own champion id, it gives 262917615 where the client found certain programs running beside it, and otherwise a random value other than that. While watching a match, a client leaves this and mask unset, so they carry no meaning."
         },
         {
           "name": "mask",
@@ -158,8 +158,7 @@
       "fields": [
         {
           "name": "maskedStatus",
-          "type": "u32",
-          "note": "It varies from client to client; a server ignores it."
+          "type": "u32"
         },
         {
           "name": "mask",
@@ -178,8 +177,7 @@
       "fields": [
         {
           "name": "maskedStatus",
-          "type": "u32",
-          "note": "It varies from client to client; a server ignores it."
+          "type": "u32"
         },
         {
           "name": "mask",
@@ -212,7 +210,7 @@
           "note": "As VersionSync gave it."
         }
       ],
-      "note": "What a client sends once it has loaded and is ready to play. The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero."
+      "note": "What a client sends once it has loaded and is ready to play."
     },
     {
       "from": "1.0.0.150",
@@ -358,7 +356,7 @@
           ]
         }
       ],
-      "note": "What a client sends once it has loaded and is ready to play. The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero."
+      "note": "What a client sends once it has loaded and is ready to play. The tip fields carry VersionSync's tip bytes."
     },
     {
       "from": "3.03.0.198",
@@ -926,84 +924,6 @@
     },
     {
       "from": "4.13.0.265",
-      "until": "4.17.0.233",
-      "channel": "requests",
-      "command": 82,
-      "direction": "clientToServer",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "moduleOne",
-          "type": "u32",
-          "note": "One of three values a client reports about software it has detected alongside itself. A client sends zero."
-        },
-        {
-          "name": "tipChosen",
-          "type": "u8",
-          "note": "Which tip the client is set to show."
-        },
-        {
-          "name": "tipColour",
-          "type": "u8",
-          "note": "How it is coloured."
-        },
-        {
-          "name": "tipDuration",
-          "type": "u8",
-          "note": "How long it stays, as an entry among the display times in the client's own settings rather than a length of time."
-        },
-        {
-          "name": "settings",
-          "type": "bits",
-          "size": 1,
-          "bits": [
-            {
-              "name": "tips",
-              "width": 1,
-              "note": "Set while tips are wanted at all."
-            },
-            {
-              "name": "reporting",
-              "width": 1,
-              "note": "Set while the client reports on itself."
-            },
-            {
-              "name": "loadingTips",
-              "width": 1,
-              "note": "Set while tips are wanted while loading."
-            },
-            {
-              "name": "playingTips",
-              "width": 1,
-              "note": "Set while tips are wanted during play."
-            },
-            {
-              "name": "debug",
-              "width": 1,
-              "note": "Set while the client runs in a debugging state."
-            },
-            {
-              "name": "unused",
-              "width": 3,
-              "note": "A client returns them as the server sent them."
-            }
-          ]
-        },
-        {
-          "name": "moduleTwo",
-          "type": "u32",
-          "note": "The second of the three. A client sends zero."
-        },
-        {
-          "name": "moduleThree",
-          "type": "u32",
-          "note": "The third. A client sends zero."
-        }
-      ],
-      "note": "What a client sends once it has loaded and is ready to play. The tip fields carry VersionSync's tip bytes, each one outside its valid range negated (0 as -128), and tips cleared where any is. Playing a replay, a client sends all four as zero."
-    },
-    {
-      "from": "4.17.0.233",
       "until": "4.18.0.271",
       "channel": "requests",
       "command": 82,
@@ -1092,7 +1012,7 @@
         {
           "name": "moduleOne",
           "type": "u32",
-          "note": "One of three values a client reports about software it has detected alongside itself. A client sends zero."
+          "note": "One of three values a client reports about software it has detected alongside itself."
         },
         {
           "name": "tipChosen",
@@ -1141,8 +1061,7 @@
             },
             {
               "name": "unused",
-              "width": 3,
-              "note": "Unused; a client may leave any value here, and a server ignores it."
+              "width": 3
             }
           ]
         },

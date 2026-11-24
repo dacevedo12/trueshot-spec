@@ -8,9 +8,9 @@ which is where the unit is and the last where it is going.
 A path names one axis of the ground plane and then the other, and carries no
 height (see [Space](space.md)).
 
-<!-- holds from 0.8.13.26 up to 1.0.0.81 -->
+<!-- holds from 0.8.13.26 up to 1.0.0.75 -->
 
-> **In 0.8.13.26–1.0.0.80**
+> **In 0.8.13.26–1.0.0.74**
 >
 > A path carries each point as two world floats (see [Space](space.md)),
 > stated against no origin and no other point.
@@ -459,9 +459,15 @@ says what a client does with a movement whose unit it does not hold.
 > the client holds the unit, and none whose movement follows a refused one; the
 > list is empty where it names none. A server MAY ignore it.
 
-<!-- holds from 4.5.0.260 up to 4.21.0.0 -->
+<!-- holds from 4.5.0.260 up to 4.17.0.233 -->
 
-> **In 4.5–4.20**
+> **In 4.5–4.16**
+>
+> A client answers each group with one `WaypointAck`. A server MAY ignore it.
+
+<!-- holds from 4.17.0.233 up to 4.21.0.0 -->
+
+> **In 4.17–4.20**
 >
 > A client answers each group with one `WaypointAck`, listing every unit in it
 > that carried a token, with an empty list where none did. A server MAY ignore
@@ -509,9 +515,9 @@ Unless its player has movement prediction on, a client does not move its own
 champion on a right click by itself: the champion moves only along a path a
 server sends.
 
-<!-- holds from 0.8.13.26 up to 1.0.0.63 -->
+<!-- holds from 0.8.13.26 up to 1.0.0.61 -->
 
-> **In 0.8.13.26–1.0.0.62**
+> **In 0.8.13.26–1.0.0.60**
 >
 > An order carries no path: only its destination, in world floats. A server
 > works out the route itself and sends it in the path that answers the order.
@@ -553,9 +559,9 @@ server sends.
 > A client takes a `WaypointGroup` or a `WaypointGroupAtSpeed` on channels 2, 3
 > and 4 alike.
 
-<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
+<!-- holds from 4.4.0.1858 up to 4.18.0.271 -->
 
-> **In 4.1–4.19**
+> **In 4.4–4.17**
 >
 > Where its player has movement prediction on, a client starts its champion
 > toward the point it asked for, and puts it back where it was if no path

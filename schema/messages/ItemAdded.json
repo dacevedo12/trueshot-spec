@@ -41,7 +41,7 @@
         {
           "name": "slot",
           "type": "u8",
-          "note": "The slot it went to, 0 to 36. A larger value than 36 has no defined effect."
+          "note": "The slot it went to."
         },
         {
           "name": "item",
@@ -51,7 +51,7 @@
         {
           "name": "inSlot",
           "type": "u8",
-          "note": "How many of the item the slot holds now; a client applies zero as well. The slot's charges come from the item's own data."
+          "note": "How many of the item the slot holds now; a client applies zero as well."
         }
       ],
       "note": "There is no charges field: a client takes the charges of an item with an active effect from the item's own data."
@@ -106,7 +106,7 @@
           "note": "How many of the item the slot holds now; a client applies zero as well. The slot's charges come from the item's own data."
         }
       ],
-      "note": "There is no charges field: a client takes an item's charges from the item's own data. A client applies it only to a champion's item slots."
+      "note": "There is no charges field: a client takes an item's charges from the item's own data."
     },
     {
       "from": "1.0.0.25",
@@ -259,7 +259,7 @@
         {
           "name": "inSlot",
           "type": "u8",
-          "note": "How many of the item the slot holds now; a client applies zero as well. The slot's charges come from the item's own data."
+          "note": "How many of the item the slot holds now; a client applies zero as well."
         }
       ],
       "note": "There is no charges field: a client takes the charges from the item's own data where the item carries a spell of its own to use."
@@ -311,10 +311,10 @@
         {
           "name": "inSlot",
           "type": "u8",
-          "note": "How many of the item the slot holds now; zero leaves the slot as it was. The slot's charges come from the item's own data."
+          "note": "How many of the item the slot holds now. The slot's charges come from the item's own data."
         }
       ],
-      "note": "There is no charges field: a client takes an item's charges from the item's own data. A server sends it to units nobody is buying for."
+      "note": "There is no charges field: a client takes an item's charges from the item's own data."
     },
     {
       "from": "1.0.0.99",
@@ -327,7 +327,7 @@
         {
           "name": "slot",
           "type": "u8",
-          "note": "The slot it went to, 0 to 37. A client rejects the message from 38 up."
+          "note": "The slot it went to."
         },
         {
           "name": "item",
@@ -337,7 +337,7 @@
         {
           "name": "inSlot",
           "type": "u8",
-          "note": "How many of the item the slot holds now; zero leaves the slot as it was. The slot's charges come from the item's own data."
+          "note": "How many of the item the slot holds now. The slot's charges come from the item's own data."
         },
         {
           "name": "activate",
@@ -345,7 +345,7 @@
           "note": "What this carries is not recorded. Where it is not zero, a client refreshes the slot and, where the slot holds an item, sends RemoveItem for it with sell clear; a server sends zero."
         }
       ],
-      "note": "There is no charges field: a client takes an item's charges from the item's own data. A server sends it to units nobody is buying for."
+      "note": "There is no charges field: a client takes an item's charges from the item's own data."
     },
     {
       "from": "1.0.0.103",
@@ -358,7 +358,7 @@
         {
           "name": "slot",
           "type": "u8",
-          "note": "The slot it went to, 0 to 37. A client rejects the message from 38 up."
+          "note": "The slot it went to."
         },
         {
           "name": "item",
@@ -368,7 +368,7 @@
         {
           "name": "inSlot",
           "type": "u8",
-          "note": "How many of the item the slot holds now; zero leaves the slot as it was. The slot's charges come from the item's own data."
+          "note": "How many of the item the slot holds now. The slot's charges come from the item's own data."
         },
         {
           "name": "activate",
@@ -376,7 +376,7 @@
           "note": "What this carries is not recorded. Where it is not zero, a client refreshes the slot and, where the slot holds an item, sends RemoveItem for it with sell clear; a server sends zero."
         }
       ],
-      "note": "There is no charges field: a client takes an item's charges from the item's own data. A server sends it to units nobody is buying for."
+      "note": "There is no charges field: a client takes an item's charges from the item's own data."
     },
     {
       "from": "1.0.0.107",
@@ -389,7 +389,7 @@
         {
           "name": "slot",
           "type": "u8",
-          "note": "The slot it went to, 0 to 37. A client rejects the message from 38 up."
+          "note": "The slot it went to."
         },
         {
           "name": "item",
@@ -399,7 +399,7 @@
         {
           "name": "inSlot",
           "type": "u8",
-          "note": "How many of the item the slot holds now; zero leaves the slot as it was. The slot's charges come from the item's own data."
+          "note": "How many of the item the slot holds now. The slot's charges come from the item's own data."
         },
         {
           "name": "activate",
@@ -407,7 +407,7 @@
           "note": "What this carries is not recorded. Where it is not zero, a client refreshes the slot and, where the slot holds an item, sends RemoveItem for it with sell clear; a server sends zero."
         }
       ],
-      "note": "There is no charges field: a client takes an item's charges from the item's own data. A server sends it to units nobody is buying for."
+      "note": "There is no charges field: a client takes an item's charges from the item's own data."
     },
     {
       "from": "1.0.0.110",
@@ -469,7 +469,7 @@
           "note": "What this carries is not recorded. Where it is not zero, a client refreshes the slot and, where the slot holds an item, sends RemoveItem for it with sell clear; a server sends zero."
         }
       ],
-      "note": "There is no charges field: a client takes an item's charges from the item's own data. A server sends it to units nobody is buying for."
+      "note": "There is no charges field: a client takes an item's charges from the item's own data."
     },
     {
       "from": "1.0.0.117",
@@ -500,7 +500,7 @@
           "note": "What this carries is not recorded. Where it is not zero, a client refreshes the slot and, where the slot holds an item, sends RemoveItem for it with sell clear; a server sends zero."
         }
       ],
-      "note": "There is no charges field: a client takes an item's charges from the item's own data. A server sends it to units nobody is buying for."
+      "note": "There is no charges field: a client takes an item's charges from the item's own data."
     },
     {
       "from": "1.0.0.119",
@@ -531,7 +531,7 @@
           "note": "What this carries is not recorded. Where it is not zero, a client refreshes the slot and, where the slot holds an item, sends RemoveItem for it with sell clear; a server sends zero."
         }
       ],
-      "note": "There is no charges field: a client takes an item's charges from the item's own data. A server sends it to units nobody is buying for."
+      "note": "There is no charges field: a client takes an item's charges from the item's own data."
     },
     {
       "from": "1.0.0.124",
@@ -597,36 +597,6 @@
     },
     {
       "from": "1.0.0.127",
-      "until": "1.0.0.128",
-      "channel": "events",
-      "command": 114,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "slot",
-          "type": "u8",
-          "note": "The slot it went to, 0 to 37. A client rejects the message from 38 up."
-        },
-        {
-          "name": "item",
-          "type": "u32",
-          "note": "Which item, by the number the client knows it as."
-        },
-        {
-          "name": "inSlot",
-          "type": "u8",
-          "note": "How many of the item the slot holds now; zero leaves the slot as it was. The slot's charges come from the item's own data."
-        },
-        {
-          "name": "activate",
-          "type": "u8",
-          "note": "What this carries is not recorded. Where it is not zero, a client refreshes the slot and, where the slot holds an item, sends RemoveItem for it with sell clear; a server sends zero."
-        }
-      ]
-    },
-    {
-      "from": "1.0.0.128",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 114,
@@ -650,43 +620,12 @@
         },
         {
           "name": "activate",
-          "type": "u8",
-          "note": "Nonzero readies the item's own spell, in the slot four past the item's, and has the client answer with RemoveItem for it."
+          "type": "u8"
         }
       ]
     },
     {
       "from": "1.0.0.132",
-      "until": "1.0.0.133",
-      "channel": "events",
-      "command": 115,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "slot",
-          "type": "u8",
-          "note": "The slot it went to. A client rejects the message from 38 up."
-        },
-        {
-          "name": "item",
-          "type": "u32",
-          "note": "Which item, by the number the client knows it as."
-        },
-        {
-          "name": "inSlot",
-          "type": "u8",
-          "note": "How many of the item the slot holds; zero leaves the slot as it was. The slot's charges come from the item's own data."
-        },
-        {
-          "name": "activate",
-          "type": "u8",
-          "note": "Nonzero readies the item's own spell, in the slot four past the item's, and has the client answer with RemoveItem for it."
-        }
-      ]
-    },
-    {
-      "from": "1.0.0.133",
       "until": "1.0.0.135",
       "channel": "events",
       "command": 115,
@@ -713,8 +652,7 @@
           "type": "u8",
           "note": "Nonzero readies the item's own spell, in the slot four past the item's, and has the client answer with RemoveItem for it."
         }
-      ],
-      "note": "A server sends it to units nobody is buying for."
+      ]
     },
     {
       "from": "1.0.0.135",
@@ -752,7 +690,7 @@
             {
               "name": "announce",
               "width": 1,
-              "note": "Set to announce the purchase: a client shows it where the unit is on its side (or it plays a replay), the item's own data allows it, the player's setting asks for it, and the same item was not bought in the last 5 seconds, a repeat within them restarting the wait."
+              "note": "Set to announce the purchase: a client shows it where the unit is on its side (or it plays a replay), the item's own data allows it, the player's setting asks for it, and the same item was not bought within the client's wait, 5 seconds unless a setting of its own changes it, a repeat within it restarting the wait."
             },
             {
               "name": "unused",
@@ -761,8 +699,7 @@
             }
           ]
         }
-      ],
-      "note": "A server sends it to units nobody is buying for."
+      ]
     },
     {
       "from": "1.0.0.138",
@@ -837,7 +774,7 @@
             {
               "name": "announce",
               "width": 1,
-              "note": "Set to announce the purchase: a client shows it where the unit is on its side (or it plays a replay), the item's own data allows it, the player's setting asks for it, and the same item was not bought in the last 5 seconds, a repeat within them restarting the wait."
+              "note": "Set to announce the purchase."
             },
             {
               "name": "unused",
@@ -846,8 +783,7 @@
             }
           ]
         }
-      ],
-      "note": "A server sends it to units nobody is buying for."
+      ]
     },
     {
       "from": "1.0.0.147",
@@ -885,7 +821,7 @@
             {
               "name": "announce",
               "width": 1,
-              "note": "Set to announce the purchase: a client shows it where the unit is on its side (or it plays a replay), the item's own data allows it, the player's setting asks for it, and the same item was not bought in the last 5 seconds, a repeat within them restarting the wait."
+              "note": "Set to announce the purchase."
             },
             {
               "name": "unused7",
@@ -894,8 +830,7 @@
             }
           ]
         }
-      ],
-      "note": "A server sends it to units nobody is buying for."
+      ]
     },
     {
       "from": "1.0.0.150",
@@ -980,7 +915,7 @@
             {
               "name": "announce",
               "width": 1,
-              "note": "Set to announce the purchase: a client shows it where the unit is on its side (or it plays a replay), the item's own data allows it, the player's setting asks for it, and the same item was not bought in the last 5 seconds, a repeat within them restarting the wait."
+              "note": "Set to announce the purchase."
             },
             {
               "name": "unused7",
@@ -989,8 +924,7 @@
             }
           ]
         }
-      ],
-      "note": "A server sends it to units nobody is buying for."
+      ]
     },
     {
       "from": "3.01.0.1",
@@ -1028,7 +962,7 @@
             {
               "name": "announce",
               "width": 1,
-              "note": "Set to announce the purchase: a client shows it where the unit is on its side (or it plays a replay), the item's own data allows it, the player's setting asks for it, and the same item was not bought in the last 5 seconds, a repeat within them restarting the wait."
+              "note": "Set to announce the purchase."
             },
             {
               "name": "unused7",
@@ -1037,8 +971,7 @@
             }
           ]
         }
-      ],
-      "note": "A server sends it to units nobody is buying for."
+      ]
     },
     {
       "from": "3.03.0.198",
@@ -1108,7 +1041,7 @@
         {
           "name": "inSlot",
           "type": "u8",
-          "note": "How many of the item the slot holds; zero leaves the slot as it was. The slot's charges come from the item's own data."
+          "note": "How many of it are in that slot now."
         },
         {
           "name": "how",
@@ -1123,7 +1056,7 @@
             {
               "name": "announce",
               "width": 1,
-              "note": "Set to announce the purchase: a client shows it where the unit is on its side (or it plays a replay), the item's own data allows it, the player's setting asks for it, and the same item was not bought in the last 5 seconds, a repeat within them restarting the wait."
+              "note": "Set to announce the purchase."
             },
             {
               "name": "unused7",
@@ -1228,7 +1161,7 @@
             {
               "name": "announce",
               "width": 1,
-              "note": "Set to announce the purchase: a client shows it where the unit is on its side (or it plays a replay), the item's own data allows it, the player's setting asks for it, and the same item was not bought in the last 5 seconds, a repeat within them restarting the wait."
+              "note": "Set to announce the purchase."
             },
             {
               "name": "unused7",
@@ -1295,59 +1228,6 @@
     },
     {
       "from": "3.14.0.700",
-      "until": "4.1.0.171",
-      "channel": "events",
-      "command": 110,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "item",
-          "type": "u32",
-          "note": "Which item, by the number the client knows it as."
-        },
-        {
-          "name": "slot",
-          "type": "u8",
-          "note": "The slot it went to. A client rejects the message from 38 up."
-        },
-        {
-          "name": "inSlot",
-          "type": "u8",
-          "note": "How many of it are in that slot now."
-        },
-        {
-          "name": "charges",
-          "type": "u8",
-          "note": "How many uses it carries."
-        },
-        {
-          "name": "how",
-          "type": "bits",
-          "size": 1,
-          "bits": [
-            {
-              "name": "unused",
-              "width": 6,
-              "note": "Unused; a server writes zero."
-            },
-            {
-              "name": "announce",
-              "width": 1,
-              "note": "Set to announce the purchase: a client shows it where the unit is on its side (or it plays a replay), the item's own data allows it, the player's setting asks for it, and the same item was not bought in the last 5 seconds, a repeat within them restarting the wait."
-            },
-            {
-              "name": "unused7",
-              "width": 1,
-              "note": "Unused; a server writes zero."
-            }
-          ]
-        }
-      ],
-      "note": "It answers no request: a client puts what follows in the slot named whether or not anything asked for it, and where inSlot is 0 leaves the slot as it was. A server sends it to units nobody is buying for."
-    },
-    {
-      "from": "4.1.0.171",
       "until": "4.4.0.1858",
       "channel": "events",
       "command": 110,
@@ -1387,7 +1267,7 @@
             {
               "name": "announce",
               "width": 1,
-              "note": "Set to announce the purchase: a client shows it where the unit is on its side (or it plays a replay), the item's own data allows it, the player's setting asks for it, and the same item was not bought in the last 5 seconds, a repeat within them restarting the wait."
+              "note": "Set to announce the purchase."
             },
             {
               "name": "unused7",
@@ -1468,7 +1348,7 @@
         {
           "name": "slot",
           "type": "u8",
-          "note": "The slot it went to. A client rejects the message from 40 up."
+          "note": "The slot it went to."
         },
         {
           "name": "inSlot",
@@ -1521,7 +1401,7 @@
         {
           "name": "slot",
           "type": "u8",
-          "note": "The slot it went to. A client rejects the message from 40 up."
+          "note": "The slot it went to."
         },
         {
           "name": "inSlot",
@@ -1627,7 +1507,7 @@
         {
           "name": "slot",
           "type": "u8",
-          "note": "The slot it went to. A client ignores a message naming a slot above 38."
+          "note": "The slot it went to."
         },
         {
           "name": "inSlot",
@@ -1647,7 +1527,7 @@
             {
               "name": "tellTheClient",
               "width": 1,
-              "note": "Set to announce the purchase to allies and those watching, for items that announce, at most once per item in 5 seconds."
+              "note": "Set to announce the purchase."
             },
             {
               "name": "unused",

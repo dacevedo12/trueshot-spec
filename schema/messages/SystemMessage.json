@@ -191,14 +191,14 @@
         {
           "name": "source",
           "type": "u32",
-          "note": "The unit the line is credited to, or zero where none is."
+          "note": "A client does not read it."
         },
         {
           "name": "text",
           "type": "string",
           "encoding": "utf8",
           "size": 512,
-          "note": "The line itself. Written out in full and padded with zero bytes to the width above."
+          "note": "The line itself."
         }
       ]
     },
@@ -213,14 +213,14 @@
         {
           "name": "source",
           "type": "u32",
-          "note": "The unit the line is credited to, or zero where none is."
+          "note": "A client does not read it."
         },
         {
           "name": "text",
           "type": "string",
           "encoding": "utf8",
           "size": 512,
-          "note": "The line itself. Written out in full and padded with zero bytes to the width above."
+          "note": "The line itself."
         }
       ]
     },
@@ -257,14 +257,14 @@
         {
           "name": "source",
           "type": "u32",
-          "note": "The unit the line is credited to, or zero where none is."
+          "note": "A client does not read it."
         },
         {
           "name": "text",
           "type": "string",
           "encoding": "utf8",
           "size": 512,
-          "note": "The line itself. Written out in full and padded with zero bytes to the width above."
+          "note": "The line itself."
         }
       ]
     },

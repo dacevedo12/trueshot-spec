@@ -1432,7 +1432,7 @@
         {
           "name": "event",
           "type": "u8",
-          "note": "Which event, from 0 to 74, and so which fields follow.",
+          "note": "Which event, and so which fields follow.",
           "values": {
             "0": {
               "name": "died"
@@ -7378,7 +7378,7 @@
         {
           "name": "subject",
           "type": "u32",
-          "note": "The unit the thing happened to, or zero where none is named; for a death, the unit that made the kill."
+          "note": "The unit the thing happened to, or zero where none is named."
         },
         {
           "name": "damage",
@@ -7718,7 +7718,6 @@
             "when": "event",
             "equals": 0
           },
-          "note": "Nothing a client shows; the unit before it names the killer.",
           "fields": [
             {
               "name": "unread",
@@ -7872,7 +7871,7 @@
         {
           "name": "subject",
           "type": "u32",
-          "note": "The unit the thing happened to, or zero where none is named; for a death, the unit that made the kill."
+          "note": "The unit the thing happened to, or zero where none is named."
         },
         {
           "name": "damage",
@@ -8212,7 +8211,6 @@
             "when": "event",
             "equals": 0
           },
-          "note": "Nothing a client shows; the unit before it names the killer.",
           "fields": [
             {
               "name": "unread",
@@ -8700,7 +8698,6 @@
             "when": "event",
             "equals": 0
           },
-          "note": "The reward, and who shared it.",
           "fields": [
             {
               "name": "gold",
@@ -9737,7 +9734,7 @@
         {
           "name": "event",
           "type": "u8",
-          "note": "Which event, from 0 to 109, and so which fields follow.",
+          "note": "Which event, and so which fields follow.",
           "values": {
             "0": {
               "name": "died"
@@ -11346,7 +11343,7 @@
         {
           "name": "event",
           "type": "u8",
-          "note": "Which event, from 0 to 109, and so which fields follow.",
+          "note": "Which event, and so which fields follow.",
           "values": {
             "0": {
               "name": "died"
@@ -13779,8 +13776,7 @@
             },
             {
               "name": "parentCaster",
-              "type": "u32",
-              "note": "Unused; a client reads nothing here."
+              "type": "u32"
             },
             {
               "name": "parent",
@@ -14360,8 +14356,7 @@
             },
             {
               "name": "parentCaster",
-              "type": "u32",
-              "note": "Unused; a client reads nothing here."
+              "type": "u32"
             },
             {
               "name": "parent",
@@ -14959,8 +14954,7 @@
             },
             {
               "name": "parentCaster",
-              "type": "u32",
-              "note": "Unused; a client reads nothing here."
+              "type": "u32"
             },
             {
               "name": "parent",
@@ -15558,8 +15552,7 @@
             },
             {
               "name": "parentCaster",
-              "type": "u32",
-              "note": "What it carries is not recorded for this range; a server writes zero."
+              "type": "u32"
             },
             {
               "name": "parent",
@@ -16199,8 +16192,7 @@
             },
             {
               "name": "parentCaster",
-              "type": "u32",
-              "note": "What it carries is not recorded for this range; a server writes zero."
+              "type": "u32"
             },
             {
               "name": "parent",
@@ -16846,8 +16838,7 @@
             },
             {
               "name": "parentCaster",
-              "type": "u32",
-              "note": "What it carries is not recorded for this range; a server writes zero."
+              "type": "u32"
             },
             {
               "name": "parent",
@@ -29345,8 +29336,7 @@
             },
             {
               "name": "parentCaster",
-              "type": "u32",
-              "note": "What it carries is not recorded for this range; a server writes zero."
+              "type": "u32"
             },
             {
               "name": "parent",
@@ -29357,17 +29347,15 @@
                 {
                   "name": "source",
                   "width": 4,
-                  "note": "What sort of source the parent spell or effect is, numbered as sourceKind is."
+                  "note": "What sort of source the parent is, numbered as sourceKind is."
                 },
                 {
                   "name": "side",
-                  "width": 4,
-                  "note": "What it means is not recorded for this range; a server writes zero."
+                  "width": 4
                 },
                 {
                   "name": "category",
-                  "width": 4,
-                  "note": "A client sums two entries of this sort where this, the source kinds and both spells match, and, where this is zero, the subjects match too."
+                  "width": 4
                 },
                 {
                   "name": "spellLevel",
@@ -29496,8 +29484,7 @@
             },
             {
               "name": "parentCaster",
-              "type": "u32",
-              "note": "What it carries is not recorded for this range; a server writes zero."
+              "type": "u32"
             },
             {
               "name": "parent",
@@ -29508,17 +29495,15 @@
                 {
                   "name": "source",
                   "width": 4,
-                  "note": "What sort of source the parent spell or effect is, numbered as sourceKind is."
+                  "note": "What sort of source the parent is, numbered as sourceKind is."
                 },
                 {
                   "name": "side",
-                  "width": 4,
-                  "note": "What it means is not recorded for this range; a server writes zero."
+                  "width": 4
                 },
                 {
                   "name": "category",
-                  "width": 4,
-                  "note": "A client sums two entries of this sort where this, the source kinds and both spells match, and, where this is zero, the subjects match too."
+                  "width": 4
                 },
                 {
                   "name": "spellLevel",
@@ -29580,8 +29565,7 @@
             },
             {
               "name": "parentCaster",
-              "type": "u32",
-              "note": "What it carries is not recorded for this range; a server writes zero."
+              "type": "u32"
             },
             {
               "name": "parent",
@@ -29592,17 +29576,15 @@
                 {
                   "name": "source",
                   "width": 4,
-                  "note": "What sort of source the parent spell or effect is, numbered as sourceKind is."
+                  "note": "What sort of source the parent is, numbered as sourceKind is."
                 },
                 {
                   "name": "side",
-                  "width": 4,
-                  "note": "What it means is not recorded for this range; a server writes zero."
+                  "width": 4
                 },
                 {
                   "name": "category",
-                  "width": 4,
-                  "note": "A client sums two entries of this sort where this, the source kinds and both spells match, and, where this is zero, the subjects match too."
+                  "width": 4
                 },
                 {
                   "name": "spellLevel",
@@ -30152,8 +30134,7 @@
             },
             {
               "name": "parentCaster",
-              "type": "u32",
-              "note": "What it carries is not recorded for this range; a server writes zero."
+              "type": "u32"
             },
             {
               "name": "parent",
@@ -30164,17 +30145,15 @@
                 {
                   "name": "source",
                   "width": 4,
-                  "note": "What sort of source the parent spell or effect is, numbered as sourceKind is."
+                  "note": "What sort of source the parent is, numbered as sourceKind is."
                 },
                 {
                   "name": "side",
-                  "width": 4,
-                  "note": "What it means is not recorded for this range; a server writes zero."
+                  "width": 4
                 },
                 {
                   "name": "category",
-                  "width": 4,
-                  "note": "A client sums two entries of this sort where this, the source kinds and both spells match, and, where this is zero, the subjects match too."
+                  "width": 4
                 },
                 {
                   "name": "spellLevel",
@@ -30303,8 +30282,7 @@
             },
             {
               "name": "parentCaster",
-              "type": "u32",
-              "note": "What it carries is not recorded for this range; a server writes zero."
+              "type": "u32"
             },
             {
               "name": "parent",
@@ -30315,17 +30293,15 @@
                 {
                   "name": "source",
                   "width": 4,
-                  "note": "What sort of source the parent spell or effect is, numbered as sourceKind is."
+                  "note": "What sort of source the parent is, numbered as sourceKind is."
                 },
                 {
                   "name": "side",
-                  "width": 4,
-                  "note": "What it means is not recorded for this range; a server writes zero."
+                  "width": 4
                 },
                 {
                   "name": "category",
-                  "width": 4,
-                  "note": "A client sums two entries of this sort where this, the source kinds and both spells match, and, where this is zero, the subjects match too."
+                  "width": 4
                 },
                 {
                   "name": "spellLevel",
@@ -30387,8 +30363,7 @@
             },
             {
               "name": "parentCaster",
-              "type": "u32",
-              "note": "What it carries is not recorded for this range; a server writes zero."
+              "type": "u32"
             },
             {
               "name": "parent",
@@ -30399,17 +30374,15 @@
                 {
                   "name": "source",
                   "width": 4,
-                  "note": "What sort of source the parent spell or effect is, numbered as sourceKind is."
+                  "note": "What sort of source the parent is, numbered as sourceKind is."
                 },
                 {
                   "name": "side",
-                  "width": 4,
-                  "note": "What it means is not recorded for this range; a server writes zero."
+                  "width": 4
                 },
                 {
                   "name": "category",
-                  "width": 4,
-                  "note": "A client sums two entries of this sort where this, the source kinds and both spells match, and, where this is zero, the subjects match too."
+                  "width": 4
                 },
                 {
                   "name": "spellLevel",
@@ -30959,8 +30932,7 @@
             },
             {
               "name": "parentCaster",
-              "type": "u32",
-              "note": "What it carries is not recorded for this range; a server writes zero."
+              "type": "u32"
             },
             {
               "name": "parent",
@@ -30971,17 +30943,15 @@
                 {
                   "name": "source",
                   "width": 4,
-                  "note": "What sort of source the parent spell or effect is, numbered as sourceKind is."
+                  "note": "What sort of source the parent is, numbered as sourceKind is."
                 },
                 {
                   "name": "side",
-                  "width": 4,
-                  "note": "What it means is not recorded for this range; a server writes zero."
+                  "width": 4
                 },
                 {
                   "name": "category",
-                  "width": 4,
-                  "note": "A client sums two entries of this sort where this, the source kinds and both spells match, and, where this is zero, the subjects match too."
+                  "width": 4
                 },
                 {
                   "name": "spellLevel",
@@ -31110,8 +31080,7 @@
             },
             {
               "name": "parentCaster",
-              "type": "u32",
-              "note": "What it carries is not recorded for this range; a server writes zero."
+              "type": "u32"
             },
             {
               "name": "parent",
@@ -31122,17 +31091,15 @@
                 {
                   "name": "source",
                   "width": 4,
-                  "note": "What sort of source the parent spell or effect is, numbered as sourceKind is."
+                  "note": "What sort of source the parent is, numbered as sourceKind is."
                 },
                 {
                   "name": "side",
-                  "width": 4,
-                  "note": "What it means is not recorded for this range; a server writes zero."
+                  "width": 4
                 },
                 {
                   "name": "category",
-                  "width": 4,
-                  "note": "A client sums two entries of this sort where this, the source kinds and both spells match, and, where this is zero, the subjects match too."
+                  "width": 4
                 },
                 {
                   "name": "spellLevel",
@@ -31194,8 +31161,7 @@
             },
             {
               "name": "parentCaster",
-              "type": "u32",
-              "note": "What it carries is not recorded for this range; a server writes zero."
+              "type": "u32"
             },
             {
               "name": "parent",
@@ -31206,17 +31172,15 @@
                 {
                   "name": "source",
                   "width": 4,
-                  "note": "What sort of source the parent spell or effect is, numbered as sourceKind is."
+                  "note": "What sort of source the parent is, numbered as sourceKind is."
                 },
                 {
                   "name": "side",
-                  "width": 4,
-                  "note": "What it means is not recorded for this range; a server writes zero."
+                  "width": 4
                 },
                 {
                   "name": "category",
-                  "width": 4,
-                  "note": "A client sums two entries of this sort where this, the source kinds and both spells match, and, where this is zero, the subjects match too."
+                  "width": 4
                 },
                 {
                   "name": "spellLevel",
@@ -31766,8 +31730,7 @@
             },
             {
               "name": "parentCaster",
-              "type": "u32",
-              "note": "What it carries is not recorded for this range; a server writes zero."
+              "type": "u32"
             },
             {
               "name": "parent",
@@ -31778,17 +31741,15 @@
                 {
                   "name": "source",
                   "width": 4,
-                  "note": "What sort of source the parent spell or effect is, numbered as sourceKind is."
+                  "note": "What sort of source the parent is, numbered as sourceKind is."
                 },
                 {
                   "name": "side",
-                  "width": 4,
-                  "note": "What it means is not recorded for this range; a server writes zero."
+                  "width": 4
                 },
                 {
                   "name": "category",
-                  "width": 4,
-                  "note": "A client sums two entries of this sort where this, the source kinds and both spells match, and, where this is zero, the subjects match too."
+                  "width": 4
                 },
                 {
                   "name": "spellLevel",
@@ -31917,8 +31878,7 @@
             },
             {
               "name": "parentCaster",
-              "type": "u32",
-              "note": "What it carries is not recorded for this range; a server writes zero."
+              "type": "u32"
             },
             {
               "name": "parent",
@@ -31929,17 +31889,15 @@
                 {
                   "name": "source",
                   "width": 4,
-                  "note": "What sort of source the parent spell or effect is, numbered as sourceKind is."
+                  "note": "What sort of source the parent is, numbered as sourceKind is."
                 },
                 {
                   "name": "side",
-                  "width": 4,
-                  "note": "What it means is not recorded for this range; a server writes zero."
+                  "width": 4
                 },
                 {
                   "name": "category",
-                  "width": 4,
-                  "note": "A client sums two entries of this sort where this, the source kinds and both spells match, and, where this is zero, the subjects match too."
+                  "width": 4
                 },
                 {
                   "name": "spellLevel",
@@ -32001,8 +31959,7 @@
             },
             {
               "name": "parentCaster",
-              "type": "u32",
-              "note": "What it carries is not recorded for this range; a server writes zero."
+              "type": "u32"
             },
             {
               "name": "parent",
@@ -32013,17 +31970,15 @@
                 {
                   "name": "source",
                   "width": 4,
-                  "note": "What sort of source the parent spell or effect is, numbered as sourceKind is."
+                  "note": "What sort of source the parent is, numbered as sourceKind is."
                 },
                 {
                   "name": "side",
-                  "width": 4,
-                  "note": "What it means is not recorded for this range; a server writes zero."
+                  "width": 4
                 },
                 {
                   "name": "category",
-                  "width": 4,
-                  "note": "A client sums two entries of this sort where this, the source kinds and both spells match, and, where this is zero, the subjects match too."
+                  "width": 4
                 },
                 {
                   "name": "spellLevel",
@@ -32576,8 +32531,7 @@
             },
             {
               "name": "parentCaster",
-              "type": "u32",
-              "note": "What it carries is not recorded for this range; a server writes zero."
+              "type": "u32"
             },
             {
               "name": "parent",
@@ -32588,17 +32542,15 @@
                 {
                   "name": "source",
                   "width": 4,
-                  "note": "What sort of source the parent spell or effect is, numbered as sourceKind is."
+                  "note": "What sort of source the parent is, numbered as sourceKind is."
                 },
                 {
                   "name": "side",
-                  "width": 4,
-                  "note": "What it means is not recorded for this range; a server writes zero."
+                  "width": 4
                 },
                 {
                   "name": "category",
-                  "width": 4,
-                  "note": "A client sums two entries of this sort where this, the source kinds and both spells match, and, where this is zero, the subjects match too."
+                  "width": 4
                 },
                 {
                   "name": "spellLevel",
@@ -32727,8 +32679,7 @@
             },
             {
               "name": "parentCaster",
-              "type": "u32",
-              "note": "What it carries is not recorded for this range; a server writes zero."
+              "type": "u32"
             },
             {
               "name": "parent",
@@ -32739,17 +32690,15 @@
                 {
                   "name": "source",
                   "width": 4,
-                  "note": "What sort of source the parent spell or effect is, numbered as sourceKind is."
+                  "note": "What sort of source the parent is, numbered as sourceKind is."
                 },
                 {
                   "name": "side",
-                  "width": 4,
-                  "note": "What it means is not recorded for this range; a server writes zero."
+                  "width": 4
                 },
                 {
                   "name": "category",
-                  "width": 4,
-                  "note": "A client sums two entries of this sort where this, the source kinds and both spells match, and, where this is zero, the subjects match too."
+                  "width": 4
                 },
                 {
                   "name": "spellLevel",
@@ -32811,8 +32760,7 @@
             },
             {
               "name": "parentCaster",
-              "type": "u32",
-              "note": "What it carries is not recorded for this range; a server writes zero."
+              "type": "u32"
             },
             {
               "name": "parent",
@@ -32823,17 +32771,15 @@
                 {
                   "name": "source",
                   "width": 4,
-                  "note": "What sort of source the parent spell or effect is, numbered as sourceKind is."
+                  "note": "What sort of source the parent is, numbered as sourceKind is."
                 },
                 {
                   "name": "side",
-                  "width": 4,
-                  "note": "What it means is not recorded for this range; a server writes zero."
+                  "width": 4
                 },
                 {
                   "name": "category",
-                  "width": 4,
-                  "note": "A client sums two entries of this sort where this, the source kinds and both spells match, and, where this is zero, the subjects match too."
+                  "width": 4
                 },
                 {
                   "name": "spellLevel",
@@ -33412,8 +33358,7 @@
             },
             {
               "name": "parentCaster",
-              "type": "u32",
-              "note": "What it carries is not recorded for this range; a server writes zero."
+              "type": "u32"
             },
             {
               "name": "parent",
@@ -33424,17 +33369,15 @@
                 {
                   "name": "source",
                   "width": 4,
-                  "note": "What sort of source the parent spell or effect is, numbered as sourceKind is."
+                  "note": "What sort of source the parent is, numbered as sourceKind is."
                 },
                 {
                   "name": "side",
-                  "width": 4,
-                  "note": "What it means is not recorded for this range; a server writes zero."
+                  "width": 4
                 },
                 {
                   "name": "category",
-                  "width": 4,
-                  "note": "A client sums two entries of this sort where this, the source kinds and both spells match, and, where this is zero, the subjects match too."
+                  "width": 4
                 },
                 {
                   "name": "spellLevel",
@@ -33563,8 +33506,7 @@
             },
             {
               "name": "parentCaster",
-              "type": "u32",
-              "note": "What it carries is not recorded for this range; a server writes zero."
+              "type": "u32"
             },
             {
               "name": "parent",
@@ -33575,17 +33517,15 @@
                 {
                   "name": "source",
                   "width": 4,
-                  "note": "What sort of source the parent spell or effect is, numbered as sourceKind is."
+                  "note": "What sort of source the parent is, numbered as sourceKind is."
                 },
                 {
                   "name": "side",
-                  "width": 4,
-                  "note": "What it means is not recorded for this range; a server writes zero."
+                  "width": 4
                 },
                 {
                   "name": "category",
-                  "width": 4,
-                  "note": "A client sums two entries of this sort where this, the source kinds and both spells match, and, where this is zero, the subjects match too."
+                  "width": 4
                 },
                 {
                   "name": "spellLevel",
@@ -33647,8 +33587,7 @@
             },
             {
               "name": "parentCaster",
-              "type": "u32",
-              "note": "What it carries is not recorded for this range; a server writes zero."
+              "type": "u32"
             },
             {
               "name": "parent",
@@ -33659,17 +33598,15 @@
                 {
                   "name": "source",
                   "width": 4,
-                  "note": "What sort of source the parent spell or effect is, numbered as sourceKind is."
+                  "note": "What sort of source the parent is, numbered as sourceKind is."
                 },
                 {
                   "name": "side",
-                  "width": 4,
-                  "note": "What it means is not recorded for this range; a server writes zero."
+                  "width": 4
                 },
                 {
                   "name": "category",
-                  "width": 4,
-                  "note": "A client sums two entries of this sort where this, the source kinds and both spells match, and, where this is zero, the subjects match too."
+                  "width": 4
                 },
                 {
                   "name": "spellLevel",
@@ -33955,7 +33892,7 @@
         {
           "name": "event",
           "type": "u8",
-          "note": "What sort of thing happened, and so which shape follows. Each name says what the sort is sent alongside, and each note what a client shows for it; the text of a notice that carries a map is the one that map gives it.",
+          "note": "What sort of thing happened, and so which shape follows. Each name says what the sort is sent alongside, and each note what a client shows for it.",
           "values": {
             "0": {
               "name": "removed"
@@ -34001,7 +33938,7 @@
             },
             "31": {
               "name": "inhibitorDied",
-              "note": "Sent as an inhibitor falls, with that inhibitor as source and the unit credited with it as subject. A client calls out the kill, naming the killer, the inhibitor and the assisters, where it holds the inhibitor as a building and knows the killer. Where it names the client's own champion and everything after it is zero, a client on map 1 shows a notice with no text of its own."
+              "note": "Sent as an inhibitor falls, with that inhibitor as source and the unit credited with it as subject. A client calls out the kill, naming the killer and the inhibitor, where it holds the inhibitor as a building and knows the killer."
             },
             "32": {
               "name": "inhibitorRespawningSoon"
@@ -34109,11 +34046,11 @@
             },
             "119": {
               "name": "welcome",
-              "note": "Sent once, early in a match. A client announces the welcome for the map carried."
+              "note": "Sent once, early in a match. A client shows a notice."
             },
             "120": {
               "name": "startNoticeTwo",
-              "note": "Sent once, after welcome. A client announces the second notice for the map carried; on map 1 that minions spawn in thirty seconds."
+              "note": "Sent once, after welcome. A client shows a notice."
             },
             "121": {
               "name": "startNoticeThree",
@@ -34248,8 +34185,7 @@
             },
             {
               "name": "parentCaster",
-              "type": "u32",
-              "note": "What it carries is not recorded for this range; a server writes zero."
+              "type": "u32"
             },
             {
               "name": "parent",
@@ -34260,17 +34196,15 @@
                 {
                   "name": "source",
                   "width": 4,
-                  "note": "What sort of source the parent spell or effect is, numbered as sourceKind is."
+                  "note": "What sort of source the parent is, numbered as sourceKind is."
                 },
                 {
                   "name": "side",
-                  "width": 4,
-                  "note": "What it means is not recorded for this range; a server writes zero."
+                  "width": 4
                 },
                 {
                   "name": "category",
-                  "width": 4,
-                  "note": "A client sums two entries of this sort where this, the source kinds and both spells match, and, where this is zero, the subjects match too."
+                  "width": 4
                 },
                 {
                   "name": "spellLevel",
@@ -34399,8 +34333,7 @@
             },
             {
               "name": "parentCaster",
-              "type": "u32",
-              "note": "What it carries is not recorded for this range; a server writes zero."
+              "type": "u32"
             },
             {
               "name": "parent",
@@ -34411,17 +34344,15 @@
                 {
                   "name": "source",
                   "width": 4,
-                  "note": "What sort of source the parent spell or effect is, numbered as sourceKind is."
+                  "note": "What sort of source the parent is, numbered as sourceKind is."
                 },
                 {
                   "name": "side",
-                  "width": 4,
-                  "note": "What it means is not recorded for this range; a server writes zero."
+                  "width": 4
                 },
                 {
                   "name": "category",
-                  "width": 4,
-                  "note": "A client sums two entries of this sort where this, the source kinds and both spells match, and, where this is zero, the subjects match too."
+                  "width": 4
                 },
                 {
                   "name": "spellLevel",
@@ -34483,8 +34414,7 @@
             },
             {
               "name": "parentCaster",
-              "type": "u32",
-              "note": "What it carries is not recorded for this range; a server writes zero."
+              "type": "u32"
             },
             {
               "name": "parent",
@@ -34495,17 +34425,15 @@
                 {
                   "name": "source",
                   "width": 4,
-                  "note": "What sort of source the parent spell or effect is, numbered as sourceKind is."
+                  "note": "What sort of source the parent is, numbered as sourceKind is."
                 },
                 {
                   "name": "side",
-                  "width": 4,
-                  "note": "What it means is not recorded for this range; a server writes zero."
+                  "width": 4
                 },
                 {
                   "name": "category",
-                  "width": 4,
-                  "note": "A client sums two entries of this sort where this, the source kinds and both spells match, and, where this is zero, the subjects match too."
+                  "width": 4
                 },
                 {
                   "name": "spellLevel",
@@ -35840,7 +35768,7 @@
             },
             "152": {
               "name": "dragonKilledWatched",
-              "note": "The same, as sent to clients watching the match. No kill details follow. A client shows the line in chat that the kill shows, and a banner announcing it."
+              "note": "The same, as sent to clients watching the match."
             },
             "153": {
               "name": "dragonStolen"
@@ -35851,7 +35779,7 @@
             },
             "155": {
               "name": "baronKilledWatched",
-              "note": "The same, as sent to clients watching the match. No kill details follow. A client shows the line in chat that the kill shows, and a banner announcing it."
+              "note": "The same, as sent to clients watching the match."
             },
             "156": {
               "name": "baronStolen"

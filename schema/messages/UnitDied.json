@@ -438,7 +438,7 @@
         {
           "name": "standing",
           "type": "u8",
-          "note": "Any nonzero value leaves the unit standing rather than dead. A champion then plays no death animation; minions and turrets play theirs whatever this says."
+          "note": "Any nonzero value leaves the unit standing rather than dead."
         }
       ],
       "note": "A client does nothing for a unit already dead. Otherwise it stops the unit's cast and attack and, where killer is nonzero, puts the unit down for stayDown, whether or not it holds killer."
@@ -510,7 +510,7 @@
         {
           "name": "standing",
           "type": "u8",
-          "note": "Any nonzero value leaves the unit standing rather than dead. A champion then plays no death animation; minions and turrets play theirs whatever this says."
+          "note": "Any nonzero value leaves the unit standing rather than dead."
         }
       ],
       "note": "A client does nothing for a unit already dead. Otherwise it stops the unit's cast and attack and, where killer is nonzero, puts the unit down for stayDown, whether or not it holds killer."
@@ -546,7 +546,7 @@
         {
           "name": "standing",
           "type": "u8",
-          "note": "Any nonzero value leaves the unit standing rather than dead. A champion then plays no death animation; minions and turrets play theirs whatever this says."
+          "note": "Any nonzero value leaves the unit standing rather than dead."
         }
       ],
       "note": "A client does nothing for a unit already dead. Otherwise it stops the unit's cast and attack and, where killer is nonzero, puts the unit down for stayDown, whether or not it holds killer."
@@ -582,7 +582,7 @@
         {
           "name": "standing",
           "type": "u8",
-          "note": "Any nonzero value leaves the unit standing rather than dead. A champion then plays no death animation; minions and turrets play theirs whatever this says."
+          "note": "Any nonzero value leaves the unit standing rather than dead."
         }
       ],
       "note": "A client does nothing for a unit already dead. Otherwise it stops the unit's cast and attack and, where killer is nonzero, puts the unit down for stayDown, whether or not it holds killer."
@@ -618,7 +618,7 @@
         {
           "name": "standing",
           "type": "u8",
-          "note": "Any nonzero value leaves the unit standing rather than dead. A champion then plays no death animation; minions and turrets play theirs whatever this says."
+          "note": "Any nonzero value leaves the unit standing rather than dead."
         }
       ],
       "note": "A client does nothing for a unit already dead. Otherwise it stops the unit's cast and attack and, where killer is nonzero, puts the unit down for stayDown, whether or not it holds killer."
@@ -654,7 +654,7 @@
         {
           "name": "standing",
           "type": "u8",
-          "note": "Any nonzero value leaves the unit standing rather than dead. A champion then plays no death animation; minions and turrets play theirs whatever this says."
+          "note": "Any nonzero value leaves the unit standing rather than dead."
         }
       ],
       "note": "A client does nothing for a unit already dead. Otherwise it stops the unit's cast and attack and, where killer is nonzero, puts the unit down for stayDown, whether or not it holds killer."
@@ -726,7 +726,7 @@
         {
           "name": "standing",
           "type": "u8",
-          "note": "Set to leave the unit standing as a husk rather than dead: no time of death, and for a champion no death animation and no death screen. A turret kept after death behaves so whatever this says. Any nonzero value sets it."
+          "note": "Any nonzero value leaves the unit standing rather than dead. A champion then plays no death animation."
         }
       ],
       "note": "A client does nothing for a unit already dead. Otherwise it stops the unit's cast and attack and, where killer is nonzero, announces the kill, naming killer where it holds it, and puts the unit down by stayDown and standing."
@@ -788,7 +788,7 @@
         {
           "name": "damageSource",
           "type": "u8",
-          "note": "Read only for a minion a champion killed, whose kill a client shows another way where it is 7; a server writes zero."
+          "note": "A server writes zero."
         },
         {
           "name": "stayDown",
@@ -824,7 +824,7 @@
         {
           "name": "damageSource",
           "type": "u8",
-          "note": "Read only for a minion a champion killed, whose kill a client shows another way where it is 7; a server writes zero."
+          "note": "A server writes zero."
         },
         {
           "name": "stayDown",
@@ -860,7 +860,7 @@
         {
           "name": "damageSource",
           "type": "u8",
-          "note": "Read only for a minion a champion killed, whose kill a client shows another way where it is 7; a server writes zero."
+          "note": "A server writes zero."
         },
         {
           "name": "stayDown",
@@ -896,7 +896,7 @@
         {
           "name": "damageSource",
           "type": "u8",
-          "note": "Read only for a minion a champion killed, whose kill a client shows another way where it is 7; a server writes zero."
+          "note": "A server writes zero."
         },
         {
           "name": "stayDown",
@@ -995,8 +995,7 @@
           "type": "u8",
           "note": "Which kill a client announces for killer: zero a neutral monster's, nonzero a minion's."
         }
-      ],
-      "note": "Where killer names a unit it knows, a client announces the kill for that unit, then the one kind picks. Where the unit is not already dead, it cancels the unit's cast and attack, and only where killer is nonzero puts the unit down, by stayDown and standing."
+      ]
     },
     {
       "from": "1.0.0.147",
@@ -1125,7 +1124,7 @@
         {
           "name": "damageSource",
           "type": "u32",
-          "note": "Unused; a server writes zero."
+          "note": "A client reads it only where a minion dies."
         },
         {
           "name": "stayDown",
@@ -1152,7 +1151,7 @@
         {
           "name": "kind",
           "type": "u8",
-          "note": "Which kill a client announces for killer: zero a neutral monster's, nonzero a minion's."
+          "note": "Which of two kill announcements a client makes: zero picks one, nonzero the other."
         }
       ],
       "note": "Where the unit is already dead, a client does nothing with the message and announces nothing. Otherwise it cancels the unit's cast and attack, and only where killer is nonzero puts the unit down, by stayDown and standing."
@@ -1178,7 +1177,7 @@
         {
           "name": "damageSource",
           "type": "u32",
-          "note": "Unused; a server writes zero."
+          "note": "A client reads it only where a minion dies."
         },
         {
           "name": "stayDown",
@@ -1205,7 +1204,7 @@
         {
           "name": "kind",
           "type": "u8",
-          "note": "Which kill a client announces for killer: zero a neutral monster's, nonzero a minion's."
+          "note": "Which of two kill announcements a client makes: zero picks one, nonzero the other."
         }
       ],
       "note": "A client cancels the unit's cast and attack, and only where killer is nonzero puts the unit down, by stayDown and standing."
@@ -1423,58 +1422,6 @@
     },
     {
       "from": "4.1.0.171",
-      "until": "4.4.0.1858",
-      "channel": "events",
-      "command": 157,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "killer",
-          "type": "u32",
-          "note": "The unit credited with the death."
-        },
-        {
-          "name": "damageType",
-          "type": "u32",
-          "note": "Unused; a server writes zero."
-        },
-        {
-          "name": "damageSource",
-          "type": "u32",
-          "note": "Unused; a server writes zero."
-        },
-        {
-          "name": "stayDown",
-          "type": "f32",
-          "note": "How long the unit stays down, in seconds."
-        },
-        {
-          "name": "how",
-          "type": "bits",
-          "size": 1,
-          "bits": [
-            {
-              "name": "standing",
-              "width": 1,
-              "note": "Set to leave the unit standing as a husk rather than dead: no time of death, and for a champion no death animation and no death screen. A turret kept after death behaves so whatever this says."
-            },
-            {
-              "name": "unused",
-              "width": 7,
-              "note": "Unused; a server writes zero."
-            }
-          ]
-        },
-        {
-          "name": "kind",
-          "type": "u8",
-          "note": "Which kill a client announces for killer: zero a neutral monster's, nonzero a minion's."
-        }
-      ]
-    },
-    {
-      "from": "4.4.0.1858",
       "until": "4.11.0.386",
       "channel": "events",
       "command": 157,

@@ -89,8 +89,7 @@
           "name": "name",
           "type": "string",
           "encoding": "utf8",
-          "size": 64,
-          "note": "What is applied, for apply; written and padded with zero bytes."
+          "size": 64
         },
         {
           "name": "option",
@@ -141,8 +140,7 @@
           "name": "name",
           "type": "string",
           "encoding": "utf8",
-          "size": 64,
-          "note": "What is applied, for apply; written and padded with zero bytes."
+          "size": 64
         },
         {
           "name": "option",
@@ -193,8 +191,7 @@
           "name": "name",
           "type": "string",
           "encoding": "utf8",
-          "size": 64,
-          "note": "What is applied, for apply; written and padded with zero bytes."
+          "size": 64
         },
         {
           "name": "option",
@@ -245,8 +242,7 @@
           "name": "name",
           "type": "string",
           "encoding": "utf8",
-          "size": 64,
-          "note": "What is applied, for apply; written and padded with zero bytes."
+          "size": 64
         },
         {
           "name": "option",
@@ -277,8 +273,7 @@
           "name": "name",
           "type": "string",
           "encoding": "utf8",
-          "size": 64,
-          "note": "The name of the animation, for animate; a client reads it for no other change. The name ends at its first zero byte, and the bytes after it carry no meaning."
+          "size": 64
         },
         {
           "name": "first",
@@ -298,7 +293,7 @@
         {
           "name": "value",
           "type": "u32",
-          "note": "A value the change uses: for animate, the animation's flags; for linkEffect, the particle effect value; for look, the look's number."
+          "note": "A value the change uses: for animate, the animation's flags. A client does not read it for linkEffect."
         },
         {
           "name": "change",
@@ -307,7 +302,7 @@
           "values": {
             "0": {
               "name": "animate",
-              "note": "Play the animation name, with value as its flags, starting at first (match time in seconds) for second seconds; option nonzero removes the prop afterwards. effect and point have no effect."
+              "note": "Play the animation name, with value as its flags, starting at first (match time in seconds) for second seconds; one with the same name and flags as the last animate the client took for that prop starts nothing, playing or not. option, effect and point have no effect."
             },
             "1": {
               "name": "linkEffect",
@@ -315,7 +310,7 @@
             },
             "2": {
               "name": "look",
-              "note": "Change the prop's look to name, numbered value. The rest have no effect."
+              "note": "A client does nothing."
             }
           }
         },
@@ -348,8 +343,7 @@
           "name": "name",
           "type": "string",
           "encoding": "utf8",
-          "size": 64,
-          "note": "The name of the animation, for animate; a client reads it for no other change. The name ends at its first zero byte, and the bytes after it carry no meaning."
+          "size": 64
         },
         {
           "name": "first",
@@ -369,7 +363,7 @@
         {
           "name": "value",
           "type": "u32",
-          "note": "A value the change uses: for animate, the animation's flags; for linkEffect, the particle effect value; for look, the look's number."
+          "note": "A value the change uses: for animate, the animation's flags. A client does not read it for linkEffect."
         },
         {
           "name": "change",
@@ -378,7 +372,7 @@
           "values": {
             "0": {
               "name": "animate",
-              "note": "Play the animation name, with value as its flags, starting at first (match time in seconds) for second seconds; option nonzero removes the prop afterwards. effect and point have no effect."
+              "note": "Play the animation name, with value as its flags, starting at first (match time in seconds) for second seconds; one with the same name and flags as the last animate the client took for that prop starts nothing, playing or not. option, effect and point have no effect."
             },
             "1": {
               "name": "linkEffect",
@@ -386,7 +380,7 @@
             },
             "2": {
               "name": "look",
-              "note": "Change the prop's look to name, numbered value. The rest have no effect."
+              "note": "A client does nothing."
             }
           }
         },
@@ -491,7 +485,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": 64,
-          "note": "The name of the animation, for animate; a client reads it for no other change. The name ends at its first zero byte, and the bytes after it carry no meaning."
+          "note": "The name ends at its first zero byte, and the bytes after it carry no meaning."
         },
         {
           "name": "first",
@@ -562,7 +556,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": 64,
-          "note": "A name: an animation's, a particle's or a look's, by the change below. The name ends at its first zero byte; the bytes after it carry no meaning."
+          "note": "The name ends at its first zero byte; the bytes after it carry no meaning."
         },
         {
           "name": "first",
@@ -704,7 +698,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": 64,
-          "note": "A name: an animation's, a particle's or a look's, by the change below. The name ends at its first zero byte; the bytes after it carry no meaning."
+          "note": "The name ends at its first zero byte; the bytes after it carry no meaning."
         },
         {
           "name": "first",
@@ -775,7 +769,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": 64,
-          "note": "A name: an animation's, a particle's or a look's, by the change below. The name ends at its first zero byte; the bytes after it carry no meaning."
+          "note": "The name ends at its first zero byte; the bytes after it carry no meaning."
         },
         {
           "name": "first",
@@ -846,7 +840,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": 64,
-          "note": "A name: an animation's, a particle's or a look's, by the change below. The name ends at its first zero byte; the bytes after it carry no meaning."
+          "note": "The name ends at its first zero byte; the bytes after it carry no meaning."
         },
         {
           "name": "first",
@@ -917,7 +911,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": 64,
-          "note": "A name: an animation's, a particle's or a look's, by the change below. The name ends at its first zero byte; the bytes after it carry no meaning."
+          "note": "The name ends at its first zero byte; the bytes after it carry no meaning."
         },
         {
           "name": "first",
@@ -1059,7 +1053,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": 64,
-          "note": "A name: an animation's, a particle's or a look's, by the change below. The name ends at its first zero byte; the bytes after it carry no meaning."
+          "note": "The name ends at its first zero byte; the bytes after it carry no meaning."
         },
         {
           "name": "first",
@@ -1130,7 +1124,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": 64,
-          "note": "A name: an animation's, a particle's or a look's, by the change below. The name ends at its first zero byte; the bytes after it carry no meaning."
+          "note": "The name ends at its first zero byte; the bytes after it carry no meaning."
         },
         {
           "name": "first",
@@ -1647,7 +1641,7 @@
         {
           "name": "value",
           "type": "u32",
-          "note": "A value the change uses: for animate, the animation's flags; for linkEffect, the particle effect value; for look, the look's number."
+          "note": "A value the change uses: for animate, the animation's flags; for look, the look's number."
         },
         {
           "name": "change",
@@ -1789,7 +1783,7 @@
         {
           "name": "value",
           "type": "u32",
-          "note": "A value the change uses: for animate, the animation's flags; for linkEffect, the particle effect value; for look, the look's number."
+          "note": "A value the change uses: for animate, the animation's flags; for look, the look's number."
         },
         {
           "name": "change",

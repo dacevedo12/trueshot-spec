@@ -230,7 +230,6 @@
         {
           "name": "damageSource",
           "type": "u8",
-          "note": "Read only for a minion a champion killed, whose kill a client shows another way where it is 7; a server writes zero.",
           "values": {
             "0": {
               "name": "raw"
@@ -287,8 +286,7 @@
             },
             {
               "name": "unused",
-              "width": 7,
-              "note": "Unused; a server writes zero."
+              "width": 7
             }
           ]
         }
@@ -327,7 +325,6 @@
         {
           "name": "damageSource",
           "type": "u8",
-          "note": "Read only for a minion a champion killed, whose kill a client shows another way where it is 7; a server writes zero.",
           "values": {
             "0": {
               "name": "raw"
@@ -384,8 +381,7 @@
             },
             {
               "name": "unused",
-              "width": 7,
-              "note": "Unused; a server writes zero."
+              "width": 7
             }
           ]
         }
@@ -424,7 +420,6 @@
         {
           "name": "damageSource",
           "type": "u8",
-          "note": "Read only for a minion a champion killed, whose kill a client shows another way where it is 7; a server writes zero.",
           "values": {
             "0": {
               "name": "raw"
@@ -481,8 +476,7 @@
             },
             {
               "name": "unused",
-              "width": 7,
-              "note": "Unused; a server writes zero."
+              "width": 7
             }
           ]
         }
@@ -671,12 +665,11 @@
             {
               "name": "zombie",
               "width": 1,
-              "note": "Set to leave the champion standing in a zombie state rather than dead: no death animation and no death screen."
+              "note": "Any value other than zero leaves the champion standing in a zombie state rather than dead, with no death animation."
             },
             {
               "name": "unused",
-              "width": 7,
-              "note": "Unused; a server writes zero."
+              "width": 7
             }
           ]
         }
@@ -796,7 +789,6 @@
         {
           "name": "damageType",
           "type": "u8",
-          "note": "Unused; a server writes zero.",
           "values": {
             "0": {
               "name": "physical"
@@ -869,8 +861,7 @@
             },
             {
               "name": "unused",
-              "width": 7,
-              "note": "Unused; a server writes zero."
+              "width": 7
             }
           ]
         }
@@ -990,7 +981,6 @@
         {
           "name": "damageType",
           "type": "u8",
-          "note": "Unused; a server writes zero.",
           "values": {
             "0": {
               "name": "physical"
@@ -1006,7 +996,6 @@
         {
           "name": "damageSource",
           "type": "u8",
-          "note": "Read only for a minion a champion killed, whose kill a client shows another way where it is 7; a server writes zero.",
           "values": {
             "0": {
               "name": "raw"
@@ -1189,7 +1178,6 @@
         {
           "name": "damageType",
           "type": "u8",
-          "note": "Unused; a server writes zero.",
           "values": {
             "0": {
               "name": "physical"
@@ -1205,7 +1193,6 @@
         {
           "name": "damageSource",
           "type": "u8",
-          "note": "Read only for a minion a champion killed, whose kill a client shows another way where it is 7; a server writes zero.",
           "values": {
             "0": {
               "name": "raw"
@@ -1270,7 +1257,7 @@
         {
           "name": "kind",
           "type": "u8",
-          "note": "Unused; a client reads it for nothing in this message."
+          "note": "It has no effect in this message."
         }
       ],
       "note": "A client ignores it where the champion is already dead. Otherwise it stops the champion's cast and attack, and puts it down only where killer is nonzero."
@@ -1291,7 +1278,6 @@
         {
           "name": "damageType",
           "type": "u32",
-          "note": "The kind of the killing blow. A client shows nothing for it.",
           "values": {
             "0": {
               "name": "physical"
@@ -1307,7 +1293,6 @@
         {
           "name": "damageSource",
           "type": "u32",
-          "note": "Where the killing blow came from. A client shows nothing for it.",
           "values": {
             "0": {
               "name": "raw"

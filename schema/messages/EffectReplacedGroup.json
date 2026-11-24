@@ -496,8 +496,7 @@
         },
         {
           "name": "lasts",
-          "type": "f32",
-          "note": "How long it runs in total, in seconds."
+          "type": "f32"
         },
         {
           "name": "count",
@@ -602,8 +601,7 @@
         },
         {
           "name": "lasts",
-          "type": "f32",
-          "note": "How long it runs in total, in seconds."
+          "type": "f32"
         },
         {
           "name": "count",
@@ -862,8 +860,7 @@
       "fields": [
         {
           "name": "runningFor",
-          "type": "f32",
-          "note": "How long the effect has already run, in seconds."
+          "type": "f32"
         },
         {
           "name": "lasts",

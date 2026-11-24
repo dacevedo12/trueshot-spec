@@ -112,29 +112,36 @@ batch.
 A client sends the answers above when it plays a match, not while it plays back
 a stream.
 
-<!-- holds from 0.9.25.24 up to 3.03.0.198 -->
+<!-- holds from 0.9.25.24 up to 1.0.0.151 -->
 
-> **In 0.9.25.24–3.02**
+> **In 0.9.25.24–1.0.0.150**
 >
 > A client also answers each `Path` and `PathWithSpeed`, taken or not, with a
 > `WaypointAck` carrying its `syncId` (see [Movement](movement.md)), when it
 > plays a match, not while it plays back a stream.
 
-<!-- holds from 3.03.0.198 up to 3.04.0.78 -->
+<!-- holds from 1.0.0.151 up to 3.6.0.388 -->
 
-> **In 3.03**
+> **In 1.0.0.151–3.5**
 >
 > A client also answers each `Path` and `PathWithSpeed`, taken or not, with a
 > `WaypointAck` carrying its `syncId` (see [Movement](movement.md)), when it
 > plays a match.
 
-<!-- holds from 3.04.0.78 up to 3.10.0.237 -->
+<!-- holds from 3.6.0.388 up to 3.7.0.328 -->
 
-> **In 3.04–3.9**
+> **In 3.6**
 >
 > A client also answers each `Path` and `PathWithSpeed`, taken or not, with a
 > `WaypointAck` carrying its `syncId` (see [Movement](movement.md)), when it
 > plays a match, not while it plays back a stream.
+
+<!-- holds from 3.7.0.328 up to 3.10.0.237 -->
+
+> **In 3.7–3.9**
+>
+> A client also answers each `Path` and `PathWithSpeed`, taken or not, with a
+> `WaypointAck` carrying its `syncId` (see [Movement](movement.md)).
 
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
@@ -175,8 +182,7 @@ a stream.
 
 > **In 0.9.22.14–0.9.25.23**
 >
-> Where its last view report goes unacknowledged, a client sends it again
-> without its view moving, once more than twice the round trip has passed.
+> Where its last view report goes unacknowledged, a client sends it again.
 
 <!-- holds from 0.9.25.24 up to 0.9.25.36 -->
 

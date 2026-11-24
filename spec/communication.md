@@ -8,9 +8,9 @@ Players chat with `Chat`, which carries a line to everyone or to a side. A
 server puts a line of its own in a client's chat with `SystemMessage`. A server
 can limit how many more lines a player can send with `ChatAllowance`.
 
-<!-- holds from 3.10.0.237 up to 4.20.0.315 -->
+<!-- holds from 3.10.0.237 up to 4.18.0.271 -->
 
-> **In 3.10–4.19**
+> **In 3.10–4.17**
 >
 > A client shows how many lines `ChatAllowance` leaves its player.
 
@@ -35,9 +35,9 @@ champion played for the moment (`ContextEmote`).
 > A client plays the voice line `VoiceCommand` names, unless its player has
 > muted the champion's player.
 
-<!-- holds from 3.10.0.237 up to 4.20.0.315 -->
+<!-- holds from 3.10.0.237 up to 4.18.0.271 -->
 
-> **In 3.10–4.19**
+> **In 3.10–4.17**
 >
 > A client shows no ping its server marks as throttled, and notes in its own
 > chat that the player is pinging too often. `VoiceCommand` and `ContextEmote`
@@ -57,9 +57,9 @@ unmute a kind of sound (`VolumeMuted`) and fade sound effects out
 >
 > `VoiceEvent` carries only the event's name and asks for no answer.
 
-<!-- holds from 0.9.25.24 up to 1.0.0.140 -->
+<!-- holds from 0.9.25.24 up to 1.0.0.133 -->
 
-> **In 0.9.25.24–1.0.0.139**
+> **In 0.9.25.24–1.0.0.132**
 >
 > Where a `VoiceEvent` asks for an answer, a client sends `VoiceEventDone` once
 > it has played the event.
@@ -70,9 +70,9 @@ unmute a kind of sound (`VolumeMuted`) and fade sound effects out
 >
 > A client never answers a `VoiceEvent` it cannot play.
 
-<!-- holds from 1.0.0.126 up to 1.0.0.140 -->
+<!-- holds from 1.0.0.126 up to 1.0.0.133 -->
 
-> **In 1.0.0.126–1.0.0.139**
+> **In 1.0.0.126–1.0.0.132**
 >
 > A client answers a `VoiceEvent` it cannot play at once.
 

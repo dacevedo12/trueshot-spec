@@ -20,9 +20,9 @@ A champion has two books of spells. Its own book holds these slots:
 | after those | the spells of the items in the inventory, one for each slot |
 | after those | spells a server places for the match's own purposes         |
 
-<!-- holds from 0.8.13.26 up to 4.20.0.315 -->
+<!-- holds from 0.8.13.26 up to 4.18.0.271 -->
 
-> **In 0.8.13.26–4.19**
+> **In 0.8.13.26–4.17**
 >
 > An item's spell is in the slot four above its inventory slot, from slot 4 on.
 
@@ -83,9 +83,9 @@ says whether it is a summoner spell.
 > Of those, 64 is the champion's basic attack and 73 its critical attack; the
 > rest are its other basic and critical attacks.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 4.4.0.1858 up to 4.21.0.0 -->
 
-> **In 4.1–4.20**
+> **In 4.4–4.20**
 >
 > A cast's slot also takes 255, for a cast from no slot.
 
@@ -143,16 +143,16 @@ A server MUST NOT name a champion book slot beyond the book's last slot.
 > to slot 0, reporting it as an error. It applies a `SpellCostChanged` naming a
 > slot above 60, or -1, to slot 0.
 
-<!-- holds from 4.7.0.296 up to 4.21.0.0 -->
+<!-- holds from 4.17.0.233 up to 4.21.0.0 -->
 
-> **In 4.7–4.20**
+> **In 4.17–4.20**
 >
 > Slot 61 is using an object on the field (see `UseObject`), and slot 62 the
 > champion's passive.
 
-<!-- holds from 4.7.0.296 up to 4.20.0.315 -->
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 
-> **In 4.7–4.19**
+> **In 4.17**
 >
 > A champion's own book ends at slot 62.
 
@@ -202,30 +202,30 @@ last slot.
 > `RemoveItemAnswer`, `InventorySlot`, `ItemAdded`, `ItemUsed` or `ItemCharges`
 > naming a slot above 37.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 4.4.0.1858 up to 4.21.0.0 -->
 
-> **In 4.1–4.20**
+> **In 4.4–4.20**
 >
 > Slot 6 holds the trinket, slot 7 the item recalling uses, and slots from 8 on
 > items held for the match's own purposes, which nothing a player sees shows.
 
-<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
+<!-- holds from 4.4.0.1858 up to 4.18.0.271 -->
 
-> **In 4.1–4.19**
+> **In 4.4–4.17**
 >
 > A client asks to swap only slots 0 to 6 (`SwapItems`).
 
-<!-- holds from 4.1.0.171 up to 4.7.0.296 -->
+<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
 
-> **In 4.1–4.6**
+> **In 4.4**
 >
 > A champion's inventory ends at slot 38. A client ignores a
 > `RemoveItemAnswer`, `InventorySlot`, `ItemAdded`, `ItemUsed` or `ItemCharges`
 > naming a slot above 38.
 
-<!-- holds from 4.7.0.296 up to 4.20.0.315 -->
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 
-> **In 4.7–4.19**
+> **In 4.17**
 >
 > A champion's inventory ends at slot 39.
 

@@ -127,7 +127,7 @@
         {
           "name": "champion",
           "type": "u32",
-          "note": "The player's champion, matched against the owner of each champion the client knows."
+          "note": "The player's client id."
         }
       ],
       "note": "Wherever its interface exists, a client shows a chat notice naming the player: in an ally's or an enemy's colour as against its own champion, or a colour of its own where it has none."
@@ -143,7 +143,7 @@
         {
           "name": "champion",
           "type": "u32",
-          "note": "The player's champion, matched against the owner of each champion the client knows."
+          "note": "The player's client id."
         }
       ],
       "note": "Wherever its interface exists, a client shows a chat notice naming the player: in an ally's or an enemy's colour as against its own champion, or a colour of its own where it has none."
@@ -159,7 +159,7 @@
         {
           "name": "champion",
           "type": "u32",
-          "note": "The player's champion, matched against the owner of each champion the client knows."
+          "note": "The player's client id."
         }
       ],
       "note": "Wherever its interface exists, a client shows a chat notice naming the player: in an ally's or an enemy's colour as against its own champion, or a colour of its own where it has none."
@@ -175,7 +175,7 @@
         {
           "name": "champion",
           "type": "u32",
-          "note": "The player's champion, matched against the owner of each champion the client knows."
+          "note": "The player's client id."
         }
       ],
       "note": "Wherever its interface exists, a client shows a chat notice naming the player: in an ally's or an enemy's colour as against its own champion, or a colour of its own where it has none."
@@ -207,7 +207,7 @@
         {
           "name": "champion",
           "type": "u32",
-          "note": "The player's champion, matched against the owner of each champion the client knows."
+          "note": "The player's client id, which names the player in the notice."
         }
       ],
       "note": "Wherever its interface exists, a client shows a chat notice naming the player."
@@ -223,7 +223,7 @@
         {
           "name": "champion",
           "type": "u32",
-          "note": "The player's champion, matched against the owner of each champion the client knows."
+          "note": "The player's client id, which names the player in the notice."
         }
       ],
       "note": "Wherever its interface exists, a client shows a chat notice naming the player."
@@ -239,7 +239,7 @@
         {
           "name": "champion",
           "type": "u32",
-          "note": "The player's champion, matched against the owner of each champion the client knows."
+          "note": "The player's client id, which names the player in the notice."
         }
       ],
       "note": "Wherever its interface exists, a client shows a chat notice naming the player."
@@ -255,7 +255,7 @@
         {
           "name": "champion",
           "type": "u32",
-          "note": "The player's champion, matched against the owner of each champion the client knows."
+          "note": "The player's client id, which names the player in the notice."
         }
       ],
       "note": "Wherever its interface exists, a client shows a chat notice naming the player."
@@ -271,7 +271,7 @@
         {
           "name": "champion",
           "type": "u32",
-          "note": "The player's champion, matched against the owner of each champion the client knows."
+          "note": "The player's client id, which names the player in the notice."
         }
       ],
       "note": "Wherever its interface exists, a client shows a chat notice naming the player."
@@ -303,10 +303,10 @@
         {
           "name": "clientId",
           "type": "u32",
-          "note": "The player's client id, matched against the client id CreateChampion gave each champion the client knows."
+          "note": "The player's client id, which names the player in the notice."
         }
       ],
-      "note": "A client shows a chat notice naming the player that client id belongs to, whenever its interface exists: coloured for whether that player is on its own side where it has a champion of its own and is not watching the match, and otherwise in that player's side's colour."
+      "note": "Wherever its interface exists, a client shows a chat notice naming the player."
     },
     {
       "from": "1.0.0.128",
@@ -319,7 +319,7 @@
         {
           "name": "champion",
           "type": "u32",
-          "note": "The player's champion."
+          "note": "The player's client id, which names the player in the notice."
         }
       ],
       "note": "Wherever its interface exists, a client shows a chat notice naming the player."
@@ -350,11 +350,10 @@
       "fields": [
         {
           "name": "champion",
-          "type": "u32",
-          "note": "The player's champion."
+          "type": "u32"
         }
       ],
-      "note": "A client shows a chat notice naming the player in their side's colour, and nothing where player names no champion it knows, names its own champion, or the match is not under way."
+      "note": "A client shows a chat notice naming the player."
     },
     {
       "from": "1.0.0.134",
@@ -366,8 +365,7 @@
       "fields": [
         {
           "name": "champion",
-          "type": "u32",
-          "note": "The player's champion."
+          "type": "u32"
         },
         {
           "name": "flags",
@@ -388,7 +386,7 @@
           "note": "Who is told."
         }
       ],
-      "note": "A client shows a chat notice naming the player in their side's colour, and nothing where player names no champion it knows, names its own champion, or the match is not under way."
+      "note": "A client shows a chat notice naming the player."
     },
     {
       "from": "1.0.0.135",
@@ -400,8 +398,7 @@
       "fields": [
         {
           "name": "champion",
-          "type": "u32",
-          "note": "The player's champion."
+          "type": "u32"
         },
         {
           "name": "flags",
@@ -422,7 +419,7 @@
           "note": "Who is told."
         }
       ],
-      "note": "A client shows a chat notice naming the player in their side's colour, and nothing where player names no champion it knows, names its own champion, or the match is not under way."
+      "note": "A client shows a chat notice naming the player."
     },
     {
       "from": "1.0.0.136",
@@ -434,8 +431,7 @@
       "fields": [
         {
           "name": "champion",
-          "type": "u32",
-          "note": "The player's champion."
+          "type": "u32"
         },
         {
           "name": "flags",
@@ -456,7 +452,7 @@
           "note": "Who is told."
         }
       ],
-      "note": "A client shows a chat notice naming the player in their side's colour, and nothing where player names no champion it knows, names its own champion, or the match is not under way."
+      "note": "A client shows a chat notice naming the player."
     },
     {
       "from": "1.0.0.138",
@@ -468,8 +464,7 @@
       "fields": [
         {
           "name": "champion",
-          "type": "u32",
-          "note": "The player's champion."
+          "type": "u32"
         },
         {
           "name": "flags",
@@ -490,7 +485,7 @@
           "note": "Who is told."
         }
       ],
-      "note": "A client shows a chat notice naming the player in their side's colour, and nothing where player names no champion it knows, names its own champion, or the match is not under way."
+      "note": "A client shows a chat notice naming the player."
     },
     {
       "from": "1.0.0.139",

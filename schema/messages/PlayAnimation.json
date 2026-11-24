@@ -111,12 +111,12 @@
             {
               "name": "fadeOthers",
               "width": 1,
-              "note": "Set to freeze the animations already playing and fade them to nothing over the blend time. They are not removed."
+              "note": "Set to fade the animations already playing to nothing."
             },
             {
               "name": "freezeOthers",
               "width": 1,
-              "note": "Set to freeze the animations already playing, fade them out over the blend time, then remove them."
+              "note": "Set to freeze the animations already playing, then remove them."
             },
             {
               "name": "dropOthers",
@@ -154,7 +154,7 @@
           "note": "The animation's name, ended by a zero byte. Nothing plays for a name the unit does not have."
         }
       ],
-      "note": "Every play blends in over a blend time of 0.2 seconds. Without loop or holdLastFrame, an animation that ends is removed, except that where it was the unit's only animation and the unit has an idle, a client fades back to the idle, looping. No start point is carried: the animation starts from its beginning. A unit whose animation has been locked ignores the message."
+      "note": "Every play blends in over a blend time of 0.2 seconds. Without loop or holdLastFrame, an animation that ends is removed, except that where it was the unit's only animation and the unit has an idle, a client fades back to the idle, looping. No start point is carried."
     },
     {
       "from": "0.9.25.24",
@@ -434,18 +434,17 @@
             },
             {
               "name": "fadeAtEnd",
-              "width": 1,
-              "note": "Only where loop is clear: set to start fading the animation out once its time left is at or below the blend time."
+              "width": 1
             },
             {
               "name": "syncPhase",
               "width": 1,
-              "note": "Only together with loop: where an animation already playing on the unit is the same one, the new one starts at that animation's current fraction of its length, where that fraction lies strictly between 0 and 1."
+              "note": "Together with fadeOthers, where the same animation already plays on the unit, or with freezeOthers, where the same animation plays or, with loop set, any animation does: the new one starts at that animation's fraction of its length."
             },
             {
               "name": "noFadeIn",
               "width": 1,
-              "note": "Set to show the animation at full weight at once, with no blend in. Animations that fadeOthers or freezeOthers fade out then vanish at once."
+              "note": "It has no effect; a server writes zero."
             },
             {
               "name": "unused",
@@ -602,12 +601,11 @@
             {
               "name": "locked",
               "width": 1,
-              "note": "Set to lock the unit's animation: once the animation plays, a client refuses every later animation played on the unit, unless the unit's own character data opts out. A client applies the lock only where one of its own settings is on."
+              "note": "Set to lock the unit's animation. A client applies the lock only where one of its own settings is on."
             },
             {
               "name": "fadeAtEnd",
-              "width": 1,
-              "note": "Only where loop is clear: set to start fading the animation out once its time left is at or below the blend time."
+              "width": 1
             },
             {
               "name": "syncPhase",
@@ -616,8 +614,7 @@
             },
             {
               "name": "noFadeIn",
-              "width": 1,
-              "note": "Set to show the animation at full weight at once, with no blend in. Animations that fadeOthers or freezeOthers fade out then vanish at once."
+              "width": 1
             },
             {
               "name": "unused",
@@ -640,7 +637,7 @@
           "note": "The animation's name, ended by a zero byte. Nothing plays for a name the unit does not have."
         }
       ],
-      "note": "Every play blends in over a blend time of 0.2 seconds unless noFadeIn is set. Without loop or holdLastFrame, an animation that ends is removed, except that where it was the unit's only animation and the unit has an idle, a client fades back to the idle, looping. No start point is carried: the animation starts from its beginning. A unit whose animation has been locked ignores the message."
+      "note": "Without loop or holdLastFrame, an animation that ends is removed, except that where it was the unit's only animation and the unit has an idle, a client fades back to the idle, looping. No start point is carried. A unit whose animation has been locked ignores the message."
     },
     {
       "from": "1.0.0.86",
@@ -783,8 +780,7 @@
             },
             {
               "name": "syncPhase",
-              "width": 1,
-              "note": "Only together with loop: where an animation already playing on the unit is the same one, the new one starts at that animation's current fraction of its length, where that fraction lies strictly between 0 and 1."
+              "width": 1
             },
             {
               "name": "noFadeIn",
@@ -1118,7 +1114,7 @@
             {
               "name": "locked",
               "width": 1,
-              "note": "Set to lock the unit's animation: once the animation plays, a client refuses every later animation played on the unit, unless the unit's own character data opts out. A client applies the lock only where one of its own settings is on."
+              "note": "Set to lock the unit's animation. A client applies the lock only where one of its own settings is on."
             },
             {
               "name": "fadeAtEnd",
@@ -1204,7 +1200,7 @@
             {
               "name": "locked",
               "width": 1,
-              "note": "Set to lock the unit's animation: once the animation plays, a client refuses every later animation played on the unit, unless the unit's own character data opts out. A client applies the lock only where one of its own settings is on."
+              "note": "Set to lock the unit's animation. A client applies the lock only where one of its own settings is on."
             },
             {
               "name": "fadeAtEnd",
@@ -1290,7 +1286,7 @@
             {
               "name": "locked",
               "width": 1,
-              "note": "Set to lock the unit's animation: once the animation plays, a client refuses every later animation played on the unit, unless the unit's own character data opts out. A client applies the lock only where one of its own settings is on."
+              "note": "Set to lock the unit's animation. A client applies the lock only where one of its own settings is on."
             },
             {
               "name": "fadeAtEnd",
@@ -1376,7 +1372,7 @@
             {
               "name": "locked",
               "width": 1,
-              "note": "Set to lock the unit's animation: once the animation plays, a client refuses every later animation played on the unit, unless the unit's own character data opts out. A client applies the lock only where one of its own settings is on."
+              "note": "Set to lock the unit's animation. A client applies the lock only where one of its own settings is on."
             },
             {
               "name": "fadeAtEnd",
@@ -1462,7 +1458,7 @@
             {
               "name": "locked",
               "width": 1,
-              "note": "Set to lock the unit's animation: once the animation plays, a client refuses every later animation played on the unit, unless the unit's own character data opts out. A client applies the lock only where one of its own settings is on."
+              "note": "Set to lock the unit's animation. A client applies the lock only where one of its own settings is on."
             },
             {
               "name": "fadeAtEnd",
@@ -1628,8 +1624,7 @@
             },
             {
               "name": "locked",
-              "width": 1,
-              "note": "Set where the unit ignores this message while the animation plays."
+              "width": 1
             },
             {
               "name": "noRestart",
@@ -1638,8 +1633,7 @@
             },
             {
               "name": "noFadeIn",
-              "width": 1,
-              "note": "The switch is instant, with no blend; only where the animation starts at once rather than queued."
+              "width": 1
             },
             {
               "name": "jumpToEnd",
@@ -1664,10 +1658,10 @@
           "type": "string",
           "encoding": "utf8",
           "size": "terminated",
-          "note": "The animation's name, ended by a zero byte, the two taking at most 64 bytes. Nothing plays for a name the unit does not have."
+          "note": "The animation's name, ended by a zero byte. Nothing plays for a name the unit does not have."
         }
       ],
-      "note": "A unit playing a locked animation ignores the message. A client stops any emote playing first, and plays at normal speed."
+      "note": "A unit whose animation has been locked ignores the message."
     },
     {
       "from": "1.0.0.132",
@@ -1826,10 +1820,10 @@
           "type": "string",
           "encoding": "utf8",
           "size": "terminated",
-          "note": "The animation's name, ended by a zero byte, the two taking at most 64 bytes. Nothing plays for a name the unit does not have."
+          "note": "The animation's name. Nothing plays for a name the unit does not have."
         }
       ],
-      "note": "A unit playing a locked animation ignores the message. A client stops any emote playing first, and plays at normal speed."
+      "note": "A unit playing a locked animation ignores the message. A client plays it at normal speed."
     },
     {
       "from": "1.0.0.136",
@@ -1907,10 +1901,10 @@
           "type": "string",
           "encoding": "utf8",
           "size": "terminated",
-          "note": "The animation's name, ended by a zero byte, the two taking at most 64 bytes. Nothing plays for a name the unit does not have."
+          "note": "The animation's name. Nothing plays for a name the unit does not have."
         }
       ],
-      "note": "A unit playing a locked animation ignores the message. A client stops any emote playing first, and plays at normal speed."
+      "note": "A unit playing a locked animation ignores the message. A client plays it at normal speed."
     },
     {
       "from": "1.0.0.138",
@@ -1988,10 +1982,10 @@
           "type": "string",
           "encoding": "utf8",
           "size": "terminated",
-          "note": "The animation's name, ended by a zero byte, the two taking at most 64 bytes. Nothing plays for a name the unit does not have."
+          "note": "The animation's name. Nothing plays for a name the unit does not have."
         }
       ],
-      "note": "A unit playing a locked animation ignores the message. A client stops any emote playing first, and plays at normal speed."
+      "note": "A unit playing a locked animation ignores the message. A client plays it at normal speed."
     },
     {
       "from": "1.0.0.139",
@@ -2069,10 +2063,10 @@
           "type": "string",
           "encoding": "utf8",
           "size": "terminated",
-          "note": "The animation's name, ended by a zero byte, the two taking at most 64 bytes. Nothing plays for a name the unit does not have."
+          "note": "The animation's name. Nothing plays for a name the unit does not have."
         }
       ],
-      "note": "A unit playing a locked animation ignores the message. A client stops any emote playing first, and plays at normal speed."
+      "note": "A unit playing a locked animation ignores the message. A client plays it at normal speed."
     },
     {
       "from": "1.0.0.140",
@@ -2234,7 +2228,7 @@
           "note": "The animation's name, ended by a zero byte. Nothing plays for a name the unit does not have."
         }
       ],
-      "note": "A unit playing a locked animation ignores the message. A client stops any emote playing first, and plays at normal speed."
+      "note": "A unit playing a locked animation ignores the message. A client plays it at normal speed."
     },
     {
       "from": "1.0.0.144",
@@ -2315,91 +2309,10 @@
           "note": "The animation's name, ended by a zero byte. Nothing plays for a name the unit does not have."
         }
       ],
-      "note": "A unit playing a locked animation ignores the message. A client stops any emote playing first, and plays at normal speed."
+      "note": "A unit playing a locked animation ignores the message. A client plays it at normal speed."
     },
     {
       "from": "1.0.0.150",
-      "until": "1.0.0.151",
-      "channel": "events",
-      "command": 173,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "flags",
-          "type": "bits",
-          "size": 4,
-          "bits": [
-            {
-              "name": "loop",
-              "width": 1,
-              "note": "Set to loop it."
-            },
-            {
-              "name": "holdLastFrame",
-              "width": 1,
-              "note": "Set to hold its last frame once it ends."
-            },
-            {
-              "name": "queue",
-              "width": 1,
-              "note": "Set to play it once the animation playing ends, rather than now."
-            },
-            {
-              "name": "queueLast",
-              "width": 1,
-              "note": "Set to play it after every animation already waiting."
-            },
-            {
-              "name": "replaceable",
-              "width": 1,
-              "note": "Set to let the next animation queued after it start at once."
-            },
-            {
-              "name": "locked",
-              "width": 1,
-              "note": "Set where the unit ignores this message while the animation plays."
-            },
-            {
-              "name": "noRestart",
-              "width": 1,
-              "note": "Where the same animation already plays on the unit, a client keeps it and starts nothing new."
-            },
-            {
-              "name": "noFadeIn",
-              "width": 1,
-              "note": "The switch is instant, with no blend; only where the animation starts at once rather than queued."
-            },
-            {
-              "name": "jumpToEnd",
-              "width": 1,
-              "note": "The animation is held at its end: without loop or holdLastFrame it ends at once, and with holdLastFrame it shows its last frame."
-            },
-            {
-              "name": "unused",
-              "width": 23,
-              "note": "Unused; a server writes zero."
-            }
-          ],
-          "note": "How the animation plays."
-        },
-        {
-          "name": "scaleTime",
-          "type": "f32",
-          "note": "Where above zero, how many seconds the animation is stretched or squeezed to last."
-        },
-        {
-          "name": "animation",
-          "type": "string",
-          "encoding": "utf8",
-          "size": "terminated",
-          "note": "The animation's name, ended by a zero byte. Nothing plays for a name the unit does not have."
-        }
-      ],
-      "note": "A unit playing a locked animation ignores the message. A client stops any emote playing first, and plays at normal speed."
-    },
-    {
-      "from": "1.0.0.151",
       "until": "1.0.0.152",
       "channel": "events",
       "command": 173,
@@ -2474,7 +2387,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": "terminated",
-          "note": "The animation's name, ended by a zero byte, the two taking at most 64 bytes. Nothing plays for a name the unit does not have."
+          "note": "The animation's name, ended by a zero byte. Nothing plays for a name the unit does not have."
         }
       ],
       "note": "A unit playing a locked animation ignores the message. A client stops any emote playing first, and plays at normal speed."
@@ -2560,7 +2473,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": "terminated",
-          "note": "The animation's name, ended by a zero byte, the two taking at most 64 bytes. Nothing plays for a name the unit does not have."
+          "note": "The animation's name, ended by a zero byte. Nothing plays for a name the unit does not have."
         }
       ],
       "note": "A unit playing a locked animation ignores the message. A client stops any emote playing first, and plays at normal speed."
@@ -2666,13 +2579,12 @@
           "bits": [
             {
               "name": "locked",
-              "width": 1,
-              "note": "Set where no other animation can fade this one out."
+              "width": 1
             },
             {
               "name": "lockedFromIdle",
               "width": 1,
-              "note": "Set where idle animations cannot fade it out. It has no effect where locked is set."
+              "note": "Set where idle animations cannot fade it out."
             },
             {
               "name": "noBlend",
@@ -2682,7 +2594,7 @@
             {
               "name": "holdLastFrame",
               "width": 1,
-              "note": "Where a non-looping animation ends, it stays on its last frame. Whether an animation loops comes from the animation's own data."
+              "note": "Set to hold its last frame once it ends."
             },
             {
               "name": "keepEmotes",
@@ -2832,12 +2744,12 @@
         {
           "name": "scaleTime",
           "type": "f32",
-          "note": "A scale on how long it plays. A client ignores it."
+          "note": "A scale on how long it plays."
         },
         {
           "name": "startProgress",
           "type": "f32",
-          "note": "How far into the animation it starts. A client ignores it."
+          "note": "How far into the animation it starts."
         },
         {
           "name": "animation",
@@ -2917,72 +2829,6 @@
     },
     {
       "from": "3.14.0.700",
-      "until": "3.15.0.244",
-      "channel": "events",
-      "command": 176,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "flags",
-          "type": "bits",
-          "size": 4,
-          "bits": [
-            {
-              "name": "locked",
-              "width": 1,
-              "note": "Set where no other animation can fade this one out."
-            },
-            {
-              "name": "lockedFromIdle",
-              "width": 1,
-              "note": "Set where idle animations cannot fade it out. It has no effect where locked is set."
-            },
-            {
-              "name": "noBlend",
-              "width": 1,
-              "note": "Set to switch to it at once rather than blend in."
-            },
-            {
-              "name": "holdLastFrame",
-              "width": 1,
-              "note": "Where a non-looping animation ends, it stays on its last frame. Whether an animation loops comes from the animation's own data."
-            },
-            {
-              "name": "keepEmotes",
-              "width": 1,
-              "note": "Set to let an emote playing go on; clear stops it."
-            },
-            {
-              "name": "unused",
-              "width": 27,
-              "note": "Unused; a server writes zero."
-            }
-          ],
-          "note": "How the animation plays."
-        },
-        {
-          "name": "scaleTime",
-          "type": "f32",
-          "note": "A scale on how long it plays. A client ignores it."
-        },
-        {
-          "name": "startProgress",
-          "type": "f32",
-          "note": "How far into the animation it starts. A client ignores it."
-        },
-        {
-          "name": "animation",
-          "type": "string",
-          "encoding": "utf8",
-          "size": "terminated",
-          "note": "The animation's name, ended by a zero byte, the two taking at most 64 bytes. Nothing plays for a name the unit does not have."
-        }
-      ],
-      "note": "A unit holding a locked animation ignores the message."
-    },
-    {
-      "from": "3.15.0.244",
       "until": "4.1.0.171",
       "channel": "events",
       "command": 176,
@@ -3045,7 +2891,7 @@
           "note": "The animation's name, ended by a zero byte, the two taking at most 64 bytes. Nothing plays for a name the unit does not have."
         }
       ],
-      "note": "scaleTime and startProgress are applied only where above zero. A unit holding a locked animation ignores the message. An animated building plays at normal speed, and keepEmotes has no effect on it."
+      "note": "A unit holding a locked animation ignores the message."
     },
     {
       "from": "4.1.0.171",
@@ -3174,84 +3020,13 @@
           "type": "string",
           "encoding": "utf8",
           "size": "terminated",
-          "note": "The animation's name, ended by a zero byte, the two taking at most 64 bytes. Nothing plays for a name the unit does not have."
+          "note": "The animation's name, ended by a zero byte. Nothing plays for a name the unit does not have."
         }
       ],
       "note": "scaleTime and startProgress are applied only where above zero. A unit holding a locked animation ignores the message. An animated building plays at normal speed, and keepEmotes has no effect on it."
     },
     {
       "from": "4.13.0.265",
-      "until": "4.17.0.233",
-      "channel": "events",
-      "command": 176,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "flags",
-          "type": "bits",
-          "size": 4,
-          "bits": [
-            {
-              "name": "locked",
-              "width": 1,
-              "note": "Set where no other animation can fade this one out."
-            },
-            {
-              "name": "lockedFromIdle",
-              "width": 1,
-              "note": "Set where idle animations cannot fade it out. It has no effect where locked is set."
-            },
-            {
-              "name": "noBlend",
-              "width": 1,
-              "note": "Set to switch to it at once rather than blend in."
-            },
-            {
-              "name": "holdLastFrame",
-              "width": 1,
-              "note": "Where a non-looping animation ends, it stays on its last frame. Whether an animation loops comes from the animation's own data."
-            },
-            {
-              "name": "keepEmotes",
-              "width": 1,
-              "note": "Set to let an emote playing go on; clear stops it."
-            },
-            {
-              "name": "unused",
-              "width": 27,
-              "note": "Unused; a server writes zero."
-            }
-          ],
-          "note": "How the animation plays."
-        },
-        {
-          "name": "scaleTime",
-          "type": "f32",
-          "note": "A scale on how long it plays."
-        },
-        {
-          "name": "startProgress",
-          "type": "f32",
-          "note": "How far into the animation it starts."
-        },
-        {
-          "name": "speed",
-          "type": "f32",
-          "note": "How fast it plays."
-        },
-        {
-          "name": "animation",
-          "type": "string",
-          "encoding": "utf8",
-          "size": "terminated",
-          "note": "The animation's name, ended by a zero byte, the two taking at most 64 bytes. Nothing plays for a name the unit does not have."
-        }
-      ],
-      "note": "scaleTime and startProgress are applied only where above zero. A unit holding a locked animation ignores the message. An animated building plays at normal speed, and keepEmotes has no effect on it."
-    },
-    {
-      "from": "4.17.0.233",
       "until": "4.18.0.271",
       "channel": "events",
       "command": 176,

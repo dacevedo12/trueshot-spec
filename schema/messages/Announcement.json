@@ -95,7 +95,7 @@
         {
           "name": "announcement",
           "type": "u32",
-          "note": "Which of the client's 28 announcements, 0 to 27. The text of each is the client's own and is not recorded here."
+          "note": "Which of the client's announcements. The text of each is the client's own and is not recorded here. -1 shows a text that is none of the 28, and 5, 6, 20, 21 and 25 show only a placeholder."
         },
         {
           "name": "unit",
@@ -115,7 +115,7 @@
         {
           "name": "announcement",
           "type": "u32",
-          "note": "Which of the client's 28 announcements, 0 to 27. The text of each is the client's own and is not recorded here."
+          "note": "Which of the client's announcements. The text of each is the client's own and is not recorded here. -1 shows a text that is none of the 28, and 5, 6, 20, 21 and 25 show only a placeholder."
         },
         {
           "name": "unit",
@@ -135,7 +135,7 @@
         {
           "name": "announcement",
           "type": "u32",
-          "note": "Which of the client's 28 announcements, 0 to 27. The text of each is the client's own and is not recorded here."
+          "note": "Which of the client's announcements. The text of each is the client's own and is not recorded here. -1 shows a text that is none of the 28, and 5, 6, 20, 21 and 25 show only a placeholder."
         },
         {
           "name": "unit",

@@ -65,7 +65,7 @@
           "name": "runes",
           "type": "array",
           "count": 30,
-          "note": "The runes set before the match, thirty places.",
+          "note": "The runes set before the match.",
           "items": {
             "name": "rune",
             "type": "u32",
@@ -1034,7 +1034,7 @@
     },
     {
       "from": "1.0.0.127",
-      "until": "1.0.0.128",
+      "until": "1.0.0.132",
       "channel": "events",
       "command": 44,
       "direction": "serverToClient",
@@ -1060,55 +1060,6 @@
           "items": {
             "name": "summoner",
             "type": "u32",
-            "note": "One spell. A zero leaves its slot as it was."
-          }
-        },
-        {
-          "name": "choices",
-          "type": "array",
-          "count": 80,
-          "note": "The choices made alongside them, 400 bytes that a client keeps as one block.",
-          "items": {
-            "name": "choice",
-            "type": "struct",
-            "struct": "Choice"
-          }
-        },
-        {
-          "name": "level",
-          "type": "u8",
-          "note": "The player's account level."
-        }
-      ]
-    },
-    {
-      "from": "1.0.0.128",
-      "until": "1.0.0.132",
-      "channel": "events",
-      "command": 44,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "note": "A client takes it whenever it arrives, for a champion it holds; of it, a client applies only the two summoner slots.",
-      "fields": [
-        {
-          "name": "runes",
-          "type": "array",
-          "count": 30,
-          "note": "The runes set before the match, thirty places in runs of nine, nine, nine and three. A place holds zero where nothing was set.",
-          "items": {
-            "name": "rune",
-            "type": "u32",
-            "note": "One rune, by the number the client knows it as."
-          }
-        },
-        {
-          "name": "summoners",
-          "type": "array",
-          "count": 2,
-          "note": "The spells in the champion's summoner slots, by the numbers their names give.",
-          "items": {
-            "name": "summoner",
-            "type": "u32",
             "note": "One spell."
           }
         },
@@ -1116,7 +1067,7 @@
           "name": "choices",
           "type": "array",
           "count": 80,
-          "note": "The choices made alongside them, one place each, and how far each was taken. A place stands empty where nothing was chosen.",
+          "note": "The choices made alongside them.",
           "items": {
             "name": "choice",
             "type": "struct",
@@ -1284,7 +1235,6 @@
       "command": 44,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A server sends one for every champion at spawning, between SpawnStart and SpawnEnd.",
       "fields": [
         {
           "name": "runes",
@@ -1328,110 +1278,11 @@
     },
     {
       "from": "1.0.0.144",
-      "until": "1.0.0.147",
-      "channel": "events",
-      "command": 41,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "note": "A client's shop is set up by the Loadout of its own champion: until that arrives the shop opens empty, with no items, no suggested items and no builds, and is drawn at a size that does not fit the screen. A server sends one for every champion at spawning, between SpawnStart and SpawnEnd.",
-      "fields": [
-        {
-          "name": "runes",
-          "type": "array",
-          "count": 30,
-          "note": "The runes set before the match, thirty places in runs of nine, nine, nine and three. A place holds zero where nothing was set.",
-          "items": {
-            "name": "rune",
-            "type": "u32",
-            "note": "One rune, by the number the client knows it as."
-          }
-        },
-        {
-          "name": "summoners",
-          "type": "array",
-          "count": 2,
-          "note": "The spells in the champion's summoner slots, by the numbers their names give.",
-          "items": {
-            "name": "summoner",
-            "type": "u32",
-            "note": "One spell."
-          }
-        },
-        {
-          "name": "choices",
-          "type": "array",
-          "count": 80,
-          "note": "The choices made alongside them, one place each, and how far each was taken. A place stands empty where nothing was chosen.",
-          "items": {
-            "name": "choice",
-            "type": "struct",
-            "struct": "Choice"
-          }
-        },
-        {
-          "name": "level",
-          "type": "u8",
-          "note": "The player's account level."
-        }
-      ]
-    },
-    {
-      "from": "1.0.0.147",
-      "until": "1.0.0.148",
-      "channel": "events",
-      "command": 41,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "note": "A server sends one for every champion at spawning, between SpawnStart and SpawnEnd.",
-      "fields": [
-        {
-          "name": "runes",
-          "type": "array",
-          "count": 30,
-          "note": "The runes set before the match, thirty places in runs of nine, nine, nine and three. A place holds zero where nothing was set.",
-          "items": {
-            "name": "rune",
-            "type": "u32",
-            "note": "One rune, by the number the client knows it as."
-          }
-        },
-        {
-          "name": "summoners",
-          "type": "array",
-          "count": 2,
-          "note": "The spells in the champion's summoner slots, by the numbers their names give.",
-          "items": {
-            "name": "summoner",
-            "type": "u32",
-            "note": "One spell."
-          }
-        },
-        {
-          "name": "choices",
-          "type": "array",
-          "count": 80,
-          "note": "The choices made alongside them, one place each, and how far each was taken. A place stands empty where nothing was chosen.",
-          "items": {
-            "name": "choice",
-            "type": "struct",
-            "struct": "Choice"
-          }
-        },
-        {
-          "name": "level",
-          "type": "u8",
-          "note": "The player's account level."
-        }
-      ]
-    },
-    {
-      "from": "1.0.0.148",
       "until": "1.0.0.149",
       "channel": "events",
       "command": 41,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client's shop is set up by the Loadout of its own champion: until that arrives the shop opens empty, with no items, no suggested items and no builds, and is drawn at a size that does not fit the screen. A server sends one for every champion at spawning, between SpawnStart and SpawnEnd.",
       "fields": [
         {
           "name": "runes",

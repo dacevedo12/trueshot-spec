@@ -129,8 +129,7 @@
           "type": "u8",
           "note": "Padding after flags. Unused; a server writes zero."
         }
-      ],
-      "note": "A client accepts it on a champion only, and it has no effect."
+      ]
     },
     {
       "from": "1.0.0.150",
@@ -257,8 +256,7 @@
           "type": "u8",
           "note": "Padding after flags. Unused; a server writes zero."
         }
-      ],
-      "note": "A client accepts it on a champion only, and it has no effect."
+      ]
     },
     {
       "from": "3.03.0.198",

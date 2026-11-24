@@ -357,7 +357,7 @@
         {
           "name": "kind",
           "type": "u8",
-          "note": "What sort of unit it is, from 0 to 3; a client spawns nothing for any other value."
+          "note": "What sort of unit it is, from 0 to 3."
         },
         {
           "name": "damageBonus",
@@ -451,7 +451,7 @@
           "note": "What is added to the health it holds."
         }
       ],
-      "note": "It arrives on its own and also inside EnterSight. The header names the barracks sending the unit out: only a barracks acts on the message, and unit names the new unit."
+      "note": "The header names the barracks sending the unit out: only a barracks acts on the message, and unit names the new unit."
     },
     {
       "from": "1.0.0.132",
@@ -681,7 +681,7 @@
           "note": "The level it starts at."
         }
       ],
-      "note": "It arrives on its own and also inside EnterSight. The header names the unit this is about."
+      "note": "It arrives on its own and also inside EnterSight."
     },
     {
       "from": "4.20.0.315",

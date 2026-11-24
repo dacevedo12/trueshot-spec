@@ -144,7 +144,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": 64,
-          "note": "The event's name. A client sends no VoiceEventDone for a name that names no event it holds."
+          "note": "The event's name."
         },
         {
           "name": "callback",
@@ -166,7 +166,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": 64,
-          "note": "The event's name. A client sends no VoiceEventDone for a name that names no event it holds."
+          "note": "The event's name."
         },
         {
           "name": "callback",
@@ -187,7 +187,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": 64,
-          "note": "The event's name. A client sends no VoiceEventDone for a name that names no event it holds."
+          "note": "The event's name."
         },
         {
           "name": "callback",
@@ -208,7 +208,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": 64,
-          "note": "The event's folder. It has no effect where kind is 1."
+          "note": "The event's folder."
         },
         {
           "name": "event",
@@ -220,7 +220,7 @@
         {
           "name": "callback",
           "type": "u8",
-          "note": "Nonzero asks the client to send VoiceEventDone once the event has played. A client sends it at once where it cannot play the event, whatever this holds."
+          "note": "Bit 0 set asks the client to send VoiceEventDone once the event has finished playing."
         },
         {
           "name": "handle",
@@ -242,7 +242,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": 64,
-          "note": "The event's folder. It has no effect where kind is 1."
+          "note": "The event's folder."
         },
         {
           "name": "event",
@@ -254,7 +254,7 @@
         {
           "name": "callback",
           "type": "u8",
-          "note": "Nonzero asks the client to send VoiceEventDone once the event has played. A client sends it at once where it cannot play the event, whatever this holds."
+          "note": "Bit 0 set asks the client to send VoiceEventDone once the event has finished playing."
         },
         {
           "name": "handle",
@@ -276,7 +276,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": 64,
-          "note": "The event's folder. It has no effect where kind is 1."
+          "note": "The event's folder."
         },
         {
           "name": "event",
@@ -288,7 +288,7 @@
         {
           "name": "callback",
           "type": "u8",
-          "note": "Nonzero asks the client to send VoiceEventDone once the event has played. A client sends it at once where it cannot play the event, whatever this holds."
+          "note": "Bit 0 set asks the client to send VoiceEventDone once the event has finished playing."
         },
         {
           "name": "handle",
@@ -469,7 +469,7 @@
     },
     {
       "from": "1.0.0.132",
-      "until": "1.0.0.133",
+      "until": "1.0.0.138",
       "channel": "events",
       "command": 126,
       "direction": "serverToClient",
@@ -498,40 +498,6 @@
           "name": "handle",
           "type": "u32",
           "note": "A number a client returns in VoiceEventDone."
-        }
-      ]
-    },
-    {
-      "from": "1.0.0.133",
-      "until": "1.0.0.138",
-      "channel": "events",
-      "command": 126,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "folder",
-          "type": "string",
-          "encoding": "utf8",
-          "size": 64,
-          "note": "The event's folder. It has no effect where kind is 1."
-        },
-        {
-          "name": "event",
-          "type": "string",
-          "encoding": "utf8",
-          "size": 64,
-          "note": "The event's name; for kind 1, the conversation's."
-        },
-        {
-          "name": "callback",
-          "type": "u8",
-          "note": "For kind 0, nonzero asks the client to send VoiceEventDone once the event has played. A client sends it at once where it cannot play the event, whatever this holds."
-        },
-        {
-          "name": "handle",
-          "type": "u32",
-          "note": "For kind 0, a number a client returns in VoiceEventDone; for kind 1, the champion."
         }
       ]
     },

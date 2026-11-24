@@ -217,7 +217,6 @@
       "command": 0,
       "direction": "bidirectional",
       "reliability": "reliable",
-      "note": "A line of chat. A client sends one as its player says something, and shows one a server sends in its chat box.",
       "fields": [
         {
           "name": "speaker",
@@ -227,7 +226,7 @@
         {
           "name": "audience",
           "type": "u32",
-          "note": "1 for the speaker's side alone, which a client shows without a tag; any other value from a server is shown tagged as said to everyone. A client sends 0 where its player began the line with the all-chat prefix, which it leaves out of the text, and 1 otherwise.",
+          "note": "Who the message reaches.",
           "values": {
             "0": {
               "name": "everyone"
@@ -240,14 +239,14 @@
         {
           "name": "textLength",
           "type": "u32",
-          "note": "The length of the text in bytes, without the byte that ends it. Its value changes nothing a client does."
+          "note": "The length of the text in bytes, without the byte that ends it."
         },
         {
           "name": "text",
           "type": "string",
           "size": "textLength",
           "encoding": "utf8",
-          "note": "The line; a client sends at most 127 bytes of it, and reads it up to the zero byte that ends it."
+          "note": "The text, textLength bytes of it."
         },
         {
           "name": "terminator",
@@ -273,7 +272,7 @@
         {
           "name": "netId",
           "type": "u32",
-          "note": "The entity a receiving end attributes the text to where the seat does not name one. Where the seat names a speaker, that is what a receiving end uses instead."
+          "note": "The player's champion a client attributes the text to, wherever it is not 4294967295; there a client attributes the text to the sender's seat instead."
         },
         {
           "name": "localized",
@@ -296,14 +295,14 @@
         {
           "name": "textLength",
           "type": "u32",
-          "note": "The length of the text, counted in bytes and excluding the byte that ends it. A client shows the text to its first zero byte."
+          "note": "The length of the text, counted in bytes and excluding the byte that ends it."
         },
         {
           "name": "text",
           "type": "string",
           "encoding": "utf8",
           "size": "textLength",
-          "note": "The line, at most 127 characters."
+          "note": "The text, textLength bytes of it."
         },
         {
           "name": "terminator",
@@ -329,7 +328,7 @@
         {
           "name": "netId",
           "type": "u32",
-          "note": "The entity a receiving end attributes the text to where the seat does not name one. Where the seat names a speaker, that is what a receiving end uses instead."
+          "note": "The player's champion a client attributes the text to, wherever it is not 4294967295; there a client attributes the text to the sender's seat instead."
         },
         {
           "name": "localized",

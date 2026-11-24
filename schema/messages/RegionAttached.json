@@ -278,7 +278,7 @@
             {
               "name": "unused",
               "width": 30,
-              "note": "Its value has no effect, because a client always sets this bit itself; a server writes zero."
+              "note": "Its value has no effect; a server writes zero."
             }
           ]
         },
@@ -293,7 +293,7 @@
           "note": "Kept with the region; what it names is not recorded. A server sends zero."
         }
       ],
-      "note": "Every message adds a new region, even one matching a region the client holds; each counts down on its own."
+      "note": "Every message adds a region; none renews one the client holds."
     },
     {
       "from": "1.0.0.63",
@@ -352,7 +352,7 @@
             {
               "name": "unused",
               "width": 30,
-              "note": "Its value has no effect, because a client always sets this bit itself; a server writes zero."
+              "note": "Its value has no effect; a server writes zero."
             }
           ]
         },
@@ -563,7 +563,7 @@
             {
               "name": "flag",
               "width": 1,
-              "note": "Set where the region shows the map; a client sets it, and does.second, wherever kind is 2. What else it changes is not recorded."
+              "note": "A client sets it, and does.second, wherever kind is 2."
             },
             {
               "name": "second",
@@ -1137,7 +1137,7 @@
         {
           "name": "marker",
           "type": "u32",
-          "note": "The region's id, which RegionRemoved names; zero has the client pick one of its own. A region that matches one the client holds in kind, sightRadius, the first three bits of does, extra, otherExtra and unit only renews that one's lifetime; the id is not compared."
+          "note": "The region's id, which RegionRemoved names; zero has the client pick one of its own."
         },
         {
           "name": "does",
@@ -1170,7 +1170,7 @@
         {
           "name": "otherExtra",
           "type": "u32",
-          "note": "A region sent again with the same value is taken as the one already shown; what else it names is not recorded. A server sends zero."
+          "note": "A server sends zero."
         }
       ]
     },
@@ -1404,12 +1404,11 @@
         {
           "name": "kind",
           "type": "u32",
-          "note": "What sort of region it is. Where it is 2, the region belongs to the client clientId names; what other values mean is not recorded."
+          "note": "What sort of region it is."
         },
         {
           "name": "clientId",
-          "type": "u32",
-          "note": "Unused; a client reads nothing here."
+          "type": "u32"
         },
         {
           "name": "sightRadius",
@@ -1605,15 +1604,14 @@
         {
           "name": "extra",
           "type": "u32",
-          "note": "Kept with the region as it stands; what it does is not recorded. A server writes zero."
+          "note": "Kept with the region, and compared in matching a region already held, so a region differing only here is added as a new one. A server writes zero."
         },
         {
           "name": "otherExtra",
           "type": "u32",
           "note": "Kept the same way; a server writes zero."
         }
-      ],
-      "note": "A region matching one the client holds in view, sightRadius, the first three bits of does, marker, sightFrom and unit only gives that one the new lifetime."
+      ]
     },
     {
       "from": "1.0.0.147",
@@ -1651,7 +1649,7 @@
         {
           "name": "marker",
           "type": "u32",
-          "note": "The region's id, which RegionRemoved names; 4294967295 has the client pick one of its own. A region sent again with the same id, kind and radius changes the one held rather than adding another."
+          "note": "The region's id, which RegionRemoved names."
         },
         {
           "name": "does",
@@ -1679,7 +1677,7 @@
         {
           "name": "extra",
           "type": "u32",
-          "note": "Kept with the region as it stands; what it does is not recorded. A server writes zero."
+          "note": "Kept with the region, and compared in matching a region already held, so a region differing only here is added as a new one. A server writes zero."
         },
         {
           "name": "otherExtra",
@@ -1687,7 +1685,7 @@
           "note": "Kept the same way; a server writes zero."
         }
       ],
-      "note": "A region matching one the client holds in view, sightRadius, the first three bits of does, marker, sightFrom and unit only gives that one the new lifetime."
+      "note": "A region matching one the client holds only gives that one the new lifetime."
     },
     {
       "from": "1.0.0.148",
@@ -1753,15 +1751,14 @@
         {
           "name": "extra",
           "type": "u32",
-          "note": "Kept with the region as it stands; what it does is not recorded. A server writes zero."
+          "note": "Kept with the region, and compared in matching a region already held, so a region differing only here is added as a new one. A server writes zero."
         },
         {
           "name": "otherExtra",
           "type": "u32",
           "note": "Kept the same way; a server writes zero."
         }
-      ],
-      "note": "A region matching one the client holds in view, sightRadius, the first three bits of does, marker, sightFrom and unit only gives that one the new lifetime."
+      ]
     },
     {
       "from": "1.0.0.150",
@@ -1878,8 +1875,7 @@
             }
           ]
         }
-      ],
-      "note": "A region matching one the client holds in view, sightRadius, the first three bits of does, marker, sightFrom and unit only gives that one the new lifetime."
+      ]
     },
     {
       "from": "3.01.0.1",
@@ -1952,8 +1948,7 @@
             }
           ]
         }
-      ],
-      "note": "A region matching one the client holds in view, sightRadius, the first three bits of does, marker, sightFrom and unit only gives that one the new lifetime."
+      ]
     },
     {
       "from": "3.03.0.198",
@@ -2040,12 +2035,11 @@
         {
           "name": "kind",
           "type": "u32",
-          "note": "What sort of region it is. Where it is 2, the region belongs to the client clientId names; what other values mean is not recorded."
+          "note": "What sort of region it is."
         },
         {
           "name": "clientId",
-          "type": "u32",
-          "note": "The client the region belongs to where kind is 2. A client takes 4294967294 as 4294967295, no client."
+          "type": "u32"
         },
         {
           "name": "sightRadius",
@@ -2100,8 +2094,7 @@
             }
           ]
         }
-      ],
-      "note": "A region matching one the client holds in view, sightRadius, the first three bits of does, marker, sightFrom and unit only gives that one the new lifetime."
+      ]
     },
     {
       "from": "3.6.0.388",
@@ -2188,12 +2181,11 @@
         {
           "name": "kind",
           "type": "u32",
-          "note": "What sort of region it is. Where it is 2, the region belongs to the client clientId names; what other values mean is not recorded."
+          "note": "What sort of region it is."
         },
         {
           "name": "clientId",
-          "type": "u32",
-          "note": "The client the region belongs to where kind is 2. A client takes 4294967294 as 4294967295, no client."
+          "type": "u32"
         },
         {
           "name": "sightRadius",
@@ -2248,8 +2240,7 @@
             }
           ]
         }
-      ],
-      "note": "A region matching one the client holds in view, sightRadius, the first three bits of does, marker, sightFrom and unit only gives that one the new lifetime."
+      ]
     },
     {
       "from": "3.10.0.237",

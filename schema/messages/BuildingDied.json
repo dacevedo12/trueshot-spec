@@ -34,7 +34,7 @@
           "note": "The unit that destroyed it. Only an inhibitor reads it; a client reads nothing here for any other building."
         }
       ],
-      "note": "A client takes a building it names away four seconds later. An inhibitor stays: a client plays its destruction and raises a game event carrying attacker. A nexus falls with GameEnded."
+      "note": "An inhibitor stays: a client plays its destruction and raises a game event carrying attacker. A nexus falls with GameEnded."
     },
     {
       "from": "0.9.25.24",
@@ -485,7 +485,7 @@
         {
           "name": "lastChampion",
           "type": "u32",
-          "note": "The last champion to have harmed it."
+          "note": "A client reads nothing here."
         }
       ]
     },
@@ -579,13 +579,12 @@
       "fields": [
         {
           "name": "attacker",
-          "type": "u32",
-          "note": "The unit that destroyed it."
+          "type": "u32"
         },
         {
           "name": "lastChampion",
           "type": "u32",
-          "note": "The last champion to have harmed it."
+          "note": "A client does not read it."
         }
       ]
     },
@@ -599,38 +598,17 @@
       "fields": [
         {
           "name": "attacker",
-          "type": "u32",
-          "note": "The unit that destroyed it."
+          "type": "u32"
         },
         {
           "name": "lastChampion",
           "type": "u32",
-          "note": "The last champion to have harmed it."
+          "note": "A client does not read it."
         }
       ]
     },
     {
       "from": "4.17.0.233",
-      "until": "4.18.0.271",
-      "channel": "events",
-      "command": 137,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "attacker",
-          "type": "u32",
-          "note": "A client does not read it."
-        },
-        {
-          "name": "lastChampion",
-          "type": "u32",
-          "note": "A client does not read it."
-        }
-      ]
-    },
-    {
-      "from": "4.18.0.271",
       "until": "4.20.0.315",
       "channel": "events",
       "command": 137,
@@ -640,12 +618,12 @@
         {
           "name": "attacker",
           "type": "u32",
-          "note": "The unit that destroyed it."
+          "note": "A client does not read it."
         },
         {
           "name": "lastChampion",
           "type": "u32",
-          "note": "The last champion to have harmed it."
+          "note": "A client does not read it."
         }
       ]
     },

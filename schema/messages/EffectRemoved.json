@@ -46,26 +46,6 @@
     },
     {
       "from": "1.0.0.97",
-      "until": "1.0.0.99",
-      "channel": "events",
-      "command": 41,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "slot",
-          "type": "u8",
-          "note": "Which slot it sat in."
-        },
-        {
-          "name": "effect",
-          "type": "u32",
-          "note": "Which effect, by the number its name gives, as spec/objects.md works it out."
-        }
-      ]
-    },
-    {
-      "from": "1.0.0.99",
       "until": "1.0.0.103",
       "channel": "events",
       "command": 41,
@@ -75,7 +55,7 @@
         {
           "name": "slot",
           "type": "u8",
-          "note": "Which slot it sat in. A client ignores the message where it is above 31."
+          "note": "Which slot it sat in."
         },
         {
           "name": "effect",
@@ -95,7 +75,7 @@
         {
           "name": "slot",
           "type": "u8",
-          "note": "Which slot it sat in. A client ignores the message where it is above 31."
+          "note": "Which slot it sat in."
         },
         {
           "name": "effect",
@@ -115,7 +95,7 @@
         {
           "name": "slot",
           "type": "u8",
-          "note": "Which slot it sat in. A client ignores the message where it is above 31."
+          "note": "Which slot it sat in."
         },
         {
           "name": "effect",
@@ -155,7 +135,7 @@
         {
           "name": "slot",
           "type": "u8",
-          "note": "Which slot it sat in. A client ignores the message where it is above 31."
+          "note": "Which slot it sat in."
         },
         {
           "name": "effect",
@@ -175,7 +155,7 @@
         {
           "name": "slot",
           "type": "u8",
-          "note": "Which slot it sat in. A client ignores the message where it is above 31."
+          "note": "Which slot it sat in."
         },
         {
           "name": "effect",
@@ -186,26 +166,6 @@
     },
     {
       "from": "1.0.0.119",
-      "until": "1.0.0.121",
-      "channel": "events",
-      "command": 123,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "slot",
-          "type": "u8",
-          "note": "Which slot it sat in. A client ignores the message where it is above 31."
-        },
-        {
-          "name": "effect",
-          "type": "u32",
-          "note": "Which effect, by the number its name gives, as spec/objects.md works it out."
-        }
-      ]
-    },
-    {
-      "from": "1.0.0.121",
       "until": "1.0.0.124",
       "channel": "events",
       "command": 123,
@@ -215,7 +175,7 @@
         {
           "name": "slot",
           "type": "u8",
-          "note": "Which slot it sat in. A client ignores the message where it is above 63."
+          "note": "Which slot it sat in."
         },
         {
           "name": "effect",

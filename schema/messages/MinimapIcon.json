@@ -206,7 +206,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": 64,
-          "note": "The name the client loads the unit's minimap mark under, which it changes only where the name differs from the one it shows. Written out in full and padded with zero bytes to the width above."
+          "note": "The name the client loads the mark under. A client changes nothing where it is the mark already drawn."
         }
       ],
       "note": "A client does nothing unless unit is a unit it holds that can be attacked."
@@ -423,7 +423,7 @@
         {
           "name": "changeBorder",
           "type": "u8",
-          "note": "1 to replace the unit's ring with border, and what it does with borderScript; 0 leaves both, and neither has any effect."
+          "note": "1 to replace the unit's ring with border; any other value leaves it, and border has no effect."
         },
         {
           "name": "border",
@@ -463,7 +463,7 @@
         {
           "name": "changeBorder",
           "type": "u8",
-          "note": "1 to replace the unit's ring with border, and what it does with borderScript; 0 leaves both, and neither has any effect."
+          "note": "1 to replace the unit's ring with border; any other value leaves it, and border has no effect."
         },
         {
           "name": "border",
@@ -557,46 +557,6 @@
     },
     {
       "from": "4.1.0.171",
-      "until": "4.5.0.260",
-      "channel": "events",
-      "command": 215,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "unit",
-          "type": "u32",
-          "note": "The unit this is about."
-        },
-        {
-          "name": "changeIcon",
-          "type": "u8",
-          "note": "1 to replace the unit's minimap icon with icon; 0 leaves it, and icon has no effect."
-        },
-        {
-          "name": "icon",
-          "type": "string",
-          "encoding": "utf8",
-          "size": 64,
-          "note": "The name the client loads the mark under. Written out in full and padded with zero bytes to the width above."
-        },
-        {
-          "name": "changeBorder",
-          "type": "u8",
-          "note": "1 to replace the unit's ring with border; 0 leaves it, and border has no effect."
-        },
-        {
-          "name": "border",
-          "type": "string",
-          "encoding": "utf8",
-          "size": 64,
-          "note": "The name the client loads the ring around the mark under, written and padded as above."
-        }
-      ],
-      "note": "A client does nothing unless unit is a unit it holds that can be attacked."
-    },
-    {
-      "from": "4.5.0.260",
       "until": "4.11.0.386",
       "channel": "events",
       "command": 215,
@@ -623,7 +583,7 @@
         {
           "name": "changeBorder",
           "type": "u8",
-          "note": "1 to replace the unit's ring with border, and what it does with borderScript; 0 leaves both, and neither has any effect."
+          "note": "1 to replace the unit's ring with border; 0 leaves it, and border has no effect."
         },
         {
           "name": "border",
@@ -663,7 +623,7 @@
         {
           "name": "changeBorder",
           "type": "u8",
-          "note": "1 to replace the unit's ring with border, and what it does with borderScript; 0 leaves both, and neither has any effect."
+          "note": "1 to replace the unit's ring with border; 0 leaves it, and border has no effect."
         },
         {
           "name": "border",

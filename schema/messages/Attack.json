@@ -100,12 +100,12 @@
         {
           "name": "target",
           "type": "u32",
-          "note": "The unit swung at. A client throws the swing at it."
+          "note": "The unit swung at."
         },
         {
           "name": "timing",
           "type": "f32",
-          "note": "A shift in time, in seconds, from the moment the message arrives. It moves when the swing lets go and ends, and when the unit may next attack."
+          "note": "A shift in time. It moves when the swing lets go and ends, and when the unit may next attack."
         },
         {
           "name": "missile",
@@ -130,12 +130,12 @@
         {
           "name": "target",
           "type": "u32",
-          "note": "The unit swung at. A client throws the swing at it."
+          "note": "The unit swung at."
         },
         {
           "name": "timing",
           "type": "u8",
-          "note": "A shift in time: the value less 128, in hundredths of a second, from -1.28 to 1.27; 128 shifts nothing. It moves when the swing lets go and ends, and when the unit may next attack."
+          "note": "A shift in time. It moves when the swing lets go and ends, and when the unit may next attack."
         },
         {
           "name": "missile",

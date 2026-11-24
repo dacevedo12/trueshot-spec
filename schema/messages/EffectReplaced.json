@@ -91,36 +91,6 @@
     },
     {
       "from": "1.0.0.97",
-      "until": "1.0.0.99",
-      "channel": "events",
-      "command": 39,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "slot",
-          "type": "u8",
-          "note": "Which of the unit's effect slots."
-        },
-        {
-          "name": "runningFor",
-          "type": "f32",
-          "note": "How long the effect has already run, in seconds."
-        },
-        {
-          "name": "lasts",
-          "type": "f32",
-          "note": "How long it runs in total, in seconds. A client applies a value below zero as given; a server sends zero or more."
-        },
-        {
-          "name": "caster",
-          "type": "u32",
-          "note": "The unit that put it there. Where the client holds no such unit, it leaves the effect with no caster."
-        }
-      ]
-    },
-    {
-      "from": "1.0.0.99",
       "until": "1.0.0.103",
       "channel": "events",
       "command": 39,
@@ -130,7 +100,7 @@
         {
           "name": "slot",
           "type": "u8",
-          "note": "Which of the unit's effect slots. A client ignores the message where it is above 31."
+          "note": "Which of the unit's effect slots."
         },
         {
           "name": "runningFor",
@@ -160,7 +130,7 @@
         {
           "name": "slot",
           "type": "u8",
-          "note": "Which of the unit's effect slots. A client ignores the message where it is above 31."
+          "note": "Which of the unit's effect slots."
         },
         {
           "name": "runningFor",
@@ -190,7 +160,7 @@
         {
           "name": "slot",
           "type": "u8",
-          "note": "Which of the unit's effect slots. A client ignores the message where it is above 31."
+          "note": "Which of the unit's effect slots."
         },
         {
           "name": "runningFor",
@@ -250,7 +220,7 @@
         {
           "name": "slot",
           "type": "u8",
-          "note": "Which of the unit's effect slots. A client ignores the message where it is above 63."
+          "note": "Which of the unit's effect slots."
         },
         {
           "name": "runningFor",
@@ -260,7 +230,7 @@
         {
           "name": "lasts",
           "type": "f32",
-          "note": "How long it runs in total, in seconds. A client applies a value below zero as given; a server sends zero or more."
+          "note": "A client applies a value below zero as given."
         },
         {
           "name": "caster",
@@ -567,8 +537,7 @@
         },
         {
           "name": "lasts",
-          "type": "f32",
-          "note": "How long it runs in total, in seconds."
+          "type": "f32"
         },
         {
           "name": "caster",
@@ -629,8 +598,7 @@
         },
         {
           "name": "lasts",
-          "type": "f32",
-          "note": "How long it runs in total, in seconds."
+          "type": "f32"
         },
         {
           "name": "caster",
@@ -660,8 +628,7 @@
         },
         {
           "name": "lasts",
-          "type": "f32",
-          "note": "How long it runs in total, in seconds."
+          "type": "f32"
         },
         {
           "name": "caster",
@@ -718,7 +685,7 @@
         {
           "name": "runningFor",
           "type": "f32",
-          "note": "How long the effect has already run, in seconds."
+          "note": "How long the effect counts as having run, in seconds."
         },
         {
           "name": "lasts",

@@ -53,9 +53,9 @@ match when a camp is next due with `CampTimer`.
 >
 > `CampCleared` sets no time for the camp to fill again.
 
-<!-- holds from 4.5.0.260 up to 4.21.0.0 -->
+<!-- holds from 4.17.0.233 up to 4.21.0.0 -->
 
-> **In 4.5–4.20**
+> **In 4.17–4.20**
 >
 > `CampCleared` also sets when the camp fills again.
 
@@ -76,16 +76,18 @@ On a map won on score, a server binds each capture point to a unit with
 >
 > A client acts on `TeamScore` once its game screen is up, whatever the mode.
 
-<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
+<!-- holds from 4.4.0.1858 up to 4.18.0.271 -->
 
-> **In 4.1–4.19**
+> **In 4.4–4.17**
 >
 > Everything a client shows of a capture point (who holds it, where it stands,
-> how far it is taken) comes from the unit `CapturePointChanged` binds it to, so a
+> how far it is taken) comes from the unit `CapturePointChanged` binds it to,
+> so a
 > server hands a point over by changing the unit's side and moves it toward
 > capture by changing the unit's resource. A client shows the points and the
 > score on a panel it builds only where the version answer names the mode ODIN,
-> and only once one point is known. Reaching a score ends nothing: the match ends
+> and only once one point is known. Reaching a score ends nothing: the match
+> ends
 > as any match does (see [The match](match.md)).
 
 ## Other map objectives

@@ -46,9 +46,9 @@ A direction is carried as a vector, not as an angle:
 > `FaceDirection` turns the unit at once where bit 0 of its flags is clear, and
 > toward that direction at its own pace where it is set.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 4.4.0.1858 up to 4.21.0.0 -->
 
-> **In 4.1–4.20**
+> **In 4.4–4.20**
 >
 > `FaceDirection` turns the unit over the time it gives where its flags say
 > so, and at once otherwise.
@@ -175,9 +175,9 @@ data for. A compact path takes its origin from the same data (see
 > | 10    | The Twisted Treeline | 7708, 7227          |
 > | 12    | The Howling Abyss    | 6560, 6309          |
 
-<!-- holds from 3.10.0.237 up to 4.1.0.171 -->
+<!-- holds from 3.10.0.237 up to 3.14.0.700 -->
 
-> **In 3.10–3.15**
+> **In 3.10–3.13**
 >
 > A client has no data for map 11.
 
@@ -187,9 +187,9 @@ data for. A compact path takes its origin from the same data (see
 >
 > A client has no data for map 11.
 
-<!-- holds from 4.18.0.271 up to 4.21.0.0 -->
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
 
-> **In 4.18–4.20**
+> **In 4.20**
 >
 > A client also has data for map 11, a second Summoner's Rift, whose paths
 > have their origin at 7358, 7412.

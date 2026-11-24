@@ -82,7 +82,7 @@
           "note": "Nonzero to lock the camera, zero to free it; a client tests the whole byte, so any set bit locks it."
         }
       ],
-      "note": "A client answers at once with CameraLock, returning the state byte as it arrived. While the game holds a forced lock, it keeps the byte and sends it only as that lock lifts."
+      "note": "A client answers at once with CameraLock, returning the state byte as it arrived."
     },
     {
       "from": "1.0.0.82",
@@ -130,7 +130,7 @@
           "note": "Nonzero to lock the camera, zero to free it; a client tests the whole byte, so any set bit locks it."
         }
       ],
-      "note": "A client answers at once with CameraLock, returning the state byte as it arrived. While the game holds a forced lock, it keeps the byte and sends it only as that lock lifts."
+      "note": "A client answers at once with CameraLock, returning the state byte as it arrived."
     },
     {
       "from": "1.0.0.98",
@@ -146,7 +146,7 @@
           "note": "Nonzero to lock the camera, zero to free it; a client tests the whole byte, so any set bit locks it."
         }
       ],
-      "note": "A client answers at once with CameraLock, returning the state byte as it arrived. While the game holds a forced lock, it keeps the byte and sends it only as that lock lifts."
+      "note": "A client answers at once with CameraLock, returning the state byte as it arrived."
     },
     {
       "from": "1.0.0.103",
@@ -162,7 +162,7 @@
           "note": "Nonzero to lock the camera, zero to free it; a client tests the whole byte, so any set bit locks it."
         }
       ],
-      "note": "A client answers at once with CameraLock, returning the state byte as it arrived. While the game holds a forced lock, it keeps the byte and sends it only as that lock lifts."
+      "note": "A client answers at once with CameraLock, returning the state byte as it arrived."
     },
     {
       "from": "1.0.0.107",
@@ -178,7 +178,7 @@
           "note": "Nonzero to lock the camera, zero to free it; a client tests the whole byte, so any set bit locks it."
         }
       ],
-      "note": "A client answers at once with CameraLock, returning the state byte as it arrived. While the game holds a forced lock, it keeps the byte and sends it only as that lock lifts."
+      "note": "A client answers at once with CameraLock, returning the state byte as it arrived."
     },
     {
       "from": "1.0.0.109",
@@ -194,7 +194,7 @@
           "note": "Nonzero to lock the camera, zero to free it; a client tests the whole byte, so any set bit locks it."
         }
       ],
-      "note": "A client answers at once with CameraLock, returning the state byte as it arrived. While the game holds a forced lock, it keeps the byte and sends it only as that lock lifts."
+      "note": "A client answers at once with CameraLock, returning the state byte as it arrived."
     },
     {
       "from": "1.0.0.110",

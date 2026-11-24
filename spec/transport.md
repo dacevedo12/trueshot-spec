@@ -243,9 +243,9 @@ argument.
 > key is the first sixteen bytes it decodes to. An argument of sixteen
 > characters or fewer is the key as it stands.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 4.4.0.1858 up to 4.21.0.0 -->
 
-> **In 4.1–4.20**
+> **In 4.4–4.20**
 >
 > An argument longer than sixteen characters holds the key in base64, and the
 > key is the first sixteen bytes it decodes to.

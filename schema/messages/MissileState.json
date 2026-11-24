@@ -201,7 +201,7 @@
         {
           "name": "unitAtX",
           "type": "f32",
-          "note": "Where to place the casting unit, along one ground axis, in world units, unless the casting itself places it."
+          "note": "Where to place the casting unit, along one ground axis, in world units. A client reads it only for a missile that flies in a line, and moves the casting unit here only where it holds that unit and the unit is out of its sight."
         },
         {
           "name": "unitAtY",
@@ -221,7 +221,7 @@
             {
               "name": "bounced",
               "width": 1,
-              "note": "Set where the missile has bounced. A client tests the whole byte, so any set bit counts. For a missile it already holds that flies in a straight line, a client then starts the line again from the caster's position, raised by the missile's height above the ground, aiming it from where the missile now is."
+              "note": "For a missile that flies in a line. Set, it flies from atX to atZ toward casterAt, raised by casterAt's height above the ground below it; clear, it flies toward endX to endZ along facingX to facingZ. A client tests the whole byte, so any set bit counts."
             },
             {
               "name": "unused",
@@ -361,7 +361,7 @@
           "note": "The casting that threw it."
         }
       ],
-      "note": "A client reads neither a speed nor a part of the missile's life spent. Neither the ground-height rule for endY nor a trail moved on by an age is confirmed. A missile that flies neither in a line nor in a chain, whose cast names units hit, becomes one missile for each. The header names the unit casting, as the casting inside does."
+      "note": "A client reads neither a speed nor a part of the missile's life spent. Whether a client takes the ground's height for endY, or moves a trail on by an age, is not recorded. A missile that flies neither in a line nor in a chain, whose cast names units hit, becomes one missile for each. The header names the unit casting, as the casting inside does."
     },
     {
       "from": "0.9.25.36",
@@ -449,7 +449,7 @@
         {
           "name": "unitAtX",
           "type": "f32",
-          "note": "Where to place the casting unit, along one ground axis, in world units, unless the casting itself places it."
+          "note": "Where to place the casting unit, along one ground axis, in world units."
         },
         {
           "name": "unitAtY",
@@ -485,7 +485,7 @@
           "note": "The casting that threw it."
         }
       ],
-      "note": "A client reads neither a speed nor a part of the missile's life spent. Neither the ground-height rule for endY nor a trail moved on by an age is confirmed. The header names the unit casting, as the casting inside does."
+      "note": "A client reads neither a speed nor a part of the missile's life spent. Whether a client takes the ground's height for endY, or moves a trail on by an age, is not recorded. The header names the unit casting, as the casting inside does."
     },
     {
       "from": "1.0.0.25",
@@ -609,7 +609,7 @@
           "note": "The casting that threw it."
         }
       ],
-      "note": "A client reads neither a speed nor a part of the missile's life spent. Neither the ground-height rule for endY nor a trail moved on by an age is confirmed. Where the client holds the missile and the second unit the casting names, a client aims the casting at that unit's position; it moves no unit. Only a missile that flies straight takes casterAt, end, facing and how; any other takes only its position and velocity. The header names the unit casting, as the casting inside does."
+      "note": "A client reads neither a speed nor a part of the missile's life spent. Whether a client takes the ground's height for endY, or moves a trail on by an age, is not recorded. Where the client holds the missile and the second unit the casting names, a client aims the casting at that unit's position; it moves no unit. Only a missile that flies straight takes casterAt, end, facing and how; any other takes only its position and velocity. The header names the unit casting, as the casting inside does."
     },
     {
       "from": "1.0.0.58",
@@ -733,7 +733,7 @@
           "note": "The casting that threw it."
         }
       ],
-      "note": "A client reads neither a speed nor a part of the missile's life spent. Neither the ground-height rule for endY nor a trail moved on by an age is confirmed. Where the casting names a second unit the client holds, a client aims the casting at that unit's position; it moves no unit. For a missile that flies straight, casterAt becomes its start point, end and facing are taken as sent, and its velocity is set to carry it from its position to its end at the spell's own missile speed; for any other missile, a client keeps the velocity as sent, and casterAt, facing, end and bounced have no effect. The header names the unit casting, as the casting inside does."
+      "note": "A client reads neither a speed nor a part of the missile's life spent. Whether a client takes the ground's height for endY, or moves a trail on by an age, is not recorded. Where the casting names a second unit the client holds, a client aims the casting at that unit's position; it moves no unit. For a missile that flies straight, casterAt becomes its start point, end and facing are taken as sent, and its velocity is set to carry it from its position to its end at the spell's own missile speed; for any other missile, a client keeps the velocity as sent, and casterAt, facing, end and bounced have no effect. The header names the unit casting, as the casting inside does."
     },
     {
       "from": "1.0.0.61",
@@ -857,7 +857,7 @@
           "note": "The casting that threw it."
         }
       ],
-      "note": "A client reads neither a speed nor a part of the missile's life spent. Neither the ground-height rule for endY nor a trail moved on by an age is confirmed. A missile that flies straight takes its velocity from its spell's own speed, so velocity matters only for other missiles."
+      "note": "A client reads neither a speed nor a part of the missile's life spent. Whether a client takes the ground's height for endY is not recorded. A missile that flies straight takes its velocity from its spell's own speed, so velocity matters only for other missiles."
     },
     {
       "from": "1.0.0.72",
@@ -981,7 +981,7 @@
           "note": "The casting that threw it."
         }
       ],
-      "note": "A client reads neither a speed nor a part of the missile's life spent. Neither the ground-height rule for endY nor a trail moved on by an age is confirmed. A missile that flies straight takes its velocity from its spell's own speed, so velocity matters only for other missiles."
+      "note": "A client reads neither a speed nor a part of the missile's life spent. Whether a client takes the ground's height for endY is not recorded. A missile that flies straight takes its velocity from its spell's own speed, so velocity matters only for other missiles."
     },
     {
       "from": "1.0.0.74",
@@ -1105,7 +1105,7 @@
           "note": "The casting that threw it."
         }
       ],
-      "note": "A client reads neither a speed nor a part of the missile's life spent. Neither the ground-height rule for endY nor a trail moved on by an age is confirmed. A client places the casting's second unit, where it holds that unit, where the thrower stood rather than with the casting unit. A missile that flies straight takes its velocity from its spell's own speed, so velocity matters only for other missiles. A client ignores the header; the casting inside names the unit casting."
+      "note": "A client reads neither a speed nor a part of the missile's life spent. Whether a client takes the ground's height for endY is not recorded. A client places the casting's second unit, where it holds that unit, where the thrower stood rather than with the casting unit. A missile that flies straight takes its velocity from its spell's own speed, so velocity matters only for other missiles. A client ignores the header; the casting inside names the unit casting."
     },
     {
       "from": "1.0.0.75",
@@ -1147,18 +1147,15 @@
         },
         {
           "name": "facingX",
-          "type": "f32",
-          "note": "Which way the missile points, along one ground axis."
+          "type": "f32"
         },
         {
           "name": "facingY",
-          "type": "f32",
-          "note": "Which way the missile points, in height."
+          "type": "f32"
         },
         {
           "name": "facingZ",
-          "type": "f32",
-          "note": "Which way the missile points, along the other ground axis."
+          "type": "f32"
         },
         {
           "name": "velocityX",
@@ -1229,7 +1226,7 @@
           "note": "The casting that threw it."
         }
       ],
-      "note": "A client reads no single speed and no part of the missile's life spent. A trail moved on by an age is not confirmed. A client places the casting's second unit, where it holds that unit, where the thrower stood rather than with the casting unit. A client ignores the header; the casting inside names the unit casting."
+      "note": "A client reads no single speed and no part of the missile's life spent. A client places the casting's second unit, where it holds that unit, where the thrower stood rather than with the casting unit. A client ignores the header; the casting inside names the unit casting."
     },
     {
       "from": "1.0.0.79",
@@ -1271,18 +1268,15 @@
         },
         {
           "name": "facingX",
-          "type": "f32",
-          "note": "Which way the missile points, along one ground axis."
+          "type": "f32"
         },
         {
           "name": "facingY",
-          "type": "f32",
-          "note": "Which way the missile points, in height."
+          "type": "f32"
         },
         {
           "name": "facingZ",
-          "type": "f32",
-          "note": "Which way the missile points, along the other ground axis."
+          "type": "f32"
         },
         {
           "name": "velocityX",
@@ -1353,7 +1347,7 @@
           "note": "The casting that threw it."
         }
       ],
-      "note": "A client reads no single speed and no part of the missile's life spent. A trail moved on by an age is not confirmed. A client places the casting's second unit, where it holds that unit, where the thrower stood rather than with the casting unit. A client ignores the header; the casting inside names the unit casting."
+      "note": "A client reads no single speed and no part of the missile's life spent. A client places the casting's second unit, where it holds that unit, where the thrower stood rather than with the casting unit. A client ignores the header; the casting inside names the unit casting."
     },
     {
       "from": "1.0.0.82",
@@ -1395,18 +1389,15 @@
         },
         {
           "name": "facingX",
-          "type": "f32",
-          "note": "Which way the missile points, along one ground axis."
+          "type": "f32"
         },
         {
           "name": "facingY",
-          "type": "f32",
-          "note": "Which way the missile points, in height."
+          "type": "f32"
         },
         {
           "name": "facingZ",
-          "type": "f32",
-          "note": "Which way the missile points, along the other ground axis."
+          "type": "f32"
         },
         {
           "name": "velocityX",
@@ -1461,7 +1452,7 @@
             {
               "name": "bounced",
               "width": 1,
-              "note": "Set where the missile has bounced. For a missile the client holds that flies straight, a client then sets its end to casterAt raised by the missile's height above the ground, and its travel to that end less its position; for any other missile the client holds it has no effect."
+              "note": "Set where the missile has bounced."
             },
             {
               "name": "unused",
@@ -1477,7 +1468,7 @@
           "note": "The casting that threw it."
         }
       ],
-      "note": "A client reads no single speed and no part of the missile's life spent. A trail moved on by an age is not confirmed. A client places the casting's second unit, where it holds that unit, where the thrower stood rather than with the casting unit. A client ignores the header; the casting inside names the unit casting."
+      "note": "A client reads no single speed and no part of the missile's life spent. A client places the casting's second unit, where it holds that unit, where the thrower stood rather than with the casting unit. A client ignores the header; the casting inside names the unit casting."
     },
     {
       "from": "1.0.0.86",
@@ -1601,7 +1592,7 @@
           "note": "The casting that threw it."
         }
       ],
-      "note": "A client reads no single speed and no part of the missile's life spent. A trail moved on by an age is not confirmed. A client places the casting's second unit, where it holds that unit, where the thrower stood rather than with the casting unit. A client ignores the header; the casting inside names the unit casting."
+      "note": "A client reads no single speed and no part of the missile's life spent. Whether a client moves a trail on by an age is not recorded. A client places the casting's second unit, where it holds that unit, where the thrower stood rather than with the casting unit. A client ignores the header; the casting inside names the unit casting."
     },
     {
       "from": "1.0.0.87",
@@ -1725,7 +1716,7 @@
           "note": "The casting that threw it."
         }
       ],
-      "note": "A client reads no single speed and no part of the missile's life spent. Neither the ground-height rule for endY nor a trail moved on by an age is confirmed. A client places the casting's second unit, where it holds that unit, where the thrower stood rather than with the casting unit. The header names the unit casting, as the casting inside does."
+      "note": "A client reads no single speed and no part of the missile's life spent. Whether a client takes the ground's height for endY, or moves a trail on by an age, is not recorded. A client places the casting's second unit, where it holds that unit, where the thrower stood rather than with the casting unit. The header names the unit casting, as the casting inside does."
     },
     {
       "from": "1.0.0.97",
@@ -1838,7 +1829,7 @@
             {
               "name": "unused",
               "width": 7,
-              "note": "Unused; a server writes zero."
+              "note": "A server writes zero."
             }
           ]
         },
@@ -1849,7 +1840,7 @@
           "note": "The casting that threw it."
         }
       ],
-      "note": "Neither the ground-height rule for endY nor a trail moved on by an age is confirmed. The header names the unit casting, as the casting inside does."
+      "note": "Whether a client takes the ground's height for endY is not recorded. The header names the unit casting, as the casting inside does."
     },
     {
       "from": "1.0.0.103",
@@ -1962,7 +1953,7 @@
             {
               "name": "unused",
               "width": 7,
-              "note": "Unused; a server writes zero."
+              "note": "A server writes zero."
             }
           ]
         },
@@ -1973,7 +1964,7 @@
           "note": "The casting that threw it."
         }
       ],
-      "note": "Neither the ground-height rule for endY nor a trail moved on by an age is confirmed. The header names the unit casting, as the casting inside does."
+      "note": "Whether a client takes the ground's height for endY is not recorded. The header names the unit casting, as the casting inside does."
     },
     {
       "from": "1.0.0.104",
@@ -2091,7 +2082,7 @@
             {
               "name": "unused",
               "width": 7,
-              "note": "Unused; a server writes zero."
+              "note": "A server writes zero."
             }
           ]
         },
@@ -2102,7 +2093,7 @@
           "note": "The casting that threw it."
         }
       ],
-      "note": "Neither the ground-height rule for endY nor a trail moved on by an age is confirmed. The header names the unit casting, as the casting inside does."
+      "note": "Whether a client takes the ground's height for endY is not recorded. The header names the unit casting, as the casting inside does."
     },
     {
       "from": "1.0.0.106",
@@ -2220,7 +2211,7 @@
             {
               "name": "unused",
               "width": 7,
-              "note": "Unused; a server writes zero."
+              "note": "A server writes zero."
             }
           ]
         },
@@ -2231,7 +2222,7 @@
           "note": "The casting that threw it."
         }
       ],
-      "note": "A client reads a speed but no part of the missile's life spent. Neither the ground-height rule for endY nor a trail moved on by an age is confirmed. The header names the unit casting, as the casting inside does."
+      "note": "A client reads no part of the missile's life spent. Whether a client takes the ground's height for endY is not recorded. The header names the unit casting, as the casting inside does."
     },
     {
       "from": "1.0.0.107",
@@ -2349,7 +2340,7 @@
             {
               "name": "unused",
               "width": 7,
-              "note": "Unused; a server writes zero."
+              "note": "A server writes zero."
             }
           ]
         },
@@ -2360,7 +2351,7 @@
           "note": "The casting that threw it."
         }
       ],
-      "note": "A client reads a speed but no part of the missile's life spent. Neither the ground-height rule for endY nor a trail moved on by an age is confirmed. The header names the unit casting, as the casting inside does."
+      "note": "A client reads no part of the missile's life spent. Whether a client takes the ground's height for endY is not recorded. The header names the unit casting, as the casting inside does."
     },
     {
       "from": "1.0.0.110",
@@ -2489,7 +2480,7 @@
           "note": "The casting that threw it."
         }
       ],
-      "note": "A client reads a speed but no part of the missile's life spent. Neither the ground-height rule for endY nor a trail moved on by an age is confirmed. The header names the unit casting, as the casting inside does. For a missile that does not fly straight, casterAt, end, facing and how have no effect."
+      "note": "A client reads a speed but no part of the missile's life spent. Whether a client takes the ground's height for endY is not recorded. The header names the unit casting, as the casting inside does. For a missile that does not fly straight, casterAt, end, facing and how have no effect."
     },
     {
       "from": "1.0.0.111",
@@ -2627,7 +2618,7 @@
             {
               "name": "unused",
               "width": 7,
-              "note": "Unused; a server writes zero."
+              "note": "A server writes zero."
             }
           ]
         },
@@ -2638,7 +2629,7 @@
           "note": "The casting that threw it."
         }
       ],
-      "note": "A client reads both a speed and a part of the missile's life spent. Neither the ground-height rule for endY nor a trail moved on by an age is confirmed. The header names the unit casting, as the casting inside does."
+      "note": "A client reads a speed. Whether a client takes the ground's height for endY is not recorded. The header names the unit casting, as the casting inside does."
     },
     {
       "from": "1.0.0.117",
@@ -2776,7 +2767,7 @@
             {
               "name": "unused",
               "width": 7,
-              "note": "Unused; a server writes zero."
+              "note": "A server writes zero."
             }
           ]
         },
@@ -2787,7 +2778,7 @@
           "note": "The casting that threw it."
         }
       ],
-      "note": "A client reads both a speed and a part of the missile's life spent. Neither the ground-height rule for endY nor a trail moved on by an age is confirmed. The header names the unit casting, as the casting inside does."
+      "note": "A client reads a speed. Whether a client takes the ground's height for endY is not recorded. The header names the unit casting, as the casting inside does."
     },
     {
       "from": "1.0.0.119",
@@ -2925,7 +2916,7 @@
             {
               "name": "unused",
               "width": 7,
-              "note": "Unused; a server writes zero."
+              "note": "A server writes zero."
             }
           ]
         },
@@ -2936,7 +2927,7 @@
           "note": "The casting that threw it."
         }
       ],
-      "note": "A client reads both a speed and a part of the missile's life spent. Neither the ground-height rule for endY nor a trail moved on by an age is confirmed. The header names the unit casting, as the casting inside does."
+      "note": "A client reads a speed. Whether a client takes the ground's height for endY is not recorded. The header names the unit casting, as the casting inside does."
     },
     {
       "from": "1.0.0.124",
@@ -3085,7 +3076,7 @@
           "note": "The casting that threw it."
         }
       ],
-      "note": "A client reads both a speed and a part of the missile's life spent. Neither the ground-height rule for endY nor a trail moved on by an age is confirmed. The header names the unit casting, as the casting inside does."
+      "note": "A client reads both a speed and a part of the missile's life spent. Whether a client takes the ground's height for endY, or moves a trail on by an age, is not recorded. The header names the unit casting, as the casting inside does."
     },
     {
       "from": "1.0.0.128",
@@ -3207,8 +3198,7 @@
         },
         {
           "name": "lifeSpent",
-          "type": "f32",
-          "note": "How much of its life is gone, as a part of one."
+          "type": "f32"
         },
         {
           "name": "how",
@@ -3516,7 +3506,7 @@
             {
               "name": "bounced",
               "width": 1,
-              "note": "Set where the missile has bounced. It applies only where age is above zero: a client then moves the missile to its position and places it again from the caster's position, the end and the facing."
+              "note": "Set where the missile has bounced."
             },
             {
               "name": "unused",
@@ -3532,7 +3522,7 @@
           "note": "The casting that threw it."
         }
       ],
-      "note": "Where the end lies on walkable ground, a client takes the ground's height there for endY. Where age is not zero, it moves the missile's trail on by age seconds. The header names the unit casting, as the casting inside does."
+      "note": "Where the end lies on walkable ground, a client takes the ground's height there for endY. The header names the unit casting, as the casting inside does."
     },
     {
       "from": "1.0.0.138",
@@ -4804,7 +4794,7 @@
           "note": "The casting that threw it."
         }
       ],
-      "note": "Where the end lies on walkable ground, a client takes the ground's height there for endY. Where age is not zero, it moves the missile's trail on by age seconds. The header names the unit casting, as the casting inside does."
+      "note": "Where age is not zero, it moves the missile's trail on by age seconds."
     },
     {
       "from": "4.17.0.233",

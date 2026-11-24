@@ -675,7 +675,7 @@
         {
           "name": "relocationCount",
           "type": "u8",
-          "note": "How many relocations follow: answering a group, how many of its paths carried a teleport token. Answering a path for one unit, a client sends only syncId and this byte, unwritten, on the transient channel, and no relocations, so a server reads nothing in it there."
+          "note": "How many relocations follow. Answering WaypointGroup a client counts them; answering a path for one unit it sends only syncId and this byte, unwritten, on the transient channel, and no relocations, so a server reads nothing in it there."
         },
         {
           "name": "relocations",
@@ -696,8 +696,7 @@
                 "note": "The token that arrived with it."
               }
             ]
-          },
-          "note": "Each of those, in the group's order."
+          }
         }
       ],
       "note": "It lists each unit whose movement carried a token, in the group's order, whether or not the client holds the unit, and none whose movement follows a refused one."
@@ -1096,7 +1095,7 @@
         {
           "name": "relocationCount",
           "type": "u8",
-          "note": "How many relocations follow. Answering WaypointGroup a client counts them; answering a path for one unit it sends only syncId and this byte, unwritten, on the transient channel, and no relocations, so a server reads nothing in it there."
+          "note": "How many relocations follow."
         },
         {
           "name": "relocations",

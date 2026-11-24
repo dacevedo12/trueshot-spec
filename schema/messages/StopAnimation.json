@@ -58,16 +58,14 @@
             },
             {
               "name": "unlock",
-              "width": 1,
-              "note": "Set to release the unit's animation lock in every case. Clear releases it only where the unit's own data allows; where the lock stays held, the animation does not stop."
+              "width": 1
             },
             {
               "name": "unusedHigh",
               "width": 25,
               "note": "A client ignores these; a server sends zero."
             }
-          ],
-          "note": "How it stops."
+          ]
         }
       ],
       "note": "No name is carried."
@@ -229,7 +227,7 @@
             {
               "name": "unlock",
               "width": 1,
-              "note": "Set to release the unit's animation lock in every case. Clear releases it only where the unit's own data allows; where the lock stays held, the animation does not stop."
+              "note": "Set to release the unit's animation lock in every case."
             },
             {
               "name": "unusedHigh",
@@ -263,7 +261,7 @@
             {
               "name": "unlock",
               "width": 1,
-              "note": "Set to release the unit's animation lock in every case. Clear releases it only where the unit's own state allows; the animation stops either way."
+              "note": "Set to release the unit's animation lock in every case."
             },
             {
               "name": "unusedHigh",
@@ -274,7 +272,7 @@
           "note": "How it stops."
         }
       ],
-      "note": "No name is carried: a client stops whatever animation the unit is playing, blending out over a fixed time."
+      "note": "No name is carried."
     },
     {
       "from": "1.0.0.74",

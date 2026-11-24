@@ -315,7 +315,7 @@
         {
           "name": "side",
           "type": "u8",
-          "note": "Which side the unit came into or out of the view of."
+          "note": "Which side the unit came into the view of, as an index below 4 rather than a side number; which index names which side is undetermined."
         }
       ]
     },
@@ -330,7 +330,7 @@
         {
           "name": "side",
           "type": "u8",
-          "note": "Which side the unit came into or out of the view of."
+          "note": "Which side the unit came into the view of, as an index below 4 rather than a side number; which index names which side is undetermined."
         }
       ]
     },
@@ -361,7 +361,7 @@
         {
           "name": "side",
           "type": "u8",
-          "note": "Which side the unit came into or out of the view of."
+          "note": "Which side the unit came into the view of, as an index below 4 rather than a side number; which index names which side is undetermined."
         }
       ]
     },

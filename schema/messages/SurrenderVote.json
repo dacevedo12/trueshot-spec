@@ -76,7 +76,7 @@
             {
               "name": "inFavour",
               "width": 1,
-              "note": "Set where the answer is yes, clear where it is no."
+              "note": "Set where the answer is yes."
             },
             {
               "name": "unused",
@@ -160,12 +160,12 @@
             {
               "name": "inFavour",
               "width": 1,
-              "note": "Set where the answer is yes, clear where it is no."
+              "note": "Set where the answer is yes."
             },
             {
               "name": "unused",
               "width": 7,
-              "note": "A client leaves these bits as they happen to be; a server ignores them."
+              "note": "A client leaves these bits unwritten, so they hold anything."
             }
           ]
         }
@@ -221,7 +221,7 @@
             {
               "name": "unused",
               "width": 7,
-              "note": "Unused; a client leaves them as they happen to be, and a server ignores them."
+              "note": "A client leaves these bits unwritten, so they hold anything."
             }
           ]
         }
@@ -864,8 +864,7 @@
             },
             {
               "name": "unused",
-              "width": 7,
-              "note": "Always clear."
+              "width": 7
             }
           ]
         }
@@ -1340,8 +1339,7 @@
             },
             {
               "name": "unused",
-              "width": 7,
-              "note": "Unused; a client may leave any value here, and a server ignores it."
+              "width": 7
             }
           ]
         }

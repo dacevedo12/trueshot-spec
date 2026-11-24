@@ -62,9 +62,16 @@ shop by the champion's level.
 >
 > `Loadout` does nothing to the shop.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 4.1.0.171 up to 4.4.0.1858 -->
 
-> **In 4.1–4.20**
+> **In 4.1–4.3**
+>
+> `ItemSubstitution`: the shop shows a substitute for an item, at the
+> substitute's price, until `SubstitutionCleared`.
+
+<!-- holds from 4.4.0.1858 up to 4.21.0.0 -->
+
+> **In 4.4–4.20**
 >
 > A client sets its shop up from its own champion's `CreateChampion` (the one
 > carrying its own client id) and then that champion's `Loadout`. Until the
@@ -95,12 +102,18 @@ the shop sends nothing.
 >
 > Opening the shop sends nothing either.
 
-<!-- holds from 0.9.25.24 up to 1.0.0.25 -->
+<!-- holds from 0.9.25.24 up to 0.9.25.36 -->
 
-> **In 0.9.25.24–1.0.0.24**
+> **In 0.9.25.24–0.9.25.35**
 >
 > Opening the shop sends `TutorialShopOpened`, in any match, except while the
 > shop is locked.
+
+<!-- holds from 0.9.25.36 up to 1.0.0.25 -->
+
+> **In 0.9.25.36–1.0.0.24**
+>
+> Opening the shop sends `TutorialShopOpened`, in any match.
 
 <!-- holds from 1.0.0.25 up to 1.0.0.58 -->
 
@@ -110,12 +123,18 @@ the shop sends nothing.
 > shop and asks to buy whether or not the shop is locked, except where a setting
 > of its own has it heed the lock.
 
-<!-- holds from 1.0.0.58 up to 1.0.0.74 -->
+<!-- holds from 1.0.0.58 up to 1.0.0.61 -->
 
-> **In 1.0.0.58–1.0.0.73**
+> **In 1.0.0.58–1.0.0.60**
 >
 > Opening the shop sends `TutorialShopOpened`, in any match, except while the
 > shop is locked.
+
+<!-- holds from 1.0.0.61 up to 1.0.0.74 -->
+
+> **In 1.0.0.61–1.0.0.73**
+>
+> Opening the shop sends `TutorialShopOpened`, in any match.
 
 <!-- holds from 1.0.0.74 up to 1.0.0.75 -->
 
@@ -133,22 +152,34 @@ the shop sends nothing.
 > shop and asks to buy whether or not the shop is locked, except where a setting
 > of its own has it heed the lock.
 
-<!-- holds from 1.0.0.87 up to 1.0.0.132 -->
+<!-- holds from 1.0.0.87 up to 1.0.0.96 -->
 
-> **In 1.0.0.87–1.0.0.131**
+> **In 1.0.0.87–1.0.0.95**
+>
+> Opening the shop sends `TutorialShopOpened`, in any match.
+
+<!-- holds from 1.0.0.96 up to 1.0.0.127 -->
+
+> **In 1.0.0.96–1.0.0.126**
 >
 > Opening the shop sends `TutorialShopOpened`, in any match, except while the
 > shop is locked.
 
-<!-- holds from 1.0.0.126 up to 1.0.0.132 -->
+<!-- holds from 1.0.0.127 up to 1.0.0.132 -->
 
-> **In 1.0.0.126–1.0.0.131**
+> **In 1.0.0.127–1.0.0.131**
+>
+> Opening the shop sends `TutorialShopOpened`, in any match.
+
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
+
+> **In 1.0.0.126**
 >
 > Opening the shop while the match is paused sends nothing.
 
-<!-- holds from 1.0.0.133 up to 1.0.0.141 -->
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
 
-> **In 1.0.0.133–1.0.0.140**
+> **In 1.0.0.140**
 >
 > Opening the shop while the match is paused sends nothing.
 
@@ -186,13 +217,20 @@ the shop sends nothing.
 A client asks for an item not built from others only where it is one the match
 sells.
 
-<!-- holds from 0.8.13.26 up to 1.0.0.74 -->
+<!-- holds from 0.8.13.26 up to 1.0.0.61 -->
 
-> **In 0.8.13.26–1.0.0.73**
+> **In 0.8.13.26–1.0.0.60**
 >
 > A client asks for an item not built from others only where its price is
 > within the champion's gold and, unless the item can be used in the shop,
 > where a slot is free or holds the same item below its stack limit.
+
+<!-- holds from 1.0.0.61 up to 1.0.0.74 -->
+
+> **In 1.0.0.61–1.0.0.73**
+>
+> A client asks for an item not built from others only where its price is
+> within the champion's gold.
 
 <!-- holds from 0.8.13.26 up to 1.0.0.61 -->
 
@@ -210,32 +248,38 @@ sells.
 > holds one of its parts, and where the champion's gold covers what remains
 > after the parts it holds, whether or not the item can be bought.
 
-<!-- holds from 0.9.22.14 up to 4.21.0.0 -->
+<!-- holds from 0.9.25.24 up to 4.21.0.0 -->
 
-> **In 0.9.22.14–4.20**
+> **In 0.9.25.24–4.20**
 >
 > A client asks for an item built from others only where it is one the match
 > sells too.
 
-<!-- holds from 0.9.25.24 up to 1.0.0.25 -->
+<!-- holds from 0.9.25.24 up to 0.9.25.36 -->
 
-> **In 0.9.25.24–1.0.0.24**
+> **In 0.9.25.24–0.9.25.35**
 >
 > A client asks only while the shop is not locked, with the champion dead or
 > near a shop of its side.
 
-<!-- holds from 1.0.0.25 up to 1.0.0.58 -->
+<!-- holds from 0.9.25.36 up to 1.0.0.58 -->
 
-> **In 1.0.0.25–1.0.0.57**
+> **In 0.9.25.36–1.0.0.57**
 >
 > A client asks only with the champion dead or near a shop of its side.
 
-<!-- holds from 1.0.0.58 up to 1.0.0.74 -->
+<!-- holds from 1.0.0.58 up to 1.0.0.61 -->
 
-> **In 1.0.0.58–1.0.0.73**
+> **In 1.0.0.58–1.0.0.60**
 >
 > A client asks only while the shop is not locked, with the champion dead or
 > near a shop of its side.
+
+<!-- holds from 1.0.0.61 up to 1.0.0.74 -->
+
+> **In 1.0.0.61–1.0.0.73**
+>
+> A client asks only with the champion dead or near a shop of its side.
 
 <!-- holds from 1.0.0.74 up to 1.0.0.75 -->
 
@@ -257,20 +301,46 @@ sells.
 >
 > A client asks only with the champion dead or near a shop of its side.
 
-<!-- holds from 1.0.0.87 up to 1.0.0.110 -->
+<!-- holds from 1.0.0.87 up to 1.0.0.96 -->
 
-> **In 1.0.0.87–1.0.0.109**
+> **In 1.0.0.87–1.0.0.95**
+>
+> A client asks for an item not built from others only where its price is
+> within the champion's gold.
+
+<!-- holds from 1.0.0.96 up to 1.0.0.97 -->
+
+> **In 1.0.0.96**
 >
 > A client asks for an item not built from others only where its price is
 > within the champion's gold and, unless the item can be used in the shop,
 > where a slot is free or holds the same item below its stack limit.
 
-<!-- holds from 1.0.0.87 up to 1.0.0.132 -->
+<!-- holds from 1.0.0.97 up to 1.0.0.110 -->
 
-> **In 1.0.0.87–1.0.0.131**
+> **In 1.0.0.97–1.0.0.109**
+>
+> A client asks for an item not built from others only where its price is
+> within the champion's gold.
+
+<!-- holds from 1.0.0.87 up to 1.0.0.96 -->
+
+> **In 1.0.0.87–1.0.0.95**
+>
+> A client asks only with the champion dead or near a shop of its side.
+
+<!-- holds from 1.0.0.96 up to 1.0.0.127 -->
+
+> **In 1.0.0.96–1.0.0.126**
 >
 > A client asks only while the shop is not locked, with the champion dead or
 > near a shop of its side.
+
+<!-- holds from 1.0.0.127 up to 1.0.0.132 -->
+
+> **In 1.0.0.127–1.0.0.131**
+>
+> A client asks only with the champion dead or near a shop of its side.
 
 <!-- holds from 1.0.0.110 up to 1.0.0.111 -->
 
@@ -281,17 +351,31 @@ sells.
 > champion is alive, where a slot is free or holds the same item below its stack
 > limit.
 
-<!-- holds from 1.0.0.111 up to 1.0.0.132 -->
+<!-- holds from 1.0.0.111 up to 1.0.0.126 -->
 
-> **In 1.0.0.111–1.0.0.131**
+> **In 1.0.0.111–1.0.0.125**
+>
+> A client asks for an item not built from others only where its price is
+> within the champion's gold.
+
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
+
+> **In 1.0.0.126**
 >
 > A client asks for an item not built from others only where its price is
 > within the champion's gold and, unless the item can be used in the shop,
 > where a slot is free or holds the same item below its stack limit.
 
-<!-- holds from 1.0.0.126 up to 3.03.0.198 -->
+<!-- holds from 1.0.0.127 up to 1.0.0.132 -->
 
-> **In 1.0.0.126–3.02**
+> **In 1.0.0.127–1.0.0.131**
+>
+> A client asks for an item not built from others only where its price is
+> within the champion's gold.
+
+<!-- holds from 1.0.0.126 up to 1.0.0.151 -->
+
+> **In 1.0.0.126–1.0.0.150**
 >
 > A client never asks for an item a player holds only one of and holds already.
 
@@ -312,13 +396,27 @@ sells.
 >
 > A client asks only with the champion dead or near a shop of its side.
 
-<!-- holds from 1.0.0.133 up to 3.03.0.198 -->
+<!-- holds from 1.0.0.133 up to 1.0.0.140 -->
 
-> **In 1.0.0.133–3.02**
+> **In 1.0.0.133–1.0.0.139**
+>
+> A client asks for an item not built from others only where its price is
+> within the champion's gold.
+
+<!-- holds from 1.0.0.140 up to 1.0.0.151 -->
+
+> **In 1.0.0.140–1.0.0.150**
 >
 > A client asks for an item not built from others only where its price is
 > within the champion's gold and, unless the item can be used in the shop,
 > where a slot is free or holds the same item below its stack limit.
+
+<!-- holds from 1.0.0.151 up to 3.03.0.198 -->
+
+> **In 1.0.0.151–3.02**
+>
+> A client asks for an item not built from others only where its price is
+> within the champion's gold.
 
 <!-- holds from 1.0.0.140 up to 1.0.0.141 -->
 
@@ -346,9 +444,9 @@ sells.
 > one of and holds already, but asks for one built from others even where the
 > player holds it already.
 
-<!-- holds from 3.04.0.78 up to 3.13.0.399 -->
+<!-- holds from 3.6.0.388 up to 3.11.0.306 -->
 
-> **In 3.04–3.12**
+> **In 3.6–3.10**
 >
 > A client never asks for an item a player holds only one of and holds already.
 
@@ -365,9 +463,9 @@ sells.
 > neutral shop. Outside the tutorial it asks whatever the shop lock says. It
 > asks whatever `ShopEnabled` says.
 
-<!-- holds from 3.7.0.328 up to 3.11.0.306 -->
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
-> **In 3.7–3.10**
+> **In 3.10**
 >
 > A client asks only while the shop is not locked, with the champion dead or
 > near a shop of its side.
@@ -403,9 +501,19 @@ sells.
 > tutorial it does not ask while its shop is locked ([The
 > interface](interface.md)).
 
-<!-- holds from 4.5.0.260 up to 4.21.0.0 -->
+<!-- holds from 4.5.0.260 up to 4.17.0.233 -->
 
-> **In 4.5–4.20**
+> **In 4.5–4.16**
+>
+> A client asks to buy only where shopping is allowed (`ShopEnabled`). It never
+> asks for an item not built from others that a player holds only one of and
+> holds already. For an item built from others, it asks only where the champion
+> holds a free slot or a part of it, everything the item requires, and gold for
+> what remains.
+
+<!-- holds from 4.17.0.233 up to 4.21.0.0 -->
+
+> **In 4.17–4.20**
 >
 > A client asks to buy only where shopping is allowed (`ShopEnabled`), with the
 > champion near its side's shop, dead, or allowed to shop from anywhere. It
@@ -452,24 +560,24 @@ with `SwapItemsAnswer`. A server can also set a slot (`InventorySlot`), set the
 whole inventory (`InventorySnapshot`), change an item's charges
 (`ItemCharges`), or report an item used (`ItemUsed`).
 
-<!-- holds from 0.8.13.26 up to 4.20.0.315 -->
+<!-- holds from 0.8.13.26 up to 4.18.0.271 -->
 
-> **In 0.8.13.26–4.19**
+> **In 0.8.13.26–4.17**
 >
 > `ItemAdded` places the item and removes nothing: a server sends a
 > `RemoveItemAnswer` for each part an item built from others takes up. Gold
 > falls only as replication states the champion's gold, and a purchase a server
 > never answers places nothing and spends nothing.
 
-<!-- holds from 1.0.0.25 up to 4.20.0.315 -->
+<!-- holds from 1.0.0.25 up to 4.18.0.271 -->
 
-> **In 1.0.0.25–4.19**
+> **In 1.0.0.25–4.17**
 >
 > A purchase a server never answers still plays the sound of buying.
 
-<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
+<!-- holds from 4.4.0.1858 up to 4.18.0.271 -->
 
-> **In 4.1–4.19**
+> **In 4.4–4.17**
 >
 > A purchase a server never answers still lists the item among recent
 > purchases.

@@ -121,7 +121,7 @@
             {
               "name": "pausing",
               "width": 1,
-              "note": "Set to have a client that is not watching the match show a notice in its chat that pausing is allowed. A client keeps nothing of it, and it limits no pausing."
+              "note": "Set to have a client post a notice in chat, except while watching a match; it allows or blocks no hold."
             },
             {
               "name": "unused",
@@ -176,7 +176,7 @@
             {
               "name": "pausing",
               "width": 1,
-              "note": "Set to have a client that is not watching the match show a notice in its chat that pausing is allowed. A client keeps nothing of it, and it limits no pausing."
+              "note": "Set to have a client post a notice in chat; it allows or blocks no hold."
             },
             {
               "name": "unused",
@@ -212,8 +212,7 @@
             }
           ]
         }
-      ],
-      "note": "A client past spawning ignores it."
+      ]
     },
     {
       "from": "1.0.0.146",
@@ -245,8 +244,7 @@
             }
           ]
         }
-      ],
-      "note": "A client past spawning ignores it."
+      ]
     },
     {
       "from": "1.0.0.147",
@@ -273,8 +271,7 @@
             }
           ]
         }
-      ],
-      "note": "A client past spawning ignores it."
+      ]
     },
     {
       "from": "1.0.0.150",
@@ -526,12 +523,11 @@
             {
               "name": "unused",
               "width": 7,
-              "note": "Unused; a server writes zero."
+              "note": "A server writes zero."
             }
           ]
         }
-      ],
-      "note": "A client past spawning ignores it."
+      ]
     },
     {
       "from": "3.10.0.237",
@@ -582,12 +578,11 @@
             {
               "name": "unused",
               "width": 7,
-              "note": "Unused; a server writes zero."
+              "note": "A server writes zero."
             }
           ]
         }
-      ],
-      "note": "A client past spawning ignores it."
+      ]
     },
     {
       "from": "3.13.0.399",
@@ -726,8 +721,7 @@
           "bits": [
             {
               "name": "pausing",
-              "width": 1,
-              "note": "Set where holding the match is allowed."
+              "width": 1
             },
             {
               "name": "unused",

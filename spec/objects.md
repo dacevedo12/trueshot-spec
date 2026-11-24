@@ -65,9 +65,9 @@ these, it carries it whole, at the width above.
 > gives the region an id of its own, its own node in the top byte and a count
 > below it, which no message from a server can name.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 4.4.0.1858 up to 4.21.0.0 -->
 
-> **In 4.1–4.20**
+> **In 4.4–4.20**
 >
 > No region id stands for no region.
 
@@ -91,12 +91,26 @@ gives the client its own client id.
 > `agreement` is 1, before any create message, because a client given a create
 > message before that `VersionSync` stops.
 
-<!-- holds from 0.9.22.14 up to 1.0.0.74 -->
+<!-- holds from 0.9.22.14 up to 0.9.25.24 -->
 
-> **In 0.9.22.14–1.0.0.73**
+> **In 0.9.22.14–0.9.25.23**
+>
+> A client takes a client id only from 0 to 252, so a server MUST give each
+> player a client id in that range.
+
+<!-- holds from 0.9.25.24 up to 1.0.0.61 -->
+
+> **In 0.9.25.24–1.0.0.60**
 >
 > A client takes a client id only from 0 to 252, and leaves on any other, so a
 > server MUST give each player a client id in that range.
+
+<!-- holds from 1.0.0.61 up to 1.0.0.74 -->
+
+> **In 1.0.0.61–1.0.0.73**
+>
+> A client takes a client id only from 0 to 252, so a server MUST give each
+> player a client id in that range.
 
 <!-- holds from 0.9.25.24 up to 0.9.25.36 -->
 
@@ -147,12 +161,26 @@ gives the client its own client id.
 > `agreement` is 1, before any create message, because a client given a create
 > message before that `VersionSync` stops.
 
-<!-- holds from 1.0.0.87 up to 1.0.0.110 -->
+<!-- holds from 1.0.0.87 up to 1.0.0.96 -->
 
-> **In 1.0.0.87–1.0.0.109**
+> **In 1.0.0.87–1.0.0.95**
+>
+> A client takes a client id only from 0 to 252, so a server MUST give each
+> player a client id in that range.
+
+<!-- holds from 1.0.0.96 up to 1.0.0.97 -->
+
+> **In 1.0.0.96**
 >
 > A client takes a client id only from 0 to 252, and leaves on any other, so a
 > server MUST give each player a client id in that range.
+
+<!-- holds from 1.0.0.97 up to 1.0.0.110 -->
+
+> **In 1.0.0.97–1.0.0.109**
+>
+> A client takes a client id only from 0 to 252, so a server MUST give each
+> player a client id in that range.
 
 <!-- holds from 1.0.0.110 up to 1.0.0.111 -->
 
@@ -167,12 +195,26 @@ gives the client its own client id.
 > `CreateNeutral`, `SpawnUnit`, `MapProp` or `SpawnPet`, because a client given
 > one of them before that `VersionSync` stops.
 
-<!-- holds from 1.0.0.111 up to 1.0.0.132 -->
+<!-- holds from 1.0.0.111 up to 1.0.0.126 -->
 
-> **In 1.0.0.111–1.0.0.131**
+> **In 1.0.0.111–1.0.0.125**
+>
+> A client takes a client id only from 0 to 252, so a server MUST give each
+> player a client id in that range.
+
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
+
+> **In 1.0.0.126**
 >
 > A client takes a client id only from 0 to 252, and leaves on any other, so a
 > server MUST give each player a client id in that range.
+
+<!-- holds from 1.0.0.127 up to 1.0.0.132 -->
+
+> **In 1.0.0.127–1.0.0.131**
+>
+> A client takes a client id only from 0 to 252, so a server MUST give each
+> player a client id in that range.
 
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
@@ -207,19 +249,33 @@ gives the client its own client id.
 > A client records the pair every `Registered` carries, and takes as its own
 > only the one carrying its own player id.
 
-<!-- holds from 1.0.0.141 up to 3.03.0.198 -->
+<!-- holds from 1.0.0.150 up to 1.0.0.151 -->
 
-> **In 1.0.0.141–3.02**
+> **In 1.0.0.150**
 >
 > A client acts on that `Registered` alone and ignores every other, so it pairs
 > no other player's player id with a client id.
 
-<!-- holds from 1.0.0.133 up to 1.0.0.150 -->
+<!-- holds from 1.0.0.133 up to 1.0.0.140 -->
 
-> **In 1.0.0.133–1.0.0.149**
+> **In 1.0.0.133–1.0.0.139**
+>
+> A client takes a client id only from 0 to 252, so a server MUST give each
+> player a client id in that range.
+
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+
+> **In 1.0.0.140**
 >
 > A client takes a client id only from 0 to 252, and leaves on any other, so a
 > server MUST give each player a client id in that range.
+
+<!-- holds from 1.0.0.141 up to 1.0.0.150 -->
+
+> **In 1.0.0.141–1.0.0.149**
+>
+> A client takes a client id only from 0 to 252, so a server MUST give each
+> player a client id in that range.
 
 <!-- holds from 1.0.0.150 up to 1.0.0.151 -->
 
@@ -237,9 +293,16 @@ gives the client its own client id.
 > 4294967295, for which it waits on as if given none; a server MUST give each
 > player a client id in that range.
 
-<!-- holds from 3.04.0.78 up to 3.11.0.306 -->
+<!-- holds from 3.04.0.78 up to 3.6.0.388 -->
 
-> **In 3.04–3.10**
+> **In 3.04–3.5**
+>
+> A client takes a client id only from 0 to 252, so a server MUST give each
+> player a client id in that range.
+
+<!-- holds from 3.6.0.388 up to 3.11.0.306 -->
+
+> **In 3.6–3.10**
 >
 > A client takes a client id only from 0 to 252, and leaves on any other, so a
 > server MUST give each player a client id in that range.
@@ -258,13 +321,21 @@ gives the client its own client id.
 > A client shows a chat line from a seat it has had no `Registered` for, but
 > without the sender's name.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 4.1.0.171 up to 4.4.0.1858 -->
 
-> **In 4.1–4.20**
+> **In 4.1–4.3**
+>
+> Registration pairs each player id with a client id.
+
+<!-- holds from 4.4.0.1858 up to 4.21.0.0 -->
+
+> **In 4.4–4.20**
 >
 > Registration pairs each player id with a client id, and a client records the
-> pair each `Registered` carries. A client takes a client id only from 0 to 252,
-> and leaves on any other, so a server MUST give each player a client id in that
+> pair each `Registered` carries. A client takes a client id only from 0 to
+> 252,
+> and leaves on any other, so a server MUST give each player a client id in
+> that
 > range.
 
 <!-- holds from 4.17.0.233 up to 4.18.0.271 -->
@@ -345,20 +416,12 @@ naming a unit, an owner or a target carry one too.
 >
 > A client given a create message for a net id it already holds stops.
 
-<!-- holds from 0.9.25.24 up to 0.9.25.36 -->
+<!-- holds from 0.9.25.24 up to 1.0.0.25 -->
 
-> **In 0.9.25.24–0.9.25.35**
+> **In 0.9.25.24–1.0.0.24**
 >
 > A client that still holds the earlier object gives the net id to the new one,
 > so messages naming it reach the new object.
-
-<!-- holds from 0.9.25.36 up to 1.0.0.25 -->
-
-> **In 0.9.25.36–1.0.0.24**
->
-> A client that still holds the earlier object gives the net id to the new one,
-> so messages naming it reach the new object, and removing either leaves the id
-> naming neither.
 
 <!-- holds from 1.0.0.25 up to 1.0.0.61 -->
 
@@ -495,9 +558,9 @@ A create message carries a node beside the object's net id.
 > A client applies a `SpawnPet`'s effect and spell level only where the owner's
 > node is its own.
 
-<!-- holds from 3.11.0.306 up to 4.21.0.0 -->
+<!-- holds from 3.13.0.399 up to 4.21.0.0 -->
 
-> **In 3.11–4.20**
+> **In 3.13–4.20**
 >
 > Nothing a player sees depends on it.
 
@@ -559,12 +622,19 @@ Among the identifiers with that top byte are these:
 > `Turret_T2_C_05`, `Turret_T2_L_01` to `Turret_T2_L_03`, and `Turret_T2_R_01`
 > to `Turret_T2_R_03`.
 
-<!-- holds from 0.9.25.24 up to 1.0.0.74 -->
+<!-- holds from 0.9.25.24 up to 1.0.0.61 -->
 
-> **In 0.9.25.24–1.0.0.73**
+> **In 0.9.25.24–1.0.0.60**
 >
 > Every object a map places carries the identifier its name gives, turrets,
 > navigation points and props among them.
+
+<!-- holds from 1.0.0.61 up to 1.0.0.74 -->
+
+> **In 1.0.0.61–1.0.0.73**
+>
+> Every object a map places carries the identifier its name gives, turrets and
+> navigation points among them.
 
 <!-- holds from 0.9.25.24 up to 0.9.25.36 -->
 
@@ -598,9 +668,16 @@ Among the identifiers with that top byte are these:
 > | 3    | `Barracks_T1_C1`, `Barracks_T2_C1`, `HQ_T1`, `HQ_T2`, `OrderShop01`, `ChaosShop01`, `____P_Chaos_Spawn_Barracks__C01`                                                         |
 > | 4    | `Barracks_T1_L1`, `Barracks_T1_R1`, `Barracks_T2_L1`, `Barracks_T2_R1`, `HQ_T1`, `HQ_T2`, `OrderShop01`, `chaosShop01`, the four spawn points named `__P_…L01` and `__P_…R01` |
 
-<!-- holds from 1.0.0.75 up to 3.11.0.306 -->
+<!-- holds from 1.0.0.75 up to 1.0.0.86 -->
 
-> **In 1.0.0.75–3.10**
+> **In 1.0.0.75–1.0.0.85**
+>
+> Every object a map places carries the identifier its name gives, turrets and
+> navigation points among them.
+
+<!-- holds from 1.0.0.86 up to 3.11.0.306 -->
+
+> **In 1.0.0.86–3.10**
 >
 > Every object a map places carries the identifier its name gives, turrets,
 > navigation points and props among them.
@@ -664,9 +741,9 @@ Among the identifiers with that top byte are these:
 > | 10  | `Barracks_T1_L1`, `Barracks_T1_R1`, `Barracks_T2_L1`, `Barracks_T2_R1`, the `L01` and `R01` spawn points of both sides, `HQ_T1`, `HQ_T2`, `orderShop01`, `chaosShop01` |
 > | 12  | `Barracks_T1_C1`, `Barracks_T2_C1`, the `C01` spawn points of both sides named `____P_…`, `HQ_T1`, `HQ_T2`, `OrderShop01`, `ChaosShop01`                               |
 
-<!-- holds from 4.1.0.171 up to 4.17.0.233 -->
+<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
 
-> **In 4.1–4.16**
+> **In 4.4**
 >
 > Of maps 1, 8, 10 and 12, these hold each name:
 >
@@ -742,9 +819,9 @@ A server MUST name each object a map holds by the identifier its name gives.
 > `CreateTurret` gives a net id to a turret the map already holds, matched by
 > name. Given to a turret that already has one, it gives it a second.
 
-<!-- holds from 0.9.25.24 up to 4.1.0.171 -->
+<!-- holds from 0.9.25.24 up to 3.14.0.700 -->
 
-> **In 0.9.25.24–3.15**
+> **In 0.9.25.24–3.13**
 >
 > Both ids name the turret.
 
@@ -776,9 +853,9 @@ A server MUST name each object a map holds by the identifier its name gives.
 > turret of the last of the map's turret buildings under the net id. On a map
 > with no turrets it fails, and a server MUST NOT send one there.
 
-<!-- holds from 3.10.0.237 up to 3.13.0.399 -->
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
-> **In 3.10–3.12**
+> **In 3.10**
 >
 > A `CreateTurret` naming no turret does nothing.
 
@@ -832,9 +909,9 @@ what each message that takes a unit out of view does.
 > owner has the earlier pet die as a unit does with no killer, and the client
 > still holds it. It does nothing to an earlier pet dead or not held.
 
-<!-- holds from 0.9.22.14 up to 0.9.25.36 -->
+<!-- holds from 0.9.25.24 up to 0.9.25.36 -->
 
-> **In 0.9.22.14–0.9.25.35**
+> **In 0.9.25.24–0.9.25.35**
 >
 > A new `SpawnPet` for an owner removes that owner's pet before it.
 
@@ -865,9 +942,9 @@ what each message that takes a unit out of view does.
 >
 > No message removes a champion.
 
-<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
+<!-- holds from 4.4.0.1858 up to 4.18.0.271 -->
 
-> **In 4.1–4.19**
+> **In 4.4–4.17**
 >
 > How each kind leaves a client's world:
 >
@@ -903,19 +980,19 @@ Each stage either marks or removes.
 >
 > The stage of `SoftReconnect` that marks is 0.
 
-<!-- holds from 1.0.0.143 up to 3.14.0.700 -->
+<!-- holds from 1.0.0.147 up to 1.0.0.148 -->
 
-> **In 1.0.0.143–3.13**
+> **In 1.0.0.147**
 >
 > A client reads only the two lowest bits of the stage: a stage with both clear
 > marks, and any other removes.
 
-<!-- holds from 1.0.0.143 up to 1.0.0.150 -->
+<!-- holds from 1.0.0.150 up to 3.14.0.700 -->
 
-> **In 1.0.0.143–1.0.0.149**
+> **In 1.0.0.150–3.13**
 >
-> A create message for a marked net id replaces the marked object rather than
-> keeping the id on it.
+> A client reads only the two lowest bits of the stage: a stage with both clear
+> marks, and any other removes.
 
 <!-- holds from 1.0.0.150 up to 1.0.0.151 -->
 
@@ -1033,9 +1110,9 @@ Creating messages are the exception, and so are the messages below.
 > wrong. The `WaypointAck` is sent as usual and lists that path. A server MUST
 > NOT name, in a group, a unit the client does not yet hold.
 
-<!-- holds from 1.0.0.126 up to 4.20.0.315 -->
+<!-- holds from 1.0.0.126 up to 4.18.0.271 -->
 
-> **In 1.0.0.126–4.19**
+> **In 1.0.0.126–4.17**
 >
 > `RegionRemoved` for a region a client does not hold does nothing.
 
@@ -1053,12 +1130,18 @@ Creating messages are the exception, and so are the messages below.
 > `SpawnPet` names the pet's owner in its header and carries the new pet's net
 > id in its body, and does nothing where that owner is not held.
 
-<!-- holds from 1.0.0.133 up to 1.0.0.150 -->
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
 
-> **In 1.0.0.133–1.0.0.149**
+> **In 1.0.0.140**
 >
 > `SpawnPet` takes the net id in its header for the new pet, but does nothing
 > where the owner its body names is not held.
+
+<!-- holds from 1.0.0.141 up to 1.0.0.150 -->
+
+> **In 1.0.0.141–1.0.0.149**
+>
+> `SpawnPet` takes the net id in its header for the new pet.
 
 <!-- holds from 1.0.0.150 up to 1.0.0.151 -->
 
@@ -1088,9 +1171,16 @@ Creating messages are the exception, and so are the messages below.
 > applied once an object takes that net id, and its `WaypointAck` is sent as
 > usual.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 4.1.0.171 up to 4.4.0.1858 -->
 
-> **In 4.1–4.20**
+> **In 4.1–4.3**
+>
+> `EnterSight` and `EnterLocalSight` act on the messages they carry whether or
+> not the client holds the unit they name.
+
+<!-- holds from 4.4.0.1858 up to 4.21.0.0 -->
+
+> **In 4.4–4.20**
 >
 > A `WaypointGroup` or `WaypointGroupAtSpeed` path for a unit not yet held is
 > applied once an object takes that net id, and its `WaypointAck` is sent as
@@ -1164,16 +1254,16 @@ for each byte b of the name, with A to Z made a to z:
 
 Every step is worked in 32 bits.
 
-<!-- holds from 0.8.13.26 up to 4.4.0.1858 -->
+<!-- holds from 0.8.13.26 up to 3.14.0.700 -->
 
-> **In 0.8.13.26–4.3**
+> **In 0.8.13.26–3.13**
 >
 > Only `A` to `Z` change, so `SummonerFlash` and `summonerflash` give one
 > number.
 
-<!-- holds from 4.5.0.260 up to 4.21.0.0 -->
+<!-- holds from 4.17.0.233 up to 4.21.0.0 -->
 
-> **In 4.5–4.20**
+> **In 4.17–4.20**
 >
 > Only `A` to `Z` change, so `SummonerFlash` and `summonerflash` give one
 > number.
@@ -1182,16 +1272,16 @@ A particle's name includes its extension, so the number comes from
 `global_ss_flash.troy` and not from `global_ss_flash`. The nine bytes
 `123456789` give 0x0678AEE9.
 
-<!-- holds from 0.8.13.26 up to 4.4.0.1858 -->
+<!-- holds from 0.8.13.26 up to 3.14.0.700 -->
 
-> **In 0.8.13.26–4.3**
+> **In 0.8.13.26–3.13**
 >
 > A byte from 128 to 255 enters the hash as its value less 256, worked in 32
 > bits, rather than as itself.
 
-<!-- holds from 4.5.0.260 up to 4.21.0.0 -->
+<!-- holds from 4.17.0.233 up to 4.21.0.0 -->
 
-> **In 4.5–4.20**
+> **In 4.17–4.20**
 >
 > A byte from 128 to 255 enters the hash as its value less 256, worked in 32
 > bits, rather than as itself.

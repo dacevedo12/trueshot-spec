@@ -70,8 +70,7 @@
           "name": "text",
           "type": "string",
           "encoding": "utf8",
-          "size": "terminated",
-          "note": "The objective, ended by a zero byte."
+          "size": "terminated"
         }
       ],
       "note": "A client ignores it where it has no objective panel."

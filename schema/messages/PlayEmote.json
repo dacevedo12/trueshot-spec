@@ -90,7 +90,7 @@
         {
           "name": "emote",
           "type": "u32",
-          "note": "Which emote, by its place in the client's list; one past the list plays nothing."
+          "note": "Which emote, by its place in the client's list."
         }
       ]
     },
@@ -120,7 +120,7 @@
         {
           "name": "emote",
           "type": "u8",
-          "note": "Which emote, by the number the client knows it as. Its four emote keys send 3, 1, 0 and 2, the numbers EmotePlayed plays."
+          "note": "Which emote."
         }
       ]
     },

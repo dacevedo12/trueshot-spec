@@ -222,8 +222,7 @@
       "fields": [
         {
           "name": "kind",
-          "type": "u16",
-          "note": "999 where the client passed the data through its own transform, 2 where it did not. A client sends kind 999 under command 237 and kind 2 under 238."
+          "type": "u16"
         },
         {
           "name": "length",
@@ -234,7 +233,7 @@
           "name": "data",
           "type": "bytes",
           "size": 1024,
-          "note": "The data, in its first length bytes; a client leaves the rest unwritten."
+          "note": "The data, in its first length bytes."
         }
       ]
     },
@@ -248,8 +247,7 @@
       "fields": [
         {
           "name": "kind",
-          "type": "u16",
-          "note": "999 where the client passed the data through its own transform, 2 where it did not."
+          "type": "u16"
         },
         {
           "name": "length",
@@ -260,7 +258,7 @@
           "name": "data",
           "type": "bytes",
           "size": 1024,
-          "note": "The data, in its first length bytes; a client leaves the rest unwritten."
+          "note": "The data, in its first length bytes."
         }
       ]
     },
@@ -274,8 +272,7 @@
       "fields": [
         {
           "name": "kind",
-          "type": "u16",
-          "note": "999 where the client passed the data through its own transform, 2 where it did not."
+          "type": "u16"
         },
         {
           "name": "length",
@@ -286,7 +283,7 @@
           "name": "data",
           "type": "bytes",
           "size": 1024,
-          "note": "The data, in its first length bytes; a client leaves the rest unwritten."
+          "note": "The data, in its first length bytes."
         }
       ]
     },
@@ -300,8 +297,7 @@
       "fields": [
         {
           "name": "kind",
-          "type": "u16",
-          "note": "999 where the client passed the data through its own transform, 2 where it did not."
+          "type": "u16"
         },
         {
           "name": "length",
@@ -312,7 +308,7 @@
           "name": "data",
           "type": "bytes",
           "size": 1024,
-          "note": "The data, in its first length bytes; a client leaves the rest unwritten."
+          "note": "The data, in its first length bytes."
         }
       ]
     },
@@ -326,8 +322,7 @@
       "fields": [
         {
           "name": "kind",
-          "type": "u16",
-          "note": "999 where the client passed the data through its own transform, 2 where it did not."
+          "type": "u16"
         },
         {
           "name": "length",
@@ -338,7 +333,7 @@
           "name": "data",
           "type": "bytes",
           "size": 1024,
-          "note": "The data, in its first length bytes; a client leaves the rest unwritten."
+          "note": "The data, in its first length bytes."
         }
       ]
     },

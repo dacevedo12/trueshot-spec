@@ -366,7 +366,7 @@
           "note": "How much."
         }
       ],
-      "note": "A client shows the figure and nothing more: the health it shows for the unit is what replication carries, and this message leaves it as it was."
+      "note": "A client shows the figure; the health it shows for the unit is what replication carries, and this message leaves it as it was."
     },
     {
       "from": "1.0.0.117",
@@ -443,7 +443,7 @@
           "note": "How much."
         }
       ],
-      "note": "A client shows the figure and nothing more: the health it shows for the unit is what replication carries, and this message leaves it as it was."
+      "note": "A client shows the figure; the health it shows for the unit is what replication carries, and this message leaves it as it was."
     },
     {
       "from": "1.0.0.119",
@@ -520,7 +520,7 @@
           "note": "How much."
         }
       ],
-      "note": "A client shows the figure and nothing more: the health it shows for the unit is what replication carries, and this message leaves it as it was."
+      "note": "A client shows the figure; the health it shows for the unit is what replication carries, and this message leaves it as it was."
     },
     {
       "from": "1.0.0.124",
@@ -597,7 +597,7 @@
           "note": "How much."
         }
       ],
-      "note": "A client shows the figure and nothing more: the health it shows for the unit is what replication carries, and this message leaves it as it was."
+      "note": "A client shows the figure; the health it shows for the unit is what replication carries, and this message leaves it as it was."
     },
     {
       "from": "1.0.0.126",
@@ -743,7 +743,7 @@
         {
           "name": "source",
           "type": "u32",
-          "note": "The unit dealing it. A client shows nothing, notices included, unless it holds target and target can be attacked; it does not need to hold source, and a champion source has the amount added to its damage dealt."
+          "note": "The unit dealing it. A client shows the figure without holding it."
         },
         {
           "name": "amount",
@@ -751,7 +751,7 @@
           "note": "How much."
         }
       ],
-      "note": "A client shows the figure and nothing more: the health it shows for the unit is what replication carries, and this message leaves it as it was."
+      "note": "A client shows the figure; the health it shows for the unit is what replication carries, and this message leaves it as it was."
     },
     {
       "from": "1.0.0.128",
@@ -828,7 +828,7 @@
           "note": "How much."
         }
       ],
-      "note": "A client shows the figure and nothing more: the health it shows for the unit is what replication carries, and this message leaves it as it was."
+      "note": "A client shows the figure; the health it shows for the unit is what replication carries, and this message leaves it as it was."
     },
     {
       "from": "1.0.0.132",
@@ -1145,7 +1145,7 @@
         {
           "name": "source",
           "type": "u32",
-          "note": "The unit dealing it. A client shows nothing, notices included, unless it holds both target and source; the figure drifts from source toward target, and a champion source has the amount added to its damage dealt."
+          "note": "The unit dealing it."
         },
         {
           "name": "amount",
@@ -1160,7 +1160,7 @@
             {
               "name": "kind",
               "width": 4,
-              "note": "What sort of damage it is, which sets how a client colours the figure: 0 red, 1 purple and 2 white. Values from 3 up show as 0 does."
+              "note": "What sort of damage it is, which sets how a client colours the figure: 0 red, 1 purple and 2 white."
             },
             {
               "name": "unused",
@@ -1264,7 +1264,7 @@
         {
           "name": "source",
           "type": "u32",
-          "note": "The unit dealing it. A client shows nothing, notices included, unless it holds both target and source; the figure drifts from source toward target, and a champion source has the amount added to its damage dealt."
+          "note": "The unit dealing it."
         },
         {
           "name": "amount",
@@ -2106,7 +2106,7 @@
             {
               "name": "result",
               "width": 3,
-              "note": "How the damage landed, and so what a client shows over the unit hurt. 4 shows the amount, 3 shows it as a critical strike, and 2 shows the word for a dodge in place of an amount.",
+              "note": "How the damage landed, and so what a client shows over the unit hurt.",
               "values": {
                 "0": {
                   "name": "invulnerable",
@@ -2190,7 +2190,7 @@
           "note": "How much."
         }
       ],
-      "note": "A client shows the figure and nothing more: the health it shows for the unit is what replication carries, and this message leaves it as it was."
+      "note": "A client shows the figure; the health it shows for the unit is what replication carries, and this message leaves it as it was."
     },
     {
       "from": "4.11.0.386",
@@ -2208,7 +2208,7 @@
             {
               "name": "result",
               "width": 3,
-              "note": "How the damage landed, and so what a client shows over the unit hurt. 4 shows the amount, 3 shows it as a critical strike, and 2 shows the word for a dodge in place of an amount.",
+              "note": "How the damage landed, and so what a client shows over the unit hurt.",
               "values": {
                 "0": {
                   "name": "invulnerable",
@@ -2292,7 +2292,7 @@
           "note": "How much."
         }
       ],
-      "note": "A client shows the figure and nothing more: the health it shows for the unit is what replication carries, and this message leaves it as it was."
+      "note": "A client shows the figure; the health it shows for the unit is what replication carries, and this message leaves it as it was."
     },
     {
       "from": "4.17.0.233",
@@ -2407,7 +2407,7 @@
         {
           "name": "result",
           "type": "u8",
-          "note": "How the damage landed, and so what a client shows over the unit hurt. A value of 6 shows the amount as normal does.",
+          "note": "How the damage landed, and so what a client shows over the unit hurt.",
           "values": {
             "0": {
               "name": "invulnerable",
@@ -2478,7 +2478,7 @@
           "note": "The unit that hurt it."
         }
       ],
-      "note": "A client shows the figure and nothing more: the health it shows for the unit is what replication carries, and this message leaves it as it was."
+      "note": "A client shows the figure: the health it shows for the unit is what replication carries, and this message leaves it as it was."
     },
     {
       "from": "4.20.0.315",

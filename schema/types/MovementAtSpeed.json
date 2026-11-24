@@ -257,7 +257,7 @@
             {
               "name": "pointCount",
               "width": 15,
-              "note": "How many points the path holds. A client takes none, or more than 2048, as no path and reads nothing more of the movement."
+              "note": "How many points the path holds."
             },
             {
               "name": "unusedHigh",
@@ -293,7 +293,7 @@
               "name": "points",
               "type": "array",
               "count": "header.pointCount",
-              "note": "Every point of the path, each stated in world units. A client reads them even for a unit it does not hold, and takes each point's height from the ground.",
+              "note": "Every point of the path, each stated in world units. A client reads them even for a unit it does not hold.",
               "items": {
                 "name": "point",
                 "type": "record",
@@ -311,8 +311,7 @@
                 ]
               }
             }
-          ],
-          "note": "Everything the movement carries beyond its first byte."
+          ]
         }
       ]
     },
@@ -419,7 +418,7 @@
             {
               "name": "pointCount",
               "width": 15,
-              "note": "How many points the path holds. A client takes none, or more than 2048, as no path and reads nothing more of the movement."
+              "note": "How many points the path holds."
             },
             {
               "name": "unusedHigh",
@@ -473,8 +472,7 @@
                 ]
               }
             }
-          ],
-          "note": "Everything the movement carries beyond its first byte."
+          ]
         }
       ]
     },
@@ -500,7 +498,7 @@
             {
               "name": "pointCount",
               "width": 15,
-              "note": "How many points the path holds. A client takes none, or more than 2048, as no path and reads nothing more of the movement."
+              "note": "How many points the path holds."
             },
             {
               "name": "unusedHigh",
@@ -554,8 +552,7 @@
                 ]
               }
             }
-          ],
-          "note": "Everything the movement carries beyond its first byte."
+          ]
         }
       ]
     },

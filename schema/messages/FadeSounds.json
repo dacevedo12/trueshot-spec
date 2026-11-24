@@ -210,7 +210,7 @@
         {
           "name": "time",
           "type": "f32",
-          "note": "How long the sounds take to fade; the unit is not recorded."
+          "note": "How long the sounds take to fade."
         }
       ]
     },
@@ -322,21 +322,6 @@
     },
     {
       "from": "4.11.0.386",
-      "until": "4.15.0.238",
-      "channel": "events",
-      "command": 95,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "time",
-          "type": "f32",
-          "note": "How long the sounds take to fade; the unit is not recorded."
-        }
-      ]
-    },
-    {
-      "from": "4.15.0.238",
       "until": "4.17.0.233",
       "channel": "events",
       "command": 95,

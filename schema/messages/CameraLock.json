@@ -57,8 +57,7 @@
             },
             {
               "name": "unused",
-              "width": 7,
-              "note": "As CameraLockSet carried them; zero in a report the client makes on its own."
+              "width": 7
             }
           ]
         },
@@ -68,7 +67,7 @@
           "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
         }
       ],
-      "note": "A client sends it on each CameraLockSet with state as that message carried it, all eight bits included, and also as its player sets the lock or the game forces a lock or lifts one. While a forced lock holds, a CameraLockSet or player setting is dropped. As a forced lock begins, a client keeps the state then in force and sends it as the lock lifts; a second forced lock during the first sends its own state and keeps nothing new."
+      "note": "A client sends it as its player sets the lock, carrying the new state; while a forced lock holds, the player's setting is dropped."
     },
     {
       "from": "0.9.25.24",
@@ -134,7 +133,7 @@
           "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
         }
       ],
-      "note": "A client sends it on each CameraLockSet with state as that message carried it, all eight bits included, and also as its player sets the lock or the game forces a lock or lifts one. While a forced lock holds, a CameraLockSet or player setting is dropped. As a forced lock begins, a client keeps the state then in force and sends it as the lock lifts; a second forced lock during the first sends its own state and keeps nothing new."
+      "note": "A client sends it on each CameraLockSet with state as that message carried it, all eight bits included, and also as its player sets the lock or the game forces a lock or lifts one. While a forced lock holds, a CameraLockSet or player setting is dropped. As a forced lock begins, a client keeps the state then in force and sends it as the lock lifts."
     },
     {
       "from": "1.0.0.25",
@@ -256,7 +255,7 @@
             {
               "name": "unused",
               "width": 7,
-              "note": "As CameraLockSet carried them; zero in a report the client makes on its own."
+              "note": "As CameraLockSet carried them."
             }
           ]
         },
@@ -266,7 +265,7 @@
           "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
         }
       ],
-      "note": "A client sends it on each CameraLockSet with state as that message carried it, all eight bits included, and also as its player sets the lock or the game forces a lock or lifts one. While a forced lock holds, a CameraLockSet or player setting is kept and sent only as that lock lifts."
+      "note": "A client sends it on each CameraLockSet with state as that message carried it, all eight bits included, and also as its player sets the lock or the game forces a lock or lifts one."
     },
     {
       "from": "1.0.0.82",
@@ -289,7 +288,7 @@
             {
               "name": "unused",
               "width": 7,
-              "note": "As CameraLockSet carried them; zero in a report the client makes on its own."
+              "note": "As CameraLockSet carried them."
             }
           ]
         },
@@ -299,7 +298,7 @@
           "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
         }
       ],
-      "note": "A client sends it on each CameraLockSet with state as that message carried it, all eight bits included, and also as its player sets the lock or the game forces a lock or lifts one. While a forced lock holds, a CameraLockSet or player setting is kept and sent only as that lock lifts."
+      "note": "A client sends it on each CameraLockSet with state as that message carried it, all eight bits included, and also as its player sets the lock or the game forces a lock or lifts one."
     },
     {
       "from": "1.0.0.86",
@@ -365,7 +364,7 @@
           "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
         }
       ],
-      "note": "A client sends it on each CameraLockSet with state as that message carried it, all eight bits included, and also as its player sets the lock or the game forces a lock or lifts one. While a forced lock holds, a CameraLockSet or player setting is kept and sent only as that lock lifts."
+      "note": "A client sends it on each CameraLockSet with state as that message carried it, all eight bits included, and also as its player sets the lock or the game forces a lock. While a forced lock holds, a CameraLockSet or player setting is kept and sent only as that lock lifts."
     },
     {
       "from": "1.0.0.96",
@@ -563,7 +562,7 @@
           "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
         }
       ],
-      "note": "A client sends it on each CameraLockSet with state as that message carried it, all eight bits included, and also as its player sets the lock or the game forces a lock or lifts one. While a forced lock holds, a CameraLockSet or player setting is kept and sent only as that lock lifts."
+      "note": "A client sends it on each CameraLockSet with state as that message carried it, all eight bits included."
     },
     {
       "from": "1.0.0.117",
@@ -596,7 +595,7 @@
           "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
         }
       ],
-      "note": "A client sends it on each CameraLockSet with state as that message carried it, all eight bits included, and also as its player sets the lock or the game forces a lock or lifts one. While a forced lock holds, a CameraLockSet or player setting is kept and sent only as that lock lifts."
+      "note": "A client sends it on each CameraLockSet with state as that message carried it, all eight bits included."
     },
     {
       "from": "1.0.0.119",
@@ -629,7 +628,7 @@
           "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
         }
       ],
-      "note": "A client sends it on each CameraLockSet with state as that message carried it, all eight bits included, and also as its player sets the lock or the game forces a lock or lifts one. While a forced lock holds, a CameraLockSet or player setting is kept and sent only as that lock lifts."
+      "note": "A client sends it on each CameraLockSet with state as that message carried it, all eight bits included."
     },
     {
       "from": "1.0.0.124",
@@ -662,7 +661,7 @@
           "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
         }
       ],
-      "note": "A client sends it on each CameraLockSet with state as that message carried it, all eight bits included, and also as its player sets the lock or the game forces a lock or lifts one. While a forced lock holds, a CameraLockSet or player setting is kept and sent only as that lock lifts."
+      "note": "A client sends it on each CameraLockSet with state as that message carried it, all eight bits included."
     },
     {
       "from": "1.0.0.126",
@@ -699,39 +698,6 @@
     },
     {
       "from": "1.0.0.127",
-      "until": "1.0.0.128",
-      "channel": "requests",
-      "command": 134,
-      "direction": "clientToServer",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "state",
-          "type": "bits",
-          "size": 1,
-          "bits": [
-            {
-              "name": "locked",
-              "width": 1,
-              "note": "Set while the view follows a unit."
-            },
-            {
-              "name": "unused",
-              "width": 7,
-              "note": "As CameraLockSet carried them; zero in a report the client makes on its own."
-            }
-          ]
-        },
-        {
-          "name": "clientId",
-          "type": "u32",
-          "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
-        }
-      ],
-      "note": "A client sends it on each CameraLockSet with state as that message carried it, all eight bits included, and also as its player sets the lock or the game forces a lock or lifts one. While a forced lock holds, a CameraLockSet or player setting is kept and sent only as that lock lifts."
-    },
-    {
-      "from": "1.0.0.128",
       "until": "1.0.0.132",
       "channel": "requests",
       "command": 134,
@@ -761,7 +727,7 @@
           "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
         }
       ],
-      "note": "A client sends it whenever its lock changes: by the player, or as the game forces a lock or lifts one. It sends none while playing a replay."
+      "note": "A client sends it whenever its lock changes: by the player, or as the game forces a lock or lifts one."
     },
     {
       "from": "1.0.0.132",
@@ -827,7 +793,7 @@
           "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
         }
       ],
-      "note": "A client sends it whenever its lock changes: by the player, or as the game forces a lock or lifts one. It sends none while playing a replay."
+      "note": "A client sends it whenever its lock changes: by the player, or as the game forces a lock or lifts one."
     },
     {
       "from": "1.0.0.139",
@@ -915,8 +881,7 @@
             },
             {
               "name": "unused",
-              "width": 7,
-              "note": "A client sends back the whole byte it holds: after CameraLockSet, the byte it received, unchanged."
+              "width": 7
             }
           ]
         },
@@ -948,8 +913,7 @@
             },
             {
               "name": "unused",
-              "width": 7,
-              "note": "Unused; a client writes zero."
+              "width": 7
             }
           ]
         },
@@ -1190,7 +1154,7 @@
           "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
         }
       ],
-      "note": "A client sends it whenever its lock changes: by the player, or as the game forces a lock or lifts one. It sends none while playing a replay."
+      "note": "A client sends it whenever its lock changes by the player. It sends none while playing a replay."
     },
     {
       "from": "4.1.0.171",

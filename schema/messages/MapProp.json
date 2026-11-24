@@ -89,7 +89,7 @@
       "command": 207,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client takes the prop's id from prop, not from the header, and makes every prop a level prop.",
+      "note": "A client takes the prop's id from prop, not from the header.",
       "fields": [
         {
           "name": "prop",
@@ -155,8 +155,7 @@
         },
         {
           "name": "skillLevel",
-          "type": "u8",
-          "note": "The prop's skill level."
+          "type": "u8"
         }
       ]
     },
@@ -167,7 +166,7 @@
       "command": 208,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client takes the prop's id from prop, not from the header, and makes every prop a level prop.",
+      "note": "A client takes the prop's id from prop, not from the header.",
       "fields": [
         {
           "name": "prop",
@@ -233,8 +232,7 @@
         },
         {
           "name": "skillLevel",
-          "type": "u8",
-          "note": "The prop's skill level."
+          "type": "u8"
         }
       ]
     },
@@ -245,7 +243,7 @@
       "command": 209,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client takes the prop's id from prop, not from the header, and makes every prop a level prop.",
+      "note": "A client takes the prop's id from prop, not from the header.",
       "fields": [
         {
           "name": "prop",
@@ -311,8 +309,7 @@
         },
         {
           "name": "skillLevel",
-          "type": "u8",
-          "note": "The prop's skill level."
+          "type": "u8"
         }
       ]
     },
@@ -323,7 +320,7 @@
       "command": 209,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client takes the prop's id from prop, not from the header, and makes every prop a level prop.",
+      "note": "A client takes the prop's id from prop, not from the header.",
       "fields": [
         {
           "name": "prop",
@@ -375,8 +372,7 @@
         },
         {
           "name": "skillLevel",
-          "type": "u8",
-          "note": "The prop's skill level."
+          "type": "u8"
         },
         {
           "name": "flags",
@@ -419,7 +415,7 @@
       "command": 210,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client takes the prop's id from prop, not from the header, and makes every prop a level prop.",
+      "note": "A client takes the prop's id from prop, not from the header.",
       "fields": [
         {
           "name": "prop",
@@ -471,8 +467,7 @@
         },
         {
           "name": "skillLevel",
-          "type": "u8",
-          "note": "The prop's skill level."
+          "type": "u8"
         },
         {
           "name": "flags",
@@ -545,17 +540,17 @@
         {
           "name": "rotationX",
           "type": "f32",
-          "note": "A vector's part along one ground axis, used for either kind. What this carries is not recorded."
+          "note": "For scenery, the yaw in degrees, a turn about the up axis. For an active prop, x of the direction it faces."
         },
         {
           "name": "rotationY",
           "type": "f32",
-          "note": "For scenery, the yaw in degrees: a turn about the up axis, positive turning +z toward +x, so yaw 0 faces +z and 90 faces +x. For an active prop, y of its facing, which does not turn it."
+          "note": "For scenery, the pitch in degrees, a turn about the x axis taken with its sign reversed. For an active prop, y of its facing, which does not turn it."
         },
         {
           "name": "rotationZ",
           "type": "f32",
-          "note": "A vector's part along the other ground axis, used for either kind. What this carries is not recorded."
+          "note": "For scenery, the roll in degrees, a turn about the z axis. For an active prop, z of the direction it faces."
         },
         {
           "name": "offsetX",
@@ -592,8 +587,7 @@
         },
         {
           "name": "skillLevel",
-          "type": "u8",
-          "note": "Unused; a server writes zero."
+          "type": "u8"
         },
         {
           "name": "rank",
@@ -603,15 +597,15 @@
         {
           "name": "kind",
           "type": "u8",
-          "note": "What sort of prop it is; a client makes nothing for any other value. A client first deletes any object holding the prop's id, whatever the kind.",
+          "note": "What sort of prop it is; a client makes nothing for any other value. A client deletes no object first: where one already holds the prop's id, both answer to it.",
           "values": {
             "0": {
               "name": "active",
-              "note": "Uses name, asset, skin, side, position, the three rotations and rank; not offset or scale."
+              "note": "Uses name, asset, side, position, the three rotations and rank; not offset."
             },
             "1": {
               "name": "scenery",
-              "note": "Uses name, asset, skin, position, rotation (pitch, yaw, roll in degrees), offset and scale; not side or rank. Where the map has a placement point of the same name, its position is used instead; where a scenery prop of that name already stands there, it is reused and takes the new id."
+              "note": "Uses name, asset, position, rotation (yaw, pitch, roll in degrees) and offset; not side or rank. Where the map has a placement point of the same name, its position is used instead. A client always makes a new scenery prop; one already standing under that name stays."
             }
           }
         },
@@ -668,17 +662,17 @@
         {
           "name": "rotationX",
           "type": "f32",
-          "note": "A vector's part along one ground axis, used for either kind. What this carries is not recorded."
+          "note": "For scenery, the yaw in degrees, a turn about the up axis. For an active prop, x of the direction it faces."
         },
         {
           "name": "rotationY",
           "type": "f32",
-          "note": "For scenery, the yaw in degrees: a turn about the up axis, positive turning +z toward +x, so yaw 0 faces +z and 90 faces +x. For an active prop, y of its facing, which does not turn it."
+          "note": "For scenery, the pitch in degrees, a turn about the x axis taken with its sign reversed. For an active prop, y of its facing, which does not turn it."
         },
         {
           "name": "rotationZ",
           "type": "f32",
-          "note": "A vector's part along the other ground axis, used for either kind. What this carries is not recorded."
+          "note": "For scenery, the roll in degrees, a turn about the z axis. For an active prop, z of the direction it faces."
         },
         {
           "name": "offsetX",
@@ -715,8 +709,7 @@
         },
         {
           "name": "skillLevel",
-          "type": "u8",
-          "note": "Unused; a server writes zero."
+          "type": "u8"
         },
         {
           "name": "rank",
@@ -726,15 +719,15 @@
         {
           "name": "kind",
           "type": "u8",
-          "note": "What sort of prop it is; a client makes nothing for any other value. A client first deletes any object holding the prop's id, whatever the kind.",
+          "note": "What sort of prop it is; a client makes nothing for any other value. A client deletes no object first: where one already holds the prop's id, both answer to it.",
           "values": {
             "0": {
               "name": "active",
-              "note": "Uses name, asset, skin, side, position, the three rotations and rank; not offset or scale."
+              "note": "Uses name, asset, side, position, the three rotations and rank; not offset."
             },
             "1": {
               "name": "scenery",
-              "note": "Uses name, asset, skin, position, rotation (pitch, yaw, roll in degrees), offset and scale; not side or rank. Where the map has a placement point of the same name, its position is used instead; where a scenery prop of that name already stands there, it is reused and takes the new id."
+              "note": "Uses name, asset, position, rotation (yaw, pitch, roll in degrees) and offset; not side or rank. Where the map has a placement point of the same name, its position is used instead. A client always makes a new scenery prop; one already standing under that name stays."
             }
           }
         },
@@ -884,7 +877,7 @@
       "command": 217,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client takes the prop's id from prop, not from the header. A scenery prop is turned by pitch, then yaw, then roll, each about the fixed world axes; none is negated or wrapped. An active prop only turns about the up axis, to face the ground direction its x and z give, and faces +z where both are zero.",
+      "note": "A client takes the prop's id from prop, not from the header. An active prop only turns about the up axis, to face the ground direction its x and z give, and faces +z where both are zero.",
       "fields": [
         {
           "name": "prop",
@@ -919,7 +912,7 @@
         {
           "name": "rotationY",
           "type": "f32",
-          "note": "For scenery, the yaw in degrees: a turn about the up axis, positive turning +z toward +x, so yaw 0 faces +z and 90 faces +x. For an active prop, y of its facing, which does not turn it."
+          "note": "For an active prop, y of its facing, which does not turn it."
         },
         {
           "name": "rotationZ",
@@ -928,23 +921,20 @@
         },
         {
           "name": "offsetX",
-          "type": "f32",
-          "note": "A second vector's part along one ground axis, used only where kind is 1. What this carries is not recorded."
+          "type": "f32"
         },
         {
           "name": "offsetY",
-          "type": "f32",
-          "note": "A second vector's part in height, used only where kind is 1. What this carries is not recorded."
+          "type": "f32"
         },
         {
           "name": "offsetZ",
-          "type": "f32",
-          "note": "A second vector's part along the other ground axis, used only where kind is 1. What this carries is not recorded."
+          "type": "f32"
         },
         {
           "name": "side",
           "type": "bits",
-          "note": "The side the prop belongs to. A server sends 300, the neutral side.",
+          "note": "The side the prop belongs to.",
           "size": 4,
           "bits": [
             {
@@ -996,7 +986,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": 64,
-          "note": "The name of the character the client loads the prop's art and sound under, written and padded as above."
+          "note": "The name the client loads its art and sound under, written and padded as above."
         }
       ]
     },
@@ -1007,7 +997,7 @@
       "command": 217,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client takes the prop's id from prop, not from the header. A scenery prop is turned by pitch, then yaw, then roll, each about the fixed world axes; none is negated or wrapped. An active prop only turns about the up axis, to face the ground direction its x and z give, and faces +z where both are zero.",
+      "note": "A client takes the prop's id from prop, not from the header. An active prop only turns about the up axis, to face the ground direction its x and z give, and faces +z where both are zero.",
       "fields": [
         {
           "name": "prop",
@@ -1037,37 +1027,34 @@
         {
           "name": "rotationX",
           "type": "f32",
-          "note": "For scenery, the pitch in degrees: a turn about the x axis, positive turning +y toward +z. For an active prop, x of the direction it faces."
+          "note": "For an active prop, x of the direction it faces."
         },
         {
           "name": "rotationY",
           "type": "f32",
-          "note": "For scenery, the yaw in degrees: a turn about the up axis, positive turning +z toward +x, so yaw 0 faces +z and 90 faces +x. For an active prop, y of its facing, which does not turn it."
+          "note": "For an active prop, y of its facing, which does not turn it."
         },
         {
           "name": "rotationZ",
           "type": "f32",
-          "note": "For scenery, the roll in degrees: a turn about the z axis, positive turning +x toward +y. For an active prop, z of the direction it faces."
+          "note": "For scenery, the roll in degrees, a turn about the z axis. For an active prop, z of the direction it faces."
         },
         {
           "name": "offsetX",
-          "type": "f32",
-          "note": "What is added to where it stands, along one ground axis, in world units."
+          "type": "f32"
         },
         {
           "name": "offsetY",
-          "type": "f32",
-          "note": "What is added to where it stands, in height, in world units."
+          "type": "f32"
         },
         {
           "name": "offsetZ",
-          "type": "f32",
-          "note": "What is added to where it stands, along the other ground axis, in world units."
+          "type": "f32"
         },
         {
           "name": "side",
           "type": "bits",
-          "note": "The side the prop belongs to. A server sends 300, the neutral side.",
+          "note": "The side the prop belongs to.",
           "size": 4,
           "bits": [
             {
@@ -1253,7 +1240,7 @@
       "command": 218,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client takes the prop's id from prop, not from the header. A scenery prop is turned by pitch, then yaw, then roll, each about the fixed world axes; none is negated or wrapped. An active prop only turns about the up axis, to face the ground direction its x and z give, and faces +z where both are zero.",
+      "note": "A client takes the prop's id from prop, not from the header. An active prop only turns about the up axis, to face the ground direction its x and z give, and faces +z where both are zero.",
       "fields": [
         {
           "name": "prop",
@@ -1283,12 +1270,12 @@
         {
           "name": "rotationX",
           "type": "f32",
-          "note": "For scenery, the pitch in degrees: a turn about the x axis, positive turning +y toward +z. For an active prop, x of the direction it faces."
+          "note": "For an active prop, x of the direction it faces."
         },
         {
           "name": "rotationY",
           "type": "f32",
-          "note": "For scenery, the yaw in degrees: a turn about the up axis, positive turning +z toward +x, so yaw 0 faces +z and 90 faces +x. For an active prop, y of its facing, which does not turn it."
+          "note": "For an active prop, y of its facing, which does not turn it."
         },
         {
           "name": "rotationZ",
@@ -1313,7 +1300,7 @@
         {
           "name": "side",
           "type": "bits",
-          "note": "The side the prop belongs to. A server sends 300, the neutral side.",
+          "note": "The side the prop belongs to.",
           "size": 4,
           "bits": [
             {
@@ -1376,7 +1363,7 @@
       "command": 220,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client takes the prop's id from prop, not from the header. A scenery prop is turned by pitch, then yaw, then roll, each about the fixed world axes; none is negated or wrapped. An active prop only turns about the up axis, to face the ground direction its x and z give, and faces +z where both are zero.",
+      "note": "A client takes the prop's id from prop, not from the header. An active prop only turns about the up axis, to face the ground direction its x and z give, and faces +z where both are zero.",
       "fields": [
         {
           "name": "prop",
@@ -1406,12 +1393,12 @@
         {
           "name": "rotationX",
           "type": "f32",
-          "note": "For scenery, the pitch in degrees: a turn about the x axis, positive turning +y toward +z. For an active prop, x of the direction it faces."
+          "note": "For an active prop, x of the direction it faces."
         },
         {
           "name": "rotationY",
           "type": "f32",
-          "note": "For scenery, the yaw in degrees: a turn about the up axis, positive turning +z toward +x, so yaw 0 faces +z and 90 faces +x. For an active prop, y of its facing, which does not turn it."
+          "note": "For an active prop, y of its facing, which does not turn it."
         },
         {
           "name": "rotationZ",
@@ -1436,7 +1423,7 @@
         {
           "name": "side",
           "type": "bits",
-          "note": "The side the prop belongs to. A server sends 300, the neutral side.",
+          "note": "The side the prop belongs to.",
           "size": 4,
           "bits": [
             {
@@ -1499,7 +1486,7 @@
       "command": 218,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client takes the prop's id from prop, not from the header. A scenery prop is turned by pitch, then yaw, then roll, each about the fixed world axes; none is negated or wrapped. An active prop only turns about the up axis, to face the ground direction its x and z give, and faces +z where both are zero.",
+      "note": "A client takes the prop's id from prop, not from the header. An active prop only turns about the up axis, to face the ground direction its x and z give, and faces +z where both are zero.",
       "fields": [
         {
           "name": "prop",
@@ -1529,12 +1516,12 @@
         {
           "name": "rotationX",
           "type": "f32",
-          "note": "For scenery, the pitch in degrees: a turn about the x axis, positive turning +y toward +z. For an active prop, x of the direction it faces."
+          "note": "For an active prop, x of the direction it faces."
         },
         {
           "name": "rotationY",
           "type": "f32",
-          "note": "For scenery, the yaw in degrees: a turn about the up axis, positive turning +z toward +x, so yaw 0 faces +z and 90 faces +x. For an active prop, y of its facing, which does not turn it."
+          "note": "For an active prop, y of its facing, which does not turn it."
         },
         {
           "name": "rotationZ",
@@ -1559,7 +1546,7 @@
         {
           "name": "side",
           "type": "bits",
-          "note": "The side the prop belongs to. A server sends 300, the neutral side.",
+          "note": "The side the prop belongs to.",
           "size": 4,
           "bits": [
             {
@@ -1622,7 +1609,7 @@
       "command": 220,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client takes the prop's id from prop, not from the header. A scenery prop is turned by pitch, then yaw, then roll, each about the fixed world axes; none is negated or wrapped. An active prop only turns about the up axis, to face the ground direction its x and z give, and faces +z where both are zero.",
+      "note": "A client takes the prop's id from prop, not from the header. An active prop only turns about the up axis, to face the ground direction its x and z give, and faces +z where both are zero.",
       "fields": [
         {
           "name": "prop",
@@ -1652,12 +1639,12 @@
         {
           "name": "rotationX",
           "type": "f32",
-          "note": "For scenery, the pitch in degrees: a turn about the x axis, positive turning +y toward +z. For an active prop, x of the direction it faces."
+          "note": "For an active prop, x of the direction it faces."
         },
         {
           "name": "rotationY",
           "type": "f32",
-          "note": "For scenery, the yaw in degrees: a turn about the up axis, positive turning +z toward +x, so yaw 0 faces +z and 90 faces +x. For an active prop, y of its facing, which does not turn it."
+          "note": "For an active prop, y of its facing, which does not turn it."
         },
         {
           "name": "rotationZ",
@@ -1682,7 +1669,7 @@
         {
           "name": "side",
           "type": "bits",
-          "note": "The side the prop belongs to. A server sends 300, the neutral side.",
+          "note": "The side the prop belongs to.",
           "size": 4,
           "bits": [
             {
@@ -1745,7 +1732,7 @@
       "command": 219,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client takes the prop's id from prop, not from the header. A scenery prop is turned by pitch, then yaw, then roll, each about the fixed world axes; none is negated or wrapped. An active prop only turns about the up axis, to face the ground direction its x and z give, and faces +z where both are zero.",
+      "note": "A client takes the prop's id from prop, not from the header. An active prop only turns about the up axis, to face the ground direction its x and z give, and faces +z where both are zero.",
       "fields": [
         {
           "name": "prop",
@@ -1775,12 +1762,12 @@
         {
           "name": "rotationX",
           "type": "f32",
-          "note": "For scenery, the pitch in degrees: a turn about the x axis, positive turning +y toward +z. For an active prop, x of the direction it faces."
+          "note": "For an active prop, x of the direction it faces."
         },
         {
           "name": "rotationY",
           "type": "f32",
-          "note": "For scenery, the yaw in degrees: a turn about the up axis, positive turning +z toward +x, so yaw 0 faces +z and 90 faces +x. For an active prop, y of its facing, which does not turn it."
+          "note": "For an active prop, y of its facing, which does not turn it."
         },
         {
           "name": "rotationZ",
@@ -1805,7 +1792,7 @@
         {
           "name": "side",
           "type": "bits",
-          "note": "The side the prop belongs to. A server sends 300, the neutral side.",
+          "note": "The side the prop belongs to.",
           "size": 4,
           "bits": [
             {
@@ -1833,7 +1820,7 @@
         {
           "name": "kind",
           "type": "u8",
-          "note": "What sort of prop it is; a client makes nothing for any other value. It deletes no object first: where one already holds the prop's id, both stay.",
+          "note": "What sort of prop it is; a client makes nothing for any other value. An object already holding the prop's id is not deleted.",
           "values": {
             "0": {
               "name": "active",
@@ -1841,7 +1828,7 @@
             },
             "1": {
               "name": "scenery",
-              "note": "Uses name, asset, position, rotation (pitch, yaw, roll in degrees) and offset; not side or rank. Where the map has a placement point of the same name, its position is used instead; where a scenery prop of that name already stands there, it is reused and takes the new id."
+              "note": "Uses name, asset, position, rotation and offset; not side or rank. Where the map has a placement point of the same name, its position is used instead; where a scenery prop of that name already stands there, it is reused and takes the new id."
             }
           }
         },
@@ -1991,7 +1978,7 @@
       "command": 221,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client takes the prop's id from prop, not from the header. A scenery prop is turned by pitch, then yaw, then roll, each about the fixed world axes; none is negated or wrapped. An active prop only turns about the up axis, to face the ground direction its x and z give, and faces +z where both are zero.",
+      "note": "A client takes the prop's id from prop, not from the header. An active prop only turns about the up axis, to face the ground direction its x and z give, and faces +z where both are zero.",
       "fields": [
         {
           "name": "prop",
@@ -2021,12 +2008,12 @@
         {
           "name": "rotationX",
           "type": "f32",
-          "note": "For scenery, the pitch in degrees: a turn about the x axis, positive turning +y toward +z. For an active prop, x of the direction it faces."
+          "note": "For an active prop, x of the direction it faces."
         },
         {
           "name": "rotationY",
           "type": "f32",
-          "note": "For scenery, the yaw in degrees: a turn about the up axis, positive turning +z toward +x, so yaw 0 faces +z and 90 faces +x. For an active prop, y of its facing, which does not turn it."
+          "note": "For an active prop, y of its facing, which does not turn it."
         },
         {
           "name": "rotationZ",
@@ -2051,7 +2038,7 @@
         {
           "name": "side",
           "type": "bits",
-          "note": "The side the prop belongs to. A server sends 300, the neutral side.",
+          "note": "The side the prop belongs to.",
           "size": 4,
           "bits": [
             {
@@ -2114,7 +2101,7 @@
       "command": 208,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client takes the prop's id from prop, not from the header. A scenery prop is turned by pitch, then yaw, then roll, each about the fixed world axes; none is negated or wrapped. An active prop only turns about the up axis, to face the ground direction its x and z give, and faces +z where both are zero.",
+      "note": "A client takes the prop's id from prop, not from the header. An active prop only turns about the up axis, to face the ground direction its x and z give, and faces +z where both are zero.",
       "fields": [
         {
           "name": "prop",
@@ -2144,12 +2131,12 @@
         {
           "name": "rotationX",
           "type": "f32",
-          "note": "For scenery, the pitch in degrees: a turn about the x axis, positive turning +y toward +z. For an active prop, x of the direction it faces."
+          "note": "For an active prop, x of the direction it faces."
         },
         {
           "name": "rotationY",
           "type": "f32",
-          "note": "For scenery, the yaw in degrees: a turn about the up axis, positive turning +z toward +x, so yaw 0 faces +z and 90 faces +x. For an active prop, y of its facing, which does not turn it."
+          "note": "For an active prop, y of its facing, which does not turn it."
         },
         {
           "name": "rotationZ",
@@ -2174,7 +2161,7 @@
         {
           "name": "side",
           "type": "bits",
-          "note": "The side the prop belongs to. A server sends 300, the neutral side.",
+          "note": "The side the prop belongs to.",
           "size": 4,
           "bits": [
             {
@@ -2237,7 +2224,7 @@
       "command": 208,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client takes the prop's id from prop, not from the header. A scenery prop is turned by pitch, then yaw, then roll, each about the fixed world axes; none is negated or wrapped. An active prop only turns about the up axis, to face the ground direction its x and z give, and faces +z where both are zero.",
+      "note": "A client takes the prop's id from prop, not from the header. An active prop only turns about the up axis, to face the ground direction its x and z give, and faces +z where both are zero.",
       "fields": [
         {
           "name": "prop",
@@ -2267,12 +2254,12 @@
         {
           "name": "rotationX",
           "type": "f32",
-          "note": "For scenery, the pitch in degrees: a turn about the x axis, positive turning +y toward +z. For an active prop, x of the direction it faces."
+          "note": "For an active prop, x of the direction it faces."
         },
         {
           "name": "rotationY",
           "type": "f32",
-          "note": "For scenery, the yaw in degrees: a turn about the up axis, positive turning +z toward +x, so yaw 0 faces +z and 90 faces +x. For an active prop, y of its facing, which does not turn it."
+          "note": "For an active prop, y of its facing, which does not turn it."
         },
         {
           "name": "rotationZ",
@@ -2297,7 +2284,7 @@
         {
           "name": "side",
           "type": "bits",
-          "note": "The side the prop belongs to. A server sends 300, the neutral side.",
+          "note": "The side the prop belongs to.",
           "size": 2,
           "bits": [
             {
@@ -3338,11 +3325,11 @@
           "values": {
             "0": {
               "name": "active",
-              "note": "Uses name, asset, skin, side, position, the three rotations and rank; not offset or scale."
+              "note": "Uses name, asset, skin, side, position, the three rotations and rank; not offset."
             },
             "1": {
               "name": "scenery",
-              "note": "Uses name, asset, skin, position, rotation (pitch, yaw, roll in degrees), offset and scale; not side or rank. Where the map has a placement point of the same name, its position is used instead; where a scenery prop of that name already stands there, it is reused and takes the new id."
+              "note": "Uses name, asset, skin, position, rotation (pitch, yaw, roll in degrees) and offset; not side or rank."
             }
           }
         },
@@ -3877,7 +3864,7 @@
         {
           "name": "side",
           "type": "u16",
-          "note": "The side it belongs to, or zero where it belongs to none."
+          "note": "The side the prop belongs to."
         },
         {
           "name": "rank",
@@ -3886,8 +3873,7 @@
         },
         {
           "name": "skillLevel",
-          "type": "u8",
-          "note": "What level the prop's own doings stand at."
+          "type": "u8"
         },
         {
           "name": "kind",

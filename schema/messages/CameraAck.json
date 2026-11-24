@@ -47,7 +47,7 @@
         {
           "name": "syncId",
           "type": "u8",
-          "note": "The name the report carried. A client sends the report again until this comes back. It takes a value only where it is newer than the last it took, counting with wrap within 128 steps, and ignores any other."
+          "note": "The name the report carried."
         }
       ],
       "note": "A client ignores the header."
@@ -63,7 +63,7 @@
         {
           "name": "syncId",
           "type": "u8",
-          "note": "The name the report carried. A client sends the report again until this comes back."
+          "note": "The name the report carried."
         }
       ],
       "note": "A client ignores the header."
@@ -159,10 +159,9 @@
         {
           "name": "syncId",
           "type": "u8",
-          "note": "The name the report carried. A client sends the report again until this comes back."
+          "note": "The name the report carried."
         }
-      ],
-      "note": "A server names in the header the champion of the player it is sent to."
+      ]
     },
     {
       "from": "1.0.0.103",
@@ -175,10 +174,9 @@
         {
           "name": "syncId",
           "type": "u8",
-          "note": "The name the report carried. A client sends the report again until this comes back."
+          "note": "The name the report carried."
         }
-      ],
-      "note": "A server names in the header the champion of the player it is sent to."
+      ]
     },
     {
       "from": "1.0.0.107",
@@ -191,10 +189,9 @@
         {
           "name": "syncId",
           "type": "u8",
-          "note": "The name the report carried. A client sends the report again until this comes back."
+          "note": "The name the report carried."
         }
-      ],
-      "note": "A server names in the header the champion of the player it is sent to."
+      ]
     },
     {
       "from": "1.0.0.109",
@@ -207,10 +204,9 @@
         {
           "name": "syncId",
           "type": "u8",
-          "note": "The name the report carried. A client sends the report again until this comes back."
+          "note": "The name the report carried."
         }
-      ],
-      "note": "A server names in the header the champion of the player it is sent to."
+      ]
     },
     {
       "from": "1.0.0.110",
@@ -351,7 +347,7 @@
         {
           "name": "syncId",
           "type": "u8",
-          "note": "The name the report carried. A client sends the report again until this comes back."
+          "note": "The name the report carried."
         }
       ],
       "note": "A client ignores the header."
@@ -383,7 +379,7 @@
         {
           "name": "syncId",
           "type": "u8",
-          "note": "The name the report carried. A client sends the report again until this comes back."
+          "note": "The name the report carried."
         }
       ],
       "note": "A client ignores the header."
@@ -513,8 +509,7 @@
           "type": "u8",
           "note": "The name the report carried. A client sends the report again until this comes back."
         }
-      ],
-      "note": "A server names in the header the champion of the player it is sent to."
+      ]
     },
     {
       "from": "4.11.0.386",

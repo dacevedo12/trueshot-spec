@@ -141,7 +141,7 @@
                 {
                   "name": "movementKind",
                   "type": "u8",
-                  "note": "What follows the sync id: 0 nothing, 1 a path walked at a set speed, 2 a path, 3 a point the unit stands at. A client reads nothing more for any other value.",
+                  "note": "What follows the sync id: 0 nothing, 1 a path walked at a set speed, 2 a path, 3 a point the unit stands at.",
                   "values": {
                     "0": {
                       "name": "nothing"
@@ -160,7 +160,7 @@
                 {
                   "name": "syncId",
                   "type": "u32",
-                  "note": "The number of this statement about the unit; a client takes a path or a point only where it is not behind the last one the unit took."
+                  "note": "The number of this statement about the unit."
                 },
                 {
                   "name": "movement",
@@ -452,7 +452,7 @@
           }
         }
       ],
-      "note": "What a server sends to bring a unit into what a client can see. A client draws a unit only once this has named it, except turrets, which it draws regardless; the header names the unit."
+      "note": "What a server sends to bring a unit into what a client can see. The header names the unit."
     },
     {
       "from": "1.0.0.25",
@@ -730,7 +730,6 @@
                   "name": "movement",
                   "type": "struct",
                   "struct": "Movement",
-                  "note": "Every point after the first.",
                   "present": {
                     "when": "movementKind",
                     "equals": 2
@@ -956,7 +955,6 @@
                   "name": "movement",
                   "type": "struct",
                   "struct": "Movement",
-                  "note": "Every point after the first.",
                   "present": {
                     "when": "movementKind",
                     "equals": 2
@@ -1069,7 +1067,6 @@
                   "name": "movement",
                   "type": "struct",
                   "struct": "Movement",
-                  "note": "Every point after the first.",
                   "present": {
                     "when": "movementKind",
                     "equals": 2
@@ -1182,7 +1179,6 @@
                   "name": "movement",
                   "type": "struct",
                   "struct": "Movement",
-                  "note": "Every point after the first.",
                   "present": {
                     "when": "movementKind",
                     "equals": 2
@@ -1506,7 +1502,6 @@
                 "when": "remaining",
                 "unseen": "absent"
               },
-              "note": "Where the unit stands, followed by the direction it faces.",
               "fields": [
                 {
                   "name": "movementKind",
@@ -1634,7 +1629,6 @@
                 "when": "remaining",
                 "unseen": "absent"
               },
-              "note": "Where the unit stands, followed by the direction it faces.",
               "fields": [
                 {
                   "name": "movementKind",
@@ -1762,7 +1756,6 @@
                 "when": "remaining",
                 "unseen": "absent"
               },
-              "note": "Where the unit stands, followed by the direction it faces.",
               "fields": [
                 {
                   "name": "movementKind",
@@ -3051,7 +3044,6 @@
                 {
                   "name": "movementKind",
                   "type": "u8",
-                  "note": "What the unit is doing on the ground, and so which shape follows. A champion stated as standing, with the place and facing below, is drawn there with its name and health bar over it. One stated as moving is drawn at the first point of its path and walks the rest.",
                   "values": {
                     "0": {
                       "name": "nothing"
@@ -3069,14 +3061,12 @@
                 },
                 {
                   "name": "syncId",
-                  "type": "u32",
-                  "note": "The name this statement of movement answers to."
+                  "type": "u32"
                 },
                 {
                   "name": "movement",
                   "type": "struct",
                   "struct": "Movement",
-                  "note": "Where the unit is going. spec/movement.md says how a path is read.",
                   "present": {
                     "when": "movementKind",
                     "equals": 2
@@ -3096,7 +3086,7 @@
                 {
                   "name": "atX",
                   "type": "f32",
-                  "note": "Where the unit stands, along one ground axis, in world units.",
+                  "note": "Along one ground axis, in world units.",
                   "present": {
                     "when": "movementKind",
                     "equals": 3
@@ -3105,7 +3095,7 @@
                 {
                   "name": "atZ",
                   "type": "f32",
-                  "note": "Where it stands, along the other, in world units.",
+                  "note": "Along the other ground axis.",
                   "present": {
                     "when": "movementKind",
                     "equals": 3
@@ -3314,7 +3304,7 @@
         {
           "name": "itemCount",
           "type": "u8",
-          "note": "How many items the unit holds. A client reads this and the rest for a champion, a minion or another unit with a mind; for a turret, a map prop, a building or a missile it reads nothing after the carried messages."
+          "note": "How many items the unit holds. A client reads this and the rest for a champion, a minion or another unit with a mind; for a turret, a map prop, a building or a missile it reads nothing."
         },
         {
           "name": "items",
@@ -3330,7 +3320,7 @@
         {
           "name": "view",
           "type": "record",
-          "note": "Everything else a client needs to draw the unit. A server sends it for a champion, a minion or another unit with a mind, which a client reads past the end of the message without it, and ends the message after the items for any other unit.",
+          "note": "A server sends it for a champion, a minion or another unit with a mind, which a client reads past the end of the message without it, and ends the message after the items for any other unit.",
           "fields": [
             {
               "name": "hasShields",
@@ -3478,7 +3468,7 @@
         {
           "name": "itemCount",
           "type": "u8",
-          "note": "How many items the unit holds. A client reads this and the rest for a champion, a minion or another unit with a mind; for a turret, a map prop, a building or a missile it reads nothing after the carried messages."
+          "note": "How many items the unit holds. A client reads this and the rest for a champion, a minion or another unit with a mind; for a turret, a map prop, a building or a missile it reads nothing."
         },
         {
           "name": "items",
@@ -3494,7 +3484,7 @@
         {
           "name": "view",
           "type": "record",
-          "note": "Everything else a client needs to draw the unit. A server sends it for a champion, a minion or another unit with a mind, which a client reads past the end of the message without it, and ends the message after the items for any other unit.",
+          "note": "A server sends it for a champion, a minion or another unit with a mind, which a client reads past the end of the message without it, and ends the message after the items for any other unit.",
           "fields": [
             {
               "name": "hasShields",
@@ -3642,7 +3632,7 @@
         {
           "name": "itemCount",
           "type": "u8",
-          "note": "How many items the unit holds. A client reads this and the rest for a champion, a minion or another unit with a mind; for a turret, a map prop, a building or a missile it reads nothing after the carried messages."
+          "note": "How many items the unit holds. A client reads this and the rest for a champion, a minion or another unit with a mind; for a turret, a map prop, a building or a missile it reads nothing."
         },
         {
           "name": "items",
@@ -3658,7 +3648,7 @@
         {
           "name": "view",
           "type": "record",
-          "note": "Everything else a client needs to draw the unit. A server sends it for a champion, a minion or another unit with a mind, which a client reads past the end of the message without it, and ends the message after the items for any other unit.",
+          "note": "A server sends it for a champion, a minion or another unit with a mind, which a client reads past the end of the message without it, and ends the message after the items for any other unit.",
           "fields": [
             {
               "name": "hasShields",
@@ -3834,7 +3824,7 @@
         {
           "name": "itemCount",
           "type": "u8",
-          "note": "How many items the unit holds. A client reads this and the rest for a champion, a minion or another unit with a mind; for a turret, a map prop, a building or a missile it reads nothing after the carried messages."
+          "note": "How many items the unit holds. A client reads this and the rest for a champion, a minion or another unit with a mind; for a turret, a map prop, a building or a missile it reads nothing."
         },
         {
           "name": "items",
@@ -3850,7 +3840,7 @@
         {
           "name": "view",
           "type": "record",
-          "note": "Everything else a client needs to draw the unit. A server sends it for a champion, a minion or another unit with a mind, which a client reads past the end of the message without it, and ends the message after the items for any other unit.",
+          "note": "A server sends it for a champion, a minion or another unit with a mind, which a client reads past the end of the message without it, and ends the message after the items for any other unit.",
           "fields": [
             {
               "name": "hasShields",
@@ -4358,7 +4348,7 @@
               "present": {
                 "when": "remaining"
               },
-              "note": "Where the unit is and what it is doing on the ground. A client reads it for a champion or a minion, and a server sends it for those; for another unit with a mind the message ends before it.",
+              "note": "Where the unit is and what it is doing on the ground.",
               "fields": [
                 {
                   "name": "movementKind",
@@ -4449,7 +4439,7 @@
           }
         }
       ],
-      "note": "It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say."
+      "note": "It carries whole messages of the same family for anything a layout of its own cannot say."
     },
     {
       "from": "1.0.0.143",
@@ -4567,7 +4557,7 @@
               "present": {
                 "when": "remaining"
               },
-              "note": "Where the unit is and what it is doing on the ground. A client reads it for a champion or a minion, and a server sends it for those; for another unit with a mind the message ends before it.",
+              "note": "Where the unit is and what it is doing on the ground.",
               "fields": [
                 {
                   "name": "movementKind",
@@ -4658,7 +4648,7 @@
           }
         }
       ],
-      "note": "It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say."
+      "note": "It carries whole messages of the same family for anything a layout of its own cannot say."
     },
     {
       "from": "1.0.0.144",
@@ -4776,7 +4766,7 @@
               "present": {
                 "when": "remaining"
               },
-              "note": "Where the unit is and what it is doing on the ground. A client reads it for a champion or a minion, and a server sends it for those; for another unit with a mind the message ends before it.",
+              "note": "Where the unit is and what it is doing on the ground.",
               "fields": [
                 {
                   "name": "movementKind",
@@ -4867,7 +4857,7 @@
           }
         }
       ],
-      "note": "It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say."
+      "note": "It carries whole messages of the same family for anything a layout of its own cannot say."
     },
     {
       "from": "1.0.0.150",
@@ -5554,7 +5544,7 @@
           "present": {
             "when": "remaining"
           },
-          "note": "Everything else a client needs to draw the unit. A server sends this message without it too, ending after the items.",
+          "note": "Everything else a client needs to draw the unit.",
           "fields": [
             {
               "name": "hasShields",
@@ -5703,7 +5693,7 @@
           ]
         }
       ],
-      "note": "It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say."
+      "note": "It carries whole messages of the same family for anything a layout of its own cannot say."
     },
     {
       "from": "3.6.0.388",
@@ -7150,7 +7140,7 @@
           "present": {
             "when": "remaining"
           },
-          "note": "Everything else a client needs to draw the unit. A server sends this message without it too, ending after the items.",
+          "note": "Everything else a client needs to draw the unit.",
           "fields": [
             {
               "name": "hasShields",
@@ -7353,7 +7343,7 @@
           ]
         }
       ],
-      "note": "It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say."
+      "note": "It carries whole messages of the same family for anything a layout of its own cannot say."
     },
     {
       "from": "4.11.0.386",
@@ -7528,7 +7518,7 @@
               "present": {
                 "when": "remaining"
               },
-              "note": "Where the unit is and what it is doing on the ground. A client reads it, whatever the message's length, for a champion or a minion; for any other unit the message ends before it.",
+              "note": "Where the unit is and what it is doing on the ground. A server also sends this message ending before it.",
               "fields": [
                 {
                   "name": "movementKind",
@@ -7891,8 +7881,7 @@
       "fields": [
         {
           "name": "carried",
-          "type": "u16",
-          "note": "The byte length of the messages carried below, all sixteen bits of it."
+          "type": "u16"
         },
         {
           "name": "messages",
@@ -7932,7 +7921,7 @@
             {
               "name": "hasShields",
               "type": "u8",
-              "note": "Whether the three figures below follow. A zero leaves them out, and everything after them begins twelve bytes earlier.",
+              "note": "Whether the three figures below follow. A zero leaves them out.",
               "values": {
                 "0": {
                   "name": "no"
@@ -8026,7 +8015,6 @@
             {
               "name": "isChampion",
               "type": "u8",
-              "note": "Whether the unit is a champion.",
               "values": {
                 "0": {
                   "name": "no"
@@ -8047,7 +8035,7 @@
                 {
                   "name": "movementKind",
                   "type": "u8",
-                  "note": "What the unit is doing on the ground, and so which shape follows. A server sends the values for standing and moving.",
+                  "note": "What the unit is doing on the ground, and so which shape follows.",
                   "values": {
                     "0": {
                       "name": "nothing"
@@ -8130,7 +8118,7 @@
           ]
         }
       ],
-      "note": "It states everything a client needs to draw the unit at once, and carries whole messages of the same family for anything a layout of its own cannot say."
+      "note": "It carries whole messages of the same family for anything a layout of its own cannot say."
     },
     {
       "from": "4.20.0.315",

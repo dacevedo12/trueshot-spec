@@ -50,7 +50,7 @@
           "note": "How fast, 1 being normal. A client takes the value as sent, with no limit."
         }
       ],
-      "note": "It takes effect at once, so sent while paused it ends the pause."
+      "note": "Sent while paused, it takes effect at once."
     },
     {
       "from": "1.0.0.70",
@@ -241,8 +241,7 @@
           "type": "f32",
           "note": "How fast, 1 being normal."
         }
-      ],
-      "note": "Sent while paused, it takes effect on resuming."
+      ]
     },
     {
       "from": "1.0.0.126",
@@ -303,7 +302,7 @@
         {
           "name": "speed",
           "type": "f32",
-          "note": "How fast, 1 being normal. A client keeps it between 0 and 10."
+          "note": "How fast, 1 being normal. In a match it plays, a client keeps it between 0 and 10."
         }
       ],
       "note": "Sent while paused, it takes effect on resuming."
@@ -399,7 +398,7 @@
         {
           "name": "speed",
           "type": "f32",
-          "note": "How fast, 1 being normal. A client keeps it between 0 and 10."
+          "note": "How fast, 1 being normal."
         }
       ],
       "note": "Sent while paused, it takes effect on resuming."
@@ -431,7 +430,7 @@
         {
           "name": "speed",
           "type": "f32",
-          "note": "How fast, 1 being normal. A client keeps it between 0 and 10."
+          "note": "How fast, 1 being normal."
         }
       ],
       "note": "Sent while paused, it takes effect on resuming."

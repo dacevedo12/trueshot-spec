@@ -46,7 +46,7 @@
         {
           "name": "action",
           "type": "u8",
-          "note": "What to do. A client ignores any other value.",
+          "note": "A client ignores any other value.",
           "values": {
             "0": {
               "name": "offer",
@@ -63,8 +63,7 @@
           "type": "u8",
           "note": "Which point."
         }
-      ],
-      "note": "A client ignores it unless it shows the respawn point panel."
+      ]
     },
     {
       "from": "1.0.0.117",
@@ -77,7 +76,7 @@
         {
           "name": "action",
           "type": "u8",
-          "note": "What to do. A client ignores any other value.",
+          "note": "A client ignores any other value.",
           "values": {
             "0": {
               "name": "offer",
@@ -94,8 +93,7 @@
           "type": "u8",
           "note": "Which point."
         }
-      ],
-      "note": "A client ignores it unless it shows the respawn point panel."
+      ]
     },
     {
       "from": "1.0.0.119",
@@ -108,7 +106,7 @@
         {
           "name": "action",
           "type": "u8",
-          "note": "What to do. A client ignores any other value.",
+          "note": "A client ignores any other value.",
           "values": {
             "0": {
               "name": "offer",
@@ -125,8 +123,7 @@
           "type": "u8",
           "note": "Which point."
         }
-      ],
-      "note": "A client ignores it unless it shows the respawn point panel."
+      ]
     },
     {
       "from": "1.0.0.123",
@@ -139,7 +136,7 @@
         {
           "name": "action",
           "type": "u8",
-          "note": "What to do. A client ignores any other value.",
+          "note": "A client ignores any other value.",
           "values": {
             "0": {
               "name": "offer",
@@ -156,8 +153,7 @@
           "type": "u8",
           "note": "Which point."
         }
-      ],
-      "note": "A client ignores it unless it shows the respawn point panel."
+      ]
     },
     {
       "from": "1.0.0.124",
@@ -170,7 +166,7 @@
         {
           "name": "action",
           "type": "u8",
-          "note": "What happened. A client ignores any other value.",
+          "note": "A client ignores any other value.",
           "values": {
             "0": {
               "name": "owned",
@@ -225,7 +221,7 @@
         {
           "name": "action",
           "type": "u8",
-          "note": "What happened. A client ignores any other value.",
+          "note": "A client ignores any other value.",
           "values": {
             "0": {
               "name": "owned",

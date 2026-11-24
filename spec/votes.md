@@ -44,11 +44,12 @@ menu on or off.
 > with reason 1, before its own champion exists fails, so a server MUST NOT send
 > either once the client's interface is up and before its own champion exists.
 
-<!-- holds from 1.0.0.58 up to 4.20.0.315 -->
+<!-- holds from 1.0.0.58 up to 4.18.0.271 -->
 
-> **In 1.0.0.58–4.19**
+> **In 1.0.0.58–4.17**
 >
-> A client ignores `SurrenderVoteCalled` that arrives before its own champion is
+> A client ignores `SurrenderVoteCalled` that arrives before its own champion
+> is
 > on the field.
 
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
@@ -64,9 +65,9 @@ turrets. Each `BalanceVote` adds one voter to the vote's panel for the voting
 side, and a client answers with `BalanceVoteAnswer` from the panel, once per
 vote. `BalanceResult` says how the vote ended, or why it could not be held.
 
-<!-- holds from 3.04.0.78 up to 4.21.0.0 -->
+<!-- holds from 3.6.0.388 up to 4.21.0.0 -->
 
-> **In 3.04–4.20**
+> **In 3.6–4.20**
 >
 > A client also answers as its player types `/equalize`; either way it answers
 > once per vote.

@@ -155,7 +155,7 @@
           "note": "The casting."
         }
       ],
-      "note": "There is no byte for ending a charge: the casting follows the sync id. Where the casting's size is wrong, a client keeps the cast with no spell; what it does then is not recorded."
+      "note": "There is no byte for ending a charge. Where the casting's size is wrong, a client keeps the cast with no spell; what it does then is not recorded."
     },
     {
       "from": "1.0.0.79",
@@ -172,7 +172,7 @@
           "note": "The casting."
         }
       ],
-      "note": "There is no byte for ending a charge: the casting follows the sync id. Where the casting's size is wrong, a client keeps the cast with no spell; what it does then is not recorded."
+      "note": "There is no byte for ending a charge. Where the casting's size is wrong, a client keeps the cast with no spell; what it does then is not recorded."
     },
     {
       "from": "1.0.0.81",
@@ -1011,7 +1011,7 @@
             {
               "name": "endCharge",
               "width": 1,
-              "note": "Set where it ends a charged cast; a client acts on it only while that spell is charging. Clear, a charged cast by the client's own champion starts the charge display."
+              "note": "Set where it ends a charged cast; a client acts on it only while that spell is charging."
             },
             {
               "name": "unused",

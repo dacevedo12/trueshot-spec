@@ -106,9 +106,9 @@ a client takes, and what that requires of a server.
 >
 > A client takes a batch on the clock, events and transient channels alike.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 4.4.0.1858 up to 4.21.0.0 -->
 
-> **In 4.1–4.20**
+> **In 4.4–4.20**
 >
 > A client takes a batch on the clock, events and transient channels alike.
 
@@ -694,9 +694,16 @@ Each row gives the group and bits that name a value and what the value is.
 > | 3     | 3      | Its size                                                    | measured |
 > | 3     | 4 to 5 | Whether anything is allowed to aim at it, and which side is | counted  |
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 4.1.0.171 up to 4.4.0.1858 -->
 
-> **In 4.1–4.20**
+> **In 4.1–4.3**
+>
+> A server first names a building in the `EnterSight` that brings it into a
+> side's sight.
+
+<!-- holds from 4.4.0.1858 up to 4.21.0.0 -->
+
+> **In 4.4–4.20**
 >
 > ## A champion
 >
@@ -758,17 +765,22 @@ Each row gives the group and bits that name a value and what the value is.
 >
 > Until a champion's first batch arrives, the panel shows figures the client
 > holds for that champion. Once one arrives, it shows the values batches carry,
-> and armour, spell resistance, ability power and movement speed read 0 where no
+> and armour, spell resistance, ability power and movement speed read 0 where
+> no
 > batch has carried them.
 >
-> Each percent penetration field carries the share of armour or spell resistance
+> Each percent penetration field carries the share of armour or spell
+> resistance
 > left standing, 1 where nothing is cut through.
 >
-> A spell's cooldown lasts its base length times one plus the modifier at bit 21,
-> so a reduction is carried as a negative fraction and the panel shows its size.
+> A spell's cooldown lasts its base length times one plus the modifier at bit
+> 21,
+> so a reduction is carried as a negative fraction and the panel shows its
+> size.
 >
 > Bit 22 sets the countdown a client shows on the champion's passive. It is a
-> moment on the match clock (see [Time](time.md)), in seconds, on the same clock
+> moment on the match clock (see [Time](time.md)), in seconds, on the same
+> clock
 > as the time a `ClockSync` carries, and not the time left: 120 at the opening
 > of a match starts the countdown from 2:00. Once that moment has passed, the
 > passive shows ready. Bit 23 is how long the whole cooldown lasts, in seconds,
@@ -789,7 +801,8 @@ Each row gives the group and bits that name a value and what the value is.
 > | 3     | 5      | Its size                                                             | measured |
 > | 5     | 0 to 1 | Whether anything is allowed to aim at it, and which side is          | counted  |
 >
-> Where a server raises a turret's health at its greatest, it raises health as it
+> Where a server raises a turret's health at its greatest, it raises health as
+> it
 > stands to the same value.
 >
 > ## A minion, and a unit belonging to no side
@@ -809,7 +822,8 @@ Each row gives the group and bits that name a value and what the value is.
 > ## A building
 >
 > This table holds for inhibitors and nexuses, named as
-> [Objects and identifiers](objects.md#net-ids-of-what-a-map-holds) gives. Where
+> [Objects and identifiers](objects.md#net-ids-of-what-a-map-holds) gives.
+> Where
 > a server replicates a map's buildings, it sends these two groups and nothing
 > else. On map 8 it replicates none.
 >
@@ -820,7 +834,8 @@ Each row gives the group and bits that name a value and what the value is.
 > | 5     | 0 to 1 | Whether anything is allowed to aim at it, and which side is | counted  |
 >
 > The health figure does not follow the building's health. A server SHOULD send
-> an inhibitor's as 4000 on map 1 and 3000 on map 10, a nexus's as 5500 on both,
+> an inhibitor's as 4000 on map 1 and 3000 on map 10, a nexus's as 5500 on
+> both,
 > and every building's as 0 on map 12. A server SHOULD NOT change it, even as a
 > building is destroyed. A server first names a building in the `EnterSight`
 > that brings it into a side's sight.
@@ -854,9 +869,9 @@ Each row gives the group and bits that name a value and what the value is.
 >
 > Group 0 carries nothing at bits 26 and 27, and group 2 nothing at all.
 
-<!-- holds from 4.5.0.260 up to 4.21.0.0 -->
+<!-- holds from 4.17.0.233 up to 4.21.0.0 -->
 
-> **In 4.5–4.20**
+> **In 4.17–4.20**
 >
 > A champion's group 2 carries:
 >
@@ -865,7 +880,8 @@ Each row gives the group and bits that name a value and what the value is.
 > | 2     | 0 to 1 | How much more armour and spell resistance it cuts through, as the share left standing | measured |
 >
 > The panel shows what two percent penetration fields cut through together, as
-> 200 percent less both shares in percent: bit 25 of group 1 with bit 0 of group 2
+> 200 percent less both shares in percent: bit 25 of group 1 with bit 0 of
+> group 2
 > for armour, and bit 27 of group 1 with bit 1 of group 2 for spell resistance.
 
 <!-- holds from 4.17.0.233 up to 4.18.0.271 -->
@@ -921,9 +937,9 @@ Each row gives the group and bits that name a value and what the value is.
 > | 1     | 0    | Health as it stands        | measured |
 > | 1     | 1    | Health as it stands, again | measured |
 
-<!-- holds from 4.18.0.271 up to 4.21.0.0 -->
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
 
-> **In 4.18–4.20**
+> **In 4.20**
 >
 > A champion's group 0 also carries:
 >
@@ -942,7 +958,8 @@ Each row gives the group and bits that name a value and what the value is.
 > [Sides and slots](values.md) numbers the slots.
 >
 > Bits 8 to 11 carry what the spells in slots 0 to 3 cost. A server sets bits 8
-> to 27 together and writes zero in bits 12 to 27. It leaves bits 6 and 7 clear.
+> to 27 together and writes zero in bits 12 to 27. It leaves bits 6 and 7
+> clear.
 >
 > On map 11, a server SHOULD send an inhibitor's health figure as 4000 and a
 > nexus's as 5500.
@@ -1018,9 +1035,9 @@ Besides its batches, a server states some values with messages of their own.
 > `GoldGained` grants no gold: a champion's gold in hand follows group 0 bit 1 of
 > its batches alone.
 
-<!-- holds from 1.0.0.58 up to 1.0.0.74 -->
+<!-- holds from 1.0.0.58 up to 1.0.0.61 -->
 
-> **In 1.0.0.58–1.0.0.73**
+> **In 1.0.0.58–1.0.0.60**
 >
 > A server grants gold with `GoldGained`.
 
@@ -1066,9 +1083,9 @@ Besides its batches, a server states some values with messages of their own.
 >
 > `GoldGained` grants no gold.
 
-<!-- holds from 3.10.0.237 up to 3.13.0.399 -->
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
-> **In 3.10–3.12**
+> **In 3.10**
 >
 > A server grants experience with `ExperienceGained`.
 

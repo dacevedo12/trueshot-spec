@@ -80,7 +80,7 @@
         {
           "name": "sell",
           "type": "u8",
-          "note": "A client sends 1 from the shop or a hotkey, and 0 after an answer to a purchase."
+          "note": "A client sends 1 from the shop or a hotkey."
         }
       ]
     },
@@ -100,7 +100,7 @@
         {
           "name": "sell",
           "type": "u8",
-          "note": "A client sends 1 from the shop or a hotkey, and 0 after an answer to a purchase."
+          "note": "A client sends 1 from the shop or a hotkey."
         }
       ]
     },
@@ -120,7 +120,7 @@
         {
           "name": "sell",
           "type": "u8",
-          "note": "A client sends 1 from the shop or a hotkey, and 0 after an answer to a purchase."
+          "note": "A client sends 1 from the shop or a hotkey."
         }
       ]
     },
@@ -246,7 +246,7 @@
             {
               "name": "sell",
               "width": 1,
-              "note": "Set where the item is sold rather than discarded."
+              "note": "A client always sets it."
             },
             {
               "name": "unused",

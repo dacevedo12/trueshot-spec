@@ -106,7 +106,7 @@
         {
           "name": "second",
           "type": "u8",
-          "note": "A third value where part is 2; a server writes zero otherwise."
+          "note": "A third value."
         },
         {
           "name": "state",
@@ -230,7 +230,7 @@
         {
           "name": "second",
           "type": "u8",
-          "note": "A third value where part is 2; a server writes zero otherwise."
+          "note": "A third value."
         },
         {
           "name": "state",
@@ -457,18 +457,18 @@
             },
             "2": {
               "name": "shop",
-              "note": "A shop element blinks or stops, where the shop window is open. A client takes only elements 0 to 4. Element 0 is the buy button, 1 the sell button, 2 the shop item number names, 3 the item second names within the category number names, and 4 the recommended item number names."
+              "note": "A shop element blinks or stops, where the shop window is open. Element 0 is the buy button, 1 the sell button, 2 the shop item number names, 3 the item second names within the category number names, and 4 the recommended item number names."
             },
             "3": {
               "name": "minimap",
-              "note": "The minimap; a client acts on element 0 only, its camera button."
+              "note": "The minimap; element 0 is its camera button."
             }
           }
         },
         {
           "name": "element",
           "type": "u8",
-          "note": "What to light up, as in HudHighlighted. A value beyond those named does nothing."
+          "note": "What to light up, as in HudHighlighted."
         },
         {
           "name": "number",
@@ -519,18 +519,18 @@
             },
             "2": {
               "name": "shop",
-              "note": "A shop element blinks or stops, where the shop window is open. A client takes only elements 0 to 4. Element 0 is the buy button, 1 the sell button, 2 the shop item number names, 3 the item second names within the category number names, and 4 the recommended item number names."
+              "note": "A shop element blinks or stops, where the shop window is open. Element 0 is the buy button, 1 the sell button, 2 the shop item number names, 3 the item second names within the category number names, and 4 the recommended item number names."
             },
             "3": {
               "name": "minimap",
-              "note": "The minimap; a client acts on element 0 only, its camera button."
+              "note": "The minimap; element 0 is its camera button."
             }
           }
         },
         {
           "name": "element",
           "type": "u8",
-          "note": "What to light up, as in HudHighlighted. A value beyond those named does nothing."
+          "note": "What to light up, as in HudHighlighted."
         },
         {
           "name": "number",
@@ -581,18 +581,18 @@
             },
             "2": {
               "name": "shop",
-              "note": "A shop element blinks or stops, where the shop window is open. A client takes only elements 0 to 4. Element 0 is the buy button, 1 the sell button, 2 the shop item number names, 3 the item second names within the category number names, and 4 the recommended item number names."
+              "note": "A shop element blinks or stops, where the shop window is open. Element 0 is the buy button, 1 the sell button, 2 the shop item number names, 3 the item second names within the category number names, and 4 the recommended item number names."
             },
             "3": {
               "name": "minimap",
-              "note": "The minimap; a client acts on element 0 only, its camera button."
+              "note": "The minimap; element 0 is its camera button."
             }
           }
         },
         {
           "name": "element",
           "type": "u8",
-          "note": "What to light up, as in HudHighlighted. A value beyond those named does nothing."
+          "note": "What to light up, as in HudHighlighted."
         },
         {
           "name": "number",
@@ -643,18 +643,18 @@
             },
             "2": {
               "name": "shop",
-              "note": "A shop element blinks or stops, where the shop window is open. A client takes only elements 0 to 4. Element 0 is the buy button, 1 the sell button, 2 the shop item number names, 3 the item second names within the category number names, and 4 the recommended item number names."
+              "note": "A shop element blinks or stops, where the shop window is open. Element 0 is the buy button, 1 the sell button, 2 the shop item number names, 3 the item second names within the category number names, and 4 the recommended item number names."
             },
             "3": {
               "name": "minimap",
-              "note": "The minimap; a client acts on element 0 only, its camera button."
+              "note": "The minimap; element 0 is its camera button."
             }
           }
         },
         {
           "name": "element",
           "type": "u8",
-          "note": "What to light up, as in HudHighlighted. A value beyond those named does nothing."
+          "note": "What to light up, as in HudHighlighted."
         },
         {
           "name": "number",
@@ -705,18 +705,18 @@
             },
             "2": {
               "name": "shop",
-              "note": "A shop element blinks or stops, where the shop window is open. A client takes only elements 0 to 4. Element 0 is the buy button, 1 the sell button, 2 the shop item number names, 3 the item second names within the category number names, and 4 the recommended item number names."
+              "note": "A shop element blinks or stops, where the shop window is open. Element 0 is the buy button, 1 the sell button, 2 the shop item number names, 3 the item second names within the category number names, and 4 the recommended item number names."
             },
             "3": {
               "name": "minimap",
-              "note": "The minimap; a client acts on element 0 only, its camera button."
+              "note": "The minimap; element 0 is its camera button."
             }
           }
         },
         {
           "name": "element",
           "type": "u8",
-          "note": "What to light up, as in HudHighlighted. A value beyond those named does nothing."
+          "note": "What to light up, as in HudHighlighted."
         },
         {
           "name": "number",
@@ -767,18 +767,18 @@
             },
             "2": {
               "name": "shop",
-              "note": "A shop element blinks or stops, where the shop window is open. A client takes only elements 0 to 4. Element 0 is the buy button, 1 the sell button, 2 the shop item number names, 3 the item second names within the category number names, and 4 the recommended item number names."
+              "note": "A shop element blinks or stops, where the shop window is open. Element 0 is the buy button, 1 the sell button, 2 the shop item number names, 3 the item second names within the category number names, and 4 the recommended item number names."
             },
             "3": {
               "name": "minimap",
-              "note": "The minimap; a client acts on element 0 only, its camera button."
+              "note": "The minimap; element 0 is its camera button."
             }
           }
         },
         {
           "name": "element",
           "type": "u8",
-          "note": "What to light up, as in HudHighlighted. A value beyond those named does nothing."
+          "note": "What to light up, as in HudHighlighted."
         },
         {
           "name": "number",
@@ -891,18 +891,18 @@
             },
             "2": {
               "name": "shop",
-              "note": "A shop element blinks or stops, where the shop window is open. A client takes only elements 0 to 4. Element 0 is the buy button, 1 the sell button, 2 the shop item number names, 3 the item second names within the category number names, and 4 the recommended item number names."
+              "note": "A shop element blinks or stops, where the shop window is open. Element 0 is the buy button, 1 the sell button, 2 the shop item number names, 3 the item second names within the category number names, and 4 the recommended item number names."
             },
             "3": {
               "name": "minimap",
-              "note": "The minimap; a client acts on element 0 only, its camera button."
+              "note": "The minimap; element 0 is its camera button."
             }
           }
         },
         {
           "name": "element",
           "type": "u8",
-          "note": "What to light up, as in HudHighlighted. A value beyond those named does nothing."
+          "note": "What to light up, as in HudHighlighted."
         },
         {
           "name": "number",
@@ -953,18 +953,18 @@
             },
             "2": {
               "name": "shop",
-              "note": "A shop element blinks or stops, where the shop window is open. A client takes only elements 0 to 4. Element 0 is the buy button, 1 the sell button, 2 the shop item number names, 3 the item second names within the category number names, and 4 the recommended item number names."
+              "note": "A shop element blinks or stops, where the shop window is open. Element 0 is the buy button, 1 the sell button, 2 the shop item number names, 3 the item second names within the category number names, and 4 the recommended item number names."
             },
             "3": {
               "name": "minimap",
-              "note": "The minimap; a client acts on element 0 only, its camera button."
+              "note": "The minimap; element 0 is its camera button."
             }
           }
         },
         {
           "name": "element",
           "type": "u8",
-          "note": "What to light up, as in HudHighlighted. A value beyond those named does nothing."
+          "note": "What to light up, as in HudHighlighted."
         },
         {
           "name": "number",
@@ -1097,8 +1097,7 @@
         },
         {
           "name": "second",
-          "type": "u8",
-          "note": "For the shop's element 3, which item within the category; a client reads nothing here otherwise."
+          "type": "u8"
         },
         {
           "name": "state",
@@ -1113,7 +1112,7 @@
             {
               "name": "unused",
               "width": 7,
-              "note": "Unused; a server writes zero."
+              "note": "A client ignores these bits; a server writes zero."
             }
           ],
           "note": "Whether it is lit."
@@ -1212,7 +1211,7 @@
         {
           "name": "element",
           "type": "u8",
-          "note": "What to light up, as in HudHighlighted. A value beyond those named does nothing."
+          "note": "What to light up, as in HudHighlighted."
         },
         {
           "name": "number",
@@ -1336,7 +1335,7 @@
         {
           "name": "element",
           "type": "u8",
-          "note": "What to light up, as in HudHighlighted. A value beyond those named does nothing."
+          "note": "What to light up, as in HudHighlighted."
         },
         {
           "name": "number",
@@ -1449,7 +1448,7 @@
             },
             "2": {
               "name": "shop",
-              "note": "A shop element blinks or stops, where the shop window is open. A client takes only elements 0 to 4. Element 0 is the buy button, 1 the sell button, 2 the shop item number names, 3 the item second names within the category number names, and 4 the recommended item number names."
+              "note": "A shop element blinks or stops, where the shop window is open. Element 0 is the buy button, 1 the sell button, 2 the shop item number names, 3 the item second names within the category number names, and 4 the recommended item number names."
             },
             "3": {
               "name": "minimap",
@@ -1460,7 +1459,7 @@
         {
           "name": "element",
           "type": "u8",
-          "note": "What to light up, as in HudHighlighted. A value beyond those named does nothing."
+          "note": "What to light up, as in HudHighlighted."
         },
         {
           "name": "number",
@@ -1511,7 +1510,7 @@
             },
             "2": {
               "name": "shop",
-              "note": "A shop element blinks or stops, where the shop window is open. A client takes only elements 0 to 4. Element 0 is the buy button, 1 the sell button, 2 the shop item number names, 3 the item second names within the category number names, and 4 the recommended item number names."
+              "note": "A shop element blinks or stops, where the shop window is open. Element 0 is the buy button, 1 the sell button, 2 the shop item number names, 3 the item second names within the category number names, and 4 the recommended item number names."
             },
             "3": {
               "name": "minimap",
@@ -1522,7 +1521,7 @@
         {
           "name": "element",
           "type": "u8",
-          "note": "What to light up, as in HudHighlighted. A value beyond those named does nothing."
+          "note": "What to light up, as in HudHighlighted."
         },
         {
           "name": "number",

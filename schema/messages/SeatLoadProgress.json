@@ -275,16 +275,14 @@
             },
             {
               "name": "ping",
-              "width": 15,
-              "note": "Round trip time the client measures, in milliseconds."
+              "width": 15
             },
             {
               "name": "loaded",
               "width": 1,
               "note": "Set in every report whose progress stands at one hundred, and in no other."
             }
-          ],
-          "note": "Copied with the rest; no reader of it is known."
+          ]
         },
         {
           "name": "done",
@@ -293,8 +291,7 @@
           "bits": [
             {
               "name": "loaded",
-              "width": 1,
-              "note": "Set once loading is done."
+              "width": 1
             },
             {
               "name": "unused",
@@ -490,8 +487,7 @@
             },
             {
               "name": "loaded",
-              "width": 1,
-              "note": "Set in every report whose progress stands at one hundred, and in no other."
+              "width": 1
             }
           ],
           "note": "Copied with the rest; no reader of it is known."
@@ -560,8 +556,7 @@
             },
             {
               "name": "loaded",
-              "width": 1,
-              "note": "Set in every report whose progress stands at one hundred, and in no other."
+              "width": 1
             }
           ],
           "note": "Copied with the rest; no reader of it is known."
@@ -630,8 +625,7 @@
             },
             {
               "name": "loaded",
-              "width": 1,
-              "note": "Set in every report whose progress stands at one hundred, and in no other."
+              "width": 1
             }
           ],
           "note": "Copied with the rest; no reader of it is known."
@@ -700,8 +694,7 @@
             },
             {
               "name": "loaded",
-              "width": 1,
-              "note": "Set in every report whose progress stands at one hundred, and in no other."
+              "width": 1
             }
           ],
           "note": "Copied with the rest; no reader of it is known."
@@ -1186,8 +1179,7 @@
             },
             {
               "name": "loaded",
-              "width": 1,
-              "note": "Set in every report whose progress stands at one hundred, and in no other."
+              "width": 1
             }
           ],
           "note": "Copied with the rest; no reader of it is known."
@@ -1200,12 +1192,11 @@
             {
               "name": "loaded",
               "width": 1,
-              "note": "Set where the seat has loaded; a client then shows no time left."
+              "note": "Set once loading is done."
             },
             {
               "name": "unused",
-              "width": 7,
-              "note": "Unused; a server writes zero."
+              "width": 7
             }
           ]
         }
@@ -1647,58 +1638,6 @@
     },
     {
       "from": "3.01.0.1",
-      "until": "3.03.0.198",
-      "channel": "transient",
-      "command": 149,
-      "direction": "serverToClient",
-      "reliability": "unreliable",
-      "fields": [
-        {
-          "name": "clientId",
-          "type": "u32",
-          "note": "The client id this is about."
-        },
-        {
-          "name": "player",
-          "type": "i64",
-          "note": "Who occupies it."
-        },
-        {
-          "name": "progress",
-          "type": "f32",
-          "note": "How far through loading it is, from zero to one hundred."
-        },
-        {
-          "name": "secondsLeft",
-          "type": "f32",
-          "note": "How much longer it is expected to take, in seconds."
-        },
-        {
-          "name": "status",
-          "type": "bits",
-          "size": 4,
-          "bits": [
-            {
-              "name": "count",
-              "width": 16,
-              "note": "It rises with each report, not always by one."
-            },
-            {
-              "name": "ping",
-              "width": 15,
-              "note": "Round trip time the client measures, in milliseconds."
-            },
-            {
-              "name": "loaded",
-              "width": 1,
-              "note": "Set in every report whose progress stands at one hundred, and in no other."
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "from": "3.03.0.198",
       "until": "3.6.0.388",
       "channel": "transient",
       "command": 149,

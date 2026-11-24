@@ -219,7 +219,7 @@
         {
           "name": "costType",
           "type": "u8",
-          "note": "How the amount applies. A client ignores any other value, 0 among them.",
+          "note": "How the amount applies.",
           "values": {
             "1": {
               "name": "flat"
@@ -239,8 +239,7 @@
           "type": "f32",
           "note": "The amount."
         }
-      ],
-      "note": "The header names that player's champion."
+      ]
     },
     {
       "from": "4.20.0.315",

@@ -381,7 +381,7 @@
         {
           "name": "clone",
           "type": "u32",
-          "note": "The unit the new unit is linked to as a clone and copies, or zero."
+          "note": "The unit it copies, or zero."
         },
         {
           "name": "team",
@@ -418,7 +418,7 @@
           ]
         }
       ],
-      "note": "A client gives the new unit its id and node, deleting nothing first. Where clone names a unit it holds, a client links the new unit to it as a clone and copies its current state: health, resource, their maxima and its other stats; zero or an unknown id leaves no link. The header names the unit that put it there; a client reads nothing of it."
+      "note": "A client deletes no object holding the new unit's id: both stay. clone, where nonzero, has the new unit copy that unit's health, resource, their maxima and its other stats. The header names the unit that put it there."
     },
     {
       "from": "1.0.0.63",
@@ -2804,8 +2804,7 @@
             },
             {
               "name": "laneMinion",
-              "width": 1,
-              "note": "Set where it is a lane minion."
+              "width": 1
             },
             {
               "name": "bot",
@@ -2826,8 +2825,7 @@
         },
         {
           "name": "targetableToTeam",
-          "type": "u32",
-          "note": "Read, then overwritten; a client keeps nothing of it."
+          "type": "u32"
         },
         {
           "name": "visibilitySize",
@@ -2928,8 +2926,7 @@
             },
             {
               "name": "laneMinion",
-              "width": 1,
-              "note": "Set where it is a lane minion."
+              "width": 1
             },
             {
               "name": "bot",
@@ -3046,8 +3043,7 @@
             },
             {
               "name": "laneMinion",
-              "width": 1,
-              "note": "Set where it is a lane minion."
+              "width": 1
             },
             {
               "name": "bot",
@@ -3152,8 +3148,7 @@
             },
             {
               "name": "laneMinion",
-              "width": 1,
-              "note": "Set where it is a lane minion."
+              "width": 1
             },
             {
               "name": "bot",
@@ -3165,8 +3160,7 @@
               "width": 3,
               "note": "Unused; a server writes zero."
             }
-          ],
-          "note": "What sort of unit it is."
+          ]
         },
         {
           "name": "targetableToTeam",

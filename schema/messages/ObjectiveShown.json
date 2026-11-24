@@ -67,8 +67,7 @@
           "name": "text",
           "type": "string",
           "encoding": "utf8",
-          "size": "terminated",
-          "note": "The objective, ended by a zero byte."
+          "size": "terminated"
         }
       ]
     },
@@ -221,7 +220,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": 128,
-          "note": "The objective. The text ends at its first zero byte, which falls within the field."
+          "note": "The objective, ended by a zero byte."
         }
       ]
     },
@@ -238,7 +237,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": 128,
-          "note": "The objective. The text ends at its first zero byte, which falls within the field."
+          "note": "The objective, ended by a zero byte."
         }
       ]
     },
@@ -255,7 +254,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": 128,
-          "note": "The objective. The text ends at its first zero byte, which falls within the field."
+          "note": "The objective, ended by a zero byte."
         }
       ]
     },

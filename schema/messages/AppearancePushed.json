@@ -150,7 +150,7 @@
         {
           "name": "overrideSpells",
           "type": "u8",
-          "note": "Set where the unit's spells change with it. Any nonzero value sets it."
+          "note": "Set where the unit's spells change with it."
         },
         {
           "name": "asset",
@@ -178,14 +178,14 @@
         {
           "name": "overrideSpells",
           "type": "u8",
-          "note": "Set where the unit's spells change with it. Any nonzero value sets it."
+          "note": "Set where the unit's spells change with it."
         },
         {
           "name": "asset",
           "type": "string",
           "encoding": "utf8",
           "size": "terminated",
-          "note": "The name the client loads it under, ended by a zero byte. The name and its zero byte take at most 64 bytes."
+          "note": "The name the client loads it under, ended by a zero byte."
         }
       ],
       "note": "No skin is carried; the look wears the unit's own skin. Looks stack, the newest shows, and AppearancePopped takes every one away."
@@ -234,17 +234,17 @@
         {
           "name": "overrideSpells",
           "type": "u8",
-          "note": "Set where the unit's spells change with it. Any nonzero value sets it."
+          "note": "Set where the unit's spells change with it."
         },
         {
           "name": "asset",
           "type": "string",
           "encoding": "utf8",
           "size": "terminated",
-          "note": "The name the client loads it under, ended by a zero byte. The name and its zero byte take at most 64 bytes."
+          "note": "The name the client loads it under, ended by a zero byte."
         }
       ],
-      "note": "No skin is carried; the look wears the unit's own skin. A client first stops a basic attack the unit is making; looks stack, the newest shows, and AppearancePopped takes away the one its entry names."
+      "note": "No skin is carried; the look wears the unit's own skin. Looks stack, the newest shows."
     },
     {
       "from": "1.0.0.82",
@@ -297,7 +297,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": "terminated",
-          "note": "The name the client loads it under, ended by a zero byte. The name and its zero byte take at most 64 bytes."
+          "note": "The name the client loads it under, ended by a zero byte."
         }
       ],
       "note": "No skin is carried; the look wears the unit's own skin. A client first stops a basic attack the unit is making; looks stack, the newest shows, and AppearancePopped takes away the one its entry names."
@@ -325,7 +325,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": "terminated",
-          "note": "The name the client loads it under, ended by a zero byte. The name and its zero byte take at most 64 bytes."
+          "note": "The name the client loads it under, ended by a zero byte."
         }
       ],
       "note": "No skin is carried; the look wears the unit's own skin. A client first stops a basic attack the unit is making; looks stack, the newest shows, and AppearancePopped takes away the one its entry names."
@@ -353,7 +353,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": "terminated",
-          "note": "The name the client loads it under, ended by a zero byte. The name and its zero byte take at most 64 bytes."
+          "note": "The name the client loads it under, ended by a zero byte."
         }
       ],
       "note": "No skin is carried; the look wears the unit's own skin. A client first stops a basic attack the unit is making; looks stack, the newest shows, and AppearancePopped takes away the one its entry names."
@@ -381,7 +381,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": "terminated",
-          "note": "The name the client loads it under, ended by a zero byte. The name and its zero byte take at most 64 bytes."
+          "note": "The name the client loads it under, ended by a zero byte."
         }
       ],
       "note": "No skin is carried; the look wears the unit's own skin. A client first stops a basic attack the unit is making; looks stack, the newest shows, and AppearancePopped takes away the one its entry names."
@@ -437,7 +437,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": "terminated",
-          "note": "The name the client loads it under, ended by a zero byte. The name and its zero byte take at most 64 bytes."
+          "note": "The name the client loads it under, ended by a zero byte."
         }
       ],
       "note": "No skin is carried; the look wears the unit's own skin. A client first stops a basic attack the unit is making; looks stack, the newest shows, and AppearancePopped takes away the one its entry names."
@@ -465,7 +465,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": "terminated",
-          "note": "The name the client loads it under, ended by a zero byte. The name and its zero byte take at most 64 bytes."
+          "note": "The name the client loads it under, ended by a zero byte."
         }
       ],
       "note": "No skin is carried; the look wears the unit's own skin. A client first stops a basic attack the unit is making; looks stack, the newest shows, and AppearancePopped takes away the one its entry names."
@@ -493,7 +493,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": "terminated",
-          "note": "The name the client loads it under, ended by a zero byte. The name and its zero byte take at most 64 bytes."
+          "note": "The name the client loads it under, ended by a zero byte."
         }
       ],
       "note": "No skin is carried; the look wears the unit's own skin. A client first stops a basic attack the unit is making; looks stack, the newest shows, and AppearancePopped takes away the one its entry names."
@@ -521,7 +521,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": "terminated",
-          "note": "The name the client loads it under, ended by a zero byte. The name and its zero byte take at most 64 bytes."
+          "note": "The name the client loads it under, ended by a zero byte."
         }
       ],
       "note": "No skin is carried; the look wears the unit's own skin. A client first stops a basic attack the unit is making; looks stack, the newest shows, and AppearancePopped takes away the one its entry names."
@@ -549,7 +549,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": "terminated",
-          "note": "The name the client loads it under, ended by a zero byte. The name and its zero byte take at most 64 bytes."
+          "note": "The name the client loads it under, ended by a zero byte."
         }
       ],
       "note": "No skin is carried; the look wears the unit's own skin. A client first stops a basic attack the unit is making; looks stack, the newest shows, and AppearancePopped takes away the one its entry names."
@@ -798,7 +798,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": "terminated",
-          "note": "The name the client loads it under, ended by a zero byte. The name and its zero byte take at most 64 bytes."
+          "note": "The name the client loads it under, ended by a zero byte."
         }
       ],
       "note": "A client stops a basic attack the unit is making first. Looks stack: the newest shows, and AppearancePopped takes away the one its entry names. A building ignores it."
@@ -844,7 +844,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": "terminated",
-          "note": "The name the client loads it under, ended by a zero byte. The name and its zero byte take at most 64 bytes."
+          "note": "The name the client loads it under, ended by a zero byte."
         }
       ],
       "note": "A client stops a basic attack the unit is making first. Looks stack: the newest shows, and AppearancePopped takes away the one its entry names. A building ignores it."
@@ -936,59 +936,13 @@
           "type": "string",
           "encoding": "utf8",
           "size": "terminated",
-          "note": "The name the client loads it under, ended by a zero byte. The name and its zero byte take at most 64 bytes."
+          "note": "The name the client loads it under, ended by a zero byte."
         }
       ],
       "note": "A client stops a basic attack the unit is making first. Looks stack: the newest shows, and AppearancePopped takes away the one its entry names. A building ignores the message."
     },
     {
       "from": "3.01.0.1",
-      "until": "3.03.0.198",
-      "channel": "events",
-      "command": 151,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "entry",
-          "type": "u32",
-          "note": "Names this look, so that AppearancePopped can name it."
-        },
-        {
-          "name": "how",
-          "type": "bits",
-          "size": 1,
-          "bits": [
-            {
-              "name": "overrideSpells",
-              "width": 1,
-              "note": "Set where the unit's spells change with it."
-            },
-            {
-              "name": "modelOnly",
-              "width": 1,
-              "note": "Set where only the model changes."
-            },
-            {
-              "name": "unused",
-              "width": 6,
-              "note": "Unused; a server writes zero."
-            }
-          ],
-          "note": "What the look changes."
-        },
-        {
-          "name": "asset",
-          "type": "string",
-          "encoding": "utf8",
-          "size": "terminated",
-          "note": "The name the client loads it under, ended by a zero byte. The name and its zero byte take at most 64 bytes."
-        }
-      ],
-      "note": "A client stops a basic attack the unit is making first. Looks stack: the newest shows, and AppearancePopped takes away the one its entry names. A building ignores the message."
-    },
-    {
-      "from": "3.03.0.198",
       "until": "3.6.0.388",
       "channel": "events",
       "command": 151,
@@ -1155,8 +1109,7 @@
           "bits": [
             {
               "name": "overrideSpells",
-              "width": 1,
-              "note": "Set where the unit's spells change with it."
+              "width": 1
             },
             {
               "name": "modelOnly",
@@ -1181,7 +1134,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": "terminated",
-          "note": "The name the client loads it under, ended by a zero byte. The name and its zero byte take at most 64 bytes."
+          "note": "The name the client loads it under, ended by a zero byte."
         }
       ],
       "note": "A client stops a basic attack the unit is making first. Looks stack: the newest shows, and AppearancePopped takes away the one its entry names. A building ignores the message."
@@ -1206,8 +1159,7 @@
           "bits": [
             {
               "name": "overrideSpells",
-              "width": 1,
-              "note": "Set where the unit's spells change with it."
+              "width": 1
             },
             {
               "name": "modelOnly",
@@ -1217,7 +1169,7 @@
             {
               "name": "replacePackage",
               "width": 1,
-              "note": "Set where its art and sound change with it."
+              "note": "A client reads nothing here."
             },
             {
               "name": "unused",
@@ -1237,7 +1189,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": "terminated",
-          "note": "The name the client loads it under, ended by a zero byte. The name and its zero byte take at most 64 bytes."
+          "note": "The name the client loads it under, ended by a zero byte."
         }
       ],
       "note": "A client stops a basic attack the unit is making first. Looks stack: the newest shows, and AppearancePopped takes away the one its entry names. A building ignores the message."
@@ -1329,7 +1281,7 @@
             {
               "name": "replacePackage",
               "width": 1,
-              "note": "Set where its art and sound change with it."
+              "note": "A client reads nothing here."
             },
             {
               "name": "unused",
@@ -1352,7 +1304,7 @@
           "note": "The name the client loads it under, ended by a zero byte. The name and its zero byte take at most 64 bytes."
         }
       ],
-      "note": "A client stops a basic attack the unit is making first. Looks stack: the newest shows, and AppearancePopped takes away the one its entry names. An animated building instead looks for a look of the same name whose skin equals entry, adds the look under skin where it finds none, and how has no effect on it."
+      "note": "A client stops a basic attack the unit is making first. Looks stack: the newest shows, and AppearancePopped takes away the one its entry names."
     },
     {
       "from": "4.1.0.171",
@@ -1456,69 +1408,13 @@
           "type": "string",
           "encoding": "utf8",
           "size": "terminated",
-          "note": "The name the client loads it under, ended by a zero byte. The name and its zero byte take at most 64 bytes."
+          "note": "The name the client loads it under, ended by a zero byte."
         }
       ],
       "note": "A client stops a basic attack the unit is making first. Looks stack: the newest shows, and AppearancePopped takes away the one its entry names. An animated building instead looks for a look of the same name whose skin equals entry, adds the look under skin where it finds none, and how has no effect on it."
     },
     {
       "from": "4.11.0.386",
-      "until": "4.17.0.233",
-      "channel": "events",
-      "command": 151,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "entry",
-          "type": "u32",
-          "note": "Names this look, so that AppearancePopped can name it."
-        },
-        {
-          "name": "how",
-          "type": "bits",
-          "size": 1,
-          "bits": [
-            {
-              "name": "overrideSpells",
-              "width": 1,
-              "note": "Set where the unit's spells change with it."
-            },
-            {
-              "name": "modelOnly",
-              "width": 1,
-              "note": "Set where only the model changes."
-            },
-            {
-              "name": "replacePackage",
-              "width": 1,
-              "note": "Set where its art and sound change with it."
-            },
-            {
-              "name": "unused",
-              "width": 5,
-              "note": "Unused; a server writes zero."
-            }
-          ],
-          "note": "What the look changes."
-        },
-        {
-          "name": "skin",
-          "type": "i32",
-          "note": "Which look; -1 keeps the unit's own skin."
-        },
-        {
-          "name": "asset",
-          "type": "string",
-          "encoding": "utf8",
-          "size": "terminated",
-          "note": "The name the client loads it under, ended by a zero byte. The name and its zero byte take at most 64 bytes."
-        }
-      ],
-      "note": "A client stops a basic attack the unit is making first. Looks stack: the newest shows, and AppearancePopped takes away the one its entry names. An animated building instead looks for a look of the same name whose skin equals entry, adds the look under skin where it finds none, and how has no effect on it."
-    },
-    {
-      "from": "4.17.0.233",
       "until": "4.18.0.271",
       "channel": "events",
       "command": 151,

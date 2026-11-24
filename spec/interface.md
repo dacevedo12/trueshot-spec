@@ -84,12 +84,26 @@ set a point for a player's view with `CameraBehaviour`.
 > units, at most every tenth of a second, and never while its view is locked; a
 > report sent again until answered can come sooner.
 
-<!-- holds from 1.0.0.111 up to 1.0.0.132 -->
+<!-- holds from 1.0.0.111 up to 1.0.0.126 -->
 
-> **In 1.0.0.111–1.0.0.131**
+> **In 1.0.0.111–1.0.0.125**
+>
+> A client's view report, `Camera`, goes out as its view moves, and never while
+> its view is locked.
+
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
+
+> **In 1.0.0.126**
 >
 > A client's view report, `Camera`, goes out as its view moves at least 200
 > units, at most every tenth of a second, and never while its view is locked.
+
+<!-- holds from 1.0.0.127 up to 1.0.0.132 -->
+
+> **In 1.0.0.127–1.0.0.131**
+>
+> A client's view report, `Camera`, goes out as its view moves, and never while
+> its view is locked.
 
 <!-- holds from 1.0.0.132 up to 1.0.0.133 -->
 
@@ -125,12 +139,26 @@ set a point for a player's view with `CameraBehaviour`.
 > locked or while it watches a match; a report sent again until answered can
 > come sooner.
 
-<!-- holds from 3.7.0.328 up to 3.13.0.399 -->
+<!-- holds from 3.7.0.328 up to 3.10.0.237 -->
 
-> **In 3.7–3.12**
+> **In 3.7–3.9**
+>
+> A client's view report, `Camera`, goes out as its view moves, and never while
+> its view is locked.
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
 >
 > A client's view report, `Camera`, goes out as its view moves at least 200
 > units, at most every tenth of a second, and never while its view is locked.
+
+<!-- holds from 3.11.0.306 up to 3.13.0.399 -->
+
+> **In 3.11–3.12**
+>
+> A client's view report, `Camera`, goes out as its view moves, and never while
+> its view is locked.
 
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
@@ -191,13 +219,20 @@ alone closes the shop and turns off its key.
 > drives starts and ends, and `InputLockChanged` for the locks it set or
 > cleared.
 
-<!-- holds from 0.9.25.24 up to 1.0.0.25 -->
+<!-- holds from 0.9.25.24 up to 0.9.25.36 -->
 
-> **In 0.9.25.24–1.0.0.24**
+> **In 0.9.25.24–0.9.25.35**
 >
 > A client keeps every lock a message sets or clears, and later input obeys
 > them, but it acts on a lock at once only where the message's mask is exactly
 > one of 1, 4, 8, 16, 32 or 128.
+
+<!-- holds from 0.9.25.36 up to 1.0.0.25 -->
+
+> **In 0.9.25.36–1.0.0.24**
+>
+> A client keeps every lock a message sets or clears, but it acts on a lock at
+> once only where the message's mask is exactly one of 1, 4, 8, 16, 32 or 128.
 
 <!-- holds from 1.0.0.25 up to 1.0.0.58 -->
 
@@ -208,13 +243,20 @@ alone closes the shop and turns off its key.
 > input obeys every lock but the shop's, which
 > [The shop](shop.md#buying-and-selling) covers.
 
-<!-- holds from 1.0.0.58 up to 1.0.0.74 -->
+<!-- holds from 1.0.0.58 up to 1.0.0.61 -->
 
-> **In 1.0.0.58–1.0.0.73**
+> **In 1.0.0.58–1.0.0.60**
 >
 > A client keeps every lock a message sets or clears, and later input obeys
 > them, but it acts on a lock at once only where the message's mask is exactly
 > one of 1, 4, 8, 16, 32 or 128.
+
+<!-- holds from 1.0.0.61 up to 1.0.0.74 -->
+
+> **In 1.0.0.61–1.0.0.73**
+>
+> A client keeps every lock a message sets or clears, but it acts on a lock at
+> once only where the message's mask is exactly one of 1, 4, 8, 16, 32 or 128.
 
 <!-- holds from 1.0.0.74 up to 1.0.0.111 -->
 
@@ -223,13 +265,27 @@ alone closes the shop and turns off its key.
 > A client keeps every lock a message sets or clears, but acts on a lock at once
 > only where the message's mask is exactly one of 1, 4, 8, 16, 32 or 128.
 
-<!-- holds from 1.0.0.111 up to 1.0.0.132 -->
+<!-- holds from 1.0.0.111 up to 1.0.0.126 -->
 
-> **In 1.0.0.111–1.0.0.131**
+> **In 1.0.0.111–1.0.0.125**
+>
+> A client keeps every lock a message sets or clears, but it acts on a lock at
+> once only where the message's mask is exactly one of 1, 4, 8, 16, 32 or 128.
+
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
+
+> **In 1.0.0.126**
 >
 > A client keeps every lock a message sets or clears, and later input obeys
 > them, but it acts on a lock at once only where the message's mask is exactly
 > one of 1, 4, 8, 16, 32 or 128.
+
+<!-- holds from 1.0.0.127 up to 1.0.0.132 -->
+
+> **In 1.0.0.127–1.0.0.131**
+>
+> A client keeps every lock a message sets or clears, but it acts on a lock at
+> once only where the message's mask is exactly one of 1, 4, 8, 16, 32 or 128.
 
 <!-- holds from 1.0.0.132 up to 1.0.0.133 -->
 
@@ -238,13 +294,27 @@ alone closes the shop and turns off its key.
 > A client keeps every lock a message sets or clears, but acts on a lock at once
 > only where the message's mask is exactly one of 1, 4, 8, 16, 32 or 128.
 
-<!-- holds from 1.0.0.133 up to 1.0.0.147 -->
+<!-- holds from 1.0.0.133 up to 1.0.0.140 -->
 
-> **In 1.0.0.133–1.0.0.146**
+> **In 1.0.0.133–1.0.0.139**
+>
+> A client keeps every lock a message sets or clears, but it acts on a lock at
+> once only where the message's mask is exactly one of 1, 4, 8, 16, 32 or 128.
+
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+
+> **In 1.0.0.140**
 >
 > A client keeps every lock a message sets or clears, and later input obeys
 > them, but it acts on a lock at once only where the message's mask is exactly
 > one of 1, 4, 8, 16, 32 or 128.
+
+<!-- holds from 1.0.0.141 up to 1.0.0.147 -->
+
+> **In 1.0.0.141–1.0.0.146**
+>
+> A client keeps every lock a message sets or clears, but it acts on a lock at
+> once only where the message's mask is exactly one of 1, 4, 8, 16, 32 or 128.
 
 <!-- holds from 1.0.0.147 up to 1.0.0.148 -->
 
@@ -271,9 +341,16 @@ alone closes the shop and turns off its key.
 > ignore it. It acts on a lock at once only where the message's mask is exactly
 > one of 1, 4, 8, 16, 32 or 128.
 
-<!-- holds from 3.7.0.328 up to 3.11.0.306 -->
+<!-- holds from 3.7.0.328 up to 3.10.0.237 -->
 
-> **In 3.7–3.10**
+> **In 3.7–3.9**
+>
+> A client keeps every lock a message sets or clears, but it acts on a lock at
+> once only where the message's mask is exactly one of 1, 4, 8, 16, 32 or 128.
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
 >
 > A client keeps every lock a message sets or clears, and later input obeys
 > them, but it acts on a lock at once only where the message's mask is exactly

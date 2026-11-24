@@ -85,7 +85,7 @@
         {
           "name": "driver",
           "type": "u8",
-          "note": "How the missile is driven; only 1, homing, exists, and for any other value nothing after the velocity is read."
+          "note": "How the missile is driven; only 1, homing, exists."
         },
         {
           "name": "fromX",

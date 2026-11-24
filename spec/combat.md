@@ -9,9 +9,9 @@ A server says a unit is swinging at another with `Attack`, or with
 breaks an attack off. `AttackSpeedBounds` puts a ceiling or a floor on how fast a
 unit attacks.
 
-<!-- holds from 0.8.13.26 up to 4.20.0.315 -->
+<!-- holds from 0.8.13.26 up to 4.18.0.271 -->
 
-> **In 0.8.13.26–4.19**
+> **In 0.8.13.26–4.17**
 >
 > After `StopAttack`, a client clears the unit's attack whatever the message's
 > flags ask besides.
@@ -27,9 +27,9 @@ A client asks its champion to attack with a `MoveOrder` naming the unit (see
 [Movement](movement.md)). A server then plays the attack with `Attack`, and
 reports what each blow does with `Damage`.
 
-<!-- holds from 0.8.13.26 up to 4.20.0.315 -->
+<!-- holds from 0.8.13.26 up to 4.18.0.271 -->
 
-> **In 0.8.13.26–4.19**
+> **In 0.8.13.26–4.17**
 >
 > How long a swing takes comes from the champion's data and its attack speed.
 
@@ -39,9 +39,9 @@ reports what each blow does with `Damage`.
 >
 > A client ignores an `Attack` whose target it does not hold.
 
-<!-- holds from 1.0.0.126 up to 3.6.0.388 -->
+<!-- holds from 1.0.0.126 up to 3.04.0.78 -->
 
-> **In 1.0.0.126–3.5**
+> **In 1.0.0.126–3.03**
 >
 > A swing starts later by the timing byte of its `Attack` less 128, in
 > hundredths of a second.
@@ -53,23 +53,23 @@ reports what each blow does with `Damage`.
 > A swing starts as its `Attack` arrives. The timing byte less 128, in
 > hundredths of a second, moves only when the unit can next attack.
 
-<!-- holds from 3.7.0.328 up to 3.11.0.306 -->
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
-> **In 3.7–3.10**
+> **In 3.10**
 >
 > A swing starts later by the timing byte of its `Attack` less 128, in
 > hundredths of a second.
 
-<!-- holds from 3.10.0.237 up to 4.20.0.315 -->
+<!-- holds from 3.10.0.237 up to 4.18.0.271 -->
 
-> **In 3.10–4.19**
+> **In 3.10–4.17**
 >
 > Each `Attack` plays one swing, cutting off any swing still under way.
 > `TargetUnit` and `TargetHeldChampion` are not needed for a swing to show.
 
-<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
+<!-- holds from 4.4.0.1858 up to 4.18.0.271 -->
 
-> **In 4.1–4.19**
+> **In 4.4–4.17**
 >
 > A melee swing carries a missile id of zero. A ranged swing carries an id no
 > object holds, which the client gives the missile it launches itself as the
@@ -118,12 +118,13 @@ reports what each blow does with `Damage`.
 > A client sets the mark of `TargetHeldChampion` only for a unit on the other
 > side.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 4.4.0.1858 up to 4.21.0.0 -->
 
-> **In 4.1–4.20**
+> **In 4.4–4.20**
 >
 > That a unit is attacking a champion is `TargetHeldChampion`, which marks the
-> unit's health bar with an indicator, and clears the mark when it names no such
+> unit's health bar with an indicator, and clears the mark when it names no
+> such
 > champion.
 
 `HoverTarget` and `HoverIndicator` set and show the unit a unit's hover
@@ -154,9 +155,9 @@ A server reports damage with `Damage`.
 > replication. Whether a notice or a figure shows also depends on the player's
 > floating-text settings.
 
-<!-- holds from 0.9.25.24 up to 4.20.0.315 -->
+<!-- holds from 0.9.25.24 up to 4.18.0.271 -->
 
-> **In 0.9.25.24–4.19**
+> **In 0.9.25.24–4.17**
 >
 > `Damage` shows a figure for the results that carry one, normal and critical;
 > zero is the result that shows the unit as invulnerable, not a plain hit.
@@ -184,12 +185,26 @@ A server reports damage with `Damage`.
 > as that value less 128. Of the other results, 1 shows nothing, 2 a dodge and 5
 > a miss; 3 is critical, and 4 and 6 to 127 are normal.
 
-<!-- holds from 1.0.0.111 up to 1.0.0.132 -->
+<!-- holds from 1.0.0.111 up to 1.0.0.126 -->
 
-> **In 1.0.0.111–1.0.0.131**
+> **In 1.0.0.111–1.0.0.125**
+>
+> Of the other results of `Damage`, 1 shows nothing, 2 a dodge and 5 a miss; 3
+> is critical.
+
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
+
+> **In 1.0.0.126**
 >
 > Of the other results of `Damage`, 1 shows nothing, 2 a dodge and 5 a miss; 3
 > is critical, and 4 and any above 5 are normal.
+
+<!-- holds from 1.0.0.127 up to 1.0.0.132 -->
+
+> **In 1.0.0.127–1.0.0.131**
+>
+> Of the other results of `Damage`, 1 shows nothing, 2 a dodge and 5 a miss; 3
+> is critical.
 
 <!-- holds from 1.0.0.132 up to 1.0.0.133 -->
 
@@ -213,16 +228,23 @@ A server reports damage with `Damage`.
 > as that value less 128. Of the other results, 1 shows nothing, 2 a dodge and 5
 > a miss; 3 is critical, and 4 and 6 to 127 are normal.
 
-<!-- holds from 1.0.0.141 up to 3.11.0.306 -->
+<!-- holds from 1.0.0.141 up to 1.0.0.150 -->
 
-> **In 1.0.0.141–3.10**
+> **In 1.0.0.141–1.0.0.149**
+>
+> Of the other results of `Damage`, 1 shows nothing, 2 a dodge and 5 a miss; 3
+> is critical.
+
+<!-- holds from 1.0.0.150 up to 3.11.0.306 -->
+
+> **In 1.0.0.150–3.10**
 >
 > Of the other results of `Damage`, 1 shows nothing, 2 a dodge and 5 a miss; 3
 > is critical, and 4 and any above 5 are normal.
 
-<!-- holds from 3.10.0.237 up to 4.20.0.315 -->
+<!-- holds from 3.10.0.237 up to 4.18.0.271 -->
 
-> **In 3.10–4.19**
+> **In 3.10–4.17**
 >
 > A client shows nothing at all for `Damage` unless it holds both the unit hurt
 > and the unit dealing it.
@@ -249,12 +271,40 @@ into its death.
 > holds the killer, and does nothing more. It puts a unit down only where a
 > killer is named.
 
-<!-- holds from 1.0.0.151 up to 4.4.0.1858 -->
+<!-- holds from 1.0.0.151 up to 1.0.0.154 -->
 
-> **In 1.0.0.151–4.3**
+> **In 1.0.0.151–1.0.0.153**
+>
+> A client ignores `ChampionDied` naming a unit already dead, and puts a unit
+> down only where a killer is named.
+
+<!-- holds from 1.0.0.154 up to 3.01.0.1 -->
+
+> **In 1.0.0.154**
 >
 > A client ignores `UnitDied` or `ChampionDied` naming a unit already dead, and
 > puts a unit down only where a killer is named.
+
+<!-- holds from 3.01.0.1 up to 3.03.0.198 -->
+
+> **In 3.01–3.02**
+>
+> A client ignores `ChampionDied` naming a unit already dead, and puts a unit
+> down only where a killer is named.
+
+<!-- holds from 3.03.0.198 up to 3.14.0.700 -->
+
+> **In 3.03–3.13**
+>
+> A client ignores `UnitDied` or `ChampionDied` naming a unit already dead, and
+> puts a unit down only where a killer is named.
+
+<!-- holds from 3.14.0.700 up to 4.4.0.1858 -->
+
+> **In 3.14–4.3**
+>
+> A client ignores `ChampionDied` naming a unit already dead, and puts a unit
+> down only where a killer is named.
 
 <!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
 
@@ -263,9 +313,16 @@ into its death.
 > A client ignores `ChampionDied` naming a champion already dead, and puts a
 > unit down only where a killer is named.
 
-<!-- holds from 4.5.0.260 up to 4.20.0.315 -->
+<!-- holds from 4.5.0.260 up to 4.17.0.233 -->
 
-> **In 4.5–4.19**
+> **In 4.5–4.16**
+>
+> A client ignores `ChampionDied` naming a unit already dead, and puts a unit
+> down only where a killer is named.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
 >
 > A client ignores `UnitDied` or `ChampionDied` naming a unit already dead, and
 > puts a unit down only where a killer is named.
@@ -332,12 +389,19 @@ for what a client draws on its map with `UnitDiedOnMap`.
 
 `Revived` puts a champion back on the field.
 
-<!-- holds from 0.8.13.26 up to 1.0.0.86 -->
+<!-- holds from 0.8.13.26 up to 1.0.0.75 -->
 
-> **In 0.8.13.26–1.0.0.85**
+> **In 0.8.13.26–1.0.0.74**
 >
-> A client reads nothing from `Revived` or `Respawned`: each brings the champion
+> A client reads nothing from `Revived` or `Respawned`: each brings the
+> champion
 > back where it stands.
+
+<!-- holds from 1.0.0.75 up to 1.0.0.86 -->
+
+> **In 1.0.0.75–1.0.0.85**
+>
+> A client reads nothing from `Revived` or `Respawned`.
 
 <!-- holds from 1.0.0.86 up to 1.0.0.87 -->
 
@@ -347,11 +411,18 @@ for what a client draws on its map with `UnitDiedOnMap`.
 > back at the first spawn point of its side, on the open ground nearest it.
 > `Revived` brings back a champion that is not dead too, first stopping it.
 
-<!-- holds from 1.0.0.87 up to 1.0.0.97 -->
+<!-- holds from 1.0.0.87 up to 1.0.0.96 -->
 
-> **In 1.0.0.87–1.0.0.96**
+> **In 1.0.0.87–1.0.0.95**
 >
-> A client reads nothing from `Revived` or `Respawned`: each brings the champion
+> A client reads nothing from `Revived` or `Respawned`.
+
+<!-- holds from 1.0.0.96 up to 1.0.0.97 -->
+
+> **In 1.0.0.96**
+>
+> A client reads nothing from `Revived` or `Respawned`: each brings the
+> champion
 > back where it stands.
 
 <!-- holds from 1.0.0.126 up to 4.21.0.0 -->
@@ -380,16 +451,16 @@ A client sends `UseObject` as its player right-clicks a unit that can be used.
 >
 > A client sends `UseObject` at no other time.
 
-<!-- holds from 1.0.0.140 up to 3.03.0.198 -->
+<!-- holds from 1.0.0.140 up to 1.0.0.151 -->
 
-> **In 1.0.0.140–3.02**
+> **In 1.0.0.140–1.0.0.150**
 >
 > A client also sends `UseObject` for a unit its champion is attacking, as that
 > unit changes side.
 
-<!-- holds from 3.04.0.78 up to 4.21.0.0 -->
+<!-- holds from 3.6.0.388 up to 4.21.0.0 -->
 
-> **In 3.04–4.20**
+> **In 3.6–4.20**
 >
 > A client also sends `UseObject` for a unit its champion is attacking, as that
 > unit changes side.

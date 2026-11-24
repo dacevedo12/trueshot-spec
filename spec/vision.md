@@ -41,8 +41,10 @@ A server brings a unit into what a client's side can see with `EnterSight`.
 
 > **In 1.0.0.138–4.20**
 >
-> `EnterSight` and `EnterLocalSight` can carry whole messages of the game family,
-> such as the `CreateTurret` or `CreateNeutral` that makes the unit, each taking
+> `EnterSight` and `EnterLocalSight` can carry whole messages of the game
+> family,
+> such as the `CreateTurret` or `CreateNeutral` that makes the unit, each
+> taking
 > effect as though it had arrived on its own.
 
 <!-- holds from 1.0.0.140 up to 1.0.0.141 -->
@@ -65,9 +67,9 @@ A server brings a unit into what a client's side can see with `EnterSight`.
 > an inhibitor, a shop or a spawn point) it reads nothing after the messages
 > carried.
 
-<!-- holds from 4.10.0.369 up to 4.20.0.315 -->
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 
-> **In 4.10–4.19**
+> **In 4.17**
 >
 > A client reads every part of an `EnterSight` body whatever its length, so a
 > server MUST NOT end one early.
@@ -84,9 +86,9 @@ A server brings a unit into what a client's side can see with `EnterSight`.
 A client does not draw a champion that no `EnterSight` has placed. One `EnterSight` after the `CreateChampion` draws it, with
 its name over it.
 
-<!-- holds from 0.9.22.14 up to 4.21.0.0 -->
+<!-- holds from 0.9.25.24 up to 4.21.0.0 -->
 
-> **In 0.9.22.14–4.20**
+> **In 0.9.25.24–4.20**
 >
 > The `EnterSight` that draws a champion also puts its health bar over it.
 
@@ -128,9 +130,9 @@ and leave a side's view with `ParticleEnterTeamSight` and
 > champion included: one no `EnterLocalSight` has brought in, or one
 > `LeaveLocalSight` has taken out, until an `EnterLocalSight` brings it back.
 
-<!-- holds from 1.0.0.25 up to 1.0.0.74 -->
+<!-- holds from 1.0.0.25 up to 1.0.0.61 -->
 
-> **In 1.0.0.25–1.0.0.73**
+> **In 1.0.0.25–1.0.0.60**
 >
 > `LeaveLocalSight` changes nothing a client shows, whichever unit it names.
 
@@ -142,15 +144,9 @@ and leave a side's view with `ParticleEnterTeamSight` and
 > its own champion included: one no `EnterLocalSight` has brought in, or one
 > `LeaveLocalSight` has taken out, until an `EnterLocalSight` brings it back.
 
-<!-- holds from 1.0.0.75 up to 1.0.0.110 -->
+<!-- holds from 1.0.0.86 up to 1.0.0.97 -->
 
-> **In 1.0.0.75–1.0.0.109**
->
-> `LeaveLocalSight` changes nothing a client shows, whichever unit it names.
-
-<!-- holds from 1.0.0.111 up to 1.0.0.126 -->
-
-> **In 1.0.0.111–1.0.0.125**
+> **In 1.0.0.86–1.0.0.96**
 >
 > `LeaveLocalSight` changes nothing a client shows, whichever unit it names.
 
@@ -180,9 +176,9 @@ unit with `RegionAttached`, moves it with `RegionMoved` and takes it away with
 named and when one ends. A region granting sight has a client clear its map's
 cover over it.
 
-<!-- holds from 1.0.0.126 up to 4.20.0.315 -->
+<!-- holds from 1.0.0.126 up to 4.18.0.271 -->
 
-> **In 1.0.0.126–4.19**
+> **In 1.0.0.126–4.17**
 >
 > A client makes only circular regions.
 
@@ -193,9 +189,9 @@ cover over it.
 > A region fastened to a unit with a radius of 3000 or less is blocked by walls,
 > and any other sees over them; nothing in a region chooses this.
 
-<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
+<!-- holds from 4.4.0.1858 up to 4.18.0.271 -->
 
-> **In 4.1–4.19**
+> **In 4.4–4.17**
 >
 > A client's regions see over walls or not as the region says.
 
@@ -289,19 +285,12 @@ of them only for its own champion.
 > any other unit, it has no defined effect. `ItemAdded` announces no purchase, a
 > client's own or another's.
 
-<!-- holds from 1.0.0.96 up to 1.0.0.97 -->
+<!-- holds from 1.0.0.96 up to 1.0.0.110 -->
 
-> **In 1.0.0.96**
+> **In 1.0.0.96–1.0.0.109**
 >
 > `ItemAdded` announces a purchase only for the client's own champion; an ally's
 > purchase is called out where the message asks for it.
-
-<!-- holds from 1.0.0.97 up to 1.0.0.110 -->
-
-> **In 1.0.0.97–1.0.0.109**
->
-> `ItemAdded` and `InventorySlot` announce a purchase only for the client's own
-> champion; an ally's purchase is called out where the message asks for it.
 
 <!-- holds from 1.0.0.96 up to 1.0.0.97 -->
 
@@ -320,9 +309,16 @@ of them only for its own champion.
 > purchase is called out where the message asks for it. `InventorySlot`
 > announces no purchase.
 
-<!-- holds from 1.0.0.111 up to 4.21.0.0 -->
+<!-- holds from 1.0.0.111 up to 1.0.0.126 -->
 
-> **In 1.0.0.111–4.20**
+> **In 1.0.0.111–1.0.0.125**
+>
+> `ItemAdded` announces a purchase only for the client's own champion; an
+> ally's purchase is called out where the message asks for it.
+
+<!-- holds from 1.0.0.126 up to 4.21.0.0 -->
+
+> **In 1.0.0.126–4.20**
 >
 > `ItemAdded` and `InventorySlot` announce a purchase only for the client's own
 > champion; an ally's purchase is called out where the message asks for it.
@@ -366,15 +362,9 @@ of them only for its own champion.
 > over that unit the gold gained, or lost where the amount is below 0, and
 > nothing for 0.
 
-<!-- holds from 3.14.0.700 up to 4.4.0.1858 -->
+<!-- holds from 4.17.0.233 up to 4.21.0.0 -->
 
-> **In 3.14–4.3**
->
-> `GoldGained` shows floating gold only for the client's own champion.
-
-<!-- holds from 4.5.0.260 up to 4.21.0.0 -->
-
-> **In 4.5–4.20**
+> **In 4.17–4.20**
 >
 > `GoldGained` shows floating gold only for the client's own champion.
 
@@ -386,9 +376,9 @@ of them only for its own champion.
 > source the client holds, shows the gold over the source, or over the champion
 > where the source cannot show text.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 4.4.0.1858 up to 4.21.0.0 -->
 
-> **In 4.1–4.20**
+> **In 4.4–4.20**
 >
 > `LevelUp` shows its effect over any unit the client can see.
 

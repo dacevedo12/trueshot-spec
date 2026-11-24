@@ -41,8 +41,7 @@
       "command": 177,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": [],
-      "note": "A client also opens its chat entry, as the chat key does, where chat is open to it."
+      "fields": []
     },
     {
       "from": "1.0.0.98",
@@ -51,8 +50,7 @@
       "command": 178,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": [],
-      "note": "A client also opens its chat entry, as the chat key does, where chat is open to it."
+      "fields": []
     },
     {
       "from": "1.0.0.103",
@@ -61,8 +59,7 @@
       "command": 180,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": [],
-      "note": "A client also opens its chat entry, as the chat key does, where chat is open to it."
+      "fields": []
     },
     {
       "from": "1.0.0.104",
@@ -71,21 +68,10 @@
       "command": 186,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": [],
-      "note": "A client also opens its chat entry, as the chat key does, where chat is open to it."
+      "fields": []
     },
     {
       "from": "1.0.0.107",
-      "until": "1.0.0.108",
-      "channel": "events",
-      "command": 187,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [],
-      "note": "A client also opens its chat entry, as the chat key does, where chat is open to it."
-    },
-    {
-      "from": "1.0.0.108",
       "until": "1.0.0.109",
       "channel": "events",
       "command": 187,

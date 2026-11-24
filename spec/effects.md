@@ -14,13 +14,22 @@ several units at once (`EffectAddedGroup`, `EffectReplacedGroup`,
 `EffectCountGroup`, `EffectRemovedGroup`), and set the number an effect shows on
 its icon with `EffectCounter`.
 
-<!-- holds from 1.0.0.128 up to 1.0.0.144 -->
+<!-- holds from 1.0.0.132 up to 1.0.0.141 -->
 
-> **In 1.0.0.128–1.0.0.143**
+> **In 1.0.0.132–1.0.0.140**
 >
-> `EffectReplaced` carries no effect: it re-times the effect already in the slot
+> `EffectReplaced` carries no effect: it re-times the effect already in the
+> slot
 > and names its caster again, and does nothing where the slot is empty.
 > `EffectReplacedGroup` does the same for each unit.
+
+<!-- holds from 1.0.0.141 up to 1.0.0.144 -->
+
+> **In 1.0.0.141–1.0.0.143**
+>
+> `EffectReplaced` carries no effect: it re-times the effect already in the
+> slot, and does nothing where the slot is empty. `EffectReplacedGroup` does
+> the same for each unit.
 
 ## Particles
 

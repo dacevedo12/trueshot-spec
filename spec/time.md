@@ -47,9 +47,9 @@ round trip from the client's answers (see
 [Ordering](ordering.md#what-a-client-answers)). A server can report
 the round trip it measured with `ClockConvergence`.
 
-<!-- holds from 0.8.13.26 up to 4.20.0.315 -->
+<!-- holds from 0.8.13.26 up to 4.18.0.271 -->
 
-> **In 0.8.13.26–4.19**
+> **In 0.8.13.26–4.17**
 >
 > A client takes the round trip `ClockConvergence` reports into its allowance
 > for lateness.
@@ -82,11 +82,12 @@ catch up with its own.
 > on the client's own timer from then; a `ClockSync` sets it wherever it
 > stands.
 
-<!-- holds from 0.9.25.24 up to 4.20.0.315 -->
+<!-- holds from 0.9.25.24 up to 4.18.0.271 -->
 
-> **In 0.9.25.24–4.19**
+> **In 0.9.25.24–4.17**
 >
-> A client's match clock does not run until the first `ClockSync` arrives, which
+> A client's match clock does not run until the first `ClockSync` arrives,
+> which
 > sets it. After that it runs on the client's own timer, and a later
 > `ClockSync` only corrects it, however long a server leaves between them.
 
@@ -139,14 +140,22 @@ which the match began.
 > A client takes that moment from its own match clock, once, as its game loop
 > runs.
 
-<!-- holds from 1.0.0.126 up to 1.0.0.132 -->
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
-> **In 1.0.0.126–1.0.0.131**
+> **In 1.0.0.126**
 >
 > `MatchStarted` gives that moment. Until it arrives, a client takes the match
 > clock's reading as its game loop runs, and a `MatchStarted` arriving later
 > replaces it. While the match clock is before that moment, a client shows a
 > negative time.
+
+<!-- holds from 1.0.0.127 up to 1.0.0.132 -->
+
+> **In 1.0.0.127–1.0.0.131**
+>
+> `MatchStarted` gives that moment. Until it arrives, a client takes the match
+> clock's reading, and a `MatchStarted` arriving later replaces it. While the
+> match clock is before that moment, a client shows a negative time.
 
 <!-- holds from 1.0.0.132 up to 1.0.0.133 -->
 
@@ -157,14 +166,30 @@ which the match began.
 > later replaces it. While the match clock is before that moment, a client shows
 > a negative time.
 
-<!-- holds from 1.0.0.133 up to 1.0.0.150 -->
+<!-- holds from 1.0.0.133 up to 1.0.0.140 -->
 
-> **In 1.0.0.133–1.0.0.149**
+> **In 1.0.0.133–1.0.0.139**
+>
+> `MatchStarted` gives that moment. Until it arrives, a client takes the match
+> clock's reading, and a `MatchStarted` arriving later replaces it. While the
+> match clock is before that moment, a client shows a negative time.
+
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+
+> **In 1.0.0.140**
 >
 > `MatchStarted` gives that moment. Until it arrives, a client takes the match
 > clock's reading as its game loop runs, and a `MatchStarted` arriving later
 > replaces it. While the match clock is before that moment, a client shows a
 > negative time.
+
+<!-- holds from 1.0.0.141 up to 1.0.0.150 -->
+
+> **In 1.0.0.141–1.0.0.149**
+>
+> `MatchStarted` gives that moment. Until it arrives, a client takes the match
+> clock's reading, and a `MatchStarted` arriving later replaces it. While the
+> match clock is before that moment, a client shows a negative time.
 
 <!-- holds from 1.0.0.150 up to 1.0.0.151 -->
 
@@ -175,18 +200,26 @@ which the match began.
 > later replaces it. While the match clock is before that moment, a client
 > shows a negative time.
 
-<!-- holds from 1.0.0.151 up to 3.11.0.306 -->
+<!-- holds from 1.0.0.151 up to 3.03.0.198 -->
 
-> **In 1.0.0.151–3.10**
+> **In 1.0.0.151–3.02**
+>
+> `MatchStarted` gives that moment. Until it arrives, a client takes the match
+> clock's reading, and a `MatchStarted` arriving later replaces it. While the
+> match clock is before that moment, a client shows a negative time.
+
+<!-- holds from 3.03.0.198 up to 3.11.0.306 -->
+
+> **In 3.03–3.10**
 >
 > `MatchStarted` gives that moment. Until it arrives, a client takes the match
 > clock's reading as its game loop runs, and a `MatchStarted` arriving later
 > replaces it. While the match clock is before that moment, a client shows a
 > negative time.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 4.4.0.1858 up to 4.21.0.0 -->
 
-> **In 4.1–4.20**
+> **In 4.4–4.20**
 >
 > `MatchStarted` gives that moment.
 
@@ -214,9 +247,9 @@ Moments on the match clock include:
 - when a champion's passive comes off cooldown, where a client is told it (see
   [Replication](replication.md)).
 
-<!-- holds from 0.8.13.26 up to 4.1.0.171 -->
+<!-- holds from 0.8.13.26 up to 3.14.0.700 -->
 
-> **In 0.8.13.26–3.15**
+> **In 0.8.13.26–3.13**
 >
 > A server MUST state each of these on the clock it sends in `ClockSync`.
 
@@ -235,14 +268,15 @@ Moments on the match clock include:
 > A client reads when a monster arrives as match time, counted from the moment
 > `MatchStarted` gives, and a server MUST state it so.
 
-<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
+<!-- holds from 4.4.0.1858 up to 4.18.0.271 -->
 
-> **In 4.1–4.19**
+> **In 4.4–4.17**
 >
 > ## The game clock
 >
 > A client also runs a game clock of its own, whose pace `GameSpeed` sets,
-> from 0 to 10 times normal, and which `ClockSync` does not set. How long a unit
+> from 0 to 10 times normal, and which `ClockSync` does not set. How long a
+> unit
 > stays dead, how long an object lives, and how long a client waits before
 > removing a dead unit (see [Objects and identifiers](objects.md)) run on it. A
 > server that runs a match at other than normal speed MUST send `GameSpeed`

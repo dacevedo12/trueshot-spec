@@ -162,7 +162,7 @@
         {
           "name": "entryCount",
           "type": "u16",
-          "note": "How many sets of numbers follow. A client reads every set it names."
+          "note": "How many sets of numbers follow."
         },
         {
           "name": "entries",
@@ -211,7 +211,7 @@
         {
           "name": "entryCount",
           "type": "u16",
-          "note": "How many sets of numbers follow. A client ignores the whole message where they do not all fit in it."
+          "note": "How many sets of numbers follow."
         },
         {
           "name": "entries",
@@ -1322,7 +1322,7 @@
                 }
               }
             ],
-            "note": "The numbers for one spell, five places of them."
+            "note": "The numbers for one spell."
           }
         }
       ]
@@ -1371,7 +1371,7 @@
                 }
               }
             ],
-            "note": "The numbers for one spell, five places of them."
+            "note": "The numbers for one spell."
           }
         }
       ]

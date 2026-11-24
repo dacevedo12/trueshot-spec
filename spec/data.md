@@ -24,21 +24,21 @@ that packs them into archives keeps the same paths inside.
 line each: a file name and a quality number. Each object's own file sits beside
 it and gives its name.
 
-<!-- holds from 0.8.13.26 up to 1.0.0.110 -->
+<!-- holds from 0.8.13.26 up to 1.0.0.97 -->
 
-> **In 0.8.13.26–1.0.0.109**
+> **In 0.8.13.26–1.0.0.96**
 >
 > A client creates no object from a name holding `_Destroyed`.
 
-<!-- holds from 1.0.0.111 up to 1.0.0.132 -->
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
-> **In 1.0.0.111–1.0.0.131**
+> **In 1.0.0.126**
 >
 > A client creates no object from a name holding `_Destroyed`.
 
-<!-- holds from 1.0.0.133 up to 4.21.0.0 -->
+<!-- holds from 1.0.0.140 up to 4.21.0.0 -->
 
-> **In 1.0.0.133–4.20**
+> **In 1.0.0.140–4.20**
 >
 > A client creates no object from a name holding `_Destroyed`.
 
@@ -48,14 +48,22 @@ for Order and 2 for Chaos and lanes `L`, `C` and `R`, with a shrine turret for
 each side; the numbers differ between the sides, and a server MUST take the
 names from the files.
 
-<!-- holds from 0.8.13.26 up to 1.0.0.110 -->
+<!-- holds from 0.8.13.26 up to 1.0.0.97 -->
 
-> **In 0.8.13.26–1.0.0.109**
+> **In 0.8.13.26–1.0.0.96**
 >
 > A word a name holds anywhere says what the object is, not only its opening,
 > the first match winning: a minion spawner's `Spawn_Barracks` is tested before
 > `Barracks`, which makes an inhibitor, and `HQ_` makes a nexus and `Turret` a
 > turret.
+
+<!-- holds from 1.0.0.97 up to 1.0.0.110 -->
+
+> **In 1.0.0.97–1.0.0.109**
+>
+> A word says what the object is, the first match winning: a minion spawner's
+> `Spawn_Barracks` is tested before `Barracks`, which makes an inhibitor, and
+> `HQ_` makes a nexus and `Turret` a turret.
 
 <!-- holds from 0.8.13.26 up to 0.9.22.14 -->
 
@@ -68,21 +76,21 @@ names from the files.
 > A name holding `_FB` still makes an object, though not one of the kind its
 > other words name.
 
-<!-- holds from 0.9.22.14 up to 1.0.0.110 -->
+<!-- holds from 0.9.25.24 up to 1.0.0.97 -->
 
-> **In 0.9.22.14–1.0.0.109**
+> **In 0.9.25.24–1.0.0.96**
 >
 > A client creates no object from a name holding `_FB` either.
 
-<!-- holds from 1.0.0.111 up to 1.0.0.132 -->
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
-> **In 1.0.0.111–1.0.0.131**
+> **In 1.0.0.126**
 >
 > A client creates no object from a name holding `_FB` either.
 
-<!-- holds from 1.0.0.133 up to 4.21.0.0 -->
+<!-- holds from 1.0.0.140 up to 4.21.0.0 -->
 
-> **In 1.0.0.133–4.20**
+> **In 1.0.0.140–4.20**
 >
 > A client creates no object from a name holding `_FB` either.
 
@@ -104,14 +112,30 @@ names from the files.
 > `Barracks`, which makes an inhibitor, and `HQ_` makes a nexus and `Turret` a
 > turret. A path holding `AIPath`, `_Destroyed` or `_FB` makes no object.
 
-<!-- holds from 1.0.0.111 up to 1.0.0.132 -->
+<!-- holds from 1.0.0.111 up to 1.0.0.126 -->
 
-> **In 1.0.0.111–1.0.0.131**
+> **In 1.0.0.111–1.0.0.125**
+>
+> A word says what the object is, the first match winning: a minion spawner's
+> `Spawn_Barracks` is tested before `Barracks`, which makes an inhibitor, and
+> `HQ_` makes a nexus and `Turret` a turret.
+
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
+
+> **In 1.0.0.126**
 >
 > A word a name holds anywhere says what the object is, not only its opening,
 > the first match winning: a minion spawner's `Spawn_Barracks` is tested before
 > `Barracks`, which makes an inhibitor, and `HQ_` makes a nexus and `Turret` a
 > turret.
+
+<!-- holds from 1.0.0.127 up to 1.0.0.132 -->
+
+> **In 1.0.0.127–1.0.0.131**
+>
+> A word says what the object is, the first match winning: a minion spawner's
+> `Spawn_Barracks` is tested before `Barracks`, which makes an inhibitor, and
+> `HQ_` makes a nexus and `Turret` a turret.
 
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
@@ -130,14 +154,30 @@ names from the files.
 > `Barracks`, which makes an inhibitor, and `HQ_` makes a nexus and `Turret` a
 > turret. A path holding `_Destroyed` or `_FB` makes no object.
 
-<!-- holds from 1.0.0.133 up to 3.03.0.198 -->
+<!-- holds from 1.0.0.133 up to 1.0.0.140 -->
 
-> **In 1.0.0.133–3.02**
+> **In 1.0.0.133–1.0.0.139**
+>
+> A word says what the object is, the first match winning: a minion spawner's
+> `Spawn_Barracks` is tested before `Barracks`, which makes an inhibitor, and
+> `HQ_` makes a nexus and `Turret` a turret.
+
+<!-- holds from 1.0.0.140 up to 1.0.0.151 -->
+
+> **In 1.0.0.140–1.0.0.150**
 >
 > A word a name holds anywhere says what the object is, not only its opening,
 > the first match winning: a minion spawner's `Spawn_Barracks` is tested before
 > `Barracks`, which makes an inhibitor, and `HQ_` makes a nexus and `Turret` a
 > turret.
+
+<!-- holds from 1.0.0.151 up to 3.03.0.198 -->
+
+> **In 1.0.0.151–3.02**
+>
+> A word says what the object is, the first match winning: a minion spawner's
+> `Spawn_Barracks` is tested before `Barracks`, which makes an inhibitor, and
+> `HQ_` makes a nexus and `Turret` a turret.
 
 <!-- holds from 1.0.0.140 up to 1.0.0.141 -->
 
@@ -183,16 +223,36 @@ names from the files.
 > name exists, a client reads that instead, which holds its name within it; only
 > a `.sco` gives its name on its `Name=` line.
 
-<!-- holds from 3.7.0.328 up to 3.13.0.399 -->
+<!-- holds from 3.7.0.328 up to 3.10.0.237 -->
 
-> **In 3.7–3.12**
+> **In 3.7–3.9**
+>
+> Each object's file is `.sco` as text or `.SCB` as binary.
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
 >
 > Each object's file is `.sco` as text or `.SCB` as binary, and gives its name
 > on its `Name=` line.
 
-<!-- holds from 3.7.0.328 up to 3.11.0.306 -->
+<!-- holds from 3.11.0.306 up to 3.13.0.399 -->
 
-> **In 3.7–3.10**
+> **In 3.11–3.12**
+>
+> Each object's file is `.sco` as text or `.SCB` as binary.
+
+<!-- holds from 3.7.0.328 up to 3.10.0.237 -->
+
+> **In 3.7–3.9**
+>
+> A word says what the object is, the first match winning: a minion spawner's
+> `Spawn_Barracks` is tested before `Barracks`, which makes an inhibitor, and
+> `HQ_` makes a nexus and `Turret` a turret.
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
 >
 > A word a name holds anywhere says what the object is, not only its opening,
 > the first match winning: a minion spawner's `Spawn_Barracks` is tested before
@@ -207,9 +267,9 @@ names from the files.
 > `.SCB` as binary, holding its name in its header. Where both exist, a client
 > reads the `.SCB`, and the `.sco` only where there is no `.SCB`.
 
-<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
+<!-- holds from 4.4.0.1858 up to 4.18.0.271 -->
 
-> **In 4.1–4.19**
+> **In 4.4–4.17**
 >
 > A client creates no object the map's object list below already holds.
 
@@ -244,14 +304,16 @@ names from the files.
 > A champion begins on its side's spawn point itself, or at (6000, 0, 6000) on a
 > map with none.
 
-<!-- holds from 0.9.25.24 up to 4.20.0.315 -->
+<!-- holds from 0.9.25.24 up to 4.18.0.271 -->
 
-> **In 0.9.25.24–4.19**
+> **In 0.9.25.24–4.17**
 >
 > A champion begins at its side's spawn point moved by an offset from
-> `DATA/Characters/HeroSpawnOffsets.inibin`, read from the section `Order<n>` or
+> `DATA/Characters/HeroSpawnOffsets.inibin`, read from the section `Order<n>`
+> or
 > `Chaos<n>` under the keys `Pos<i>` and `Facing<i>`, where i is one more than
-> `CreateChampion`'s spawn index. A spawn index of 6 or more begins the champion
+> `CreateChampion`'s spawn index. A spawn index of 6 or more begins the
+> champion
 > on the spawn point itself.
 
 <!-- holds from 1.0.0.96 up to 1.0.0.97 -->
@@ -261,12 +323,18 @@ names from the files.
 > In the section's name, n is how many players the side has plus the count
 > `SpawnStart` carries, added on both sides alike.
 
-<!-- holds from 1.0.0.140 up to 3.03.0.198 -->
+<!-- holds from 1.0.0.140 up to 1.0.0.151 -->
 
-> **In 1.0.0.140–3.02**
+> **In 1.0.0.140–1.0.0.150**
 >
 > In the section's name, n is how many players and bots the side has. A
 > champion begun on the spawn point itself faces along +X.
+
+<!-- holds from 1.0.0.151 up to 3.03.0.198 -->
+
+> **In 1.0.0.151–3.02**
+>
+> A champion begun on the spawn point itself faces along +X.
 
 <!-- holds from 3.03.0.198 up to 3.04.0.78 -->
 
@@ -276,34 +344,42 @@ names from the files.
 > `SpawnStart` carries for that side, the same n picking both the position and
 > the facing. A champion begun on the spawn point itself faces along +X.
 
-<!-- holds from 3.04.0.78 up to 3.10.0.237 -->
+<!-- holds from 3.04.0.78 up to 3.6.0.388 -->
 
-> **In 3.04–3.9**
->
-> In the section's name, n is how many players and bots the side has. A
-> champion begun on the spawn point itself faces along +X.
-
-<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
-
-> **In 3.10**
+> **In 3.04–3.5**
 >
 > A champion begun on the spawn point itself faces along +X.
 
-<!-- holds from 3.11.0.306 up to 4.20.0.315 -->
+<!-- holds from 3.6.0.388 up to 3.7.0.328 -->
 
-> **In 3.11–4.19**
+> **In 3.6**
 >
 > In the section's name, n is how many players and bots the side has. A
 > champion begun on the spawn point itself faces along +X.
 
-<!-- holds from 4.5.0.260 up to 4.20.0.315 -->
+<!-- holds from 3.7.0.328 up to 3.13.0.399 -->
 
-> **In 4.5–4.19**
+> **In 3.7–3.12**
+>
+> A champion begun on the spawn point itself faces along +X.
+
+<!-- holds from 3.13.0.399 up to 4.18.0.271 -->
+
+> **In 3.13–4.17**
+>
+> In the section's name, n is how many players and bots the side has. A
+> champion begun on the spawn point itself faces along +X.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
 >
 > `LEVELS/Map1/Scene/MapObjects.mob` holds the objects that are not buildings:
-> each side's spawn point, the minion spawners, navigation points, the marker of
+> each side's spawn point, the minion spawners, navigation points, the marker
+> of
 > the level's size and the props. It opens with 16 bytes: a fixed tag, a 32-bit
-> version (2), a 32-bit count and 4 reserved bytes. A record of 128 bytes follows
+> version (2), a 32-bit count and 4 reserved bytes. A record of 128 bytes
+> follows
 > for each object: its name, 62 bytes padded with zeros; a byte for its kind; a
 > byte that lets it be placed regardless of collision; 32-bit floats for its
 > position, rotation and scale (three each) and its bounding box (six); and a
@@ -324,9 +400,9 @@ binary grid. Its layout is unspecified.
 >
 > No setting of the mode chooses the grid.
 
-<!-- holds from 4.5.0.260 up to 4.20.0.315 -->
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 
-> **In 4.5–4.19**
+> **In 4.17**
 >
 > The grid's name is the one the mode's navigation setting gives.
 
@@ -355,9 +431,9 @@ figures, in `DATA/Items/<id>.inibin`; and summoner, item and shared spells in
 > Map 3 alone adds an `Items.inibin`. `DATA/Globals/` holds figures
 > for the whole game in `UnitStats`, `bounty` and `ColorSettings`.
 
-<!-- holds from 1.0.0.126 up to 4.20.0.315 -->
+<!-- holds from 1.0.0.126 up to 4.18.0.271 -->
 
-> **In 1.0.0.126–4.19**
+> **In 1.0.0.126–4.17**
 >
 > Map 1 adds `LEVELS/Map1/Items.inibin` to the items, and figures for a whole
 > mode are in `DATA/Globals/`, such as `CLASSIC_Stats.inibin` and

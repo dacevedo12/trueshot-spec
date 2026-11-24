@@ -259,7 +259,7 @@
           "values": {
             "0": {
               "name": "down",
-              "note": "The inhibitor is down for duration."
+              "note": "The inhibitor goes down."
             },
             "1": {
               "name": "restored",
@@ -495,7 +495,6 @@
         {
           "name": "state",
           "type": "u32",
-          "note": "What state the inhibitor takes. A client ignores any other value.",
           "values": {
             "0": {
               "name": "down",
@@ -910,7 +909,7 @@
             {
               "name": "duration",
               "width": 15,
-              "note": "How long the state lasts, in seconds; zero where alive is set."
+              "note": "How long the state lasts, in seconds."
             },
             {
               "name": "alive",
@@ -958,8 +957,7 @@
       "fields": [
         {
           "name": "state",
-          "type": "u8",
-          "note": "Which state. A server sends 0 as the inhibitor falls."
+          "type": "u8"
         },
         {
           "name": "duration",

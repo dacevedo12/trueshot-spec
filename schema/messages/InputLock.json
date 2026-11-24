@@ -830,57 +830,10 @@
           "type": "u8",
           "note": "Set to lock, clear to unlock. Any nonzero value sets it."
         }
-      ],
-      "note": "A client ignores it while playing a replay."
-    },
-    {
-      "from": "1.0.0.132",
-      "until": "1.0.0.133",
-      "channel": "events",
-      "command": 138,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "category",
-          "type": "u32",
-          "note": "Which input, as a set of bits.",
-          "values": {
-            "1": {
-              "name": "cameraLocking"
-            },
-            "2": {
-              "name": "movement"
-            },
-            "4": {
-              "name": "abilities"
-            },
-            "8": {
-              "name": "summonerSpells"
-            },
-            "16": {
-              "name": "shop"
-            },
-            "32": {
-              "name": "chat"
-            },
-            "64": {
-              "name": "minimapMovement"
-            },
-            "128": {
-              "name": "cameraMovement"
-            }
-          }
-        },
-        {
-          "name": "locked",
-          "type": "u8",
-          "note": "Set to lock, clear to unlock. Any nonzero value sets it."
-        }
       ]
     },
     {
-      "from": "1.0.0.133",
+      "from": "1.0.0.132",
       "until": "1.0.0.138",
       "channel": "events",
       "command": 138,
@@ -923,8 +876,7 @@
           "type": "u8",
           "note": "Set to lock, clear to unlock. Any nonzero value sets it."
         }
-      ],
-      "note": "A client ignores it while playing a replay."
+      ]
     },
     {
       "from": "1.0.0.138",
@@ -970,8 +922,7 @@
           "type": "u8",
           "note": "Set to lock, clear to unlock. Any nonzero value sets it."
         }
-      ],
-      "note": "A client ignores it while playing a replay."
+      ]
     },
     {
       "from": "1.0.0.139",

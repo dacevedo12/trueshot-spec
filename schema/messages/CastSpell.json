@@ -397,7 +397,7 @@
             {
               "name": "slot",
               "width": 7,
-              "note": "Which slot is being cast from, from 0 to 50. A client sends nothing for a slot above 50."
+              "note": "Which slot is being cast from."
             }
           ]
         },
@@ -459,7 +459,7 @@
             {
               "name": "slot",
               "width": 7,
-              "note": "Which slot is being cast from, from 0 to 50. A client sends nothing for a slot above 50."
+              "note": "Which slot is being cast from."
             }
           ]
         },
@@ -583,7 +583,7 @@
             {
               "name": "slot",
               "width": 7,
-              "note": "Which slot is being cast from, from 0 to 50. A client sends nothing for a slot above 50."
+              "note": "Which slot is being cast from."
             }
           ]
         },
@@ -645,7 +645,7 @@
             {
               "name": "slot",
               "width": 7,
-              "note": "Which slot is being cast from, from 0 to 50. A client sends nothing for a slot above 50."
+              "note": "Which slot is being cast from."
             }
           ]
         },
@@ -707,7 +707,7 @@
             {
               "name": "slot",
               "width": 7,
-              "note": "Which slot is being cast from, from 0 to 50. A client sends nothing for a slot above 50."
+              "note": "Which slot is being cast from."
             }
           ]
         },
@@ -769,7 +769,7 @@
             {
               "name": "slot",
               "width": 7,
-              "note": "Which slot is being cast from, from 0 to 51. A client sends nothing for a slot above 51."
+              "note": "Which slot is being cast from."
             }
           ]
         },
@@ -831,7 +831,7 @@
             {
               "name": "slot",
               "width": 7,
-              "note": "Which slot is being cast from, from 0 to 51. A client sends nothing for a slot above 51."
+              "note": "Which slot is being cast from."
             }
           ]
         },
@@ -955,7 +955,7 @@
             {
               "name": "slot",
               "width": 7,
-              "note": "Which slot is being cast from. A client sends 0, 1 or 2, for the champion's first three spells."
+              "note": "Which slot is being cast from."
             }
           ]
         },
@@ -977,7 +977,7 @@
         {
           "name": "endX",
           "type": "f32",
-          "note": "The second point of what aims the spell: the same as x and z for a point or a unit; for a line dragged out, its far end, cut to the spell's length; for a cone, its far point."
+          "note": "The second point of what aims the spell."
         },
         {
           "name": "endY",
@@ -1079,7 +1079,7 @@
             {
               "name": "slot",
               "width": 7,
-              "note": "Which slot is being cast from. A client sends 0, 1 or 2, for the champion's first three spells."
+              "note": "Which slot is being cast from."
             }
           ]
         },
@@ -1141,7 +1141,7 @@
             {
               "name": "slot",
               "width": 7,
-              "note": "Which slot is being cast from. A client sends 0, 1 or 2, for the champion's first three spells."
+              "note": "Which slot is being cast from."
             }
           ]
         },
@@ -1203,7 +1203,7 @@
             {
               "name": "slot",
               "width": 7,
-              "note": "Which slot is being cast from. A client sends 0, 1 or 2, for the champion's first three spells."
+              "note": "Which slot is being cast from."
             }
           ]
         },
@@ -1327,7 +1327,7 @@
             {
               "name": "slot",
               "width": 7,
-              "note": "Which slot is being cast from. A client sends 0, 1 or 2, for the champion's first three spells."
+              "note": "Which slot is being cast from."
             }
           ]
         },
@@ -1384,7 +1384,7 @@
             {
               "name": "slot",
               "width": 6,
-              "note": "Which slot is being cast from. A client sends 0, 1 or 2, for the champion's first three spells."
+              "note": "Which slot is being cast from."
             },
             {
               "name": "summonerSpell",
@@ -1451,7 +1451,7 @@
             {
               "name": "slot",
               "width": 6,
-              "note": "Which slot is being cast from. A client sends 0, 1 or 2, for the champion's first three spells."
+              "note": "Which slot is being cast from."
             },
             {
               "name": "summonerSpell",
@@ -1565,7 +1565,7 @@
             {
               "name": "slot",
               "width": 6,
-              "note": "Which slot is being cast from. A client sends 0, 1 or 2, for the champion's first three spells."
+              "note": "Which slot is being cast from."
             },
             {
               "name": "summonerSpell",

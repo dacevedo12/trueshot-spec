@@ -90,27 +90,6 @@
     },
     {
       "from": "1.0.0.127",
-      "until": "1.0.0.128",
-      "channel": "events",
-      "command": 241,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "particle",
-          "type": "u32",
-          "note": "The particle."
-        },
-        {
-          "name": "team",
-          "type": "u8",
-          "note": "Which side, by an index."
-        }
-      ],
-      "note": "A client ignores the message where particle names none it holds."
-    },
-    {
-      "from": "1.0.0.128",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 241,
@@ -227,8 +206,7 @@
           "type": "u8",
           "note": "Which side, by an index."
         }
-      ],
-      "note": "A client ignores a particle it does not hold."
+      ]
     },
     {
       "from": "1.0.0.140",

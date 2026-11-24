@@ -56,12 +56,17 @@ const twoParts = (build: string): string =>
 // is named: its first build, and the last before the range that follows.
 const wholeBuilds = (build: string): boolean =>
   build.startsWith("0.") || build.startsWith("1.0.");
+// The last build is the bound's build less one, its other parts written as the
+// bound writes them (3.01.0.5 gives 3.01.0.4). A bound whose last part is 1
+// opens a line of builds (3.01.0.1), so no build of that line comes before it:
+// the range's last build is then its first.
 function lastBuild(r: Ranged): string | undefined {
   if (r.until === undefined) return undefined;
-  const parts = r.until.split(".").map(Number);
-  const tail = parts[3];
-  if (tail === undefined || tail === 0) return undefined;
-  parts[3] = tail - 1;
+  const parts = r.until.split(".");
+  const tail = Number(parts[3]);
+  if (parts[3] === undefined || tail === 0) return undefined;
+  if (tail === 1) return r.from;
+  parts[3] = String(tail - 1);
   return parts.join(".");
 }
 function boundsName(r: Ranged): string {

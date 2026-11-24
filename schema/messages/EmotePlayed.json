@@ -105,7 +105,7 @@
         {
           "name": "emote",
           "type": "u32",
-          "note": "Which emote, by its place in the client's list; one past the list plays nothing."
+          "note": "Which emote."
         }
       ]
     },
@@ -271,7 +271,7 @@
         {
           "name": "emote",
           "type": "u8",
-          "note": "Which emote, by the number the client knows it as. A client plays an animation on the champion for 0, 1 and 2, a different one each, and none for 3."
+          "note": "Which emote, by the number the client knows it as."
         }
       ]
     },

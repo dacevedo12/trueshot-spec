@@ -23,13 +23,6 @@ champion's that [replication](replication.md) carries.
 > A client casts nothing for a casting record whose length disagrees with its
 > count of targets.
 
-<!-- holds from 0.9.22.14 up to 0.9.25.24 -->
-
-> **In 0.9.22.14–0.9.25.23**
->
-> A client still casts from a casting record whose length disagrees with its
-> count of targets.
-
 <!-- holds from 0.9.25.24 up to 0.9.25.36 -->
 
 > **In 0.9.25.24–0.9.25.35**
@@ -51,23 +44,24 @@ champion's that [replication](replication.md) carries.
 > A client fails on a casting record whose length disagrees with its count of
 > targets, and a server MUST NOT send one.
 
-<!-- holds from 1.0.0.97 up to 4.20.0.315 -->
+<!-- holds from 1.0.0.110 up to 4.18.0.271 -->
 
-> **In 1.0.0.97–4.19**
+> **In 1.0.0.110–4.17**
 >
 > A client casts nothing for a casting record whose length disagrees with its
 > count of targets.
 
-<!-- holds from 1.0.0.126 up to 4.20.0.315 -->
+<!-- holds from 1.0.0.126 up to 4.18.0.271 -->
 
-> **In 1.0.0.126–4.19**
+> **In 1.0.0.126–4.17**
 >
-> The casting record names the spell by the hash of its name, and a client casts
+> The casting record names the spell by the hash of its name, and a client
+> casts
 > nothing for a spell it has not loaded.
 
-<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
+<!-- holds from 4.4.0.1858 up to 4.18.0.271 -->
 
-> **In 4.1–4.19**
+> **In 4.4–4.17**
 >
 > `SpellCastAnswer` is both the answer to the client that asked and what every
 > client sees of the cast; there is nothing else to send it. A client applies
@@ -109,9 +103,9 @@ with `SpellUpgraded`, and a client shows the new level;
 are what `LevelUp` carries. A server can set how far each
 spell can be raised, and at which champion levels, with `SpellRankLimits`.
 
-<!-- holds from 0.8.13.26 up to 4.20.0.315 -->
+<!-- holds from 0.8.13.26 up to 4.18.0.271 -->
 
-> **In 0.8.13.26–4.19**
+> **In 0.8.13.26–4.17**
 >
 > A client spends the point as it sends `UpgradeSpell`.
 
@@ -121,9 +115,9 @@ spell can be raised, and at which champion levels, with `SpellRankLimits`.
 >
 > A command its player types sends `UpgradeSpell` without checking anything.
 
-<!-- holds from 3.10.0.237 up to 4.20.0.315 -->
+<!-- holds from 3.10.0.237 up to 4.18.0.271 -->
 
-> **In 3.10–4.19**
+> **In 3.10–4.17**
 >
 > A client asks only where the champion has a point to spend, is of the level
 > the slot requires, and the spell is below its highest level. A request a
@@ -184,22 +178,15 @@ name in advance the units a chain missile will strike with `ChainTargets`.
 `MissileCourse` sets where a missile starts and how fast it flies, and restarts
 its flight.
 
-<!-- holds from 0.9.22.14 up to 0.9.25.24 -->
-
-> **In 0.9.22.14–0.9.25.23**
->
-> A client reports where a missile that flies straight is, and where it is
-> going, with `MissileReport`, which a server MAY ignore.
-
 <!-- holds from 0.9.25.24 up to 0.9.25.36 -->
 
 > **In 0.9.25.24–0.9.25.35**
 >
 > A client sends no `MissileReport`.
 
-<!-- holds from 0.9.25.36 up to 4.10.0.369 -->
+<!-- holds from 1.0.0.25 up to 4.10.0.369 -->
 
-> **In 0.9.25.36–4.9**
+> **In 1.0.0.25–4.9**
 >
 > A client reports where a missile that flies straight is, and where it is
 > going, with `MissileReport`, which a server MAY ignore.

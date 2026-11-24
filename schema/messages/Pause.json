@@ -64,43 +64,6 @@
     },
     {
       "from": "1.0.0.132",
-      "until": "1.0.0.133",
-      "channel": "requests",
-      "command": 170,
-      "direction": "clientToServer",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "clientId",
-          "type": "u32",
-          "note": "A client writes 4294967295, the client id of no client."
-        },
-        {
-          "name": "timeLeft",
-          "type": "i32",
-          "note": "A client leaves it unwritten; its bytes carry no meaning."
-        },
-        {
-          "name": "how",
-          "type": "bits",
-          "size": 1,
-          "bits": [
-            {
-              "name": "tournament",
-              "width": 1,
-              "note": "A client sends it clear."
-            },
-            {
-              "name": "unused",
-              "width": 7,
-              "note": "Unused; a client leaves these bits unwritten."
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "from": "1.0.0.133",
       "until": "1.0.0.135",
       "channel": "requests",
       "command": 170,
@@ -134,8 +97,7 @@
             }
           ]
         }
-      ],
-      "note": "A client sends the same values in every Pause, as each field states."
+      ]
     },
     {
       "from": "1.0.0.135",
@@ -172,8 +134,7 @@
             }
           ]
         }
-      ],
-      "note": "A client sends the same values in every Pause, as each field states."
+      ]
     },
     {
       "from": "1.0.0.136",
@@ -210,8 +171,7 @@
             }
           ]
         }
-      ],
-      "note": "A client sends the same values in every Pause, as each field states."
+      ]
     },
     {
       "from": "1.0.0.138",
@@ -248,8 +208,7 @@
             }
           ]
         }
-      ],
-      "note": "A client sends the same values in every Pause, as each field states."
+      ]
     },
     {
       "from": "1.0.0.139",
@@ -319,8 +278,7 @@
             },
             {
               "name": "unused",
-              "width": 7,
-              "note": "Unused; a client writes zero."
+              "width": 7
             }
           ]
         }
@@ -504,12 +462,12 @@
             {
               "name": "unlimited",
               "width": 1,
-              "note": "Set where the hold is not counted against a limit."
+              "note": "A client sends it clear."
             },
             {
               "name": "unused",
               "width": 7,
-              "note": "Unused; a client may leave any value here, and a server ignores it."
+              "note": "Unused."
             }
           ]
         }

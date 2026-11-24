@@ -52,7 +52,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "The header names the sender's champion. A client sends no body."
+      "note": "A client sends no body."
     },
     {
       "from": "1.0.0.117",
@@ -62,7 +62,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "The header names the sender's champion. A client sends no body."
+      "note": "A client sends no body."
     },
     {
       "from": "1.0.0.119",
@@ -72,7 +72,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "The header names the sender's champion. A client sends no body."
+      "note": "A client sends no body."
     },
     {
       "from": "1.0.0.124",
@@ -158,7 +158,7 @@
           "note": "One of three values a client reports about software it has detected alongside itself. A client sends zero."
         }
       ],
-      "note": "The header names the sender's champion. It says what the client has detected running alongside it."
+      "note": "The header names the sender's champion."
     },
     {
       "from": "4.8.0.189",
@@ -184,7 +184,7 @@
           "note": "A value standing for that appearance's content."
         }
       ],
-      "note": "The header names the sender's champion. It says what the client has detected running alongside it, and which appearance it believes it is wearing."
+      "note": "The header names the sender's champion."
     },
     {
       "from": "4.11.0.386",
@@ -210,7 +210,7 @@
           "note": "A value standing for that appearance's content."
         }
       ],
-      "note": "The header names the sender's champion. It says what the client has detected running alongside it, and which appearance it believes it is wearing."
+      "note": "The header names the sender's champion."
     },
     {
       "from": "4.12.0.356",

@@ -20,9 +20,9 @@ seconds.
 > regeneration over that span, up to their maxima; a dead unit does not
 > advance.
 
-<!-- holds from 0.9.25.24 up to 4.20.0.315 -->
+<!-- holds from 0.9.25.24 up to 4.18.0.271 -->
 
-> **In 0.9.25.24–4.19**
+> **In 0.9.25.24–4.17**
 >
 > A client shows the speed `GameSpeed` sets over its champion. A client changes
 > nothing it shows for `StatTick`.
@@ -61,9 +61,9 @@ seconds.
 > A server MUST NOT send `GameSpeed` before the client's own champion exists,
 > because a client given one before then fails.
 
-<!-- holds from 1.0.0.126 up to 4.20.0.315 -->
+<!-- holds from 1.0.0.126 up to 4.18.0.271 -->
 
-> **In 1.0.0.126–4.19**
+> **In 1.0.0.126–4.17**
 >
 > Sent during a hold, `GameSpeed` takes effect as the match resumes.
 
@@ -129,9 +129,9 @@ A server holds the match with `Paused`.
 > its own, shows a box with the time left. A hold with the flag clear shows
 > nothing.
 
-<!-- holds from 1.0.0.140 up to 4.20.0.315 -->
+<!-- holds from 1.0.0.140 up to 4.18.0.271 -->
 
-> **In 1.0.0.140–4.19**
+> **In 1.0.0.140–4.17**
 >
 > A client shows a tournament's hold, crediting the seat that asked, where the
 > message says it is one.
@@ -214,12 +214,26 @@ A server ends the hold with `Resumed`.
 > and ignores a `Resumed` with a countdown that arrives while one runs. A
 > `Resumed` arriving while the match is not held leaves the match as it is.
 
-<!-- holds from 3.7.0.328 up to 3.13.0.399 -->
+<!-- holds from 3.7.0.328 up to 3.10.0.237 -->
 
-> **In 3.7–3.12**
+> **In 3.7–3.9**
+>
+> `Resumed` ends the hold either at once or after a countdown, during which the
+> match stays held.
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
 >
 > `Resumed` ends the hold either at once or after a countdown the client shows,
 > during which the match stays held.
+
+<!-- holds from 3.11.0.306 up to 3.13.0.399 -->
+
+> **In 3.11–3.12**
+>
+> `Resumed` ends the hold either at once or after a countdown, during which the
+> match stays held.
 
 <!-- holds from 3.13.0.399 up to 3.14.0.700 -->
 
@@ -270,9 +284,9 @@ A server ends the hold with `Resumed`.
 > A client announces who resumed the match even where it was not held, and
 > announces nothing where `Resumed` names no one.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 4.4.0.1858 up to 4.21.0.0 -->
 
-> **In 4.1–4.20**
+> **In 4.4–4.20**
 >
 > Input stays locked during the countdown.
 
@@ -290,16 +304,16 @@ A server ends the match with `GameEnded`, saying which side won, and sends
 `HudDisabled` (see [The interface](interface.md#the-minimap-and-text-on-screen)). A client shows the win or loss for its
 player's side and sends `ClientFinished`.
 
-<!-- holds from 0.8.13.26 up to 1.0.0.110 -->
+<!-- holds from 0.8.13.26 up to 1.0.0.97 -->
 
-> **In 0.8.13.26–1.0.0.109**
+> **In 0.8.13.26–1.0.0.96**
 >
 > A client sends `ClientFinished` every time `GameEnded` arrives in play, while
 > playing a replay too.
 
-<!-- holds from 1.0.0.110 up to 1.0.0.124 -->
+<!-- holds from 1.0.0.97 up to 1.0.0.124 -->
 
-> **In 1.0.0.110–1.0.0.123**
+> **In 1.0.0.97–1.0.0.123**
 >
 > A client sends `ClientFinished` every time `GameEnded` arrives in play.
 
@@ -310,22 +324,28 @@ player's side and sends `ClientFinished`.
 > A client sends `ClientFinished` every time `GameEnded` arrives in play, and
 > none while playing a replay.
 
-<!-- holds from 1.0.0.125 up to 1.0.0.132 -->
+<!-- holds from 1.0.0.125 up to 1.0.0.126 -->
 
-> **In 1.0.0.125–1.0.0.131**
+> **In 1.0.0.125**
+>
+> A client sends `ClientFinished` every time `GameEnded` arrives in play.
+
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
+
+> **In 1.0.0.126**
 >
 > A client sends `ClientFinished` every time `GameEnded` arrives in play, while
 > playing a replay too.
 
-<!-- holds from 1.0.0.132 up to 1.0.0.133 -->
+<!-- holds from 1.0.0.127 up to 1.0.0.140 -->
 
-> **In 1.0.0.132**
+> **In 1.0.0.127–1.0.0.139**
 >
 > A client sends `ClientFinished` every time `GameEnded` arrives in play.
 
-<!-- holds from 1.0.0.133 up to 1.0.0.141 -->
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
 
-> **In 1.0.0.133–1.0.0.140**
+> **In 1.0.0.140**
 >
 > A client sends `ClientFinished` every time `GameEnded` arrives in play, while
 > playing a replay too.
@@ -340,16 +360,16 @@ player's side and sends `ClientFinished`.
 > nothing, so a server MUST NOT send `GameEnded` before the client's own
 > champion is created.
 
-<!-- holds from 0.9.22.14 up to 0.9.25.36 -->
+<!-- holds from 0.9.25.24 up to 0.9.25.36 -->
 
-> **In 0.9.22.14–0.9.25.35**
+> **In 0.9.25.24–0.9.25.35**
 >
 > A client that receives `GameEnded` while still loading takes it as in play:
 > it records the result and sends `ClientFinished`.
 
-<!-- holds from 1.0.0.58 up to 1.0.0.150 -->
+<!-- holds from 1.0.0.58 up to 1.0.0.141 -->
 
-> **In 1.0.0.58–1.0.0.149**
+> **In 1.0.0.58–1.0.0.140**
 >
 > A client that receives `GameEnded` while still loading leaves at once.
 
@@ -392,9 +412,9 @@ player's side and sends `ClientFinished`.
 > not while it plays a match back, from a replay, a spectator stream or over
 > its game connection.
 
-<!-- holds from 3.7.0.328 up to 3.13.0.399 -->
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
-> **In 3.7–3.12**
+> **In 3.10**
 >
 > A client that receives `GameEnded` while still loading leaves at once.
 
@@ -414,15 +434,15 @@ player's side and sends `ClientFinished`.
 > once; otherwise it first shows an error, and leaves once its player dismisses
 > it.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 4.4.0.1858 up to 4.21.0.0 -->
 
-> **In 4.1–4.20**
+> **In 4.4–4.20**
 >
 > A client sends no `ClientFinished` while playing a replay.
 
-<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
+<!-- holds from 4.1.0.171 up to 4.18.0.271 -->
 
-> **In 4.1–4.19**
+> **In 4.1–4.17**
 >
 > A client that receives `GameEnded` while still loading leaves.
 
@@ -469,23 +489,23 @@ player's side and sends `ClientFinished`.
 A client leaving as one abandoning the match sends `Exit` as its player quits.
 A client also leaves at once on `BotKick` with the action that means leave.
 
-<!-- holds from 0.8.13.26 up to 1.0.0.110 -->
+<!-- holds from 0.8.13.26 up to 1.0.0.97 -->
 
-> **In 0.8.13.26–1.0.0.109**
+> **In 0.8.13.26–1.0.0.96**
 >
 > A client also leaves as one abandoning the match as its player closes the
 > window, and as an attempt to connect again does not succeed.
 
-<!-- holds from 1.0.0.110 up to 1.0.0.111 -->
+<!-- holds from 1.0.0.97 up to 1.0.0.126 -->
 
-> **In 1.0.0.110**
+> **In 1.0.0.97–1.0.0.125**
 >
 > A client also leaves as one abandoning the match as its player closes the
 > window.
 
-<!-- holds from 1.0.0.111 up to 1.0.0.132 -->
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
-> **In 1.0.0.111–1.0.0.131**
+> **In 1.0.0.126**
 >
 > A client also leaves as one abandoning the match as its player closes the
 > window, and as an attempt to connect again does not succeed.
@@ -505,9 +525,9 @@ A client also leaves at once on `BotKick` with the action that means leave.
 > cancels a reconnection under way, and as its player dismisses the notice that
 > it was dropped for being away.
 
-<!-- holds from 1.0.0.133 up to 4.21.0.0 -->
+<!-- holds from 1.0.0.140 up to 4.21.0.0 -->
 
-> **In 1.0.0.133–4.20**
+> **In 1.0.0.140–4.20**
 >
 > A client also leaves as one abandoning the match as its player closes the
 > window, and as an attempt to connect again does not succeed.
@@ -541,15 +561,15 @@ A server tells the others that a player's client dropped with
 > A client whose connection drops, while loading or in play, shows its player
 > that it was disconnected, and neither connects again nor leaves.
 
-<!-- holds from 0.9.25.24 up to 4.20.0.315 -->
+<!-- holds from 0.9.25.24 up to 4.18.0.271 -->
 
-> **In 0.9.25.24–4.19**
+> **In 0.9.25.24–4.17**
 >
 > A client shows a notice in chat for `PlayerDisconnected`.
 
-<!-- holds from 0.9.25.24 up to 3.13.0.399 -->
+<!-- holds from 0.9.25.24 up to 3.11.0.306 -->
 
-> **In 0.9.25.24–3.12**
+> **In 0.9.25.24–3.10**
 >
 > A client started again for a match in progress knows nothing of it, and joins
 > as at the start: a server takes it through [Joining a match](joining.md)
@@ -558,6 +578,15 @@ A server tells the others that a player's client dropped with
 >
 > A client the server drops with the reason that means its player was away
 > shows that, and does not connect again.
+
+<!-- holds from 3.11.0.306 up to 3.13.0.399 -->
+
+> **In 3.11–3.12**
+>
+> A client started again for a match in progress knows nothing of it, and joins
+> as at the start: a server takes it through [Joining a match](joining.md) from
+> registering to `StartGame`, with a spawn run that states the field as it
+> stands, and a `ClockSync`.
 
 <!-- holds from 1.0.0.140 up to 1.0.0.141 -->
 
@@ -610,9 +639,18 @@ A server tells the others that a player's client dropped with
 > A client dropped during play with the reason that means its player was away
 > shows that, and does not connect again.
 
-<!-- holds from 3.14.0.700 up to 4.21.0.0 -->
+<!-- holds from 3.14.0.700 up to 4.4.0.1858 -->
 
-> **In 3.14–4.20**
+> **In 3.14–4.3**
+>
+> A client started again for a match in progress knows nothing of it, and joins
+> as at the start: a server takes it through [Joining a match](joining.md) from
+> registering to `StartGame`, with a spawn run that states the field as it
+> stands, and a `ClockSync`.
+
+<!-- holds from 4.4.0.1858 up to 4.21.0.0 -->
+
+> **In 4.4–4.20**
 >
 > A client started again for a match in progress knows nothing of it, and joins
 > as at the start: a server takes it through [Joining a match](joining.md)
@@ -717,9 +755,9 @@ A server tells the others that a player's client dropped with
 > A client whose connection drops before play begins, once the registration
 > answer has given it its own client id, leaves rather than connecting again.
 
-<!-- holds from 1.0.0.111 up to 1.0.0.140 -->
+<!-- holds from 1.0.0.126 up to 1.0.0.133 -->
 
-> **In 1.0.0.111–1.0.0.139**
+> **In 1.0.0.126–1.0.0.132**
 >
 > A client whose connection drops before play begins leaves rather than
 > connecting again.
@@ -765,9 +803,9 @@ A server tells the others that a player's client dropped with
 > A client sends `ReconnectedInMatch` as the `Registered` naming its own player
 > id arrives, not as the connection is made.
 
-<!-- holds from 3.10.0.237 up to 4.20.0.315 -->
+<!-- holds from 3.10.0.237 up to 4.18.0.271 -->
 
-> **In 3.10–4.19**
+> **In 3.10–4.17**
 >
 > `Reconnected` announces that another player came back. A client shows it for
 > an ally, or for anyone while it watches the match, and only notes it where it
@@ -851,12 +889,13 @@ does.
 > after a drop: it returns the client to spawning, from which only another
 > `StartGame` brings it back into play.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 4.4.0.1858 up to 4.21.0.0 -->
 
-> **In 4.1–4.20**
+> **In 4.4–4.20**
 >
 > A client dropped during play connects again to the same address and port, and
-> shows its player that it is reconnecting until it is back. It goes on where it
+> shows its player that it is reconnecting until it is back. It goes on where
+> it
 > was: it asks for no status and no version, loads nothing, and keeps every
 > seat, name and identifier it held. A server answers with `SoftReconnect`.
 

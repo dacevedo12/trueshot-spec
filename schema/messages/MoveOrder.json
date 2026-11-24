@@ -108,7 +108,7 @@
           "note": "The network object the order is aimed at, or zero where it is aimed at open ground."
         }
       ],
-      "note": "What a client sends as its player gives an order. It carries no path. The header names the unit ordered: the player's champion, or a unit it controls alongside, which gets its own copy of the order."
+      "note": "What a client sends as its player gives an order. It carries no path. The header names the unit ordered: the player's champion, or a unit it controls alongside."
     },
     {
       "from": "0.9.25.24",
@@ -265,7 +265,7 @@
                 {
                   "name": "unused",
                   "width": 15,
-                  "note": "Unused; a client reads nothing here."
+                  "note": "A client leaves these bits unwritten, so they hold anything."
                 },
                 {
                   "name": "pointCount",
@@ -275,7 +275,7 @@
                 {
                   "name": "unusedHigh",
                   "width": 1,
-                  "note": "Unused; a client reads nothing here."
+                  "note": "A client leaves this bit unwritten, so it holds anything."
                 }
               ]
             },
@@ -319,13 +319,13 @@
                   }
                 }
               ],
-              "note": "Everything the movement carries beyond its first byte."
+              "note": "Everything the movement carries beyond its header."
             }
           ],
-          "note": "Every point after the first."
+          "note": "The path, every point included."
         }
       ],
-      "note": "What a client sends as its player gives an order. The header names the unit ordered: the player's champion, or a unit it controls alongside, which gets its own copy of the order. The path it carries is what the client would take; where the unit actually goes is whatever the server answers with."
+      "note": "What a client sends as its player gives an order. The header names the unit ordered: the player's champion, or a unit it controls alongside, which gets its own copy of the order."
     },
     {
       "from": "1.0.0.74",
@@ -477,7 +477,7 @@
         {
           "name": "targetX",
           "type": "f32",
-          "note": "Where the order points, along one ground axis. Carried in world units rather than in the units a path uses."
+          "note": "Where the order points, along one ground axis, in world units."
         },
         {
           "name": "targetY",
@@ -510,18 +510,16 @@
                 },
                 {
                   "name": "unused",
-                  "width": 15,
-                  "note": "Unused; a client reads nothing here."
+                  "width": 15
                 },
                 {
                   "name": "pointCount",
                   "width": 15,
-                  "note": "How many points the path holds. A client takes none, or more than 2048, as no path and reads nothing more of the movement."
+                  "note": "How many points the path holds."
                 },
                 {
                   "name": "unusedHigh",
-                  "width": 1,
-                  "note": "Unused; a client reads nothing here."
+                  "width": 1
                 }
               ]
             },
@@ -564,11 +562,9 @@
                     ]
                   }
                 }
-              ],
-              "note": "Everything the movement carries beyond its first byte."
+              ]
             }
-          ],
-          "note": "Every point after the first."
+          ]
         }
       ],
       "note": "What a client sends as its player gives an order. The header names the unit ordered: the player's champion, or a unit it controls alongside, which gets its own copy of the order. The path it carries is what the client would take; where the unit actually goes is whatever the server answers with."
@@ -600,7 +596,7 @@
         {
           "name": "targetX",
           "type": "f32",
-          "note": "Where the order points, along one ground axis. Carried in world units rather than in the units a path uses."
+          "note": "Where the order points, along one ground axis, in world units."
         },
         {
           "name": "targetY",
@@ -633,18 +629,16 @@
                 },
                 {
                   "name": "unused",
-                  "width": 15,
-                  "note": "Unused; a client reads nothing here."
+                  "width": 15
                 },
                 {
                   "name": "pointCount",
                   "width": 15,
-                  "note": "How many points the path holds. A client takes none, or more than 2048, as no path and reads nothing more of the movement."
+                  "note": "How many points the path holds."
                 },
                 {
                   "name": "unusedHigh",
-                  "width": 1,
-                  "note": "Unused; a client reads nothing here."
+                  "width": 1
                 }
               ]
             },
@@ -687,11 +681,9 @@
                     ]
                   }
                 }
-              ],
-              "note": "Everything the movement carries beyond its first byte."
+              ]
             }
-          ],
-          "note": "Every point after the first."
+          ]
         }
       ],
       "note": "What a client sends as its player gives an order. The header names the unit ordered: the player's champion, or a unit it controls alongside, which gets its own copy of the order. The path it carries is what the client would take; where the unit actually goes is whatever the server answers with."
@@ -2219,7 +2211,7 @@
         {
           "name": "target",
           "type": "u32",
-          "note": "The network object the order is aimed at, or zero where it is aimed at open ground."
+          "note": "The network object the order is aimed at."
         },
         {
           "name": "movement",
@@ -2237,8 +2229,7 @@
                 },
                 {
                   "name": "unused",
-                  "width": 15,
-                  "note": "A client sends whatever it held in these bits; they carry no meaning, and a server ignores them."
+                  "width": 15
                 },
                 {
                   "name": "pointCount",
@@ -2247,8 +2238,7 @@
                 },
                 {
                   "name": "unusedHigh",
-                  "width": 9,
-                  "note": "A client sends whatever it held in these bits; they carry no meaning, and a server ignores them."
+                  "width": 9
                 }
               ]
             },
@@ -2354,8 +2344,7 @@
                     ]
                   }
                 }
-              ],
-              "note": "Everything the movement carries beyond its first four bytes."
+              ]
             }
           ]
         }
@@ -2584,7 +2573,7 @@
         {
           "name": "target",
           "type": "u32",
-          "note": "The network object the order is aimed at, or zero where it is aimed at open ground."
+          "note": "The network object the order is aimed at."
         },
         {
           "name": "movement",
@@ -2631,7 +2620,7 @@
         {
           "name": "target",
           "type": "u32",
-          "note": "The network object the order is aimed at, or zero where it is aimed at open ground."
+          "note": "The network object the order is aimed at."
         },
         {
           "name": "movement",

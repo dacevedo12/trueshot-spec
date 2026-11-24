@@ -227,7 +227,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": "terminated",
-          "note": "A text the client also keeps, at most 63 characters, ended by a zero byte. What it says is not recorded; a server ignores it."
+          "note": "A text the client also keeps, at most 63 characters, ended by a zero byte. What it says is not recorded."
         }
       ]
     },
@@ -302,7 +302,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": "terminated",
-          "note": "A text the client also keeps, at most 63 characters, ended by a zero byte. What it says is not recorded; a server ignores it."
+          "note": "A text the client also keeps, at most 63 characters, ended by a zero byte. What it says is not recorded."
         }
       ]
     },
@@ -417,8 +417,7 @@
           "bits": [
             {
               "name": "count",
-              "width": 16,
-              "note": "It rises with each report, not always by one."
+              "width": 16
             },
             {
               "name": "ping",
@@ -1206,7 +1205,7 @@
         {
           "name": "playerId",
           "type": "i64",
-          "note": "Who is reporting. A client sends every bit set, which names nobody."
+          "note": "Who is reporting."
         },
         {
           "name": "percent",
@@ -1398,8 +1397,7 @@
           "bits": [
             {
               "name": "count",
-              "width": 16,
-              "note": "It rises with each report, not always by one."
+              "width": 16
             },
             {
               "name": "ping",
@@ -1502,8 +1500,7 @@
           "bits": [
             {
               "name": "count",
-              "width": 16,
-              "note": "It rises with each report, not always by one."
+              "width": 16
             },
             {
               "name": "ping",
@@ -1512,8 +1509,7 @@
             },
             {
               "name": "loaded",
-              "width": 1,
-              "note": "Set in every report whose progress stands at one hundred, and in no other."
+              "width": 1
             }
           ]
         }

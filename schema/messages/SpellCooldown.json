@@ -832,7 +832,7 @@
             {
               "name": "summonerSpell",
               "width": 1,
-              "note": "Set where the slot is a summoner slot rather than one of the unit's own. It does not move the slot into the summoner range: a client puts the wait on the slot named, set or clear."
+              "note": "Set where the slot counts among the summoner slots."
             },
             {
               "name": "speakWhenReady",
@@ -849,12 +849,12 @@
         {
           "name": "timeLeft",
           "type": "f32",
-          "note": "How long is left, in seconds. A client counts down from it."
+          "note": "How long is left, in seconds."
         },
         {
           "name": "outOf",
           "type": "f32",
-          "note": "The length the client shows that remainder against, in seconds: 20 left out of 40 shows the wait half run."
+          "note": "The whole cooldown the time left is shown against."
         }
       ]
     },

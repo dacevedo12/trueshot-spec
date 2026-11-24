@@ -106,7 +106,7 @@
           "note": "A client reads nothing here."
         }
       ],
-      "note": "A client keeps the champion's level, experience, gold, maxima and spell ranks, and plays the coming back. A client returns the champion where it already stands. The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
+      "note": "A client returns the champion where it already stands. The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
     },
     {
       "from": "1.0.0.63",
@@ -132,7 +132,7 @@
           "note": "A client reads nothing here."
         }
       ],
-      "note": "A client keeps the champion's level, experience, gold, maxima and spell ranks, and plays the coming back. A client returns the champion where it already stands. The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
+      "note": "A client returns the champion where it already stands. The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
     },
     {
       "from": "1.0.0.74",
@@ -184,7 +184,7 @@
           "note": "A client reads nothing here."
         }
       ],
-      "note": "A client keeps the champion's level, experience, gold, maxima and spell ranks, and plays the coming back. A client returns the champion where it already stands. The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
+      "note": "A client keeps the champion's level, experience, gold, maxima and spell ranks, and plays the coming back. The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
     },
     {
       "from": "1.0.0.86",
@@ -274,18 +274,15 @@
       "fields": [
         {
           "name": "x",
-          "type": "f32",
-          "note": "A client reads nothing here."
+          "type": "f32"
         },
         {
           "name": "y",
-          "type": "f32",
-          "note": "A client reads nothing here."
+          "type": "f32"
         },
         {
           "name": "z",
-          "type": "f32",
-          "note": "A client reads nothing here."
+          "type": "f32"
         }
       ],
       "note": "A client keeps the champion's level, experience, gold and maxima, and plays the coming back."
@@ -300,18 +297,15 @@
       "fields": [
         {
           "name": "x",
-          "type": "f32",
-          "note": "A client reads nothing here."
+          "type": "f32"
         },
         {
           "name": "y",
-          "type": "f32",
-          "note": "A client reads nothing here."
+          "type": "f32"
         },
         {
           "name": "z",
-          "type": "f32",
-          "note": "A client reads nothing here."
+          "type": "f32"
         }
       ],
       "note": "A client keeps the champion's level, experience, gold and maxima, and plays the coming back."
@@ -326,18 +320,15 @@
       "fields": [
         {
           "name": "x",
-          "type": "f32",
-          "note": "A client reads nothing here."
+          "type": "f32"
         },
         {
           "name": "y",
-          "type": "f32",
-          "note": "A client reads nothing here."
+          "type": "f32"
         },
         {
           "name": "z",
-          "type": "f32",
-          "note": "A client reads nothing here."
+          "type": "f32"
         }
       ],
       "note": "A client keeps the champion's level, experience, gold and maxima, and plays the coming back."
@@ -352,18 +343,15 @@
       "fields": [
         {
           "name": "x",
-          "type": "f32",
-          "note": "A client reads nothing here."
+          "type": "f32"
         },
         {
           "name": "y",
-          "type": "f32",
-          "note": "A client reads nothing here."
+          "type": "f32"
         },
         {
           "name": "z",
-          "type": "f32",
-          "note": "A client reads nothing here."
+          "type": "f32"
         }
       ],
       "note": "A client keeps the champion's level, experience, gold and maxima, and plays the coming back."
@@ -418,7 +406,7 @@
           "note": "Where it comes back, along the other ground axis, in world units."
         }
       ],
-      "note": "A client keeps the champion's level, experience, gold, maxima and spell ranks, and plays the coming back. The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that. A client sets the champion on the nearest open ground."
+      "note": "A client keeps the champion's level, experience, gold, maxima and spell ranks, and plays the coming back. A client sets the champion on the nearest open ground."
     },
     {
       "from": "1.0.0.117",
@@ -444,7 +432,7 @@
           "note": "Where it comes back, along the other ground axis, in world units."
         }
       ],
-      "note": "A client keeps the champion's level, experience, gold, maxima and spell ranks, and plays the coming back. The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that. A client sets the champion on the nearest open ground."
+      "note": "A client keeps the champion's level, experience, gold, maxima and spell ranks, and plays the coming back. A client sets the champion on the nearest open ground."
     },
     {
       "from": "1.0.0.119",
@@ -470,7 +458,7 @@
           "note": "Where it comes back, along the other ground axis, in world units."
         }
       ],
-      "note": "A client keeps the champion's level, experience, gold, maxima and spell ranks, and plays the coming back. The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that. A client sets the champion on the nearest open ground."
+      "note": "A client keeps the champion's level, experience, gold, maxima and spell ranks, and plays the coming back. A client sets the champion on the nearest open ground."
     },
     {
       "from": "1.0.0.124",
@@ -527,7 +515,7 @@
           "note": "Its resource, such as mana, once back."
         }
       ],
-      "note": "A client keeps the champion's level, experience, gold, maxima and spell ranks, and plays the coming back. The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that. A client sets the champion on the nearest open ground."
+      "note": "A client keeps the champion's level, experience, gold, maxima and spell ranks, and plays the coming back. The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
     },
     {
       "from": "1.0.0.132",
@@ -822,7 +810,7 @@
           "note": "Its resource, such as mana, once back."
         }
       ],
-      "note": "A client keeps the champion's level, experience, gold, maxima and spell ranks, and plays the coming back. The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that. A client sets the champion on the nearest open ground."
+      "note": "A client keeps the champion's level, experience, gold, maxima and spell ranks, and plays the coming back. The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
     },
     {
       "from": "4.11.0.386",

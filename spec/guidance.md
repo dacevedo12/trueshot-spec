@@ -38,9 +38,9 @@ something has come about (`Situation`).
 > A client is in the tutorial where `VersionSync` names the mode TUTORIAL and a
 > setting of its own turns the tutorial on, whatever the map.
 
-<!-- holds from 4.1.0.171 up to 4.21.0.0 -->
+<!-- holds from 4.4.0.1858 up to 4.21.0.0 -->
 
-> **In 4.1–4.20**
+> **In 4.4–4.20**
 >
 > A client is in the tutorial where `VersionSync` names the mode TUTORIAL, in
 > any case, and the data the client installs for the map turns the tutorial
