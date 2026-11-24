@@ -153,12 +153,28 @@ says.
 
 > **In 4.17–4.20**
 >
+> A server answers a watching client with a `Registered` naming the player
+> number the client was started with as its player id: the client takes no
+> other answer as its own.
+>
 > A watching client given a client id that a player in the streamed match holds
 > takes that player's champion as its own.
+
+<!-- holds from 3.03.0.198 up to 3.04.0.78 -->
+
+> **In 3.03**
+>
+> 1. A client answered on registration sends `StreamRequest`.
 
 <!-- holds from 3.13.0.399 up to 3.14.0.700 -->
 
 > **In 3.13**
+>
+> 1. A client answered on registration sends `StreamRequest`.
+
+<!-- holds from 4.17.0.233 up to 4.21.0.0 -->
+
+> **In 4.17–4.20**
 >
 > 1. A client answered on registration sends `StreamRequest`.
 

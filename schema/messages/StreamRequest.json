@@ -126,6 +126,67 @@
     },
     {
       "from": "3.01.0.1",
+      "until": "3.03.0.198",
+      "channel": "requests",
+      "command": 234,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "wantsMetadata",
+          "type": "u8",
+          "note": "One: the client wants StreamMetadata."
+        },
+        {
+          "name": "jumpToLatest",
+          "type": "u8",
+          "note": "One where the client has no key frame yet and nothing past the end of the startup chunks: a client that can be joined late (see spec/spectating.md)."
+        },
+        {
+          "name": "fromChunk",
+          "type": "u32",
+          "note": "The first chunk wanted: one past the highest the client holds, 1 at first."
+        },
+        {
+          "name": "fromKeyFrame",
+          "type": "u32",
+          "note": "The first key frame wanted: one past the latest the client holds, 1 at first."
+        }
+      ]
+    },
+    {
+      "from": "3.03.0.198",
+      "until": "3.04.0.78",
+      "channel": "requests",
+      "command": 234,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "wantsMetadata",
+          "type": "u8",
+          "note": "One: the client wants StreamMetadata."
+        },
+        {
+          "name": "jumpToLatest",
+          "type": "u8",
+          "note": "One where the client has no key frame yet and nothing past the end of the startup chunks: a client that can be joined late (see spec/spectating.md)."
+        },
+        {
+          "name": "fromChunk",
+          "type": "u32",
+          "note": "The first chunk wanted: one past the highest the client holds, 1 at first."
+        },
+        {
+          "name": "fromKeyFrame",
+          "type": "u32",
+          "note": "The first key frame wanted: one past the latest the client holds, 1 at first."
+        }
+      ],
+      "note": "A client sends it each time the server answers its registration."
+    },
+    {
+      "from": "3.04.0.78",
       "until": "3.13.0.399",
       "channel": "requests",
       "command": 234,
@@ -247,7 +308,7 @@
     },
     {
       "from": "4.11.0.386",
-      "until": "4.21.0.0",
+      "until": "4.17.0.233",
       "channel": "requests",
       "command": 234,
       "direction": "clientToServer",
@@ -274,6 +335,37 @@
           "note": "The first key frame wanted: one past the latest the client holds, 1 at first."
         }
       ]
+    },
+    {
+      "from": "4.17.0.233",
+      "until": "4.21.0.0",
+      "channel": "requests",
+      "command": 234,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "wantsMetadata",
+          "type": "u8",
+          "note": "One: the client wants StreamMetadata."
+        },
+        {
+          "name": "jumpToLatest",
+          "type": "u8",
+          "note": "One where the client has no key frame yet and nothing past the end of the startup chunks: a client that can be joined late (see spec/spectating.md)."
+        },
+        {
+          "name": "fromChunk",
+          "type": "u32",
+          "note": "The first chunk wanted: one past the highest the client holds, 1 at first."
+        },
+        {
+          "name": "fromKeyFrame",
+          "type": "u32",
+          "note": "The first key frame wanted: one past the latest the client holds, 1 at first."
+        }
+      ],
+      "note": "A client sends it each time the server answers its registration."
     }
   ]
 }
