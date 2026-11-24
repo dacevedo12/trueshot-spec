@@ -140,8 +140,9 @@ function sweepFor(
   const out = [...best.values()]
     .sort((a, b) => a.name.localeCompare(b.name))
     .map(({ name, channel, fields }) => ({ name, channel, fields }));
-  // spec/spells.md: a 3.10 server MUST NOT send SpellInSlot naming a marker,
-  // which two vectors can do between them by naming the same net id.
+  // spec/spells.md: a 3.10 or 4.17 to 4.20 server MUST NOT send SpellInSlot
+  // naming a marker, which two vectors can do between them by naming the same
+  // net id.
   const markers = new Set(
     out.filter((m) => m.name === "SpawnMarker").map((m) => m.fields["unit"]),
   );
