@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "Register",
+  "version": "1.0.0.132",
+  "note": "Laid out as a 1.0.0.132 client given no key sends it.",
+  "key": "00000000000000000000000000000000",
+  "bytes": "0089720000000000010000000000000044d3c22953e8f4b4",
+  "fields": {
+    "command": 0,
+    "leading": "897200",
+    "clientId": 0,
+    "playerId": "1",
+    "proof": "1"
+  }
+}

@@ -271,6 +271,42 @@ key frames for its `keyFrameTimeInterval` (see [Time](time.md#how-a-time-is-carr
 A chunk is the messages a server sent the players of the match, one record
 after another.
 
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+
+> **In 1.0.0.140**
+>
+> Where a client's setting for packed records is on, each record is a
+> [`StreamRecord`](../schema/types/StreamRecord.json), written against the one
+> before it to save space. A reader keeps the last record's time, command and
+> object, and recovers a record's own:
+>
+> - its time, from a time difference, as the last record's time plus that many
+>   milliseconds;
+> - its command, where the record leaves it out, as the last record's;
+> - its object, from an object difference, as the last record's object plus
+>   that signed difference.
+>
+> A message is the command, the object and the body, laid out as a game message
+> is (see [Messages](messages.md)).
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> Where a client's setting for packed records is on, each record is a
+> [`StreamRecord`](../schema/types/StreamRecord.json), written against the one
+> before it to save space. A reader keeps the last record's time, command and
+> object, and recovers a record's own:
+>
+> - its time, from a time difference, as the last record's time plus that many
+>   milliseconds;
+> - its command, where the record leaves it out, as the last record's;
+> - its object, from an object difference, as the last record's object plus
+>   that signed difference.
+>
+> A message is the command, the object and the body, laid out as a game message
+> is (see [Messages](messages.md)).
+
 <!-- holds from 4.17.0.233 up to 4.21.0.0 -->
 
 > **In 4.17–4.20**

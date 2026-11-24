@@ -56,8 +56,10 @@ height (see [Space](space.md)).
 > **In 1.0.0.110**
 >
 > `Movement` and `MovementAtSpeed` are compact: a path is a run of integer
-> points, while positions elsewhere are world floats covering a far larger range
-> (see [Space](space.md)). The two are related by an origin and a step:
+> points, while positions elsewhere are world floats covering a far larger
+> range (see [Space](space.md)), except a particle's points on the ground,
+> carried in the units a path uses (see `Particle`). The two are related by an
+> origin and a step:
 >
 > ```
 > encoded = truncate_toward_zero((world - origin) / 2)
@@ -74,8 +76,10 @@ height (see [Space](space.md)).
 > **In 1.0.0.111–1.0.0.131**
 >
 > `Movement` and `MovementAtSpeed` are compact: a path is a run of integer
-> points, while positions elsewhere are world floats covering a far larger range
-> (see [Space](space.md)). The two are related by an origin and a step:
+> points, while positions elsewhere are world floats covering a far larger
+> range (see [Space](space.md)), except a particle's points on the ground,
+> carried in the units a path uses (see `Particle`). The two are related by an
+> origin and a step:
 >
 > ```
 > encoded = truncate_toward_zero((world - origin) / 2)
@@ -89,8 +93,10 @@ height (see [Space](space.md)).
 > **In 1.0.0.132**
 >
 > `Movement` and `MovementAtSpeed` are compact: a path is a run of integer
-> points, while positions elsewhere are world floats covering a far larger range
-> (see [Space](space.md)). The two are related by an origin and a step:
+> points, while positions elsewhere are world floats covering a far larger
+> range (see [Space](space.md)), except a particle's points on the ground,
+> carried in the units a path uses (see `Particle`). The two are related by an
+> origin and a step:
 >
 > ```
 > encoded = truncate_toward_zero((world - origin) / 2)
@@ -107,8 +113,10 @@ height (see [Space](space.md)).
 > **In 1.0.0.133–1.0.0.149**
 >
 > `Movement` and `MovementAtSpeed` are compact: a path is a run of integer
-> points, while positions elsewhere are world floats covering a far larger range
-> (see [Space](space.md)). The two are related by an origin and a step:
+> points, while positions elsewhere are world floats covering a far larger
+> range (see [Space](space.md)), except a particle's points on the ground,
+> carried in the units a path uses (see `Particle`). The two are related by an
+> origin and a step:
 >
 > ```
 > encoded = truncate_toward_zero((world - origin) / 2)
@@ -122,8 +130,10 @@ height (see [Space](space.md)).
 > **In 1.0.0.150**
 >
 > `Movement` and `MovementAtSpeed` are compact: a path is a run of integer
-> points, while positions elsewhere are world floats covering a far larger range
-> (see [Space](space.md)). The two are related by an origin and a step:
+> points, while positions elsewhere are world floats covering a far larger
+> range (see [Space](space.md)), except a particle's points on the ground,
+> carried in the units a path uses (see `Particle`). The two are related by an
+> origin and a step:
 >
 > ```
 > encoded = truncate_toward_zero((world - origin) / 2)
@@ -140,8 +150,10 @@ height (see [Space](space.md)).
 > **In 3.03**
 >
 > `Movement` and `MovementAtSpeed` are compact: a path is a run of integer
-> points, while positions elsewhere are world floats covering a far larger range
-> (see [Space](space.md)). The two are related by an origin and a step:
+> points, while positions elsewhere are world floats covering a far larger
+> range (see [Space](space.md)), except a particle's points on the ground,
+> carried in the units a path uses (see `Particle`). The two are related by an
+> origin and a step:
 >
 > ```
 > encoded = truncate_toward_zero((world - origin) / 2)
@@ -158,8 +170,10 @@ height (see [Space](space.md)).
 > **In 3.04–4.3**
 >
 > `Movement` and `MovementAtSpeed` are compact: a path is a run of integer
-> points, while positions elsewhere are world floats covering a far larger range
-> (see [Space](space.md)). The two are related by an origin and a step:
+> points, while positions elsewhere are world floats covering a far larger
+> range (see [Space](space.md)), except a particle's points on the ground,
+> carried in the units a path uses (see `Particle`). The two are related by an
+> origin and a step:
 >
 > ```
 > encoded = truncate_toward_zero((world - origin) / 2)
@@ -173,8 +187,10 @@ height (see [Space](space.md)).
 > **In 4.4**
 >
 > `Movement` and `MovementAtSpeed` are compact: a path is a run of integer
-> points, while positions elsewhere are world floats covering a far larger range
-> (see [Space](space.md)). The two are related by an origin and a step:
+> points, while positions elsewhere are world floats covering a far larger
+> range (see [Space](space.md)), except a particle's points on the ground,
+> carried in the units a path uses (see `Particle`). The two are related by an
+> origin and a step:
 >
 > ```
 > encoded = truncate_toward_zero((world - origin) / 2)
@@ -186,13 +202,50 @@ height (see [Space](space.md)).
 > A path that arrives before a client has loaded the map's ground grid is read
 > with a step of 1 in place of 2 and an origin of 0.
 
-<!-- holds from 4.5.0.260 up to 4.21.0.0 -->
+<!-- holds from 4.5.0.260 up to 4.18.0.271 -->
 
-> **In 4.5–4.20**
+> **In 4.5–4.17**
 >
 > `Movement` and `MovementAtSpeed` are compact: a path is a run of integer
-> points, while positions elsewhere are world floats covering a far larger range
-> (see [Space](space.md)). The two are related by an origin and a step:
+> points, while positions elsewhere are world floats covering a far larger
+> range (see [Space](space.md)), except a particle's points on the ground,
+> carried in the units a path uses (see `Particle`). The two are related by an
+> origin and a step:
+>
+> ```
+> encoded = truncate_toward_zero((world - origin) / 2)
+> world   = origin + 2 * encoded
+> ```
+>
+> A path resolves a position to two world units, rounded toward the origin.
+
+<!-- holds from 4.18.0.271 up to 4.20.0.315 -->
+
+> **In 4.18–4.19**
+>
+> `Movement` and `MovementAtSpeed` are compact: a path is a run of integer
+> points, while positions elsewhere are world floats covering a far larger
+> range (see [Space](space.md)), except a particle's points on the ground and
+> the place on the ground of the unit a swing aims at, carried in the units a
+> path uses (see `Particle` and `Strike`). The two are related by an origin and
+> a step:
+>
+> ```
+> encoded = truncate_toward_zero((world - origin) / 2)
+> world   = origin + 2 * encoded
+> ```
+>
+> A path resolves a position to two world units, rounded toward the origin.
+
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
+>
+> `Movement` and `MovementAtSpeed` are compact: a path is a run of integer
+> points, while positions elsewhere are world floats covering a far larger
+> range (see [Space](space.md)), except a particle's points on the ground,
+> carried in the units a path uses (see `Particle`). The two are related by an
+> origin and a step:
 >
 > ```
 > encoded = truncate_toward_zero((world - origin) / 2)
@@ -206,19 +259,47 @@ height (see [Space](space.md)).
 `MovementAtSpeed` carries the same points as `Movement` with the terms of the
 travel stated before them, and `WaypointGroupAtSpeed` is what carries it.
 
-<!-- holds from 0.8.13.26 up to 1.0.0.83 -->
+<!-- holds from 0.8.13.26 up to 1.0.0.79 -->
 
-> **In 0.8.13.26–1.0.0.82**
+> **In 0.8.13.26–1.0.0.78**
 >
 > Other messages carry their points as world floats.
 
-<!-- holds from 1.0.0.83 up to 4.21.0.0 -->
+<!-- holds from 1.0.0.83 up to 1.0.0.98 -->
 
-> **In 1.0.0.83–4.20**
+> **In 1.0.0.83–1.0.0.97**
 >
 > `MoveOrder` carries its destination in world floats and then a path in the
 > compact form `Movement` takes. Other messages carry their points as world
 > floats.
+
+<!-- holds from 1.0.0.98 up to 4.18.0.271 -->
+
+> **In 1.0.0.98–4.17**
+>
+> `MoveOrder` carries its destination in world floats and then a path in the
+> compact form `Movement` takes, and a particle carries its points on the
+> ground in the units a path uses (see `Particle`). Other messages carry their
+> points as world floats.
+
+<!-- holds from 4.18.0.271 up to 4.20.0.315 -->
+
+> **In 4.18–4.19**
+>
+> `MoveOrder` carries its destination in world floats and then a path in the
+> compact form `Movement` takes, a particle carries its points on the ground in
+> the units a path uses (see `Particle`), and a swing the place on the ground
+> of the unit swung at (see `Strike`). Other messages carry their points as
+> world floats.
+
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
+>
+> `MoveOrder` carries its destination in world floats and then a path in the
+> compact form `Movement` takes, and a particle carries its points on the
+> ground in the units a path uses (see `Particle`). Other messages carry their
+> points as world floats.
 
 [Vision](vision.md) says when `EnterSight` states a unit's path, or its place
 and facing while it stands.

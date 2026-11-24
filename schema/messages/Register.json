@@ -38,6 +38,70 @@
     },
     {
       "from": "1.0.0.128",
+      "until": "1.0.0.132",
+      "channel": "registration",
+      "command": 0,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "leading",
+          "type": "bytes",
+          "size": 3,
+          "note": "Arbitrary; it carries no meaning."
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "A client writes zero here."
+        },
+        {
+          "name": "playerId",
+          "type": "i64",
+          "note": "Who the sender claims to be. The proof is what settles the claim."
+        },
+        {
+          "name": "proof",
+          "type": "i64",
+          "enciphered": true,
+          "note": "The player id enciphered with the 16-byte key; a plain copy where the client has no key."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.132",
+      "until": "1.0.0.133",
+      "channel": "registration",
+      "command": 0,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "leading",
+          "type": "bytes",
+          "size": 3,
+          "note": "Arbitrary; it carries no meaning."
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "A client writes zero here."
+        },
+        {
+          "name": "playerId",
+          "type": "i64",
+          "note": "Who the sender claims to be. The proof is what settles the claim."
+        },
+        {
+          "name": "proof",
+          "type": "i64",
+          "enciphered": true,
+          "note": "The player id enciphered with the 16-byte key, its missing bytes zero; a client given no key enciphers it with a key of zeros."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.133",
       "until": "1.0.0.142",
       "channel": "registration",
       "command": 0,

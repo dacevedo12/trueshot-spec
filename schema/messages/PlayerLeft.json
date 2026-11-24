@@ -1,0 +1,50 @@
+{
+  "$schema": "../meta/message.json",
+  "message": "PlayerLeft",
+  "system": "joining",
+  "note": "What a server sends to say that a player has left the match, naming the client id they held. It shares the registration channel with Registered, from which its command value tells it apart.",
+  "revisions": [
+    {
+      "from": "1.0.0.58",
+      "until": "1.0.0.133",
+      "channel": "registration",
+      "command": 1,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unused",
+          "type": "bytes",
+          "size": 3,
+          "note": "A client reads none of it; a server writes zero."
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the player who left. A client drops the pair it holds for that client id; it reads nothing after it."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.150",
+      "until": "1.0.0.151",
+      "channel": "registration",
+      "command": 1,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unused",
+          "type": "bytes",
+          "size": 3,
+          "note": "A client reads none of it; a server writes zero."
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the player who left. A client marks the client holding it as gone in its list of players, whether that client id is its own or another's; it reads nothing after it."
+        }
+      ]
+    }
+  ]
+}

@@ -1204,7 +1204,7 @@
           }
         }
       ],
-      "note": "It lists the units whose movements in the group carried a token, with that token. A client sends none for a group while it plays a match back, from a replay, a spectator stream or over its game connection."
+      "note": "It lists the units whose movements in the group carried a token, with that token, up to any movement the client refused. A client sends none for a group while it plays a match back, from a replay, a spectator stream or over its game connection."
     },
     {
       "from": "3.04.0.78",

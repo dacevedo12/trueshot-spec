@@ -179,9 +179,8 @@ gives the client its own client id.
 > **In 1.0.0.126**
 >
 > A client records the pair every `Registered` carries, and takes as its own
-> only the one carrying its own player id. A `Registered` whose leading byte is 1
-> says that player has left: a client in play shows so in chat and drops the
-> pair.
+> only the one carrying its own player id. `PlayerLeft` says the player holding
+> its client id has left: a client in play shows so in chat and drops the pair.
 >
 > A server MUST send a `VersionSync` whose `agreement` is 1 before any
 > `SpawnUnit`, `SpawnBot` or `MapProp`, because a client given one of them
