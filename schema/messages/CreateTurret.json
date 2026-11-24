@@ -1442,7 +1442,7 @@
           "note": "Unused; a server writes zero."
         }
       ],
-      "note": "It arrives on its own and also inside EnterSight. Where the name matches a turret, a client first removes any object holding the turret's net id."
+      "note": "It arrives on its own and also inside EnterSight. A client first removes any object holding the turret's net id, whether or not the name matches a turret."
     }
   ]
 }

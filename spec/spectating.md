@@ -85,6 +85,14 @@ says.
 > The match number a key is deciphered under is the low 32 bits of the match
 > number, written out as a signed decimal.
 
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> In that form the address is a spectator service's and the further word a
+> platform name; a client started so takes the match over HTTP from that
+> service.
+
 <!-- holds from 4.20.0.315 up to 4.21.0.0 -->
 
 > **In 4.20**

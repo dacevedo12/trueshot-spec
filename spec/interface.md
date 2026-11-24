@@ -341,7 +341,10 @@ alone closes the shop and turns off its key.
 
 > **In 4.20**
 >
-> A watching client ignores `InputLock`.
+> A client acts on a lock at once only where the message's mask is exactly one
+> of 1, 4, 8, 16, 32 or 128. A message that locks other input along with the
+> shop stops the shop opening, but leaves an open shop open and its key on. A
+> watching client ignores `InputLock`.
 
 ## The minimap and text on screen
 

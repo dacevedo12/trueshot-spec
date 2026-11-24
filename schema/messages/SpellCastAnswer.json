@@ -104,7 +104,7 @@
           "note": "The casting."
         }
       ],
-      "note": "There is no byte for ending a charge and no sync id: the casting is the whole body. Where the casting's size is wrong, a client keeps the cast with no spell; what it does then is not recorded."
+      "note": "There is no byte for ending a charge and no sync id: the casting is the whole body. A client fails where the casting's size is wrong, for it then casts with no spell."
     },
     {
       "from": "1.0.0.61",
@@ -237,50 +237,6 @@
     },
     {
       "from": "1.0.0.87",
-      "until": "1.0.0.96",
-      "channel": "events",
-      "command": 36,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "syncId",
-          "type": "u32",
-          "note": "It settles whether a client brings the caster's position in line for this cast, and nothing else."
-        },
-        {
-          "name": "cast",
-          "type": "struct",
-          "struct": "SpellCast",
-          "note": "The casting."
-        }
-      ],
-      "note": "There is no byte for ending a charge: the casting follows the sync id. A client fails where the casting's size is wrong, for it then casts with no spell."
-    },
-    {
-      "from": "1.0.0.96",
-      "until": "1.0.0.97",
-      "channel": "events",
-      "command": 36,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "syncId",
-          "type": "u32",
-          "note": "It settles whether a client brings the caster's position in line for this cast, and nothing else."
-        },
-        {
-          "name": "cast",
-          "type": "struct",
-          "struct": "SpellCast",
-          "note": "The casting."
-        }
-      ],
-      "note": "There is no byte for ending a charge: the casting follows the sync id. Where the casting's size is wrong, a client keeps the cast with no spell; what it does then is not recorded."
-    },
-    {
-      "from": "1.0.0.97",
       "until": "1.0.0.99",
       "channel": "events",
       "command": 36,

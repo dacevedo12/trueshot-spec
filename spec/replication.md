@@ -603,10 +603,13 @@ Each row gives the group and bits that name a value and what the value is.
 > | 3     | 3        | Its size                                                                                               | measured |
 > | 3     | 4 to 5   | Whether anything is allowed to aim at it, and which side is                                            | counted  |
 >
-> Where every minion and unit of no side a client creates has its character's
-> data always update its resource, each carries its two resource values as
-> group 3 bits 0 and 1 instead: the rest of group 1 moves down two bits and the
-> rest of group 3 up two.
+> A unit whose character's data has it always update its resource carries its
+> two resource values as group 3 bits 0 and 1 instead: the rest of group 1 moves
+> down two bits and the rest of group 3 up two. The first minion or unit of no
+> side a client creates sets which of the two layouts every one of them takes.
+> A later unit of the other sort carries its resource values after the last row
+> of the other group: as group 3 bits 6 and 7 where the first unit carried them
+> in group 1, and as group 1 bits 20 and 21 the other way round.
 >
 > ## A building
 >
@@ -841,11 +844,14 @@ Each row gives the group and bits that name a value and what the value is.
 > | 1     | 19 to 20 | How fast health and resource return                                                                    | measured |
 > | 1     | 21 to 22 | Flat and percent reduction of the spell damage it takes                                                | measured |
 >
-> Its bits 23 to 31 name nothing. Where every minion and unit of no side a
-> client creates sets `AlwaysUpdatePAR` in its character data's `Minion`
-> section, each carries its two resource values as group 3 bits 0 and 1
-> instead: the rest of group 1 moves down two bits and the rest of group 3 up
-> two.
+> Its bits 23 to 31 name nothing. A unit whose character's data sets
+> `AlwaysUpdatePAR` in its `Minion` section carries its two resource values as
+> group 3 bits 0 and 1 instead: the rest of group 1 moves down two bits and the
+> rest of group 3 up two. The first minion or unit of no side a client creates
+> sets which of the two layouts every one of them takes. A later unit of the
+> other sort carries its resource values after the last row of the other
+> group: as group 3 bits 6 and 7 where the first unit carried them in group 1,
+> and as group 1 bits 21 and 22 the other way round.
 >
 > A prop's group 1 also carries:
 >

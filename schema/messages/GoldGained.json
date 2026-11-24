@@ -158,7 +158,7 @@
           "note": "How much."
         }
       ],
-      "note": "Where amount is above 0.5, unit is the client's own champion and source names a unit it holds, a client floats the gold over the source. Otherwise, where it holds the unit and that unit is a champion, a minion or a turret, it floats the amount over the unit as a gain or a loss, and nothing for zero."
+      "note": "Where amount is above 0.5, unit is the client's own champion and source names a unit it holds, a client floats the gold over the source. Otherwise, where it holds the unit and that unit is a champion, a minion or a turret, it floats the amount over the unit as a gain or a loss, and nothing for zero; for any other unit it holds the message has no defined effect."
     },
     {
       "from": "1.0.0.61",

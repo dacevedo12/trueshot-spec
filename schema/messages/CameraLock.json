@@ -1322,7 +1322,7 @@
           "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
         }
       ],
-      "note": "A client sends it whenever its lock changes, by the player or as the game forces a lock or lifts one. It sends none while playing a replay."
+      "note": "A client sends it whenever its lock changes, by the player or as the game forces a lock or lifts one, and in answer to every CameraLockSet it acts on, even where the lock stays as it was. It sends none while playing a replay."
     },
     {
       "from": "4.18.0.271",

@@ -306,7 +306,7 @@
             {
               "name": "sell",
               "width": 1,
-              "note": "Whether the item is sold."
+              "note": "A client always sets it."
             },
             {
               "name": "unused",
@@ -316,7 +316,7 @@
           ]
         }
       ],
-      "note": "A client sends it to be rid of an item."
+      "note": "A client sends it to be rid of an item, and does not say whether it sells or throws it away."
     }
   ]
 }

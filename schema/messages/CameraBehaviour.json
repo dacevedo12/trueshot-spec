@@ -80,7 +80,7 @@
           "note": "Along the other ground axis, in world units."
         }
       ],
-      "note": "Only the client whose own champion the header names applies it; what its view then does with the point is not recorded."
+      "note": "A client moves the view to the point once, shortly after the message arrives, and leaves it free to move away after. Only the client whose own champion the header names applies it."
     },
     {
       "from": "1.0.0.61",

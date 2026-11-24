@@ -26,7 +26,7 @@
         {
           "name": "playerId",
           "type": "i64",
-          "note": "Who occupies that seat. A client keeps the pair of clientId and playerId, and takes the answer as its own only where this is its own player id; it reads nothing after it."
+          "note": "Who occupies that seat. A client keeps the pair of clientId and playerId where it holds no pair for that client id yet, and takes the answer as its own only where this is its own player id; it reads nothing after it."
         }
       ]
     },
@@ -73,12 +73,12 @@
         {
           "name": "clientId",
           "type": "u32",
-          "note": "The client id playerId holds."
+          "note": "The client id playerId holds. Where playerId is the client's own, the client takes this client id as its own and goes on."
         },
         {
           "name": "playerId",
           "type": "i64",
-          "note": "Who occupies that seat. A client keeps the pair of clientId and playerId from every answer; it reads nothing after it."
+          "note": "Who occupies that seat. A client keeps the pair of clientId and playerId from every answer, and takes the answer as its own only where this is its own player id; it reads nothing after it."
         }
       ]
     },

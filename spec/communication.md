@@ -18,8 +18,7 @@ can limit how many more lines a player can send with `ChatAllowance`.
 
 > **In 4.4**
 >
-> A client given `ChatAllowance` before its game screen is up fails, so a server
-> MUST NOT send one then.
+> A client drops a `ChatAllowance` that arrives before it has finished loading.
 
 ## Pings and emotes
 

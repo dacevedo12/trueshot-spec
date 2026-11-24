@@ -33,15 +33,9 @@ reports what each blow does with `Damage`.
 >
 > How long a swing takes comes from the champion's data and its attack speed.
 
-<!-- holds from 0.8.13.26 up to 1.0.0.96 -->
+<!-- holds from 0.8.13.26 up to 3.11.0.306 -->
 
-> **In 0.8.13.26–1.0.0.95**
->
-> A client ignores an `Attack` whose target it does not hold.
-
-<!-- holds from 1.0.0.97 up to 3.11.0.306 -->
-
-> **In 1.0.0.97–3.10**
+> **In 0.8.13.26–3.10**
 >
 > A client ignores an `Attack` whose target it does not hold.
 
@@ -393,8 +387,7 @@ A client sends `UseObject` as its player right-clicks a unit that can be used.
 >
 > As a champion, a minion or another unit with a mind changes side, a client
 > sends `UseObject` naming it for every unit with a mind it holds that targets
-> it, with that unit in the header. A building or a prop changing side sends
-> none.
+> it, with that unit in the header. A building changing side sends none.
 
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 

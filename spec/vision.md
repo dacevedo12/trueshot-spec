@@ -61,8 +61,9 @@ A server brings a unit into what a client's side can see with `EnterSight`.
 > `EnterSight` states the unit's shields and looks and, for a champion or a
 > minion, where it stands or which path it walks, and nothing of its health or
 > resource. A client reads every part of the body whatever its length, so a
-> server MUST NOT end one early. For an inhibitor or a nexus it reads nothing
-> after the messages carried.
+> server MUST NOT end one early. For a prop of the map or a building (a nexus,
+> an inhibitor, a shop or a spawn point) it reads nothing after the messages
+> carried.
 
 <!-- holds from 4.1.0.171 up to 4.2.0.2718 -->
 
@@ -265,7 +266,8 @@ of them only for its own champion.
 
 > **In 0.9.25.24–0.9.25.35**
 >
-> `LevelUp` shows its effect over any champion the client can see.
+> `LevelUp` shows its effect over any champion the client can see, and does
+> nothing for another unit.
 
 <!-- holds from 1.0.0.25 up to 1.0.0.58 -->
 
@@ -290,8 +292,9 @@ of them only for its own champion.
 > `GoldGained` naming the client's own champion, with an amount above 0.5 and a
 > source the client holds, shows the gold over the source. Any other `GoldGained`
 > naming a champion, a minion or a turret the client holds shows over it the
-> gold gained, or lost where the amount is below 0, and nothing for 0.
-> `ItemAdded` announces no purchase, a client's own or another's.
+> gold gained, or lost where the amount is below 0, and nothing for 0; naming
+> any other unit, it has no defined effect. `ItemAdded` announces no purchase, a
+> client's own or another's.
 
 <!-- holds from 1.0.0.96 up to 1.0.0.110 -->
 
@@ -420,7 +423,10 @@ A client also acts on what it is told about a unit it holds but cannot see:
 
 > **In 3.10**
 >
-> A client playing back a stream ignores `LeaveLocalSight`.
+> While `LeaveLocalSight` has its own champion out of its local sight, until an
+> `EnterLocalSight` brings it back, a client drops `UnitText` naming that
+> champion and shows no healing numbers over it. A client playing back a stream
+> ignores `LeaveLocalSight`.
 
 <!-- holds from 3.13.0.399 up to 3.14.0.700 -->
 

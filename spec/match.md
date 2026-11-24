@@ -473,9 +473,8 @@ player's side and sends `ClientFinished`.
 
 ## Leaving and coming back
 
-A client leaving as one abandoning the match sends `Exit`: as its player quits,
-or on a server's `Shutdown`, which has it leave at once. A client also leaves at
-once on `BotKick` with the action that means leave.
+A client leaving as one abandoning the match sends `Exit` as its player quits.
+A client also leaves at once on `BotKick` with the action that means leave.
 
 <!-- holds from 0.8.13.26 up to 1.0.0.110 -->
 
@@ -497,6 +496,13 @@ once on `BotKick` with the action that means leave.
 >
 > A client also leaves as one abandoning the match as its player closes the
 > window, and as a reconnection fails.
+
+<!-- holds from 1.0.0.130 up to 4.21.0.0 -->
+
+> **In 1.0.0.130–4.20**
+>
+> A client also sends `Exit` on a server's `Shutdown`, which has it leave at
+> once.
 
 <!-- holds from 0.9.25.24 up to 3.11.0.306 -->
 
@@ -812,7 +818,8 @@ A server tells the others that a player's client dropped with
 > again at once by itself, for any reason but the one that means its player was
 > away. Where that setting is off, it asks its player for the reason 0 whether
 > to connect again, and for any reason but that and the one that means its
-> player was away shows that the reconnection failed.
+> player was away shows that the reconnection failed. A client registers again
+> on every connection it makes, a new one after a drop included.
 >
 > A client sends `ReconnectedInMatch` as the connection is made, before any
 > `Registered`, and only while the match is in play and it is not watching it.

@@ -31,8 +31,9 @@ menu on or off.
 > **In 0.9.25.24–0.9.25.35**
 >
 > A client given `SurrenderVoteCalled`, or `SurrenderStatus` with reason 1,
-> before its own champion exists fails on it. `SurrenderStatus` with reason 0,
-> 2, 3 or 4 does not depend on that champion.
+> before its own champion exists fails on it, so a server MUST NOT send either
+> before then. `SurrenderStatus` with reason 0, 2, 3 or 4 does not depend on that
+> champion.
 
 <!-- holds from 1.0.0.25 up to 1.0.0.58 -->
 

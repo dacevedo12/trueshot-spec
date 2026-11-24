@@ -651,7 +651,7 @@
           "note": "Its resource, such as mana, once back."
         }
       ],
-      "note": "A client keeps the champion's level, experience, gold, maxima and spell ranks, and plays the coming back. The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that. A client places the champion at the point where it lies on open ground."
+      "note": "A client keeps the champion's level, experience, gold, maxima and spell ranks, and plays the coming back. The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that. A client keeps the point, held within the map's bounds, where it lies on open ground, and otherwise sets the champion on the nearest open ground."
     },
     {
       "from": "1.0.0.141",

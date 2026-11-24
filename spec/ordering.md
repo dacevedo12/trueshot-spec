@@ -66,16 +66,16 @@ for. Each family keeps its own numbers, and compares them in its own way.
 > server MUST give each statement about a unit a number equal to or ahead of
 > the last it gave that unit.
 
-<!-- holds from 0.9.25.24 up to 1.0.0.58 -->
+<!-- holds from 0.9.25.24 up to 1.0.0.61 -->
 
-> **In 0.9.25.24–1.0.0.57**
+> **In 0.9.25.24–1.0.0.60**
 >
 > A client compares a `PathWithSpeed`'s number with its unit's count but does
 > not advance the count to it.
 
-<!-- holds from 1.0.0.58 up to 1.0.0.96 -->
+<!-- holds from 1.0.0.61 up to 1.0.0.96 -->
 
-> **In 1.0.0.58–1.0.0.95**
+> **In 1.0.0.61–1.0.0.95**
 >
 > A client compares a `PathWithSpeed`'s number with its unit's count.
 

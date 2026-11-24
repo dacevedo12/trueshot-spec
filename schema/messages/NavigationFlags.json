@@ -382,7 +382,7 @@
       "command": 71,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "Once a part of its world it sets up for the match exists, a client clears every circle it holds before marking these, and answers each with a message to the server under command 32 whose body is this sync id alone. Before then it neither marks nor answers.",
+      "note": "Once its navigation grid exists, a client clears every circle it holds before marking these, and answers each with a message to the server under command 32 whose body is this sync id alone. Before then it neither marks nor answers.",
       "fields": [
         {
           "name": "count",
@@ -1487,7 +1487,7 @@
       "command": 65,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client whose map's ground data is loaded fails on one of these that arrives while it holds no circles; before that data is loaded, it takes nothing and does not answer.",
+      "note": "A client whose map's ground data is loaded fails on the first of these in a match; before that data is loaded, it takes nothing and does not answer.",
       "fields": [
         {
           "name": "count",
