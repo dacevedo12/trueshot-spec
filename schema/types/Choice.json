@@ -36,6 +36,68 @@
     },
     {
       "from": "1.0.0.25",
+      "until": "1.0.0.97",
+      "fields": [
+        {
+          "name": "choice",
+          "type": "u32",
+          "note": "Which choice, by the number the client knows it as. Zero where the place stands empty."
+        },
+        {
+          "name": "rank",
+          "type": "u8",
+          "note": "How far it was taken."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.97",
+      "until": "1.0.0.110",
+      "fields": [
+        {
+          "name": "choice",
+          "type": "u32",
+          "note": "Which choice."
+        },
+        {
+          "name": "rank",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.110",
+      "until": "1.0.0.111",
+      "fields": [
+        {
+          "name": "choice",
+          "type": "u32",
+          "note": "Which choice. Whether it is given by the number the client knows it as is not recorded. Whether it is zero where the place stands empty is not recorded."
+        },
+        {
+          "name": "rank",
+          "type": "u8",
+          "note": "Whether it says how far it was taken is not recorded."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.111",
+      "until": "1.0.0.126",
+      "fields": [
+        {
+          "name": "choice",
+          "type": "u32",
+          "note": "Which choice."
+        },
+        {
+          "name": "rank",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.126",
       "until": "4.21.0.0",
       "fields": [
         {

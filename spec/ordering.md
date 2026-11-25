@@ -13,7 +13,9 @@ against another.
 A client acts on game messages in the order they arrive, whichever channel
 they arrive on, and holds none back for later but the paths
 [Objects and identifiers](objects.md) names. A message that arrives before the
-message creating what it names is lost. So:
+message creating what it names is lost, but for what
+[Objects and identifiers](objects.md#messages-about-objects-a-client-does-not-hold)
+says. So:
 
 - A server MUST send the message creating an object before any message naming
   it.
@@ -21,6 +23,15 @@ message creating what it names is lost. So:
   sent later on another. Where one depends on the other, a server sends both
   on one reliable channel, or sends the second once the transport has
   acknowledged the first.
+
+<!-- holds from 1.0.0.86 up to 1.0.0.141 -->
+
+> **In 1.0.0.86–1.0.0.140**
+>
+> A `WaypointGroup` or `WaypointGroupAtSpeed` record naming a unit the client
+> does not hold is not simply lost. A client leaves that record's path unread,
+> so every later record in that group is read from the wrong place. The group's
+> `WaypointAck` is still sent.
 
 The messages creating a unit travel reliably on the events channel, while
 `Replication` and `WaypointGroup` travel unreliably on the transient channel,

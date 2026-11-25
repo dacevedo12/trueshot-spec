@@ -20,7 +20,8 @@ This chapter covers layers 1 to 3.
 
 This document does not restate ENet. Connection setup, acknowledgement,
 sequence numbers, retransmission, throttling, and fragmentation behave as
-[ENet 1.2.5](http://enet.bespin.org) defines them.
+[ENet 1.2.5](http://enet.bespin.org) defines them, but for what this chapter
+states.
 
 <!-- holds from 0.8.13.26 up to 1.0.0.127 -->
 

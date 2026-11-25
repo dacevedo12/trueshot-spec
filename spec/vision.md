@@ -169,10 +169,11 @@ leave it held (see [Objects and identifiers](objects.md)). A server sends
 
 ## Regions
 
-A region is a patch of ground with sight of its own. A server places one with `RegionAdded` or fastens one to a
-unit with `RegionAttached`, moves it with `RegionMoved` and takes it away with
-`RegionRemoved`; [Objects and identifiers](objects.md) says how regions are
-named and when one ends.
+A region is a patch of ground with sight of its own. A server places one with
+`RegionAdded` or fastens one to a unit with `RegionAttached`, moves it with
+`RegionMoved` and takes it away with `RegionRemoved`;
+[Objects and identifiers](objects.md) says how regions are named and when one
+ends.
 
 <!-- holds from 0.8.13.26 up to 4.18.0.271 -->
 
@@ -185,8 +186,9 @@ named and when one ends.
 
 > **In 4.20**
 >
-> Whether a region can reveal hidden units within it is not recorded, nor
-> whether a region granting sight has a client clear its map's cover over it.
+> Whether a region can reveal hidden units within it is not recorded. Whether a
+> region granting sight has a client clear its map's cover over it is not
+> recorded.
 
 <!-- holds from 1.0.0.126 up to 4.18.0.271 -->
 

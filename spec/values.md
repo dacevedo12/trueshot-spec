@@ -95,9 +95,8 @@ A server MUST NOT name a champion book slot beyond the book's last slot.
 
 > **In 0.8.13.26–0.9.22.13**
 >
-> A champion's own book ends at slot 22. Whether a client reports an `Autocast`
-> naming a slot above 22 as an error, and keeps it all the same, is not
-> recorded.
+> A champion's own book ends at slot 22. A client reports an `Autocast` naming
+> a slot above 22 as an error, and keeps it all the same.
 
 <!-- holds from 0.9.25.24 up to 0.9.25.36 -->
 

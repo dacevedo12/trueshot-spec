@@ -197,9 +197,9 @@ server answers with `VersionSync`, and a client loads only where its
 
 ## Taking a seat
 
-<!-- holds from 0.9.22.14 up to 3.03.0.198 -->
+<!-- holds from 0.9.22.14 up to 1.0.0.151 -->
 
-> **In 0.9.22.14–3.02**
+> **In 0.9.22.14–1.0.0.150**
 >
 > Straight after `VersionSync`, a client sends `JoinSide` on the roster
 > channel.
@@ -252,9 +252,9 @@ A client reports how far loading has got with `LoadingProgress`, repeatedly
 through loading. A server answers each report with `SeatLoadProgress`,
 carrying the report's figures under the seat that reported.
 
-<!-- holds from 0.8.13.26 up to 3.14.0.700 -->
+<!-- holds from 0.9.22.14 up to 3.14.0.700 -->
 
-> **In 0.8.13.26–3.13**
+> **In 0.9.22.14–3.13**
 >
 > A client goes on reporting after its progress reaches 100, until play begins.
 

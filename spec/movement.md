@@ -457,9 +457,9 @@ says what a client does with a movement whose unit it does not hold.
 > Whether the token a receiving end remembers for a unit begins at zero is not
 > recorded.
 
-<!-- holds from 1.0.0.150 up to 4.17.0.233 -->
+<!-- holds from 1.0.0.150 up to 4.5.0.260 -->
 
-> **In 1.0.0.150–4.16**
+> **In 1.0.0.150–4.4**
 >
 > The token a receiving end remembers for a unit begins at zero.
 

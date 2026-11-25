@@ -98,7 +98,7 @@
           "note": "The champion being attacked."
         }
       ],
-      "note": "A client marks the unit where target is nonzero and is its own champion, whatever the unit's side; any other target clears the mark. What the mark draws is not recorded."
+      "note": "A client marks the unit where target is nonzero and is its own champion, whatever the unit's side; any other target clears the mark. Whether it draws an indicator on the unit's health bar unless the unit's data turns it off is not recorded."
     },
     {
       "from": "1.0.0.75",
@@ -226,7 +226,7 @@
           "note": "The champion being attacked."
         }
       ],
-      "note": "A client marks the unit only where target is its own champion, with no test of sides; any other target, zero included, clears the mark. What the mark shows is not recorded."
+      "note": "A client marks the unit only where target is its own champion, with no test of sides; any other target, zero included, clears the mark. Whether it draws an indicator on the unit's health bar unless the unit's data turns it off is not recorded."
     },
     {
       "from": "1.0.0.111",
@@ -322,7 +322,7 @@
           "note": "The champion being attacked."
         }
       ],
-      "note": "A client marks the unit only where target is its own champion, drawing an indicator on the unit's health bar unless the unit's data turns it off; any other target clears the mark."
+      "note": "A client marks the unit only where target is its own champion; any other target clears the mark. Whether it draws an indicator on the unit's health bar unless the unit's data turns it off is not recorded."
     },
     {
       "from": "1.0.0.127",
@@ -354,7 +354,7 @@
           "note": "The champion being attacked."
         }
       ],
-      "note": "A client marks the unit only where target is its own champion, with no test of sides; any other target, zero included, clears the mark. What the mark shows is not recorded."
+      "note": "A client marks the unit only where target is its own champion, with no test of sides; any other target, zero included, clears the mark. Whether it draws an indicator on the unit's health bar unless the unit's data turns it off is not recorded."
     },
     {
       "from": "1.0.0.133",

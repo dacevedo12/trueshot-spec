@@ -349,9 +349,9 @@ gives the client its own client id.
 place in that list. `SeatName`, `SeatChampion` and the `VersionSync` seats name
 a player by player id; `SeatLoadProgress` names both.
 
-<!-- holds from 0.8.13.26 up to 1.0.0.58 -->
+<!-- holds from 0.9.22.14 up to 1.0.0.58 -->
 
-> **In 0.8.13.26–1.0.0.57**
+> **In 0.9.22.14–1.0.0.57**
 >
 > A client finds a seat's client id through its player id.
 
