@@ -1,7 +1,7 @@
 {
   "$schema": "../meta/struct.json",
   "struct": "Choice",
-  "note": "One choice made before the match, and how far it was taken.",
+  "note": "One choice made before the match.",
   "revisions": [
     {
       "from": "0.8.13.26",
@@ -67,68 +67,6 @@
     },
     {
       "from": "1.0.0.110",
-      "until": "1.0.0.111",
-      "fields": [
-        {
-          "name": "choice",
-          "type": "u32",
-          "note": "Which choice. Whether it is given by the number the client knows it as is not recorded. Whether it is zero where the place stands empty is not recorded."
-        },
-        {
-          "name": "rank",
-          "type": "u8",
-          "note": "Whether it says how far it was taken is not recorded."
-        }
-      ]
-    },
-    {
-      "from": "1.0.0.111",
-      "until": "1.0.0.126",
-      "fields": [
-        {
-          "name": "choice",
-          "type": "u32",
-          "note": "Which choice."
-        },
-        {
-          "name": "rank",
-          "type": "u8"
-        }
-      ]
-    },
-    {
-      "from": "1.0.0.126",
-      "until": "1.0.0.127",
-      "fields": [
-        {
-          "name": "choice",
-          "type": "u32",
-          "note": "Which choice. Whether it is given by the number the client knows it as is not recorded. Whether it is zero where the place stands empty is not recorded."
-        },
-        {
-          "name": "rank",
-          "type": "u8",
-          "note": "Whether it says how far it was taken is not recorded."
-        }
-      ]
-    },
-    {
-      "from": "1.0.0.127",
-      "until": "1.0.0.132",
-      "fields": [
-        {
-          "name": "choice",
-          "type": "u32",
-          "note": "Which choice."
-        },
-        {
-          "name": "rank",
-          "type": "u8"
-        }
-      ]
-    },
-    {
-      "from": "1.0.0.132",
       "until": "1.0.0.133",
       "fields": [
         {

@@ -945,7 +945,7 @@
           "items": {
             "name": "rune",
             "type": "u32",
-            "note": "One rune."
+            "note": "One rune. Whether it is given by the number the client knows it as is not recorded."
           }
         },
         {
@@ -972,7 +972,8 @@
         },
         {
           "name": "level",
-          "type": "u8"
+          "type": "u8",
+          "note": "Whether it is the player's account level is not recorded."
         }
       ]
     },
@@ -993,7 +994,7 @@
           "items": {
             "name": "rune",
             "type": "u32",
-            "note": "One rune."
+            "note": "One rune. Whether it is given by the number the client knows it as is not recorded."
           }
         },
         {
@@ -1020,7 +1021,8 @@
         },
         {
           "name": "level",
-          "type": "u8"
+          "type": "u8",
+          "note": "Whether it is the player's account level is not recorded."
         }
       ]
     },
@@ -1090,7 +1092,7 @@
           "items": {
             "name": "rune",
             "type": "u32",
-            "note": "One rune."
+            "note": "One rune. Whether it is given by the number the client knows it as is not recorded."
           }
         },
         {
@@ -1117,7 +1119,8 @@
         },
         {
           "name": "level",
-          "type": "u8"
+          "type": "u8",
+          "note": "Whether it is the player's account level is not recorded."
         }
       ]
     },
