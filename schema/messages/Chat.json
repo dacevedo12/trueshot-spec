@@ -702,7 +702,7 @@
     },
     {
       "from": "3.6.0.388",
-      "until": "4.18.0.271",
+      "until": "4.5.0.260",
       "channel": "chat",
       "command": 104,
       "direction": "bidirectional",
@@ -744,7 +744,140 @@
         {
           "name": "textLength",
           "type": "u32",
-          "note": "The length of the text, counted in bytes and excluding the byte that ends it. A 4.17 client sends at most 255 bytes of text. A client shows the text to its first zero byte."
+          "note": "The length of the text, counted in bytes and excluding the byte that ends it. A client shows the text to its first zero byte."
+        },
+        {
+          "name": "params",
+          "type": "bytes",
+          "size": 32,
+          "note": "Thirty two bytes holding text that fills in a key, ended by a zero byte within them. The bytes after that zero byte carry no meaning, so two messages otherwise alike can differ in them."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "textLength",
+          "note": "The text, textLength bytes of it."
+        },
+        {
+          "name": "terminator",
+          "type": "bytes",
+          "size": 1,
+          "note": "A zero byte closing the text."
+        }
+      ]
+    },
+    {
+      "from": "4.5.0.260",
+      "until": "4.17.0.233",
+      "channel": "chat",
+      "command": 104,
+      "direction": "bidirectional",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the sender."
+        },
+        {
+          "name": "netId",
+          "type": "u32"
+        },
+        {
+          "name": "localized",
+          "type": "u8",
+          "note": "Whether the text is a phrase to show as it stands, or a key naming one the receiving end looks up and fills in from the parameters. Both ends send it clear."
+        },
+        {
+          "name": "audience",
+          "type": "i32",
+          "note": "Who the message reaches.",
+          "values": {
+            "0": {
+              "name": "everyone"
+            },
+            "1": {
+              "name": "team"
+            }
+          }
+        },
+        {
+          "name": "paramsLength",
+          "type": "u32",
+          "note": "How many bytes of the run that follows carry meaning."
+        },
+        {
+          "name": "textLength",
+          "type": "u32",
+          "note": "The length of the text, counted in bytes and excluding the byte that ends it."
+        },
+        {
+          "name": "params",
+          "type": "bytes",
+          "size": 32,
+          "note": "Thirty two bytes holding text that fills in a key, ended by a zero byte within them. The bytes after that zero byte carry no meaning, so two messages otherwise alike can differ in them."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "textLength",
+          "note": "The text, textLength bytes of it."
+        },
+        {
+          "name": "terminator",
+          "type": "bytes",
+          "size": 1,
+          "note": "A zero byte closing the text."
+        }
+      ]
+    },
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.271",
+      "channel": "chat",
+      "command": 104,
+      "direction": "bidirectional",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the sender."
+        },
+        {
+          "name": "netId",
+          "type": "u32",
+          "note": "Whether a receiving end attributes the text to this entity where the seat does not name one, and to the speaker the seat names where it names one, is not recorded."
+        },
+        {
+          "name": "localized",
+          "type": "u8",
+          "note": "Whether the text is a phrase to show as it stands, or a key naming one the receiving end looks up and fills in from the parameters. Both ends send it clear."
+        },
+        {
+          "name": "audience",
+          "type": "i32",
+          "note": "Who the message reaches.",
+          "values": {
+            "0": {
+              "name": "everyone"
+            },
+            "1": {
+              "name": "team"
+            }
+          }
+        },
+        {
+          "name": "paramsLength",
+          "type": "u32",
+          "note": "How many bytes of the run that follows carry meaning."
+        },
+        {
+          "name": "textLength",
+          "type": "u32",
+          "note": "The length of the text, counted in bytes and excluding the byte that ends it. A 4.17 client sends at most 255 bytes of text. Whether a client shows the text to its first zero byte is not recorded."
         },
         {
           "name": "params",
@@ -769,6 +902,72 @@
     },
     {
       "from": "4.18.0.271",
+      "until": "4.20.0.315",
+      "channel": "chat",
+      "command": 104,
+      "direction": "bidirectional",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the sender."
+        },
+        {
+          "name": "netId",
+          "type": "u32"
+        },
+        {
+          "name": "localized",
+          "type": "u8",
+          "note": "Whether the text is a phrase to show as it stands, or a key naming one the receiving end looks up and fills in from the parameters. Both ends send it clear."
+        },
+        {
+          "name": "audience",
+          "type": "i32",
+          "note": "Who the message reaches.",
+          "values": {
+            "0": {
+              "name": "everyone"
+            },
+            "1": {
+              "name": "team"
+            }
+          }
+        },
+        {
+          "name": "paramsLength",
+          "type": "u32",
+          "note": "How many bytes of the run that follows carry meaning."
+        },
+        {
+          "name": "textLength",
+          "type": "u32",
+          "note": "The length of the text, counted in bytes and excluding the byte that ends it."
+        },
+        {
+          "name": "params",
+          "type": "bytes",
+          "size": 32,
+          "note": "Thirty two bytes holding text that fills in a key, ended by a zero byte within them. The bytes after that zero byte carry no meaning, so two messages otherwise alike can differ in them."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "textLength",
+          "note": "The text, textLength bytes of it."
+        },
+        {
+          "name": "terminator",
+          "type": "bytes",
+          "size": 1,
+          "note": "A zero byte closing the text."
+        }
+      ]
+    },
+    {
+      "from": "4.20.0.315",
       "until": "4.21.0.0",
       "channel": "chat",
       "command": 104,

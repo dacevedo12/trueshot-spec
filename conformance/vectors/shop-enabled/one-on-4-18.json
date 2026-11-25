@@ -1,0 +1,18 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ShopEnabled",
+  "version": "4.18.0.271",
+  "note": "Laid out as a 4.18.0.271 client takes it.",
+  "bytes": "f02200004001",
+  "fields": {
+    "command": 240,
+    "netId": 1073741858,
+    "extendedCommand": null,
+    "flags": {
+      "enabled": 1,
+      "force": 0,
+      "unused": 0
+    }
+  }
+}

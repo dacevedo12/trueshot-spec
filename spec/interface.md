@@ -13,9 +13,37 @@ again. A client tells a server what it has selected with
 `CameraLock`.
 
 A server carries a client's view from one place to another with `MoveCamera`. A
-server can also lock or free a client's camera with `CameraLockSet`, which the
-client answers with `CameraLock` except while it holds its camera itself, and
-set a point for a player's view with `CameraBehaviour`.
+server can also lock or free a client's camera with `CameraLockSet`, and set a
+point for a player's view with `CameraBehaviour`.
+
+<!-- holds from 0.9.22.14 up to 1.0.0.141 -->
+
+> **In 0.9.22.14–1.0.0.140**
+>
+> A client answers `CameraLockSet` with `CameraLock` except while it holds its
+> camera itself.
+
+<!-- holds from 1.0.0.150 up to 3.03.0.198 -->
+
+> **In 1.0.0.150–3.02**
+>
+> A client answers `CameraLockSet` with `CameraLock` except while it holds its
+> camera itself, and sends none while watching a match.
+
+<!-- holds from 3.03.0.198 up to 3.04.0.78 -->
+
+> **In 3.03**
+>
+> A client answers `CameraLockSet` with `CameraLock` except while it holds its
+> camera itself, and sends none while it plays a match back, from a replay, a
+> spectator stream or over its game connection.
+
+<!-- holds from 3.04.0.78 up to 4.21.0.0 -->
+
+> **In 3.04–4.20**
+>
+> A client answers `CameraLockSet` with `CameraLock` except while it holds its
+> camera itself, and sends none while playing a replay.
 
 <!-- holds from 0.8.13.26 up to 0.9.22.14 -->
 

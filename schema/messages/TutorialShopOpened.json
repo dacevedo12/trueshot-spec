@@ -61,8 +61,7 @@
       "command": 153,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": [],
-      "note": "A client sends it whenever its player opens the shop, in every mode and on every map."
+      "fields": []
     },
     {
       "from": "1.0.0.86",
@@ -76,6 +75,15 @@
     },
     {
       "from": "1.0.0.87",
+      "until": "1.0.0.96",
+      "channel": "requests",
+      "command": 153,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": []
+    },
+    {
+      "from": "1.0.0.96",
       "until": "1.0.0.97",
       "channel": "requests",
       "command": 153,
@@ -91,8 +99,7 @@
       "command": 154,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": [],
-      "note": "A client sends it whenever its player opens the shop, in every mode and on every map."
+      "fields": []
     },
     {
       "from": "1.0.0.98",
@@ -101,8 +108,7 @@
       "command": 155,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": [],
-      "note": "A client sends it whenever its player opens the shop, in every mode and on every map."
+      "fields": []
     },
     {
       "from": "1.0.0.103",
@@ -111,8 +117,7 @@
       "command": 157,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": [],
-      "note": "A client sends it whenever its player opens the shop, in every mode and on every map."
+      "fields": []
     },
     {
       "from": "1.0.0.104",
@@ -121,8 +126,7 @@
       "command": 162,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": [],
-      "note": "A client sends it whenever its player opens the shop, in every mode and on every map."
+      "fields": []
     },
     {
       "from": "1.0.0.107",
@@ -131,8 +135,7 @@
       "command": 163,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": [],
-      "note": "A client sends it whenever its player opens the shop, in every mode and on every map."
+      "fields": []
     },
     {
       "from": "1.0.0.109",
@@ -141,12 +144,11 @@
       "command": 164,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": [],
-      "note": "A client sends it whenever its player opens the shop, in every mode and on every map."
+      "fields": []
     },
     {
       "from": "1.0.0.110",
-      "until": "1.0.0.117",
+      "until": "1.0.0.111",
       "channel": "requests",
       "command": 91,
       "direction": "clientToServer",
@@ -155,14 +157,22 @@
       "note": "A client sends it as its player opens the shop, in any match. While the shop is locked, the shop does not open and nothing is sent."
     },
     {
+      "from": "1.0.0.111",
+      "until": "1.0.0.117",
+      "channel": "requests",
+      "command": 91,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": []
+    },
+    {
       "from": "1.0.0.117",
       "until": "1.0.0.119",
       "channel": "requests",
       "command": 92,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": [],
-      "note": "A client sends it as its player opens the shop, in any match. While the shop is locked, the shop does not open and nothing is sent."
+      "fields": []
     },
     {
       "from": "1.0.0.119",
@@ -171,8 +181,7 @@
       "command": 93,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": [],
-      "note": "A client sends it as its player opens the shop, in any match. While the shop is locked, the shop does not open and nothing is sent."
+      "fields": []
     },
     {
       "from": "1.0.0.124",
@@ -181,8 +190,7 @@
       "command": 96,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": [],
-      "note": "A client sends it as its player opens the shop, in any match. While the shop is locked, the shop does not open and nothing is sent."
+      "fields": []
     },
     {
       "from": "1.0.0.126",

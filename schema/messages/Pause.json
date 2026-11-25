@@ -546,7 +546,7 @@
     },
     {
       "from": "4.1.0.171",
-      "until": "4.11.0.386",
+      "until": "4.5.0.260",
       "channel": "requests",
       "command": 160,
       "direction": "clientToServer",
@@ -583,7 +583,77 @@
       "note": "A client sends the same values in every Pause, as each field states."
     },
     {
+      "from": "4.5.0.260",
+      "until": "4.11.0.386",
+      "channel": "requests",
+      "command": 160,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "A client writes 4294967295, the client id of no client."
+        },
+        {
+          "name": "timeLeft",
+          "type": "i32"
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "tournament",
+              "width": 1
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused."
+            }
+          ]
+        }
+      ]
+    },
+    {
       "from": "4.11.0.386",
+      "until": "4.17.0.233",
+      "channel": "requests",
+      "command": 161,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "A client writes 4294967295, the client id of no client."
+        },
+        {
+          "name": "timeLeft",
+          "type": "i32"
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "tournament",
+              "width": 1
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "from": "4.17.0.233",
       "until": "4.18.0.271",
       "channel": "requests",
       "command": 161,
@@ -598,7 +668,7 @@
         {
           "name": "timeLeft",
           "type": "i32",
-          "note": "A client sends zero."
+          "note": "Whether a client sends zero is not recorded."
         },
         {
           "name": "how",
@@ -608,17 +678,17 @@
             {
               "name": "tournament",
               "width": 1,
-              "note": "A client sends it clear."
+              "note": "Whether a client sends it clear is not recorded."
             },
             {
               "name": "unused",
               "width": 7,
-              "note": "Unused; a client writes zero."
+              "note": "Unused. Whether a client writes zero is not recorded."
             }
           ]
         }
       ],
-      "note": "A client sends the same values in every Pause, as each field states."
+      "note": "Whether a client sends the same values in every Pause, as each field states, is not recorded."
     },
     {
       "from": "4.18.0.271",
@@ -644,8 +714,7 @@
           "bits": [
             {
               "name": "unlimited",
-              "width": 1,
-              "note": "A client sends it clear."
+              "width": 1
             },
             {
               "name": "unused",

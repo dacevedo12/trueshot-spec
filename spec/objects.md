@@ -346,9 +346,40 @@ gives the client its own client id.
 > client given a create message before it has its own client id stops.
 
 `Roster` lists each side's player ids in order, and a player's seat is their
-place in that list. A client finds a seat's client id through its player id.
-`SeatName`, `SeatChampion` and the `VersionSync` seats name a player by player
-id; `SeatLoadProgress` names both.
+place in that list. `SeatName`, `SeatChampion` and the `VersionSync` seats name
+a player by player id; `SeatLoadProgress` names both.
+
+<!-- holds from 0.8.13.26 up to 1.0.0.58 -->
+
+> **In 0.8.13.26–1.0.0.57**
+>
+> A client finds a seat's client id through its player id.
+
+<!-- holds from 1.0.0.58 up to 1.0.0.61 -->
+
+> **In 1.0.0.58–1.0.0.60**
+>
+> Whether a client finds a seat's client id through its player id is not
+> recorded.
+
+<!-- holds from 1.0.0.74 up to 1.0.0.111 -->
+
+> **In 1.0.0.74–1.0.0.110**
+>
+> A client finds a seat's client id through its player id.
+
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
+
+> **In 1.0.0.126**
+>
+> Whether a client finds a seat's client id through its player id is not
+> recorded.
+
+<!-- holds from 1.0.0.132 up to 4.21.0.0 -->
+
+> **In 1.0.0.132–4.20**
+>
+> A client finds a seat's client id through its player id.
 
 A champion carries the client id of the player it belongs to. The
 `CreateChampion` carrying a client's own client id makes that champion the
@@ -1048,6 +1079,15 @@ Creating messages are the exception, and so are the messages below.
 >
 > A client fails on a `RegionAttached` whose unit names no unit it holds, and a
 > server MUST NOT send one.
+>
+> Where a message whose header names a net id the client does not hold is one of
+> these, that net id does not decide whether anything happens:
+> `QueryStatusAnswer`, `SpawnStart`, `CreateChampion`, `CreateNeutral`,
+> `CreateTurret`, `SpawnEnd`, `StartGame`, `GameEnded`, `ParticlesCreated`,
+> `KillParticle`, `PingPlaced`, `GoldGained`, `ExperienceGained`,
+> `MissileState`, `StatTick`, `Announcement`, `VersionSync`, `ClockSync`,
+> `ClockConvergence`, `RegionRemoved`, `RegionAttached`, `RegionAdded`,
+> `SpawnUnit`, `ChainTargets`, `CameraAck` and `MatchIdentity`.
 
 <!-- holds from 0.8.13.26 up to 1.0.0.97 -->
 

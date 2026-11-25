@@ -96,13 +96,21 @@ sends `ReconnectedInMatch`.
 > A client waits for the answer naming its own player id as long as it takes,
 > and offers its player no choice.
 
-<!-- holds from 0.9.25.24 up to 4.21.0.0 -->
+<!-- holds from 0.9.25.24 up to 4.18.0.271 -->
 
-> **In 0.9.25.24–4.20**
+> **In 0.9.25.24–4.17**
 >
 > A client waits 30 seconds for the answer naming its own player id. Then it
 > offers its player to wait another 30 seconds or to give up, and leaves on
 > giving up.
+
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
+>
+> Whether a client waits 30 seconds for the answer naming its own player id,
+> then offers its player to wait another 30 seconds or to give up, and leaves on
+> giving up, is not recorded.
 
 <!-- holds from 3.10.0.237 up to 4.18.0.271 -->
 
@@ -189,9 +197,23 @@ server answers with `VersionSync`, and a client loads only where its
 
 ## Taking a seat
 
-<!-- holds from 0.9.22.14 up to 3.14.0.700 -->
+<!-- holds from 0.9.22.14 up to 3.03.0.198 -->
 
-> **In 0.9.22.14–3.13**
+> **In 0.9.22.14–3.02**
+>
+> Straight after `VersionSync`, a client sends `JoinSide` on the roster
+> channel.
+
+<!-- holds from 3.03.0.198 up to 3.04.0.78 -->
+
+> **In 3.03**
+>
+> Whether a client sends `JoinSide` on the roster channel straight after
+> `VersionSync` is not recorded.
+
+<!-- holds from 3.6.0.388 up to 3.14.0.700 -->
+
+> **In 3.6–3.13**
 >
 > Straight after `VersionSync`, a client sends `JoinSide` on the roster
 > channel.
@@ -229,7 +251,25 @@ each seat a player holds.
 A client reports how far loading has got with `LoadingProgress`, repeatedly
 through loading. A server answers each report with `SeatLoadProgress`,
 carrying the report's figures under the seat that reported.
-A client goes on reporting after its progress reaches 100, until play begins.
+
+<!-- holds from 0.8.13.26 up to 3.14.0.700 -->
+
+> **In 0.8.13.26–3.13**
+>
+> A client goes on reporting after its progress reaches 100, until play begins.
+
+<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
+
+> **In 4.4**
+>
+> Whether a client goes on reporting after its progress reaches 100, until play
+> begins, is not recorded.
+
+<!-- holds from 4.17.0.233 up to 4.21.0.0 -->
+
+> **In 4.17–4.20**
+>
+> A client goes on reporting after its progress reaches 100, until play begins.
 
 A client waits on no other seat. `SpawnStart`, `SpawnEnd` and `StartGame` are
 what move a client on, and `StartGame` alone ends its loading. A server that

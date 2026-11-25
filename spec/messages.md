@@ -173,9 +173,17 @@ follow it as usual. An enclosure that states none ends where the body ends, so
 it is the last field too, and so is any struct whose own last field is one of
 these.
 
-A body ends where its last field ends, with one exception: a client accepts a
-`Registered` carrying bytes past its record, and takes no meaning from them. A
-sender MUST write the fields a revision lists and nothing after them.
+A body ends where its last field ends, but for the exceptions here. A client
+accepts a `Registered` carrying bytes past its record, and takes no meaning from
+them. A server MUST write the fields a revision lists and nothing after them.
+
+<!-- holds from 0.8.13.26 up to 1.0.0.116 -->
+
+> **In 0.8.13.26–1.0.0.115**
+>
+> A body a client sends enciphered runs on past its last field to the end of
+> the payload, through the bytes [Transport](transport.md#the-cipher) says it
+> adds.
 
 ## Byte order
 

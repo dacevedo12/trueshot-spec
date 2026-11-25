@@ -106,7 +106,7 @@
         {
           "name": "subject",
           "type": "u32",
-          "note": "The unit the event is about; for a death, the unit that made the kill."
+          "note": "The unit the event is about. Whether, for a death, it is the unit that made the kill is not recorded."
         },
         {
           "name": "damage",
@@ -137,7 +137,7 @@
                 },
                 "1": {
                   "name": "item",
-                  "note": "An item the killer holds, named by script."
+                  "note": "An item, named by script. Whether it is one the killer holds is not recorded."
                 },
                 "2": {
                   "name": "buff",
@@ -154,12 +154,12 @@
             {
               "name": "script",
               "type": "u32",
-              "note": "The spell or effect, by the number its name gives, shown by name."
+              "note": "The spell or effect, by the number its name gives. Whether a client shows it by name is not recorded."
             },
             {
               "name": "parentScript",
               "type": "u32",
-              "note": "The spell or effect it came from, by the number its name gives, shown by name."
+              "note": "The spell or effect it came from, by the number its name gives. Whether a client shows it by name is not recorded."
             },
             {
               "name": "parentCaster",
@@ -185,12 +185,12 @@
                 {
                   "name": "category",
                   "width": 4,
-                  "note": "A client sums two entries of this sort where this, the source kinds and both spells match, and, where this is zero, the subjects match too."
+                  "note": "Whether a client sums two entries of this sort where this, the source kinds and both spells match, and, where this is zero, the subjects match too, is not recorded."
                 },
                 {
                   "name": "spellLevel",
                   "width": 3,
-                  "note": "The rank of the spell, as shown."
+                  "note": "The rank of the spell. Whether a client shows it is not recorded."
                 },
                 {
                   "name": "unused",
@@ -204,7 +204,7 @@
         {
           "name": "spent",
           "type": "u32",
-          "note": "How much gold, as shown.",
+          "note": "How much gold. Whether a client shows it is not recorded.",
           "present": {
             "when": "event",
             "equals": 18
@@ -213,7 +213,7 @@
         {
           "name": "critical",
           "type": "f32",
-          "note": "The critical strike's damage, as shown.",
+          "note": "The critical strike's damage. Whether a client shows it is not recorded.",
           "present": {
             "when": "event",
             "equals": 21
@@ -222,7 +222,7 @@
         {
           "name": "spree",
           "type": "u32",
-          "note": "How many kills in a row, as shown.",
+          "note": "How many kills in a row. Whether a client shows it is not recorded.",
           "present": {
             "when": "event",
             "equals": 39
@@ -240,7 +240,7 @@
             {
               "name": "gold",
               "type": "f32",
-              "note": "How much gold, as shown."
+              "note": "How much gold. Whether a client shows it is not recorded."
             }
           ]
         },
@@ -256,7 +256,7 @@
             {
               "name": "amount",
               "type": "f32",
-              "note": "How much health, as shown."
+              "note": "How much health. Whether a client shows it is not recorded."
             },
             {
               "name": "sourceKind",
@@ -268,7 +268,7 @@
                 },
                 "1": {
                   "name": "item",
-                  "note": "An item the killer holds, named by script."
+                  "note": "An item, named by script. Whether it is one the killer holds is not recorded."
                 },
                 "2": {
                   "name": "buff",
@@ -285,7 +285,7 @@
             {
               "name": "script",
               "type": "u32",
-              "note": "The spell or effect, by the number its name gives, shown by name."
+              "note": "The spell or effect, by the number its name gives. Whether a client shows it by name is not recorded."
             },
             {
               "name": "spellLevel",
@@ -300,7 +300,7 @@
             {
               "name": "parentScript",
               "type": "u32",
-              "note": "The spell or effect it came from, by the number its name gives, shown by name."
+              "note": "The spell or effect it came from, by the number its name gives. Whether a client shows it by name is not recorded."
             }
           ]
         },
@@ -323,7 +323,7 @@
                 },
                 "1": {
                   "name": "item",
-                  "note": "An item the killer holds, named by script."
+                  "note": "An item, named by script. Whether it is one the killer holds is not recorded."
                 },
                 "2": {
                   "name": "buff",
@@ -340,7 +340,7 @@
             {
               "name": "script",
               "type": "u32",
-              "note": "The spell or effect, by the number its name gives, shown by name."
+              "note": "The spell or effect, by the number its name gives. Whether a client shows it by name is not recorded."
             },
             {
               "name": "spellLevel",
@@ -355,7 +355,7 @@
             {
               "name": "parentScript",
               "type": "u32",
-              "note": "The spell or effect it came from, by the number its name gives, shown by name."
+              "note": "The spell or effect it came from, by the number its name gives. Whether a client shows it by name is not recorded."
             }
           ]
         },
@@ -371,7 +371,7 @@
             {
               "name": "lastHit",
               "type": "f32",
-              "note": "When it last dealt damage, in match seconds."
+              "note": "When it last dealt damage. Whether it is given in match seconds is not recorded."
             },
             {
               "name": "physical",
@@ -498,7 +498,7 @@
         {
           "name": "subject",
           "type": "u32",
-          "note": "The unit the event is about; for a death, the unit that made the kill."
+          "note": "The unit the event is about."
         },
         {
           "name": "damage",
@@ -528,8 +528,7 @@
                   "name": "spell"
                 },
                 "1": {
-                  "name": "item",
-                  "note": "An item the killer holds, named by script."
+                  "name": "item"
                 },
                 "2": {
                   "name": "buff",
@@ -546,12 +545,12 @@
             {
               "name": "script",
               "type": "u32",
-              "note": "The spell or effect, by the number its name gives, shown by name."
+              "note": "The spell or effect, by the number its name gives."
             },
             {
               "name": "parentScript",
               "type": "u32",
-              "note": "The spell or effect it came from, by the number its name gives, shown by name."
+              "note": "The spell or effect it came from, by the number its name gives."
             },
             {
               "name": "parentCaster",
@@ -576,13 +575,12 @@
                 },
                 {
                   "name": "category",
-                  "width": 4,
-                  "note": "A client sums two entries of this sort where this, the source kinds and both spells match, and, where this is zero, the subjects match too."
+                  "width": 4
                 },
                 {
                   "name": "spellLevel",
                   "width": 3,
-                  "note": "The rank of the spell, as shown."
+                  "note": "The rank of the spell."
                 },
                 {
                   "name": "unused",
@@ -596,7 +594,7 @@
         {
           "name": "spent",
           "type": "u32",
-          "note": "How much gold, as shown.",
+          "note": "How much gold.",
           "present": {
             "when": "event",
             "equals": 18
@@ -614,7 +612,7 @@
         {
           "name": "critical",
           "type": "f32",
-          "note": "The critical strike's damage, as shown.",
+          "note": "The critical strike's damage.",
           "present": {
             "when": "event",
             "equals": 21
@@ -623,7 +621,7 @@
         {
           "name": "spree",
           "type": "u32",
-          "note": "How many kills in a row, as shown.",
+          "note": "How many kills in a row.",
           "present": {
             "when": "event",
             "equals": 39
@@ -641,7 +639,7 @@
             {
               "name": "gold",
               "type": "f32",
-              "note": "How much gold, as shown."
+              "note": "How much gold."
             }
           ]
         },
@@ -657,7 +655,7 @@
             {
               "name": "amount",
               "type": "f32",
-              "note": "How much health, as shown."
+              "note": "How much health."
             },
             {
               "name": "sourceKind",
@@ -668,8 +666,7 @@
                   "name": "spell"
                 },
                 "1": {
-                  "name": "item",
-                  "note": "An item the killer holds, named by script."
+                  "name": "item"
                 },
                 "2": {
                   "name": "buff",
@@ -686,7 +683,7 @@
             {
               "name": "script",
               "type": "u32",
-              "note": "The spell or effect, by the number its name gives, shown by name."
+              "note": "The spell or effect, by the number its name gives."
             },
             {
               "name": "spellLevel",
@@ -701,7 +698,7 @@
             {
               "name": "parentScript",
               "type": "u32",
-              "note": "The spell or effect it came from, by the number its name gives, shown by name."
+              "note": "The spell or effect it came from, by the number its name gives."
             },
             {
               "name": "unused",
@@ -733,8 +730,7 @@
                   "name": "spell"
                 },
                 "1": {
-                  "name": "item",
-                  "note": "An item the killer holds, named by script."
+                  "name": "item"
                 },
                 "2": {
                   "name": "buff",
@@ -751,7 +747,7 @@
             {
               "name": "script",
               "type": "u32",
-              "note": "The spell or effect, by the number its name gives, shown by name."
+              "note": "The spell or effect, by the number its name gives."
             },
             {
               "name": "spellLevel",
@@ -766,7 +762,7 @@
             {
               "name": "parentScript",
               "type": "u32",
-              "note": "The spell or effect it came from, by the number its name gives, shown by name."
+              "note": "The spell or effect it came from, by the number its name gives."
             },
             {
               "name": "unused",
@@ -792,7 +788,7 @@
             {
               "name": "lastHit",
               "type": "f32",
-              "note": "When it last dealt damage, in match seconds."
+              "note": "When it last dealt damage."
             },
             {
               "name": "physical",
@@ -978,7 +974,7 @@
         {
           "name": "subject",
           "type": "u32",
-          "note": "The unit the event is about; for a death, the unit that made the kill."
+          "note": "The unit the event is about."
         },
         {
           "name": "damage",
@@ -1008,8 +1004,7 @@
                   "name": "spell"
                 },
                 "1": {
-                  "name": "item",
-                  "note": "An item the killer holds, named by script."
+                  "name": "item"
                 },
                 "2": {
                   "name": "buff",
@@ -1026,12 +1021,12 @@
             {
               "name": "script",
               "type": "u32",
-              "note": "The spell or effect, by the number its name gives, shown by name."
+              "note": "The spell or effect, by the number its name gives."
             },
             {
               "name": "parentScript",
               "type": "u32",
-              "note": "The spell or effect it came from, by the number its name gives, shown by name."
+              "note": "The spell or effect it came from, by the number its name gives."
             },
             {
               "name": "parentCaster",
@@ -1056,13 +1051,12 @@
                 },
                 {
                   "name": "category",
-                  "width": 4,
-                  "note": "A client sums two entries of this sort where this, the source kinds and both spells match, and, where this is zero, the subjects match too."
+                  "width": 4
                 },
                 {
                   "name": "spellLevel",
                   "width": 3,
-                  "note": "The rank of the spell, as shown."
+                  "note": "The rank of the spell."
                 },
                 {
                   "name": "unused",
@@ -1076,7 +1070,7 @@
         {
           "name": "spent",
           "type": "u32",
-          "note": "How much gold, as shown.",
+          "note": "How much gold.",
           "present": {
             "when": "event",
             "equals": 18
@@ -1094,7 +1088,7 @@
         {
           "name": "critical",
           "type": "f32",
-          "note": "The critical strike's damage, as shown.",
+          "note": "The critical strike's damage.",
           "present": {
             "when": "event",
             "equals": 21
@@ -1103,7 +1097,7 @@
         {
           "name": "spree",
           "type": "u32",
-          "note": "How many kills in a row, as shown.",
+          "note": "How many kills in a row.",
           "present": {
             "when": "event",
             "equals": 39
@@ -1121,7 +1115,7 @@
             {
               "name": "gold",
               "type": "f32",
-              "note": "How much gold, as shown."
+              "note": "How much gold."
             }
           ]
         },
@@ -1137,7 +1131,7 @@
             {
               "name": "amount",
               "type": "f32",
-              "note": "How much health, as shown."
+              "note": "How much health."
             },
             {
               "name": "sourceKind",
@@ -1148,8 +1142,7 @@
                   "name": "spell"
                 },
                 "1": {
-                  "name": "item",
-                  "note": "An item the killer holds, named by script."
+                  "name": "item"
                 },
                 "2": {
                   "name": "buff",
@@ -1166,7 +1159,7 @@
             {
               "name": "script",
               "type": "u32",
-              "note": "The spell or effect, by the number its name gives, shown by name."
+              "note": "The spell or effect, by the number its name gives."
             },
             {
               "name": "spellLevel",
@@ -1181,7 +1174,7 @@
             {
               "name": "parentScript",
               "type": "u32",
-              "note": "The spell or effect it came from, by the number its name gives, shown by name."
+              "note": "The spell or effect it came from, by the number its name gives."
             },
             {
               "name": "unused",
@@ -1213,8 +1206,7 @@
                   "name": "spell"
                 },
                 "1": {
-                  "name": "item",
-                  "note": "An item the killer holds, named by script."
+                  "name": "item"
                 },
                 "2": {
                   "name": "buff",
@@ -1231,7 +1223,7 @@
             {
               "name": "script",
               "type": "u32",
-              "note": "The spell or effect, by the number its name gives, shown by name."
+              "note": "The spell or effect, by the number its name gives."
             },
             {
               "name": "spellLevel",
@@ -1246,7 +1238,7 @@
             {
               "name": "parentScript",
               "type": "u32",
-              "note": "The spell or effect it came from, by the number its name gives, shown by name."
+              "note": "The spell or effect it came from, by the number its name gives."
             },
             {
               "name": "unused",
@@ -1272,7 +1264,7 @@
             {
               "name": "lastHit",
               "type": "f32",
-              "note": "When it last dealt damage, in match seconds."
+              "note": "When it last dealt damage."
             },
             {
               "name": "physical",
@@ -1458,7 +1450,7 @@
         {
           "name": "subject",
           "type": "u32",
-          "note": "The unit the event is about; for a death, the unit that made the kill."
+          "note": "The unit the event is about."
         },
         {
           "name": "damage",
@@ -1488,8 +1480,7 @@
                   "name": "spell"
                 },
                 "1": {
-                  "name": "item",
-                  "note": "An item the killer holds, named by script."
+                  "name": "item"
                 },
                 "2": {
                   "name": "buff",
@@ -1506,12 +1497,12 @@
             {
               "name": "script",
               "type": "u32",
-              "note": "The spell or effect, by the number its name gives, shown by name."
+              "note": "The spell or effect, by the number its name gives."
             },
             {
               "name": "parentScript",
               "type": "u32",
-              "note": "The spell or effect it came from, by the number its name gives, shown by name."
+              "note": "The spell or effect it came from, by the number its name gives."
             },
             {
               "name": "parentCaster",
@@ -1536,13 +1527,12 @@
                 },
                 {
                   "name": "category",
-                  "width": 4,
-                  "note": "A client sums two entries of this sort where this, the source kinds and both spells match, and, where this is zero, the subjects match too."
+                  "width": 4
                 },
                 {
                   "name": "spellLevel",
                   "width": 3,
-                  "note": "The rank of the spell, as shown."
+                  "note": "The rank of the spell."
                 },
                 {
                   "name": "unused",
@@ -1556,7 +1546,7 @@
         {
           "name": "spent",
           "type": "u32",
-          "note": "How much gold, as shown.",
+          "note": "How much gold.",
           "present": {
             "when": "event",
             "equals": 18
@@ -1574,7 +1564,7 @@
         {
           "name": "critical",
           "type": "f32",
-          "note": "The critical strike's damage, as shown.",
+          "note": "The critical strike's damage.",
           "present": {
             "when": "event",
             "equals": 21
@@ -1583,7 +1573,7 @@
         {
           "name": "spree",
           "type": "u32",
-          "note": "How many kills in a row, as shown.",
+          "note": "How many kills in a row.",
           "present": {
             "when": "event",
             "equals": 39
@@ -1601,7 +1591,7 @@
             {
               "name": "gold",
               "type": "f32",
-              "note": "How much gold, as shown."
+              "note": "How much gold."
             }
           ]
         },
@@ -1617,7 +1607,7 @@
             {
               "name": "amount",
               "type": "f32",
-              "note": "How much health, as shown."
+              "note": "How much health."
             },
             {
               "name": "sourceKind",
@@ -1628,8 +1618,7 @@
                   "name": "spell"
                 },
                 "1": {
-                  "name": "item",
-                  "note": "An item the killer holds, named by script."
+                  "name": "item"
                 },
                 "2": {
                   "name": "buff",
@@ -1646,7 +1635,7 @@
             {
               "name": "script",
               "type": "u32",
-              "note": "The spell or effect, by the number its name gives, shown by name."
+              "note": "The spell or effect, by the number its name gives."
             },
             {
               "name": "spellLevel",
@@ -1661,7 +1650,7 @@
             {
               "name": "parentScript",
               "type": "u32",
-              "note": "The spell or effect it came from, by the number its name gives, shown by name."
+              "note": "The spell or effect it came from, by the number its name gives."
             },
             {
               "name": "unused",
@@ -1693,8 +1682,7 @@
                   "name": "spell"
                 },
                 "1": {
-                  "name": "item",
-                  "note": "An item the killer holds, named by script."
+                  "name": "item"
                 },
                 "2": {
                   "name": "buff",
@@ -1711,7 +1699,7 @@
             {
               "name": "script",
               "type": "u32",
-              "note": "The spell or effect, by the number its name gives, shown by name."
+              "note": "The spell or effect, by the number its name gives."
             },
             {
               "name": "spellLevel",
@@ -1726,7 +1714,7 @@
             {
               "name": "parentScript",
               "type": "u32",
-              "note": "The spell or effect it came from, by the number its name gives, shown by name."
+              "note": "The spell or effect it came from, by the number its name gives."
             },
             {
               "name": "unused",
@@ -1752,7 +1740,7 @@
             {
               "name": "lastHit",
               "type": "f32",
-              "note": "When it last dealt damage, in match seconds."
+              "note": "When it last dealt damage."
             },
             {
               "name": "physical",

@@ -188,7 +188,7 @@
     },
     {
       "from": "1.0.0.86",
-      "until": "1.0.0.96",
+      "until": "1.0.0.87",
       "channel": "requests",
       "command": 128,
       "direction": "clientToServer",
@@ -228,6 +228,49 @@
         }
       ],
       "note": "What a client sends for every WaypointGroup it takes, and for every WaypointGroupAtSpeed. The header names no object: it carries zero. It lists the units whose movements in the group carried a token, with that token."
+    },
+    {
+      "from": "1.0.0.87",
+      "until": "1.0.0.96",
+      "channel": "requests",
+      "command": 128,
+      "direction": "clientToServer",
+      "reliability": "unsequenced",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u32",
+          "note": "The number of the group it answers, as the group named itself."
+        },
+        {
+          "name": "relocationCount",
+          "type": "u8",
+          "note": "How many relocations follow: answering a group, how many of its paths carried a teleport token. Answering a path for one unit, a client sends only syncId and this byte, unwritten, on the transient channel, and no relocations, so a server reads nothing in it there."
+        },
+        {
+          "name": "relocations",
+          "type": "array",
+          "count": "relocationCount",
+          "items": {
+            "name": "relocation",
+            "type": "record",
+            "fields": [
+              {
+                "name": "unit",
+                "type": "u32",
+                "note": "The unit the token belonged to."
+              },
+              {
+                "name": "token",
+                "type": "u8",
+                "note": "The token that arrived with it."
+              }
+            ]
+          },
+          "note": "Each of those, in the group's order."
+        }
+      ],
+      "note": "What a client sends for every WaypointGroup it takes, and for every WaypointGroupAtSpeed. The header names no object: it carries zero."
     },
     {
       "from": "1.0.0.96",
@@ -993,8 +1036,7 @@
             ]
           }
         }
-      ],
-      "note": "It lists the units whose movements in the group carried a token, with that token."
+      ]
     },
     {
       "from": "1.0.0.144",
@@ -1289,7 +1331,7 @@
     },
     {
       "from": "3.6.0.388",
-      "until": "3.10.0.237",
+      "until": "3.7.0.328",
       "channel": "requests",
       "command": 118,
       "direction": "clientToServer",
@@ -1328,6 +1370,47 @@
         }
       ],
       "note": "It lists the units whose movements in the group carried a token, with that token."
+    },
+    {
+      "from": "3.7.0.328",
+      "until": "3.10.0.237",
+      "channel": "requests",
+      "command": 118,
+      "direction": "clientToServer",
+      "reliability": "unsequenced",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u32",
+          "note": "Which group is being acknowledged, as the group named itself."
+        },
+        {
+          "name": "relocationCount",
+          "type": "u8",
+          "note": "How many relocations follow."
+        },
+        {
+          "name": "relocations",
+          "type": "array",
+          "count": "relocationCount",
+          "items": {
+            "name": "relocation",
+            "type": "record",
+            "fields": [
+              {
+                "name": "unit",
+                "type": "u32",
+                "note": "The unit the token belonged to."
+              },
+              {
+                "name": "token",
+                "type": "u8",
+                "note": "The token that arrived with it."
+              }
+            ]
+          }
+        }
+      ]
     },
     {
       "from": "3.10.0.237",
@@ -1410,8 +1493,7 @@
             ]
           }
         }
-      ],
-      "note": "It lists the units whose movements in the group carried a token, with that token."
+      ]
     },
     {
       "from": "3.13.0.399",
@@ -1457,6 +1539,47 @@
     },
     {
       "from": "3.14.0.700",
+      "until": "4.4.0.1858",
+      "channel": "requests",
+      "command": 118,
+      "direction": "clientToServer",
+      "reliability": "unsequenced",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u32",
+          "note": "Which group is being acknowledged, as the group named itself."
+        },
+        {
+          "name": "relocationCount",
+          "type": "u8",
+          "note": "How many relocations follow."
+        },
+        {
+          "name": "relocations",
+          "type": "array",
+          "count": "relocationCount",
+          "items": {
+            "name": "relocation",
+            "type": "record",
+            "fields": [
+              {
+                "name": "unit",
+                "type": "u32",
+                "note": "The unit the token belonged to."
+              },
+              {
+                "name": "token",
+                "type": "u8",
+                "note": "The token that arrived with it."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "from": "4.4.0.1858",
       "until": "4.5.0.260",
       "channel": "requests",
       "command": 118,
@@ -1536,8 +1659,7 @@
             ]
           }
         }
-      ],
-      "note": "It lists the units whose movements in the group carried a token."
+      ]
     },
     {
       "from": "4.11.0.386",
@@ -1578,8 +1700,7 @@
             ]
           }
         }
-      ],
-      "note": "It lists the units whose movements in the group carried a token."
+      ]
     },
     {
       "from": "4.17.0.233",

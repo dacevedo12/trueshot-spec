@@ -547,12 +547,11 @@
           "type": "f32",
           "note": "Along the other ground axis, in world units."
         }
-      ],
-      "note": "The view keeps to the point."
+      ]
     },
     {
       "from": "1.0.0.132",
-      "until": "1.0.0.138",
+      "until": "1.0.0.133",
       "channel": "events",
       "command": 119,
       "direction": "serverToClient",
@@ -574,10 +573,60 @@
           "note": "Along the other ground axis, in world units."
         }
       ],
-      "note": "The view keeps to the point."
+      "note": "Whether the view keeps to the point is not recorded."
+    },
+    {
+      "from": "1.0.0.133",
+      "until": "1.0.0.138",
+      "channel": "events",
+      "command": 119,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Along one ground axis, in world units."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "In height, in world units."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Along the other ground axis, in world units."
+        }
+      ]
     },
     {
       "from": "1.0.0.138",
+      "until": "1.0.0.140",
+      "channel": "events",
+      "command": 121,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Along one ground axis, in world units."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "In height, in world units."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Along the other ground axis, in world units."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.140",
       "until": "1.0.0.141",
       "channel": "events",
       "command": 121,

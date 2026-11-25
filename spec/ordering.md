@@ -106,7 +106,7 @@ batch.
 | --------------------------------------- | ------------------------------------------------------------------------ |
 | `QueryStatusAnswer`                     | nothing; it asks again with `QueryStatus` until told the server is ready |
 | `WaypointGroup`, `WaypointGroupAtSpeed` | `WaypointAck` for each group, taken or not (see [Movement](movement.md)) |
-| `Replication`                           | `TransientAck`, where every unit the batch names is held                 |
+| `Replication`                           | `TransientAck`, only where every unit the batch names is held            |
 | `ClockSync`                             | `ClockReply`, on the clock channel (see [Time](time.md))                 |
 
 A client sends the answers above when it plays a match, not while it plays back

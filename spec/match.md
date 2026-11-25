@@ -301,8 +301,8 @@ A server ends the hold with `Resumed`.
 ## The end
 
 A server ends the match with `GameEnded`, saying which side won, and sends
-`HudDisabled` (see [The interface](interface.md#the-minimap-and-text-on-screen)). A client shows the win or loss for its
-player's side and sends `ClientFinished`.
+`HudDisabled` (see [The interface](interface.md#the-minimap-and-text-on-screen)). A client that receives
+`GameEnded` in play shows the win or loss for its player's side.
 
 <!-- holds from 0.8.13.26 up to 1.0.0.97 -->
 
@@ -385,12 +385,18 @@ player's side and sends `ClientFinished`.
 >
 > Before it leaves, it shows an error where it has no champion of its own yet.
 
+<!-- holds from 1.0.0.150 up to 3.03.0.198 -->
+
+> **In 1.0.0.150–3.02**
+>
+> A client sends `ClientFinished` every time `GameEnded` arrives in play, and
+> none while watching a match or playing a replay.
+
 <!-- holds from 1.0.0.150 up to 1.0.0.151 -->
 
 > **In 1.0.0.150**
 >
-> A client sends `ClientFinished` every time `GameEnded` arrives in play, and
-> none while watching a match or playing a replay. A client that receives
+> A client that receives
 > `GameEnded` while still loading sends neither `ClientFinished` nor `Exit`.
 > Where it has a champion of its own it leaves at once; otherwise it first shows
 > an error, and leaves once its player dismisses it.
@@ -418,9 +424,9 @@ player's side and sends `ClientFinished`.
 >
 > A client that receives `GameEnded` while still loading leaves at once.
 
-<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+<!-- holds from 3.04.0.78 up to 4.4.0.1858 -->
 
-> **In 3.10**
+> **In 3.04–4.3**
 >
 > A client sends `ClientFinished` every time `GameEnded` arrives in play, and
 > not while playing a replay.
@@ -463,6 +469,12 @@ player's side and sends `ClientFinished`.
 > that receives `GameEnded` while still loading sends neither `ClientFinished`
 > nor `Exit`; where it has no champion of its own yet, it first shows an error,
 > and leaves once its player dismisses it.
+
+<!-- holds from 4.18.0.271 up to 4.21.0.0 -->
+
+> **In 4.18–4.20**
+>
+> A client sends `ClientFinished` for a `GameEnded` that arrives in play.
 
 `VictoryDance` sets units moving as winners or losers do. It ends nothing.
 
@@ -755,12 +767,19 @@ A server tells the others that a player's client dropped with
 > A client whose connection drops before play begins, once the registration
 > answer has given it its own client id, leaves rather than connecting again.
 
-<!-- holds from 1.0.0.126 up to 1.0.0.133 -->
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
-> **In 1.0.0.126–1.0.0.132**
+> **In 1.0.0.126**
 >
 > A client whose connection drops before play begins leaves rather than
 > connecting again.
+
+<!-- holds from 1.0.0.132 up to 1.0.0.133 -->
+
+> **In 1.0.0.132**
+>
+> Whether a client whose connection drops before play begins leaves rather
+> than connecting again is not recorded.
 
 <!-- holds from 1.0.0.140 up to 3.11.0.306 -->
 

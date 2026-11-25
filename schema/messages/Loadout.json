@@ -21,7 +21,7 @@
           "items": {
             "name": "rune",
             "type": "u32",
-            "note": "One rune, by the number the client knows it as."
+            "note": "One rune. Whether it is given by the number the client knows it as is not recorded."
           }
         },
         {
@@ -49,7 +49,7 @@
         {
           "name": "level",
           "type": "u8",
-          "note": "The player's account level."
+          "note": "Whether it is the player's account level is not recorded."
         }
       ]
     },
@@ -69,7 +69,7 @@
           "items": {
             "name": "rune",
             "type": "u32",
-            "note": "One rune, by the number the client knows it as."
+            "note": "One rune."
           }
         },
         {
@@ -96,8 +96,7 @@
         },
         {
           "name": "level",
-          "type": "u8",
-          "note": "The player's account level."
+          "type": "u8"
         }
       ]
     },
@@ -1421,7 +1420,7 @@
         {
           "name": "wardSkin",
           "type": "u8",
-          "note": "What the champion's wards look like."
+          "note": "Whether it says what the champion's wards look like is not recorded."
         }
       ]
     },
@@ -1432,7 +1431,7 @@
       "command": 41,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "Whether a client's shop is set up by the Loadout of its own champion, opening empty until that arrives, with no items, no suggested items and no builds, and drawn at a size that does not fit the screen, is not recorded. A server sends one for every champion at spawning, between SpawnStart and SpawnEnd. It also says what the champion's wards look like.",
+      "note": "Whether a client's shop is set up by the Loadout of its own champion, opening empty until that arrives, with no items, no suggested items and no builds, and drawn at a size that does not fit the screen, is not recorded. A server sends one for every champion at spawning, between SpawnStart and SpawnEnd. Whether it also says what the champion's wards look like is not recorded.",
       "fields": [
         {
           "name": "runes",
@@ -1475,7 +1474,7 @@
         {
           "name": "wardSkin",
           "type": "u8",
-          "note": "What the champion's wards look like."
+          "note": "Whether it says what the champion's wards look like is not recorded."
         }
       ]
     },
@@ -1486,7 +1485,7 @@
       "command": 41,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A server sends one for every champion at spawning, between SpawnStart and SpawnEnd. It also says what the champion's wards look like.",
+      "note": "A server sends one for every champion at spawning, between SpawnStart and SpawnEnd. Whether it also says what the champion's wards look like is not recorded.",
       "fields": [
         {
           "name": "runes",
@@ -1529,7 +1528,7 @@
         {
           "name": "wardSkin",
           "type": "u8",
-          "note": "What the champion's wards look like."
+          "note": "Whether it says what the champion's wards look like is not recorded."
         }
       ]
     },
@@ -1540,7 +1539,7 @@
       "command": 41,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client sets the champion's two summoner spell slots from summoners, and changes nothing in the shop. A server sends one for every champion at spawning, between SpawnStart and SpawnEnd. It also says what the champion's wards look like.",
+      "note": "A client sets the champion's two summoner spell slots from summoners, and changes nothing in the shop. A server sends one for every champion at spawning, between SpawnStart and SpawnEnd. Whether it also says what the champion's wards look like is not recorded.",
       "fields": [
         {
           "name": "runes",
@@ -1583,7 +1582,7 @@
         {
           "name": "wardSkin",
           "type": "u8",
-          "note": "What the champion's wards look like."
+          "note": "Whether it says what the champion's wards look like is not recorded."
         }
       ]
     },
@@ -1594,7 +1593,7 @@
       "command": 41,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A server sends one for every champion at spawning, between SpawnStart and SpawnEnd. It also says what the champion's wards look like.",
+      "note": "A server sends one for every champion at spawning, between SpawnStart and SpawnEnd. Whether it also says what the champion's wards look like is not recorded.",
       "fields": [
         {
           "name": "runes",
@@ -1631,13 +1630,12 @@
         },
         {
           "name": "level",
-          "type": "u8",
-          "note": "The player's account level."
+          "type": "u8"
         },
         {
           "name": "wardSkin",
           "type": "u8",
-          "note": "What the champion's wards look like."
+          "note": "Whether it says what the champion's wards look like is not recorded."
         }
       ]
     },
@@ -1648,7 +1646,7 @@
       "command": 41,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "Whether a client's shop is set up by the Loadout of its own champion, opening empty until that arrives, with no items, no suggested items and no builds, and drawn at a size that does not fit the screen, is not recorded. A server sends one for every champion at spawning, between SpawnStart and SpawnEnd. It also says what the champion's wards look like.",
+      "note": "Whether a client's shop is set up by the Loadout of its own champion, opening empty until that arrives, with no items, no suggested items and no builds, and drawn at a size that does not fit the screen, is not recorded. A server sends one for every champion at spawning, between SpawnStart and SpawnEnd. Whether it also says what the champion's wards look like is not recorded.",
       "fields": [
         {
           "name": "runes",
@@ -1686,12 +1684,12 @@
         {
           "name": "level",
           "type": "u8",
-          "note": "The player's account level."
+          "note": "Whether it is the player's account level is not recorded."
         },
         {
           "name": "wardSkin",
           "type": "u8",
-          "note": "What the champion's wards look like."
+          "note": "Whether it says what the champion's wards look like is not recorded."
         }
       ]
     },
@@ -1702,7 +1700,7 @@
       "command": 41,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A server sends one for every champion at spawning, between SpawnStart and SpawnEnd. It also says what the champion's wards look like.",
+      "note": "A server sends one for every champion at spawning, between SpawnStart and SpawnEnd. Whether it also says what the champion's wards look like is not recorded.",
       "fields": [
         {
           "name": "runes",
@@ -1740,12 +1738,12 @@
         {
           "name": "level",
           "type": "u8",
-          "note": "The player's account level."
+          "note": "Whether it is the player's account level is not recorded."
         },
         {
           "name": "wardSkin",
           "type": "u8",
-          "note": "What the champion's wards look like."
+          "note": "Whether it says what the champion's wards look like is not recorded."
         }
       ]
     },
@@ -1756,7 +1754,7 @@
       "command": 41,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client loads each nonzero spell in summoners into its slot, and reads neither level nor wardSkin. A server sends one for every champion at spawning, between SpawnStart and SpawnEnd. It also says what the champion's wards look like.",
+      "note": "A client loads each nonzero spell in summoners into its slot, and reads neither level nor wardSkin. A server sends one for every champion at spawning, between SpawnStart and SpawnEnd. Whether it also says what the champion's wards look like is not recorded.",
       "fields": [
         {
           "name": "runes",
@@ -1794,12 +1792,12 @@
         {
           "name": "level",
           "type": "u8",
-          "note": "The player's account level."
+          "note": "Whether it is the player's account level is not recorded."
         },
         {
           "name": "wardSkin",
           "type": "u8",
-          "note": "What the champion's wards look like."
+          "note": "Whether it says what the champion's wards look like is not recorded."
         }
       ]
     },
@@ -1810,7 +1808,7 @@
       "command": 41,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A server sends one for every champion at spawning, between SpawnStart and SpawnEnd. It also says what the champion's wards look like.",
+      "note": "A server sends one for every champion at spawning, between SpawnStart and SpawnEnd.",
       "fields": [
         {
           "name": "runes",
@@ -1847,13 +1845,11 @@
         },
         {
           "name": "level",
-          "type": "u8",
-          "note": "The player's account level."
+          "type": "u8"
         },
         {
           "name": "wardSkin",
-          "type": "u8",
-          "note": "What the champion's wards look like."
+          "type": "u8"
         }
       ]
     },
@@ -1967,6 +1963,68 @@
     },
     {
       "from": "4.18.0.271",
+      "until": "4.20.0.315",
+      "channel": "events",
+      "command": 42,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "runes",
+          "type": "array",
+          "count": 30,
+          "note": "The runes set before the match, thirty places in runs of nine, nine, nine and three. A place holds zero where nothing was set.",
+          "items": {
+            "name": "rune",
+            "type": "u32",
+            "note": "One rune, by the number the client knows it as."
+          }
+        },
+        {
+          "name": "summoners",
+          "type": "array",
+          "count": 2,
+          "note": "The spells in the champion's summoner slots.",
+          "items": {
+            "name": "summoner",
+            "type": "u32",
+            "note": "One spell."
+          }
+        },
+        {
+          "name": "summonersAgain",
+          "type": "array",
+          "count": 2,
+          "note": "The same two spells a second time. A server writes them twice, and both runs agree.",
+          "items": {
+            "name": "summoner",
+            "type": "u32",
+            "note": "One spell."
+          }
+        },
+        {
+          "name": "choices",
+          "type": "array",
+          "count": 80,
+          "note": "The choices made alongside them, one place each, and how far each was taken. A place stands empty where nothing was chosen.",
+          "items": {
+            "name": "choice",
+            "type": "struct",
+            "struct": "Choice"
+          }
+        },
+        {
+          "name": "level",
+          "type": "u8"
+        },
+        {
+          "name": "wardSkin",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "from": "4.20.0.315",
       "until": "4.21.0.0",
       "channel": "events",
       "command": 42,
@@ -2020,15 +2078,15 @@
         {
           "name": "level",
           "type": "u8",
-          "note": "The level the champion starts at."
+          "note": "Whether it is the level the champion starts at is not recorded."
         },
         {
           "name": "wardSkin",
           "type": "u8",
-          "note": "What the champion's wards look like."
+          "note": "Whether it says what the champion's wards look like is not recorded."
         }
       ],
-      "note": "It also says what the champion's wards look like."
+      "note": "Whether it also says what the champion's wards look like is not recorded."
     }
   ]
 }

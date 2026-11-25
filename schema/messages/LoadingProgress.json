@@ -1285,12 +1285,11 @@
         {
           "name": "percent",
           "type": "f32",
-          "note": "How far loading has got, from zero to one hundred."
+          "note": "How far loading has got."
         },
         {
           "name": "eta",
-          "type": "f32",
-          "note": "How long the client expects still to take, in seconds."
+          "type": "f32"
         },
         {
           "name": "status",
@@ -1299,8 +1298,7 @@
           "bits": [
             {
               "name": "count",
-              "width": 16,
-              "note": "It rises with each report, not always by one."
+              "width": 16
             },
             {
               "name": "ping",
@@ -1321,8 +1319,7 @@
           "bits": [
             {
               "name": "loaded",
-              "width": 1,
-              "note": "Set in every report whose progress stands at one hundred, and in no other."
+              "width": 1
             },
             {
               "name": "unused",
@@ -1354,12 +1351,12 @@
         {
           "name": "percent",
           "type": "f32",
-          "note": "How far loading has got, from zero to one hundred."
+          "note": "How far loading has got. Whether it runs from zero to one hundred is not recorded."
         },
         {
           "name": "eta",
           "type": "f32",
-          "note": "How long the client expects still to take, in seconds."
+          "note": "Whether it gives how long the client expects still to take, in seconds, is not recorded."
         },
         {
           "name": "status",
@@ -1369,7 +1366,7 @@
             {
               "name": "count",
               "width": 16,
-              "note": "It rises with each report, not always by one."
+              "note": "Whether it rises with each report, not always by one, is not recorded."
             },
             {
               "name": "ping",
@@ -1391,7 +1388,7 @@
             {
               "name": "loaded",
               "width": 1,
-              "note": "Set in every report whose progress stands at one hundred, and in no other."
+              "note": "Whether it is set in every report whose progress stands at one hundred, and in no other, is not recorded."
             },
             {
               "name": "unused",
@@ -1423,12 +1420,11 @@
         {
           "name": "percent",
           "type": "f32",
-          "note": "How far loading has got, from zero to one hundred."
+          "note": "How far loading has got."
         },
         {
           "name": "eta",
-          "type": "f32",
-          "note": "How long the client expects still to take, in seconds."
+          "type": "f32"
         },
         {
           "name": "status",
@@ -1437,8 +1433,7 @@
           "bits": [
             {
               "name": "count",
-              "width": 16,
-              "note": "It rises with each report, not always by one."
+              "width": 16
             },
             {
               "name": "ping",
@@ -1459,8 +1454,7 @@
           "bits": [
             {
               "name": "loaded",
-              "width": 1,
-              "note": "Set in every report whose progress stands at one hundred, and in no other."
+              "width": 1
             },
             {
               "name": "unused",
@@ -1492,12 +1486,11 @@
         {
           "name": "percent",
           "type": "f32",
-          "note": "How far loading has got, from zero to one hundred."
+          "note": "How far loading has got."
         },
         {
           "name": "eta",
-          "type": "f32",
-          "note": "How long the client expects still to take, in seconds."
+          "type": "f32"
         },
         {
           "name": "status",
@@ -1506,8 +1499,7 @@
           "bits": [
             {
               "name": "count",
-              "width": 16,
-              "note": "It rises with each report, not always by one."
+              "width": 16
             },
             {
               "name": "ping",
@@ -1528,8 +1520,7 @@
           "bits": [
             {
               "name": "loaded",
-              "width": 1,
-              "note": "Set in every report whose progress stands at one hundred, and in no other."
+              "width": 1
             },
             {
               "name": "unused",
@@ -1561,12 +1552,11 @@
         {
           "name": "percent",
           "type": "f32",
-          "note": "How far loading has got, from zero to one hundred."
+          "note": "How far loading has got."
         },
         {
           "name": "eta",
-          "type": "f32",
-          "note": "How long the client expects still to take, in seconds."
+          "type": "f32"
         },
         {
           "name": "status",
@@ -1575,8 +1565,7 @@
           "bits": [
             {
               "name": "count",
-              "width": 16,
-              "note": "It rises with each report, not always by one."
+              "width": 16
             },
             {
               "name": "ping",
@@ -1585,8 +1574,7 @@
             },
             {
               "name": "loaded",
-              "width": 1,
-              "note": "Set in every report whose progress stands at one hundred, and in no other."
+              "width": 1
             }
           ]
         }
@@ -1937,7 +1925,7 @@
             {
               "name": "count",
               "width": 16,
-              "note": "It rises with each report, not always by one."
+              "note": "Whether it rises with each report, not always by one, is not recorded."
             },
             {
               "name": "ping",
@@ -1947,7 +1935,7 @@
             {
               "name": "loaded",
               "width": 1,
-              "note": "Set in every report whose progress stands at one hundred, and in no other."
+              "note": "Whether it is set in every report whose progress stands at one hundred, and in no other, is not recorded."
             }
           ]
         }
@@ -1956,6 +1944,56 @@
     },
     {
       "from": "3.11.0.306",
+      "until": "3.13.0.399",
+      "channel": "requests",
+      "command": 22,
+      "direction": "clientToServer",
+      "reliability": "unreliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the client reporting."
+        },
+        {
+          "name": "playerId",
+          "type": "i64",
+          "note": "Who is reporting. A client sends every bit set, which names nobody."
+        },
+        {
+          "name": "percent",
+          "type": "f32",
+          "note": "How far loading has got, from zero to one hundred."
+        },
+        {
+          "name": "eta",
+          "type": "f32",
+          "note": "How long the client expects still to take, in seconds."
+        },
+        {
+          "name": "status",
+          "type": "bits",
+          "size": 4,
+          "bits": [
+            {
+              "name": "count",
+              "width": 16
+            },
+            {
+              "name": "ping",
+              "width": 15,
+              "note": "Round trip time the client measures, in milliseconds."
+            },
+            {
+              "name": "loaded",
+              "width": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "from": "3.13.0.399",
       "until": "4.18.0.271",
       "channel": "requests",
       "command": 22,

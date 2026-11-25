@@ -243,9 +243,15 @@ Moments on the match clock include:
 
 - when a monster arrives (`CreateNeutral`'s `spawnAt`, where it carries one);
 - when a prop's animation starts (`MapPropChanged`, where it carries one);
-- when an assisting unit last dealt damage (`ClientEvent`);
 - when a champion's passive comes off cooldown, where a client is told it (see
   [Replication](replication.md)).
+
+<!-- holds from 0.9.25.24 up to 4.21.0.0 -->
+
+> **In 0.9.25.24–4.20**
+>
+> When an assisting unit last dealt damage (`ClientEvent`) is a moment on the
+> match clock too.
 
 <!-- holds from 0.8.13.26 up to 3.14.0.700 -->
 

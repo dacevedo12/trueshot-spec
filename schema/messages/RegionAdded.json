@@ -3731,8 +3731,7 @@
             },
             {
               "name": "revealHidden",
-              "width": 1,
-              "note": "Set to show hidden units within it, where grantSight is set."
+              "width": 1
             },
             {
               "name": "unused",
@@ -3834,12 +3833,12 @@
             {
               "name": "grantSight",
               "width": 1,
-              "note": "Set to turn on the region's sight; sightFrom and revealHidden apply only where it is set. Where it is set, a client clears its map's cover over the region."
+              "note": "Set to turn on the region's sight; sightFrom and revealHidden apply only where it is set. Whether, where it is set, a client clears its map's cover over the region is not recorded."
             },
             {
               "name": "revealHidden",
               "width": 1,
-              "note": "Set to show hidden units within it, where grantSight is set."
+              "note": "Whether, where grantSight is set, a client shows hidden units within it is not recorded."
             },
             {
               "name": "unused",

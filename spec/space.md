@@ -61,8 +61,8 @@ A direction is carried as a vector, not as an angle:
 > where both are 0.
 
 A champion carries no facing of its own when created.
-[The client's data](data.md#what-a-server-reads) says where it begins and which
-way it faces.
+[The client's data](data.md#what-a-server-reads) says where it begins, and
+which way it faces where it sets one.
 
 <!-- holds from 0.8.13.26 up to 0.9.22.14 -->
 

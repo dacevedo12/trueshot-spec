@@ -111,9 +111,9 @@ its name over it.
 ## Losing sight
 
 `LeaveSight` and `LeaveTeamSight` take a unit out of the matching view, and
-leave it held (see [Objects and identifiers](objects.md)). Particles come into
-and leave a side's view with `ParticleEnterTeamSight` and
-`ParticleLeaveTeamSight`.
+leave it held (see [Objects and identifiers](objects.md)). A server sends
+`ParticleEnterTeamSight` as a particle comes into a side's view and
+`ParticleLeaveTeamSight` as one leaves it.
 
 <!-- holds from 0.8.13.26 up to 0.9.25.36 -->
 
@@ -169,12 +169,24 @@ and leave a side's view with `ParticleEnterTeamSight` and
 
 ## Regions
 
-A region is a patch of ground with sight of its own, which can reveal hidden
-units within it. A server places one with `RegionAdded` or fastens one to a
+A region is a patch of ground with sight of its own. A server places one with `RegionAdded` or fastens one to a
 unit with `RegionAttached`, moves it with `RegionMoved` and takes it away with
 `RegionRemoved`; [Objects and identifiers](objects.md) says how regions are
-named and when one ends. A region granting sight has a client clear its map's
-cover over it.
+named and when one ends.
+
+<!-- holds from 0.8.13.26 up to 4.18.0.271 -->
+
+> **In 0.8.13.26–4.17**
+>
+> A region can reveal hidden units within it. A region granting sight has a
+> client clear its map's cover over it.
+
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
+>
+> Whether a region can reveal hidden units within it is not recorded, nor
+> whether a region granting sight has a client clear its map's cover over it.
 
 <!-- holds from 1.0.0.126 up to 4.18.0.271 -->
 

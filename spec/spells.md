@@ -143,8 +143,6 @@ fills in the numbers a client shows beside a unit's spells, and
 `SpellCostChanged` changes what a spell costs. A server can also draw rings
 around its player's cursor with `CursorRings`.
 
-A marker has no slots.
-
 <!-- holds from 1.0.0.150 up to 1.0.0.151 -->
 
 > **In 1.0.0.150**
@@ -155,8 +153,8 @@ A marker has no slots.
 
 > **In 4.17–4.20**
 >
-> A server MUST NOT send `SpellInSlot` naming a marker: a client fails on it,
-> whatever the slot.
+> A marker has no slots. A server MUST NOT send `SpellInSlot` naming a marker: a
+> client fails on it, whatever the slot.
 
 <!-- holds from 1.0.0.96 up to 1.0.0.111 -->
 

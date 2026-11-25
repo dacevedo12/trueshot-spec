@@ -247,7 +247,7 @@
     },
     {
       "from": "3.9.0.491",
-      "until": "3.14.0.700",
+      "until": "3.11.0.306",
       "channel": "events",
       "command": 11,
       "direction": "serverToClient",
@@ -274,6 +274,70 @@
           "name": "left",
           "type": "u8",
           "note": "How many are left in the slot; zero empties it, item and charges cleared. Either way a client cancels any spell or action its player had picked."
+        }
+      ]
+    },
+    {
+      "from": "3.11.0.306",
+      "until": "3.13.0.399",
+      "channel": "events",
+      "command": 11,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "which",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "slot",
+              "width": 7,
+              "note": "Which slot. A client changes nothing from 38 up."
+            },
+            {
+              "name": "notify",
+              "width": 1,
+              "note": "Set to have a client tell its screens the inventory changed; clear still updates the slot, quietly."
+            }
+          ]
+        },
+        {
+          "name": "left",
+          "type": "u8",
+          "note": "How many are left in the slot; zero empties it, item and charges cleared."
+        }
+      ]
+    },
+    {
+      "from": "3.13.0.399",
+      "until": "3.14.0.700",
+      "channel": "events",
+      "command": 11,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "which",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "slot",
+              "width": 7,
+              "note": "Which slot. A client changes nothing from 38 up."
+            },
+            {
+              "name": "notify",
+              "width": 1,
+              "note": "Set to have a client tell its screens the inventory changed; clear still updates the slot, quietly."
+            }
+          ]
+        },
+        {
+          "name": "left",
+          "type": "u8",
+          "note": "How many are left in the slot; zero empties it, item and charges cleared. Whether a client cancels any spell or action its player had picked is not recorded."
         }
       ]
     },
@@ -305,7 +369,7 @@
         {
           "name": "left",
           "type": "u8",
-          "note": "How many are left in the slot; zero empties it, item and charges cleared. Either way a client cancels any spell or action its player had picked."
+          "note": "How many are left in the slot; zero empties it, item and charges cleared."
         }
       ]
     },

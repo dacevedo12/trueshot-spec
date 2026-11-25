@@ -76,7 +76,8 @@ reports what each blow does with `Damage`.
 > swing lets go, with no further message while the attacker is in view. A swing
 > that nothing interrupts finishes by itself.
 
-`TargetUnit` draws a unit's targeting beam at what it is attacking.
+`TargetUnit` draws a unit's targeting beam at what it is attacking, where the
+target and the unit's own settings allow.
 
 <!-- holds from 0.8.13.26 up to 1.0.0.97 -->
 

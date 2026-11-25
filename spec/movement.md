@@ -419,8 +419,7 @@ says what a client does with a movement whose unit it does not hold.
 > **In 1.0.0.96–4.20**
 >
 > A movement whose flag says so carries a token beside the unit (see
-> `Movement`). A receiving end remembers one token for each unit, beginning at
-> zero.
+> `Movement`). A receiving end remembers one token for each unit.
 >
 > A token unlike the remembered one puts the unit where the path begins rather
 > than walking it there, where either ground axis differs by more than fifty
@@ -431,6 +430,51 @@ says what a client does with a movement whose unit it does not hold.
 > unfamiliar one arriving while the unit is near enough. In both the path is
 > followed and the remembered token kept, so a token is taken up only once it
 > has moved something.
+
+<!-- holds from 1.0.0.96 up to 1.0.0.111 -->
+
+> **In 1.0.0.96–1.0.0.110**
+>
+> The token a receiving end remembers for a unit begins at zero.
+
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
+
+> **In 1.0.0.126**
+>
+> Whether the token a receiving end remembers for a unit begins at zero is not
+> recorded.
+
+<!-- holds from 1.0.0.132 up to 1.0.0.133 -->
+
+> **In 1.0.0.132**
+>
+> The token a receiving end remembers for a unit begins at zero.
+
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+
+> **In 1.0.0.140**
+>
+> Whether the token a receiving end remembers for a unit begins at zero is not
+> recorded.
+
+<!-- holds from 1.0.0.150 up to 4.17.0.233 -->
+
+> **In 1.0.0.150–4.16**
+>
+> The token a receiving end remembers for a unit begins at zero.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> Whether the token a receiving end remembers for a unit begins at zero is not
+> recorded.
+
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
+>
+> The token a receiving end remembers for a unit begins at zero.
 
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
@@ -511,10 +555,6 @@ says what a client does with a movement whose unit it does not hold.
 An order from a client is a request: what a unit does is whatever the server
 sends back.
 
-Unless its player has movement prediction on, a client does not move its own
-champion on a right click by itself: the champion moves only along a path a
-server sends.
-
 <!-- holds from 0.8.13.26 up to 1.0.0.61 -->
 
 > **In 0.8.13.26–1.0.0.60**
@@ -530,6 +570,13 @@ server sends.
 > `WaypointGroup`, and the client returns that group's `syncId` in a
 > `WaypointAck` (see [Ordering](ordering.md)).
 
+<!-- holds from 0.9.25.24 up to 1.0.0.61 -->
+
+> **In 0.9.25.24–1.0.0.60**
+>
+> A client does not move its own champion on a right click by itself: the
+> champion moves only along a path a server sends.
+
 <!-- holds from 0.9.25.24 up to 1.0.0.127 -->
 
 > **In 0.9.25.24–1.0.0.126**
@@ -543,6 +590,14 @@ server sends.
 >
 > A client sends the `WaypointAck` before reading any movement in the group,
 > and lists no units in it.
+
+<!-- holds from 1.0.0.74 up to 4.21.0.0 -->
+
+> **In 1.0.0.74–4.20**
+>
+> Unless its player has movement prediction on, a client does not move its own
+> champion on a right click by itself: the champion moves only along a path a
+> server sends.
 
 <!-- holds from 1.0.0.96 up to 4.21.0.0 -->
 
@@ -559,14 +614,28 @@ server sends.
 > A client takes a `WaypointGroup` or a `WaypointGroupAtSpeed` on channels 2, 3
 > and 4 alike.
 
+<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
+
+> **In 4.4**
+>
+> Where its player has movement prediction on, a client starts its champion
+> toward the point it asked for, and puts it back where it was if no path
+> arrives within 2 seconds.
+
 <!-- holds from 4.4.0.1858 up to 4.18.0.271 -->
 
 > **In 4.4–4.17**
 >
+> A path carried by `WaypointGroupAtSpeed` cannot be overridden by the player's
+> orders.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
 > Where its player has movement prediction on, a client starts its champion
-> toward the point it asked for, and puts it back where it was if no path
-> arrives within 2 seconds. A path carried by `WaypointGroupAtSpeed` cannot be
-> overridden by the player's orders.
+> toward the point it asked for. Whether it puts it back where it was if no path
+> arrives within 2 seconds is not recorded.
 
 ## Marking the ground
 

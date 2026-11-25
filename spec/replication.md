@@ -88,8 +88,8 @@ the building table.
 
 ## Which batches a client takes
 
-A client answers a batch with `TransientAck` where it holds every unit the
-batch names, whether or not it took the values. It sends one answer for each
+A client answers a batch with `TransientAck` only where it holds every unit
+the batch names, whether or not it took the values. It sends one answer for each
 batch it answers, in the order the batches came, including a batch that repeats
 the `syncId` of the batch before it. [Ordering](ordering.md) says which batches
 a client takes, and what that requires of a server.
@@ -100,15 +100,28 @@ a client takes, and what that requires of a server.
 >
 > A client answers a batch as soon as it arrives, within the spawn run or not.
 
+<!-- holds from 1.0.0.150 up to 1.0.0.151 -->
+
+> **In 1.0.0.150**
+>
+> A client answers a batch only where each unit it names can take the values.
+
 <!-- holds from 0.9.25.24 up to 1.0.0.127 -->
 
 > **In 0.9.25.24–1.0.0.126**
 >
 > A client takes a batch on the clock, events and transient channels alike.
 
-<!-- holds from 4.4.0.1858 up to 4.21.0.0 -->
+<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
 
-> **In 4.4–4.20**
+> **In 4.4**
+>
+> Whether a client takes a batch on the clock, events and transient channels
+> alike is not recorded.
+
+<!-- holds from 4.17.0.233 up to 4.21.0.0 -->
+
+> **In 4.17–4.20**
 >
 > A client takes a batch on the clock, events and transient channels alike.
 
