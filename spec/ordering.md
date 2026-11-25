@@ -203,9 +203,9 @@ a stream.
 > second apart, until a server answers it with `CameraAck`, carrying its number.
 > After a `CameraAck` carrying 255 it never takes one carrying 0.
 
-<!-- holds from 1.0.0.25 up to 1.0.0.110 -->
+<!-- holds from 0.9.25.36 up to 1.0.0.110 -->
 
-> **In 1.0.0.25–1.0.0.109**
+> **In 0.9.25.36–1.0.0.109**
 >
 > A client sends a view report again, twice the round trip time plus 1/30 of a
 > second apart, until a server answers it with `CameraAck`, carrying its number.

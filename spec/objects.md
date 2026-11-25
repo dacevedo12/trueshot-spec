@@ -137,21 +137,9 @@ gives the client its own client id.
 > `CreateChampion` or `CreateNeutral`, because a client given one of them
 > before that `VersionSync` stops.
 
-<!-- holds from 1.0.0.74 up to 1.0.0.75 -->
+<!-- holds from 1.0.0.74 up to 1.0.0.87 -->
 
-> **In 1.0.0.74**
->
-> A client takes a client id only from 0 to 252, and leaves on any other but
-> 4294967295, for which it waits on as if given none; a server MUST give each
-> player a client id in that range.
->
-> A server MUST send that `Registered`, and then a `VersionSync` whose
-> `agreement` is 1, before any create message, because a client given a create
-> message before that `VersionSync` stops.
-
-<!-- holds from 1.0.0.86 up to 1.0.0.87 -->
-
-> **In 1.0.0.86**
+> **In 1.0.0.74–1.0.0.86**
 >
 > A client takes a client id only from 0 to 252, and leaves on any other but
 > 4294967295, for which it waits on as if given none; a server MUST give each
@@ -277,17 +265,9 @@ gives the client its own client id.
 > A client takes a client id only from 0 to 252, so a server MUST give each
 > player a client id in that range.
 
-<!-- holds from 1.0.0.150 up to 1.0.0.151 -->
+<!-- holds from 1.0.0.150 up to 3.04.0.78 -->
 
-> **In 1.0.0.150**
->
-> A client takes a client id only from 0 to 252, and leaves on any other but
-> 4294967295, for which it waits on as if given none; a server MUST give each
-> player a client id in that range.
-
-<!-- holds from 3.03.0.198 up to 3.04.0.78 -->
-
-> **In 3.03**
+> **In 1.0.0.150–3.03**
 >
 > A client takes a client id only from 0 to 252, and leaves on any other but
 > 4294967295, for which it waits on as if given none; a server MUST give each
@@ -677,9 +657,9 @@ Among the identifiers with that top byte are these:
 > | 1, 2 | the six `Barracks` names, `HQ_T1`, `HQ_T2`, `orderShop01`, `chaosShop01`, the six spawn points named `__P_…`, and turrets named `Turret_T1_…` and `Turret_T2_…`, `Turret_OrderTurretShrine` and `Turret_ChaosTurretShrine` among them |
 > | 3    | `Barracks_T1_C1`, `Barracks_T2_C1`, `HQ_T1`, `HQ_T2`, `OrderShop01`, `ChaosShop01`, `____P_Chaos_Spawn_Barracks__C01`, and turrets, `Turret_T1_C_08` among them                                                                       |
 
-<!-- holds from 1.0.0.25 up to 1.0.0.61 -->
+<!-- holds from 1.0.0.25 up to 1.0.0.74 -->
 
-> **In 1.0.0.25–1.0.0.60**
+> **In 1.0.0.25–1.0.0.73**
 >
 > | Map  | Holds                                                                                                                                                                         |
 > | ---- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -714,9 +694,9 @@ Among the identifiers with that top byte are these:
 > Every object a map places carries the identifier its name gives, turrets,
 > navigation points and props among them.
 
-<!-- holds from 1.0.0.86 up to 1.0.0.87 -->
+<!-- holds from 1.0.0.75 up to 1.0.0.87 -->
 
-> **In 1.0.0.86**
+> **In 1.0.0.75–1.0.0.86**
 >
 > | Map  | Holds                                                                                                                                                                         |
 > | ---- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -891,9 +871,9 @@ A server MUST name each object a map holds by the identifier its name gives.
 >
 > A `CreateTurret` naming no turret does nothing.
 
-<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+<!-- holds from 3.10.0.237 up to 3.13.0.399 -->
 
-> **In 3.10**
+> **In 3.10–3.12**
 >
 > `CreateTurret` matches a turret's name exactly, case included.
 
@@ -914,6 +894,13 @@ A server MUST name each object a map holds by the identifier its name gives.
 > Of a turret's two ids, the first still names it in every message, and the
 > second in every message but `LevelUp`, `Path`, `PathWithSpeed`,
 > `EnterTeamSight` and `LeaveTeamSight`, which do nothing under it.
+
+<!-- holds from 4.18.0.271 up to 4.20.0.315 -->
+
+> **In 4.18–4.19**
+>
+> One naming no turret removes any object holding its net id, and nothing takes
+> the id.
 
 <!-- holds from 4.20.0.315 up to 4.21.0.0 -->
 
@@ -1147,16 +1134,9 @@ Creating messages are the exception, and so are the messages below.
 >
 > `RegionRemoved` for a region a client does not hold does nothing.
 
-<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
+<!-- holds from 1.0.0.126 up to 1.0.0.133 -->
 
-> **In 1.0.0.126**
->
-> `SpawnPet` names the pet's owner in its header and carries the new pet's net
-> id in its body, and does nothing where that owner is not held.
-
-<!-- holds from 1.0.0.132 up to 1.0.0.133 -->
-
-> **In 1.0.0.132**
+> **In 1.0.0.126–1.0.0.132**
 >
 > `SpawnPet` names the pet's owner in its header and carries the new pet's net
 > id in its body, and does nothing where that owner is not held.

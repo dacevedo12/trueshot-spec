@@ -33,6 +33,14 @@ height (see [Space](space.md)).
 > A path that arrives before a client has loaded the map's ground grid is read
 > with a step of 1 in place of 3, and an origin of 0.
 
+<!-- holds from 1.0.0.87 up to 1.0.0.96 -->
+
+> **In 1.0.0.87–1.0.0.95**
+>
+> `Movement` and `MovementAtSpeed` are compact: a path is a run of integer
+> points, while positions elsewhere are world floats covering a far larger
+> range (see [Space](space.md)).
+
 <!-- holds from 1.0.0.96 up to 1.0.0.97 -->
 
 > **In 1.0.0.96**
@@ -50,6 +58,12 @@ height (see [Space](space.md)).
 >
 > A path that arrives before a client has loaded the map's ground grid is read
 > with a step of 1 in place of 2.
+
+<!-- holds from 1.0.0.97 up to 1.0.0.110 -->
+
+> **In 1.0.0.97–1.0.0.109**
+>
+> A path resolves a position to two world units, rounded toward the origin.
 
 <!-- holds from 1.0.0.110 up to 1.0.0.111 -->
 
@@ -144,6 +158,23 @@ height (see [Space](space.md)).
 >
 > A path that arrives before a client has loaded the map's ground grid is read
 > with a step of 1 in place of 2.
+
+<!-- holds from 1.0.0.151 up to 3.03.0.198 -->
+
+> **In 1.0.0.151–3.02**
+>
+> `Movement` and `MovementAtSpeed` are compact: a path is a run of integer
+> points, while positions elsewhere are world floats covering a far larger
+> range (see [Space](space.md)), except a particle's points on the ground,
+> carried in the units a path uses (see `Particle`). The two are related by an
+> origin and a step:
+>
+> ```
+> encoded = truncate_toward_zero((world - origin) / 2)
+> world   = origin + 2 * encoded
+> ```
+>
+> A path resolves a position to two world units, rounded toward the origin.
 
 <!-- holds from 3.03.0.198 up to 3.04.0.78 -->
 
@@ -306,18 +337,9 @@ and facing while it stands.
 
 ## Resolving a path
 
-<!-- holds from 1.0.0.86 up to 1.0.0.87 -->
+<!-- holds from 1.0.0.86 up to 4.21.0.0 -->
 
-> **In 1.0.0.86**
->
-> A path is read into points by taking the first as it stands and then, for
-> each point after it, taking each coordinate either as it stands or by adding
-> the step to the coordinate of the point before. The point before means as
-> that point resolved, not what the wire carried for it.
-
-<!-- holds from 1.0.0.96 up to 4.21.0.0 -->
-
-> **In 1.0.0.96–4.20**
+> **In 1.0.0.86–4.20**
 >
 > A path is read into points by taking the first as it stands and then, for
 > each point after it, taking each coordinate either as it stands or by adding
@@ -372,9 +394,9 @@ says what a client does with a movement whose unit it does not hold.
 >
 > A server needs no origin.
 
-<!-- holds from 1.0.0.86 up to 1.0.0.87 -->
+<!-- holds from 1.0.0.86 up to 1.0.0.96 -->
 
-> **In 1.0.0.86**
+> **In 1.0.0.86–1.0.0.95**
 >
 > The origin is the midpoint of the bounds a map's navigation data covers,
 > truncated to a whole number on each axis. **Nothing on the wire carries it.**
@@ -648,6 +670,12 @@ sends back.
 > A server MAY send `NavigationFlags`. Once the map's ground grid is loaded, a
 > client replaces the circles it holds with those it carries, and answers with
 > its `syncId`; before then it takes nothing and does not answer.
+
+<!-- holds from 1.0.0.111 up to 1.0.0.126 -->
+
+> **In 1.0.0.111–1.0.0.125**
+>
+> A server MAY send `NavigationFlags`.
 
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 

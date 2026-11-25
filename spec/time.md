@@ -231,6 +231,12 @@ which the match began.
 > as its game loop runs. While the match clock is before that moment, a client
 > shows a negative time.
 
+<!-- holds from 4.18.0.271 up to 4.20.0.315 -->
+
+> **In 4.18–4.19**
+>
+> While the match clock is before that moment, a client shows a negative time.
+
 <!-- holds from 4.20.0.315 up to 4.21.0.0 -->
 
 > **In 4.20**

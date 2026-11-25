@@ -950,6 +950,29 @@ Each row gives the group and bits that name a value and what the value is.
 > | 1     | 0    | Health as it stands        | measured |
 > | 1     | 1    | Health as it stands, again | measured |
 
+<!-- holds from 4.18.0.271 up to 4.20.0.315 -->
+
+> **In 4.18–4.19**
+>
+> The group 1 of a minion, or of a unit belonging to no side, also carries:
+>
+> | Group | Bits     | Value                                                                                                  | Shape    |
+> | ----- | -------- | ------------------------------------------------------------------------------------------------------ | -------- |
+> | 1     | 13 to 14 | Armour and spell resistance                                                                            | measured |
+> | 1     | 15       | A multiplier on how fast it strikes                                                                    | measured |
+> | 1     | 16 to 18 | Flat and percent modifiers on the damage it strikes with, then the flat modifier on its spells' damage | measured |
+> | 1     | 19 to 20 | How fast health and resource return                                                                    | measured |
+> | 1     | 21 to 22 | Flat and percent reduction of the spell damage it takes                                                | measured |
+>
+> Its bits 23 to 31 name nothing.
+>
+> A prop's group 1 also carries:
+>
+> | Group | Bits | Value                      | Shape    |
+> | ----- | ---- | -------------------------- | -------- |
+> | 1     | 0    | Health as it stands        | measured |
+> | 1     | 1    | Health as it stands, again | measured |
+
 <!-- holds from 4.20.0.315 up to 4.21.0.0 -->
 
 > **In 4.20**
@@ -1034,16 +1057,9 @@ Besides its batches, a server states some values with messages of their own.
 > `ExperienceGained` shows the experience gained over the unit and grants none:
 > a champion's experience follows its batches alone.
 
-<!-- holds from 0.9.25.24 up to 0.9.25.36 -->
+<!-- holds from 0.9.25.24 up to 1.0.0.58 -->
 
-> **In 0.9.25.24–0.9.25.35**
->
-> `GoldGained` grants no gold: a champion's gold in hand follows group 0 bit 1 of
-> its batches alone.
-
-<!-- holds from 1.0.0.25 up to 1.0.0.58 -->
-
-> **In 1.0.0.25–1.0.0.57**
+> **In 0.9.25.24–1.0.0.57**
 >
 > `GoldGained` grants no gold: a champion's gold in hand follows group 0 bit 1 of
 > its batches alone.

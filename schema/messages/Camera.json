@@ -101,7 +101,7 @@
         {
           "name": "syncId",
           "type": "u8",
-          "note": "Names this report, counting up as the view moves. A client sends the report again until a server returns the name."
+          "note": "Names this report, counting up as the view moves and wrapping after 255. A client sends the report again until a server returns the name."
         }
       ]
     },

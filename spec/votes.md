@@ -81,6 +81,12 @@ vote. `BalanceResult` says how the vote ended, or why it could not be held.
 > There, outside the tutorial, it also sends `BalanceVoteRefused`, a vote
 > against, as its player types `/noequalize`.
 
+<!-- holds from 3.11.0.306 up to 3.13.0.399 -->
+
+> **In 3.11–3.12**
+>
+> `BalanceVote` opens the panel where it says the vote opens.
+
 <!-- holds from 3.13.0.399 up to 3.14.0.700 -->
 
 > **In 3.13**

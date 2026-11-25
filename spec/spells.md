@@ -195,27 +195,9 @@ its flight.
 >
 > Only a missile that flies straight acts on `MissileHits`.
 
-<!-- holds from 1.0.0.150 up to 1.0.0.151 -->
+<!-- holds from 1.0.0.150 up to 4.5.0.260 -->
 
-> **In 1.0.0.150**
->
-> Only a scripted missile acts on `MissileCourse`.
-
-<!-- holds from 3.03.0.198 up to 3.11.0.306 -->
-
-> **In 3.03–3.10**
->
-> Only a scripted missile acts on `MissileCourse`.
-
-<!-- holds from 3.13.0.399 up to 3.14.0.700 -->
-
-> **In 3.13**
->
-> Only a scripted missile acts on `MissileCourse`.
-
-<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
-
-> **In 4.4**
+> **In 1.0.0.150–4.4**
 >
 > Only a scripted missile acts on `MissileCourse`.
 

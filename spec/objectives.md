@@ -12,9 +12,9 @@ its monsters come, and marks it empty with `CampCleared`. The monsters
 themselves are units (see [Units](units.md)). A server tells clients watching a
 match when a camp is next due with `CampTimer`.
 
-<!-- holds from 0.8.13.26 up to 3.11.0.306 -->
+<!-- holds from 0.8.13.26 up to 3.14.0.700 -->
 
-> **In 0.8.13.26–3.10**
+> **In 0.8.13.26–3.13**
 >
 > A client places a camp where the first of its monsters is created
 > (`CreateNeutral`).
@@ -39,13 +39,6 @@ match when a camp is next due with `CampTimer`.
 > `CampOpened` also places a camp the client does not know yet, where the
 > message says. A client announces a camp `CampCleared` empties where the
 > message's flag says to.
-
-<!-- holds from 3.13.0.399 up to 3.14.0.700 -->
-
-> **In 3.13**
->
-> A client places a camp where the first of its monsters is created
-> (`CreateNeutral`).
 
 <!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
 

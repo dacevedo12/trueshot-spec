@@ -166,7 +166,7 @@
         {
           "name": "nameLength",
           "type": "u32",
-          "note": "How many bytes the name below occupies, counting the byte that ends it."
+          "note": "How many bytes the name below occupies, counting the byte that ends it. A client reads nothing here: it reads the name up to its zero byte."
         },
         {
           "name": "name",

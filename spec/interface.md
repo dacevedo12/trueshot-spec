@@ -81,9 +81,9 @@ point for a player's view with `CameraBehaviour`.
 > A client's view report, `Camera`, goes out as its view moves more than 200
 > units, at most every tenth of a second, and never while its view is locked.
 
-<!-- holds from 1.0.0.25 up to 1.0.0.97 -->
+<!-- holds from 1.0.0.25 up to 1.0.0.110 -->
 
-> **In 1.0.0.25–1.0.0.96**
+> **In 1.0.0.25–1.0.0.109**
 >
 > A client's view report, `Camera`, goes out as its view moves more than 200
 > units, at most every tenth of a second, and never while its view is locked; a
@@ -133,39 +133,22 @@ point for a player's view with `CameraBehaviour`.
 > A client's view report, `Camera`, goes out as its view moves, and never while
 > its view is locked.
 
-<!-- holds from 1.0.0.132 up to 1.0.0.133 -->
+<!-- holds from 1.0.0.132 up to 1.0.0.141 -->
 
-> **In 1.0.0.132**
+> **In 1.0.0.132–1.0.0.140**
 >
 > A client's view report, `Camera`, goes out where a point it carries moves more
 > than 200 units, at most every tenth of a second, and never while its view is
 > locked; a report sent again until answered can come sooner.
 
-<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+<!-- holds from 1.0.0.150 up to 3.7.0.328 -->
 
-> **In 1.0.0.140**
->
-> A client's view report, `Camera`, goes out where a point it carries moves
-> more than 200 units, at most every tenth of a second, and never while its
-> view is locked; a report sent again until answered can come sooner.
-
-<!-- holds from 1.0.0.150 up to 1.0.0.151 -->
-
-> **In 1.0.0.150**
+> **In 1.0.0.150–3.6**
 >
 > A client's view report, `Camera`, goes out where a point it carries moves
 > more than 200 units, at most every tenth of a second, and never while its
 > view is locked or while it watches a match; a report sent again until
 > answered can come sooner.
-
-<!-- holds from 3.03.0.198 up to 3.7.0.328 -->
-
-> **In 3.03–3.6**
->
-> A client's view report, `Camera`, goes out where a point it carries moves more
-> than 200 units, at most every tenth of a second, and never while its view is
-> locked or while it watches a match; a report sent again until answered can
-> come sooner.
 
 <!-- holds from 3.7.0.328 up to 3.10.0.237 -->
 

@@ -183,9 +183,9 @@ the shop sends nothing.
 >
 > Opening the shop while the match is paused sends nothing.
 
-<!-- holds from 1.0.0.132 up to 1.0.0.133 -->
+<!-- holds from 1.0.0.132 up to 1.0.0.141 -->
 
-> **In 1.0.0.132**
+> **In 1.0.0.132–1.0.0.140**
 >
 > Opening the shop sends `TutorialShopOpened`, in any match. A client asks to
 > buy whether or not the shop is locked, except where a setting of its own has
@@ -198,14 +198,6 @@ the shop sends nothing.
 > Opening the shop while a tournament's hold (a `Paused` with `how.tournament`)
 > has the match stopped sends nothing; any other hold, or `GameSpeed` 0 alone,
 > does not stop it.
-
-<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
-
-> **In 1.0.0.140**
->
-> Opening the shop sends `TutorialShopOpened`, in any match. A client asks to
-> buy whether or not the shop is locked, except where a setting of its own has
-> it heed the lock.
 
 <!-- holds from 3.10.0.237 up to 4.21.0.0 -->
 
@@ -281,19 +273,9 @@ sells.
 >
 > A client asks only with the champion dead or near a shop of its side.
 
-<!-- holds from 1.0.0.74 up to 1.0.0.75 -->
+<!-- holds from 1.0.0.74 up to 1.0.0.87 -->
 
-> **In 1.0.0.74**
->
-> A client asks for an item not built from others only where its price is
-> within the champion's gold and a slot is free or holds the same item below its
-> stack limit, an item that can be used in the shop as any other.
->
-> A client asks only with the champion dead or near a shop of its side.
-
-<!-- holds from 1.0.0.86 up to 1.0.0.87 -->
-
-> **In 1.0.0.86**
+> **In 1.0.0.74–1.0.0.86**
 >
 > A client asks for an item not built from others only where its price is
 > within the champion's gold and a slot is free or holds the same item below its
@@ -418,9 +400,9 @@ sells.
 > A client asks for an item not built from others only where its price is
 > within the champion's gold.
 
-<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+<!-- holds from 1.0.0.133 up to 1.0.0.141 -->
 
-> **In 1.0.0.140**
+> **In 1.0.0.133–1.0.0.140**
 >
 > A client asks only with the champion dead or near a shop of its side.
 
@@ -443,6 +425,15 @@ sells.
 > A client never asks for an item not built from others that a player holds only
 > one of and holds already, but asks for one built from others even where the
 > player holds it already.
+
+<!-- holds from 3.04.0.78 up to 3.6.0.388 -->
+
+> **In 3.04–3.5**
+>
+> A client asks for an item not built from others only where its price is
+> within the champion's gold and, unless the item can be used in the shop and
+> the champion is alive, where a slot is free or holds the same item below its
+> stack limit.
 
 <!-- holds from 3.6.0.388 up to 3.11.0.306 -->
 
@@ -537,6 +528,13 @@ sells.
 >
 > In the tutorial, it does not ask while its shop is locked
 > ([The interface](interface.md)).
+
+<!-- holds from 4.18.0.271 up to 4.20.0.315 -->
+
+> **In 4.18–4.19**
+>
+> In the tutorial, it does not ask while its shop is locked ([The
+> interface](interface.md)).
 
 <!-- holds from 4.20.0.315 up to 4.21.0.0 -->
 

@@ -251,6 +251,18 @@ says.
 > information gives `chunkId`, `nextChunkId`, `availableSince` and
 > `endStartupChunkId`.
 
+<!-- holds from 1.0.0.127 up to 1.0.0.132 -->
+
+> **In 1.0.0.127–1.0.0.131**
+>
+> A watching client asks the spectator service for the match under
+> `/observer-mode/rest/consumer/`, each request naming the platform and the
+> match number: `getGameMetaData` for the match's metadata, `getLastChunkInfo`
+> for how far the match has come, and `getGameDataChunk` and `getKeyFrame` for
+> a chunk or a key frame by number. It gives up on the metadata after a time,
+> fetches the chunks of setting up, then catches up to the last chunk on offer
+> and waits there for the next. Chunks and key frames arrive compressed.
+
 <!-- holds from 1.0.0.126 up to 1.0.0.133 -->
 
 > **In 1.0.0.126–1.0.0.132**

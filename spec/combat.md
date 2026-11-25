@@ -170,17 +170,9 @@ A server reports damage with `Damage`.
 > Of the other results of `Damage`, 1 shows nothing, 2 a dodge and 5 a miss; 3
 > is critical, and 4 and any above 5 are normal.
 
-<!-- holds from 1.0.0.58 up to 1.0.0.97 -->
+<!-- holds from 1.0.0.58 up to 1.0.0.111 -->
 
-> **In 1.0.0.58–1.0.0.96**
->
-> A client reads only the low seven bits of a `Damage` result, so 128 and up act
-> as that value less 128. Of the other results, 1 shows nothing, 2 a dodge and 5
-> a miss; 3 is critical, and 4 and 6 to 127 are normal.
-
-<!-- holds from 1.0.0.110 up to 1.0.0.111 -->
-
-> **In 1.0.0.110**
+> **In 1.0.0.58–1.0.0.110**
 >
 > A client reads only the low seven bits of a `Damage` result, so 128 and up act
 > as that value less 128. Of the other results, 1 shows nothing, 2 a dodge and 5
@@ -207,9 +199,9 @@ A server reports damage with `Damage`.
 > Of the other results of `Damage`, 1 shows nothing, 2 a dodge and 5 a miss; 3
 > is critical.
 
-<!-- holds from 1.0.0.132 up to 1.0.0.133 -->
+<!-- holds from 1.0.0.132 up to 1.0.0.140 -->
 
-> **In 1.0.0.132**
+> **In 1.0.0.132–1.0.0.139**
 >
 > A client reads only the low seven bits of a `Damage` result, so 128 and up act
 > as that value less 128. Of the other results, 1 shows nothing, 2 a dodge and 5
@@ -347,15 +339,9 @@ into its death.
 > A server MUST NOT send `BuildingDied` for the nexus: a client removes the
 > nexus some 4 seconds later while still using it, and fails.
 
-<!-- holds from 1.0.0.58 up to 3.14.0.700 -->
+<!-- holds from 1.0.0.58 up to 4.21.0.0 -->
 
-> **In 1.0.0.58–3.13**
->
-> A death that credits no killer still stops the unit's cast and attack.
-
-<!-- holds from 4.4.0.1858 up to 4.21.0.0 -->
-
-> **In 4.4–4.20**
+> **In 1.0.0.58–4.20**
 >
 > A death that credits no killer still stops the unit's cast and attack.
 

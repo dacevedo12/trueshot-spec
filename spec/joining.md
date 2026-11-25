@@ -69,6 +69,13 @@ proof under that key.
 > argument holds `.rofl` plays that replay, and one whose command line holds
 > `.rep` anywhere plays a replay rather than connecting.
 
+<!-- holds from 4.18.0.271 up to 4.20.0.315 -->
+
+> **In 4.18–4.19**
+>
+> Whitespace separates a client's arguments, and double quotes group words into
+> one; any whitespace separates the words of the fourth argument.
+
 <!-- holds from 4.20.0.315 up to 4.21.0.0 -->
 
 > **In 4.20**
@@ -315,6 +322,14 @@ every client has sent `ClientReady`.
 > ping where its seat's `level` is below 120. A card with no `SeatName`, no
 > registration or no `SeatLoadProgress` yet says it is not connected. A later
 > `SeatChampion` does not change a card already set up.
+
+<!-- holds from 1.0.0.97 up to 1.0.0.110 -->
+
+> **In 1.0.0.97–1.0.0.109**
+>
+> A player's card takes its place on the screen from that seat's place in the
+> `Roster`, and its name from that player's `SeatName`. A card shows the ping
+> where its seat's `level` is below 120.
 
 <!-- holds from 1.0.0.110 up to 1.0.0.111 -->
 
@@ -778,6 +793,13 @@ every client has sent `ClientReady`.
 > `GameEnded` and `ModuleData`, apart from what arrives on the registration and
 > roster channels, and keeps nothing it drops for later. A server MUST NOT send
 > any of the spawn run before `CharacterSelected` arrives.
+
+<!-- holds from 3.14.0.700 up to 4.4.0.1858 -->
+
+> **In 3.14–4.3**
+>
+> A server MUST NOT send any of the spawn run before `CharacterSelected`
+> arrives.
 
 <!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
 

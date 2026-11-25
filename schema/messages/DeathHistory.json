@@ -5672,7 +5672,7 @@
         {
           "name": "killer",
           "type": "u32",
-          "note": "The unit credited with the death. A client ignores the whole message where this is zero."
+          "note": "The unit credited with the death. A client ignores the whole message where this is zero, and takes a killer it does not hold as none."
         },
         {
           "name": "span",
@@ -6200,7 +6200,7 @@
         {
           "name": "killer",
           "type": "u32",
-          "note": "The unit credited with the death. A client ignores the whole message where this is zero."
+          "note": "The unit credited with the death. A client ignores the whole message where this is zero, and takes a killer it does not hold as none."
         },
         {
           "name": "span",
@@ -23668,7 +23668,7 @@
         {
           "name": "blobLength",
           "type": "u32",
-          "note": "How many bytes the entries below take together. A client reads exactly that many; zero, or a value above 2147483647, carries no entries."
+          "note": "How many bytes the entries below take together. A client takes exactly that many, and reads entryCount entries from them without checking that they fit; zero, or a value above 2147483647, carries no entries."
         },
         {
           "name": "entryCount",
@@ -24359,7 +24359,7 @@
         {
           "name": "blobLength",
           "type": "u32",
-          "note": "How many bytes the entries below take together. A client reads exactly that many; zero, or a value above 2147483647, carries no entries."
+          "note": "How many bytes the entries below take together. A client takes exactly that many, and reads entryCount entries from them without checking that they fit; zero, or a value above 2147483647, carries no entries."
         },
         {
           "name": "entryCount",
@@ -25050,7 +25050,7 @@
         {
           "name": "blobLength",
           "type": "u32",
-          "note": "How many bytes the entries below take together. A client reads exactly that many; zero, or a value above 2147483647, carries no entries."
+          "note": "How many bytes the entries below take together. A client takes exactly that many, and reads entryCount entries from them without checking that they fit; zero, or a value above 2147483647, carries no entries."
         },
         {
           "name": "entryCount",
@@ -26437,7 +26437,7 @@
         {
           "name": "blobLength",
           "type": "u32",
-          "note": "How many bytes the entries below take together. A client reads exactly that many; zero, or a value above 2147483647, carries no entries."
+          "note": "How many bytes the entries below take together. A client takes exactly that many, and reads entryCount entries from them without checking that they fit; zero, or a value above 2147483647, carries no entries."
         },
         {
           "name": "entryCount",
@@ -33052,7 +33052,7 @@
         {
           "name": "blobLength",
           "type": "u32",
-          "note": "How many bytes the entries below take together. A client reads exactly that many; zero, or a value above 2147483647, carries no entries."
+          "note": "How many bytes the entries below take together. A client takes exactly that many, and reads entryCount entries from them without checking that they fit; zero, or a value above 2147483647, carries no entries."
         },
         {
           "name": "entryCount",
@@ -33843,7 +33843,7 @@
         {
           "name": "blobLength",
           "type": "u32",
-          "note": "How many bytes the entries below take together. A client reads exactly that many; zero, or a value above 2147483647, carries no entries."
+          "note": "How many bytes the entries below take together. A client takes exactly that many, and reads entryCount entries from them without checking that they fit; zero, or a value above 2147483647, carries no entries."
         },
         {
           "name": "entryCount",
@@ -34634,7 +34634,7 @@
         {
           "name": "blobLength",
           "type": "u32",
-          "note": "How many bytes the entries below take together. A client reads exactly that many; zero, or a value above 2147483647, carries no entries."
+          "note": "How many bytes the entries below take together. A client takes exactly that many, and reads entryCount entries from them without checking that they fit; zero, or a value above 2147483647, carries no entries."
         },
         {
           "name": "entryCount",
