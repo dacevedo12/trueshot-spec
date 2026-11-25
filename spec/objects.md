@@ -1131,19 +1131,9 @@ Creating messages are the exception, and so are the messages below.
 > `WorldEvent`, `NexusSkin`, `HudDisabled`, `NexusIdle`, `FadeMinions` and
 > `FadeSounds`. A client drops any other.
 
-<!-- holds from 1.0.0.86 up to 1.0.0.87 -->
+<!-- holds from 1.0.0.86 up to 1.0.0.141 -->
 
-> **In 1.0.0.86**
->
-> A `WaypointGroup` or `WaypointGroupAtSpeed` path for a unit not held is never
-> applied, and a client does not read past its points: it reads the next path
-> from inside the one it skipped, so every later path of that message comes out
-> wrong. The `WaypointAck` is sent as usual and lists that path. A server MUST
-> NOT name, in a group, a unit the client does not yet hold.
-
-<!-- holds from 1.0.0.96 up to 1.0.0.141 -->
-
-> **In 1.0.0.96–1.0.0.140**
+> **In 1.0.0.86–1.0.0.140**
 >
 > A `WaypointGroup` or `WaypointGroupAtSpeed` path for a unit not held is never
 > applied, and a client does not read past its points: it reads the next path

@@ -1041,7 +1041,7 @@
           "items": {
             "name": "rune",
             "type": "u32",
-            "note": "One rune, by the number the client knows it as."
+            "note": "One rune. Whether it is given by the number the client knows it as is not recorded."
           }
         },
         {
@@ -1069,7 +1069,7 @@
         {
           "name": "level",
           "type": "u8",
-          "note": "The player's account level."
+          "note": "Whether it is the player's account level is not recorded."
         }
       ]
     },
@@ -1090,7 +1090,104 @@
           "items": {
             "name": "rune",
             "type": "u32",
-            "note": "One rune, by the number the client knows it as."
+            "note": "One rune."
+          }
+        },
+        {
+          "name": "summoners",
+          "type": "array",
+          "count": 2,
+          "note": "The spells in the champion's summoner slots, by the numbers their names give.",
+          "items": {
+            "name": "summoner",
+            "type": "u32",
+            "note": "One spell."
+          }
+        },
+        {
+          "name": "choices",
+          "type": "array",
+          "count": 80,
+          "note": "The choices made alongside them, 400 bytes that a client keeps as one block.",
+          "items": {
+            "name": "choice",
+            "type": "struct",
+            "struct": "Choice"
+          }
+        },
+        {
+          "name": "level",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.132",
+      "until": "1.0.0.133",
+      "channel": "events",
+      "command": 44,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "note": "A client takes it whenever it arrives, for a champion it holds: it puts the summoner spells in the champion's summoner slots, and keeps the runes, the choices and level without acting on them.",
+      "fields": [
+        {
+          "name": "runes",
+          "type": "array",
+          "count": 30,
+          "note": "The runes set before the match, thirty places.",
+          "items": {
+            "name": "rune",
+            "type": "u32",
+            "note": "One rune. Whether it is given by the number the client knows it as is not recorded."
+          }
+        },
+        {
+          "name": "summoners",
+          "type": "array",
+          "count": 2,
+          "note": "The spells in the champion's summoner slots, by the numbers their names give.",
+          "items": {
+            "name": "summoner",
+            "type": "u32",
+            "note": "One spell."
+          }
+        },
+        {
+          "name": "choices",
+          "type": "array",
+          "count": 80,
+          "note": "The choices made alongside them, 400 bytes that a client keeps as one block.",
+          "items": {
+            "name": "choice",
+            "type": "struct",
+            "struct": "Choice"
+          }
+        },
+        {
+          "name": "level",
+          "type": "u8",
+          "note": "Whether it is the player's account level is not recorded."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.133",
+      "until": "1.0.0.140",
+      "channel": "events",
+      "command": 44,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "note": "A client takes it whenever it arrives, for a champion it holds.",
+      "fields": [
+        {
+          "name": "runes",
+          "type": "array",
+          "count": 30,
+          "note": "The runes set before the match, thirty places.",
+          "items": {
+            "name": "rune",
+            "type": "u32",
+            "note": "One rune."
           }
         },
         {
@@ -1117,106 +1214,7 @@
         },
         {
           "name": "level",
-          "type": "u8",
-          "note": "The player's account level."
-        }
-      ]
-    },
-    {
-      "from": "1.0.0.132",
-      "until": "1.0.0.133",
-      "channel": "events",
-      "command": 44,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "note": "A client takes it whenever it arrives, for a champion it holds: it puts the summoner spells in the champion's summoner slots, and keeps the runes, the choices and level without acting on them.",
-      "fields": [
-        {
-          "name": "runes",
-          "type": "array",
-          "count": 30,
-          "note": "The runes set before the match, thirty places in runs of nine, nine, nine and three. A place holds zero where nothing was set.",
-          "items": {
-            "name": "rune",
-            "type": "u32",
-            "note": "One rune, by the number the client knows it as."
-          }
-        },
-        {
-          "name": "summoners",
-          "type": "array",
-          "count": 2,
-          "note": "The spells in the champion's summoner slots, by the numbers their names give.",
-          "items": {
-            "name": "summoner",
-            "type": "u32",
-            "note": "One spell."
-          }
-        },
-        {
-          "name": "choices",
-          "type": "array",
-          "count": 80,
-          "note": "The choices made alongside them, one place each, and how far each was taken. A place stands empty where nothing was chosen.",
-          "items": {
-            "name": "choice",
-            "type": "struct",
-            "struct": "Choice"
-          }
-        },
-        {
-          "name": "level",
-          "type": "u8",
-          "note": "The player's account level."
-        }
-      ]
-    },
-    {
-      "from": "1.0.0.133",
-      "until": "1.0.0.140",
-      "channel": "events",
-      "command": 44,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "note": "A client takes it whenever it arrives, for a champion it holds.",
-      "fields": [
-        {
-          "name": "runes",
-          "type": "array",
-          "count": 30,
-          "note": "The runes set before the match, thirty places in runs of nine, nine, nine and three. A place holds zero where nothing was set.",
-          "items": {
-            "name": "rune",
-            "type": "u32",
-            "note": "One rune, by the number the client knows it as."
-          }
-        },
-        {
-          "name": "summoners",
-          "type": "array",
-          "count": 2,
-          "note": "The spells in the champion's summoner slots, by the numbers their names give.",
-          "items": {
-            "name": "summoner",
-            "type": "u32",
-            "note": "One spell."
-          }
-        },
-        {
-          "name": "choices",
-          "type": "array",
-          "count": 80,
-          "note": "The choices made alongside them, one place each, and how far each was taken. A place stands empty where nothing was chosen.",
-          "items": {
-            "name": "choice",
-            "type": "struct",
-            "struct": "Choice"
-          }
-        },
-        {
-          "name": "level",
-          "type": "u8",
-          "note": "The player's account level."
+          "type": "u8"
         }
       ]
     },
