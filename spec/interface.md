@@ -16,9 +16,23 @@ A server carries a client's view from one place to another with `MoveCamera`. A
 server can also lock or free a client's camera with `CameraLockSet`, and set a
 point for a player's view with `CameraBehaviour`.
 
-<!-- holds from 0.9.22.14 up to 1.0.0.141 -->
+<!-- holds from 0.9.22.14 up to 1.0.0.127 -->
 
-> **In 0.9.22.14–1.0.0.140**
+> **In 0.9.22.14–1.0.0.126**
+>
+> A client answers `CameraLockSet` with `CameraLock` except while it holds its
+> camera itself.
+
+<!-- holds from 1.0.0.132 up to 1.0.0.133 -->
+
+> **In 1.0.0.132**
+>
+> A client answers `CameraLockSet` with `CameraLock` except while it holds its
+> camera itself.
+
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+
+> **In 1.0.0.140**
 >
 > A client answers `CameraLockSet` with `CameraLock` except while it holds its
 > camera itself.
@@ -96,9 +110,17 @@ point for a player's view with `CameraBehaviour`.
 > A client keeps a `CameraLockSet` that arrives while it holds its camera
 > itself, and applies and answers it once the hold ends.
 
-<!-- holds from 1.0.0.96 up to 1.0.0.127 -->
+<!-- holds from 1.0.0.96 up to 1.0.0.111 -->
 
-> **In 1.0.0.96–1.0.0.126**
+> **In 1.0.0.96–1.0.0.110**
+>
+> A client takes the lock from the player's own settings when `StartGame`
+> arrives, and answers with `CameraLock`; `CameraLockSet` changes it for the
+> match without changing those settings.
+
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
+
+> **In 1.0.0.126**
 >
 > A client takes the lock from the player's own settings when `StartGame`
 > arrives, and answers with `CameraLock`; `CameraLockSet` changes it for the

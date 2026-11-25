@@ -524,14 +524,6 @@ naming a unit, an owner or a target carry one too.
 > `CreateFollower` only where its header names a unit the client holds;
 > otherwise each removes and creates nothing.
 
-<!-- holds from 4.18.0.271 up to 4.20.0.315 -->
-
-> **In 4.18–4.19**
->
-> `SpawnPet`, `CreateChampion`, `CreateNeutral`, `SpawnUnit`, `CreateTurret`,
-> `MapProp`, `SpawnMarker` and `SpawnTurret` first remove any object holding
-> the net id, and the new object takes it.
-
 <!-- holds from 4.20.0.315 up to 4.21.0.0 -->
 
 > **In 4.20**
@@ -1050,9 +1042,9 @@ Each stage either marks or removes.
 > A client reads only the two lowest bits of the stage: a stage with both clear
 > marks, and any other removes.
 
-<!-- holds from 4.18.0.271 up to 4.21.0.0 -->
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
 
-> **In 4.18–4.20**
+> **In 4.20**
 >
 > The stage of `SoftReconnect` that marks is 1.
 
@@ -1224,9 +1216,9 @@ Creating messages are the exception, and so are the messages below.
 > body names is not held it creates nothing, but still removes any object
 > holding that net id.
 
-<!-- holds from 4.18.0.271 up to 4.21.0.0 -->
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
 
-> **In 4.18–4.20**
+> **In 4.20**
 >
 > `SpawnPet` takes the net id in its header for the new pet.
 

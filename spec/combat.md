@@ -98,9 +98,41 @@ target and the unit's own settings allow.
 >
 > Only a turret takes `TargetUnit`; every other unit ignores it.
 
-<!-- holds from 0.9.25.24 up to 3.11.0.306 -->
+<!-- holds from 0.9.25.24 up to 1.0.0.87 -->
 
-> **In 0.9.25.24–3.10**
+> **In 0.9.25.24–1.0.0.86**
+>
+> `TargetHeldChampion` marks a unit as attacking the client's own champion: a
+> client sets the mark only where the message names that champion, and clears
+> it for any other. A client takes it apart from `TargetUnit`.
+
+<!-- holds from 1.0.0.96 up to 1.0.0.97 -->
+
+> **In 1.0.0.96**
+>
+> `TargetHeldChampion` marks a unit as attacking the client's own champion: a
+> client sets the mark only where the message names that champion, and clears
+> it for any other. A client takes it apart from `TargetUnit`.
+
+<!-- holds from 1.0.0.110 up to 1.0.0.141 -->
+
+> **In 1.0.0.110–1.0.0.140**
+>
+> `TargetHeldChampion` marks a unit as attacking the client's own champion: a
+> client sets the mark only where the message names that champion, and clears
+> it for any other. A client takes it apart from `TargetUnit`.
+
+<!-- holds from 1.0.0.147 up to 1.0.0.148 -->
+
+> **In 1.0.0.147**
+>
+> `TargetHeldChampion` marks a unit as attacking the client's own champion: a
+> client sets the mark only where the message names that champion, and clears
+> it for any other. A client takes it apart from `TargetUnit`.
+
+<!-- holds from 1.0.0.150 up to 3.11.0.306 -->
+
+> **In 1.0.0.150–3.10**
 >
 > `TargetHeldChampion` marks a unit as attacking the client's own champion: a
 > client sets the mark only where the message names that champion, and clears
@@ -378,9 +410,23 @@ into its death.
 >
 > A death that credits no killer still stops the unit's cast and attack.
 
-<!-- holds from 1.0.0.126 up to 4.21.0.0 -->
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
-> **In 1.0.0.126–4.20**
+> **In 1.0.0.126**
+>
+> Either `UnitDied` or `ChampionDied` can leave the unit standing as a husk
+> rather than dead, without its death animation or death screen.
+
+<!-- holds from 1.0.0.132 up to 4.18.0.271 -->
+
+> **In 1.0.0.132–4.17**
+>
+> Either `UnitDied` or `ChampionDied` can leave the unit standing as a husk
+> rather than dead, without its death animation or death screen.
+
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
 >
 > Either `UnitDied` or `ChampionDied` can leave the unit standing as a husk
 > rather than dead, without its death animation or death screen.

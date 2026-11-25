@@ -455,7 +455,7 @@
         {
           "name": "clientId",
           "type": "u32",
-          "note": "The client id of the player the champion belongs to, or 4294967295 where it belongs to none, as a bot's does. A client takes the champion carrying its own client id as its own."
+          "note": "The client id of the player the champion belongs to, or 4294967295 where it belongs to none, as a bot's does."
         },
         {
           "name": "node",
@@ -2706,7 +2706,7 @@
         {
           "name": "clientId",
           "type": "u32",
-          "note": "The client id of the player the champion belongs to, or 4294967295 where it belongs to none, as a bot's does. A client takes the champion carrying its own client id as its own."
+          "note": "The client id of the player the champion belongs to, or 4294967295 where it belongs to none, as a bot's does."
         },
         {
           "name": "node",

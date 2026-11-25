@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "3.02.0.30",
-      "until": "4.1.0.171",
+      "until": "3.14.0.700",
       "channel": "events",
       "command": 249,
       "direction": "serverToClient",
@@ -20,8 +20,38 @@
       ]
     },
     {
+      "from": "3.14.0.700",
+      "until": "4.1.0.171",
+      "channel": "events",
+      "command": 249,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "linesLeft",
+          "type": "i32",
+          "note": "How many lines are left."
+        }
+      ]
+    },
+    {
       "from": "4.1.0.171",
-      "until": "4.11.0.386",
+      "until": "4.4.0.1858",
+      "channel": "events",
+      "command": 248,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "linesLeft",
+          "type": "i32",
+          "note": "How many lines are left."
+        }
+      ]
+    },
+    {
+      "from": "4.4.0.1858",
+      "until": "4.5.0.260",
       "channel": "events",
       "command": 248,
       "direction": "serverToClient",
@@ -35,7 +65,37 @@
       ]
     },
     {
+      "from": "4.5.0.260",
+      "until": "4.11.0.386",
+      "channel": "events",
+      "command": 248,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "linesLeft",
+          "type": "i32",
+          "note": "How many lines are left."
+        }
+      ]
+    },
+    {
       "from": "4.11.0.386",
+      "until": "4.17.0.233",
+      "channel": "events",
+      "command": 249,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "linesLeft",
+          "type": "i32",
+          "note": "How many lines are left."
+        }
+      ]
+    },
+    {
+      "from": "4.17.0.233",
       "until": "4.21.0.0",
       "channel": "events",
       "command": 249,

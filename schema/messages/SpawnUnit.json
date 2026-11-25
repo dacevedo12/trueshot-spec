@@ -329,7 +329,7 @@
           ]
         }
       ],
-      "note": "A client gives the new unit its id and node, deleting nothing first. Where clone names a unit it holds, a client links the new unit to it as a clone; zero or an unknown id leaves no link. The header names the unit that put it there."
+      "note": "The header names the unit that put it there."
     },
     {
       "from": "1.0.0.25",
@@ -595,8 +595,7 @@
             }
           ]
         }
-      ],
-      "note": "The header names the unit that put it there."
+      ]
     },
     {
       "from": "1.0.0.63",

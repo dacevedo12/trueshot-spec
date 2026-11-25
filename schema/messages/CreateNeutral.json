@@ -394,8 +394,7 @@
         },
         {
           "name": "healthBonus",
-          "type": "i32",
-          "note": "What is added to the health it holds, three times over: the unit's maximum and current health both end at its base health plus three times this, and not below 0."
+          "type": "i32"
         },
         {
           "name": "roaming",
@@ -418,8 +417,7 @@
           "type": "u32",
           "note": "Which camp the unit belongs to."
         }
-      ],
-      "note": "A client leaves the monster facing as it was made. A client adds damageBonus to the damage the unit deals twice over."
+      ]
     },
     {
       "from": "1.0.0.25",
@@ -740,7 +738,7 @@
         {
           "name": "camp",
           "type": "u32",
-          "note": "Which camp the unit belongs to. Where no camp of that number exists yet, a client makes one at the unit's own position and adds the unit to it."
+          "note": "Which camp the unit belongs to."
         }
       ]
     },
@@ -1173,8 +1171,7 @@
           "type": "u32",
           "note": "Which camp the unit belongs to."
         }
-      ],
-      "note": "A client leaves the monster facing as it was made, and drops the message while its map's navigation data is unloaded. A client adds damageBonus to the damage the unit deals twice over."
+      ]
     },
     {
       "from": "1.0.0.96",
@@ -2401,7 +2398,7 @@
         {
           "name": "camp",
           "type": "u32",
-          "note": "Which camp the unit belongs to. Where an earlier CreateNeutral made a camp of that number, a client adds the unit to it; otherwise it makes one at the unit's own position and adds the unit to it."
+          "note": "Which camp the unit belongs to."
         }
       ],
       "note": "The monster faces from where it stands toward the facing point, or along +Z where the two are the same. A client drops the message while its map's navigation data is unloaded."

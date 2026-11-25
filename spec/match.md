@@ -47,9 +47,16 @@ seconds.
 > leaves the match held. A `Resumed` that arrives while the speed is 0, held or
 > not, sets the match going at the speed it had when the last hold began.
 
-<!-- holds from 1.0.0.58 up to 1.0.0.97 -->
+<!-- holds from 1.0.0.58 up to 1.0.0.61 -->
 
-> **In 1.0.0.58–1.0.0.96**
+> **In 1.0.0.58–1.0.0.60**
+>
+> The speed `GameSpeed` sets takes effect at once: sent during a hold, it ends
+> the hold, and a `Resumed` after it changes nothing.
+
+<!-- holds from 1.0.0.70 up to 1.0.0.97 -->
+
+> **In 1.0.0.70–1.0.0.96**
 >
 > The speed `GameSpeed` sets takes effect at once: sent during a hold, it ends
 > the hold, and a `Resumed` after it changes nothing.
@@ -270,9 +277,23 @@ A server ends the hold with `Resumed`.
 >
 > A client announces in chat who resumed the match.
 
-<!-- holds from 1.0.0.140 up to 3.11.0.306 -->
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
 
-> **In 1.0.0.140–3.10**
+> **In 1.0.0.140**
+>
+> A client announces who resumed the match even where it was not held, and
+> announces nothing where `Resumed` names no one.
+
+<!-- holds from 1.0.0.150 up to 3.7.0.328 -->
+
+> **In 1.0.0.150–3.6**
+>
+> A client announces who resumed the match even where it was not held, and
+> announces nothing where `Resumed` names no one.
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
 >
 > A client announces who resumed the match even where it was not held, and
 > announces nothing where `Resumed` names no one.
@@ -303,9 +324,16 @@ A server ends the match with `GameEnded`, saying which side won, and sends
 `HudDisabled` (see [The interface](interface.md#the-minimap-and-text-on-screen)). A client that receives
 `GameEnded` in play shows the win or loss for its player's side.
 
-<!-- holds from 0.8.13.26 up to 1.0.0.97 -->
+<!-- holds from 0.8.13.26 up to 0.9.22.14 -->
 
-> **In 0.8.13.26–1.0.0.96**
+> **In 0.8.13.26–0.9.22.13**
+>
+> A client sends `ClientFinished` every time `GameEnded` arrives in play, while
+> playing a replay too.
+
+<!-- holds from 0.9.25.24 up to 1.0.0.97 -->
+
+> **In 0.9.25.24–1.0.0.96**
 >
 > A client sends `ClientFinished` every time `GameEnded` arrives in play, while
 > playing a replay too.
@@ -372,9 +400,15 @@ A server ends the match with `GameEnded`, saying which side won, and sends
 >
 > A client that receives `GameEnded` while still loading leaves at once.
 
-<!-- holds from 1.0.0.110 up to 1.0.0.127 -->
+<!-- holds from 1.0.0.110 up to 1.0.0.111 -->
 
-> **In 1.0.0.110–1.0.0.126**
+> **In 1.0.0.110**
+>
+> A client that receives `GameEnded` while still loading leaves at once.
+
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
+
+> **In 1.0.0.126**
 >
 > A client that receives `GameEnded` while still loading leaves at once.
 

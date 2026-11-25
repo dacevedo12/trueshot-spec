@@ -69,9 +69,45 @@ shop by the champion's level.
 > `ItemSubstitution`: the shop shows a substitute for an item, at the
 > substitute's price, until `SubstitutionCleared`.
 
-<!-- holds from 4.4.0.1858 up to 4.21.0.0 -->
+<!-- holds from 4.4.0.1858 up to 4.18.0.271 -->
 
-> **In 4.4–4.20**
+> **In 4.4–4.17**
+>
+> A client sets its shop up from its own champion's `CreateChampion` (the one
+> carrying its own client id) and then that champion's `Loadout`. Until the
+> `Loadout` arrives, its shop opens empty and too big for the screen: no items,
+> no suggested items, no builds. Given its own champion's `Loadout`, it shows
+> every item and the items it suggests for the champion.
+>
+> What a match sells is settled by the client's own data for the map, the mode
+> and the variants named in `VersionSync`. The map's data lists items that
+> cannot be bought, with further lists for the mode and each variant; a mode
+> with no list of its own removes nothing. Suggested items also depend on the
+> map and the mode. Of what a server sends, only these change what can be
+> bought:
+>
+> - `VersionSync`'s disabled items; a zero place disables nothing.
+> - `ItemSubstitution`: the shop shows a substitute for an item, at the
+>   substitute's price, until `SubstitutionCleared`.
+
+<!-- holds from 4.18.0.271 up to 4.20.0.315 -->
+
+> **In 4.18–4.19**
+>
+> What a match sells is settled by the client's own data for the map, the mode
+> and the variants named in `VersionSync`. The map's data lists items that
+> cannot be bought, with further lists for the mode and each variant; a mode
+> with no list of its own removes nothing. Suggested items also depend on the
+> map and the mode. Of what a server sends, only these change what can be
+> bought:
+>
+> - `VersionSync`'s disabled items; a zero place disables nothing.
+> - `ItemSubstitution`: the shop shows a substitute for an item, at the
+>   substitute's price, until `SubstitutionCleared`.
+
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
 >
 > A client sets its shop up from its own champion's `CreateChampion` (the one
 > carrying its own client id) and then that champion's `Loadout`. Until the
@@ -556,9 +592,73 @@ with `SwapItemsAnswer`. A server can also set a slot (`InventorySlot`), set the
 whole inventory (`InventorySnapshot`), change an item's charges
 (`ItemCharges`), or report an item used (`ItemUsed`).
 
-<!-- holds from 0.8.13.26 up to 4.18.0.271 -->
+<!-- holds from 0.8.13.26 up to 0.9.25.36 -->
 
-> **In 0.8.13.26–4.17**
+> **In 0.8.13.26–0.9.25.35**
+>
+> `ItemAdded` places the item and removes nothing: a server sends a
+> `RemoveItemAnswer` for each part an item built from others takes up. Gold
+> falls only as replication states the champion's gold, and a purchase a server
+> never answers places nothing and spends nothing.
+
+<!-- holds from 0.9.25.36 up to 1.0.0.25 -->
+
+> **In 0.9.25.36–1.0.0.24**
+>
+> Gold falls only as replication states the champion's gold, and a purchase a
+> server never answers places nothing and spends nothing.
+
+<!-- holds from 1.0.0.25 up to 1.0.0.75 -->
+
+> **In 1.0.0.25–1.0.0.74**
+>
+> `ItemAdded` places the item and removes nothing: a server sends a
+> `RemoveItemAnswer` for each part an item built from others takes up. Gold
+> falls only as replication states the champion's gold, and a purchase a server
+> never answers places nothing and spends nothing.
+
+<!-- holds from 1.0.0.75 up to 1.0.0.86 -->
+
+> **In 1.0.0.75–1.0.0.85**
+>
+> Gold falls only as replication states the champion's gold, and a purchase a
+> server never answers places nothing and spends nothing.
+
+<!-- holds from 1.0.0.86 up to 3.14.0.700 -->
+
+> **In 1.0.0.86–3.13**
+>
+> `ItemAdded` places the item and removes nothing: a server sends a
+> `RemoveItemAnswer` for each part an item built from others takes up. Gold
+> falls only as replication states the champion's gold, and a purchase a server
+> never answers places nothing and spends nothing.
+
+<!-- holds from 3.14.0.700 up to 4.4.0.1858 -->
+
+> **In 3.14–4.3**
+>
+> Gold falls only as replication states the champion's gold, and a purchase a
+> server never answers places nothing and spends nothing.
+
+<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
+
+> **In 4.4**
+>
+> `ItemAdded` places the item and removes nothing: a server sends a
+> `RemoveItemAnswer` for each part an item built from others takes up. Gold
+> falls only as replication states the champion's gold, and a purchase a server
+> never answers places nothing and spends nothing.
+
+<!-- holds from 4.5.0.260 up to 4.17.0.233 -->
+
+> **In 4.5–4.16**
+>
+> Gold falls only as replication states the champion's gold, and a purchase a
+> server never answers places nothing and spends nothing.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
 >
 > `ItemAdded` places the item and removes nothing: a server sends a
 > `RemoveItemAnswer` for each part an item built from others takes up. Gold

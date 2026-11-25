@@ -61,9 +61,41 @@ the round trip it measured with `ClockConvergence`.
 > Each `ClockConvergence` sets a client's allowance to 0.8 times what it was
 > plus 0.1 times the round trip it reports.
 
-<!-- holds from 1.0.0.96 up to 3.11.0.306 -->
+<!-- holds from 1.0.0.96 up to 1.0.0.111 -->
 
-> **In 1.0.0.96–3.10**
+> **In 1.0.0.96–1.0.0.110**
+>
+> The allowance starts at 0, and nothing but `ClockConvergence` changes it: a
+> client that has had none takes `ClockSync` as it stands. A server SHOULD send
+> `ClockConvergence`, or each `ClockSync` sets a client's clock behind by the
+> time it took to arrive.
+
+<!-- holds from 1.0.0.111 up to 1.0.0.126 -->
+
+> **In 1.0.0.111–1.0.0.125**
+>
+> A server SHOULD send `ClockConvergence`, or each `ClockSync` sets a client's
+> clock behind by the time it took to arrive.
+
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
+
+> **In 1.0.0.126**
+>
+> The allowance starts at 0, and nothing but `ClockConvergence` changes it: a
+> client that has had none takes `ClockSync` as it stands. A server SHOULD send
+> `ClockConvergence`, or each `ClockSync` sets a client's clock behind by the
+> time it took to arrive.
+
+<!-- holds from 1.0.0.127 up to 1.0.0.132 -->
+
+> **In 1.0.0.127–1.0.0.131**
+>
+> A server SHOULD send `ClockConvergence`, or each `ClockSync` sets a client's
+> clock behind by the time it took to arrive.
+
+<!-- holds from 1.0.0.132 up to 3.11.0.306 -->
+
+> **In 1.0.0.132–3.10**
 >
 > The allowance starts at 0, and nothing but `ClockConvergence` changes it: a
 > client that has had none takes `ClockSync` as it stands. A server SHOULD send
@@ -82,9 +114,27 @@ catch up with its own.
 > on the client's own timer from then; a `ClockSync` sets it wherever it
 > stands.
 
-<!-- holds from 0.9.25.24 up to 1.0.0.141 -->
+<!-- holds from 0.9.25.24 up to 1.0.0.111 -->
 
-> **In 0.9.25.24–1.0.0.140**
+> **In 0.9.25.24–1.0.0.110**
+>
+> A client's match clock does not run until the first `ClockSync` arrives,
+> which
+> sets it. After that it runs on the client's own timer, and a later
+> `ClockSync` only corrects it, however long a server leaves between them.
+
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
+
+> **In 1.0.0.126**
+>
+> A client's match clock does not run until the first `ClockSync` arrives,
+> which
+> sets it. After that it runs on the client's own timer, and a later
+> `ClockSync` only corrects it, however long a server leaves between them.
+
+<!-- holds from 1.0.0.132 up to 1.0.0.141 -->
+
+> **In 1.0.0.132–1.0.0.140**
 >
 > A client's match clock does not run until the first `ClockSync` arrives,
 > which

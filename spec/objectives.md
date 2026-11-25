@@ -12,9 +12,37 @@ its monsters come, and marks it empty with `CampCleared`. The monsters
 themselves are units (see [Units](units.md)). A server tells clients watching a
 match when a camp is next due with `CampTimer`.
 
-<!-- holds from 0.8.13.26 up to 3.14.0.700 -->
+<!-- holds from 0.8.13.26 up to 0.9.25.36 -->
 
-> **In 0.8.13.26–3.13**
+> **In 0.8.13.26–0.9.25.35**
+>
+> A client places a camp where the first of its monsters is created
+> (`CreateNeutral`).
+
+<!-- holds from 1.0.0.25 up to 1.0.0.61 -->
+
+> **In 1.0.0.25–1.0.0.60**
+>
+> A client places a camp where the first of its monsters is created
+> (`CreateNeutral`).
+
+<!-- holds from 1.0.0.74 up to 1.0.0.87 -->
+
+> **In 1.0.0.74–1.0.0.86**
+>
+> A client places a camp where the first of its monsters is created
+> (`CreateNeutral`).
+
+<!-- holds from 1.0.0.96 up to 1.0.0.127 -->
+
+> **In 1.0.0.96–1.0.0.126**
+>
+> A client places a camp where the first of its monsters is created
+> (`CreateNeutral`).
+
+<!-- holds from 1.0.0.132 up to 3.14.0.700 -->
+
+> **In 1.0.0.132–3.13**
 >
 > A client places a camp where the first of its monsters is created
 > (`CreateNeutral`).
@@ -75,9 +103,32 @@ On a map won on score, a server binds each capture point to a unit with
 >
 > A client acts on `TeamScore` once its game screen is up, whatever the mode.
 
-<!-- holds from 4.4.0.1858 up to 4.18.0.271 -->
+<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
 
-> **In 4.4–4.17**
+> **In 4.4**
+>
+> Everything a client shows of a capture point (who holds it, where it stands,
+> how far it is taken) comes from the unit `CapturePointChanged` binds it to,
+> so a
+> server hands a point over by changing the unit's side and moves it toward
+> capture by changing the unit's resource. A client shows the points and the
+> score on a panel it builds only where the version answer names the mode ODIN,
+> and only once one point is known. Reaching a score ends nothing: the match
+> ends
+> as any match does (see [The match](match.md)).
+
+<!-- holds from 4.5.0.260 up to 4.17.0.233 -->
+
+> **In 4.5–4.16**
+>
+> A client shows the points and the score on a panel it builds only where the
+> version answer names the mode ODIN, and only once one point is known.
+> Reaching a score ends nothing: the match ends as any match does (see [The
+> match](match.md)).
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
 >
 > Everything a client shows of a capture point (who holds it, where it stands,
 > how far it is taken) comes from the unit `CapturePointChanged` binds it to,

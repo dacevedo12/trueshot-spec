@@ -574,12 +574,6 @@ says what a client does with a movement whose unit it does not hold.
 > the client holds the unit, and none whose movement follows a refused one; the
 > list is empty where it names none. A server MAY ignore it.
 
-<!-- holds from 4.5.0.260 up to 4.17.0.233 -->
-
-> **In 4.5–4.16**
->
-> A client answers each group with one `WaypointAck`. A server MAY ignore it.
-
 <!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 
 > **In 4.17**

@@ -327,8 +327,7 @@
         },
         {
           "name": "clone",
-          "type": "u32",
-          "note": "The unit it copies, or zero."
+          "type": "u32"
         }
       ]
     },
@@ -2346,7 +2345,6 @@
       "command": 60,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client kills the owner's earlier pet if it lives. It deletes no object first. duration has no effect.",
       "fields": [
         {
           "name": "pet",
@@ -2465,7 +2463,6 @@
       "command": 60,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client kills the owner's earlier pet if it lives. It deletes no object first. duration has no effect.",
       "fields": [
         {
           "name": "owner",
@@ -4786,7 +4783,7 @@
           "note": "The script that drives it, padded with zero bytes."
         }
       ],
-      "note": "A client deletes any object holding the header's id; spawns nothing where it does not know the owner; kills the owner's earlier pet if it lives; makes the pet, replacing its script with script; gives it the owner's seat, its gold going to the owner; and registers it under the header's id and node. spellLevel, duration and effect have no effect. The header names the pet. A server sends it to clients watching a match."
+      "note": "The header names the pet. A server sends it to clients watching a match."
     },
     {
       "from": "4.20.0.315",

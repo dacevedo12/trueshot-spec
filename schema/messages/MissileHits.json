@@ -157,7 +157,7 @@
             "type": "u32",
             "note": "A unit struck."
           },
-          "note": "The units struck, in order. A client still takes a unit it does not know, with nothing shown on it, and nothing after the hit that destroys the missile shows."
+          "note": "The units struck, in order."
         }
       ]
     },
@@ -183,7 +183,7 @@
             "type": "u32",
             "note": "A unit struck."
           },
-          "note": "The units struck, in order. A client still takes a unit it does not know, with nothing shown on it, and nothing after the hit that destroys the missile shows."
+          "note": "The units struck, in order."
         }
       ]
     },
@@ -209,7 +209,7 @@
             "type": "u32",
             "note": "A unit struck."
           },
-          "note": "The units struck, in order. A client still takes a unit it does not know, with nothing shown on it, and nothing after the hit that destroys the missile shows."
+          "note": "The units struck, in order."
         }
       ]
     },
@@ -235,7 +235,7 @@
             "type": "u32",
             "note": "A unit struck."
           },
-          "note": "The units struck, in order. A client still takes a unit it does not know, with nothing shown on it, and nothing after the hit that destroys the missile shows."
+          "note": "The units struck, in order."
         }
       ]
     },
@@ -261,7 +261,7 @@
             "type": "u32",
             "note": "A unit struck."
           },
-          "note": "The units struck, in order. A client still takes a unit it does not know, with nothing shown on it, and nothing after the hit that destroys the missile shows."
+          "note": "The units struck, in order."
         }
       ]
     },
@@ -287,13 +287,13 @@
             "type": "u32",
             "note": "A unit struck."
           },
-          "note": "The units struck, in order. A client still takes a unit it does not know, with nothing shown on it, and nothing after the hit that destroys the missile shows."
+          "note": "The units struck, in order."
         }
       ]
     },
     {
       "from": "1.0.0.110",
-      "until": "1.0.0.124",
+      "until": "1.0.0.111",
       "channel": "events",
       "command": 39,
       "direction": "serverToClient",
@@ -314,6 +314,32 @@
             "note": "A unit struck."
           },
           "note": "The units struck, in order. A client still takes a unit it does not know, with nothing shown on it, and nothing after the hit that destroys the missile shows."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.111",
+      "until": "1.0.0.124",
+      "channel": "events",
+      "command": 39,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "count",
+          "type": "u16",
+          "note": "How many units follow. A client reads it as signed, so a count of zero or above 32767 carries no units, and a server sends at most 32767."
+        },
+        {
+          "name": "targets",
+          "type": "array",
+          "count": "count",
+          "items": {
+            "name": "target",
+            "type": "u32",
+            "note": "A unit struck."
+          },
+          "note": "The units struck, in order."
         }
       ]
     },
@@ -339,7 +365,7 @@
             "type": "u32",
             "note": "A unit struck."
           },
-          "note": "The units struck, in order. A client still takes a unit it does not know, with nothing shown on it, and nothing after the hit that destroys the missile shows."
+          "note": "The units struck, in order."
         }
       ]
     },

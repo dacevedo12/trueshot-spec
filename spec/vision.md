@@ -196,9 +196,30 @@ leave it held (see [Objects and identifiers](objects.md)). A server sends
 > until an `EnterLocalSight` brings it back. A client playing a replay ignores
 > `LeaveLocalSight`.
 
-<!-- holds from 3.10.0.237 up to 4.21.0.0 -->
+<!-- holds from 3.10.0.237 up to 3.14.0.700 -->
 
-> **In 3.10–4.20**
+> **In 3.10–3.13**
+>
+> `LeaveLocalSight` takes a unit out of what one client alone can see, and
+> leaves it held.
+
+<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
+
+> **In 4.4**
+>
+> `LeaveLocalSight` takes a unit out of what one client alone can see, and
+> leaves it held.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> `LeaveLocalSight` takes a unit out of what one client alone can see, and
+> leaves it held.
+
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
 >
 > `LeaveLocalSight` takes a unit out of what one client alone can see, and
 > leaves it held.

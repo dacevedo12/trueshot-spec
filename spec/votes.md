@@ -19,9 +19,9 @@ menu on or off.
 > Where a vote does not pass, `SurrenderFailed` says how long until another can
 > be called.
 
-<!-- holds from 0.9.25.21 up to 0.9.25.36 -->
+<!-- holds from 0.9.25.24 up to 0.9.25.36 -->
 
-> **In 0.9.25.21–0.9.25.35**
+> **In 0.9.25.24–0.9.25.35**
 >
 > `SurrenderVoteCalled` shows the caller's vote to that side and, where it says
 > the vote opens, opens the vote's panel for that side.

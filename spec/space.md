@@ -85,9 +85,17 @@ which way it faces where it sets one.
 > A champion is created facing +z, whatever its map's table of spawn positions
 > says, and so is a monster.
 
-<!-- holds from 1.0.0.104 up to 4.21.0.0 -->
+<!-- holds from 1.0.0.104 up to 4.18.0.271 -->
 
-> **In 1.0.0.104–4.20**
+> **In 1.0.0.104–4.17**
+>
+> `CreateNeutral` carries a point to face rather than a direction: the monster
+> faces from where it stands toward that point, or along +z where the two are
+> the same.
+
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
 >
 > `CreateNeutral` carries a point to face rather than a direction: the monster
 > faces from where it stands toward that point, or along +z where the two are
