@@ -288,7 +288,7 @@
           "note": "A client reads nothing here."
         }
       ],
-      "note": "A client keeps the champion's level, experience, gold and maxima, and plays the coming back. The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
+      "note": "A client keeps the champion's level, experience, gold and maxima, and plays the coming back. The champion comes back with full health."
     },
     {
       "from": "1.0.0.96",
@@ -314,7 +314,7 @@
           "note": "A client reads nothing here."
         }
       ],
-      "note": "A client keeps the champion's level, experience, gold and maxima, keeps the ranks of slots 4 to 9, lowers any rank above 5 in slots 0 to 3 to 5, and plays the coming back. A client returns the champion where it already stands. The champion comes back with full health, and for its own champion a client moves the camera onto it where the player asked for that."
+      "note": "A client keeps the champion's level, experience, gold and maxima, keeps the ranks of slots 4 to 9, lowers any rank above 5 in slots 0 to 3 to 5, and plays the coming back. A client returns the champion where it already stands. The champion comes back with full health. Whether, for its own champion, a client moves the camera onto it where the player asked for that is not recorded."
     },
     {
       "from": "1.0.0.97",

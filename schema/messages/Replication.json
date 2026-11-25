@@ -756,36 +756,6 @@
     },
     {
       "from": "1.0.0.150",
-      "until": "1.0.0.151",
-      "channel": "transient",
-      "command": 193,
-      "direction": "serverToClient",
-      "reliability": "unreliable",
-      "fields": [
-        {
-          "name": "syncId",
-          "type": "u32",
-          "note": "Names this batch of changes. spec/ordering.md says which batches a client takes values from."
-        },
-        {
-          "name": "unitCount",
-          "type": "u8",
-          "note": "How many units follow."
-        },
-        {
-          "name": "units",
-          "type": "array",
-          "count": "unitCount",
-          "items": {
-            "name": "unit",
-            "type": "struct",
-            "struct": "Replication"
-          }
-        }
-      ]
-    },
-    {
-      "from": "1.0.0.151",
       "until": "3.01.0.1",
       "channel": "transient",
       "command": 193,
@@ -846,36 +816,6 @@
     },
     {
       "from": "3.04.0.78",
-      "until": "3.6.0.388",
-      "channel": "transient",
-      "command": 196,
-      "direction": "serverToClient",
-      "reliability": "unreliable",
-      "fields": [
-        {
-          "name": "syncId",
-          "type": "u32",
-          "note": "Names this batch of changes. spec/ordering.md says which batches a client takes values from."
-        },
-        {
-          "name": "unitCount",
-          "type": "u8",
-          "note": "How many units follow."
-        },
-        {
-          "name": "units",
-          "type": "array",
-          "count": "unitCount",
-          "items": {
-            "name": "unit",
-            "type": "struct",
-            "struct": "Replication"
-          }
-        }
-      ]
-    },
-    {
-      "from": "3.6.0.388",
       "until": "4.1.0.171",
       "channel": "transient",
       "command": 196,
@@ -906,36 +846,6 @@
     },
     {
       "from": "4.1.0.171",
-      "until": "4.5.0.260",
-      "channel": "transient",
-      "command": 195,
-      "direction": "serverToClient",
-      "reliability": "unreliable",
-      "fields": [
-        {
-          "name": "syncId",
-          "type": "u32",
-          "note": "Names this batch of changes. spec/ordering.md says which batches a client takes values from."
-        },
-        {
-          "name": "unitCount",
-          "type": "u8",
-          "note": "How many units follow."
-        },
-        {
-          "name": "units",
-          "type": "array",
-          "count": "unitCount",
-          "items": {
-            "name": "unit",
-            "type": "struct",
-            "struct": "Replication"
-          }
-        }
-      ]
-    },
-    {
-      "from": "4.5.0.260",
       "until": "4.11.0.386",
       "channel": "transient",
       "command": 195,

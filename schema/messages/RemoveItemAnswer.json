@@ -241,7 +241,7 @@
         {
           "name": "left",
           "type": "u8",
-          "note": "How many are left in the slot; zero empties it, item and charges cleared. Either way a client cancels any spell or action its player had picked."
+          "note": "How many are left in the slot; zero empties it, item and charges cleared. Whether a client cancels any spell or action its player had picked is not recorded."
         }
       ]
     },

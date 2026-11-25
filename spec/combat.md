@@ -375,8 +375,8 @@ for what a client draws on its map with `UnitDiedOnMap`.
 
 > **In 1.0.0.140**
 >
-> A client draws the world without colour for `GreyscaleWhenDead` only under
-> one of its display settings, and otherwise ignores it.
+> Whether a client draws the world without colour for `GreyscaleWhenDead` only
+> under one of its display settings, and otherwise ignores it, is not recorded.
 
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 

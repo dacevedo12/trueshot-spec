@@ -1134,6 +1134,60 @@ while (growing) {
   }
 }
 
+// A struct's layout at a version: its revision there less range and notes,
+// and, deep, with every struct it holds laid out the same way. A struct's
+// notes are read from its own revision whichever message carries it, so only
+// a change of layout makes two carriers differ.
+const withoutNotes = (value: unknown): unknown =>
+  Array.isArray(value)
+    ? value.map(withoutNotes)
+    : value !== null && typeof value === "object"
+      ? Object.fromEntries(
+          Object.entries(value)
+            .filter(([key]) => !["note", "from", "until"].includes(key))
+            .map(([key, inner]) => [key, withoutNotes(inner)]),
+        )
+      : value;
+const layoutAt = (
+  name: string,
+  version: string,
+  deep = true,
+  seen: readonly string[] = [],
+): string => {
+  const revision = structs
+    .get(name)
+    ?.revisions.find((r) => covers(r, version));
+  if (revision === undefined) return "none";
+  const held =
+    !deep || seen.includes(name)
+      ? []
+      : heldStructs(revision.fields).map((inner) =>
+          layoutAt(inner, version, true, [...seen, name]),
+        );
+  return JSON.stringify([withoutNotes(revision), held]);
+};
+// Where a run of back-to-back revisions of a struct that differ only in notes
+// begins: they lay out one payload, so one vector evidences them all.
+const runFrom = (name: string, from: string): string => {
+  const revisions = structs.get(name)?.revisions ?? [];
+  let at = revisions.findIndex((r) => r.from === from);
+  if (at < 0) return from;
+  const shape = (r: Ranged): string => JSON.stringify(withoutNotes(r));
+  while (at > 0) {
+    const before = revisions[at - 1];
+    const here = revisions[at];
+    if (
+      before === undefined ||
+      here === undefined ||
+      before.until !== here.from ||
+      shape(before) !== shape(here)
+    )
+      break;
+    at -= 1;
+  }
+  return revisions[at]?.from ?? from;
+};
+
 // Every struct as the revision covering a version lays it out, and what the
 // codec reads each as there.
 const views = new Map<string, Map<string, StructView>>();
@@ -1146,7 +1200,7 @@ const structsAt = (version: string): ReadonlyMap<string, StructView> => {
     if (revision)
       made.set(name, {
         struct: name,
-        from: revision.from,
+        from: runFrom(name, revision.from),
         fields: revision.fields,
       });
   }
@@ -1313,11 +1367,9 @@ for (const file of listJson("messages")) {
 
 for (const { where, doc } of messages) {
   checkRevisions(doc.revisions, where, (a, b) =>
-    heldStructs((a as MessageRevision).fields).every((name) => {
-      const at = (v: string): Ranged | undefined =>
-        structs.get(name)?.revisions.find((r) => covers(r, v));
-      return at(a.from) === at(b.from);
-    }),
+    heldStructs((a as MessageRevision).fields).every(
+      (name) => layoutAt(name, a.from) === layoutAt(name, b.from),
+    ),
   );
   doc.revisions.forEach((revision, index) => {
     const at = `${where} revision ${index}`;
@@ -1414,23 +1466,29 @@ for (const { where, doc } of messages) {
       }
     }
 
-    // Every struct the revision holds has one revision for all of its range,
-    // so the layout cannot change partway through it.
+    // Every struct the revision holds is defined for all of its range, with
+    // one layout throughout, so the layout cannot change partway through it.
+    // Its notes may: they are read from the struct's own revisions.
     for (const name of new Set(heldStructs(revision.fields))) {
       const doc = structs.get(name);
       if (!doc) continue;
+      // The layout can change only where some struct's revision begins or
+      // ends, so it is enough to compare it there.
+      const inside = (v: string): boolean =>
+        compareVersions(v, revision.from) > 0 &&
+        (revision.until === undefined ||
+          compareVersions(v, revision.until) < 0);
+      const points = [...structs.values()]
+        .flatMap((s) => s.revisions.flatMap((r) => [r.from, r.until]))
+        .filter((v): v is string => v !== undefined && inside(v));
+      const layout = layoutAt(name, revision.from, false);
       if (
-        !doc.revisions.some(
-          (r) =>
-            covers(r, revision.from) &&
-            (r.until === undefined ||
-              (revision.until !== undefined &&
-                compareVersions(revision.until, r.until) <= 0)),
-        )
+        layout === "none" ||
+        points.some((v) => layoutAt(name, v, false) !== layout)
       ) {
         fail(
           at,
-          `holds struct "${name}", and no one revision of it covers ${revision.from} up to ${revision.until ?? "the end"}`,
+          `holds struct "${name}", and no one layout of it covers ${revision.from} up to ${revision.until ?? "the end"}`,
         );
       }
     }
@@ -2176,6 +2234,8 @@ for (const { where, doc } of messages) {
 // A struct no message carries travels on its own, so vectors read it alone.
 for (const { path: where, doc } of structFiles) {
   for (const revision of doc.revisions) {
+    // One check for each run of revisions laid out the same.
+    if (runFrom(doc.struct, revision.from) !== revision.from) continue;
     const key = `${doc.struct}@${revision.from}`;
     if (carriedStructs.has(key)) continue;
     if (!structCovered.has(key)) {

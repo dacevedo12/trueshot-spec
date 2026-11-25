@@ -1213,7 +1213,7 @@
             },
             "1": {
               "name": "scenery",
-              "note": "Uses name, asset, position, rotation (pitch, yaw, roll in degrees) and offset; not side or rank. Where the map has a placement point of the same name, its position is used instead; where a scenery prop of that name already stands there, it is reused and takes the new id."
+              "note": "Uses name, asset, position, rotation (pitch, yaw, roll in degrees) and offset; not side or rank. Where the map has a placement point of the same name, its position is used instead. Whether a scenery prop of that name already standing there is reused and takes the new id is not recorded."
             }
           }
         },
@@ -1336,7 +1336,7 @@
             },
             "1": {
               "name": "scenery",
-              "note": "Uses name, asset, position, rotation and offset; not side or rank. Where the map has a placement point of the same name, its position is used instead; where a scenery prop of that name already stands there, it is reused and takes the new id."
+              "note": "Uses name, asset, position, rotation and offset; not side or rank. Where the map has a placement point of the same name, its position is used instead."
             }
           }
         },
@@ -1459,7 +1459,7 @@
             },
             "1": {
               "name": "scenery",
-              "note": "Uses name, asset, position, rotation and offset; not side or rank. Where the map has a placement point of the same name, its position is used instead; where a scenery prop of that name already stands there, it is reused and takes the new id."
+              "note": "Uses name, asset, position, rotation and offset; not side or rank. Where the map has a placement point of the same name, its position is used instead."
             }
           }
         },
@@ -1582,7 +1582,7 @@
             },
             "1": {
               "name": "scenery",
-              "note": "Uses name, asset, position, rotation and offset; not side or rank. Where the map has a placement point of the same name, its position is used instead; where a scenery prop of that name already stands there, it is reused and takes the new id."
+              "note": "Uses name, asset, position, rotation and offset; not side or rank. Where the map has a placement point of the same name, its position is used instead."
             }
           }
         },
@@ -1705,7 +1705,7 @@
             },
             "1": {
               "name": "scenery",
-              "note": "Uses name, asset, position, rotation and offset; not side or rank. Where the map has a placement point of the same name, its position is used instead; where a scenery prop of that name already stands there, it is reused and takes the new id."
+              "note": "Uses name, asset, position, rotation and offset; not side or rank. Where the map has a placement point of the same name, its position is used instead."
             }
           }
         },
@@ -1828,7 +1828,7 @@
             },
             "1": {
               "name": "scenery",
-              "note": "Uses name, asset, position, rotation and offset; not side or rank. Where the map has a placement point of the same name, its position is used instead; where a scenery prop of that name already stands there, it is reused and takes the new id."
+              "note": "Uses name, asset, position, rotation and offset; not side or rank. Where the map has a placement point of the same name, its position is used instead."
             }
           }
         },

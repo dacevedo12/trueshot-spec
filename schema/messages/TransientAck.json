@@ -417,8 +417,7 @@
           "type": "u32",
           "note": "Which batch is being acknowledged, as the batch named itself."
         }
-      ],
-      "note": "It is sent only where the client holds every unit the batch names."
+      ]
     },
     {
       "from": "1.0.0.144",
@@ -465,8 +464,7 @@
           "type": "u32",
           "note": "Which batch is being acknowledged, as the batch named itself."
         }
-      ],
-      "note": "It is sent only where the client holds every unit the batch names."
+      ]
     },
     {
       "from": "3.01.0.1",
@@ -481,8 +479,7 @@
           "type": "u32",
           "note": "Which batch is being acknowledged, as the batch named itself."
         }
-      ],
-      "note": "It is sent only where the client holds every unit the batch names."
+      ]
     },
     {
       "from": "3.03.0.198",
@@ -561,8 +558,7 @@
           "type": "u32",
           "note": "Which batch is being acknowledged, as the batch named itself."
         }
-      ],
-      "note": "It is sent for a batch whose values the client dropped as well as for one it took."
+      ]
     },
     {
       "from": "3.13.0.399",
@@ -593,12 +589,26 @@
           "type": "u32",
           "note": "Which batch is being acknowledged, as the batch named itself."
         }
-      ],
-      "note": "It is sent for a batch whose values the client dropped as well as for one it took."
+      ]
     },
     {
       "from": "4.1.0.171",
-      "until": "4.11.0.386",
+      "until": "4.4.0.1858",
+      "channel": "requests",
+      "command": 167,
+      "direction": "clientToServer",
+      "reliability": "unsequenced",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u32",
+          "note": "Which batch is being acknowledged, as the batch named itself."
+        }
+      ]
+    },
+    {
+      "from": "4.4.0.1858",
+      "until": "4.5.0.260",
       "channel": "requests",
       "command": 167,
       "direction": "clientToServer",
@@ -613,6 +623,21 @@
       "note": "It is sent for a batch whose values the client dropped as well as for one it took."
     },
     {
+      "from": "4.5.0.260",
+      "until": "4.11.0.386",
+      "channel": "requests",
+      "command": 167,
+      "direction": "clientToServer",
+      "reliability": "unsequenced",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u32",
+          "note": "Which batch is being acknowledged, as the batch named itself."
+        }
+      ]
+    },
+    {
       "from": "4.11.0.386",
       "until": "4.17.0.233",
       "channel": "requests",
@@ -625,8 +650,7 @@
           "type": "u32",
           "note": "Which batch is being acknowledged, as the batch named itself."
         }
-      ],
-      "note": "It is sent for a batch whose values the client dropped as well as for one it took."
+      ]
     },
     {
       "from": "4.17.0.233",
@@ -657,8 +681,7 @@
           "type": "u32",
           "note": "Which batch is being acknowledged, as the batch named itself."
         }
-      ],
-      "note": "It is sent for a batch whose values the client dropped as well as for one it took."
+      ]
     },
     {
       "from": "4.20.0.315",

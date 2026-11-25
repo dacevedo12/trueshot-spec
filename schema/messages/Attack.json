@@ -40,7 +40,7 @@
         {
           "name": "target",
           "type": "u32",
-          "note": "The unit swung at. A client throws the swing at it."
+          "note": "The unit swung at."
         },
         {
           "name": "timing",
@@ -241,7 +241,7 @@
     },
     {
       "from": "1.0.0.86",
-      "until": "1.0.0.96",
+      "until": "1.0.0.87",
       "channel": "events",
       "command": 57,
       "direction": "serverToClient",
@@ -251,6 +251,36 @@
           "name": "target",
           "type": "u32",
           "note": "The unit swung at. A client throws the swing at it."
+        },
+        {
+          "name": "timing",
+          "type": "u8",
+          "note": "A shift in time: the value less 128, in hundredths of a second, from -1.28 to 1.27; 128 shifts nothing. It moves when the swing lets go and ends, and when the unit may next attack."
+        },
+        {
+          "name": "missile",
+          "type": "u32",
+          "note": "The name the missile this swing throws will answer to."
+        },
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which of the unit's attacks this is."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.87",
+      "until": "1.0.0.96",
+      "channel": "events",
+      "command": 57,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit swung at."
         },
         {
           "name": "timing",
@@ -310,7 +340,7 @@
         {
           "name": "target",
           "type": "u32",
-          "note": "The unit swung at. A client throws the swing at it."
+          "note": "The unit swung at."
         },
         {
           "name": "timing",
@@ -340,7 +370,7 @@
         {
           "name": "target",
           "type": "u32",
-          "note": "The unit swung at. A client throws the swing at it."
+          "note": "The unit swung at."
         },
         {
           "name": "timing",
@@ -370,7 +400,7 @@
         {
           "name": "target",
           "type": "u32",
-          "note": "The unit swung at. A client throws the swing at it."
+          "note": "The unit swung at."
         },
         {
           "name": "timing",
@@ -646,22 +676,6 @@
     },
     {
       "from": "4.18.0.271",
-      "until": "4.20.0.315",
-      "channel": "events",
-      "command": 12,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "strike",
-          "type": "struct",
-          "struct": "Strike",
-          "note": "The swing."
-        }
-      ]
-    },
-    {
-      "from": "4.20.0.315",
       "until": "4.21.0.0",
       "channel": "events",
       "command": 12,

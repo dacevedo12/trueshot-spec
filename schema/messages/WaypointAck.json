@@ -1077,8 +1077,7 @@
             ]
           }
         }
-      ],
-      "note": "It lists, in the order the group gives them, each unit whose movement carried a token, with that token, whether or not the client holds the unit."
+      ]
     },
     {
       "from": "1.0.0.150",
@@ -1162,7 +1161,7 @@
           }
         }
       ],
-      "note": "It lists the units whose movements in the group carried a token, with that token. A client sends none for a group while it plays a match back."
+      "note": "A client sends none for a group while it plays a match back."
     },
     {
       "from": "3.01.0.1",
@@ -1203,8 +1202,7 @@
             ]
           }
         }
-      ],
-      "note": "It lists the units whose movements in the group carried a token, with that token."
+      ]
     },
     {
       "from": "3.03.0.198",
@@ -1250,6 +1248,47 @@
     },
     {
       "from": "3.04.0.78",
+      "until": "3.6.0.388",
+      "channel": "requests",
+      "command": 118,
+      "direction": "clientToServer",
+      "reliability": "unsequenced",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u32",
+          "note": "Which group is being acknowledged, as the group named itself."
+        },
+        {
+          "name": "relocationCount",
+          "type": "u8",
+          "note": "How many relocations follow."
+        },
+        {
+          "name": "relocations",
+          "type": "array",
+          "count": "relocationCount",
+          "items": {
+            "name": "relocation",
+            "type": "record",
+            "fields": [
+              {
+                "name": "unit",
+                "type": "u32",
+                "note": "The unit the token belonged to."
+              },
+              {
+                "name": "token",
+                "type": "u8",
+                "note": "The token that arrived with it."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "from": "3.6.0.388",
       "until": "3.10.0.237",
       "channel": "requests",
       "command": 118,

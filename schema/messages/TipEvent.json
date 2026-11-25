@@ -461,7 +461,7 @@
     },
     {
       "from": "3.01.0.1",
-      "until": "3.13.0.399",
+      "until": "3.11.0.306",
       "channel": "requests",
       "command": 108,
       "direction": "clientToServer",
@@ -489,6 +489,36 @@
         }
       ],
       "note": "The header names the sender's champion."
+    },
+    {
+      "from": "3.11.0.306",
+      "until": "3.13.0.399",
+      "channel": "requests",
+      "command": 108,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "what",
+          "type": "u8",
+          "note": "What happened to the tip.",
+          "values": {
+            "0": {
+              "name": "clicked",
+              "note": "The player clicked the tip: once per tip, and only while no tip's dialogue is open."
+            },
+            "1": {
+              "name": "closed",
+              "note": "The player closed the tip's dialogue."
+            }
+          }
+        },
+        {
+          "name": "tip",
+          "type": "u32",
+          "note": "Which tip, as TipShown named it."
+        }
+      ]
     },
     {
       "from": "3.13.0.399",
@@ -584,6 +614,36 @@
     },
     {
       "from": "4.11.0.386",
+      "until": "4.17.0.233",
+      "channel": "requests",
+      "command": 109,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "what",
+          "type": "u8",
+          "note": "What happened to the tip.",
+          "values": {
+            "0": {
+              "name": "clicked",
+              "note": "The player clicked the tip: once per tip, and only while no tip's dialogue is open."
+            },
+            "1": {
+              "name": "closed",
+              "note": "The player closed the tip's dialogue."
+            }
+          }
+        },
+        {
+          "name": "tip",
+          "type": "u32",
+          "note": "Which tip, as TipShown named it."
+        }
+      ]
+    },
+    {
+      "from": "4.17.0.233",
       "until": "4.18.0.271",
       "channel": "requests",
       "command": 109,

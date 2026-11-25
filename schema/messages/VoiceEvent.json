@@ -469,7 +469,7 @@
     },
     {
       "from": "1.0.0.132",
-      "until": "1.0.0.138",
+      "until": "1.0.0.133",
       "channel": "events",
       "command": 126,
       "direction": "serverToClient",
@@ -498,6 +498,38 @@
           "name": "handle",
           "type": "u32",
           "note": "A number a client returns in VoiceEventDone."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.133",
+      "until": "1.0.0.138",
+      "channel": "events",
+      "command": 126,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "folder",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The event's folder."
+        },
+        {
+          "name": "event",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The event's name."
+        },
+        {
+          "name": "callback",
+          "type": "u8"
+        },
+        {
+          "name": "handle",
+          "type": "u32"
         }
       ]
     },

@@ -453,8 +453,9 @@ naming a unit, an owner or a target carry one too.
 
 > **In 1.0.0.126**
 >
-> `CreateChampion`, and a `CreateTurret` naming a turret the map holds, first
-> remove any object holding the net id. For any other creating message, a client that
+> Whether `CreateChampion`, and a `CreateTurret` naming a turret the map holds,
+> first remove any object holding the net id is not recorded. For any other
+> creating message, a client that
 > still holds the earlier object creates the new one but keeps the net id on the
 > old one, so messages naming it reach the old object, and removing either
 > leaves the id naming neither.
@@ -1189,9 +1190,9 @@ Creating messages are the exception, and so are the messages below.
 > `EnterSight` and `EnterLocalSight` act on the messages they carry whether or
 > not the client holds the unit they name.
 
-<!-- holds from 4.11.0.386 up to 4.18.0.271 -->
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 
-> **In 4.11–4.17**
+> **In 4.17**
 >
 > A client fails on a `RegionMoved` naming a region it does not hold, one whose
 > lifetime has run out included, and a server MUST NOT send one.

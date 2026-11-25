@@ -129,7 +129,7 @@
           "note": "Zero while the match StartGame began is running, 1 otherwise: before StartGame, and once the match has ended."
         }
       ],
-      "note": "A client dropped while playing connects again only where its player agrees; one dropped while loading leaves."
+      "note": "A client dropped while playing connects again only where its player agrees."
     },
     {
       "from": "1.0.0.82",
@@ -145,7 +145,7 @@
           "note": "Zero while the match StartGame began is running, 1 otherwise: before StartGame, and once the match has ended."
         }
       ],
-      "note": "A client dropped while playing connects again only where its player agrees; one dropped while loading leaves."
+      "note": "A client dropped while playing connects again only where its player agrees."
     },
     {
       "from": "1.0.0.86",
@@ -177,7 +177,7 @@
           "note": "Zero while the match StartGame began is running, 1 otherwise: before StartGame, and once the match has ended."
         }
       ],
-      "note": "A client sends it right after the server answers its registration with its own player id, on every connection, the first included. A client dropped while playing connects again only where its player agrees; one dropped while loading leaves."
+      "note": "A client sends it right after the server answers its registration with its own player id, on every connection, the first included. A client dropped while playing connects again only where its player agrees."
     },
     {
       "from": "1.0.0.96",
@@ -658,7 +658,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "A client sends it as the connection is made, before any Registered, on every connection made while the match is in play. It carries nothing of its own."
+      "note": "It carries nothing of its own."
     },
     {
       "from": "4.11.0.386",
@@ -668,7 +668,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "A client sends it as the connection is made, before any Registered, on every connection made while the match is in play. It carries nothing of its own."
+      "note": "It carries nothing of its own."
     },
     {
       "from": "4.17.0.233",

@@ -6,6 +6,55 @@
   "revisions": [
     {
       "from": "0.9.25.21",
+      "until": "0.9.25.24",
+      "channel": "events",
+      "command": 168,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "entryCount",
+          "type": "u16",
+          "note": "How many sets of numbers follow. A client reads every set it names."
+        },
+        {
+          "name": "entries",
+          "type": "array",
+          "count": "entryCount",
+          "note": "The sets themselves.",
+          "items": {
+            "name": "entry",
+            "type": "record",
+            "fields": [
+              {
+                "name": "unit",
+                "type": "u32",
+                "note": "The unit whose spell this is."
+              },
+              {
+                "name": "slot",
+                "type": "u8",
+                "note": "Which of the unit's spell slots."
+              },
+              {
+                "name": "values",
+                "type": "array",
+                "count": 3,
+                "note": "The numbers themselves, one place each.",
+                "items": {
+                  "name": "value",
+                  "type": "f32",
+                  "note": "One number."
+                }
+              }
+            ],
+            "note": "The numbers for one spell, three places of them."
+          }
+        }
+      ]
+    },
+    {
+      "from": "0.9.25.24",
       "until": "0.9.25.36",
       "channel": "events",
       "command": 168,
@@ -1308,7 +1357,7 @@
               {
                 "name": "slot",
                 "type": "u8",
-                "note": "Which slot: from 60 to 119 the unit's own spell slot, less 60; from 120 up a summoner slot, less 120."
+                "note": "Which slot."
               },
               {
                 "name": "values",
@@ -1887,32 +1936,6 @@
     },
     {
       "from": "4.18.0.271",
-      "until": "4.20.0.315",
-      "channel": "events",
-      "command": 127,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "entryCount",
-          "type": "u16",
-          "note": "How many sets of numbers follow."
-        },
-        {
-          "name": "entries",
-          "type": "array",
-          "count": "entryCount",
-          "note": "The sets themselves.",
-          "items": {
-            "name": "entry",
-            "type": "struct",
-            "struct": "SpellNumberSet"
-          }
-        }
-      ]
-    },
-    {
-      "from": "4.20.0.315",
       "until": "4.21.0.0",
       "channel": "events",
       "command": 127,

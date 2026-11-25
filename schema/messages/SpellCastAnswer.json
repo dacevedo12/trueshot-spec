@@ -6,57 +6,6 @@
   "revisions": [
     {
       "from": "0.8.13.26",
-      "until": "0.9.22.14",
-      "channel": "events",
-      "command": 36,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "cast",
-          "type": "struct",
-          "struct": "SpellCast",
-          "note": "The casting."
-        }
-      ],
-      "note": "There is no byte for ending a charge and no sync id: the casting follows the header at once."
-    },
-    {
-      "from": "0.9.22.14",
-      "until": "0.9.25.24",
-      "channel": "events",
-      "command": 36,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "cast",
-          "type": "struct",
-          "struct": "SpellCast",
-          "note": "The casting."
-        }
-      ],
-      "note": "There is no byte for ending a charge and no sync id: the casting follows the header at once."
-    },
-    {
-      "from": "0.9.25.24",
-      "until": "1.0.0.25",
-      "channel": "events",
-      "command": 36,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "cast",
-          "type": "struct",
-          "struct": "SpellCast",
-          "note": "The casting."
-        }
-      ],
-      "note": "There is no byte for ending a charge and no sync id: the casting follows the header at once."
-    },
-    {
-      "from": "1.0.0.25",
       "until": "1.0.0.58",
       "channel": "events",
       "command": 36,
@@ -878,44 +827,6 @@
     },
     {
       "from": "4.1.0.171",
-      "until": "4.5.0.260",
-      "channel": "events",
-      "command": 180,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "syncId",
-          "type": "u32",
-          "note": "It settles whether a client brings the caster's position in line for this cast, and nothing else."
-        },
-        {
-          "name": "how",
-          "type": "bits",
-          "size": 1,
-          "bits": [
-            {
-              "name": "endCharge",
-              "width": 1,
-              "note": "Set where the cast ends a charge: a client drops the message unless the caster is charging that same spell. Clear lets a client charge a spell that charges, sending SpellCharge as it does."
-            },
-            {
-              "name": "unused",
-              "width": 7,
-              "note": "Unused; a server writes zero."
-            }
-          ]
-        },
-        {
-          "name": "cast",
-          "type": "struct",
-          "struct": "SpellCast",
-          "note": "The casting."
-        }
-      ]
-    },
-    {
-      "from": "4.5.0.260",
       "until": "4.11.0.386",
       "channel": "events",
       "command": 180,

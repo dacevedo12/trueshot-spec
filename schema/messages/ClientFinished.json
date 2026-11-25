@@ -16,6 +16,15 @@
     },
     {
       "from": "0.9.22.14",
+      "until": "0.9.25.24",
+      "channel": "requests",
+      "command": 17,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": []
+    },
+    {
+      "from": "0.9.25.24",
       "until": "1.0.0.58",
       "channel": "requests",
       "command": 17,
@@ -41,8 +50,7 @@
       "command": 17,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": [],
-      "note": "A client sends it each time GameEnded arrives."
+      "fields": []
     },
     {
       "from": "1.0.0.74",
@@ -62,7 +70,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "A client sends it each time GameEnded arrives."
+      "note": "A client sends it each time GameEnded arrives after StartGame."
     },
     {
       "from": "1.0.0.86",
@@ -81,8 +89,7 @@
       "command": 17,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": [],
-      "note": "A client sends it each time GameEnded arrives."
+      "fields": []
     },
     {
       "from": "1.0.0.96",

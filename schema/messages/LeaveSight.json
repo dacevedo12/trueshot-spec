@@ -96,13 +96,23 @@
     },
     {
       "from": "1.0.0.110",
-      "until": "1.0.0.117",
+      "until": "1.0.0.111",
       "channel": "events",
       "command": 80,
       "direction": "serverToClient",
       "reliability": "reliable",
       "fields": [],
       "note": "What a server sends to take a unit out of what a client can see; the client stops drawing it. The header names the unit."
+    },
+    {
+      "from": "1.0.0.111",
+      "until": "1.0.0.117",
+      "channel": "events",
+      "command": 80,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "What a server sends to take a unit out of what a client can see. The header names the unit."
     },
     {
       "from": "1.0.0.117",
@@ -112,7 +122,7 @@
       "direction": "serverToClient",
       "reliability": "reliable",
       "fields": [],
-      "note": "What a server sends to take a unit out of what a client can see; the client stops drawing it. The header names the unit."
+      "note": "What a server sends to take a unit out of what a client can see. The header names the unit."
     },
     {
       "from": "1.0.0.119",
@@ -122,7 +132,7 @@
       "direction": "serverToClient",
       "reliability": "reliable",
       "fields": [],
-      "note": "What a server sends to take a unit out of what a client can see; the client stops drawing it. The header names the unit."
+      "note": "What a server sends to take a unit out of what a client can see. The header names the unit."
     },
     {
       "from": "1.0.0.124",

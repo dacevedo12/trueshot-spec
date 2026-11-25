@@ -92,8 +92,7 @@
           "bits": [
             {
               "name": "pausing",
-              "width": 1,
-              "note": "Set to have a client post a notice in chat."
+              "width": 1
             },
             {
               "name": "unused",
@@ -385,8 +384,7 @@
             }
           ]
         }
-      ],
-      "note": "A client past spawning ignores it."
+      ]
     },
     {
       "from": "3.01.0.1",
@@ -413,8 +411,7 @@
             }
           ]
         }
-      ],
-      "note": "A client past spawning ignores it."
+      ]
     },
     {
       "from": "3.03.0.198",

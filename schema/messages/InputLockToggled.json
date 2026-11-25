@@ -1567,7 +1567,7 @@
     },
     {
       "from": "3.03.0.198",
-      "until": "3.6.0.388",
+      "until": "3.04.0.78",
       "channel": "events",
       "command": 155,
       "direction": "serverToClient",
@@ -1608,6 +1608,49 @@
         }
       ],
       "note": "A client acts on the change at once only where locks is 1, 4, 8, 16, 32 or 128; any other value, 2 and 64 among them, still changes what is locked, and takes effect as the player next tries."
+    },
+    {
+      "from": "3.04.0.78",
+      "until": "3.6.0.388",
+      "channel": "events",
+      "command": 155,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "locks",
+          "type": "u32",
+          "note": "Each lock set flips.",
+          "values": {
+            "1": {
+              "name": "cameraLock",
+              "note": "Locking the camera."
+            },
+            "2": {
+              "name": "movement"
+            },
+            "4": {
+              "name": "spells"
+            },
+            "8": {
+              "name": "summonerSpells"
+            },
+            "16": {
+              "name": "shop"
+            },
+            "32": {
+              "name": "chat"
+            },
+            "64": {
+              "name": "minimapMovement",
+              "note": "Moving by the minimap."
+            },
+            "128": {
+              "name": "cameraMovement"
+            }
+          }
+        }
+      ]
     },
     {
       "from": "3.6.0.388",
@@ -1655,6 +1698,49 @@
     },
     {
       "from": "3.7.0.328",
+      "until": "3.10.0.237",
+      "channel": "events",
+      "command": 155,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "locks",
+          "type": "u32",
+          "note": "Each lock set flips.",
+          "values": {
+            "1": {
+              "name": "cameraLock",
+              "note": "Locking the camera."
+            },
+            "2": {
+              "name": "movement"
+            },
+            "4": {
+              "name": "spells"
+            },
+            "8": {
+              "name": "summonerSpells"
+            },
+            "16": {
+              "name": "shop"
+            },
+            "32": {
+              "name": "chat"
+            },
+            "64": {
+              "name": "minimapMovement",
+              "note": "Moving by the minimap."
+            },
+            "128": {
+              "name": "cameraMovement"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "from": "3.10.0.237",
       "until": "3.14.0.700",
       "channel": "events",
       "command": 155,
@@ -1708,7 +1794,6 @@
         {
           "name": "locks",
           "type": "u32",
-          "note": "Each lock set flips.",
           "values": {
             "1": {
               "name": "cameraLock",
@@ -1752,7 +1837,6 @@
         {
           "name": "locks",
           "type": "u32",
-          "note": "Each lock set flips.",
           "values": {
             "1": {
               "name": "cameraLock",
@@ -1840,7 +1924,6 @@
         {
           "name": "locks",
           "type": "u32",
-          "note": "Each lock set flips.",
           "values": {
             "1": {
               "name": "cameraLock",
@@ -1884,7 +1967,6 @@
         {
           "name": "locks",
           "type": "u32",
-          "note": "Each lock set flips.",
           "values": {
             "1": {
               "name": "cameraLock",

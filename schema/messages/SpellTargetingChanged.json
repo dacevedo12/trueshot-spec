@@ -6,6 +6,38 @@
   "revisions": [
     {
       "from": "0.9.22.14",
+      "until": "0.9.25.24",
+      "channel": "events",
+      "command": 133,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "which",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "slot",
+              "width": 7,
+              "note": "Which slot. A champion's own spells count from 0."
+            },
+            {
+              "name": "summonerSlots",
+              "width": 1,
+              "note": "Set where the slot counts among the summoner slots, so that 0 and 1 name those two."
+            }
+          ]
+        },
+        {
+          "name": "targeting",
+          "type": "u8",
+          "note": "How the spell is aimed, 0 to 6; no value asks for the spell's own default."
+        }
+      ]
+    },
+    {
+      "from": "0.9.25.24",
       "until": "0.9.25.36",
       "channel": "events",
       "command": 133,
@@ -678,7 +710,7 @@
     },
     {
       "from": "1.0.0.132",
-      "until": "1.0.0.144",
+      "until": "1.0.0.141",
       "channel": "events",
       "command": 26,
       "direction": "serverToClient",
@@ -698,6 +730,38 @@
               "name": "summonerSlots",
               "width": 1,
               "note": "Set where slot names a summoner spell's slot, clear for the unit's own spells. Only a champion has summoner slots: a server sets it only for a champion, and for any other unit a client fails."
+            }
+          ]
+        },
+        {
+          "name": "targeting",
+          "type": "u8",
+          "note": "How the spell is aimed."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.141",
+      "until": "1.0.0.144",
+      "channel": "events",
+      "command": 26,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "which",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "slot",
+              "width": 7,
+              "note": "Which slot. A champion's own spells count from 0."
+            },
+            {
+              "name": "summonerSlots",
+              "width": 1,
+              "note": "Set where slot names a summoner spell's slot, clear for the unit's own spells. Only a champion has summoner slots."
             }
           ]
         },

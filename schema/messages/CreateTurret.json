@@ -471,7 +471,7 @@
           "note": "What this turret is called, so a client can tell one from another. Written out in full and padded with zero bytes to the width above."
         }
       ],
-      "note": "A client matches name against the map's turrets without regard to case. With no match it does nothing, and removes no object; a matched turret missing or dead is rebuilt before it takes the id."
+      "note": "A client matches name against the map's turrets without regard to case. With no match it does nothing, and removes no object; a matched turret takes the id. Whether one missing or dead is rebuilt before it takes the id is not recorded."
     },
     {
       "from": "1.0.0.127",
@@ -499,7 +499,7 @@
           "note": "What this turret is called, so a client can tell one from another. Written out in full and padded with zero bytes to the width above."
         }
       ],
-      "note": "A client matches name against the map's turrets. A matched turret missing or dead is rebuilt before it takes the id."
+      "note": "A client matches name against the map's turrets."
     },
     {
       "from": "1.0.0.129",
@@ -549,7 +549,7 @@
           "note": "Read, then overwritten; a client keeps nothing of it."
         }
       ],
-      "note": "A client matches name against the map's turrets. A matched turret missing or dead is rebuilt before it takes the id."
+      "note": "A client matches name against the map's turrets."
     },
     {
       "from": "1.0.0.132",

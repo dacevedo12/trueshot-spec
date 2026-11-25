@@ -321,7 +321,7 @@
         {
           "name": "audience",
           "type": "u32",
-          "note": "1 for the speaker's side alone, which a client shows without a tag; any other value from a server is shown tagged as said to everyone. A client sends 0 where its player began the line with the all-chat prefix, which it leaves out of the text, and 1 otherwise.",
+          "note": "A client sends 0 where its player began the line with the all-chat prefix, which it leaves out of the text, and 1 otherwise.",
           "values": {
             "0": {
               "name": "everyone"

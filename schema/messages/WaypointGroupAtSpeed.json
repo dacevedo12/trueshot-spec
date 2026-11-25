@@ -6,102 +6,6 @@
   "revisions": [
     {
       "from": "0.9.22.14",
-      "until": "0.9.25.24",
-      "channel": "events",
-      "command": 122,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "syncId",
-          "type": "u32",
-          "note": "Names this statement of movement."
-        },
-        {
-          "name": "movementCount",
-          "type": "u16",
-          "note": "How many units follow. A client reads it as signed, so a count above 32767 counts as none, as zero does."
-        },
-        {
-          "name": "movements",
-          "type": "array",
-          "count": "movementCount",
-          "note": "What each unit is told to do.",
-          "items": {
-            "name": "movement",
-            "type": "struct",
-            "struct": "MovementAtSpeed"
-          }
-        }
-      ],
-      "note": "A client answers each with WaypointAck, naming this sync id alone, before it reads any movement and whatever movementCount is."
-    },
-    {
-      "from": "0.9.25.24",
-      "until": "0.9.25.36",
-      "channel": "events",
-      "command": 122,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "syncId",
-          "type": "u32",
-          "note": "Names this statement of movement."
-        },
-        {
-          "name": "movementCount",
-          "type": "u16",
-          "note": "How many units follow. A client reads it as signed, so a count above 32767 counts as none, as zero does."
-        },
-        {
-          "name": "movements",
-          "type": "array",
-          "count": "movementCount",
-          "note": "What each unit is told to do.",
-          "items": {
-            "name": "movement",
-            "type": "struct",
-            "struct": "MovementAtSpeed"
-          }
-        }
-      ],
-      "note": "A client answers each with WaypointAck, naming this sync id alone, before it reads any movement and whatever movementCount is."
-    },
-    {
-      "from": "0.9.25.36",
-      "until": "1.0.0.25",
-      "channel": "events",
-      "command": 122,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "syncId",
-          "type": "u32",
-          "note": "Names this statement of movement."
-        },
-        {
-          "name": "movementCount",
-          "type": "u16",
-          "note": "How many units follow. A client reads it as signed, so a count above 32767 counts as none, as zero does."
-        },
-        {
-          "name": "movements",
-          "type": "array",
-          "count": "movementCount",
-          "note": "What each unit is told to do.",
-          "items": {
-            "name": "movement",
-            "type": "struct",
-            "struct": "MovementAtSpeed"
-          }
-        }
-      ],
-      "note": "A client answers each with WaypointAck, naming this sync id alone, before it reads any movement and whatever movementCount is."
-    },
-    {
-      "from": "1.0.0.25",
       "until": "1.0.0.58",
       "channel": "events",
       "command": 122,
@@ -895,37 +799,6 @@
     },
     {
       "from": "3.01.0.1",
-      "until": "3.14.0.700",
-      "channel": "events",
-      "command": 99,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "syncId",
-          "type": "u32",
-          "note": "Names this statement of movement."
-        },
-        {
-          "name": "movementCount",
-          "type": "u16",
-          "note": "How many units follow."
-        },
-        {
-          "name": "movements",
-          "type": "array",
-          "count": "movementCount",
-          "note": "What each unit is told to do.",
-          "items": {
-            "name": "movement",
-            "type": "struct",
-            "struct": "MovementAtSpeed"
-          }
-        }
-      ]
-    },
-    {
-      "from": "3.14.0.700",
       "until": "4.4.0.1858",
       "channel": "events",
       "command": 99,
@@ -1019,37 +892,6 @@
     },
     {
       "from": "4.11.0.386",
-      "until": "4.17.0.233",
-      "channel": "events",
-      "command": 100,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "syncId",
-          "type": "u32",
-          "note": "Names this statement of movement."
-        },
-        {
-          "name": "movementCount",
-          "type": "u16",
-          "note": "How many units follow."
-        },
-        {
-          "name": "movements",
-          "type": "array",
-          "count": "movementCount",
-          "note": "What each unit is told to do.",
-          "items": {
-            "name": "movement",
-            "type": "struct",
-            "struct": "MovementAtSpeed"
-          }
-        }
-      ]
-    },
-    {
-      "from": "4.17.0.233",
       "until": "4.20.0.315",
       "channel": "events",
       "command": 100,
