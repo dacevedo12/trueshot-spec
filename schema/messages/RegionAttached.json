@@ -664,6 +664,79 @@
     },
     {
       "from": "1.0.0.87",
+      "until": "1.0.0.96",
+      "channel": "events",
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "command": 96,
+      "fields": [
+        {
+          "name": "kind",
+          "type": "u32",
+          "note": "Whose map shows the region: 0 side 100's, 1 side 200's, 2 everyone's, 3 side 300's, 4 any other. A client takes the value as it stands, so 100 or 200 here matches no one, and draws the region only where it is 2 or names the player's own side."
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "Unused; a client reads nothing here."
+        },
+        {
+          "name": "sightRadius",
+          "type": "f32",
+          "note": "How far the region shows the map around it, in world units, zero or more. Zero takes the unit's own sight radius, followed as it changes, or a default where it has none."
+        },
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit the region follows. A client ignores the message where it does not know the unit."
+        },
+        {
+          "name": "lifetime",
+          "type": "f32",
+          "note": "How long it lasts, in seconds. A client counts it down and removes the region once it reaches zero or less, so one that starts at zero or less goes at its first count."
+        },
+        {
+          "name": "marker",
+          "type": "u32",
+          "note": "The region's id, which RegionRemoved names; zero has the client pick one of its own."
+        },
+        {
+          "name": "does",
+          "type": "bits",
+          "size": 4,
+          "note": "What the region does.",
+          "bits": [
+            {
+              "name": "flag",
+              "width": 1,
+              "note": "A client sets it, and does.second, wherever kind is 2."
+            },
+            {
+              "name": "second",
+              "width": 1,
+              "note": "Kept with the region; a client also sets it wherever kind is 2. It changes nothing a client shows."
+            },
+            {
+              "name": "unused",
+              "width": 30,
+              "note": "Its value has no effect, because a client always sets this bit itself; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "extra",
+          "type": "u32",
+          "note": "Kept with the region; it changes nothing a client shows. A server writes zero."
+        },
+        {
+          "name": "otherExtra",
+          "type": "u32",
+          "note": "Kept with the region; what it names is not recorded. A server sends zero."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.96",
       "until": "1.0.0.97",
       "channel": "events",
       "direction": "serverToClient",
@@ -1176,7 +1249,79 @@
     },
     {
       "from": "1.0.0.124",
-      "until": "1.0.0.128",
+      "until": "1.0.0.126",
+      "channel": "events",
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "command": 38,
+      "fields": [
+        {
+          "name": "kind",
+          "type": "u32",
+          "note": "Whose map shows the region: 0 side 100's, 1 side 200's, 2 everyone's, 3 side 300's, 4 any other. A client takes the value as it stands, so 100 or 200 here matches no one, and draws the region only where it is 2 or names the player's own side."
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "Unused; a client reads nothing here."
+        },
+        {
+          "name": "sightRadius",
+          "type": "f32",
+          "note": "How far the region shows the map around it, in world units, zero or more. Zero takes the unit's own sight radius, followed as it changes, or a default where it has none."
+        },
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit the region follows. A client ignores the message where it does not know the unit."
+        },
+        {
+          "name": "lifetime",
+          "type": "f32",
+          "note": "How long it lasts, in seconds. A client counts it down and removes the region once it reaches zero or less, so one that starts at zero or less goes at its first count."
+        },
+        {
+          "name": "marker",
+          "type": "u32",
+          "note": "The region's id, which RegionRemoved names; zero has the client pick one of its own."
+        },
+        {
+          "name": "does",
+          "type": "bits",
+          "size": 4,
+          "note": "What the region does.",
+          "bits": [
+            {
+              "name": "flag",
+              "width": 1
+            },
+            {
+              "name": "second",
+              "width": 1,
+              "note": "Kept with the region; a client also sets it where kind is 2 and flag is set. It changes nothing a client shows."
+            },
+            {
+              "name": "unused",
+              "width": 30,
+              "note": "Its value has no effect, because a client always sets this bit itself; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "extra",
+          "type": "u32",
+          "note": "Kept with the region; it changes nothing a client shows. A server writes zero."
+        },
+        {
+          "name": "otherExtra",
+          "type": "u32",
+          "note": "A server sends zero."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
       "channel": "events",
       "direction": "serverToClient",
       "reliability": "reliable",
@@ -1244,6 +1389,77 @@
           "name": "otherExtra",
           "type": "u32",
           "note": "A region sent again with the same value is taken as the one already shown; what else it names is not recorded. A server sends zero."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.127",
+      "until": "1.0.0.128",
+      "channel": "events",
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "command": 38,
+      "fields": [
+        {
+          "name": "kind",
+          "type": "u32"
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "Unused; a client reads nothing here."
+        },
+        {
+          "name": "sightRadius",
+          "type": "f32",
+          "note": "How far the region shows the map around it, in world units. Zero takes the unit's own sight radius, or a default where it has none."
+        },
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit the region follows. A client ignores the message where it does not know the unit."
+        },
+        {
+          "name": "lifetime",
+          "type": "f32",
+          "note": "How long it lasts, in seconds. A client counts it down and removes the region once it reaches zero or less, so one that starts at zero or less goes at its first count."
+        },
+        {
+          "name": "marker",
+          "type": "u32",
+          "note": "The region's id, which RegionRemoved names; zero has the client pick one of its own."
+        },
+        {
+          "name": "does",
+          "type": "bits",
+          "size": 4,
+          "note": "What the region does.",
+          "bits": [
+            {
+              "name": "flag",
+              "width": 1
+            },
+            {
+              "name": "second",
+              "width": 1,
+              "note": "Kept with the region; a client also sets it where kind is 2 and flag is set."
+            },
+            {
+              "name": "unused",
+              "width": 30,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "extra",
+          "type": "u32",
+          "note": "Kept with the region. A server writes zero."
+        },
+        {
+          "name": "otherExtra",
+          "type": "u32",
+          "note": "A server writes zero."
         }
       ]
     },
@@ -1468,7 +1684,80 @@
     },
     {
       "from": "1.0.0.139",
-      "until": "1.0.0.144",
+      "until": "1.0.0.140",
+      "channel": "events",
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "command": 38,
+      "fields": [
+        {
+          "name": "kind",
+          "type": "u32",
+          "note": "What sort of region it is."
+        },
+        {
+          "name": "clientId",
+          "type": "u32"
+        },
+        {
+          "name": "sightRadius",
+          "type": "f32",
+          "note": "How far the region shows the map around it, in world units. Zero takes the unit's own sight radius, or a default where it has none."
+        },
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit the region follows. Where the client does not hold the unit, it drops the whole message and makes no region."
+        },
+        {
+          "name": "lifetime",
+          "type": "f32",
+          "note": "How long it lasts, in seconds. A client counts it down and removes the region once it reaches zero or less."
+        },
+        {
+          "name": "marker",
+          "type": "u32",
+          "note": "The region's id, which RegionRemoved names."
+        },
+        {
+          "name": "does",
+          "type": "bits",
+          "size": 4,
+          "note": "What the region does.",
+          "bits": [
+            {
+              "name": "flag",
+              "width": 1,
+              "note": "What this changes on a client is not recorded."
+            },
+            {
+              "name": "second",
+              "width": 1,
+              "note": "A second choice a client keeps with the region; it also sets it itself where kind is 2 and the bit below it is set."
+            },
+            {
+              "name": "unused",
+              "width": 30,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "extra",
+          "type": "u32",
+          "note": "Kept with the region. A server writes zero."
+        },
+        {
+          "name": "otherExtra",
+          "type": "u32",
+          "note": "Kept the same way; a server writes zero."
+        }
+      ],
+      "note": "A region matching one the client holds in kind, sightRadius, the first three bits of does, extra, otherExtra and unit only gives that one the new lifetime."
+    },
+    {
+      "from": "1.0.0.140",
+      "until": "1.0.0.141",
       "channel": "events",
       "direction": "serverToClient",
       "reliability": "reliable",
@@ -1539,6 +1828,79 @@
         }
       ],
       "note": "A region matching one the client holds in kind, sightRadius, the first three bits of does (as the client sets them itself), extra, otherExtra and unit only has its lifetime replaced by the new one; marker and clientId are not compared, and nothing new is added."
+    },
+    {
+      "from": "1.0.0.141",
+      "until": "1.0.0.144",
+      "channel": "events",
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "command": 38,
+      "fields": [
+        {
+          "name": "kind",
+          "type": "u32",
+          "note": "What sort of region it is. Where it is 2, the region belongs to the client clientId names; what other values mean is not recorded."
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client the region belongs to where kind is 2. A client takes 4294967294 as 4294967295, no client."
+        },
+        {
+          "name": "sightRadius",
+          "type": "f32",
+          "note": "How far the region shows the map around it, in world units. Zero takes the unit's own sight radius, or a default where it has none."
+        },
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit the region follows. Where the client does not hold the unit, it drops the whole message and makes no region."
+        },
+        {
+          "name": "lifetime",
+          "type": "f32",
+          "note": "How long it lasts, in seconds. A client counts it down and removes the region once it reaches zero or less."
+        },
+        {
+          "name": "marker",
+          "type": "u32",
+          "note": "The region's id, which RegionRemoved names."
+        },
+        {
+          "name": "does",
+          "type": "bits",
+          "size": 4,
+          "note": "What the region does.",
+          "bits": [
+            {
+              "name": "flag",
+              "width": 1,
+              "note": "What this changes on a client is not recorded."
+            },
+            {
+              "name": "second",
+              "width": 1,
+              "note": "A second choice a client keeps with the region; it also sets it itself where kind is 2 and the bit below it is set."
+            },
+            {
+              "name": "unused",
+              "width": 30,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "extra",
+          "type": "u32",
+          "note": "Kept with the region, and compared in matching a region already held, so a region differing only here is added as a new one. A server writes zero."
+        },
+        {
+          "name": "otherExtra",
+          "type": "u32",
+          "note": "Kept and compared the same way; a server writes zero."
+        }
+      ]
     },
     {
       "from": "1.0.0.144",

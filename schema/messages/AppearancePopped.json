@@ -22,7 +22,23 @@
     },
     {
       "from": "0.9.22.14",
-      "until": "1.0.0.25",
+      "until": "0.9.25.24",
+      "channel": "events",
+      "command": 91,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "entry",
+          "type": "u32",
+          "note": "The look, by the name AppearancePushed gave it."
+        }
+      ],
+      "note": "A client also takes away every look laid over the unit on this command, so the unit is left with no look laid over it."
+    },
+    {
+      "from": "0.9.25.24",
+      "until": "0.9.25.36",
       "channel": "events",
       "command": 91,
       "direction": "serverToClient",
@@ -35,6 +51,22 @@
         }
       ],
       "note": "A client also takes away every look laid over the unit on this command, and does so before it looks for the one entry names, so the unit is left with no look laid over it."
+    },
+    {
+      "from": "0.9.25.36",
+      "until": "1.0.0.25",
+      "channel": "events",
+      "command": 91,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "entry",
+          "type": "u32",
+          "note": "The look, by the name AppearancePushed gave it."
+        }
+      ],
+      "note": "A client also takes away every look laid over the unit on this command, so the unit is left with no look laid over it."
     },
     {
       "from": "1.0.0.25",
@@ -246,7 +278,23 @@
     },
     {
       "from": "1.0.0.124",
-      "until": "1.0.0.128",
+      "until": "1.0.0.126",
+      "channel": "events",
+      "command": 106,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "entry",
+          "type": "u32",
+          "note": "The look, by the name AppearancePushed gave it."
+        }
+      ],
+      "note": "A client also takes away every look laid over the unit on this command, so the unit is left with no look laid over it."
+    },
+    {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
       "channel": "events",
       "command": 106,
       "direction": "serverToClient",
@@ -261,7 +309,7 @@
       "note": "A client also takes away every look laid over the unit on this command, and does so before it looks for the one entry names, so the unit is left with no look laid over it."
     },
     {
-      "from": "1.0.0.128",
+      "from": "1.0.0.127",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 106,

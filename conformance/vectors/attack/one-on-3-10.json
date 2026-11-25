@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "Attack",
+  "version": "3.10.0.237",
+  "note": "Laid out as a 3.10.0.237 client takes it.",
+  "bytes": "0c0500004001000040800120004040",
+  "fields": {
+    "command": 12,
+    "netId": 1073741829,
+    "extendedCommand": null,
+    "target": 1073741825,
+    "timing": 128,
+    "missile": 1073750017,
+    "slot": 64
+  }
+}

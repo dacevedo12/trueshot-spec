@@ -22,6 +22,21 @@
     },
     {
       "from": "0.9.22.14",
+      "until": "0.9.25.24",
+      "channel": "events",
+      "command": 64,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "seconds",
+          "type": "f32",
+          "note": "The span, in seconds."
+        }
+      ]
+    },
+    {
+      "from": "0.9.25.24",
       "until": "1.0.0.74",
       "channel": "events",
       "command": 64,

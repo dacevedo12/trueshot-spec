@@ -308,7 +308,38 @@
     },
     {
       "from": "1.0.0.138",
-      "until": "1.0.0.144",
+      "until": "1.0.0.140",
+      "channel": "requests",
+      "command": 115,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "what",
+          "type": "u8",
+          "note": "What happened to the tip.",
+          "values": {
+            "0": {
+              "name": "clicked",
+              "note": "The player clicked the tip: once per tip, and only while no tip's dialogue is open."
+            },
+            "1": {
+              "name": "closed",
+              "note": "The player closed the tip's dialogue."
+            }
+          }
+        },
+        {
+          "name": "tip",
+          "type": "u32",
+          "note": "Which tip, as TipShown named it."
+        }
+      ],
+      "note": "For what 1 the header names the sender's champion; for 0, the unit the TipShown was addressed to."
+    },
+    {
+      "from": "1.0.0.140",
+      "until": "1.0.0.141",
       "channel": "requests",
       "command": 115,
       "direction": "clientToServer",
@@ -336,6 +367,36 @@
         }
       ],
       "note": "For what 1, the header names the sender's champion. For what 0, it names the champion TipShown's header named, and a client sends it only while it still knows that champion."
+    },
+    {
+      "from": "1.0.0.141",
+      "until": "1.0.0.144",
+      "channel": "requests",
+      "command": 115,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "what",
+          "type": "u8",
+          "note": "What happened to the tip.",
+          "values": {
+            "0": {
+              "name": "clicked",
+              "note": "The player clicked the tip: once per tip, and only while no tip's dialogue is open."
+            },
+            "1": {
+              "name": "closed",
+              "note": "The player closed the tip's dialogue."
+            }
+          }
+        },
+        {
+          "name": "tip",
+          "type": "u32",
+          "note": "Which tip, as TipShown named it."
+        }
+      ]
     },
     {
       "from": "1.0.0.144",

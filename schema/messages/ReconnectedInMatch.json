@@ -22,6 +22,21 @@
     },
     {
       "from": "0.9.25.36",
+      "until": "1.0.0.25",
+      "channel": "requests",
+      "command": 117,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "loading",
+          "type": "u8",
+          "note": "Zero while the client is playing, in the state StartGame puts it in; 1 at any other time, including after GameEnded."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.25",
       "until": "1.0.0.58",
       "channel": "requests",
       "command": 117,
@@ -493,7 +508,7 @@
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
-      "note": "A client sends it as a connection comes up, without waiting for the registration answer, and only while the match is in play, so none on its first connection. A client dropped while playing reconnects by itself; one dropped while loading leaves instead. It carries nothing of its own."
+      "note": "A client sends it as a connection comes up, without waiting for the registration answer, and only while the match is in play, so none on its first connection. It carries nothing of its own."
     },
     {
       "from": "1.0.0.148",

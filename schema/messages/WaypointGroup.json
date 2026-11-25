@@ -6,6 +6,70 @@
   "revisions": [
     {
       "from": "0.9.22.14",
+      "until": "0.9.25.24",
+      "channel": "transient",
+      "command": 121,
+      "direction": "serverToClient",
+      "reliability": "unreliable",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u32",
+          "note": "The number of this statement; a client applies a path to a unit only where it is not behind the last the unit took. A client returns it in WaypointAck to say the group arrived."
+        },
+        {
+          "name": "movementCount",
+          "type": "u16",
+          "note": "How many paths follow, one for each unit. A client reads it as signed, so a count above 32767 counts as none, as zero does, and a client still answers."
+        },
+        {
+          "name": "movements",
+          "type": "array",
+          "count": "movementCount",
+          "items": {
+            "name": "movement",
+            "type": "struct",
+            "struct": "Movement"
+          },
+          "note": "One path for each unit."
+        }
+      ],
+      "note": "What a server sends to set units walking paths, which each walks at its own speed."
+    },
+    {
+      "from": "0.9.25.24",
+      "until": "0.9.25.36",
+      "channel": "transient",
+      "command": 121,
+      "direction": "serverToClient",
+      "reliability": "unreliable",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u32",
+          "note": "The number of this statement; a client applies a path to a unit only where it is not behind the last the unit took. A client returns it in WaypointAck to say the group arrived."
+        },
+        {
+          "name": "movementCount",
+          "type": "u16",
+          "note": "How many paths follow, one for each unit. A client reads it as signed, so a count above 32767 counts as none, as zero does, and a client still answers."
+        },
+        {
+          "name": "movements",
+          "type": "array",
+          "count": "movementCount",
+          "items": {
+            "name": "movement",
+            "type": "struct",
+            "struct": "Movement"
+          },
+          "note": "One path for each unit."
+        }
+      ],
+      "note": "What a server sends to set units walking paths, which each walks at its own speed."
+    },
+    {
+      "from": "0.9.25.36",
       "until": "1.0.0.25",
       "channel": "transient",
       "command": 121,
@@ -550,7 +614,7 @@
     },
     {
       "from": "1.0.0.124",
-      "until": "1.0.0.128",
+      "until": "1.0.0.127",
       "channel": "transient",
       "command": 100,
       "direction": "serverToClient",
@@ -581,7 +645,7 @@
       "note": "What a server sends to set units walking paths, which each walks at its own speed."
     },
     {
-      "from": "1.0.0.128",
+      "from": "1.0.0.127",
       "until": "1.0.0.132",
       "channel": "transient",
       "command": 100,
@@ -732,7 +796,7 @@
     },
     {
       "from": "1.0.0.150",
-      "until": "3.01.0.1",
+      "until": "1.0.0.151",
       "channel": "transient",
       "command": 94,
       "direction": "serverToClient",
@@ -747,6 +811,36 @@
           "name": "movementCount",
           "type": "u16",
           "note": "How many units the group moves. A client reads it as signed, so a count above 32767 carries none."
+        },
+        {
+          "name": "movements",
+          "type": "array",
+          "count": "movementCount",
+          "items": {
+            "name": "movement",
+            "type": "struct",
+            "struct": "Movement"
+          }
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.151",
+      "until": "3.01.0.1",
+      "channel": "transient",
+      "command": 94,
+      "direction": "serverToClient",
+      "reliability": "unreliable",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u32",
+          "note": "Names this group. A client returns it to say the group arrived."
+        },
+        {
+          "name": "movementCount",
+          "type": "u16",
+          "note": "How many units the group moves."
         },
         {
           "name": "movements",
@@ -822,6 +916,66 @@
     },
     {
       "from": "3.04.0.78",
+      "until": "3.6.0.388",
+      "channel": "transient",
+      "command": 96,
+      "direction": "serverToClient",
+      "reliability": "unreliable",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u32",
+          "note": "Names this group. A client returns it to say the group arrived."
+        },
+        {
+          "name": "movementCount",
+          "type": "u16",
+          "note": "How many units the group moves."
+        },
+        {
+          "name": "movements",
+          "type": "array",
+          "count": "movementCount",
+          "items": {
+            "name": "movement",
+            "type": "struct",
+            "struct": "Movement"
+          }
+        }
+      ]
+    },
+    {
+      "from": "3.6.0.388",
+      "until": "3.14.0.700",
+      "channel": "transient",
+      "command": 96,
+      "direction": "serverToClient",
+      "reliability": "unreliable",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u32",
+          "note": "Names this group. A client returns it to say the group arrived."
+        },
+        {
+          "name": "movementCount",
+          "type": "u16",
+          "note": "How many units the group moves."
+        },
+        {
+          "name": "movements",
+          "type": "array",
+          "count": "movementCount",
+          "items": {
+            "name": "movement",
+            "type": "struct",
+            "struct": "Movement"
+          }
+        }
+      ]
+    },
+    {
+      "from": "3.14.0.700",
       "until": "4.4.0.1858",
       "channel": "transient",
       "command": 96,
@@ -912,6 +1066,36 @@
     },
     {
       "from": "4.11.0.386",
+      "until": "4.17.0.233",
+      "channel": "transient",
+      "command": 97,
+      "direction": "serverToClient",
+      "reliability": "unreliable",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u32",
+          "note": "Names this group. A client returns it to say the group arrived."
+        },
+        {
+          "name": "movementCount",
+          "type": "u16",
+          "note": "How many units the group moves."
+        },
+        {
+          "name": "movements",
+          "type": "array",
+          "count": "movementCount",
+          "items": {
+            "name": "movement",
+            "type": "struct",
+            "struct": "Movement"
+          }
+        }
+      ]
+    },
+    {
+      "from": "4.17.0.233",
       "until": "4.20.0.315",
       "channel": "transient",
       "command": 97,

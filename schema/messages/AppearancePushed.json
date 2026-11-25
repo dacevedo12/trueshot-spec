@@ -29,6 +29,29 @@
     },
     {
       "from": "0.9.22.14",
+      "until": "0.9.25.24",
+      "channel": "events",
+      "command": 90,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "entry",
+          "type": "u32",
+          "note": "Names this look, so that AppearancePopped can name it."
+        },
+        {
+          "name": "asset",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "The name the client loads it under, ended by a zero byte."
+        }
+      ],
+      "note": "No skin is carried. Looks stack, the newest shows."
+    },
+    {
+      "from": "0.9.25.24",
       "until": "0.9.25.36",
       "channel": "events",
       "command": 90,
@@ -248,6 +271,34 @@
     },
     {
       "from": "1.0.0.82",
+      "until": "1.0.0.86",
+      "channel": "events",
+      "command": 101,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "entry",
+          "type": "u32",
+          "note": "Names this look, so that AppearancePopped can name it."
+        },
+        {
+          "name": "overrideSpells",
+          "type": "u8",
+          "note": "Set where the unit's spells change with it."
+        },
+        {
+          "name": "asset",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "The name the client loads it under, ended by a zero byte."
+        }
+      ],
+      "note": "No skin is carried; the look wears the unit's own skin. Looks stack, the newest shows."
+    },
+    {
+      "from": "1.0.0.86",
       "until": "1.0.0.97",
       "channel": "events",
       "command": 101,
@@ -556,7 +607,7 @@
     },
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.128",
+      "until": "1.0.0.127",
       "channel": "events",
       "command": 159,
       "direction": "serverToClient",
@@ -583,7 +634,7 @@
       "note": "No skin is carried; the look wears the unit's own skin. A client first stops a basic attack the unit is making; looks stack, the newest shows, and AppearancePopped takes away the one its entry names."
     },
     {
-      "from": "1.0.0.128",
+      "from": "1.0.0.127",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 159,
@@ -989,7 +1040,7 @@
     },
     {
       "from": "3.6.0.388",
-      "until": "3.10.0.237",
+      "until": "3.7.0.328",
       "channel": "events",
       "command": 151,
       "direction": "serverToClient",
@@ -1009,6 +1060,56 @@
               "name": "overrideSpells",
               "width": 1,
               "note": "Set where the unit's spells change with it."
+            },
+            {
+              "name": "modelOnly",
+              "width": 1,
+              "note": "Set where only the model changes."
+            },
+            {
+              "name": "unused",
+              "width": 6,
+              "note": "Unused; a server writes zero."
+            }
+          ],
+          "note": "What the look changes."
+        },
+        {
+          "name": "skin",
+          "type": "i32",
+          "note": "Which look; -1 keeps the unit's own skin."
+        },
+        {
+          "name": "asset",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "The name the client loads it under, ended by a zero byte."
+        }
+      ],
+      "note": "A client stops a basic attack the unit is making first. Looks stack: the newest shows, and AppearancePopped takes away the one its entry names. It has no effect on a building."
+    },
+    {
+      "from": "3.7.0.328",
+      "until": "3.10.0.237",
+      "channel": "events",
+      "command": 151,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "entry",
+          "type": "u32",
+          "note": "Names this look, so that AppearancePopped can name it."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "overrideSpells",
+              "width": 1
             },
             {
               "name": "modelOnly",

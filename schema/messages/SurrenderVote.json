@@ -818,7 +818,35 @@
     },
     {
       "from": "1.0.0.139",
-      "until": "1.0.0.144",
+      "until": "1.0.0.140",
+      "channel": "requests",
+      "command": 174,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "inFavour",
+              "width": 1,
+              "note": "Set where the answer is yes, clear where it is no."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "A client leaves these bits unwritten; they carry no meaning."
+            }
+          ]
+        }
+      ],
+      "note": "It answers a call to surrender."
+    },
+    {
+      "from": "1.0.0.140",
+      "until": "1.0.0.141",
       "channel": "requests",
       "command": 174,
       "direction": "clientToServer",
@@ -843,6 +871,33 @@
         }
       ],
       "note": "A client sends it to start a vote as well as to answer one: the surrender chat command sends it in favour whether or not a vote is open, and the vote panel's buttons and the chat command that votes no answer one."
+    },
+    {
+      "from": "1.0.0.141",
+      "until": "1.0.0.144",
+      "channel": "requests",
+      "command": 174,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "inFavour",
+              "width": 1,
+              "note": "Set where the answer is yes, clear where it is no."
+            },
+            {
+              "name": "unused",
+              "width": 7
+            }
+          ]
+        }
+      ],
+      "note": "It answers a call to surrender."
     },
     {
       "from": "1.0.0.144",

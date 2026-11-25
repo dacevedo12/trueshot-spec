@@ -49,7 +49,7 @@
     },
     {
       "from": "0.9.22.14",
-      "until": "1.0.0.74",
+      "until": "1.0.0.61",
       "channel": "requests",
       "command": 30,
       "direction": "clientToServer",
@@ -59,6 +59,48 @@
           "name": "unit",
           "type": "u32",
           "note": "A value the client takes from the unit that speaks; what it names is not recorded."
+        },
+        {
+          "name": "unknown",
+          "type": "f32",
+          "note": "A client writes 2."
+        },
+        {
+          "name": "unknownToo",
+          "type": "u32",
+          "note": "A client writes zero."
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "0 for text a client sends on a script's behalf. 1 for one of the client's own error texts, each distinct text sent once per session."
+        },
+        {
+          "name": "unused",
+          "type": "u8",
+          "note": "A client writes zero."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "What the unit says, ended by a zero byte; the two take at most 1024 bytes."
+        }
+      ],
+      "note": "The header names the unit speaking."
+    },
+    {
+      "from": "1.0.0.61",
+      "until": "1.0.0.74",
+      "channel": "requests",
+      "command": 30,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32"
         },
         {
           "name": "unknown",
@@ -135,7 +177,49 @@
     },
     {
       "from": "1.0.0.75",
-      "until": "1.0.0.110",
+      "until": "1.0.0.86",
+      "channel": "requests",
+      "command": 30,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32"
+        },
+        {
+          "name": "unknown",
+          "type": "f32",
+          "note": "A client writes 2."
+        },
+        {
+          "name": "unknownToo",
+          "type": "u32",
+          "note": "A client writes zero."
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "0 for text a client sends on a script's behalf. 1 for one of the client's own error texts, each distinct text sent once per session."
+        },
+        {
+          "name": "unused",
+          "type": "u8",
+          "note": "A client writes zero."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "What the unit says, ended by a zero byte; the two take at most 1024 bytes."
+        }
+      ],
+      "note": "The header names the unit speaking."
+    },
+    {
+      "from": "1.0.0.86",
+      "until": "1.0.0.97",
       "channel": "requests",
       "command": 30,
       "direction": "clientToServer",
@@ -160,6 +244,48 @@
           "name": "kind",
           "type": "u8",
           "note": "0 for text a client sends on a script's behalf. 1 for one of the client's own error texts, each distinct text sent once per session."
+        },
+        {
+          "name": "unused",
+          "type": "u8",
+          "note": "A client writes zero."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "What the unit says, ended by a zero byte; the two take at most 1024 bytes."
+        }
+      ],
+      "note": "The header names the unit speaking."
+    },
+    {
+      "from": "1.0.0.97",
+      "until": "1.0.0.110",
+      "channel": "requests",
+      "command": 30,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "A value the client takes from the unit that speaks; what it names is not recorded."
+        },
+        {
+          "name": "unknown",
+          "type": "f32",
+          "note": "A client writes 2."
+        },
+        {
+          "name": "unknownToo",
+          "type": "u32",
+          "note": "A client writes zero."
+        },
+        {
+          "name": "kind",
+          "type": "u8"
         },
         {
           "name": "unused",
@@ -221,7 +347,7 @@
     },
     {
       "from": "1.0.0.138",
-      "until": "1.0.0.144",
+      "until": "1.0.0.141",
       "channel": "requests",
       "command": 27,
       "direction": "clientToServer",
@@ -268,8 +394,54 @@
       "note": "The header names the unit speaking."
     },
     {
+      "from": "1.0.0.141",
+      "until": "1.0.0.144",
+      "channel": "requests",
+      "command": 27,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "A value the client takes from the unit that speaks; what it names is not recorded."
+        },
+        {
+          "name": "unknown",
+          "type": "f32",
+          "note": "A client writes 2."
+        },
+        {
+          "name": "unknownToo",
+          "type": "u32",
+          "note": "A client writes zero."
+        },
+        {
+          "name": "kind",
+          "type": "u8"
+        },
+        {
+          "name": "unused",
+          "type": "u8",
+          "note": "A client writes zero."
+        },
+        {
+          "name": "unusedToo",
+          "type": "u32"
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "What the unit says, ended by a zero byte; the two take at most 1024 bytes."
+        }
+      ],
+      "note": "The header names the unit speaking."
+    },
+    {
       "from": "1.0.0.144",
-      "until": "3.12.0.251",
+      "until": "1.0.0.150",
       "channel": "requests",
       "command": 24,
       "direction": "clientToServer",
@@ -284,6 +456,99 @@
           "name": "unknown",
           "type": "f32",
           "note": "A client writes 2."
+        },
+        {
+          "name": "unknownToo",
+          "type": "u32",
+          "note": "A client writes zero."
+        },
+        {
+          "name": "kind",
+          "type": "u8"
+        },
+        {
+          "name": "unused",
+          "type": "u8",
+          "note": "A client writes zero."
+        },
+        {
+          "name": "unusedToo",
+          "type": "u32"
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "What the unit says, ended by a zero byte; the two take at most 1024 bytes."
+        }
+      ],
+      "note": "The header names the unit speaking."
+    },
+    {
+      "from": "1.0.0.150",
+      "until": "3.11.0.306",
+      "channel": "requests",
+      "command": 24,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "A value the client takes from the unit that speaks; what it names is not recorded."
+        },
+        {
+          "name": "unknown",
+          "type": "f32",
+          "note": "A client writes 2."
+        },
+        {
+          "name": "unknownToo",
+          "type": "u32",
+          "note": "A client writes zero."
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "A client writes zero."
+        },
+        {
+          "name": "unused",
+          "type": "u8",
+          "note": "A client writes zero."
+        },
+        {
+          "name": "unusedToo",
+          "type": "u32",
+          "note": "A client writes zero."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "What the unit says, ended by a zero byte; the two take at most 1024 bytes."
+        }
+      ],
+      "note": "The header names the unit speaking."
+    },
+    {
+      "from": "3.11.0.306",
+      "until": "3.12.0.251",
+      "channel": "requests",
+      "command": 24,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "A value the client takes from the unit that speaks; what it names is not recorded."
+        },
+        {
+          "name": "unknown",
+          "type": "f32"
         },
         {
           "name": "unknownToo",

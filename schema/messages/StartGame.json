@@ -51,7 +51,7 @@
     },
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.132",
+      "until": "1.0.0.127",
       "channel": "events",
       "command": 95,
       "direction": "serverToClient",
@@ -78,8 +78,35 @@
       "note": "A client ignores it once the match has ended or while it is leaving, and acts on it again where it is repeated."
     },
     {
+      "from": "1.0.0.127",
+      "until": "1.0.0.132",
+      "channel": "events",
+      "command": 95,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "rules",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "pausing",
+              "width": 1,
+              "note": "Set to have a client post a notice in chat."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ]
+    },
+    {
       "from": "1.0.0.132",
-      "until": "1.0.0.138",
+      "until": "1.0.0.133",
       "channel": "events",
       "command": 96,
       "direction": "serverToClient",
@@ -104,6 +131,33 @@
         }
       ],
       "note": "A client past spawning ignores it."
+    },
+    {
+      "from": "1.0.0.133",
+      "until": "1.0.0.138",
+      "channel": "events",
+      "command": 96,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "rules",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "pausing",
+              "width": 1,
+              "note": "Set to have a client post a notice in chat, except while watching a match; it allows or blocks no hold."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ]
     },
     {
       "from": "1.0.0.138",
@@ -451,7 +505,7 @@
             {
               "name": "altUnitDisplay",
               "width": 1,
-              "note": "Shows units' health and experience bars and their character display from another set of the client's data."
+              "note": "An alternative unit display."
             },
             {
               "name": "balanceVoteCommands",
@@ -735,6 +789,33 @@
     },
     {
       "from": "4.11.0.386",
+      "until": "4.17.0.233",
+      "channel": "events",
+      "command": 92,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "rules",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "pausing",
+              "width": 1
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ],
+      "note": "A client past spawning ignores it."
+    },
+    {
+      "from": "4.17.0.233",
       "until": "4.18.0.271",
       "channel": "events",
       "command": 92,

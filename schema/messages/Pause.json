@@ -24,7 +24,7 @@
     },
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.132",
+      "until": "1.0.0.127",
       "channel": "requests",
       "command": 169,
       "direction": "clientToServer",
@@ -59,6 +59,43 @@
         }
       ],
       "note": "A client sends the same values in every Pause, as each field states."
+    },
+    {
+      "from": "1.0.0.127",
+      "until": "1.0.0.132",
+      "channel": "requests",
+      "command": 169,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "A client writes 4294967295, the client id of no client."
+        },
+        {
+          "name": "timeLeft",
+          "type": "i32",
+          "note": "A client leaves it unwritten; its bytes carry no meaning."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "tournament",
+              "width": 1,
+              "note": "A client sends it clear."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "A client leaves these bits unwritten; they carry no meaning."
+            }
+          ]
+        }
+      ]
     },
     {
       "from": "1.0.0.132",
@@ -210,7 +247,44 @@
     },
     {
       "from": "1.0.0.139",
-      "until": "1.0.0.144",
+      "until": "1.0.0.140",
+      "channel": "requests",
+      "command": 171,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "A client writes 4294967295, the client id of no client."
+        },
+        {
+          "name": "timeLeft",
+          "type": "i32",
+          "note": "A client leaves it unwritten; its bytes carry no meaning."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "tournament",
+              "width": 1,
+              "note": "A client sends it clear."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a client leaves these bits unwritten."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.140",
+      "until": "1.0.0.141",
       "channel": "requests",
       "command": 171,
       "direction": "clientToServer",
@@ -240,6 +314,43 @@
               "name": "unused",
               "width": 7,
               "note": "A client writes only tournament: these bits carry whatever it held there, and a server ignores them."
+            }
+          ]
+        }
+      ],
+      "note": "A client sends the same values in every Pause, as each field states."
+    },
+    {
+      "from": "1.0.0.141",
+      "until": "1.0.0.144",
+      "channel": "requests",
+      "command": 171,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "A client writes 4294967295, the client id of no client."
+        },
+        {
+          "name": "timeLeft",
+          "type": "i32",
+          "note": "A client leaves it unwritten; its bytes carry no meaning."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "tournament",
+              "width": 1,
+              "note": "A client sends it clear."
+            },
+            {
+              "name": "unused",
+              "width": 7
             }
           ]
         }
@@ -285,7 +396,7 @@
     },
     {
       "from": "1.0.0.150",
-      "until": "3.01.0.1",
+      "until": "1.0.0.151",
       "channel": "requests",
       "command": 158,
       "direction": "clientToServer",
@@ -322,7 +433,81 @@
       "note": "A client sends the same values in every Pause, as each field states."
     },
     {
+      "from": "1.0.0.151",
+      "until": "3.01.0.1",
+      "channel": "requests",
+      "command": 158,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "A client writes 4294967295, the client id of no client."
+        },
+        {
+          "name": "timeLeft",
+          "type": "i32"
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "tournament",
+              "width": 1,
+              "note": "A client sends it clear."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a client writes zero."
+            }
+          ]
+        }
+      ],
+      "note": "A client sends the same values in every Pause, as each field states."
+    },
+    {
       "from": "3.01.0.1",
+      "until": "3.03.0.198",
+      "channel": "requests",
+      "command": 161,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "A client writes 4294967295, the client id of no client."
+        },
+        {
+          "name": "timeLeft",
+          "type": "i32"
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "tournament",
+              "width": 1,
+              "note": "A client sends it clear."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a client writes zero."
+            }
+          ]
+        }
+      ],
+      "note": "A client sends the same values in every Pause, as each field states."
+    },
+    {
+      "from": "3.03.0.198",
       "until": "4.1.0.171",
       "channel": "requests",
       "command": 161,

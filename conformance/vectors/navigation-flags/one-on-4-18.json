@@ -1,0 +1,23 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "NavigationFlags",
+  "version": "4.18.0.271",
+  "note": "Laid out as a 4.18.0.271 client takes it.",
+  "bytes": "410000000001004d0000000000c8430000c8430000964300000000",
+  "fields": {
+    "command": 65,
+    "netId": 0,
+    "extendedCommand": null,
+    "count": 1,
+    "syncId": 77,
+    "circles": [
+      {
+        "x": 400,
+        "z": 400,
+        "radius": 300,
+        "flags": 0
+      }
+    ]
+  }
+}

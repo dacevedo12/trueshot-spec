@@ -16,13 +16,33 @@
     },
     {
       "from": "0.9.25.36",
-      "until": "1.0.0.74",
+      "until": "1.0.0.25",
+      "channel": "requests",
+      "command": 148,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client sends it every time its player opens the shop, in any game."
+    },
+    {
+      "from": "1.0.0.25",
+      "until": "1.0.0.61",
       "channel": "requests",
       "command": 148,
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
       "note": "A client sends it every time its player opens the shop, in any game. Where a script of the client's has locked the shop, the shop does not open and nothing is sent."
+    },
+    {
+      "from": "1.0.0.61",
+      "until": "1.0.0.74",
+      "channel": "requests",
+      "command": 148,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client sends it as its player opens the shop, in any match."
     },
     {
       "from": "1.0.0.74",
@@ -156,13 +176,32 @@
     },
     {
       "from": "1.0.0.124",
-      "until": "1.0.0.132",
+      "until": "1.0.0.126",
+      "channel": "requests",
+      "command": 96,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client sends it as its player opens the shop, in any match. While the shop is locked, the shop does not open and nothing is sent."
+    },
+    {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
       "channel": "requests",
       "command": 96,
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
       "note": "A client sends it each time the shop opens, in any mode and on any map, except while a script lock keeps the shop shut or the match is paused."
+    },
+    {
+      "from": "1.0.0.127",
+      "until": "1.0.0.132",
+      "channel": "requests",
+      "command": 96,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": []
     },
     {
       "from": "1.0.0.132",
@@ -265,13 +304,31 @@
     },
     {
       "from": "3.01.0.1",
-      "until": "3.6.0.388",
+      "until": "3.03.0.198",
+      "channel": "requests",
+      "command": 92,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": []
+    },
+    {
+      "from": "3.03.0.198",
+      "until": "3.04.0.78",
       "channel": "requests",
       "command": 92,
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
       "note": "A client sends it only in the tutorial: where the version answer names the mode TUTORIAL and a setting of the client's own turns the tutorial on, whatever the map; elsewhere it never sends this."
+    },
+    {
+      "from": "3.04.0.78",
+      "until": "3.6.0.388",
+      "channel": "requests",
+      "command": 92,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": []
     },
     {
       "from": "3.6.0.388",
@@ -285,7 +342,16 @@
     },
     {
       "from": "3.7.0.328",
-      "until": "4.1.0.171",
+      "until": "3.10.0.237",
+      "channel": "requests",
+      "command": 92,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": []
+    },
+    {
+      "from": "3.10.0.237",
+      "until": "3.14.0.700",
       "channel": "requests",
       "command": 92,
       "direction": "clientToServer",
@@ -294,7 +360,17 @@
       "note": "A client sends it only in the tutorial: where the version answer names the mode TUTORIAL and a setting of the client's own turns the tutorial on, whatever the map; elsewhere it never sends this."
     },
     {
-      "from": "4.1.0.171",
+      "from": "3.14.0.700",
+      "until": "4.4.0.1858",
+      "channel": "requests",
+      "command": 92,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client sends it only in the tutorial."
+    },
+    {
+      "from": "4.4.0.1858",
       "until": "4.11.0.386",
       "channel": "requests",
       "command": 92,

@@ -37,7 +37,37 @@
     },
     {
       "from": "0.9.22.14",
-      "until": "1.0.0.74",
+      "until": "0.9.25.24",
+      "channel": "requests",
+      "command": 25,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Where on the map, along one ground axis, in world units."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "The height of the place pinged, in world units."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Where on the map, along the other ground axis, in world units."
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "A network object the mark is on, or zero where it is on open ground."
+        }
+      ]
+    },
+    {
+      "from": "0.9.25.24",
+      "until": "1.0.0.61",
       "channel": "requests",
       "command": 25,
       "direction": "clientToServer",
@@ -65,6 +95,36 @@
         }
       ],
       "note": "A client also sends it from the alert button on its HUD, naming its champion's own place and writing nothing in particular where the target goes."
+    },
+    {
+      "from": "1.0.0.61",
+      "until": "1.0.0.74",
+      "channel": "requests",
+      "command": 25,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Where on the map, along one ground axis, in world units."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "The height of the place pinged, in world units."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Where on the map, along the other ground axis, in world units."
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "A network object the mark is on, or zero where it is on open ground."
+        }
+      ]
     },
     {
       "from": "1.0.0.74",
@@ -99,7 +159,37 @@
     },
     {
       "from": "1.0.0.75",
-      "until": "1.0.0.96",
+      "until": "1.0.0.86",
+      "channel": "requests",
+      "command": 25,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Where on the map, along one ground axis, in world units."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "The height of the place pinged, in world units."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Where on the map, along the other ground axis, in world units."
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "A network object the mark is on, or zero where it is on open ground."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.86",
+      "until": "1.0.0.87",
       "channel": "requests",
       "command": 25,
       "direction": "clientToServer",
@@ -129,7 +219,7 @@
       "note": "A client also sends it from the alert button on its HUD, naming its champion's own place and writing nothing in particular where the target goes."
     },
     {
-      "from": "1.0.0.96",
+      "from": "1.0.0.87",
       "until": "1.0.0.110",
       "channel": "requests",
       "command": 25,
@@ -325,7 +415,7 @@
     },
     {
       "from": "1.0.0.124",
-      "until": "1.0.0.128",
+      "until": "1.0.0.127",
       "channel": "requests",
       "command": 90,
       "direction": "clientToServer",
@@ -382,7 +472,7 @@
       ]
     },
     {
-      "from": "1.0.0.128",
+      "from": "1.0.0.127",
       "until": "1.0.0.132",
       "channel": "requests",
       "command": 90,
@@ -499,7 +589,65 @@
     },
     {
       "from": "1.0.0.138",
-      "until": "1.0.0.144",
+      "until": "1.0.0.140",
+      "channel": "requests",
+      "command": 93,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Where on the map, along one ground axis, in world units."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "The height of the place pinged."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Where on the map, along the other ground axis, in world units."
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "A network object the mark is on, or zero where it is on open ground."
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "Which mark it is. A client sends any of the seven below, and 1 where the mark shows a direction of attack.",
+          "values": {
+            "0": {
+              "name": "here"
+            },
+            "1": {
+              "name": "attackDirection"
+            },
+            "2": {
+              "name": "danger"
+            },
+            "3": {
+              "name": "targetUnaccountedFor"
+            },
+            "4": {
+              "name": "onMyWay"
+            },
+            "5": {
+              "name": "fallBack"
+            },
+            "6": {
+              "name": "comeHere"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.140",
+      "until": "1.0.0.141",
       "channel": "requests",
       "command": 93,
       "direction": "clientToServer",
@@ -555,6 +703,64 @@
         }
       ],
       "note": "While watching a match, a client places the mark only on its own screen and sends nothing."
+    },
+    {
+      "from": "1.0.0.141",
+      "until": "1.0.0.144",
+      "channel": "requests",
+      "command": 93,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "Where on the map, along one ground axis, in world units."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "The height of the place pinged."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "Where on the map, along the other ground axis, in world units."
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "A network object the mark is on, or zero where it is on open ground."
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "Which mark it is. A client sends any of the seven below, and 1 where the mark shows a direction of attack.",
+          "values": {
+            "0": {
+              "name": "here"
+            },
+            "1": {
+              "name": "attackDirection"
+            },
+            "2": {
+              "name": "danger"
+            },
+            "3": {
+              "name": "targetUnaccountedFor"
+            },
+            "4": {
+              "name": "onMyWay"
+            },
+            "5": {
+              "name": "fallBack"
+            },
+            "6": {
+              "name": "comeHere"
+            }
+          }
+        }
+      ]
     },
     {
       "from": "1.0.0.144",

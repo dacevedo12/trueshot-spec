@@ -24,7 +24,7 @@
     },
     {
       "from": "0.9.25.36",
-      "until": "1.0.0.74",
+      "until": "1.0.0.61",
       "channel": "events",
       "command": 151,
       "direction": "serverToClient",
@@ -36,6 +36,23 @@
           "encoding": "utf8",
           "size": "terminated",
           "note": "The objective, ended by a zero byte."
+        }
+      ],
+      "note": "A client ignores it where it has no objective panel."
+    },
+    {
+      "from": "1.0.0.61",
+      "until": "1.0.0.74",
+      "channel": "events",
+      "command": 151,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated"
         }
       ],
       "note": "A client ignores it where it has no objective panel."
@@ -77,6 +94,23 @@
     },
     {
       "from": "1.0.0.82",
+      "until": "1.0.0.86",
+      "channel": "events",
+      "command": 156,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated"
+        }
+      ],
+      "note": "A client ignores it where it has no objective panel."
+    },
+    {
+      "from": "1.0.0.86",
       "until": "1.0.0.97",
       "channel": "events",
       "command": 156,
@@ -221,7 +255,25 @@
     },
     {
       "from": "1.0.0.111",
-      "until": "1.0.0.128",
+      "until": "1.0.0.126",
+      "channel": "events",
+      "command": 14,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "The objective, ended by a zero byte."
+        }
+      ],
+      "note": "A client ignores it where it has no objective panel."
+    },
+    {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
       "channel": "events",
       "command": 14,
       "direction": "serverToClient",
@@ -238,7 +290,7 @@
       "note": "A client ignores it where it has no objective panel."
     },
     {
-      "from": "1.0.0.128",
+      "from": "1.0.0.127",
       "until": "1.0.0.144",
       "channel": "events",
       "command": 14,

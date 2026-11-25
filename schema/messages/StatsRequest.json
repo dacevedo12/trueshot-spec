@@ -76,7 +76,17 @@
     },
     {
       "from": "1.0.0.124",
-      "until": "1.0.0.128",
+      "until": "1.0.0.126",
+      "channel": "requests",
+      "command": 89,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "A client sends no body."
+    },
+    {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
       "channel": "requests",
       "command": 89,
       "direction": "clientToServer",
@@ -85,7 +95,7 @@
       "note": "The header names the sender's champion. A client sends no body."
     },
     {
-      "from": "1.0.0.128",
+      "from": "1.0.0.127",
       "until": "1.0.0.132",
       "channel": "requests",
       "command": 89,
@@ -106,13 +116,33 @@
     },
     {
       "from": "1.0.0.138",
-      "until": "1.0.0.144",
+      "until": "1.0.0.140",
+      "channel": "requests",
+      "command": 92,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "The header names the sender's champion."
+    },
+    {
+      "from": "1.0.0.140",
+      "until": "1.0.0.141",
       "channel": "requests",
       "command": 92,
       "direction": "clientToServer",
       "reliability": "reliable",
       "fields": [],
       "note": "The header names the sender's champion. It carries nothing of its own. A client sends it from its score panel."
+    },
+    {
+      "from": "1.0.0.141",
+      "until": "1.0.0.144",
+      "channel": "requests",
+      "command": 92,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [],
+      "note": "The header names the sender's champion."
     },
     {
       "from": "1.0.0.144",
@@ -214,7 +244,7 @@
     },
     {
       "from": "4.12.0.356",
-      "until": "4.20.0.315",
+      "until": "4.17.0.233",
       "channel": "requests",
       "command": 86,
       "direction": "clientToServer",
@@ -239,6 +269,78 @@
           "name": "appearance",
           "type": "u32",
           "note": "The appearance the client believes it is wearing, by the number it knows it as."
+        },
+        {
+          "name": "appearanceCheck",
+          "type": "u32",
+          "note": "A value standing for that appearance's content."
+        }
+      ],
+      "note": "The header names the sender's champion."
+    },
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.271",
+      "channel": "requests",
+      "command": 86,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "moduleOne",
+          "type": "u32",
+          "note": "One of three values a client reports about software it has detected alongside itself. A client sends zero."
+        },
+        {
+          "name": "moduleTwo",
+          "type": "u32",
+          "note": "The second of the three. A client sends zero."
+        },
+        {
+          "name": "moduleThree",
+          "type": "u32",
+          "note": "The third. A client sends zero."
+        },
+        {
+          "name": "appearance",
+          "type": "u32",
+          "note": "The appearance the client believes it is wearing, by the number it knows it as."
+        },
+        {
+          "name": "appearanceCheck",
+          "type": "u32",
+          "note": "A value standing for that appearance's content."
+        }
+      ],
+      "note": "The header names the sender's champion. It says what the client has detected running alongside it, and which appearance it believes it is wearing."
+    },
+    {
+      "from": "4.18.0.271",
+      "until": "4.20.0.315",
+      "channel": "requests",
+      "command": 86,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "moduleOne",
+          "type": "u32",
+          "note": "One of three values a client reports about software it has detected alongside itself."
+        },
+        {
+          "name": "moduleTwo",
+          "type": "u32",
+          "note": "The second of the three."
+        },
+        {
+          "name": "moduleThree",
+          "type": "u32",
+          "note": "The third."
+        },
+        {
+          "name": "appearance",
+          "type": "u32",
+          "note": "The skin the client's own champion wears."
         },
         {
           "name": "appearanceCheck",

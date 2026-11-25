@@ -23,7 +23,7 @@
     },
     {
       "from": "0.9.25.36",
-      "until": "1.0.0.74",
+      "until": "1.0.0.61",
       "channel": "events",
       "command": 149,
       "direction": "serverToClient",
@@ -35,6 +35,22 @@
           "encoding": "utf8",
           "size": "terminated",
           "note": "The objective, ended by a zero byte."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.61",
+      "until": "1.0.0.74",
+      "channel": "events",
+      "command": 149,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated"
         }
       ]
     },
@@ -73,6 +89,22 @@
     },
     {
       "from": "1.0.0.82",
+      "until": "1.0.0.86",
+      "channel": "events",
+      "command": 154,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated"
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.86",
       "until": "1.0.0.97",
       "channel": "events",
       "command": 154,
@@ -260,6 +292,23 @@
     },
     {
       "from": "1.0.0.124",
+      "until": "1.0.0.126",
+      "channel": "events",
+      "command": 59,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "The objective, ended by a zero byte."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.126",
       "until": "1.0.0.144",
       "channel": "events",
       "command": 59,

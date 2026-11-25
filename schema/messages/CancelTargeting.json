@@ -122,7 +122,36 @@
     },
     {
       "from": "1.0.0.139",
-      "until": "1.0.0.144",
+      "until": "1.0.0.140",
+      "channel": "events",
+      "command": 141,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "which",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "slot",
+              "width": 7,
+              "note": "Which slot."
+            },
+            {
+              "name": "summonerSpell",
+              "width": 1,
+              "note": "Set where the slot is a summoner slot."
+            }
+          ],
+          "note": "Which spell."
+        }
+      ],
+      "note": "A client cancels the aiming only where that slot is being aimed, and otherwise does nothing."
+    },
+    {
+      "from": "1.0.0.140",
+      "until": "1.0.0.141",
       "channel": "events",
       "command": 141,
       "direction": "serverToClient",
@@ -148,6 +177,35 @@
         }
       ],
       "note": "A client cancels the aiming only where that slot is being aimed, and otherwise does nothing. It acts on the message for any champion it holds, watching a match or not."
+    },
+    {
+      "from": "1.0.0.141",
+      "until": "1.0.0.144",
+      "channel": "events",
+      "command": 141,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "which",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "slot",
+              "width": 7,
+              "note": "Which slot."
+            },
+            {
+              "name": "summonerSpell",
+              "width": 1,
+              "note": "Set where the slot is a summoner slot."
+            }
+          ],
+          "note": "Which spell."
+        }
+      ],
+      "note": "A client cancels the aiming only where that slot is being aimed, and otherwise does nothing."
     },
     {
       "from": "1.0.0.144",

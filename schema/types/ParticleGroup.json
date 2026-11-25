@@ -5,7 +5,7 @@
   "revisions": [
     {
       "from": "0.8.13.26",
-      "until": "0.9.25.24",
+      "until": "0.9.22.14",
       "fields": [
         {
           "name": "particle",
@@ -26,6 +26,47 @@
           "name": "bone",
           "type": "u32",
           "note": "Where on the unit that made them they hang, by the same reading."
+        },
+        {
+          "name": "particleCount",
+          "type": "u8",
+          "note": "How many particles follow."
+        },
+        {
+          "name": "particles",
+          "type": "array",
+          "count": "particleCount",
+          "note": "The particles themselves.",
+          "items": {
+            "type": "struct",
+            "struct": "Particle",
+            "name": "drawn"
+          }
+        }
+      ]
+    },
+    {
+      "from": "0.9.22.14",
+      "until": "0.9.25.24",
+      "fields": [
+        {
+          "name": "particle",
+          "type": "u32",
+          "note": "Which particle, by the number its name gives, as spec/objects.md works it out."
+        },
+        {
+          "name": "flags",
+          "type": "u16",
+          "note": "How each particle of the group behaves, one bit each: 1 kept alive, not ending by itself. Bits 9 to 15 have no effect."
+        },
+        {
+          "name": "targetBone",
+          "type": "u32",
+          "note": "Where on the unit aimed at they hang, by the number the name of that place gives, as spec/objects.md works it out."
+        },
+        {
+          "name": "bone",
+          "type": "u32"
         },
         {
           "name": "particleCount",

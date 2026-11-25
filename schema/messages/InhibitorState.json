@@ -534,7 +534,7 @@
             {
               "name": "duration",
               "width": 31,
-              "note": "How long the state lasts, in seconds."
+              "note": "How long the state lasts."
             }
           ]
         }
@@ -561,7 +561,7 @@
             {
               "name": "duration",
               "width": 31,
-              "note": "How long the state lasts, in seconds."
+              "note": "How long the state lasts."
             }
           ]
         }
@@ -613,6 +613,50 @@
     },
     {
       "from": "1.0.0.128",
+      "until": "1.0.0.132",
+      "channel": "events",
+      "command": 45,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 2,
+          "bits": [
+            {
+              "name": "duration",
+              "width": 15,
+              "note": "How long the state lasts, in whole seconds; zero where alive is set."
+            },
+            {
+              "name": "unused",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "life",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "alive",
+              "width": 1,
+              "note": "Set while the inhibitor stands, with duration zero; clear while a state lasts the duration given."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.132",
       "until": "1.0.0.144",
       "channel": "events",
       "command": 45,
@@ -839,7 +883,7 @@
     },
     {
       "from": "3.10.0.237",
-      "until": "4.4.0.1858",
+      "until": "3.14.0.700",
       "channel": "events",
       "command": 42,
       "direction": "serverToClient",
@@ -866,7 +910,7 @@
       "note": "A client ignores it unless alive differs from the inhibitor's state: a new duration with the same state has no effect."
     },
     {
-      "from": "4.4.0.1858",
+      "from": "3.14.0.700",
       "until": "4.5.0.260",
       "channel": "events",
       "command": 42,
@@ -922,6 +966,33 @@
     },
     {
       "from": "4.11.0.386",
+      "until": "4.17.0.233",
+      "channel": "events",
+      "command": 43,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 2,
+          "bits": [
+            {
+              "name": "duration",
+              "width": 15,
+              "note": "How long the state lasts, in seconds."
+            },
+            {
+              "name": "alive",
+              "width": 1,
+              "note": "Set while the inhibitor stands, with duration zero; clear while a state lasts the duration given."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "from": "4.17.0.233",
       "until": "4.18.0.271",
       "channel": "events",
       "command": 43,

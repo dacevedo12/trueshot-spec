@@ -81,7 +81,7 @@
               "values": {
                 "0": {
                   "name": "invulnerable",
-                  "note": "A notice, no number."
+                  "note": "The word for invulnerable, no number."
                 },
                 "1": {
                   "name": "silent",
@@ -89,7 +89,7 @@
                 },
                 "2": {
                   "name": "dodge",
-                  "note": "A notice."
+                  "note": "The word for a dodge."
                 },
                 "3": {
                   "name": "critical",
@@ -101,7 +101,7 @@
                 },
                 "5": {
                   "name": "miss",
-                  "note": "A notice in the dodge style."
+                  "note": "The word for a miss."
                 },
                 "6": {
                   "name": "normal6",
@@ -139,7 +139,7 @@
     },
     {
       "from": "0.9.25.24",
-      "until": "1.0.0.110",
+      "until": "1.0.0.97",
       "channel": "events",
       "command": 23,
       "direction": "serverToClient",
@@ -157,7 +157,7 @@
               "values": {
                 "0": {
                   "name": "invulnerable",
-                  "note": "A notice, no number."
+                  "note": "The word for invulnerable, no number."
                 },
                 "1": {
                   "name": "silent",
@@ -165,7 +165,7 @@
                 },
                 "2": {
                   "name": "dodge",
-                  "note": "A notice."
+                  "note": "The word for a dodge."
                 },
                 "3": {
                   "name": "critical",
@@ -177,7 +177,84 @@
                 },
                 "5": {
                   "name": "miss",
-                  "note": "A notice in the dodge style."
+                  "note": "The word for a miss."
+                },
+                "6": {
+                  "name": "normal6",
+                  "note": "As 4."
+                },
+                "7": {
+                  "name": "normal7",
+                  "note": "As 4."
+                }
+              }
+            },
+            {
+              "name": "unused",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit hurt."
+        },
+        {
+          "name": "source",
+          "type": "u32",
+          "note": "The unit dealing it. A client shows nothing, notices included, unless it holds target and target can be attacked; it does not need to hold source, and a champion source has the amount added to its damage dealt where result is 3, 4 or above 5."
+        },
+        {
+          "name": "amount",
+          "type": "f32",
+          "note": "How much."
+        }
+      ],
+      "note": "A client shows the figure, but the health it shows for the unit is what replication carries, and this message leaves it as it was."
+    },
+    {
+      "from": "1.0.0.97",
+      "until": "1.0.0.110",
+      "channel": "events",
+      "command": 23,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "result",
+              "width": 7,
+              "note": "How the damage landed, and so what a client shows over the unit hurt: 0 the word for an invulnerable unit, 1 nothing, 2 the word for a dodge, 3 the amount as a critical strike, 5 the word for a miss, and 4 or any value above 5 the amount.",
+              "values": {
+                "0": {
+                  "name": "invulnerable",
+                  "note": "The word for invulnerable, no number."
+                },
+                "1": {
+                  "name": "silent",
+                  "note": "Nothing shown."
+                },
+                "2": {
+                  "name": "dodge",
+                  "note": "The word for a dodge."
+                },
+                "3": {
+                  "name": "critical",
+                  "note": "The number, as a critical."
+                },
+                "4": {
+                  "name": "normal",
+                  "note": "The number."
+                },
+                "5": {
+                  "name": "miss",
+                  "note": "The word for a miss."
                 },
                 "6": {
                   "name": "normal6",
@@ -311,7 +388,7 @@
               "values": {
                 "0": {
                   "name": "invulnerable",
-                  "note": "A notice, no number."
+                  "note": "The word for invulnerable, no number."
                 },
                 "1": {
                   "name": "silent",
@@ -319,7 +396,7 @@
                 },
                 "2": {
                   "name": "dodge",
-                  "note": "A notice."
+                  "note": "The word for a dodge."
                 },
                 "3": {
                   "name": "critical",
@@ -331,7 +408,7 @@
                 },
                 "5": {
                   "name": "miss",
-                  "note": "A notice in the dodge style."
+                  "note": "The word for a miss."
                 },
                 "6": {
                   "name": "normal6",
@@ -388,7 +465,7 @@
               "values": {
                 "0": {
                   "name": "invulnerable",
-                  "note": "A notice, no number."
+                  "note": "The word for invulnerable, no number."
                 },
                 "1": {
                   "name": "silent",
@@ -396,7 +473,7 @@
                 },
                 "2": {
                   "name": "dodge",
-                  "note": "A notice."
+                  "note": "The word for a dodge."
                 },
                 "3": {
                   "name": "critical",
@@ -408,7 +485,7 @@
                 },
                 "5": {
                   "name": "miss",
-                  "note": "A notice in the dodge style."
+                  "note": "The word for a miss."
                 },
                 "6": {
                   "name": "normal6",
@@ -465,7 +542,7 @@
               "values": {
                 "0": {
                   "name": "invulnerable",
-                  "note": "A notice, no number."
+                  "note": "The word for invulnerable, no number."
                 },
                 "1": {
                   "name": "silent",
@@ -473,7 +550,7 @@
                 },
                 "2": {
                   "name": "dodge",
-                  "note": "A notice."
+                  "note": "The word for a dodge."
                 },
                 "3": {
                   "name": "critical",
@@ -485,7 +562,7 @@
                 },
                 "5": {
                   "name": "miss",
-                  "note": "A notice in the dodge style."
+                  "note": "The word for a miss."
                 },
                 "6": {
                   "name": "normal6",
@@ -542,7 +619,7 @@
               "values": {
                 "0": {
                   "name": "invulnerable",
-                  "note": "A notice, no number."
+                  "note": "The word for invulnerable, no number."
                 },
                 "1": {
                   "name": "silent",
@@ -550,7 +627,7 @@
                 },
                 "2": {
                   "name": "dodge",
-                  "note": "A notice."
+                  "note": "The word for a dodge."
                 },
                 "3": {
                   "name": "critical",
@@ -562,7 +639,7 @@
                 },
                 "5": {
                   "name": "miss",
-                  "note": "A notice in the dodge style."
+                  "note": "The word for a miss."
                 },
                 "6": {
                   "name": "normal6",
@@ -619,7 +696,7 @@
               "values": {
                 "0": {
                   "name": "invulnerable",
-                  "note": "A notice, no number."
+                  "note": "The word for invulnerable, no number."
                 },
                 "1": {
                   "name": "silent",
@@ -627,7 +704,7 @@
                 },
                 "2": {
                   "name": "dodge",
-                  "note": "A notice."
+                  "note": "The word for a dodge."
                 },
                 "3": {
                   "name": "critical",
@@ -639,7 +716,7 @@
                 },
                 "5": {
                   "name": "miss",
-                  "note": "A notice in the dodge style."
+                  "note": "The word for a miss."
                 },
                 "6": {
                   "name": "normal6",
@@ -696,7 +773,7 @@
               "values": {
                 "0": {
                   "name": "invulnerable",
-                  "note": "A notice, no number."
+                  "note": "The word for invulnerable, no number."
                 },
                 "1": {
                   "name": "silent",
@@ -704,7 +781,7 @@
                 },
                 "2": {
                   "name": "dodge",
-                  "note": "A notice."
+                  "note": "The word for a dodge."
                 },
                 "3": {
                   "name": "critical",
@@ -716,7 +793,7 @@
                 },
                 "5": {
                   "name": "miss",
-                  "note": "A notice in the dodge style."
+                  "note": "The word for a miss."
                 },
                 "6": {
                   "name": "normal6",
@@ -773,7 +850,7 @@
               "values": {
                 "0": {
                   "name": "invulnerable",
-                  "note": "A notice, no number."
+                  "note": "The word for invulnerable, no number."
                 },
                 "1": {
                   "name": "silent",
@@ -781,7 +858,7 @@
                 },
                 "2": {
                   "name": "dodge",
-                  "note": "A notice."
+                  "note": "The word for a dodge."
                 },
                 "3": {
                   "name": "critical",
@@ -793,7 +870,7 @@
                 },
                 "5": {
                   "name": "miss",
-                  "note": "A notice in the dodge style."
+                  "note": "The word for a miss."
                 },
                 "6": {
                   "name": "normal6",
@@ -850,7 +927,7 @@
               "values": {
                 "0": {
                   "name": "invulnerable",
-                  "note": "A notice, no number."
+                  "note": "The word for invulnerable, no number."
                 },
                 "1": {
                   "name": "silent",
@@ -858,7 +935,7 @@
                 },
                 "2": {
                   "name": "dodge",
-                  "note": "A notice."
+                  "note": "The word for a dodge."
                 },
                 "3": {
                   "name": "critical",
@@ -870,7 +947,7 @@
                 },
                 "5": {
                   "name": "miss",
-                  "note": "A notice in the dodge style."
+                  "note": "The word for a miss."
                 },
                 "6": {
                   "name": "normal6",
@@ -927,7 +1004,7 @@
               "values": {
                 "0": {
                   "name": "invulnerable",
-                  "note": "A notice, no number."
+                  "note": "The word for invulnerable, no number."
                 },
                 "1": {
                   "name": "silent",
@@ -935,7 +1012,7 @@
                 },
                 "2": {
                   "name": "dodge",
-                  "note": "A notice."
+                  "note": "The word for a dodge."
                 },
                 "3": {
                   "name": "critical",
@@ -947,7 +1024,7 @@
                 },
                 "5": {
                   "name": "miss",
-                  "note": "A notice in the dodge style."
+                  "note": "The word for a miss."
                 },
                 "6": {
                   "name": "normal6",
@@ -986,7 +1063,101 @@
     },
     {
       "from": "1.0.0.138",
-      "until": "1.0.0.144",
+      "until": "1.0.0.140",
+      "channel": "events",
+      "command": 107,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "result",
+              "width": 7,
+              "note": "How the damage landed, and so what a client shows over the unit hurt. 4 shows the amount, 3 shows it as a critical strike, and 2 shows the word for a dodge in place of an amount.",
+              "values": {
+                "0": {
+                  "name": "invulnerable",
+                  "note": "The word for invulnerable, no number."
+                },
+                "1": {
+                  "name": "silent",
+                  "note": "Nothing shown."
+                },
+                "2": {
+                  "name": "dodge",
+                  "note": "The word for a dodge."
+                },
+                "3": {
+                  "name": "critical",
+                  "note": "The number, as a critical."
+                },
+                "4": {
+                  "name": "normal",
+                  "note": "The number."
+                },
+                "5": {
+                  "name": "miss",
+                  "note": "The word for a miss."
+                },
+                "6": {
+                  "name": "normal6",
+                  "note": "As 4."
+                },
+                "7": {
+                  "name": "normal7",
+                  "note": "As 4."
+                }
+              }
+            },
+            {
+              "name": "unused",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit hurt."
+        },
+        {
+          "name": "source",
+          "type": "u32",
+          "note": "The unit dealing it. A client shows the figure without holding it; the figure drifts from source toward target, and a champion source it holds has the amount added to its damage dealt."
+        },
+        {
+          "name": "amount",
+          "type": "f32",
+          "note": "How much."
+        },
+        {
+          "name": "damageKind",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "kind",
+              "width": 4,
+              "note": "What sort of damage it is, which sets how a client colours the figure: 0 red, 1 purple and 2 white. A client reads the low 4 bits only, so 16 shows as 0 and 17 as 1; low bits from 3 to 15 show as 0 does."
+            },
+            {
+              "name": "unused",
+              "width": 4,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ],
+      "note": "The health a client shows for the unit is what replication carries, and this message leaves it as it was."
+    },
+    {
+      "from": "1.0.0.140",
+      "until": "1.0.0.141",
       "channel": "events",
       "command": 107,
       "direction": "serverToClient",
@@ -1079,6 +1250,100 @@
       "note": "The health a client shows for the unit is what replication carries, and this message leaves it as it was. Where target is the client's own champion and a critical or plain amount is above zero, a client also flashes the screen."
     },
     {
+      "from": "1.0.0.141",
+      "until": "1.0.0.144",
+      "channel": "events",
+      "command": 107,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "result",
+              "width": 7,
+              "note": "How the damage landed, and so what a client shows over the unit hurt. 4 shows the amount, 3 shows it as a critical strike, and 2 shows the word for a dodge in place of an amount.",
+              "values": {
+                "0": {
+                  "name": "invulnerable",
+                  "note": "The word for invulnerable, no number."
+                },
+                "1": {
+                  "name": "silent",
+                  "note": "Nothing shown."
+                },
+                "2": {
+                  "name": "dodge",
+                  "note": "The word for a dodge."
+                },
+                "3": {
+                  "name": "critical",
+                  "note": "The number, as a critical."
+                },
+                "4": {
+                  "name": "normal",
+                  "note": "The number."
+                },
+                "5": {
+                  "name": "miss",
+                  "note": "The word for a miss."
+                },
+                "6": {
+                  "name": "normal6",
+                  "note": "As 4."
+                },
+                "7": {
+                  "name": "normal7",
+                  "note": "As 4."
+                }
+              }
+            },
+            {
+              "name": "unused",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit hurt."
+        },
+        {
+          "name": "source",
+          "type": "u32",
+          "note": "The unit dealing it."
+        },
+        {
+          "name": "amount",
+          "type": "f32",
+          "note": "How much."
+        },
+        {
+          "name": "damageKind",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "kind",
+              "width": 4,
+              "note": "What sort of damage it is, which sets how a client colours the figure: 0 red, 1 purple and 2 white. A client reads the low 4 bits only, so 16 shows as 0 and 17 as 1; low bits from 3 to 15 show as 0 does."
+            },
+            {
+              "name": "unused",
+              "width": 4,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ],
+      "note": "The health a client shows for the unit is what replication carries, and this message leaves it as it was."
+    },
+    {
       "from": "1.0.0.144",
       "until": "1.0.0.147",
       "channel": "events",
@@ -1098,7 +1363,7 @@
               "values": {
                 "0": {
                   "name": "invulnerable",
-                  "note": "A notice, no number."
+                  "note": "The word for invulnerable, no number."
                 },
                 "1": {
                   "name": "silent",
@@ -1106,7 +1371,7 @@
                 },
                 "2": {
                   "name": "dodge",
-                  "note": "A notice."
+                  "note": "The word for a dodge."
                 },
                 "3": {
                   "name": "critical",
@@ -1118,7 +1383,7 @@
                 },
                 "5": {
                   "name": "miss",
-                  "note": "A notice in the dodge style."
+                  "note": "The word for a miss."
                 },
                 "6": {
                   "name": "normal6",
@@ -1192,7 +1457,7 @@
               "values": {
                 "0": {
                   "name": "invulnerable",
-                  "note": "A notice, no number."
+                  "note": "The word for invulnerable, no number."
                 },
                 "1": {
                   "name": "silent",
@@ -1200,7 +1465,7 @@
                 },
                 "2": {
                   "name": "dodge",
-                  "note": "A notice."
+                  "note": "The word for a dodge."
                 },
                 "3": {
                   "name": "critical",
@@ -1212,7 +1477,7 @@
                 },
                 "5": {
                   "name": "miss",
-                  "note": "A notice in the dodge style."
+                  "note": "The word for a miss."
                 },
                 "6": {
                   "name": "normal6",
@@ -1276,7 +1541,7 @@
     },
     {
       "from": "1.0.0.150",
-      "until": "1.0.0.151",
+      "until": "3.01.0.1",
       "channel": "events",
       "command": 98,
       "direction": "serverToClient",
@@ -1315,108 +1580,6 @@
                 "5": {
                   "name": "miss",
                   "note": "The word for a miss."
-                },
-                "6": {
-                  "name": "normal6",
-                  "note": "As 4."
-                },
-                "7": {
-                  "name": "normal7",
-                  "note": "As 4."
-                }
-              }
-            },
-            {
-              "name": "unused1",
-              "width": 1,
-              "note": "Unused; a server writes zero."
-            },
-            {
-              "name": "kind",
-              "width": 2,
-              "note": "What sort of damage it is, which sets how a client colours the figure: 0 red, 1 purple and 2 white.",
-              "values": {
-                "0": {
-                  "name": "physical"
-                },
-                "1": {
-                  "name": "magic"
-                },
-                "2": {
-                  "name": "true"
-                },
-                "3": {
-                  "name": "mixed",
-                  "note": "Shown as physical."
-                }
-              }
-            },
-            {
-              "name": "unused",
-              "width": 2,
-              "note": "Unused; a server writes zero."
-            }
-          ]
-        },
-        {
-          "name": "target",
-          "type": "u32",
-          "note": "The unit hurt."
-        },
-        {
-          "name": "source",
-          "type": "u32",
-          "note": "The unit dealing it. A client shows nothing, notices included, unless it holds both target and source; the figure drifts from source toward target, and a champion source has the amount added to its damage dealt."
-        },
-        {
-          "name": "amount",
-          "type": "f32",
-          "note": "How much."
-        }
-      ],
-      "note": "A client shows the figure; the health it shows for the unit is what replication carries, and this message leaves it as it was."
-    },
-    {
-      "from": "1.0.0.151",
-      "until": "3.01.0.1",
-      "channel": "events",
-      "command": 98,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "how",
-          "type": "bits",
-          "size": 1,
-          "bits": [
-            {
-              "name": "result",
-              "width": 3,
-              "note": "How the damage landed, and so what a client shows over the unit hurt. 4 shows the amount, 3 shows it as a critical strike, and 2 shows the word for a dodge in place of an amount.",
-              "values": {
-                "0": {
-                  "name": "invulnerable",
-                  "note": "A notice, no number."
-                },
-                "1": {
-                  "name": "silent",
-                  "note": "Nothing shown."
-                },
-                "2": {
-                  "name": "dodge",
-                  "note": "A notice."
-                },
-                "3": {
-                  "name": "critical",
-                  "note": "The number, as a critical."
-                },
-                "4": {
-                  "name": "normal",
-                  "note": "The number."
-                },
-                "5": {
-                  "name": "miss",
-                  "note": "A notice in the dodge style."
                 },
                 "6": {
                   "name": "normal6",
@@ -1480,109 +1643,7 @@
     },
     {
       "from": "3.01.0.1",
-      "until": "3.6.0.388",
-      "channel": "events",
-      "command": 100,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "how",
-          "type": "bits",
-          "size": 1,
-          "bits": [
-            {
-              "name": "result",
-              "width": 3,
-              "note": "How the damage landed, and so what a client shows over the unit hurt. 4 shows the amount, 3 shows it as a critical strike, and 2 shows the word for a dodge in place of an amount.",
-              "values": {
-                "0": {
-                  "name": "invulnerable",
-                  "note": "A notice, no number."
-                },
-                "1": {
-                  "name": "silent",
-                  "note": "Nothing shown."
-                },
-                "2": {
-                  "name": "dodge",
-                  "note": "A notice."
-                },
-                "3": {
-                  "name": "critical",
-                  "note": "The number, as a critical."
-                },
-                "4": {
-                  "name": "normal",
-                  "note": "The number."
-                },
-                "5": {
-                  "name": "miss",
-                  "note": "A notice in the dodge style."
-                },
-                "6": {
-                  "name": "normal6",
-                  "note": "As 4."
-                },
-                "7": {
-                  "name": "normal7",
-                  "note": "As 4."
-                }
-              }
-            },
-            {
-              "name": "unused1",
-              "width": 1,
-              "note": "Unused; a server writes zero."
-            },
-            {
-              "name": "kind",
-              "width": 2,
-              "note": "What sort of damage it is, which sets how a client colours the figure: 0 red, 1 purple and 2 white.",
-              "values": {
-                "0": {
-                  "name": "physical"
-                },
-                "1": {
-                  "name": "magic"
-                },
-                "2": {
-                  "name": "true"
-                },
-                "3": {
-                  "name": "mixed",
-                  "note": "Shown as physical."
-                }
-              }
-            },
-            {
-              "name": "unused",
-              "width": 2,
-              "note": "Unused; a server writes zero."
-            }
-          ]
-        },
-        {
-          "name": "target",
-          "type": "u32",
-          "note": "The unit hurt."
-        },
-        {
-          "name": "source",
-          "type": "u32",
-          "note": "The unit dealing it. A client shows nothing, notices included, unless it holds both target and source; the figure drifts from source toward target, and a champion source has the amount added to its damage dealt."
-        },
-        {
-          "name": "amount",
-          "type": "f32",
-          "note": "How much."
-        }
-      ],
-      "note": "A client shows the figure; the health it shows for the unit is what replication carries, and this message leaves it as it was."
-    },
-    {
-      "from": "3.6.0.388",
-      "until": "3.7.0.328",
+      "until": "3.10.0.237",
       "channel": "events",
       "command": 100,
       "direction": "serverToClient",
@@ -1621,108 +1682,6 @@
                 "5": {
                   "name": "miss",
                   "note": "The word for a miss."
-                },
-                "6": {
-                  "name": "normal6",
-                  "note": "As 4."
-                },
-                "7": {
-                  "name": "normal7",
-                  "note": "As 4."
-                }
-              }
-            },
-            {
-              "name": "unused1",
-              "width": 1,
-              "note": "Unused; a server writes zero."
-            },
-            {
-              "name": "kind",
-              "width": 2,
-              "note": "What sort of damage it is, which sets how a client colours the figure: 0 red, 1 purple and 2 white.",
-              "values": {
-                "0": {
-                  "name": "physical"
-                },
-                "1": {
-                  "name": "magic"
-                },
-                "2": {
-                  "name": "true"
-                },
-                "3": {
-                  "name": "mixed",
-                  "note": "Shown as physical."
-                }
-              }
-            },
-            {
-              "name": "unused",
-              "width": 2,
-              "note": "Unused; a server writes zero."
-            }
-          ]
-        },
-        {
-          "name": "target",
-          "type": "u32",
-          "note": "The unit hurt."
-        },
-        {
-          "name": "source",
-          "type": "u32",
-          "note": "The unit dealing it. A client shows nothing, notices included, unless it holds both target and source; the figure drifts from source toward target, and a champion source has the amount added to its damage dealt."
-        },
-        {
-          "name": "amount",
-          "type": "f32",
-          "note": "How much."
-        }
-      ],
-      "note": "A client shows the figure; the health it shows for the unit is what replication carries, and this message leaves it as it was."
-    },
-    {
-      "from": "3.7.0.328",
-      "until": "3.10.0.237",
-      "channel": "events",
-      "command": 100,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "how",
-          "type": "bits",
-          "size": 1,
-          "bits": [
-            {
-              "name": "result",
-              "width": 3,
-              "note": "How the damage landed, and so what a client shows over the unit hurt. 4 shows the amount, 3 shows it as a critical strike, and 2 shows the word for a dodge in place of an amount.",
-              "values": {
-                "0": {
-                  "name": "invulnerable",
-                  "note": "A notice, no number."
-                },
-                "1": {
-                  "name": "silent",
-                  "note": "Nothing shown."
-                },
-                "2": {
-                  "name": "dodge",
-                  "note": "A notice."
-                },
-                "3": {
-                  "name": "critical",
-                  "note": "The number, as a critical."
-                },
-                "4": {
-                  "name": "normal",
-                  "note": "The number."
-                },
-                "5": {
-                  "name": "miss",
-                  "note": "A notice in the dodge style."
                 },
                 "6": {
                   "name": "normal6",
@@ -1804,7 +1763,7 @@
               "values": {
                 "0": {
                   "name": "invulnerable",
-                  "note": "A notice, no number."
+                  "note": "The word for invulnerable, no number."
                 },
                 "1": {
                   "name": "silent",
@@ -1812,7 +1771,7 @@
                 },
                 "2": {
                   "name": "dodge",
-                  "note": "A notice."
+                  "note": "The word for a dodge."
                 },
                 "3": {
                   "name": "critical",
@@ -1824,7 +1783,7 @@
                 },
                 "5": {
                   "name": "miss",
-                  "note": "A notice in the dodge style."
+                  "note": "The word for a miss."
                 },
                 "6": {
                   "name": "normal6",
@@ -1888,7 +1847,7 @@
     },
     {
       "from": "3.11.0.306",
-      "until": "4.4.0.1858",
+      "until": "3.13.0.399",
       "channel": "events",
       "command": 100,
       "direction": "serverToClient",
@@ -1906,7 +1865,7 @@
               "values": {
                 "0": {
                   "name": "invulnerable",
-                  "note": "A notice, no number."
+                  "note": "The word for invulnerable, no number."
                 },
                 "1": {
                   "name": "silent",
@@ -1914,7 +1873,7 @@
                 },
                 "2": {
                   "name": "dodge",
-                  "note": "A notice."
+                  "note": "The word for a dodge."
                 },
                 "3": {
                   "name": "critical",
@@ -1926,7 +1885,109 @@
                 },
                 "5": {
                   "name": "miss",
-                  "note": "A notice in the dodge style."
+                  "note": "The word for a miss."
+                },
+                "6": {
+                  "name": "normal6",
+                  "note": "As 4."
+                },
+                "7": {
+                  "name": "normal7",
+                  "note": "As 4."
+                }
+              }
+            },
+            {
+              "name": "unused1",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
+            {
+              "name": "kind",
+              "width": 2,
+              "note": "What sort of damage it is, which sets how a client colours the figure: 0 red, 1 purple and 2 white.",
+              "values": {
+                "0": {
+                  "name": "physical"
+                },
+                "1": {
+                  "name": "magic"
+                },
+                "2": {
+                  "name": "true"
+                },
+                "3": {
+                  "name": "mixed",
+                  "note": "Shown as physical."
+                }
+              }
+            },
+            {
+              "name": "unused",
+              "width": 2,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit hurt."
+        },
+        {
+          "name": "source",
+          "type": "u32",
+          "note": "The unit dealing it. A client shows nothing, notices included, unless it holds both target and source; the figure drifts from source toward target, and a champion source has the amount added to its damage dealt."
+        },
+        {
+          "name": "amount",
+          "type": "f32",
+          "note": "How much."
+        }
+      ],
+      "note": "A client shows the figure. The health it shows for the unit is what replication carries, and this message leaves it as it was."
+    },
+    {
+      "from": "3.13.0.399",
+      "until": "3.14.0.700",
+      "channel": "events",
+      "command": 100,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "result",
+              "width": 3,
+              "note": "How the damage landed, and so what a client shows over the unit hurt. 4 shows the amount, 3 shows it as a critical strike, and 2 shows the word for a dodge in place of an amount.",
+              "values": {
+                "0": {
+                  "name": "invulnerable",
+                  "note": "The word for invulnerable, no number."
+                },
+                "1": {
+                  "name": "silent",
+                  "note": "Nothing shown."
+                },
+                "2": {
+                  "name": "dodge",
+                  "note": "The word for a dodge."
+                },
+                "3": {
+                  "name": "critical",
+                  "note": "The number, as a critical."
+                },
+                "4": {
+                  "name": "normal",
+                  "note": "The number."
+                },
+                "5": {
+                  "name": "miss",
+                  "note": "The word for a miss."
                 },
                 "6": {
                   "name": "normal6",
@@ -1989,6 +2050,108 @@
       "note": "A client shows the figure and nothing more: the health it shows for the unit is what replication carries, and this message leaves it as it was."
     },
     {
+      "from": "3.14.0.700",
+      "until": "4.4.0.1858",
+      "channel": "events",
+      "command": 100,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "result",
+              "width": 3,
+              "note": "How the damage landed, and so what a client shows over the unit hurt. 4 shows the amount, 3 shows it as a critical strike, and 2 shows the word for a dodge in place of an amount.",
+              "values": {
+                "0": {
+                  "name": "invulnerable",
+                  "note": "The word for invulnerable, no number."
+                },
+                "1": {
+                  "name": "silent",
+                  "note": "Nothing shown."
+                },
+                "2": {
+                  "name": "dodge",
+                  "note": "The word for a dodge."
+                },
+                "3": {
+                  "name": "critical",
+                  "note": "The number, as a critical."
+                },
+                "4": {
+                  "name": "normal",
+                  "note": "The number."
+                },
+                "5": {
+                  "name": "miss",
+                  "note": "The word for a miss."
+                },
+                "6": {
+                  "name": "normal6",
+                  "note": "As 4."
+                },
+                "7": {
+                  "name": "normal7",
+                  "note": "As 4."
+                }
+              }
+            },
+            {
+              "name": "unused1",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
+            {
+              "name": "kind",
+              "width": 2,
+              "note": "What sort of damage it is, which picks the style a client shows the figure in: 0, 1 and 2 each have their own.",
+              "values": {
+                "0": {
+                  "name": "physical"
+                },
+                "1": {
+                  "name": "magic"
+                },
+                "2": {
+                  "name": "true"
+                },
+                "3": {
+                  "name": "mixed",
+                  "note": "Shown as physical."
+                }
+              }
+            },
+            {
+              "name": "unused",
+              "width": 2,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit hurt."
+        },
+        {
+          "name": "source",
+          "type": "u32",
+          "note": "The unit dealing it. A client shows nothing, notices included, unless it holds both target and source; the figure drifts from source toward target, and a champion source has the amount added to its damage dealt."
+        },
+        {
+          "name": "amount",
+          "type": "f32",
+          "note": "How much."
+        }
+      ],
+      "note": "A client shows the figure; the health it shows for the unit is what replication carries, and this message leaves it as it was."
+    },
+    {
       "from": "4.4.0.1858",
       "until": "4.5.0.260",
       "channel": "events",
@@ -2008,7 +2171,7 @@
               "values": {
                 "0": {
                   "name": "invulnerable",
-                  "note": "A notice, no number."
+                  "note": "The word for invulnerable, no number."
                 },
                 "1": {
                   "name": "silent",
@@ -2016,7 +2179,7 @@
                 },
                 "2": {
                   "name": "dodge",
-                  "note": "A notice."
+                  "note": "The word for a dodge."
                 },
                 "3": {
                   "name": "critical",
@@ -2028,7 +2191,7 @@
                 },
                 "5": {
                   "name": "miss",
-                  "note": "A notice in the dodge style."
+                  "note": "The word for a miss."
                 },
                 "6": {
                   "name": "normal6",
@@ -2110,7 +2273,7 @@
               "values": {
                 "0": {
                   "name": "invulnerable",
-                  "note": "A notice, no number."
+                  "note": "The word for invulnerable, no number."
                 },
                 "1": {
                   "name": "silent",
@@ -2118,7 +2281,7 @@
                 },
                 "2": {
                   "name": "dodge",
-                  "note": "A notice."
+                  "note": "The word for a dodge."
                 },
                 "3": {
                   "name": "critical",
@@ -2130,7 +2293,7 @@
                 },
                 "5": {
                   "name": "miss",
-                  "note": "A notice in the dodge style."
+                  "note": "The word for a miss."
                 },
                 "6": {
                   "name": "normal6",
@@ -2212,7 +2375,7 @@
               "values": {
                 "0": {
                   "name": "invulnerable",
-                  "note": "A notice, no number."
+                  "note": "The word for invulnerable, no number."
                 },
                 "1": {
                   "name": "silent",
@@ -2220,7 +2383,7 @@
                 },
                 "2": {
                   "name": "dodge",
-                  "note": "A notice."
+                  "note": "The word for a dodge."
                 },
                 "3": {
                   "name": "critical",
@@ -2232,7 +2395,7 @@
                 },
                 "5": {
                   "name": "miss",
-                  "note": "A notice in the dodge style."
+                  "note": "The word for a miss."
                 },
                 "6": {
                   "name": "normal6",
@@ -2314,7 +2477,7 @@
               "values": {
                 "0": {
                   "name": "invulnerable",
-                  "note": "A notice, no number."
+                  "note": "The word for invulnerable, no number."
                 },
                 "1": {
                   "name": "silent",
@@ -2322,7 +2485,7 @@
                 },
                 "2": {
                   "name": "dodge",
-                  "note": "A notice."
+                  "note": "The word for a dodge."
                 },
                 "3": {
                   "name": "critical",
@@ -2334,7 +2497,7 @@
                 },
                 "5": {
                   "name": "miss",
-                  "note": "A notice in the dodge style."
+                  "note": "The word for a miss."
                 },
                 "6": {
                   "name": "normal6",

@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "0.8.13.26",
-      "until": "1.0.0.110",
+      "until": "1.0.0.97",
       "channel": "events",
       "command": 22,
       "direction": "serverToClient",
@@ -19,6 +19,21 @@
         }
       ],
       "note": "The particle field alone names the particle; the header can carry zero."
+    },
+    {
+      "from": "1.0.0.97",
+      "until": "1.0.0.110",
+      "channel": "events",
+      "command": 22,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "particle",
+          "type": "u32",
+          "note": "The particle to stop."
+        }
+      ]
     },
     {
       "from": "1.0.0.110",
@@ -129,7 +144,22 @@
     },
     {
       "from": "3.7.0.328",
-      "until": "3.13.0.399",
+      "until": "3.10.0.237",
+      "channel": "events",
+      "command": 55,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "particle",
+          "type": "u32",
+          "note": "The particle to stop."
+        }
+      ]
+    },
+    {
+      "from": "3.10.0.237",
+      "until": "3.11.0.306",
       "channel": "events",
       "command": 55,
       "direction": "serverToClient",
@@ -142,6 +172,21 @@
         }
       ],
       "note": "The header names the particle."
+    },
+    {
+      "from": "3.11.0.306",
+      "until": "3.13.0.399",
+      "channel": "events",
+      "command": 55,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "particle",
+          "type": "u32",
+          "note": "The particle to stop."
+        }
+      ]
     },
     {
       "from": "3.13.0.399",

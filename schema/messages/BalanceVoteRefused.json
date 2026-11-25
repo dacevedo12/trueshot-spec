@@ -101,6 +101,38 @@
     },
     {
       "from": "4.1.0.171",
+      "until": "4.4.0.1858",
+      "channel": "requests",
+      "command": 249,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "flags",
+          "type": "u8",
+          "note": "Zero: a vote against."
+        },
+        {
+          "name": "voter",
+          "type": "u32",
+          "note": "Zero."
+        },
+        {
+          "name": "unset",
+          "type": "array",
+          "count": 23,
+          "items": {
+            "name": "byte",
+            "type": "u8",
+            "note": "One unused byte."
+          },
+          "note": "The rest of BalanceVote's layout. Unused; its bytes carry no meaning."
+        }
+      ],
+      "note": "A client sends it only outside the tutorial."
+    },
+    {
+      "from": "4.4.0.1858",
       "until": "4.11.0.386",
       "channel": "requests",
       "command": 249,

@@ -24,7 +24,7 @@
     },
     {
       "from": "0.9.22.14",
-      "until": "1.0.0.126",
+      "until": "0.9.25.24",
       "channel": "chat",
       "command": 0,
       "direction": "bidirectional",
@@ -35,6 +35,100 @@
           "name": "speaker",
           "type": "u32",
           "note": "The client id the line is from. A client sends its own. From a server, a client shows the line with the name of the player holding that client id, coloured for whether that player is on its own side, and with no name for a client id nobody holds; 4294967295 shows the whole line with no name and no tag. A client does not show a line from a player its own player has ignored or muted."
+        },
+        {
+          "name": "audience",
+          "type": "u32",
+          "note": "1 for the speaker's side alone, which a client shows without a tag; any other value from a server is shown tagged as said to everyone. A client sends 0 where its player began the line with the all-chat prefix, which it leaves out of the text, and 1 otherwise.",
+          "values": {
+            "0": {
+              "name": "everyone"
+            },
+            "1": {
+              "name": "team"
+            }
+          }
+        },
+        {
+          "name": "textLength",
+          "type": "u32",
+          "note": "The length of the text in bytes, without the byte that ends it. Its value changes nothing a client does."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "size": "textLength",
+          "encoding": "utf8",
+          "note": "The line, ended by a zero byte."
+        },
+        {
+          "name": "terminator",
+          "type": "bytes",
+          "size": 1,
+          "note": "A zero byte closing the text."
+        }
+      ]
+    },
+    {
+      "from": "0.9.25.24",
+      "until": "1.0.0.111",
+      "channel": "chat",
+      "command": 0,
+      "direction": "bidirectional",
+      "reliability": "reliable",
+      "note": "A line of chat. A client sends one as its player says something, and shows one a server sends in its chat box.",
+      "fields": [
+        {
+          "name": "speaker",
+          "type": "u32",
+          "note": "The client id the line is from. A client sends its own. From a server, a client shows the line with the name of the player holding that client id, coloured for whether that player is on its own side, and with no name for a client id nobody holds; 4294967295 shows the whole line with no name and no tag. A client does not show a line from a player its own player has ignored or muted."
+        },
+        {
+          "name": "audience",
+          "type": "u32",
+          "note": "1 for the speaker's side alone, which a client shows without a tag; any other value from a server is shown tagged as said to everyone. A client sends 0 where its player began the line with the all-chat prefix, which it leaves out of the text, and 1 otherwise.",
+          "values": {
+            "0": {
+              "name": "everyone"
+            },
+            "1": {
+              "name": "team"
+            }
+          }
+        },
+        {
+          "name": "textLength",
+          "type": "u32",
+          "note": "The length of the text in bytes, without the byte that ends it. Its value changes nothing a client does."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "size": "textLength",
+          "encoding": "utf8",
+          "note": "The line; a client sends at most 511 bytes of it, and reads it up to the zero byte that ends it."
+        },
+        {
+          "name": "terminator",
+          "type": "bytes",
+          "size": 1,
+          "note": "A zero byte closing the text."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.111",
+      "until": "1.0.0.126",
+      "channel": "chat",
+      "command": 0,
+      "direction": "bidirectional",
+      "reliability": "reliable",
+      "note": "A line of chat. A client sends one as its player says something, and shows one a server sends in its chat box.",
+      "fields": [
+        {
+          "name": "speaker",
+          "type": "u32",
+          "note": "The client id the line is from. A client sends its own. From a server, a client shows the line with the name of the player holding that client id, coloured for whether that player is on its own side where the client has a champion of its own and is not playing a replay, and with no name for a client id nobody holds; 4294967295 shows the whole line with no name and no tag. A client does not show a line from a player its own player has ignored or muted."
         },
         {
           "name": "audience",
@@ -118,7 +212,54 @@
     },
     {
       "from": "1.0.0.127",
-      "until": "1.0.0.140",
+      "until": "1.0.0.132",
+      "channel": "chat",
+      "command": 0,
+      "direction": "bidirectional",
+      "reliability": "reliable",
+      "note": "A line of chat. A client sends one as its player says something, and shows one a server sends in its chat box.",
+      "fields": [
+        {
+          "name": "speaker",
+          "type": "u32",
+          "note": "The client id the line is from. A client sends its own. From a server, a client shows the line with the name of the player holding that client id, coloured for whether that player is on its own side where the client has a champion of its own and is not playing a replay, and with no name for a client id nobody holds; 4294967295 shows the whole line with no name and no tag. A client does not show a line from a player its own player has ignored or muted."
+        },
+        {
+          "name": "audience",
+          "type": "u32",
+          "note": "1 for the speaker's side alone, which a client shows without a tag; any other value from a server is shown tagged as said to everyone. A client sends 0 where its player began the line with the all-chat prefix, which it leaves out of the text, and 1 otherwise.",
+          "values": {
+            "0": {
+              "name": "everyone"
+            },
+            "1": {
+              "name": "team"
+            }
+          }
+        },
+        {
+          "name": "textLength",
+          "type": "u32",
+          "note": "The length of the text in bytes, without the byte that ends it. Its value changes nothing a client does."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "size": "textLength",
+          "encoding": "utf8",
+          "note": "The line; a client sends at most 511 bytes of it, and reads it up to the zero byte that ends it."
+        },
+        {
+          "name": "terminator",
+          "type": "bytes",
+          "size": 1,
+          "note": "A zero byte closing the text."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.132",
+      "until": "1.0.0.133",
       "channel": "chat",
       "command": 0,
       "direction": "bidirectional",
@@ -129,6 +270,53 @@
           "name": "speaker",
           "type": "u32",
           "note": "The client id the line is from. A client sends its own. From a server, a client shows the line with the name of the player holding that client id, coloured for whether that player is on its own side, and with no name for a client id nobody holds; 4294967295 shows the whole line with no name and no tag. A client does not show a line from a player its own player has ignored or muted."
+        },
+        {
+          "name": "audience",
+          "type": "u32",
+          "note": "1 for the speaker's side alone, which a client shows without a tag; any other value from a server is shown tagged as said to everyone. A client sends 0 where its player began the line with the all-chat prefix, which it leaves out of the text, and 1 otherwise.",
+          "values": {
+            "0": {
+              "name": "everyone"
+            },
+            "1": {
+              "name": "team"
+            }
+          }
+        },
+        {
+          "name": "textLength",
+          "type": "u32",
+          "note": "The length of the text in bytes, without the byte that ends it. Its value changes nothing a client does."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "size": "textLength",
+          "encoding": "utf8",
+          "note": "The line; a client sends at most 511 bytes of it, and reads it up to the zero byte that ends it."
+        },
+        {
+          "name": "terminator",
+          "type": "bytes",
+          "size": 1,
+          "note": "A zero byte closing the text."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.133",
+      "until": "1.0.0.140",
+      "channel": "chat",
+      "command": 0,
+      "direction": "bidirectional",
+      "reliability": "reliable",
+      "note": "A line of chat. A client sends one as its player says something, and shows one a server sends in its chat box.",
+      "fields": [
+        {
+          "name": "speaker",
+          "type": "u32",
+          "note": "The client id the line is from. A client sends its own. From a server, a client shows the line with the name of the player holding that client id, and with no name for a client id nobody holds."
         },
         {
           "name": "audience",
@@ -221,7 +409,7 @@
         {
           "name": "speaker",
           "type": "u32",
-          "note": "The client id the line is from. A client sends its own. From a server, a client shows the line with the name and champion of the player holding that client id, coloured for their side, and with no name for a client id nobody holds; 4294967295 shows the line as said to everyone with no name, less its first three bytes."
+          "note": "The client id of the sender."
         },
         {
           "name": "audience",
@@ -448,6 +636,72 @@
     },
     {
       "from": "3.04.0.78",
+      "until": "3.6.0.388",
+      "channel": "chat",
+      "command": 104,
+      "direction": "bidirectional",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the sender."
+        },
+        {
+          "name": "netId",
+          "type": "u32"
+        },
+        {
+          "name": "localized",
+          "type": "u8",
+          "note": "Whether the text is a phrase to show as it stands, or a key naming one the receiving end looks up and fills in from the parameters. Both ends send it clear."
+        },
+        {
+          "name": "audience",
+          "type": "i32",
+          "note": "Who the message reaches.",
+          "values": {
+            "0": {
+              "name": "everyone"
+            },
+            "1": {
+              "name": "team"
+            }
+          }
+        },
+        {
+          "name": "paramsLength",
+          "type": "u32",
+          "note": "How many bytes of the run that follows carry meaning."
+        },
+        {
+          "name": "textLength",
+          "type": "u32",
+          "note": "The length of the text, counted in bytes and excluding the byte that ends it. A client shows the text to its first zero byte."
+        },
+        {
+          "name": "params",
+          "type": "bytes",
+          "size": 32,
+          "note": "Thirty two bytes holding text that fills in a key, ended by a zero byte within them. The bytes after that zero byte carry no meaning, so two messages otherwise alike can differ in them."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "textLength",
+          "note": "The text, textLength bytes of it."
+        },
+        {
+          "name": "terminator",
+          "type": "bytes",
+          "size": 1,
+          "note": "A zero byte closing the text."
+        }
+      ]
+    },
+    {
+      "from": "3.6.0.388",
       "until": "4.18.0.271",
       "channel": "chat",
       "command": 104,

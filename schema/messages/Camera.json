@@ -107,7 +107,7 @@
     },
     {
       "from": "0.9.25.24",
-      "until": "1.0.0.74",
+      "until": "1.0.0.61",
       "channel": "requests",
       "command": 59,
       "direction": "clientToServer",
@@ -140,6 +140,42 @@
         }
       ],
       "note": "A client sends each report once where a server answers it, and again and again where a server does not. A client sends a new report each time its view moves more than 200 units, at most one every tenth of a second, and sends an unanswered one again after twice its ping, in seconds, plus 1/30 of a second. While its view is locked it sends none."
+    },
+    {
+      "from": "1.0.0.61",
+      "until": "1.0.0.74",
+      "channel": "requests",
+      "command": 59,
+      "direction": "clientToServer",
+      "reliability": "unreliable",
+      "fields": [
+        {
+          "name": "lookAtX",
+          "type": "f32",
+          "note": "The point the view looks at, along one ground axis: where it stands, plus 2000 units the way it faces."
+        },
+        {
+          "name": "lookAtY",
+          "type": "f32",
+          "note": "Its height, taken the same way."
+        },
+        {
+          "name": "lookAtZ",
+          "type": "f32",
+          "note": "Along the other ground axis, taken the same way."
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id the sender holds: that of the client the view belongs to."
+        },
+        {
+          "name": "syncId",
+          "type": "u8",
+          "note": "Names this report, counting up as the view moves and wrapping after 255. A client sends the report again until a server returns the name."
+        }
+      ],
+      "note": "A client sends an unanswered report again after twice its ping, in seconds, plus 1/30 of a second, until a server answers it. While its view is locked it sends none."
     },
     {
       "from": "1.0.0.74",
@@ -491,7 +527,7 @@
     },
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.128",
+      "until": "1.0.0.127",
       "channel": "requests",
       "command": 48,
       "direction": "clientToServer",
@@ -538,7 +574,7 @@
       "note": "A client sends each report once where a server answers it, and again and again where a server does not. A client sends no report while the camera is locked. It sends a new report, with the next syncId, only where at least 0.1 seconds have passed since the last and the view has moved more than 200 units or turned; it sends a report that goes unanswered again after a delay that follows the round trip."
     },
     {
-      "from": "1.0.0.128",
+      "from": "1.0.0.127",
       "until": "1.0.0.144",
       "channel": "requests",
       "command": 48,

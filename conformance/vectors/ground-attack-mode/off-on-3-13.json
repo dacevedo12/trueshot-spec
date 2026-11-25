@@ -1,0 +1,15 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "GroundAttackMode",
+  "version": "3.13.0.399",
+  "note": "Laid out as a 3.13.0.399 client takes it.",
+  "bytes": "fe0000000001010100004000",
+  "fields": {
+    "command": 254,
+    "netId": 0,
+    "extendedCommand": 257,
+    "champion": 1073741825,
+    "mode": 0
+  }
+}

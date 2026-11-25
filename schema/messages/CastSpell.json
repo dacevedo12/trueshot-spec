@@ -68,7 +68,69 @@
     },
     {
       "from": "0.9.22.14",
-      "until": "1.0.0.25",
+      "until": "0.9.25.24",
+      "channel": "requests",
+      "command": 35,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "summonerSpell",
+              "width": 1,
+              "note": "Set where the slot is a summoner spell's."
+            },
+            {
+              "name": "slot",
+              "width": 7,
+              "note": "Which slot is being cast from."
+            }
+          ]
+        },
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "A point on the ground the cast is described by, along one axis, in world units."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "The same point, in height, in world units: the height of the place aimed at."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "The same point, along the other axis, in world units."
+        },
+        {
+          "name": "endX",
+          "type": "f32",
+          "note": "The second point of what aims the spell; for a spell that takes no aim it is the caster's own position, the same as the first."
+        },
+        {
+          "name": "endY",
+          "type": "f32",
+          "note": "The second point, in height, in world units: the height of where the cast ends."
+        },
+        {
+          "name": "endZ",
+          "type": "f32",
+          "note": "The second point, along the other axis, in world units."
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit aimed at; for a spell that takes no aim, the caster itself, with its own position in both points. Zero only where no unit is aimed at."
+        }
+      ]
+    },
+    {
+      "from": "0.9.25.24",
+      "until": "0.9.25.36",
       "channel": "requests",
       "command": 35,
       "direction": "clientToServer",
@@ -129,8 +191,70 @@
       ]
     },
     {
+      "from": "0.9.25.36",
+      "until": "1.0.0.25",
+      "channel": "requests",
+      "command": 35,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "summonerSpell",
+              "width": 1,
+              "note": "Set where the slot is a summoner spell's."
+            },
+            {
+              "name": "slot",
+              "width": 7,
+              "note": "Which slot is being cast from."
+            }
+          ]
+        },
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "A point on the ground the cast is described by, along one axis, in world units."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "The same point, in height, in world units: the height of the place aimed at."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "The same point, along the other axis, in world units."
+        },
+        {
+          "name": "endX",
+          "type": "f32",
+          "note": "The second point of what aims the spell; for a spell that takes no aim it is the caster's own position, the same as the first."
+        },
+        {
+          "name": "endY",
+          "type": "f32",
+          "note": "The second point, in height, in world units: the height of where the cast ends."
+        },
+        {
+          "name": "endZ",
+          "type": "f32",
+          "note": "The second point, along the other axis, in world units."
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit aimed at; for a spell that takes no aim, the caster itself, with its own position in both points. Zero only where no unit is aimed at."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.25",
-      "until": "1.0.0.74",
+      "until": "1.0.0.61",
       "channel": "requests",
       "command": 35,
       "direction": "clientToServer",
@@ -191,8 +315,70 @@
       ]
     },
     {
+      "from": "1.0.0.61",
+      "until": "1.0.0.74",
+      "channel": "requests",
+      "command": 35,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "summonerSpell",
+              "width": 1,
+              "note": "Set for a slot of one of the unit's two spell books and clear for the other, whatever the slot's number; which book sets it is not recorded."
+            },
+            {
+              "name": "slot",
+              "width": 7,
+              "note": "Which slot is being cast from, from 0 to 48."
+            }
+          ]
+        },
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "A point on the ground the cast is described by, along one axis, in world units."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "The same point, in height, in world units: the height of the place aimed at."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "The same point, along the other axis, in world units."
+        },
+        {
+          "name": "endX",
+          "type": "f32",
+          "note": "The second point of what aims the spell; for a spell that takes no aim it is the caster's own position, the same as the first."
+        },
+        {
+          "name": "endY",
+          "type": "f32",
+          "note": "The second point, in height, in world units: the height of where the cast ends."
+        },
+        {
+          "name": "endZ",
+          "type": "f32",
+          "note": "The second point, along the other axis, in world units."
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit aimed at; for a spell that takes no aim, the caster itself, with its own position in both points. Zero only where no unit is aimed at."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.74",
-      "until": "1.0.0.75",
+      "until": "1.0.0.86",
       "channel": "requests",
       "command": 35,
       "direction": "clientToServer",
@@ -253,7 +439,7 @@
       ]
     },
     {
-      "from": "1.0.0.75",
+      "from": "1.0.0.86",
       "until": "1.0.0.96",
       "channel": "requests",
       "command": 35,
@@ -316,7 +502,7 @@
     },
     {
       "from": "1.0.0.96",
-      "until": "1.0.0.103",
+      "until": "1.0.0.97",
       "channel": "requests",
       "command": 35,
       "direction": "clientToServer",
@@ -336,6 +522,68 @@
               "name": "slot",
               "width": 7,
               "note": "Which slot is being cast from, from 0 to 48. A client sends nothing for a slot above 48."
+            }
+          ]
+        },
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "A point on the ground the cast is described by, along one axis, in world units."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "The same point, in height, in world units: the height of the place aimed at."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "The same point, along the other axis, in world units."
+        },
+        {
+          "name": "endX",
+          "type": "f32",
+          "note": "The second point of what aims the spell; for a spell that takes no aim it is the caster's own position, the same as the first."
+        },
+        {
+          "name": "endY",
+          "type": "f32",
+          "note": "The second point, in height, in world units: the height of where the cast ends."
+        },
+        {
+          "name": "endZ",
+          "type": "f32",
+          "note": "The second point, along the other axis, in world units."
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit aimed at; for a spell that takes no aim, the caster itself, with its own position in both points. Zero only where no unit is aimed at."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.97",
+      "until": "1.0.0.103",
+      "channel": "requests",
+      "command": 35,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "summonerSpell",
+              "width": 1,
+              "note": "Set where the slot is a summoner spell's."
+            },
+            {
+              "name": "slot",
+              "width": 7,
+              "note": "Which slot is being cast from."
             }
           ]
         },
@@ -874,7 +1122,7 @@
     },
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.128",
+      "until": "1.0.0.127",
       "channel": "requests",
       "command": 162,
       "direction": "clientToServer",
@@ -935,7 +1183,7 @@
       ]
     },
     {
-      "from": "1.0.0.128",
+      "from": "1.0.0.127",
       "until": "1.0.0.132",
       "channel": "requests",
       "command": 162,
@@ -998,7 +1246,7 @@
     },
     {
       "from": "1.0.0.132",
-      "until": "1.0.0.135",
+      "until": "1.0.0.133",
       "channel": "requests",
       "command": 163,
       "direction": "clientToServer",
@@ -1018,6 +1266,68 @@
               "name": "slot",
               "width": 7,
               "note": "Which slot is being cast from. A client sends 0, 1 or 2, for the champion's first three spells."
+            }
+          ]
+        },
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "A point on the ground the cast is described by, along one axis, in world units."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "The height of the place aimed at."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "The same point, along the other axis, in world units."
+        },
+        {
+          "name": "endX",
+          "type": "f32",
+          "note": "The second point of what aims the spell: the same as x and z for a point or a unit; for a line dragged out, its far end, cut to the spell's length; for a cone, its far point."
+        },
+        {
+          "name": "endY",
+          "type": "f32",
+          "note": "The height of where the cast ends."
+        },
+        {
+          "name": "endZ",
+          "type": "f32",
+          "note": "The second point, along the other axis, in world units."
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit aimed at; for a spell that takes no aim, the caster itself, with its own position in both points. Zero only where no unit is aimed at."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.133",
+      "until": "1.0.0.135",
+      "channel": "requests",
+      "command": 163,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "summonerSpell",
+              "width": 1,
+              "note": "Set where the slot is a summoner spell's."
+            },
+            {
+              "name": "slot",
+              "width": 7,
+              "note": "Which slot is being cast from."
             }
           ]
         },
@@ -1246,6 +1556,68 @@
     },
     {
       "from": "1.0.0.139",
+      "until": "1.0.0.140",
+      "channel": "requests",
+      "command": 164,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "summonerSpell",
+              "width": 1,
+              "note": "Set where the slot is a summoner spell's."
+            },
+            {
+              "name": "slot",
+              "width": 7,
+              "note": "Which slot is being cast from."
+            }
+          ]
+        },
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "A point on the ground the cast is described by, along one axis, in world units."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "The height of the place aimed at."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "The same point, along the other axis, in world units."
+        },
+        {
+          "name": "endX",
+          "type": "f32",
+          "note": "The second point of what aims the spell: the same as x and z for a point or a unit; for a line dragged out, its far end, cut to the spell's length; for a cone, its far point."
+        },
+        {
+          "name": "endY",
+          "type": "f32",
+          "note": "The height of where the cast ends."
+        },
+        {
+          "name": "endZ",
+          "type": "f32",
+          "note": "The second point, along the other axis, in world units."
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit aimed at; for a spell that takes no aim, the caster itself, with its own position in both points. Zero only where no unit is aimed at."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.140",
       "until": "1.0.0.144",
       "channel": "requests",
       "command": 164,
@@ -1494,7 +1866,7 @@
     },
     {
       "from": "1.0.0.150",
-      "until": "3.01.0.1",
+      "until": "1.0.0.151",
       "channel": "requests",
       "command": 151,
       "direction": "clientToServer",
@@ -1509,6 +1881,63 @@
               "name": "slot",
               "width": 6,
               "note": "Which slot is being cast from. A client sends 0, 1 or 2, for the champion's first three spells."
+            },
+            {
+              "name": "summonerSpell",
+              "width": 1,
+              "note": "Set where the slot is a summoner spell's."
+            },
+            {
+              "name": "clicked",
+              "width": 1,
+              "note": "Set where the cast began with a click on the spell's button rather than its key."
+            }
+          ]
+        },
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "A point on the ground the cast is described by, along one axis, in world units."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "The same point, along the other axis, in world units."
+        },
+        {
+          "name": "endX",
+          "type": "f32",
+          "note": "The second point of what aims the spell: the same as x and z for a point or a unit; for a line dragged out, its far end, cut to the spell's length; for a cone, its far point."
+        },
+        {
+          "name": "endZ",
+          "type": "f32",
+          "note": "The second point, along the other axis, in world units."
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit aimed at; for a spell that takes no aim, the caster itself, with its own position in both points. Zero only where no unit is aimed at."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.151",
+      "until": "3.01.0.1",
+      "channel": "requests",
+      "command": 151,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "slot",
+              "width": 6,
+              "note": "Which slot is being cast from."
             },
             {
               "name": "summonerSpell",
@@ -1665,7 +2094,64 @@
     },
     {
       "from": "3.04.0.78",
-      "until": "3.10.0.237",
+      "until": "3.6.0.388",
+      "channel": "requests",
+      "command": 154,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "slot",
+              "width": 6,
+              "note": "Which slot is being cast from."
+            },
+            {
+              "name": "summonerSpell",
+              "width": 1,
+              "note": "Set where the slot is a summoner spell's."
+            },
+            {
+              "name": "clicked",
+              "width": 1,
+              "note": "Set where the cast began with a click on the spell's button rather than its key."
+            }
+          ]
+        },
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "A point on the ground the cast is described by, along one axis, in world units."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "The same point, along the other axis, in world units."
+        },
+        {
+          "name": "endX",
+          "type": "f32",
+          "note": "The second point of what aims the spell: the same as x and z for a point or a unit; for a line dragged out, its far end, cut to the spell's length; for a cone, its far point."
+        },
+        {
+          "name": "endZ",
+          "type": "f32",
+          "note": "The second point, along the other axis, in world units."
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit aimed at; for a spell that takes no aim, the caster itself, with its own position in both points. Zero only where no unit is aimed at."
+        }
+      ]
+    },
+    {
+      "from": "3.6.0.388",
+      "until": "3.7.0.328",
       "channel": "requests",
       "command": 154,
       "direction": "clientToServer",
@@ -1680,6 +2166,63 @@
               "name": "slot",
               "width": 6,
               "note": "Which slot is being cast from. A client sends 0, 1 or 2, for the champion's first three spells."
+            },
+            {
+              "name": "summonerSpell",
+              "width": 1,
+              "note": "Set where the slot is a summoner spell's."
+            },
+            {
+              "name": "clicked",
+              "width": 1,
+              "note": "Set where the cast began with a click on the spell's button rather than its key."
+            }
+          ]
+        },
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "A point on the ground the cast is described by, along one axis, in world units."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "The same point, along the other axis, in world units."
+        },
+        {
+          "name": "endX",
+          "type": "f32",
+          "note": "The second point of what aims the spell: the same as x and z for a point or a unit; for a line dragged out, its far end, cut to the spell's length; for a cone, its far point."
+        },
+        {
+          "name": "endZ",
+          "type": "f32",
+          "note": "The second point, along the other axis, in world units."
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit aimed at; for a spell that takes no aim, the caster itself, with its own position in both points. Zero only where no unit is aimed at."
+        }
+      ]
+    },
+    {
+      "from": "3.7.0.328",
+      "until": "3.10.0.237",
+      "channel": "requests",
+      "command": 154,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "slot",
+              "width": 6,
+              "note": "Which slot is being cast from."
             },
             {
               "name": "summonerSpell",

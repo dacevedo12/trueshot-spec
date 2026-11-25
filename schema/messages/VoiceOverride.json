@@ -45,7 +45,7 @@
     },
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.128",
+      "until": "1.0.0.127",
       "channel": "events",
       "command": 158,
       "direction": "serverToClient",
@@ -83,7 +83,7 @@
       ]
     },
     {
-      "from": "1.0.0.128",
+      "from": "1.0.0.127",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 158,
@@ -279,7 +279,7 @@
     },
     {
       "from": "1.0.0.139",
-      "until": "1.0.0.144",
+      "until": "1.0.0.141",
       "channel": "events",
       "command": 160,
       "direction": "serverToClient",
@@ -302,6 +302,45 @@
             }
           ],
           "note": "Whether to reset. A client compares the whole byte with 1, so a server writes the other bits zero."
+        },
+        {
+          "name": "voice",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "The voice's name, ended by a zero byte.",
+          "present": {
+            "when": "flags.reset",
+            "equals": 0
+          }
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.141",
+      "until": "1.0.0.144",
+      "channel": "events",
+      "command": 160,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "reset",
+              "width": 1,
+              "note": "Set where the unit returns to its own voice; no name follows."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ],
+          "note": "Whether to reset."
         },
         {
           "name": "voice",

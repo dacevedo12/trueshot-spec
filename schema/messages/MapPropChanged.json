@@ -71,8 +71,7 @@
           "note": "What changes. A client ignores any other value.",
           "values": {
             "0": {
-              "name": "apply",
-              "note": "Apply name to the prop."
+              "name": "apply"
             },
             "1": {
               "name": "linkEffect",
@@ -122,8 +121,7 @@
           "note": "What changes. A client ignores any other value.",
           "values": {
             "0": {
-              "name": "apply",
-              "note": "Apply name to the prop."
+              "name": "apply"
             },
             "1": {
               "name": "linkEffect",
@@ -173,8 +171,7 @@
           "note": "What changes. A client ignores any other value.",
           "values": {
             "0": {
-              "name": "apply",
-              "note": "Apply name to the prop."
+              "name": "apply"
             },
             "1": {
               "name": "linkEffect",
@@ -224,8 +221,7 @@
           "note": "What changes. A client ignores any other value.",
           "values": {
             "0": {
-              "name": "apply",
-              "note": "Apply name to the prop."
+              "name": "apply"
             },
             "1": {
               "name": "linkEffect",
@@ -301,8 +297,7 @@
           "note": "What changes. A client ignores any other value.",
           "values": {
             "0": {
-              "name": "animate",
-              "note": "Play the animation name, with value as its flags, starting at first (match time in seconds) for second seconds; one with the same name and flags as the last animate the client took for that prop starts nothing, playing or not. option, effect and point have no effect."
+              "name": "animate"
             },
             "1": {
               "name": "linkEffect",
@@ -371,8 +366,7 @@
           "note": "What changes. A client ignores any other value.",
           "values": {
             "0": {
-              "name": "animate",
-              "note": "Play the animation name, with value as its flags, starting at first (match time in seconds) for second seconds; one with the same name and flags as the last animate the client took for that prop starts nothing, playing or not. option, effect and point have no effect."
+              "name": "animate"
             },
             "1": {
               "name": "linkEffect",
@@ -971,6 +965,77 @@
     },
     {
       "from": "1.0.0.139",
+      "until": "1.0.0.140",
+      "channel": "events",
+      "command": 220,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "A name: an animation's or a particle's, by the change below. The name ends at its first zero byte; the bytes after it carry no meaning."
+        },
+        {
+          "name": "first",
+          "type": "f32",
+          "note": "For animate, when the animation starts, in seconds of match time."
+        },
+        {
+          "name": "second",
+          "type": "f32",
+          "note": "For animate, how long the animation runs, in seconds."
+        },
+        {
+          "name": "prop",
+          "type": "u32",
+          "note": "The object changed."
+        },
+        {
+          "name": "value",
+          "type": "u32",
+          "note": "For animate, the animation's flags."
+        },
+        {
+          "name": "change",
+          "type": "u8",
+          "note": "What changes. A client does nothing for any other value, nor where prop names no prop it holds.",
+          "values": {
+            "0": {
+              "name": "animate",
+              "note": "Play the animation name, with value as its flags, starting at first (match time in seconds) for second seconds. option, effect and point have no effect."
+            },
+            "1": {
+              "name": "linkEffect",
+              "note": "Drive the prop's particle value effect from capture point point; a client refuses the change where option is not zero. name, first, second and value have no effect."
+            },
+            "2": {
+              "name": "look",
+              "note": "A client does nothing for it."
+            }
+          }
+        },
+        {
+          "name": "option",
+          "type": "u8",
+          "note": "For linkEffect, zero. It has no effect for animate."
+        },
+        {
+          "name": "effect",
+          "type": "u8",
+          "note": "For linkEffect, which of the prop's effect values to drive."
+        },
+        {
+          "name": "point",
+          "type": "u8",
+          "note": "For linkEffect, which capture point drives it."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.140",
       "until": "1.0.0.141",
       "channel": "events",
       "command": 220,
@@ -1466,6 +1531,77 @@
     },
     {
       "from": "3.04.0.78",
+      "until": "3.6.0.388",
+      "channel": "events",
+      "command": 209,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "A name: an animation's, a particle's or a look's, by the change below. The name ends at its first zero byte; the bytes after it carry no meaning."
+        },
+        {
+          "name": "first",
+          "type": "f32",
+          "note": "For animate, when the animation starts, in seconds of match time."
+        },
+        {
+          "name": "second",
+          "type": "f32",
+          "note": "For animate, how long the animation runs, in seconds."
+        },
+        {
+          "name": "prop",
+          "type": "u32",
+          "note": "The object changed."
+        },
+        {
+          "name": "value",
+          "type": "u32",
+          "note": "A value the change uses: for animate, the animation's flags; for look, the look's number. linkEffect does not read it."
+        },
+        {
+          "name": "change",
+          "type": "u8",
+          "note": "What changes. A client does nothing for any other value, nor where prop names no prop it holds.",
+          "values": {
+            "0": {
+              "name": "animate",
+              "note": "Play the animation name, with value as its flags, starting at first (match time in seconds) for second seconds. effect and point have no effect."
+            },
+            "1": {
+              "name": "linkEffect",
+              "note": "Drive the prop's particle value effect from capture point point; a client refuses the change where option is not zero. name, first, second and value have no effect."
+            },
+            "2": {
+              "name": "look",
+              "note": "Change the prop's look to name, numbered value. The rest have no effect."
+            }
+          }
+        },
+        {
+          "name": "option",
+          "type": "u8",
+          "note": "For linkEffect, zero."
+        },
+        {
+          "name": "effect",
+          "type": "u8",
+          "note": "For linkEffect, which of the prop's effect values to drive."
+        },
+        {
+          "name": "point",
+          "type": "u8",
+          "note": "For linkEffect, which capture point drives it."
+        }
+      ]
+    },
+    {
+      "from": "3.6.0.388",
       "until": "3.7.0.328",
       "channel": "events",
       "command": 209,
@@ -1537,7 +1673,78 @@
     },
     {
       "from": "3.7.0.328",
-      "until": "4.1.0.171",
+      "until": "3.10.0.237",
+      "channel": "events",
+      "command": 209,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "A name: an animation's, a particle's or a look's, by the change below. The name ends at its first zero byte; the bytes after it carry no meaning."
+        },
+        {
+          "name": "first",
+          "type": "f32",
+          "note": "For animate, when the animation starts, in seconds of match time."
+        },
+        {
+          "name": "second",
+          "type": "f32",
+          "note": "For animate, how long the animation runs, in seconds."
+        },
+        {
+          "name": "prop",
+          "type": "u32",
+          "note": "The object changed."
+        },
+        {
+          "name": "value",
+          "type": "u32",
+          "note": "A value the change uses: for animate, the animation's flags; for look, the look's number."
+        },
+        {
+          "name": "change",
+          "type": "u8",
+          "note": "What changes. A client does nothing for any other value, nor where prop names no prop it holds.",
+          "values": {
+            "0": {
+              "name": "animate",
+              "note": "Play the animation name, with value as its flags, starting at first (match time in seconds) for second seconds; option nonzero removes the prop afterwards. effect and point have no effect."
+            },
+            "1": {
+              "name": "linkEffect",
+              "note": "Drive the prop's particle value effect from capture point point; a client refuses the change where option is not zero. name, first, second and value have no effect."
+            },
+            "2": {
+              "name": "look",
+              "note": "Change the prop's look to name, numbered value. The rest have no effect."
+            }
+          }
+        },
+        {
+          "name": "option",
+          "type": "u8",
+          "note": "For animate, nonzero to remove the prop after the animation; for linkEffect, zero."
+        },
+        {
+          "name": "effect",
+          "type": "u8",
+          "note": "For linkEffect, which of the prop's effect values to drive."
+        },
+        {
+          "name": "point",
+          "type": "u8",
+          "note": "For linkEffect, which capture point drives it."
+        }
+      ]
+    },
+    {
+      "from": "3.10.0.237",
+      "until": "3.14.0.700",
       "channel": "events",
       "command": 209,
       "direction": "serverToClient",
@@ -1569,6 +1776,77 @@
           "name": "value",
           "type": "u32",
           "note": "A value the change uses: for animate, the animation's flags; for linkEffect, the particle effect value; for look, the look's number."
+        },
+        {
+          "name": "change",
+          "type": "u8",
+          "note": "What changes. A client does nothing for any other value, nor where prop names no prop it holds.",
+          "values": {
+            "0": {
+              "name": "animate",
+              "note": "Play the animation name, with value as its flags, starting at first (match time in seconds) for second seconds; option nonzero removes the prop afterwards. effect and point have no effect."
+            },
+            "1": {
+              "name": "linkEffect",
+              "note": "Drive the prop's particle value effect from capture point point; a client refuses the change where option is not zero. name, first, second and value have no effect."
+            },
+            "2": {
+              "name": "look",
+              "note": "Change the prop's look to name, numbered value. The rest have no effect."
+            }
+          }
+        },
+        {
+          "name": "option",
+          "type": "u8",
+          "note": "For animate, nonzero to remove the prop after the animation; for linkEffect, zero."
+        },
+        {
+          "name": "effect",
+          "type": "u8",
+          "note": "For linkEffect, which of the prop's effect values to drive."
+        },
+        {
+          "name": "point",
+          "type": "u8",
+          "note": "For linkEffect, which capture point drives it."
+        }
+      ]
+    },
+    {
+      "from": "3.14.0.700",
+      "until": "4.1.0.171",
+      "channel": "events",
+      "command": 209,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "A name: an animation's, a particle's or a look's, by the change below. The name ends at its first zero byte; the bytes after it carry no meaning."
+        },
+        {
+          "name": "first",
+          "type": "f32",
+          "note": "For animate, when the animation starts, in seconds of match time."
+        },
+        {
+          "name": "second",
+          "type": "f32",
+          "note": "For animate, how long the animation runs, in seconds."
+        },
+        {
+          "name": "prop",
+          "type": "u32",
+          "note": "The object changed."
+        },
+        {
+          "name": "value",
+          "type": "u32",
+          "note": "A value the change uses: for animate, the animation's flags; for look, the look's number."
         },
         {
           "name": "change",
@@ -1821,6 +2099,77 @@
     },
     {
       "from": "4.11.0.386",
+      "until": "4.17.0.233",
+      "channel": "events",
+      "command": 209,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "A name: an animation's, a particle's or a look's, by the change below. The name ends at its first zero byte; the bytes after it carry no meaning."
+        },
+        {
+          "name": "first",
+          "type": "f32",
+          "note": "For animate, when the animation starts, in seconds of match time."
+        },
+        {
+          "name": "second",
+          "type": "f32",
+          "note": "For animate, how long the animation runs, in seconds."
+        },
+        {
+          "name": "prop",
+          "type": "u32",
+          "note": "The object changed."
+        },
+        {
+          "name": "value",
+          "type": "u32",
+          "note": "A value the change uses: for animate, the animation's flags; for look, the look's number."
+        },
+        {
+          "name": "change",
+          "type": "u8",
+          "note": "What changes. A client does nothing for any other value, nor where prop names no prop it holds.",
+          "values": {
+            "0": {
+              "name": "animate",
+              "note": "Play the animation name, with value as its flags, starting at first (match time in seconds) for second seconds; option nonzero removes the prop afterwards. effect and point have no effect."
+            },
+            "1": {
+              "name": "linkEffect",
+              "note": "Drive the prop's particle value effect from capture point point; a client refuses the change where option is not zero. name, first, second and value have no effect."
+            },
+            "2": {
+              "name": "look",
+              "note": "Change the prop's look to name, numbered value. The rest have no effect."
+            }
+          }
+        },
+        {
+          "name": "option",
+          "type": "u8",
+          "note": "For animate, nonzero to remove the prop after the animation; for linkEffect, zero."
+        },
+        {
+          "name": "effect",
+          "type": "u8",
+          "note": "For linkEffect, which of the prop's effect values to drive."
+        },
+        {
+          "name": "point",
+          "type": "u8",
+          "note": "For linkEffect, which capture point drives it."
+        }
+      ]
+    },
+    {
+      "from": "4.17.0.233",
       "until": "4.18.0.271",
       "channel": "events",
       "command": 209,

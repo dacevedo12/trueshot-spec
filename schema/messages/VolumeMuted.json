@@ -62,6 +62,62 @@
     },
     {
       "from": "0.9.25.36",
+      "until": "1.0.0.25",
+      "channel": "events",
+      "command": 167,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "category",
+          "type": "u8",
+          "note": "Which kind.",
+          "values": {
+            "0": {
+              "name": "all"
+            },
+            "1": {
+              "name": "music"
+            },
+            "2": {
+              "name": "effects"
+            },
+            "3": {
+              "name": "announcer"
+            },
+            "4": {
+              "name": "unitResponses"
+            },
+            "5": {
+              "name": "environment"
+            },
+            "6": {
+              "name": "mainEffects"
+            }
+          }
+        },
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "muted",
+              "width": 1,
+              "note": "Set to mute, clear to unmute."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ],
+          "note": "Whether it is muted."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.25",
       "until": "1.0.0.74",
       "channel": "events",
       "command": 167,
@@ -174,7 +230,7 @@
     },
     {
       "from": "1.0.0.82",
-      "until": "1.0.0.96",
+      "until": "1.0.0.87",
       "channel": "events",
       "command": 172,
       "direction": "serverToClient",
@@ -184,6 +240,62 @@
           "name": "category",
           "type": "u8",
           "note": "Which kind. A larger value than 6 has no defined effect.",
+          "values": {
+            "0": {
+              "name": "all"
+            },
+            "1": {
+              "name": "music"
+            },
+            "2": {
+              "name": "effects"
+            },
+            "3": {
+              "name": "announcer"
+            },
+            "4": {
+              "name": "unitResponses"
+            },
+            "5": {
+              "name": "environment"
+            },
+            "6": {
+              "name": "mainEffects"
+            }
+          }
+        },
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "muted",
+              "width": 1,
+              "note": "Set to mute, clear to unmute."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ],
+          "note": "Whether it is muted."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.87",
+      "until": "1.0.0.96",
+      "channel": "events",
+      "command": 172,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "category",
+          "type": "u8",
+          "note": "Which kind.",
           "values": {
             "0": {
               "name": "all"
@@ -734,6 +846,62 @@
     },
     {
       "from": "1.0.0.124",
+      "until": "1.0.0.126",
+      "channel": "events",
+      "command": 41,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "category",
+          "type": "u8",
+          "note": "Which kind.",
+          "values": {
+            "0": {
+              "name": "all"
+            },
+            "1": {
+              "name": "music"
+            },
+            "2": {
+              "name": "effects"
+            },
+            "3": {
+              "name": "announcer"
+            },
+            "4": {
+              "name": "unitResponses"
+            },
+            "5": {
+              "name": "environment"
+            },
+            "6": {
+              "name": "mainEffects"
+            }
+          }
+        },
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "muted",
+              "width": 1,
+              "note": "Set to mute, clear to unmute."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ],
+          "note": "Whether it is muted."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.126",
       "until": "1.0.0.144",
       "channel": "events",
       "command": 41,
@@ -902,6 +1070,65 @@
     },
     {
       "from": "4.18.0.271",
+      "until": "4.20.0.315",
+      "channel": "events",
+      "command": 39,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "category",
+          "type": "u8",
+          "note": "Which kind.",
+          "values": {
+            "0": {
+              "name": "all"
+            },
+            "1": {
+              "name": "music"
+            },
+            "2": {
+              "name": "effects"
+            },
+            "3": {
+              "name": "announcer"
+            },
+            "4": {
+              "name": "unitResponses"
+            },
+            "5": {
+              "name": "environment"
+            },
+            "6": {
+              "name": "mainEffects"
+            },
+            "7": {
+              "name": "pings"
+            }
+          }
+        },
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "muted",
+              "width": 1,
+              "note": "Set to mute, clear to unmute."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ],
+          "note": "Whether it is muted."
+        }
+      ]
+    },
+    {
+      "from": "4.20.0.315",
       "until": "4.21.0.0",
       "channel": "events",
       "command": 39,

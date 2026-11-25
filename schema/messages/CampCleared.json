@@ -352,7 +352,7 @@
     },
     {
       "from": "1.0.0.132",
-      "until": "1.0.0.135",
+      "until": "1.0.0.133",
       "channel": "events",
       "command": 204,
       "direction": "serverToClient",
@@ -376,6 +376,30 @@
       ]
     },
     {
+      "from": "1.0.0.133",
+      "until": "1.0.0.135",
+      "channel": "events",
+      "command": 204,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32"
+        },
+        {
+          "name": "camp",
+          "type": "u32",
+          "note": "Which camp. A client ignores a camp it does not know."
+        },
+        {
+          "name": "active",
+          "type": "u8",
+          "note": "The camp's state for that side, kept as it stands; nonzero where it is active."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.135",
       "until": "1.0.0.136",
       "channel": "events",
@@ -385,8 +409,7 @@
       "fields": [
         {
           "name": "unit",
-          "type": "u32",
-          "note": "A unit whose side picks the marker: side 100 for one of side 100, side 200 otherwise."
+          "type": "u32"
         },
         {
           "name": "camp",
@@ -447,8 +470,7 @@
       "fields": [
         {
           "name": "killer",
-          "type": "u32",
-          "note": "Unused; a client reads nothing here."
+          "type": "u32"
         },
         {
           "name": "camp",
@@ -481,6 +503,47 @@
     },
     {
       "from": "1.0.0.139",
+      "until": "1.0.0.140",
+      "channel": "events",
+      "command": 205,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "killer",
+          "type": "u32"
+        },
+        {
+          "name": "camp",
+          "type": "u32",
+          "note": "Which camp. A client does nothing for a camp it does not know."
+        },
+        {
+          "name": "does",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "speak",
+              "width": 1,
+              "note": "Set to have the client play the line for a camp revealed or a buff taken, to the client's own side."
+            },
+            {
+              "name": "sideOrder",
+              "width": 1,
+              "note": "Set to clear side 100's marker of the camp, clear to clear side 200's."
+            },
+            {
+              "name": "unused",
+              "width": 6,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.140",
       "until": "1.0.0.141",
       "channel": "events",
       "command": 205,

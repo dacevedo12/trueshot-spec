@@ -174,7 +174,7 @@
     },
     {
       "from": "1.0.0.25",
-      "until": "1.0.0.110",
+      "until": "1.0.0.97",
       "channel": "events",
       "command": 30,
       "direction": "serverToClient",
@@ -211,6 +211,48 @@
           "encoding": "utf8",
           "size": "terminated",
           "note": "The text, ended by a zero byte; the two take at most 1024 bytes. For slot 0 and for the on-screen message, a client shows a text that names a key into its own text as that key's text, and any other text as it is."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.97",
+      "until": "1.0.0.110",
+      "channel": "events",
+      "command": 30,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unused",
+          "type": "u32",
+          "note": "Unused; a server writes zero."
+        },
+        {
+          "name": "delay",
+          "type": "f32",
+          "note": "Unused."
+        },
+        {
+          "name": "slot",
+          "type": "i32",
+          "note": "Where the text goes. 0 floats it over the unit while the unit is in the client's own view. 1 to 50 writes it, in colour, to that line of a debugging display, only where the unit is the one the player has selected. A client does nothing for any other value."
+        },
+        {
+          "name": "error",
+          "type": "u8",
+          "note": "Nonzero has a client show the text on screen as a message for ten seconds, whatever slot holds, and do nothing else with the message."
+        },
+        {
+          "name": "colour",
+          "type": "u8",
+          "note": "The text's colour on the debugging display; it has no effect for slot 0."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "The text, ended by a zero byte."
         }
       ]
     },
@@ -468,7 +510,54 @@
     },
     {
       "from": "1.0.0.138",
-      "until": "1.0.0.144",
+      "until": "1.0.0.140",
+      "channel": "events",
+      "command": 27,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unused",
+          "type": "u32",
+          "note": "Unused; a server writes zero."
+        },
+        {
+          "name": "delay",
+          "type": "f32",
+          "note": "Unused; a server writes 2."
+        },
+        {
+          "name": "slot",
+          "type": "i32",
+          "note": "Where the text goes. 0 floats it over the unit while the unit is in the client's own view. 1 to 50 writes it, in colour, to that line of a debugging display, only where the unit is the one the player has selected. A client does nothing for any other value."
+        },
+        {
+          "name": "error",
+          "type": "u8",
+          "note": "Nonzero has a client put the text on its list of on-screen messages for 10 seconds."
+        },
+        {
+          "name": "colour",
+          "type": "u8",
+          "note": "The text's colour on the debugging display; it has no effect for slot 0."
+        },
+        {
+          "name": "style",
+          "type": "u32",
+          "note": "Which style of floating text."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "The text, ended by a zero byte; the two take at most 1024 bytes."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.140",
+      "until": "1.0.0.141",
       "channel": "events",
       "command": 27,
       "direction": "serverToClient",
@@ -493,6 +582,53 @@
           "name": "error",
           "type": "u8",
           "note": "Nonzero has a client put the text on its list of on-screen messages for 10 seconds; slot, colour and style then have no effect."
+        },
+        {
+          "name": "colour",
+          "type": "u8",
+          "note": "The text's colour on the debugging display; it has no effect for slot 0."
+        },
+        {
+          "name": "style",
+          "type": "u32",
+          "note": "Which style of floating text."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "The text, ended by a zero byte; the two take at most 1024 bytes."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.141",
+      "until": "1.0.0.144",
+      "channel": "events",
+      "command": 27,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unused",
+          "type": "u32",
+          "note": "Unused; a server writes zero."
+        },
+        {
+          "name": "delay",
+          "type": "f32",
+          "note": "Unused; a server writes 2."
+        },
+        {
+          "name": "slot",
+          "type": "i32",
+          "note": "Where the text goes. 0 floats it over the unit while the unit is in the client's own view. 1 to 50 writes it, in colour, to that line of a debugging display, only where the unit is the one the player has selected. A client does nothing for any other value."
+        },
+        {
+          "name": "error",
+          "type": "u8",
+          "note": "Nonzero has a client put the text on its list of on-screen messages for 10 seconds."
         },
         {
           "name": "colour",
@@ -1032,6 +1168,52 @@
     },
     {
       "from": "4.5.0.260",
+      "until": "4.17.0.233",
+      "channel": "events",
+      "command": 24,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "delay",
+          "type": "f32",
+          "note": "Unused; a server writes 2."
+        },
+        {
+          "name": "slot",
+          "type": "i32",
+          "note": "Where the text goes. 0 floats it over the unit while the unit is in the client's own view, the text looked up as a key into the client's own text. 1 to 50 writes it, in colour, to that line of a debugging display, only where the unit is the one the player has selected. A client does nothing for any other value."
+        },
+        {
+          "name": "error",
+          "type": "u8"
+        },
+        {
+          "name": "colour",
+          "type": "u8",
+          "note": "The text's colour on the debugging display; it has no effect for slot 0."
+        },
+        {
+          "name": "style",
+          "type": "u32",
+          "note": "Which style of floating text."
+        },
+        {
+          "name": "length",
+          "type": "u32",
+          "note": "The text's length in bytes, counting its zero byte."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "length",
+          "note": "The text."
+        }
+      ]
+    },
+    {
+      "from": "4.17.0.233",
       "until": "4.20.0.315",
       "channel": "events",
       "command": 24,

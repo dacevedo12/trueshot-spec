@@ -56,7 +56,34 @@
     },
     {
       "from": "0.9.22.14",
-      "until": "1.0.0.25",
+      "until": "0.9.25.24",
+      "channel": "events",
+      "command": 8,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "turret",
+          "type": "u32",
+          "note": "The name the turret answers to, so later messages can name it."
+        },
+        {
+          "name": "node",
+          "type": "u8",
+          "note": "Which network node the object belongs to, in a field of its own."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "What this turret is called, so a client can tell one from another. Written out in full and padded with zero bytes to the width above."
+        }
+      ]
+    },
+    {
+      "from": "0.9.25.24",
+      "until": "0.9.25.36",
       "channel": "events",
       "command": 8,
       "direction": "serverToClient",
@@ -81,6 +108,34 @@
         }
       ],
       "note": "A client matches name against the map's turrets, ignoring case. With no match it does nothing; a matched turret takes the id and node, and one missing or dead is not rebuilt."
+    },
+    {
+      "from": "0.9.25.36",
+      "until": "1.0.0.25",
+      "channel": "events",
+      "command": 8,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "turret",
+          "type": "u32",
+          "note": "The name the turret answers to, so later messages can name it."
+        },
+        {
+          "name": "node",
+          "type": "u8",
+          "note": "Which network node the object belongs to, in a field of its own."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "What this turret is called, so a client can tell one from another. Written out in full and padded with zero bytes to the width above."
+        }
+      ],
+      "note": "A client matches name against the map's turrets, ignoring case. With no match it does nothing; a matched turret takes the id, and one missing or dead is not rebuilt."
     },
     {
       "from": "1.0.0.25",
@@ -140,7 +195,35 @@
     },
     {
       "from": "1.0.0.61",
-      "until": "1.0.0.110",
+      "until": "1.0.0.74",
+      "channel": "events",
+      "command": 8,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "turret",
+          "type": "u32",
+          "note": "The name the turret answers to, so later messages can name it."
+        },
+        {
+          "name": "node",
+          "type": "u8",
+          "note": "Which network node the object belongs to, in a field of its own."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "What this turret is called, so a client can tell one from another. Written out in full and padded with zero bytes to the width above."
+        }
+      ],
+      "note": "A client matches name against the map's turrets, ignoring case. With no match it does nothing; a matched turret takes the id, and one missing or dead is not rebuilt."
+    },
+    {
+      "from": "1.0.0.74",
+      "until": "1.0.0.97",
       "channel": "events",
       "command": 8,
       "direction": "serverToClient",
@@ -165,6 +248,34 @@
         }
       ],
       "note": "A client matches name against the map's turrets, ignoring case. With no match it does nothing; a matched turret takes the id and node, and one missing or dead is not rebuilt."
+    },
+    {
+      "from": "1.0.0.97",
+      "until": "1.0.0.110",
+      "channel": "events",
+      "command": 8,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "turret",
+          "type": "u32",
+          "note": "The name the turret answers to, so later messages can name it."
+        },
+        {
+          "name": "node",
+          "type": "u8",
+          "note": "Which network node the object belongs to, in a field of its own."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "What this turret is called, so a client can tell one from another. Written out in full and padded with zero bytes to the width above."
+        }
+      ],
+      "note": "A client matches name against the map's turrets, ignoring case. With no match it does nothing; a matched turret takes the id, and one missing or dead is not rebuilt."
     },
     {
       "from": "1.0.0.110",
@@ -959,7 +1070,35 @@
     },
     {
       "from": "3.7.0.328",
-      "until": "3.13.0.399",
+      "until": "3.10.0.237",
+      "channel": "events",
+      "command": 157,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "turret",
+          "type": "u32",
+          "note": "The name the turret answers to, so later messages can name it."
+        },
+        {
+          "name": "node",
+          "type": "u8",
+          "note": "Which network node the object belongs to, in a field of its own."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "What this turret is called, so a client can tell one from another. Written out in full and padded with zero bytes to the width above."
+        }
+      ],
+      "note": "A client matches name exactly against the map's turrets. With no match it only removes any object holding the id; a matched turret missing or dead is rebuilt before it takes the id."
+    },
+    {
+      "from": "3.10.0.237",
+      "until": "3.11.0.306",
       "channel": "events",
       "command": 157,
       "direction": "serverToClient",
@@ -984,6 +1123,34 @@
         }
       ],
       "note": "A client matches name exactly against the map's turrets. With no match it only removes any object holding the id; a matched turret missing or dead is rebuilt before it takes the id. A server sends it only inside EnterSight, and the channel and delivery given here are those of the message carrying it."
+    },
+    {
+      "from": "3.11.0.306",
+      "until": "3.13.0.399",
+      "channel": "events",
+      "command": 157,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "turret",
+          "type": "u32",
+          "note": "The name the turret answers to, so later messages can name it."
+        },
+        {
+          "name": "node",
+          "type": "u8",
+          "note": "Which network node the object belongs to, in a field of its own."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "What this turret is called, so a client can tell one from another. Written out in full and padded with zero bytes to the width above."
+        }
+      ],
+      "note": "A client matches name exactly against the map's turrets. With no match it only removes any object holding the id; a matched turret missing or dead is rebuilt before it takes the id."
     },
     {
       "from": "3.13.0.399",

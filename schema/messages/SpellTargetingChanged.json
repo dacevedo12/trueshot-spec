@@ -582,7 +582,39 @@
     },
     {
       "from": "1.0.0.119",
-      "until": "1.0.0.128",
+      "until": "1.0.0.126",
+      "channel": "events",
+      "command": 26,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "which",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "slot",
+              "width": 7,
+              "note": "Which slot. A champion's own spells count from 0."
+            },
+            {
+              "name": "summonerSlots",
+              "width": 1,
+              "note": "Set where the slot counts among the summoner slots, so that 0 and 1 name those two. A client fails where it is set for a unit with no summoner slots."
+            }
+          ]
+        },
+        {
+          "name": "targeting",
+          "type": "u8",
+          "note": "How the spell is aimed; no value asks for the spell's own default."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
       "channel": "events",
       "command": 26,
       "direction": "serverToClient",
@@ -613,7 +645,39 @@
       ]
     },
     {
-      "from": "1.0.0.128",
+      "from": "1.0.0.127",
+      "until": "1.0.0.132",
+      "channel": "events",
+      "command": 26,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "which",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "slot",
+              "width": 7,
+              "note": "Which slot. A champion's own spells count from 0."
+            },
+            {
+              "name": "summonerSlots",
+              "width": 1,
+              "note": "Set where the slot counts among the summoner slots. A client fails where it is set for a unit with no summoner slots."
+            }
+          ]
+        },
+        {
+          "name": "targeting",
+          "type": "u8",
+          "note": "How the spell is aimed."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.132",
       "until": "1.0.0.144",
       "channel": "events",
       "command": 26,

@@ -262,7 +262,7 @@
     },
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.128",
+      "until": "1.0.0.127",
       "channel": "requests",
       "command": 176,
       "direction": "clientToServer",
@@ -275,6 +275,22 @@
         }
       ],
       "note": "A client sends it for a Replication batch only where it holds every unit the batch names, or the batch names none."
+    },
+    {
+      "from": "1.0.0.127",
+      "until": "1.0.0.128",
+      "channel": "requests",
+      "command": 176,
+      "direction": "clientToServer",
+      "reliability": "unsequenced",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u32",
+          "note": "Which batch is being acknowledged, as the batch named itself."
+        }
+      ],
+      "note": "A client sends it for a Replication batch where it holds every unit the batch names."
     },
     {
       "from": "1.0.0.128",
@@ -358,7 +374,23 @@
     },
     {
       "from": "1.0.0.139",
-      "until": "1.0.0.144",
+      "until": "1.0.0.140",
+      "channel": "requests",
+      "command": 178,
+      "direction": "clientToServer",
+      "reliability": "unsequenced",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u32",
+          "note": "Which batch is being acknowledged, as the batch named itself."
+        }
+      ],
+      "note": "Where the client holds every unit the batch names, it is sent whether the client took the values or dropped them."
+    },
+    {
+      "from": "1.0.0.140",
+      "until": "1.0.0.141",
       "channel": "requests",
       "command": 178,
       "direction": "clientToServer",
@@ -371,6 +403,22 @@
         }
       ],
       "note": "A client sends it for a batch it took and for one whose values it dropped, but sends none for a batch where any entry names a unit it does not hold."
+    },
+    {
+      "from": "1.0.0.141",
+      "until": "1.0.0.144",
+      "channel": "requests",
+      "command": 178,
+      "direction": "clientToServer",
+      "reliability": "unsequenced",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "u32",
+          "note": "Which batch is being acknowledged, as the batch named itself."
+        }
+      ],
+      "note": "It is sent only where the client holds every unit the batch names."
     },
     {
       "from": "1.0.0.144",

@@ -134,6 +134,21 @@
     },
     {
       "from": "1.0.0.138",
+      "until": "1.0.0.140",
+      "channel": "requests",
+      "command": 5,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "handle",
+          "type": "u32",
+          "note": "The number the VoiceEvent carried."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.140",
       "until": "4.21.0.0",
       "channel": "requests",
       "command": 5,

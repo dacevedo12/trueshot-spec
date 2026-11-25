@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "0.9.22.14",
-      "until": "1.0.0.128",
+      "until": "1.0.0.127",
       "channel": "roster",
       "command": 100,
       "direction": "clientToServer",
@@ -32,7 +32,33 @@
       "note": "It asks for a seat on one of the two sides."
     },
     {
-      "from": "1.0.0.128",
+      "from": "1.0.0.127",
+      "until": "1.0.0.132",
+      "channel": "roster",
+      "command": 100,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "padding",
+          "type": "bytes",
+          "size": 3
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the client asking."
+        },
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "The side it asks for."
+        }
+      ],
+      "note": "It asks for a seat on one of the two sides."
+    },
+    {
+      "from": "1.0.0.132",
       "until": "1.0.0.147",
       "channel": "roster",
       "command": 100,
@@ -60,7 +86,7 @@
     },
     {
       "from": "1.0.0.147",
-      "until": "3.03.0.198",
+      "until": "1.0.0.151",
       "channel": "roster",
       "command": 100,
       "direction": "clientToServer",
@@ -78,6 +104,25 @@
         }
       ],
       "note": "It asks for a seat on one of the two sides."
+    },
+    {
+      "from": "1.0.0.151",
+      "until": "3.03.0.198",
+      "channel": "roster",
+      "command": 100,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the client asking."
+        },
+        {
+          "name": "side",
+          "type": "u32"
+        }
+      ]
     },
     {
       "from": "3.03.0.198",
@@ -102,7 +147,26 @@
     },
     {
       "from": "3.04.0.78",
-      "until": "3.13.0.399",
+      "until": "3.6.0.388",
+      "channel": "roster",
+      "command": 100,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the client asking."
+        },
+        {
+          "name": "side",
+          "type": "u32"
+        }
+      ]
+    },
+    {
+      "from": "3.6.0.388",
+      "until": "3.11.0.306",
       "channel": "roster",
       "command": 100,
       "direction": "clientToServer",
@@ -120,6 +184,25 @@
         }
       ],
       "note": "It asks for a seat on one of the two sides."
+    },
+    {
+      "from": "3.11.0.306",
+      "until": "3.13.0.399",
+      "channel": "roster",
+      "command": 100,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the client asking."
+        },
+        {
+          "name": "side",
+          "type": "u32"
+        }
+      ]
     },
     {
       "from": "3.13.0.399",
@@ -144,6 +227,25 @@
     },
     {
       "from": "3.14.0.700",
+      "until": "4.4.0.1858",
+      "channel": "roster",
+      "command": 100,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the client asking."
+        },
+        {
+          "name": "side",
+          "type": "u32"
+        }
+      ]
+    },
+    {
+      "from": "4.4.0.1858",
       "until": "4.21.0.0",
       "channel": "roster",
       "command": 100,

@@ -32,6 +32,32 @@
     },
     {
       "from": "0.9.22.14",
+      "until": "0.9.25.24",
+      "channel": "events",
+      "command": 93,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "towardX",
+          "type": "f32",
+          "note": "The direction faced, along one ground axis."
+        },
+        {
+          "name": "towardY",
+          "type": "f32",
+          "note": "The direction faced, in height."
+        },
+        {
+          "name": "towardZ",
+          "type": "f32",
+          "note": "The direction faced, along the other ground axis."
+        }
+      ],
+      "note": "Where towardX and towardZ are both zero, a client does not turn the unit at once."
+    },
+    {
+      "from": "0.9.25.24",
       "until": "1.0.0.63",
       "channel": "events",
       "command": 93,
@@ -318,7 +344,7 @@
     },
     {
       "from": "1.0.0.124",
-      "until": "1.0.0.128",
+      "until": "1.0.0.127",
       "channel": "events",
       "command": 83,
       "direction": "serverToClient",
@@ -343,7 +369,7 @@
       "note": "Where towardX and towardZ are both zero, a client does not turn the unit at once, but it still keeps the zero direction as the one the unit is to face. What follows from that is not recorded."
     },
     {
-      "from": "1.0.0.128",
+      "from": "1.0.0.127",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 83,
@@ -619,7 +645,7 @@
     },
     {
       "from": "3.01.0.1",
-      "until": "4.1.0.171",
+      "until": "3.14.0.700",
       "channel": "events",
       "command": 79,
       "direction": "serverToClient",
@@ -665,7 +691,53 @@
       ]
     },
     {
-      "from": "4.1.0.171",
+      "from": "3.14.0.700",
+      "until": "4.4.0.1858",
+      "channel": "events",
+      "command": 79,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "towardX",
+          "type": "f32",
+          "note": "The direction faced, along one ground axis."
+        },
+        {
+          "name": "towardY",
+          "type": "f32",
+          "note": "The direction faced, in height."
+        },
+        {
+          "name": "towardZ",
+          "type": "f32",
+          "note": "The direction faced, along the other ground axis."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "turnOverTime",
+              "width": 1,
+              "note": "Set to turn the unit toward the direction; clear to face the direction at once."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "turnTime",
+          "type": "f32"
+        }
+      ]
+    },
+    {
+      "from": "4.4.0.1858",
       "until": "4.11.0.386",
       "channel": "events",
       "command": 79,

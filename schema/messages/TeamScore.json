@@ -35,13 +35,11 @@
       "fields": [
         {
           "name": "sideScore",
-          "type": "i32",
-          "note": "The score side 100 now stands at."
+          "type": "i32"
         },
         {
           "name": "otherSideScore",
-          "type": "i32",
-          "note": "The score side 200 now stands at."
+          "type": "i32"
         }
       ]
     },
@@ -55,13 +53,11 @@
       "fields": [
         {
           "name": "sideScore",
-          "type": "i32",
-          "note": "The score side 100 now stands at."
+          "type": "i32"
         },
         {
           "name": "otherSideScore",
-          "type": "i32",
-          "note": "The score side 200 now stands at."
+          "type": "i32"
         }
       ]
     },
@@ -75,13 +71,11 @@
       "fields": [
         {
           "name": "sideScore",
-          "type": "i32",
-          "note": "The score side 100 now stands at."
+          "type": "i32"
         },
         {
           "name": "otherSideScore",
-          "type": "i32",
-          "note": "The score side 200 now stands at."
+          "type": "i32"
         }
       ]
     },
@@ -95,13 +89,11 @@
       "fields": [
         {
           "name": "sideScore",
-          "type": "i32",
-          "note": "The score side 100 now stands at."
+          "type": "i32"
         },
         {
           "name": "otherSideScore",
-          "type": "i32",
-          "note": "The score side 200 now stands at."
+          "type": "i32"
         }
       ]
     },
@@ -115,13 +107,11 @@
       "fields": [
         {
           "name": "side",
-          "type": "i32",
-          "note": "Which side, 100 or 200. A client ignores any other."
+          "type": "i32"
         },
         {
           "name": "score",
-          "type": "i32",
-          "note": "The score it now stands at: the whole of it, not a change."
+          "type": "i32"
         }
       ]
     },
@@ -132,6 +122,25 @@
       "command": 220,
       "direction": "serverToClient",
       "reliability": "reliable",
+      "fields": [
+        {
+          "name": "side",
+          "type": "i32"
+        },
+        {
+          "name": "score",
+          "type": "i32"
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "events",
+      "command": 221,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "note": "A client takes this whenever its match interface exists, which it builds while loading, before StartGame. It draws nothing from this message alone: the score shows on the panel that a client shows only where the version answer named the mode ODIN and a point is known (CapturePointChanged). The panel counts five points, and a score of 500 at most. A score that arrives before the panel shows is shown when it does. Reaching a score ends nothing in a client: a match ends through the messages that end any match.",
       "fields": [
         {
           "name": "side",
@@ -146,13 +155,13 @@
       ]
     },
     {
-      "from": "1.0.0.126",
+      "from": "1.0.0.127",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 221,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client takes this whenever its match interface exists, which it builds while loading, before StartGame. It draws nothing from this message alone: the score shows on the panel that a client shows only where the version answer named the mode ODIN and a point is known (CapturePointChanged). The panel counts five points, and a score of 500 at most. A score that arrives before the panel shows is shown when it does. Reaching a score ends nothing in a client: a match ends through the messages that end any match.",
+      "note": "A client takes this whenever its match interface exists, which it builds while loading. It draws nothing from this message alone: the score shows on the panel that a client shows only where the version answer named the mode ODIN and a point is known (CapturePointChanged). The panel counts five points, and a score of 500 at most. A score that arrives before the panel shows is shown when it does. Reaching a score ends nothing in a client: a match ends through the messages that end any match.",
       "fields": [
         {
           "name": "side",
@@ -357,7 +366,7 @@
     },
     {
       "from": "3.01.0.1",
-      "until": "4.1.0.171",
+      "until": "3.14.0.700",
       "channel": "events",
       "command": 212,
       "direction": "serverToClient",
@@ -377,7 +386,49 @@
       ]
     },
     {
+      "from": "3.14.0.700",
+      "until": "4.1.0.171",
+      "channel": "events",
+      "command": 212,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "note": "The score shows on the panel that a client shows only where the version answer named the mode ODIN and a point is known (CapturePointChanged). The panel counts five points, and a score of 500 at most. A score that arrives before the panel shows is shown when it does. Reaching a score ends nothing in a client: a match ends through the messages that end any match.",
+      "fields": [
+        {
+          "name": "side",
+          "type": "i32",
+          "note": "Which side, 100 or 200. A client ignores any other."
+        },
+        {
+          "name": "score",
+          "type": "i32",
+          "note": "The score it now stands at: the whole of it, not a change."
+        }
+      ]
+    },
+    {
       "from": "4.1.0.171",
+      "until": "4.4.0.1858",
+      "channel": "events",
+      "command": 211,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "note": "The score shows on the panel that a client shows only where the version answer named the mode ODIN and a point is known (CapturePointChanged). The panel counts five points, and a score of 500 at most. A score that arrives before the panel shows is shown when it does. Reaching a score ends nothing in a client: a match ends through the messages that end any match.",
+      "fields": [
+        {
+          "name": "side",
+          "type": "i32",
+          "note": "Which side, 100 or 200. A client ignores any other."
+        },
+        {
+          "name": "score",
+          "type": "i32",
+          "note": "The score it now stands at: the whole of it, not a change."
+        }
+      ]
+    },
+    {
+      "from": "4.4.0.1858",
       "until": "4.11.0.386",
       "channel": "events",
       "command": 211,

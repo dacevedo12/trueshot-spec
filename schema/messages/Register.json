@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "0.8.13.26",
-      "until": "1.0.0.128",
+      "until": "1.0.0.127",
       "channel": "registration",
       "command": 0,
       "direction": "clientToServer",
@@ -37,7 +37,7 @@
       ]
     },
     {
-      "from": "1.0.0.128",
+      "from": "1.0.0.127",
       "until": "1.0.0.132",
       "channel": "registration",
       "command": 0,
@@ -102,6 +102,38 @@
     },
     {
       "from": "1.0.0.133",
+      "until": "1.0.0.140",
+      "channel": "registration",
+      "command": 0,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "leading",
+          "type": "bytes",
+          "size": 3,
+          "note": "Arbitrary; it carries no meaning."
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "A client writes zero here."
+        },
+        {
+          "name": "playerId",
+          "type": "i64",
+          "note": "Who the sender claims to be. The proof is what settles the claim."
+        },
+        {
+          "name": "proof",
+          "type": "i64",
+          "enciphered": true,
+          "note": "The player id enciphered with the 16-byte key."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.140",
       "until": "1.0.0.142",
       "channel": "registration",
       "command": 0,
@@ -134,7 +166,7 @@
     },
     {
       "from": "1.0.0.142",
-      "until": "3.10.0.237",
+      "until": "3.7.0.328",
       "channel": "registration",
       "command": 0,
       "direction": "clientToServer",
@@ -160,6 +192,48 @@
           "name": "version",
           "type": "u32",
           "note": "The build the client runs, as first × 10000000 + second × 100000 + third × 100 + fourth, so 1.0.0.150 arrives as 10000150 and 3.6.0.388 as 30600388. A client always carries it, and the answer a server carries back repeats the same number."
+        },
+        {
+          "name": "proof",
+          "type": "i64",
+          "enciphered": true,
+          "note": "The player id enciphered with the 16-byte key; a plain copy where the client has no key."
+        },
+        {
+          "name": "trailing",
+          "type": "bytes",
+          "size": 4,
+          "note": "Arbitrary; it carries no meaning."
+        }
+      ]
+    },
+    {
+      "from": "3.7.0.328",
+      "until": "3.10.0.237",
+      "channel": "registration",
+      "command": 0,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "leading",
+          "type": "bytes",
+          "size": 3,
+          "note": "Arbitrary; it carries no meaning."
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "A client writes zero here."
+        },
+        {
+          "name": "playerId",
+          "type": "i64",
+          "note": "Who the sender claims to be. The proof is what settles the claim."
+        },
+        {
+          "name": "version",
+          "type": "u32"
         },
         {
           "name": "proof",
@@ -220,7 +294,49 @@
     },
     {
       "from": "3.11.0.306",
-      "until": "4.4.0.1858",
+      "until": "3.13.0.399",
+      "channel": "registration",
+      "command": 0,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "leading",
+          "type": "bytes",
+          "size": 3,
+          "note": "Arbitrary; it carries no meaning."
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "A client writes zero here."
+        },
+        {
+          "name": "playerId",
+          "type": "i64",
+          "note": "Who the sender claims to be. The proof is what settles the claim."
+        },
+        {
+          "name": "version",
+          "type": "u32"
+        },
+        {
+          "name": "proof",
+          "type": "i64",
+          "enciphered": true,
+          "note": "The player id enciphered with the 16-byte key; a plain copy where the client has no key."
+        },
+        {
+          "name": "trailing",
+          "type": "bytes",
+          "size": 4,
+          "note": "Arbitrary; it carries no meaning."
+        }
+      ]
+    },
+    {
+      "from": "3.13.0.399",
+      "until": "3.14.0.700",
       "channel": "registration",
       "command": 0,
       "direction": "clientToServer",
@@ -262,7 +378,7 @@
       ]
     },
     {
-      "from": "4.4.0.1858",
+      "from": "3.14.0.700",
       "until": "4.5.0.260",
       "channel": "registration",
       "command": 0,

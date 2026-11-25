@@ -29,7 +29,46 @@
     },
     {
       "from": "0.9.22.14",
-      "until": "1.0.0.25",
+      "until": "0.9.25.24",
+      "channel": "events",
+      "command": 68,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "agreement",
+          "type": "u8",
+          "note": "1 lets the client go on into the game. For 0 a client shows both versions and leaves."
+        },
+        {
+          "name": "map",
+          "type": "i32",
+          "note": "Which map to load. spec/space.md keys the path origins by the same maps."
+        },
+        {
+          "name": "seats",
+          "type": "array",
+          "count": 12,
+          "note": "Every place at the match, held or empty.",
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
+        },
+        {
+          "name": "build",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 256,
+          "note": "Which build the server serves. Written out in full and padded with zero bytes to the width above."
+        }
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
+    },
+    {
+      "from": "0.9.25.24",
+      "until": "0.9.25.36",
       "channel": "events",
       "command": 68,
       "direction": "serverToClient",
@@ -44,6 +83,45 @@
           "name": "map",
           "type": "i32",
           "note": "Which map to load. spec/space.md keys the path origins by the same maps."
+        },
+        {
+          "name": "seats",
+          "type": "array",
+          "count": 12,
+          "note": "Every place at the match, held or empty.",
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
+        },
+        {
+          "name": "build",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 256,
+          "note": "Which build the server serves, shown and not checked. Written out in full and padded with zero bytes to the width above; a client reads it up to the first zero byte."
+        }
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
+    },
+    {
+      "from": "0.9.25.36",
+      "until": "1.0.0.25",
+      "channel": "events",
+      "command": 68,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "agreement",
+          "type": "u8",
+          "note": "Nonzero where the builds agree, letting the client go on into the game. For 0 a client shows both versions, reports a build mismatch and leaves."
+        },
+        {
+          "name": "map",
+          "type": "i32",
+          "note": "Which map to load."
         },
         {
           "name": "seats",
@@ -263,7 +341,46 @@
     },
     {
       "from": "1.0.0.82",
-      "until": "1.0.0.96",
+      "until": "1.0.0.86",
+      "channel": "events",
+      "command": 72,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "agreement",
+          "type": "u8",
+          "note": "A server writes 1. For 0 a client shows both versions and leaves; for any other value it leaves without showing them."
+        },
+        {
+          "name": "map",
+          "type": "i32",
+          "note": "Which map to load."
+        },
+        {
+          "name": "seats",
+          "type": "array",
+          "count": 12,
+          "note": "Every place at the match, held or empty.",
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
+        },
+        {
+          "name": "build",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 256,
+          "note": "Which build the server serves, shown and not checked. Written out in full and padded with zero bytes to the width above; a client reads it up to the first zero byte."
+        }
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
+    },
+    {
+      "from": "1.0.0.86",
+      "until": "1.0.0.87",
       "channel": "events",
       "command": 72,
       "direction": "serverToClient",
@@ -299,6 +416,45 @@
         }
       ],
       "note": "It also says which map to load, who is at the match, and everything else settled before play."
+    },
+    {
+      "from": "1.0.0.87",
+      "until": "1.0.0.96",
+      "channel": "events",
+      "command": 72,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "agreement",
+          "type": "u8",
+          "note": "A server writes 1. For 0 a client shows both versions and leaves; for any other value it leaves without showing them."
+        },
+        {
+          "name": "map",
+          "type": "i32",
+          "note": "Which map to load. spec/space.md keys the path origins by the same maps."
+        },
+        {
+          "name": "seats",
+          "type": "array",
+          "count": 12,
+          "note": "Every place at the match, held or empty.",
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
+        },
+        {
+          "name": "build",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 256,
+          "note": "Which build the server serves, shown and not checked. Written out in full and padded with zero bytes to the width above; a client reads it up to the first zero byte."
+        }
+      ],
+      "note": "It also says which map to load and who is at the match."
     },
     {
       "from": "1.0.0.96",
@@ -741,7 +897,7 @@
     },
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.128",
+      "until": "1.0.0.127",
       "channel": "events",
       "command": 87,
       "direction": "serverToClient",
@@ -774,6 +930,52 @@
           "encoding": "utf8",
           "size": 256,
           "note": "Which build the server serves, shown and not checked. Written out in full and padded with zero bytes to the width above; a client reads it up to the first zero byte."
+        },
+        {
+          "name": "mode",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "Which way the match is played, written and padded as above."
+        }
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
+    },
+    {
+      "from": "1.0.0.127",
+      "until": "1.0.0.128",
+      "channel": "events",
+      "command": 87,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "agreement",
+          "type": "u8",
+          "note": "For 0 a client shows both versions and leaves; for any other value it leaves without a notice."
+        },
+        {
+          "name": "map",
+          "type": "i32",
+          "note": "Which map to load. spec/space.md keys the path origins by the same maps."
+        },
+        {
+          "name": "seats",
+          "type": "array",
+          "count": 12,
+          "note": "Every place at the match, held or empty.",
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
+        },
+        {
+          "name": "build",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 256,
+          "note": "Which build the server serves. Written out in full and padded with zero bytes to the width above."
         },
         {
           "name": "mode",
@@ -1383,7 +1585,7 @@
     },
     {
       "from": "1.0.0.140",
-      "until": "1.0.0.144",
+      "until": "1.0.0.141",
       "channel": "events",
       "command": 90,
       "direction": "serverToClient",
@@ -1393,6 +1595,120 @@
           "name": "agreement",
           "type": "u8",
           "note": "1 has a client load. 0 has it show both versions and end; any value from 2 to 255 also has it end, without showing them."
+        },
+        {
+          "name": "map",
+          "type": "i32",
+          "note": "Which map to load. spec/space.md keys the path origins by the same maps."
+        },
+        {
+          "name": "seats",
+          "type": "array",
+          "count": 12,
+          "note": "Every place at the match, held or empty.",
+          "items": {
+            "name": "seat",
+            "type": "struct",
+            "struct": "Seat"
+          }
+        },
+        {
+          "name": "build",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 256,
+          "note": "Which build the server serves. Written out in full and padded with zero bytes to the width above."
+        },
+        {
+          "name": "mode",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 128,
+          "note": "Which way the match is played, written and padded as above."
+        },
+        {
+          "name": "teamName",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 25,
+          "note": "What one side is called where it plays as a standing team, written and padded as above."
+        },
+        {
+          "name": "teamTag",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 7,
+          "note": "The short form of that name, written and padded as above."
+        },
+        {
+          "name": "otherTeamName",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 25,
+          "note": "What the other side is called, under the same terms."
+        },
+        {
+          "name": "otherTeamTag",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 7,
+          "note": "The short form of that one."
+        },
+        {
+          "name": "metricsHost",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 1024,
+          "note": "Where a client reports figures about the match, written and padded as above."
+        },
+        {
+          "name": "metricsPath",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 1024,
+          "note": "What it asks for there, written and padded as above."
+        },
+        {
+          "name": "metricsPort",
+          "type": "u16",
+          "note": "Which port it reaches that at."
+        },
+        {
+          "name": "reporting",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "reportsToFile",
+              "width": 1,
+              "note": "Set to have a client also write its reports to a file of its own."
+            },
+            {
+              "name": "matched",
+              "width": 1,
+              "note": "Set to hide all chat: a client refuses to send a line to all players and shows a notice instead, a different one where it is watching the match."
+            },
+            {
+              "name": "unused",
+              "width": 6,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ],
+      "note": "It also says which map to load, who is at the match, and everything else settled before play."
+    },
+    {
+      "from": "1.0.0.141",
+      "until": "1.0.0.144",
+      "channel": "events",
+      "command": 90,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "agreement",
+          "type": "u8"
         },
         {
           "name": "map",
@@ -1742,7 +2058,7 @@
         {
           "name": "playingTips",
           "type": "u8",
-          "note": "Nonzero shows it during play, from time to time."
+          "note": "Nonzero shows it during play."
         }
       ],
       "note": "It also says which map to load, who is at the match, and everything else settled before play."
@@ -1882,7 +2198,7 @@
         {
           "name": "playingTips",
           "type": "u8",
-          "note": "Nonzero shows it during play, from time to time."
+          "note": "Nonzero shows it during play."
         }
       ],
       "note": "It also says which map to load, who is at the match, and everything else settled before play."
@@ -2022,7 +2338,7 @@
         {
           "name": "playingTips",
           "type": "u8",
-          "note": "Nonzero shows it during play, from time to time."
+          "note": "Nonzero shows it during play."
         }
       ],
       "note": "It also says which map to load, who is at the match, and everything else settled before play."
@@ -6792,8 +7108,7 @@
             },
             {
               "name": "altControls",
-              "width": 1,
-              "note": "Some mouse commands are taken by the time since the click before; what that changes on screen is not recorded."
+              "width": 1
             },
             {
               "name": "shopUndo",
@@ -6822,8 +7137,7 @@
             },
             {
               "name": "waveOrder",
-              "width": 1,
-              "note": "Changes the order of the kinds of minion within a wave."
+              "width": 1
             },
             {
               "name": "turretRange",
@@ -6872,8 +7186,7 @@
             },
             {
               "name": "particleOption",
-              "width": 1,
-              "note": "An extra option for drawing particles, in effect from the match's start; what it changes on screen is not recorded."
+              "width": 1
             },
             {
               "name": "unused",
@@ -7184,8 +7497,7 @@
             },
             {
               "name": "altControls",
-              "width": 1,
-              "note": "Some mouse commands are taken by the time since the click before; what that changes on screen is not recorded."
+              "width": 1
             },
             {
               "name": "shopUndo",
@@ -7214,8 +7526,7 @@
             },
             {
               "name": "waveOrder",
-              "width": 1,
-              "note": "Changes the order of the kinds of minion within a wave."
+              "width": 1
             },
             {
               "name": "turretRange",
@@ -7264,8 +7575,7 @@
             },
             {
               "name": "particleOption",
-              "width": 1,
-              "note": "An extra option for drawing particles, in effect from the match's start; what it changes on screen is not recorded."
+              "width": 1
             },
             {
               "name": "unused",
@@ -7576,8 +7886,7 @@
             },
             {
               "name": "altControls",
-              "width": 1,
-              "note": "Some mouse commands are taken by the time since the click before; what that changes on screen is not recorded."
+              "width": 1
             },
             {
               "name": "shopUndo",
@@ -7606,8 +7915,7 @@
             },
             {
               "name": "waveOrder",
-              "width": 1,
-              "note": "Changes the order of the kinds of minion within a wave."
+              "width": 1
             },
             {
               "name": "turretRange",
@@ -8390,8 +8698,7 @@
             },
             {
               "name": "networkMetrics",
-              "width": 1,
-              "note": "Reports of network figures from time to time, where reporting is on (agreement's reportingReady)."
+              "width": 1
             },
             {
               "name": "hardwareMetrics",
@@ -8786,8 +9093,7 @@
             },
             {
               "name": "networkMetrics",
-              "width": 1,
-              "note": "Reports of network figures from time to time, where reporting is on (agreement's reportingReady)."
+              "width": 1
             },
             {
               "name": "hardwareMetrics",
@@ -8816,8 +9122,7 @@
             },
             {
               "name": "jungleTimers",
-              "width": 1,
-              "note": "Timers for the jungle camps on the screen."
+              "width": 1
             },
             {
               "name": "traceroute",
@@ -9183,8 +9488,7 @@
             },
             {
               "name": "networkMetrics",
-              "width": 1,
-              "note": "Reports of network figures from time to time, where reporting is on (agreement's reportingReady)."
+              "width": 1
             },
             {
               "name": "hardwareMetrics",
@@ -9213,8 +9517,7 @@
             },
             {
               "name": "jungleTimers",
-              "width": 1,
-              "note": "Timers for the jungle camps on the screen."
+              "width": 1
             },
             {
               "name": "traceroute",
@@ -9587,8 +9890,7 @@
             },
             {
               "name": "networkMetrics",
-              "width": 1,
-              "note": "Reports of network figures from time to time, where reporting is on (agreement's reportingReady)."
+              "width": 1
             },
             {
               "name": "hardwareMetrics",
@@ -9617,8 +9919,7 @@
             },
             {
               "name": "traceroute",
-              "width": 1,
-              "note": "A trace of the route to the server, begun after this message and reported later, where reporting is on."
+              "width": 1
             },
             {
               "name": "unused",
@@ -9986,8 +10287,7 @@
             },
             {
               "name": "networkMetrics",
-              "width": 1,
-              "note": "Reports of network figures from time to time, where reporting is on (agreement's reportingReady)."
+              "width": 1
             },
             {
               "name": "hardwareMetrics",
@@ -10016,8 +10316,7 @@
             },
             {
               "name": "traceroute",
-              "width": 1,
-              "note": "A trace of the route to the server, begun after this message and reported later, where reporting is on."
+              "width": 1
             },
             {
               "name": "bit23",
@@ -11372,7 +11671,7 @@
             {
               "name": "logMetrics",
               "width": 1,
-              "note": "Set to have the client also write its figures about the match to a file of its own."
+              "note": "Set to have a client also write its reports to a file of its own, where it does not send them as event reports."
             },
             {
               "name": "matched",

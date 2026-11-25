@@ -136,7 +136,7 @@
     },
     {
       "from": "1.0.0.58",
-      "until": "1.0.0.74",
+      "until": "1.0.0.61",
       "channel": "events",
       "command": 42,
       "direction": "serverToClient",
@@ -159,6 +159,32 @@
         }
       ],
       "note": "There is no charges field: a client takes an item's charges from the item's own data. A client applies it only to a champion's item slots."
+    },
+    {
+      "from": "1.0.0.61",
+      "until": "1.0.0.74",
+      "channel": "events",
+      "command": 42,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "The slot it went to, 0 to 36. A larger value than 36 has no defined effect."
+        },
+        {
+          "name": "item",
+          "type": "u32",
+          "note": "Which item, by the number the client knows it as. For an item it does not know, a client empties the slot and still takes inSlot."
+        },
+        {
+          "name": "inSlot",
+          "type": "u8",
+          "note": "How many of the item the slot holds now; a client applies zero as well."
+        }
+      ],
+      "note": "There is no charges field: a client takes the charges from the item's own data where the item carries a spell of its own to use. A client applies it only to a champion's item slots."
     },
     {
       "from": "1.0.0.74",
@@ -703,7 +729,7 @@
     },
     {
       "from": "1.0.0.138",
-      "until": "1.0.0.144",
+      "until": "1.0.0.141",
       "channel": "events",
       "command": 117,
       "direction": "serverToClient",
@@ -733,6 +759,48 @@
               "name": "announce",
               "width": 1,
               "note": "Set to announce the purchase: a client shows it where the unit is on its side (or it plays a replay), the item's own data allows it, the player's setting asks for it, and the same item was not bought within the client's wait, 5 seconds unless a setting of its own changes it, a repeat within it restarting the wait."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.141",
+      "until": "1.0.0.144",
+      "channel": "events",
+      "command": 117,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "item",
+          "type": "u32",
+          "note": "Which item, by the number the client knows it as."
+        },
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "The slot it went to. A client rejects the message from 38 up."
+        },
+        {
+          "name": "inSlot",
+          "type": "u8",
+          "note": "How many of the item the slot holds; zero leaves the slot as it was. The slot's charges come from the item's own data."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "announce",
+              "width": 1,
+              "note": "Set to announce the purchase."
             },
             {
               "name": "unused",

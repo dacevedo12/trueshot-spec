@@ -216,6 +216,21 @@
     },
     {
       "from": "1.0.0.111",
+      "until": "1.0.0.126",
+      "command": 20,
+      "channel": "events",
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "element",
+          "type": "u8",
+          "note": "Which part of the minimap blinks."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.126",
       "until": "1.0.0.128",
       "command": 20,
       "channel": "events",

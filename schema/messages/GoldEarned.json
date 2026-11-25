@@ -186,6 +186,26 @@
     },
     {
       "from": "1.0.0.139",
+      "until": "1.0.0.140",
+      "channel": "events",
+      "command": 239,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "owner",
+          "type": "u32",
+          "note": "The champion credited."
+        },
+        {
+          "name": "amount",
+          "type": "f32",
+          "note": "How much gold."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.140",
       "until": "1.0.0.141",
       "channel": "events",
       "command": 239,
@@ -396,7 +416,7 @@
     },
     {
       "from": "4.17.0.233",
-      "until": "4.20.0.315",
+      "until": "4.18.0.271",
       "channel": "events",
       "command": 228,
       "direction": "serverToClient",
@@ -414,6 +434,27 @@
         }
       ],
       "note": "A client acts on it whether it watches the match or plays in it. It adds the gold to the champion's tally of gold earned, and leaves the gold the champion holds as it was."
+    },
+    {
+      "from": "4.18.0.271",
+      "until": "4.20.0.315",
+      "channel": "events",
+      "command": 228,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "owner",
+          "type": "u32",
+          "note": "The champion credited."
+        },
+        {
+          "name": "amount",
+          "type": "f32",
+          "note": "How much gold."
+        }
+      ],
+      "note": "A client acts on it whether it watches the match or plays in it."
     },
     {
       "from": "4.20.0.315",

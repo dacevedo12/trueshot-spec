@@ -106,6 +106,32 @@
     },
     {
       "from": "1.0.0.82",
+      "until": "1.0.0.86",
+      "channel": "events",
+      "command": 144,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "fade",
+          "type": "i16",
+          "note": "Names this fade, so that FadeRemoved can name it."
+        },
+        {
+          "name": "target",
+          "type": "f32",
+          "note": "The opacity it fades to, from 0 for unseen to 1 for solid."
+        },
+        {
+          "name": "time",
+          "type": "f32",
+          "note": "How long the fade takes, in seconds."
+        }
+      ],
+      "note": "FadeRemoved names the id of the fade it takes away."
+    },
+    {
+      "from": "1.0.0.86",
       "until": "1.0.0.97",
       "channel": "events",
       "command": 144,

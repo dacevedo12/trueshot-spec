@@ -70,7 +70,71 @@
     },
     {
       "from": "1.0.0.61",
-      "until": "1.0.0.96",
+      "until": "1.0.0.74",
+      "channel": "roster",
+      "command": 103,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "padding",
+          "type": "bytes",
+          "size": 3,
+          "note": "Unused; a client reads nothing here."
+        },
+        {
+          "name": "sideRoom",
+          "type": "u32",
+          "note": "How many seats side 100 has room for."
+        },
+        {
+          "name": "otherSideRoom",
+          "type": "u32",
+          "note": "How many side 200 has room for."
+        },
+        {
+          "name": "gap",
+          "type": "bytes",
+          "size": 4,
+          "note": "Unused; a client reads nothing here."
+        },
+        {
+          "name": "side",
+          "type": "array",
+          "count": 24,
+          "note": "The players on side 100, twenty four places of a player identifier's width; the client copies as many as sideRoom says, so a server keeps sideRoom at 24 or less. sideTaken says how many of the leading places carry a player, and the rest hold zero.",
+          "items": {
+            "name": "player",
+            "type": "i64",
+            "note": "One player."
+          }
+        },
+        {
+          "name": "otherSide",
+          "type": "array",
+          "count": 24,
+          "note": "The players on side 200, read the same way under otherSideRoom and otherSideTaken, with otherSideRoom kept at 24 or less.",
+          "items": {
+            "name": "player",
+            "type": "i64",
+            "note": "One player."
+          }
+        },
+        {
+          "name": "sideTaken",
+          "type": "u32",
+          "note": "How many of side 100's places carry a player."
+        },
+        {
+          "name": "otherSideTaken",
+          "type": "u32",
+          "note": "How many on side 200."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.74",
+      "until": "1.0.0.87",
       "channel": "roster",
       "command": 103,
       "direction": "serverToClient",
@@ -103,6 +167,70 @@
           "type": "array",
           "count": 24,
           "note": "The players on side 100, twenty four places of a player identifier's width; the client copies as many as sideRoom says, so a server keeps sideRoom at 24 or less; a larger one has no defined effect. sideTaken says how many of the leading places carry a player, and the rest hold zero.",
+          "items": {
+            "name": "player",
+            "type": "i64",
+            "note": "One player."
+          }
+        },
+        {
+          "name": "otherSide",
+          "type": "array",
+          "count": 24,
+          "note": "The players on side 200, read the same way under otherSideRoom and otherSideTaken, with otherSideRoom kept at 24 or less.",
+          "items": {
+            "name": "player",
+            "type": "i64",
+            "note": "One player."
+          }
+        },
+        {
+          "name": "sideTaken",
+          "type": "u32",
+          "note": "How many of side 100's places carry a player."
+        },
+        {
+          "name": "otherSideTaken",
+          "type": "u32",
+          "note": "How many on side 200."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.87",
+      "until": "1.0.0.96",
+      "channel": "roster",
+      "command": 103,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "padding",
+          "type": "bytes",
+          "size": 3,
+          "note": "Unused; a client reads nothing here."
+        },
+        {
+          "name": "sideRoom",
+          "type": "u32",
+          "note": "How many seats side 100 has room for."
+        },
+        {
+          "name": "otherSideRoom",
+          "type": "u32",
+          "note": "How many side 200 has room for."
+        },
+        {
+          "name": "gap",
+          "type": "bytes",
+          "size": 4,
+          "note": "Unused; a client reads nothing here."
+        },
+        {
+          "name": "side",
+          "type": "array",
+          "count": 24,
+          "note": "The players on side 100, twenty four places of a player identifier's width; the client copies as many as sideRoom says, so a server keeps sideRoom at 24 or less. sideTaken says how many of the leading places carry a player, and the rest hold zero.",
           "items": {
             "name": "player",
             "type": "i64",
@@ -198,7 +326,71 @@
     },
     {
       "from": "1.0.0.97",
-      "until": "1.0.0.128",
+      "until": "1.0.0.110",
+      "channel": "roster",
+      "command": 103,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "padding",
+          "type": "bytes",
+          "size": 3,
+          "note": "Unused; a client reads nothing here."
+        },
+        {
+          "name": "sideRoom",
+          "type": "u32",
+          "note": "How many seats side 100 has room for."
+        },
+        {
+          "name": "otherSideRoom",
+          "type": "u32",
+          "note": "How many side 200 has room for."
+        },
+        {
+          "name": "gap",
+          "type": "bytes",
+          "size": 4,
+          "note": "Unused; a client reads nothing here."
+        },
+        {
+          "name": "side",
+          "type": "array",
+          "count": 24,
+          "note": "The players on side 100, twenty four places of a player identifier's width; the client copies as many as sideRoom says, so a server keeps sideRoom at 24 or less. sideTaken says how many of the leading places carry a player, and the rest hold zero.",
+          "items": {
+            "name": "player",
+            "type": "i64",
+            "note": "One player."
+          }
+        },
+        {
+          "name": "otherSide",
+          "type": "array",
+          "count": 24,
+          "note": "The players on side 200, read the same way under otherSideRoom and otherSideTaken, with otherSideRoom kept at 24 or less.",
+          "items": {
+            "name": "player",
+            "type": "i64",
+            "note": "One player."
+          }
+        },
+        {
+          "name": "sideTaken",
+          "type": "u32",
+          "note": "How many of side 100's places carry a player."
+        },
+        {
+          "name": "otherSideTaken",
+          "type": "u32",
+          "note": "How many on side 200."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.110",
+      "until": "1.0.0.127",
       "channel": "roster",
       "command": 103,
       "direction": "serverToClient",
@@ -261,8 +453,72 @@
       ]
     },
     {
-      "from": "1.0.0.128",
-      "until": "1.0.0.147",
+      "from": "1.0.0.127",
+      "until": "1.0.0.132",
+      "channel": "roster",
+      "command": 103,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "padding",
+          "type": "bytes",
+          "size": 3,
+          "note": "Unused; a client reads nothing here."
+        },
+        {
+          "name": "sideRoom",
+          "type": "u32",
+          "note": "How many seats the first side has room for."
+        },
+        {
+          "name": "otherSideRoom",
+          "type": "u32",
+          "note": "How many the other has room for."
+        },
+        {
+          "name": "gap",
+          "type": "bytes",
+          "size": 4,
+          "note": "Unused; a client reads nothing here."
+        },
+        {
+          "name": "side",
+          "type": "array",
+          "count": 24,
+          "note": "The players on one side, twenty four places. A client copies as many leading places as sideRoom gives. It has a player identifier's width.",
+          "items": {
+            "name": "player",
+            "type": "i64",
+            "note": "One player."
+          }
+        },
+        {
+          "name": "otherSide",
+          "type": "array",
+          "count": 24,
+          "note": "The players on the other, under the same reading, as many as otherSideRoom gives.",
+          "items": {
+            "name": "player",
+            "type": "i64",
+            "note": "One player."
+          }
+        },
+        {
+          "name": "sideTaken",
+          "type": "u32",
+          "note": "How many of the leading places on the first side carry a player."
+        },
+        {
+          "name": "otherSideTaken",
+          "type": "u32",
+          "note": "How many on the other."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.132",
+      "until": "1.0.0.141",
       "channel": "roster",
       "command": 103,
       "direction": "serverToClient",
@@ -325,8 +581,124 @@
       ]
     },
     {
+      "from": "1.0.0.141",
+      "until": "1.0.0.147",
+      "channel": "roster",
+      "command": 103,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "padding",
+          "type": "bytes",
+          "size": 3,
+          "note": "Unused; a client reads nothing here."
+        },
+        {
+          "name": "sideRoom",
+          "type": "u32",
+          "note": "How many seats the first side has room for."
+        },
+        {
+          "name": "otherSideRoom",
+          "type": "u32",
+          "note": "How many the other has room for."
+        },
+        {
+          "name": "gap",
+          "type": "bytes",
+          "size": 4,
+          "note": "Unused; a client reads nothing here."
+        },
+        {
+          "name": "side",
+          "type": "array",
+          "count": 24,
+          "note": "The players on one side, twenty four places. A place cannot be read on its own, because zero is an identifier a match gives out as well as what an unused place holds. It has a player identifier's width.",
+          "items": {
+            "name": "player",
+            "type": "i64",
+            "note": "One player."
+          }
+        },
+        {
+          "name": "otherSide",
+          "type": "array",
+          "count": 24,
+          "note": "The players on the other, under the same reading.",
+          "items": {
+            "name": "player",
+            "type": "i64",
+            "note": "One player."
+          }
+        },
+        {
+          "name": "sideTaken",
+          "type": "u32",
+          "note": "How many of the leading places on the first side carry a player."
+        },
+        {
+          "name": "otherSideTaken",
+          "type": "u32",
+          "note": "How many on the other."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.147",
-      "until": "4.4.0.1858",
+      "until": "1.0.0.150",
+      "channel": "roster",
+      "command": 103,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "sideRoom",
+          "type": "u32",
+          "note": "How many seats the first side has room for."
+        },
+        {
+          "name": "otherSideRoom",
+          "type": "u32",
+          "note": "How many the other has room for."
+        },
+        {
+          "name": "side",
+          "type": "array",
+          "count": 24,
+          "note": "The players on one side, twenty four places. A place cannot be read on its own, because zero is an identifier a match gives out as well as what an unused place holds. It has a player identifier's width.",
+          "items": {
+            "name": "player",
+            "type": "i64",
+            "note": "One player."
+          }
+        },
+        {
+          "name": "otherSide",
+          "type": "array",
+          "count": 24,
+          "note": "The players on the other, under the same reading.",
+          "items": {
+            "name": "player",
+            "type": "i64",
+            "note": "One player."
+          }
+        },
+        {
+          "name": "sideTaken",
+          "type": "u32",
+          "note": "How many of the leading places on the first side carry a player."
+        },
+        {
+          "name": "otherSideTaken",
+          "type": "u32",
+          "note": "How many on the other."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.150",
+      "until": "3.14.0.700",
       "channel": "roster",
       "command": 103,
       "direction": "serverToClient",
@@ -358,6 +730,58 @@
           "type": "array",
           "count": 24,
           "note": "The players on the other, under the same reading and its own count.",
+          "items": {
+            "name": "player",
+            "type": "i64",
+            "note": "One player."
+          }
+        },
+        {
+          "name": "sideTaken",
+          "type": "u32",
+          "note": "How many of the leading places on the first side carry a player."
+        },
+        {
+          "name": "otherSideTaken",
+          "type": "u32",
+          "note": "How many on the other."
+        }
+      ]
+    },
+    {
+      "from": "3.14.0.700",
+      "until": "4.4.0.1858",
+      "channel": "roster",
+      "command": 103,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "sideRoom",
+          "type": "u32",
+          "note": "How many seats the first side has room for."
+        },
+        {
+          "name": "otherSideRoom",
+          "type": "u32",
+          "note": "How many the other has room for."
+        },
+        {
+          "name": "side",
+          "type": "array",
+          "count": 24,
+          "note": "The players on one side, twenty four places. A place cannot be read on its own, because zero is an identifier a match gives out as well as what an unused place holds. It has a player identifier's width.",
+          "items": {
+            "name": "player",
+            "type": "i64",
+            "note": "One player."
+          }
+        },
+        {
+          "name": "otherSide",
+          "type": "array",
+          "count": 24,
+          "note": "The players on the other, under the same reading.",
           "items": {
             "name": "player",
             "type": "i64",
@@ -430,7 +854,59 @@
     },
     {
       "from": "4.5.0.260",
-      "until": "4.20.0.315",
+      "until": "4.17.0.233",
+      "channel": "roster",
+      "command": 103,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "sideRoom",
+          "type": "u32",
+          "note": "How many seats the first side has room for."
+        },
+        {
+          "name": "otherSideRoom",
+          "type": "u32",
+          "note": "How many the other has room for."
+        },
+        {
+          "name": "side",
+          "type": "array",
+          "count": 24,
+          "note": "The players on one side, twenty four places. A place cannot be read on its own, because zero is an identifier a match gives out as well as what an unused place holds. It has a player identifier's width.",
+          "items": {
+            "name": "player",
+            "type": "i64",
+            "note": "One player."
+          }
+        },
+        {
+          "name": "otherSide",
+          "type": "array",
+          "count": 24,
+          "note": "The players on the other, under the same reading.",
+          "items": {
+            "name": "player",
+            "type": "i64",
+            "note": "One player."
+          }
+        },
+        {
+          "name": "sideTaken",
+          "type": "u32",
+          "note": "How many of the leading places on the first side carry a player."
+        },
+        {
+          "name": "otherSideTaken",
+          "type": "u32",
+          "note": "How many on the other."
+        }
+      ]
+    },
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.271",
       "channel": "roster",
       "command": 103,
       "direction": "serverToClient",
@@ -462,6 +938,58 @@
           "type": "array",
           "count": 24,
           "note": "The players on the other, under the same reading and its own count.",
+          "items": {
+            "name": "player",
+            "type": "i64",
+            "note": "One player."
+          }
+        },
+        {
+          "name": "sideTaken",
+          "type": "u32",
+          "note": "How many of the leading places on the first side carry a player."
+        },
+        {
+          "name": "otherSideTaken",
+          "type": "u32",
+          "note": "How many on the other."
+        }
+      ]
+    },
+    {
+      "from": "4.18.0.271",
+      "until": "4.20.0.315",
+      "channel": "roster",
+      "command": 103,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "sideRoom",
+          "type": "u32",
+          "note": "How many seats the first side has room for."
+        },
+        {
+          "name": "otherSideRoom",
+          "type": "u32",
+          "note": "How many the other has room for."
+        },
+        {
+          "name": "side",
+          "type": "array",
+          "count": 24,
+          "note": "The players on one side, twenty four places. A place cannot be read on its own, because zero is an identifier a match gives out as well as what an unused place holds. It has a player identifier's width.",
+          "items": {
+            "name": "player",
+            "type": "i64",
+            "note": "One player."
+          }
+        },
+        {
+          "name": "otherSide",
+          "type": "array",
+          "count": 24,
+          "note": "The players on the other, under the same reading.",
           "items": {
             "name": "player",
             "type": "i64",

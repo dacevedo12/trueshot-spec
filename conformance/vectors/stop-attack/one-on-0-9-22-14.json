@@ -1,0 +1,21 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "StopAttack",
+  "version": "0.9.22.14",
+  "note": "Laid out as a 0.9.22.14 client takes it.",
+  "bytes": "300000000100004000",
+  "fields": {
+    "command": 48,
+    "padding": "000000",
+    "netId": 1073741825,
+    "how": {
+      "keepAnimating": 0,
+      "forceCast": 0,
+      "forceStop": 0,
+      "summonerSpell": 0,
+      "destroyMissile": 0,
+      "unused": 0
+    }
+  }
+}

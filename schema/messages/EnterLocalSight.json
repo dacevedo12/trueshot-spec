@@ -127,6 +127,37 @@
     },
     {
       "from": "1.0.0.82",
+      "until": "1.0.0.86",
+      "channel": "events",
+      "command": 61,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "vitals",
+          "type": "record",
+          "present": {
+            "when": "remaining"
+          },
+          "note": "The unit's health. A client reads it only for a unit with a mind; for any other unit it reads nothing of the body.",
+          "fields": [
+            {
+              "name": "maxHealth",
+              "type": "f32",
+              "note": "What the unit's health tops out at."
+            },
+            {
+              "name": "health",
+              "type": "f32",
+              "note": "What its health stands at. A client holds it to between zero and maxHealth."
+            }
+          ]
+        }
+      ],
+      "note": "It carries no other messages: the body is the unit's health alone, always present."
+    },
+    {
+      "from": "1.0.0.86",
       "until": "1.0.0.97",
       "channel": "events",
       "command": 61,
@@ -437,7 +468,7 @@
     },
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.128",
+      "until": "1.0.0.127",
       "channel": "events",
       "command": 181,
       "direction": "serverToClient",
@@ -467,7 +498,7 @@
       "note": "It carries no other messages: the body is the unit's health alone, always present."
     },
     {
-      "from": "1.0.0.128",
+      "from": "1.0.0.127",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 181,
@@ -676,6 +707,64 @@
     },
     {
       "from": "1.0.0.139",
+      "until": "1.0.0.140",
+      "channel": "events",
+      "command": 183,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "carried",
+          "type": "bits",
+          "size": 2,
+          "bits": [
+            {
+              "name": "size",
+              "width": 11,
+              "note": "How many bytes the messages below occupy in total."
+            },
+            {
+              "name": "unused",
+              "width": 5,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "messages",
+          "type": "array",
+          "size": "carried.size",
+          "note": "Whole messages of the same family, each behind its own length, that a client acts on as though they had arrived on their own.",
+          "items": {
+            "type": "struct",
+            "struct": "CarriedMessage",
+            "name": "message"
+          }
+        },
+        {
+          "name": "vitals",
+          "type": "record",
+          "present": {
+            "when": "remaining"
+          },
+          "note": "The unit's health.",
+          "fields": [
+            {
+              "name": "maxHealth",
+              "type": "f32",
+              "note": "What the unit's health tops out at."
+            },
+            {
+              "name": "health",
+              "type": "f32",
+              "note": "What its health stands at."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.140",
       "until": "1.0.0.141",
       "channel": "events",
       "command": 183,
@@ -850,7 +939,7 @@
     },
     {
       "from": "1.0.0.150",
-      "until": "3.01.0.1",
+      "until": "1.0.0.151",
       "channel": "events",
       "command": 171,
       "direction": "serverToClient",
@@ -907,7 +996,123 @@
       ]
     },
     {
+      "from": "1.0.0.151",
+      "until": "3.01.0.1",
+      "channel": "events",
+      "command": 171,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "carried",
+          "type": "bits",
+          "size": 2,
+          "bits": [
+            {
+              "name": "size",
+              "width": 11,
+              "note": "How many bytes the messages below occupy in total."
+            },
+            {
+              "name": "unused",
+              "width": 5,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "messages",
+          "type": "array",
+          "size": "carried.size",
+          "note": "Whole messages of the same family, each behind its own length, that a client acts on as though they had arrived on their own.",
+          "items": {
+            "type": "struct",
+            "struct": "CarriedMessage",
+            "name": "message"
+          }
+        },
+        {
+          "name": "vitals",
+          "type": "record",
+          "present": {
+            "when": "remaining"
+          },
+          "note": "The unit's health.",
+          "fields": [
+            {
+              "name": "maxHealth",
+              "type": "f32",
+              "note": "What the unit's health tops out at."
+            },
+            {
+              "name": "health",
+              "type": "f32",
+              "note": "What its health stands at."
+            }
+          ]
+        }
+      ]
+    },
+    {
       "from": "3.01.0.1",
+      "until": "3.03.0.198",
+      "channel": "events",
+      "command": 174,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "carried",
+          "type": "bits",
+          "size": 2,
+          "bits": [
+            {
+              "name": "size",
+              "width": 11,
+              "note": "How many bytes the messages below occupy in total."
+            },
+            {
+              "name": "unused",
+              "width": 5,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "messages",
+          "type": "array",
+          "size": "carried.size",
+          "note": "Whole messages of the same family, each behind its own length, that a client acts on as though they had arrived on their own.",
+          "items": {
+            "type": "struct",
+            "struct": "CarriedMessage",
+            "name": "message"
+          }
+        },
+        {
+          "name": "vitals",
+          "type": "record",
+          "present": {
+            "when": "remaining"
+          },
+          "note": "The unit's health.",
+          "fields": [
+            {
+              "name": "maxHealth",
+              "type": "f32",
+              "note": "What the unit's health tops out at."
+            },
+            {
+              "name": "health",
+              "type": "f32",
+              "note": "What its health stands at."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "from": "3.03.0.198",
       "until": "3.04.0.78",
       "channel": "events",
       "command": 174,
@@ -1024,6 +1229,64 @@
     },
     {
       "from": "3.7.0.328",
+      "until": "3.10.0.237",
+      "channel": "events",
+      "command": 174,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "carried",
+          "type": "bits",
+          "size": 2,
+          "bits": [
+            {
+              "name": "size",
+              "width": 11,
+              "note": "How many bytes the messages below occupy in total."
+            },
+            {
+              "name": "unused",
+              "width": 5,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "messages",
+          "type": "array",
+          "size": "carried.size",
+          "note": "Whole messages of the same family, each behind its own length, that a client acts on as though they had arrived on their own.",
+          "items": {
+            "type": "struct",
+            "struct": "CarriedMessage",
+            "name": "message"
+          }
+        },
+        {
+          "name": "vitals",
+          "type": "record",
+          "present": {
+            "when": "remaining"
+          },
+          "note": "The unit's health.",
+          "fields": [
+            {
+              "name": "maxHealth",
+              "type": "f32",
+              "note": "What the unit's health tops out at."
+            },
+            {
+              "name": "health",
+              "type": "f32",
+              "note": "What its health stands at."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "from": "3.10.0.237",
       "until": "4.1.0.171",
       "channel": "events",
       "command": 174,
@@ -1082,7 +1345,7 @@
     },
     {
       "from": "4.1.0.171",
-      "until": "4.11.0.386",
+      "until": "4.5.0.260",
       "channel": "events",
       "command": 173,
       "direction": "serverToClient",
@@ -1123,6 +1386,64 @@
             "when": "remaining"
           },
           "note": "The unit's health. A server sends this message without it too, ending after the carried messages.",
+          "fields": [
+            {
+              "name": "maxHealth",
+              "type": "f32",
+              "note": "What the unit's health tops out at."
+            },
+            {
+              "name": "health",
+              "type": "f32",
+              "note": "What its health stands at."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "from": "4.5.0.260",
+      "until": "4.11.0.386",
+      "channel": "events",
+      "command": 173,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "carried",
+          "type": "bits",
+          "size": 2,
+          "bits": [
+            {
+              "name": "size",
+              "width": 13,
+              "note": "How many bytes the messages below occupy in total."
+            },
+            {
+              "name": "unused",
+              "width": 3,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        },
+        {
+          "name": "messages",
+          "type": "array",
+          "size": "carried.size",
+          "note": "Whole messages of the same family, each behind its own length, that a client acts on as though they had arrived on their own.",
+          "items": {
+            "type": "struct",
+            "struct": "CarriedMessage",
+            "name": "message"
+          }
+        },
+        {
+          "name": "vitals",
+          "type": "record",
+          "present": {
+            "when": "remaining"
+          },
+          "note": "The unit's health.",
           "fields": [
             {
               "name": "maxHealth",

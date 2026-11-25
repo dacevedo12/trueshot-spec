@@ -50,7 +50,51 @@
     },
     {
       "from": "0.9.25.36",
-      "until": "1.0.0.63",
+      "until": "1.0.0.25",
+      "channel": "events",
+      "command": 124,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "locks",
+          "type": "u32",
+          "note": "Each lock set flips.",
+          "values": {
+            "1": {
+              "name": "cameraLock",
+              "note": "Locking the camera."
+            },
+            "2": {
+              "name": "movement"
+            },
+            "4": {
+              "name": "spells"
+            },
+            "8": {
+              "name": "summonerSpells"
+            },
+            "16": {
+              "name": "shop"
+            },
+            "32": {
+              "name": "chat"
+            },
+            "64": {
+              "name": "minimapMovement",
+              "note": "Moving by the minimap."
+            },
+            "128": {
+              "name": "cameraMovement"
+            }
+          }
+        }
+      ],
+      "note": "A client acts on the change at once only where locks is 1, 4, 8, 16, 32 or 128; any other value still changes what is locked, and takes effect as the player next tries."
+    },
+    {
+      "from": "1.0.0.25",
+      "until": "1.0.0.61",
       "channel": "events",
       "command": 124,
       "direction": "serverToClient",
@@ -91,6 +135,49 @@
         }
       ],
       "note": "A client acts on the change at once only where locks is 1, 4, 8, 16, 32 or 128; any other value, 2 and 64 among them, still changes what is locked, and takes effect as the player next tries."
+    },
+    {
+      "from": "1.0.0.61",
+      "until": "1.0.0.63",
+      "channel": "events",
+      "command": 124,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "locks",
+          "type": "u32",
+          "note": "Each lock set flips.",
+          "values": {
+            "1": {
+              "name": "cameraLock",
+              "note": "Locking the camera."
+            },
+            "2": {
+              "name": "movement"
+            },
+            "4": {
+              "name": "spells"
+            },
+            "8": {
+              "name": "summonerSpells"
+            },
+            "16": {
+              "name": "shop"
+            },
+            "32": {
+              "name": "chat"
+            },
+            "64": {
+              "name": "minimapMovement"
+            },
+            "128": {
+              "name": "cameraMovement"
+            }
+          }
+        }
+      ],
+      "note": "A client acts on the change at once only where locks is exactly one of 1, 4, 8, 16, 32 or 128; any other value still changes what is locked, and takes effect as the player next tries."
     },
     {
       "from": "1.0.0.63",
@@ -266,6 +353,49 @@
     },
     {
       "from": "1.0.0.87",
+      "until": "1.0.0.96",
+      "channel": "events",
+      "command": 132,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "locks",
+          "type": "u32",
+          "note": "Each lock set flips.",
+          "values": {
+            "1": {
+              "name": "cameraLock",
+              "note": "Locking the camera."
+            },
+            "2": {
+              "name": "movement"
+            },
+            "4": {
+              "name": "spells"
+            },
+            "8": {
+              "name": "summonerSpells"
+            },
+            "16": {
+              "name": "shop"
+            },
+            "32": {
+              "name": "chat"
+            },
+            "64": {
+              "name": "minimapMovement"
+            },
+            "128": {
+              "name": "cameraMovement"
+            }
+          }
+        }
+      ],
+      "note": "A client acts on the change at once only where locks is 1, 4, 8, 16, 32 or 128; any other value still changes what is locked."
+    },
+    {
+      "from": "1.0.0.96",
       "until": "1.0.0.97",
       "channel": "events",
       "command": 132,
@@ -740,7 +870,7 @@
     },
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.132",
+      "until": "1.0.0.127",
       "channel": "events",
       "command": 163,
       "direction": "serverToClient",
@@ -781,6 +911,49 @@
         }
       ],
       "note": "A client acts on the change at once only where locks is 1, 4, 8, 16, 32 or 128; any other value still changes what is locked, and takes effect as the player next tries."
+    },
+    {
+      "from": "1.0.0.127",
+      "until": "1.0.0.132",
+      "channel": "events",
+      "command": 163,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "locks",
+          "type": "u32",
+          "note": "Each lock set flips.",
+          "values": {
+            "1": {
+              "name": "cameraLock",
+              "note": "Locking the camera."
+            },
+            "2": {
+              "name": "movement"
+            },
+            "4": {
+              "name": "spells"
+            },
+            "8": {
+              "name": "summonerSpells"
+            },
+            "16": {
+              "name": "shop"
+            },
+            "32": {
+              "name": "chat"
+            },
+            "64": {
+              "name": "minimapMovement"
+            },
+            "128": {
+              "name": "cameraMovement"
+            }
+          }
+        }
+      ],
+      "note": "A client acts on the change at once only where locks is 1, 4, 8, 16, 32 or 128; any other value still changes what is locked."
     },
     {
       "from": "1.0.0.132",
@@ -999,7 +1172,50 @@
     },
     {
       "from": "1.0.0.139",
-      "until": "1.0.0.144",
+      "until": "1.0.0.140",
+      "channel": "events",
+      "command": 165,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "locks",
+          "type": "u32",
+          "note": "Each lock set flips.",
+          "values": {
+            "1": {
+              "name": "cameraLock",
+              "note": "Locking the camera."
+            },
+            "2": {
+              "name": "movement"
+            },
+            "4": {
+              "name": "spells"
+            },
+            "8": {
+              "name": "summonerSpells"
+            },
+            "16": {
+              "name": "shop"
+            },
+            "32": {
+              "name": "chat"
+            },
+            "64": {
+              "name": "minimapMovement"
+            },
+            "128": {
+              "name": "cameraMovement"
+            }
+          }
+        }
+      ],
+      "note": "A client acts on the change at once only where the value is exactly one of 1, 4, 8, 16, 32 and 128; any other value still changes what is locked."
+    },
+    {
+      "from": "1.0.0.140",
+      "until": "1.0.0.141",
       "channel": "events",
       "command": 165,
       "direction": "serverToClient",
@@ -1040,6 +1256,50 @@
         }
       ],
       "note": "A client acts on the change at once only where the value is exactly one of 1, 4, 8, 16, 32 and 128; any other value, 2 and 64 among them, still changes what is locked, and takes effect as the player next tries."
+    },
+    {
+      "from": "1.0.0.141",
+      "until": "1.0.0.144",
+      "channel": "events",
+      "command": 165,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "locks",
+          "type": "u32",
+          "note": "Each lock set flips.",
+          "values": {
+            "1": {
+              "name": "cameraLock",
+              "note": "Locking the camera."
+            },
+            "2": {
+              "name": "movement"
+            },
+            "4": {
+              "name": "spells"
+            },
+            "8": {
+              "name": "summonerSpells"
+            },
+            "16": {
+              "name": "shop"
+            },
+            "32": {
+              "name": "chat"
+            },
+            "64": {
+              "name": "minimapMovement",
+              "note": "Moving by the minimap."
+            },
+            "128": {
+              "name": "cameraMovement"
+            }
+          }
+        }
+      ],
+      "note": "A client acts on the change at once only where the value is exactly one of 1, 4, 8, 16, 32 and 128; any other value still changes what is locked."
     },
     {
       "from": "1.0.0.144",
@@ -1263,6 +1523,50 @@
     },
     {
       "from": "3.01.0.1",
+      "until": "3.03.0.198",
+      "channel": "events",
+      "command": 155,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "locks",
+          "type": "u32",
+          "note": "Each lock set flips.",
+          "values": {
+            "1": {
+              "name": "cameraLock",
+              "note": "Locking the camera."
+            },
+            "2": {
+              "name": "movement"
+            },
+            "4": {
+              "name": "spells"
+            },
+            "8": {
+              "name": "summonerSpells"
+            },
+            "16": {
+              "name": "shop"
+            },
+            "32": {
+              "name": "chat"
+            },
+            "64": {
+              "name": "minimapMovement",
+              "note": "Moving by the minimap."
+            },
+            "128": {
+              "name": "cameraMovement"
+            }
+          }
+        }
+      ],
+      "note": "A client acts on the change at once only where locks is 1, 4, 8, 16, 32 or 128; any other value still changes what is locked."
+    },
+    {
+      "from": "3.03.0.198",
       "until": "3.6.0.388",
       "channel": "events",
       "command": 155,
@@ -1351,7 +1655,7 @@
     },
     {
       "from": "3.7.0.328",
-      "until": "4.1.0.171",
+      "until": "3.14.0.700",
       "channel": "events",
       "command": 155,
       "direction": "serverToClient",
@@ -1392,6 +1696,50 @@
         }
       ],
       "note": "A client acts on the change at once only where locks is 1, 4, 8, 16, 32 or 128; any other value, 2 and 64 among them, still changes what is locked, and takes effect as the player next tries."
+    },
+    {
+      "from": "3.14.0.700",
+      "until": "4.1.0.171",
+      "channel": "events",
+      "command": 155,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "locks",
+          "type": "u32",
+          "note": "Each lock set flips.",
+          "values": {
+            "1": {
+              "name": "cameraLock",
+              "note": "Locking the camera."
+            },
+            "2": {
+              "name": "movement"
+            },
+            "4": {
+              "name": "spells"
+            },
+            "8": {
+              "name": "summonerSpells"
+            },
+            "16": {
+              "name": "shop"
+            },
+            "32": {
+              "name": "chat"
+            },
+            "64": {
+              "name": "minimapMovement",
+              "note": "Moving by the minimap."
+            },
+            "128": {
+              "name": "cameraMovement"
+            }
+          }
+        }
+      ],
+      "note": "A client acts on the change at once only where locks is 1, 4, 8, 16, 32 or 128."
     },
     {
       "from": "4.1.0.171",

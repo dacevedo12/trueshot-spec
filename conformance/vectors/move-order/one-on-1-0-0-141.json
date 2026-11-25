@@ -1,0 +1,72 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "MoveOrder",
+  "version": "1.0.0.141",
+  "note": "Laid out as a 1.0.0.141 client sends it: the values of the 3.01.0.1 vector one-on-3-01.",
+  "bytes": "7801000040026ce0924448adb444000000000a01000040fc21f3adf2e1f4f9f37d7d007dce32",
+  "fields": {
+    "command": 120,
+    "netId": 1073741825,
+    "kind": 2,
+    "targetX": 1175.01318359375,
+    "targetZ": 1445.4150390625,
+    "target": 0,
+    "movement": {
+      "header": {
+        "hasTeleportToken": 0,
+        "pointCount": 5
+      },
+      "path": {
+        "unit": 1073741825,
+        "teleportToken": null,
+        "flags": [
+          {
+            "xIsStep": 0,
+            "zIsStep": 0
+          },
+          {
+            "xIsStep": 1,
+            "zIsStep": 1
+          },
+          {
+            "xIsStep": 1,
+            "zIsStep": 1
+          },
+          {
+            "xIsStep": 1,
+            "zIsStep": 1
+          }
+        ],
+        "firstX": -3295,
+        "firstZ": -3411,
+        "steps": [
+          {
+            "xStep": null,
+            "xWhole": -2847,
+            "zStep": null,
+            "zWhole": -3079
+          },
+          {
+            "xStep": 125,
+            "xWhole": null,
+            "zStep": 125,
+            "zWhole": null
+          },
+          {
+            "xStep": 0,
+            "xWhole": null,
+            "zStep": 125,
+            "zWhole": null
+          },
+          {
+            "xStep": -50,
+            "xWhole": null,
+            "zStep": 50,
+            "zWhole": null
+          }
+        ]
+      }
+    }
+  }
+}

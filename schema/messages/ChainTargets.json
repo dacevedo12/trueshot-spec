@@ -38,6 +38,37 @@
     },
     {
       "from": "0.9.22.14",
+      "until": "0.9.25.24",
+      "channel": "events",
+      "command": 103,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "count",
+          "type": "i32",
+          "note": "How many of the slots are used, 0 to 32; 0 or less leaves the targets the client holds as they are. A client sets no bound, and more than 32 has no defined effect."
+        },
+        {
+          "name": "caster",
+          "type": "u32",
+          "note": "The unit casting the missile. Where a client does not hold it, the client starts no missile, though a missile it already holds under the header's name still takes the targets."
+        },
+        {
+          "name": "targets",
+          "type": "array",
+          "count": 32,
+          "items": {
+            "name": "target",
+            "type": "u32",
+            "note": "A unit, in the order struck."
+          },
+          "note": "Always 32 slots; those past count have no effect."
+        }
+      ]
+    },
+    {
+      "from": "0.9.25.24",
       "until": "0.9.25.36",
       "channel": "events",
       "command": 103,
@@ -860,7 +891,39 @@
     },
     {
       "from": "1.0.0.138",
-      "until": "1.0.0.144",
+      "until": "1.0.0.140",
+      "channel": "events",
+      "command": 114,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "count",
+          "type": "i32",
+          "note": "How many of the slots are used, 0 to 32."
+        },
+        {
+          "name": "caster",
+          "type": "u32",
+          "note": "The unit casting the missile."
+        },
+        {
+          "name": "targets",
+          "type": "array",
+          "count": 32,
+          "items": {
+            "name": "target",
+            "type": "u32",
+            "note": "A unit, in the order struck."
+          },
+          "note": "Always 32 slots; those past count have no effect."
+        }
+      ],
+      "note": "While the match is in play, a client that holds caster, where caster is casting, keeps the list for the caster's next chain missile."
+    },
+    {
+      "from": "1.0.0.140",
+      "until": "1.0.0.141",
       "channel": "events",
       "command": 114,
       "direction": "serverToClient",
@@ -889,6 +952,37 @@
         }
       ],
       "note": "A client drops the message unless the match is running, it holds caster, and caster has a cast in progress. It keeps the list for the caster's next chain missile, even where it already holds the missile."
+    },
+    {
+      "from": "1.0.0.141",
+      "until": "1.0.0.144",
+      "channel": "events",
+      "command": 114,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "count",
+          "type": "i32",
+          "note": "How many of the slots are used, 0 to 32."
+        },
+        {
+          "name": "caster",
+          "type": "u32",
+          "note": "The unit casting the missile."
+        },
+        {
+          "name": "targets",
+          "type": "array",
+          "count": 32,
+          "items": {
+            "name": "target",
+            "type": "u32",
+            "note": "A unit, in the order struck."
+          },
+          "note": "Always 32 slots; those past count have no effect."
+        }
+      ]
     },
     {
       "from": "1.0.0.144",
@@ -1082,7 +1176,7 @@
     },
     {
       "from": "3.7.0.328",
-      "until": "3.13.0.399",
+      "until": "3.10.0.237",
       "channel": "events",
       "command": 107,
       "direction": "serverToClient",
@@ -1108,6 +1202,69 @@
             "note": "A unit, in the order struck."
           },
           "note": "Always 32 slots; those past count have no effect."
+        }
+      ]
+    },
+    {
+      "from": "3.10.0.237",
+      "until": "3.11.0.306",
+      "channel": "events",
+      "command": 107,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "count",
+          "type": "i32",
+          "note": "How many of the slots are used, 0 to 32."
+        },
+        {
+          "name": "caster",
+          "type": "u32",
+          "note": "The unit casting the missile."
+        },
+        {
+          "name": "targets",
+          "type": "array",
+          "count": 32,
+          "items": {
+            "name": "target",
+            "type": "u32",
+            "note": "A unit, in the order struck."
+          },
+          "note": "Always 32 slots; those past count have no effect."
+        }
+      ],
+      "note": "Where the client already holds the missile, the missile takes the list; otherwise the list waits for the caster's next chain missile."
+    },
+    {
+      "from": "3.11.0.306",
+      "until": "3.13.0.399",
+      "channel": "events",
+      "command": 107,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "count",
+          "type": "i32",
+          "note": "How many of the slots are used, at most 32."
+        },
+        {
+          "name": "caster",
+          "type": "u32",
+          "note": "The unit casting the missile."
+        },
+        {
+          "name": "targets",
+          "type": "array",
+          "count": 32,
+          "items": {
+            "name": "target",
+            "type": "u32",
+            "note": "A unit, in the order struck."
+          },
+          "note": "Always 32 slots."
         }
       ],
       "note": "Where the client already holds the missile, the missile takes the list; otherwise the list waits for the caster's next chain missile."

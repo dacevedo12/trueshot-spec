@@ -5,7 +5,7 @@
   "revisions": [
     {
       "from": "0.8.13.26",
-      "until": "0.9.25.24",
+      "until": "0.9.22.14",
       "fields": [
         {
           "name": "target",
@@ -21,6 +21,77 @@
           "name": "boundTo",
           "type": "u32",
           "note": "The unit the particle hangs off, or zero. Where it names a unit the client does not hold, the particle waits until it does, unless the group's flags say otherwise."
+        },
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where the particle sits, along one ground axis, in world units."
+        },
+        {
+          "name": "atY",
+          "type": "f32",
+          "note": "Where it sits, in height, in world units."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where it sits, along the other ground axis, in world units."
+        },
+        {
+          "name": "towardX",
+          "type": "f32",
+          "note": "Where the particle is aimed, along one ground axis, in world units."
+        },
+        {
+          "name": "towardY",
+          "type": "f32",
+          "note": "Where it is aimed, in height, in world units."
+        },
+        {
+          "name": "towardZ",
+          "type": "f32",
+          "note": "Where it is aimed, along the other ground axis, in world units."
+        },
+        {
+          "name": "ownerX",
+          "type": "f32",
+          "note": "Where the unit that made it stood, along one ground axis, in world units."
+        },
+        {
+          "name": "ownerY",
+          "type": "f32",
+          "note": "Where that unit stood, in height, in world units."
+        },
+        {
+          "name": "ownerZ",
+          "type": "f32",
+          "note": "Where that unit stood, along the other ground axis, in world units."
+        },
+        {
+          "name": "runningFor",
+          "type": "f32",
+          "note": "How far into its run the particle already is, in seconds."
+        }
+      ]
+    },
+    {
+      "from": "0.9.22.14",
+      "until": "0.9.25.24",
+      "fields": [
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit the particle is aimed at, or zero."
+        },
+        {
+          "name": "particle",
+          "type": "u32",
+          "note": "The name this particle answers to, so later messages can name it."
+        },
+        {
+          "name": "boundTo",
+          "type": "u32",
+          "note": "The unit the particle hangs off, or zero."
         },
         {
           "name": "atX",
@@ -147,7 +218,78 @@
     },
     {
       "from": "0.9.25.36",
-      "until": "1.0.0.98",
+      "until": "1.0.0.25",
+      "fields": [
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit the particle is aimed at, or zero."
+        },
+        {
+          "name": "particle",
+          "type": "u32",
+          "note": "The name this particle answers to, so later messages can name it."
+        },
+        {
+          "name": "boundTo",
+          "type": "u32",
+          "note": "The unit the particle hangs off, or zero."
+        },
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where the particle sits, along one ground axis, in world units."
+        },
+        {
+          "name": "atY",
+          "type": "f32",
+          "note": "Where it sits, in height, in world units."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where it sits, along the other ground axis, in world units."
+        },
+        {
+          "name": "towardX",
+          "type": "f32",
+          "note": "Where the particle is aimed, along one ground axis, in world units."
+        },
+        {
+          "name": "towardY",
+          "type": "f32",
+          "note": "Where it is aimed, in height, in world units."
+        },
+        {
+          "name": "towardZ",
+          "type": "f32",
+          "note": "Where it is aimed, along the other ground axis, in world units."
+        },
+        {
+          "name": "ownerX",
+          "type": "f32",
+          "note": "Where the unit that made it stood, along one ground axis, in world units."
+        },
+        {
+          "name": "ownerY",
+          "type": "f32",
+          "note": "Where that unit stood, in height, in world units."
+        },
+        {
+          "name": "ownerZ",
+          "type": "f32",
+          "note": "Where that unit stood, along the other ground axis, in world units."
+        },
+        {
+          "name": "runningFor",
+          "type": "f32",
+          "note": "How far into its run the particle already is, in seconds."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.25",
+      "until": "1.0.0.97",
       "fields": [
         {
           "name": "target",
@@ -208,6 +350,77 @@
           "name": "ownerZ",
           "type": "f32",
           "note": "Where that unit stood, along the other ground axis, in world units."
+        },
+        {
+          "name": "runningFor",
+          "type": "f32",
+          "note": "How far into its run the particle already is, in seconds."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.97",
+      "until": "1.0.0.98",
+      "fields": [
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit the particle is aimed at, or zero."
+        },
+        {
+          "name": "particle",
+          "type": "u32",
+          "note": "The name this particle answers to, so later messages can name it."
+        },
+        {
+          "name": "boundTo",
+          "type": "u32",
+          "note": "The unit the particle hangs off, or zero. Where it names a unit the client does not hold, the particle waits until it does, unless the group's flags say otherwise."
+        },
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where the particle sits, along one ground axis."
+        },
+        {
+          "name": "atY",
+          "type": "f32",
+          "note": "Where it sits, in height, in world units."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where it sits, along the other ground axis."
+        },
+        {
+          "name": "towardX",
+          "type": "f32",
+          "note": "Where the particle is aimed, along one ground axis."
+        },
+        {
+          "name": "towardY",
+          "type": "f32",
+          "note": "Where it is aimed, in height, in world units."
+        },
+        {
+          "name": "towardZ",
+          "type": "f32",
+          "note": "Where it is aimed, along the other ground axis."
+        },
+        {
+          "name": "ownerX",
+          "type": "f32",
+          "note": "Where the unit that made it stood, along one ground axis."
+        },
+        {
+          "name": "ownerY",
+          "type": "f32",
+          "note": "Where that unit stood, in height, in world units."
+        },
+        {
+          "name": "ownerZ",
+          "type": "f32",
+          "note": "Where that unit stood, along the other ground axis."
         },
         {
           "name": "runningFor",

@@ -256,7 +256,7 @@
     },
     {
       "from": "1.0.0.120",
-      "until": "1.0.0.128",
+      "until": "1.0.0.127",
       "channel": "clock",
       "command": 8,
       "direction": "clientToServer",
@@ -286,8 +286,70 @@
       ]
     },
     {
+      "from": "1.0.0.127",
+      "until": "1.0.0.128",
+      "channel": "clock",
+      "command": 8,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "value",
+          "type": "u32",
+          "note": "The client id the sender holds."
+        },
+        {
+          "name": "serverSaid",
+          "type": "f32",
+          "note": "What the server last said the clock stood at, in seconds."
+        },
+        {
+          "name": "clientSaid",
+          "type": "f32",
+          "note": "What the client's own clock reads, in seconds, just after it set itself from that statement."
+        },
+        {
+          "name": "check",
+          "type": "bytes",
+          "size": 32,
+          "note": "The same thirty two bytes from every client of the build; they carry nothing a server needs."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.128",
-      "until": "1.0.0.140",
+      "until": "1.0.0.132",
+      "channel": "clock",
+      "command": 8,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "value",
+          "type": "u32",
+          "note": "The client id the sender holds."
+        },
+        {
+          "name": "serverSaid",
+          "type": "f32",
+          "note": "What the server last said the clock stood at, in seconds."
+        },
+        {
+          "name": "clientSaid",
+          "type": "f32",
+          "note": "What the client's own clock reads, in seconds, just after it set itself from that statement."
+        },
+        {
+          "name": "check",
+          "type": "bytes",
+          "size": 32,
+          "note": "Thirty-two bytes every client of this build sends alike; a server ignores them."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.132",
+      "until": "1.0.0.133",
       "channel": "clock",
       "command": 8,
       "direction": "clientToServer",
@@ -317,8 +379,8 @@
       ]
     },
     {
-      "from": "1.0.0.140",
-      "until": "1.0.0.141",
+      "from": "1.0.0.133",
+      "until": "1.0.0.150",
       "channel": "clock",
       "command": 8,
       "direction": "clientToServer",
@@ -348,7 +410,7 @@
       ]
     },
     {
-      "from": "1.0.0.141",
+      "from": "1.0.0.150",
       "until": "3.12.0.251",
       "channel": "clock",
       "command": 8,

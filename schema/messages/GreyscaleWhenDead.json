@@ -492,7 +492,7 @@
     },
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.132",
+      "until": "1.0.0.127",
       "channel": "events",
       "command": 178,
       "direction": "serverToClient",
@@ -507,6 +507,33 @@
               "name": "enabled",
               "width": 1,
               "note": "Set where a client draws the world without colour while its champion is down; clear, it does not use that look. A client reads it only on its own champion."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.127",
+      "until": "1.0.0.132",
+      "channel": "events",
+      "command": 178,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "enabled",
+              "width": 1,
+              "note": "Set where the world is drawn without colour."
             },
             {
               "name": "unused",
@@ -627,7 +654,34 @@
     },
     {
       "from": "1.0.0.139",
-      "until": "1.0.0.144",
+      "until": "1.0.0.140",
+      "channel": "events",
+      "command": 180,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "enabled",
+              "width": 1,
+              "note": "Set where the world is drawn without colour."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.140",
+      "until": "1.0.0.141",
       "channel": "events",
       "command": 180,
       "direction": "serverToClient",
@@ -652,6 +706,33 @@
         }
       ],
       "note": "A client honours it only under one of its display settings, and otherwise ignores it."
+    },
+    {
+      "from": "1.0.0.141",
+      "until": "1.0.0.144",
+      "channel": "events",
+      "command": 180,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "enabled",
+              "width": 1,
+              "note": "Set where the world is drawn without colour while the champion is down; clear, it is drawn in colour."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ]
     },
     {
       "from": "1.0.0.144",
@@ -696,7 +777,7 @@
             {
               "name": "enabled",
               "width": 1,
-              "note": "Set where the world is drawn without colour while the client's own champion is down; clear, it is drawn in colour from the next frame. It starts set as the champion is created."
+              "note": "Set where the world is drawn without colour while the champion is down; clear, it is drawn in colour from the next frame. It starts set as the champion is created."
             },
             {
               "name": "unused",
@@ -790,6 +871,33 @@
     },
     {
       "from": "3.01.0.1",
+      "until": "3.03.0.198",
+      "channel": "events",
+      "command": 169,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "enabled",
+              "width": 1,
+              "note": "Set where the world is drawn without colour while the champion is down; clear, it is drawn in colour."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "from": "3.03.0.198",
       "until": "4.1.0.171",
       "channel": "events",
       "command": 169,

@@ -38,7 +38,7 @@
     },
     {
       "from": "1.0.0.124",
-      "until": "1.0.0.128",
+      "until": "1.0.0.127",
       "command": 55,
       "channel": "events",
       "direction": "serverToClient",
@@ -65,6 +65,38 @@
           "name": "target",
           "type": "u32",
           "note": "The unit the slot's targeting indicator works from instead of the caster. A client takes an id it does not hold as no unit."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.127",
+      "until": "1.0.0.128",
+      "command": 55,
+      "channel": "events",
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "which",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "slot",
+              "width": 7,
+              "note": "Which slot. A champion's own spells count from 0."
+            },
+            {
+              "name": "summonerSlots",
+              "width": 1,
+              "note": "Set where slot names a summoner spell's slot. Only a champion has summoner slots."
+            }
+          ]
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit the slot's targeting indicator works from instead of the caster."
         }
       ]
     },

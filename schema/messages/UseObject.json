@@ -132,7 +132,7 @@
     },
     {
       "from": "3.6.0.388",
-      "until": "3.10.0.237",
+      "until": "3.7.0.328",
       "channel": "requests",
       "command": 57,
       "direction": "clientToServer",
@@ -145,6 +145,22 @@
         }
       ],
       "note": "A client also sends it as a champion, a minion or a turret changes side (TeamChanged), whether usable or not: once for each unit it holds whose target that unit is, naming that unit in the header."
+    },
+    {
+      "from": "3.7.0.328",
+      "until": "3.10.0.237",
+      "channel": "requests",
+      "command": 57,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit to use."
+        }
+      ],
+      "note": "A client also sends it as a champion, a minion or a turret changes side (TeamChanged), whether usable or not: once for each unit it holds whose target that unit is."
     },
     {
       "from": "3.10.0.237",

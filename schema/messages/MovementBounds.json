@@ -37,7 +37,38 @@
     },
     {
       "from": "0.9.25.36",
-      "until": "1.0.0.63",
+      "until": "1.0.0.25",
+      "channel": "events",
+      "command": 126,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "The circle's centre, in world units."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "The centre's height, in world units."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "The circle's centre, in world units."
+        },
+        {
+          "name": "radius",
+          "type": "f32",
+          "note": "The circle's radius, in world units. Zero lifts the bounds; a negative radius counts as zero."
+        }
+      ],
+      "note": "A client keeps its camera within the circle, and nothing else."
+    },
+    {
+      "from": "1.0.0.25",
+      "until": "1.0.0.61",
       "channel": "events",
       "command": 126,
       "direction": "serverToClient",
@@ -52,6 +83,37 @@
           "name": "y",
           "type": "f32",
           "note": "The centre's height, in world units. A client does not use it."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "The circle's centre, in world units."
+        },
+        {
+          "name": "radius",
+          "type": "f32",
+          "note": "The circle's radius, in world units. Zero lifts the bounds; a negative radius counts as zero."
+        }
+      ],
+      "note": "A client keeps its camera within the circle, and nothing else."
+    },
+    {
+      "from": "1.0.0.61",
+      "until": "1.0.0.63",
+      "channel": "events",
+      "command": 126,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "The circle's centre, in world units."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "The centre's height, in world units."
         },
         {
           "name": "z",
@@ -311,7 +373,7 @@
     },
     {
       "from": "1.0.0.110",
-      "until": "1.0.0.126",
+      "until": "1.0.0.111",
       "channel": "events",
       "command": 6,
       "direction": "serverToClient",
@@ -346,8 +408,43 @@
       "note": "A client pulls an order to a point outside onto the circle's edge before sending it, and drops an order at an object outside."
     },
     {
+      "from": "1.0.0.111",
+      "until": "1.0.0.126",
+      "channel": "events",
+      "command": 6,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "The circle's centre, in world units."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "The centre's height, in world units."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "The circle's centre, in world units."
+        },
+        {
+          "name": "radius",
+          "type": "f32",
+          "note": "The circle's radius, in world units. Zero lifts the bounds; a negative radius counts as zero."
+        },
+        {
+          "name": "camera",
+          "type": "u8"
+        }
+      ],
+      "note": "A client pulls an order to a point outside onto the circle's edge before sending it, and drops an order at an object outside."
+    },
+    {
       "from": "1.0.0.126",
-      "until": "1.0.0.128",
+      "until": "1.0.0.127",
       "channel": "events",
       "command": 6,
       "direction": "serverToClient",
@@ -382,7 +479,43 @@
       "note": "A client pulls an order to a point outside onto the circle's edge before sending it, and drops an order at an object outside."
     },
     {
-      "from": "1.0.0.128",
+      "from": "1.0.0.127",
+      "until": "1.0.0.132",
+      "channel": "events",
+      "command": 6,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "The circle's centre, in world units."
+        },
+        {
+          "name": "y",
+          "type": "f32",
+          "note": "The centre's height, in world units."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "The circle's centre, in world units."
+        },
+        {
+          "name": "radius",
+          "type": "f32",
+          "note": "The circle's radius, in world units. Zero lifts the bounds; a negative radius counts as zero."
+        },
+        {
+          "name": "camera",
+          "type": "u8",
+          "note": "Set to keep the camera within the circle too. Any nonzero value sets it."
+        }
+      ],
+      "note": "A client pulls an order to a point outside onto the circle's edge before sending it, and drops an order at an object outside."
+    },
+    {
+      "from": "1.0.0.132",
       "until": "1.0.0.147",
       "channel": "events",
       "command": 6,

@@ -170,7 +170,7 @@
     },
     {
       "from": "1.0.0.58",
-      "until": "1.0.0.74",
+      "until": "1.0.0.61",
       "channel": "requests",
       "command": 60,
       "direction": "clientToServer",
@@ -200,6 +200,38 @@
         }
       ],
       "note": "A client sends it on each CameraLockSet with state as that message carried it, all eight bits included, and also as its player sets the lock, as the game forces the view free and as that forcing lifts. A forced free view is sent at once, with state zero. While it holds, a CameraLockSet or player setting is dropped; as it lifts, a client sends the state in force just before it began. Where the client's own champion is made while the view is locked, a client sends state 1 again."
+    },
+    {
+      "from": "1.0.0.61",
+      "until": "1.0.0.74",
+      "channel": "requests",
+      "command": 60,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "locked",
+              "width": 1,
+              "note": "Set while the view follows a unit."
+            },
+            {
+              "name": "unused",
+              "width": 7
+            }
+          ]
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
+        }
+      ],
+      "note": "A client sends it on each CameraLockSet with state as that message carried it, all eight bits included, and also as its player sets the lock, as the game forces the view free and as that forcing lifts. A forced free view is sent with state zero. While it holds, a CameraLockSet is dropped; as it lifts, a client sends the state in force just before it began. Where the client's own champion is made while the view is locked, a client sends state 1 again."
     },
     {
       "from": "1.0.0.74",
@@ -731,7 +763,7 @@
     },
     {
       "from": "1.0.0.132",
-      "until": "1.0.0.138",
+      "until": "1.0.0.133",
       "channel": "requests",
       "command": 135,
       "direction": "clientToServer",
@@ -761,6 +793,39 @@
         }
       ],
       "note": "A client sends it whenever its lock changes: by the player, or as the game forces a lock or lifts one. It sends none while playing a replay."
+    },
+    {
+      "from": "1.0.0.133",
+      "until": "1.0.0.138",
+      "channel": "requests",
+      "command": 135,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "locked",
+              "width": 1,
+              "note": "Set while the view follows a unit."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "A client sends these bits as it holds them, so after a CameraLockSet they are what that message carried."
+            }
+          ]
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
+        }
+      ],
+      "note": "A client sends it whenever its lock changes: by the player, or as the game forces a lock or lifts one."
     },
     {
       "from": "1.0.0.138",
@@ -1059,7 +1124,7 @@
     },
     {
       "from": "3.04.0.78",
-      "until": "3.13.0.399",
+      "until": "3.11.0.306",
       "channel": "requests",
       "command": 129,
       "direction": "clientToServer",
@@ -1089,6 +1154,39 @@
         }
       ],
       "note": "A client sends it whenever its lock changes: by the player, or as the game forces a lock or lifts one. It sends none while playing a replay."
+    },
+    {
+      "from": "3.11.0.306",
+      "until": "3.13.0.399",
+      "channel": "requests",
+      "command": 129,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "locked",
+              "width": 1,
+              "note": "Set while the view follows a unit."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a client writes zero."
+            }
+          ]
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
+        }
+      ],
+      "note": "A client sends it whenever its lock changes: by the player. It sends none while playing a replay."
     },
     {
       "from": "3.13.0.399",
@@ -1158,6 +1256,39 @@
     },
     {
       "from": "4.1.0.171",
+      "until": "4.4.0.1858",
+      "channel": "requests",
+      "command": 128,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "locked",
+              "width": 1,
+              "note": "Set while the view follows a unit."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a client writes zero."
+            }
+          ]
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
+        }
+      ],
+      "note": "A client sends it whenever its lock changes by the player. It sends none while playing a replay."
+    },
+    {
+      "from": "4.4.0.1858",
       "until": "4.11.0.386",
       "channel": "requests",
       "command": 128,
@@ -1257,6 +1388,37 @@
     },
     {
       "from": "4.18.0.271",
+      "until": "4.20.0.315",
+      "channel": "requests",
+      "command": 129,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "locked",
+              "width": 1,
+              "note": "Set while the view follows a unit."
+            },
+            {
+              "name": "unused",
+              "width": 7
+            }
+          ]
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
+        }
+      ]
+    },
+    {
+      "from": "4.20.0.315",
       "until": "4.21.0.0",
       "channel": "requests",
       "command": 129,

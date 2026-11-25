@@ -1,0 +1,19 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "UnitSpoke",
+  "version": "1.0.0.138",
+  "note": "Laid out as a 1.0.0.138 client sends it.",
+  "bytes": "1b0100004001000040000000400000000000000000000048656c6c6f00",
+  "fields": {
+    "command": 27,
+    "netId": 1073741825,
+    "unit": 1073741825,
+    "unknown": 2,
+    "unknownToo": 0,
+    "kind": 0,
+    "unused": 0,
+    "unusedToo": 0,
+    "text": "Hello"
+  }
+}

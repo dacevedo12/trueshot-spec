@@ -572,7 +572,79 @@
     },
     {
       "from": "1.0.0.124",
-      "until": "1.0.0.128",
+      "until": "1.0.0.126",
+      "channel": "events",
+      "command": 107,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What sort of effect it is."
+        },
+        {
+          "name": "effect",
+          "type": "u32",
+          "note": "Which effect, by the number its name gives."
+        },
+        {
+          "name": "runningFor",
+          "type": "f32",
+          "note": "How long it has already run, in seconds."
+        },
+        {
+          "name": "lasts",
+          "type": "f32"
+        },
+        {
+          "name": "count",
+          "type": "u8",
+          "note": "How many units follow."
+        },
+        {
+          "name": "entries",
+          "type": "array",
+          "count": "count",
+          "items": {
+            "name": "entriesEntry",
+            "type": "record",
+            "fields": [
+              {
+                "name": "unit",
+                "type": "u32",
+                "note": "The unit carrying the effect."
+              },
+              {
+                "name": "caster",
+                "type": "u32",
+                "note": "The unit that put it there."
+              },
+              {
+                "name": "slot",
+                "type": "u8",
+                "note": "Which of the unit's effect slots it sits in."
+              },
+              {
+                "name": "stacks",
+                "type": "u8",
+                "note": "How many are stacked there."
+              },
+              {
+                "name": "hidden",
+                "type": "u8",
+                "note": "Whether the client keeps it off the unit's display."
+              }
+            ]
+          },
+          "note": "The units, one place each."
+        }
+      ],
+      "note": "A client takes each entry as it takes an EffectAdded for that unit, with the kind, effect and times above, and holds it to the same rules."
+    },
+    {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
       "channel": "events",
       "command": 107,
       "direction": "serverToClient",
@@ -644,7 +716,7 @@
       "note": "A client takes each entry as it takes an EffectAdded for that unit, with the kind, effect and times above, and holds it to the same rules."
     },
     {
-      "from": "1.0.0.128",
+      "from": "1.0.0.127",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 107,
@@ -716,7 +788,7 @@
     },
     {
       "from": "1.0.0.132",
-      "until": "1.0.0.138",
+      "until": "1.0.0.133",
       "channel": "events",
       "command": 108,
       "direction": "serverToClient",
@@ -787,8 +859,150 @@
       ]
     },
     {
+      "from": "1.0.0.133",
+      "until": "1.0.0.138",
+      "channel": "events",
+      "command": 108,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What sort of effect it is."
+        },
+        {
+          "name": "effect",
+          "type": "u32",
+          "note": "Which effect, by the number its name gives."
+        },
+        {
+          "name": "runningFor",
+          "type": "f32",
+          "note": "How long it has already run, in seconds."
+        },
+        {
+          "name": "lasts",
+          "type": "f32"
+        },
+        {
+          "name": "count",
+          "type": "u8",
+          "note": "How many units follow."
+        },
+        {
+          "name": "entries",
+          "type": "array",
+          "count": "count",
+          "items": {
+            "name": "entriesEntry",
+            "type": "record",
+            "fields": [
+              {
+                "name": "unit",
+                "type": "u32",
+                "note": "The unit carrying the effect."
+              },
+              {
+                "name": "caster",
+                "type": "u32",
+                "note": "The unit that put it there."
+              },
+              {
+                "name": "slot",
+                "type": "u8",
+                "note": "Which of the unit's effect slots it sits in."
+              },
+              {
+                "name": "stacks",
+                "type": "u8",
+                "note": "How many are stacked there."
+              },
+              {
+                "name": "hidden",
+                "type": "u8",
+                "note": "Whether the client keeps it off the unit's display."
+              }
+            ]
+          },
+          "note": "The units, one place each."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.138",
-      "until": "1.0.0.144",
+      "until": "1.0.0.140",
+      "channel": "events",
+      "command": 110,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What sort of effect it is."
+        },
+        {
+          "name": "effect",
+          "type": "u32",
+          "note": "Which effect, by the number its name gives."
+        },
+        {
+          "name": "runningFor",
+          "type": "f32",
+          "note": "How long it has already run, in seconds."
+        },
+        {
+          "name": "lasts",
+          "type": "f32"
+        },
+        {
+          "name": "count",
+          "type": "u8",
+          "note": "How many units follow."
+        },
+        {
+          "name": "entries",
+          "type": "array",
+          "count": "count",
+          "items": {
+            "name": "entriesEntry",
+            "type": "record",
+            "fields": [
+              {
+                "name": "unit",
+                "type": "u32",
+                "note": "The unit carrying the effect."
+              },
+              {
+                "name": "caster",
+                "type": "u32",
+                "note": "The unit that put it there."
+              },
+              {
+                "name": "slot",
+                "type": "u8",
+                "note": "Which of the unit's effect slots it sits in."
+              },
+              {
+                "name": "stacks",
+                "type": "u8",
+                "note": "How many are stacked there."
+              },
+              {
+                "name": "hidden",
+                "type": "u8",
+                "note": "Whether the client keeps it off the unit's display."
+              }
+            ]
+          },
+          "note": "The units, one place each."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.140",
+      "until": "1.0.0.141",
       "channel": "events",
       "command": 110,
       "direction": "serverToClient",
@@ -846,6 +1060,78 @@
                 "name": "stacks",
                 "type": "u8",
                 "note": "How many are stacked there. 0 takes the effect out of the slot."
+              },
+              {
+                "name": "hidden",
+                "type": "u8",
+                "note": "Whether the client keeps it off the unit's display: 1 hides it, and any other value shows it."
+              }
+            ]
+          },
+          "note": "The units, one place each."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.141",
+      "until": "1.0.0.144",
+      "channel": "events",
+      "command": 110,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What sort of effect it is."
+        },
+        {
+          "name": "effect",
+          "type": "u32",
+          "note": "Which effect, by the number its name gives."
+        },
+        {
+          "name": "runningFor",
+          "type": "f32",
+          "note": "How long it has already run, in seconds."
+        },
+        {
+          "name": "lasts",
+          "type": "f32",
+          "note": "How long it has left to run, in seconds from when the message arrives: the whole run is runningFor plus lasts."
+        },
+        {
+          "name": "count",
+          "type": "u8",
+          "note": "How many units follow."
+        },
+        {
+          "name": "entries",
+          "type": "array",
+          "count": "count",
+          "items": {
+            "name": "entriesEntry",
+            "type": "record",
+            "fields": [
+              {
+                "name": "unit",
+                "type": "u32",
+                "note": "The unit carrying the effect."
+              },
+              {
+                "name": "caster",
+                "type": "u32",
+                "note": "The unit that put it there."
+              },
+              {
+                "name": "slot",
+                "type": "u8",
+                "note": "Which of the unit's effect slots it sits in."
+              },
+              {
+                "name": "stacks",
+                "type": "u8",
+                "note": "How many are stacked there."
               },
               {
                 "name": "hidden",
@@ -1317,7 +1603,83 @@
     },
     {
       "from": "3.04.0.78",
-      "until": "3.10.0.237",
+      "until": "3.6.0.388",
+      "channel": "events",
+      "command": 103,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What sort of effect it is."
+        },
+        {
+          "name": "effect",
+          "type": "u32",
+          "note": "Which effect, by the number its name gives."
+        },
+        {
+          "name": "package",
+          "type": "u32",
+          "note": "Which set of art and sound the client draws it with."
+        },
+        {
+          "name": "runningFor",
+          "type": "f32",
+          "note": "How long it has already run, in seconds."
+        },
+        {
+          "name": "lasts",
+          "type": "f32"
+        },
+        {
+          "name": "count",
+          "type": "u8",
+          "note": "How many units follow."
+        },
+        {
+          "name": "entries",
+          "type": "array",
+          "count": "count",
+          "items": {
+            "name": "entriesEntry",
+            "type": "record",
+            "fields": [
+              {
+                "name": "unit",
+                "type": "u32",
+                "note": "The unit carrying the effect."
+              },
+              {
+                "name": "caster",
+                "type": "u32",
+                "note": "The unit that put it there."
+              },
+              {
+                "name": "slot",
+                "type": "u8",
+                "note": "Which of the unit's effect slots it sits in."
+              },
+              {
+                "name": "stacks",
+                "type": "u8",
+                "note": "How many are stacked there."
+              },
+              {
+                "name": "hidden",
+                "type": "u8",
+                "note": "Whether the client keeps it off the unit's display."
+              }
+            ]
+          },
+          "note": "The units, one place each."
+        }
+      ]
+    },
+    {
+      "from": "3.6.0.388",
+      "until": "3.7.0.328",
       "channel": "events",
       "command": 103,
       "direction": "serverToClient",
@@ -1347,6 +1709,82 @@
           "name": "lasts",
           "type": "f32",
           "note": "How long it runs in total, in seconds."
+        },
+        {
+          "name": "count",
+          "type": "u8",
+          "note": "How many units follow."
+        },
+        {
+          "name": "entries",
+          "type": "array",
+          "count": "count",
+          "items": {
+            "name": "entriesEntry",
+            "type": "record",
+            "fields": [
+              {
+                "name": "unit",
+                "type": "u32",
+                "note": "The unit carrying the effect."
+              },
+              {
+                "name": "caster",
+                "type": "u32",
+                "note": "The unit that put it there."
+              },
+              {
+                "name": "slot",
+                "type": "u8",
+                "note": "Which of the unit's effect slots it sits in."
+              },
+              {
+                "name": "stacks",
+                "type": "u8",
+                "note": "How many are stacked there."
+              },
+              {
+                "name": "hidden",
+                "type": "u8",
+                "note": "Whether the client keeps it off the unit's display."
+              }
+            ]
+          },
+          "note": "The units, one place each."
+        }
+      ]
+    },
+    {
+      "from": "3.7.0.328",
+      "until": "3.10.0.237",
+      "channel": "events",
+      "command": 103,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What sort of effect it is."
+        },
+        {
+          "name": "effect",
+          "type": "u32",
+          "note": "Which effect, by the number its name gives."
+        },
+        {
+          "name": "package",
+          "type": "u32",
+          "note": "Which set of art and sound the client draws it with."
+        },
+        {
+          "name": "runningFor",
+          "type": "f32",
+          "note": "How long it has already run, in seconds."
+        },
+        {
+          "name": "lasts",
+          "type": "f32"
         },
         {
           "name": "count",
@@ -1702,6 +2140,82 @@
     },
     {
       "from": "4.18.0.271",
+      "until": "4.20.0.315",
+      "channel": "events",
+      "command": 104,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What sort of effect it is."
+        },
+        {
+          "name": "effect",
+          "type": "u32",
+          "note": "Which effect, by the number its name gives."
+        },
+        {
+          "name": "package",
+          "type": "u32",
+          "note": "Which set of art and sound the client draws it with."
+        },
+        {
+          "name": "runningFor",
+          "type": "f32",
+          "note": "How long it has already run, in seconds."
+        },
+        {
+          "name": "lasts",
+          "type": "f32"
+        },
+        {
+          "name": "count",
+          "type": "u8",
+          "note": "How many units follow."
+        },
+        {
+          "name": "entries",
+          "type": "array",
+          "count": "count",
+          "items": {
+            "name": "entriesEntry",
+            "type": "record",
+            "fields": [
+              {
+                "name": "unit",
+                "type": "u32",
+                "note": "The unit carrying the effect."
+              },
+              {
+                "name": "caster",
+                "type": "u32",
+                "note": "The unit that put it there."
+              },
+              {
+                "name": "slot",
+                "type": "u8",
+                "note": "Which of the unit's effect slots it sits in."
+              },
+              {
+                "name": "stacks",
+                "type": "u8",
+                "note": "How many are stacked there."
+              },
+              {
+                "name": "hidden",
+                "type": "u8",
+                "note": "Whether the client keeps it off the unit's display."
+              }
+            ]
+          },
+          "note": "The units, one place each."
+        }
+      ]
+    },
+    {
+      "from": "4.20.0.315",
       "until": "4.21.0.0",
       "channel": "events",
       "command": 104,

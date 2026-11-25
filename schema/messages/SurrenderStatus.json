@@ -15,7 +15,7 @@
         {
           "name": "reason",
           "type": "u32",
-          "note": "Why the vote stands where it does. A client acts on 0 to 4 and ignores the message for any other value; 0 resets the vote whatever side is, and 1 resets it only where side is the client's own. A client announces 0, 2, 3 and 4 whether or not it has a player of its own, and fails on 1 without one."
+          "note": "Why the vote stands where it does. A client acts on 0 to 4 and ignores the message for any other value; 0 resets the vote whatever side is, and 1 resets it only where side is the client's own. A client announces 0, 2, 3 and 4 whether or not it has a player of its own."
         },
         {
           "name": "inFavour",
@@ -127,7 +127,7 @@
     },
     {
       "from": "1.0.0.58",
-      "until": "1.0.0.74",
+      "until": "1.0.0.61",
       "channel": "events",
       "command": 160,
       "direction": "serverToClient",
@@ -137,6 +137,37 @@
           "name": "reason",
           "type": "u32",
           "note": "Why the vote stands where it does. A client acts on 0 to 4 and ignores the message for any other value; 0 resets the vote whatever side holds, and 1 resets it only where side is the client's own."
+        },
+        {
+          "name": "inFavour",
+          "type": "u8",
+          "note": "How many voted for."
+        },
+        {
+          "name": "against",
+          "type": "u8",
+          "note": "How many voted against."
+        },
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "Which side."
+        }
+      ],
+      "note": "A client ignores the message unless its interface and its own champion both exist."
+    },
+    {
+      "from": "1.0.0.61",
+      "until": "1.0.0.74",
+      "channel": "events",
+      "command": 160,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "reason",
+          "type": "u32",
+          "note": "Why the vote stands where it does. A client acts on 0 to 4 and ignores the message for any other value; 1 resets the vote only where side is the client's own."
         },
         {
           "name": "inFavour",
@@ -219,6 +250,36 @@
     },
     {
       "from": "1.0.0.82",
+      "until": "1.0.0.86",
+      "channel": "events",
+      "command": 165,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "reason",
+          "type": "u32",
+          "note": "Why the vote stands where it does. A client acts on 0 to 4 and ignores the message for any other value; 1 resets the vote only where side is the client's own."
+        },
+        {
+          "name": "inFavour",
+          "type": "u8",
+          "note": "How many voted for."
+        },
+        {
+          "name": "against",
+          "type": "u8",
+          "note": "How many voted against."
+        },
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "Which side."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.86",
       "until": "1.0.0.96",
       "channel": "events",
       "command": 165,

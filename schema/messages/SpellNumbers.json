@@ -349,6 +349,55 @@
     },
     {
       "from": "1.0.0.82",
+      "until": "1.0.0.86",
+      "channel": "events",
+      "command": 171,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "entryCount",
+          "type": "u16",
+          "note": "How many sets of numbers follow. A client ignores the whole message where they do not all fit in it."
+        },
+        {
+          "name": "entries",
+          "type": "array",
+          "count": "entryCount",
+          "note": "The sets themselves.",
+          "items": {
+            "name": "entry",
+            "type": "record",
+            "fields": [
+              {
+                "name": "unit",
+                "type": "u32",
+                "note": "The unit whose spell this is."
+              },
+              {
+                "name": "slot",
+                "type": "u8",
+                "note": "Which slot."
+              },
+              {
+                "name": "values",
+                "type": "array",
+                "count": 3,
+                "note": "The numbers themselves, one place each.",
+                "items": {
+                  "name": "value",
+                  "type": "f32",
+                  "note": "One number."
+                }
+              }
+            ],
+            "note": "The numbers for one spell, three of them."
+          }
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.86",
       "until": "1.0.0.96",
       "channel": "events",
       "command": 171,
@@ -937,7 +986,56 @@
     },
     {
       "from": "1.0.0.124",
-      "until": "1.0.0.128",
+      "until": "1.0.0.126",
+      "channel": "events",
+      "command": 131,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "entryCount",
+          "type": "u16",
+          "note": "How many sets of numbers follow. A client ignores the whole message where they do not all fit in it."
+        },
+        {
+          "name": "entries",
+          "type": "array",
+          "count": "entryCount",
+          "note": "The sets themselves.",
+          "items": {
+            "name": "entry",
+            "type": "record",
+            "fields": [
+              {
+                "name": "unit",
+                "type": "u32",
+                "note": "The unit whose spell this is."
+              },
+              {
+                "name": "slot",
+                "type": "u8",
+                "note": "Which slot: from 60 to 119 the champion's own spell slot, less 60; from 120 up a summoner slot, less 120. What 0 to 59 name is not recorded."
+              },
+              {
+                "name": "values",
+                "type": "array",
+                "count": 3,
+                "note": "The numbers themselves, one place each.",
+                "items": {
+                  "name": "value",
+                  "type": "f32",
+                  "note": "One number."
+                }
+              }
+            ],
+            "note": "The numbers for one spell, three of them."
+          }
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
       "channel": "events",
       "command": 131,
       "direction": "serverToClient",
@@ -953,6 +1051,55 @@
           "type": "array",
           "count": "entryCount",
           "note": "The sets themselves. A client skips a set naming a unit it does not hold.",
+          "items": {
+            "name": "entry",
+            "type": "record",
+            "fields": [
+              {
+                "name": "unit",
+                "type": "u32",
+                "note": "The unit whose spell this is."
+              },
+              {
+                "name": "slot",
+                "type": "u8",
+                "note": "Which slot: 60 to 119 name the unit's own spell slot, less 60, and 120 and up a summoner slot, less 120, the set skipped for a unit that has none. What 0 to 59 name is not recorded."
+              },
+              {
+                "name": "values",
+                "type": "array",
+                "count": 3,
+                "note": "The numbers themselves, one place each.",
+                "items": {
+                  "name": "value",
+                  "type": "f32",
+                  "note": "One number."
+                }
+              }
+            ],
+            "note": "The numbers for one spell, three of them."
+          }
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.127",
+      "until": "1.0.0.128",
+      "channel": "events",
+      "command": 131,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "entryCount",
+          "type": "u16",
+          "note": "How many sets of numbers follow. A client ignores the whole message where they do not all fit in it."
+        },
+        {
+          "name": "entries",
+          "type": "array",
+          "count": "entryCount",
+          "note": "The sets themselves.",
           "items": {
             "name": "entry",
             "type": "record",
@@ -1133,7 +1280,56 @@
     },
     {
       "from": "1.0.0.138",
-      "until": "1.0.0.144",
+      "until": "1.0.0.140",
+      "channel": "events",
+      "command": 134,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "entryCount",
+          "type": "u16",
+          "note": "How many sets of numbers follow. A client ignores the whole message where that many entries of 17 bytes run past its end."
+        },
+        {
+          "name": "entries",
+          "type": "array",
+          "count": "entryCount",
+          "note": "The sets themselves.",
+          "items": {
+            "name": "entry",
+            "type": "record",
+            "fields": [
+              {
+                "name": "unit",
+                "type": "u32",
+                "note": "The unit whose spell this is."
+              },
+              {
+                "name": "slot",
+                "type": "u8",
+                "note": "Which slot: from 60 to 119 the unit's own spell slot, less 60; from 120 up a summoner slot, less 120."
+              },
+              {
+                "name": "values",
+                "type": "array",
+                "count": 3,
+                "note": "The numbers themselves, one place each.",
+                "items": {
+                  "name": "value",
+                  "type": "f32",
+                  "note": "One number."
+                }
+              }
+            ],
+            "note": "The numbers for one spell, three of them. A client skips an entry whose unit it does not hold."
+          }
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.140",
+      "until": "1.0.0.141",
       "channel": "events",
       "command": 134,
       "direction": "serverToClient",
@@ -1176,6 +1372,55 @@
               }
             ],
             "note": "The numbers for one spell, three places of them. A client skips an entry whose unit it does not hold."
+          }
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.141",
+      "until": "1.0.0.144",
+      "channel": "events",
+      "command": 134,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "entryCount",
+          "type": "u16",
+          "note": "How many sets of numbers follow. A client ignores the whole message where that many entries of 17 bytes run past its end."
+        },
+        {
+          "name": "entries",
+          "type": "array",
+          "count": "entryCount",
+          "note": "The sets themselves.",
+          "items": {
+            "name": "entry",
+            "type": "record",
+            "fields": [
+              {
+                "name": "unit",
+                "type": "u32",
+                "note": "The unit whose spell this is."
+              },
+              {
+                "name": "slot",
+                "type": "u8",
+                "note": "Which slot."
+              },
+              {
+                "name": "values",
+                "type": "array",
+                "count": 3,
+                "note": "The numbers themselves, one place each.",
+                "items": {
+                  "name": "value",
+                  "type": "f32",
+                  "note": "One number."
+                }
+              }
+            ],
+            "note": "The numbers for one spell, three of them."
           }
         }
       ]

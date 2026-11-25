@@ -357,7 +357,7 @@
     },
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.128",
+      "until": "1.0.0.127",
       "channel": "requests",
       "command": 197,
       "direction": "clientToServer",
@@ -383,7 +383,7 @@
       ]
     },
     {
-      "from": "1.0.0.128",
+      "from": "1.0.0.127",
       "until": "1.0.0.132",
       "channel": "requests",
       "command": 197,
@@ -519,6 +519,33 @@
     },
     {
       "from": "1.0.0.139",
+      "until": "1.0.0.140",
+      "channel": "requests",
+      "command": 199,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clock",
+          "type": "f32",
+          "note": "The client's own clock as it sends this, in seconds."
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the client reporting."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "ascii",
+          "size": 256,
+          "note": "The build, as text. The text ends at a zero byte."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.140",
       "until": "1.0.0.141",
       "channel": "requests",
       "command": 199,

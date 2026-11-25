@@ -66,7 +66,7 @@
     },
     {
       "from": "1.0.0.124",
-      "until": "1.0.0.128",
+      "until": "1.0.0.127",
       "channel": "requests",
       "command": 76,
       "direction": "clientToServer",
@@ -80,7 +80,7 @@
       ]
     },
     {
-      "from": "1.0.0.128",
+      "from": "1.0.0.127",
       "until": "1.0.0.132",
       "channel": "requests",
       "command": 76,
@@ -126,6 +126,21 @@
     },
     {
       "from": "1.0.0.138",
+      "until": "1.0.0.140",
+      "channel": "requests",
+      "command": 78,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "emote",
+          "type": "u8",
+          "note": "Which emote."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.140",
       "until": "1.0.0.144",
       "channel": "requests",
       "command": 78,

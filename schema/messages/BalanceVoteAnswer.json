@@ -35,6 +35,35 @@
     },
     {
       "from": "3.04.0.78",
+      "until": "3.6.0.388",
+      "channel": "requests",
+      "command": 251,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "vote",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "inFavour",
+              "width": 1,
+              "note": "Set for yes, clear for no."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a client writes zero."
+            }
+          ],
+          "note": "The answer."
+        }
+      ],
+      "note": "A client sends it once per vote, from the vote's panel."
+    },
+    {
+      "from": "3.6.0.388",
       "until": "4.1.0.171",
       "channel": "requests",
       "command": 251,
@@ -122,6 +151,34 @@
     },
     {
       "from": "4.18.0.271",
+      "until": "4.20.0.315",
+      "channel": "requests",
+      "command": 251,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "vote",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "inFavour",
+              "width": 1,
+              "note": "Set for yes, clear for no."
+            },
+            {
+              "name": "unused",
+              "width": 7
+            }
+          ],
+          "note": "The answer."
+        }
+      ],
+      "note": "A client sends it once per vote, from the vote's panel or by typing /equalize."
+    },
+    {
+      "from": "4.20.0.315",
       "until": "4.21.0.0",
       "channel": "requests",
       "command": 251,

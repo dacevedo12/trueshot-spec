@@ -22,7 +22,23 @@
     },
     {
       "from": "0.9.22.14",
-      "until": "1.0.0.25",
+      "until": "0.9.25.24",
+      "channel": "events",
+      "command": 40,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "i8",
+          "note": "The slot cast by itself. What -1 does is not recorded."
+        }
+      ],
+      "note": "It names one slot: there is no slot for a critical strike."
+    },
+    {
+      "from": "0.9.25.24",
+      "until": "0.9.25.36",
       "channel": "events",
       "command": 40,
       "direction": "serverToClient",
@@ -32,6 +48,22 @@
           "name": "slot",
           "type": "i8",
           "note": "The slot cast by itself, from -1 to 44. A client takes a value outside that range as it stands. What -1 does is not recorded."
+        }
+      ],
+      "note": "It names one slot: there is no slot for a critical strike."
+    },
+    {
+      "from": "0.9.25.36",
+      "until": "1.0.0.25",
+      "channel": "events",
+      "command": 40,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "i8",
+          "note": "The slot cast by itself. What -1 does is not recorded."
         }
       ],
       "note": "It names one slot: there is no slot for a critical strike."
@@ -54,7 +86,7 @@
     },
     {
       "from": "1.0.0.82",
-      "until": "1.0.0.99",
+      "until": "1.0.0.97",
       "channel": "events",
       "command": 43,
       "direction": "serverToClient",
@@ -69,7 +101,7 @@
       "note": "It names one slot: there is no slot for a critical strike."
     },
     {
-      "from": "1.0.0.99",
+      "from": "1.0.0.97",
       "until": "1.0.0.103",
       "channel": "events",
       "command": 43,
@@ -150,7 +182,23 @@
     },
     {
       "from": "1.0.0.124",
-      "until": "1.0.0.128",
+      "until": "1.0.0.126",
+      "channel": "events",
+      "command": 34,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "i8",
+          "note": "The slot cast by itself. What -1 does is not recorded."
+        }
+      ],
+      "note": "It names one slot: there is no slot for a critical strike."
+    },
+    {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
       "channel": "events",
       "command": 34,
       "direction": "serverToClient",
@@ -165,8 +213,39 @@
       "note": "It names one slot: there is no slot for a critical strike."
     },
     {
+      "from": "1.0.0.127",
+      "until": "1.0.0.128",
+      "channel": "events",
+      "command": 34,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "i8",
+          "note": "The slot cast by itself."
+        }
+      ],
+      "note": "It names one slot: there is no slot for a critical strike."
+    },
+    {
       "from": "1.0.0.128",
-      "until": "1.0.0.140",
+      "until": "1.0.0.132",
+      "channel": "events",
+      "command": 34,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "i8",
+          "note": "The slot cast by itself."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.132",
+      "until": "1.0.0.133",
       "channel": "events",
       "command": 34,
       "direction": "serverToClient",
@@ -176,6 +255,21 @@
           "name": "slot",
           "type": "i8",
           "note": "The slot cast by itself, from 0 to 51; -1 leaves none."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.133",
+      "until": "1.0.0.140",
+      "channel": "events",
+      "command": 34,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "i8",
+          "note": "The slot cast by itself, from 0 to 51."
         }
       ]
     },

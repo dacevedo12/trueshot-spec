@@ -160,7 +160,7 @@
               {
                 "name": "target",
                 "type": "u32",
-                "note": "The unit it was done to. A client fails where it holds the source but not this unit."
+                "note": "The unit it was done to."
               },
               {
                 "name": "damage",
@@ -668,7 +668,7 @@
               {
                 "name": "target",
                 "type": "u32",
-                "note": "The unit it was done to. A client fails where it holds the source but not this unit."
+                "note": "The unit it was done to."
               },
               {
                 "name": "damage",
@@ -1176,7 +1176,7 @@
               {
                 "name": "target",
                 "type": "u32",
-                "note": "The unit it was done to. A client fails where it holds the source but not this unit."
+                "note": "The unit it was done to."
               },
               {
                 "name": "damage",
@@ -13153,7 +13153,7 @@
     },
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.128",
+      "until": "1.0.0.127",
       "channel": "events",
       "command": 36,
       "direction": "serverToClient",
@@ -13699,7 +13699,7 @@
       "note": "A client lays it out. A client ignores the whole message where killer is zero; a killer it does not hold still lets the entries apply. Each entry's size after source follows from event alone."
     },
     {
-      "from": "1.0.0.128",
+      "from": "1.0.0.127",
       "until": "1.0.0.129",
       "channel": "events",
       "command": 36,
@@ -28128,12 +28128,10 @@
                         "name": "spell"
                       },
                       "1": {
-                        "name": "item",
-                        "note": "An item the killer holds, named by script."
+                        "name": "item"
                       },
                       "2": {
-                        "name": "buff",
-                        "note": "An effect, named by script."
+                        "name": "buff"
                       },
                       "3": {
                         "name": "passive"
@@ -28273,12 +28271,10 @@
                         "name": "spell"
                       },
                       "1": {
-                        "name": "item",
-                        "note": "An item the killer holds, named by script."
+                        "name": "item"
                       },
                       "2": {
-                        "name": "buff",
-                        "note": "An effect, named by script."
+                        "name": "buff"
                       },
                       "3": {
                         "name": "passive"
@@ -28356,12 +28352,10 @@
                         "name": "spell"
                       },
                       "1": {
-                        "name": "item",
-                        "note": "An item the killer holds, named by script."
+                        "name": "item"
                       },
                       "2": {
-                        "name": "buff",
-                        "note": "An effect, named by script."
+                        "name": "buff"
                       },
                       "3": {
                         "name": "passive"
@@ -28862,12 +28856,10 @@
                         "name": "spell"
                       },
                       "1": {
-                        "name": "item",
-                        "note": "An item the killer holds, named by script."
+                        "name": "item"
                       },
                       "2": {
-                        "name": "buff",
-                        "note": "An effect, named by script."
+                        "name": "buff"
                       },
                       "3": {
                         "name": "passive"
@@ -29007,12 +28999,10 @@
                         "name": "spell"
                       },
                       "1": {
-                        "name": "item",
-                        "note": "An item the killer holds, named by script."
+                        "name": "item"
                       },
                       "2": {
-                        "name": "buff",
-                        "note": "An effect, named by script."
+                        "name": "buff"
                       },
                       "3": {
                         "name": "passive"
@@ -29090,12 +29080,10 @@
                         "name": "spell"
                       },
                       "1": {
-                        "name": "item",
-                        "note": "An item the killer holds, named by script."
+                        "name": "item"
                       },
                       "2": {
-                        "name": "buff",
-                        "note": "An effect, named by script."
+                        "name": "buff"
                       },
                       "3": {
                         "name": "passive"
@@ -29599,12 +29587,10 @@
                         "name": "spell"
                       },
                       "1": {
-                        "name": "item",
-                        "note": "An item the killer holds, named by script."
+                        "name": "item"
                       },
                       "2": {
-                        "name": "buff",
-                        "note": "An effect, named by script."
+                        "name": "buff"
                       },
                       "3": {
                         "name": "passive"
@@ -29747,12 +29733,10 @@
                         "name": "spell"
                       },
                       "1": {
-                        "name": "item",
-                        "note": "An item the killer holds, named by script."
+                        "name": "item"
                       },
                       "2": {
-                        "name": "buff",
-                        "note": "An effect, named by script."
+                        "name": "buff"
                       },
                       "3": {
                         "name": "passive"
@@ -29833,12 +29817,10 @@
                         "name": "spell"
                       },
                       "1": {
-                        "name": "item",
-                        "note": "An item the killer holds, named by script."
+                        "name": "item"
                       },
                       "2": {
-                        "name": "buff",
-                        "note": "An effect, named by script."
+                        "name": "buff"
                       },
                       "3": {
                         "name": "passive"

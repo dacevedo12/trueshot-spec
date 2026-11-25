@@ -6,13 +6,22 @@
   "revisions": [
     {
       "from": "0.8.13.26",
-      "until": "1.0.0.110",
+      "until": "1.0.0.97",
       "channel": "events",
       "command": 12,
       "direction": "serverToClient",
       "reliability": "reliable",
       "fields": [],
       "note": "A client answers it at once with ClientReady."
+    },
+    {
+      "from": "1.0.0.97",
+      "until": "1.0.0.110",
+      "channel": "events",
+      "command": 12,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": []
     },
     {
       "from": "1.0.0.110",

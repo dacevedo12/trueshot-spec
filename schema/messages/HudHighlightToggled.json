@@ -378,6 +378,68 @@
     },
     {
       "from": "1.0.0.82",
+      "until": "1.0.0.86",
+      "channel": "events",
+      "command": 169,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "part",
+          "type": "u8",
+          "note": "Which part of the screen. A client ignores any other value.",
+          "values": {
+            "1": {
+              "name": "hud",
+              "note": "The main controls, with element as in HudHighlighted."
+            },
+            "2": {
+              "name": "shop",
+              "note": "A shop element blinks or stops. Element 0 is the buy button, 1 the sell button, 2 the shop item number names, 3 the item second names within the category number names, and 4 the recommended item number names. A larger element has no defined effect."
+            },
+            "3": {
+              "name": "minimap",
+              "note": "The minimap; element 0 is its camera button, and any other element has no defined effect."
+            }
+          }
+        },
+        {
+          "name": "element",
+          "type": "u8",
+          "note": "What to light up, as in HudHighlighted. A value beyond those named has no defined effect."
+        },
+        {
+          "name": "number",
+          "type": "u8",
+          "note": "Which slot, as in HudHighlighted."
+        },
+        {
+          "name": "second",
+          "type": "u8",
+          "note": "A third value where part is 2; a server writes zero otherwise."
+        },
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "on",
+              "width": 1,
+              "note": "Set to light it up, clear to put it out."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "A client ignores these bits; a server writes zero."
+            }
+          ],
+          "note": "Whether it is lit."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.86",
       "until": "1.0.0.97",
       "channel": "events",
       "command": 169,
@@ -812,7 +874,7 @@
     },
     {
       "from": "1.0.0.110",
-      "until": "1.0.0.117",
+      "until": "1.0.0.111",
       "channel": "events",
       "command": 78,
       "direction": "serverToClient",
@@ -841,6 +903,68 @@
           "name": "element",
           "type": "u8",
           "note": "What to light up, as in HudHighlighted. A value beyond those named does nothing."
+        },
+        {
+          "name": "number",
+          "type": "u8",
+          "note": "Which slot, as in HudHighlighted."
+        },
+        {
+          "name": "second",
+          "type": "u8",
+          "note": "A third value where part is 2; a server writes zero otherwise."
+        },
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "on",
+              "width": 1,
+              "note": "Set to light it up, clear to put it out."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "A client ignores these bits; a server writes zero."
+            }
+          ],
+          "note": "Whether it is lit."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.111",
+      "until": "1.0.0.117",
+      "channel": "events",
+      "command": 78,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "part",
+          "type": "u8",
+          "note": "Which part of the screen. A client ignores any other value.",
+          "values": {
+            "1": {
+              "name": "hud",
+              "note": "The main controls, with element as in HudHighlighted."
+            },
+            "2": {
+              "name": "shop",
+              "note": "A shop element blinks or stops, where the shop window is open. Element 0 is the buy button, 1 the sell button, 2 the shop item number names, 3 the item second names within the category number names, and 4 the recommended item number names."
+            },
+            "3": {
+              "name": "minimap",
+              "note": "The minimap; element 0 is its camera button."
+            }
+          }
+        },
+        {
+          "name": "element",
+          "type": "u8",
+          "note": "What to light up, as in HudHighlighted."
         },
         {
           "name": "number",
@@ -998,7 +1122,69 @@
     },
     {
       "from": "1.0.0.124",
-      "until": "1.0.0.128",
+      "until": "1.0.0.126",
+      "channel": "events",
+      "command": 82,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "part",
+          "type": "u8",
+          "note": "Which part of the screen. A client ignores any other value.",
+          "values": {
+            "1": {
+              "name": "hud",
+              "note": "The main controls, with element as in HudHighlighted."
+            },
+            "2": {
+              "name": "shop",
+              "note": "A shop element blinks or stops, where the shop window is open. Element 0 is the buy button, 1 the sell button, 2 the shop item number names, 3 the item second names within the category number names, and 4 the recommended item number names."
+            },
+            "3": {
+              "name": "minimap",
+              "note": "The minimap; element 0 is its camera button."
+            }
+          }
+        },
+        {
+          "name": "element",
+          "type": "u8",
+          "note": "What to light up, as in HudHighlighted."
+        },
+        {
+          "name": "number",
+          "type": "u8",
+          "note": "Which slot, as in HudHighlighted."
+        },
+        {
+          "name": "second",
+          "type": "u8",
+          "note": "A third value where part is 2; a server writes zero otherwise."
+        },
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "on",
+              "width": 1,
+              "note": "Set to light it up, clear to put it out."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "A client ignores these bits; a server writes zero."
+            }
+          ],
+          "note": "Whether it is lit."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
       "channel": "events",
       "command": 82,
       "direction": "serverToClient",
@@ -1059,7 +1245,7 @@
       ]
     },
     {
-      "from": "1.0.0.128",
+      "from": "1.0.0.127",
       "until": "1.0.0.132",
       "channel": "events",
       "command": 82,
@@ -1245,7 +1431,69 @@
     },
     {
       "from": "1.0.0.138",
-      "until": "1.0.0.144",
+      "until": "1.0.0.140",
+      "channel": "events",
+      "command": 85,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "part",
+          "type": "u8",
+          "note": "Which part of the screen. A client ignores any other value.",
+          "values": {
+            "1": {
+              "name": "hud",
+              "note": "The main controls, with element as in HudHighlighted."
+            },
+            "2": {
+              "name": "shop",
+              "note": "A shop element blinks or stops, where the shop window is open. Element 0 is the buy button, 1 the sell button, 2 the shop item number names, 3 the item second names within the category number names, and 4 the recommended item number names."
+            },
+            "3": {
+              "name": "minimap",
+              "note": "The minimap."
+            }
+          }
+        },
+        {
+          "name": "element",
+          "type": "u8",
+          "note": "What to light up, as in HudHighlighted."
+        },
+        {
+          "name": "number",
+          "type": "u8",
+          "note": "Which slot, as in HudHighlighted."
+        },
+        {
+          "name": "second",
+          "type": "u8",
+          "note": "For the shop's element 3, which item within the category; a client reads nothing here otherwise."
+        },
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "on",
+              "width": 1,
+              "note": "Set to light it up, clear to put it out."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ],
+          "note": "Whether it is lit."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.140",
+      "until": "1.0.0.141",
       "channel": "events",
       "command": 85,
       "direction": "serverToClient",
@@ -1274,6 +1522,68 @@
           "name": "element",
           "type": "u8",
           "note": "What to light up, as in HudHighlighted. A value beyond those named does nothing."
+        },
+        {
+          "name": "number",
+          "type": "u8",
+          "note": "Which slot, as in HudHighlighted."
+        },
+        {
+          "name": "second",
+          "type": "u8",
+          "note": "For the shop's element 3, which item within the category; a client reads nothing here otherwise."
+        },
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "on",
+              "width": 1,
+              "note": "Set to light it up, clear to put it out."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ],
+          "note": "Whether it is lit."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.141",
+      "until": "1.0.0.144",
+      "channel": "events",
+      "command": 85,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "part",
+          "type": "u8",
+          "note": "Which part of the screen. A client ignores any other value.",
+          "values": {
+            "1": {
+              "name": "hud",
+              "note": "The main controls, with element as in HudHighlighted."
+            },
+            "2": {
+              "name": "shop",
+              "note": "A shop element blinks or stops, where the shop window is open. Element 0 is the buy button, 1 the sell button, 2 the shop item number names, 3 the item second names within the category number names, and 4 the recommended item number names."
+            },
+            "3": {
+              "name": "minimap",
+              "note": "The minimap."
+            }
+          }
+        },
+        {
+          "name": "element",
+          "type": "u8",
+          "note": "What to light up, as in HudHighlighted."
         },
         {
           "name": "number",
@@ -1468,8 +1778,7 @@
         },
         {
           "name": "second",
-          "type": "u8",
-          "note": "For the shop's element 3, which item within the category; a client reads nothing here otherwise."
+          "type": "u8"
         },
         {
           "name": "state",
@@ -1530,8 +1839,7 @@
         },
         {
           "name": "second",
-          "type": "u8",
-          "note": "For the shop's element 3, which item within the category; a client reads nothing here otherwise."
+          "type": "u8"
         },
         {
           "name": "state",
@@ -1555,6 +1863,63 @@
     },
     {
       "from": "3.02.0.30",
+      "until": "3.03.0.198",
+      "channel": "events",
+      "command": 78,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "part",
+          "type": "u8",
+          "note": "Which part of the screen. A client ignores any other value.",
+          "values": {
+            "1": {
+              "name": "hud",
+              "note": "The main controls, with element as in HudHighlighted."
+            },
+            "3": {
+              "name": "minimap",
+              "note": "The minimap; a client acts on element 0 only, its camera button."
+            }
+          }
+        },
+        {
+          "name": "element",
+          "type": "u8",
+          "note": "What to light up, as in HudHighlighted."
+        },
+        {
+          "name": "number",
+          "type": "u8",
+          "note": "Which slot, as in HudHighlighted."
+        },
+        {
+          "name": "unused",
+          "type": "u8"
+        },
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "on",
+              "width": 1,
+              "note": "Set to light it up, clear to put it out."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ],
+          "note": "Whether it is lit."
+        }
+      ]
+    },
+    {
+      "from": "3.03.0.198",
       "until": "4.11.0.386",
       "channel": "events",
       "command": 78,

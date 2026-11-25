@@ -330,7 +330,88 @@
     },
     {
       "from": "1.0.0.151",
-      "until": "4.20.0.315",
+      "until": "3.03.0.198",
+      "fields": [
+        {
+          "name": "player",
+          "type": "i64",
+          "note": "Which player holds the place, or a negative number where it stands empty. It has a player identifier's width."
+        },
+        {
+          "name": "level",
+          "type": "u16",
+          "note": "The level the seat holder has reached across matches."
+        },
+        {
+          "name": "summoner",
+          "type": "u32",
+          "note": "The spell in one of the seat's summoner slots, as the name hash of the spell; drawn as its icon on the loading screen. It has no effect on a bot's seat."
+        },
+        {
+          "name": "otherSummoner",
+          "type": "u32",
+          "note": "The spell in the other."
+        },
+        {
+          "name": "flags",
+          "type": "u8",
+          "note": "How the seat is treated. Two bits take effect: bit 0, set where a bot holds the seat, which the loading screen then shows from the bot fields below as already loaded; and bit 1, set to show the seat's champion on the loading screen in its skin's vintage art. The others have no effect."
+        },
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "The side the seat is on, or zero where it stands empty."
+        },
+        {
+          "name": "botName",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "What the seat is called where nobody holds it, written and padded as above."
+        },
+        {
+          "name": "botAsset",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The name the client loads art for it under where nobody holds it, written and padded as above."
+        },
+        {
+          "name": "standing",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 16,
+          "note": "What the seat's standing across matches is called, written and padded as above."
+        },
+        {
+          "name": "botSkin",
+          "type": "i32",
+          "note": "Which look it wears where nobody holds it."
+        },
+        {
+          "name": "botDifficulty",
+          "type": "i32",
+          "note": "How well it plays where nobody holds it: 0 beginner, 1 intermediate, 2 advanced, 3 top, 4 tutorial, 5 intro."
+        },
+        {
+          "name": "icon",
+          "type": "i32",
+          "note": "Which profile icon the client shows on the seat's loading-screen card; a negative number, or one with no art, shows icon 0's."
+        },
+        {
+          "name": "allyBadge",
+          "type": "u8"
+        },
+        {
+          "name": "enemyBadge",
+          "type": "u8",
+          "note": "The badge it shows where the ally badge is not shown and this is nonzero."
+        }
+      ]
+    },
+    {
+      "from": "3.03.0.198",
+      "until": "4.18.0.271",
       "fields": [
         {
           "name": "player",
@@ -402,6 +483,88 @@
           "name": "allyBadge",
           "type": "u8",
           "note": "The badge a 4.17 client shows on the seat's card to the seat's own side (and to a client on neither side), where it is one of the badges the client's own data names."
+        },
+        {
+          "name": "enemyBadge",
+          "type": "u8",
+          "note": "The badge it shows where the ally badge is not shown and this is nonzero."
+        }
+      ]
+    },
+    {
+      "from": "4.18.0.271",
+      "until": "4.20.0.315",
+      "fields": [
+        {
+          "name": "player",
+          "type": "i64",
+          "note": "Which player holds the place, or a negative number where it stands empty. It has a player identifier's width."
+        },
+        {
+          "name": "level",
+          "type": "u16",
+          "note": "The level the seat holder has reached across matches."
+        },
+        {
+          "name": "summoner",
+          "type": "u32",
+          "note": "The spell in one of the seat's summoner slots, as the name hash of the spell; drawn as its icon on the loading screen. It has no effect on a bot's seat."
+        },
+        {
+          "name": "otherSummoner",
+          "type": "u32",
+          "note": "The spell in the other."
+        },
+        {
+          "name": "flags",
+          "type": "u8",
+          "note": "How the seat is treated. Bit 0 is set where a bot holds the seat, which the loading screen then shows from the bot fields below as already loaded. Bit 1 asks for the champion in its skin's older art."
+        },
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "The side the seat is on, or zero where it stands empty."
+        },
+        {
+          "name": "botName",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "What the seat is called where nobody holds it, written and padded as above. A client shows its own name for a bot of the champion instead."
+        },
+        {
+          "name": "botAsset",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The name the client loads art for it under where nobody holds it, written and padded as above."
+        },
+        {
+          "name": "standing",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 16,
+          "note": "What the seat's standing across matches is called, written and padded as above. UNRANKED and BRONZE draw nothing."
+        },
+        {
+          "name": "botSkin",
+          "type": "i32",
+          "note": "Which look it wears where nobody holds it."
+        },
+        {
+          "name": "botDifficulty",
+          "type": "i32",
+          "note": "How well it plays where nobody holds it: 0 beginner, 1 intermediate, 2 advanced, 3 top, 4 tutorial, 5 intro. A client picks a bot's two summoner spells by it."
+        },
+        {
+          "name": "icon",
+          "type": "i32",
+          "note": "Which profile icon the client shows on the seat's loading-screen card; one with no art shows icon 0's."
+        },
+        {
+          "name": "allyBadge",
+          "type": "u8",
+          "note": "The badge a client shows on the seat's card to the seat's own side (and to a client on neither side), where it is one of the badges the client's own data names."
         },
         {
           "name": "enemyBadge",

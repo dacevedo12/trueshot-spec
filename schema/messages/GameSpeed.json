@@ -22,7 +22,23 @@
     },
     {
       "from": "0.9.25.36",
-      "until": "1.0.0.63",
+      "until": "1.0.0.25",
+      "channel": "events",
+      "command": 135,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "speed",
+          "type": "f32",
+          "note": "How fast, 1 being normal. A client applies it as given, with no limit."
+        }
+      ],
+      "note": "Sent while paused, it takes effect at once."
+    },
+    {
+      "from": "1.0.0.25",
+      "until": "1.0.0.61",
       "channel": "events",
       "command": 135,
       "direction": "serverToClient",
@@ -35,6 +51,22 @@
         }
       ],
       "note": "It takes effect at once, so sent while paused it ends the pause."
+    },
+    {
+      "from": "1.0.0.61",
+      "until": "1.0.0.63",
+      "channel": "events",
+      "command": 135,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "speed",
+          "type": "f32",
+          "note": "How fast, 1 being normal. A client applies it as given, with no limit."
+        }
+      ],
+      "note": "Sent while paused, it takes effect at once."
     },
     {
       "from": "1.0.0.63",
@@ -245,7 +277,7 @@
     },
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.144",
+      "until": "1.0.0.141",
       "channel": "events",
       "command": 19,
       "direction": "serverToClient",
@@ -255,6 +287,22 @@
           "name": "speed",
           "type": "f32",
           "note": "How fast, 1 being normal. Zero stops the clock as a pause does, and a client then holds any later GameSpeed until the game resumes."
+        }
+      ],
+      "note": "Sent while paused, it takes effect on resuming."
+    },
+    {
+      "from": "1.0.0.141",
+      "until": "1.0.0.144",
+      "channel": "events",
+      "command": 19,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "speed",
+          "type": "f32",
+          "note": "How fast, 1 being normal."
         }
       ],
       "note": "Sent while paused, it takes effect on resuming."

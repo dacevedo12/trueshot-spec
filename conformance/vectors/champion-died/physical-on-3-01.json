@@ -1,0 +1,21 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "ChampionDied",
+  "version": "3.01.0.1",
+  "note": "Laid out as a 3.01.0.1 client takes it.",
+  "bytes": "5d01000040010000400000000000000000000070410000",
+  "fields": {
+    "command": 93,
+    "netId": 1073741825,
+    "killer": 1073741825,
+    "damageType": 0,
+    "damageSource": 0,
+    "stayDown": 15,
+    "how": {
+      "zombie": 0,
+      "unused": 0
+    },
+    "kind": 0
+  }
+}

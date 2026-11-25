@@ -340,7 +340,7 @@
     },
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.132",
+      "until": "1.0.0.127",
       "channel": "events",
       "command": 142,
       "direction": "serverToClient",
@@ -350,6 +350,21 @@
           "name": "attacker",
           "type": "u32",
           "note": "The unit that destroyed it. A client reads nothing here."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.127",
+      "until": "1.0.0.132",
+      "channel": "events",
+      "command": 142,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "attacker",
+          "type": "u32",
+          "note": "The unit that destroyed it."
         }
       ]
     },
@@ -390,7 +405,27 @@
     },
     {
       "from": "1.0.0.139",
-      "until": "1.0.0.144",
+      "until": "1.0.0.140",
+      "channel": "events",
+      "command": 144,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "attacker",
+          "type": "u32",
+          "note": "The unit that destroyed it."
+        },
+        {
+          "name": "lastChampion",
+          "type": "u32",
+          "note": "Unused; a client reads nothing here."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.140",
+      "until": "1.0.0.141",
       "channel": "events",
       "command": 144,
       "direction": "serverToClient",
@@ -408,6 +443,26 @@
         }
       ],
       "note": "A client reads nothing after the header. It plays the destruction once for each building and ignores any repeat."
+    },
+    {
+      "from": "1.0.0.141",
+      "until": "1.0.0.144",
+      "channel": "events",
+      "command": 144,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "attacker",
+          "type": "u32",
+          "note": "The unit that destroyed it."
+        },
+        {
+          "name": "lastChampion",
+          "type": "u32",
+          "note": "Unused; a client reads nothing here."
+        }
+      ]
     },
     {
       "from": "1.0.0.144",
@@ -431,7 +486,7 @@
     },
     {
       "from": "1.0.0.150",
-      "until": "1.0.0.154",
+      "until": "1.0.0.151",
       "channel": "events",
       "command": 135,
       "direction": "serverToClient",
@@ -450,7 +505,7 @@
       ]
     },
     {
-      "from": "1.0.0.154",
+      "from": "1.0.0.151",
       "until": "3.01.0.1",
       "channel": "events",
       "command": 135,

@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "3.9.0.491",
-      "until": "4.17.0.233",
+      "until": "4.5.0.260",
       "channel": "events",
       "command": 264,
       "direction": "serverToClient",
@@ -21,6 +21,26 @@
           "name": "secondRadius",
           "type": "f32",
           "note": "A second ring's radius, in world units, drawn where above zero."
+        }
+      ]
+    },
+    {
+      "from": "4.5.0.260",
+      "until": "4.17.0.233",
+      "channel": "events",
+      "command": 264,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "radius",
+          "type": "f32",
+          "note": "The ring's radius, in world units. Zero or less draws neither ring."
+        },
+        {
+          "name": "secondRadius",
+          "type": "f32",
+          "note": "A second ring's radius, in world units."
         }
       ]
     },
@@ -46,6 +66,26 @@
     },
     {
       "from": "4.18.0.271",
+      "until": "4.20.0.315",
+      "channel": "events",
+      "command": 264,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "radius",
+          "type": "f32",
+          "note": "The ring's radius, in world units. Zero or less draws neither ring."
+        },
+        {
+          "name": "secondRadius",
+          "type": "f32",
+          "note": "A second ring's radius, in world units."
+        }
+      ]
+    },
+    {
+      "from": "4.20.0.315",
       "until": "4.21.0.0",
       "channel": "events",
       "command": 264,

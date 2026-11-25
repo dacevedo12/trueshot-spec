@@ -38,7 +38,23 @@
     },
     {
       "from": "0.9.25.36",
-      "until": "1.0.0.63",
+      "until": "1.0.0.25",
+      "channel": "events",
+      "command": 116,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The player's client id."
+        }
+      ],
+      "note": "A client shows a chat notice naming the player that client id belongs to, whenever its interface exists: in a neutral colour where it has no champion of its own, and otherwise coloured for whether that player is on its own side."
+    },
+    {
+      "from": "1.0.0.25",
+      "until": "1.0.0.61",
       "channel": "events",
       "command": 116,
       "direction": "serverToClient",
@@ -53,6 +69,21 @@
       "note": "A client shows a chat notice naming the player that client id belongs to, whenever its interface exists: in a neutral colour where it has no champion of its own, and otherwise coloured for whether that player is on its own side."
     },
     {
+      "from": "1.0.0.61",
+      "until": "1.0.0.63",
+      "channel": "events",
+      "command": 116,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32"
+        }
+      ],
+      "note": "A client shows a chat notice naming the player, whenever its interface exists: in a neutral colour where it has no champion of its own, and otherwise coloured for whether that player is on its own side."
+    },
+    {
       "from": "1.0.0.63",
       "until": "1.0.0.74",
       "channel": "events",
@@ -62,8 +93,7 @@
       "fields": [
         {
           "name": "champion",
-          "type": "u32",
-          "note": "The player's champion, matched against the owner of each champion the client knows."
+          "type": "u32"
         }
       ],
       "note": "Where it has its interface, a client shows a chat notice naming the player in the ally or the enemy colour, as against its own champion's side, or a plain colour where it has none."
@@ -94,14 +124,28 @@
       "fields": [
         {
           "name": "champion",
-          "type": "u32",
-          "note": "The player's champion, matched against the owner of each champion the client knows."
+          "type": "u32"
         }
       ],
       "note": "Where it has its interface, a client shows a chat notice naming the player in the ally or the enemy colour, as against its own champion's side, or a plain colour where it has none."
     },
     {
       "from": "1.0.0.82",
+      "until": "1.0.0.86",
+      "channel": "events",
+      "command": 124,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32"
+        }
+      ],
+      "note": "A client shows a chat notice naming the player, whenever its interface exists: in a neutral colour where it has no champion of its own, and otherwise coloured for whether that player is on its own side."
+    },
+    {
+      "from": "1.0.0.86",
       "until": "1.0.0.97",
       "channel": "events",
       "command": 124,
@@ -489,6 +533,39 @@
     },
     {
       "from": "1.0.0.139",
+      "until": "1.0.0.140",
+      "channel": "events",
+      "command": 162,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "champion",
+          "type": "u32"
+        },
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "toEnemies",
+              "width": 1,
+              "note": "Set to show the notice only to the other side; clear to show it only to the player's own side. A client with no champion of its own shows it only where this is clear."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ],
+          "note": "Who is told."
+        }
+      ],
+      "note": "A client shows a chat notice naming the player."
+    },
+    {
+      "from": "1.0.0.140",
       "until": "1.0.0.144",
       "channel": "events",
       "command": 162,

@@ -96,11 +96,16 @@ way it faces.
 
 ## Maps
 
-`VersionSync`'s `map` names the map to load by number. A client takes a map's
-buildings (see [Objects and identifiers](objects.md)) and spawn positions from
-its own data (see [The client's data](data.md)), and can load only a map it has
-data for. A compact path takes its origin from the same data (see
-[Movement](movement.md)).
+A client takes a map's buildings (see [Objects and identifiers](objects.md)) and
+spawn positions from its own data (see [The client's data](data.md)), and can
+load only a map it has data for. A compact path takes its origin from the same
+data (see [Movement](movement.md)).
+
+<!-- holds from 0.9.22.14 up to 4.21.0.0 -->
+
+> **In 0.9.22.14–4.20**
+>
+> `VersionSync`'s `map` names the map to load by number.
 
 <!-- holds from 0.8.13.26 up to 0.9.22.14 -->
 

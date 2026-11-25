@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "3.10.0.237",
-      "until": "4.4.0.1858",
+      "until": "3.14.0.700",
       "channel": "events",
       "command": 274,
       "direction": "serverToClient",
@@ -19,6 +19,21 @@
         }
       ],
       "note": "A server sends it to its player's champion."
+    },
+    {
+      "from": "3.14.0.700",
+      "until": "4.4.0.1858",
+      "channel": "events",
+      "command": 274,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "cap",
+          "type": "u8",
+          "note": "The highest level; zero restores the usual 18."
+        }
+      ]
     },
     {
       "from": "4.4.0.1858",
@@ -38,6 +53,21 @@
     },
     {
       "from": "4.5.0.260",
+      "until": "4.17.0.233",
+      "channel": "events",
+      "command": 274,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "cap",
+          "type": "u8",
+          "note": "The highest level; zero restores the usual 18."
+        }
+      ]
+    },
+    {
+      "from": "4.17.0.233",
       "until": "4.21.0.0",
       "channel": "events",
       "command": 274,

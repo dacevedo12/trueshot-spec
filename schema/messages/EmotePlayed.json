@@ -111,6 +111,21 @@
     },
     {
       "from": "1.0.0.135",
+      "until": "1.0.0.140",
+      "channel": "events",
+      "command": 73,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "emote",
+          "type": "u8",
+          "note": "Which emote."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.140",
       "until": "1.0.0.144",
       "channel": "events",
       "command": 73,
@@ -232,7 +247,22 @@
     },
     {
       "from": "3.11.0.306",
-      "until": "4.4.0.1858",
+      "until": "3.13.0.399",
+      "channel": "events",
+      "command": 65,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "emote",
+          "type": "u8",
+          "note": "Which emote, by the number the client knows it as."
+        }
+      ]
+    },
+    {
+      "from": "3.13.0.399",
+      "until": "3.14.0.700",
       "channel": "events",
       "command": 65,
       "direction": "serverToClient",
@@ -242,6 +272,21 @@
           "name": "emote",
           "type": "u8",
           "note": "Which emote, by the number the client knows it as. A client plays an animation on the champion for 0, 1 and 2, a different one each, and none for 3."
+        }
+      ]
+    },
+    {
+      "from": "3.14.0.700",
+      "until": "4.4.0.1858",
+      "channel": "events",
+      "command": 65,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "emote",
+          "type": "u8",
+          "note": "Which emote, by the number the client knows it as."
         }
       ]
     },
@@ -277,6 +322,21 @@
     },
     {
       "from": "4.11.0.386",
+      "until": "4.17.0.233",
+      "channel": "events",
+      "command": 66,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "emote",
+          "type": "u8",
+          "note": "Which emote, by the number the client knows it as."
+        }
+      ]
+    },
+    {
+      "from": "4.17.0.233",
       "until": "4.18.0.271",
       "channel": "events",
       "command": 66,

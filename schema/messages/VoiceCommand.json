@@ -6,7 +6,7 @@
   "revisions": [
     {
       "from": "1.0.0.138",
-      "until": "1.0.0.144",
+      "until": "1.0.0.141",
       "channel": "events",
       "command": 74,
       "direction": "serverToClient",
@@ -67,6 +67,69 @@
         }
       ],
       "note": "A client plays the champion's voice line that call names, about target, passing on highlight and ping. It does nothing where it has no champion of its own or the player behind the champion is muted."
+    },
+    {
+      "from": "1.0.0.141",
+      "until": "1.0.0.144",
+      "channel": "events",
+      "command": 74,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "padding1",
+          "type": "u16",
+          "note": "Padding before call. Unused; a server writes zero."
+        },
+        {
+          "name": "padding2",
+          "type": "u8",
+          "note": "Padding before call. Unused; a server writes zero."
+        },
+        {
+          "name": "call",
+          "type": "u32",
+          "note": "Which call."
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit the call is about."
+        },
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "highlight",
+              "width": 1,
+              "note": "Set where the player's icon is highlighted."
+            },
+            {
+              "name": "ping",
+              "width": 1,
+              "note": "Set where it marks a ping."
+            },
+            {
+              "name": "unused",
+              "width": 6,
+              "note": "Unused; a server writes zero."
+            }
+          ],
+          "note": "How it is shown."
+        },
+        {
+          "name": "padding3",
+          "type": "u16",
+          "note": "Padding after flags. Unused; a server writes zero."
+        },
+        {
+          "name": "padding4",
+          "type": "u8",
+          "note": "Padding after flags. Unused; a server writes zero."
+        }
+      ]
     },
     {
       "from": "1.0.0.144",
@@ -133,7 +196,7 @@
     },
     {
       "from": "1.0.0.150",
-      "until": "3.01.0.1",
+      "until": "1.0.0.151",
       "channel": "events",
       "command": 66,
       "direction": "serverToClient",
@@ -194,6 +257,69 @@
         }
       ],
       "note": "A client accepts it on a champion only, and it has no effect."
+    },
+    {
+      "from": "1.0.0.151",
+      "until": "3.01.0.1",
+      "channel": "events",
+      "command": 66,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "padding1",
+          "type": "u16",
+          "note": "Padding before call. Unused; a server writes zero."
+        },
+        {
+          "name": "padding2",
+          "type": "u8",
+          "note": "Padding before call. Unused; a server writes zero."
+        },
+        {
+          "name": "call",
+          "type": "u32",
+          "note": "Which call."
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit the call is about."
+        },
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "highlight",
+              "width": 1,
+              "note": "Set where the player's icon is highlighted."
+            },
+            {
+              "name": "ping",
+              "width": 1,
+              "note": "Set where it marks a ping."
+            },
+            {
+              "name": "unused",
+              "width": 6,
+              "note": "Unused; a server writes zero."
+            }
+          ],
+          "note": "How it is shown."
+        },
+        {
+          "name": "padding3",
+          "type": "u16",
+          "note": "Padding after flags. Unused; a server writes zero."
+        },
+        {
+          "name": "padding4",
+          "type": "u8",
+          "note": "Padding after flags. Unused; a server writes zero."
+        }
+      ]
     },
     {
       "from": "3.01.0.1",
@@ -324,6 +450,69 @@
     },
     {
       "from": "3.04.0.78",
+      "until": "3.6.0.388",
+      "channel": "events",
+      "command": 67,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "padding1",
+          "type": "u16",
+          "note": "Padding before call. Unused; a server writes zero."
+        },
+        {
+          "name": "padding2",
+          "type": "u8",
+          "note": "Padding before call. Unused; a server writes zero."
+        },
+        {
+          "name": "call",
+          "type": "u32",
+          "note": "Which call."
+        },
+        {
+          "name": "target",
+          "type": "u32",
+          "note": "The unit the call is about."
+        },
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "highlight",
+              "width": 1,
+              "note": "Set where the player's icon is highlighted."
+            },
+            {
+              "name": "ping",
+              "width": 1,
+              "note": "Set where it marks a ping."
+            },
+            {
+              "name": "unused",
+              "width": 6,
+              "note": "Unused; a server writes zero."
+            }
+          ],
+          "note": "How it is shown."
+        },
+        {
+          "name": "padding3",
+          "type": "u16",
+          "note": "Padding after flags. Unused; a server writes zero."
+        },
+        {
+          "name": "padding4",
+          "type": "u8",
+          "note": "Padding after flags. Unused; a server writes zero."
+        }
+      ]
+    },
+    {
+      "from": "3.6.0.388",
       "until": "4.11.0.386",
       "channel": "events",
       "command": 67,
