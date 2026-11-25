@@ -59,12 +59,6 @@ height (see [Space](space.md)).
 > A path that arrives before a client has loaded the map's ground grid is read
 > with a step of 1 in place of 2.
 
-<!-- holds from 1.0.0.97 up to 1.0.0.110 -->
-
-> **In 1.0.0.97–1.0.0.109**
->
-> A path resolves a position to two world units, rounded toward the origin.
-
 <!-- holds from 1.0.0.110 up to 1.0.0.111 -->
 
 > **In 1.0.0.110**
@@ -85,9 +79,18 @@ height (see [Space](space.md)).
 > Until a client has loaded the map's ground grid, the step is 1 in place of 2
 > and the origin 0, both for the paths it reads and for those it sends.
 
-<!-- holds from 1.0.0.111 up to 1.0.0.132 -->
+<!-- holds from 1.0.0.111 up to 1.0.0.126 -->
 
-> **In 1.0.0.111–1.0.0.131**
+> **In 1.0.0.111–1.0.0.125**
+>
+> `Movement` and `MovementAtSpeed` are compact: a path is a run of integer
+> points, while positions elsewhere are world floats covering a far larger
+> range (see [Space](space.md)), except a particle's points on the ground,
+> carried in the units a path uses (see `Particle`).
+
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
+
+> **In 1.0.0.126**
 >
 > `Movement` and `MovementAtSpeed` are compact: a path is a run of integer
 > points, while positions elsewhere are world floats covering a far larger
@@ -101,6 +104,15 @@ height (see [Space](space.md)).
 > ```
 >
 > A path resolves a position to two world units, rounded toward the origin.
+
+<!-- holds from 1.0.0.127 up to 1.0.0.132 -->
+
+> **In 1.0.0.127–1.0.0.131**
+>
+> `Movement` and `MovementAtSpeed` are compact: a path is a run of integer
+> points, while positions elsewhere are world floats covering a far larger
+> range (see [Space](space.md)), except a particle's points on the ground,
+> carried in the units a path uses (see `Particle`).
 
 <!-- holds from 1.0.0.132 up to 1.0.0.133 -->
 
@@ -122,9 +134,18 @@ height (see [Space](space.md)).
 > A path that arrives before a client has loaded the map's ground grid is read
 > with a step of 1 in place of 2 and an origin of 0.
 
-<!-- holds from 1.0.0.133 up to 1.0.0.150 -->
+<!-- holds from 1.0.0.133 up to 1.0.0.140 -->
 
-> **In 1.0.0.133–1.0.0.149**
+> **In 1.0.0.133–1.0.0.139**
+>
+> `Movement` and `MovementAtSpeed` are compact: a path is a run of integer
+> points, while positions elsewhere are world floats covering a far larger
+> range (see [Space](space.md)), except a particle's points on the ground,
+> carried in the units a path uses (see `Particle`).
+
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+
+> **In 1.0.0.140**
 >
 > `Movement` and `MovementAtSpeed` are compact: a path is a run of integer
 > points, while positions elsewhere are world floats covering a far larger
@@ -138,6 +159,15 @@ height (see [Space](space.md)).
 > ```
 >
 > A path resolves a position to two world units, rounded toward the origin.
+
+<!-- holds from 1.0.0.141 up to 1.0.0.150 -->
+
+> **In 1.0.0.141–1.0.0.149**
+>
+> `Movement` and `MovementAtSpeed` are compact: a path is a run of integer
+> points, while positions elsewhere are world floats covering a far larger
+> range (see [Space](space.md)), except a particle's points on the ground,
+> carried in the units a path uses (see `Particle`).
 
 <!-- holds from 1.0.0.150 up to 1.0.0.151 -->
 
@@ -166,15 +196,7 @@ height (see [Space](space.md)).
 > `Movement` and `MovementAtSpeed` are compact: a path is a run of integer
 > points, while positions elsewhere are world floats covering a far larger
 > range (see [Space](space.md)), except a particle's points on the ground,
-> carried in the units a path uses (see `Particle`). The two are related by an
-> origin and a step:
->
-> ```
-> encoded = truncate_toward_zero((world - origin) / 2)
-> world   = origin + 2 * encoded
-> ```
->
-> A path resolves a position to two world units, rounded toward the origin.
+> carried in the units a path uses (see `Particle`).
 
 <!-- holds from 3.03.0.198 up to 3.04.0.78 -->
 
@@ -196,9 +218,18 @@ height (see [Space](space.md)).
 > A path that arrives before a client has loaded the map's ground grid is read
 > with a step of 1 in place of 2 and an origin of 0.
 
-<!-- holds from 3.04.0.78 up to 4.4.0.1858 -->
+<!-- holds from 3.04.0.78 up to 3.6.0.388 -->
 
-> **In 3.04–4.3**
+> **In 3.04–3.5**
+>
+> `Movement` and `MovementAtSpeed` are compact: a path is a run of integer
+> points, while positions elsewhere are world floats covering a far larger
+> range (see [Space](space.md)), except a particle's points on the ground,
+> carried in the units a path uses (see `Particle`).
+
+<!-- holds from 3.6.0.388 up to 3.14.0.700 -->
+
+> **In 3.6–3.13**
 >
 > `Movement` and `MovementAtSpeed` are compact: a path is a run of integer
 > points, while positions elsewhere are world floats covering a far larger
@@ -212,6 +243,15 @@ height (see [Space](space.md)).
 > ```
 >
 > A path resolves a position to two world units, rounded toward the origin.
+
+<!-- holds from 3.14.0.700 up to 4.4.0.1858 -->
+
+> **In 3.14–4.3**
+>
+> `Movement` and `MovementAtSpeed` are compact: a path is a run of integer
+> points, while positions elsewhere are world floats covering a far larger
+> range (see [Space](space.md)), except a particle's points on the ground,
+> carried in the units a path uses (see `Particle`).
 
 <!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
 
@@ -233,9 +273,18 @@ height (see [Space](space.md)).
 > A path that arrives before a client has loaded the map's ground grid is read
 > with a step of 1 in place of 2 and an origin of 0.
 
-<!-- holds from 4.5.0.260 up to 4.18.0.271 -->
+<!-- holds from 4.5.0.260 up to 4.17.0.233 -->
 
-> **In 4.5–4.17**
+> **In 4.5–4.16**
+>
+> `Movement` and `MovementAtSpeed` are compact: a path is a run of integer
+> points, while positions elsewhere are world floats covering a far larger
+> range (see [Space](space.md)), except a particle's points on the ground,
+> carried in the units a path uses (see `Particle`).
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
 >
 > `Movement` and `MovementAtSpeed` are compact: a path is a run of integer
 > points, while positions elsewhere are world floats covering a far larger
@@ -531,9 +580,17 @@ says what a client does with a movement whose unit it does not hold.
 >
 > A client answers each group with one `WaypointAck`. A server MAY ignore it.
 
-<!-- holds from 4.17.0.233 up to 4.21.0.0 -->
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 
-> **In 4.17–4.20**
+> **In 4.17**
+>
+> A client answers each group with one `WaypointAck`, listing every unit in it
+> that carried a token, with an empty list where none did. A server MAY ignore
+> it.
+
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
 >
 > A client answers each group with one `WaypointAck`, listing every unit in it
 > that carried a token, with an empty list where none did. A server MAY ignore

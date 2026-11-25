@@ -48,22 +48,23 @@ for Order and 2 for Chaos and lanes `L`, `C` and `R`, with a shrine turret for
 each side; the numbers differ between the sides, and a server MUST take the
 names from the files.
 
-<!-- holds from 0.8.13.26 up to 1.0.0.97 -->
+<!-- holds from 0.8.13.26 up to 0.9.22.14 -->
 
-> **In 0.8.13.26–1.0.0.96**
+> **In 0.8.13.26–0.9.22.13**
 >
 > A word a name holds anywhere says what the object is, not only its opening,
 > the first match winning: a minion spawner's `Spawn_Barracks` is tested before
 > `Barracks`, which makes an inhibitor, and `HQ_` makes a nexus and `Turret` a
 > turret.
 
-<!-- holds from 1.0.0.97 up to 1.0.0.110 -->
+<!-- holds from 0.9.25.24 up to 1.0.0.97 -->
 
-> **In 1.0.0.97–1.0.0.109**
+> **In 0.9.25.24–1.0.0.96**
 >
-> A word says what the object is, the first match winning: a minion spawner's
-> `Spawn_Barracks` is tested before `Barracks`, which makes an inhibitor, and
-> `HQ_` makes a nexus and `Turret` a turret.
+> A word a name holds anywhere says what the object is, not only its opening,
+> the first match winning: a minion spawner's `Spawn_Barracks` is tested before
+> `Barracks`, which makes an inhibitor, and `HQ_` makes a nexus and `Turret` a
+> turret.
 
 <!-- holds from 0.8.13.26 up to 0.9.22.14 -->
 
@@ -112,14 +113,6 @@ names from the files.
 > `Barracks`, which makes an inhibitor, and `HQ_` makes a nexus and `Turret` a
 > turret. A path holding `AIPath`, `_Destroyed` or `_FB` makes no object.
 
-<!-- holds from 1.0.0.111 up to 1.0.0.126 -->
-
-> **In 1.0.0.111–1.0.0.125**
->
-> A word says what the object is, the first match winning: a minion spawner's
-> `Spawn_Barracks` is tested before `Barracks`, which makes an inhibitor, and
-> `HQ_` makes a nexus and `Turret` a turret.
-
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
 > **In 1.0.0.126**
@@ -128,14 +121,6 @@ names from the files.
 > the first match winning: a minion spawner's `Spawn_Barracks` is tested before
 > `Barracks`, which makes an inhibitor, and `HQ_` makes a nexus and `Turret` a
 > turret.
-
-<!-- holds from 1.0.0.127 up to 1.0.0.132 -->
-
-> **In 1.0.0.127–1.0.0.131**
->
-> A word says what the object is, the first match winning: a minion spawner's
-> `Spawn_Barracks` is tested before `Barracks`, which makes an inhibitor, and
-> `HQ_` makes a nexus and `Turret` a turret.
 
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
@@ -154,14 +139,6 @@ names from the files.
 > `Barracks`, which makes an inhibitor, and `HQ_` makes a nexus and `Turret` a
 > turret. A path holding `_Destroyed` or `_FB` makes no object.
 
-<!-- holds from 1.0.0.133 up to 1.0.0.140 -->
-
-> **In 1.0.0.133–1.0.0.139**
->
-> A word says what the object is, the first match winning: a minion spawner's
-> `Spawn_Barracks` is tested before `Barracks`, which makes an inhibitor, and
-> `HQ_` makes a nexus and `Turret` a turret.
-
 <!-- holds from 1.0.0.140 up to 1.0.0.151 -->
 
 > **In 1.0.0.140–1.0.0.150**
@@ -170,14 +147,6 @@ names from the files.
 > the first match winning: a minion spawner's `Spawn_Barracks` is tested before
 > `Barracks`, which makes an inhibitor, and `HQ_` makes a nexus and `Turret` a
 > turret.
-
-<!-- holds from 1.0.0.151 up to 3.03.0.198 -->
-
-> **In 1.0.0.151–3.02**
->
-> A word says what the object is, the first match winning: a minion spawner's
-> `Spawn_Barracks` is tested before `Barracks`, which makes an inhibitor, and
-> `HQ_` makes a nexus and `Turret` a turret.
 
 <!-- holds from 1.0.0.140 up to 1.0.0.141 -->
 
@@ -227,14 +196,6 @@ names from the files.
 > **In 3.11–3.12**
 >
 > Each object's file is `.sco` as text or `.SCB` as binary.
-
-<!-- holds from 3.7.0.328 up to 3.10.0.237 -->
-
-> **In 3.7–3.9**
->
-> A word says what the object is, the first match winning: a minion spawner's
-> `Spawn_Barracks` is tested before `Barracks`, which makes an inhibitor, and
-> `HQ_` makes a nexus and `Turret` a turret.
 
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 

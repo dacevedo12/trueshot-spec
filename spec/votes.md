@@ -19,9 +19,37 @@ menu on or off.
 > Where a vote does not pass, `SurrenderFailed` says how long until another can
 > be called.
 
-<!-- holds from 0.9.25.21 up to 4.21.0.0 -->
+<!-- holds from 0.9.25.21 up to 0.9.25.36 -->
 
-> **In 0.9.25.21–4.20**
+> **In 0.9.25.21–0.9.25.35**
+>
+> `SurrenderVoteCalled` shows the caller's vote to that side and, where it says
+> the vote opens, opens the vote's panel for that side.
+
+<!-- holds from 1.0.0.25 up to 1.0.0.111 -->
+
+> **In 1.0.0.25–1.0.0.110**
+>
+> `SurrenderVoteCalled` shows the caller's vote to that side and, where it says
+> the vote opens, opens the vote's panel for that side.
+
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
+
+> **In 1.0.0.126**
+>
+> `SurrenderVoteCalled` shows the caller's vote to that side and, where it says
+> the vote opens, opens the vote's panel for that side.
+
+<!-- holds from 1.0.0.132 up to 4.18.0.271 -->
+
+> **In 1.0.0.132–4.17**
+>
+> `SurrenderVoteCalled` shows the caller's vote to that side and, where it says
+> the vote opens, opens the vote's panel for that side.
+
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
 >
 > `SurrenderVoteCalled` shows the caller's vote to that side and, where it says
 > the vote opens, opens the vote's panel for that side.
@@ -65,9 +93,37 @@ turrets. Each `BalanceVote` adds one voter to the vote's panel for the voting
 side, and a client answers with `BalanceVoteAnswer` from the panel, once per
 vote. `BalanceResult` says how the vote ended, or why it could not be held.
 
-<!-- holds from 3.6.0.388 up to 4.21.0.0 -->
+<!-- holds from 3.6.0.388 up to 3.7.0.328 -->
 
-> **In 3.6–4.20**
+> **In 3.6**
+>
+> A client also answers as its player types `/equalize`; either way it answers
+> once per vote.
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> A client also answers as its player types `/equalize`; either way it answers
+> once per vote.
+
+<!-- holds from 3.13.0.399 up to 3.14.0.700 -->
+
+> **In 3.13**
+>
+> A client also answers as its player types `/equalize`; either way it answers
+> once per vote.
+
+<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
+
+> **In 4.4**
+>
+> A client also answers as its player types `/equalize`; either way it answers
+> once per vote.
+
+<!-- holds from 4.17.0.233 up to 4.21.0.0 -->
+
+> **In 4.17–4.20**
 >
 > A client also answers as its player types `/equalize`; either way it answers
 > once per vote.

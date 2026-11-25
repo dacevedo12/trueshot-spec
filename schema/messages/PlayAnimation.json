@@ -154,7 +154,7 @@
           "note": "The animation's name, ended by a zero byte. Nothing plays for a name the unit does not have."
         }
       ],
-      "note": "Every play blends in over a blend time of 0.2 seconds. Without loop or holdLastFrame, an animation that ends is removed, except that where it was the unit's only animation and the unit has an idle, a client fades back to the idle, looping. No start point is carried."
+      "note": "No start point is carried."
     },
     {
       "from": "0.9.25.24",

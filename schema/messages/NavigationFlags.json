@@ -11,7 +11,6 @@
       "command": 204,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client clears every circle it holds before marking these, and answers each with a message to the server under command 32 whose body is this sync id alone.",
       "fields": [
         {
           "name": "count",
@@ -64,7 +63,6 @@
       "command": 205,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client clears every circle it holds before marking these, and answers each with a message to the server under command 32 whose body is this sync id alone.",
       "fields": [
         {
           "name": "count",

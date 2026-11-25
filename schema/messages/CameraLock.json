@@ -230,8 +230,7 @@
           "type": "u32",
           "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
         }
-      ],
-      "note": "A client sends it on each CameraLockSet with state as that message carried it, all eight bits included, and also as its player sets the lock, as the game forces the view free and as that forcing lifts. A forced free view is sent with state zero. While it holds, a CameraLockSet is dropped; as it lifts, a client sends the state in force just before it began. Where the client's own champion is made while the view is locked, a client sends state 1 again."
+      ]
     },
     {
       "from": "1.0.0.74",
@@ -295,8 +294,7 @@
           "type": "u32",
           "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
         }
-      ],
-      "note": "A client sends it on each CameraLockSet with state as that message carried it, all eight bits included, and also as its player sets the lock or the game forces a lock or lifts one."
+      ]
     },
     {
       "from": "1.0.0.82",
@@ -327,8 +325,7 @@
           "type": "u32",
           "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
         }
-      ],
-      "note": "A client sends it on each CameraLockSet with state as that message carried it, all eight bits included, and also as its player sets the lock or the game forces a lock or lifts one."
+      ]
     },
     {
       "from": "1.0.0.86",
@@ -591,8 +588,7 @@
           "type": "u32",
           "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
         }
-      ],
-      "note": "A client sends it on each CameraLockSet with state as that message carried it, all eight bits included."
+      ]
     },
     {
       "from": "1.0.0.117",
@@ -624,8 +620,7 @@
           "type": "u32",
           "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
         }
-      ],
-      "note": "A client sends it on each CameraLockSet with state as that message carried it, all eight bits included."
+      ]
     },
     {
       "from": "1.0.0.119",
@@ -657,8 +652,7 @@
           "type": "u32",
           "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
         }
-      ],
-      "note": "A client sends it on each CameraLockSet with state as that message carried it, all eight bits included."
+      ]
     },
     {
       "from": "1.0.0.124",
@@ -690,8 +684,7 @@
           "type": "u32",
           "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
         }
-      ],
-      "note": "A client sends it on each CameraLockSet with state as that message carried it, all eight bits included."
+      ]
     },
     {
       "from": "1.0.0.126",
@@ -755,8 +748,7 @@
           "type": "u32",
           "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
         }
-      ],
-      "note": "A client sends it whenever its lock changes: by the player, or as the game forces a lock or lifts one."
+      ]
     },
     {
       "from": "1.0.0.132",
@@ -821,8 +813,7 @@
           "type": "u32",
           "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
         }
-      ],
-      "note": "A client sends it whenever its lock changes: by the player, or as the game forces a lock or lifts one."
+      ]
     },
     {
       "from": "1.0.0.138",
@@ -854,8 +845,7 @@
           "type": "u32",
           "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
         }
-      ],
-      "note": "A client sends it whenever its lock changes: by the player, or as the game forces a lock or lifts one."
+      ]
     },
     {
       "from": "1.0.0.139",
@@ -887,8 +877,7 @@
           "type": "u32",
           "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
         }
-      ],
-      "note": "A client sends it whenever its lock changes: by the player, or as the game forces a lock or lifts one."
+      ]
     },
     {
       "from": "1.0.0.140",
@@ -952,8 +941,7 @@
           "type": "u32",
           "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
         }
-      ],
-      "note": "A client sends it each time its lock is set, even to the state it already has: by the player, or as the game forces a lock or lifts one."
+      ]
     },
     {
       "from": "1.0.0.144",
@@ -984,8 +972,7 @@
           "type": "u32",
           "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
         }
-      ],
-      "note": "A client sends it each time its lock is set, even to the state it already has: by the player, or as the game forces a lock or lifts one."
+      ]
     },
     {
       "from": "1.0.0.150",
@@ -1050,8 +1037,7 @@
           "type": "u32",
           "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
         }
-      ],
-      "note": "A client sends it whenever its lock changes: by the player, or as the game forces a lock or lifts one."
+      ]
     },
     {
       "from": "3.01.0.1",
@@ -1083,8 +1069,7 @@
           "type": "u32",
           "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
         }
-      ],
-      "note": "A client sends it whenever its lock changes: by the player, or as the game forces a lock or lifts one."
+      ]
     },
     {
       "from": "3.03.0.198",
@@ -1121,6 +1106,38 @@
     },
     {
       "from": "3.04.0.78",
+      "until": "3.6.0.388",
+      "channel": "requests",
+      "command": 129,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "locked",
+              "width": 1,
+              "note": "Set while the view follows a unit."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a client writes zero."
+            }
+          ]
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the client locking. Zero is a client id like any other rather than an absence."
+        }
+      ]
+    },
+    {
+      "from": "3.6.0.388",
       "until": "3.11.0.306",
       "channel": "requests",
       "command": 129,

@@ -30,9 +30,15 @@ states.
 > Stock ENet 1.2.5 serves a client as it stands: the header, the constants and
 > the commands are the release's own.
 
-<!-- holds from 1.0.0.127 up to 3.03.0.198 -->
+<!-- holds from 1.0.0.127 up to 1.0.0.132 -->
 
-> **In 1.0.0.127–3.02**
+> **In 1.0.0.127–1.0.0.131**
+>
+> The header and the commands are the release's own.
+
+<!-- holds from 1.0.0.132 up to 3.03.0.198 -->
+
+> **In 1.0.0.132–3.02**
 >
 > Stock ENet 1.2.5 serves a client once its transmission unit is clamped (see
 > below). The header and the commands are the release's own.
@@ -146,9 +152,9 @@ travel unchanged, so a payload shorter than one block travels in the clear.
 > it. The bytes it adds follow the message's own fields to the end of the
 > payload and hold nothing in particular.
 
-<!-- holds from 1.0.0.116 up to 4.21.0.0 -->
+<!-- holds from 1.0.0.126 up to 4.21.0.0 -->
 
-> **In 1.0.0.116–4.20**
+> **In 1.0.0.126–4.20**
 >
 > What a client sends carries no padding either.
 
@@ -175,12 +181,6 @@ argument.
 > Where the argument is shorter than sixteen characters, the rest of the key is
 > undefined, and no server can know it: the key MUST be sixteen characters or
 > more.
-
-<!-- holds from 1.0.0.111 up to 1.0.0.126 -->
-
-> **In 1.0.0.111–1.0.0.125**
->
-> The argument holds the key in base64.
 
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 

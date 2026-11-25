@@ -839,7 +839,7 @@
             {
               "name": "bounced",
               "width": 1,
-              "note": "Set where the missile has bounced. For a missile that flies straight, a client then sets its end to casterAt raised by the missile's height above the ground, so it heads back to where the thrower stood; for any other missile it has no effect."
+              "note": "Set where the missile has bounced."
             },
             {
               "name": "unused",
@@ -963,7 +963,7 @@
             {
               "name": "bounced",
               "width": 1,
-              "note": "Set where the missile has bounced. For a missile that flies straight, a client then sets its end to casterAt raised by the missile's height above the ground, so it heads back to where the thrower stood; for any other missile it has no effect."
+              "note": "Set where the missile has bounced."
             },
             {
               "name": "unused",
@@ -1942,8 +1942,7 @@
           "bits": [
             {
               "name": "bounced",
-              "width": 1,
-              "note": "For a missile that flies in a straight line: set, a client sends the missile from where it is toward where its thrower stood (casterAt)."
+              "width": 1
             },
             {
               "name": "unused",
@@ -2066,8 +2065,7 @@
           "bits": [
             {
               "name": "bounced",
-              "width": 1,
-              "note": "For a missile that flies in a straight line: set, a client sends the missile from where it is toward where its thrower stood (casterAt)."
+              "width": 1
             },
             {
               "name": "unused",
@@ -2195,8 +2193,7 @@
           "bits": [
             {
               "name": "bounced",
-              "width": 1,
-              "note": "For a missile that flies in a straight line: set, a client sends the missile from where it is toward where its thrower stood (casterAt)."
+              "width": 1
             },
             {
               "name": "unused",
@@ -2324,8 +2321,7 @@
           "bits": [
             {
               "name": "bounced",
-              "width": 1,
-              "note": "For a missile that flies in a straight line: set, a client sends the missile from where it is toward where its thrower stood (casterAt)."
+              "width": 1
             },
             {
               "name": "unused",
@@ -2453,8 +2449,7 @@
           "bits": [
             {
               "name": "bounced",
-              "width": 1,
-              "note": "For a missile that flies in a straight line: set, a client sends the missile from where it is toward where its thrower stood (casterAt)."
+              "width": 1
             },
             {
               "name": "unused",

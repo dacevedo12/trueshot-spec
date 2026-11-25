@@ -33,8 +33,7 @@
           "type": "u8",
           "note": "Nonzero to lock the camera, zero to free it; a client tests the whole byte, so any set bit locks it."
         }
-      ],
-      "note": "A client answers at once with CameraLock, returning the state byte as it arrived."
+      ]
     },
     {
       "from": "1.0.0.25",
@@ -97,8 +96,7 @@
           "type": "u8",
           "note": "Nonzero to lock the camera, zero to free it; a client tests the whole byte, so any set bit locks it."
         }
-      ],
-      "note": "A client answers at once with CameraLock, returning the state byte as it arrived."
+      ]
     },
     {
       "from": "1.0.0.82",
@@ -113,8 +111,7 @@
           "type": "u8",
           "note": "Nonzero to lock the camera, zero to free it; a client tests the whole byte, so any set bit locks it."
         }
-      ],
-      "note": "A client answers at once with CameraLock, returning the state byte as it arrived."
+      ]
     },
     {
       "from": "1.0.0.86",
@@ -145,8 +142,7 @@
           "type": "u8",
           "note": "Nonzero to lock the camera, zero to free it; a client tests the whole byte, so any set bit locks it."
         }
-      ],
-      "note": "A client answers at once with CameraLock, returning the state byte as it arrived."
+      ]
     },
     {
       "from": "1.0.0.96",
@@ -177,8 +173,7 @@
           "type": "u8",
           "note": "Nonzero to lock the camera, zero to free it; a client tests the whole byte, so any set bit locks it."
         }
-      ],
-      "note": "A client answers at once with CameraLock, returning the state byte as it arrived."
+      ]
     },
     {
       "from": "1.0.0.98",
@@ -193,8 +188,7 @@
           "type": "u8",
           "note": "Nonzero to lock the camera, zero to free it; a client tests the whole byte, so any set bit locks it."
         }
-      ],
-      "note": "A client answers at once with CameraLock, returning the state byte as it arrived."
+      ]
     },
     {
       "from": "1.0.0.103",
@@ -209,8 +203,7 @@
           "type": "u8",
           "note": "Nonzero to lock the camera, zero to free it; a client tests the whole byte, so any set bit locks it."
         }
-      ],
-      "note": "A client answers at once with CameraLock, returning the state byte as it arrived."
+      ]
     },
     {
       "from": "1.0.0.107",
@@ -225,8 +218,7 @@
           "type": "u8",
           "note": "Nonzero to lock the camera, zero to free it; a client tests the whole byte, so any set bit locks it."
         }
-      ],
-      "note": "A client answers at once with CameraLock, returning the state byte as it arrived."
+      ]
     },
     {
       "from": "1.0.0.109",
@@ -241,8 +233,7 @@
           "type": "u8",
           "note": "Nonzero to lock the camera, zero to free it; a client tests the whole byte, so any set bit locks it."
         }
-      ],
-      "note": "A client answers at once with CameraLock, returning the state byte as it arrived."
+      ]
     },
     {
       "from": "1.0.0.110",
@@ -480,7 +471,7 @@
     },
     {
       "from": "1.0.0.150",
-      "until": "3.01.0.1",
+      "until": "1.0.0.151",
       "channel": "events",
       "command": 118,
       "direction": "serverToClient",
@@ -506,6 +497,35 @@
         }
       ],
       "note": "A client answers with CameraLock. A client ignores the message while something of its own holds the camera. It sends no CameraLock while watching a match."
+    },
+    {
+      "from": "1.0.0.151",
+      "until": "3.01.0.1",
+      "channel": "events",
+      "command": 118,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "locked",
+              "width": 1,
+              "note": "Set to lock the camera, clear to free it."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ],
+          "note": "Whether the camera is locked."
+        }
+      ],
+      "note": "A client ignores the message while something of its own holds the camera. It sends no CameraLock while watching a match."
     },
     {
       "from": "3.01.0.1",
@@ -534,7 +554,7 @@
           "note": "Whether the camera is locked."
         }
       ],
-      "note": "A client answers with CameraLock. A client ignores the message while something of its own holds the camera. It sends no CameraLock while watching a match."
+      "note": "A client ignores the message while something of its own holds the camera. It sends no CameraLock while watching a match."
     },
     {
       "from": "3.03.0.198",
@@ -567,6 +587,35 @@
     },
     {
       "from": "3.04.0.78",
+      "until": "3.6.0.388",
+      "channel": "events",
+      "command": 120,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "state",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "locked",
+              "width": 1,
+              "note": "Set to lock the camera, clear to free it."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ],
+          "note": "Whether the camera is locked."
+        }
+      ],
+      "note": "A client ignores the message while something of its own holds the camera. It sends no CameraLock while playing a replay."
+    },
+    {
+      "from": "3.6.0.388",
       "until": "4.1.0.171",
       "channel": "events",
       "command": 120,

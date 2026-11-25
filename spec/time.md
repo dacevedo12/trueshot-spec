@@ -82,9 +82,41 @@ catch up with its own.
 > on the client's own timer from then; a `ClockSync` sets it wherever it
 > stands.
 
-<!-- holds from 0.9.25.24 up to 4.18.0.271 -->
+<!-- holds from 0.9.25.24 up to 1.0.0.141 -->
 
-> **In 0.9.25.24–4.17**
+> **In 0.9.25.24–1.0.0.140**
+>
+> A client's match clock does not run until the first `ClockSync` arrives,
+> which
+> sets it. After that it runs on the client's own timer, and a later
+> `ClockSync` only corrects it, however long a server leaves between them.
+
+<!-- holds from 1.0.0.141 up to 1.0.0.150 -->
+
+> **In 1.0.0.141–1.0.0.149**
+>
+> A client's match clock does not run until the first `ClockSync` arrives,
+> which sets it.
+
+<!-- holds from 1.0.0.150 up to 1.0.0.151 -->
+
+> **In 1.0.0.150**
+>
+> A client's match clock does not run until the first `ClockSync` arrives,
+> which
+> sets it. After that it runs on the client's own timer, and a later
+> `ClockSync` only corrects it, however long a server leaves between them.
+
+<!-- holds from 1.0.0.151 up to 3.03.0.198 -->
+
+> **In 1.0.0.151–3.02**
+>
+> A client's match clock does not run until the first `ClockSync` arrives,
+> which sets it.
+
+<!-- holds from 3.03.0.198 up to 4.18.0.271 -->
+
+> **In 3.03–4.17**
 >
 > A client's match clock does not run until the first `ClockSync` arrives,
 > which
@@ -98,9 +130,26 @@ catch up with its own.
 > Once a `StartGame` sets `rules.fixedStep`, a client's match clock instead
 > runs in steps of 0.0333433 seconds a frame.
 
-<!-- holds from 0.9.25.24 up to 3.11.0.306 -->
+<!-- holds from 0.9.25.24 up to 3.7.0.328 -->
 
-> **In 0.9.25.24–3.10**
+> **In 0.9.25.24–3.6**
+>
+> `GameSpeed` sets the pace of the match clock
+> ([The match](match.md#holding-and-resuming) says what a hold does to it). A
+> server that runs a match at other than normal speed
+> MUST send `GameSpeed` with that speed, or a client's match clock runs apart
+> from its own.
+
+<!-- holds from 3.7.0.328 up to 3.10.0.237 -->
+
+> **In 3.7–3.9**
+>
+> A server that runs a match at other than normal speed MUST send `GameSpeed`
+> with that speed, or a client's match clock runs apart from its own.
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
 >
 > `GameSpeed` sets the pace of the match clock
 > ([The match](match.md#holding-and-resuming) says what a hold does to it). A
@@ -280,9 +329,36 @@ Moments on the match clock include:
 > A client reads when a monster arrives as match time, counted from the moment
 > `MatchStarted` gives, and a server MUST state it so.
 
-<!-- holds from 4.4.0.1858 up to 4.18.0.271 -->
+<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
 
-> **In 4.4–4.17**
+> **In 4.4**
+>
+> ## The game clock
+>
+> A client also runs a game clock of its own, whose pace `GameSpeed` sets,
+> from 0 to 10 times normal, and which `ClockSync` does not set. How long a
+> unit
+> stays dead, how long an object lives, and how long a client waits before
+> removing a dead unit (see [Objects and identifiers](objects.md)) run on it. A
+> server that runs a match at other than normal speed MUST send `GameSpeed`
+> with that speed, or those durations run apart from its own.
+
+<!-- holds from 4.5.0.260 up to 4.17.0.233 -->
+
+> **In 4.5–4.16**
+>
+> ## The game clock
+>
+> A client also runs a game clock of its own, whose pace `GameSpeed` sets, and
+> which `ClockSync` does not set. How long a unit stays dead, how long an
+> object lives, and how long a client waits before removing a dead unit (see
+> [Objects and identifiers](objects.md)) run on it. A server that runs a match
+> at other than normal speed MUST send `GameSpeed` with that speed, or those
+> durations run apart from its own.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
 >
 > ## The game clock
 >

@@ -48,8 +48,7 @@
           "type": "u32",
           "note": "The unit to use."
         }
-      ],
-      "note": "A client also sends it as a champion, a minion or a turret changes side (TeamChanged): once for each unit it holds whose target that unit is, naming that unit in the header."
+      ]
     },
     {
       "from": "1.0.0.140",

@@ -26,9 +26,48 @@ proof under that key.
 >
 > A client whose command line holds no double quote ends.
 
-<!-- holds from 0.9.25.24 up to 3.11.0.306 -->
+<!-- holds from 0.9.25.24 up to 1.0.0.133 -->
 
-> **In 0.9.25.24–3.10**
+> **In 0.9.25.24–1.0.0.132**
+>
+> Any whitespace separates the words of the fourth argument. A client whose
+> command line holds `.rep` anywhere plays a replay rather than connecting.
+
+<!-- holds from 1.0.0.133 up to 1.0.0.140 -->
+
+> **In 1.0.0.133–1.0.0.139**
+>
+> Any whitespace separates the words of the fourth argument.
+
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+
+> **In 1.0.0.140**
+>
+> Any whitespace separates the words of the fourth argument. A client whose
+> command line holds `.rep` anywhere plays a replay rather than connecting.
+
+<!-- holds from 1.0.0.141 up to 1.0.0.150 -->
+
+> **In 1.0.0.141–1.0.0.149**
+>
+> Any whitespace separates the words of the fourth argument.
+
+<!-- holds from 1.0.0.150 up to 3.7.0.328 -->
+
+> **In 1.0.0.150–3.6**
+>
+> Any whitespace separates the words of the fourth argument. A client whose
+> command line holds `.rep` anywhere plays a replay rather than connecting.
+
+<!-- holds from 3.7.0.328 up to 3.10.0.237 -->
+
+> **In 3.7–3.9**
+>
+> Any whitespace separates the words of the fourth argument.
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
 >
 > Any whitespace separates the words of the fourth argument. A client whose
 > command line holds `.rep` anywhere plays a replay rather than connecting.
@@ -232,9 +271,9 @@ server answers with `VersionSync`, and a client loads only where its
 > Straight after a `VersionSync` whose `agreement` is 1, a client sends
 > `JoinSide` on the roster channel.
 
-<!-- holds from 4.5.0.260 up to 4.21.0.0 -->
+<!-- holds from 4.17.0.233 up to 4.21.0.0 -->
 
-> **In 4.5–4.20**
+> **In 4.17–4.20**
 >
 > Straight after `VersionSync`, a client sends `JoinSide` on the roster
 > channel.
@@ -575,18 +614,47 @@ every client has sent `ClientReady`.
 > A player's card takes its place on the screen from that seat's place in the
 > `Roster`, and its name from that player's `SeatName`. The registration
 > answers (`Registered`) pair each player with a client id, and the latest
-> `SeatLoadProgress` for that client gives the card its progress.
-> The first `SeatLoadProgress` after the player's `SeatChampion` sets the card
-> up: its portrait and the champion's name, from that `SeatChampion`'s champion
-> and skin, then everything else from the `VersionSync` seat whose player id
-> the `SeatLoadProgress` names. A card with no `SeatChampion` yet shows a black
-> portrait, and one with no registration or no `SeatLoadProgress` yet says it
-> is not connected. A later `SeatChampion` does not change a card already set
-> up.
+> `SeatLoadProgress` for that client gives the card its progress. The first
+> `SeatLoadProgress` after the player's `SeatChampion` sets the card up: its
+> portrait and the champion's name, from that `SeatChampion`'s champion and
+> skin, then everything else from the `VersionSync` seat whose player id the
+> `SeatLoadProgress` names. A later `SeatChampion` does not change a card
+> already set up.
 
-<!-- holds from 4.4.0.1858 up to 4.18.0.271 -->
+<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
 
-> **In 4.4–4.17**
+> **In 4.4**
+>
+> A player's card takes its place on the screen from that seat's place in the
+> `Roster`, and its name from that player's `SeatName`. The registration
+> answers
+> (`Registered`) pair each player with a client id, and the latest
+> `SeatLoadProgress` for that client gives the card its progress and, on the
+> client's own card only, its ping. The first `SeatLoadProgress` after the
+> player's `SeatChampion` sets the card up: its portrait and the champion's
+> name, from that `SeatChampion`'s champion and skin, then everything else from
+> the `VersionSync` seat whose player id the `SeatLoadProgress` names. A card
+> with no `SeatChampion` yet shows a black portrait, and one with no
+> registration or no `SeatLoadProgress` yet says it is not connected. A later
+> `SeatChampion` does not change a card already set up.
+
+<!-- holds from 4.5.0.260 up to 4.17.0.233 -->
+
+> **In 4.5–4.16**
+>
+> A player's card takes its place on the screen from that seat's place in the
+> `Roster`, and its name from that player's `SeatName`. The registration
+> answers (`Registered`) pair each player with a client id, and the latest
+> `SeatLoadProgress` for that client gives the card its progress and, on the
+> client's own card only, its ping. The first `SeatLoadProgress` after the
+> player's `SeatChampion` sets the card up: its portrait and the champion's
+> name, from that `SeatChampion`'s champion and skin, then everything else from
+> the `VersionSync` seat whose player id the `SeatLoadProgress` names. A later
+> `SeatChampion` does not change a card already set up.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
 >
 > A player's card takes its place on the screen from that seat's place in the
 > `Roster`, and its name from that player's `SeatName`. The registration

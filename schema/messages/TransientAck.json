@@ -432,8 +432,7 @@
           "type": "u32",
           "note": "Which batch is being acknowledged, as the batch named itself."
         }
-      ],
-      "note": "A client sends it for a batch it took and for one whose values it dropped, but sends none for a batch where any entry names a unit it does not hold."
+      ]
     },
     {
       "from": "1.0.0.150",

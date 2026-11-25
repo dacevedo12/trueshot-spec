@@ -60,9 +60,22 @@ reports what each blow does with `Damage`.
 > A swing starts later by the timing byte of its `Attack` less 128, in
 > hundredths of a second.
 
-<!-- holds from 3.10.0.237 up to 4.18.0.271 -->
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
-> **In 3.10–4.17**
+> **In 3.10**
+>
+> Each `Attack` plays one swing, cutting off any swing still under way.
+> `TargetUnit` and `TargetHeldChampion` are not needed for a swing to show.
+
+<!-- holds from 3.11.0.306 up to 3.13.0.399 -->
+
+> **In 3.11–3.12**
+>
+> `TargetUnit` and `TargetHeldChampion` are not needed for a swing to show.
+
+<!-- holds from 3.13.0.399 up to 4.18.0.271 -->
+
+> **In 3.13–4.17**
 >
 > Each `Attack` plays one swing, cutting off any swing still under way.
 > `TargetUnit` and `TargetHeldChampion` are not needed for a swing to show.
@@ -156,9 +169,23 @@ A server reports damage with `Damage`.
 > replication. Whether a notice or a figure shows also depends on the player's
 > floating-text settings.
 
-<!-- holds from 0.9.25.24 up to 4.18.0.271 -->
+<!-- holds from 0.9.25.24 up to 1.0.0.141 -->
 
-> **In 0.9.25.24–4.17**
+> **In 0.9.25.24–1.0.0.140**
+>
+> `Damage` shows a figure for the results that carry one, normal and critical;
+> zero is the result that shows the unit as invulnerable, not a plain hit.
+
+<!-- holds from 1.0.0.150 up to 3.7.0.328 -->
+
+> **In 1.0.0.150–3.6**
+>
+> `Damage` shows a figure for the results that carry one, normal and critical;
+> zero is the result that shows the unit as invulnerable, not a plain hit.
+
+<!-- holds from 3.10.0.237 up to 4.18.0.271 -->
+
+> **In 3.10–4.17**
 >
 > `Damage` shows a figure for the results that carry one, normal and critical;
 > zero is the result that shows the unit as invulnerable, not a plain hit.
@@ -221,16 +248,16 @@ A server reports damage with `Damage`.
 > as that value less 128. Of the other results, 1 shows nothing, 2 a dodge and 5
 > a miss; 3 is critical, and 4 and 6 to 127 are normal.
 
-<!-- holds from 1.0.0.141 up to 1.0.0.150 -->
+<!-- holds from 1.0.0.150 up to 3.7.0.328 -->
 
-> **In 1.0.0.141–1.0.0.149**
+> **In 1.0.0.150–3.6**
 >
 > Of the other results of `Damage`, 1 shows nothing, 2 a dodge and 5 a miss; 3
-> is critical.
+> is critical, and 4 and any above 5 are normal.
 
-<!-- holds from 1.0.0.150 up to 3.11.0.306 -->
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
-> **In 1.0.0.150–3.10**
+> **In 3.10**
 >
 > Of the other results of `Damage`, 1 shows nothing, 2 a dodge and 5 a miss; 3
 > is critical, and 4 and any above 5 are normal.
@@ -248,9 +275,9 @@ A unit's death is `UnitDied`, a champion's `ChampionDied`, a building's
 `BuildingDied`, and an inhibitor's `InhibitorDied`. `ForceDeath` puts a unit
 into its death.
 
-<!-- holds from 0.8.13.26 up to 1.0.0.150 -->
+<!-- holds from 0.8.13.26 up to 1.0.0.141 -->
 
-> **In 0.8.13.26–1.0.0.149**
+> **In 0.8.13.26–1.0.0.140**
 >
 > A client ignores `UnitDied` or `ChampionDied` naming a unit already dead, and
 > puts a unit down only where a killer is named.
@@ -320,9 +347,15 @@ into its death.
 > A client ignores `UnitDied` or `ChampionDied` naming a unit already dead, and
 > puts a unit down only where a killer is named.
 
-<!-- holds from 0.8.13.26 up to 3.11.0.306 -->
+<!-- holds from 0.8.13.26 up to 1.0.0.111 -->
 
-> **In 0.8.13.26–3.10**
+> **In 0.8.13.26–1.0.0.110**
+>
+> A killer a client does not hold still puts the unit down.
+
+<!-- holds from 1.0.0.126 up to 3.11.0.306 -->
+
+> **In 1.0.0.126–3.10**
 >
 > A killer a client does not hold still puts the unit down.
 
@@ -438,9 +471,16 @@ A client sends `UseObject` as its player right-clicks a unit that can be used.
 >
 > A client sends `UseObject` at no other time.
 
-<!-- holds from 1.0.0.140 up to 1.0.0.151 -->
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
 
-> **In 1.0.0.140–1.0.0.150**
+> **In 1.0.0.140**
+>
+> A client also sends `UseObject` for a unit its champion is attacking, as that
+> unit changes side.
+
+<!-- holds from 1.0.0.150 up to 1.0.0.151 -->
+
+> **In 1.0.0.150**
 >
 > A client also sends `UseObject` for a unit its champion is attacking, as that
 > unit changes side.

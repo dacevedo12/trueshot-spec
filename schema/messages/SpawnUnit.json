@@ -596,7 +596,7 @@
           ]
         }
       ],
-      "note": "A client deletes no object holding the new unit's id: both stay. clone, where nonzero, has the new unit copy that unit's health, resource, their maxima and its other stats. The header names the unit that put it there."
+      "note": "The header names the unit that put it there."
     },
     {
       "from": "1.0.0.63",
@@ -684,8 +684,7 @@
             }
           ]
         }
-      ],
-      "note": "A client deletes no object holding the new unit's id. It does nothing more where it cannot make the unit. clone, where nonzero, has the new unit copy that unit's health, resource, their maxima and its other stats. The header names the unit that put it there."
+      ]
     },
     {
       "from": "1.0.0.74",
@@ -1699,7 +1698,7 @@
           ]
         }
       ],
-      "note": "A client deletes no object holding the new unit's id. It does nothing more where it cannot make the unit. clone, where nonzero, is copied, state and inventory."
+      "note": "It does nothing more where it cannot make the unit. clone, where nonzero, is copied, state and inventory."
     },
     {
       "from": "1.0.0.117",
@@ -1793,7 +1792,7 @@
           ]
         }
       ],
-      "note": "A client deletes no object holding the new unit's id. It does nothing more where it cannot make the unit. clone, where nonzero, is copied, state and inventory."
+      "note": "It does nothing more where it cannot make the unit. clone, where nonzero, is copied, state and inventory."
     },
     {
       "from": "1.0.0.119",
@@ -1887,7 +1886,7 @@
           ]
         }
       ],
-      "note": "A client deletes no object holding the new unit's id. It does nothing more where it cannot make the unit. clone, where nonzero, is copied, state and inventory."
+      "note": "It does nothing more where it cannot make the unit. clone, where nonzero, is copied, state and inventory."
     },
     {
       "from": "1.0.0.120",
@@ -1986,7 +1985,7 @@
           ]
         }
       ],
-      "note": "A client deletes no object holding the new unit's id. It does nothing more where it cannot make the unit. clone, where nonzero, is copied, state and inventory."
+      "note": "It does nothing more where it cannot make the unit. clone, where nonzero, is copied, state and inventory."
     },
     {
       "from": "1.0.0.122",
@@ -2090,7 +2089,7 @@
           "note": "The name the client loads its art under, padded with zero bytes."
         }
       ],
-      "note": "A client deletes no object holding the new unit's id. It does nothing more where it cannot make the unit. clone, where nonzero, is copied, state and inventory."
+      "note": "It does nothing more where it cannot make the unit. clone, where nonzero, is copied, state and inventory."
     },
     {
       "from": "1.0.0.124",
@@ -2194,7 +2193,7 @@
           "note": "The name the client loads its art under, padded with zero bytes."
         }
       ],
-      "note": "A client deletes no object holding the new unit's id. It does nothing more where it cannot make the unit. clone, where nonzero, is copied, state and inventory."
+      "note": "It does nothing more where it cannot make the unit. clone, where nonzero, is copied, state and inventory."
     },
     {
       "from": "1.0.0.125",
@@ -2421,8 +2420,7 @@
           "size": 64,
           "note": "The name the client loads its art under, padded with zero bytes."
         }
-      ],
-      "note": "A client deletes no object holding the new unit's id, and does nothing more where it cannot make the unit. clone, where nonzero, is copied, state and inventory."
+      ]
     },
     {
       "from": "1.0.0.132",

@@ -1953,8 +1953,7 @@
             }
           }
         }
-      ],
-      "note": "A client acts on the change at once only where locks is exactly 1, 4, 8, 16, 32 or 128; for any other value, 2 and 64 alone included, every lock but chat takes effect where the client next checks it."
+      ]
     },
     {
       "from": "4.11.0.386",
@@ -1996,8 +1995,7 @@
             }
           }
         }
-      ],
-      "note": "A client acts on the change at once only where locks is exactly 1, 4, 8, 16, 32 or 128; for any other value, 2 and 64 alone included, every lock but chat takes effect where the client next checks it."
+      ]
     },
     {
       "from": "4.17.0.233",
@@ -2084,8 +2082,7 @@
             }
           }
         }
-      ],
-      "note": "A client acts on the change at once only where locks is exactly 1, 4, 8, 16, 32 or 128; any other value, 2 and 64 alone included, still changes what is locked."
+      ]
     },
     {
       "from": "4.20.0.315",

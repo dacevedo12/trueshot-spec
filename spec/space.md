@@ -46,9 +46,23 @@ A direction is carried as a vector, not as an angle:
 > `FaceDirection` turns the unit at once where bit 0 of its flags is clear, and
 > toward that direction at its own pace where it is set.
 
-<!-- holds from 4.4.0.1858 up to 4.21.0.0 -->
+<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
 
-> **In 4.4–4.20**
+> **In 4.4**
+>
+> `FaceDirection` turns the unit over the time it gives where its flags say
+> so, and at once otherwise.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> `FaceDirection` turns the unit over the time it gives where its flags say
+> so, and at once otherwise.
+
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
 >
 > `FaceDirection` turns the unit over the time it gives where its flags say
 > so, and at once otherwise.
@@ -101,9 +115,9 @@ spawn positions from its own data (see [The client's data](data.md)), and can
 load only a map it has data for. A compact path takes its origin from the same
 data (see [Movement](movement.md)).
 
-<!-- holds from 0.9.22.14 up to 4.21.0.0 -->
+<!-- holds from 0.9.25.24 up to 4.21.0.0 -->
 
-> **In 0.9.22.14–4.20**
+> **In 0.9.25.24–4.20**
 >
 > `VersionSync`'s `map` names the map to load by number.
 

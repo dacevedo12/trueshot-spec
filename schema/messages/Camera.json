@@ -251,6 +251,41 @@
     },
     {
       "from": "1.0.0.87",
+      "until": "1.0.0.96",
+      "channel": "requests",
+      "command": 63,
+      "direction": "clientToServer",
+      "reliability": "unreliable",
+      "fields": [
+        {
+          "name": "lookAtX",
+          "type": "f32",
+          "note": "The point the view looks at, along one ground axis: where it stands, plus 2000 units the way it faces."
+        },
+        {
+          "name": "lookAtY",
+          "type": "f32",
+          "note": "Its height, taken the same way."
+        },
+        {
+          "name": "lookAtZ",
+          "type": "f32",
+          "note": "Along the other ground axis, taken the same way."
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id the sender holds: that of the client the view belongs to."
+        },
+        {
+          "name": "syncId",
+          "type": "u8",
+          "note": "Names this report, counting up as the view moves. A client sends the report again until a server returns the name."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.96",
       "until": "1.0.0.97",
       "channel": "requests",
       "command": 63,
@@ -474,8 +509,7 @@
           "type": "u8",
           "note": "Names this report, counting up as the view moves. A client sends the report again until a server returns the name."
         }
-      ],
-      "note": "A client sends each report once where a server answers it, and again and again where a server does not."
+      ]
     },
     {
       "from": "1.0.0.124",
@@ -522,8 +556,7 @@
           "type": "u8",
           "note": "Names this report, counting up as the view moves. A client sends the report again until a server returns the name."
         }
-      ],
-      "note": "A client sends each report once where a server answers it, and again and again where a server does not."
+      ]
     },
     {
       "from": "1.0.0.126",
@@ -575,6 +608,50 @@
     },
     {
       "from": "1.0.0.127",
+      "until": "1.0.0.132",
+      "channel": "requests",
+      "command": 48,
+      "direction": "clientToServer",
+      "reliability": "unreliable",
+      "fields": [
+        {
+          "name": "positionX",
+          "type": "f32"
+        },
+        {
+          "name": "positionY",
+          "type": "f32"
+        },
+        {
+          "name": "positionZ",
+          "type": "f32"
+        },
+        {
+          "name": "directionX",
+          "type": "f32"
+        },
+        {
+          "name": "directionY",
+          "type": "f32"
+        },
+        {
+          "name": "directionZ",
+          "type": "f32"
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the client the view belongs to."
+        },
+        {
+          "name": "syncId",
+          "type": "u8",
+          "note": "Names this report, counting up as the view moves. A client sends the report again until a server returns the name."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.132",
       "until": "1.0.0.144",
       "channel": "requests",
       "command": 48,

@@ -103,9 +103,21 @@ with `SpellUpgraded`, and a client shows the new level;
 are what `LevelUp` carries. A server can set how far each
 spell can be raised, and at which champion levels, with `SpellRankLimits`.
 
-<!-- holds from 0.8.13.26 up to 4.18.0.271 -->
+<!-- holds from 0.8.13.26 up to 3.7.0.328 -->
 
-> **In 0.8.13.26–4.17**
+> **In 0.8.13.26–3.6**
+>
+> A client spends the point as it sends `UpgradeSpell`.
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> A client spends the point as it sends `UpgradeSpell`.
+
+<!-- holds from 3.13.0.399 up to 4.18.0.271 -->
+
+> **In 3.13–4.17**
 >
 > A client spends the point as it sends `UpgradeSpell`.
 

@@ -345,8 +345,7 @@
           "type": "u32",
           "note": "Which cue or event."
         }
-      ],
-      "note": "The header names a champion; a client acts on it whichever champion that is."
+      ]
     },
     {
       "from": "1.0.0.144",
@@ -377,8 +376,7 @@
           "type": "u32",
           "note": "Which cue or event."
         }
-      ],
-      "note": "The header names a champion; a client acts on it whichever champion that is."
+      ]
     },
     {
       "from": "1.0.0.150",
@@ -526,7 +524,7 @@
     },
     {
       "from": "3.13.0.399",
-      "until": "4.1.0.171",
+      "until": "3.14.0.700",
       "channel": "events",
       "command": 220,
       "direction": "serverToClient",
@@ -565,6 +563,45 @@
       "note": "The header names a champion; a client acts on it whichever champion that is, and does nothing where the header names none."
     },
     {
+      "from": "3.14.0.700",
+      "until": "4.1.0.171",
+      "channel": "events",
+      "command": 220,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "cue",
+          "type": "u8",
+          "note": "What to do. A client takes any other value and does nothing.",
+          "values": {
+            "0": {
+              "name": "prepare"
+            },
+            "1": {
+              "name": "begin"
+            },
+            "2": {
+              "name": "end"
+            },
+            "3": {
+              "name": "changeState"
+            }
+          }
+        },
+        {
+          "name": "event",
+          "type": "u32",
+          "note": "Which cue or event."
+        },
+        {
+          "name": "parameter",
+          "type": "u32",
+          "note": "Which state, where the state changes."
+        }
+      ]
+    },
+    {
       "from": "4.1.0.171",
       "until": "4.4.0.1858",
       "channel": "events",
@@ -601,8 +638,7 @@
           "type": "u32",
           "note": "Which state, where the state changes."
         }
-      ],
-      "note": "The header names a champion; a client acts on it whichever champion that is, and does nothing where the header names none."
+      ]
     },
     {
       "from": "4.4.0.1858",
@@ -681,8 +717,7 @@
           "type": "u32",
           "note": "Which state, where the state changes."
         }
-      ],
-      "note": "A client plays the cue for whichever champion the header names, and ignores the message where it names none."
+      ]
     },
     {
       "from": "4.11.0.386",

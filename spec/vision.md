@@ -22,9 +22,45 @@ A server brings a unit into what a client's side can see with `EnterSight`.
 > `EnterSight` states where the unit stands or which path it walks, and nothing
 > of its looks, shields, health or resource.
 
-<!-- holds from 1.0.0.97 up to 4.21.0.0 -->
+<!-- holds from 1.0.0.97 up to 1.0.0.111 -->
 
-> **In 1.0.0.97–4.20**
+> **In 1.0.0.97–1.0.0.110**
+>
+> `EnterSight` states the unit's items.
+
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
+
+> **In 1.0.0.126**
+>
+> `EnterSight` states the unit's items.
+
+<!-- holds from 1.0.0.132 up to 3.7.0.328 -->
+
+> **In 1.0.0.132–3.6**
+>
+> `EnterSight` states the unit's items.
+
+<!-- holds from 3.10.0.237 up to 3.11.0.306 -->
+
+> **In 3.10**
+>
+> `EnterSight` states the unit's items.
+
+<!-- holds from 3.13.0.399 up to 4.5.0.260 -->
+
+> **In 3.13–4.4**
+>
+> `EnterSight` states the unit's items.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> `EnterSight` states the unit's items.
+
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
 >
 > `EnterSight` states the unit's items.
 
@@ -175,9 +211,48 @@ A region is a patch of ground with sight of its own. A server places one with
 [Objects and identifiers](objects.md) says how regions are named and when one
 ends.
 
-<!-- holds from 0.8.13.26 up to 4.18.0.271 -->
+<!-- holds from 0.8.13.26 up to 1.0.0.111 -->
 
-> **In 0.8.13.26–4.17**
+> **In 0.8.13.26–1.0.0.110**
+>
+> A region can reveal hidden units within it. A region granting sight has a
+> client clear its map's cover over it.
+
+<!-- holds from 1.0.0.111 up to 1.0.0.126 -->
+
+> **In 1.0.0.111–1.0.0.125**
+>
+> A region can reveal hidden units within it.
+
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
+
+> **In 1.0.0.126**
+>
+> A region can reveal hidden units within it. A region granting sight has a
+> client clear its map's cover over it.
+
+<!-- holds from 1.0.0.127 up to 1.0.0.132 -->
+
+> **In 1.0.0.127–1.0.0.131**
+>
+> A region can reveal hidden units within it.
+
+<!-- holds from 1.0.0.132 up to 3.14.0.700 -->
+
+> **In 1.0.0.132–3.13**
+>
+> A region can reveal hidden units within it. A region granting sight has a
+> client clear its map's cover over it.
+
+<!-- holds from 3.14.0.700 up to 4.4.0.1858 -->
+
+> **In 3.14–4.3**
+>
+> A region can reveal hidden units within it.
+
+<!-- holds from 4.4.0.1858 up to 4.18.0.271 -->
+
+> **In 4.4–4.17**
 >
 > A region can reveal hidden units within it. A region granting sight has a
 > client clear its map's cover over it.
@@ -218,9 +293,9 @@ ends.
 A client acts on a message about whichever unit it names, its own champion or
 another, so what a client knows is whatever a server sends it.
 
-<!-- holds from 0.8.13.26 up to 4.20.0.315 -->
+<!-- holds from 0.8.13.26 up to 4.18.0.271 -->
 
-> **In 0.8.13.26–4.19**
+> **In 0.8.13.26–4.17**
 >
 > `UnitDiedOnMap`, `InventorySnapshotOnMap`, `FloatingTextOnMap` and
 > `SpellSlotChangedForOwner` do not exist, so a server sends both audiences of

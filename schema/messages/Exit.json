@@ -51,7 +51,6 @@
       "command": 115,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting, closes the window or declines to reconnect.",
       "fields": []
     },
     {
@@ -61,7 +60,6 @@
       "command": 118,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "note": "A client sends it as it leaves as one abandoning the match: as its player confirms quitting, closes the window or declines to reconnect.",
       "fields": []
     },
     {

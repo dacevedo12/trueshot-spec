@@ -38,9 +38,9 @@ point for a player's view with `CameraBehaviour`.
 > camera itself, and sends none while it plays a match back, from a replay, a
 > spectator stream or over its game connection.
 
-<!-- holds from 3.04.0.78 up to 4.21.0.0 -->
+<!-- holds from 3.6.0.388 up to 4.21.0.0 -->
 
-> **In 3.04–4.20**
+> **In 3.6–4.20**
 >
 > A client answers `CameraLockSet` with `CameraLock` except while it holds its
 > camera itself, and sends none while playing a replay.
@@ -112,26 +112,12 @@ point for a player's view with `CameraBehaviour`.
 > units, at most every tenth of a second, and never while its view is locked; a
 > report sent again until answered can come sooner.
 
-<!-- holds from 1.0.0.111 up to 1.0.0.126 -->
-
-> **In 1.0.0.111–1.0.0.125**
->
-> A client's view report, `Camera`, goes out as its view moves, and never while
-> its view is locked.
-
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
 > **In 1.0.0.126**
 >
 > A client's view report, `Camera`, goes out as its view moves at least 200
 > units, at most every tenth of a second, and never while its view is locked.
-
-<!-- holds from 1.0.0.127 up to 1.0.0.132 -->
-
-> **In 1.0.0.127–1.0.0.131**
->
-> A client's view report, `Camera`, goes out as its view moves, and never while
-> its view is locked.
 
 <!-- holds from 1.0.0.132 up to 1.0.0.141 -->
 
@@ -150,26 +136,12 @@ point for a player's view with `CameraBehaviour`.
 > view is locked or while it watches a match; a report sent again until
 > answered can come sooner.
 
-<!-- holds from 3.7.0.328 up to 3.10.0.237 -->
-
-> **In 3.7–3.9**
->
-> A client's view report, `Camera`, goes out as its view moves, and never while
-> its view is locked.
-
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
 > **In 3.10**
 >
 > A client's view report, `Camera`, goes out as its view moves at least 200
 > units, at most every tenth of a second, and never while its view is locked.
-
-<!-- holds from 3.11.0.306 up to 3.13.0.399 -->
-
-> **In 3.11–3.12**
->
-> A client's view report, `Camera`, goes out as its view moves, and never while
-> its view is locked.
 
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
@@ -187,9 +159,16 @@ point for a player's view with `CameraBehaviour`.
 > locked or while it watches a match; a report sent again until answered can
 > come sooner.
 
-<!-- holds from 4.1.0.171 up to 4.20.0.315 -->
+<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
 
-> **In 4.1–4.19**
+> **In 4.4**
+>
+> A client's view report, `Camera`, goes out as its view moves, and never while
+> its view is locked.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
 >
 > A client's view report, `Camera`, goes out as its view moves, and never while
 > its view is locked.
@@ -352,13 +331,6 @@ alone closes the shop and turns off its key.
 > ignore it. It acts on a lock at once only where the message's mask is exactly
 > one of 1, 4, 8, 16, 32 or 128.
 
-<!-- holds from 3.7.0.328 up to 3.10.0.237 -->
-
-> **In 3.7–3.9**
->
-> A client keeps every lock a message sets or clears, but it acts on a lock at
-> once only where the message's mask is exactly one of 1, 4, 8, 16, 32 or 128.
-
 <!-- holds from 3.10.0.237 up to 3.11.0.306 -->
 
 > **In 3.10**
@@ -373,9 +345,9 @@ alone closes the shop and turns off its key.
 >
 > A watching client ignores `InputLock`.
 
-<!-- holds from 4.4.0.1858 up to 4.20.0.315 -->
+<!-- holds from 4.4.0.1858 up to 4.18.0.271 -->
 
-> **In 4.4–4.19**
+> **In 4.4–4.17**
 >
 > A message that locks other input along with the shop stops the shop opening,
 > but leaves an open shop open and its key on.

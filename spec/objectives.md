@@ -46,9 +46,15 @@ match when a camp is next due with `CampTimer`.
 >
 > `CampCleared` sets no time for the camp to fill again.
 
-<!-- holds from 4.17.0.233 up to 4.21.0.0 -->
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
 
-> **In 4.17–4.20**
+> **In 4.17**
+>
+> `CampCleared` also sets when the camp fills again.
+
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
 >
 > `CampCleared` also sets when the camp fills again.
 

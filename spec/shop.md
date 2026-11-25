@@ -124,12 +124,6 @@ the shop sends nothing.
 > Opening the shop sends `TutorialShopOpened`, in any match, except while the
 > shop is locked.
 
-<!-- holds from 1.0.0.61 up to 1.0.0.74 -->
-
-> **In 1.0.0.61–1.0.0.73**
->
-> Opening the shop sends `TutorialShopOpened`, in any match.
-
 <!-- holds from 1.0.0.74 up to 1.0.0.75 -->
 
 > **In 1.0.0.74**
@@ -146,9 +140,16 @@ the shop sends nothing.
 > shop and asks to buy whether or not the shop is locked, except where a setting
 > of its own has it heed the lock.
 
-<!-- holds from 1.0.0.96 up to 1.0.0.127 -->
+<!-- holds from 1.0.0.96 up to 1.0.0.111 -->
 
-> **In 1.0.0.96–1.0.0.126**
+> **In 1.0.0.96–1.0.0.110**
+>
+> Opening the shop sends `TutorialShopOpened`, in any match, except while the
+> shop is locked.
+
+<!-- holds from 1.0.0.126 up to 1.0.0.127 -->
+
+> **In 1.0.0.126**
 >
 > Opening the shop sends `TutorialShopOpened`, in any match, except while the
 > shop is locked.

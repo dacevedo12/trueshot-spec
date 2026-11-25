@@ -98,7 +98,7 @@
         {
           "name": "item",
           "type": "u32",
-          "note": "Which item, by the number the client knows it as. For an item it does not know, a client empties the slot and still takes inSlot."
+          "note": "Which item, by the number the client knows it as."
         },
         {
           "name": "inSlot",
@@ -228,18 +228,42 @@
         {
           "name": "item",
           "type": "u32",
-          "note": "Which item, by the number the client knows it as. For an item it does not know, a client empties the slot and still takes inSlot."
+          "note": "Which item, by the number the client knows it as."
         },
         {
           "name": "inSlot",
           "type": "u8",
           "note": "How many of the item the slot holds now; a client applies zero as well."
         }
-      ],
-      "note": "There is no charges field: a client takes the charges from the item's own data where the item carries a spell of its own to use, and otherwise leaves the slot's charges as they were."
+      ]
     },
     {
       "from": "1.0.0.82",
+      "until": "1.0.0.86",
+      "channel": "events",
+      "command": 45,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "The slot it went to, 0 to 36. A larger value than 36 has no defined effect."
+        },
+        {
+          "name": "item",
+          "type": "u32",
+          "note": "Which item, by the number the client knows it as."
+        },
+        {
+          "name": "inSlot",
+          "type": "u8",
+          "note": "How many of the item the slot holds now; a client applies zero as well."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.86",
       "until": "1.0.0.87",
       "channel": "events",
       "command": 45,
@@ -1604,8 +1628,7 @@
             }
           ]
         }
-      ],
-      "note": "It answers no request: a client puts what follows in the slot named whether or not anything asked for it. Where inSlot is zero, it leaves the slot as it was."
+      ]
     },
     {
       "from": "4.20.0.315",

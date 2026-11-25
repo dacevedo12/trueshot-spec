@@ -443,8 +443,7 @@
           "bits": [
             {
               "name": "active",
-              "width": 1,
-              "note": "Set where the camp is active, clear where it is cleared."
+              "width": 1
             },
             {
               "name": "sideOrder",
@@ -624,8 +623,7 @@
             }
           ]
         }
-      ],
-      "note": "A client marks the camp empty, even one that had just filled."
+      ]
     },
     {
       "from": "1.0.0.143",
@@ -661,8 +659,7 @@
             }
           ]
         }
-      ],
-      "note": "A client marks the camp empty, even one that had just filled."
+      ]
     },
     {
       "from": "1.0.0.144",
@@ -698,8 +695,7 @@
             }
           ]
         }
-      ],
-      "note": "A client marks the camp empty, even one that had just filled."
+      ]
     },
     {
       "from": "1.0.0.150",

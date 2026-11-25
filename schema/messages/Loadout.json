@@ -156,7 +156,6 @@
       "command": 83,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client applies it whenever it arrives, for a champion it holds: it sets the champion's two summoner slots from summoners, and keeps the runes, the choices and level.",
       "fields": [
         {
           "name": "runes",
@@ -449,7 +448,6 @@
       "command": 90,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client applies it whenever it arrives: it keeps the runes, the choices and level, and puts the two summoner spells in the champion's summoner slots.",
       "fields": [
         {
           "name": "runes",
@@ -498,7 +496,6 @@
       "command": 94,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client applies it whenever it arrives: it keeps the runes, the choices and level, and puts the two summoner spells in the champion's summoner slots.",
       "fields": [
         {
           "name": "runes",
@@ -596,7 +593,6 @@
       "command": 94,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "A client applies it whenever it arrives: it keeps the runes, the choices and level, and puts the two summoner spells in the champion's summoner slots.",
       "fields": [
         {
           "name": "runes",

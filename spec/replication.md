@@ -94,9 +94,21 @@ batch it answers, in the order the batches came, including a batch that repeats
 the `syncId` of the batch before it. [Ordering](ordering.md) says which batches
 a client takes, and what that requires of a server.
 
-<!-- holds from 0.9.25.24 up to 3.11.0.306 -->
+<!-- holds from 0.9.25.24 up to 1.0.0.141 -->
 
-> **In 0.9.25.24–3.10**
+> **In 0.9.25.24–1.0.0.140**
+>
+> A client answers a batch as soon as it arrives, within the spawn run or not.
+
+<!-- holds from 1.0.0.150 up to 1.0.0.151 -->
+
+> **In 1.0.0.150**
+>
+> A client answers a batch as soon as it arrives, within the spawn run or not.
+
+<!-- holds from 3.03.0.198 up to 3.11.0.306 -->
+
+> **In 3.03–3.10**
 >
 > A client answers a batch as soon as it arrives, within the spawn run or not.
 
@@ -714,9 +726,585 @@ Each row gives the group and bits that name a value and what the value is.
 > A server first names a building in the `EnterSight` that brings it into a
 > side's sight.
 
-<!-- holds from 4.4.0.1858 up to 4.21.0.0 -->
+<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
 
-> **In 4.4–4.20**
+> **In 4.4**
+>
+> ## A champion
+>
+> | Group | Bits     | Value                                                                                                  | Shape    |
+> | ----- | -------- | ------------------------------------------------------------------------------------------------------ | -------- |
+> | 0     | 0        | Gold in hand                                                                                           | measured |
+> | 0     | 1        | Gold earned in all                                                                                     | measured |
+> | 1     | 0 to 4   | What the champion is doing, and four kinds of harm it is proof against                                 | counted  |
+> | 1     | 5        | Damage it deals by striking                                                                            | measured |
+> | 1     | 6        | Damage its spells deal before modifiers                                                                | measured |
+> | 1     | 7        | How often it turns a blow aside                                                                        | measured |
+> | 1     | 8        | How often it strikes critically                                                                        | measured |
+> | 1     | 9        | Armour                                                                                                 | measured |
+> | 1     | 10       | Spell resistance                                                                                       | measured |
+> | 1     | 11 to 12 | How fast health and resource return                                                                    | measured |
+> | 1     | 13       | How far it strikes from                                                                                | measured |
+> | 1     | 14 to 16 | Flat and percent modifiers on the damage it strikes with, then the flat modifier on its spells' damage | measured |
+> | 1     | 17 to 18 | Flat and percent reduction of the spell damage it takes                                                | measured |
+> | 1     | 19       | A multiplier on how fast it strikes                                                                    | measured |
+> | 1     | 20       | A flat addition to how far from the champion an aimed spell's point is allowed to land                 | measured |
+> | 1     | 21       | A modifier on its cooldowns                                                                            | measured |
+> | 1     | 22       | When its passive's cooldown ends, as a moment on the match clock                                       | measured |
+> | 1     | 23       | How long its passive's cooldown lasts in all                                                           | measured |
+> | 1     | 24 to 25 | How much armour it cuts through, flat then as the share left standing                                  | measured |
+> | 1     | 26 to 27 | How much spell resistance it cuts through, flat then as the share left standing                        | measured |
+> | 1     | 28       | Life steal                                                                                             | measured |
+> | 1     | 29       | Spell vamp                                                                                             | measured |
+> | 1     | 30       | Crowd-control reduction                                                                                | measured |
+> | 3     | 0 to 1   | Health and resource as they stand                                                                      | measured |
+> | 3     | 2 to 3   | Health and resource at their greatest                                                                  | measured |
+> | 3     | 4        | Experience                                                                                             | measured |
+> | 3     | 5 to 9   | Lifetime, and how far the champion sees                                                                | measured |
+> | 3     | 10       | How fast it moves                                                                                      | measured |
+> | 3     | 11 to 12 | Its size, and how wide a path it needs                                                                 | measured |
+> | 3     | 13       | Level                                                                                                  | counted  |
+> | 3     | 14 to 16 | Kills taken from no side, and whether anything is allowed to aim at it                                 | counted  |
+>
+> A server writes 0x800007 in group 1 bit 0.
+>
+> ### What a client shows from this table
+>
+> A client shows, for a champion:
+>
+> - its health and resource bars, as they stand (group 3 bits 0 and 1) out of
+>   their greatest (bits 2 and 3);
+> - its level (group 3 bit 13), on the portrait and over the health bar;
+> - its gold (group 0 bit 0);
+> - in the panel under its portrait, ability power (group 1 bit 6), armour (bit
+>   9), spell resistance (bit 10), movement speed (group 3 bit 10), and attack
+>   speed as the champion's own base attack speed times group 1 bit 19;
+> - in its panel of statistics, group 1 bit 21 as cooldown reduction, its size
+>   as a percent whatever its sign; bits 28 and 29 as life steal and spell vamp,
+>   and bit 30 as tenacity, each a fraction shown as a percent; and bits 24 and
+>   26 as flat penetration of armour and of spell resistance.
+>
+> The attack damage the panel under the portrait shows is the client's own
+> figure for the champion's level, with group 1 bit 14 added to it and drawn as
+> a bonus.
+>
+> Until a champion's first batch arrives, the panel shows figures the client
+> holds for that champion. Once one arrives, it shows the values batches carry,
+> and armour, spell resistance, ability power and movement speed read 0 where
+> no
+> batch has carried them.
+>
+> Each percent penetration field carries the share of armour or spell
+> resistance
+> left standing, 1 where nothing is cut through.
+>
+> A spell's cooldown lasts its base length times one plus the modifier at bit
+> 21,
+> so a reduction is carried as a negative fraction and the panel shows its
+> size.
+>
+> Bit 22 sets the countdown a client shows on the champion's passive. It is a
+> moment on the match clock (see [Time](time.md)), in seconds, on the same
+> clock
+> as the time a `ClockSync` carries, and not the time left: 120 at the opening
+> of a match starts the countdown from 2:00. Once that moment has passed, the
+> passive shows ready. Bit 23 is how long the whole cooldown lasts, in seconds,
+> and a client shades the passive's icon by the time left over that length; the
+> countdown itself follows bit 22 alone.
+>
+> ## A turret
+>
+> | Group | Bits   | Value                                                                | Shape    |
+> | ----- | ------ | -------------------------------------------------------------------- | -------- |
+> | 1     | 0 to 1 | Resource at its greatest, then as it stands                          | measured |
+> | 1     | 2 to 6 | What the turret is doing, and four kinds of harm it is proof against | counted  |
+> | 1     | 7      | Damage it deals by striking                                          | measured |
+> | 1     | 8      | Armour                                                               | measured |
+> | 3     | 0 to 1 | Health as it stands, then at its greatest                            | measured |
+> | 3     | 2 to 3 | How far it sees                                                      | measured |
+> | 3     | 4      | How fast it moves                                                    | measured |
+> | 3     | 5      | Its size                                                             | measured |
+> | 5     | 0 to 1 | Whether anything is allowed to aim at it, and which side is          | counted  |
+>
+> Where a server raises a turret's health at its greatest, it raises health as
+> it
+> stands to the same value.
+>
+> ## A minion, and a unit belonging to no side
+>
+> | Group | Bits    | Value                                                                      | Shape    |
+> | ----- | ------- | -------------------------------------------------------------------------- | -------- |
+> | 1     | 0 to 1  | Health as it stands, then at its greatest                                  | measured |
+> | 1     | 2 to 4  | How long it lives, as it stands and at its greatest, and the count of that | measured |
+> | 1     | 5 to 6  | Resource at its greatest, then as it stands                                | measured |
+> | 1     | 7 to 11 | What the unit is doing, and four kinds of harm it is proof against         | counted  |
+> | 1     | 12      | Damage it deals by striking                                                | measured |
+> | 3     | 0 to 1  | How far it sees                                                            | measured |
+> | 3     | 2       | How fast it moves                                                          | measured |
+> | 3     | 3       | Its size                                                                   | measured |
+> | 3     | 4 to 5  | Whether anything is allowed to aim at it, and which side is                | counted  |
+>
+> ## A building
+>
+> This table holds for inhibitors and nexuses, named as
+> [Objects and identifiers](objects.md#net-ids-of-what-a-map-holds) gives.
+> Where
+> a server replicates a map's buildings, it sends these two groups and nothing
+> else. On map 8 it replicates none.
+>
+> | Group | Bits   | Value                                                       | Shape    |
+> | ----- | ------ | ----------------------------------------------------------- | -------- |
+> | 1     | 0      | A health figure                                             | measured |
+> | 1     | 1      | Whether the building is proof against harm                  | counted  |
+> | 5     | 0 to 1 | Whether anything is allowed to aim at it, and which side is | counted  |
+>
+> The health figure does not follow the building's health. A server SHOULD send
+> an inhibitor's as 4000 on map 1 and 3000 on map 10, a nexus's as 5500 on
+> both,
+> and every building's as 0 on map 12. A server SHOULD NOT change it, even as a
+> building is destroyed. A server first names a building in the `EnterSight`
+> that brings it into a side's sight.
+>
+> ## A prop
+>
+> A server MAY leave a prop's values unreplicated.
+>
+> | Group | Bits   | Value                                                       | Shape    |
+> | ----- | ------ | ----------------------------------------------------------- | -------- |
+> | 1     | 2      | Whether the prop is proof against harm                      | counted  |
+> | 3     | 0 to 1 | How far it sees                                             | measured |
+> | 3     | 2      | How fast it moves                                           | measured |
+> | 3     | 3      | Its size                                                    | measured |
+> | 3     | 4 to 5 | Whether anything is allowed to aim at it, and which side is | counted  |
+
+<!-- holds from 4.5.0.260 up to 4.17.0.233 -->
+
+> **In 4.5–4.16**
+>
+> ## A champion
+>
+> | Group | Bits     | Value                                                                                                  | Shape    |
+> | ----- | -------- | ------------------------------------------------------------------------------------------------------ | -------- |
+> | 0     | 0        | Gold in hand                                                                                           | measured |
+> | 0     | 1        | Gold earned in all                                                                                     | measured |
+> | 1     | 0 to 4   | What the champion is doing, and four kinds of harm it is proof against                                 | counted  |
+> | 1     | 5        | Damage it deals by striking                                                                            | measured |
+> | 1     | 6        | Damage its spells deal before modifiers                                                                | measured |
+> | 1     | 7        | How often it turns a blow aside                                                                        | measured |
+> | 1     | 8        | How often it strikes critically                                                                        | measured |
+> | 1     | 9        | Armour                                                                                                 | measured |
+> | 1     | 10       | Spell resistance                                                                                       | measured |
+> | 1     | 11 to 12 | How fast health and resource return                                                                    | measured |
+> | 1     | 13       | How far it strikes from                                                                                | measured |
+> | 1     | 14 to 16 | Flat and percent modifiers on the damage it strikes with, then the flat modifier on its spells' damage | measured |
+> | 1     | 17 to 18 | Flat and percent reduction of the spell damage it takes                                                | measured |
+> | 1     | 19       | A multiplier on how fast it strikes                                                                    | measured |
+> | 1     | 20       | A flat addition to how far from the champion an aimed spell's point is allowed to land                 | measured |
+> | 1     | 21       | A modifier on its cooldowns                                                                            | measured |
+> | 1     | 22       | When its passive's cooldown ends, as a moment on the match clock                                       | measured |
+> | 1     | 23       | How long its passive's cooldown lasts in all                                                           | measured |
+> | 1     | 24 to 25 | How much armour it cuts through, flat then as the share left standing                                  | measured |
+> | 1     | 26 to 27 | How much spell resistance it cuts through, flat then as the share left standing                        | measured |
+> | 1     | 28       | Life steal                                                                                             | measured |
+> | 1     | 29       | Spell vamp                                                                                             | measured |
+> | 1     | 30       | Crowd-control reduction                                                                                | measured |
+> | 3     | 0 to 1   | Health and resource as they stand                                                                      | measured |
+> | 3     | 2 to 3   | Health and resource at their greatest                                                                  | measured |
+> | 3     | 4        | Experience                                                                                             | measured |
+> | 3     | 5 to 9   | Lifetime, and how far the champion sees                                                                | measured |
+> | 3     | 10       | How fast it moves                                                                                      | measured |
+> | 3     | 11 to 12 | Its size, and how wide a path it needs                                                                 | measured |
+> | 3     | 13       | Level                                                                                                  | counted  |
+> | 3     | 14 to 16 | Kills taken from no side, and whether anything is allowed to aim at it                                 | counted  |
+>
+> A server writes 0x800007 in group 1 bit 0.
+>
+> ### What a client shows from this table
+>
+> A client shows, for a champion:
+>
+> - its health and resource bars, as they stand (group 3 bits 0 and 1) out of
+>   their greatest (bits 2 and 3);
+> - its level (group 3 bit 13), on the portrait and over the health bar;
+> - its gold (group 0 bit 0);
+> - in the panel under its portrait, ability power (group 1 bit 6), armour (bit
+>   9), spell resistance (bit 10), movement speed (group 3 bit 10), and attack
+>   speed as the champion's own base attack speed times group 1 bit 19;
+> - in its panel of statistics, group 1 bit 21 as cooldown reduction, its size
+>   as a percent whatever its sign; bits 28 and 29 as life steal and spell vamp,
+>   and bit 30 as tenacity, each a fraction shown as a percent; and bits 24 and
+>   26 as flat penetration of armour and of spell resistance.
+>
+> The attack damage the panel under the portrait shows is the client's own
+> figure for the champion's level, with group 1 bit 14 added to it and drawn as
+> a bonus.
+>
+> Until a champion's first batch arrives, the panel shows figures the client
+> holds for that champion. Once one arrives, it shows the values batches carry,
+> and armour, spell resistance, ability power and movement speed read 0 where
+> no
+> batch has carried them.
+>
+> Each percent penetration field carries the share of armour or spell
+> resistance
+> left standing, 1 where nothing is cut through.
+>
+> A spell's cooldown lasts its base length times one plus the modifier at bit
+> 21,
+> so a reduction is carried as a negative fraction and the panel shows its
+> size.
+>
+> Bit 22 sets the countdown a client shows on the champion's passive. It is a
+> moment on the match clock (see [Time](time.md)), in seconds, on the same
+> clock
+> as the time a `ClockSync` carries, and not the time left: 120 at the opening
+> of a match starts the countdown from 2:00. Once that moment has passed, the
+> passive shows ready. Bit 23 is how long the whole cooldown lasts, in seconds,
+> and a client shades the passive's icon by the time left over that length; the
+> countdown itself follows bit 22 alone.
+>
+> ## A turret
+>
+> | Group | Bits   | Value                                                                | Shape    |
+> | ----- | ------ | -------------------------------------------------------------------- | -------- |
+> | 1     | 0 to 1 | Resource at its greatest, then as it stands                          | measured |
+> | 1     | 2 to 6 | What the turret is doing, and four kinds of harm it is proof against | counted  |
+> | 1     | 7      | Damage it deals by striking                                          | measured |
+> | 1     | 8      | Armour                                                               | measured |
+> | 3     | 0 to 1 | Health as it stands, then at its greatest                            | measured |
+> | 3     | 2 to 3 | How far it sees                                                      | measured |
+> | 3     | 4      | How fast it moves                                                    | measured |
+> | 3     | 5      | Its size                                                             | measured |
+> | 5     | 0 to 1 | Whether anything is allowed to aim at it, and which side is          | counted  |
+>
+> Where a server raises a turret's health at its greatest, it raises health as
+> it
+> stands to the same value.
+>
+> ## A building
+>
+> This table holds for inhibitors and nexuses, named as
+> [Objects and identifiers](objects.md#net-ids-of-what-a-map-holds) gives.
+> Where
+> a server replicates a map's buildings, it sends these two groups and nothing
+> else. On map 8 it replicates none.
+>
+> | Group | Bits   | Value                                                       | Shape    |
+> | ----- | ------ | ----------------------------------------------------------- | -------- |
+> | 1     | 0      | A health figure                                             | measured |
+> | 1     | 1      | Whether the building is proof against harm                  | counted  |
+> | 5     | 0 to 1 | Whether anything is allowed to aim at it, and which side is | counted  |
+>
+> The health figure does not follow the building's health. A server SHOULD send
+> an inhibitor's as 4000 on map 1 and 3000 on map 10, a nexus's as 5500 on
+> both,
+> and every building's as 0 on map 12. A server SHOULD NOT change it, even as a
+> building is destroyed. A server first names a building in the `EnterSight`
+> that brings it into a side's sight.
+>
+> ## A prop
+>
+> A server MAY leave a prop's values unreplicated.
+>
+> | Group | Bits   | Value                                                       | Shape    |
+> | ----- | ------ | ----------------------------------------------------------- | -------- |
+> | 1     | 2      | Whether the prop is proof against harm                      | counted  |
+> | 3     | 0 to 1 | How far it sees                                             | measured |
+> | 3     | 2      | How fast it moves                                           | measured |
+> | 3     | 3      | Its size                                                    | measured |
+> | 3     | 4 to 5 | Whether anything is allowed to aim at it, and which side is | counted  |
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
+>
+> ## A champion
+>
+> | Group | Bits     | Value                                                                                                  | Shape    |
+> | ----- | -------- | ------------------------------------------------------------------------------------------------------ | -------- |
+> | 0     | 0        | Gold in hand                                                                                           | measured |
+> | 0     | 1        | Gold earned in all                                                                                     | measured |
+> | 1     | 0 to 4   | What the champion is doing, and four kinds of harm it is proof against                                 | counted  |
+> | 1     | 5        | Damage it deals by striking                                                                            | measured |
+> | 1     | 6        | Damage its spells deal before modifiers                                                                | measured |
+> | 1     | 7        | How often it turns a blow aside                                                                        | measured |
+> | 1     | 8        | How often it strikes critically                                                                        | measured |
+> | 1     | 9        | Armour                                                                                                 | measured |
+> | 1     | 10       | Spell resistance                                                                                       | measured |
+> | 1     | 11 to 12 | How fast health and resource return                                                                    | measured |
+> | 1     | 13       | How far it strikes from                                                                                | measured |
+> | 1     | 14 to 16 | Flat and percent modifiers on the damage it strikes with, then the flat modifier on its spells' damage | measured |
+> | 1     | 17 to 18 | Flat and percent reduction of the spell damage it takes                                                | measured |
+> | 1     | 19       | A multiplier on how fast it strikes                                                                    | measured |
+> | 1     | 20       | A flat addition to how far from the champion an aimed spell's point is allowed to land                 | measured |
+> | 1     | 21       | A modifier on its cooldowns                                                                            | measured |
+> | 1     | 22       | When its passive's cooldown ends, as a moment on the match clock                                       | measured |
+> | 1     | 23       | How long its passive's cooldown lasts in all                                                           | measured |
+> | 1     | 24 to 25 | How much armour it cuts through, flat then as the share left standing                                  | measured |
+> | 1     | 26 to 27 | How much spell resistance it cuts through, flat then as the share left standing                        | measured |
+> | 1     | 28       | Life steal                                                                                             | measured |
+> | 1     | 29       | Spell vamp                                                                                             | measured |
+> | 1     | 30       | Crowd-control reduction                                                                                | measured |
+> | 3     | 0 to 1   | Health and resource as they stand                                                                      | measured |
+> | 3     | 2 to 3   | Health and resource at their greatest                                                                  | measured |
+> | 3     | 4        | Experience                                                                                             | measured |
+> | 3     | 5 to 9   | Lifetime, and how far the champion sees                                                                | measured |
+> | 3     | 10       | How fast it moves                                                                                      | measured |
+> | 3     | 11 to 12 | Its size, and how wide a path it needs                                                                 | measured |
+> | 3     | 13       | Level                                                                                                  | counted  |
+> | 3     | 14 to 16 | Kills taken from no side, and whether anything is allowed to aim at it                                 | counted  |
+>
+> A server writes 0x800007 in group 1 bit 0.
+>
+> ### What a client shows from this table
+>
+> A client shows, for a champion:
+>
+> - its health and resource bars, as they stand (group 3 bits 0 and 1) out of
+>   their greatest (bits 2 and 3);
+> - its level (group 3 bit 13), on the portrait and over the health bar;
+> - its gold (group 0 bit 0);
+> - in the panel under its portrait, ability power (group 1 bit 6), armour (bit
+>   9), spell resistance (bit 10), movement speed (group 3 bit 10), and attack
+>   speed as the champion's own base attack speed times group 1 bit 19;
+> - in its panel of statistics, group 1 bit 21 as cooldown reduction, its size
+>   as a percent whatever its sign; bits 28 and 29 as life steal and spell vamp,
+>   and bit 30 as tenacity, each a fraction shown as a percent; and bits 24 and
+>   26 as flat penetration of armour and of spell resistance.
+>
+> The attack damage the panel under the portrait shows is the client's own
+> figure for the champion's level, with group 1 bit 14 added to it and drawn as
+> a bonus.
+>
+> Until a champion's first batch arrives, the panel shows figures the client
+> holds for that champion. Once one arrives, it shows the values batches carry,
+> and armour, spell resistance, ability power and movement speed read 0 where
+> no
+> batch has carried them.
+>
+> Each percent penetration field carries the share of armour or spell
+> resistance
+> left standing, 1 where nothing is cut through.
+>
+> A spell's cooldown lasts its base length times one plus the modifier at bit
+> 21,
+> so a reduction is carried as a negative fraction and the panel shows its
+> size.
+>
+> Bit 22 sets the countdown a client shows on the champion's passive. It is a
+> moment on the match clock (see [Time](time.md)), in seconds, on the same
+> clock
+> as the time a `ClockSync` carries, and not the time left: 120 at the opening
+> of a match starts the countdown from 2:00. Once that moment has passed, the
+> passive shows ready. Bit 23 is how long the whole cooldown lasts, in seconds,
+> and a client shades the passive's icon by the time left over that length; the
+> countdown itself follows bit 22 alone.
+>
+> ## A turret
+>
+> | Group | Bits   | Value                                                                | Shape    |
+> | ----- | ------ | -------------------------------------------------------------------- | -------- |
+> | 1     | 0 to 1 | Resource at its greatest, then as it stands                          | measured |
+> | 1     | 2 to 6 | What the turret is doing, and four kinds of harm it is proof against | counted  |
+> | 1     | 7      | Damage it deals by striking                                          | measured |
+> | 1     | 8      | Armour                                                               | measured |
+> | 3     | 0 to 1 | Health as it stands, then at its greatest                            | measured |
+> | 3     | 2 to 3 | How far it sees                                                      | measured |
+> | 3     | 4      | How fast it moves                                                    | measured |
+> | 3     | 5      | Its size                                                             | measured |
+> | 5     | 0 to 1 | Whether anything is allowed to aim at it, and which side is          | counted  |
+>
+> Where a server raises a turret's health at its greatest, it raises health as
+> it
+> stands to the same value.
+>
+> ## A minion, and a unit belonging to no side
+>
+> | Group | Bits    | Value                                                                      | Shape    |
+> | ----- | ------- | -------------------------------------------------------------------------- | -------- |
+> | 1     | 0 to 1  | Health as it stands, then at its greatest                                  | measured |
+> | 1     | 2 to 4  | How long it lives, as it stands and at its greatest, and the count of that | measured |
+> | 1     | 5 to 6  | Resource at its greatest, then as it stands                                | measured |
+> | 1     | 7 to 11 | What the unit is doing, and four kinds of harm it is proof against         | counted  |
+> | 1     | 12      | Damage it deals by striking                                                | measured |
+> | 3     | 0 to 1  | How far it sees                                                            | measured |
+> | 3     | 2       | How fast it moves                                                          | measured |
+> | 3     | 3       | Its size                                                                   | measured |
+> | 3     | 4 to 5  | Whether anything is allowed to aim at it, and which side is                | counted  |
+>
+> ## A building
+>
+> This table holds for inhibitors and nexuses, named as
+> [Objects and identifiers](objects.md#net-ids-of-what-a-map-holds) gives.
+> Where
+> a server replicates a map's buildings, it sends these two groups and nothing
+> else. On map 8 it replicates none.
+>
+> | Group | Bits   | Value                                                       | Shape    |
+> | ----- | ------ | ----------------------------------------------------------- | -------- |
+> | 1     | 0      | A health figure                                             | measured |
+> | 1     | 1      | Whether the building is proof against harm                  | counted  |
+> | 5     | 0 to 1 | Whether anything is allowed to aim at it, and which side is | counted  |
+>
+> The health figure does not follow the building's health. A server SHOULD send
+> an inhibitor's as 4000 on map 1 and 3000 on map 10, a nexus's as 5500 on
+> both,
+> and every building's as 0 on map 12. A server SHOULD NOT change it, even as a
+> building is destroyed. A server first names a building in the `EnterSight`
+> that brings it into a side's sight.
+>
+> ## A prop
+>
+> A server MAY leave a prop's values unreplicated.
+>
+> | Group | Bits   | Value                                                       | Shape    |
+> | ----- | ------ | ----------------------------------------------------------- | -------- |
+> | 1     | 2      | Whether the prop is proof against harm                      | counted  |
+> | 3     | 0 to 1 | How far it sees                                             | measured |
+> | 3     | 2      | How fast it moves                                           | measured |
+> | 3     | 3      | Its size                                                    | measured |
+> | 3     | 4 to 5 | Whether anything is allowed to aim at it, and which side is | counted  |
+
+<!-- holds from 4.18.0.271 up to 4.20.0.315 -->
+
+> **In 4.18–4.19**
+>
+> ## A champion
+>
+> | Group | Bits     | Value                                                                                                  | Shape    |
+> | ----- | -------- | ------------------------------------------------------------------------------------------------------ | -------- |
+> | 0     | 0        | Gold in hand                                                                                           | measured |
+> | 0     | 1        | Gold earned in all                                                                                     | measured |
+> | 1     | 0 to 4   | What the champion is doing, and four kinds of harm it is proof against                                 | counted  |
+> | 1     | 5        | Damage it deals by striking                                                                            | measured |
+> | 1     | 6        | Damage its spells deal before modifiers                                                                | measured |
+> | 1     | 7        | How often it turns a blow aside                                                                        | measured |
+> | 1     | 8        | How often it strikes critically                                                                        | measured |
+> | 1     | 9        | Armour                                                                                                 | measured |
+> | 1     | 10       | Spell resistance                                                                                       | measured |
+> | 1     | 11 to 12 | How fast health and resource return                                                                    | measured |
+> | 1     | 13       | How far it strikes from                                                                                | measured |
+> | 1     | 14 to 16 | Flat and percent modifiers on the damage it strikes with, then the flat modifier on its spells' damage | measured |
+> | 1     | 17 to 18 | Flat and percent reduction of the spell damage it takes                                                | measured |
+> | 1     | 19       | A multiplier on how fast it strikes                                                                    | measured |
+> | 1     | 20       | A flat addition to how far from the champion an aimed spell's point is allowed to land                 | measured |
+> | 1     | 21       | A modifier on its cooldowns                                                                            | measured |
+> | 1     | 22       | When its passive's cooldown ends, as a moment on the match clock                                       | measured |
+> | 1     | 23       | How long its passive's cooldown lasts in all                                                           | measured |
+> | 1     | 24 to 25 | How much armour it cuts through, flat then as the share left standing                                  | measured |
+> | 1     | 26 to 27 | How much spell resistance it cuts through, flat then as the share left standing                        | measured |
+> | 1     | 28       | Life steal                                                                                             | measured |
+> | 1     | 29       | Spell vamp                                                                                             | measured |
+> | 1     | 30       | Crowd-control reduction                                                                                | measured |
+> | 3     | 0 to 1   | Health and resource as they stand                                                                      | measured |
+> | 3     | 2 to 3   | Health and resource at their greatest                                                                  | measured |
+> | 3     | 4        | Experience                                                                                             | measured |
+> | 3     | 5 to 9   | Lifetime, and how far the champion sees                                                                | measured |
+> | 3     | 10       | How fast it moves                                                                                      | measured |
+> | 3     | 11 to 12 | Its size, and how wide a path it needs                                                                 | measured |
+> | 3     | 13       | Level                                                                                                  | counted  |
+> | 3     | 14 to 16 | Kills taken from no side, and whether anything is allowed to aim at it                                 | counted  |
+>
+> A server writes 0x800007 in group 1 bit 0.
+>
+> ### What a client shows from this table
+>
+> A client shows, for a champion:
+>
+> - its health and resource bars, as they stand (group 3 bits 0 and 1) out of
+>   their greatest (bits 2 and 3);
+> - its level (group 3 bit 13), on the portrait and over the health bar;
+> - its gold (group 0 bit 0);
+> - in the panel under its portrait, ability power (group 1 bit 6), armour (bit
+>   9), spell resistance (bit 10), movement speed (group 3 bit 10), and attack
+>   speed as the champion's own base attack speed times group 1 bit 19;
+> - in its panel of statistics, group 1 bit 21 as cooldown reduction, its size
+>   as a percent whatever its sign; bits 28 and 29 as life steal and spell vamp,
+>   and bit 30 as tenacity, each a fraction shown as a percent; and bits 24 and
+>   26 as flat penetration of armour and of spell resistance.
+>
+> The attack damage the panel under the portrait shows is the client's own
+> figure for the champion's level, with group 1 bit 14 added to it and drawn as
+> a bonus.
+>
+> Until a champion's first batch arrives, the panel shows figures the client
+> holds for that champion. Once one arrives, it shows the values batches carry,
+> and armour, spell resistance, ability power and movement speed read 0 where
+> no
+> batch has carried them.
+>
+> Each percent penetration field carries the share of armour or spell
+> resistance
+> left standing, 1 where nothing is cut through.
+>
+> A spell's cooldown lasts its base length times one plus the modifier at bit
+> 21,
+> so a reduction is carried as a negative fraction and the panel shows its
+> size.
+>
+> Bit 22 sets the countdown a client shows on the champion's passive. It is a
+> moment on the match clock (see [Time](time.md)), in seconds, on the same
+> clock
+> as the time a `ClockSync` carries, and not the time left: 120 at the opening
+> of a match starts the countdown from 2:00. Once that moment has passed, the
+> passive shows ready. Bit 23 is how long the whole cooldown lasts, in seconds,
+> and a client shades the passive's icon by the time left over that length; the
+> countdown itself follows bit 22 alone.
+>
+> ## A turret
+>
+> | Group | Bits   | Value                                                                | Shape    |
+> | ----- | ------ | -------------------------------------------------------------------- | -------- |
+> | 1     | 0 to 1 | Resource at its greatest, then as it stands                          | measured |
+> | 1     | 2 to 6 | What the turret is doing, and four kinds of harm it is proof against | counted  |
+> | 1     | 7      | Damage it deals by striking                                          | measured |
+> | 1     | 8      | Armour                                                               | measured |
+> | 3     | 0 to 1 | Health as it stands, then at its greatest                            | measured |
+> | 3     | 2 to 3 | How far it sees                                                      | measured |
+> | 3     | 4      | How fast it moves                                                    | measured |
+> | 3     | 5      | Its size                                                             | measured |
+> | 5     | 0 to 1 | Whether anything is allowed to aim at it, and which side is          | counted  |
+>
+> Where a server raises a turret's health at its greatest, it raises health as
+> it
+> stands to the same value.
+>
+> ## A building
+>
+> This table holds for inhibitors and nexuses, named as
+> [Objects and identifiers](objects.md#net-ids-of-what-a-map-holds) gives.
+> Where
+> a server replicates a map's buildings, it sends these two groups and nothing
+> else. On map 8 it replicates none.
+>
+> | Group | Bits   | Value                                                       | Shape    |
+> | ----- | ------ | ----------------------------------------------------------- | -------- |
+> | 1     | 0      | A health figure                                             | measured |
+> | 1     | 1      | Whether the building is proof against harm                  | counted  |
+> | 5     | 0 to 1 | Whether anything is allowed to aim at it, and which side is | counted  |
+>
+> The health figure does not follow the building's health. A server SHOULD send
+> an inhibitor's as 4000 on map 1 and 3000 on map 10, a nexus's as 5500 on
+> both,
+> and every building's as 0 on map 12. A server SHOULD NOT change it, even as a
+> building is destroyed. A server first names a building in the `EnterSight`
+> that brings it into a side's sight.
+>
+> ## A prop
+>
+> A server MAY leave a prop's values unreplicated.
+>
+> | Group | Bits   | Value                                                       | Shape    |
+> | ----- | ------ | ----------------------------------------------------------- | -------- |
+> | 1     | 2      | Whether the prop is proof against harm                      | counted  |
+> | 3     | 0 to 1 | How far it sees                                             | measured |
+> | 3     | 2      | How fast it moves                                           | measured |
+> | 3     | 3      | Its size                                                    | measured |
+> | 3     | 4 to 5 | Whether anything is allowed to aim at it, and which side is | counted  |
+
+<!-- holds from 4.20.0.315 up to 4.21.0.0 -->
+
+> **In 4.20**
 >
 > ## A champion
 >
@@ -953,18 +1541,6 @@ Each row gives the group and bits that name a value and what the value is.
 <!-- holds from 4.18.0.271 up to 4.20.0.315 -->
 
 > **In 4.18–4.19**
->
-> The group 1 of a minion, or of a unit belonging to no side, also carries:
->
-> | Group | Bits     | Value                                                                                                  | Shape    |
-> | ----- | -------- | ------------------------------------------------------------------------------------------------------ | -------- |
-> | 1     | 13 to 14 | Armour and spell resistance                                                                            | measured |
-> | 1     | 15       | A multiplier on how fast it strikes                                                                    | measured |
-> | 1     | 16 to 18 | Flat and percent modifiers on the damage it strikes with, then the flat modifier on its spells' damage | measured |
-> | 1     | 19 to 20 | How fast health and resource return                                                                    | measured |
-> | 1     | 21 to 22 | Flat and percent reduction of the spell damage it takes                                                | measured |
->
-> Its bits 23 to 31 name nothing.
 >
 > A prop's group 1 also carries:
 >

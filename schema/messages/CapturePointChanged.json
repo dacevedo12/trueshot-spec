@@ -200,7 +200,7 @@
       "command": 220,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "The points exist only through this message: a map brings none, and a client makes point 0 to point n when it first meets n, whatever the change. Once a client knows one point, and only where the version answer named the mode ODIN, it shows the panel of each side's score and points held, and marks each point on the minimap. Everything shown of a point comes from the unit bound to it: its side holds the point (100 or 200; any other side leaves it neutral), its position places it, and its current resource over its maximum, where its resource kind matches the one bound, is how far the point is taken. A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
+      "note": "Once a client knows one point, and only where the version answer named the mode ODIN, it shows the panel of each side's score and points held, and marks each point on the minimap. Everything shown of a point comes from the unit bound to it: its side holds the point (100 or 200; any other side leaves it neutral), its position places it, and its current resource over its maximum, where its resource kind matches the one bound, is how far the point is taken. A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
       "fields": [
         {
           "name": "point",
@@ -326,7 +326,7 @@
       "command": 221,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "The points exist only through this message: a map brings none, and a client makes point 0 to point n when it first meets n, whatever the change. Once a client knows one point, and only where the version answer named the mode ODIN, it shows the panel of each side's score and points held, and marks each point on the minimap. Everything shown of a point comes from the unit bound to it: its side holds the point (100 or 200; any other side leaves it neutral), its position places it, and its current resource over its maximum, where its resource kind matches the one bound, is how far the point is taken. A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
+      "note": "Once a client knows one point, and only where the version answer named the mode ODIN, it shows the panel of each side's score and points held, and marks each point on the minimap. Everything shown of a point comes from the unit bound to it: its side holds the point (100 or 200; any other side leaves it neutral), its position places it, and its current resource over its maximum, where its resource kind matches the one bound, is how far the point is taken. A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
       "fields": [
         {
           "name": "point",
@@ -389,7 +389,7 @@
       "command": 223,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "The points exist only through this message: a map brings none, and a client makes point 0 to point n when it first meets n, whatever the change. Once a client knows one point, and only where the version answer named the mode ODIN, it shows the panel of each side's score and points held, and marks each point on the minimap. Everything shown of a point comes from the unit bound to it: its side holds the point (100 or 200; any other side leaves it neutral), its position places it, and its current resource over its maximum, where its resource kind matches the one bound, is how far the point is taken. A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
+      "note": "Once a client knows one point, and only where the version answer named the mode ODIN, it shows the panel of each side's score and points held, and marks each point on the minimap. Everything shown of a point comes from the unit bound to it: its side holds the point (100 or 200; any other side leaves it neutral), its position places it, and its current resource over its maximum, where its resource kind matches the one bound, is how far the point is taken. A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
       "fields": [
         {
           "name": "point",
@@ -452,7 +452,7 @@
       "command": 221,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "The points exist only through this message: a map brings none, and a client makes point 0 to point n when it first meets n, whatever the change. Once a client knows one point, and only where the version answer named the mode ODIN, it shows the panel of each side's score and points held, and marks each point on the minimap. Everything shown of a point comes from the unit bound to it: its side holds the point (100 or 200; any other side leaves it neutral), its position places it, and its current resource over its maximum, where its resource kind matches the one bound, is how far the point is taken. A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
+      "note": "Once a client knows one point, and only where the version answer named the mode ODIN, it shows the panel of each side's score and points held, and marks each point on the minimap. Everything shown of a point comes from the unit bound to it: its side holds the point (100 or 200; any other side leaves it neutral), its position places it, and its current resource over its maximum, where its resource kind matches the one bound, is how far the point is taken. A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
       "fields": [
         {
           "name": "point",
@@ -515,7 +515,7 @@
       "command": 223,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "The points exist only through this message: a map brings none, and a client makes point 0 to point n when it first meets n, whatever the change. Once a client knows one point, and only where the version answer named the mode ODIN, it shows the panel of each side's score and points held, and marks each point on the minimap. Everything shown of a point comes from the unit bound to it: its side holds the point (100 or 200; any other side leaves it neutral), its position places it, and its current resource over its maximum, where its resource kind matches the one bound, is how far the point is taken. A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
+      "note": "Once a client knows one point, and only where the version answer named the mode ODIN, it shows the panel of each side's score and points held, and marks each point on the minimap. Everything shown of a point comes from the unit bound to it: its side holds the point (100 or 200; any other side leaves it neutral), its position places it, and its current resource over its maximum, where its resource kind matches the one bound, is how far the point is taken. A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
       "fields": [
         {
           "name": "point",
@@ -578,7 +578,7 @@
       "command": 222,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "The points exist only through this message: a map brings none, and a client makes point 0 to point n when it first meets n, whatever the change. Once a client knows one point, and only where the version answer named the mode ODIN, it shows the panel of each side's score and points held, and marks each point on the minimap. Everything shown of a point comes from the unit bound to it: its side holds the point (100 or 200; any other side leaves it neutral), its position places it, and its current resource over its maximum, where its resource kind matches the one bound, is how far the point is taken. A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
+      "note": "Once a client knows one point, and only where the version answer named the mode ODIN, it shows the panel of each side's score and points held, and marks each point on the minimap. Everything shown of a point comes from the unit bound to it: its side holds the point (100 or 200; any other side leaves it neutral), its position places it, and its current resource over its maximum, where its resource kind matches the one bound, is how far the point is taken. A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
       "fields": [
         {
           "name": "point",
@@ -704,7 +704,7 @@
       "command": 224,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "The points exist only through this message: a map brings none, and a client makes point 0 to point n when it first meets n, whatever the change. Once a client knows one point, and only where the version answer named the mode ODIN, it shows the panel of each side's score and points held, and marks each point on the minimap. Everything shown of a point comes from the unit bound to it: its side holds the point (100 or 200; any other side leaves it neutral), its position places it, and its current resource over its maximum, where its resource kind matches the one bound, is how far the point is taken. A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
+      "note": "Once a client knows one point, and only where the version answer named the mode ODIN, it shows the panel of each side's score and points held, and marks each point on the minimap. Everything shown of a point comes from the unit bound to it: its side holds the point (100 or 200; any other side leaves it neutral), its position places it, and its current resource over its maximum, where its resource kind matches the one bound, is how far the point is taken. A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
       "fields": [
         {
           "name": "point",
@@ -767,7 +767,7 @@
       "command": 211,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "The points exist only through this message: a map brings none, and a client makes point 0 to point n when it first meets n, whatever the change. Once a client knows one point, and only where the version answer named the mode ODIN, it shows the panel of each side's score and points held, and marks each point on the minimap. Everything shown of a point comes from the unit bound to it: its side holds the point (100 or 200; any other side leaves it neutral), its position places it, and its current resource over its maximum, where its resource kind matches the one bound, is how far the point is taken. A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
+      "note": "Once a client knows one point, and only where the version answer named the mode ODIN, it shows the panel of each side's score and points held, and marks each point on the minimap. Everything shown of a point comes from the unit bound to it: its side holds the point (100 or 200; any other side leaves it neutral), its position places it, and its current resource over its maximum, where its resource kind matches the one bound, is how far the point is taken. A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
       "fields": [
         {
           "name": "point",
@@ -1205,7 +1205,7 @@
       "command": 211,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "The points exist only through this message: a map brings none, and a client makes point 0 to point n when it first meets n, whatever the change. Once a client knows one point, and only where the version answer named the mode ODIN, it shows the panel of each side's score and points held, and marks each point on the minimap. Everything shown of a point comes from the unit bound to it: its side holds the point (100 or 200; any other side leaves it neutral), its position places it, and its current resource over its maximum, where its resource kind matches the one bound, is how far the point is taken. A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
+      "note": "Once a client knows one point, and only where the version answer named the mode ODIN, it shows the panel of each side's score and points held, and marks each point on the minimap. Everything shown of a point comes from the unit bound to it: its side holds the point (100 or 200; any other side leaves it neutral), its position places it, and its current resource over its maximum, where its resource kind matches the one bound, is how far the point is taken. A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
       "fields": [
         {
           "name": "point",
@@ -1286,7 +1286,7 @@
       "command": 211,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "The points exist only through this message: a map brings none, and a client makes point 0 to point n when it first meets n, whatever the change. Once a client knows one point, and only where the version answer named the mode ODIN, it shows the panel of each side's score and points held, and marks each point on the minimap. Everything shown of a point comes from the unit bound to it: its side holds the point (100 or 200; any other side leaves it neutral), its position places it, and its current resource over its maximum, where its resource kind matches the one bound, is how far the point is taken. A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
+      "note": "Once a client knows one point, and only where the version answer named the mode ODIN, it shows the panel of each side's score and points held, and marks each point on the minimap. Everything shown of a point comes from the unit bound to it: its side holds the point (100 or 200; any other side leaves it neutral), its position places it, and its current resource over its maximum, where its resource kind matches the one bound, is how far the point is taken. A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
       "fields": [
         {
           "name": "point",
@@ -1370,7 +1370,7 @@
       "command": 210,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "The points exist only through this message: a map brings none, and a client makes point 0 to point n when it first meets n, whatever the change. Once a client knows one point, and only where the version answer named the mode ODIN, it shows the panel of each side's score and points held, and marks each point on the minimap. Everything shown of a point comes from the unit bound to it: its side holds the point (100 or 200; any other side leaves it neutral), its position places it, and its current resource over its maximum, where its resource kind matches the one bound, is how far the point is taken. A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
+      "note": "Once a client knows one point, and only where the version answer named the mode ODIN, it shows the panel of each side's score and points held, and marks each point on the minimap. Everything shown of a point comes from the unit bound to it: its side holds the point (100 or 200; any other side leaves it neutral), its position places it, and its current resource over its maximum, where its resource kind matches the one bound, is how far the point is taken. A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
       "fields": [
         {
           "name": "point",
@@ -1538,7 +1538,7 @@
       "command": 210,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "The points exist only through this message: a map brings none, and a client makes point 0 to point n when it first meets n, whatever the change. Once a client knows one point, and only where the version answer named the mode ODIN, it shows the panel of each side's score and points held, and marks each point on the minimap. Everything shown of a point comes from the unit bound to it: its side holds the point (100 or 200; any other side leaves it neutral), its position places it, and its current resource over its maximum, where its resource kind matches the one bound, is how far the point is taken. A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
+      "note": "Once a client knows one point, and only where the version answer named the mode ODIN, it shows the panel of each side's score and points held, and marks each point on the minimap. Everything shown of a point comes from the unit bound to it: its side holds the point (100 or 200; any other side leaves it neutral), its position places it, and its current resource over its maximum, where its resource kind matches the one bound, is how far the point is taken. A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
       "fields": [
         {
           "name": "point",
@@ -1622,7 +1622,7 @@
       "command": 211,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "The points exist only through this message: a map brings none, and a client makes point 0 to point n when it first meets n, whatever the change. Once a client knows one point, and only where the version answer named the mode ODIN, it shows the panel of each side's score and points held, and marks each point on the minimap. Everything shown of a point comes from the unit bound to it: its side holds the point (100 or 200; any other side leaves it neutral), its position places it, and its current resource over its maximum, where its resource kind matches the one bound, is how far the point is taken. A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
+      "note": "Once a client knows one point, and only where the version answer named the mode ODIN, it shows the panel of each side's score and points held, and marks each point on the minimap. Everything shown of a point comes from the unit bound to it: its side holds the point (100 or 200; any other side leaves it neutral), its position places it, and its current resource over its maximum, where its resource kind matches the one bound, is how far the point is taken. A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
       "fields": [
         {
           "name": "point",

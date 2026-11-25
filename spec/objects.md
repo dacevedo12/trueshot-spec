@@ -358,9 +358,21 @@ a player by player id; `SeatLoadProgress` names both.
 > Whether a client finds a seat's client id through its player id is not
 > recorded.
 
-<!-- holds from 1.0.0.132 up to 4.21.0.0 -->
+<!-- holds from 1.0.0.132 up to 1.0.0.141 -->
 
-> **In 1.0.0.132–4.20**
+> **In 1.0.0.132–1.0.0.140**
+>
+> A client finds a seat's client id through its player id.
+
+<!-- holds from 1.0.0.150 up to 1.0.0.151 -->
+
+> **In 1.0.0.150**
+>
+> A client finds a seat's client id through its player id.
+
+<!-- holds from 3.03.0.198 up to 4.21.0.0 -->
+
+> **In 3.03–4.20**
 >
 > A client finds a seat's client id through its player id.
 
@@ -430,9 +442,9 @@ naming a unit, an owner or a target carry one too.
 >
 > A client given a create message for a net id it already holds stops.
 
-<!-- holds from 0.9.25.24 up to 1.0.0.25 -->
+<!-- holds from 0.9.25.24 up to 0.9.25.36 -->
 
-> **In 0.9.25.24–1.0.0.24**
+> **In 0.9.25.24–0.9.25.35**
 >
 > A client that still holds the earlier object gives the net id to the new one,
 > so messages naming it reach the new object.
@@ -1150,12 +1162,6 @@ Creating messages are the exception, and so are the messages below.
 >
 > `SpawnPet` takes the net id in its header for the new pet, but does nothing
 > where the owner its body names is not held.
-
-<!-- holds from 1.0.0.141 up to 1.0.0.150 -->
-
-> **In 1.0.0.141–1.0.0.149**
->
-> `SpawnPet` takes the net id in its header for the new pet.
 
 <!-- holds from 1.0.0.150 up to 1.0.0.151 -->
 

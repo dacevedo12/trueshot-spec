@@ -8,9 +8,21 @@ Players chat with `Chat`, which carries a line to everyone or to a side. A
 server puts a line of its own in a client's chat with `SystemMessage`. A server
 can limit how many more lines a player can send with `ChatAllowance`.
 
-<!-- holds from 3.10.0.237 up to 4.18.0.271 -->
+<!-- holds from 3.10.0.237 up to 3.14.0.700 -->
 
-> **In 3.10–4.17**
+> **In 3.10–3.13**
+>
+> A client shows how many lines `ChatAllowance` leaves its player.
+
+<!-- holds from 4.4.0.1858 up to 4.5.0.260 -->
+
+> **In 4.4**
+>
+> A client shows how many lines `ChatAllowance` leaves its player.
+
+<!-- holds from 4.17.0.233 up to 4.18.0.271 -->
+
+> **In 4.17**
 >
 > A client shows how many lines `ChatAllowance` leaves its player.
 

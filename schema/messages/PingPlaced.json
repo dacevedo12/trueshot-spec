@@ -213,8 +213,7 @@
           "type": "u32",
           "note": "The unit that placed it."
         }
-      ],
-      "note": "Where target is a unit it holds, of a kind that takes notices, and source is a unit it holds, a client shows a notice for it, but not again for the next ping on the same target; it keeps the last target of each side apart."
+      ]
     },
     {
       "from": "1.0.0.96",

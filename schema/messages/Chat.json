@@ -316,7 +316,7 @@
         {
           "name": "speaker",
           "type": "u32",
-          "note": "The client id the line is from. A client sends its own. From a server, a client shows the line with the name of the player holding that client id, and with no name for a client id nobody holds."
+          "note": "The client id the line is from. A client sends its own."
         },
         {
           "name": "audience",

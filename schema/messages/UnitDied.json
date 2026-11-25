@@ -281,7 +281,7 @@
           "note": "How long the unit stays down, in seconds."
         }
       ],
-      "note": "A client does nothing for a unit already dead. Otherwise it stops the unit's cast and attack and, where killer is nonzero, puts the unit down for stayDown, whether or not it knows killer, and shows what that kind of unit shows for a kill."
+      "note": "A client does nothing for a unit already dead."
     },
     {
       "from": "1.0.0.86",
@@ -343,7 +343,7 @@
           "note": "How long the unit stays down, in seconds."
         }
       ],
-      "note": "A client does nothing for a unit already dead. Otherwise it stops the unit's cast and attack and, where killer is nonzero, puts the unit down for stayDown, whether or not it knows killer, and shows what that kind of unit shows for a kill."
+      "note": "A client does nothing for a unit already dead."
     },
     {
       "from": "1.0.0.96",
@@ -1231,8 +1231,7 @@
         },
         {
           "name": "kind",
-          "type": "u8",
-          "note": "Which of two kill announcements a client makes: zero picks one, nonzero the other."
+          "type": "u8"
         }
       ],
       "note": "Where the unit is already dead, a client does nothing with the message and announces nothing. Otherwise it cancels the unit's cast and attack, and only where killer is nonzero puts the unit down, by stayDown and standing."
@@ -1284,8 +1283,7 @@
         },
         {
           "name": "kind",
-          "type": "u8",
-          "note": "Which of two kill announcements a client makes: zero picks one, nonzero the other."
+          "type": "u8"
         }
       ]
     },
@@ -1753,8 +1751,7 @@
         },
         {
           "name": "kind",
-          "type": "u8",
-          "note": "Which kill killer is credited with: zero a neutral monster's, nonzero a minion's."
+          "type": "u8"
         }
       ]
     },

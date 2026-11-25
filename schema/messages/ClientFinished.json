@@ -275,8 +275,7 @@
       "command": 141,
       "direction": "clientToServer",
       "reliability": "reliable",
-      "fields": [],
-      "note": "A client sends it each time GameEnded arrives in play, and not while playing a replay."
+      "fields": []
     },
     {
       "from": "3.03.0.198",
@@ -290,6 +289,15 @@
     },
     {
       "from": "3.04.0.78",
+      "until": "3.6.0.388",
+      "channel": "requests",
+      "command": 141,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": []
+    },
+    {
+      "from": "3.6.0.388",
       "until": "4.1.0.171",
       "channel": "requests",
       "command": 141,

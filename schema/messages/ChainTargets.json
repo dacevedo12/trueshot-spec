@@ -465,7 +465,7 @@
         {
           "name": "caster",
           "type": "u32",
-          "note": "The unit casting the missile. Where a client does not hold it, the client starts no missile, though a missile it already holds under the header's name still takes the targets."
+          "note": "The unit casting the missile."
         },
         {
           "name": "targets",
@@ -496,7 +496,7 @@
         {
           "name": "caster",
           "type": "u32",
-          "note": "The unit casting the missile. Where a client does not hold it, the client starts no missile, though a missile it already holds under the header's name still takes the targets."
+          "note": "The unit casting the missile."
         },
         {
           "name": "targets",
@@ -527,7 +527,7 @@
         {
           "name": "caster",
           "type": "u32",
-          "note": "The unit casting the missile. Where a client does not hold it, the client starts no missile, though a missile it already holds under the header's name still takes the targets."
+          "note": "The unit casting the missile."
         },
         {
           "name": "targets",
@@ -558,7 +558,7 @@
         {
           "name": "caster",
           "type": "u32",
-          "note": "The unit casting the missile. Where a client does not hold it, the client starts no missile, though a missile it already holds under the header's name still takes the targets."
+          "note": "The unit casting the missile."
         },
         {
           "name": "targets",
@@ -621,7 +621,7 @@
         {
           "name": "caster",
           "type": "u32",
-          "note": "The unit casting the missile. Where a client does not hold it, the client starts no missile, though a missile it already holds under the header's name still takes the targets."
+          "note": "The unit casting the missile."
         },
         {
           "name": "targets",
@@ -652,7 +652,7 @@
         {
           "name": "caster",
           "type": "u32",
-          "note": "The unit casting the missile. Where a client does not hold it, the client starts no missile, though a missile it already holds under the header's name still takes the targets."
+          "note": "The unit casting the missile."
         },
         {
           "name": "targets",
@@ -683,7 +683,7 @@
         {
           "name": "caster",
           "type": "u32",
-          "note": "The unit casting the missile. Where a client does not hold it, the client starts no missile, though a missile it already holds under the header's name still takes the targets."
+          "note": "The unit casting the missile."
         },
         {
           "name": "targets",
@@ -714,7 +714,7 @@
         {
           "name": "caster",
           "type": "u32",
-          "note": "The unit casting the missile. Where a client does not hold it, the client starts no missile, though a missile it already holds under the header's name still takes the targets."
+          "note": "The unit casting the missile."
         },
         {
           "name": "targets",
@@ -1266,8 +1266,7 @@
           },
           "note": "Always 32 slots."
         }
-      ],
-      "note": "Where the client already holds the missile, the missile takes the list; otherwise the list waits for the caster's next chain missile."
+      ]
     },
     {
       "from": "3.13.0.399",
@@ -1330,8 +1329,7 @@
           },
           "note": "Always 32 slots; those past count have no effect."
         }
-      ],
-      "note": "Where the client already holds the missile, the missile takes the list; otherwise the list waits for the caster's next chain missile."
+      ]
     },
     {
       "from": "4.4.0.1858",
@@ -1471,8 +1469,7 @@
       "fields": [
         {
           "name": "count",
-          "type": "i32",
-          "note": "How many of the slots are used. 0 empties the missile's list. A client does not cap it."
+          "type": "i32"
         },
         {
           "name": "caster",
