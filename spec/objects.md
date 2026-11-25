@@ -203,6 +203,9 @@ gives the client its own client id.
 >
 > A client takes a client id only from 0 to 252, so a server MUST give each
 > player a client id in that range.
+>
+> A client records the pair every `Registered` carries, and takes as its own
+> only the one carrying its own player id.
 
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 

@@ -211,17 +211,9 @@ argument.
 > argument of sixteen characters or fewer is the key as it stands, followed by
 > zero bytes up to sixteen.
 
-<!-- holds from 1.0.0.133 up to 1.0.0.140 -->
+<!-- holds from 1.0.0.133 up to 1.0.0.141 -->
 
-> **In 1.0.0.133–1.0.0.139**
->
-> An argument longer than sixteen characters holds the key in base64, and the
-> key is the first sixteen bytes it decodes to. An argument of sixteen
-> characters or fewer is the key as it stands.
-
-<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
-
-> **In 1.0.0.140**
+> **In 1.0.0.133–1.0.0.140**
 >
 > An argument longer than sixteen characters holds the key in base64, and the
 > key is the first sixteen bytes it decodes to. Such an argument MUST decode to

@@ -448,7 +448,7 @@
     },
     {
       "from": "3.6.0.388",
-      "until": "3.11.0.306",
+      "until": "3.13.0.399",
       "channel": "events",
       "command": 59,
       "direction": "serverToClient",
@@ -491,51 +491,6 @@
         }
       ],
       "note": "Only a scripted missile acts on it; any other missile ignores it."
-    },
-    {
-      "from": "3.11.0.306",
-      "until": "3.13.0.399",
-      "channel": "events",
-      "command": 59,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "unused",
-          "type": "u8",
-          "note": "Unused; a server writes zero."
-        },
-        {
-          "name": "fromX",
-          "type": "f32",
-          "note": "Where the missile starts, in world units, along one ground axis."
-        },
-        {
-          "name": "fromY",
-          "type": "f32",
-          "note": "Where the missile starts, in world units, in height."
-        },
-        {
-          "name": "fromZ",
-          "type": "f32",
-          "note": "Where the missile starts, in world units, along the other ground axis."
-        },
-        {
-          "name": "velocityX",
-          "type": "f32",
-          "note": "How fast it travels, in world units a second, along one ground axis."
-        },
-        {
-          "name": "velocityY",
-          "type": "f32",
-          "note": "How fast it travels, in world units a second, in height."
-        },
-        {
-          "name": "velocityZ",
-          "type": "f32",
-          "note": "How fast it travels, in world units a second, along the other ground axis."
-        }
-      ]
     },
     {
       "from": "3.13.0.399",
@@ -621,51 +576,6 @@
     },
     {
       "from": "3.14.0.700",
-      "until": "4.4.0.1858",
-      "channel": "events",
-      "command": 59,
-      "direction": "serverToClient",
-      "reliability": "reliable",
-      "fields": [
-        {
-          "name": "unused",
-          "type": "u8",
-          "note": "Unused; a server writes zero."
-        },
-        {
-          "name": "fromX",
-          "type": "f32",
-          "note": "Where the missile starts, in world units, along one ground axis."
-        },
-        {
-          "name": "fromY",
-          "type": "f32",
-          "note": "Where the missile starts, in world units, in height."
-        },
-        {
-          "name": "fromZ",
-          "type": "f32",
-          "note": "Where the missile starts, in world units, along the other ground axis."
-        },
-        {
-          "name": "velocityX",
-          "type": "f32",
-          "note": "How fast it travels, in world units a second, along one ground axis."
-        },
-        {
-          "name": "velocityY",
-          "type": "f32",
-          "note": "How fast it travels, in world units a second, in height."
-        },
-        {
-          "name": "velocityZ",
-          "type": "f32",
-          "note": "How fast it travels, in world units a second, along the other ground axis."
-        }
-      ]
-    },
-    {
-      "from": "4.4.0.1858",
       "until": "4.5.0.260",
       "channel": "events",
       "command": 59,

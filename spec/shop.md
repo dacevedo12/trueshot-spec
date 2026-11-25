@@ -109,12 +109,6 @@ the shop sends nothing.
 > Opening the shop sends `TutorialShopOpened`, in any match, except while the
 > shop is locked.
 
-<!-- holds from 0.9.25.36 up to 1.0.0.25 -->
-
-> **In 0.9.25.36–1.0.0.24**
->
-> Opening the shop sends `TutorialShopOpened`, in any match.
-
 <!-- holds from 1.0.0.25 up to 1.0.0.58 -->
 
 > **In 1.0.0.25–1.0.0.57**
@@ -152,24 +146,12 @@ the shop sends nothing.
 > shop and asks to buy whether or not the shop is locked, except where a setting
 > of its own has it heed the lock.
 
-<!-- holds from 1.0.0.87 up to 1.0.0.96 -->
-
-> **In 1.0.0.87–1.0.0.95**
->
-> Opening the shop sends `TutorialShopOpened`, in any match.
-
 <!-- holds from 1.0.0.96 up to 1.0.0.127 -->
 
 > **In 1.0.0.96–1.0.0.126**
 >
 > Opening the shop sends `TutorialShopOpened`, in any match, except while the
 > shop is locked.
-
-<!-- holds from 1.0.0.127 up to 1.0.0.132 -->
-
-> **In 1.0.0.127–1.0.0.131**
->
-> Opening the shop sends `TutorialShopOpened`, in any match.
 
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
@@ -183,9 +165,9 @@ the shop sends nothing.
 >
 > Opening the shop while the match is paused sends nothing.
 
-<!-- holds from 1.0.0.132 up to 1.0.0.141 -->
+<!-- holds from 1.0.0.132 up to 1.0.0.133 -->
 
-> **In 1.0.0.132–1.0.0.140**
+> **In 1.0.0.132**
 >
 > Opening the shop sends `TutorialShopOpened`, in any match. A client asks to
 > buy whether or not the shop is locked, except where a setting of its own has
@@ -198,6 +180,21 @@ the shop sends nothing.
 > Opening the shop while a tournament's hold (a `Paused` with `how.tournament`)
 > has the match stopped sends nothing; any other hold, or `GameSpeed` 0 alone,
 > does not stop it.
+
+<!-- holds from 1.0.0.133 up to 1.0.0.140 -->
+
+> **In 1.0.0.133–1.0.0.139**
+>
+> A client asks to buy whether or not the shop is locked, except where a setting
+> of its own has it heed the lock.
+
+<!-- holds from 1.0.0.140 up to 1.0.0.141 -->
+
+> **In 1.0.0.140**
+>
+> Opening the shop sends `TutorialShopOpened`, in any match. A client asks to
+> buy whether or not the shop is locked, except where a setting of its own has
+> it heed the lock.
 
 <!-- holds from 3.10.0.237 up to 4.21.0.0 -->
 
