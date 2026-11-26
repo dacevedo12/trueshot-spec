@@ -90,8 +90,8 @@ menu on or off.
 
 A server can hold a vote on giving the side behind gold, experience and
 turrets. Each `BalanceVote` adds one voter to the vote's panel for the voting
-side, and a client answers with `BalanceVoteAnswer` from the panel, once per
-vote. `BalanceResult` says how the vote ended, or why it could not be held.
+side, and `BalanceVoteAnswer` carries a client's answer from the panel.
+`BalanceResult` says how the vote ended, or why it could not be held.
 
 <!-- holds from 3.6.0.388 up to 3.7.0.328 -->
 

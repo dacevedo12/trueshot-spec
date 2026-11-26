@@ -535,7 +535,55 @@
     },
     {
       "from": "1.0.0.138",
-      "until": "1.0.0.144",
+      "until": "1.0.0.140",
+      "channel": "events",
+      "command": 128,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "folder",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The event's folder. It has no effect where kind is 1."
+        },
+        {
+          "name": "event",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The event's name; for kind 1, the conversation's."
+        },
+        {
+          "name": "callback",
+          "type": "u8"
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What sort of event. A client does nothing for any other value.",
+          "values": {
+            "0": {
+              "name": "general",
+              "note": "Played with no place."
+            },
+            "1": {
+              "name": "champion",
+              "note": "A conversation played in the voice of the champion named by handle, where sound is on and the client knows the champion."
+            }
+          }
+        },
+        {
+          "name": "handle",
+          "type": "u32",
+          "note": "For kind 0, a number a client returns in VoiceEventDone; for kind 1, the champion."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.140",
+      "until": "1.0.0.141",
       "channel": "events",
       "command": 128,
       "direction": "serverToClient",
@@ -559,6 +607,55 @@
           "name": "callback",
           "type": "u8",
           "note": "For kind 0, nonzero asks the client to send VoiceEventDone once the event has played. A client sends it at once where it cannot play the event, whatever this holds."
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What sort of event. A client does nothing for any other value.",
+          "values": {
+            "0": {
+              "name": "general",
+              "note": "Played with no place."
+            },
+            "1": {
+              "name": "champion",
+              "note": "A conversation played in the voice of the champion named by handle, where sound is on and the client knows the champion."
+            }
+          }
+        },
+        {
+          "name": "handle",
+          "type": "u32",
+          "note": "For kind 0, a number a client returns in VoiceEventDone; for kind 1, the champion."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.141",
+      "until": "1.0.0.144",
+      "channel": "events",
+      "command": 128,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "folder",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The event's folder. It has no effect where kind is 1."
+        },
+        {
+          "name": "event",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The event's name; for kind 1, the conversation's."
+        },
+        {
+          "name": "callback",
+          "type": "u8",
+          "note": "For kind 0, nonzero asks the client to send VoiceEventDone once the event has played."
         },
         {
           "name": "kind",
@@ -607,7 +704,7 @@
         {
           "name": "callback",
           "type": "u8",
-          "note": "For kind 0, nonzero asks the client to send VoiceEventDone once the event has played. A client sends it at once where it cannot play the event, whatever this holds."
+          "note": "For kind 0, nonzero asks the client to send VoiceEventDone once the event has played."
         },
         {
           "name": "kind",
@@ -682,6 +779,202 @@
     },
     {
       "from": "3.01.0.1",
+      "until": "3.7.0.328",
+      "channel": "events",
+      "command": 121,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "folder",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The event's folder. It has no effect where kind is 1."
+        },
+        {
+          "name": "event",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The event's name; for kind 1, the conversation's."
+        },
+        {
+          "name": "callback",
+          "type": "u8",
+          "note": "For kind 0, nonzero asks the client to send VoiceEventDone once the event has played. A client sends it at once where it cannot play the event, whatever this holds."
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What sort of event. A client does nothing for any other value.",
+          "values": {
+            "0": {
+              "name": "general",
+              "note": "Played with no place."
+            },
+            "1": {
+              "name": "champion",
+              "note": "A conversation played in the voice of the champion named by handle, where sound is on and the client knows the champion."
+            }
+          }
+        },
+        {
+          "name": "handle",
+          "type": "u32",
+          "note": "For kind 0, a number a client returns in VoiceEventDone; for kind 1, the champion."
+        }
+      ]
+    },
+    {
+      "from": "3.7.0.328",
+      "until": "3.10.0.237",
+      "channel": "events",
+      "command": 121,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "folder",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The event's folder. It has no effect where kind is 1."
+        },
+        {
+          "name": "event",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The event's name; for kind 1, the conversation's."
+        },
+        {
+          "name": "callback",
+          "type": "u8",
+          "note": "For kind 0, nonzero asks the client to send VoiceEventDone once the event has played."
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What sort of event. A client does nothing for any other value.",
+          "values": {
+            "0": {
+              "name": "general",
+              "note": "Played with no place."
+            },
+            "1": {
+              "name": "champion",
+              "note": "A conversation played in the voice of the champion named by handle, where sound is on and the client knows the champion."
+            }
+          }
+        },
+        {
+          "name": "handle",
+          "type": "u32",
+          "note": "For kind 0, a number a client returns in VoiceEventDone; for kind 1, the champion."
+        }
+      ]
+    },
+    {
+      "from": "3.10.0.237",
+      "until": "3.11.0.306",
+      "channel": "events",
+      "command": 121,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "folder",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The event's folder. It has no effect where kind is 1."
+        },
+        {
+          "name": "event",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The event's name; for kind 1, the conversation's."
+        },
+        {
+          "name": "callback",
+          "type": "u8",
+          "note": "For kind 0, nonzero asks the client to send VoiceEventDone once the event has played. A client sends it at once where it cannot play the event, whatever this holds."
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What sort of event. A client does nothing for any other value.",
+          "values": {
+            "0": {
+              "name": "general",
+              "note": "Played with no place."
+            },
+            "1": {
+              "name": "champion",
+              "note": "A conversation played in the voice of the champion named by handle, where sound is on and the client knows the champion."
+            }
+          }
+        },
+        {
+          "name": "handle",
+          "type": "u32",
+          "note": "For kind 0, a number a client returns in VoiceEventDone; for kind 1, the champion."
+        }
+      ]
+    },
+    {
+      "from": "3.11.0.306",
+      "until": "3.13.0.399",
+      "channel": "events",
+      "command": 121,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "folder",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The event's folder. It has no effect where kind is 1."
+        },
+        {
+          "name": "event",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The event's name; for kind 1, the conversation's."
+        },
+        {
+          "name": "callback",
+          "type": "u8",
+          "note": "For kind 0, nonzero asks the client to send VoiceEventDone once the event has played."
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What sort of event. A client does nothing for any other value.",
+          "values": {
+            "0": {
+              "name": "general",
+              "note": "Played with no place."
+            },
+            "1": {
+              "name": "champion",
+              "note": "A conversation played in the voice of the champion named by handle, where sound is on and the client knows the champion."
+            }
+          }
+        },
+        {
+          "name": "handle",
+          "type": "u32",
+          "note": "For kind 0, a number a client returns in VoiceEventDone; for kind 1, the champion."
+        }
+      ]
+    },
+    {
+      "from": "3.13.0.399",
       "until": "4.1.0.171",
       "channel": "events",
       "command": 121,
@@ -731,7 +1024,7 @@
     },
     {
       "from": "4.1.0.171",
-      "until": "4.11.0.386",
+      "until": "4.5.0.260",
       "channel": "events",
       "command": 120,
       "direction": "serverToClient",
@@ -779,7 +1072,203 @@
       ]
     },
     {
+      "from": "4.5.0.260",
+      "until": "4.11.0.386",
+      "channel": "events",
+      "command": 120,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "folder",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The event's folder. It has no effect where kind is 1."
+        },
+        {
+          "name": "event",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The event's name; for kind 1, the conversation's."
+        },
+        {
+          "name": "callback",
+          "type": "u8",
+          "note": "For kind 0, nonzero asks the client to send VoiceEventDone once the event has played."
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What sort of event. A client does nothing for any other value.",
+          "values": {
+            "0": {
+              "name": "general",
+              "note": "Played with no place."
+            },
+            "1": {
+              "name": "champion",
+              "note": "A conversation played in the voice of the champion named by handle, where sound is on and the client knows the champion."
+            }
+          }
+        },
+        {
+          "name": "handle",
+          "type": "u32",
+          "note": "For kind 0, a number a client returns in VoiceEventDone; for kind 1, the champion."
+        }
+      ]
+    },
+    {
       "from": "4.11.0.386",
+      "until": "4.17.0.233",
+      "channel": "events",
+      "command": 121,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "folder",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The event's folder. It has no effect where kind is 1."
+        },
+        {
+          "name": "event",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The event's name; for kind 1, the conversation's."
+        },
+        {
+          "name": "callback",
+          "type": "u8",
+          "note": "For kind 0, nonzero asks the client to send VoiceEventDone once the event has played."
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What sort of event. A client does nothing for any other value.",
+          "values": {
+            "0": {
+              "name": "general",
+              "note": "Played with no place."
+            },
+            "1": {
+              "name": "champion",
+              "note": "A conversation played in the voice of the champion named by handle, where sound is on and the client knows the champion."
+            }
+          }
+        },
+        {
+          "name": "handle",
+          "type": "u32",
+          "note": "For kind 0, a number a client returns in VoiceEventDone; for kind 1, the champion."
+        }
+      ]
+    },
+    {
+      "from": "4.17.0.233",
+      "until": "4.18.0.271",
+      "channel": "events",
+      "command": 121,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "folder",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The event's folder. It has no effect where kind is 1."
+        },
+        {
+          "name": "event",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The event's name; for kind 1, the conversation's."
+        },
+        {
+          "name": "callback",
+          "type": "u8",
+          "note": "For kind 0, nonzero asks the client to send VoiceEventDone once the event has played. A client sends it at once where it cannot play the event, whatever this holds."
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What sort of event. A client does nothing for any other value.",
+          "values": {
+            "0": {
+              "name": "general",
+              "note": "Played with no place."
+            },
+            "1": {
+              "name": "champion",
+              "note": "A conversation played in the voice of the champion named by handle, where sound is on and the client knows the champion."
+            }
+          }
+        },
+        {
+          "name": "handle",
+          "type": "u32",
+          "note": "For kind 0, a number a client returns in VoiceEventDone; for kind 1, the champion."
+        }
+      ]
+    },
+    {
+      "from": "4.18.0.271",
+      "until": "4.20.0.315",
+      "channel": "events",
+      "command": 121,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "folder",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The event's folder. It has no effect where kind is 1."
+        },
+        {
+          "name": "event",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The event's name; for kind 1, the conversation's."
+        },
+        {
+          "name": "callback",
+          "type": "u8",
+          "note": "For kind 0, nonzero asks the client to send VoiceEventDone once the event has played."
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What sort of event. A client does nothing for any other value.",
+          "values": {
+            "0": {
+              "name": "general",
+              "note": "Played with no place."
+            },
+            "1": {
+              "name": "champion",
+              "note": "A conversation played in the voice of the champion named by handle, where sound is on and the client knows the champion."
+            }
+          }
+        },
+        {
+          "name": "handle",
+          "type": "u32",
+          "note": "For kind 0, a number a client returns in VoiceEventDone; for kind 1, the champion."
+        }
+      ]
+    },
+    {
+      "from": "4.20.0.315",
       "until": "4.21.0.0",
       "channel": "events",
       "command": 121,

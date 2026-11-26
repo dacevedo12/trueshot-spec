@@ -146,8 +146,7 @@
           "bits": [
             {
               "name": "pausing",
-              "width": 1,
-              "note": "Set to have a client post a notice in chat, except while watching a match; it allows or blocks no hold."
+              "width": 1
             },
             {
               "name": "unused",
@@ -173,8 +172,7 @@
           "bits": [
             {
               "name": "pausing",
-              "width": 1,
-              "note": "Set to have a client post a notice in chat, except while watching a match; it allows or blocks no hold."
+              "width": 1
             },
             {
               "name": "unused",
@@ -254,8 +252,7 @@
           "bits": [
             {
               "name": "pausing",
-              "width": 1,
-              "note": "Set to have a client that is not watching the match show a notice in its chat."
+              "width": 1
             },
             {
               "name": "unused",
@@ -281,13 +278,11 @@
           "bits": [
             {
               "name": "pausing",
-              "width": 1,
-              "note": "Set to have a client that is not watching the match show a notice in its chat."
+              "width": 1
             },
             {
               "name": "notice",
-              "width": 1,
-              "note": "Set to have a client post a notice in chat and from then on run its match clock in fixed steps of 0.0333433 seconds a frame, even past spawning and while playing back; a second StartGame with it set steps the clock on again."
+              "width": 1
             },
             {
               "name": "unused",
@@ -313,8 +308,7 @@
           "bits": [
             {
               "name": "pausing",
-              "width": 1,
-              "note": "Set to have a client that is not watching the match show a notice in its chat."
+              "width": 1
             },
             {
               "name": "unused",

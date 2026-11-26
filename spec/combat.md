@@ -16,9 +16,23 @@ unit attacks.
 > After `StopAttack`, a client clears the unit's attack whatever the message's
 > flags ask besides.
 
-<!-- holds from 0.9.25.24 up to 3.11.0.306 -->
+<!-- holds from 0.9.25.24 up to 1.0.0.61 -->
 
-> **In 0.9.25.24–3.10**
+> **In 0.9.25.24–1.0.0.60**
+>
+> A client moves the attacker to the place `AttackFrom` gives only where it
+> stands more than 400 units from it.
+
+<!-- holds from 1.0.0.74 up to 1.0.0.75 -->
+
+> **In 1.0.0.74**
+>
+> A client moves the attacker to the place `AttackFrom` gives only where it
+> stands more than 400 units from it.
+
+<!-- holds from 1.0.0.86 up to 3.11.0.306 -->
+
+> **In 1.0.0.86–3.10**
 >
 > A client moves the attacker to the place `AttackFrom` gives only where it
 > stands more than 400 units from it.

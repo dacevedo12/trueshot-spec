@@ -6,6 +6,21 @@
   "revisions": [
     {
       "from": "0.9.22.14",
+      "until": "0.9.25.24",
+      "channel": "events",
+      "command": 136,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "speed",
+          "type": "f32",
+          "note": "How fast, 1 being normal. A client sets no bound."
+        }
+      ]
+    },
+    {
+      "from": "0.9.25.24",
       "until": "0.9.25.36",
       "channel": "events",
       "command": 136,

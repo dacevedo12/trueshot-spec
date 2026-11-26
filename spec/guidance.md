@@ -20,10 +20,10 @@ A server lights up parts of the screen and units with `HudHighlighted`,
 ## Tips, quests and objectives
 
 A server puts a tip in front of a player with `TipShown`, addressed to that
-player's champion, and a client reports a click on it, or the tip being closed,
-with `TipEvent`. A server can add, complete and remove quests in the quest
-tracker with `QuestUpdated`, and a client reports the pointer passing over a
-quest, and a click on it, with `QuestEvent`. A server can also show, change
+player's champion, and `TipEvent` carries a client's report of a click on a tip
+or its closing. A server can add, complete and remove quests in the quest
+tracker with `QuestUpdated`, and `QuestEvent` carries a client's report of the
+pointer passing over a quest, or a click on it. A server can also show, change
 and hide an objective panel (`ObjectiveShown`, `ObjectiveReplaced`,
 `ObjectiveHidden`) and a box of text at the side of the screen
 (`SideTextShown`, `SideTextRefreshed`, `SideTextHidden`), and tell a champion

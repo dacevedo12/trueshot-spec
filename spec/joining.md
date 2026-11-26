@@ -183,10 +183,11 @@ sends `ReconnectedInMatch`.
 
 ## Asking whether a server is ready
 
-A client then sends `QueryStatus` over and over until a `QueryStatusAnswer`
-says the server is ready. It pairs no answer with a query: one ready answer is
-enough, and a query it sends after that answer needs none. Until a ready answer
-arrives, a client stays on a black screen and goes no further.
+`QueryStatus` carries a client's question whether the server is ready, and
+`QueryStatusAnswer` the answer. A client pairs no answer with a query: one
+ready answer is enough, and a query it sends after that answer needs none.
+Until a ready answer arrives, a client stays on a black screen and goes no
+further.
 
 <!-- holds from 1.0.0.126 up to 1.0.0.127 -->
 
@@ -202,9 +203,9 @@ arrives, a client stays on a black screen and goes no further.
 
 ## Stating a build
 
-Once an answer says the server is ready, a client sends `ClientVersion` once. A
-server answers with `VersionSync`, and a client loads only where its
-`agreement` says the builds agree.
+`ClientVersion` carries the build a client runs. A server answers with
+`VersionSync`, and a client loads only where its `agreement` says the builds
+agree.
 
 <!-- holds from 0.8.13.26 up to 0.9.22.14 -->
 
@@ -294,9 +295,9 @@ each seat a player holds.
 
 ## Loading
 
-A client reports how far loading has got with `LoadingProgress`, repeatedly
-through loading. A server answers each report with `SeatLoadProgress`,
-carrying the report's figures under the seat that reported.
+`LoadingProgress` carries a client's report of how far loading has got. A
+server answers each report with `SeatLoadProgress`, carrying the report's
+figures under the seat that reported.
 
 <!-- holds from 0.9.22.14 up to 3.14.0.700 -->
 

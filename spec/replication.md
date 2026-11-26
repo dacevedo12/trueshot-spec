@@ -88,11 +88,10 @@ the building table.
 
 ## Which batches a client takes
 
-A client answers a batch with `TransientAck` only where it holds every unit
-the batch names, whether or not it took the values. It sends one answer for each
-batch it answers, in the order the batches came, including a batch that repeats
-the `syncId` of the batch before it. [Ordering](ordering.md) says which batches
-a client takes, and what that requires of a server.
+`TransientAck` carries a client's answer to a batch. A client sends one answer
+for each batch it answers, in the order the batches came, including a batch
+that repeats the `syncId` of the batch before it. [Ordering](ordering.md) says
+which batches a client takes, and what that requires of a server.
 
 <!-- holds from 0.9.25.24 up to 1.0.0.141 -->
 

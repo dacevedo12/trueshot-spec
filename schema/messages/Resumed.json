@@ -116,13 +116,22 @@
     },
     {
       "from": "1.0.0.110",
-      "until": "1.0.0.126",
+      "until": "1.0.0.111",
       "channel": "events",
       "command": 10,
       "direction": "serverToClient",
       "reliability": "reliable",
       "fields": [],
       "note": "A client resumes the match at once where it is held, and announces no one."
+    },
+    {
+      "from": "1.0.0.111",
+      "until": "1.0.0.126",
+      "channel": "events",
+      "command": 10,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": []
     },
     {
       "from": "1.0.0.126",
@@ -356,6 +365,138 @@
     },
     {
       "from": "1.0.0.150",
+      "until": "3.7.0.328",
+      "channel": "events",
+      "command": 10,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the player who resumed the match, announced in chat in their side's colour where their champion is known; 4294967295 announces no one."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "afterCountdown",
+              "width": 1,
+              "note": "Set where the match starts again after a countdown rather than at once."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ],
+      "note": "The header has no effect. Resuming after the countdown, it keeps input locked and the pause panel open until a countdown of its own ends; resuming at once, it unlocks input and closes the panel."
+    },
+    {
+      "from": "3.7.0.328",
+      "until": "3.10.0.237",
+      "channel": "events",
+      "command": 10,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the player who resumed the match, announced in chat in their side's colour where their champion is known; 4294967295 announces no one."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "afterCountdown",
+              "width": 1,
+              "note": "Set where the match starts again after a countdown rather than at once."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ],
+      "note": "The header has no effect."
+    },
+    {
+      "from": "3.10.0.237",
+      "until": "3.11.0.306",
+      "channel": "events",
+      "command": 10,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the player who resumed the match, announced in chat in their side's colour where their champion is known; 4294967295 announces no one."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "afterCountdown",
+              "width": 1,
+              "note": "Set where the match starts again after a countdown rather than at once."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ],
+      "note": "The header has no effect. Resuming after the countdown, it keeps input locked and the pause panel open until a countdown of its own ends; resuming at once, it unlocks input and closes the panel."
+    },
+    {
+      "from": "3.11.0.306",
+      "until": "3.13.0.399",
+      "channel": "events",
+      "command": 10,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the player who resumed the match, announced in chat in their side's colour where their champion is known; 4294967295 announces no one."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "afterCountdown",
+              "width": 1,
+              "note": "Set where the match starts again after a countdown rather than at once."
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ],
+      "note": "The header has no effect."
+    },
+    {
+      "from": "3.13.0.399",
       "until": "3.14.0.700",
       "channel": "events",
       "command": 10,

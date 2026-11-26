@@ -92,6 +92,87 @@
     },
     {
       "from": "0.9.25.24",
+      "until": "0.9.25.36",
+      "channel": "events",
+      "command": 49,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The name the unit answers to, so later messages can name it."
+        },
+        {
+          "name": "node",
+          "type": "u8",
+          "note": "Which network node the unit belongs to, in a field of its own rather than as part of the name that follows."
+        },
+        {
+          "name": "wave",
+          "type": "u8",
+          "note": "Which run of units it belongs to."
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What sort of unit it is, from 0 to 3; any other value has no defined effect."
+        },
+        {
+          "name": "damageBonus",
+          "type": "i16",
+          "note": "What is added to the damage it deals."
+        },
+        {
+          "name": "healthBonus",
+          "type": "i16",
+          "note": "What is added to the health it holds."
+        }
+      ],
+      "note": "The header names the barracks, and a client handles the message only where it holds that barracks; the new unit's id is in unit."
+    },
+    {
+      "from": "0.9.25.36",
+      "until": "1.0.0.25",
+      "channel": "events",
+      "command": 49,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The name the unit answers to, so later messages can name it."
+        },
+        {
+          "name": "node",
+          "type": "u8",
+          "note": "Which network node the unit belongs to, in a field of its own rather than as part of the name that follows."
+        },
+        {
+          "name": "wave",
+          "type": "u8",
+          "note": "Which run of units it belongs to."
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What sort of unit it is, from 0 to 3; any other value has no defined effect."
+        },
+        {
+          "name": "damageBonus",
+          "type": "i16",
+          "note": "What is added to the damage it deals."
+        },
+        {
+          "name": "healthBonus",
+          "type": "i16",
+          "note": "What is added to the health it holds."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.25",
       "until": "1.0.0.61",
       "channel": "events",
       "command": 49,
@@ -530,8 +611,7 @@
           "type": "i16",
           "note": "What is added to the health it holds."
         }
-      ],
-      "note": "The header names the barracks sending the unit out: only a barracks acts on the message, and unit names the new unit."
+      ]
     },
     {
       "from": "1.0.0.128",
@@ -571,8 +651,7 @@
           "type": "i16",
           "note": "What is added to the health it holds."
         }
-      ],
-      "note": "The header names the barracks sending the unit out: only a barracks acts on the message, and unit names the new unit."
+      ]
     },
     {
       "from": "1.0.0.132",
@@ -617,7 +696,7 @@
     },
     {
       "from": "1.0.0.133",
-      "until": "1.0.0.143",
+      "until": "1.0.0.141",
       "channel": "events",
       "command": 3,
       "direction": "serverToClient",
@@ -657,7 +736,94 @@
       "note": "It arrives on its own and also inside EnterSight. The header names the barracks sending the unit out: only a barracks acts on the message, and unit names the new unit."
     },
     {
+      "from": "1.0.0.141",
+      "until": "1.0.0.143",
+      "channel": "events",
+      "command": 3,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The name the unit answers to, so later messages can name it."
+        },
+        {
+          "name": "node",
+          "type": "u8",
+          "note": "Which network node the unit belongs to, in a field of its own rather than as part of the name that follows."
+        },
+        {
+          "name": "wave",
+          "type": "u8",
+          "note": "Which run of units it belongs to."
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What sort of unit it is."
+        },
+        {
+          "name": "damageBonus",
+          "type": "i16",
+          "note": "What is added to the damage it deals."
+        },
+        {
+          "name": "healthBonus",
+          "type": "i16",
+          "note": "What is added to the health it holds."
+        }
+      ],
+      "note": "It arrives on its own and also inside EnterSight."
+    },
+    {
       "from": "1.0.0.143",
+      "until": "1.0.0.150",
+      "channel": "events",
+      "command": 3,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The name the unit answers to, so later messages can name it."
+        },
+        {
+          "name": "node",
+          "type": "u8",
+          "note": "Which network node the unit belongs to, in a field of its own rather than as part of the name that follows."
+        },
+        {
+          "name": "barracks",
+          "type": "u32",
+          "note": "The place it came out of, by the identifier its name gives as spec/objects.md works it out. On map 1 that is a spawn point such as __P_Order_Spawn_Barracks__C01, not the inhibitor named Barracks_T1_C1: named by the inhibitor, a client creates nothing."
+        },
+        {
+          "name": "wave",
+          "type": "u8",
+          "note": "Which run of units it belongs to."
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "note": "What sort of unit it is."
+        },
+        {
+          "name": "damageBonus",
+          "type": "i16",
+          "note": "What is added to the damage it deals."
+        },
+        {
+          "name": "healthBonus",
+          "type": "i16",
+          "note": "What is added to the health it holds."
+        }
+      ],
+      "note": "It arrives on its own and also inside EnterSight."
+    },
+    {
+      "from": "1.0.0.150",
       "until": "3.14.0.700",
       "channel": "events",
       "command": 3,

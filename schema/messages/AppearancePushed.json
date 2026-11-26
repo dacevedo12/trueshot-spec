@@ -1407,6 +1407,56 @@
     },
     {
       "from": "4.1.0.171",
+      "until": "4.4.0.1858",
+      "channel": "events",
+      "command": 150,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "entry",
+          "type": "u32",
+          "note": "Names this look, so that AppearancePopped can name it."
+        },
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "overrideSpells",
+              "width": 1,
+              "note": "Set where the unit's spells change with it."
+            },
+            {
+              "name": "modelOnly",
+              "width": 1,
+              "note": "Set where only the model changes."
+            },
+            {
+              "name": "unused",
+              "width": 6,
+              "note": "Unused; a server writes zero."
+            }
+          ],
+          "note": "What the look changes."
+        },
+        {
+          "name": "skin",
+          "type": "i32",
+          "note": "Which look; -1 keeps the unit's own skin."
+        },
+        {
+          "name": "asset",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "The name the client loads it under, ended by a zero byte. The name and its zero byte take at most 64 bytes."
+        }
+      ]
+    },
+    {
+      "from": "4.4.0.1858",
       "until": "4.5.0.260",
       "channel": "events",
       "command": 150,

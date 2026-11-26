@@ -72,6 +72,27 @@
     },
     {
       "from": "3.12.0.251",
+      "until": "3.13.0.399",
+      "channel": "events",
+      "command": 235,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unused",
+          "type": "u32",
+          "note": "Unused; a server writes zero."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "remaining"
+        }
+      ]
+    },
+    {
+      "from": "3.13.0.399",
       "until": "4.1.0.171",
       "channel": "events",
       "command": 235,

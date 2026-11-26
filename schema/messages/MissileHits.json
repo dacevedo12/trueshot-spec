@@ -6,6 +6,32 @@
   "revisions": [
     {
       "from": "0.9.22.16",
+      "until": "0.9.25.24",
+      "channel": "events",
+      "command": 163,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "count",
+          "type": "u16",
+          "note": "How many units follow. A client reads it as signed, so a count of zero or above 32767 carries no units, and a server sends at most 32767."
+        },
+        {
+          "name": "targets",
+          "type": "array",
+          "count": "count",
+          "items": {
+            "name": "target",
+            "type": "u32",
+            "note": "A unit struck."
+          },
+          "note": "The units struck, in order."
+        }
+      ]
+    },
+    {
+      "from": "0.9.25.24",
       "until": "0.9.25.36",
       "channel": "events",
       "command": 163,

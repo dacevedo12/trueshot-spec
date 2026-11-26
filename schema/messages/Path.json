@@ -1068,6 +1068,82 @@
     },
     {
       "from": "3.01.0.1",
+      "until": "3.7.0.328",
+      "channel": "events",
+      "command": 185,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "i32",
+          "note": "The unit's movement count."
+        },
+        {
+          "name": "points",
+          "type": "array",
+          "count": "remaining",
+          "items": {
+            "name": "pointsEntry",
+            "type": "record",
+            "fields": [
+              {
+                "name": "x",
+                "type": "f32",
+                "note": "A point on the path, in world units."
+              },
+              {
+                "name": "z",
+                "type": "f32",
+                "note": "A point on the path, in world units."
+              }
+            ]
+          },
+          "note": "The path's points, to the end of the message. A client takes the ground's height for each."
+        }
+      ],
+      "note": "A client answers every one at once, unsequenced on the transient channel, with ten bytes: WaypointAck's command, a net id of zero, this sync id, and one byte that is arbitrary and carries no meaning. It applies it only where the sync id is not older than the last the unit took (as UnitStopped)."
+    },
+    {
+      "from": "3.7.0.328",
+      "until": "3.10.0.237",
+      "channel": "events",
+      "command": 185,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "syncId",
+          "type": "i32",
+          "note": "The unit's movement count."
+        },
+        {
+          "name": "points",
+          "type": "array",
+          "count": "remaining",
+          "items": {
+            "name": "pointsEntry",
+            "type": "record",
+            "fields": [
+              {
+                "name": "x",
+                "type": "f32",
+                "note": "A point on the path, in world units."
+              },
+              {
+                "name": "z",
+                "type": "f32",
+                "note": "A point on the path, in world units."
+              }
+            ]
+          },
+          "note": "The path's points, to the end of the message. A client takes the ground's height for each."
+        }
+      ],
+      "note": "It applies it only where the sync id is not older than the last the unit took (as UnitStopped)."
+    },
+    {
+      "from": "3.10.0.237",
       "until": "4.1.0.171",
       "channel": "events",
       "command": 185,

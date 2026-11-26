@@ -1,0 +1,24 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "CastSpell",
+  "version": "4.18.0.271",
+  "note": "Laid out as a 4.18.0.271 client sends it.",
+  "bytes": "9a0100004000002270614490dea4442270614490dea44400000000",
+  "fields": {
+    "command": 154,
+    "netId": 1073741825,
+    "extendedCommand": null,
+    "how": {
+      "fromSummonerSlots": 0,
+      "fromHud": 0,
+      "unused": 0
+    },
+    "slot": 0,
+    "x": 901.7520751953125,
+    "z": 1318.955078125,
+    "endX": 901.7520751953125,
+    "endZ": 1318.955078125,
+    "target": 0
+  }
+}

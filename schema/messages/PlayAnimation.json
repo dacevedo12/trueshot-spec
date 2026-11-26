@@ -1576,7 +1576,7 @@
     },
     {
       "from": "1.0.0.126",
-      "until": "1.0.0.128",
+      "until": "1.0.0.127",
       "channel": "events",
       "command": 184,
       "direction": "serverToClient",
@@ -1659,6 +1659,87 @@
         }
       ],
       "note": "Every play blends in over a blend time of 0.2 seconds unless noFadeIn is set. Without loop or holdLastFrame, an animation that ends is removed, except that where it was the unit's only animation and the unit has an idle, a client fades back to the idle, looping. No start point is carried: the animation starts from its beginning. A unit whose animation has been locked ignores the message."
+    },
+    {
+      "from": "1.0.0.127",
+      "until": "1.0.0.128",
+      "channel": "events",
+      "command": 184,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 4,
+          "bits": [
+            {
+              "name": "unusedLow",
+              "width": 1,
+              "note": "Unused; a server writes zero."
+            },
+            {
+              "name": "loop",
+              "width": 1,
+              "note": "Set to loop the animation: it starts over once it ends."
+            },
+            {
+              "name": "holdLastFrame",
+              "width": 1
+            },
+            {
+              "name": "fadeOthers",
+              "width": 1,
+              "note": "Set to freeze the animations already playing and fade them to nothing over the blend time. They are not removed."
+            },
+            {
+              "name": "freezeOthers",
+              "width": 1,
+              "note": "Set to freeze the animations already playing, fade them out over the blend time, then remove them."
+            },
+            {
+              "name": "dropOthers",
+              "width": 1,
+              "note": "Set to remove the animations already playing at once, with no fade."
+            },
+            {
+              "name": "locked",
+              "width": 1
+            },
+            {
+              "name": "fadeAtEnd",
+              "width": 1,
+              "note": "Only where loop is clear: set to start fading the animation out once its time left is at or below the blend time."
+            },
+            {
+              "name": "syncPhase",
+              "width": 1,
+              "note": "Only together with loop: where an animation already playing on the unit is the same one, the new one starts at that animation's current fraction of its length, where that fraction lies strictly between 0 and 1."
+            },
+            {
+              "name": "noFadeIn",
+              "width": 1
+            },
+            {
+              "name": "unused",
+              "width": 22,
+              "note": "Unused; a server writes zero."
+            }
+          ],
+          "note": "How the animation plays, as a set of bits."
+        },
+        {
+          "name": "scaleTime",
+          "type": "f32"
+        },
+        {
+          "name": "animation",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "The animation's name, ended by a zero byte. Nothing plays for a name the unit does not have."
+        }
+      ]
     },
     {
       "from": "1.0.0.128",
@@ -2985,13 +3066,11 @@
         },
         {
           "name": "scaleTime",
-          "type": "f32",
-          "note": "A scale on how long it plays."
+          "type": "f32"
         },
         {
           "name": "startProgress",
-          "type": "f32",
-          "note": "How far into the animation it starts."
+          "type": "f32"
         },
         {
           "name": "animation",
@@ -3116,13 +3195,11 @@
         },
         {
           "name": "scaleTime",
-          "type": "f32",
-          "note": "A scale on how long it plays."
+          "type": "f32"
         },
         {
           "name": "startProgress",
-          "type": "f32",
-          "note": "How far into the animation it starts."
+          "type": "f32"
         },
         {
           "name": "animation",
@@ -3181,13 +3258,11 @@
         },
         {
           "name": "scaleTime",
-          "type": "f32",
-          "note": "A scale on how long it plays."
+          "type": "f32"
         },
         {
           "name": "startProgress",
-          "type": "f32",
-          "note": "How far into the animation it starts."
+          "type": "f32"
         },
         {
           "name": "animation",
@@ -3470,6 +3545,77 @@
     },
     {
       "from": "4.18.0.271",
+      "until": "4.20.0.315",
+      "channel": "events",
+      "command": 176,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "flags",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "locked",
+              "width": 1,
+              "note": "Set where no other animation can fade this one out."
+            },
+            {
+              "name": "lockedFromIdle",
+              "width": 1,
+              "note": "Set where idle animations cannot fade it out. It has no effect where locked is set."
+            },
+            {
+              "name": "noBlend",
+              "width": 1,
+              "note": "Set to switch to it at once rather than blend in."
+            },
+            {
+              "name": "holdLastFrame",
+              "width": 1,
+              "note": "Where a non-looping animation ends, it stays on its last frame. Whether an animation loops comes from the animation's own data."
+            },
+            {
+              "name": "keepEmotes",
+              "width": 1,
+              "note": "Set to let an emote playing go on; clear stops it."
+            },
+            {
+              "name": "unused",
+              "width": 3,
+              "note": "Unused; a server writes zero."
+            }
+          ],
+          "note": "How the animation plays."
+        },
+        {
+          "name": "scaleTime",
+          "type": "f32",
+          "note": "A scale on how long it plays."
+        },
+        {
+          "name": "startProgress",
+          "type": "f32",
+          "note": "How far into the animation it starts."
+        },
+        {
+          "name": "speed",
+          "type": "f32",
+          "note": "How fast it plays."
+        },
+        {
+          "name": "animation",
+          "type": "string",
+          "encoding": "utf8",
+          "size": "terminated",
+          "note": "Nothing plays for a name the unit does not have."
+        }
+      ],
+      "note": "scaleTime and startProgress are applied only where above zero. A unit holding a locked animation ignores the message. An animated building plays at normal speed, and keepEmotes has no effect on it."
+    },
+    {
+      "from": "4.20.0.315",
       "until": "4.21.0.0",
       "channel": "events",
       "command": 176,

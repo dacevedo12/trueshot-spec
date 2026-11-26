@@ -206,12 +206,12 @@
         {
           "name": "count",
           "type": "i32",
-          "note": "How many of the slots are used, 0 to 32; 0 clears every target the client holds, and a count below zero names no targets and clears nothing. A count above 32 has no defined effect."
+          "note": "How many of the slots are used, 0 to 32. A count above 32 has no defined effect."
         },
         {
           "name": "caster",
           "type": "u32",
-          "note": "The unit casting the missile. Where a client does not hold it, a missile it already holds under the header's name still takes the targets."
+          "note": "The unit casting the missile."
         },
         {
           "name": "targets",
@@ -237,12 +237,12 @@
         {
           "name": "count",
           "type": "i32",
-          "note": "How many of the slots are used, 0 to 32; 0 clears every target the client holds."
+          "note": "How many of the slots are used, 0 to 32."
         },
         {
           "name": "caster",
           "type": "u32",
-          "note": "The unit casting the missile. Where a client does not hold it, a missile it already holds under the header's name still takes the targets."
+          "note": "The unit casting the missile."
         },
         {
           "name": "targets",
@@ -396,12 +396,12 @@
         {
           "name": "count",
           "type": "i32",
-          "note": "How many of the slots are used, 0 to 32. 0 clears every target the client holds; a negative value sets none and clears none. Any other count sets that many targets and leaves the rest as they were."
+          "note": "How many of the slots are used, 0 to 32."
         },
         {
           "name": "caster",
           "type": "u32",
-          "note": "The unit casting the missile. Where a client does not hold it, the client starts no missile, though a missile it already holds under the header's name still takes the targets."
+          "note": "The unit casting the missile."
         },
         {
           "name": "targets",

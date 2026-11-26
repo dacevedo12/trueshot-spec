@@ -2721,6 +2721,67 @@
     },
     {
       "from": "4.18.0.271",
+      "until": "4.20.0.315",
+      "channel": "requests",
+      "command": 154,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "how",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "fromSummonerSlots",
+              "width": 1,
+              "note": "Set where the slot counts among the summoner slots rather than the unit's own."
+            },
+            {
+              "name": "fromHud",
+              "width": 1,
+              "note": "Set where the cast came from clicking the panel rather than the world."
+            },
+            {
+              "name": "unused",
+              "width": 6,
+              "note": "Unused; a client may leave any value here, and a server ignores it."
+            }
+          ]
+        },
+        {
+          "name": "slot",
+          "type": "u8",
+          "note": "Which slot is being cast from. It names slots for a unit's own spells and for items alike."
+        },
+        {
+          "name": "x",
+          "type": "f32",
+          "note": "A point on the ground the cast is described by, along one axis, in world units."
+        },
+        {
+          "name": "z",
+          "type": "f32",
+          "note": "The same point, along the other axis, in world units."
+        },
+        {
+          "name": "endX",
+          "type": "f32",
+          "note": "The second point of what aims the spell: the same as x and z for a point or a unit; for a line dragged out, its far end, cut to the spell's length; for a cone, its far point."
+        },
+        {
+          "name": "endZ",
+          "type": "f32",
+          "note": "The second point, along the other axis, in world units."
+        },
+        {
+          "name": "target",
+          "type": "u32"
+        }
+      ]
+    },
+    {
+      "from": "4.20.0.315",
       "until": "4.21.0.0",
       "channel": "requests",
       "command": 154,

@@ -1094,7 +1094,7 @@
           "note": "What this turret is called, so a client can tell one from another. Written out in full and padded with zero bytes to the width above."
         }
       ],
-      "note": "A client matches name exactly against the map's turrets. With no match it only removes any object holding the id; a matched turret missing or dead is rebuilt before it takes the id."
+      "note": "A client matches name exactly against the map's turrets."
     },
     {
       "from": "3.10.0.237",
@@ -1150,7 +1150,7 @@
           "note": "What this turret is called, so a client can tell one from another. Written out in full and padded with zero bytes to the width above."
         }
       ],
-      "note": "A client matches name exactly against the map's turrets. With no match it only removes any object holding the id; a matched turret missing or dead is rebuilt before it takes the id."
+      "note": "A client matches name exactly against the map's turrets."
     },
     {
       "from": "3.13.0.399",

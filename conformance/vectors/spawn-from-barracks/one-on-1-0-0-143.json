@@ -1,0 +1,19 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "SpawnFromBarracks",
+  "version": "1.0.0.143",
+  "note": "Laid out as a 1.0.0.143 client takes it.",
+  "bytes": "0301000040210000404000000000010000000000",
+  "fields": {
+    "command": 3,
+    "netId": 1073741825,
+    "unit": 1073741857,
+    "node": 64,
+    "barracks": 0,
+    "wave": 1,
+    "kind": 0,
+    "damageBonus": 0,
+    "healthBonus": 0
+  }
+}

@@ -6,6 +6,15 @@
   "revisions": [
     {
       "from": "0.9.22.14",
+      "until": "0.9.25.24",
+      "channel": "events",
+      "command": 134,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": []
+    },
+    {
+      "from": "0.9.25.24",
       "until": "0.9.25.36",
       "channel": "events",
       "command": 134,
@@ -16,7 +25,16 @@
     },
     {
       "from": "0.9.25.36",
-      "until": "1.0.0.63",
+      "until": "1.0.0.25",
+      "channel": "events",
+      "command": 133,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": []
+    },
+    {
+      "from": "1.0.0.25",
+      "until": "1.0.0.61",
       "channel": "events",
       "command": 133,
       "direction": "serverToClient",
@@ -25,18 +43,26 @@
       "note": "A client holds the match at once where it is not already held."
     },
     {
+      "from": "1.0.0.61",
+      "until": "1.0.0.63",
+      "channel": "events",
+      "command": 133,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": []
+    },
+    {
       "from": "1.0.0.63",
       "until": "1.0.0.74",
       "channel": "events",
       "command": 136,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": [],
-      "note": "A client holds the match at once where it is not already held."
+      "fields": []
     },
     {
       "from": "1.0.0.74",
-      "until": "1.0.0.82",
+      "until": "1.0.0.75",
       "channel": "events",
       "command": 137,
       "direction": "serverToClient",
@@ -45,7 +71,25 @@
       "note": "A client holds the match at once where it is not already held."
     },
     {
+      "from": "1.0.0.75",
+      "until": "1.0.0.82",
+      "channel": "events",
+      "command": 137,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": []
+    },
+    {
       "from": "1.0.0.82",
+      "until": "1.0.0.86",
+      "channel": "events",
+      "command": 141,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": []
+    },
+    {
+      "from": "1.0.0.86",
       "until": "1.0.0.97",
       "channel": "events",
       "command": 141,
@@ -61,8 +105,7 @@
       "command": 142,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": [],
-      "note": "A client holds the match at once where it is not already held."
+      "fields": []
     },
     {
       "from": "1.0.0.98",
@@ -71,8 +114,7 @@
       "command": 143,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": [],
-      "note": "A client holds the match at once where it is not already held."
+      "fields": []
     },
     {
       "from": "1.0.0.103",
@@ -81,8 +123,7 @@
       "command": 145,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": [],
-      "note": "A client holds the match at once where it is not already held."
+      "fields": []
     },
     {
       "from": "1.0.0.104",
@@ -91,8 +132,7 @@
       "command": 150,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": [],
-      "note": "A client holds the match at once where it is not already held."
+      "fields": []
     },
     {
       "from": "1.0.0.107",
@@ -101,8 +141,7 @@
       "command": 151,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": [],
-      "note": "A client holds the match at once where it is not already held."
+      "fields": []
     },
     {
       "from": "1.0.0.109",
@@ -111,8 +150,7 @@
       "command": 152,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "fields": [],
-      "note": "A client holds the match at once where it is not already held."
+      "fields": []
     },
     {
       "from": "1.0.0.110",

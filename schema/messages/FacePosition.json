@@ -438,7 +438,7 @@
     },
     {
       "from": "1.0.0.138",
-      "until": "1.0.0.144",
+      "until": "1.0.0.141",
       "channel": "requests",
       "command": 86,
       "direction": "clientToServer",
@@ -463,6 +463,35 @@
           "name": "unused",
           "type": "u8",
           "note": "1 where the script turns the unit toward the point rather than snapping it there, and 0 otherwise."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.141",
+      "until": "1.0.0.144",
+      "channel": "requests",
+      "command": 86,
+      "direction": "clientToServer",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "directionX",
+          "type": "f32",
+          "note": "Which way the unit now faces, as a direction of length one, along one ground axis."
+        },
+        {
+          "name": "directionY",
+          "type": "f32",
+          "note": "Which way the unit now faces, as a direction of length one, in height."
+        },
+        {
+          "name": "directionZ",
+          "type": "f32",
+          "note": "Which way the unit now faces, as a direction of length one, along the other ground axis."
+        },
+        {
+          "name": "unused",
+          "type": "u8"
         }
       ]
     },

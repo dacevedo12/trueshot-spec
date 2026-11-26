@@ -1,0 +1,19 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "AttackIndicators",
+  "version": "4.18.0.271",
+  "note": "Laid out as a 4.18.0.271 client takes it.",
+  "bytes": "fe0100004002011d00004000",
+  "fields": {
+    "command": 254,
+    "netId": 1073741825,
+    "extendedCommand": 258,
+    "unit": 1073741853,
+    "show": {
+      "show": 0,
+      "minimap": 0,
+      "unused": 0
+    }
+  }
+}

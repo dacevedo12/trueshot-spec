@@ -195,8 +195,7 @@
           "bits": [
             {
               "name": "countAsYes",
-              "width": 1,
-              "note": "Applies only where side is the client's own: set shows caller voting yes, clear voting no, opening the menu or not."
+              "width": 1
             },
             {
               "name": "openTheMenu",
@@ -2151,8 +2150,7 @@
             },
             {
               "name": "openTheMenu",
-              "width": 1,
-              "note": "Set to have a client, where side is its own, show the vote with seats and closesIn."
+              "width": 1
             },
             {
               "name": "unused",

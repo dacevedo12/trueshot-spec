@@ -815,9 +815,8 @@ Among the identifiers with that top byte are these:
 
 The `Barracks` names above belong to inhibitors, whatever the name says.
 
-A client puts a minion on the field for a `SpawnFromBarracks` naming a spawn
-point, and creates nothing for one naming an inhibitor such as
-`Barracks_T1_C1`.
+`SpawnFromBarracks` is for putting a minion on the field from a spawn point,
+not from an inhibitor such as `Barracks_T1_C1`.
 
 A server MUST name each object a map holds by the identifier its name gives.
 

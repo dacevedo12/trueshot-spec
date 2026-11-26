@@ -200,7 +200,7 @@
       "command": 220,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "Once a client knows one point, and only where the version answer named the mode ODIN, it shows the panel of each side's score and points held, and marks each point on the minimap. A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
+      "note": "A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
       "fields": [
         {
           "name": "point",
@@ -242,7 +242,7 @@
         {
           "name": "change",
           "type": "u8",
-          "note": "What to do. A client acts on 0 only; it ignores any other value, after making the points up to this one.",
+          "note": "What to do.",
           "values": {
             "0": {
               "name": "bind",
@@ -326,7 +326,7 @@
       "command": 221,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "Once a client knows one point, and only where the version answer named the mode ODIN, it shows the panel of each side's score and points held, and marks each point on the minimap. A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
+      "note": "A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
       "fields": [
         {
           "name": "point",
@@ -368,7 +368,7 @@
         {
           "name": "change",
           "type": "u8",
-          "note": "What to do. A client acts on 0 only; it ignores any other value, after making the points up to this one.",
+          "note": "What to do.",
           "values": {
             "0": {
               "name": "bind",
@@ -389,7 +389,7 @@
       "command": 223,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "Once a client knows one point, and only where the version answer named the mode ODIN, it shows the panel of each side's score and points held, and marks each point on the minimap. A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
+      "note": "A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
       "fields": [
         {
           "name": "point",
@@ -431,7 +431,7 @@
         {
           "name": "change",
           "type": "u8",
-          "note": "What to do. A client acts on 0 only; it ignores any other value, after making the points up to this one.",
+          "note": "What to do.",
           "values": {
             "0": {
               "name": "bind",
@@ -452,7 +452,7 @@
       "command": 221,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "Once a client knows one point, and only where the version answer named the mode ODIN, it shows the panel of each side's score and points held, and marks each point on the minimap. A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
+      "note": "A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
       "fields": [
         {
           "name": "point",
@@ -494,7 +494,7 @@
         {
           "name": "change",
           "type": "u8",
-          "note": "What to do. A client acts on 0 only; it ignores any other value, after making the points up to this one.",
+          "note": "What to do.",
           "values": {
             "0": {
               "name": "bind",
@@ -515,7 +515,7 @@
       "command": 223,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "Once a client knows one point, and only where the version answer named the mode ODIN, it shows the panel of each side's score and points held, and marks each point on the minimap. A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
+      "note": "A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
       "fields": [
         {
           "name": "point",
@@ -557,7 +557,7 @@
         {
           "name": "change",
           "type": "u8",
-          "note": "What to do. A client acts on 0 only; it ignores any other value, after making the points up to this one.",
+          "note": "What to do.",
           "values": {
             "0": {
               "name": "bind",
@@ -578,7 +578,7 @@
       "command": 222,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "Once a client knows one point, and only where the version answer named the mode ODIN, it shows the panel of each side's score and points held, and marks each point on the minimap. A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
+      "note": "A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
       "fields": [
         {
           "name": "point",
@@ -620,7 +620,7 @@
         {
           "name": "change",
           "type": "u8",
-          "note": "What to do. A client acts on 0 only; it ignores any other value, after making the points up to this one.",
+          "note": "What to do.",
           "values": {
             "0": {
               "name": "bind",
@@ -704,7 +704,7 @@
       "command": 224,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "Once a client knows one point, and only where the version answer named the mode ODIN, it shows the panel of each side's score and points held, and marks each point on the minimap. A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
+      "note": "A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
       "fields": [
         {
           "name": "point",
@@ -746,7 +746,7 @@
         {
           "name": "change",
           "type": "u8",
-          "note": "What to do. A client acts on 0 only; it ignores any other value, after making the points up to this one.",
+          "note": "What to do.",
           "values": {
             "0": {
               "name": "bind",
@@ -767,7 +767,7 @@
       "command": 211,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "Once a client knows one point, and only where the version answer named the mode ODIN, it shows the panel of each side's score and points held, and marks each point on the minimap. A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
+      "note": "A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
       "fields": [
         {
           "name": "point",
@@ -809,7 +809,7 @@
         {
           "name": "change",
           "type": "u8",
-          "note": "What to do. A client acts on 0 only; it ignores any other value, after making the points up to this one.",
+          "note": "What to do.",
           "values": {
             "0": {
               "name": "bind",
@@ -1205,7 +1205,7 @@
       "command": 211,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "Once a client knows one point, and only where the version answer named the mode ODIN, it shows the panel of each side's score and points held, and marks each point on the minimap. A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
+      "note": "A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
       "fields": [
         {
           "name": "point",
@@ -1265,7 +1265,7 @@
         {
           "name": "change",
           "type": "u8",
-          "note": "What to do. A client acts on 0 only; it ignores any other value, after making the points up to this one.",
+          "note": "What to do.",
           "values": {
             "0": {
               "name": "bind",
@@ -1286,7 +1286,7 @@
       "command": 211,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "Once a client knows one point, and only where the version answer named the mode ODIN, it shows the panel of each side's score and points held, and marks each point on the minimap. A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
+      "note": "A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
       "fields": [
         {
           "name": "point",
@@ -1349,7 +1349,7 @@
         {
           "name": "change",
           "type": "u8",
-          "note": "What to do. A client acts on 0 only; it ignores any other value, after making the points up to this one.",
+          "note": "What to do.",
           "values": {
             "0": {
               "name": "bind",
@@ -1370,7 +1370,7 @@
       "command": 210,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "Once a client knows one point, and only where the version answer named the mode ODIN, it shows the panel of each side's score and points held, and marks each point on the minimap. A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
+      "note": "A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
       "fields": [
         {
           "name": "point",
@@ -1433,7 +1433,7 @@
         {
           "name": "change",
           "type": "u8",
-          "note": "What to do. A client acts on 0 only; it ignores any other value, after making the points up to this one.",
+          "note": "What to do.",
           "values": {
             "0": {
               "name": "bind",
@@ -1538,7 +1538,7 @@
       "command": 210,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "Once a client knows one point, and only where the version answer named the mode ODIN, it shows the panel of each side's score and points held, and marks each point on the minimap. A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
+      "note": "A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
       "fields": [
         {
           "name": "point",
@@ -1601,7 +1601,7 @@
         {
           "name": "change",
           "type": "u8",
-          "note": "What to do. A client acts on 0 only; it ignores any other value, after making the points up to this one.",
+          "note": "What to do.",
           "values": {
             "0": {
               "name": "bind",
@@ -1622,7 +1622,7 @@
       "command": 211,
       "direction": "serverToClient",
       "reliability": "reliable",
-      "note": "Once a client knows one point, and only where the version answer named the mode ODIN, it shows the panel of each side's score and points held, and marks each point on the minimap. A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
+      "note": "A server hands a point over by changing that unit's side (TeamChanged) and moves it toward capture by changing that unit's resource.",
       "fields": [
         {
           "name": "point",
@@ -1688,7 +1688,7 @@
         {
           "name": "change",
           "type": "u8",
-          "note": "What to do. A client acts on 0 only; it ignores any other value, after making the points up to this one.",
+          "note": "What to do.",
           "values": {
             "0": {
               "name": "bind",
@@ -1791,6 +1791,63 @@
     },
     {
       "from": "4.18.0.271",
+      "until": "4.20.0.315",
+      "channel": "events",
+      "command": 211,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "point",
+          "type": "u8",
+          "note": "Which point."
+        },
+        {
+          "name": "unit",
+          "type": "u32",
+          "note": "The unit the change concerns."
+        },
+        {
+          "name": "resourceKind",
+          "type": "u8",
+          "note": "Which of the unit's resources the client shows as the point's capture progress, where change is 0.",
+          "values": {
+            "0": {
+              "name": "mana"
+            },
+            "1": {
+              "name": "energy"
+            },
+            "2": {
+              "name": "none"
+            },
+            "3": {
+              "name": "shield"
+            },
+            "4": {
+              "name": "battleFury"
+            },
+            "5": {
+              "name": "dragonFury"
+            },
+            "6": {
+              "name": "rage"
+            }
+          }
+        },
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "Unused; a server writes zero."
+        },
+        {
+          "name": "change",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "from": "4.20.0.315",
       "until": "4.21.0.0",
       "channel": "events",
       "command": 211,

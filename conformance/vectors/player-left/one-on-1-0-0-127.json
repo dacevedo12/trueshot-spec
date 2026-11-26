@@ -1,0 +1,13 @@
+{
+  "$schema": "../../../schema/meta/vector.json",
+  "subject": "message",
+  "message": "PlayerLeft",
+  "version": "1.0.0.127",
+  "note": "Laid out as a 1.0.0.127 client takes it.",
+  "bytes": "0100000000000000",
+  "fields": {
+    "command": 1,
+    "unused": "000000",
+    "clientId": 0
+  }
+}

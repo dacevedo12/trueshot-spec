@@ -46,15 +46,14 @@
         {
           "name": "item",
           "type": "u32",
-          "note": "Which item, by the number the client knows it as. For an item it does not know, a client empties the slot and still takes inSlot."
+          "note": "Which item, by the number the client knows it as."
         },
         {
           "name": "inSlot",
           "type": "u8",
-          "note": "How many of the item the slot holds now; a client applies zero as well."
+          "note": "How many of the item the slot holds now."
         }
-      ],
-      "note": "There is no charges field: a client takes the charges of an item with an active effect from the item's own data."
+      ]
     },
     {
       "from": "0.9.25.24",
@@ -103,7 +102,7 @@
         {
           "name": "inSlot",
           "type": "u8",
-          "note": "How many of the item the slot holds now; a client applies zero as well. The slot's charges come from the item's own data."
+          "note": "How many of the item the slot holds now. The slot's charges come from the item's own data."
         }
       ],
       "note": "There is no charges field."
@@ -233,7 +232,7 @@
         {
           "name": "inSlot",
           "type": "u8",
-          "note": "How many of the item the slot holds now; a client applies zero as well."
+          "note": "How many of the item the slot holds now."
         }
       ]
     },
@@ -258,7 +257,7 @@
         {
           "name": "inSlot",
           "type": "u8",
-          "note": "How many of the item the slot holds now; a client applies zero as well."
+          "note": "How many of the item the slot holds now."
         }
       ]
     },
@@ -363,8 +362,7 @@
           "type": "u8",
           "note": "How many of the item the slot holds now. The slot's charges come from the item's own data."
         }
-      ],
-      "note": "There is no charges field: a client takes an item's charges from the item's own data."
+      ]
     },
     {
       "from": "1.0.0.99",
@@ -394,8 +392,7 @@
           "type": "u8",
           "note": "What this carries is not recorded. Where it is not zero, a client refreshes the slot and, where the slot holds an item, sends RemoveItem for it with sell clear; a server sends zero."
         }
-      ],
-      "note": "There is no charges field: a client takes an item's charges from the item's own data."
+      ]
     },
     {
       "from": "1.0.0.103",
@@ -425,8 +422,7 @@
           "type": "u8",
           "note": "What this carries is not recorded. Where it is not zero, a client refreshes the slot and, where the slot holds an item, sends RemoveItem for it with sell clear; a server sends zero."
         }
-      ],
-      "note": "There is no charges field: a client takes an item's charges from the item's own data."
+      ]
     },
     {
       "from": "1.0.0.107",
@@ -456,8 +452,7 @@
           "type": "u8",
           "note": "What this carries is not recorded. Where it is not zero, a client refreshes the slot and, where the slot holds an item, sends RemoveItem for it with sell clear; a server sends zero."
         }
-      ],
-      "note": "There is no charges field: a client takes an item's charges from the item's own data."
+      ]
     },
     {
       "from": "1.0.0.110",
@@ -1464,8 +1459,7 @@
             },
             {
               "name": "announce",
-              "width": 1,
-              "note": "Set to announce the purchase: a client shows it where the unit is on its side (or it plays a replay), the item's own data allows it, the player's setting asks for it, and the same item was not bought in the last 5 seconds, a repeat within them restarting the wait."
+              "width": 1
             },
             {
               "name": "unused7",
@@ -1516,8 +1510,7 @@
             },
             {
               "name": "announce",
-              "width": 1,
-              "note": "Set to announce the purchase: a client shows it where the unit is on its side (or it plays a replay), the item's own data allows it, the player's setting asks for it, and the same item was not bought in the last 5 seconds, a repeat within them restarting the wait."
+              "width": 1
             },
             {
               "name": "unused7",

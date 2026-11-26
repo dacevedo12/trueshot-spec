@@ -6,6 +6,90 @@
   "revisions": [
     {
       "from": "1.0.0.58",
+      "until": "1.0.0.111",
+      "channel": "registration",
+      "command": 1,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unused",
+          "type": "bytes",
+          "size": 3,
+          "note": "A client reads none of it; a server writes zero."
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the player who left. A client drops the pair it holds for that client id; it reads nothing after it."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.111",
+      "until": "1.0.0.126",
+      "channel": "registration",
+      "command": 1,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unused",
+          "type": "bytes",
+          "size": 3,
+          "note": "A client reads none of it; a server writes zero."
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the player who left."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
+      "channel": "registration",
+      "command": 1,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unused",
+          "type": "bytes",
+          "size": 3,
+          "note": "A client reads none of it; a server writes zero."
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the player who left. A client drops the pair it holds for that client id; it reads nothing after it."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.127",
+      "until": "1.0.0.132",
+      "channel": "registration",
+      "command": 1,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "unused",
+          "type": "bytes",
+          "size": 3,
+          "note": "A client reads none of it; a server writes zero."
+        },
+        {
+          "name": "clientId",
+          "type": "u32",
+          "note": "The client id of the player who left."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.132",
       "until": "1.0.0.133",
       "channel": "registration",
       "command": 1,

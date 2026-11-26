@@ -5,13 +5,13 @@ Casting, levelling spells, cooldowns, and the missiles casts send out.
 ## Casting
 
 A client asks to cast from one of its champion's slots with `CastSpell`, at a
-point or at a unit. A server answers with `SpellCastAnswer`, which says the unit
-is casting and carries the whole casting: the spell, its level, its target, its
-timings and the missile it will send. A client shows the cast from that answer;
-`CastSpell` alone shows nothing. A server then sets how long until the slot is
-ready with `SpellCooldown`, and, for a spell with uses, how many are left with
-`SpellCharges`. A client reports a cooldown it sets by itself with
-`CooldownSet`.
+point or at a unit. A server answers with `SpellCastAnswer`, which says the
+unit is casting and carries the whole casting: the spell, its level, its
+target, its timings and the missile it will send. `SpellCastAnswer` is what a
+cast is shown from; `CastSpell` alone shows nothing. A server then sets how
+long until the slot is ready with `SpellCooldown`, and, for a spell with uses,
+how many are left with `SpellCharges`. A client reports a cooldown it sets by
+itself with `CooldownSet`.
 
 Which slots a client lets its player cast from at all is a value of the
 champion's that [replication](replication.md) carries.
@@ -98,10 +98,10 @@ casts by itself with `Autocast`.
 ## Levelling
 
 A client asks to put a point into a spell with `UpgradeSpell`. A server answers
-with `SpellUpgraded`, and a client shows the new level;
-`SpellLevel` sets a level outright. The spell points a champion has to spend
-are what `LevelUp` carries. A server can set how far each
-spell can be raised, and at which champion levels, with `SpellRankLimits`.
+with `SpellUpgraded`, which carries the new level; `SpellLevel` sets a level
+outright. The spell points a champion has to spend are what `LevelUp` carries.
+A server can set how far each spell can be raised, and at which champion
+levels, with `SpellRankLimits`.
 
 <!-- holds from 0.8.13.26 up to 3.7.0.328 -->
 

@@ -401,7 +401,7 @@
     },
     {
       "from": "1.0.0.124",
-      "until": "1.0.0.128",
+      "until": "1.0.0.127",
       "channel": "events",
       "command": 49,
       "direction": "serverToClient",
@@ -411,6 +411,31 @@
           "name": "atX",
           "type": "f32",
           "note": "Where it returns, along one ground axis, in world units. A client sets the champion on the nearest open ground to this point and atZ."
+        },
+        {
+          "name": "atY",
+          "type": "f32",
+          "note": "Where it returns, in height, in world units."
+        },
+        {
+          "name": "atZ",
+          "type": "f32",
+          "note": "Where it returns, along the other ground axis, in world units."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.127",
+      "until": "1.0.0.128",
+      "channel": "events",
+      "command": 49,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "atX",
+          "type": "f32",
+          "note": "Where it returns, along one ground axis, in world units."
         },
         {
           "name": "atY",

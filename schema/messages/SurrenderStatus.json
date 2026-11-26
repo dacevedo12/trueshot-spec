@@ -75,7 +75,7 @@
         {
           "name": "reason",
           "type": "u32",
-          "note": "Why the vote stands where it does. A client acts on 0 to 4 and ignores the message for any other value; 0 resets the vote whatever side holds, and 1 resets it only where side is the client's own."
+          "note": "Why the vote stands where it does."
         },
         {
           "name": "inFavour",

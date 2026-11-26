@@ -31,7 +31,7 @@
         {
           "name": "result",
           "type": "u8",
-          "note": "Nonzero where side 100 won, zero where side 200 did; a client counts a win where its own side is the one that won."
+          "note": "Nonzero where side 100 won, zero where side 200 did."
         }
       ]
     },
@@ -62,7 +62,7 @@
         {
           "name": "result",
           "type": "u8",
-          "note": "Nonzero where side 100 won, zero where side 200 did; a client counts a win where its own side is the one that won."
+          "note": "Nonzero where side 100 won, zero where side 200 did."
         }
       ]
     },
@@ -204,7 +204,7 @@
             {
               "name": "side100Won",
               "width": 1,
-              "note": "Set where side 100 won, clear where side 200 did. A client counts a win where this names its own side, and a loss otherwise."
+              "note": "Set where side 100 won, clear where side 200 did."
             },
             {
               "name": "unused",
@@ -231,7 +231,7 @@
             {
               "name": "side100Won",
               "width": 1,
-              "note": "Set where side 100 won, clear where side 200 did. A client counts a win where this names its own side, and a loss otherwise."
+              "note": "Set where side 100 won, clear where side 200 did."
             },
             {
               "name": "unused",
@@ -286,7 +286,7 @@
             {
               "name": "side100Won",
               "width": 1,
-              "note": "Set where side 100 won, clear where side 200 did. A client counts a win where this names its own side, and a loss otherwise."
+              "note": "Set where side 100 won, clear where side 200 did."
             },
             {
               "name": "unused",
@@ -1111,6 +1111,32 @@
     },
     {
       "from": "4.18.0.271",
+      "until": "4.20.0.315",
+      "channel": "events",
+      "command": 198,
+      "direction": "serverToClient",
+      "reliability": "reliable",
+      "fields": [
+        {
+          "name": "result",
+          "type": "bits",
+          "size": 1,
+          "bits": [
+            {
+              "name": "side100Won",
+              "width": 1
+            },
+            {
+              "name": "unused",
+              "width": 7,
+              "note": "Unused; a server writes zero."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "from": "4.20.0.315",
       "until": "4.21.0.0",
       "channel": "events",
       "command": 198,

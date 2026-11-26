@@ -137,7 +137,64 @@
     },
     {
       "from": "1.0.0.124",
-      "until": "1.0.0.131",
+      "until": "1.0.0.126",
+      "fields": [
+        {
+          "name": "player",
+          "type": "i64",
+          "note": "Which player holds the place, or a negative number where it stands empty. It has a player identifier's width."
+        },
+        {
+          "name": "level",
+          "type": "u16",
+          "note": "The level the seat holder has reached across matches."
+        },
+        {
+          "name": "summoner",
+          "type": "u32",
+          "note": "The spell in one of the seat's summoner slots, as the name hash of the spell; drawn as its icon on the loading screen. It has no effect on a bot's seat."
+        },
+        {
+          "name": "otherSummoner",
+          "type": "u32",
+          "note": "The spell in the other."
+        },
+        {
+          "name": "flags",
+          "type": "u8"
+        },
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "The side the seat is on, or zero where it stands empty."
+        },
+        {
+          "name": "botName",
+          "type": "bytes",
+          "size": 28,
+          "note": "A 28-byte text the client takes as it stands in its own memory: bytes 4 to 19 hold the text, the u32 at 20 its length and the u32 at 24 a capacity, which a server writes as 15 or less, so the text holds at most 15 bytes; bytes 0 to 3 are not read."
+        },
+        {
+          "name": "botAsset",
+          "type": "bytes",
+          "size": 28,
+          "note": "The name the client loads art for it under where nobody holds it, written and padded as above. A 28-byte text the client takes as it stands in its own memory: bytes 4 to 19 hold the text, the u32 at 20 its length and the u32 at 24 a capacity, which a server writes as 15 or less, so the text holds at most 15 bytes; bytes 0 to 3 are not read."
+        },
+        {
+          "name": "botDifficulty",
+          "type": "i32",
+          "note": "How well it plays where nobody holds it: 0 beginner, 1 intermediate, 2 advanced, 3 top, 4 tutorial, 5 intro."
+        },
+        {
+          "name": "icon",
+          "type": "i32",
+          "note": "Which profile icon the client shows on the seat's loading-screen card; a negative number, or one with no art, shows icon 0's."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.126",
+      "until": "1.0.0.127",
       "fields": [
         {
           "name": "player",
@@ -194,7 +251,125 @@
       ]
     },
     {
+      "from": "1.0.0.127",
+      "until": "1.0.0.131",
+      "fields": [
+        {
+          "name": "player",
+          "type": "i64",
+          "note": "Which player holds the place, or a negative number where it stands empty. It has a player identifier's width."
+        },
+        {
+          "name": "level",
+          "type": "u16",
+          "note": "The level the seat holder has reached across matches."
+        },
+        {
+          "name": "summoner",
+          "type": "u32",
+          "note": "The spell in one of the seat's summoner slots, as the name hash of the spell; drawn as its icon on the loading screen. It has no effect on a bot's seat."
+        },
+        {
+          "name": "otherSummoner",
+          "type": "u32",
+          "note": "The spell in the other."
+        },
+        {
+          "name": "flags",
+          "type": "u8",
+          "note": "How the seat is treated."
+        },
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "The side the seat is on, or zero where it stands empty."
+        },
+        {
+          "name": "botName",
+          "type": "bytes",
+          "size": 28,
+          "note": "What the seat is called where nobody holds it, written and padded as above. A 28-byte text the client takes as it stands in its own memory: bytes 4 to 19 hold the text, the u32 at 20 its length and the u32 at 24 a capacity, which a server writes as 15 or less, so the text holds at most 15 bytes; bytes 0 to 3 are not read."
+        },
+        {
+          "name": "botAsset",
+          "type": "bytes",
+          "size": 28,
+          "note": "The name the client loads art for it under where nobody holds it, written and padded as above. A 28-byte text the client takes as it stands in its own memory: bytes 4 to 19 hold the text, the u32 at 20 its length and the u32 at 24 a capacity, which a server writes as 15 or less, so the text holds at most 15 bytes; bytes 0 to 3 are not read."
+        },
+        {
+          "name": "botDifficulty",
+          "type": "i32",
+          "note": "How well it plays where nobody holds it: 0 beginner, 1 intermediate, 2 advanced, 3 top, 4 tutorial, 5 intro."
+        },
+        {
+          "name": "icon",
+          "type": "i32",
+          "note": "Which profile icon the client shows on the seat's loading-screen card; a negative number, or one with no art, shows icon 0's."
+        }
+      ]
+    },
+    {
       "from": "1.0.0.131",
+      "until": "1.0.0.132",
+      "fields": [
+        {
+          "name": "player",
+          "type": "i64",
+          "note": "Which player holds the place, or a negative number where it stands empty. It has a player identifier's width."
+        },
+        {
+          "name": "level",
+          "type": "u16",
+          "note": "The level the seat holder has reached across matches."
+        },
+        {
+          "name": "summoner",
+          "type": "u32",
+          "note": "The spell in one of the seat's summoner slots, as the name hash of the spell; drawn as its icon on the loading screen. It has no effect on a bot's seat."
+        },
+        {
+          "name": "otherSummoner",
+          "type": "u32",
+          "note": "The spell in the other."
+        },
+        {
+          "name": "flags",
+          "type": "u8",
+          "note": "How the seat is treated."
+        },
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "The side the seat is on, or zero where it stands empty."
+        },
+        {
+          "name": "botName",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "What the seat is called where nobody holds it, written and padded as above. A client reads nothing here."
+        },
+        {
+          "name": "botAsset",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The name the client loads art for it under where nobody holds it, written and padded as above. A bot seat's loading card shows its name from this, looked up in the client's own text."
+        },
+        {
+          "name": "botDifficulty",
+          "type": "i32",
+          "note": "How well it plays where nobody holds it: 0 beginner, 1 intermediate, 2 advanced, 3 top, 4 tutorial, 5 intro."
+        },
+        {
+          "name": "icon",
+          "type": "i32",
+          "note": "Which profile icon the client shows on the seat's loading-screen card; a negative number, or one with no art, shows icon 0's."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.132",
       "until": "1.0.0.133",
       "fields": [
         {
@@ -435,6 +610,80 @@
     },
     {
       "from": "1.0.0.148",
+      "until": "1.0.0.150",
+      "fields": [
+        {
+          "name": "player",
+          "type": "i64",
+          "note": "Which player holds the place, or a negative number where it stands empty. It has a player identifier's width."
+        },
+        {
+          "name": "level",
+          "type": "u16",
+          "note": "The level the seat holder has reached across matches."
+        },
+        {
+          "name": "summoner",
+          "type": "u32",
+          "note": "The spell in one of the seat's summoner slots, as the name hash of the spell; drawn as its icon on the loading screen. It has no effect on a bot's seat."
+        },
+        {
+          "name": "otherSummoner",
+          "type": "u32",
+          "note": "The spell in the other."
+        },
+        {
+          "name": "flags",
+          "type": "u8",
+          "note": "How the seat is treated."
+        },
+        {
+          "name": "side",
+          "type": "u32",
+          "note": "The side the seat is on, or zero where it stands empty."
+        },
+        {
+          "name": "botName",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "What the seat is called where nobody holds it, written and padded as above."
+        },
+        {
+          "name": "botAsset",
+          "type": "string",
+          "encoding": "utf8",
+          "size": 64,
+          "note": "The name the client loads art for it under where nobody holds it, written and padded as above."
+        },
+        {
+          "name": "botSkin",
+          "type": "i32",
+          "note": "Which look it wears where nobody holds it."
+        },
+        {
+          "name": "botDifficulty",
+          "type": "i32",
+          "note": "How well it plays where nobody holds it: 0 beginner, 1 intermediate, 2 advanced, 3 top, 4 tutorial, 5 intro."
+        },
+        {
+          "name": "icon",
+          "type": "i32"
+        },
+        {
+          "name": "allyBadge",
+          "type": "u8",
+          "note": ""
+        },
+        {
+          "name": "enemyBadge",
+          "type": "u8",
+          "note": "The badge it shows where the ally badge is not shown and this is nonzero."
+        }
+      ]
+    },
+    {
+      "from": "1.0.0.150",
       "until": "1.0.0.151",
       "fields": [
         {
@@ -510,7 +759,7 @@
     },
     {
       "from": "1.0.0.151",
-      "until": "3.03.0.198",
+      "until": "4.17.0.233",
       "fields": [
         {
           "name": "player",
@@ -535,7 +784,7 @@
         {
           "name": "flags",
           "type": "u8",
-          "note": "How the seat is treated. The others have no effect."
+          "note": "How the seat is treated."
         },
         {
           "name": "side",
@@ -590,7 +839,7 @@
       ]
     },
     {
-      "from": "3.03.0.198",
+      "from": "4.17.0.233",
       "until": "4.18.0.271",
       "fields": [
         {
@@ -601,7 +850,7 @@
         {
           "name": "level",
           "type": "u16",
-          "note": "The level the seat holder has reached across matches. A 4.17 client does not draw it on the loading screen."
+          "note": "The level the seat holder has reached across matches. A client does not draw it on the loading screen."
         },
         {
           "name": "summoner",
@@ -616,7 +865,7 @@
         {
           "name": "flags",
           "type": "u8",
-          "note": "How the seat is treated. Two bits take effect on a 4.17 client: bit 0, set where a bot holds the seat, which the loading screen then shows from the bot fields below as already loaded; and bit 1, set to show the seat's champion on the loading screen in its skin's vintage art. The others have no effect."
+          "note": "How the seat is treated. Two bits take effect: bit 0, set where a bot holds the seat, which the loading screen then shows from the bot fields below as already loaded; and bit 1, set to show the seat's champion on the loading screen in its skin's vintage art. The others have no effect."
         },
         {
           "name": "side",
@@ -628,7 +877,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": 64,
-          "note": "What the seat is called where nobody holds it, written and padded as above. A 4.17 client shows its own name for a bot of the champion instead."
+          "note": "What the seat is called where nobody holds it, written and padded as above. A client shows its own name for a bot of the champion instead."
         },
         {
           "name": "botAsset",
@@ -642,7 +891,7 @@
           "type": "string",
           "encoding": "utf8",
           "size": 16,
-          "note": "What the seat's standing across matches is called, written and padded as above. A 4.17 client frames the seat's loading-screen card with its own image of that name, where it has one; UNRANKED and BRONZE draw nothing."
+          "note": "What the seat's standing across matches is called, written and padded as above. A client frames the seat's loading-screen card with its own image of that name, where it has one; UNRANKED and BRONZE draw nothing."
         },
         {
           "name": "botSkin",
@@ -652,7 +901,7 @@
         {
           "name": "botDifficulty",
           "type": "i32",
-          "note": "How well it plays where nobody holds it: 0 beginner, 1 intermediate, 2 advanced, 3 top, 4 tutorial, 5 intro. A 4.17 client draws it nowhere and picks the bot's summoner spells by it."
+          "note": "How well it plays where nobody holds it: 0 beginner, 1 intermediate, 2 advanced, 3 top, 4 tutorial, 5 intro. A client draws it nowhere and picks the bot's summoner spells by it."
         },
         {
           "name": "icon",
@@ -662,7 +911,7 @@
         {
           "name": "allyBadge",
           "type": "u8",
-          "note": "The badge a 4.17 client shows on the seat's card to the seat's own side (and to a client on neither side), where it is one of the badges the client's own data names."
+          "note": "The badge a client shows on the seat's card to the seat's own side (and to a client on neither side), where it is one of the badges the client's own data names."
         },
         {
           "name": "enemyBadge",
